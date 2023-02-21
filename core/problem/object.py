@@ -101,7 +101,6 @@ class Equation(Condition):
         """reload add() of parent class <Condition> to adapt equation's operation."""
         if item not in self.get_id_by_item and -item not in self.get_id_by_item:
             added, _id = super().add(item, premise, theorem)
-            print(item)
             if theorem != "solve_eq":
                 self.equations[item] = item
             self.solved = False

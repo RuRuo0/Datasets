@@ -480,10 +480,13 @@ class EqParser:
         i = 0
         expr_list = []
         for j in range(1, len(expr)):    # to list
-            if expr[j] in string.ascii_lowercase or expr[j] in EqParser.operator:
-                expr_list.append(expr[i:j])
-                i = j
-        expr_list.append(expr[i:len(expr)])
+            if expr[j] in EqParser.operator:
+                if i < j:
+                    expr_list.append(expr[i:j])
+                expr_list.append(expr[j])
+                i = j + 1
+        if i < len(expr):
+            expr_list.append(expr[i:len(expr)])
         expr_list.append("~")
 
         expr_stack = []

@@ -77,10 +77,6 @@ class Solver:
                             update = self.problem.add(predicate, tuple(item), r_ids[i], theorem_name) or update
                         else:  # algebra relation
                             equation = EqParser.get_equation_from_tree(self.problem, para, True, r_items[i])
-                            # print(para)
-                            # print(r_items[i])
-                            # print(equation)
-                            # exit(0)
                             if equation is not None:
                                 update = self.problem.add("Equation", equation, r_ids[i], theorem_name) or update
         if update:  # add theorem to problem theorem_applied list when update

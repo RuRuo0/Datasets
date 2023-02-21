@@ -94,7 +94,7 @@
 				"1": {
 					"premise": "RightTriangle(ABC)",
 					"conclusion": [
-						"Perpendicular(B,AB,CB)",
+						"Perpendicular(AB,CB)",
 						"Equal(Measure(ABC),90)"
 					]
 				}
@@ -146,7 +146,7 @@
 			"name": "right_triangle_judgment_angle",
 			"description": {
 				"1": {
-					"premise": "Triangle(ABC)&(Perpendicular(B,AD,CE)|Equal(Measure(ABC),90))",
+					"premise": "Triangle(ABC)&(Perpendicular(AB,CB)|Equal(Measure(ABC),90))",
 					"conclusion": [
 						"RightTriangle(ABC)"
 					]
@@ -363,7 +363,7 @@
 				"1": {
 					"premise": "Angle(ABC)&Equal(Measure(ABC),90)",
 					"conclusion": [
-						"Perpendicular(B,AB,CB)"
+						"Perpendicular(AB,CB)"
 					]
 				}
 			}
@@ -372,7 +372,7 @@
 			"name": "perpendicular_property",
 			"description": {
 				"1": {
-					"premise": "Perpendicular(O,AB,CD)&Angle(AOC)",
+					"premise": "Perpendicular(AO,CO)",
 					"conclusion": [
 						"Equal(Measure(AOC),90)"
 					]
@@ -383,9 +383,10 @@
 			"name": "perpendicular_property_collinear_extend",
 			"description": {
 				"1": {
-					"premise": "Perpendicular(O,AB,CD)&Collinear(ABE)",
+					"premise": "Collinear(AOB)&(Perpendicular(AO,CO)|Perpendicular(CO,BO))",
 					"conclusion": [
-						"Perpendicular(O,AE,CD)"
+						"Perpendicular(CO,BO)",
+						"Perpendicular(AO,CO)"
 					]
 				}
 			}
@@ -400,15 +401,21 @@
 					]
 				},
 				"2": {
-					"premise": "Parallel(AB,CD)&Perpendicular(O,AB,EF)&Intersect(P,CD,EF)",
+					"premise": "Parallel(AB,CD)&Perpendicular(AC,DC)",
 					"conclusion": [
-						"Perpendicular(P,CD,EF)"
+						"Perpendicular(BA,CA)"
 					]
 				},
 				"3": {
-					"premise": "Perpendicular(O,AB,EF)&Perpendicular(P,CD,EF)",
+					"premise": "Parallel(AB,CD)&Perpendicular(CD,BD)",
 					"conclusion": [
-						"DisorderParallel(AB,CD)"
+						"Perpendicular(DB,AB)"
+					]
+				},
+				"4": {
+					"premise": "Perpendicular(CD,BD)&Perpendicular(DB,AB)",
+					"conclusion": [
+						"Parallel(AB,CD)"
 					]
 				}
 			}
@@ -439,7 +446,7 @@
 			"name": "perpendicular_bisector_property_distance_equal",
 			"description": {
 				"1": {
-					"premise": "PerpendicularBisector(O,AB,CD)",
+					"premise": "PerpendicularBisector(AB,CO)",
 					"conclusion": [
 						"Equal(Length(CA),Length(CB))"
 					]
@@ -450,9 +457,9 @@
 			"name": "perpendicular_bisector_judgment",
 			"description": {
 				"1": {
-					"premise": "Perpendicular(O,AB,CD)&Midpoint(O,AB)",
+					"premise": "Perpendicular(AO,CO)&Perpendicular(CO,BO)&Midpoint(O,AB)",
 					"conclusion": [
-						"PerpendicularBisector(O,AB,CD)"
+						"PerpendicularBisector(AB,CO)"
 					]
 				}
 			}
@@ -518,7 +525,8 @@
 				"1": {
 					"premise": "IsAltitude(AD,ABC)",
 					"conclusion": [
-						"Perpendicular(D,BC,AD)"
+						"Perpendicular(BD,AD)",
+						"Perpendicular(AD,CD)"
 					]
 				}
 			}
@@ -527,7 +535,7 @@
 			"name": "altitude_judgment",
 			"description": {
 				"1": {
-					"premise": "Triangle(ABC)&Collinear(BDC)&Line(AD)&(Perpendicular(D,BC,AD)|Perpendicular(D,BD,AD)|Perpendicular(D,DC,AD))",
+					"premise": "Triangle(ABC)&Collinear(BDC)&Line(AD)&(Perpendicular(BD,AD)|Perpendicular(AD,CD))",
 					"conclusion": [
 						"IsAltitude(AD,ABC)"
 					]
@@ -594,15 +602,15 @@
 			"name": "circumcenter_property_intersect",
 			"description": {
 				"1": {
-					"premise": "Circumcenter(O,ABC)&Perpendicular(D,BC,OE)",
+					"premise": "Circumcenter(O,ABC)&Collinear(BEC)&(Perpendicular(BE,OE)|Perpendicular(OE,CE))",
 					"conclusion": [
-						"PerpendicularBisector(D,BC,OE)"
+						"PerpendicularBisector(BC,OE)"
 					]
 				},
 				"2": {
 					"premise": "Circumcenter(O,ABC)&Midpoint(M,BC)",
 					"conclusion": [
-						"PerpendicularBisector(M,BC,OM)"
+						"PerpendicularBisector(BC,OM)"
 					]
 				}
 			}
@@ -611,7 +619,7 @@
 			"name": "circumcenter_judgment",
 			"description": {
 				"1": {
-					"premise": "Triangle(ABC)&PerpendicularBisector(D,AB,OE)&PerpendicularBisector(F,BC,OG)",
+					"premise": "Triangle(ABC)&Collinear(BDC)&Collinear(CEA)&PerpendicularBisector(BC,OD)&PerpendicularBisector(CA,OE)",
 					"conclusion": [
 						"Circumcenter(O,ABC)"
 					]
@@ -622,7 +630,7 @@
 			"name": "incenter_property_line_equal",
 			"description": {
 				"1": {
-					"premise": "Incenter(O,ABC)&Collinear(ADB)&Collinear(BEC)&Perpendicular(D,AB,OD)&Perpendicular(E,BC,OE)",
+					"premise": "Incenter(O,ABC)&Collinear(ADB)&Collinear(BEC)&(Perpendicular(AD,OD)|Perpendicular(OD,BD))&(Perpendicular(BE,OE)|Perpendicular(OE,CE))",
 					"conclusion": [
 						"Equal(Length(OD),Length(OE))"
 					]

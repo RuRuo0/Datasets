@@ -72,7 +72,7 @@ The code structure is shown below:
 </div>
 <div align=center>
 	Figure 1. Architecture
-</div> 
+</div>   
 `cowork` displays collaboration information.  
 `data` contains unformalized but unified geometry problem datasets, such as Geometry3K, GeoQA, UniGeo, etc. It also contains formalized problems, which stores in *data/formalized-problems*.  
 `doc` is the introduction of formal system and project-related documentation.

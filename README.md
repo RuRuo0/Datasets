@@ -4,7 +4,7 @@ Formal representation and reasoning for SAT-level Euclidean plane geometry probl
 
 ## Cowork
 #### Week 1 (230220): form 2023-02-20 to 2023-02-26.
-<table align="center">
+<table>
 	<tr>
         <td align="center"><b>Worker</b></td>
 	    <td align="center"><b>WorkLoad</b></td>

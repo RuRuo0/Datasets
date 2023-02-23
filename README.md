@@ -3,7 +3,7 @@ Formal representation and reasoning for SAT-level Euclidean plane geometry probl
 **FormalGeo-SAT** is an extended version of **[FormalGeo](https://github.com/BitSecret/FormalGeo)**. It supports solving more types of plane geometric problems.
 
 ## Cowork
-#### Week 1 (230220): form 2023-02-20 to 2023-02-26.
+#### Week 1 (230227): form 2023-02-27 to 2023-03-05.
 <table>
 	<tr>
         <td align="center"><b>Worker</b></td>
@@ -163,5 +163,7 @@ python main.py
 </div>
 
 ## Acknowledge
-Thanks for the support of the **[Geometric Cognitive Reasoning Group of Shanghai University (GCRG, SHU)](https://euclidesprobationem.github.io/)**. Thank you for participating in the dataset annotation. They are: [XiaokaiZhang](https://github.com/BitSecret). Thank you for the work of the original datasets, which are: [GeoS](https://geometry.allenai.org/), [Geometry3K](https://github.com/lupantech/InterGPS), [GeoQA](https://github.com/chen-judge/GeoQA), [GeometryQA](https://github.com/doublebite/Sequence-to-General-tree/), [GeoQA+](https://github.com/SCNU203/GeoQA-Plus), [UniGeo](https://github.com/chen-judge/UniGeo).  
+Thanks for the support of the **[Geometric Cognitive Reasoning Group of Shanghai University (GCRG, SHU)](https://euclidesprobationem.github.io/)**.   
+Thank you for participating in the dataset annotation. They are: [XiaokaiZhang](https://github.com/BitSecret).   
+Thank you for the work of the original datasets, which are: [GeoS](https://geometry.allenai.org/), [Geometry3K](https://github.com/lupantech/InterGPS), [GeoQA](https://github.com/chen-judge/GeoQA), [GeometryQA](https://github.com/doublebite/Sequence-to-General-tree/), [GeoQA+](https://github.com/SCNU203/GeoQA-Plus), [UniGeo](https://github.com/chen-judge/UniGeo).  
 Please contact with the author (xiaokaizhang1999@163.com) if you encounter any issues.  

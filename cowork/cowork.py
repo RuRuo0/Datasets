@@ -27,5 +27,9 @@ def get_work_dis():
     print(table + "</table>")
 
 
+def statistics():
+    pass
+
+
 if __name__ == '__main__':
     get_work_dis()

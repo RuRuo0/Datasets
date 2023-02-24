@@ -3,7 +3,7 @@ import os
 
 def get_work_dis():
     workers = ["XiaokaiZhang", "NaZhu", "JiaZou", "YimingHe"]
-    timespan = "Week 1 (230220): form 2023-02-20 to 2023-02-26."
+    timespan = "Week 1 (230227): form 2023-02-27 to 2023-03-05."
     start_pid = 1584
     workload = 15
 

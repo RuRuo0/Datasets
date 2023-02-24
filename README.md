@@ -1,5 +1,5 @@
 # FormalGeo-SAT
-Formal representation and reasoning for SAT-level Euclidean plane geometry problems.  
+Formal representation and solving for SAT-level Euclidean plane geometry problems.  
 **FormalGeo-SAT** is an extended version of **[FormalGeo](https://github.com/BitSecret/FormalGeo)**. It supports solving more types of plane geometric problems.
 
 ## Cowork

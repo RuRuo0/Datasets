@@ -10,6 +10,7 @@ FormalGeo形式化语言包括两大组成部分，分别是**几何定义语言
     <br>
     Figure 1. 几何本体域-二维四象限
 </div>
+
 ### 1.2几何表示论
 几何表示论是研究如何使用文字或符号来表示几何图形的理论，是问题*我们如何形式化？*的回答，其理论成果包括对应一致性原则、构造性作图法。对应一致性原则是指原始系统和形式化系统的静态描述和动态过程要一一对应。在几何领域，静态描述指的是几何问题的条件，包括数量关系和实体关系；动态过程是指定理。构造性作图法采用最少数量的形式化语句来描述几何图形，并按照机械化的方法自动构建出所有的几何元素。
 **CDL**采用点的有序对来描述几何图形，根据构图的先后顺序，可以分为：构图语句（包括基本构图语句和基本实体）和其他语句（实体、实体关系、代数关系等），具体可参考附录。  
@@ -37,10 +38,12 @@ Conda是一个开源包管理系统和环境管理系统，包括多种语言的
 <div align=center>
     <img src="cowork-pic/1.png" width="80%">
 </div>
+
 2.无脑next到这里，勾选以下内容：
 <div align=center>
     <img src="cowork-pic/2.png" width="50%">
 </div>
+
 3.继续无脑next，直到安装完成。打开命令窗口，输入命令查看安装版本，检查是否安装成功：
 
     # 查看安装版本
@@ -87,6 +90,7 @@ pycharm一款用于python项目开发的IDE。安装pycharm主要是为了：①
 <div align=center>
     <img src="cowork-pic/3.png" width="70%">
 </div>
+
 2.在这一页勾选几项个性化配置，其他都无脑next：
 <div align=center>
     <img src="cowork-pic/4.png" width="70%">
@@ -99,10 +103,12 @@ Git是一种分布式版本控制系统，用于多人协作项目开发时的�
     <img src="cowork-pic/5.png" width="70%">
     <img src="cowork-pic/6.png" width="70%">
 </div>
+
 2.按照其默认的勾选，无脑next，直到安装完成：
 <div align=center>
     <img src="cowork-pic/7.png" width="70%">
 </div>
+
 3.首次使用，配置用户名和邮箱，在任意目录下右键，选择 Git Bash Here：
 <div align=center>
     <img src="cowork-pic/8.png" width="40%">
@@ -122,6 +128,7 @@ Git是一种分布式版本控制系统，用于多人协作项目开发时的�
 <div align=center>
     <img src="cowork-pic/9.png" width="40%">
 </div>
+
 2.初始化git并从远程仓库下载项目
 
 	# 初始化git
@@ -143,38 +150,46 @@ Git是一种分布式版本控制系统，用于多人协作项目开发时的�
 <div align=center>
     <img src="cowork-pic/10.png">
 </div>
+
 查看我们的[远程协作仓库](https://github.com/BitSecret/FormalGeo-SAT)，也有了你的远程分支：
 <div align=center>
     <img src="cowork-pic/11.png">
     <img src="cowork-pic/12.png">
 </div>
+
 3.添加 .gitignore 文件：  
 添加.gitignore文件到你的项目目录，其作用是忽略你的IDE产生的、与项目无关的缓存or配置文件。
 <div align=center>
     <img src="cowork-pic/13.png">
 </div>
+
 文件的内容如图所示。如果你用的是其他IDE，请将对应的缓存/配置文件或文件夹添加到.gitignore文件中。  
 4.pycharm项目配置  
 在你的项目文件夹右键，选择作为pycharm项目打开。首次打开会为文件编制索引，加载较慢，耐心等待。  
 <div align=center>
     <img src="cowork-pic/14.png">
 </div>
+
 加载完成后，选择 文件->设置->项目->python解释器->全部显示：  
 <div align=center>
     <img src="cowork-pic/15.png">
 </div>
+
 点击+号，选择Conda环境，将你的Conda安装地址配置到pycharm中，同时选择我们在2.1节新建的python3.10环境：  
 <div align=center>
     <img src="cowork-pic/16.png" width="70%">
 </div>
+
 点击确定，加载Conda环境。勾选关联项目，然后点击应用：  
 <div align=center>
     <img src="cowork-pic/17.png" width="60%">
 </div>
+
 选择python解释器，点击应用：  
 <div align=center>
     <img src="cowork-pic/18.png" width="60%">
 </div>
+
 配置完成后，会载入环境，编制索引，加载较慢，耐心等待。  
 5.首次运行  
 右键 main.py ，选择运行。若程序成功编译并输出 pid： ，则证明环境配置成功。  
@@ -182,6 +197,7 @@ Git是一种分布式版本控制系统，用于多人协作项目开发时的�
     <img src="cowork-pic/19.png" width="30%">
     <img src="cowork-pic/20.png">
 </div>
+
 随便输入一个 data/formalized-problems 文件夹中的序号，查看推理器输出：
 <div align=center>
     <img src="cowork-pic/21.png">
@@ -193,6 +209,7 @@ Git是一种分布式版本控制系统，用于多人协作项目开发时的�
 <div align=center>
     <img src="cowork-pic/9.png" width="40%">
 </div>
+
 2.输入以下指令，将远程主分支的更新内容拉取到你的本地分支：  
 
 	$ git pull origin main
@@ -201,16 +218,19 @@ Git是一种分布式版本控制系统，用于多人协作项目开发时的�
 <div align=center>
     <img src="cowork-pic/22.png">
 </div>
+
 上图中黄色箭头是每周的**标注识别号**，绿色箭头是每个人分配的题号，原始题目在 data/raw-problems 文件夹，共6个数据集，已经化为了统一的格式。
 ### 3.2标注(1个)问题
 1.复制模板到 data/formalized-problems ，并改名为 <problem_id>.json ：
 <div align=center>
     <img src="cowork-pic/23.png">
 </div>
+
 2.将原始问题具有的信息添加到 <problem_id>.json ，同时添加上自己的标注信息：  
 <div align=center>
     <img src="cowork-pic/24.png">
 </div>
+
 3.按照附录的各种手册，标注并保存问题。
 
 ### 3.3提交已标注的问题
@@ -218,6 +238,7 @@ Git是一种分布式版本控制系统，用于多人协作项目开发时的�
 <div align=center>
     <img src="cowork-pic/9.png" width="40%">
 </div>
+
 2.提交已标注的问题
 
 	# 添加文件
@@ -272,6 +293,7 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
 	    <td align="center">Point,Arc</td>
     </tr>
 </table>
+
 ### B、基本实体
 <table width="100%">
 	<tr>
@@ -289,6 +311,7 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
 	    <td align="center">/</td>
     </tr>
 </table>
+
 ### C、实体
 <table width="100%">
 	<tr>
@@ -306,6 +329,7 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
 	    <td align="center">/</td>
     </tr>
 </table>
+
 ### D、实体关系
 <table width="100%">
 	<tr>
@@ -323,6 +347,7 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
 	    <td align="center">/</td>
     </tr>
 </table>
+
 ### E、基本实体属性
 <table width="100%">
 	<tr>
@@ -340,6 +365,7 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
 	    <td align="center">/</td>
     </tr>
 </table>
+
 ### F、实体属性
 <table width="100%">
 	<tr>
@@ -358,6 +384,7 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
     </tr>
 </table>
 ### G、代数关系
+
 <table width="100%">
 	<tr>
 	    <td align="center"><b>名称</b></td>
@@ -371,6 +398,7 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
     </tr>
 </table>
 ### H、代数运算
+
 <table width="100%">
 	<tr>
 	    <td align="center"><b>名称</b></td>
@@ -397,6 +425,7 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
 	    <td align="center">$可以是表达式，也可以是实体属性，并且可以嵌套表示</td>
     </tr>
 </table>
+
 ## 附录3 定理列表
 <table width="100%">
 	<tr>
@@ -410,6 +439,7 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
 	    <td align="center">/</td>
     </tr>
 </table>
+
 ## 附录4 图形-文字表示对照手册
 
 条件的自动扩展
@@ -418,6 +448,7 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
     <br>
     Figure 1. 几何本体域-二维四象限
 </div>
+
 ### A、基本构图谓词
 ### B、基本实体
 ### C、实体

@@ -268,7 +268,7 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
 	<tr>
 	    <td align="center"><b>名称</b></td>
         <td align="center"><b>格式</b></td>
-        <td align="center"><b>多重表示</b></td>
+        <td align="center"><b>多种表示</b></td>
         <td align="center"><b>实体存在性约束</b></td>
         <td align="center"><b>扩展</b></td>
     </tr>
@@ -300,7 +300,7 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
 	<tr>
 	    <td align="center"><b>名称</b></td>
         <td align="center"><b>格式</b></td>
-        <td align="center"><b>多重表示</b></td>
+        <td align="center"><b>多种表示</b></td>
         <td align="center"><b>实体存在性约束</b></td>
         <td align="center"><b>扩展</b></td>
     </tr>
@@ -311,6 +311,42 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
 	    <td align="center">/</td>
 	    <td align="center">/</td>
     </tr>
+    <tr>
+        <td align="center">线</td>
+	    <td align="center">Line(AB)</td>
+        <td align="center">BA</td>
+	    <td align="center">/</td>
+	    <td align="center">Point(A),Point(B)</td>
+    </tr>
+    <tr>
+        <td align="center">角</td>
+	    <td align="center">Angle(ABC)</td>
+        <td align="center">/</td>
+	    <td align="center">/</td>
+	    <td align="center">Line(AB),Line(BC)</td>
+    </tr>
+    <tr>
+        <td align="center">多边形</td>
+	    <td align="center">Polygon($)</td>
+        <td align="center">*</td>
+	    <td align="center">/</td>
+	    <td align="center">Angle</td>
+    </tr>
+    <tr>
+        <td align="center">弧</td>
+	    <td align="center">Arc(AB)</td>
+        <td align="center">/</td>
+	    <td align="center">/</td>
+	    <td align="center">Point(A),Point(B)</td>
+    </tr>
+    <tr>
+        <td align="center">圆</td>
+	    <td align="center">Circle(O)</td>
+        <td align="center">/</td>
+	    <td align="center">/</td>
+	    <td align="center">Point(O)</td>
+    </tr>
+
 </table>
 
 ### C、实体
@@ -318,14 +354,35 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
 	<tr>
 	    <td align="center"><b>名称</b></td>
         <td align="center"><b>格式</b></td>
-        <td align="center"><b>多重表示</b></td>
+        <td align="center"><b>多种表示</b></td>
         <td align="center"><b>实体存在性约束</b></td>
         <td align="center"><b>扩展</b></td>
     </tr>
     <tr>
         <td align="center">三角形</td>
 	    <td align="center">Triangle(ABC)</td>
-	    <td align="center">BCA/CAB</td>
+	    <td align="center">BCA,CAB</td>
+	    <td align="center">Polygon(ABC)</td>
+	    <td align="center">/</td>
+    </tr>
+    <tr>
+        <td align="center">直角三角形</td>
+	    <td align="center">RightTriangle(ABC)</td>
+	    <td align="center">/</td>
+	    <td align="center">Polygon(ABC)</td>
+	    <td align="center">/</td>
+    </tr>
+    <tr>
+        <td align="center">等腰三角形</td>
+	    <td align="center">IsoscelesTriangle(ABC)</td>
+	    <td align="center">/</td>
+	    <td align="center">Polygon(ABC)</td>
+	    <td align="center">/</td>
+    </tr>
+    <tr>
+        <td align="center">等边三角形</td>
+	    <td align="center">EquilateralTriangle(ABC)</td>
+	    <td align="center">BCA,CAB</td>
 	    <td align="center">Polygon(ABC)</td>
 	    <td align="center">/</td>
     </tr>
@@ -336,16 +393,128 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
 	<tr>
 	    <td align="center"><b>名称</b></td>
         <td align="center"><b>格式</b></td>
-        <td align="center"><b>多重表示</b></td>
+        <td align="center"><b>多种表示</b></td>
         <td align="center"><b>实体存在性约束</b></td>
         <td align="center"><b>扩展</b></td>
     </tr>
     <tr>
         <td align="center">中点</td>
 	    <td align="center">Midpoint(M,AB)</td>
-	    <td align="center">M,BA</td>
+	    <td align="center">MBA</td>
 	    <td align="center">Point(M),Line(AB)</td>
 	    <td align="center">/</td>
+    </tr>
+    <tr>
+        <td align="center">两线相交</td>
+	    <td align="center">Intersect(O,AB,CD)</td>
+	    <td align="center">OCDBA,OBADC,ODCAB</td>
+	    <td align="center">Point(O),Line(AB),Line(CD)</td>
+	    <td align="center">/</td>
+    </tr>
+    <tr>
+        <td align="center">两线平行</td>
+	    <td align="center">Parallel(AB,CD)</td>
+	    <td align="center">DCBA</td>
+	    <td align="center">Line(AB),Line(CD)</td>
+	    <td align="center">/</td>
+    </tr>
+    <tr>
+        <td align="center">两线垂直</td>
+	    <td align="center">Perpendicular(AO,OC)</td>
+	    <td align="center">/</td>
+	    <td align="center">Line(AO),Line(OC)</td>
+	    <td align="center">/</td>
+    </tr>
+    <tr>
+        <td align="center">垂直平分线</td>
+	    <td align="center">PerpendicularBisector(AB,CO)</td>
+	    <td align="center">/</td>
+	    <td align="center">Line(AB),Line(CO)</td>
+	    <td align="center">/</td>
+    </tr>
+    <tr>
+        <td align="center">角平分线</td>
+	    <td align="center">Bisector(BD,ABC)</td>
+	    <td align="center">/</td>
+	    <td align="center">Line(BD),Angle(ABC)</td>
+	    <td align="center">/</td>
+    </tr>
+    <tr>
+        <td align="center">三角形的中线</td>
+	    <td align="center">Median(AD,ABC)</td>
+	    <td align="center">/</td>
+	    <td align="center">Line(AD),Polygon(ABC),Collinear(BDC)</td>
+	    <td align="center">Triangle(ABC)</td>
+    </tr>
+    <tr>
+        <td align="center">三角形的高</td>
+	    <td align="center">IsAltitude(AD,ABC)</td>
+	    <td align="center">/</td>
+	    <td align="center">Line(AD),Polygon(ABC),Collinear(BDC)</td>
+	    <td align="center">Triangle(ABC)</td>
+    </tr>
+    <tr>
+        <td align="center">三角形的中位线</td>
+	    <td align="center">Neutrality(DE,ABC)</td>
+	    <td align="center">/</td>
+	    <td align="center">Line(DE),Polygon(ABC)</td>
+	    <td align="center">Triangle(ABC)</td>
+    </tr>
+    <tr>
+        <td align="center">三角形的外心</td>
+	    <td align="center">Circumcenter(O,ABC)</td>
+	    <td align="center">OBCA,OCAB</td>
+	    <td align="center">Point(O),Polygon(ABC)</td>
+	    <td align="center">Triangle(ABC)</td>
+    </tr>
+    <tr>
+        <td align="center">三角形的内心</td>
+	    <td align="center">Incenter(O,ABC)</td>
+	    <td align="center">OBCA,OCAB</td>
+	    <td align="center">Point(O),Polygon(ABC)</td>
+	    <td align="center">Triangle(ABC)</td>
+    </tr>
+    <tr>
+        <td align="center">三角形的重心</td>
+	    <td align="center">Centroid(O,ABC)</td>
+	    <td align="center">OBCA,OCAB</td>
+	    <td align="center">Point(O),Polygon(ABC)</td>
+	    <td align="center">Triangle(ABC)</td>
+    </tr>
+    <tr>
+        <td align="center">三角形的垂心</td>
+	    <td align="center">Orthocenter(O,ABC)</td>
+	    <td align="center">OBCA,OCAB</td>
+	    <td align="center">Point(O),Polygon(ABC)</td>
+	    <td align="center">Triangle(ABC)</td>
+    </tr>
+    <tr>
+        <td align="center">三角形全等</td>
+	    <td align="center">Congruent(ABC,DEF)</td>
+	    <td align="center">DEFABC,BCAEFD,EFDBCA,CABFDE,FDECAB</td>
+	    <td align="center">Polygon(ABC),Polygon(DEF)</td>
+	    <td align="center">Triangle(ABC),Triangle(DEF)</td>
+    </tr>
+    <tr>
+        <td align="center">三角形相似</td>
+	    <td align="center">Similar(ABC,DEF)</td>
+	    <td align="center">DEFABC,BCAEFD,EFDBCA,CABFDE,FDECAB</td>
+	    <td align="center">Polygon(ABC),Polygon(DEF)</td>
+	    <td align="center">Triangle(ABC),Triangle(DEF)</td>
+    </tr>
+    <tr>
+        <td align="center">三角形镜像全等</td>
+	    <td align="center">MirrorCongruent(ABC,DEF)</td>
+	    <td align="center">DEFABC,BCAFDE,FDEBCA,CABEFD,EFDCAB</td>
+	    <td align="center">Polygon(ABC),Polygon(DEF)</td>
+	    <td align="center">Triangle(ABC),Triangle(DEF)</td>
+    </tr>
+    <tr>
+        <td align="center">三角形镜像相似</td>
+	    <td align="center">MirrorSimilar(ABC,DEF)</td>
+	    <td align="center">DEFABC,BCAFDE,FDEBCA,CABEFD,EFDCAB</td>
+	    <td align="center">Polygon(ABC),Polygon(DEF)</td>
+	    <td align="center">Triangle(ABC),Triangle(DEF)</td>
     </tr>
 </table>
 
@@ -354,16 +523,38 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
 	<tr>
 	    <td align="center"><b>名称</b></td>
         <td align="center"><b>格式</b></td>
-        <td align="center"><b>多重表示</b></td>
+        <td align="center"><b>多种表示</b></td>
         <td align="center"><b>实体存在性约束</b></td>
-        <td align="center"><b>扩展</b></td>
     </tr>
     <tr>
         <td align="center">长度</td>
 	    <td align="center">Length(AB)</td>
-	    <td align="center">/</td>
+	    <td align="center">BA</td>
 	    <td align="center">Line(AB)</td>
+    </tr>
+    <tr>
+        <td align="center">弧长</td>
+	    <td align="center">ArcLength(AB)</td>
 	    <td align="center">/</td>
+	    <td align="center">Arc(AB)</td>
+    </tr>
+    <tr>
+        <td align="center">角度</td>
+	    <td align="center">Measure(ABC)</td>
+	    <td align="center">/</td>
+	    <td align="center">Angle(ABC)</td>
+    </tr>
+    <tr>
+        <td align="center">面积</td>
+	    <td align="center">Area($)</td>
+	    <td align="center">*</td>
+	    <td align="center">Polygon($)/Circle(O)</td>
+    </tr>
+    <tr>
+        <td align="center">周长</td>
+	    <td align="center">Perimeter($)</td>
+	    <td align="center">*</td>
+	    <td align="center">Polygon($)/Circle(O)</td>
     </tr>
 </table>
 
@@ -372,20 +563,24 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
 	<tr>
 	    <td align="center"><b>名称</b></td>
         <td align="center"><b>格式</b></td>
-        <td align="center"><b>多重表示</b></td>
+        <td align="center"><b>多种表示</b></td>
         <td align="center"><b>实体存在性约束</b></td>
-        <td align="center"><b>扩展</b></td>
     </tr>
     <tr>
         <td align="center">三角形高的长度</td>
 	    <td align="center">AltitudeOfTriangle(ABC)</td>
 	    <td align="center">/</td>
 	    <td align="center">Polygon(ABC)</td>
-	    <td align="center">/</td>
+    </tr>
+    <tr>
+        <td align="center">点到直线的距离</td>
+	    <td align="center">DistanceOfPointToLine(O,AB)</td>
+	    <td align="center">OBA</td>
+	    <td align="center">Point(O),Line(AB)</td>
     </tr>
 </table>
-### G、代数关系
 
+### G、代数关系
 <table width="100%">
 	<tr>
 	    <td align="center"><b>名称</b></td>
@@ -398,8 +593,8 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
 	    <td align="center">$可以是表达式，也可以是实体属性，并且可以嵌套表示</td>
     </tr>
 </table>
-### H、代数运算
 
+### H、代数运算
 <table width="100%">
 	<tr>
 	    <td align="center"><b>名称</b></td>
@@ -410,6 +605,51 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
         <td align="center">加</td>
 	    <td align="center">Add(expr1,expr2,…)</td>
 	    <td align="center">+</td>
+    </tr>
+    <tr>
+        <td align="center">减</td>
+	    <td align="center">Sub(expr1,expr2)</td>
+	    <td align="center">-</td>
+    </tr>
+    <tr>
+        <td align="center">乘</td>
+	    <td align="center">Mul(expr1,expr2,…)</td>
+	    <td align="center">*</td>
+    </tr>
+    <tr>
+        <td align="center">除</td>
+	    <td align="center">Div(expr1,expr2)</td>
+	    <td align="center">/</td>
+    </tr>
+    <tr>
+        <td align="center">幂</td>
+	    <td align="center">Pow(expr1,expr2)</td>
+	    <td align="center">^</td>
+    </tr>
+    <tr>
+        <td align="center">正弦</td>
+	    <td align="center">Sin(expr)</td>
+	    <td align="center">@</td>
+    </tr>
+    <tr>
+        <td align="center">余弦</td>
+	    <td align="center">Cos(expr)</td>
+	    <td align="center">#</td>
+    </tr>
+    <tr>
+        <td align="center">正切</td>
+	    <td align="center">Tan(expr)</td>
+	    <td align="center">$</td>
+    </tr>
+    <tr>
+        <td align="center">实数</td>
+	    <td align="center">R</td>
+	    <td align="center">/</td>
+    </tr>
+    <tr>
+        <td align="center">自由变量</td>
+	    <td align="center">x</td>
+	    <td align="center">/</td>
     </tr>
 </table>
 
@@ -424,6 +664,16 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
         <td align="center">证相等</td>
 	    <td align="center">Equal($,$)</td>
 	    <td align="center">$可以是表达式，也可以是实体属性，并且可以嵌套表示</td>
+    </tr>
+    <tr>
+        <td align="center">求值</td>
+	    <td align="center">Value(Expression($))</td>
+	    <td align="center">Expression表示由运算和实体属性构成的表达式</td>
+    </tr>
+    <tr>
+        <td align="center">求关系</td>
+	    <td align="center">Relation($)</td>
+	    <td align="center">Relation表示任意实体、实体关系</td>
     </tr>
 </table>
 

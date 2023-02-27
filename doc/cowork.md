@@ -389,7 +389,7 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
 </table>
 
 ### D、实体关系
-<table width="100%">
+<table style="word-wrap:break-word;word-break:break-all;" width="100%">
 	<tr>
 	    <td align="center"><b>名称</b></td>
         <td align="center"><b>格式</b></td>

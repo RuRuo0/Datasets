@@ -678,18 +678,9 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
 </table>
 
 ## 附录3 定理列表
-<table width="100%">
-	<tr>
-	    <td align="center"><b>名称</b></td>
-        <td align="center"><b>前提</b></td>
-        <td align="center"><b>结论</b></td>
-    </tr>
-    <tr>
-        <td align="center">/</td>
-	    <td align="center">/</td>
-	    <td align="center">/</td>
-    </tr>
-</table>
+|名称|前提|结论|
+--|--|--|
+测试|测试|测试|
 
 ## 附录4 图形-文字表示对照手册
 

@@ -519,151 +519,50 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
 </table>
 
 ### E、基本实体属性
-<table width="100%">
-	<tr>
-	    <td align="center"><b>名称</b></td>
-        <td align="center"><b>格式</b></td>
-        <td align="center"><b>多种表示</b></td>
-        <td align="center"><b>实体存在性约束</b></td>
-    </tr>
-    <tr>
-        <td align="center">长度</td>
-	    <td align="center">Length(AB)</td>
-	    <td align="center">BA</td>
-	    <td align="center">Line(AB)</td>
-    </tr>
-    <tr>
-        <td align="center">弧长</td>
-	    <td align="center">ArcLength(AB)</td>
-	    <td align="center">/</td>
-	    <td align="center">Arc(AB)</td>
-    </tr>
-    <tr>
-        <td align="center">角度</td>
-	    <td align="center">Measure(ABC)</td>
-	    <td align="center">/</td>
-	    <td align="center">Angle(ABC)</td>
-    </tr>
-    <tr>
-        <td align="center">面积</td>
-	    <td align="center">Area($)</td>
-	    <td align="center">*</td>
-	    <td align="center">Polygon($)/Circle(O)</td>
-    </tr>
-    <tr>
-        <td align="center">周长</td>
-	    <td align="center">Perimeter($)</td>
-	    <td align="center">*</td>
-	    <td align="center">Polygon($)/Circle(O)</td>
-    </tr>
-</table>
+|名称|格式|多种表示|实体存在性约束|
+|:--:|:--:|:--:|:--:|
+|长度|Length(AB)|BA|Line(AB)|
+|弧长|ArcLength(AB)|/|Arc(AB)|
+|角度|Measure(ABC)|/|Angle(ABC)|
+|面积|Area($)|$|Polygon($)/Circle(O)|
+|周长|Perimeter($)|$|Polygon($)/Circle(O)|
 
 ### F、实体属性
-<table width="100%">
-	<tr>
-	    <td align="center"><b>名称</b></td>
-        <td align="center"><b>格式</b></td>
-        <td align="center"><b>多种表示</b></td>
-        <td align="center"><b>实体存在性约束</b></td>
-    </tr>
-    <tr>
-        <td align="center">三角形高的长度</td>
-	    <td align="center">AltitudeOfTriangle(ABC)</td>
-	    <td align="center">/</td>
-	    <td align="center">Polygon(ABC)</td>
-    </tr>
-    <tr>
-        <td align="center">点到直线的距离</td>
-	    <td align="center">DistanceOfPointToLine(O,AB)</td>
-	    <td align="center">OBA</td>
-	    <td align="center">Point(O),Line(AB)</td>
-    </tr>
-</table>
+|名称|格式|多种表示|实体存在性约束|
+|:--:|:--:|:--:|:--:|
+|三角形高的长度|AltitudeOfTriangle(ABC)|/|Polygon(ABC)|
+|点到直线的距离|DistanceOfPointToLine(O,AB)|OBA|Point(O),Line(AB)|
 
 ### G、代数关系
-<table width="100%">
-	<tr>
-	    <td align="center"><b>名称</b></td>
-        <td align="center"><b>格式</b></td>
-        <td align="center"><b>备注</b></td>
-    </tr>
-    <tr>
-        <td align="center">相等</td>
-	    <td align="center">Equal($,$)</td>
-	    <td align="center">$可以是表达式，也可以是实体属性，并且可以嵌套表示</td>
-    </tr>
-</table>
+|名称|格式|备注|
+|:--:|:--:|:--:|
+|相等|Equal(\$,\$)|$可以是表达式，也可以是实体属性，并且可以嵌套表示|
 
 ### H、代数运算
-<table width="100%">
-	<tr>
-	    <td align="center"><b>名称</b></td>
-        <td align="center"><b>格式</b></td>
-        <td align="center"><b>表达式符号</b></td>
-    </tr>
-    <tr>
-        <td align="center">加</td>
-	    <td align="center">Add(expr1,expr2,…)</td>
-	    <td align="center">+</td>
-    </tr>
-    <tr>
-        <td align="center">减</td>
-	    <td align="center">Sub(expr1,expr2)</td>
-	    <td align="center">-</td>
-    </tr>
-    <tr>
-        <td align="center">乘</td>
-	    <td align="center">Mul(expr1,expr2,…)</td>
-	    <td align="center">*</td>
-    </tr>
-    <tr>
-        <td align="center">除</td>
-	    <td align="center">Div(expr1,expr2)</td>
-	    <td align="center">/</td>
-    </tr>
-    <tr>
-        <td align="center">幂</td>
-	    <td align="center">Pow(expr1,expr2)</td>
-	    <td align="center">^</td>
-    </tr>
-    <tr>
-        <td align="center">正弦</td>
-	    <td align="center">Sin(expr)</td>
-	    <td align="center">@</td>
-    </tr>
-    <tr>
-        <td align="center">余弦</td>
-	    <td align="center">Cos(expr)</td>
-	    <td align="center">#</td>
-    </tr>
-    <tr>
-        <td align="center">正切</td>
-	    <td align="center">Tan(expr)</td>
-	    <td align="center">$</td>
-    </tr>
-    <tr>
-        <td align="center">实数</td>
-	    <td align="center">R</td>
-	    <td align="center">/</td>
-    </tr>
-    <tr>
-        <td align="center">自由变量</td>
-	    <td align="center">x</td>
-	    <td align="center">/</td>
-    </tr>
-</table>
+|名称|格式|表达式符号|
+|:--:|:--:|:--:|
+|加|Add(expr1,expr2,…)|+|
+|减|Sub(expr1,expr2)|-|
+|乘|Mul(expr1,expr2,…)|*|
+|除|Div(expr1,expr2)|/|
+|幂|Pow(expr1,expr2)|^|
+|正弦|Sin(expr)|@|
+|余弦|Cos(expr)|#|
+|正切|Tan(expr)|$|
+|实数|R|1,2,3,...|
+|自由变量|x|a,b,c,...|
 
 ### I、解题目标
 |名称|格式|备注|
-|:--:|:--:|--|
-|证相等|Equal($,$)|$可以是表达式，也可以是实体属性，并且可以嵌套表示|
+|:--:|:--:|:--:|
+|证相等|Equal(\$,\$)|$可以是表达式，也可以是实体属性，并且可以嵌套表示|
 |求值|Value(Expression($))|Expression表示由运算和实体属性构成的表达式|
 |求关系|Relation($)|Relation表示任意实体、实体关系|
 
 ## 附录3 定理列表
 |名称|前提|结论|
 |--|--|--|
-a|b|c|
+|a|b|c|
 
 ## 附录4 图形-文字表示对照手册
 

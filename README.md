@@ -110,7 +110,7 @@ The code structure is shown below:
 `data` contains unformalized but unified geometry problem datasets, such as Geometry3K, GeoQA, UniGeo, etc. It also contains formalized problems, which stores in *data/formalized-problems*.  
 `doc` is the introduction of formal system and project-related documentation.  
 <div align=center>
-	<img src="doc/pic/structure.png">
+	<img src="doc/readme-pic/structure.png">
 </div>
 <div align=center>
 	Figure 1. Architecture
@@ -133,10 +133,10 @@ python main.py
 ## Example
 **logic inputs and reasoning process:**  
 <div align=center>
-	<img src="doc/pic/example1.png">
-	<img src="doc/pic/example2.png">
-	<img src="doc/pic/example3.png">
-	<img src="doc/pic/example4.png">
+	<img src="doc/readme-pic/example1.png">
+	<img src="doc/readme-pic/example2.png">
+	<img src="doc/readme-pic/example3.png">
+	<img src="doc/readme-pic/example4.png">
 </div>
 <div align=center>
 	Figure 2. Visible, traceable, and interpretable problem-solving process
@@ -144,19 +144,19 @@ python main.py
 
 **Outputs:** 
 <div align=center>
-	<img src="doc/pic/example5.png">
+	<img src="doc/readme-pic/example5.png">
 </div>
 <div align=center>
 	Figure 3. Outputs
 </div>
 <div align=center>
-	<img src="doc/pic/example6.png">
+	<img src="doc/readme-pic/example6.png">
 </div>
 <div align=center>
 	Figure 4. Solution hypertree
 </div>
 <div align=center>
-	<img src="doc/pic/example7.png">
+	<img src="doc/readme-pic/example7.png">
 </div>
 <div align=center>
 	Figure 5. Theorem DAG

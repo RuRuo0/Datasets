@@ -654,33 +654,16 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
 </table>
 
 ### I、解题目标
-<table width="100%">
-	<tr>
-	    <td align="center"><b>名称</b></td>
-        <td align="center"><b>格式</b></td>
-        <td align="center"><b>备注</b></td>
-    </tr>
-    <tr>
-        <td align="center">证相等</td>
-	    <td align="center">Equal($,$)</td>
-	    <td align="center">$可以是表达式，也可以是实体属性，并且可以嵌套表示</td>
-    </tr>
-    <tr>
-        <td align="center">求值</td>
-	    <td align="center">Value(Expression($))</td>
-	    <td align="center">Expression表示由运算和实体属性构成的表达式</td>
-    </tr>
-    <tr>
-        <td align="center">求关系</td>
-	    <td align="center">Relation($)</td>
-	    <td align="center">Relation表示任意实体、实体关系</td>
-    </tr>
-</table>
+|名称|格式|备注|
+|:--:|:--:|--|
+|证相等|Equal($,$)|$可以是表达式，也可以是实体属性，并且可以嵌套表示|
+|求值|Value(Expression($))|Expression表示由运算和实体属性构成的表达式|
+|求关系|Relation($)|Relation表示任意实体、实体关系|
 
 ## 附录3 定理列表
 |名称|前提|结论|
---|--|--|
-测试|测试|测试|
+|--|--|--|
+a|b|c|
 
 ## 附录4 图形-文字表示对照手册
 

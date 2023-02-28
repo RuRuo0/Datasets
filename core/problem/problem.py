@@ -1,5 +1,5 @@
 import warnings
-from core.problem.object import Condition, Construction, Relation, Equation
+from core.problem.object import *
 from itertools import combinations
 from sympy import symbols
 from core.aux_tools.parse import EqParser
@@ -27,18 +27,21 @@ class Problem:
 
         self.conditions = {}  # init conditions
         for predicate in self.predicate_GDL["Construction"]:
-            self.conditions[predicate] = Construction(predicate)
+            self.conditions[predicate] = VariableLengthCondition(predicate)
         for predicate in self.predicate_GDL["Entity"]:
-            self.conditions[predicate] = Relation(predicate)
+            self.conditions[predicate] = FixedLengthCondition(predicate)
         for predicate in self.predicate_GDL["Relation"]:
-            self.conditions[predicate] = Relation(predicate)
+            self.conditions[predicate] = FixedLengthCondition(predicate)
         self.conditions["Equation"] = Equation("Equation", self.predicate_GDL["Attribution"])
 
         for predicate, item in problem_CDL["parsed_cdl"]["construction_cdl"]:  # conditions of construction
-            if predicate == "Collinear":
+            if predicate in ["Point", "Line", "Angle", "Polygon", "Arc", "Circle"]:
                 self.add(predicate, tuple(item), (-1,), "prerequisite")
         for predicate, item in problem_CDL["parsed_cdl"]["construction_cdl"]:
-            if predicate == "Shape":
+            if predicate in ["Collinear"]:
+                self.add(predicate, tuple(item), (-1,), "prerequisite")
+        for predicate, item in problem_CDL["parsed_cdl"]["construction_cdl"]:
+            if predicate in ["Shape", "Cocircular"]:
                 self.add(predicate, tuple(item), (-1,), "prerequisite")
 
         self.construction_init()  # start construction
@@ -170,44 +173,26 @@ class Problem:
         :param theorem: <str>, theorem of item.
         :return: True or False
         """
-        if not self.item_is_valid(predicate, item):   # validity check
-            return False  # return when invalid
+        if predicate not in self.conditions:
+            raise Exception(
+                "<PredicateNotDefined> Predicate '{}': not defined in current predicate GDL.".format(
+                    predicate
+                )
+            )
+        if not self.item_ee_check(predicate, item):  # EE check
+            if not self.loaded:
+                warnings.warn("EE check not passed: [{}, {}]".format(predicate, item))
+            return False
+        if not self.item_fv_check(predicate, item):  # FV check
+            if not self.loaded:
+                warnings.warn("FV check not passed: [{}, {}]".format(predicate, item))
+            return False
 
         self.gathered = False
 
         if predicate == "Equation":  # Equation
             added, _ = self.conditions["Equation"].add(item, premise, theorem)
             return added
-        elif predicate in self.predicate_GDL["Entity"]:  # Entity
-            added, _id = self.conditions[predicate].add(item, premise, theorem)
-            if added:
-                for para_list in self.predicate_GDL["Entity"][predicate]["multi"]:  # multi
-                    para = []
-                    for i in para_list:
-                        para.append(item[i])
-                    self.conditions[predicate].add(tuple(para), (_id,), "extended")
-
-                for extended_predicate, para_list in self.predicate_GDL["Entity"][predicate]["extend"]:  # extended
-                    para = []
-                    for i in para_list:
-                        para.append(item[i])
-                    self.add(extended_predicate, tuple(para), (_id,), "extended")
-                return True
-        elif predicate in self.predicate_GDL["Relation"]:  # Relation
-            added, _id = self.conditions[predicate].add(item, premise, theorem)
-            if added:
-                for para_list in self.predicate_GDL["Relation"][predicate]["multi"]:  # multi
-                    para = []
-                    for i in para_list:
-                        para.append(item[i])
-                    self.conditions[predicate].add(tuple(para), (_id,), "extended")
-
-                for extended_predicate, para_list in self.predicate_GDL["Relation"][predicate]["extend"]:  # extended
-                    para = []
-                    for i in para_list:
-                        para.append(item[i])
-                    self.add(extended_predicate, tuple(para), (_id,), "extended")
-                return True
         elif predicate == "Shape":  # Construction predicate: Shape
             added, _id = self.conditions["Shape"].add(item, premise, theorem)
             if added:  # if added successful
@@ -255,23 +240,12 @@ class Problem:
                         self.conditions["Shape"].add(
                             tuple([item[(i + bias) % l] for i in range(l)]), (_id,), "extended"
                         )
-                        extended_angle = [item[0 + bias], item[(1 + bias) % l], item[(2 + bias) % l]]  # extend Angle
-                        self.add("Angle", tuple(extended_angle), (_id,), "extended")
 
                 self.add("Polygon", extended_shape[-1], tuple(polygon_premise), "extended")  # shape no collinear points
-                if len(extended_shape) > 1:
-                    eq = self.get_sym_of_attr(extended_shape[0], "Area") - \
-                         self.get_sym_of_attr(extended_shape[-1], "Area")
-                    self.conditions["Equation"].add(eq, tuple(polygon_premise), "extended")
-                return True
-        elif predicate == "Polygon":
-            added, _id = self.conditions["Polygon"].add(item, tuple(premise), theorem)
-            if added:  # if added successful
-                l = len(item)
-                for bias in range(l):
-                    self.conditions["Polygon"].add(tuple([item[(i + bias) % l] for i in range(l)]), (_id,), "extended")
-                if l == 3:    # default execute theorems
-                    self.add("Triangle", item, (_id,), "definition_of_triangle")
+                # if len(extended_shape) > 1:
+                #     eq = self.get_sym_of_attr(extended_shape[0], "Area") - \
+                #          self.get_sym_of_attr(extended_shape[-1], "Area")
+                #     self.conditions["Equation"].add(eq, tuple(polygon_premise), "extended")
                 return True
         elif predicate == "Collinear":  # Construction predicate: Collinear
             added, _id = self.conditions["Collinear"].add(item, premise, theorem)
@@ -287,88 +261,143 @@ class Problem:
                     for j in range(i + 1, len(item)):
                         self.add("Line", (item[i], item[j]), (_id,), "extended")
                 return True
+        elif predicate == "Cocircular":  # Construction predicate: Cocircular
+            added, _id = self.conditions["Cocircular"].add(item, premise, theorem)
+            if added:
+                for l in range(3, len(item) + 1):  # extend collinear
+                    for extended_item in combinations(item, l):
+                        self.conditions["Collinear"].add(extended_item, (_id,), "extended")
+                        self.conditions["Collinear"].add(extended_item[::-1], (_id,), "extended")
+                        if len(extended_item) == 3:
+                            self.conditions["Angle"].add(extended_item, (_id,), "extended")
+                            self.conditions["Angle"].add(extended_item[::-1], (_id,), "extended")
+                for i in range(len(item) - 1):  # extend line
+                    for j in range(i + 1, len(item)):
+                        self.add("Line", (item[i], item[j]), (_id,), "extended")
+                return True
+        elif predicate == "Polygon":
+            added, _id = self.conditions["Polygon"].add(item, tuple(premise), theorem)
+            if added:  # if added successful
+                l = len(item)
+                for bias in range(l):  # multi
+                    self.conditions["Polygon"].add(tuple([item[(i + bias) % l] for i in range(l)]), (_id,), "extended")
+                for bias in range(l):  # extend
+                    self.add("Angle", (item[0 + bias], item[(1 + bias) % l], item[(2 + bias) % l]), (_id,), "extended")
+                return True
+        elif predicate in self.predicate_GDL["Entity"]:  # Entity
+            added, _id = self.conditions[predicate].add(item, premise, theorem)
+            if added:
+                for para_list in self.predicate_GDL["Entity"][predicate]["multi"]:  # multi
+                    para = []
+                    for i in para_list:
+                        para.append(item[i])
+                    self.conditions[predicate].add(tuple(para), (_id,), "extended")
+
+                for extended_predicate, para_list in self.predicate_GDL["Entity"][predicate]["extend"]:  # extended
+                    para = []
+                    for i in para_list:
+                        para.append(item[i])
+                    self.add(extended_predicate, tuple(para), (_id,), "extended")
+                return True
+        elif predicate in self.predicate_GDL["Relation"]:  # Relation
+            added, _id = self.conditions[predicate].add(item, premise, theorem)
+            if added:
+                for para_list in self.predicate_GDL["Relation"][predicate]["multi"]:  # multi
+                    para = []
+                    for i in para_list:
+                        para.append(item[i])
+                    self.conditions[predicate].add(tuple(para), (_id,), "extended")
+
+                for extended_predicate, para_list in self.predicate_GDL["Relation"][predicate]["extend"]:  # extended
+                    para = []
+                    for i in para_list:
+                        para.append(item[i])
+                    self.add(extended_predicate, tuple(para), (_id,), "extended")
+                return True
+        # elif predicate == "Point":    # Preset BasicEntity: Point
+        #     added, _id = self.conditions["Point"].add(item, tuple(premise), theorem)
+        #     return added
+        # elif predicate == "Line":
+        #     added, _id = self.conditions["Line"].add(item, tuple(premise), theorem)
+        #     if added:  # if added successful
+        #         self.add("Point", tuple(item[0]), tuple(_id), "extended")    # extend
+        #         self.add("Point", tuple(item[1]), tuple(_id), "extended")
+        #         return True
+        # elif predicate == "Angle":
+        #     added, _id = self.conditions["Angle"].add(item, tuple(premise), theorem)
+        #     if added:  # if added successful
+        #         self.add("Line", tuple(item[0:2]), _id, "extended")    # extend
+        #         self.add("Line", tuple(item[1:3]), _id, "extended")
+        #         return True
+        # elif predicate == "Arc":
+        #     added, _id = self.conditions["Arc"].add(item, tuple(premise), theorem)
+        #     if added:  # if added successful
+        #         self.add("Point", tuple(item[0]), tuple(_id), "extended")    # extend
+        #         self.add("Point", tuple(item[1]), tuple(_id), "extended")
+        #         return True
+        # elif predicate == "Circle":
+        #     added, _id = self.conditions["Circle"].add(item, tuple(premise), theorem)
+        #     if added:  # if added successful
+        #         self.add("Point", item, tuple(_id), "extended")    # extend
+        #         return True
         return False
 
     """------------Format Control for <entity relation>------------"""
 
-    def item_is_valid(self, predicate, item):
-        """
-        Validity check for the format of logic conditions.
-        Length Validity check: LV check, throw <Exception>.
-        Format Validity check: FV check, throw <Warning>.
-        Entity Existence check: EE check, throw <Warning>.
-        """
-        if predicate not in self.conditions:
-            raise Exception(
-                "<PredicateNotDefined> Predicate '{}': not defined in current predicate GDL.".format(
-                    predicate
-                )
-            )
+    def item_ee_check(self, predicate, item):
+        """Entity Existence check."""
 
-        if predicate == "Equation":
-            return True, None
-
-        if predicate in self.predicate_GDL["Construction"]:  # FV check
-            if len(item) == len(set(item)):
-                return True, None
-            if not self.loaded:
-                warnings.warn("FV check not passed: [{}, {}]".format(predicate, item))
-            return False
+        if predicate in ["Equation", "Point", "Line", "Angle", "Arc", "Circle", "Polygon",
+                         "Shape", "Collinear", "Cocircular"]:
+            return True
 
         if predicate in self.predicate_GDL["Entity"]:
             item_GDL = self.predicate_GDL["Entity"][predicate]
-            if len(item) != len(item_GDL["vars"]):  # FV check
-                raise Exception(
-                    "<ParameterLengthError> Predicate '{}' excepted length: {}. Got: {}".format(
-                        predicate, len(item_GDL["vars"]), item
-                    )
-                )
+        else:
+            item_GDL = self.predicate_GDL["Relation"][predicate]
+
+        for name, para in item_GDL["ee_check"]:  # EE check
+            if tuple([item[i] for i in para]) not in self.conditions[name].get_id_by_item:
+                return False
+        return True
+
+    def item_fv_check(self, predicate, item):
+        """Format Validity check."""
+
+        if predicate == "Equation":
+            return True
+
+        if predicate in ["Polygon", "Shape", "Collinear", "Cocircular"] or\
+                predicate in self.predicate_GDL["Entity"]:
             if len(item) == len(set(item)):
-                return True, None
-            if not self.loaded:
-                warnings.warn("FV check not passed: [{}, {}]".format(predicate, item))
+                return True
             return False
 
         item_GDL = self.predicate_GDL["Relation"][predicate]
-        if len(item) != len(item_GDL["vars"]):  # FV check
-            raise Exception(
-                "<ParameterLengthError> Predicate '{}' excepted length: {}. Got: {}".format(
-                    predicate, len(item_GDL["vars"]), item
-                )
-            )
 
-        for name, para in self.predicate_GDL["Relation"][predicate]["para"]:  # EE check
-            if tuple([item[i] for i in para]) not in self.conditions[name].get_id_by_item:
-                if not self.loaded:
-                    warnings.warn("EE check not passed: [{}, {}]".format(predicate, item))
-                return False
+        if len(item) != len(item_GDL["vars"]):
+            return False
 
-        if "format" in item_GDL:
-            letters = []
-            item_vars = list(item)
-            for i in range(len(item_vars)):
-                if item_vars[i] not in letters:
-                    letters.append(item_vars[i])
-                item_vars[i] = letters.index(item_vars[i])
-            if item_vars in item_GDL["format"]:
+        if "fv_check_format" in item_GDL:
+            checked = []
+            result = []
+            for i in item:
+                if i not in checked:
+                    checked.append(i)
+                result.append(str(checked.index(i)))
+            if "".join(result) in item_GDL["fv_check_format"]:
                 return True
-            if not self.loaded:
-                warnings.warn("FV check not passed: [{}, {}]".format(predicate, item))
             return False
         else:
-            for mutex in item_GDL["mutex"]:
+            for mutex in item_GDL["fv_check_mutex"]:
                 if isinstance(mutex[0], list):
                     first = "".join([item[i] for i in mutex[0]])
                     second = "".join([item[i] for i in mutex[1]])
                     if first == second:
-                        if not self.loaded:
-                            warnings.warn("FV check not passed: [{}, {}]".format(predicate, item))
                         return False
                 else:
                     points = [item[i] for i in mutex]
                     if len(points) != len(set(points)):
-                        if not self.loaded:
-                            warnings.warn("FV check not passed: [{}, {}]".format(predicate, item))
                         return False
             return True
 
@@ -381,7 +410,19 @@ class Problem:
         :param attr: attr's name, such as Length
         :return: sym
         """
-        if not self.attr_is_valid(item, attr):   # validity check
+        if attr not in self.predicate_GDL["Attribution"]:
+            raise Exception(
+                "<AttributionNotDefined> Attribution '{}': not defined in current predicate GDL.".format(
+                    attr
+                )
+            )
+        if not self.attr_ee_check(item, attr):
+            if not self.loaded:
+                warnings.warn("EE check not passed: [{}, {}]".format(item, attr))
+            return None
+        if not self.attr_fv_check(item, attr):
+            if not self.loaded:
+                warnings.warn("FV check not passed: [{}, {}]".format(item, attr))
             return None
 
         if (item, attr) not in self.conditions["Equation"].sym_of_attr:  # No symbolic representation, initialize one.
@@ -391,8 +432,8 @@ class Problem:
                 sym = symbols(self.predicate_GDL["Attribution"][attr]["sym"] + "_" + "".join(item).lower(),
                               positive=True)
 
-            self.conditions["Equation"].value_of_sym[sym] = None  # init symbol's value
             self.conditions["Equation"].sym_of_attr[(item, attr)] = sym  # add sym
+            self.conditions["Equation"].value_of_sym[sym] = None  # init symbol's value
 
             extend_items = [item]
             if isinstance(self.predicate_GDL["Attribution"][attr]["multi"], str):
@@ -411,36 +452,55 @@ class Problem:
 
         return self.conditions["Equation"].sym_of_attr[(item, attr)]
 
-    def attr_is_valid(self, item, attr):
-        """
-        Validity check for format of algebra conditions.
-        Length Validity check: LV check, throw <Exception>.
-        Format Validity check: FV check, throw <Warning>.
-        Entity Existence check: EE check, throw <Warning>.
-        """
+    def attr_ee_check(self, item, attr):
+        """Entity Existence check."""
         if attr == "Free":
             return True
-
-        if isinstance(self.predicate_GDL["Attribution"][attr]["multi"], str):  # EE check
-            if item in self.conditions[self.predicate_GDL["Attribution"][attr]["para"]].get_id_by_item:  # EE check
-                return True
-            if not self.loaded:
-                warnings.warn("EE check not passed: [{}, {}]".format(item, attr))
-            return False
+        elif isinstance(self.predicate_GDL["Attribution"][attr]["vars"], str):
+            for predicate in self.predicate_GDL["Attribution"][attr]["ee_check"]:
+                if item in self.conditions[predicate].get_id_by_item:
+                    return True
+                return False
         else:
-            excepted_length = len(self.predicate_GDL["Attribution"][attr]["vars"])
-            if len(item) != excepted_length:  # FV check
-                raise Exception(
-                    "<ParameterLengthError> Attribute '{}' excepted length: {}. Got: {}".format(
-                        attr, excepted_length, item
-                    )
-                )
-            for predicate, para in self.predicate_GDL["Attribution"][attr]["para"]:
-                if tuple([item[p] for p in para]) not in self.conditions[predicate].get_id_by_item:  # EE check
-                    if not self.loaded:
-                        warnings.warn("EE check not passed: [{}, {}]".format(item, attr))
+            for name, para in self.predicate_GDL["Attribution"][attr]["ee_check"]:  # EE check
+                if tuple([item[i] for i in para]) not in self.conditions[name].get_id_by_item:
                     return False
             return True
+
+    def attr_fv_check(self, item, attr):
+        """Format Validity check."""
+        if attr == "Free":
+            return True
+        elif isinstance(self.predicate_GDL["Attribution"][attr]["vars"], str):
+            if len(item) == len(set(item)):
+                return True
+            return False
+        else:
+            if len(item) != len(self.predicate_GDL["Attribution"][attr]["vars"]):
+                return False
+
+            if "fv_check_format" in self.predicate_GDL["Attribution"][attr]:
+                checked = []
+                result = []
+                for i in item:
+                    if i not in checked:
+                        checked.append(i)
+                    result.append(str(checked.index(i)))
+                if "".join(result) in self.predicate_GDL["Attribution"][attr]["fv_check_format"]:
+                    return True
+                return False
+            else:
+                for mutex in self.predicate_GDL["Attribution"][attr]["fv_check_mutex"]:
+                    if isinstance(mutex[0], list):
+                        first = "".join([item[i] for i in mutex[0]])
+                        second = "".join([item[i] for i in mutex[1]])
+                        if first == second:
+                            return False
+                    else:
+                        points = [item[i] for i in mutex]
+                        if len(points) != len(set(points)):
+                            return False
+                return True
 
     def set_value_of_sym(self, sym, value, premise, theorem):
         """

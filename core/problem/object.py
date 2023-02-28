@@ -44,10 +44,9 @@ class Condition:
         return self.name + " <Condition> with {} items".format(len(self.get_item_by_id))
 
 
-class Construction(Condition):
-
+class VariableLengthCondition(Condition):
     def __init__(self, name):
-        super(Construction, self).__init__(name)
+        super(VariableLengthCondition, self).__init__(name)
 
     def __call__(self, variables):
         """generate a function to get items, premise and variables when reasoning"""
@@ -61,10 +60,9 @@ class Construction(Condition):
         return ids, items, variables
 
 
-class Relation(Condition):
-
+class FixedLengthCondition(Condition):
     def __init__(self, name):
-        super(Relation, self).__init__(name)
+        super(FixedLengthCondition, self).__init__(name)
 
     def __call__(self, variables):
         """generate a function to get items, premise and variables when reasoning"""

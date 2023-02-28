@@ -7,134 +7,214 @@ class FLParser:
     def parse_predicate(predicate_GDL):
         """parse predicate_GDL to executable form."""
         predicate_GDL = predicate_GDL["Predicates"]
-        parsed_GDL = {
-            "Construction": ["Shape", "Collinear", "Polygon"],  # preset Construction,
+        parsed_GDL = {    # preset Construction
+            "Construction": {
+                "Shape": {
+                    "vars": "variable",
+                    "multi": "variable",
+                    "extend": "variable"
+                },
+                "Collinear": {
+                    "vars": "variable",
+                    "multi": "variable",
+                    "extend": "variable"
+                },
+                "Cocircular": {
+                    "vars": "variable",
+                    "multi": "variable",
+                    "extend": "variable"
+                },
+                "Polygon": {
+                    "vars": "variable",
+                    "multi": "variable",
+                    "extend": "variable"
+                }
+            },
             "Entity": {  # preset Entity
                 "Point": {
-                    "vars": [0], "multi": [], "extend": []
+                    "vars": [0],
+                    "ee_check": [],
+                    "multi": [],
+                    "extend": []
                 },
                 "Line": {
-                    "vars": [0, 1], "multi": [[1, 0]], "extend": [["Point", [0]], ["Point", [1]]]
+                    "vars": [0, 1],
+                    "ee_check": [],
+                    "multi": [[1, 0]],
+                    "extend": [["Point", [0]], ["Point", [1]]]
                 },
                 "Angle": {
-                    "vars": [0, 1, 2], "multi": [], "extend": [["Line", [0, 1]], ["Line", [1, 2]]]
+                    "vars": [0, 1, 2],
+                    "ee_check": [],
+                    "multi": [],
+                    "extend": [["Line", [0, 1]], ["Line", [1, 2]]]
+                },
+                "Arc": {
+                    "vars": [0, 1],
+                    "ee_check": [],
+                    "multi": [],
+                    "extend": [["Point", [0]], ["Point", [1]]]
+                },
+                "Circle": {
+                    "vars": [0],
+                    "ee_check": [],
+                    "multi": [],
+                    "extend": [["Point", [0]]]
                 }
             },
             "Relation": {},
             "Attribution": {  # preset Attribution
                 "Free": {
-                    "vars": [],
-                    "para": [],
+                    "vars": "variable",
+                    "ee_check": [],
+                    "fv_check_format": "variable",
                     "sym": "f",
-                    "multi": [],  # var list or 'normal'
+                    "multi": [],
                     "negative": "True"
                 },
                 "Length": {
                     "vars": [0, 1],
-                    "para": [["Line", [0, 1]]],
-                    "sym": "l",
+                    "ee_check": [["Line", [0, 1]]],
+                    "fv_check_format": ["01"],
+                    "sym": "ll",
                     "multi": [[1, 0]],
+                    "negative": "False"
+                },
+                "ArcLength": {
+                    "vars": [0, 1],
+                    "ee_check": [["Arc", [0, 1]]],
+                    "fv_check_format": ["01"],
+                    "sym": "la",
+                    "multi": [],
                     "negative": "False"
                 },
                 "Measure": {
                     "vars": [0, 1, 2],
-                    "para": [["Angle", [0, 1, 2]]],
-                    "sym": "m",
+                    "ee_check": [["Angle", [0, 1, 2]]],
+                    "fv_check_format": ["012"],
+                    "sym": "ma",
                     "multi": [],
-                    "negative": "True"
+                    "negative": "False"
                 },
                 "Area": {
-                    "vars": [],
+                    "vars": "variable",
+                    "ee_check": ["Polygon", "Circle"],
+                    "fv_check_format": "variable",
                     "sym": "a",
-                    "para": "Shape",
-                    "multi": "normal",
+                    "multi": "variable",
                     "negative": "False"
                 },
                 "Perimeter": {
-                    "vars": [],
+                    "vars": "variable",
+                    "ee_check": ["Polygon", "Circle"],
+                    "fv_check_format": "variable",
                     "sym": "p",
-                    "para": "Shape",
-                    "multi": "normal",
+                    "multi": "variable",
                     "negative": "False"
                 }
-            }
+            },
+            "Equation": "Equation"
         }
 
-        entity = predicate_GDL["Entity"]  # parse entity
-        for key in entity:
-            name, para, _ = FLParser._parse_one_predicate(entity[key]["name"])
-            parsed_GDL["Entity"][name] = {  # parameter of predicate
-                "vars": [i for i in range(len(para))]
-            }
-            parsed_GDL["Entity"][name]["multi"] = [[para.index(i) for i in multi]  # multi
-                                                   for multi in entity[key]["multi"]]
-            parsed_GDL["Entity"][name]["extend"] = []  # extend
-            for extend in entity[key]["extend"]:
-                extend_name, extend_para, _ = FLParser._parse_one_predicate(extend)
-                parsed_GDL["Entity"][name]["extend"].append([extend_name, [para.index(i) for i in extend_para]])
-
-        relation = predicate_GDL["Relation"]  # parse relation
-        for key in relation:
-            name, para, para_len = FLParser._parse_one_predicate(relation[key]["name"])
-            parsed_GDL["Relation"][name] = {  # parameter of predicate
+        entities = predicate_GDL["Entity"]  # parse entity
+        for item in entities:
+            name, para, _ = FLParser._parse_one_predicate(item)
+            parsed_GDL["Entity"][name] = {
                 "vars": [i for i in range(len(para))],
-                "para_structure": para_len
+                "ee_check": FLParser._parse_ee_check(entities[item]["ee_check"], para),
+                "multi": FLParser._parse_multi(entities[item]["multi"], para),
+                "extend": FLParser._parse_extend(entities[item]["extend"], para)
             }
-            parsed_GDL["Relation"][name]["para"] = []  # extend
-            for predicate in relation[key]["para"]:
-                predicate_name, predicate_para, _ = FLParser._parse_one_predicate(predicate)
-                parsed_GDL["Relation"][name]["para"].append([predicate_name, [para.index(i) for i in predicate_para]])
-            if "format" in relation[key]:  # format control
-                parsed_format = []
-                for i in range(len(relation[key]["format"])):
-                    parsed_format.append([])
-                    checked = []
-                    for item in relation[key]["format"][i].replace(",", ""):
-                        if item not in checked:
-                            checked.append(item)
-                        parsed_format[i].append(checked.index(item))
-                parsed_GDL["Relation"][name]["format"] = parsed_format
+
+        relations = predicate_GDL["Relation"]  # parse relation
+        for item in relations:
+            name, para, para_len = FLParser._parse_one_predicate(item)
+            if "fv_check_format" in relations[item]:
+                parsed_GDL["Relation"][name] = {
+                    "vars": [i for i in range(len(para))],
+                    "para_structure": para_len,
+                    "ee_check": FLParser._parse_ee_check(relations[item]["ee_check"], para),
+                    "fv_check_format": FLParser._parse_fv_check_format(relations[item]["fv_check_format"]),
+                    "multi": FLParser._parse_multi(relations[item]["multi"], para),
+                    "extend": FLParser._parse_extend(relations[item]["extend"], para)
+                }
             else:
-                parsed_mutex = []
-                for i in range(len(relation[key]["mutex"])):
-                    parsed_mutex.append([])
-                    if isinstance(relation[key]["mutex"][i], str):
-                        for item in relation[key]["mutex"][i]:
-                            parsed_mutex[i].append(para.index(item))
-                    else:
-                        parsed_mutex[i].append([])
-                        parsed_mutex[i].append([])
-                        for item in relation[key]["mutex"][i][0]:
-                            parsed_mutex[i][0].append(para.index(item))
-                        for item in relation[key]["mutex"][i][1]:
-                            parsed_mutex[i][1].append(para.index(item))
-                parsed_GDL["Relation"][name]["mutex"] = parsed_mutex
-            parsed_GDL["Relation"][name]["multi"] = [[para.index(i) for i in multi.replace(",", "")]  # multi
-                                                     for multi in relation[key]["multi"]]
-            parsed_GDL["Relation"][name]["extend"] = []  # extend
-            for extend in relation[key]["extend"]:
-                extend_name, extend_para, _ = FLParser._parse_one_predicate(extend)
-                parsed_GDL["Relation"][name]["extend"].append([extend_name, [para.index(i) for i in extend_para]])
+                parsed_GDL["Relation"][name] = {
+                    "vars": [i for i in range(len(para))],
+                    "para_structure": para_len,
+                    "ee_check": FLParser._parse_ee_check(relations[item]["ee_check"], para),
+                    "fv_check_mutex": FLParser._parse_fv_check_mutex(relations[item]["fv_check_mutex"], para),
+                    "multi": FLParser._parse_multi(relations[item]["multi"], para),
+                    "extend": FLParser._parse_extend(relations[item]["extend"], para)
+                }
 
-        attribution = predicate_GDL["Attribution"]  # parse attribution
-        for key in attribution:
-            name, para, _ = FLParser._parse_one_predicate(attribution[key]["name"])
-            parsed_GDL["Attribution"][name] = {  # vars
-                "vars": [i for i in range(len(para))],
-                "para": []
-            }
-            for predicate in attribution[key]["para"]:  # para
-                predicate_name, predicate_para, _ = FLParser._parse_one_predicate(predicate)
-                parsed_GDL["Attribution"][name]["para"].append(
-                    [predicate_name, [para.index(item) for item in predicate_para]]
-                )
-            parsed_GDL["Attribution"][name]["sym"] = attribution[key]["sym"]  # sym
-            parsed_GDL["Attribution"][name]["multi"] = [  # multi
-                [para.index(item) for item in multi] for multi in attribution[key]["multi"]
-            ]
-            parsed_GDL["Attribution"][name]["negative"] = attribution[key]["negative"]  # negative
+        attributions = predicate_GDL["Attribution"]  # parse attribution
+        for item in attributions:
+            name, para, _ = FLParser._parse_one_predicate(item)
+            if "fv_check_format" in attributions[item]:
+                parsed_GDL["Attribution"][name] = {
+                    "vars": [i for i in range(len(para))],
+                    "ee_check": FLParser._parse_ee_check(attributions[item]["ee_check"], para),
+                    "fv_check_format": FLParser._parse_fv_check_format(attributions[item]["fv_check_format"]),
+                    "sym": attributions[item]["sym"],
+                    "multi": FLParser._parse_multi(attributions[item]["multi"], para),
+                    "negative": attributions[item]["negative"]
+                }
+            else:
+                parsed_GDL["Attribution"][name] = {
+                    "vars": [i for i in range(len(para))],
+                    "ee_check": FLParser._parse_ee_check(attributions[item]["ee_check"], para),
+                    "fv_check_mutex": FLParser._parse_fv_check_mutex(attributions[item]["fv_check_mutex"], para),
+                    "sym": attributions[item]["sym"],
+                    "multi": FLParser._parse_multi(attributions[item]["multi"], para),
+                    "negative": attributions[item]["negative"]
+                }
 
         return parsed_GDL
+
+    @staticmethod
+    def _parse_ee_check(ee_check, para):
+        results = []
+        for item in ee_check:
+            name, item_para, _ = FLParser._parse_one_predicate(item)
+            results.append([name, [para.index(i) for i in item_para]])
+        return results
+
+    @staticmethod
+    def _parse_fv_check_format(fv_check_format):
+        results = []
+        for item in fv_check_format:
+            checked = []
+            result = []
+            for i in item.replace(",", ""):
+                if i not in checked:
+                    checked.append(i)
+                result.append(str(checked.index(i)))
+            results.append("".join(result))
+        return results
+
+    @staticmethod
+    def _parse_fv_check_mutex(fv_check_mutex, para):
+        results = []
+        for item in fv_check_mutex:
+            if isinstance(item, str):
+                results.append([para.index(i) for i in item])
+            else:
+                results.append([[para.index(i) for i in item[0]], [para.index(i) for i in item[1]]])
+        return results
+
+    @staticmethod
+    def _parse_multi(fv_check_mutex, para):
+        return [[para.index(i) for i in multi.replace(",", "")]
+                for multi in fv_check_mutex]
+
+    @staticmethod
+    def _parse_extend(fv_check_mutex, para):
+        results = []
+        for extend in fv_check_mutex:
+            extend_name, extend_para, _ = FLParser._parse_one_predicate(extend)
+            results.append([extend_name, [para.index(i) for i in extend_para]])
+        return results
 
     @staticmethod
     def parse_theorem(theorem_GDL):
@@ -142,16 +222,15 @@ class FLParser:
         theorem_GDL = theorem_GDL["Theorems"]
         parsed_GDL = {}
 
-        for key in theorem_GDL:
-            theorem_name = theorem_GDL[key]["name"]
+        for theorem_name in theorem_GDL:
             parsed_GDL[theorem_name] = {}
-            for branch in theorem_GDL[key]["description"]:
+            for branch in theorem_GDL[theorem_name]:
                 parsed_GDL[theorem_name][branch] = {}
 
                 letters = []  # vars
 
                 parsed_premise = FLParser._parse_premise(  # premise
-                    [theorem_GDL[key]["description"][branch]["premise"]]
+                    [theorem_GDL[theorem_name][branch]["premise"]]
                 )
                 for i in range(len(parsed_premise)):
                     for j in range(len(parsed_premise[i])):
@@ -168,7 +247,7 @@ class FLParser:
                             parsed_premise[i][j] = [predicate, para]
 
                 parsed_conclusion = []  # conclusion
-                for item in theorem_GDL[key]["description"][branch]["conclusion"]:
+                for item in theorem_GDL[theorem_name][branch]["conclusion"]:
                     if "Equal" in item:
                         parsed_conclusion.append(
                             FLParser._replace_letter_with_vars(FLParser._parse_equal_predicate(item), letters)
@@ -479,7 +558,7 @@ class EqParser:
         """Parse the expression in <str> form into <symbolic> form"""
         i = 0
         expr_list = []
-        for j in range(1, len(expr)):    # to list
+        for j in range(1, len(expr)):  # to list
             if expr[j] in EqParser.operator:
                 if i < j:
                     expr_list.append(expr[i:j])

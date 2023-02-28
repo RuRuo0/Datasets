@@ -11,9 +11,9 @@ def save_parsed_gdl(solver):
 
 
 def save_parsed_cdl(solver):
-    save_json(solver.problem.problem_CDL, "data/solved/{}_parsed.json".format(solver.problem.problem_CDL["id"]))
-    save_step_msg(solver.problem, "data/solved/")
-    save_solution_tree(solver.problem, "data/solved/")
+    save_json(solver.problem.problem_CDL, "data/solved/problems/{}_parsed.json".format(solver.problem.problem_CDL["id"]))
+    save_step_msg(solver.problem, "data/solved/problems/")
+    save_solution_tree(solver.problem, "data/solved/problems/")
 
 
 def show_backward_reasoning(solver):
@@ -58,7 +58,7 @@ def run(save_GDL=False, save_CDL=False, auto=False):
 
 
 if __name__ == '__main__':
-    run(auto=False)
+    run(save_GDL=False, save_CDL=False, auto=False)
     # for filename in os.listdir("F:/Geometry3K"):
     #     data = load_json("F:/Geometry3K" + "/" + filename)
     #     saved_data = {

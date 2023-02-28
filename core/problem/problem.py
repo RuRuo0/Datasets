@@ -242,10 +242,6 @@ class Problem:
                         )
 
                 self.add("Polygon", extended_shape[-1], tuple(polygon_premise), "extended")  # shape no collinear points
-                # if len(extended_shape) > 1:
-                #     eq = self.get_sym_of_attr(extended_shape[0], "Area") - \
-                #          self.get_sym_of_attr(extended_shape[-1], "Area")
-                #     self.conditions["Equation"].add(eq, tuple(polygon_premise), "extended")
                 return True
         elif predicate == "Collinear":  # Construction predicate: Collinear
             added, _id = self.conditions["Collinear"].add(item, premise, theorem)
@@ -254,12 +250,9 @@ class Problem:
                     for extended_item in combinations(item, l):
                         self.conditions["Collinear"].add(extended_item, (_id,), "extended")
                         self.conditions["Collinear"].add(extended_item[::-1], (_id,), "extended")
-                        if len(extended_item) == 3:
+                        if len(extended_item) == 3:  # extend angle
                             self.conditions["Angle"].add(extended_item, (_id,), "extended")
                             self.conditions["Angle"].add(extended_item[::-1], (_id,), "extended")
-                for i in range(len(item) - 1):  # extend line
-                    for j in range(i + 1, len(item)):
-                        self.add("Line", (item[i], item[j]), (_id,), "extended")
                 return True
         elif predicate == "Cocircular":  # Construction predicate: Cocircular
             added, _id = self.conditions["Cocircular"].add(item, premise, theorem)
@@ -314,32 +307,6 @@ class Problem:
                         para.append(item[i])
                     self.add(extended_predicate, tuple(para), (_id,), "extended")
                 return True
-        # elif predicate == "Point":    # Preset BasicEntity: Point
-        #     added, _id = self.conditions["Point"].add(item, tuple(premise), theorem)
-        #     return added
-        # elif predicate == "Line":
-        #     added, _id = self.conditions["Line"].add(item, tuple(premise), theorem)
-        #     if added:  # if added successful
-        #         self.add("Point", tuple(item[0]), tuple(_id), "extended")    # extend
-        #         self.add("Point", tuple(item[1]), tuple(_id), "extended")
-        #         return True
-        # elif predicate == "Angle":
-        #     added, _id = self.conditions["Angle"].add(item, tuple(premise), theorem)
-        #     if added:  # if added successful
-        #         self.add("Line", tuple(item[0:2]), _id, "extended")    # extend
-        #         self.add("Line", tuple(item[1:3]), _id, "extended")
-        #         return True
-        # elif predicate == "Arc":
-        #     added, _id = self.conditions["Arc"].add(item, tuple(premise), theorem)
-        #     if added:  # if added successful
-        #         self.add("Point", tuple(item[0]), tuple(_id), "extended")    # extend
-        #         self.add("Point", tuple(item[1]), tuple(_id), "extended")
-        #         return True
-        # elif predicate == "Circle":
-        #     added, _id = self.conditions["Circle"].add(item, tuple(premise), theorem)
-        #     if added:  # if added successful
-        #         self.add("Point", item, tuple(_id), "extended")    # extend
-        #         return True
         return False
 
     """------------Format Control for <entity relation>------------"""

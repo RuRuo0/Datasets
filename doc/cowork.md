@@ -264,259 +264,50 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
 
 ## 附录2 谓词列表
 ### A、基本构图谓词
-<table width="100%">
-	<tr>
-	    <td align="center"><b>名称</b></td>
-        <td align="center"><b>格式</b></td>
-        <td align="center"><b>多种表示</b></td>
-        <td align="center"><b>实体存在性约束</b></td>
-        <td align="center"><b>扩展</b></td>
-    </tr>
-    <tr>
-        <td align="center">基本形状</td>
-	    <td align="center">Shape($)</td>
-	    <td align="center">*</td>
-	    <td align="center">/</td>
-	    <td align="center">Polygon</td>
-    </tr>
-    <tr>
-        <td align="center">共线点</td>
-	    <td align="center">Collinear($)</td>
-	    <td align="center">*</td>
-	    <td align="center">/</td>
-	    <td align="center">Line</td>
-    </tr>
-    <tr>
-        <td align="center">共圆点</td>
-	    <td align="center">Cocircular(O,$)</td>
-	    <td align="center">*</td>
-	    <td align="center">/</td>
-	    <td align="center">Point,Arc</td>
-    </tr>
-</table>
+| 名称 | 格式 | 多种表示 | 实体存在性约束 | 扩展 |
+|:---:|:---:|:---:|:---:|:---:|
+| 基本形状 | Shape($) | * | / | Polygon |
+| 共线点 | Collinear($) | * | / | Line |
+| 共圆点 | Cocircular(O,$) | * | / | Point,Arc |
 
 ### B、基本实体
-<table width="100%">
-	<tr>
-	    <td align="center"><b>名称</b></td>
-        <td align="center"><b>格式</b></td>
-        <td align="center"><b>多种表示</b></td>
-        <td align="center"><b>实体存在性约束</b></td>
-        <td align="center"><b>扩展</b></td>
-    </tr>
-    <tr>
-        <td align="center">点</td>
-	    <td align="center">Point(A)</td>
-        <td align="center">/</td>
-	    <td align="center">/</td>
-	    <td align="center">/</td>
-    </tr>
-    <tr>
-        <td align="center">线</td>
-	    <td align="center">Line(AB)</td>
-        <td align="center">BA</td>
-	    <td align="center">/</td>
-	    <td align="center">Point(A),Point(B)</td>
-    </tr>
-    <tr>
-        <td align="center">角</td>
-	    <td align="center">Angle(ABC)</td>
-        <td align="center">/</td>
-	    <td align="center">/</td>
-	    <td align="center">Line(AB),Line(BC)</td>
-    </tr>
-    <tr>
-        <td align="center">多边形</td>
-	    <td align="center">Polygon($)</td>
-        <td align="center">*</td>
-	    <td align="center">/</td>
-	    <td align="center">Angle</td>
-    </tr>
-    <tr>
-        <td align="center">弧</td>
-	    <td align="center">Arc(AB)</td>
-        <td align="center">/</td>
-	    <td align="center">/</td>
-	    <td align="center">Point(A),Point(B)</td>
-    </tr>
-    <tr>
-        <td align="center">圆</td>
-	    <td align="center">Circle(O)</td>
-        <td align="center">/</td>
-	    <td align="center">/</td>
-	    <td align="center">Point(O)</td>
-    </tr>
-
-</table>
+| 名称 | 格式 | 多种表示 | 实体存在性约束 | 扩展 |
+|:---:|:---:|:---:|:---:|:---:|
+| 点 | Point(A) | / | / | / |
+| 线 | Line(AB) | BA | / | Point(A),Point(B) |
+| 角 | Angle(ABC) | / | / | Line(AB),Line(BC) |
+| 多边形 | Polygon($) | * | / | Angle |
+| 弧 | Arc(AB) | / | / | Point(A),Point(B) |
+| 圆 | Circle(O) | / | / | Point(O) |
 
 ### C、实体
-<table width="100%">
-	<tr>
-	    <td align="center"><b>名称</b></td>
-        <td align="center"><b>格式</b></td>
-        <td align="center"><b>多种表示</b></td>
-        <td align="center"><b>实体存在性约束</b></td>
-        <td align="center"><b>扩展</b></td>
-    </tr>
-    <tr>
-        <td align="center">三角形</td>
-	    <td align="center">Triangle(ABC)</td>
-	    <td align="center">BCA,CAB</td>
-	    <td align="center">Polygon(ABC)</td>
-	    <td align="center">/</td>
-    </tr>
-    <tr>
-        <td align="center">直角三角形</td>
-	    <td align="center">RightTriangle(ABC)</td>
-	    <td align="center">/</td>
-	    <td align="center">Polygon(ABC)</td>
-	    <td align="center">/</td>
-    </tr>
-    <tr>
-        <td align="center">等腰三角形</td>
-	    <td align="center">IsoscelesTriangle(ABC)</td>
-	    <td align="center">/</td>
-	    <td align="center">Polygon(ABC)</td>
-	    <td align="center">/</td>
-    </tr>
-    <tr>
-        <td align="center">等边三角形</td>
-	    <td align="center">EquilateralTriangle(ABC)</td>
-	    <td align="center">BCA,CAB</td>
-	    <td align="center">Polygon(ABC)</td>
-	    <td align="center">/</td>
-    </tr>
-</table>
+| 名称 | 格式 | 多种表示 | 实体存在性约束 | 扩展 |
+|:---:|:---:|:---:|:---:|:---:|
+| 三角形 | Triangle(ABC) | BCA,CAB | Polygon(ABC) | / |
+| 直角三角形 | RightTriangle(ABC) | / | Polygon(ABC) | / |
+| 等腰三角形 | IsoscelesTriangle(ABC) | / | Polygon(ABC) | / |
+| 等边三角形 | EquilateralTriangle(ABC) | BCA,CAB | Polygon(ABC) | / |
 
 ### D、实体关系
-<table style="word-wrap:break-word;word-break:break-all;" width="100%">
-	<tr>
-	    <td align="center"><b>名称</b></td>
-        <td align="center"><b>格式</b></td>
-        <td align="center"><b>多种表示</b></td>
-        <td align="center"><b>实体存在性约束</b></td>
-        <td align="center"><b>扩展</b></td>
-    </tr>
-    <tr>
-        <td align="center">中点</td>
-	    <td align="center">Midpoint(M,AB)</td>
-	    <td align="center">MBA</td>
-	    <td align="center">Point(M),Line(AB)</td>
-	    <td align="center">/</td>
-    </tr>
-    <tr>
-        <td align="center">两线相交</td>
-	    <td align="center">Intersect(O,AB,CD)</td>
-	    <td align="center">OCDBA,OBADC,ODCAB</td>
-	    <td align="center">Point(O),Line(AB),Line(CD)</td>
-	    <td align="center">/</td>
-    </tr>
-    <tr>
-        <td align="center">两线平行</td>
-	    <td align="center">Parallel(AB,CD)</td>
-	    <td align="center">DCBA</td>
-	    <td align="center">Line(AB),Line(CD)</td>
-	    <td align="center">/</td>
-    </tr>
-    <tr>
-        <td align="center">两线垂直</td>
-	    <td align="center">Perpendicular(AO,OC)</td>
-	    <td align="center">/</td>
-	    <td align="center">Line(AO),Line(OC)</td>
-	    <td align="center">/</td>
-    </tr>
-    <tr>
-        <td align="center">垂直平分线</td>
-	    <td align="center">PerpendicularBisector(AB,CO)</td>
-	    <td align="center">/</td>
-	    <td align="center">Line(AB),Line(CO)</td>
-	    <td align="center">/</td>
-    </tr>
-    <tr>
-        <td align="center">角平分线</td>
-	    <td align="center">Bisector(BD,ABC)</td>
-	    <td align="center">/</td>
-	    <td align="center">Line(BD),Angle(ABC)</td>
-	    <td align="center">/</td>
-    </tr>
-    <tr>
-        <td align="center">三角形的中线</td>
-	    <td align="center">Median(AD,ABC)</td>
-	    <td align="center">/</td>
-	    <td align="center">Line(AD),Polygon(ABC),Collinear(BDC)</td>
-	    <td align="center">Triangle(ABC)</td>
-    </tr>
-    <tr>
-        <td align="center">三角形的高</td>
-	    <td align="center">IsAltitude(AD,ABC)</td>
-	    <td align="center">/</td>
-	    <td align="center">Line(AD),Polygon(ABC),Collinear(BDC)</td>
-	    <td align="center">Triangle(ABC)</td>
-    </tr>
-    <tr>
-        <td align="center">三角形的中位线</td>
-	    <td align="center">Neutrality(DE,ABC)</td>
-	    <td align="center">/</td>
-	    <td align="center">Line(DE),Polygon(ABC)</td>
-	    <td align="center">Triangle(ABC)</td>
-    </tr>
-    <tr>
-        <td align="center">三角形的外心</td>
-	    <td align="center">Circumcenter(O,ABC)</td>
-	    <td align="center">OBCA,OCAB</td>
-	    <td align="center">Point(O),Polygon(ABC)</td>
-	    <td align="center">Triangle(ABC)</td>
-    </tr>
-    <tr>
-        <td align="center">三角形的内心</td>
-	    <td align="center">Incenter(O,ABC)</td>
-	    <td align="center">OBCA,OCAB</td>
-	    <td align="center">Point(O),Polygon(ABC)</td>
-	    <td align="center">Triangle(ABC)</td>
-    </tr>
-    <tr>
-        <td align="center">三角形的重心</td>
-	    <td align="center">Centroid(O,ABC)</td>
-	    <td align="center">OBCA,OCAB</td>
-	    <td align="center">Point(O),Polygon(ABC)</td>
-	    <td align="center">Triangle(ABC)</td>
-    </tr>
-    <tr>
-        <td align="center">三角形的垂心</td>
-	    <td align="center">Orthocenter(O,ABC)</td>
-	    <td align="center">OBCA,OCAB</td>
-	    <td align="center">Point(O),Polygon(ABC)</td>
-	    <td align="center">Triangle(ABC)</td>
-    </tr>
-    <tr>
-        <td align="center">三角形全等</td>
-	    <td align="center">Congruent(ABC,DEF)</td>
-	    <td align="center">DEFABC,BCAEFD,EFDBCA,CABFDE,FDECAB</td>
-	    <td align="center">Polygon(ABC),Polygon(DEF)</td>
-	    <td align="center">Triangle(ABC),Triangle(DEF)</td>
-    </tr>
-    <tr>
-        <td align="center">三角形相似</td>
-	    <td align="center">Similar(ABC,DEF)</td>
-	    <td align="center">DEFABC,BCAEFD,EFDBCA,CABFDE,FDECAB</td>
-	    <td align="center">Polygon(ABC),Polygon(DEF)</td>
-	    <td align="center">Triangle(ABC),Triangle(DEF)</td>
-    </tr>
-    <tr>
-        <td align="center">三角形镜像全等</td>
-	    <td align="center">MirrorCongruent(ABC,DEF)</td>
-	    <td align="center">DEFABC,BCAFDE,FDEBCA,CABEFD,EFDCAB</td>
-	    <td align="center">Polygon(ABC),Polygon(DEF)</td>
-	    <td align="center">Triangle(ABC),Triangle(DEF)</td>
-    </tr>
-    <tr>
-        <td align="center">三角形镜像相似</td>
-	    <td align="center">MirrorSimilar(ABC,DEF)</td>
-	    <td align="center">DEFABC,BCAFDE,FDEBCA,CABEFD,EFDCAB</td>
-	    <td align="center">Polygon(ABC),Polygon(DEF)</td>
-	    <td align="center">Triangle(ABC),Triangle(DEF)</td>
-    </tr>
-</table>
+|名称|格式|多种表示|实体存在性约束|扩展|
+|:---:|:---:|:---:|:---:|:---:|
+| 中点 | Midpoint(M,AB) | MBA | Point(M),<br>Line(AB) | / |
+| 两线相交 | Intersect(O,AB,CD) | OCDBA,<br>OBADC,<br>ODCAB | Point(O),<br>Line(AB),<br>Line(CD) | / |
+| 两线平行 | Parallel(AB,CD) | DCBA | Line(AB),<br>Line(CD) | / |
+| 两线垂直 | Perpendicular(AO,OC) | / | Line(AO),<br>Line(OC) | / |
+| 垂直平分线 | PerpendicularBisector(AB,CO) | / | Line(AB),<br>Line(CO) | / |
+| 角平分线 | Bisector(BD,ABC) | / | Line(BD),<br>Angle(ABC) | / |
+| 三角形的中线 | Median(AD,ABC) | / | Line(AD),<br>Polygon(ABC),<br>Collinear(BDC) | Triangle(ABC) |
+| 三角形的高 | IsAltitude(AD,ABC) | / | Line(AD),<br>Polygon(ABC),<br>Collinear(BDC) | Triangle(ABC) |
+| 三角形的中位线 | Neutrality(DE,ABC) | / | Line(DE),<br>Polygon(ABC) | Triangle(ABC) |
+| 三角形的外心 | Circumcenter(O,ABC) | OBCA,<br>OCAB | Point(O),<br>Polygon(ABC) | Triangle(ABC) |
+| 三角形的内心 | Incenter(O,ABC) | OBCA,<br>OCAB | Point(O),<br>Polygon(ABC) | Triangle(ABC) |
+| 三角形的重心 | Centroid(O,ABC) | OBCA,<br>OCAB | Point(O),<br>Polygon(ABC) | Triangle(ABC) |
+| 三角形的垂心 | Orthocenter(O,ABC) | OBCA,<br>OCAB | Point(O),<br>Polygon(ABC) | Triangle(ABC) |
+| 三角形全等 | Congruent(ABC,DEF) | DEFABC,<br>BCAEFD,<br>EFDBCA,<br>CABFDE,<br>FDECAB | Polygon(ABC),<br>Polygon(DEF) | Triangle(ABC),<br>Triangle(DEF) |
+| 三角形相似 | Similar(ABC,DEF) | DEFABC,<br>BCAEFD,<br>EFDBCA,<br>CABFDE,<br>FDECAB | Polygon(ABC),<br>Polygon(DEF) | Triangle(ABC),<br>Triangle(DEF) |
+| 三角形镜像全等 | MirrorCongruent(ABC,DEF) | DEFABC,<br>BCAFDE,<br>FDEBCA,<br>CABEFD,<br>EFDCAB | Polygon(ABC),<br>Polygon(DEF) | Triangle(ABC),<br>Triangle(DEF) |
+| 三角形镜像相似 | MirrorSimilar(ABC,DEF) | DEFABC,<br>BCAFDE,<br>FDEBCA,<br>CABEFD,<br>EFDCAB | Polygon(ABC),<br>Polygon(DEF) | Triangle(ABC),<br>Triangle(DEF) |
 
 ### E、基本实体属性
 |名称|格式|多种表示|实体存在性约束|
@@ -536,7 +327,7 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
 ### G、代数关系
 |名称|格式|备注|
 |:--:|:--:|:--:|
-|相等|Equal(\$,\$)|$可以是表达式，也可以是实体属性，并且可以嵌套表示|
+|相等|Equal(expr1,expr2)|expr可以是表达式，也可以是实体属性，并且可以嵌套表示|
 
 ### H、代数运算
 |名称|格式|表达式符号|
@@ -555,8 +346,8 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
 ### I、解题目标
 |名称|格式|备注|
 |:--:|:--:|:--:|
-|证相等|Equal(\$,\$)|$可以是表达式，也可以是实体属性，并且可以嵌套表示|
-|求值|Value(Expression($))|Expression表示由运算和实体属性构成的表达式|
+|证相等|Equal(expr1,expr2)|expr可以是表达式，也可以是实体属性，并且可以嵌套表示|
+|求值|Value(expr)|expr表示由运算和实体属性构成的表达式|
 |求关系|Relation($)|Relation表示任意实体、实体关系|
 
 ## 附录3 定理列表

@@ -4,43 +4,12 @@ Formal representation and solving for SAT-level Euclidean plane geometry problem
 
 ## Cowork
 #### Week 1 (230227): form 2023-02-27 to 2023-03-05.
-<table>
-	<tr>
-        <td align="center"><b>Worker</b></td>
-	    <td align="center"><b>WorkLoad</b></td>
-    <td align="center"><b>PID</b></td>
-	    <td align="center"><b>Skip</b></td>
-	    <td align="center"><b>Submitted</b></td>
-    </tr>
-    <tr>
-        <td align="center">XiaokaiZhang</td>
-	    <td align="center">15</td>
-	    <td align="center">1584-1601</td>
-	    <td align="center">[1584, 1588, 1589]</td>
-	    <td align="center"><font color="green"><b>√</b></font></td>
-    </tr>
-    <tr>
-        <td align="center">NaZhu</td>
-	    <td align="center">15</td>
-	    <td align="center">1602-1616</td>
-	    <td align="center">[]</td>
-	    <td align="center"><font color="red"><b>×</b></font></td>
-    </tr>
-    <tr>
-        <td align="center">JiaZou</td>
-	    <td align="center">15</td>
-	    <td align="center">1617-1631</td>
-	    <td align="center">[]</td>
-	    <td align="center"><font color="red"><b>×</b></font></td>
-    </tr>
-    <tr>
-        <td align="center">YimingHe</td>
-	    <td align="center">15</td>
-	    <td align="center">1632-1646</td>
-	    <td align="center">[]</td>
-	    <td align="center"><font color="red"><b>×</b></font></td>
-    </tr>
-</table>
+| Worker | WorkLoad | PID | Skip | Submitted |
+|:---:|:---:|:---:|:---:|:---:|
+| XiaokaiZhang | 15 | 1584-1601 | [1584, 1588, 1589] | × |
+| NaZhu | 15 | 1602-1616 | / | × |
+| JiaZou | 15 | 1617-1631 | / | × |
+| YimingHe | 15 | 1632-1646 | / | × |
 
 ## Introduction
 Formal mathematics plays an important role in mathematical research, especially with the deepening of mathematical research, the theory becomes obscure and difficult to understand, and computer aided verification is more needed. Geometry involves the literal description and image representation of knowledge, the unity of algebraic calculation and symbolic reasoning, so it is difficult to formalize.  

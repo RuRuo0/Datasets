@@ -23,6 +23,14 @@ So we designed a plane geometry formalization system and provided a python imple
 4.Generate information about problem-solving process, such as solution hypertree, CDL of every step, Directed acyclic graph of applied theorem, etc. These interfaces provide verification information for correctness of problem-solving and facilitate AI-assisted reasoning.
 
 ## Version
+#### FormalGeo-SAT 1.1 (Feb 28, 2023) 
+**predicates/theorems**: 49/83  
+**problems**: 119  
+**new functions**:  
+1.Hierarchical structure and automatic expansion for problem conditions.  
+2.New format of GDL.  
+3.Two types of validity checks are defined: EE check and FV check.  
+
 #### FormalGeo-SAT 1.0 (Feb 21, 2023)
 A simple copy of the original version "FormalGeo".  
 **predicates/theorems**: 35/82  

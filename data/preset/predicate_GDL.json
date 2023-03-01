@@ -1,465 +1,465 @@
 {
-	"Predicates": {
-		"Entity": {
-			"Triangle(ABC)": {
-				"ee_check": [
-					"Polygon(ABC)"
-				],
-				"fv_check_format": [
-					"ABC"
-				],
-				"multi": [
-					"BCA",
-					"CAB"
-				],
-				"extend": []
-			},
-			"RightTriangle(ABC)": {
-				"ee_check": [
-					"Polygon(ABC)"
-				],
-				"fv_check_format": [
-					"ABC"
-				],
-				"multi": [],
-				"extend": [
-					"Triangle(ABC)"
-				]
-			},
-			"IsoscelesTriangle(ABC)": {
-				"ee_check": [
-					"Polygon(ABC)"
-				],
-				"fv_check_format": [
-					"ABC"
-				],
-				"multi": [],
-				"extend": [
-					"Triangle(ABC)"
-				]
-			},
-			"EquilateralTriangle(ABC)": {
-				"ee_check": [
-					"Polygon(ABC)"
-				],
-				"fv_check_format": [
-					"ABC"
-				],
-				"multi": [
-					"BCA",
-					"CAB"
-				],
-				"extend": [
-					"Triangle(ABC)"
-				]
-			}
-		},
-		"Relation": {
-			"Midpoint(M,AB)": {
-				"ee_check": [
-					"Point(M)",
-					"Line(AB)"
-				],
-				"fv_check_format": [
-					"M,AB"
-				],
-				"multi": [
-					"M,BA"
-				],
-				"extend": []
-			},
-			"Intersect(O,AB,CD)": {
-				"ee_check": [
-					"Point(O)",
-					"Line(AB)",
-					"Line(CD)"
-				],
-				"fv_check_format": [
-					"O,AB,CD"
-				],
-				"multi": [
-					"O,CD,BA",
-					"O,BA,DC",
-					"O,DC,AB"
-				],
-				"extend": []
-			},
-			"Parallel(AB,CD)": {
-				"ee_check": [
-					"Line(AB)",
-					"Line(CD)"
-				],
-				"fv_check_format": [
-					"AB,CD"
-				],
-				"multi": [
-					"DC,BA"
-				],
-				"extend": []
-			},
-			"Perpendicular(AO,CO)": {
-				"ee_check": [
-					"Line(AO)",
-					"Line(CO)"
-				],
-				"fv_check_format": [
-					"AO,CO"
-				],
-				"multi": [],
-				"extend": []
-			},
-			"PerpendicularBisector(AB,CO)": {
-				"ee_check": [
-					"Line(AB)",
-					"Line(CO)"
-				],
-				"fv_check_format": [
-					"AB,CO"
-				],
-				"multi": [],
-				"extend": []
-			},
-			"Bisector(BD,ABC)": {
-				"ee_check": [
-					"Line(BD)",
-					"Angle(ABC)"
-				],
-				"fv_check_format": [
-					"BD,ABC"
-				],
-				"multi": [],
-				"extend": []
-			},
-			"Median(AD,ABC)": {
-				"ee_check": [
-					"Line(AD)",
-					"Polygon(ABC)",
-					"Collinear(BDC)"
-				],
-				"fv_check_format": [
-					"AD,ABC"
-				],
-				"multi": [],
-				"extend": [
-					"Triangle(ABC)"
-				]
-			},
-			"IsAltitude(AD,ABC)": {
-				"ee_check": [
-					"Line(AD)",
-					"Polygon(ABC)",
-					"Collinear(BDC)"
-				],
-				"fv_check_format": [
-					"AD,ABC",
-					"AB,ABC",
-					"AC,ABC"
-				],
-				"multi": [],
-				"extend": [
-					"Triangle(ABC)"
-				]
-			},
-			"Neutrality(DE,ABC)": {
-				"ee_check": [
-					"Line(DE)",
-					"Polygon(ABC)"
-				],
-				"fv_check_format": [
-					"DE,ABC"
-				],
-				"multi": [],
-				"extend": [
-					"Triangle(ABC)"
-				]
-			},
-			"Circumcenter(O,ABC)": {
-				"ee_check": [
-					"Point(O)",
-					"Polygon(ABC)"
-				],
-				"fv_check_format": [
-					"O,ABC"
-				],
-				"multi": [
-					"O,BCA",
-					"O,CAB"
-				],
-				"extend": [
-					"Triangle(ABC)"
-				]
-			},
-			"Incenter(O,ABC)": {
-				"ee_check": [
-					"Point(O)",
-					"Polygon(ABC)"
-				],
-				"fv_check_format": [
-					"O,ABC"
-				],
-				"multi": [
-					"O,BCA",
-					"O,CAB"
-				],
-				"extend": [
-					"Triangle(ABC)"
-				]
-			},
-			"Centroid(O,ABC)": {
-				"ee_check": [
-					"Point(O)",
-					"Polygon(ABC)"
-				],
-				"fv_check_format": [
-					"O,ABC"
-				],
-				"multi": [
-					"O,BCA",
-					"O,CAB"
-				],
-				"extend": [
-					"Triangle(ABC)"
-				]
-			},
-			"Orthocenter(O,ABC)": {
-				"ee_check": [
-					"Point(O)",
-					"Polygon(ABC)"
-				],
-				"fv_check_format": [
-					"O,ABC",
-					"A,ABC",
-					"B,ABC",
-					"C,ABC"
-				],
-				"multi": [
-					"O,BCA",
-					"O,CAB"
-				],
-				"extend": [
-					"Triangle(ABC)"
-				]
-			},
-			"Congruent(ABC,DEF)": {
-				"ee_check": [
-					"Polygon(ABC)",
-					"Polygon(DEF)"
-				],
-				"fv_check_mutex": [
-					"ABC",
-					"DEF",
-					[
-						"ABC",
-						"DEF"
-					],
-					[
-						"ABC",
-						"EFD"
-					],
-					[
-						"ABC",
-						"FDE"
-					],
-					[
-						"ABC",
-						"FED"
-					],
-					[
-						"ABC",
-						"DFE"
-					],
-					[
-						"ABC",
-						"EDF"
-					]
-				],
-				"multi": [
-					"DEF,ABC",
-					"BCA,EFD",
-					"EFD,BCA",
-					"CAB,FDE",
-					"FDE,CAB"
-				],
-				"extend": [
-					"Triangle(ABC)",
-					"Triangle(DEF)"
-				]
-			},
-			"Similar(ABC,DEF)": {
-				"ee_check": [
-					"Polygon(ABC)",
-					"Polygon(DEF)"
-				],
-				"fv_check_mutex": [
-					"ABC",
-					"DEF",
-					[
-						"ABC",
-						"DEF"
-					],
-					[
-						"ABC",
-						"EFD"
-					],
-					[
-						"ABC",
-						"FDE"
-					],
-					[
-						"ABC",
-						"FED"
-					],
-					[
-						"ABC",
-						"DFE"
-					],
-					[
-						"ABC",
-						"EDF"
-					]
-				],
-				"multi": [
-					"DEF,ABC",
-					"BCA,EFD",
-					"EFD,BCA",
-					"CAB,FDE",
-					"FDE,CAB"
-				],
-				"extend": [
-					"Triangle(ABC)",
-					"Triangle(DEF)"
-				]
-			},
-			"MirrorCongruent(ABC,DEF)": {
-				"ee_check": [
-					"Polygon(ABC)",
-					"Polygon(DEF)"
-				],
-				"fv_check_mutex": [
-					"ABC",
-					"DEF",
-					[
-						"ABC",
-						"DEF"
-					],
-					[
-						"ABC",
-						"EFD"
-					],
-					[
-						"ABC",
-						"FDE"
-					],
-					[
-						"ABC",
-						"FED"
-					],
-					[
-						"ABC",
-						"DFE"
-					],
-					[
-						"ABC",
-						"EDF"
-					]
-				],
-				"multi": [
-					"DEF,ABC",
-					"BCA,FDE",
-					"FDE,BCA",
-					"CAB,EFD",
-					"EFD,CAB"
-				],
-				"extend": [
-					"Triangle(ABC)",
-					"Triangle(DEF)"
-				]
-			},
-			"MirrorSimilar(ABC,DEF)": {
-				"ee_check": [
-					"Polygon(ABC)",
-					"Polygon(DEF)"
-				],
-				"fv_check_mutex": [
-					"ABC",
-					"DEF",
-					[
-						"ABC",
-						"DEF"
-					],
-					[
-						"ABC",
-						"EFD"
-					],
-					[
-						"ABC",
-						"FDE"
-					],
-					[
-						"ABC",
-						"FED"
-					],
-					[
-						"ABC",
-						"DFE"
-					],
-					[
-						"ABC",
-						"EDF"
-					]
-				],
-				"multi": [
-					"DEF,ABC",
-					"BCA,FDE",
-					"FDE,BCA",
-					"CAB,EFD",
-					"EFD,CAB"
-				],
-				"extend": [
-					"Triangle(ABC)",
-					"Triangle(DEF)"
-				]
-			}
-		},
-		"Attribution": {
-			"AltitudeOfTriangle(ABC)": {
-				"ee_check": [
-					"Polygon(ABC)"
-				],
-				"fv_check_format": [
-					"ABC"
-				],
-				"sym": "at",
-				"multi": [],
-				"negative": "False"
-			},
-			"DistanceOfPointToLine(O,AB)": {
-				"ee_check": [
-					"Point(O)",
-					"Line(AB)"
-				],
-				"fv_check_format": [
-					"OAB",
-					"OOB",
-					"OAO"
-				],
-				"sym": "dpl",
-				"multi": [
-					"OBA"
-				],
-				"negative": "False"
-			}
-		}
-	},
-	"Notes": {
-		"built-in": [
-			"3 Construction definitions: Shape, Collinear and Cocircular.",
-			"6 BasicEntity definitions: Point, Line, Angle, Arc, Circle, and Polygon.",
-			"6 BasicAttribution definitions: Free, Length, ArcLength, Measure, Area and Perimeter."
-		],
-		"fv_check_format/fv_check_mutex": "Two different forms of format validity check (FV check).",
-		"ee_check": "For entity existence check (EE check). It only contains BasicEntity.",
-		"extend": "For automatic extension of conditions. It only contains Entity or EntityRelation."
-	},
-	"Version": "1.1"
+  "Predicates": {
+    "Entity": {
+      "Triangle(ABC)": {
+        "ee_check": [
+          "Polygon(ABC)"
+        ],
+        "fv_check_format": [
+          "ABC"
+        ],
+        "multi": [
+          "BCA",
+          "CAB"
+        ],
+        "extend": []
+      },
+      "RightTriangle(ABC)": {
+        "ee_check": [
+          "Polygon(ABC)"
+        ],
+        "fv_check_format": [
+          "ABC"
+        ],
+        "multi": [],
+        "extend": [
+          "Triangle(ABC)"
+        ]
+      },
+      "IsoscelesTriangle(ABC)": {
+        "ee_check": [
+          "Polygon(ABC)"
+        ],
+        "fv_check_format": [
+          "ABC"
+        ],
+        "multi": [],
+        "extend": [
+          "Triangle(ABC)"
+        ]
+      },
+      "EquilateralTriangle(ABC)": {
+        "ee_check": [
+          "Polygon(ABC)"
+        ],
+        "fv_check_format": [
+          "ABC"
+        ],
+        "multi": [
+          "BCA",
+          "CAB"
+        ],
+        "extend": [
+          "Triangle(ABC)"
+        ]
+      }
+    },
+    "Relation": {
+      "Midpoint(M,AB)": {
+        "ee_check": [
+          "Point(M)",
+          "Line(AB)"
+        ],
+        "fv_check_format": [
+          "M,AB"
+        ],
+        "multi": [
+          "M,BA"
+        ],
+        "extend": []
+      },
+      "Intersect(O,AB,CD)": {
+        "ee_check": [
+          "Point(O)",
+          "Line(AB)",
+          "Line(CD)"
+        ],
+        "fv_check_format": [
+          "O,AB,CD"
+        ],
+        "multi": [
+          "O,CD,BA",
+          "O,BA,DC",
+          "O,DC,AB"
+        ],
+        "extend": []
+      },
+      "Parallel(AB,CD)": {
+        "ee_check": [
+          "Line(AB)",
+          "Line(CD)"
+        ],
+        "fv_check_format": [
+          "AB,CD"
+        ],
+        "multi": [
+          "DC,BA"
+        ],
+        "extend": []
+      },
+      "Perpendicular(AO,CO)": {
+        "ee_check": [
+          "Line(AO)",
+          "Line(CO)"
+        ],
+        "fv_check_format": [
+          "AO,CO"
+        ],
+        "multi": [],
+        "extend": []
+      },
+      "PerpendicularBisector(AB,CO)": {
+        "ee_check": [
+          "Line(AB)",
+          "Line(CO)"
+        ],
+        "fv_check_format": [
+          "AB,CO"
+        ],
+        "multi": [],
+        "extend": []
+      },
+      "Bisector(BD,ABC)": {
+        "ee_check": [
+          "Line(BD)",
+          "Angle(ABC)"
+        ],
+        "fv_check_format": [
+          "BD,ABC"
+        ],
+        "multi": [],
+        "extend": []
+      },
+      "Median(AD,ABC)": {
+        "ee_check": [
+          "Line(AD)",
+          "Polygon(ABC)",
+          "Collinear(BDC)"
+        ],
+        "fv_check_format": [
+          "AD,ABC"
+        ],
+        "multi": [],
+        "extend": [
+          "Triangle(ABC)"
+        ]
+      },
+      "IsAltitude(AD,ABC)": {
+        "ee_check": [
+          "Line(AD)",
+          "Polygon(ABC)",
+          "Collinear(BDC)"
+        ],
+        "fv_check_format": [
+          "AD,ABC",
+          "AB,ABC",
+          "AC,ABC"
+        ],
+        "multi": [],
+        "extend": [
+          "Triangle(ABC)"
+        ]
+      },
+      "Neutrality(DE,ABC)": {
+        "ee_check": [
+          "Line(DE)",
+          "Polygon(ABC)"
+        ],
+        "fv_check_format": [
+          "DE,ABC"
+        ],
+        "multi": [],
+        "extend": [
+          "Triangle(ABC)"
+        ]
+      },
+      "Circumcenter(O,ABC)": {
+        "ee_check": [
+          "Point(O)",
+          "Polygon(ABC)"
+        ],
+        "fv_check_format": [
+          "O,ABC"
+        ],
+        "multi": [
+          "O,BCA",
+          "O,CAB"
+        ],
+        "extend": [
+          "Triangle(ABC)"
+        ]
+      },
+      "Incenter(O,ABC)": {
+        "ee_check": [
+          "Point(O)",
+          "Polygon(ABC)"
+        ],
+        "fv_check_format": [
+          "O,ABC"
+        ],
+        "multi": [
+          "O,BCA",
+          "O,CAB"
+        ],
+        "extend": [
+          "Triangle(ABC)"
+        ]
+      },
+      "Centroid(O,ABC)": {
+        "ee_check": [
+          "Point(O)",
+          "Polygon(ABC)"
+        ],
+        "fv_check_format": [
+          "O,ABC"
+        ],
+        "multi": [
+          "O,BCA",
+          "O,CAB"
+        ],
+        "extend": [
+          "Triangle(ABC)"
+        ]
+      },
+      "Orthocenter(O,ABC)": {
+        "ee_check": [
+          "Point(O)",
+          "Polygon(ABC)"
+        ],
+        "fv_check_format": [
+          "O,ABC",
+          "A,ABC",
+          "B,ABC",
+          "C,ABC"
+        ],
+        "multi": [
+          "O,BCA",
+          "O,CAB"
+        ],
+        "extend": [
+          "Triangle(ABC)"
+        ]
+      },
+      "Congruent(ABC,DEF)": {
+        "ee_check": [
+          "Polygon(ABC)",
+          "Polygon(DEF)"
+        ],
+        "fv_check_mutex": [
+          "ABC",
+          "DEF",
+          [
+            "ABC",
+            "DEF"
+          ],
+          [
+            "ABC",
+            "EFD"
+          ],
+          [
+            "ABC",
+            "FDE"
+          ],
+          [
+            "ABC",
+            "FED"
+          ],
+          [
+            "ABC",
+            "DFE"
+          ],
+          [
+            "ABC",
+            "EDF"
+          ]
+        ],
+        "multi": [
+          "DEF,ABC",
+          "BCA,EFD",
+          "EFD,BCA",
+          "CAB,FDE",
+          "FDE,CAB"
+        ],
+        "extend": [
+          "Triangle(ABC)",
+          "Triangle(DEF)"
+        ]
+      },
+      "Similar(ABC,DEF)": {
+        "ee_check": [
+          "Polygon(ABC)",
+          "Polygon(DEF)"
+        ],
+        "fv_check_mutex": [
+          "ABC",
+          "DEF",
+          [
+            "ABC",
+            "DEF"
+          ],
+          [
+            "ABC",
+            "EFD"
+          ],
+          [
+            "ABC",
+            "FDE"
+          ],
+          [
+            "ABC",
+            "FED"
+          ],
+          [
+            "ABC",
+            "DFE"
+          ],
+          [
+            "ABC",
+            "EDF"
+          ]
+        ],
+        "multi": [
+          "DEF,ABC",
+          "BCA,EFD",
+          "EFD,BCA",
+          "CAB,FDE",
+          "FDE,CAB"
+        ],
+        "extend": [
+          "Triangle(ABC)",
+          "Triangle(DEF)"
+        ]
+      },
+      "MirrorCongruent(ABC,DEF)": {
+        "ee_check": [
+          "Polygon(ABC)",
+          "Polygon(DEF)"
+        ],
+        "fv_check_mutex": [
+          "ABC",
+          "DEF",
+          [
+            "ABC",
+            "DEF"
+          ],
+          [
+            "ABC",
+            "EFD"
+          ],
+          [
+            "ABC",
+            "FDE"
+          ],
+          [
+            "ABC",
+            "FED"
+          ],
+          [
+            "ABC",
+            "DFE"
+          ],
+          [
+            "ABC",
+            "EDF"
+          ]
+        ],
+        "multi": [
+          "DEF,ABC",
+          "BCA,FDE",
+          "FDE,BCA",
+          "CAB,EFD",
+          "EFD,CAB"
+        ],
+        "extend": [
+          "Triangle(ABC)",
+          "Triangle(DEF)"
+        ]
+      },
+      "MirrorSimilar(ABC,DEF)": {
+        "ee_check": [
+          "Polygon(ABC)",
+          "Polygon(DEF)"
+        ],
+        "fv_check_mutex": [
+          "ABC",
+          "DEF",
+          [
+            "ABC",
+            "DEF"
+          ],
+          [
+            "ABC",
+            "EFD"
+          ],
+          [
+            "ABC",
+            "FDE"
+          ],
+          [
+            "ABC",
+            "FED"
+          ],
+          [
+            "ABC",
+            "DFE"
+          ],
+          [
+            "ABC",
+            "EDF"
+          ]
+        ],
+        "multi": [
+          "DEF,ABC",
+          "BCA,FDE",
+          "FDE,BCA",
+          "CAB,EFD",
+          "EFD,CAB"
+        ],
+        "extend": [
+          "Triangle(ABC)",
+          "Triangle(DEF)"
+        ]
+      }
+    },
+    "Attribution": {
+      "AltitudeOfTriangle(ABC)": {
+        "ee_check": [
+          "Polygon(ABC)"
+        ],
+        "fv_check_format": [
+          "ABC"
+        ],
+        "sym": "at",
+        "multi": [],
+        "negative": "False"
+      },
+      "DistanceOfPointToLine(O,AB)": {
+        "ee_check": [
+          "Point(O)",
+          "Line(AB)"
+        ],
+        "fv_check_format": [
+          "OAB",
+          "OOB",
+          "OAO"
+        ],
+        "sym": "dpl",
+        "multi": [
+          "OBA"
+        ],
+        "negative": "False"
+      }
+    }
+  },
+  "Notes": {
+    "built-in": [
+      "3 Construction definitions: Shape, Collinear and Cocircular.",
+      "6 BasicEntity definitions: Point, Line, Angle, Arc, Circle, and Polygon.",
+      "6 BasicAttribution definitions: Free, Length, ArcLength, Measure, Area and Perimeter."
+    ],
+    "fv_check_format/fv_check_mutex": "Two different forms of format validity check (FV check).",
+    "ee_check": "For entity existence check (EE check). It only contains BasicEntity.",
+    "extend": "For automatic extension of conditions. It only contains Entity or EntityRelation."
+  },
+  "Version": "1.1"
 }

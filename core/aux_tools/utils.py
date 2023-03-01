@@ -153,6 +153,7 @@ def show(problem, simple=False):
     print("\033[34mTime consumption:\033[0m")
     for s in problem.goal["solving_msg"]:
         print(s)
+    print()
 
 
 def save_solution_tree(problem, path):

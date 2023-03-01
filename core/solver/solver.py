@@ -1,7 +1,8 @@
 from core.problem.problem import Problem
 from core.aux_tools.parse import FLParser, EqParser
 from sympy import symbols, solve, Float, Integer
-from func_timeout import func_set_timeout
+from func_timeout import func_set_timeout, FunctionTimedOut
+import warnings
 import time
 
 
@@ -16,7 +17,7 @@ class Solver:
         """Load problem through problem_CDL."""
         s_start_time = time.time()  # timing
         self.problem = Problem(self.predicate_GDL, FLParser.parse_problem(problem_CDL))  # init problem
-        self.solve()  # Solve the equations after initialization
+        self.solve_equations()  # Solve the equations after initialization
         self.problem.applied("init_problem")  # save applied theorem and update step
         self.problem.goal["solving_msg"].append(
             "\033[32mInit problem and first solving\033[0m:{:.6f}s".format(time.time() - s_start_time))
@@ -28,9 +29,9 @@ class Solver:
                 "<ProblemNotLoaded> Please run <load_problem> before run <greedy_search>."
             )
 
-        if orientation == "forward":    # forward search
+        if orientation == "forward":  # forward search
             pass
-        else:    # backward search
+        else:  # backward search
             pass
 
     def apply_theorem(self, theorem_name):
@@ -80,7 +81,7 @@ class Solver:
                             if equation is not None:
                                 update = self.problem.add("Equation", equation, r_ids[i], theorem_name) or update
         if update:  # add theorem to problem theorem_applied list when update
-            self.solve()
+            self.solve_equations()
             self.problem.applied(theorem_name)  # save applied theorem and update step
             self.problem.goal["solving_msg"].append(
                 "\033[32mApply theorem <{}>\033[0m:{:.6f}s".format(theorem_name, time.time() - s_start_time))
@@ -223,8 +224,12 @@ class Solver:
 
         return r_ids, r_items, r1_vars
 
-    @func_set_timeout(10)
-    def solve(self):
+    @staticmethod
+    @func_set_timeout(3)
+    def solve(equations):
+        return solve(equations)
+
+    def solve_equations(self):
         """Solve the equation contained in the <Problem.condition["Equation"].equations>."""
         eq = self.problem.conditions["Equation"]  # class <Equation>
 
@@ -249,16 +254,19 @@ class Solver:
                 equations, _, premise, mini_sym_set = self.get_minimum_equations(sym)
                 resolved_sym_set.union(mini_sym_set)
 
-                result = solve(equations)  # solve equations
-
-                if len(result) > 0:
-                    if isinstance(result, list):
-                        result = result[0]
-                    for key in result.keys():  # save solved value
-                        if eq.value_of_sym[key] is None \
-                                and (isinstance(result[key], Float) or isinstance(result[key], Integer)):
-                            self.problem.set_value_of_sym(key, float(result[key]), tuple(premise), "solve_eq")
-                            update = True
+                try:
+                    result = Solver.solve(equations)  # solve equations
+                except FunctionTimedOut:
+                    warnings.warn("Timeout when solve: {}".format(equations))
+                else:
+                    if len(result) > 0:
+                        if isinstance(result, list):
+                            result = result[0]
+                        for key in result.keys():  # save solved value
+                            if eq.value_of_sym[key] is None \
+                                    and (isinstance(result[key], Float) or isinstance(result[key], Integer)):
+                                self.problem.set_value_of_sym(key, float(result[key]), tuple(premise), "solve_eq")
+                                update = True
 
         eq.solved = True
 
@@ -293,16 +301,20 @@ class Solver:
         equations = self._high_level_simplify(equations, target_expr)  # high level simplify
         target_sym = symbols("t_s")
         equations[-1] = target_sym - equations[-1]
-        solved_result = solve(equations)
 
-        if len(solved_result) > 0 and isinstance(solved_result, list):  # Multi answer. Choose the first.
-            solved_result = solved_result[0]
+        try:
+            solved_result = Solver.solve(equations)  # solve equations
+        except FunctionTimedOut:
+            warnings.warn("Timeout when solve: {}".format(equations))
+        else:
+            if len(solved_result) > 0 and isinstance(solved_result, list):  # Multi answer. Choose the first.
+                solved_result = solved_result[0]
 
-        if len(solved_result) > 0 and \
-                target_sym in solved_result.keys() and \
-                (isinstance(solved_result[target_sym], Float) or
-                 isinstance(solved_result[target_sym], Integer)):
-            return float(solved_result[target_sym]), list(set(premise))  # Only return real solution.
+            if len(solved_result) > 0 and \
+                    target_sym in solved_result.keys() and \
+                    (isinstance(solved_result[target_sym], Float) or
+                     isinstance(solved_result[target_sym], Integer)):
+                return float(solved_result[target_sym]), list(set(premise))  # Only return real solution.
 
         return None, None  # unsolvable
 
@@ -352,13 +364,19 @@ class Solver:
 
                 if len(eq.equations[key].free_symbols) == 1:  # only one sym unsolved, then solved
                     target_sym = list(eq.equations[key].free_symbols)[0]
-                    value = solve(eq.equations[key])[0]
-                    premise = [eq.get_id_by_item[key]]
-                    for sym in key.free_symbols:
-                        if eq.value_of_sym[sym] is not None:
-                            premise.append(eq.get_id_by_item[sym - eq.value_of_sym[sym]])
-                    self.problem.set_value_of_sym(target_sym, value, tuple(premise), "solve_eq")
-                    remove_lists.append(key)
+                    try:
+                        result = Solver.solve(eq.equations[key])  # solve equations
+                    except FunctionTimedOut:
+                        warnings.warn("Timeout when solve: {}".format(eq.equations[key]))
+                    else:
+                        if len(result) > 0:  # It can't be solved unexpectedly, such as: sin(pi*ma_aeb/180)+sin(0.3*pi)
+                            value = solve(eq.equations[key])[0]
+                            premise = [eq.get_id_by_item[key]]
+                            for sym in key.free_symbols:
+                                if eq.value_of_sym[sym] is not None:
+                                    premise.append(eq.get_id_by_item[sym - eq.value_of_sym[sym]])
+                            self.problem.set_value_of_sym(target_sym, value, tuple(premise), "solve_eq")
+                            remove_lists.append(key)
 
             for remove_eq in remove_lists:  # remove useless equation
                 eq.equations.pop(remove_eq)
@@ -419,8 +437,8 @@ class Solver:
                                             self.find_vars_from_equal_tree(conclusion[1][1], attr_name)
                                 replaced = []
                                 for attr_var in list(set(attr_vars)):  # fast redundancy removal and ergodic
-                                    for attr_para in attr_paras:    # multi rep
-                                        if len(attr_var) == len(attr_para):   # filter Area, Perimeter
+                                    for attr_para in attr_paras:  # multi rep
+                                        if len(attr_var) == len(attr_para):  # filter Area, Perimeter
                                             replaced.append([attr_para[attr_var.index(v)] if v in attr_var else v
                                                              for v in one_theorem["vars"]])
                                 pres = self.prerequisite_generation(replaced, one_theorem["premise"])
@@ -438,7 +456,7 @@ class Solver:
                             for pre in pres:
                                 results.append((theorem_name, pre))  # add to results
 
-        unique = []   # redundancy removal
+        unique = []  # redundancy removal
         for result in results:
             if result not in unique:
                 unique.append(result)

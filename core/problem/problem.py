@@ -276,37 +276,34 @@ class Problem:
                     self.conditions["Polygon"].add(tuple([item[(i + bias) % l] for i in range(l)]), (_id,), "extended")
                 for bias in range(l):  # extend
                     self.add("Angle", (item[0 + bias], item[(1 + bias) % l], item[(2 + bias) % l]), (_id,), "extended")
+                if l == 3:
+                    self.add("Triangle", item, (_id,), "extended")
+                elif l == 4:
+                    self.add("Quadrilateral", item, (_id,), "extended")
                 return True
-        elif predicate in self.predicate_GDL["Entity"]:  # Entity
+        elif predicate in self.predicate_GDL["Entity"] or\
+                predicate in self.predicate_GDL["Relation"]:  # Entity or Relation
             added, _id = self.conditions[predicate].add(item, premise, theorem)
             if added:
-                for para_list in self.predicate_GDL["Entity"][predicate]["multi"]:  # multi
+                item_GDL = self.predicate_GDL["Entity"][predicate] \
+                    if predicate in self.predicate_GDL["Entity"] \
+                    else self.predicate_GDL["Relation"][predicate]
+
+                for para_list in item_GDL["multi"]:  # multi
                     para = []
                     for i in para_list:
                         para.append(item[i])
                     self.conditions[predicate].add(tuple(para), (_id,), "extended")
 
-                for extended_predicate, para_list in self.predicate_GDL["Entity"][predicate]["extend"]:  # extended
-                    para = []
-                    for i in para_list:
-                        para.append(item[i])
-                    self.add(extended_predicate, tuple(para), (_id,), "extended")
+                for extended_predicate, para in item_GDL["extend"]:  # extended
+                    if extended_predicate == "Equal":
+                        eq = EqParser.get_equation_from_tree(self, para, True, item)
+                        if eq is not None:
+                            self.add("Equation", eq, (_id,), "extended")
+                    else:
+                        self.add(extended_predicate, tuple(item[i] for i in para), (_id,), "extended")
                 return True
-        elif predicate in self.predicate_GDL["Relation"]:  # Relation
-            added, _id = self.conditions[predicate].add(item, premise, theorem)
-            if added:
-                for para_list in self.predicate_GDL["Relation"][predicate]["multi"]:  # multi
-                    para = []
-                    for i in para_list:
-                        para.append(item[i])
-                    self.conditions[predicate].add(tuple(para), (_id,), "extended")
 
-                for extended_predicate, para_list in self.predicate_GDL["Relation"][predicate]["extend"]:  # extended
-                    para = []
-                    for i in para_list:
-                        para.append(item[i])
-                    self.add(extended_predicate, tuple(para), (_id,), "extended")
-                return True
         return False
 
     """------------Format Control for <entity relation>------------"""

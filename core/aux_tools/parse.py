@@ -7,7 +7,7 @@ class FLParser:
     def parse_predicate(predicate_GDL):
         """parse predicate_GDL to executable form."""
         predicate_GDL = predicate_GDL["Predicates"]
-        parsed_GDL = {    # preset Construction
+        parsed_GDL = {  # preset Construction
             "Construction": {
                 "Shape": {
                     "vars": "variable",
@@ -212,8 +212,11 @@ class FLParser:
     def _parse_extend(fv_check_mutex, para):
         results = []
         for extend in fv_check_mutex:
-            extend_name, extend_para, _ = FLParser._parse_one_predicate(extend)
-            results.append([extend_name, [para.index(i) for i in extend_para]])
+            if extend.startswith("Equal"):
+                results.append(FLParser._replace_letter_with_vars(FLParser._parse_equal_predicate(extend), para))
+            else:
+                extend_name, extend_para, _ = FLParser._parse_one_predicate(extend)
+                results.append([extend_name, [para.index(i) for i in extend_para]])
         return results
 
     @staticmethod
@@ -235,8 +238,9 @@ class FLParser:
                 for i in range(len(parsed_premise)):
                     for j in range(len(parsed_premise[i])):
                         if "Equal" in parsed_premise[i][j]:
-                            parsed_premise[i][j] = FLParser._parse_equal_predicate(parsed_premise[i][j])
-                            parsed_premise[i][j] = FLParser._replace_letter_with_vars(parsed_premise[i][j], letters)
+                            parsed_premise[i][j] = FLParser._replace_letter_with_vars(
+                                FLParser._parse_equal_predicate(parsed_premise[i][j]), letters
+                            )
                         else:
                             predicate, para, _ = FLParser._parse_one_predicate(parsed_premise[i][j])
                             for k in range(len(para)):
@@ -440,6 +444,8 @@ class FLParser:
         Recursive trans s_tree's para to vars.
         >> replace_letter_with_vars(['Add', [['Length', ['A', 'B']], ['Length', ['C', 'D']]]], ['A', 'B', 'C', 'D'])
         ['Add', [['Length', ['0', '1']], ['Length', ['2', '3']]]]
+        >> replace_letter_with_vars(['Equal', [['Length', ['A', 'B']], ['Length', ['A', 'C']]]], ['A', 'B', 'C'])
+        ['Equal', [['Length', [0, 1]], ['Length', [0, 2]]]]
         """
         if not isinstance(s_tree, list):
             return s_tree
@@ -488,7 +494,6 @@ class EqParser:
         """
         if not isinstance(tree, list):  # expr
             return EqParser.parse_expr(problem, tree)
-
         if tree[0] in problem.predicate_GDL["Attribution"]:  # attr
             if not replaced:
                 return problem.get_sym_of_attr(tuple(tree[1]), tree[0])

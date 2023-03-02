@@ -165,10 +165,16 @@ Git是一种分布式版本控制系统，用于多人协作项目开发时的�
 
 文件的内容如图所示。如果你用的是其他IDE，请将对应的缓存/配置文件或文件夹添加到.gitignore文件中。  
 4.pycharm项目配置  
-在你的项目文件夹右键，选择作为pycharm项目打开。首次打开会为文件编制索引，加载较慢，耐心等待。  
+在你的项目文件夹右键，选择作为pycharm项目打开。  
 <div align=center>
     <img src="cowork-pic/14.png">
 </div>
+
+将data和doc两个文件夹标记为Excluded，这样就不会为文件编制索引，加快打开速度。选择 文件->设置->项目->项目结构：  
+<div align=center>
+    <img src="cowork-pic/25.png" width="70%">
+</div>
+
 
 加载完成后，选择 文件->设置->项目->python解释器->全部显示：  
 <div align=center>
@@ -180,7 +186,7 @@ Git是一种分布式版本控制系统，用于多人协作项目开发时的�
     <img src="cowork-pic/16.png" width="70%">
 </div>
 
-点击确定，加载Conda环境。勾选关联项目，然后点击应用：  
+选定我们的python环境，然后点击应用：  
 <div align=center>
     <img src="cowork-pic/17.png" width="60%">
 </div>

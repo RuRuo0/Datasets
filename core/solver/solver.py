@@ -365,18 +365,16 @@ class Solver:
                 if len(eq.equations[key].free_symbols) == 1:  # only one sym unsolved, then solved
                     target_sym = list(eq.equations[key].free_symbols)[0]
                     try:
-                        result = Solver.solve(eq.equations[key])  # solve equations
+                        value = Solver.solve(eq.equations[key])[0]  # solve equations
                     except FunctionTimedOut:
                         warnings.warn("Timeout when solve: {}".format(eq.equations[key]))
                     else:
-                        if len(result) > 0:  # It can't be solved unexpectedly, such as: sin(pi*ma_aeb/180)+sin(0.3*pi)
-                            value = solve(eq.equations[key])[0]
-                            premise = [eq.get_id_by_item[key]]
-                            for sym in key.free_symbols:
-                                if eq.value_of_sym[sym] is not None:
-                                    premise.append(eq.get_id_by_item[sym - eq.value_of_sym[sym]])
-                            self.problem.set_value_of_sym(target_sym, value, tuple(premise), "solve_eq")
-                            remove_lists.append(key)
+                        premise = [eq.get_id_by_item[key]]
+                        for sym in key.free_symbols:
+                            if eq.value_of_sym[sym] is not None:
+                                premise.append(eq.get_id_by_item[sym - eq.value_of_sym[sym]])
+                        self.problem.set_value_of_sym(target_sym, value, tuple(premise), "solve_eq")
+                        remove_lists.append(key)
 
             for remove_eq in remove_lists:  # remove useless equation
                 eq.equations.pop(remove_eq)

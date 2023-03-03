@@ -1,1 +1,32 @@
-{"problem_id": 1652, "annotation": "xiaokaizhang_2022-09-09", "source": "Geometry3k-68", "problem_level": 1, "problem_text_cn": "", "problem_text_en": "Find the perimeter of the triangle ACB, if triangle ACB is similar to triangle CDB, AD=5, CD=12, and BC=31.2.", "problem_img": "25_g3k-68.png", "construction_cdl": ["Shape(ACD)", "Shape(DCB)", "Collinear(ADB)"], "text_cdl": ["Triangle(ACB)", "Similar(Triangle(ACB),Triangle(CDB))", "Equal(Length(Line(AD)),5)", "Equal(Length(Line(CD)),12)", "Equal(Length(Line(BC)),31.2)"], "image_cdl": ["Perpendicular(Point(D),Line(AB),Line(DC))", "Perpendicular(Point(C),Line(CB),Line(AC))"], "goal_cdl": "Find(Perimeter(Triangle(ACB)))", "problem_answer": "78", "theorem_seqs": [27, 23, 84], "notes": ""}
+{
+  "problem_id": 1652,
+  "annotation": "xiaokaizhang_2022-09-09",
+  "source": "Geometry3k-68",
+  "problem_level": 1,
+  "problem_text_cn": "",
+  "problem_text_en": "Find the perimeter of the triangle ACB, if triangle ACB is similar to triangle CDB, AD=5, CD=12, and BC=31.2.",
+  "problem_img": "1652.png",
+  "construction_cdl": [
+    "Polygon(ACD)",
+    "Polygon(DCB)",
+    "Collinear(ADB)"
+  ],
+  "text_cdl": [
+    "Similar(ACB,CDB)",
+    "Equal(LengthOfLine(AD),5)",
+    "Equal(LengthOfLine(CD),12)",
+    "Equal(LengthOfLine(BC),31.2)"
+  ],
+  "image_cdl": [
+    "Perpendicular(AC,BC)",
+    "Perpendicular(BD,CD)"
+  ],
+  "goal_cdl": "Value(PerimeterOfTriangle(ACB))",
+  "problem_answer": "78",
+  "theorem_seqs": [
+    "perpendicular_property_collinear_extend",
+    "right_triangle_judgment_angle",
+    "pythagorean",
+    "triangle_perimeter_formula"
+  ]
+}

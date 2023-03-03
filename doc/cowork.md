@@ -3,19 +3,28 @@
 
 ## 1.形式化语言简介
 FormalGeo形式化语言包括两大组成部分，分别是**几何定义语言（GDL）**和**条件声明语言（CDL）**。GDL用于配置推理器，使其具有可扩展性；CDL用于几何问题的形式化输入。FormalGeo形式化语言采用类似谓词逻辑的语法结构，非常容易上手,在标注工作中，我们只需关注如何将几何问题转化为CDL即可。
-### 1.1几何本体论
-几何本体论研究几何学领域的根本性本体，以及本体之间的关系，是问题*我们需要形式化那些东西？*的回答，其理论成果如下图所示。
+
+### 1.1几何本体论与几何表示论
+**几何本体论**研究几何学领域的根本性本体，以及本体之间的关系，是问题*我们需要形式化那些东西？*的回答，其理论成果如下图所示。
 <div align=center>
     <img src="cowork-pic/four-quadrant.png" width="60%">
     <br>
     Figure 1. 几何本体域-二维四象限
 </div>
 
-### 1.2几何表示论
-几何表示论是研究如何使用文字或符号来表示几何图形的理论，是问题*我们如何形式化？*的回答，其理论成果包括对应一致性原则、构造性作图法。对应一致性原则是指原始系统和形式化系统的静态描述和动态过程要一一对应。在几何领域，静态描述指的是几何问题的条件，包括数量关系和实体关系；动态过程是指定理。构造性作图法采用最少数量的形式化语句来描述几何图形，并按照机械化的方法自动构建出所有的几何元素。
-**CDL**采用点的有序对来描述几何图形，根据构图的先后顺序，可以分为：构图语句（包括基本构图语句和基本实体）和其他语句（实体、实体关系、代数关系等），具体可参考附录。  
-### 1.3语法
+**几何表示论**是研究如何使用文字或符号来表示几何图形的理论，是问题*我们如何形式化？*的回答，其理论成果包括对应一致性原则和构造性作图法。对应一致性原则是指原始系统和形式化系统的静态描述和动态过程要一一对应。在几何领域，静态描述指的是几何问题的条件，动态过程是指定理。构造性作图法采用最少数量的形式化语句来描述几何图形，并按照机械化的方法自动构建出所有的几何元素。
 
+### 1.2语法
+**CDL**采用点的有序对来描述几何图形，根据其作用，可以分为三类。第一类是**构图语句**，包括基本构图语句和基本实体，推理器利用少量构图语句来构建所有的几何元素；第二类是**条件语句**，用于描述几何问题的前提条件，包括数量关系和实体关系；第三类是目标语句，用于声明几何问题的求解目标。  
+CDL语法与谓词逻辑类似，非常简单易学，我们举两个例子：  
+
+    Triangle(ABC)
+    Equal(LengthOfLine(AB),LengthOfLine(CD))
+
+很显然，第一句话声明了一个三角形，ABC是三角形的三个顶点；第二句话声明了一个数量关系，即直线AB的长度与直线CD的长度相等。  
+现在我们介绍几个基本的概念。  
+在上述两条CDL语句中，*Triangle*和*Equal*称作谓词，用于描述一种几何元素或几何元素之间的关系；*括号中的内容*称为个体词，在实体关系中，个体词为点的有序对，在数量关系中，个体词为由实数、运算符和符号构成的表达式；*LengthOfLine*称为函数，是个体词到个体词的映射，准确来说是实体关系个体词到代数关系个体词的映射，我们通过这样的映射，就可以用点的有序对来表示数量关系，实现了实体关系和数量关系表示形式的统一。  
+介绍完毕，就是这么简单！  
 
 ## 2.环境配置
 我们需要配置以下环境，熟悉环境配置的朋友可以自行安装，不熟悉的可以参照本章安装教程。  
@@ -158,7 +167,13 @@ Git是一种分布式版本控制系统，用于多人协作项目开发时的�
 </div>
 
 3.添加 .gitignore 文件：  
-添加.gitignore文件到你的项目目录，其作用是忽略你的IDE产生的、与项目无关的缓存or配置文件。
+添加.gitignore文件到你的项目目录，其作用是忽略你的IDE产生的、与项目无关的缓存or配置文件，内容为：  
+
+    .idea
+	__pycache__
+	.gitignore
+	data/solved
+
 <div align=center>
     <img src="cowork-pic/13.png">
 </div>
@@ -211,23 +226,23 @@ Git是一种分布式版本控制系统，用于多人协作项目开发时的�
 
 ## 3.标注协作
 ### 3.1与主分支同步
-1.在项目文件夹右键，选择Git Bash Here：
+在项目文件夹右键，选择Git Bash Here：
 <div align=center>
     <img src="cowork-pic/9.png" width="40%">
 </div>
 
-2.输入以下指令，将远程主分支的更新内容拉取到你的本地分支：  
+输入以下指令，将远程主分支的更新内容拉取到你的本地分支：  
 
 	$ git pull origin main
 
-3.阅读README.md，获取每周的任务分配：
+阅读README.md，获取每周的任务分配：
 <div align=center>
     <img src="cowork-pic/22.png">
 </div>
 
 上图中黄色箭头是每周的**标注识别号**，绿色箭头是每个人分配的题号，原始题目在 data/raw-problems 文件夹，共6个数据集，已经化为了统一的格式。
 ### 3.2标注(1个)问题
-1.复制模板到 data/formalized-problems ，并改名为 <problem_id>.json ：
+1.复制模板到 data/formalized-problems ，并改名为 <problem_id>.json：
 <div align=center>
     <img src="cowork-pic/23.png">
 </div>
@@ -240,7 +255,7 @@ Git是一种分布式版本控制系统，用于多人协作项目开发时的�
 3.按照附录的各种手册，标注并保存问题。
 
 ### 3.3提交已标注的问题
-在每周的标注任务完成后，将所有的标注文件统一提交。  
+在每周的标注任务**全部完成后**，将所有的标注文件统一提交。  
 1.在项目文件夹右键，选择Git Bash Here：
 <div align=center>
     <img src="cowork-pic/9.png" width="40%">
@@ -265,16 +280,13 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
 ### 4.2沟通交流
 标注过程遇到任何问题及时沟通，直接在群里提出(最高效的)，或填写[在线协作文档](https://docs.qq.com/sheet/DRk55TFZVb0hiWEJn)。
 ### 4.3常见问题
-
-## 附录1 单个问题标注流程
-
-## 附录2 谓词列表
-### A、基本构图谓词
+## 附录1 谓词列表
+### A、基本构图
 | 名称 | 格式 | 多种表示 | 实体存在性约束 | 扩展 |
 |:---:|:---:|:---:|:---:|:---:|
-| 基本形状 | Shape($) | * | / | Polygon |
-| 共线点 | Collinear($) | * | / | Line |
-| 共圆点 | Cocircular(O,$) | * | / | Point,Arc |
+| 基本形状 | Polygon($) | * | / | Angle,Triangle,Quadrilateral |
+| 共线点 | Collinear($) | * | / | Angle |
+| 共圆点 | Cocircular(O,$) | * | / | Arc,Circle |
 
 ### B、基本实体
 | 名称 | 格式 | 多种表示 | 实体存在性约束 | 扩展 |
@@ -282,53 +294,53 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
 | 点 | Point(A) | / | / | / |
 | 线 | Line(AB) | BA | / | Point(A),Point(B) |
 | 角 | Angle(ABC) | / | / | Line(AB),Line(BC) |
-| 多边形 | Polygon($) | * | / | Angle |
+| 三角形 | Triangle(ABC) | BCA,CAB | / | / |
+| 四边形 | Quadrilateral(ABCD) | BCDA,CDAB,DABC | / | / |
 | 弧 | Arc(AB) | / | / | Point(A),Point(B) |
 | 圆 | Circle(O) | / | / | Point(O) |
 
 ### C、实体
 | 名称 | 格式 | 多种表示 | 实体存在性约束 | 扩展 |
 |:---:|:---:|:---:|:---:|:---:|
-| 三角形 | Triangle(ABC) | BCA,CAB | Polygon(ABC) | / |
-| 直角三角形 | RightTriangle(ABC) | / | Polygon(ABC) | / |
-| 等腰三角形 | IsoscelesTriangle(ABC) | / | Polygon(ABC) | / |
-| 等边三角形 | EquilateralTriangle(ABC) | BCA,CAB | Polygon(ABC) | / |
+| 直角三角形 | RightTriangle(ABC) | / | Triangle(ABC) | Perpendicular(AB,CB) |
+| 等腰三角形 | IsoscelesTriangle(ABC) | / | Triangle(ABC) | Equal(LengthOfLine(AB),LengthOfLine(AC)) |
+| 等边三角形 | EquilateralTriangle(ABC) | BCA,<br>CAB | Triangle(ABC) | Equal(LengthOfLine(AB),LengthOfLine(AC))<br>Equal(LengthOfLine(AB),LengthOfLine(BC)) |
 
 ### D、实体关系
 |名称|格式|多种表示|实体存在性约束|扩展|
 |:---:|:---:|:---:|:---:|:---:|
-| 中点 | Midpoint(M,AB) | MBA | Point(M),<br>Line(AB) | / |
+| 中点 | Midpoint(M,AB) | MBA | Point(M),<br>Line(AB) | Equal(LengthOfLine(AM),LengthOfLine(MB)) |
 | 两线相交 | Intersect(O,AB,CD) | OCDBA,<br>OBADC,<br>ODCAB | Point(O),<br>Line(AB),<br>Line(CD) | / |
 | 两线平行 | Parallel(AB,CD) | DCBA | Line(AB),<br>Line(CD) | / |
-| 两线垂直 | Perpendicular(AO,OC) | / | Line(AO),<br>Line(OC) | / |
-| 垂直平分线 | PerpendicularBisector(AB,CO) | / | Line(AB),<br>Line(CO) | / |
-| 角平分线 | Bisector(BD,ABC) | / | Line(BD),<br>Angle(ABC) | / |
-| 三角形的中线 | Median(AD,ABC) | / | Line(AD),<br>Polygon(ABC),<br>Collinear(BDC) | Triangle(ABC) |
-| 三角形的高 | IsAltitude(AD,ABC) | / | Line(AD),<br>Polygon(ABC),<br>Collinear(BDC) | Triangle(ABC) |
-| 三角形的中位线 | Neutrality(DE,ABC) | / | Line(DE),<br>Polygon(ABC) | Triangle(ABC) |
-| 三角形的外心 | Circumcenter(O,ABC) | OBCA,<br>OCAB | Point(O),<br>Polygon(ABC) | Triangle(ABC) |
-| 三角形的内心 | Incenter(O,ABC) | OBCA,<br>OCAB | Point(O),<br>Polygon(ABC) | Triangle(ABC) |
-| 三角形的重心 | Centroid(O,ABC) | OBCA,<br>OCAB | Point(O),<br>Polygon(ABC) | Triangle(ABC) |
-| 三角形的垂心 | Orthocenter(O,ABC) | OBCA,<br>OCAB | Point(O),<br>Polygon(ABC) | Triangle(ABC) |
-| 三角形全等 | Congruent(ABC,DEF) | DEFABC,<br>BCAEFD,<br>EFDBCA,<br>CABFDE,<br>FDECAB | Polygon(ABC),<br>Polygon(DEF) | Triangle(ABC),<br>Triangle(DEF) |
-| 三角形相似 | Similar(ABC,DEF) | DEFABC,<br>BCAEFD,<br>EFDBCA,<br>CABFDE,<br>FDECAB | Polygon(ABC),<br>Polygon(DEF) | Triangle(ABC),<br>Triangle(DEF) |
-| 三角形镜像全等 | MirrorCongruent(ABC,DEF) | DEFABC,<br>BCAFDE,<br>FDEBCA,<br>CABEFD,<br>EFDCAB | Polygon(ABC),<br>Polygon(DEF) | Triangle(ABC),<br>Triangle(DEF) |
-| 三角形镜像相似 | MirrorSimilar(ABC,DEF) | DEFABC,<br>BCAFDE,<br>FDEBCA,<br>CABEFD,<br>EFDCAB | Polygon(ABC),<br>Polygon(DEF) | Triangle(ABC),<br>Triangle(DEF) |
+| 两线垂直 | Perpendicular(AO,OC) | / | Line(AO),<br>Line(OC) | Equal(MeasureOfAngle(AOC),90) |
+| 垂直平分线 | PerpendicularBisector(AB,CO) | / | Line(AB),<br>Line(CO) | Perpendicular(AO,CO)<br>Perpendicular(CO,BO)<br>Midpoint(AO,OB) |
+| 角平分线 | Bisector(BD,ABC) | / | Line(BD),<br>Angle(ABC) | Equal(MeasureOfAngle(ABD),MeasureOfAngle(DBC)) |
+| 三角形的中线 | Median(AD,ABC) | / | Line(AD),<br>Triangle(ABC),<br>Collinear(BDC) | Midpoint(D,BC) |
+| 三角形的高 | IsAltitude(AD,ABC) | / | Line(AD),<br>Triangle(ABC),<br>Collinear(BDC) | Perpendicular(BD,AD)<br>Perpendicular(AD,CD)<br>Equal(LengthOfLine(AD),AltitudeOfTriangle(ABC)) |
+| 三角形的中位线 | Neutrality(DE,ABC) | / | Line(DE),<br>Triangle(ABC) | Parallel(DE,BC) |
+| 三角形的外心 | Circumcenter(O,ABC) | OBCA,<br>OCAB | Point(O),<br>Triangle(ABC) | / |
+| 三角形的内心 | Incenter(O,ABC) | OBCA,<br>OCAB | Point(O),<br>Triangle(ABC) | / |
+| 三角形的重心 | Centroid(O,ABC) | OBCA,<br>OCAB | Point(O),<br>Triangle(ABC) | / |
+| 三角形的垂心 | Orthocenter(O,ABC) | OBCA,<br>OCAB | Point(O),<br>Triangle(ABC) | / |
+| 三角形全等 | Congruent(ABC,DEF) | DEFABC,<br>BCAEFD,<br>EFDBCA,<br>CABFDE,<br>FDECAB | Triangle(ABC),<br>Triangle(DEF) | / |
+| 三角形相似 | Similar(ABC,DEF) | DEFABC,<br>BCAEFD,<br>EFDBCA,<br>CABFDE,<br>FDECAB | Triangle(ABC),<br>Triangle(DEF) | / |
+| 三角形镜像全等 | MirrorCongruent(ABC,DEF) | DEFABC,<br>BCAFDE,<br>FDEBCA,<br>CABEFD,<br>EFDCAB | Triangle(ABC),<br>Triangle(DEF) | / |
+| 三角形镜像相似 | MirrorSimilar(ABC,DEF) | DEFABC,<br>BCAFDE,<br>FDEBCA,<br>CABEFD,<br>EFDCAB | Triangle(ABC),<br>Triangle(DEF) | / |
 
 ### E、基本实体属性
-|名称|格式|多种表示|实体存在性约束|
-|:--:|:--:|:--:|:--:|
-|长度|Length(AB)|BA|Line(AB)|
-|弧长|ArcLength(AB)|/|Arc(AB)|
-|角度|Measure(ABC)|/|Angle(ABC)|
-|面积|Area($)|$|Polygon($)/Circle(O)|
-|周长|Perimeter($)|$|Polygon($)/Circle(O)|
+|名称|格式|符号|多种表示|实体存在性约束|
+|:--:|:--:|:--:|:--:|:--:|
+|长度|LengthOfLine(AB)|ll|BA|Line(AB)|
+|弧长|LengthOfArc(AB)|la|/|Arc(AB)|
+|角度|MeasureOfAngle(ABC)|ma|/|Angle(ABC)|
 
 ### F、实体属性
-|名称|格式|多种表示|实体存在性约束|
-|:--:|:--:|:--:|:--:|
-|三角形高的长度|AltitudeOfTriangle(ABC)|/|Polygon(ABC)|
-|点到直线的距离|DistanceOfPointToLine(O,AB)|OBA|Point(O),Line(AB)|
+|名称|格式|符号|多种表示|实体存在性约束|
+|:--:|:--:|:--:|:--:|:--:|
+|三角形面积|AreaOfTriangle(ABC)|at|BCA,CAB|Triangle(ABC)|
+|三角形周长|PerimeterOfTriangle(ABC)|pt|BCA,CAB|Triangle(ABC)|
+|三角形高的长度|AltitudeOfTriangle(ABC)|alt|/|Triangle(ABC)|
+|点到直线的距离|DistanceOfPointToLine(O,AB)|dpl|OBA|Point(O),Line(AB)|
 
 ### G、代数关系
 |名称|格式|备注|
@@ -356,26 +368,316 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
 |求值|Value(expr)|expr表示由运算和实体属性构成的表达式|
 |求关系|Relation($)|Relation表示任意实体、实体关系|
 
-## 附录3 定理列表
-|名称|前提|结论|
-|--|--|--|
-|a|b|c|
+## 附录2 定理列表
+|名称|描述|
+|:--:|:--:|
+|line_addition|/|
+|angle_addition|/|
+|perpendicular_property_collinear_extend|/|
+|triangle_property_angle_sum|/|
+|triangle_property_equal_line_to_equal_angle|/|
+|triangle_perimeter_formula|/|
+|sine_theorem|/|
+|cosine_theorem|/|
+|right_triangle_judgment_angle|/|
+|pythagorean|/|
+|right_triangle_property_special_rt_30_60|/|
+|isosceles_triangle_judgment_equilateral|/|
+|isosceles_triangle_property_line_coincidence|/|
+|neutrality_property_line_ratio|/|
+|neutrality_judgment|/|
+|bisector_judgment_angle_equal|/|
+|bisector_property_line_ratio|/|
+|incenter_property_intersect|/|
+|congruent_property_angle_equal|/|
+|similar_property_line_ratio|/|
 
-## 附录4 图形-文字表示对照手册
-
-条件的自动扩展
+## 附录3 图形-文字对照手册
+标注几何问题CDL的顺序为：  
+**1.标注构图CDL**  
+首先标注基本构图CDL，有3个，分别是Polygon、Collinear和Cocircular。在推理器构图阶段，会根据识别到的基本构图CDL自动构建基本实体CDL，参见图<构图的自动扩展>。标注完基本构图CDL后，还需要补充标注无法由基本构图CDL扩展得到的基本实体CDL（这就要求对于构图过程比较熟悉，其实也很简单）。  
+**2.标注条件CDL**  
+包括图像和文字的标注。  
+**3.标注目标CDL**  
+共有三类，分别是Value、Equal、Relation。  
 <div align=center>
     <img src="cowork-pic/auto-expand.png" width="60%">
-    <br>
-    Figure 1. 几何本体域-二维四象限
+    构图的自动扩展
 </div>
 
 ### A、基本构图谓词
+#### Polygon
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+#### Collinear
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+#### Cocircular
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
 ### B、基本实体
+#### Point
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+#### Line
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+#### Angle
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+#### Triangle
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+#### Quadrilateral
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+#### Arc
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+#### Circle
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
 ### C、实体
+#### RightTriangle
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+#### IsoscelesTriangle
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+#### EquilateralTriangle
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
 ### D、实体关系
-### E、基本实体属性
-### F、实体属性
-### G、代数关系
-### H、代数运算
-### H、解题目标
+#### Midpoint
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+#### Intersect
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+#### Parallel
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+#### Perpendicular
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+#### PerpendicularBisector
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+#### Bisector
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+#### Median
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+#### IsAltitude
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+#### Neutrality
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+#### Circumcenter
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+#### Incenter
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+#### Centroid
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+#### Orthocenter
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+#### Congruent
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+#### Similar
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+#### MirrorCongruent
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+#### MirrorSimilar
+<div align=center>
+    <img src="cowork-pic/?.png" width="50%">
+</div>
+
+CDL：  
+标注要点：  
+例1：  
+例2：  
+### E、基本实体属性,实体属性,代数关系和代数运算
+### F、解题目标

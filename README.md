@@ -28,7 +28,7 @@ So we designed a plane geometry formalization system and provided a python imple
 **problems**: 119  
 **new functions**:  
 1.Hierarchical structure and automatic expansion for problem conditions.  
-2.New format of GDL.  
+2.New format of GDL. Simpler but more expressive.  
 3.Two types of validity checks are defined: EE check and FV check.  
 
 #### FormalGeo-SAT 1.0 (Feb 21, 2023)
@@ -41,7 +41,7 @@ A simple copy of the original version "FormalGeo".
 3.Backward solving.  
 4.Interactive theorem proving.  
 5.Visible, traceable, and interpretable problem-solving process.  
-6.Problem-solving information output: solution hypertree, parsed GDL/CDL, CDL in every step, theorem DAG...  
+6.Problem-solving information output: solution hypertree (generated according to the problem-solving process), parsed GDL/CDL, CDL in every step, theorem DAG (generated according to the problem-solving process), etc.  
 
 ## Project structure
 The code structure is shown below:  

@@ -16,7 +16,7 @@ class Condition:
         self.get_id_by_item = {}
         self.premises = {}
         self.theorems = {}
-        self.step_msg = []  # (0, 2)  item 2 adding in step 0
+        self.step_msg = {}  # {0:[1, 2], 1:[3, 4]}
 
     def add(self, item, premise, theorem):
         """
@@ -36,7 +36,10 @@ class Condition:
             self.premises[_id] = premise
             self.theorems[item] = theorem  # theorem
             self.theorems[_id] = theorem  # theorem
-            self.step_msg.append((Condition.step, _id))  # step_msg
+            if Condition.step not in self.step_msg:  # step_msg
+                self.step_msg[Condition.step] = [_id]
+            else:
+                self.step_msg[Condition.step].append(_id)
             return True, _id
         return False, None
 

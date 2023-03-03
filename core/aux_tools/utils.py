@@ -1,5 +1,5 @@
 import json
-from core.aux_tools.parse import AntiParser
+from core.aux_tools.parse import InverseParser
 from sympy import Float
 from graphviz import Digraph
 import os
@@ -33,7 +33,6 @@ def show(problem, simple=False):
                 str(problem.goal["solved_answer"])
             ))
         return
-    problem.gather_conditions_msg()  # gather conditions msg before generate CDL.
 
     """-----------Conditional Declaration Statement-----------"""
     print("\033[36mproblem_index:\033[0m", end=" ")
@@ -57,20 +56,22 @@ def show(problem, simple=False):
         print("{0:^3}{1:<20}".format(i, problem.theorems_applied[i]))
 
     print("\033[36mreasoning_cdl:\033[0m")
-    anti_parsed_cdl = AntiParser.anti_parse_logic_to_cdl(problem)
+    anti_parsed_cdl = InverseParser.inverse_parse_logic_to_cdl(problem)
     for step in anti_parsed_cdl:
         for cdl in anti_parsed_cdl[step]:
             print("{0:^3}{1:<20}".format(step, cdl))
     print()
 
     used_id = []
+    get_item_by_id, _ = InverseParser.solution_msg(problem)
     if problem.goal["solved"]:
         used_id = list(set(problem.goal["premise"]))
         while True:
             len_used_id = len(used_id)
             for _id in used_id:
                 if _id >= 0:
-                    used_id += list(problem.conditions[problem.get_predicate_by_id[_id]].premises[_id])
+                    predicate, _ = get_item_by_id[_id]
+                    used_id += list(problem.conditions[predicate].premises[_id])
                     used_id = list(set(used_id))
             if len_used_id == len(used_id):
                 break
@@ -78,6 +79,7 @@ def show(problem, simple=False):
     """-----------Logic Form-----------"""
     print("\033[33mRelations:\033[0m")
     predicates = list(problem.predicate_GDL["Construction"])
+    predicates += list(problem.predicate_GDL["BasicEntity"])
     predicates += list(problem.predicate_GDL["Entity"])
     predicates += list(problem.predicate_GDL["Relation"])
     for predicate in predicates:
@@ -158,7 +160,7 @@ def show(problem, simple=False):
 
 def save_solution_tree(problem, path):
     """Generate and save solution hyper tree and theorem DAG."""
-    problem.gather_conditions_msg()  # gather conditions msg before generate CDL.
+    get_item_by_id, get_id_by_step = InverseParser.solution_msg(problem)  # gather conditions msg before generate CDL.
 
     st_dot = Digraph(name=str(problem.problem_CDL["id"]))  # Tree
     nodes = []    # list of cdl or theorem.
@@ -166,10 +168,11 @@ def save_solution_tree(problem, path):
     group = {}    # (premise, theorem): [_id], used for building hyper graph.
     cdl = {}      # _id: anti_parsed_cdl, user for getting cdl by id.
 
-    for _id in problem.get_predicate_by_id:    # summary information
-        cdl[_id] = AntiParser.anti_parse_one_by_id(problem, _id)
-        premise = problem.conditions[problem.get_predicate_by_id[_id]].premises[_id]
-        theorem = problem.conditions[problem.get_predicate_by_id[_id]].theorems[_id]
+    for _id in get_item_by_id:    # summary information
+        predicate, item = get_item_by_id[_id]
+        cdl[_id] = InverseParser.inverse_parse_one(predicate, item, problem)
+        premise = problem.conditions[predicate].premises[_id]
+        theorem = problem.conditions[predicate].theorems[_id]
         if theorem == "prerequisite":    # prerequisite not show in graph
             continue
         if (premise, theorem) not in group:
@@ -262,8 +265,9 @@ def _add_edge(dot, nodes, start_node, end_node, edges=None):
             edges[start_node].append(end_node)
 
 
-def save_step_msg(problem, path, de_redundant=True):
+def save_step_msg(problem, path):
     """Save conditions grouped by step in dict."""
-    problem.gather_conditions_msg()  # gather conditions msg before generate CDL.
-    anti_parsed_cdl = AntiParser.anti_parse_logic_to_cdl(problem, de_redundant)
-    save_json(anti_parsed_cdl, path + "{}_step.json".format(problem.problem_CDL["id"]))
+    save_json(
+        InverseParser.inverse_parse_logic_to_cdl(problem),
+        path + "{}_step.json".format(problem.problem_CDL["id"])
+    )

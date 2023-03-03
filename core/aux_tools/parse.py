@@ -8,112 +8,82 @@ class FLParser:
         """parse predicate_GDL to executable form."""
         predicate_GDL = predicate_GDL["Predicates"]
         parsed_GDL = {  # preset Construction
-            "Construction": {
-                "Shape": {
-                    "vars": "variable",
-                    "multi": "variable",
-                    "extend": "variable"
-                },
-                "Collinear": {
-                    "vars": "variable",
-                    "multi": "variable",
-                    "extend": "variable"
-                },
-                "Cocircular": {
-                    "vars": "variable",
-                    "multi": "variable",
-                    "extend": "variable"
-                },
-                "Polygon": {
-                    "vars": "variable",
-                    "multi": "variable",
-                    "extend": "variable"
-                }
-            },
-            "Entity": {  # preset Entity
+            "Construction": ["Polygon", "Collinear", "Cocircular"],
+            "BasicEntity": {  # preset Entity
                 "Point": {
                     "vars": [0],
                     "ee_check": [],
+                    "fv_check_format": ["0"],
                     "multi": [],
                     "extend": []
                 },
                 "Line": {
                     "vars": [0, 1],
                     "ee_check": [],
+                    "fv_check_format": ["01"],
                     "multi": [[1, 0]],
                     "extend": [["Point", [0]], ["Point", [1]]]
                 },
                 "Angle": {
                     "vars": [0, 1, 2],
                     "ee_check": [],
+                    "fv_check_format": ["012"],
                     "multi": [],
                     "extend": [["Line", [0, 1]], ["Line", [1, 2]]]
+                },
+                "Triangle": {
+                    "vars": [0, 1, 2],
+                    "ee_check": [],
+                    "fv_check_format": ["012"],
+                    "multi": [[1, 2, 0], [2, 0, 1]],
+                    "extend": []
+                },
+                "Quadrilateral": {
+                    "vars": [0, 1, 2, 3],
+                    "ee_check": [],
+                    "fv_check_format": ["0123"],
+                    "multi": [[1, 2, 3, 0], [2, 3, 0, 1], [3, 0, 1, 2]],
+                    "extend": []
                 },
                 "Arc": {
                     "vars": [0, 1],
                     "ee_check": [],
+                    "fv_check_format": ["01"],
                     "multi": [],
                     "extend": [["Point", [0]], ["Point", [1]]]
                 },
                 "Circle": {
                     "vars": [0],
                     "ee_check": [],
+                    "fv_check_format": ["0"],
                     "multi": [],
                     "extend": [["Point", [0]]]
                 }
             },
+            "BasicAttribution": ["Free"],
+            "Equation": ["Equal"],
+            "Entity": {},
             "Relation": {},
-            "Attribution": {  # preset Attribution
-                "Free": {
-                    "vars": "variable",
-                    "ee_check": [],
-                    "fv_check_format": "variable",
-                    "sym": "f",
-                    "multi": [],
-                    "negative": "True"
-                },
-                "Length": {
+            "Attribution": {
+                "LengthOfLine": {
                     "vars": [0, 1],
                     "ee_check": [["Line", [0, 1]]],
-                    "fv_check_format": ["01"],
                     "sym": "ll",
-                    "multi": [[1, 0]],
-                    "negative": "False"
+                    "multi": [[1, 0]]
                 },
-                "ArcLength": {
+                "LengthOfArc": {
                     "vars": [0, 1],
                     "ee_check": [["Arc", [0, 1]]],
-                    "fv_check_format": ["01"],
                     "sym": "la",
-                    "multi": [],
-                    "negative": "False"
+                    "multi": []
                 },
-                "Measure": {
+                "MeasureOfAngle": {
                     "vars": [0, 1, 2],
                     "ee_check": [["Angle", [0, 1, 2]]],
-                    "fv_check_format": ["012"],
                     "sym": "ma",
-                    "multi": [],
-                    "negative": "False"
-                },
-                "Area": {
-                    "vars": "variable",
-                    "ee_check": ["Polygon", "Circle"],
-                    "fv_check_format": "variable",
-                    "sym": "a",
-                    "multi": "variable",
-                    "negative": "False"
-                },
-                "Perimeter": {
-                    "vars": "variable",
-                    "ee_check": ["Polygon", "Circle"],
-                    "fv_check_format": "variable",
-                    "sym": "p",
-                    "multi": "variable",
-                    "negative": "False"
+                    "multi": []
                 }
-            },
-            "Equation": "Equation"
+            }
         }
 
         entities = predicate_GDL["Entity"]  # parse entity
@@ -151,24 +121,12 @@ class FLParser:
         attributions = predicate_GDL["Attribution"]  # parse attribution
         for item in attributions:
             name, para, _ = FLParser._parse_one_predicate(item)
-            if "fv_check_format" in attributions[item]:
-                parsed_GDL["Attribution"][name] = {
-                    "vars": [i for i in range(len(para))],
-                    "ee_check": FLParser._parse_ee_check(attributions[item]["ee_check"], para),
-                    "fv_check_format": FLParser._parse_fv_check_format(attributions[item]["fv_check_format"]),
-                    "sym": attributions[item]["sym"],
-                    "multi": FLParser._parse_multi(attributions[item]["multi"], para),
-                    "negative": attributions[item]["negative"]
-                }
-            else:
-                parsed_GDL["Attribution"][name] = {
-                    "vars": [i for i in range(len(para))],
-                    "ee_check": FLParser._parse_ee_check(attributions[item]["ee_check"], para),
-                    "fv_check_mutex": FLParser._parse_fv_check_mutex(attributions[item]["fv_check_mutex"], para),
-                    "sym": attributions[item]["sym"],
-                    "multi": FLParser._parse_multi(attributions[item]["multi"], para),
-                    "negative": attributions[item]["negative"]
-                }
+            parsed_GDL["Attribution"][name] = {
+                "vars": [i for i in range(len(para))],
+                "ee_check": FLParser._parse_ee_check(attributions[item]["ee_check"], para),
+                "sym": attributions[item]["sym"],
+                "multi": FLParser._parse_multi(attributions[item]["multi"], para)
+            }
 
         return parsed_GDL
 
@@ -626,67 +584,110 @@ class EqParser:
         return expr_stack.pop()
 
 
-class AntiParser:
+class InverseParser:
+    @staticmethod
+    def solution_msg(problem):
+        """
+        Gather all conditions msg for problem showing, solution tree generating, etc.
+        return:
+        get_item_by_id, dict, _id: (predicate item)
+        get_id_by_step, dict, step: [_id]
+        """
+        get_item_by_id = {}
+        get_id_by_step = {}
+
+        for predicate in problem.conditions:
+            for _id in problem.conditions[predicate].get_item_by_id:
+                get_item_by_id[_id] = (predicate, problem.conditions[predicate].get_item_by_id[_id])
+            for step in problem.conditions[predicate].step_msg:
+                if step not in get_id_by_step:
+                    get_id_by_step[step] = problem.conditions[predicate].step_msg[step]
+                else:
+                    get_id_by_step[step] += problem.conditions[predicate].step_msg[step]
+        return get_item_by_id, get_id_by_step
 
     @staticmethod
-    def anti_parse_logic_to_cdl(problem, de_redundant=False):
-        """
-        Anti parse conditions of logic form to CDL.
-        Refer to function <anti_parse_one_by_id>.
-        """
-        problem.gather_conditions_msg()  # gather conditions msg before generate CDL.
+    def inverse_parse_logic_to_cdl(problem):
+        """Inverse parse conditions of logic form to CDL."""
+        get_item_by_id, get_id_by_step = InverseParser.solution_msg(problem)
 
-        anti_parsed_cdl = {}
-        for step in range(len(problem.get_id_by_step)):
-            anti_parsed_cdl[step] = []
-            for _id in problem.get_id_by_step[step]:
-                anti_parsed_cdl[step].append(AntiParser.anti_parse_one_by_id(problem, _id))
-
-        if de_redundant:
-            for step in anti_parsed_cdl:
-                new_anti_parsed = []
-                i = 0
-                while i < len(anti_parsed_cdl[step]):
-                    predicate = anti_parsed_cdl[step][i].split("(")[0]
-                    if predicate in ["Shape", "Collinear", "Point", "Line", "Angle"]:  # skip
-                        i += 1
-                        continue
-                    new_anti_parsed.append(anti_parsed_cdl[step][i])
-                    if predicate in problem.predicate_GDL["Entity"]:
-                        i += len(problem.predicate_GDL["Entity"][predicate]["multi"])
-                    elif predicate in problem.predicate_GDL["Relation"]:
-                        i += len(problem.predicate_GDL["Relation"][predicate]["multi"])
-                    i += 1
-                anti_parsed_cdl[step] = new_anti_parsed
-
-        return anti_parsed_cdl
-
-    @staticmethod
-    def anti_parse_one_by_id(problem, _id):
-        """
-        Anti parse conditions of logic form to CDL.
-        ['Shape', ['A', 'B', 'C']]           ==>   'Shape(ABC)'
-        ['Parallel', ['A', 'B', 'C', 'D']]   ==>   'Parallel(AB,CD)'
-        """
-        predicate = problem.get_predicate_by_id[_id]
-        condition = problem.conditions[predicate]
-        if predicate in list(problem.predicate_GDL["Construction"]) + list(problem.predicate_GDL["Entity"]):
-            return predicate + "(" + "".join(condition.get_item_by_id[_id]) + ")"
-        elif predicate in problem.predicate_GDL["Relation"]:
-            item = []
+        inverse_parsed_cdl = {}
+        for step in range(len(get_id_by_step)):
             i = 0
-            for l in problem.predicate_GDL["Relation"][predicate]["para_structure"]:
-                item.append("")
-                for _ in range(l):
-                    item[-1] += condition.get_item_by_id[_id][i]
+            while i < len(get_id_by_step[step]):
+                predicate, item = get_item_by_id[get_id_by_step[step][i]]
+                result = InverseParser.inverse_parse_one(predicate, item, problem)
+
+                if step not in inverse_parsed_cdl:
+                    inverse_parsed_cdl[step] = [result]
+                else:
+                    inverse_parsed_cdl[step].append(result)
+
+                if predicate == "Polygon":    # remove duplicate representation
+                    i += len(item)
+                elif predicate == "Collinear":
+                    i += 2
+                elif predicate == "Cocircular":
+                    i += len(item) - 1
+                elif predicate in problem.predicate_GDL["BasicEntity"]:
+                    i += len(problem.predicate_GDL["BasicEntity"][predicate]["multi"]) + 1
+                elif predicate in problem.predicate_GDL["Entity"]:
+                    i += len(problem.predicate_GDL["Entity"][predicate]["multi"]) + 1
+                elif predicate in problem.predicate_GDL["Relation"]:
+                    i += len(problem.predicate_GDL["Relation"][predicate]["multi"]) + 1
+                else:    # Equation
                     i += 1
-            return predicate + "(" + ",".join(item) + ")"
-        else:  # equation
-            equation = condition.get_item_by_id[_id]
-            if len(equation.free_symbols) > 1:
-                equation_str = str(condition.get_item_by_id[_id])
-                equation_str = equation_str.replace(" ", "")
-                return "Equation" + "(" + equation_str + ")"
-            else:
-                items, predicate = condition.attr_of_sym[list(equation.free_symbols)[0]]
-                return predicate + "(" + "".join(items[0]) + ")"
+
+        return inverse_parsed_cdl
+
+    @staticmethod
+    def inverse_parse_one(predicate, item, problem):
+        """
+        Inverse parse one condition of logic form to CDL.
+        Called by <inverse_parse_logic_to_cdl>.
+        """
+        if predicate == "Equation":
+            return InverseParser.inverse_parse_equation(item, problem.conditions["Equation"])
+        else:
+            return InverseParser.inverse_parse_logic(predicate, item, problem.predicate_GDL)
+
+    @staticmethod
+    def inverse_parse_logic(predicate, item, predicate_GDL):
+        """
+        Inverse parse conditions of logic form to CDL.
+        Called by <inverse_parse_one>.
+        >> inverse_parse_one(Shape, ('A', 'B', 'C'), predicate_GDL)
+        'Shape(ABC)'
+        >> inverse_parse_one(Parallel, ('A', 'B', 'C', 'D'), predicate_GDL)
+        'Parallel(AB,CD)'
+        """
+        if predicate in predicate_GDL["Construction"] or \
+                predicate in predicate_GDL["BasicEntity"] or \
+                predicate in predicate_GDL["Entity"]:  # entity
+            return predicate + "(" + "".join(item) + ")"
+        else:  # relation
+            result = []
+            i = 0
+            for l in predicate_GDL["Relation"][predicate]["para_structure"]:
+                result.append("")
+                for _ in range(l):
+                    result[-1] += item[i]
+                    i += 1
+            return predicate + "(" + ",".join(result) + ")"
+
+    @staticmethod
+    def inverse_parse_equation(item, equation):
+        """
+        Inverse parse conditions of logic form to CDL.
+        Called by <inverse_parse_one>.
+        >> inverse_parse_one(ll_ac - ll_cd, equation)
+        'Equation(ll_ac-ll_cd)'
+        >> inverse_parse_one(ll_ac - 1, equation)
+        'LengthOfLine(AC)'
+        """
+
+        if len(item.free_symbols) > 1:
+            return "Equation" + "(" + str(item).replace(" ", "") + ")"
+        else:
+            items, predicate = equation.attr_of_sym[list(item.free_symbols)[0]]
+            return predicate + "(" + "".join(items[0]) + ")"

@@ -21,28 +21,20 @@ class Problem:
         self.predicate_GDL = predicate_GDL  # problem predicate definition
 
         self.theorems_applied = []  # applied theorem list
-        self.get_predicate_by_id = {}
-        self.get_id_by_step = {}
-        self.gathered = False
 
         self.conditions = {}  # init conditions
         for predicate in self.predicate_GDL["Construction"]:
             self.conditions[predicate] = VariableLengthCondition(predicate)
+        for predicate in self.predicate_GDL["BasicEntity"]:
+            self.conditions[predicate] = FixedLengthCondition(predicate)
         for predicate in self.predicate_GDL["Entity"]:
             self.conditions[predicate] = FixedLengthCondition(predicate)
         for predicate in self.predicate_GDL["Relation"]:
             self.conditions[predicate] = FixedLengthCondition(predicate)
         self.conditions["Equation"] = Equation("Equation", self.predicate_GDL["Attribution"])
 
-        for predicate, item in problem_CDL["parsed_cdl"]["construction_cdl"]:  # conditions of construction
-            if predicate in ["Point", "Line", "Angle", "Polygon", "Arc", "Circle"]:
-                self.add(predicate, tuple(item), (-1,), "prerequisite")
         for predicate, item in problem_CDL["parsed_cdl"]["construction_cdl"]:
-            if predicate in ["Collinear"]:
-                self.add(predicate, tuple(item), (-1,), "prerequisite")
-        for predicate, item in problem_CDL["parsed_cdl"]["construction_cdl"]:
-            if predicate in ["Shape", "Cocircular"]:
-                self.add(predicate, tuple(item), (-1,), "prerequisite")
+            self.add(predicate, tuple(item), (-1,), "prerequisite")
 
         self.construction_init()  # start construction
 
@@ -72,40 +64,54 @@ class Problem:
 
     def construction_init(self):
         """
-        1.Iterative build all shape.
-        Shape(BC*A), Shape(A*CD)  ==>  Shape(ABCD)
+        1.Iterative build all polygon.
+        Polygon(BC*A), Polygon(A*CD)  ==>  Polygon(ABCD)
         2.Make the symbols of angles the same.
         Measure(Angle(ABC)), Measure(Angle(ABD))  ==>  m_abc,  if Collinear(BCD)
         """
-        update = True  # 1.Iterative build all shape
+        update = True  # 1.Iterative build all polygon
         traversed = []
+        # k = 0
         while update:
             update = False
-            for shape1 in list(self.conditions["Shape"].get_id_by_item):
-                for shape2 in list(self.conditions["Shape"].get_id_by_item):
-                    if (shape1, shape2) in traversed:  # skip traversed
+            for polygon1 in list(self.conditions["Polygon"].get_id_by_item):
+                for polygon2 in list(self.conditions["Polygon"].get_id_by_item):
+                    # k += 1
+                    if (polygon1, polygon2) in traversed:  # skip traversed
                         continue
-                    traversed.append((shape1, shape2))
-
-                    if not (shape1[len(shape1) - 1] == shape2[0] and  # At least two points are the same
-                            shape1[len(shape1) - 2] == shape2[1]):
+                    traversed.append((polygon1, polygon2))
+                    if not (polygon1[len(polygon1) - 1] == polygon2[0] and  # At least two points are the same
+                            polygon1[len(polygon1) - 2] == polygon2[1]):
                         continue
 
                     same_length = 2  # Number of identical points
-                    while same_length < len(shape1) and same_length < len(shape2):
-                        if shape1[len(shape1) - same_length - 1] == shape2[same_length]:
+                    while same_length < len(polygon1) and same_length < len(polygon2):
+                        if polygon1[len(polygon1) - same_length - 1] == polygon2[same_length]:
                             same_length += 1
                         else:
                             break
+                    new_polygon = list(polygon1[0:len(polygon1) - same_length + 1])  # the first same point
+                    new_polygon += list(polygon2[same_length:len(polygon2)])  # points in polygon2
+                    new_polygon.append(polygon1[len(polygon1) - 1])  # the second same point
 
-                    new_shape = list(shape1[0:len(shape1) - same_length + 1])  # points in shape1, the first same point
-                    new_shape += list(shape2[same_length:len(shape2)])  # points in shape2
-                    new_shape.append(shape1[len(shape1) - 1])  # the second same point
+                    # make sure new_polygon is polygon and no ring
+                    if 2 < len(new_polygon) == len(set(new_polygon)) and\
+                            tuple(new_polygon) not in self.conditions["Polygon"].get_id_by_item:
+                        premise = [self.conditions["Polygon"].get_id_by_item[polygon1],
+                                   self.conditions["Polygon"].get_id_by_item[polygon2]]
 
-                    if 2 < len(new_shape) == len(set(new_shape)):  # make sure new_shape is Shape and no ring
-                        premise = (self.conditions["Shape"].get_id_by_item[shape1],
-                                   self.conditions["Shape"].get_id_by_item[shape2])
-                        update = self.add("Shape", tuple(new_shape), premise, "extended") or update
+                        coll_update = True    # remove collinear points
+                        while coll_update:
+                            coll_update = False
+                            for i in range(len(new_polygon)):
+                                coll = tuple(new_polygon[(i + j) % len(new_polygon)] for j in range(3))
+                                if coll in self.conditions["Collinear"].get_id_by_item:
+                                    premise.append(self.conditions["Collinear"].get_id_by_item[coll])
+                                    new_polygon.pop((i + 1) % len(new_polygon))
+                                    coll_update = True
+                        if len(new_polygon) > 2:
+                            # print("k: {}, polygon: [{} {}], new: {}".format(k, polygon1, polygon2, new_polygon))
+                            update = self.add("Polygon", tuple(new_polygon), premise, "extended") or update
 
         collinear = []  # 2.Make the symbols of angles the same
         for predicate, item in self.problem_CDL["parsed_cdl"]["construction_cdl"]:
@@ -113,9 +119,9 @@ class Problem:
                 collinear.append(tuple(item))
         angles = list(self.conditions["Angle"].get_id_by_item)
         for angle in angles:
-            if (angle, "Measure") in self.conditions["Equation"].sym_of_attr:
+            if (angle, "MeasureOfAngle") in self.conditions["Equation"].sym_of_attr:
                 continue
-            sym = self.get_sym_of_attr(angle, "Measure")
+            sym = self.get_sym_of_attr(angle, "MeasureOfAngle")
 
             a, v, b = angle
             a_points = []  # Points collinear with a and on the same side with a
@@ -160,8 +166,8 @@ class Problem:
                     same_angles.append((a_point, v, b_point))  # 相同的角设置一样的符号
 
             for same_angle in same_angles:
-                self.conditions["Equation"].sym_of_attr[(same_angle, "Measure")] = sym
-            self.conditions["Equation"].attr_of_sym[sym] = [same_angles, "Measure"]
+                self.conditions["Equation"].sym_of_attr[(same_angle, "MeasureOfAngle")] = sym
+            self.conditions["Equation"].attr_of_sym[sym] = [same_angles, "MeasureOfAngle"]
 
     def add(self, predicate, item, premise, theorem):
         """
@@ -173,172 +179,112 @@ class Problem:
         :param theorem: <str>, theorem of item.
         :return: True or False
         """
-        if predicate not in self.conditions:
+        if predicate == "Equation":    # Equation
+            added, _ = self.conditions["Equation"].add(item, premise, theorem)
+            if added:
+                return True
+            return False
+        elif predicate in self.predicate_GDL["Construction"]:    # Construction
+            if len(item) != len(set(item)):
+                if not self.loaded:
+                    warnings.warn("FV check not passed: [{}, {}]".format(predicate, item))
+                return False
+            if predicate == "Polygon":
+                added, _id = self.conditions["Polygon"].add(item, tuple(premise), theorem)
+                if added:  # if added successful
+                    l = len(item)
+                    for bias in range(l):  # multi & extend
+                        self.conditions["Polygon"].add(tuple([item[(i + bias) % l] for i in range(l)]),
+                                                       (_id,), "extended")
+                        self.add("Angle", (item[0 + bias], item[(1 + bias) % l], item[(2 + bias) % l]),
+                                 (_id,), "extended")
+                    if l == 3:
+                        self.add("Triangle", item, (_id,), "extended")
+                    elif l == 4:
+                        self.add("Quadrilateral", item, (_id,), "extended")
+                    return True
+            elif predicate == "Collinear":  # Construction predicate: Collinear
+                added, _id = self.conditions["Collinear"].add(item, premise, theorem)
+                if added:
+                    for l in range(3, len(item) + 1):  # extend collinear
+                        for extended_item in combinations(item, l):
+                            self.conditions["Collinear"].add(extended_item, (_id,), "extended")
+                            self.conditions["Collinear"].add(extended_item[::-1], (_id,), "extended")
+                            if len(extended_item) == 3:  # extend angle
+                                self.conditions["Angle"].add(extended_item, (_id,), "extended")
+                                self.conditions["Angle"].add(extended_item[::-1], (_id,), "extended")
+                    return True
+            else:  # Construction predicate: Cocircular
+                added, _id = self.conditions["Cocircular"].add(item, premise, theorem)
+                if added:
+                    for l in range(3, len(item) + 1):  # extend collinear
+                        for extended_item in combinations(item, l):
+                            self.conditions["Collinear"].add(extended_item, (_id,), "extended")
+                            self.conditions["Collinear"].add(extended_item[::-1], (_id,), "extended")
+                            if len(extended_item) == 3:
+                                self.conditions["Angle"].add(extended_item, (_id,), "extended")
+                                self.conditions["Angle"].add(extended_item[::-1], (_id,), "extended")
+                    for i in range(len(item) - 1):  # extend line
+                        for j in range(i + 1, len(item)):
+                            self.add("Line", (item[i], item[j]), (_id,), "extended")
+                    return True
+            return False
+        elif predicate in self.predicate_GDL["BasicEntity"]:
+            item_GDL = self.predicate_GDL["BasicEntity"][predicate]
+        elif predicate in self.predicate_GDL["Entity"]:
+            item_GDL = self.predicate_GDL["Entity"][predicate]
+        elif predicate in self.predicate_GDL["Relation"]:
+            item_GDL = self.predicate_GDL["Relation"][predicate]
+            if not Problem.item_fv_check(item, item_GDL):  # FV check
+                if not self.loaded:
+                    warnings.warn("FV check not passed: [{}, {}]".format(predicate, item))
+                return False
+        else:
             raise Exception(
                 "<PredicateNotDefined> Predicate '{}': not defined in current predicate GDL.".format(
                     predicate
                 )
             )
-        if not self.item_ee_check(predicate, item):  # EE check
+
+        if not self.ee_check(item, item_GDL):  # EE check
             if not self.loaded:
                 warnings.warn("EE check not passed: [{}, {}]".format(predicate, item))
             return False
-        if not self.item_fv_check(predicate, item):  # FV check
-            if not self.loaded:
-                warnings.warn("FV check not passed: [{}, {}]".format(predicate, item))
-            return False
 
-        self.gathered = False
+        added, _id = self.conditions[predicate].add(item, premise, theorem)
+        if added:
+            for para_list in item_GDL["multi"]:  # multi
+                para = []
+                for i in para_list:
+                    para.append(item[i])
+                self.conditions[predicate].add(tuple(para), (_id,), "extended")
 
-        if predicate == "Equation":  # Equation
-            added, _ = self.conditions["Equation"].add(item, premise, theorem)
-            return added
-        elif predicate == "Shape":  # Construction predicate: Shape
-            added, _id = self.conditions["Shape"].add(item, premise, theorem)
-            if added:  # if added successful
-                non_vertex_points = []
-                for i in range(0, len(item)):
-                    point1 = item[i]  # sliding window in the length of 3
-                    point2 = item[(i + 1) % len(item)]
-                    j = 0
-                    while True:
-                        point3 = item[(i + 2 + j) % len(item)]
-                        if (point1, point2, point3) not in self.conditions["Collinear"].get_id_by_item:
-                            break
-                        j += 1
-                    if j > 0:
-                        non_vertex_points.append("".join([item[(i + 1 + k) % len(item)] for k in range(j)]))
-                new_non_vertex_points = []
-                for i in non_vertex_points:
-                    can_add = True
-                    for j in non_vertex_points:
-                        if i != j and i in j:
-                            can_add = False
-                            break
-                    if can_add:
-                        new_non_vertex_points.append(i)
-                non_vertex_points = new_non_vertex_points
-
-                polygon_premise = [_id]
-                for non_vertex_point in non_vertex_points:
-                    for collinear in self.conditions["Collinear"].get_id_by_item:
-                        if non_vertex_point in collinear:
-                            polygon_premise.append(self.conditions["Collinear"].get_id_by_item[collinear])
-                            break
-
-                extended_shape = []  # shape after remove collinear points
-                non_vertex_points = list((set("".join(non_vertex_points))))
-                for i in range(len(non_vertex_points) + 1):
-                    for removed_points in combinations(non_vertex_points, i):
-                        new_item = list(item)
-                        for removed_point in removed_points:
-                            new_item.pop(new_item.index(removed_point))
-                        extended_shape.append(tuple(new_item))
-                for item in extended_shape:
-                    l = len(item)
-                    for bias in range(l):
-                        self.conditions["Shape"].add(
-                            tuple([item[(i + bias) % l] for i in range(l)]), (_id,), "extended"
-                        )
-
-                self.add("Polygon", extended_shape[-1], tuple(polygon_premise), "extended")  # shape no collinear points
-                return True
-        elif predicate == "Collinear":  # Construction predicate: Collinear
-            added, _id = self.conditions["Collinear"].add(item, premise, theorem)
-            if added:
-                for l in range(3, len(item) + 1):  # extend collinear
-                    for extended_item in combinations(item, l):
-                        self.conditions["Collinear"].add(extended_item, (_id,), "extended")
-                        self.conditions["Collinear"].add(extended_item[::-1], (_id,), "extended")
-                        if len(extended_item) == 3:  # extend angle
-                            self.conditions["Angle"].add(extended_item, (_id,), "extended")
-                            self.conditions["Angle"].add(extended_item[::-1], (_id,), "extended")
-                return True
-        elif predicate == "Cocircular":  # Construction predicate: Cocircular
-            added, _id = self.conditions["Cocircular"].add(item, premise, theorem)
-            if added:
-                for l in range(3, len(item) + 1):  # extend collinear
-                    for extended_item in combinations(item, l):
-                        self.conditions["Collinear"].add(extended_item, (_id,), "extended")
-                        self.conditions["Collinear"].add(extended_item[::-1], (_id,), "extended")
-                        if len(extended_item) == 3:
-                            self.conditions["Angle"].add(extended_item, (_id,), "extended")
-                            self.conditions["Angle"].add(extended_item[::-1], (_id,), "extended")
-                for i in range(len(item) - 1):  # extend line
-                    for j in range(i + 1, len(item)):
-                        self.add("Line", (item[i], item[j]), (_id,), "extended")
-                return True
-        elif predicate == "Polygon":
-            added, _id = self.conditions["Polygon"].add(item, tuple(premise), theorem)
-            if added:  # if added successful
-                l = len(item)
-                for bias in range(l):  # multi
-                    self.conditions["Polygon"].add(tuple([item[(i + bias) % l] for i in range(l)]), (_id,), "extended")
-                for bias in range(l):  # extend
-                    self.add("Angle", (item[0 + bias], item[(1 + bias) % l], item[(2 + bias) % l]), (_id,), "extended")
-                if l == 3:
-                    self.add("Triangle", item, (_id,), "extended")
-                elif l == 4:
-                    self.add("Quadrilateral", item, (_id,), "extended")
-                return True
-        elif predicate in self.predicate_GDL["Entity"] or\
-                predicate in self.predicate_GDL["Relation"]:  # Entity or Relation
-            added, _id = self.conditions[predicate].add(item, premise, theorem)
-            if added:
-                item_GDL = self.predicate_GDL["Entity"][predicate] \
-                    if predicate in self.predicate_GDL["Entity"] \
-                    else self.predicate_GDL["Relation"][predicate]
-
-                for para_list in item_GDL["multi"]:  # multi
-                    para = []
-                    for i in para_list:
-                        para.append(item[i])
-                    self.conditions[predicate].add(tuple(para), (_id,), "extended")
-
-                for extended_predicate, para in item_GDL["extend"]:  # extended
-                    if extended_predicate == "Equal":
-                        eq = EqParser.get_equation_from_tree(self, para, True, item)
-                        if eq is not None:
-                            self.add("Equation", eq, (_id,), "extended")
-                    else:
-                        self.add(extended_predicate, tuple(item[i] for i in para), (_id,), "extended")
-                return True
+            for extended_predicate, para in item_GDL["extend"]:  # extended
+                if extended_predicate == "Equal":
+                    eq = EqParser.get_equation_from_tree(self, para, True, item)
+                    if eq is not None:
+                        self.add("Equation", eq, (_id,), "extended")
+                else:
+                    self.add(extended_predicate, tuple(item[i] for i in para), (_id,), "extended")
+            return True
 
         return False
 
     """------------Format Control for <entity relation>------------"""
 
-    def item_ee_check(self, predicate, item):
+    def ee_check(self, item, item_GDL):
         """Entity Existence check."""
-
-        if predicate in ["Equation", "Point", "Line", "Angle", "Arc", "Circle", "Polygon",
-                         "Shape", "Collinear", "Cocircular"]:
-            return True
-
-        if predicate in self.predicate_GDL["Entity"]:
-            item_GDL = self.predicate_GDL["Entity"][predicate]
-        else:
-            item_GDL = self.predicate_GDL["Relation"][predicate]
-
         for name, para in item_GDL["ee_check"]:  # EE check
             if tuple([item[i] for i in para]) not in self.conditions[name].get_id_by_item:
                 return False
         return True
 
-    def item_fv_check(self, predicate, item):
-        """Format Validity check."""
-
-        if predicate == "Equation":
-            return True
-
-        if predicate in ["Polygon", "Shape", "Collinear", "Cocircular"] or\
-                predicate in self.predicate_GDL["Entity"]:
-            if len(item) == len(set(item)):
-                return True
-            return False
-
-        item_GDL = self.predicate_GDL["Relation"][predicate]
-
+    @staticmethod
+    def item_fv_check(item, item_GDL):
+        """
+        Format Validity check.
+        Just <Relation> needed.
+        """
         if len(item) != len(item_GDL["vars"]):
             return False
 
@@ -371,100 +317,46 @@ class Problem:
         """
         Get symbolic representation of item's attribution.
         :param item: tuple, such as ('A', 'B')
-        :param attr: attr's name, such as Length
+        :param attr: attr's name, such as LengthOfLine
         :return: sym
         """
-        if attr not in self.predicate_GDL["Attribution"]:
+        if attr == "Free":
+            if (item, attr) not in self.conditions["Equation"].sym_of_attr:
+                sym = symbols("f_" + "".join(item).lower())
+                self.conditions["Equation"].sym_of_attr[(item, attr)] = sym  # add sym
+                self.conditions["Equation"].value_of_sym[sym] = None  # init symbol's value
+                self.conditions["Equation"].attr_of_sym[sym] = [[item], attr]  # add attr
+                return sym
+            return self.conditions["Equation"].sym_of_attr[(item, attr)]
+        elif attr in self.predicate_GDL["Attribution"]:
+            attr_GDL = self.predicate_GDL["Attribution"][attr]
+        else:
             raise Exception(
                 "<AttributionNotDefined> Attribution '{}': not defined in current predicate GDL.".format(
                     attr
                 )
             )
-        if not self.attr_ee_check(item, attr):
+
+        if not self.ee_check(item, attr_GDL):
             if not self.loaded:
                 warnings.warn("EE check not passed: [{}, {}]".format(item, attr))
             return None
-        if not self.attr_fv_check(item, attr):
-            if not self.loaded:
-                warnings.warn("FV check not passed: [{}, {}]".format(item, attr))
-            return None
 
         if (item, attr) not in self.conditions["Equation"].sym_of_attr:  # No symbolic representation, initialize one.
-            if self.predicate_GDL["Attribution"][attr]["negative"] == "True":  # Judge whether sym can be negative.
-                sym = symbols(self.predicate_GDL["Attribution"][attr]["sym"] + "_" + "".join(item).lower())
-            else:
-                sym = symbols(self.predicate_GDL["Attribution"][attr]["sym"] + "_" + "".join(item).lower(),
-                              positive=True)
-
+            sym = symbols(attr_GDL["sym"] + "_" + "".join(item).lower(), positive=True)
             self.conditions["Equation"].sym_of_attr[(item, attr)] = sym  # add sym
             self.conditions["Equation"].value_of_sym[sym] = None  # init symbol's value
 
             extend_items = [item]
-            if isinstance(self.predicate_GDL["Attribution"][attr]["multi"], str):
-                l = len(item)
-                for bias in range(1, l):
-                    extended_item = [item[(i + bias) % l] for i in range(l)]  # extend item
-                    extend_items.append(tuple(extended_item))
-                    self.conditions["Equation"].sym_of_attr[(tuple(extended_item), attr)] = sym  # multi representation
-            else:
-                for multi in self.predicate_GDL["Attribution"][attr]["multi"]:
-                    extended_item = [item[i] for i in multi]  # extend item
-                    extend_items.append(tuple(extended_item))
-                    self.conditions["Equation"].sym_of_attr[(tuple(extended_item), attr)] = sym  # multi representation
+            for multi in attr_GDL["multi"]:
+                extended_item = [item[i] for i in multi]  # extend item
+                self.conditions["Equation"].sym_of_attr[(tuple(extended_item), attr)] = sym  # multi representation
+                extend_items.append(tuple(extended_item))
+
             self.conditions["Equation"].attr_of_sym[sym] = [extend_items, attr]  # add attr
             return sym
 
         return self.conditions["Equation"].sym_of_attr[(item, attr)]
-
-    def attr_ee_check(self, item, attr):
-        """Entity Existence check."""
-        if attr == "Free":
-            return True
-        elif isinstance(self.predicate_GDL["Attribution"][attr]["vars"], str):
-            for predicate in self.predicate_GDL["Attribution"][attr]["ee_check"]:
-                if item in self.conditions[predicate].get_id_by_item:
-                    return True
-                return False
-        else:
-            for name, para in self.predicate_GDL["Attribution"][attr]["ee_check"]:  # EE check
-                if tuple([item[i] for i in para]) not in self.conditions[name].get_id_by_item:
-                    return False
-            return True
-
-    def attr_fv_check(self, item, attr):
-        """Format Validity check."""
-        if attr == "Free":
-            return True
-        elif isinstance(self.predicate_GDL["Attribution"][attr]["vars"], str):
-            if len(item) == len(set(item)):
-                return True
-            return False
-        else:
-            if len(item) != len(self.predicate_GDL["Attribution"][attr]["vars"]):
-                return False
-
-            if "fv_check_format" in self.predicate_GDL["Attribution"][attr]:
-                checked = []
-                result = []
-                for i in item:
-                    if i not in checked:
-                        checked.append(i)
-                    result.append(str(checked.index(i)))
-                if "".join(result) in self.predicate_GDL["Attribution"][attr]["fv_check_format"]:
-                    return True
-                return False
-            else:
-                for mutex in self.predicate_GDL["Attribution"][attr]["fv_check_mutex"]:
-                    if isinstance(mutex[0], list):
-                        first = "".join([item[i] for i in mutex[0]])
-                        second = "".join([item[i] for i in mutex[1]])
-                        if first == second:
-                            return False
-                    else:
-                        points = [item[i] for i in mutex]
-                        if len(points) != len(set(points)):
-                            return False
-                return True
 
     def set_value_of_sym(self, sym, value, premise, theorem):
         """
@@ -482,21 +374,6 @@ class Problem:
         return False
 
     """-----------------------Auxiliary function----------------------"""
-
-    def gather_conditions_msg(self):
-        """Gather all conditions msg for problem showing, solution tree generating, etc..."""
-        if self.gathered:
-            return
-        self.get_predicate_by_id = {}  # init
-        self.get_id_by_step = {}
-        for predicate in self.conditions:
-            for _id in self.conditions[predicate].get_item_by_id:
-                self.get_predicate_by_id[_id] = predicate
-            for step, _id in self.conditions[predicate].step_msg:
-                if step not in self.get_id_by_step:
-                    self.get_id_by_step[step] = []
-                self.get_id_by_step[step].append(_id)
-        self.gathered = True
 
     def applied(self, theorem_name):
         """Execute when theorem successful applied. Save theorem name and update step."""

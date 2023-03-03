@@ -58,7 +58,7 @@ def run(save_GDL=False, save_CDL=False, auto=False):
 
 
 if __name__ == '__main__':
-    run(save_GDL=False, save_CDL=False, auto=False)
+    run(save_GDL=False, save_CDL=True, auto=False)
     
     # for filename in os.listdir("F:/Geometry3K"):
     #     data = load_json("F:/Geometry3K" + "/" + filename)

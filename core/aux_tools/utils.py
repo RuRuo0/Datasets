@@ -12,7 +12,7 @@ def load_json(filename):
 
 def save_json(data, filename):
     with open(filename, "w", encoding="utf-8") as f:
-        json.dump(data, f)
+        json.dump(data, f, ensure_ascii=False)
 
 
 def show(problem, simple=False):

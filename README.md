@@ -3,13 +3,15 @@ Formal representation and solving for SAT-level Euclidean plane geometry problem
 **FormalGeo-SAT** is an extended version of **[FormalGeo](https://github.com/BitSecret/FormalGeo)**. It supports solving more types of plane geometric problems.
 
 ## Cowork
-#### Week 1 (230227): form 2023-02-27 to 2023-03-05.
+#### Week 1 (230306): form 2023-03-06 to 2023-03-12.
+**Attention:** Annotate problems in directory **Geometry3k-Triangle**.  
+
 | Worker | WorkLoad | PID | Skip | Submitted |
 |:---:|:---:|:---:|:---:|:---:|
-| XiaokaiZhang | 15 | 1584-1601 | [1584, 1588, 1589] | × |
-| NaZhu | 15 | 1602-1616 | / | × |
-| JiaZou | 15 | 1617-1631 | / | × |
-| YimingHe | 15 | 1632-1646 | / | × |
+| XiaokaiZhang | 107 | 1584-1864 | / | × |
+| NaZhu | 70 | 1865-2026 | / | × |
+| JiaZou | 70 | 2028-2233 | / | × |
+| YimingHe | 70 | 2236-2396 | / | × |
 
 ## Introduction
 Formal mathematics plays an important role in mathematical research, especially with the deepening of mathematical research, the theory becomes obscure and difficult to understand, and computer aided verification is more needed. Geometry involves the literal description and image representation of knowledge, the unity of algebraic calculation and symbolic reasoning, so it is difficult to formalize.  

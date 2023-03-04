@@ -60,6 +60,14 @@
 				]
 			}
 		},
+		"triangle_area_formula_common": {
+			"1": {
+				"premise": "IsAltitude(AD,ABC)",
+				"conclusion": [
+					"Equal(AreaOfTriangle(ABC),Mul(LengthOfLine(AD),LengthOfLine(BC),0.5))"
+				]
+			}
+		},
 		"sine_theorem": {
 			"1": {
 				"premise": "Triangle(ABC)",
@@ -105,6 +113,14 @@
 				"conclusion": [
 					"Equal(LengthOfLine(BC),Mul(LengthOfLine(AB),1.7321))",
 					"Equal(LengthOfLine(AC),Mul(LengthOfLine(AB),2))"
+				]
+			}
+		},
+		"altitude_judgment": {
+			"1": {
+				"premise": "Triangle(ABC)&Collinear(BDC)&Line(AD)&(Equal(MeasureOfAngle(BDA),90)|Equal(MeasureOfAngle(ADC),90))",
+				"conclusion": [
+					"IsAltitude(AD,ABC)"
 				]
 			}
 		},
@@ -206,7 +222,36 @@
 					"Equal(Mul(LengthOfLine(AB),LengthOfLine(EF)),Mul(LengthOfLine(FD),LengthOfLine(BC)))"
 				]
 			}
+		},
+		"similar_judgment_aa": {
+			"1": {
+				"premise": "Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(CAB),MeasureOfAngle(FDE))&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))",
+				"conclusion": [
+					"Similar(ABC,DEF)"
+				]
+			},
+			"2": {
+				"premise": "Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(CAB),MeasureOfAngle(FDE))&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))",
+				"conclusion": [
+					"MirrorSimilar(ABC,DEF)"
+				]
+			}
+		},
+		"similar_property_line_ratio": {
+			"1": {
+				"premise": "Similar(ABC,DEF)",
+				"conclusion": [
+					"Equal(Mul(LengthOfLine(AB),LengthOfLine(EF)),Mul(LengthOfLine(DE),LengthOfLine(BC)))"
+				]
+			},
+			"2": {
+				"premise": "MirrorSimilar(ABC,DEF)",
+				"conclusion": [
+					"Equal(Mul(LengthOfLine(AB),LengthOfLine(EF)),Mul(LengthOfLine(FD),LengthOfLine(BC)))"
+				]
+			}
 		}
 	},
-	"Version": "1.1"
+	"Version": "1.1",
+	"notes": "altitude_judgment  1660"
 }

@@ -15,7 +15,7 @@ FormalGeo形式化语言包括两大组成部分，分别是**几何定义语言
 **几何表示论**是研究如何使用文字或符号来表示几何图形的理论，是问题*我们如何形式化？*的回答，其理论成果包括对应一致性原则和构造性作图法。对应一致性原则是指原始系统和形式化系统的静态描述和动态过程要一一对应。在几何领域，静态描述指的是几何问题的条件，动态过程是指定理。构造性作图法采用最少数量的形式化语句来描述几何图形，并按照机械化的方法自动构建出所有的几何元素。
 
 ### 1.2语法
-**CDL**采用点的有序对来描述几何图形，根据其作用，可以分为三类。第一类是**构图语句**，包括基本构图语句和基本实体，推理器利用少量构图语句来构建所有的几何元素；第二类是**条件语句**，用于描述几何问题的前提条件，包括数量关系和实体关系；第三类是目标语句，用于声明几何问题的求解目标。  
+**CDL**采用点的有序对来描述几何图形，根据其作用，可以分为三类。第一类是**构图语句**，包括基本构图语句和基本实体，推理器利用少量构图语句来构建所有的几何元素；第二类是**条件语句**，用于描述几何问题的前提条件，包括数量关系和实体关系；第三类是**目标语句**，用于声明几何问题的求解目标。  
 CDL语法与谓词逻辑类似，非常简单易学，我们举两个例子：  
 
     Triangle(ABC)
@@ -23,7 +23,7 @@ CDL语法与谓词逻辑类似，非常简单易学，我们举两个例子：
 
 很显然，第一句话声明了一个三角形，ABC是三角形的三个顶点；第二句话声明了一个数量关系，即直线AB的长度与直线CD的长度相等。  
 现在我们介绍几个基本的概念。  
-在上述两条CDL语句中，*Triangle*和*Equal*称作谓词，用于描述一种几何元素或几何元素之间的关系；*括号中的内容*称为个体词，在实体关系中，个体词为点的有序对，在数量关系中，个体词为由实数、运算符和符号构成的表达式；*LengthOfLine*称为函数，是个体词到个体词的映射，准确来说是实体关系个体词到代数关系个体词的映射，我们通过这样的映射，就可以用点的有序对来表示数量关系，实现了实体关系和数量关系表示形式的统一。  
+在上述两条CDL语句中，*Triangle*和*Equal*称作**谓词**，用于描述一种几何元素或几何元素之间的关系；*括号中的内容*称为**个体词**，在实体关系中，个体词为点的有序对，在数量关系中，个体词为由实数、运算符和符号构成的表达式；*LengthOfLine*称为**函数**，是个体词到个体词的映射，准确来说是实体关系个体词到代数关系个体词的映射，我们通过这样的映射，就可以用点的有序对来表示数量关系，实现了实体关系和数量关系表示形式的统一。  
 介绍完毕，就是这么简单！  
 
 ## 2.环境配置
@@ -105,7 +105,23 @@ pycharm一款用于python项目开发的IDE。安装pycharm主要是为了：①
     <img src="cowork-pic/4.png" width="70%">
 </div>
 
-### 2.2 Git安装
+### 2.2 Graphviz安装
+登陆[官网](https://graphviz.org/download/)下载安装包，一步步安装即可：  
+<div align=center>
+    <img src="cowork-pic/26.png" width="80%">
+</div>
+
+将Graphviz安装路径中的bin目录添加到环境变量path中，选择 我的电脑->属性->高级系统设置->环境变量->Path->新建：  
+<div align=center>
+    <img src="cowork-pic/27.png" width="100%">
+</div>
+
+打开命令窗口，输入指令查看是否安装配置成功。  
+
+    > dot -v
+    dot - graphviz version 6.0.1 (20220911.1526)
+
+### 2.3 Git安装
 Git是一种分布式版本控制系统，用于多人协作项目开发时的版本控制，方便版本管理，非常的好用。我们的标注工作不涉及代码修改，只涉及文件的上传，只需学习几个简单的git命令就可以。  
 1.登陆[官网](https://git-scm.com/)下载安装包：  
 <div align=center>
@@ -132,7 +148,7 @@ Git是一种分布式版本控制系统，用于多人协作项目开发时的�
 	user.email=<your_email>
 	user.name=<your_name>
 
-### 2.3项目初始化配置
+### 2.4项目初始化配置
 1.新建项目文件夹，并右键，选择 Git Bash Here：
 <div align=center>
     <img src="cowork-pic/9.png" width="40%">
@@ -146,7 +162,7 @@ Git是一种分布式版本控制系统，用于多人协作项目开发时的�
 	# 添加远程协作仓库
 	$ git remote add origin https://github.com/BitSecret/FormalGeo-SAT.git
 
-	# 拉取远程主分支到本地新分支
+	# 拉取远程主分支到本地新分支，<your_name>换成你自己的名字，如 xiaokaizhang
 	$ git fetch origin main:<your_name>
 
 	# 切换到你的本地分支
@@ -242,17 +258,13 @@ Git是一种分布式版本控制系统，用于多人协作项目开发时的�
 
 上图中黄色箭头是每周的**标注识别号**，绿色箭头是每个人分配的题号，原始题目在 data/raw-problems 文件夹，共6个数据集，已经化为了统一的格式。
 ### 3.2标注(1个)问题
-1.复制模板到 data/formalized-problems ，并改名为 <problem_id>.json：
+1.从 data/raw_problems 复制题目到 data/formalized-problems  
+2.标注并保存问题   
 <div align=center>
-    <img src="cowork-pic/23.png">
+    <img src="cowork-pic/24.png" width="70%">
 </div>
 
-2.将原始问题具有的信息添加到 <problem_id>.json ，同时添加上自己的标注信息：  
-<div align=center>
-    <img src="cowork-pic/24.png">
-</div>
-
-3.按照附录的各种手册，标注并保存问题。
+3.运行推理器，查看问题是否成功求解  
 
 ### 3.3提交已标注的问题
 在每周的标注任务**全部完成后**，将所有的标注文件统一提交。  
@@ -276,7 +288,7 @@ Git是一种分布式版本控制系统，用于多人协作项目开发时的�
 ### 4.1时间安排
 A、每周的任务需在周日晚24点之前提交。  
 B、每周一上午12点之前更新主分支内容。  
-C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主分支。  
+C、每个人第N周提交的内容将会在第N+1周周日日24点之前合并到主分支。  
 ### 4.2沟通交流
 标注过程遇到任何问题及时沟通，直接在群里提出(最高效的)，或填写[在线协作文档](https://docs.qq.com/sheet/DRk55TFZVb0hiWEJn)。
 ### 4.3常见问题
@@ -393,291 +405,329 @@ C、每个人第N周提交的内容将会在第N+1周日24点之前合并到主�
 |similar_property_line_ratio|/|
 
 ## 附录3 图形-文字对照手册
-标注几何问题CDL的顺序为：  
+### 标注几何问题CDL的顺序
 **1.标注构图CDL**  
-首先标注基本构图CDL，有3个，分别是Polygon、Collinear和Cocircular。在推理器构图阶段，会根据识别到的基本构图CDL自动构建基本实体CDL，参见图<构图的自动扩展>。标注完基本构图CDL后，还需要补充标注无法由基本构图CDL扩展得到的基本实体CDL（这就要求对于构图过程比较熟悉，其实也很简单）。  
+首先标注基本构图CDL，有3个，分别是Polygon、Collinear和Cocircular。在推理器构图阶段，会根据识别到的基本构图CDL自动构建基本实体CDL，参见下图。标注完基本构图CDL后，还需要补充标注无法由基本构图CDL扩展得到的基本实体CDL（这就要求对于构图过程比较熟悉，其实也很简单）。  
 **2.标注条件CDL**  
 包括图像和文字的标注。  
 **3.标注目标CDL**  
 共有三类，分别是Value、Equal、Relation。  
 <div align=center>
     <img src="cowork-pic/auto-expand.png" width="60%">
-    构图的自动扩展
 </div>
+
+### 标注口诀
+**1.逆时针法则**  
+很多图形的文字表示都是按照逆时针的方向，将图形的点按顺序列出，如多边形、角、三角形等。逆时针法则主要是为了区分镜像图形。  
+<div align=center>
+    <img src="cowork-pic/40.png" width="60%">
+</div>
+
+    Triangle(ABC)
+    Angle(AOB)
+    Polygon(ABCDE)
+
+**2.旋转不变性**  
+图形旋转后还是原图形，各种性质不变，但点的位置变化了，因此一个图形可能有多个文字表示。再标注时，我们仅需标注一个表示即可，其他表示会由推理器自动构建。  
+<div align=center>
+    <img src="cowork-pic/41.png" width="60%">
+</div>
+
+    Triangle(ABC),Triangle(ABC),Triangle(ABC)
+
+**3.从左到右，从上到下**  
+有些不封闭的图形，如平行、相交关系等，用逆时针法则不符合人的思维习惯，这时候就使用第三条口诀。  
+<div align=center>
+    <img src="cowork-pic/42.png" width="60%">
+</div>
+
+    Parallel(AB,CD)
+    Intersect(O,AB,CD)
+    Perpendicular(AO,BO)
 
 ### A、基本构图谓词
 #### Polygon
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/Polygon.png" width="60%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    Polygon(ABCDE),Polygon(BCDEA),Polygon(CDEAB),Polygon(DEABC),Polygon(EABCD)
+    例1: Polygon(ADE),Polygon(DBCE)
+    例2: Polygon(ABC),Polygon(ACD),Polygon(ADE),Polygon(AEF)
+
+备注：  
 #### Collinear
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/Collinear.png" width="60%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    Collinear(AMB),Collinear(BMA)
+    例1: Collinear(AOB),Collinear(COD)
+    例2: Collinear(BCDEF)
+
+备注：  
 #### Cocircular
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/Cocircular.png" width="40%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    Cocircular(O,AC),Cocircular(O,CA)
+    例1: Cocircular(O,ABCD)
+
+备注：  
 ### B、基本实体
 #### Point
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/Point.png" width="60%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    Point(A)
+    例1: Point(A),Point(B),Point(C)
+    例2: Point(O),Point(A),Point(C)
+
+备注：  
 #### Line
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/Line.png" width="60%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    Line(AB),Line(BA)
+    例1: Line(AB),Line(CD)
+    例2: Line(AO),Line(BO)
+
+备注：  
 #### Angle
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/Angle.png" width="60%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    Angle(AOB)
+    例1: Angle(ABC),Angle(BCA),Angle(CAB)
+    例2: Angle(AOC),Angle(COB),Angle(BOD),Angle(DOA)
+
+备注：  
 #### Triangle
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/Triangle.png" width="60%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    Triangle(ABC),Triangle(BCA),Triangle(CAB)
+    例1: Triangle(ADE),Triangle(ABC)
+    例2: Triangle(ABD),Triangle(ADC),Triangle(ABC)
+
+备注：  
 #### Quadrilateral
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/Quadrilateral.png" width="60%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    Quadrilateral(ABCD),Quadrilateral(BCDA),Quadrilateral(CDAB),Quadrilateral(DABC)
+    例1: Quadrilateral(DBCE)
+    例2: Quadrilateral(ABCD)
+
+备注：  
 #### Arc
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/Arc.png" width="60%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    Arc(AB)
+    例1: Arc(AC),Arc(CA)
+    例2: Arc(AB),Arc(BC),Arc(CD),...
+
+备注：  
 #### Circle
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/Circle.png" width="60%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    Circle(O)
+    例1: Circle(A),Circle(B)
+    例2: Circle(O)
+
+备注：  
 ### C、实体
 #### RightTriangle
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/RightTriangle.png" width="20%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    RightTriangle(ABC)
+
+备注：  
 #### IsoscelesTriangle
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/IsoscelesTriangle.png" width="20%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    IsoscelesTriangle(ABC)
+
+备注：  
 #### EquilateralTriangle
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/EquilateralTriangle.png" width="20%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    EquilateralTriangle(ABC),EquilateralTriangle(BCA),EquilateralTriangle(CAB)
+
+备注：  
 ### D、实体关系
 #### Midpoint
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/Midpoint.png" width="20%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    Midpoint(M,AB),Midpoint(M,BA)
+
+备注：  
 #### Intersect
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/Intersect.png" width="20%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    Intersect(O,AB,CD),Intersect(O,CD,BA),Intersect(O,BA,DC),Intersect(O,DC,AB)
+
+备注：  
 #### Parallel
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/Parallel.png" width="20%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    Parallel(AB,CD),Parallel(DC,BA)
+
+备注：  
 #### Perpendicular
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/Perpendicular.png" width="20%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    Perpendicular(AO,BO)
+
+备注：  
 #### PerpendicularBisector
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/PerpendicularBisector.png" width="20%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    PerpendicularBisector(AB,CO)
+
+备注：  
 #### Bisector
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/Bisector.png" width="20%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    Bisector(BD,ABC)
+
+备注：  
 #### Median
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/Median.png" width="20%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    Median(AM,ABC)
+
+备注：  
 #### IsAltitude
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/IsAltitude.png" width="20%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    IsAltitude(AD,ABC)
+
+备注：  
 #### Neutrality
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/Neutrality.png" width="20%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    Neutrality(DE,ABC)
+
+备注：  
 #### Circumcenter
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/Circumcenter.png" width="20%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    Circumcenter(O,ABC),Circumcenter(O,BCA),Circumcenter(O,CAB)
+
+备注：  
 #### Incenter
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/Incenter.png" width="20%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    Incenter(O,ABC),Incenter(O,BCA),Incenter(O,CAB)
+
+备注：  
 #### Centroid
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/Centroid.png" width="20%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    Centroid(O,ABC),Centroid(O,BCA),Centroid(O,CAB)
+
+备注：  
 #### Orthocenter
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/Orthocenter.png" width="20%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    Orthocenter(O,ABC),Orthocenter(O,BCA),Orthocenter(O,CAB)
+
+备注：  
 #### Congruent
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/Congruent.png" width="20%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    Congruent(ABC,DEF),Congruent(DEF,ABC),Congruent(BCA,EFD),
+    Congruent(EFD,BCA),Congruent(CAB,FDE),Congruent(FDE,CAB)
+
+备注：  
 #### Similar
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/Similar.png" width="20%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    Similar(ABC,DEF),Similar(DEF,ABC),Similar(BCA,EFD),
+    Similar(EFD,BCA),Similar(CAB,FDE),Similar(FDE,CAB)
+
+备注：  
 #### MirrorCongruent
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/MirrorCongruent.png" width="20%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    MirrorCongruent(ABC,DEF),MirrorCongruent(DEF,ABC),MirrorCongruent(BCA,FDE)
+    MirrorCongruent(FDE,BCA),MirrorCongruent(CAB,EFD),MirrorCongruent(EFD,CAB)
+
+备注：  
 #### MirrorSimilar
 <div align=center>
-    <img src="cowork-pic/?.png" width="50%">
+    <img src="cowork-pic/MirrorSimilar.png" width="20%">
 </div>
 
-CDL：  
-标注要点：  
-例1：  
-例2：  
+    MirrorSimilar(ABC,DEF),MirrorSimilar(DEF,ABC),MirrorSimilar(BCA,FDE)
+    MirrorSimilar(FDE,BCA),MirrorSimilar(CAB,EFD),MirrorSimilar(EFD,CAB)
+
+备注：  
 ### E、基本实体属性,实体属性,代数关系和代数运算
+见附录2。 
+ 
 ### F、解题目标
+#### Value
+
+    Value(LengthOfLine(AB))
+    Value(Add(MeasureOfAngle(ABC),MeasureOfAngle(DEF)))
+    Value(x+y)
+
+#### Equal
+
+    Equal(LengthOfLine(AB),x+y)
+    Equal(Add(MeasureOfAngle(ABC),MeasureOfAngle(DEF)),Pow(x,2))
+
+#### Relation
+
+    Relation(Parallel(AB,CD))
+    Relation(RightTriangle(ABC))

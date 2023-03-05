@@ -413,14 +413,14 @@ C、每个人第N周提交的内容将会在第N+1周周日日24点之前合并�
 **3.标注目标CDL**  
 共有三类，分别是Value、Equal、Relation。  
 <div align=center>
-    <img src="cowork-pic/auto-expand.png" width="60%">
+    <img src="cowork-pic/auto-expand.png" width="50%">
 </div>
 
 ### 标注口诀
 **1.逆时针法则**  
 很多图形的文字表示都是按照逆时针的方向，将图形的点按顺序列出，如多边形、角、三角形等。逆时针法则主要是为了区分镜像图形。  
-<div align=center>
-    <img src="cowork-pic/40.png" width="60%">
+<div>
+    <img src="cowork-pic/40.png" width="40%">
 </div>
 
     Triangle(ABC)
@@ -429,16 +429,16 @@ C、每个人第N周提交的内容将会在第N+1周周日日24点之前合并�
 
 **2.旋转不变性**  
 图形旋转后还是原图形，各种性质不变，但点的位置变化了，因此一个图形可能有多个文字表示。再标注时，我们仅需标注一个表示即可，其他表示会由推理器自动构建。  
-<div align=center>
-    <img src="cowork-pic/41.png" width="60%">
+<div>
+    <img src="cowork-pic/41.png" width="40%">
 </div>
 
     Triangle(ABC),Triangle(ABC),Triangle(ABC)
 
 **3.从左到右，从上到下**  
 有些不封闭的图形，如平行、相交关系等，用逆时针法则不符合人的思维习惯，这时候就使用第三条口诀。  
-<div align=center>
-    <img src="cowork-pic/42.png" width="60%">
+<div>
+    <img src="cowork-pic/42.png" width="40%">
 </div>
 
     Parallel(AB,CD)
@@ -447,8 +447,8 @@ C、每个人第N周提交的内容将会在第N+1周周日日24点之前合并�
 
 ### A、基本构图谓词
 #### Polygon
-<div align=center>
-    <img src="cowork-pic/Polygon.png" width="60%">
+<div>
+    <img src="cowork-pic/Polygon.png" width="40%">
 </div>
 
     Polygon(ABCDE),Polygon(BCDEA),Polygon(CDEAB),Polygon(DEABC),Polygon(EABCD)
@@ -457,8 +457,8 @@ C、每个人第N周提交的内容将会在第N+1周周日日24点之前合并�
 
 备注：  
 #### Collinear
-<div align=center>
-    <img src="cowork-pic/Collinear.png" width="60%">
+<div>
+    <img src="cowork-pic/Collinear.png" width="40%">
 </div>
 
     Collinear(AMB),Collinear(BMA)
@@ -467,8 +467,8 @@ C、每个人第N周提交的内容将会在第N+1周周日日24点之前合并�
 
 备注：  
 #### Cocircular
-<div align=center>
-    <img src="cowork-pic/Cocircular.png" width="40%">
+<div>
+    <img src="cowork-pic/Cocircular.png" width="27%">
 </div>
 
     Cocircular(O,AC),Cocircular(O,CA)
@@ -477,8 +477,8 @@ C、每个人第N周提交的内容将会在第N+1周周日日24点之前合并�
 备注：  
 ### B、基本实体
 #### Point
-<div align=center>
-    <img src="cowork-pic/Point.png" width="60%">
+<div>
+    <img src="cowork-pic/Point.png" width="40%">
 </div>
 
     Point(A)
@@ -487,8 +487,8 @@ C、每个人第N周提交的内容将会在第N+1周周日日24点之前合并�
 
 备注：  
 #### Line
-<div align=center>
-    <img src="cowork-pic/Line.png" width="60%">
+<div>
+    <img src="cowork-pic/Line.png" width="40%">
 </div>
 
     Line(AB),Line(BA)
@@ -497,8 +497,8 @@ C、每个人第N周提交的内容将会在第N+1周周日日24点之前合并�
 
 备注：  
 #### Angle
-<div align=center>
-    <img src="cowork-pic/Angle.png" width="60%">
+<div>
+    <img src="cowork-pic/Angle.png" width="40%">
 </div>
 
     Angle(AOB)
@@ -507,8 +507,8 @@ C、每个人第N周提交的内容将会在第N+1周周日日24点之前合并�
 
 备注：  
 #### Triangle
-<div align=center>
-    <img src="cowork-pic/Triangle.png" width="60%">
+<div>
+    <img src="cowork-pic/Triangle.png" width="40%">
 </div>
 
     Triangle(ABC),Triangle(BCA),Triangle(CAB)
@@ -517,8 +517,8 @@ C、每个人第N周提交的内容将会在第N+1周周日日24点之前合并�
 
 备注：  
 #### Quadrilateral
-<div align=center>
-    <img src="cowork-pic/Quadrilateral.png" width="60%">
+<div>
+    <img src="cowork-pic/Quadrilateral.png" width="40%">
 </div>
 
     Quadrilateral(ABCD),Quadrilateral(BCDA),Quadrilateral(CDAB),Quadrilateral(DABC)
@@ -527,8 +527,8 @@ C、每个人第N周提交的内容将会在第N+1周周日日24点之前合并�
 
 备注：  
 #### Arc
-<div align=center>
-    <img src="cowork-pic/Arc.png" width="60%">
+<div>
+    <img src="cowork-pic/Arc.png" width="40%">
 </div>
 
     Arc(AB)
@@ -537,8 +537,8 @@ C、每个人第N周提交的内容将会在第N+1周周日日24点之前合并�
 
 备注：  
 #### Circle
-<div align=center>
-    <img src="cowork-pic/Circle.png" width="60%">
+<div>
+    <img src="cowork-pic/Circle.png" width="40%">
 </div>
 
     Circle(O)
@@ -548,24 +548,24 @@ C、每个人第N周提交的内容将会在第N+1周周日日24点之前合并�
 备注：  
 ### C、实体
 #### RightTriangle
-<div align=center>
-    <img src="cowork-pic/RightTriangle.png" width="20%">
+<div>
+    <img src="cowork-pic/RightTriangle.png"  width="14%">
 </div>
 
     RightTriangle(ABC)
 
 备注：  
 #### IsoscelesTriangle
-<div align=center>
-    <img src="cowork-pic/IsoscelesTriangle.png" width="20%">
+<div>
+    <img src="cowork-pic/IsoscelesTriangle.png"  width="14%">
 </div>
 
     IsoscelesTriangle(ABC)
 
 备注：  
 #### EquilateralTriangle
-<div align=center>
-    <img src="cowork-pic/EquilateralTriangle.png" width="20%">
+<div>
+    <img src="cowork-pic/EquilateralTriangle.png"  width="14%">
 </div>
 
     EquilateralTriangle(ABC),EquilateralTriangle(BCA),EquilateralTriangle(CAB)
@@ -573,112 +573,112 @@ C、每个人第N周提交的内容将会在第N+1周周日日24点之前合并�
 备注：  
 ### D、实体关系
 #### Midpoint
-<div align=center>
-    <img src="cowork-pic/Midpoint.png" width="20%">
+<div>
+    <img src="cowork-pic/MidPoint.png"  width="14%">
 </div>
 
     Midpoint(M,AB),Midpoint(M,BA)
 
 备注：  
 #### Intersect
-<div align=center>
-    <img src="cowork-pic/Intersect.png" width="20%">
+<div>
+    <img src="cowork-pic/Intersect.png"  width="14%">
 </div>
 
     Intersect(O,AB,CD),Intersect(O,CD,BA),Intersect(O,BA,DC),Intersect(O,DC,AB)
 
 备注：  
 #### Parallel
-<div align=center>
-    <img src="cowork-pic/Parallel.png" width="20%">
+<div>
+    <img src="cowork-pic/Parallel.png"  width="14%">
 </div>
 
     Parallel(AB,CD),Parallel(DC,BA)
 
 备注：  
 #### Perpendicular
-<div align=center>
-    <img src="cowork-pic/Perpendicular.png" width="20%">
+<div>
+    <img src="cowork-pic/Perpendicular.png"  width="14%">
 </div>
 
     Perpendicular(AO,BO)
 
 备注：  
 #### PerpendicularBisector
-<div align=center>
-    <img src="cowork-pic/PerpendicularBisector.png" width="20%">
+<div>
+    <img src="cowork-pic/PerpendicularBisector.png"  width="14%">
 </div>
 
     PerpendicularBisector(AB,CO)
 
 备注：  
 #### Bisector
-<div align=center>
-    <img src="cowork-pic/Bisector.png" width="20%">
+<div>
+    <img src="cowork-pic/Bisector.png"  width="14%">
 </div>
 
     Bisector(BD,ABC)
 
 备注：  
 #### Median
-<div align=center>
-    <img src="cowork-pic/Median.png" width="20%">
+<div>
+    <img src="cowork-pic/Median.png"  width="14%">
 </div>
 
     Median(AM,ABC)
 
 备注：  
 #### IsAltitude
-<div align=center>
-    <img src="cowork-pic/IsAltitude.png" width="20%">
+<div>
+    <img src="cowork-pic/IsAltitude.png"  width="14%">
 </div>
 
     IsAltitude(AD,ABC)
 
 备注：  
 #### Neutrality
-<div align=center>
-    <img src="cowork-pic/Neutrality.png" width="20%">
+<div>
+    <img src="cowork-pic/Neutrality.png"  width="14%">
 </div>
 
     Neutrality(DE,ABC)
 
 备注：  
 #### Circumcenter
-<div align=center>
-    <img src="cowork-pic/Circumcenter.png" width="20%">
+<div>
+    <img src="cowork-pic/Circumcenter.png"  width="14%">
 </div>
 
     Circumcenter(O,ABC),Circumcenter(O,BCA),Circumcenter(O,CAB)
 
 备注：  
 #### Incenter
-<div align=center>
-    <img src="cowork-pic/Incenter.png" width="20%">
+<div>
+    <img src="cowork-pic/Incenter.png"  width="14%">
 </div>
 
     Incenter(O,ABC),Incenter(O,BCA),Incenter(O,CAB)
 
 备注：  
 #### Centroid
-<div align=center>
-    <img src="cowork-pic/Centroid.png" width="20%">
+<div>
+    <img src="cowork-pic/Centroid.png"  width="14%">
 </div>
 
     Centroid(O,ABC),Centroid(O,BCA),Centroid(O,CAB)
 
 备注：  
 #### Orthocenter
-<div align=center>
-    <img src="cowork-pic/Orthocenter.png" width="20%">
+<div>
+    <img src="cowork-pic/Orthocenter.png"  width="14%">
 </div>
 
     Orthocenter(O,ABC),Orthocenter(O,BCA),Orthocenter(O,CAB)
 
 备注：  
 #### Congruent
-<div align=center>
-    <img src="cowork-pic/Congruent.png" width="20%">
+<div>
+    <img src="cowork-pic/Congruent.png"  width="14%">
 </div>
 
     Congruent(ABC,DEF),Congruent(DEF,ABC),Congruent(BCA,EFD),
@@ -686,8 +686,8 @@ C、每个人第N周提交的内容将会在第N+1周周日日24点之前合并�
 
 备注：  
 #### Similar
-<div align=center>
-    <img src="cowork-pic/Similar.png" width="20%">
+<div>
+    <img src="cowork-pic/Similar.png"  width="14%">
 </div>
 
     Similar(ABC,DEF),Similar(DEF,ABC),Similar(BCA,EFD),
@@ -695,8 +695,8 @@ C、每个人第N周提交的内容将会在第N+1周周日日24点之前合并�
 
 备注：  
 #### MirrorCongruent
-<div align=center>
-    <img src="cowork-pic/MirrorCongruent.png" width="20%">
+<div>
+    <img src="cowork-pic/MirrorCongruent.png"  width="14%">
 </div>
 
     MirrorCongruent(ABC,DEF),MirrorCongruent(DEF,ABC),MirrorCongruent(BCA,FDE)
@@ -704,8 +704,8 @@ C、每个人第N周提交的内容将会在第N+1周周日日24点之前合并�
 
 备注：  
 #### MirrorSimilar
-<div align=center>
-    <img src="cowork-pic/MirrorSimilar.png" width="20%">
+<div>
+    <img src="cowork-pic/MirrorSimilar.png"  width="14%">
 </div>
 
     MirrorSimilar(ABC,DEF),MirrorSimilar(DEF,ABC),MirrorSimilar(BCA,FDE)

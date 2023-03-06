@@ -11,7 +11,7 @@ Formal representation and solving for SAT-level Euclidean plane geometry problem
 
 | Worker | WorkLoad | PID | Skip | Submitted |
 |:---:|:---:|:---:|:---:|:---:|
-| XiaokaiZhang | 107 | 1584-1864 | / | × |
+| XiaokaiZhang | 107 | 1584-1864 | / | √ |
 | NaZhu | 70 | 1865-2026 | / | × |
 | JiaZou | 70 | 2028-2233 | / | × |
 | YimingHe | 70 | 2236-2396 | / | × |

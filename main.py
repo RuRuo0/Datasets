@@ -1,5 +1,7 @@
+import warnings
+
 from core.solver.solver import Solver
-from core.aux_tools.utils import load_json, save_json, show, save_step_msg, save_solution_tree
+from core.aux_tools.utils import load_json, save_json, show, simple_show, save_step_msg, save_solution_tree
 import os
 predicate_GDL_file_path = "data/preset/predicate_GDL.json"
 theorem_GDL_file_path = "data/preset/theorem_GDL.json"
@@ -33,15 +35,24 @@ def run(save_GDL=False, save_CDL=False, auto=False):
         save_parsed_gdl(solver)
 
     if auto:
+        warnings.filterwarnings("ignore")
+        start_pid = int(input("start_pid:"))
+        end_pid = int(input("end_pid:"))
         for filename in os.listdir("data/formalized-problems"):
-            problem_CDL = load_json("data/formalized-problems/{}".format(filename))
-            solver.load_problem(problem_CDL)
-            for theorem in problem_CDL["theorem_seqs"]:
-                solver.apply_theorem(theorem)
-            solver.check_goal()
-            show(solver.problem, simple=True)
-            if save_CDL:
-                save_parsed_cdl(solver)
+            if start_pid <= int(filename.split(".")[0]) <= end_pid:
+                try:
+                    problem_CDL = load_json("data/formalized-problems/{}".format(filename))
+                    solver.load_problem(problem_CDL)
+                    for theorem in problem_CDL["theorem_seqs"]:
+                        solver.apply_theorem(theorem)
+                    solver.check_goal()
+                    simple_show(solver.problem)
+                    if save_CDL:
+                        save_parsed_cdl(solver)
+                except Exception as e:
+                    print("Raise Exception in problem {}.".format(filename.split(".")[0]))
+                else:
+                    pass
     else:
         while True:
             pid = int(input("pid:"))
@@ -52,30 +63,11 @@ def run(save_GDL=False, save_CDL=False, auto=False):
             for theorem in problem_CDL["theorem_seqs"]:
                 solver.apply_theorem(theorem)
             solver.check_goal()
-            show(solver.problem, simple=False)
+            show(solver.problem)
             if save_CDL:
                 save_parsed_cdl(solver)
 
 
 if __name__ == '__main__':
-    run(save_GDL=False, save_CDL=True, auto=False)
-    
-    # for filename in os.listdir("F:/Geometry3K"):
-    #     data = load_json("F:/Geometry3K" + "/" + filename)
-    #     saved_data = {
-    #         "problem_id": data["problem_id"],
-    #         "annotation": data["annotation"],
-    #         "source": data["source"],
-    #         "problem_level": 1,
-    #         "problem_text_cn": data["problem_text_cn"],
-    #         "problem_text_en": data["problem_text_en"],
-    #         "problem_img": data["problem_img"],
-    #         "construction_cdl": data["construction_fls"],
-    #         "text_cdl": data["text_fls"],
-    #         "image_cdl": data["image_fls"],
-    #         "goal_cdl": data["target_fls"][0],
-    #         "problem_answer": data["problem_answer"][0],
-    #         "theorem_seqs": data["theorem_seqs"],
-    #         "notes": "",
-    #     }
-    #     save_json(saved_data, "F:/Geometry3K" + "/" + filename)
+    run(save_GDL=False, save_CDL=False, auto=False)
+

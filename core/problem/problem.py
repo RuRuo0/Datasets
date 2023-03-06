@@ -15,8 +15,6 @@ class Problem:
         Condition.id = 0  # init step and id
         Condition.step = 0
 
-        self.loaded = False  # indicate whether problem is completely loaded
-
         self.problem_CDL = problem_CDL  # parsed problem msg, it will be further decomposed
         self.predicate_GDL = predicate_GDL  # problem predicate definition
 
@@ -59,8 +57,6 @@ class Problem:
         self.goal["premise"] = None
         self.goal["theorem"] = None
         self.goal["solving_msg"] = []
-
-        self.loaded = True
 
     def construction_init(self):
         """
@@ -186,8 +182,7 @@ class Problem:
             return False
         elif predicate in self.predicate_GDL["Construction"]:    # Construction
             if len(item) != len(set(item)):
-                if not self.loaded:
-                    warnings.warn("FV check not passed: [{}, {}]".format(predicate, item))
+                warnings.warn("FV check not passed: [{}, {}]".format(predicate, item))
                 return False
             if predicate == "Polygon":
                 added, _id = self.conditions["Polygon"].add(item, tuple(premise), theorem)
@@ -211,8 +206,9 @@ class Problem:
                             self.conditions["Collinear"].add(extended_item, (_id,), "extended")
                             self.conditions["Collinear"].add(extended_item[::-1], (_id,), "extended")
                             if len(extended_item) == 3:  # extend angle
-                                self.conditions["Angle"].add(extended_item, (_id,), "extended")
-                                self.conditions["Angle"].add(extended_item[::-1], (_id,), "extended")
+                                self.add("Angle", extended_item, (_id,), "extended")
+                                self.add("Angle", extended_item[::-1], (_id,), "extended")
+                    self.add("Line", (item[0], item[-1]), (_id,), "extended")
                     return True
             else:  # Construction predicate: Cocircular
                 added, _id = self.conditions["Cocircular"].add(item, premise, theorem)
@@ -236,8 +232,7 @@ class Problem:
         elif predicate in self.predicate_GDL["Relation"]:
             item_GDL = self.predicate_GDL["Relation"][predicate]
             if not Problem.item_fv_check(item, item_GDL):  # FV check
-                if not self.loaded:
-                    warnings.warn("FV check not passed: [{}, {}]".format(predicate, item))
+                warnings.warn("FV check not passed: [{}, {}]".format(predicate, item))
                 return False
         else:
             raise Exception(
@@ -247,8 +242,7 @@ class Problem:
             )
 
         if not self.ee_check(item, item_GDL):  # EE check
-            if not self.loaded:
-                warnings.warn("EE check not passed: [{}, {}]".format(predicate, item))
+            warnings.warn("EE check not passed: [{}, {}]".format(predicate, item))
             return False
 
         added, _id = self.conditions[predicate].add(item, premise, theorem)
@@ -288,28 +282,38 @@ class Problem:
         if len(item) != len(item_GDL["vars"]):
             return False
 
-        if "fv_check_format" in item_GDL:
-            checked = []
-            result = []
-            for i in item:
-                if i not in checked:
-                    checked.append(i)
-                result.append(str(checked.index(i)))
-            if "".join(result) in item_GDL["fv_check_format"]:
-                return True
-            return False
-        else:
-            for mutex in item_GDL["fv_check_mutex"]:
-                if isinstance(mutex[0], list):
-                    first = "".join([item[i] for i in mutex[0]])
-                    second = "".join([item[i] for i in mutex[1]])
-                    if first == second:
-                        return False
-                else:
-                    points = [item[i] for i in mutex]
-                    if len(points) != len(set(points)):
-                        return False
+        checked = []
+        result = []
+        for i in item:
+            if i not in checked:
+                checked.append(i)
+            result.append(str(checked.index(i)))
+        if "".join(result) in item_GDL["fv_check_format"]:
             return True
+        return False
+
+        # if "fv_check_format" in item_GDL:
+        #     checked = []
+        #     result = []
+        #     for i in item:
+        #         if i not in checked:
+        #             checked.append(i)
+        #         result.append(str(checked.index(i)))
+        #     if "".join(result) in item_GDL["fv_check_format"]:
+        #         return True
+        #     return False
+        # else:
+        #     for mutex in item_GDL["fv_check_mutex"]:
+        #         if isinstance(mutex[0], list):
+        #             first = "".join([item[i] for i in mutex[0]])
+        #             second = "".join([item[i] for i in mutex[1]])
+        #             if first == second:
+        #                 return False
+        #         else:
+        #             points = [item[i] for i in mutex]
+        #             if len(points) != len(set(points)):
+        #                 return False
+        #     return True
 
     """-----------Format Control for <algebraic relation>-----------"""
 
@@ -338,8 +342,7 @@ class Problem:
             )
 
         if not self.ee_check(item, attr_GDL):
-            if not self.loaded:
-                warnings.warn("EE check not passed: [{}, {}]".format(item, attr))
+            warnings.warn("EE check not passed: [{}, {}]".format(item, attr))
             return None
 
         if (item, attr) not in self.conditions["Equation"].sym_of_attr:  # No symbolic representation, initialize one.

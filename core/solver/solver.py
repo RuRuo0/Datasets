@@ -58,12 +58,11 @@ class Solver:
         for branch in self.theorem_GDL[theorem_name]:
             b_premise = self.theorem_GDL[theorem_name][branch]["premise"]
             b_conclusion = self.theorem_GDL[theorem_name][branch]["conclusion"]
-
             for normal_form in b_premise:
                 results = self.problem.conditions[normal_form[0][0]](normal_form[0][1])  # (ids, items, vars)
                 results = Solver.duplicate_removal(results)
                 for i in range(1, len(normal_form)):
-                    if len(results[0]) == 0:
+                    if len(results[0]) == 0:    # if no satisfied results, stop reasoning
                         break
                     if normal_form[i][0] == "Equal":
                         results = self.algebra_and(results, normal_form[i])

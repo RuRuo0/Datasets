@@ -1,1 +1,40 @@
-{"problem_id": 1775, "annotation": "xiaokaizhang_2022-09-12", "source": "Geometry3k-191", "problem_level": 1, "problem_text_cn": "", "problem_text_en": "J is the incenter of triangle CBA. Find the measure of angle JAC.", "problem_img": "67_g3k-191.png", "construction_cdl": ["Shape(CDJ)", "Shape(DBJ)", "Shape(JBE)", "Shape(JEA)", "Shape(JAF)", "Shape(JFC)", "Collinear(CDB)", "Collinear(BEA)", "Collinear(AFC)"], "text_cdl": ["Incenter(Point(J),Triangle(CBA))"], "image_cdl": ["Equal(Measure(Angle(JCD)),32)", "Equal(Measure(Angle(JBE)),34)", "Equal(Length(Line(AJ)),15)", "Equal(Length(Line(AE)),12)", "Perpendicular(Point(D),Line(BC),Line(DG))", "Perpendicular(Point(E),Line(BA),Line(JE))", "Perpendicular(Point(F),Line(AC),Line(JF))"], "goal_cdl": "Find(Measure(Angle(JAC)))", "problem_answer": "24", "theorem_seqs": [3, 61, 21], "notes": ""}
+{
+  "problem_id": 1775,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "Geometry3k-191",
+  "problem_level": 1,
+  "problem_text_cn": "",
+  "problem_text_en": "J is the incenter of triangle CBA. Find the measure of angle JAC.",
+  "problem_img": "67_g3k-191.png",
+  "construction_cdl": [
+    "Polygon(CDJ)",
+    "Polygon(DBJ)",
+    "Polygon(JBE)",
+    "Polygon(JEA)",
+    "Polygon(JAF)",
+    "Polygon(JFC)",
+    "Collinear(CDB)",
+    "Collinear(BEA)",
+    "Collinear(AFC)"
+  ],
+  "text_cdl": [
+    "Incenter(J,CBA)"
+  ],
+  "image_cdl": [
+    "Equal(MeasureOfAngle(JCD),32)",
+    "Equal(MeasureOfAngle(JBE),34)",
+    "Equal(Add(MeasureOfAngle(EAF),MeasureOfAngle(JAF)),MeasureOfAngle(EAF))",
+    "Equal(LengthOfLine(AJ),15)",
+    "Equal(LengthOfLine(AE),12)",
+    "Perpendicular(CD,JD)",
+    "Perpendicular(JE,AE)",
+    "Perpendicular(AF,JF)"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(JAC))",
+  "problem_answer": "24",
+  "theorem_seqs": [
+    "incenter_property_intersect",
+    "triangle_property_angle_sum"
+  ],
+  "notes": "使用定理 <angle_addition> 后，求解时间巨长。方程求解部分还需优化。"
+}

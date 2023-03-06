@@ -15,25 +15,36 @@ def save_json(data, filename):
         json.dump(data, f, ensure_ascii=False)
 
 
-def show(problem, simple=False):
-    """Show all information about problem."""
-    if simple:
-        if problem.goal["solved"]:
-            print("pid: {}, correct_answer: {}, solved: \033[32m{}\033[0m, solved_answer: {}".format(
-                problem.problem_CDL["id"],
-                str(problem.goal["answer"]),
-                str(problem.goal["solved"]),
-                str(problem.goal["solved_answer"])
-            ))
-        else:
-            print("pid: {}, correct_answer: {}, solved: \033[31m{}\033[0m, solved_answer: {}".format(
-                problem.problem_CDL["id"],
-                str(problem.goal["answer"]),
-                str(problem.goal["solved"]),
-                str(problem.goal["solved_answer"])
-            ))
-        return
+class SolvingInfoKeeper:
+    def __init__(self, problem):
+        self.problem = problem
 
+
+class SolvingInfoPrinter:
+
+    def __init__(self, problem):
+        self.problem = problem
+
+
+def simple_show(problem):
+    time_sum = 0
+    for t in problem.time_consuming:
+        time_sum += t
+    printed = "pid: {}, correct_answer: {}".format(problem.problem_CDL["id"], str(problem.goal["answer"]))
+    if problem.goal["solved"]:
+        printed += ", solved: \033[32m{}\033[0m".format(str(problem.goal["solved"]))
+    else:
+        printed += ", solved: \033[31m{}\033[0m".format(str(problem.goal["solved"]))
+    printed += ", solved_answer: {}".format(str(problem.goal["solved_answer"]))
+    if time_sum < 1:
+        printed += ", spend: {:.6f}s".format(time_sum)
+    else:
+        printed += ", spend: \033[31m{:.6f}s\033[0m".format(time_sum)
+    print(printed)
+
+
+def show(problem):
+    """Show all information about problem."""
     """-----------Conditional Declaration Statement-----------"""
     print("\033[36mproblem_index:\033[0m", end=" ")
     print(problem.problem_CDL["id"])
@@ -153,8 +164,8 @@ def show(problem, simple=False):
     print()
 
     print("\033[34mTime consumption:\033[0m")
-    for s in problem.goal["solving_msg"]:
-        print(s)
+    for i in range(len(problem.theorems_applied)):
+        print("\033[32m{}\033[0m:{:.6f}s".format(problem.theorems_applied[i], problem.time_consuming[i]))
     print()
 
 

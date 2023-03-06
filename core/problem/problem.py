@@ -19,6 +19,7 @@ class Problem:
         self.predicate_GDL = predicate_GDL  # problem predicate definition
 
         self.theorems_applied = []  # applied theorem list
+        self.time_consuming = []    # applied theorem time-consuming
 
         self.conditions = {}  # init conditions
         for predicate in self.predicate_GDL["Construction"]:
@@ -162,6 +163,7 @@ class Problem:
                     same_angles.append((a_point, v, b_point))  # 相同的角设置一样的符号
 
             for same_angle in same_angles:
+                self.add("Angle", same_angle, (self.conditions["Angle"].get_id_by_item[angle],), "extended")
                 self.conditions["Equation"].sym_of_attr[(same_angle, "MeasureOfAngle")] = sym
             self.conditions["Equation"].attr_of_sym[sym] = [same_angles, "MeasureOfAngle"]
 
@@ -176,13 +178,18 @@ class Problem:
         :return: True or False
         """
         if predicate == "Equation":    # Equation
+            if item == 0:  # Sometimes identical equation appear
+                msg = "FV check not passed: [{}, {}, {}, {}]".format(predicate, item, premise, theorem)
+                warnings.warn(msg)
+                return False
             added, _ = self.conditions["Equation"].add(item, premise, theorem)
             if added:
                 return True
             return False
         elif predicate in self.predicate_GDL["Construction"]:    # Construction
             if len(item) != len(set(item)):
-                warnings.warn("FV check not passed: [{}, {}]".format(predicate, item))
+                msg = "FV check not passed: [{}, {}, {}, {}]".format(predicate, item, premise, theorem)
+                warnings.warn(msg)
                 return False
             if predicate == "Polygon":
                 added, _id = self.conditions["Polygon"].add(item, tuple(premise), theorem)
@@ -232,7 +239,8 @@ class Problem:
         elif predicate in self.predicate_GDL["Relation"]:
             item_GDL = self.predicate_GDL["Relation"][predicate]
             if not Problem.item_fv_check(item, item_GDL):  # FV check
-                warnings.warn("FV check not passed: [{}, {}]".format(predicate, item))
+                msg = "FV check not passed: [{}, {}, {}, {}]".format(predicate, item, premise, theorem)
+                warnings.warn(msg)
                 return False
         else:
             raise Exception(
@@ -242,7 +250,8 @@ class Problem:
             )
 
         if not self.ee_check(item, item_GDL):  # EE check
-            warnings.warn("EE check not passed: [{}, {}]".format(predicate, item))
+            msg = "EE check not passed: [{}, {}, {}, {}]".format(predicate, item, premise, theorem)
+            warnings.warn(msg)
             return False
 
         added, _id = self.conditions[predicate].add(item, premise, theorem)
@@ -282,38 +291,23 @@ class Problem:
         if len(item) != len(item_GDL["vars"]):
             return False
 
-        checked = []
-        result = []
-        for i in item:
-            if i not in checked:
-                checked.append(i)
-            result.append(str(checked.index(i)))
-        if "".join(result) in item_GDL["fv_check_format"]:
+        if "fv_check_format" in item_GDL:
+            checked = []
+            result = []
+            for i in item:
+                if i not in checked:
+                    checked.append(i)
+                result.append(str(checked.index(i)))
+            if "".join(result) in item_GDL["fv_check_format"]:
+                return True
+            return False
+        else:
+            for mutex in item_GDL["fv_check_mutex"]:
+                first = "".join([item[i] for i in mutex[0]])
+                second = "".join([item[i] for i in mutex[1]])
+                if first == second:
+                    return False
             return True
-        return False
-
-        # if "fv_check_format" in item_GDL:
-        #     checked = []
-        #     result = []
-        #     for i in item:
-        #         if i not in checked:
-        #             checked.append(i)
-        #         result.append(str(checked.index(i)))
-        #     if "".join(result) in item_GDL["fv_check_format"]:
-        #         return True
-        #     return False
-        # else:
-        #     for mutex in item_GDL["fv_check_mutex"]:
-        #         if isinstance(mutex[0], list):
-        #             first = "".join([item[i] for i in mutex[0]])
-        #             second = "".join([item[i] for i in mutex[1]])
-        #             if first == second:
-        #                 return False
-        #         else:
-        #             points = [item[i] for i in mutex]
-        #             if len(points) != len(set(points)):
-        #                 return False
-        #     return True
 
     """-----------Format Control for <algebraic relation>-----------"""
 
@@ -342,10 +336,15 @@ class Problem:
             )
 
         if not self.ee_check(item, attr_GDL):
-            warnings.warn("EE check not passed: [{}, {}]".format(item, attr))
+            msg = "EE check not passed: [{}, {}]".format(item, attr)
+            warnings.warn(msg)
             return None
 
         if (item, attr) not in self.conditions["Equation"].sym_of_attr:  # No symbolic representation, initialize one.
+            # if attr == "MeasureOfAngle":
+            #     sym = symbols(attr_GDL["sym"] + "_" + "".join(item).lower())
+            # else:
+            #     sym = symbols(attr_GDL["sym"] + "_" + "".join(item).lower(), positive=True)
             sym = symbols(attr_GDL["sym"] + "_" + "".join(item).lower(), positive=True)
             self.conditions["Equation"].sym_of_attr[(item, attr)] = sym  # add sym
             self.conditions["Equation"].value_of_sym[sym] = None  # init symbol's value
@@ -378,7 +377,8 @@ class Problem:
 
     """-----------------------Auxiliary function----------------------"""
 
-    def applied(self, theorem_name):
+    def applied(self, theorem_name, time_consuming):
         """Execute when theorem successful applied. Save theorem name and update step."""
         self.theorems_applied.append(theorem_name)
+        self.time_consuming.append(time_consuming)
         Condition.step += 1

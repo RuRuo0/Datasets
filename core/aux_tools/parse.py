@@ -99,32 +99,24 @@ class FLParser:
         relations = predicate_GDL["Relation"]  # parse relation
         for item in relations:
             name, para, para_len = FLParser._parse_one_predicate(item)
-            parsed_GDL["Relation"][name] = {
-                "vars": [i for i in range(len(para))],
-                "para_structure": para_len,
-                "ee_check": FLParser._parse_ee_check(relations[item]["ee_check"], para),
-                "fv_check_format": FLParser._parse_fv_check_format(relations[item]["fv_check_format"]),
-                "multi": FLParser._parse_multi(relations[item]["multi"], para),
-                "extend": FLParser._parse_extend(relations[item]["extend"], para)
-            }
-            # if "fv_check_format" in relations[item]:
-            #     parsed_GDL["Relation"][name] = {
-            #         "vars": [i for i in range(len(para))],
-            #         "para_structure": para_len,
-            #         "ee_check": FLParser._parse_ee_check(relations[item]["ee_check"], para),
-            #         "fv_check_format": FLParser._parse_fv_check_format(relations[item]["fv_check_format"]),
-            #         "multi": FLParser._parse_multi(relations[item]["multi"], para),
-            #         "extend": FLParser._parse_extend(relations[item]["extend"], para)
-            #     }
-            # else:
-            #     parsed_GDL["Relation"][name] = {
-            #         "vars": [i for i in range(len(para))],
-            #         "para_structure": para_len,
-            #         "ee_check": FLParser._parse_ee_check(relations[item]["ee_check"], para),
-            #         "fv_check_mutex": FLParser._parse_fv_check_mutex(relations[item]["fv_check_mutex"], para),
-            #         "multi": FLParser._parse_multi(relations[item]["multi"], para),
-            #         "extend": FLParser._parse_extend(relations[item]["extend"], para)
-            #     }
+            if "fv_check_format" in relations[item]:
+                parsed_GDL["Relation"][name] = {
+                    "vars": [i for i in range(len(para))],
+                    "para_structure": para_len,
+                    "ee_check": FLParser._parse_ee_check(relations[item]["ee_check"], para),
+                    "fv_check_format": FLParser._parse_fv_check_format(relations[item]["fv_check_format"]),
+                    "multi": FLParser._parse_multi(relations[item]["multi"], para),
+                    "extend": FLParser._parse_extend(relations[item]["extend"], para)
+                }
+            else:
+                parsed_GDL["Relation"][name] = {
+                    "vars": [i for i in range(len(para))],
+                    "para_structure": para_len,
+                    "ee_check": FLParser._parse_ee_check(relations[item]["ee_check"], para),
+                    "fv_check_mutex": FLParser._parse_fv_check_mutex(relations[item]["fv_check_mutex"], para),
+                    "multi": FLParser._parse_multi(relations[item]["multi"], para),
+                    "extend": FLParser._parse_extend(relations[item]["extend"], para)
+                }
 
         attributions = predicate_GDL["Attribution"]  # parse attribution
         for item in attributions:
@@ -529,7 +521,7 @@ class EqParser:
         """Parse the expression in <str> form into <symbolic> form"""
         i = 0
         expr_list = []
-        for j in range(1, len(expr)):  # to list
+        for j in range(len(expr)):  # to list
             if expr[j] in EqParser.operator:
                 if i < j:
                     expr_list.append(expr[i:j])

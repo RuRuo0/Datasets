@@ -18,9 +18,7 @@ class Solver:
         s_start_time = time.time()  # timing
         self.problem = Problem(self.predicate_GDL, FLParser.parse_problem(problem_CDL))  # init problem
         self.solve_equations()  # Solve the equations after initialization
-        self.problem.applied("init_problem")  # save applied theorem and update step
-        self.problem.goal["solving_msg"].append(
-            "\033[32mInit problem and first solving\033[0m:{:.6f}s".format(time.time() - s_start_time))
+        self.problem.applied("init_problem", time.time() - s_start_time)  # save applied theorem and update step
 
     def greedy_search(self, orientation="forward"):
         """Breadth-first search."""
@@ -74,6 +72,8 @@ class Solver:
                     for predicate, para in b_conclusion:
                         if predicate != "Equal":  # logic relation
                             item = [r_items[i][r_vars.index(j)] for j in para]
+                            # if theorem_name == "similar_judgment_aa":
+                            #     print(item)
                             update = self.problem.add(predicate, tuple(item), r_ids[i], theorem_name) or update
                         else:  # algebra relation
                             equation = EqParser.get_equation_from_tree(self.problem, para, True, r_items[i])
@@ -81,9 +81,7 @@ class Solver:
                                 update = self.problem.add("Equation", equation, r_ids[i], theorem_name) or update
         if update:  # add theorem to problem theorem_applied list when update
             self.solve_equations()
-            self.problem.applied(theorem_name)  # save applied theorem and update step
-            self.problem.goal["solving_msg"].append(
-                "\033[32mApply theorem <{}>\033[0m:{:.6f}s".format(theorem_name, time.time() - s_start_time))
+            self.problem.applied(theorem_name, time.time() - s_start_time)  # save applied theorem and update step
 
         return update
 
@@ -226,7 +224,12 @@ class Solver:
     @staticmethod
     @func_set_timeout(3)
     def solve(equations):
-        return solve(equations)
+        try:
+            result = solve(equations)
+        except NotImplementedError:
+            return []
+        else:
+            return result
 
     def solve_equations(self):
         """Solve the equation contained in the <Problem.condition["Equation"].equations>."""
@@ -306,14 +309,13 @@ class Solver:
         except FunctionTimedOut:
             warnings.warn("Timeout when solve: {}".format(equations))
         else:
-            if len(solved_result) > 0 and isinstance(solved_result, list):  # Multi answer. Choose the first.
-                solved_result = solved_result[0]
-
-            if len(solved_result) > 0 and \
-                    target_sym in solved_result.keys() and \
-                    (isinstance(solved_result[target_sym], Float) or
-                     isinstance(solved_result[target_sym], Integer)):
-                return float(solved_result[target_sym]), list(set(premise))  # Only return real solution.
+            if len(solved_result) > 0:
+                if isinstance(solved_result, list):  # multi answer, choose the first.
+                    solved_result = solved_result[0]
+                if target_sym in solved_result.keys() and \
+                        (isinstance(solved_result[target_sym], Float) or
+                         isinstance(solved_result[target_sym], Integer)):
+                    return float(solved_result[target_sym]), list(set(premise))  # only return real solution.
 
         return None, None  # unsolvable
 
@@ -366,7 +368,11 @@ class Solver:
                     try:
                         value = Solver.solve(eq.equations[key])[0]  # solve equations
                     except FunctionTimedOut:
-                        warnings.warn("Timeout when solve: {}".format(eq.equations[key]))
+                        msg = "Timeout when solve: {}".format(eq.equations[key])
+                        warnings.warn(msg)
+                    except IndexError:
+                        msg = "Sympy can't solve: {}".format(eq.equations[key])
+                        warnings.warn(msg)
                     else:
                         premise = [eq.get_id_by_item[key]]
                         for sym in key.free_symbols:
@@ -590,5 +596,4 @@ class Solver:
                 self.problem.goal["theorem"] = self.problem.conditions[self.problem.goal["item"]].theorems[
                     self.problem.goal["answer"]]
 
-        self.problem.goal["solving_msg"].append(
-            "\033[32mChecking goal\033[0m:{:.6f}s".format(time.time() - s_start_time))
+        self.problem.applied("Checking goal", time.time() - s_start_time)

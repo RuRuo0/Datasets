@@ -1,5 +1,5 @@
 # FormalGeo-SAT
-[![Version](https://img.shields.io/badge/Version-1.2.0-brightgreen)](https://github.com/BitSecret/FormalGeo-SAT)
+[![Version](https://img.shields.io/badge/Version-1.1.0-brightgreen)](https://github.com/BitSecret/FormalGeo-SAT)
 [![License](https://img.shields.io/badge/License-MIT-green)](https://opensource.org/licenses/MIT)
 [![Survey](https://img.shields.io/badge/Survey-FormalGeo-blue)](https://github.com/BitSecret/FormalGeo-SAT)  
 Formal representation and solving for SAT-level Euclidean plane geometry problems.  
@@ -147,6 +147,6 @@ python main.py
 
 ## Acknowledge
 Thanks for the support of the **[Geometric Cognitive Reasoning Group of Shanghai University (GCRG, SHU)](https://euclidesprobationem.github.io/)**.   
-Thank you for participating in the dataset annotation. They are: [XiaokaiZhang](https://github.com/BitSecret), [YimingHe](https://github.com/748978460), [JiaZou](https://github.com/PersonNoName), [NaZhu](https://github.com/RuRuo0), [YanjunGuo](https://github.com/g826796047), [QikeHuang](https://github.com/huangqaqqk), [XiaoxiaoJin](https://github.com/J1372628520), [YangLi](https://github.com/leeyoung628), [ChenyangMao](https://github.com/shadymcy), [ChanghaoWu](https://github.com/changhaowu), [DengfengYue](https://github.com/331368068), [FangzhenZhu](https://github.com/pigsquare), [ZheZhu](https://github.com/BitSecret)   
+Thank you for participating in the dataset annotation. They are: [XiaokaiZhang](https://github.com/BitSecret), [YimingHe](https://github.com/748978460), [JiaZou](https://github.com/PersonNoName), [NaZhu](https://github.com/RuRuo0), [YanjunGuo](https://github.com/g826796047), [QikeHuang](https://github.com/huangqaqqk), [XiaoxiaoJin](https://github.com/J1372628520), [YangLi](https://github.com/leeyoung628), [ChenyangMao](https://github.com/shadymcy), [ChanghaoWu](https://github.com/changhaowu), [DengfengYue](https://github.com/331368068), [FangzhenZhu](https://github.com/pigsquare), [ZheZhu](https://github.com/BitSecret).   
 Thank you for the work of the original datasets, which are: [GeoS](https://geometry.allenai.org/), [Geometry3K](https://github.com/lupantech/InterGPS), [GeoQA](https://github.com/chen-judge/GeoQA), [GeometryQA](https://github.com/doublebite/Sequence-to-General-tree/), [GeoQA+](https://github.com/SCNU203/GeoQA-Plus), [UniGeo](https://github.com/chen-judge/UniGeo).  
 Please contact with the author (xiaokaizhang1999@163.com) if you encounter any issues.  

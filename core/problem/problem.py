@@ -35,7 +35,7 @@ class Problem:
         for predicate, item in problem_CDL["parsed_cdl"]["construction_cdl"]:
             self.add(predicate, tuple(item), (-1,), "prerequisite")
 
-        self.construction_init()  # start construction
+        self._construction_init()  # start construction
 
         for predicate, item in problem_CDL["parsed_cdl"]["text_and_image_cdl"]:  # conditions of text_and_image
             if predicate == "Equal":
@@ -43,23 +43,9 @@ class Problem:
             else:
                 self.add(predicate, tuple(item), (-1,), "prerequisite")
 
-        self.goal = {"type": problem_CDL["parsed_cdl"]["goal"]["type"]}  # set goal
-        if self.goal["type"] == "value":
-            self.goal["item"] = EqParser.get_expr_from_tree(self, problem_CDL["parsed_cdl"]["goal"]["item"][1][0])
-            self.goal["answer"] = EqParser.get_expr_from_tree(self, problem_CDL["parsed_cdl"]["goal"]["answer"])
-        elif self.goal["type"] == "equal":
-            self.goal["item"] = EqParser.get_equation_from_tree(self, problem_CDL["parsed_cdl"]["goal"]["item"][1])
-            self.goal["answer"] = 0
-        else:  # relation type
-            self.goal["item"] = problem_CDL["parsed_cdl"]["goal"]["item"]
-            self.goal["answer"] = tuple(problem_CDL["parsed_cdl"]["goal"]["answer"])
-        self.goal["solved"] = False
-        self.goal["solved_answer"] = None
-        self.goal["premise"] = None
-        self.goal["theorem"] = None
-        self.goal["solving_msg"] = []
+        self.goal = Goal(self, problem_CDL["parsed_cdl"]["goal"])    # set goal
 
-    def construction_init(self):
+    def _construction_init(self):
         """
         1.Iterative build all polygon.
         Polygon(BC*A), Polygon(A*CD)  ==>  Polygon(ABCD)

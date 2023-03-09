@@ -1,3 +1,7 @@
+from core.aux_tools.parse import EqParser
+from core.aux_tools.utils import rough_equal
+
+
 class Condition:
     id = 0
     step = 0
@@ -49,7 +53,7 @@ class Condition:
 
 class VariableLengthCondition(Condition):
     def __init__(self, name):
-        super(VariableLengthCondition, self).__init__(name)
+        super().__init__(name)
 
     def __call__(self, variables):
         """generate a function to get items, premise and variables when reasoning"""
@@ -65,7 +69,7 @@ class VariableLengthCondition(Condition):
 
 class FixedLengthCondition(Condition):
     def __init__(self, name):
-        super(FixedLengthCondition, self).__init__(name)
+        super().__init__(name)
 
     def __call__(self, variables):
         """generate a function to get items, premise and variables when reasoning"""
@@ -80,23 +84,24 @@ class Equation(Condition):
 
     def __init__(self, name, attr_GDL):
         """
-        self.sym_of_attr = {}  # Symbolic representation of attribute values.
-        >> {(('A', 'B'), 'Length'): l_ab}
-        self.attr_of_sym = {}  # Attribute values of symbol.
-        >> {l_ab: [[('A', 'B'), ('B', 'A')], 'Length']}
-        self.value_of_sym = {}  # Value of symbol.
-        >> {l_ab: 3.0}
-        self.equations = {}    # Simplified equations. Replace sym with value of symbol's value already known.
-        >> {a + b - c: a -5}    # Suppose that b, c already known and b - c = -5.
-        self.solved = True   # If not solved, then solve.
+        >> self.sym_of_attr    # Symbolic representation of attribute values.
+        {(('A', 'B'), 'Length'): l_ab}
+        >> self.attr_of_sym    # Attribute values of symbol.
+        {l_ab: [[('A', 'B'), ('B', 'A')], 'Length']}
+        >> self.value_of_sym    # Value of symbol.
+        {l_ab: 3.0}
+        >> self.equations    # Simplified equations. Replace sym with value of symbol's value already known.
+        {a + b - c: a -5}    # Suppose that b, c already known and b - c = -5.
+        >> self.solved   # If not solved, then solve.
+        True
         """
-        super(Equation, self).__init__(name)
+        super().__init__(name)
         self.attr_GDL = attr_GDL
-        self.solved = True
         self.sym_of_attr = {}
         self.attr_of_sym = {}
         self.value_of_sym = {}
         self.equations = {}
+        self.solved = True
 
     def add(self, item, premise, theorem):
         """reload add() of parent class <Condition> to adapt equation's operation."""
@@ -107,3 +112,47 @@ class Equation(Condition):
             self.solved = False
             return added, _id
         return False, None
+
+
+class Goal:
+
+    def __init__(self, problem, problem_goal_CDL):
+        """
+        example:
+        1. self.type == 'value'
+        self.item: ll_ac
+        self.answer: 1
+        2. self.type == 'equal'
+        self.item: ll_ac - 1
+        self.answer: 0
+        3. self.type == 'relation'
+        self.item: 'Parallel'
+        self.answer: ('A', 'B', 'C')
+        """
+        self.type = problem_goal_CDL["type"]
+
+        if self.type == "value":
+            self.item = EqParser.get_expr_from_tree(problem, problem_goal_CDL["item"][1][0])
+            self.answer = EqParser.get_expr_from_tree(problem, problem_goal_CDL["answer"])
+        elif self.type == "equal":
+            self.item = EqParser.get_equation_from_tree(problem, problem_goal_CDL["item"][1])
+            self.answer = 0
+        else:
+            self.item = problem_goal_CDL["item"]
+            self.answer = tuple(problem_goal_CDL["answer"])
+
+        self.solved = False
+        self.solved_answer = None
+        self.premise = None
+        self.theorem = None
+
+    def set_solved_answer(self, solved_answer, premise, theorem):
+        if self.type in ["value", "equal"]:
+            if rough_equal(solved_answer, self.answer):
+                self.solved = True
+        else:
+            self.solved = True
+
+        self.solved_answer = solved_answer
+        self.premise = premise
+        self.theorem = theorem

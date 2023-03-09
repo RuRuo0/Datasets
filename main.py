@@ -1,7 +1,7 @@
 import warnings
-
 from core.solver.solver import Solver
-from core.aux_tools.utils import load_json, save_json, show, simple_show, save_step_msg, save_solution_tree
+from core.aux_tools.utils import load_json, save_json
+from core.aux_tools.output import show, simple_show, save_step_msg, save_solution_tree
 import os
 predicate_GDL_file_path = "data/preset/predicate_GDL.json"
 theorem_GDL_file_path = "data/preset/theorem_GDL.json"
@@ -36,8 +36,10 @@ def run(save_GDL=False, save_CDL=False, auto=False):
 
     if auto:
         warnings.filterwarnings("ignore")
-        start_pid = int(input("start_pid:"))
-        end_pid = int(input("end_pid:"))
+        # start_pid = int(input("start_pid:"))
+        # end_pid = int(input("end_pid:"))
+        start_pid = 1584
+        end_pid = 1864
         for filename in os.listdir("data/formalized-problems"):
             if start_pid <= int(filename.split(".")[0]) <= end_pid:
                 try:
@@ -70,4 +72,3 @@ def run(save_GDL=False, save_CDL=False, auto=False):
 
 if __name__ == '__main__':
     run(save_GDL=False, save_CDL=False, auto=False)
-

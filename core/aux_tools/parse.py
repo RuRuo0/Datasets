@@ -451,7 +451,7 @@ class EqParser:
         sin(pi*m_zxy/180)
         """
         if not isinstance(tree, list):  # expr
-            return EqParser.parse_expr(problem, tree)
+            return EqParser._parse_expr(problem, tree)
         if tree[0] in problem.predicate_GDL["Attribution"]:  # attr
             if not replaced:
                 return problem.get_sym_of_attr(tuple(tree[1]), tree[0])
@@ -507,7 +507,11 @@ class EqParser:
 
     @staticmethod
     def get_equation_from_tree(problem, tree, replaced=False, letters=None):
-        """Called by function <get_expr_from_tree>."""
+        """
+        Trans expr_tree to symbolic algebraic expression..
+        >> get_expr_from_tree(problem, ['Equal', [['Length', ['Z', 'X']], '2*x-14']])
+        - 2.0*f_x + l_zx + 14.0
+        """
         left_expr = EqParser.get_expr_from_tree(problem, tree[0], replaced, letters)
         if left_expr is None:
             return None
@@ -517,7 +521,7 @@ class EqParser:
         return left_expr - right_expr
 
     @staticmethod
-    def parse_expr(problem, expr):
+    def _parse_expr(problem, expr):
         """Parse the expression in <str> form into <symbolic> form"""
         i = 0
         expr_list = []
@@ -647,18 +651,18 @@ class InverseParser:
         Called by <inverse_parse_logic_to_cdl>.
         """
         if predicate == "Equation":
-            return InverseParser.inverse_parse_equation(item, problem.conditions["Equation"])
+            return InverseParser._inverse_parse_equation(item, problem.conditions["Equation"])
         else:
-            return InverseParser.inverse_parse_logic(predicate, item, problem.predicate_GDL)
+            return InverseParser._inverse_parse_logic(predicate, item, problem.predicate_GDL)
 
     @staticmethod
-    def inverse_parse_logic(predicate, item, predicate_GDL):
+    def _inverse_parse_logic(predicate, item, predicate_GDL):
         """
         Inverse parse conditions of logic form to CDL.
         Called by <inverse_parse_one>.
-        >> inverse_parse_one(Shape, ('A', 'B', 'C'), predicate_GDL)
+        >> _inverse_parse_one(Shape, ('A', 'B', 'C'), predicate_GDL)
         'Shape(ABC)'
-        >> inverse_parse_one(Parallel, ('A', 'B', 'C', 'D'), predicate_GDL)
+        >> _inverse_parse_one(Parallel, ('A', 'B', 'C', 'D'), predicate_GDL)
         'Parallel(AB,CD)'
         """
         if predicate in predicate_GDL["Construction"] or \
@@ -676,13 +680,13 @@ class InverseParser:
             return predicate + "(" + ",".join(result) + ")"
 
     @staticmethod
-    def inverse_parse_equation(item, equation):
+    def _inverse_parse_equation(item, equation):
         """
         Inverse parse conditions of logic form to CDL.
         Called by <inverse_parse_one>.
-        >> inverse_parse_one(ll_ac - ll_cd, equation)
+        >> _inverse_parse_one(ll_ac - ll_cd, equation)
         'Equation(ll_ac-ll_cd)'
-        >> inverse_parse_one(ll_ac - 1, equation)
+        >> _inverse_parse_one(ll_ac - 1, equation)
         'LengthOfLine(AC)'
         """
 

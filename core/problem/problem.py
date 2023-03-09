@@ -19,7 +19,7 @@ class Problem:
         self.predicate_GDL = predicate_GDL  # problem predicate definition
 
         self.theorems_applied = []  # applied theorem list
-        self.time_consuming = []    # applied theorem time-consuming
+        self.time_consuming = []  # applied theorem time-consuming
 
         self.conditions = {}  # init conditions
         for predicate in self.predicate_GDL["Construction"]:
@@ -39,11 +39,17 @@ class Problem:
 
         for predicate, item in problem_CDL["parsed_cdl"]["text_and_image_cdl"]:  # conditions of text_and_image
             if predicate == "Equal":
-                self.add("Equation", EqParser.get_equation_from_tree(self, item), (-1,), "prerequisite")
+                eq = EqParser.get_equation_from_tree(self, item)
+                if eq is not None:
+                    self.add("Equation", eq, (-1,), "prerequisite")
+                else:
+                    msg = "Got None when generate equation from tree: {}. " \
+                          "The possible reason is that the EE check not passed.".format(item)
+                    warnings.warn(msg)
             else:
                 self.add(predicate, tuple(item), (-1,), "prerequisite")
 
-        self.goal = Goal(self, problem_CDL["parsed_cdl"]["goal"])    # set goal
+        self.goal = Goal(self, problem_CDL["parsed_cdl"]["goal"])  # set goal
 
     def _construction_init(self):
         """
@@ -78,12 +84,12 @@ class Problem:
                     new_polygon.append(polygon1[len(polygon1) - 1])  # the second same point
 
                     # make sure new_polygon is polygon and no ring
-                    if 2 < len(new_polygon) == len(set(new_polygon)) and\
+                    if 2 < len(new_polygon) == len(set(new_polygon)) and \
                             tuple(new_polygon) not in self.conditions["Polygon"].get_id_by_item:
                         premise = [self.conditions["Polygon"].get_id_by_item[polygon1],
                                    self.conditions["Polygon"].get_id_by_item[polygon2]]
 
-                        coll_update = True    # remove collinear points
+                        coll_update = True  # remove collinear points
                         while coll_update:
                             coll_update = False
                             for i in range(len(new_polygon)):
@@ -163,7 +169,7 @@ class Problem:
         :param theorem: <str>, theorem of item.
         :return: True or False
         """
-        if predicate == "Equation":    # Equation
+        if predicate == "Equation":  # Equation
             if item == 0:  # Sometimes identical equation appear
                 msg = "FV check not passed: [{}, {}, {}, {}]".format(predicate, item, premise, theorem)
                 warnings.warn(msg)
@@ -172,7 +178,7 @@ class Problem:
             if added:
                 return True
             return False
-        elif predicate in self.predicate_GDL["Construction"]:    # Construction
+        elif predicate in self.predicate_GDL["Construction"]:  # Construction
             if len(item) != len(set(item)):
                 msg = "FV check not passed: [{}, {}, {}, {}]".format(predicate, item, premise, theorem)
                 warnings.warn(msg)

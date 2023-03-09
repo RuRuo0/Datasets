@@ -788,6 +788,23 @@ class EquationKiller:
         target_eq = target_sym - target_expr
         equations = [target_sym - target_expr]  # unsolved equation list and its premise
         premises = [premise]
+
+        sym_set = target_eq.free_symbols
+
+        while True:    # select relevant equation from problem.conditions["Equation"].equations
+            length_before_added = len(equations)
+            for sym in sym_set:
+                for raw_eq in equation.equations:
+                    if sym in equation.equations[raw_eq] and equation.equations[raw_eq] not in equations:
+                        equations.append(equation.equations[raw_eq])
+                        premises.append([equation.get_id_by_item[raw_eq]])
+                        for raw_sym in raw_eq.free_symbols:
+                            if equation.value_of_sym[raw_sym] is not None:
+                                premises[-1].append(equation.get_id_by_item[raw_sym - equation.value_of_sym[raw_sym]])
+
+            if length_before_added == len(equations):
+                break
+
         for raw_eq in equation.equations:
             equations.append(equation.equations[raw_eq])
             premises.append([equation.get_id_by_item[raw_eq]])

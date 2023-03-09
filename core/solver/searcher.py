@@ -11,6 +11,7 @@ class BackwardTree:
 
 
 class Searcher:
+    """后面开始开发后，注意暴搜与AI的统一接口，特别是结点选择部分"""
 
     def __init__(self, predicate_GDL, theorem_GDL):
         self.solver = Solver(predicate_GDL, theorem_GDL)

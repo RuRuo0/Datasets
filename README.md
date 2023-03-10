@@ -38,6 +38,12 @@ So we designed a plane geometry formalization system and provided a python imple
 4.Generate information about problem-solving process, such as solution hypertree, CDL of every step, Directed acyclic graph of applied theorem, etc. These interfaces provide verification information for correctness of problem-solving and facilitate AI-assisted reasoning.
 
 ## Version
+#### FormalGeo-SAT 1.2 (Mar 10, 2023) 
+**predicates/theorems**: 50/75  
+**problems**: 300  
+**new functions**:  
+1.A new equations-solving method has been released, which can save 65% solving-time but only lose a little success rate.
+
 #### FormalGeo-SAT 1.1 (Feb 28, 2023) 
 **predicates/theorems**: 49/83  
 **problems**: 119  

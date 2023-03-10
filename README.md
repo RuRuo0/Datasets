@@ -22,9 +22,9 @@ Formal representation and solving for SAT-level Euclidean plane geometry problem
 | Worker | WorkLoad | PID | Skip | Submitted |
 |:---:|:---:|:---:|:---:|:---:|
 | XiaokaiZhang | 107 | 1584-1864 | / | √ |
-| NaZhu | 70 | 1865-2026 | / | × |
+| NaZhu | 70 | 1865-2026 | / | √ |
 | JiaZou | 70 | 2028-2233 | / | × |
-| YimingHe | 70 | 2236-2396 | / | × |
+| YimingHe | 70 | 2236-2396 | / | √ |
 
 ## Introduction
 Formal mathematics plays an important role in mathematical research, especially with the deepening of mathematical research, the theory becomes obscure and difficult to understand, and computer aided verification is more needed. Geometry involves the literal description and image representation of knowledge, the unity of algebraic calculation and symbolic reasoning, so it is difficult to formalize.  

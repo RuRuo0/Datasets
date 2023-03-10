@@ -604,7 +604,7 @@ class EquationKiller:
                         new_syms = set()
                         for new_eq in new_eqs:
                             new_syms |= new_eq.free_symbols
-                        if len(new_syms) == len(sym_group_item):    # remove the equation without affecting the number of unknowns
+                        if len(new_syms) == len(sym_group_item):  # the number of syms not change
                             eq_group_item = new_eqs
                             sym_group_item = new_syms
                         if len(eq_group_item) == len(sym_group_item):

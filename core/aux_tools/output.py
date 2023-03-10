@@ -12,9 +12,9 @@ def simple_show(problem):
         time_sum += t
     printed = "pid\t{}\tcorrect_answer\t{}\t".format(problem.problem_CDL["id"], str(problem.goal.answer))
     if problem.goal.solved:
-        printed += "solved\t\033[32mTrue\033[0m\t"
+        printed += "solved:\033[32mTrue\t1\033[0m\t"
     else:
-        printed += ", solved\t\033[31mFalse\033[0m\t"
+        printed += "solved:\033[31mFalse\t0\033[0m\t"
     printed += "solved_answer\t{}\t".format(str(problem.goal.solved_answer))
     if time_sum < 2:
         printed += "spend(s)\t{:.6f}".format(time_sum)

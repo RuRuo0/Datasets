@@ -56,8 +56,10 @@ def run(save_GDL=False, save_CDL=False, auto=False):
                 else:
                     pass
     else:
+        # warnings.filterwarnings("ignore")
         while True:
             pid = int(input("pid:"))
+            # pid = 1584
             if pid == -1:
                 break
             problem_CDL = load_json("data/formalized-problems/{}.json".format(pid))

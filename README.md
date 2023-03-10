@@ -1,12 +1,12 @@
 # FormalGeo-SAT
-[![Version](https://img.shields.io/badge/Version-1.1.0-brightgreen)](https://github.com/BitSecret/FormalGeo-SAT)
+[![Version](https://img.shields.io/badge/Version-1.2.0-brightgreen)](https://github.com/BitSecret/FormalGeo-SAT)
 [![License](https://img.shields.io/badge/License-MIT-green)](https://opensource.org/licenses/MIT)
 [![Survey](https://img.shields.io/badge/Survey-FormalGeo-blue)](https://github.com/BitSecret/FormalGeo-SAT)  
 Formal representation and solving for SAT-level Euclidean plane geometry problems.  
 **FormalGeo-SAT** is an extended version of **[FormalGeo](https://github.com/BitSecret/FormalGeo)**. It supports solving more types of plane geometric problems.
 
 ## Cowork
-#### Week 1 (230313): form 2023-03-13 to 2023-03-19.
+#### Week 2 (230313): form 2023-03-13 to 2023-03-19.
 **Attention:** Annotate problems in directory **Geometry3k-Triangle**.  
 
 | Worker | WorkLoad | PID | Skip | Submitted |

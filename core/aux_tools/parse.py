@@ -99,12 +99,12 @@ class FLParser:
         relations = predicate_GDL["Relation"]  # parse relation
         for item in relations:
             name, para, para_len = FLParser._parse_one_predicate(item)
-            if "fv_check_format" in relations[item]:
+            if "fv_check" in relations[item]:
                 parsed_GDL["Relation"][name] = {
                     "vars": [i for i in range(len(para))],
                     "para_structure": para_len,
                     "ee_check": FLParser._parse_ee_check(relations[item]["ee_check"], para),
-                    "fv_check_format": FLParser._parse_fv_check_format(relations[item]["fv_check_format"]),
+                    "fv_check": FLParser._parse_fv_check(relations[item]["fv_check"]),
                     "multi": FLParser._parse_multi(relations[item]["multi"], para),
                     "extend": FLParser._parse_extend(relations[item]["extend"], para)
                 }
@@ -113,7 +113,6 @@ class FLParser:
                     "vars": [i for i in range(len(para))],
                     "para_structure": para_len,
                     "ee_check": FLParser._parse_ee_check(relations[item]["ee_check"], para),
-                    "fv_check_mutex": FLParser._parse_fv_check_mutex(relations[item]["fv_check_mutex"], para),
                     "multi": FLParser._parse_multi(relations[item]["multi"], para),
                     "extend": FLParser._parse_extend(relations[item]["extend"], para)
                 }
@@ -121,12 +120,21 @@ class FLParser:
         attributions = predicate_GDL["Attribution"]  # parse attribution
         for item in attributions:
             name, para, _ = FLParser._parse_one_predicate(item)
-            parsed_GDL["Attribution"][name] = {
-                "vars": [i for i in range(len(para))],
-                "ee_check": FLParser._parse_ee_check(attributions[item]["ee_check"], para),
-                "sym": attributions[item]["sym"],
-                "multi": FLParser._parse_multi(attributions[item]["multi"], para)
-            }
+            if "fv_check" in attributions[item]:
+                parsed_GDL["Attribution"][name] = {
+                    "vars": [i for i in range(len(para))],
+                    "ee_check": FLParser._parse_ee_check(attributions[item]["ee_check"], para),
+                    "fv_check": FLParser._parse_fv_check(attributions[item]["fv_check"]),
+                    "sym": attributions[item]["sym"],
+                    "multi": FLParser._parse_multi(attributions[item]["multi"], para)
+                }
+            else:
+                parsed_GDL["Attribution"][name] = {
+                    "vars": [i for i in range(len(para))],
+                    "ee_check": FLParser._parse_ee_check(attributions[item]["ee_check"], para),
+                    "sym": attributions[item]["sym"],
+                    "multi": FLParser._parse_multi(attributions[item]["multi"], para)
+                }
 
         return parsed_GDL
 
@@ -139,9 +147,9 @@ class FLParser:
         return results
 
     @staticmethod
-    def _parse_fv_check_format(fv_check_format):
+    def _parse_fv_check(fv_check):
         results = []
-        for item in fv_check_format:
+        for item in fv_check:
             checked = []
             result = []
             for i in item.replace(",", ""):
@@ -454,10 +462,10 @@ class EqParser:
             return EqParser._parse_expr(problem, tree)
         if tree[0] in problem.predicate_GDL["Attribution"]:  # attr
             if not replaced:
-                return problem.get_sym_of_attr(tuple(tree[1]), tree[0])
+                return problem.get_sym_of_attr(tree[0], tuple(tree[1]))
             else:
                 replaced_item = [letters[i] for i in tree[1]]
-                return problem.get_sym_of_attr(tuple(replaced_item), tree[0])
+                return problem.get_sym_of_attr(tree[0], tuple(replaced_item))
 
         if tree[0] in ["Add", "Mul"]:  # operate
             expr_list = []
@@ -581,7 +589,7 @@ class EqParser:
                     elif operator_unit == "~":  # 只有unit为"~"，才能到达这个判断，表示表达式处理完成
                         break
             else:  # symbol or number
-                unit = problem.get_sym_of_attr((unit,), "Free") if unit.isalpha() else float(unit)
+                unit = problem.get_sym_of_attr("Free", (unit,)) if unit.isalpha() else float(unit)
                 expr_stack.append(unit)
                 i = i + 1
 

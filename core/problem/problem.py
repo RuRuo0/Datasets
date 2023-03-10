@@ -110,7 +110,7 @@ class Problem:
         for angle in angles:
             if (angle, "MeasureOfAngle") in self.conditions["Equation"].sym_of_attr:
                 continue
-            sym = self.get_sym_of_attr(angle, "MeasureOfAngle")
+            sym = self.get_sym_of_attr("MeasureOfAngle", angle)
 
             a, v, b = angle
             a_points = []  # Points collinear with a and on the same side with a
@@ -169,20 +169,24 @@ class Problem:
         :param theorem: <str>, theorem of item.
         :return: True or False
         """
-        if predicate == "Equation":  # Equation
-            if item == 0:  # Sometimes identical equation appear
-                msg = "FV check not passed: [{}, {}, {}, {}]".format(predicate, item, premise, theorem)
-                warnings.warn(msg)
-                return False
-            added, _ = self.conditions["Equation"].add(item, premise, theorem)
-            if added:
-                return True
+        if predicate not in self.conditions:    # predicate must define
+            e_msg = "Predicate '{}' not defined in current predicate GDL.".format(predicate)
+            raise Exception(e_msg)
+
+        if not self.ee_check(predicate, item):    # ee check
+            w_msg = "EE check not passed: [{}, {}, {}, {}]".format(predicate, item, premise, theorem)
+            warnings.warn(w_msg)
             return False
+
+        if not self.fv_check(predicate, item):    # fv check
+            w_msg = "FV check not passed: [{}, {}, {}, {}]".format(predicate, item, premise, theorem)
+            warnings.warn(w_msg)
+            return False
+
+        if predicate == "Equation":  # Equation
+            added, _ = self.conditions["Equation"].add(item, premise, theorem)
+            return added
         elif predicate in self.predicate_GDL["Construction"]:  # Construction
-            if len(item) != len(set(item)):
-                msg = "FV check not passed: [{}, {}, {}, {}]".format(predicate, item, premise, theorem)
-                warnings.warn(msg)
-                return False
             if predicate == "Polygon":
                 added, _id = self.conditions["Polygon"].add(item, tuple(premise), theorem)
                 if added:  # if added successful
@@ -228,23 +232,8 @@ class Problem:
             item_GDL = self.predicate_GDL["BasicEntity"][predicate]
         elif predicate in self.predicate_GDL["Entity"]:
             item_GDL = self.predicate_GDL["Entity"][predicate]
-        elif predicate in self.predicate_GDL["Relation"]:
-            item_GDL = self.predicate_GDL["Relation"][predicate]
-            if not Problem.item_fv_check(item, item_GDL):  # FV check
-                msg = "FV check not passed: [{}, {}, {}, {}]".format(predicate, item, premise, theorem)
-                warnings.warn(msg)
-                return False
         else:
-            raise Exception(
-                "<PredicateNotDefined> Predicate '{}': not defined in current predicate GDL.".format(
-                    predicate
-                )
-            )
-
-        if not self.ee_check(item, item_GDL):  # EE check
-            msg = "EE check not passed: [{}, {}, {}, {}]".format(predicate, item, premise, theorem)
-            warnings.warn(msg)
-            return False
+            item_GDL = self.predicate_GDL["Relation"][predicate]
 
         added, _id = self.conditions[predicate].add(item, premise, theorem)
         if added:
@@ -265,51 +254,108 @@ class Problem:
 
         return False
 
-    """------------Format Control for <entity relation>------------"""
-
-    def ee_check(self, item, item_GDL):
+    def ee_check(self, predicate, item):
         """Entity Existence check."""
-        for name, para in item_GDL["ee_check"]:  # EE check
+        if predicate == "Equation" or \
+                predicate in self.predicate_GDL["Construction"] or \
+                predicate in self.predicate_GDL["BasicEntity"]:
+            return True
+
+        if predicate in self.predicate_GDL["Entity"]:
+            item_GDL = self.predicate_GDL["Entity"][predicate]
+        elif predicate in self.predicate_GDL["Relation"]:
+            item_GDL = self.predicate_GDL["Relation"][predicate]
+        elif predicate == "Free":
+            return True
+        else:
+            item_GDL = self.predicate_GDL["Attribution"][predicate]
+
+        for name, para in item_GDL["ee_check"]:
             if tuple([item[i] for i in para]) not in self.conditions[name].get_id_by_item:
                 return False
         return True
 
-    @staticmethod
-    def item_fv_check(item, item_GDL):
-        """
-        Format Validity check.
-        Just <Relation> needed.
-        """
-        if len(item) != len(item_GDL["vars"]):
+    def fv_check(self, predicate, item):
+        """Format Validity check."""
+        if predicate == "Equation":
+            if item is None or item == 0:
+                return False
+            return True
+        elif predicate in self.predicate_GDL["Construction"]:
+            return len(item) == len(set(item))    # default check 1: mutex points
+        elif predicate in self.predicate_GDL["BasicEntity"]:
+            if len(item) != len(set(item)):    # default check 1: mutex points
+                return False
+            item_GDL = self.predicate_GDL["BasicEntity"][predicate]
+        elif predicate in self.predicate_GDL["Entity"]:
+            if len(item) != len(set(item)):    # default check 1: mutex points
+                return False
+            item_GDL = self.predicate_GDL["Entity"][predicate]
+        elif predicate in self.predicate_GDL["Relation"]:
+            item_GDL = self.predicate_GDL["Relation"][predicate]
+        elif predicate == "Free":
+            return True
+        else:
+            item_GDL = self.predicate_GDL["Attribution"][predicate]
+
+        if len(item) != len(item_GDL["vars"]):    # default check 2: correct para len
             return False
 
-        if "fv_check_format" in item_GDL:
+        if "fv_check" in item_GDL:    # fv check, more stringent than default check 3
             checked = []
             result = []
             for i in item:
                 if i not in checked:
                     checked.append(i)
                 result.append(str(checked.index(i)))
-            if "".join(result) in item_GDL["fv_check_format"]:
+            if "".join(result) in item_GDL["fv_check"]:
                 return True
             return False
-        else:
-            for mutex in item_GDL["fv_check_mutex"]:
-                first = "".join([item[i] for i in mutex[0]])
-                second = "".join([item[i] for i in mutex[1]])
-                if first == second:
-                    return False
-            return True
 
-    """-----------Format Control for <algebraic relation>-----------"""
+        if len(item_GDL["ee_check"]) > 1:  # default check 3: para of the same type need to be different
+            predicate_to_vars = {}
+            for predicate, p_var in item_GDL["ee_check"]:
+                if predicate not in self.predicate_GDL["Construction"]:    # check only BasicEntity
+                    if predicate not in predicate_to_vars:
+                        predicate_to_vars[predicate] = [p_var]
+                    else:
+                        predicate_to_vars[predicate].append(p_var)
+            for predicate in predicate_to_vars:
+                if len(predicate_to_vars[predicate]) >= 2:
+                    mutex_sets = []
+                    for p_var in predicate_to_vars[predicate]:    # mutex_item
+                        mutex_sets.append([item[i] for i in p_var])
+                    mutex_sets_multi = []
+                    for mutex_item in mutex_sets:    # mutex_item multi representation
+                        mutex_sets_multi.append(tuple(mutex_item))
+                        for multi_var in self.predicate_GDL["BasicEntity"][predicate]["multi"]:
+                            mutex_sets_multi.append(tuple([mutex_item[i] for i in multi_var]))
+                    if len(mutex_sets_multi) != len(set(mutex_sets_multi)):
+                        return False
 
-    def get_sym_of_attr(self, item, attr):
+        return True
+
+    def get_sym_of_attr(self, attr, item):    # 这里参数换了位置，注意更改其他的
         """
         Get symbolic representation of item's attribution.
-        :param item: tuple, such as ('A', 'B')
         :param attr: attr's name, such as LengthOfLine
+        :param item: tuple, such as ('A', 'B')
         :return: sym
         """
+        if attr != "Free" and attr not in self.predicate_GDL["Attribution"]:   # attr must define
+            e_msg = "Attribution '{}' not defined in current predicate GDL.".format(attr)
+            raise Exception(e_msg)
+
+        if not self.ee_check(attr, item):    # ee check
+            msg = "EE check not passed: [{}, {}]".format(attr, item)
+            warnings.warn(msg)
+            return None
+
+        if not self.fv_check(attr, item):    # fv check
+            msg = "FV check not passed: [{}, {}]".format(attr, item)
+            warnings.warn(msg)
+            return None
+
         if attr == "Free":
             if (item, attr) not in self.conditions["Equation"].sym_of_attr:
                 sym = symbols("f_" + "".join(item).lower())
@@ -318,19 +364,8 @@ class Problem:
                 self.conditions["Equation"].attr_of_sym[sym] = [[item], attr]  # add attr
                 return sym
             return self.conditions["Equation"].sym_of_attr[(item, attr)]
-        elif attr in self.predicate_GDL["Attribution"]:
-            attr_GDL = self.predicate_GDL["Attribution"][attr]
-        else:
-            raise Exception(
-                "<AttributionNotDefined> Attribution '{}': not defined in current predicate GDL.".format(
-                    attr
-                )
-            )
 
-        if not self.ee_check(item, attr_GDL):
-            msg = "EE check not passed: [{}, {}]".format(item, attr)
-            warnings.warn(msg)
-            return None
+        attr_GDL = self.predicate_GDL["Attribution"][attr]
 
         if (item, attr) not in self.conditions["Equation"].sym_of_attr:  # No symbolic representation, initialize one.
             # if attr == "MeasureOfAngle":
@@ -366,8 +401,6 @@ class Problem:
             added, _id = self.conditions["Equation"].add(sym - value, premise, theorem)
             return added
         return False
-
-    """-----------------------Auxiliary function----------------------"""
 
     def applied(self, theorem_name, time_consuming):
         """Execute when theorem successful applied. Save theorem name and update step."""

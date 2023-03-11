@@ -33,6 +33,7 @@ def run(save_GDL=False, save_CDL=False, auto=False):
                     load_json(theorem_GDL_file_path))
     if save_GDL:
         save_parsed_gdl(solver)
+        exit(0)
 
     if auto:
         warnings.filterwarnings("ignore")
@@ -68,7 +69,7 @@ def run(save_GDL=False, save_CDL=False, auto=False):
             problem_CDL = load_json("data/formalized-problems/{}.json".format(pid))
             solver.load_problem(problem_CDL)
             for theorem in problem_CDL["theorem_seqs"]:
-                solver.apply_theorem(theorem)
+                solver.old_apply_theorem(theorem)
             solver.check_goal()
             show(solver.problem)
             if save_CDL:
@@ -76,4 +77,4 @@ def run(save_GDL=False, save_CDL=False, auto=False):
 
 
 if __name__ == '__main__':
-    run(save_GDL=False, save_CDL=False, auto=True)
+    run(save_GDL=True, save_CDL=False, auto=False)

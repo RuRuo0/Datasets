@@ -6,23 +6,28 @@ from core.aux_tools.parse import EqParser
 
 
 class Problem:
-    def __init__(self, predicate_GDL, problem_CDL):
-        """
-        initialize a problem.
-        :param predicate_GDL: parsed predicate_GDL.
-        :param problem_CDL: parsed problem_CDL
-        """
+    def __init__(self, predicate_GDL):
+        """Initialize a problem."""
         Condition.id = 0  # init step and id
         Condition.step = 0
-
-        self.problem_CDL = problem_CDL  # parsed problem msg, it will be further decomposed
         self.predicate_GDL = predicate_GDL  # problem predicate definition
 
-        self.theorems_applied = []  # applied theorem list
-        self.time_consuming = []  # applied theorem time-consuming
+        self.loaded = False  # if loaded
 
-        self.conditions = {}  # init conditions
-        for predicate in self.predicate_GDL["Construction"]:
+        self.conditions = None  # conditions
+
+        self.theorems_applied = None  # applied theorem list
+        self.time_consuming = None  # applied theorem time-consuming
+
+        self.problem_CDL = None  # parsed problem msg, it will be further decomposed
+        self.goal = None    # goal
+
+    def load_problem(self, problem_CDL):
+        """Load problem through problem CDL."""
+        self.problem_CDL = problem_CDL
+
+        self.conditions = {}
+        for predicate in self.predicate_GDL["Construction"]:    # init conditions
             self.conditions[predicate] = VariableLengthCondition(predicate)
         for predicate in self.predicate_GDL["BasicEntity"]:
             self.conditions[predicate] = FixedLengthCondition(predicate)
@@ -39,17 +44,30 @@ class Problem:
 
         for predicate, item in problem_CDL["parsed_cdl"]["text_and_image_cdl"]:  # conditions of text_and_image
             if predicate == "Equal":
-                eq = EqParser.get_equation_from_tree(self, item)
-                if eq is not None:
-                    self.add("Equation", eq, (-1,), "prerequisite")
-                else:
-                    msg = "Got None when generate equation from tree: {}. " \
-                          "The possible reason is that the EE check not passed.".format(item)
-                    warnings.warn(msg)
+                self.add("Equation", EqParser.get_equation_from_tree(self, item), (-1,), "prerequisite")
             else:
                 self.add(predicate, tuple(item), (-1,), "prerequisite")
 
-        self.goal = Goal(self, problem_CDL["parsed_cdl"]["goal"])  # set goal
+        self.theorems_applied = []   # init
+        self.time_consuming = []
+
+        problem_goal_CDL = problem_CDL["parsed_cdl"]["goal"]  # set goal
+        self.goal = {"type": problem_goal_CDL["type"]}
+        if self.goal["type"] == "value":
+            self.goal["item"] = EqParser.get_expr_from_tree(self, problem_goal_CDL["item"][1][0])
+            self.goal["answer"] = EqParser.get_expr_from_tree(self, problem_goal_CDL["answer"])
+        elif self.goal["type"] == "equal":
+            self.goal["item"] = EqParser.get_equation_from_tree(self, problem_goal_CDL["item"][1])
+            self.goal["answer"] = 0
+        else:
+            self.goal["item"] = problem_goal_CDL["item"]
+            self.goal["answer"] = tuple(problem_goal_CDL["answer"])
+        self.goal["solved"] = False
+        self.goal["solved_answer"] = None
+        self.goal["premise"] = None
+        self.goal["theorem"] = None
+
+        self.loaded = True
 
     def _construction_init(self):
         """
@@ -159,7 +177,7 @@ class Problem:
                 self.conditions["Equation"].sym_of_attr[(same_angle, "MeasureOfAngle")] = sym
             self.conditions["Equation"].attr_of_sym[sym] = [same_angles, "MeasureOfAngle"]
 
-    def add(self, predicate, item, premise, theorem):
+    def add(self, predicate, item, premise, theorem, force=False):
         """
         Add item to condition of specific predicate category.
         Also consider condition expansion and equation construction.
@@ -167,29 +185,32 @@ class Problem:
         :param item: <tuple> or equation.
         :param premise: tuple of <int>, premise of item.
         :param theorem: <str>, theorem of item.
-        :return: True or False
+        :param force: <bool>, set to True when you are confident that the format of item must be legal.
+        :return: True or False.
         """
-        if predicate not in self.conditions:    # predicate must define
+        if not self.loaded:   # problem must be loaded
+            e_msg = "Problem not loaded. Please run <load_problem> before run other functions."
+            raise Exception(e_msg)
+        if predicate not in self.conditions:  # predicate must be defined
             e_msg = "Predicate '{}' not defined in current predicate GDL.".format(predicate)
             raise Exception(e_msg)
 
-        if not self.ee_check(predicate, item):    # ee check
-            w_msg = "EE check not passed: [{}, {}, {}, {}]".format(predicate, item, premise, theorem)
-            warnings.warn(w_msg)
-            return False
+        if not force:
+            if not self.ee_check(predicate, item):    # ee check
+                w_msg = "EE check not passed: [{}, {}, {}, {}]".format(predicate, item, premise, theorem)
+                warnings.warn(w_msg)
+                return False
+            if not self.fv_check(predicate, item):    # fv check
+                w_msg = "FV check not passed: [{}, {}, {}, {}]".format(predicate, item, premise, theorem)
+                warnings.warn(w_msg)
+                return False
 
-        if not self.fv_check(predicate, item):    # fv check
-            w_msg = "FV check not passed: [{}, {}, {}, {}]".format(predicate, item, premise, theorem)
-            warnings.warn(w_msg)
-            return False
-
-        if predicate == "Equation":  # Equation
-            added, _ = self.conditions["Equation"].add(item, premise, theorem)
-            return added
-        elif predicate in self.predicate_GDL["Construction"]:  # Construction
-            if predicate == "Polygon":
-                added, _id = self.conditions["Polygon"].add(item, tuple(premise), theorem)
-                if added:  # if added successful
+        added, _id = self.conditions[predicate].add(item, tuple(premise), theorem)
+        if added:
+            if predicate == "Equation":  # Equation
+                return True
+            elif predicate in self.predicate_GDL["Construction"]:  # Construction
+                if predicate == "Polygon":
                     l = len(item)
                     for bias in range(l):  # multi & extend
                         self.conditions["Polygon"].add(tuple([item[(i + bias) % l] for i in range(l)]),
@@ -200,10 +221,7 @@ class Problem:
                         self.add("Triangle", item, (_id,), "extended")
                     elif l == 4:
                         self.add("Quadrilateral", item, (_id,), "extended")
-                    return True
-            elif predicate == "Collinear":  # Construction predicate: Collinear
-                added, _id = self.conditions["Collinear"].add(item, premise, theorem)
-                if added:
+                elif predicate == "Collinear":  # Construction predicate: Collinear
                     for l in range(3, len(item) + 1):  # extend collinear
                         for extended_item in combinations(item, l):
                             self.conditions["Collinear"].add(extended_item, (_id,), "extended")
@@ -212,10 +230,7 @@ class Problem:
                                 self.add("Angle", extended_item, (_id,), "extended")
                                 self.add("Angle", extended_item[::-1], (_id,), "extended")
                     self.add("Line", (item[0], item[-1]), (_id,), "extended")
-                    return True
-            else:  # Construction predicate: Cocircular
-                added, _id = self.conditions["Cocircular"].add(item, premise, theorem)
-                if added:
+                else:  # Construction predicate: Cocircular
                     for l in range(3, len(item) + 1):  # extend collinear
                         for extended_item in combinations(item, l):
                             self.conditions["Collinear"].add(extended_item, (_id,), "extended")
@@ -226,17 +241,14 @@ class Problem:
                     for i in range(len(item) - 1):  # extend line
                         for j in range(i + 1, len(item)):
                             self.add("Line", (item[i], item[j]), (_id,), "extended")
-                    return True
-            return False
-        elif predicate in self.predicate_GDL["BasicEntity"]:
-            item_GDL = self.predicate_GDL["BasicEntity"][predicate]
-        elif predicate in self.predicate_GDL["Entity"]:
-            item_GDL = self.predicate_GDL["Entity"][predicate]
-        else:
-            item_GDL = self.predicate_GDL["Relation"][predicate]
+                return True
+            elif predicate in self.predicate_GDL["BasicEntity"]:
+                item_GDL = self.predicate_GDL["BasicEntity"][predicate]
+            elif predicate in self.predicate_GDL["Entity"]:
+                item_GDL = self.predicate_GDL["Entity"][predicate]
+            else:
+                item_GDL = self.predicate_GDL["Relation"][predicate]
 
-        added, _id = self.conditions[predicate].add(item, premise, theorem)
-        if added:
             for para_list in item_GDL["multi"]:  # multi
                 para = []
                 for i in para_list:
@@ -250,12 +262,40 @@ class Problem:
                         self.add("Equation", eq, (_id,), "extended")
                 else:
                     self.add(extended_predicate, tuple(item[i] for i in para), (_id,), "extended")
+
             return True
 
         return False
 
+    def can_add(self, predicate, item, premise, theorem):
+        """
+        Test add item.
+        :param predicate: Construction, Entity, Relation or Equation.
+        :param item: <tuple> or equation.
+        :param premise: tuple of <int>, premise of item.
+        :param theorem: <str>, theorem of item.
+        :return: True or False.
+        """
+        if not self.loaded:   # problem must be loaded
+            e_msg = "Problem not loaded. Please run <load_problem> before run other functions."
+            raise Exception(e_msg)
+        if predicate not in self.conditions:  # predicate must be defined
+            e_msg = "Predicate '{}' not defined in current predicate GDL.".format(predicate)
+            raise Exception(e_msg)
+        if not self.ee_check(predicate, item):  # ee check
+            w_msg = "EE check not passed: [{}, {}, {}, {}]".format(predicate, item, premise, theorem)
+            warnings.warn(w_msg)
+            return False
+        if not self.fv_check(predicate, item):  # fv check
+            w_msg = "FV check not passed: [{}, {}, {}, {}]".format(predicate, item, premise, theorem)
+            warnings.warn(w_msg)
+            return False
+
+        return self.conditions[predicate].can_add(item)
+
     def ee_check(self, predicate, item):
         """Entity Existence check."""
+
         if predicate == "Equation" or \
                 predicate in self.predicate_GDL["Construction"] or \
                 predicate in self.predicate_GDL["BasicEntity"]:
@@ -277,6 +317,7 @@ class Problem:
 
     def fv_check(self, predicate, item):
         """Format Validity check."""
+
         if predicate == "Equation":
             if item is None or item == 0:
                 return False
@@ -335,22 +376,21 @@ class Problem:
 
         return True
 
-    def get_sym_of_attr(self, attr, item):    # 这里参数换了位置，注意更改其他的
+    def get_sym_of_attr(self, attr, item):
         """
         Get symbolic representation of item's attribution.
         :param attr: attr's name, such as LengthOfLine
         :param item: tuple, such as ('A', 'B')
         :return: sym
         """
+
         if attr != "Free" and attr not in self.predicate_GDL["Attribution"]:   # attr must define
             e_msg = "Attribution '{}' not defined in current predicate GDL.".format(attr)
             raise Exception(e_msg)
-
         if not self.ee_check(attr, item):    # ee check
             msg = "EE check not passed: [{}, {}]".format(attr, item)
             warnings.warn(msg)
             return None
-
         if not self.fv_check(attr, item):    # fv check
             msg = "FV check not passed: [{}, {}]".format(attr, item)
             warnings.warn(msg)
@@ -394,16 +434,21 @@ class Problem:
         :param sym: <symbol>
         :param value: <float>
         :param premise: tuple of <int>, premise of getting value.
-        :param theorem: <str>, theorem of getting value.
+        :param theorem: <str>, theorem of getting value. such as 'solved_eq'.
         """
+
         if self.conditions["Equation"].value_of_sym[sym] is None:
             self.conditions["Equation"].value_of_sym[sym] = value
             added, _id = self.conditions["Equation"].add(sym - value, premise, theorem)
             return added
         return False
 
-    def applied(self, theorem_name, time_consuming):
+    def applied(self, theorem_name, theorem_para, time_consuming):
         """Execute when theorem successful applied. Save theorem name and update step."""
-        self.theorems_applied.append(theorem_name)
-        self.time_consuming.append(time_consuming)
-        Condition.step += 1
+
+        if theorem_name == "checking_goal":
+            self.time_consuming[-1] += time_consuming
+        else:
+            self.theorems_applied.append([theorem_name, theorem_para])
+            self.time_consuming.append(time_consuming)
+            Condition.step += 1

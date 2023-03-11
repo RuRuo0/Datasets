@@ -649,9 +649,9 @@ class EquationKiller:
         # print(difficult_mini_eq_sets)
         # print()
 
-        checked_eq_sets = []
-        unchecked_eq_sets = [{eq} for eq in equations]
-        unchecked_eq_syms = [eq.free_symbols for eq in equations]
+        # checked_eq_sets = []
+        # unchecked_eq_sets = [{eq} for eq in equations]
+        # unchecked_eq_syms = [eq.free_symbols for eq in equations]
         # print(unchecked_eq_sets)
         # print(unchecked_eq_syms)
         # print()
@@ -857,7 +857,7 @@ class EquationKiller:
         # print("solve_equations out")
 
     @staticmethod
-    def solve_target(problem, target_expr, hard_mode=False, trh=7):
+    def solve_target(problem, target_expr, hard_mode=True, trh=20):
         """
         Solve target_expr in the constraint of problem.conditions["Equation"].
         :param problem: Instance of class <Problem>.

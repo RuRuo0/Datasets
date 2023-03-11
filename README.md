@@ -40,7 +40,7 @@ So we designed a plane geometry formalization system and provided a python imple
 ## Version
 #### FormalGeo-SAT 1.2 (Mar 10, 2023) 
 **predicates/theorems**: 50/75  
-**problems**: 300  
+**problems**: 249  
 **new functions**:  
 1.A new equations-solving method has been released, which can save 65% solving-time but only lose a little success rate.
 

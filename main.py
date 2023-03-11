@@ -36,14 +36,13 @@ def run(save_GDL=False, save_CDL=False, auto=False):
 
     if auto:
         warnings.filterwarnings("ignore")
-        # start_pid = int(input("start_pid:"))
-        # end_pid = int(input("end_pid:"))
-        start_pid = 1584
-        end_pid = 1864
+        unsolved = []
         for filename in os.listdir("data/formalized-problems"):
-            if start_pid <= int(filename.split(".")[0]) <= end_pid:
-                try:
-                    problem_CDL = load_json("data/formalized-problems/{}".format(filename))
+            problem_CDL = load_json("data/formalized-problems/{}".format(filename))
+            try:
+                if "notes" in problem_CDL:
+                    unsolved.append("{}\t{}".format(problem_CDL["problem_id"], problem_CDL["notes"]))
+                else:
                     solver.load_problem(problem_CDL)
                     for theorem in problem_CDL["theorem_seqs"]:
                         solver.apply_theorem(theorem)
@@ -51,15 +50,19 @@ def run(save_GDL=False, save_CDL=False, auto=False):
                     simple_show(solver.problem)
                     if save_CDL:
                         save_parsed_cdl(solver)
-                except Exception as e:
-                    print("Raise Exception in problem {}.".format(filename.split(".")[0]))
-                else:
-                    pass
+            except Exception as e:
+                msg = "Raise Exception {} in problem {}.".format(e, filename.split(".")[0])
+                print(msg)
+                unsolved.append("{}\t{}".format(problem_CDL["problem_id"], msg))
+            else:
+                pass
+
+        print()
+        for n in unsolved:
+            print(n)
     else:
-        # warnings.filterwarnings("ignore")
         while True:
             pid = int(input("pid:"))
-            # pid = 1584
             if pid == -1:
                 break
             problem_CDL = load_json("data/formalized-problems/{}.json".format(pid))

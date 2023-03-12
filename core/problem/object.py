@@ -1,14 +1,17 @@
+from sympy import Eq
+
+
 class Condition:
     id = 0
     step = 0
 
     def __init__(self, name):
         """A set of conditions."""
-        self.name = name    # <str>, one-to-one correspondence with predicate.
-        self.get_item_by_id = {}   # <dict>, key:id, value:item
-        self.get_id_by_item = {}   # <dict>, key:item, value: id
-        self.premises = {}   # <dict>, key:item or id, value: premise
-        self.theorems = {}   # <dict>, key:item or id, value: theorem
+        self.name = name  # <str>, one-to-one correspondence with predicate.
+        self.get_item_by_id = {}  # <dict>, key:id, value:item
+        self.get_id_by_item = {}  # <dict>, key:item, value: id
+        self.premises = {}  # <dict>, key:item or id, value: premise
+        self.theorems = {}  # <dict>, key:item or id, value: theorem
         self.step_msg = {}  # {0:[1, 2], 1:[3, 4]}
 
     def add(self, item, premise, theorem):
@@ -24,7 +27,6 @@ class Condition:
             self.get_item_by_id[_id] = item  # item
             Condition.id += 1
             self.get_id_by_item[item] = _id  # id
-            premise = tuple(set(premise))    # fast repeat removal
             self.premises[item] = premise  # premise
             self.premises[_id] = premise
             self.theorems[item] = theorem  # theorem
@@ -86,20 +88,21 @@ class Equation(Condition):
     def __init__(self, name, attr_GDL):
         super().__init__(name)
         self.attr_GDL = attr_GDL
-        self.sym_of_attr = {}   # Symbolic representation of attribute values. Example: {(('A', 'B'), 'Length'): l_ab}
-        self.attr_of_sym = {}   # Attribute values of symbol. Example: {l_ab: ['Length', [('A', 'B'), ('B', 'A')]]}
-        self.value_of_sym = {}   # Value of symbol. Example: {l_ab: 3.0}
-        self.equations = {}   # Simplified equations. Example: {a + b - c: a -5}
-        self.solved = True   # Whether the equation been solved. If not solved, then solve.
+        self.sym_of_attr = {}  # Sym of attribute values. Example: {('LengthOfLine', ('A', 'B')): l_ab}
+        self.attr_of_sym = {}  # Attr of symbol. Example: {l_ab: ['LengthOfLine', (('A', 'B'))]}
+        self.value_of_sym = {}  # Value of symbol. Example: {l_ab: 3.0}
+        self.equations = {}  # Simplified equations. Example: {a + b - c: a -5}
+        self.solved = True  # Whether the equation been solved. If not solved, then solve.
 
     def add(self, item, premise, theorem):
         """Reload super().add() to adapt equation's operation."""
+
         if self.can_add(item):
             added, _id = super().add(item, premise, theorem)
             if theorem != "solve_eq":
                 self.equations[item] = item
-            else:
                 self.solved = False
+
             return added, _id
         return False, None
 

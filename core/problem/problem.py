@@ -3,28 +3,30 @@ from core.problem.object import *
 from itertools import combinations
 from sympy import symbols
 from core.aux_tools.parse import EqParser
+import copy
 
 
 class Problem:
     def __init__(self, predicate_GDL):
         """Initialize a problem."""
-        Condition.id = 0  # init step and id
-        Condition.step = 0
         self.predicate_GDL = predicate_GDL  # problem predicate definition
-
-        self.loaded = False  # if loaded
+        self.problem_CDL = None  # parsed problem msg
 
         self.conditions = None  # conditions
 
         self.theorems_applied = None  # applied theorem list
         self.time_consuming = None  # applied theorem time-consuming
 
-        self.problem_CDL = None  # parsed problem msg, it will be further decomposed
         self.goal = None    # goal
 
-    def load_problem(self, problem_CDL):
+        self.loaded = False  # if loaded
+
+    def load_problem_from_cdl(self, problem_CDL):
         """Load problem through problem CDL."""
-        self.problem_CDL = problem_CDL
+        Condition.id = 0  # init step and id
+        Condition.step = 0
+        self.problem_CDL = problem_CDL  # cdl
+        self.loaded = True
 
         self.conditions = {}
         for predicate in self.predicate_GDL["Construction"]:    # init conditions
@@ -67,7 +69,17 @@ class Problem:
         self.goal["premise"] = None
         self.goal["theorem"] = None
 
+    def load_problem_by_copy(self, problem):
+        """Load problem through copying existing problem."""
+        Condition.id = 0  # init step and id
+        Condition.step = 0
+        self.problem_CDL = problem.problem_CDL  # cdl
         self.loaded = True
+
+        self.conditions = copy.deepcopy(problem.conditions)    # copy
+        self.theorems_applied = copy.deepcopy(problem.theorems_applied)
+        self.time_consuming = copy.deepcopy(problem.time_consuming)
+        self.goal = copy.deepcopy(problem.goal)
 
     def _construction_init(self):
         """
@@ -126,7 +138,7 @@ class Problem:
                 collinear.append(tuple(item))
         angles = list(self.conditions["Angle"].get_id_by_item)
         for angle in angles:
-            if (angle, "MeasureOfAngle") in self.conditions["Equation"].sym_of_attr:
+            if ("MeasureOfAngle", angle) in self.conditions["Equation"].sym_of_attr:
                 continue
             sym = self.get_sym_of_attr("MeasureOfAngle", angle)
 
@@ -174,8 +186,8 @@ class Problem:
 
             for same_angle in same_angles:
                 self.add("Angle", same_angle, (self.conditions["Angle"].get_id_by_item[angle],), "extended")
-                self.conditions["Equation"].sym_of_attr[(same_angle, "MeasureOfAngle")] = sym
-            self.conditions["Equation"].attr_of_sym[sym] = [same_angles, "MeasureOfAngle"]
+                self.conditions["Equation"].sym_of_attr[("MeasureOfAngle", same_angle)] = sym
+            self.conditions["Equation"].attr_of_sym[sym] = ("MeasureOfAngle", tuple(same_angles))
 
     def add(self, predicate, item, premise, theorem, force=False):
         """
@@ -249,19 +261,19 @@ class Problem:
             else:
                 item_GDL = self.predicate_GDL["Relation"][predicate]
 
+            predicate_vars = item_GDL["vars"]
+            letters = {}  # used for vars-letters replacement
+            for i in range(len(predicate_vars)):
+                letters[predicate_vars[i]] = item[i]
+
             for para_list in item_GDL["multi"]:  # multi
-                para = []
-                for i in para_list:
-                    para.append(item[i])
-                self.conditions[predicate].add(tuple(para), (_id,), "extended")
+                self.conditions[predicate].add(tuple(letters[i] for i in para_list), (_id,), "extended")
 
             for extended_predicate, para in item_GDL["extend"]:  # extended
                 if extended_predicate == "Equal":
-                    eq = EqParser.get_equation_from_tree(self, para, True, item)
-                    if eq is not None:
-                        self.add("Equation", eq, (_id,), "extended")
+                    self.add("Equation", EqParser.get_equation_from_tree(self, para, True, letters), (_id,), "extended")
                 else:
-                    self.add(extended_predicate, tuple(item[i] for i in para), (_id,), "extended")
+                    self.add(extended_predicate, tuple(letters[i] for i in para), (_id,), "extended")
 
             return True
 
@@ -310,8 +322,12 @@ class Problem:
         else:
             item_GDL = self.predicate_GDL["Attribution"][predicate]
 
+        letters = {}  # used for vars-letters replacement
+        for i in range(len(item_GDL["vars"])):
+            letters[item_GDL["vars"][i]] = item[i]
+
         for name, para in item_GDL["ee_check"]:
-            if tuple([item[i] for i in para]) not in self.conditions[name].get_id_by_item:
+            if tuple(letters[i] for i in para) not in self.conditions[name].get_id_by_item:
                 return False
         return True
 
@@ -361,18 +377,32 @@ class Problem:
                         predicate_to_vars[predicate] = [p_var]
                     else:
                         predicate_to_vars[predicate].append(p_var)
+
+            letters = {}  # used for vars-letters replacement
+            for i in range(len(item_GDL["vars"])):
+                letters[item_GDL["vars"][i]] = item[i]
+
             for predicate in predicate_to_vars:
-                if len(predicate_to_vars[predicate]) >= 2:
-                    mutex_sets = []
-                    for p_var in predicate_to_vars[predicate]:    # mutex_item
-                        mutex_sets.append([item[i] for i in p_var])
-                    mutex_sets_multi = []
-                    for mutex_item in mutex_sets:    # mutex_item multi representation
-                        mutex_sets_multi.append(tuple(mutex_item))
-                        for multi_var in self.predicate_GDL["BasicEntity"][predicate]["multi"]:
-                            mutex_sets_multi.append(tuple([mutex_item[i] for i in multi_var]))
-                    if len(mutex_sets_multi) != len(set(mutex_sets_multi)):
-                        return False
+                if len(predicate_to_vars[predicate]) == 1:
+                    continue
+
+                mutex_sets = []  # mutex_item
+                for p_var in predicate_to_vars[predicate]:
+                    mutex_sets.append([letters[i] for i in p_var])
+
+                mutex_sets_multi = []  # mutex_item multi representation
+                for mutex_item in mutex_sets:
+                    mutex_sets_multi.append(tuple(mutex_item))
+
+                    mutex_item_letters = {}  # used for vars-letters replacement
+                    for i in range(len(self.predicate_GDL["BasicEntity"][predicate]["vars"])):
+                        mutex_item_letters[self.predicate_GDL["BasicEntity"][predicate]["vars"][i]] = mutex_item[i]
+
+                    for multi_var in self.predicate_GDL["BasicEntity"][predicate]["multi"]:
+                        mutex_sets_multi.append(tuple(mutex_item_letters[i] for i in multi_var))
+
+                if len(mutex_sets_multi) != len(set(mutex_sets_multi)):
+                    return False
 
         return True
 
@@ -397,35 +427,40 @@ class Problem:
             return None
 
         if attr == "Free":
-            if (item, attr) not in self.conditions["Equation"].sym_of_attr:
+            if (attr, item) not in self.conditions["Equation"].sym_of_attr:
                 sym = symbols("f_" + "".join(item).lower())
-                self.conditions["Equation"].sym_of_attr[(item, attr)] = sym  # add sym
+                self.conditions["Equation"].sym_of_attr[(attr, item)] = sym  # add sym
                 self.conditions["Equation"].value_of_sym[sym] = None  # init symbol's value
-                self.conditions["Equation"].attr_of_sym[sym] = [[item], attr]  # add attr
+                self.conditions["Equation"].attr_of_sym[sym] = (attr, (item,))  # add attr
                 return sym
-            return self.conditions["Equation"].sym_of_attr[(item, attr)]
+            return self.conditions["Equation"].sym_of_attr[(attr, item)]
 
         attr_GDL = self.predicate_GDL["Attribution"][attr]
 
-        if (item, attr) not in self.conditions["Equation"].sym_of_attr:  # No symbolic representation, initialize one.
+        if (attr, item) not in self.conditions["Equation"].sym_of_attr:  # No symbolic representation, initialize one.
             # if attr == "MeasureOfAngle":
             #     sym = symbols(attr_GDL["sym"] + "_" + "".join(item).lower())
             # else:
             #     sym = symbols(attr_GDL["sym"] + "_" + "".join(item).lower(), positive=True)
             sym = symbols(attr_GDL["sym"] + "_" + "".join(item).lower(), positive=True)
-            self.conditions["Equation"].sym_of_attr[(item, attr)] = sym  # add sym
+            self.conditions["Equation"].sym_of_attr[(attr, item)] = sym  # add sym
             self.conditions["Equation"].value_of_sym[sym] = None  # init symbol's value
 
             extend_items = [item]
+
+            letters = {}  # used for vars-letters replacement
+            for i in range(len(attr_GDL["vars"])):
+                letters[attr_GDL["vars"][i]] = item[i]
+
             for multi in attr_GDL["multi"]:
-                extended_item = [item[i] for i in multi]  # extend item
-                self.conditions["Equation"].sym_of_attr[(tuple(extended_item), attr)] = sym  # multi representation
+                extended_item = [letters[i] for i in multi]  # extend item
+                self.conditions["Equation"].sym_of_attr[(attr, tuple(extended_item))] = sym  # multi representation
                 extend_items.append(tuple(extended_item))
 
-            self.conditions["Equation"].attr_of_sym[sym] = [extend_items, attr]  # add attr
+            self.conditions["Equation"].attr_of_sym[sym] = (attr, tuple(extend_items))  # add attr
             return sym
 
-        return self.conditions["Equation"].sym_of_attr[(item, attr)]
+        return self.conditions["Equation"].sym_of_attr[(attr, item)]
 
     def set_value_of_sym(self, sym, value, premise, theorem):
         """
@@ -443,12 +478,16 @@ class Problem:
             return added
         return False
 
-    def applied(self, theorem_name, theorem_para, time_consuming):
-        """Execute when theorem successful applied. Save theorem name and update step."""
+    def applied(self, theorem, time_consuming):
+        """
+        Execute when theorem successful applied. Save theorem name and update step.
+        :param theorem: theorem name and para, <str>
+        :param time_consuming: <float>
+        """
 
-        if theorem_name == "checking_goal":
+        if theorem == "check_goal":
             self.time_consuming[-1] += time_consuming
         else:
-            self.theorems_applied.append([theorem_name, theorem_para])
+            self.theorems_applied.append(theorem)
             self.time_consuming.append(time_consuming)
             Condition.step += 1

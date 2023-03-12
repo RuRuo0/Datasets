@@ -10,12 +10,12 @@ def simple_show(problem):
     time_sum = 0
     for t in problem.time_consuming:
         time_sum += t
-    printed = "pid\t{}\tcorrect_answer\t{}\t".format(problem.problem_CDL["id"], str(problem.goal.answer))
-    if problem.goal.solved:
+    printed = "pid\t{}\tcorrect_answer\t{}\t".format(problem.problem_CDL["id"], str(problem.goal["answer"]))
+    if problem.goal["solved"]:
         printed += "solved:\033[32mTrue\t1\033[0m\t"
     else:
         printed += "solved:\033[31mFalse\t0\033[0m\t"
-    printed += "solved_answer\t{}\t".format(str(problem.goal.solved_answer))
+    printed += "solved_answer\t{}\t".format(str(problem.goal["solved_answer"]))
     if time_sum < 2:
         printed += "spend(s)\t{:.6f}".format(time_sum)
     else:
@@ -55,8 +55,8 @@ def show(problem):
 
     used_id = []
     get_item_by_id, _ = InverseParser.solution_msg(problem)
-    if problem.goal.solved:
-        used_id = list(set(problem.goal.premise))
+    if problem.goal["solved"]:
+        used_id = list(set(problem.goal["premise"]))
         while True:
             len_used_id = len(used_id)
             for _id in used_id:
@@ -79,7 +79,7 @@ def show(problem):
             print(predicate + ":")
             for _id in condition.get_item_by_id:
                 if _id not in used_id:
-                    print("{0:^6}{1:^15}{2:^25}{3:^6}".format(
+                    print("{0:^6}{1:^25}{2:^25}{3:^6}".format(
                         _id,
                         ",".join(condition.get_item_by_id[_id]),
                         str(condition.premises[_id]),
@@ -96,14 +96,14 @@ def show(problem):
 
     print("\033[33mSymbols and Value:\033[0m")
     equation = problem.conditions["Equation"]
-    for attr in equation.sym_of_attr.keys():
+    for attr in equation.sym_of_attr:
         sym = equation.sym_of_attr[attr]
         if isinstance(equation.value_of_sym[sym], Float):
-            print("{0:^25}{1:^15}{2:^15.3f}".format(
+            print("{0:^50}{1:^15}{2:^20.3f}".format(
                 str(("".join(attr[0]), attr[1])), str(sym), equation.value_of_sym[sym])
             )
         else:
-            print("{0:^25}{1:^15}{2:^15}".format(
+            print("{0:^50}{1:^15}{2:^20}".format(
                 str(("".join(attr[0]), attr[1])), str(sym), str(equation.value_of_sym[sym]))
             )
 
@@ -128,19 +128,19 @@ def show(problem):
 
     # goal
     print("\033[34mSolving Goal:\033[0m")
-    print("type: {}".format(str(problem.goal.type)))
-    print("goal: {}".format(str(problem.goal.item)))
-    print("answer: {}".format(str(problem.goal.answer)))
+    print("type: {}".format(str(problem.goal["type"])))
+    print("goal: {}".format(str(problem.goal["item"])))
+    print("answer: {}".format(str(problem.goal["answer"])))
 
-    if problem.goal.solved:
+    if problem.goal["solved"]:
         print("solved: \033[32mTrue\033[0m")
     else:
         print("solved: \033[31mFalse\033[0m")
 
-    if problem.goal.solved_answer is not None:
-        print("solved_answer: {}".format(str(problem.goal.solved_answer)))
-        print("premise: {}".format(str(problem.goal.premise)))
-        print("theorem: {}".format(str(problem.goal.theorem)))
+    if problem.goal["solved_answer"] is not None:
+        print("solved_answer: {}".format(str(problem.goal["solved_answer"])))
+        print("premise: {}".format(str(problem.goal["premise"])))
+        print("theorem: {}".format(str(problem.goal["theorem"])))
     print()
 
     print("\033[34mTime consumption:\033[0m")
@@ -154,8 +154,9 @@ def save_solution_tree(problem, path):
     get_item_by_id, _ = InverseParser.solution_msg(problem)  # gather conditions msg before generate CDL.
 
     st_dot = Digraph(name=str(problem.problem_CDL["id"]))  # Tree
-    nodes = []    # list of cdl or theorem.
-    edges = {}      # node(cdl or theorem): node(cdl or theorem), used for DAG generating.
+    nodes = []    # list of node(cdl or theorem).
+    t_nodes = []    # theorem nodes, used for DAG generating.
+    edges = {}      # node(cdl or theorem): [node(cdl or theorem)], used for DAG generating.
     group = {}    # (premise, theorem): [_id], used for building hyper graph.
     cdl = {}      # _id: anti_parsed_cdl, user for getting cdl by id.
 
@@ -171,11 +172,13 @@ def save_solution_tree(problem, path):
         else:
             group[(premise, theorem)].append(_id)
 
-    if problem.goal.solved and problem.goal.type in ["value", "equal"]:    # if target solved, add target
-        target_equation = "Equation(" + str(problem.goal.item - problem.goal.answer).replace(" ", "") + ")"
-        _id = len(cdl)
-        cdl[_id] = target_equation
-        group[(problem.goal.premise, problem.goal.theorem)] = [_id]
+    if problem.goal["solved"] and problem.goal["type"] in ["value", "equal"]:    # if target solved, add target
+        eq = problem.goal["item"] - problem.goal["answer"]
+        if eq not in problem.conditions["Equation"].get_id_by_item:    # target not in condition set
+            target_equation = InverseParser.inverse_parse_one("Equation", eq, problem)
+            _id = len(cdl)
+            cdl[_id] = target_equation
+            group[(problem.goal["premise"], problem.goal["theorem"])] = [_id]
 
     count = 0
     solution_tree = {}
@@ -183,6 +186,7 @@ def save_solution_tree(problem, path):
         premise, theorem = key
 
         theorem_node = theorem + "_{}".format(count)    # theorem name in hyper
+        t_nodes.append(theorem_node)
         _add_node(st_dot, nodes, theorem_node)
 
         start_nodes = []
@@ -215,8 +219,9 @@ def save_solution_tree(problem, path):
     dag_dot = Digraph(name=str(problem.problem_CDL["id"]))  # generate theorem DAG
     nodes = []  # list of theorem.
     dag = {}
-    for s_node in edges:    # theorem
-        if "(" not in s_node:
+
+    for s_node in edges:
+        if s_node in t_nodes:    # s_node is theorem node
             dag[s_node] = []
             _add_node(dag_dot, nodes, s_node)
             for m_node in edges[s_node]:    # middle condition

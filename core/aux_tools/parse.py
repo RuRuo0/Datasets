@@ -1,19 +1,24 @@
 import string
-from sympy import sin, cos, tan, pi
+from sympy import sin, cos, tan, sqrt, pi, Float, Integer
+from core.aux_tools.utils import number_round
 
 
 class FLParser:
     @staticmethod
-    def _parse_one_predicate(s):
+    def _parse_one_predicate(s, make_vars=False):
         """
         parse s to get predicate, para, and structural msg.
         >> _parse_one_predicate('Predicate(ABC)')
         ('Predicate', ['A', 'B', 'C'], [3])
-        >> _parse_one_predicate('Predicate(ABC, DE)')
+        >> _parse_one_predicate('Predicate(ABC, DE)', True)
         ('Predicate', ['a', 'b', 'c', 'd', 'e'], [3, 2])
         """
         predicate_name, para = s.split("(")
-        para = para.split(")")[0].lower()
+        if make_vars:
+            para = para.split(")")[0].lower()
+        else:
+            para = para.split(")")[0]
+
         if "," not in para:
             return predicate_name, list(para), [len(para)]
         para_len = []
@@ -110,7 +115,7 @@ class FLParser:
 
         entities = predicate_GDL["Entity"]  # parse entity
         for item in entities:
-            name, para, para_len = FLParser._parse_one_predicate(item)
+            name, para, para_len = FLParser._parse_one_predicate(item, True)
             parsed_GDL["Entity"][name] = {
                 "vars": para,
                 "para_len": para_len,
@@ -121,7 +126,7 @@ class FLParser:
 
         relations = predicate_GDL["Relation"]  # parse relation
         for item in relations:
-            name, para, para_len = FLParser._parse_one_predicate(item)
+            name, para, para_len = FLParser._parse_one_predicate(item, True)
             if "fv_check" in relations[item]:
                 parsed_GDL["Relation"][name] = {
                     "vars": para,
@@ -133,7 +138,7 @@ class FLParser:
                 }
             else:
                 parsed_GDL["Relation"][name] = {
-                    "vars": [i for i in range(len(para))],
+                    "vars": para,
                     "para_len": para_len,
                     "ee_check": FLParser._parse_ee_check(relations[item]["ee_check"]),
                     "multi": FLParser._parse_multi(relations[item]["multi"]),
@@ -142,7 +147,7 @@ class FLParser:
 
         attributions = predicate_GDL["Attribution"]  # parse attribution
         for item in attributions:
-            name, para, para_len = FLParser._parse_one_predicate(item)
+            name, para, para_len = FLParser._parse_one_predicate(item, True)
             if "fv_check" in attributions[item]:
                 parsed_GDL["Attribution"][name] = {
                     "vars": para,
@@ -174,7 +179,7 @@ class FLParser:
         """
         results = []
         for item in ee_check:
-            name, item_para, _ = FLParser._parse_one_predicate(item)
+            name, item_para, _ = FLParser._parse_one_predicate(item, True)
             results.append([name, item_para])
         return results
 
@@ -223,7 +228,7 @@ class FLParser:
             if extend.startswith("Equal"):
                 results.append(FLParser._parse_equal_predicate(extend, True))
             else:
-                extend_name, extend_para, _ = FLParser._parse_one_predicate(extend)
+                extend_name, extend_para, _ = FLParser._parse_one_predicate(extend, True)
                 results.append([extend_name, extend_para])
         return results
 
@@ -241,7 +246,7 @@ class FLParser:
                 for p in parsed_premise:
                     body.append([p, parsed_conclusion])  # premise, conclusion
 
-            name, para, para_len = FLParser._parse_one_predicate(theorem_name)
+            name, para, para_len = FLParser._parse_one_predicate(theorem_name, True)
             parsed_GDL[name] = {
                 "vars": para,
                 "para_len": para_len,
@@ -329,7 +334,7 @@ class FLParser:
                 if "Equal" in premise_GDL[i][j]:
                     premise_GDL[i][j] = FLParser._parse_equal_predicate(premise_GDL[i][j], True)
                 else:
-                    predicate, para, _ = FLParser._parse_one_predicate(premise_GDL[i][j])
+                    predicate, para, _ = FLParser._parse_one_predicate(premise_GDL[i][j], True)
                     premise_GDL[i][j] = [predicate, para]
         return premise_GDL
 
@@ -344,7 +349,7 @@ class FLParser:
             if "Equal" in conclusion_GDL[i]:
                 conclusion_GDL[i] = FLParser._parse_equal_predicate(conclusion_GDL[i], True)
             else:
-                predicate, para, _ = FLParser._parse_one_predicate(conclusion_GDL[i])
+                predicate, para, _ = FLParser._parse_one_predicate(conclusion_GDL[i], True)
                 conclusion_GDL[i] = [predicate, para]
         return conclusion_GDL
 
@@ -393,7 +398,7 @@ class FLParser:
         return parsed_CDL
 
     @staticmethod
-    def _parse_theorem_seqs(theorem_seqs):
+    def parse_theorem_seqs(theorem_seqs):
         results = []
         for theorem in theorem_seqs:
             name, para, _ = FLParser._parse_one_predicate(theorem)
@@ -627,11 +632,17 @@ class EqParser:
                     elif operator_unit == "~":  # 只有unit为"~"，才能到达这个判断，表示表达式处理完成
                         break
             else:  # symbol or number
-                unit = problem.get_sym_of_attr("Free", (unit,)) if unit.isalpha() else float(unit)
+                if unit.isalpha():
+                    unit = problem.get_sym_of_attr("Free", (unit,))
+                else:
+                    if "." in unit:
+                        unit = Float(unit)
+                    else:
+                        unit = Integer(unit)
                 expr_stack.append(unit)
                 i = i + 1
 
-        return expr_stack.pop()
+        return number_round(expr_stack.pop())
 
 
 class InverseParser:
@@ -651,7 +662,7 @@ class InverseParser:
                 get_item_by_id[_id] = (predicate, problem.conditions[predicate].get_item_by_id[_id])
             for step in problem.conditions[predicate].step_msg:
                 if step not in get_id_by_step:
-                    get_id_by_step[step] = problem.conditions[predicate].step_msg[step]
+                    get_id_by_step[step] = [i for i in problem.conditions[predicate].step_msg[step]]
                 else:
                     get_id_by_step[step] += problem.conditions[predicate].step_msg[step]
         return get_item_by_id, get_id_by_step
@@ -698,27 +709,29 @@ class InverseParser:
         """
         if predicate == "Equation":
             return InverseParser._inverse_parse_equation(item, problem.conditions["Equation"])
+        elif predicate in problem.predicate_GDL["Construction"] or\
+                predicate in problem.predicate_GDL["BasicEntity"] or\
+                predicate in problem.predicate_GDL["Entity"]:
+            return InverseParser.inverse_parse_logic(predicate, item, [1])
         else:
-            return InverseParser._inverse_parse_logic(predicate, item, problem.predicate_GDL)
+            para_len = problem.predicate_GDL["Relation"][predicate]["para_len"]
+            return InverseParser.inverse_parse_logic(predicate, item, para_len)
 
     @staticmethod
-    def _inverse_parse_logic(predicate, item, predicate_GDL):
+    def inverse_parse_logic(predicate, item, para_len):
         """
         Inverse parse conditions of logic form to CDL.
-        Called by <inverse_parse_one>.
-        >> _inverse_parse_one(Shape, ('A', 'B', 'C'), predicate_GDL)
+        >> inverse_parse_logic(Shape, ('A', 'B', 'C'), [3])
         'Shape(ABC)'
-        >> _inverse_parse_one(Parallel, ('A', 'B', 'C', 'D'), predicate_GDL)
+        >> inverse_parse_logic(Parallel, ('A', 'B', 'C', 'D'), [2, 2])
         'Parallel(AB,CD)'
         """
-        if predicate in predicate_GDL["Construction"] or \
-                predicate in predicate_GDL["BasicEntity"] or \
-                predicate in predicate_GDL["Entity"]:  # entity
+        if len(para_len) == 1:  # no need add ','
             return predicate + "(" + "".join(item) + ")"
         else:  # relation
             result = []
             i = 0
-            for l in predicate_GDL["Relation"][predicate]["para_structure"]:
+            for l in para_len:
                 result.append("")
                 for _ in range(l):
                     result[-1] += item[i]
@@ -736,8 +749,11 @@ class InverseParser:
         'LengthOfLine(AC)'
         """
 
-        if len(item.free_symbols) > 1:
-            return "Equation" + "(" + str(item).replace(" ", "") + ")"
-        else:
-            items, predicate = equation.attr_of_sym[list(item.free_symbols)[0]]
-            return predicate + "(" + "".join(items[0]) + ")"
+        if len(item.free_symbols) == 1:
+            sym = list(item.free_symbols)[0]
+            if sym - equation.value_of_sym[sym] == item:
+                attr, items = equation.attr_of_sym[sym]
+                return attr + "(" + "".join(items[0]) + ")"
+
+        return "Equation" + "(" + str(item).replace(" ", "") + ")"
+

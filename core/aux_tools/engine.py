@@ -1,5 +1,6 @@
-from sympy import symbols, solve, Float, Integer
+from sympy import symbols, solve
 from func_timeout import func_set_timeout, FunctionTimedOut
+from core.aux_tools.utils import number_round
 import warnings
 
 
@@ -219,18 +220,14 @@ class EquationKiller:
     @func_set_timeout(2)
     def solve(equations):
         cleaned_results = {}  # real number solution
-
         try:
             results = solve(equations, dict=True)
-            # print(equations)
-            # print(results)
-            # print()
             if len(results) > 0:
                 if isinstance(results, list):    # multi results, choose the first
                     results = results[0]
                 for sym in results:  # filter out real number solution
-                    if isinstance(results[sym], Float) or isinstance(results[sym], Integer):
-                        cleaned_results[sym] = float(results[sym])
+                    if len(results[sym].free_symbols) == 0:
+                        cleaned_results[sym] = number_round(results[sym])
         except Exception as e:
             msg = "Exception <{}> occur when solve {}".format(e, equations)
             warnings.warn(msg)
@@ -316,9 +313,9 @@ class EquationKiller:
         equation = problem.conditions["Equation"]  # class <Equation>
 
         if target_expr in equation.get_id_by_item:    # no need to solve
-            return 0.0, [equation.get_id_by_item[target_expr]]
+            return 0, [equation.get_id_by_item[target_expr]]
         if -target_expr in equation.get_id_by_item:
-            return 0.0, [equation.get_id_by_item[-target_expr]]
+            return 0, [equation.get_id_by_item[-target_expr]]
 
         EquationKiller.simplification_value_replace(problem)  # simplify equations before solving
 
@@ -328,7 +325,7 @@ class EquationKiller:
                 target_expr = target_expr.subs(sym, equation.value_of_sym[sym])
                 premise.append(equation.get_id_by_item[sym - equation.value_of_sym[sym]])
         if len(target_expr.free_symbols) == 0:
-            return float(target_expr), premise
+            return number_round(target_expr), premise
 
         target_sym = symbols("t_s")
         target_eq = target_sym - target_expr

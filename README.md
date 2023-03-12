@@ -1,5 +1,5 @@
 # FormalGeo-SAT
-[![Version](https://img.shields.io/badge/Version-1.2.0-brightgreen)](https://github.com/BitSecret/FormalGeo-SAT)
+[![Version](https://img.shields.io/badge/Version-1.3.0-brightgreen)](https://github.com/BitSecret/FormalGeo-SAT)
 [![License](https://img.shields.io/badge/License-MIT-green)](https://opensource.org/licenses/MIT)
 [![Survey](https://img.shields.io/badge/Survey-FormalGeo-blue)](https://github.com/BitSecret/FormalGeo-SAT)  
 Formal representation and solving for SAT-level Euclidean plane geometry problems.  
@@ -23,7 +23,7 @@ Formal representation and solving for SAT-level Euclidean plane geometry problem
 |:---:|:---:|:---:|:---:|:---:|
 | XiaokaiZhang | 107 | 1584-1864 | / | √ |
 | NaZhu | 70 | 1865-2026 | / | √ |
-| JiaZou | 70 | 2028-2233 | / | × |
+| JiaZou | 70 | 2028-2233 | / | √ |
 | YimingHe | 70 | 2236-2396 | / | √ |
 
 ## Introduction
@@ -38,6 +38,15 @@ So we designed a plane geometry formalization system and provided a python imple
 4.Generate information about problem-solving process, such as solution hypertree, CDL of every step, Directed acyclic graph of applied theorem, etc. These interfaces provide verification information for correctness of problem-solving and facilitate AI-assisted reasoning.
 
 ## Version
+#### FormalGeo-SAT 1.3 (Mar 12, 2023) 
+**predicates/theorems**: 50/77  
+**problems**: 319  
+**new functions**:  
+1.A new theorem GDL format and corresponding problem-solving theorem sequence labeling method. (theorem seqs with para)  
+2.Better error handling mechanism. It make data set annotation more convenient.  
+3.Prepare for greedy search (forward and backward) and AI-assisted search. (rough definition of program interface and framework)   
+4.merge problem annotated in this week.  
+
 #### FormalGeo-SAT 1.2 (Mar 10, 2023) 
 **predicates/theorems**: 50/75  
 **problems**: 249  
@@ -66,43 +75,43 @@ A simple copy of the original version "FormalGeo".
 
 ## Project structure
 The code structure is shown below:  
-```bash
-./core
-    aux_tools/
-        parse.py
-        utils.py
-    problem/
-        object.py
-        problem.py
-    solver/
-        solver.py
 
-./data
-    formalized-problems/
-        0.json
-        1.json
-        ...
-    preset/
-        predicate_GDL.json
-        theorem_GDL.json
-    raw-problems/
-        Geometry3K/
-        GeometryQA/
-        GeoQA/
-        GeoQAPlus/
-        GeoS/
-        UniGeo/
-        template.json
-    solved/
-        ...
+	./core
+	    aux_tools/
+	        parse.py
+	        utils.py
+	    problem/
+	        object.py
+	        problem.py
+	    solver/
+	        solver.py
+	
+	./data
+	    formalized-problems/
+	        0.json
+	        1.json
+	        ...
+	    preset/
+	        predicate_GDL.json
+	        theorem_GDL.json
+	    raw-problems/
+	        Geometry3K/
+	        GeometryQA/
+	        GeoQA/
+	        GeoQAPlus/
+	        GeoS/
+	        UniGeo/
+	        template.json
+	    solved/
+	        ...
+	
+	./doc
+	    cowork.md
+	
+	./main.py
+	
+	./README.md
 
-./doc
-    cowork.md
-
-./main.py
-
-./README.md
-```
 
 `core` is the implementation code of the FormalGeo. The architecture of each module and the relationship between modules are shown in figure 1.  
 `cowork` displays collaboration information.  
@@ -116,18 +125,18 @@ The code structure is shown below:
 </div>
 
 ## Setup
-```bash
-# Create python environment
-conda create -n FormalGeo python=3.10
-conda activate FormalGeo
 
-# Install python dependencies
-pip install -v sympy==1.10.1
-pip install -v graphviz==0.20.1
+	# Create python environment
+	conda create -n FormalGeo python=3.10
+	conda activate FormalGeo
+	
+	# Install python dependencies
+	pip install -v sympy==1.10.1
+	pip install -v graphviz==0.20.1
+	
+	# Execute
+	python main.py
 
-# Execute
-python main.py
-```
 
 ## Example
 **logic inputs and reasoning process:**  

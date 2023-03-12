@@ -3,7 +3,9 @@ import warnings
 
 
 class ForwardTree:
-    pass
+
+    def __init__(self):
+        self.cache = None  # save conditions obtained from the forward greedy search and accelerate the reasoning
 
 
 class BackwardTree:

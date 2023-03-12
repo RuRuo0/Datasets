@@ -1,4 +1,5 @@
 import json
+from sympy import Float
 
 
 def load_json(filename):
@@ -15,3 +16,9 @@ def rough_equal(a, b):
     """Accuracy is controlled at 0.01"""
     return abs(a - b) < 0.01
 
+
+def number_round(n):
+    """Round to 6 if n is Float."""
+    if isinstance(n, Float):
+        return n.round(6)
+    return n

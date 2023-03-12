@@ -113,15 +113,12 @@ The code structure is shown below:
 	./README.md
 
 
-`core` is the implementation code of the FormalGeo. The architecture of each module and the relationship between modules are shown in figure 1.  
+`core` is the implementation code of the FormalGeo. The architecture of each module and the relationship between modules are shown in figure.  
 `cowork` displays collaboration information.  
 `data` contains unformalized but unified geometry problem datasets, such as Geometry3K, GeoQA, UniGeo, etc. It also contains formalized problems, which stores in *data/formalized-problems*.  
 `doc` is the introduction of formal system and project-related documentation.  
 <div align=center>
-	<img src="doc/readme-pic/structure.png">
-</div>
-<div align=center>
-	Figure 1. Architecture
+	<img src="doc/readme-pic/structure.png", width="70%">
 </div>
 
 ## Setup
@@ -140,35 +137,551 @@ The code structure is shown below:
 
 ## Example
 **logic inputs and reasoning process:**  
+
+	pid:1584
+	problem_index: 1584
+	construction_cdl:
+	Polygon(RST)
+	Polygon(XYZ)
+	text_cdl:
+	Congruent(RST,XYZ)
+	image_cdl:
+	Equal(LengthOfLine(TR),x+21)
+	Equal(MeasureOfAngle(TRS),4*y-10)
+	Equal(MeasureOfAngle(ZXY),3*y+5)
+	Equal(LengthOfLine(ZX),2*x-14)
+	goal_cdl:
+	Value(y)
+	
+	theorem_applied:
+	 0 init_problem        
+	 1 congruent_property_angle_equal(TRS,ZXY)
+	reasoning_cdl:
+	 0 Polygon(RST)        
+	 0 Polygon(XYZ)        
+	 0 Point(R)            
+	 0 Point(S)            
+	 0 Point(T)            
+	 0 Point(X)            
+	 0 Point(Y)            
+	 0 Point(Z)            
+	 0 Line(RS)            
+	 0 Line(ST)            
+	 0 Line(TR)            
+	 0 Line(XY)            
+	 0 Line(YZ)            
+	 0 Line(ZX)            
+	 0 Angle(RST)          
+	 0 Angle(STR)          
+	 0 Angle(TRS)          
+	 0 Angle(XYZ)          
+	 0 Angle(YZX)          
+	 0 Angle(ZXY)          
+	 0 Triangle(RST)       
+	 0 Triangle(XYZ)       
+	 0 Congruent(RST,XYZ)  
+	 0 Equation(-f_x+ll_tr-21)
+	 0 Equation(-4*f_y+ma_trs+10)
+	 0 Equation(-3*f_y+ma_zxy-5)
+	 0 Equation(-2*f_x+ll_zx+14)
+	 1 Equation(ma_trs-ma_zxy)
+	 1 Free(y)             
+	 1 MeasureOfAngle(TRS) 
+	 1 MeasureOfAngle(ZXY) 
+	
+	Relations:
+	Polygon:
+	  0             R,S,T                    (-1,)          prerequisite
+	  9             S,T,R                    (0,)           extended
+	  13            T,R,S                    (0,)           extended
+	  18            X,Y,Z                    (-1,)          prerequisite
+	  27            Y,Z,X                    (18,)          extended
+	  31            Z,X,Y                    (18,)          extended
+	Point:
+	  4               R                      (2,)           extended
+	  5               S                      (2,)           extended
+	  8               T                      (6,)           extended
+	  22              X                      (20,)          extended
+	  23              Y                      (20,)          extended
+	  26              Z                      (24,)          extended
+	Line:
+	  2              R,S                     (1,)           extended
+	  3              S,R                     (2,)           extended
+	  6              S,T                     (1,)           extended
+	  7              T,S                     (6,)           extended
+	  11             T,R                     (10,)          extended
+	  12             R,T                     (11,)          extended
+	  20             X,Y                     (19,)          extended
+	  21             Y,X                     (20,)          extended
+	  24             Y,Z                     (19,)          extended
+	  25             Z,Y                     (24,)          extended
+	  29             Z,X                     (28,)          extended
+	  30             X,Z                     (29,)          extended
+	Angle:
+	  1             R,S,T                    (0,)           extended
+	  10            S,T,R                    (0,)           extended
+	  14            T,R,S                    (0,)           extended
+	  19            X,Y,Z                    (18,)          extended
+	  28            Y,Z,X                    (18,)          extended
+	  32            Z,X,Y                    (18,)          extended
+	Triangle:
+	  15            R,S,T                    (0,)           extended
+	  16            S,T,R                    (15,)          extended
+	  17            T,R,S                    (15,)          extended
+	  33            X,Y,Z                    (18,)          extended
+	  34            Y,Z,X                    (33,)          extended
+	  35            Z,X,Y                    (33,)          extended
+	Congruent:
+	  36    R,S,T,X,Y,Z            (-1,)          prerequisite
+	  37         X,Y,Z,R,S,T                 (36,)          extended
+	  38         S,T,R,Y,Z,X                 (36,)          extended
+	  39         Y,Z,X,S,T,R                 (36,)          extended
+	  40    T,R,S,Z,X,Y            (36,)          extended
+	  41         Z,X,Y,T,R,S                 (36,)          extended
+	
+	Symbols and Value:
+	       ('MeasureOfAngle', ('R', 'S', 'T'))            ma_rst             None        
+	       ('MeasureOfAngle', ('S', 'T', 'R'))            ma_str             None        
+	       ('MeasureOfAngle', ('T', 'R', 'S'))            ma_trs              50         
+	       ('MeasureOfAngle', ('X', 'Y', 'Z'))            ma_xyz             None        
+	       ('MeasureOfAngle', ('Y', 'Z', 'X'))            ma_yzx             None        
+	       ('MeasureOfAngle', ('Z', 'X', 'Y'))            ma_zxy              50         
+	           ('LengthOfLine', ('T', 'R'))                ll_tr             None        
+	           ('LengthOfLine', ('R', 'T'))                ll_tr             None        
+	                 ('Free', ('x',))                       f_x              None        
+	                 ('Free', ('y',))                       f_y               15         
+	           ('LengthOfLine', ('Z', 'X'))                ll_zx             None        
+	           ('LengthOfLine', ('X', 'Z'))                ll_zx             None        
+	Equations:
+	  42         -f_x + ll_tr - 21               (-1,)          prerequisite
+	  43        -4*f_y + ma_trs + 10             (-1,)          prerequisite
+	  44        -3*f_y + ma_zxy - 5              (-1,)          prerequisite
+	  45        -2*f_x + ll_zx + 14              (-1,)          prerequisite
+	  46          ma_trs - ma_zxy                (40,)          congruent_property_angle_equal(TRS,ZXY)
+	  47              f_y - 15               (43, 44, 46)       solve_eq
+	  48            ma_trs - 50              (43, 44, 46)       solve_eq
+	  49            ma_zxy - 50              (43, 44, 46)       solve_eq
+	
+	Solving Goal:
+	type: value
+	goal: f_y
+	answer: 15
+	solved: True
+	solved_answer: 15
+	premise: (43, 44, 46)
+	theorem: solve_eq
+	
+	Time consumption:
+	init_problem:0.181281s
+	congruent_property_angle_equal(TRS,ZXY):0.014099s
+
+
+**Outputs files** 
 <div align=center>
-	<img src="doc/readme-pic/example1.png">
-	<img src="doc/readme-pic/example2.png">
-	<img src="doc/readme-pic/example3.png">
-	<img src="doc/readme-pic/example4.png">
-</div>
-<div align=center>
-	Figure 2. Visible, traceable, and interpretable problem-solving process
+	<img src="doc/readme-pic/1.png">
 </div>
 
-**Outputs:** 
+
+**Solution hypertree** 
 <div align=center>
-	<img src="doc/readme-pic/example5.png">
+	<img src="doc/readme-pic/2.png">
 </div>
+
+```json
+{
+	"0": {
+		"conditions": [
+			"Polygon(RST)"
+		],
+		"theorem": "extended",
+		"conclusion": [
+			"Polygon(STR)",
+			"Polygon(TRS)",
+			"Angle(RST)",
+			"Angle(STR)",
+			"Angle(TRS)",
+			"Triangle(RST)"
+		]
+	},
+	"1": {
+		"conditions": [
+			"Polygon(XYZ)"
+		],
+		"theorem": "extended",
+		"conclusion": [
+			"Polygon(YZX)",
+			"Polygon(ZXY)",
+			"Angle(XYZ)",
+			"Angle(YZX)",
+			"Angle(ZXY)",
+			"Triangle(XYZ)"
+		]
+	},
+	"2": {
+		"conditions": [
+			"Line(RS)"
+		],
+		"theorem": "extended",
+		"conclusion": [
+			"Point(R)",
+			"Point(S)",
+			"Line(SR)"
+		]
+	},
+	"3": {
+		"conditions": [
+			"Line(ST)"
+		],
+		"theorem": "extended",
+		"conclusion": [
+			"Point(T)",
+			"Line(TS)"
+		]
+	},
+	"4": {
+		"conditions": [
+			"Line(XY)"
+		],
+		"theorem": "extended",
+		"conclusion": [
+			"Point(X)",
+			"Point(Y)",
+			"Line(YX)"
+		]
+	},
+	"5": {
+		"conditions": [
+			"Line(YZ)"
+		],
+		"theorem": "extended",
+		"conclusion": [
+			"Point(Z)",
+			"Line(ZY)"
+		]
+	},
+	"6": {
+		"conditions": [
+			"Angle(RST)"
+		],
+		"theorem": "extended",
+		"conclusion": [
+			"Line(RS)",
+			"Line(ST)"
+		]
+	},
+	"7": {
+		"conditions": [
+			"Angle(STR)"
+		],
+		"theorem": "extended",
+		"conclusion": [
+			"Line(TR)"
+		]
+	},
+	"8": {
+		"conditions": [
+			"Line(TR)"
+		],
+		"theorem": "extended",
+		"conclusion": [
+			"Line(RT)"
+		]
+	},
+	"9": {
+		"conditions": [
+			"Angle(XYZ)"
+		],
+		"theorem": "extended",
+		"conclusion": [
+			"Line(XY)",
+			"Line(YZ)"
+		]
+	},
+	"10": {
+		"conditions": [
+			"Angle(YZX)"
+		],
+		"theorem": "extended",
+		"conclusion": [
+			"Line(ZX)"
+		]
+	},
+	"11": {
+		"conditions": [
+			"Line(ZX)"
+		],
+		"theorem": "extended",
+		"conclusion": [
+			"Line(XZ)"
+		]
+	},
+	"12": {
+		"conditions": [
+			"Triangle(RST)"
+		],
+		"theorem": "extended",
+		"conclusion": [
+			"Triangle(STR)",
+			"Triangle(TRS)"
+		]
+	},
+	"13": {
+		"conditions": [
+			"Triangle(XYZ)"
+		],
+		"theorem": "extended",
+		"conclusion": [
+			"Triangle(YZX)",
+			"Triangle(ZXY)"
+		]
+	},
+	"14": {
+		"conditions": [
+			"Congruent(RST,XYZ)"
+		],
+		"theorem": "extended",
+		"conclusion": [
+			"Congruent(XYZ,RST)",
+			"Congruent(STR,YZX)",
+			"Congruent(YZX,STR)",
+			"Congruent(TRS,ZXY)",
+			"Congruent(ZXY,TRS)"
+		]
+	},
+	"15": {
+		"conditions": [
+			"Congruent(TRS,ZXY)"
+		],
+		"theorem": "congruent_property_angle_equal(TRS,ZXY)",
+		"conclusion": [
+			"Equation(ma_trs-ma_zxy)"
+		]
+	},
+	"16": {
+		"conditions": [
+			"Equation(-4*f_y+ma_trs+10)",
+			"Equation(-3*f_y+ma_zxy-5)",
+			"Equation(ma_trs-ma_zxy)"
+		],
+		"theorem": "solve_eq",
+		"conclusion": [
+			"Free(y)",
+			"MeasureOfAngle(TRS)",
+			"MeasureOfAngle(ZXY)"
+		]
+	}
+}
+```
+
+**Theorem DAG**
 <div align=center>
-	Figure 3. Outputs
+	<img src="doc/readme-pic/3.png">
 </div>
-<div align=center>
-	<img src="doc/readme-pic/example6.png">
-</div>
-<div align=center>
-	Figure 4. Solution hypertree
-</div>
-<div align=center>
-	<img src="doc/readme-pic/example7.png">
-</div>
-<div align=center>
-	Figure 5. Theorem DAG
-</div>
+
+```json
+{
+	"extended_0": [
+		"extended_6",
+		"extended_7",
+		"extended_12"
+	],
+	"extended_1": [
+		"extended_9",
+		"extended_10",
+		"extended_13"
+	],
+	"extended_2": [],
+	"extended_3": [],
+	"extended_4": [],
+	"extended_5": [],
+	"extended_6": [
+		"extended_2",
+		"extended_3"
+	],
+	"extended_7": [
+		"extended_8"
+	],
+	"extended_8": [],
+	"extended_9": [
+		"extended_4",
+		"extended_5"
+	],
+	"extended_10": [
+		"extended_11"
+	],
+	"extended_11": [],
+	"extended_12": [],
+	"extended_13": [],
+	"extended_14": [
+		"congruent_property_angle_equal(TRS,ZXY)_15"
+	],
+	"congruent_property_angle_equal(TRS,ZXY)_15": [
+		"solve_eq_16"
+	],
+	"solve_eq_16": []
+}
+```
+
+**Parsed problem**
+```json
+{
+	"id": 1584,
+	"cdl": {
+		"construction_cdl": [
+			"Polygon(RST)",
+			"Polygon(XYZ)"
+		],
+		"text_cdl": [
+			"Congruent(RST,XYZ)"
+		],
+		"image_cdl": [
+			"Equal(LengthOfLine(TR),x+21)",
+			"Equal(MeasureOfAngle(TRS),4*y-10)",
+			"Equal(MeasureOfAngle(ZXY),3*y+5)",
+			"Equal(LengthOfLine(ZX),2*x-14)"
+		],
+		"goal_cdl": "Value(y)"
+	},
+	"parsed_cdl": {
+		"construction_cdl": [
+			[
+				"Polygon",
+				[
+					"R",
+					"S",
+					"T"
+				]
+			],
+			[
+				"Polygon",
+				[
+					"X",
+					"Y",
+					"Z"
+				]
+			]
+		],
+		"text_and_image_cdl": [
+			[
+				"Congruent",
+				[
+					"R",
+					"S",
+					"T",
+					"X",
+					"Y",
+					"Z"
+				]
+			],
+			[
+				"Equal",
+				[
+					[
+						"LengthOfLine",
+						[
+							"T",
+							"R"
+						]
+					],
+					"x+21"
+				]
+			],
+			[
+				"Equal",
+				[
+					[
+						"MeasureOfAngle",
+						[
+							"T",
+							"R",
+							"S"
+						]
+					],
+					"4*y-10"
+				]
+			],
+			[
+				"Equal",
+				[
+					[
+						"MeasureOfAngle",
+						[
+							"Z",
+							"X",
+							"Y"
+						]
+					],
+					"3*y+5"
+				]
+			],
+			[
+				"Equal",
+				[
+					[
+						"LengthOfLine",
+						[
+							"Z",
+							"X"
+						]
+					],
+					"2*x-14"
+				]
+			]
+		],
+		"goal": {
+			"type": "value",
+			"item": [
+				"Value",
+				[
+					"y"
+				]
+			],
+			"answer": "15"
+		}
+	}
+}
+```
+
+**Step msg**
+```json
+{
+	"0": [
+		"Polygon(RST)",
+		"Polygon(XYZ)",
+		"Point(R)",
+		"Point(S)",
+		"Point(T)",
+		"Point(X)",
+		"Point(Y)",
+		"Point(Z)",
+		"Line(RS)",
+		"Line(ST)",
+		"Line(TR)",
+		"Line(XY)",
+		"Line(YZ)",
+		"Line(ZX)",
+		"Angle(RST)",
+		"Angle(STR)",
+		"Angle(TRS)",
+		"Angle(XYZ)",
+		"Angle(YZX)",
+		"Angle(ZXY)",
+		"Triangle(RST)",
+		"Triangle(XYZ)",
+		"Congruent(RST,XYZ)",
+		"Equation(-f_x+ll_tr-21)",
+		"Equation(-4*f_y+ma_trs+10)",
+		"Equation(-3*f_y+ma_zxy-5)",
+		"Equation(-2*f_x+ll_zx+14)"
+	],
+	"1": [
+		"Equation(ma_trs-ma_zxy)",
+		"Free(y)",
+		"MeasureOfAngle(TRS)",
+		"MeasureOfAngle(ZXY)"
+	]
+}
+```
 
 ## Acknowledge
 Thanks for the support of the **[Geometric Cognitive Reasoning Group of Shanghai University (GCRG, SHU)](https://euclidesprobationem.github.io/)**.   

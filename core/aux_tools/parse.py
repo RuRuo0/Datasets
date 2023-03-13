@@ -673,7 +673,7 @@ class InverseParser:
         get_item_by_id, get_id_by_step = InverseParser.solution_msg(problem)
 
         inverse_parsed_cdl = {}
-        for step in range(len(get_id_by_step)):
+        for step in sorted(list(get_id_by_step)):
             i = 0
             while i < len(get_id_by_step[step]):
                 predicate, item = get_item_by_id[get_id_by_step[step][i]]

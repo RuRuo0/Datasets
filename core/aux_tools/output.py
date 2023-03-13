@@ -145,7 +145,7 @@ def show(problem):
 
     print("\033[34mTime consumption:\033[0m")
     for i in range(len(problem.theorems_applied)):
-        print("\033[32m{}\033[0m:{:.6f}s".format(problem.theorems_applied[i], problem.time_consuming[i]))
+        print("\033[32m{}\033[0m: {:.6f}s".format(problem.theorems_applied[i], problem.time_consuming[i]))
     print()
 
 
@@ -263,7 +263,14 @@ def _add_edge(dot, nodes, start_node, end_node, edges=None):
 
 def save_step_msg(problem, path):
     """Save conditions grouped by step in dict."""
+    step_msg = {
+        "cdl_inverse_parsed": InverseParser.inverse_parse_logic_to_cdl(problem),
+        "theorems_applied": {}
+    }
+    for i in range(1, len(problem.theorems_applied)):
+        step_msg["theorems_applied"][str(i)] = problem.theorems_applied[i]
+
     save_json(
-        InverseParser.inverse_parse_logic_to_cdl(problem),
+        step_msg,
         path + "{}_step.json".format(problem.problem_CDL["id"])
     )

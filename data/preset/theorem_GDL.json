@@ -25,19 +25,19 @@
         ]
       }
     },
-    "adjacent_complementary_angle(AOC,COB)": {
+    "adjacent_complementary_angle(AOB,BOC)": {
       "1": {
-        "premise": "Angle(AOC)&Angle(COB)&Collinear(AOB)",
+        "premise": "Angle(AOB)&Angle(BOC)&Collinear(AOC)",
         "conclusion": [
-          "Equal(Add(MeasureOfAngle(AOC),MeasureOfAngle(COB)),180)"
+          "Equal(Add(MeasureOfAngle(AOB),MeasureOfAngle(BOC)),180)"
         ]
       }
     },
-    "midpoint_judgment(M,AC)": {
+    "midpoint_judgment(M,AB)": {
       "1": {
-        "premise": "Collinear(AMC)&Equal(LengthOfLine(AM),LengthOfLine(MC))",
+        "premise": "Collinear(AMB)&Equal(LengthOfLine(AM),LengthOfLine(MB))",
         "conclusion": [
-          "Midpoint(M,AC)"
+          "Midpoint(M,AB)"
         ]
       }
     },
@@ -61,7 +61,7 @@
       "1": {
         "premise": "Triangle(ABC)",
         "conclusion": [
-          "Equal(AreaOfTriangle(ABC),Mul(LengthOfLine(AB),LengthOfLine(BC),Sin(MeasureOfAngle(ABC)),0.5))"
+          "Equal(AreaOfTriangle(ABC),Mul(LengthOfLine(AB),LengthOfLine(AC),Sin(MeasureOfAngle(CAB)),1/2))"
         ]
       }
     },
@@ -87,8 +87,10 @@
         "conclusion": [
           "Equal(MeasureOfAngle(ABC),MeasureOfAngle(BCA))"
         ]
-      },
-      "2": {
+      }
+    },
+	"triangle_property_equal_angle_to_equal_line(ABC)": {
+      "1": {
         "premise": "Triangle(ABC)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(BCA))",
         "conclusion": [
           "Equal(LengthOfLine(AB),LengthOfLine(AC))"
@@ -99,7 +101,7 @@
       "1": {
         "premise": "Triangle(ABC)",
         "conclusion": [
-          "Equal(Mul(LengthOfLine(BC),Sin(MeasureOfAngle(ABC))),Mul(LengthOfLine(AC),Sin(MeasureOfAngle(CAB))))"
+          "Equal(Mul(LengthOfLine(AB),Sin(MeasureOfAngle(ABC))),Mul(LengthOfLine(AC),Sin(MeasureOfAngle(BCA))))"
         ]
       }
     },
@@ -107,7 +109,7 @@
       "1": {
         "premise": "Triangle(ABC)",
         "conclusion": [
-          "Equal(Add(Pow(LengthOfLine(AC),2),Mul(2,LengthOfLine(BC),LengthOfLine(AB),Cos(MeasureOfAngle(ABC)))),Add(Pow(LengthOfLine(BC),2),Pow(LengthOfLine(AB),2)))"
+          "Equal(Add(Pow(LengthOfLine(BC),2),Mul(2,LengthOfLine(AB),LengthOfLine(AC),Cos(MeasureOfAngle(CAB)))),Add(Pow(LengthOfLine(AB),2),Pow(LengthOfLine(AC),2)))"
         ]
       }
     },
@@ -137,7 +139,7 @@
     },
     "parallel_judgment_per_per(AB,CD)": {
       "1": {
-        "premise": "Perpendicular(CD,BD)&Perpendicular(DB,AB)",
+        "premise": "Perpendicular(BA,CA)&Perpendicular(AC,DC)",
         "conclusion": [
           "Parallel(AB,CD)"
         ]
@@ -158,17 +160,17 @@
         ]
       },
       "2": {
+        "premise": "Collinear(MAB)&Parallel(AB,CD)",
+        "conclusion": [
+          "Parallel(MA,CD)",
+          "Parallel(MB,CD)"
+        ]
+      },
+      "3": {
         "premise": "Collinear(ABM)&Parallel(AB,CD)",
         "conclusion": [
           "Parallel(AM,CD)",
           "Parallel(BM,CD)"
-        ]
-      },
-      "3": {
-        "premise": "Collinear(MAB)&Parallel(AB,CD)",
-        "conclusion": [
-          "Parallel(MB,CD)",
-          "Parallel(MA,CD)"
         ]
       }
     },
@@ -178,12 +180,6 @@
         "conclusion": [
           "Equal(MeasureOfAngle(BAD),MeasureOfAngle(CDA))"
         ]
-      },
-      "2": {
-        "premise": "Parallel(AB,CD)&Line(BC)",
-        "conclusion": [
-          "Equal(MeasureOfAngle(CBA),MeasureOfAngle(BCD))"
-        ]
       }
     },
     "parallel_property_Ipsilateral_internal_angle(AB,CD)": {
@@ -192,25 +188,19 @@
         "conclusion": [
           "Equal(Add(MeasureOfAngle(BAC),MeasureOfAngle(ACD)),180)"
         ]
-      },
-      "2": {
-        "premise": "Parallel(AB,CD)&Line(DB)",
-        "conclusion": [
-          "Equal(Add(MeasureOfAngle(CDB),MeasureOfAngle(DBA)),180)"
-        ]
       }
     },
-    "parallel_property_corresponding_angle(AB,CD,M)": {
+    "parallel_property_corresponding_angle(AB,CD,E)": {
       "1": {
-        "premise": "Parallel(AB,CD)&Collinear(MAC)",
+        "premise": "Parallel(AB,CD)&Collinear(EAC)",
         "conclusion": [
-          "Equal(MeasureOfAngle(MAB),MeasureOfAngle(ACD))"
+          "Equal(MeasureOfAngle(EAB),MeasureOfAngle(ACD))"
         ]
       },
       "2": {
-        "premise": "Parallel(AB,CD)&Collinear(MCA)",
+        "premise": "Parallel(AB,CD)&Collinear(ACE)",
         "conclusion": [
-          "Equal(MeasureOfAngle(BAC),MeasureOfAngle(DCM))"
+          "Equal(MeasureOfAngle(BAC),MeasureOfAngle(DCE))"
         ]
       }
     },
@@ -260,7 +250,7 @@
         ]
       }
     },
-    "neutrality_judgment(DE,ABC)": {
+    "neutrality_judgment_parallel(DE,ABC)": {
       "1": {
         "premise": "Triangle(ABC)&Collinear(ADB)&Collinear(AEC)&Parallel(DE,BC)",
         "conclusion": [
@@ -303,7 +293,7 @@
     },
     "perpendicular_bisector_judgment(AB,CO)": {
       "1": {
-        "premise": "(Perpendicular(AO,CO)|Equal(MeasureOfAngle(AOC),90))&(Perpendicular(CO,BO)|Equal(MeasureOfAngle(COB),90))&(Midpoint(O,AB)|Equal(LengthOfLine(AO),LengthOfLine(OB)))",
+        "premise": "Collinear(AOB)&(Perpendicular(AO,CO)|Equal(MeasureOfAngle(AOC),90)|Perpendicular(CO,BO)|Equal(MeasureOfAngle(COB),90))&(Midpoint(O,AB)|Equal(LengthOfLine(AO),LengthOfLine(OB)))",
         "conclusion": [
           "PerpendicularBisector(AB,CO)"
         ]

@@ -20,39 +20,54 @@ class Solver:
         EquationKiller.solve_equations(self.problem)  # Solve the equations after initialization
         self.problem.applied("init_problem", time.time() - s_start_time)  # save applied theorem and update step
 
-    def apply_theorem(self, theorem_name, theorem_para, selection=None):
+    def apply_theorem(self, theorem_name=None, theorem_para=None, selection=None):
         """
         Apply a theorem and return whether it is successful.
         :param theorem_name: <str>.
-        :param theorem_para: tuple of <str>.
-        :param selection: {(theorem_name, theorem_para): (predicate, item, premise, theorem)}.
+        :param theorem_para: tuple of <str>, set None when rough apply theorem.
+        :param selection: {(theorem_name, theorem_para): [(predicate, item, premise)]}.
         :return update: True or False.
         """
-        if theorem_name not in self.theorem_GDL:
+        if theorem_name is not None and theorem_name not in self.theorem_GDL:
             e_msg = "Theorem {} not defined in current GDL.".format(theorem_name)
             raise Exception(e_msg)
-        elif theorem_name.endswith("definition"):
+        if theorem_name is not None and theorem_name.endswith("definition"):
             w_msg = "Theorem {} only used for backward reason.".format(theorem_name)
             warnings.warn(w_msg)
             return False
-        if len(theorem_para) != len(self.theorem_GDL[theorem_name]["vars"]):
+        if theorem_para is not None and len(theorem_para) != len(self.theorem_GDL[theorem_name]["vars"]):
             e_msg = "Theorem <{}> para length error. Expected {} but got {}.".format(
-                theorem_name, len(self.theorem_GDL[theorem_name]["vars"]), theorem_para
-            )
+                theorem_name, len(self.theorem_GDL[theorem_name]["vars"]), theorem_para)
             raise Exception(e_msg)
 
-        s_time = time.time()    # timing
-        theorem = InverseParser.inverse_parse_logic(   # theorem + para, add in problem
-            theorem_name, theorem_para, self.theorem_GDL[theorem_name]["para_len"])
         update = False
+        s_time = time.time()  # timing
 
-        if selection is not None:    # for forward search
+        if selection is not None:    # mode 1, search mode
+            theorem_msg = list(selection.keys())
+            last_theorem_msg = theorem_msg.pop(-1)
+
+            for theorem_name, theorem_para in theorem_msg:
+                theorem = InverseParser.inverse_parse_logic(  # theorem + para, add in problem
+                    theorem_name, theorem_para, self.theorem_GDL[theorem_name]["para_len"])
+                for predicate, item, premise in selection[(theorem_name, theorem_para)]:
+                    update = self.problem.add(predicate, item, premise, theorem, True) or update
+                self.problem.applied(theorem, 0)
+
+            theorem_name, theorem_para = last_theorem_msg
+            theorem = InverseParser.inverse_parse_logic(  # theorem + para, add in problem
+                theorem_name, theorem_para, self.theorem_GDL[theorem_name]["para_len"])
             for predicate, item, premise in selection[(theorem_name, theorem_para)]:
                 update = self.problem.add(predicate, item, premise, theorem, True) or update
 
-        else:    # for interactive reasoning
+            EquationKiller.solve_equations(self.problem)
+            self.problem.applied(theorem, time.time() - s_time)
+
+        elif theorem_para is not None:    # mode 2, accurate mode
+            theorem = InverseParser.inverse_parse_logic(  # theorem + para, add in problem
+                theorem_name, theorem_para, self.theorem_GDL[theorem_name]["para_len"])
             theorem_vars = self.theorem_GDL[theorem_name]["vars"]
-            letters = {}    # used for vars-letters replacement
+            letters = {}  # used for vars-letters replacement
             for i in range(len(theorem_vars)):
                 letters[theorem_vars[i]] = theorem_para[i]
 
@@ -62,20 +77,20 @@ class Solver:
                 passed = True
                 premises = []
                 for predicate, item in premises_GDL:
-                    if predicate == "Equal":    # algebra premise
+                    if predicate == "Equal":  # algebra premise
                         eq = EqParser.get_equation_from_tree(self.problem, item, True, letters)
                         result, premise = EquationKiller.solve_target(self.problem, eq)
-                        if result is None or not rough_equal(result, 0):    # not passed
+                        if result is None or not rough_equal(result, 0):  # not passed
                             passed = False
                             break
-                        else:   # add premise if passed
+                        else:  # add premise if passed
                             premises += premise
-                    else:    # logic premise
+                    else:  # logic premise
                         item = tuple(letters[i] for i in item)
-                        if not self.problem.conditions[predicate].has(item):    # not passed
+                        if not self.problem.conditions[predicate].has(item):  # not passed
                             passed = False
                             break
-                        else:   # add premise if passed
+                        else:  # add premise if passed
                             premises.append(self.problem.conditions[predicate].get_id_by_item[item])
 
                 if not passed:  # If the premise is not met, no conclusion will be generated
@@ -83,22 +98,29 @@ class Solver:
 
                 premises = tuple(set(premises))  # fast repeat removal
                 for predicate, item in conclusions_GDL:
-                    if predicate == "Equal":    # algebra conclusion
+                    if predicate == "Equal":  # algebra conclusion
                         eq = EqParser.get_equation_from_tree(self.problem, item, True, letters)
                         update = self.problem.add("Equation", eq, premises, theorem) or update
-                    else:    # logic conclusion
+                    else:  # logic conclusion
                         item = tuple(letters[i] for i in item)
                         update = self.problem.add(predicate, item, premises, theorem) or update
 
-        if update:   # solve new equations, save applied theorem and update step
             EquationKiller.solve_equations(self.problem)
             self.problem.applied(theorem, time.time() - s_time)
-            return True
-        else:
+
+        elif theorem_name is not None:    # mode 3, rough mode
+            pass
+
+        else:    # invalid if-else branch
+            e_msg = "Wrong parameter in function <apply_theorem>: (None, None, None)"
+            raise Exception(e_msg)
+
+        if not update:
             w_msg = "Theorem <{},{}> not applied. Please check your theorem_para or prerequisite.".format(
                 theorem_name, theorem_para)
             warnings.warn(w_msg)
-            return False
+
+        return update
 
     def check_goal(self):
         """Check whether the solution is completed."""
@@ -130,7 +152,11 @@ class Solver:
         self.problem.applied("check_goal", time.time() - s_start_time)
 
     def try_theorem(self, theorem_name):
-        """return: list of (theorem_name, theorem_para, conclusions)"""
+        """
+        Try a theorem and return added conclusions.
+        :param theorem_name: <str>.
+        :return selection: {(theorem_name, theorem_para): [(predicate, item, premise)]}.
+        """
         if theorem_name not in self.theorem_GDL:
             e_msg = "Theorem {} not defined in current GDL.".format(theorem_name)
             raise Exception(e_msg)

@@ -295,6 +295,7 @@ C、每个人第N周提交的内容将会在第N+1周周日日24点之前合并�
 
 
 ## 附录1 标注口诀
+### 谓词标注口诀
 **1.先构图后标注**  
 首先标注**基本构图CDL**，有3个，分别是Polygon、Collinear和Cocircular。在推理器构图阶段，会根据识别到的基本构图CDL自动构建基本实体CDL，参见下图。标注完基本构图CDL后，还需要补充标注无法由基本构图CDL扩展得到的**基本实体CDL**（这就要求对于构图过程比较熟悉，其实也很简单）。然后标注**问题文本CDL**，即问题的自然描述转化来的CDL。其次标注**问题图形CDL**，即问题的图像转化来的CDL。再次标注**解题目标CDL**，共有三类，分别是Value、Equal、Relation。最后标注**定理序列CDL**，根据推理器执行结果不断调整定理，直至解题完成。   
 <div align=center>
@@ -331,8 +332,12 @@ C、每个人第N周提交的内容将会在第N+1周周日日24点之前合并�
     Intersect(O,AB,CD)
     Perpendicular(AO,BO)
 
+
+### 定理标注口诀
+coming soon...
+
 ## 附录2 谓词标注对照手册
-见 predicate.md
+见 doc/predicate.md
 
 ## 附录3 定理标注对照手册
-见 theorem.md
+见 doc/theorem.md

@@ -27,7 +27,7 @@
     # branch 1
     premise: Collinear(ABC)
     conclusion: Equal(MeasureOfAngle(ABC),180)
-                Equal(MeasureOfAngle(CBA),180)
+
 **Notes**:  
 
 #### adjacent_complementary_angle(AOB,BOC)

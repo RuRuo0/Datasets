@@ -172,7 +172,7 @@
 
 #### parallel_judgment_per_per(AB,CD)
 <div>
-    <img src="cowork-pic/parallel_judgment_per_per.png"  width="20%">
+    <img src="cowork-pic/parallel_judgment_per_per.png"  width="40%">
 </div>
 
     # branch 1
@@ -185,7 +185,7 @@
 
 #### parallel_property_collinear_extend(AB,CD,M)
 <div>
-    <img src="cowork-pic/parallel_property_collinear_extend.png"  width="20%">
+    <img src="cowork-pic/parallel_property_collinear_extend.png"  width="60%">
 </div>
 
     # branch 1
@@ -224,7 +224,7 @@
 
 #### parallel_property_corresponding_angle(AB,CD,E)
 <div>
-    <img src="cowork-pic/parallel_property_corresponding_angle.png"  width="20%">
+    <img src="cowork-pic/parallel_property_corresponding_angle.png"  width="40%">
 </div>
 
     # branch 1
@@ -237,7 +237,7 @@
 
 #### parallel_property_extend_perpendicular(AB,CD)
 <div>
-    <img src="cowork-pic/parallel_property_extend_perpendicular.png"  width="20%">
+    <img src="cowork-pic/parallel_property_extend_perpendicular.png"  width="30%">
 </div>
 
     # branch 1
@@ -381,7 +381,7 @@
 
 #### perpendicular_property_collinear_extend(AO,CO,B)
 <div>
-    <img src="cowork-pic/perpendicular_property_collinear_extend.png"  width="20%">
+    <img src="cowork-pic/perpendicular_property_collinear_extend.png"  width="80%">
 </div>
 
     # branch 1
@@ -430,7 +430,7 @@
 
 #### right_triangle_property_special_rt_30_60(ABC)
 <div>
-    <img src="cowork-pic/right_triangle_property_special_rt_30_60.png"  width="20%">
+    <img src="cowork-pic/right_triangle_property_special_rt_30_60.png"  width="40%">
 </div>
 
     # branch 1
@@ -565,7 +565,7 @@
 
 #### congruent_judgment_aas(ABC,DEF)
 <div>
-    <img src="cowork-pic/congruent_judgment_aas.png"  width="20%">
+    <img src="cowork-pic/congruent_judgment_aas.png"  width="40%">
 </div>
 
     # branch 1
@@ -578,7 +578,7 @@
 
 #### congruent_judgment_asa(ABC,DEF)
 <div>
-    <img src="cowork-pic/congruent_judgment_asa.png"  width="20%">
+    <img src="cowork-pic/congruent_judgment_asa.png"  width="40%">
 </div>
 
     # branch 1
@@ -591,7 +591,7 @@
 
 #### congruent_judgment_hl(ABC,DEF)
 <div>
-    <img src="cowork-pic/congruent_judgment_hl.png"  width="20%">
+    <img src="cowork-pic/congruent_judgment_hl.png"  width="40%">
 </div>
 
     # branch 1
@@ -604,7 +604,7 @@
 
 #### congruent_judgment_sas(ABC,DEF)
 <div>
-    <img src="cowork-pic/congruent_judgment_sas.png"  width="20%">
+    <img src="cowork-pic/congruent_judgment_sas.png"  width="40%">
 </div>
 
     # branch 1
@@ -617,7 +617,7 @@
 
 #### congruent_judgment_sss(ABC,DEF)
 <div>
-    <img src="cowork-pic/congruent_judgment_sss.png"  width="20%">
+    <img src="cowork-pic/congruent_judgment_sss.png"  width="40%">
 </div>
 
     # branch 1
@@ -630,7 +630,7 @@
 
 #### congruent_property_angle_equal(ABC,DEF)
 <div>
-    <img src="cowork-pic/congruent_property_angle_equal.png"  width="20%">
+    <img src="cowork-pic/congruent_property_angle_equal.png"  width="40%">
 </div>
 
     # branch 1
@@ -643,7 +643,7 @@
 
 #### congruent_property_area_equal(ABC,DEF)
 <div>
-    <img src="cowork-pic/congruent_property_area_equal.png"  width="20%">
+    <img src="cowork-pic/congruent_property_area_equal.png"  width="40%">
 </div>
 
     # branch 1
@@ -656,7 +656,7 @@
 
 #### congruent_property_line_equal(ABC,DEF)
 <div>
-    <img src="cowork-pic/congruent_property_line_equal.png"  width="20%">
+    <img src="cowork-pic/congruent_property_line_equal.png"  width="40%">
 </div>
 
     # branch 1
@@ -669,7 +669,7 @@
 
 #### congruent_property_perimeter_equal(ABC,DEF)
 <div>
-    <img src="cowork-pic/congruent_property_perimeter_equal.png"  width="20%">
+    <img src="cowork-pic/congruent_property_perimeter_equal.png"  width="40%">
 </div>
 
     # branch 1
@@ -682,7 +682,7 @@
 
 #### similar_judgment_aa(ABC,DEF)
 <div>
-    <img src="cowork-pic/similar_judgment_aa.png"  width="20%">
+    <img src="cowork-pic/similar_judgment_aa.png"  width="40%">
 </div>
 
     # branch 1
@@ -695,7 +695,7 @@
 
 #### similar_judgment_sas(ABC,DEF)
 <div>
-    <img src="cowork-pic/similar_judgment_sas.png"  width="20%">
+    <img src="cowork-pic/similar_judgment_sas.png"  width="40%">
 </div>
 
     # branch 1
@@ -708,7 +708,7 @@
 
 #### similar_judgment_sss(ABC,DEF)
 <div>
-    <img src="cowork-pic/similar_judgment_sss.png"  width="20%">
+    <img src="cowork-pic/similar_judgment_sss.png"  width="40%">
 </div>
 
     # branch 1
@@ -721,7 +721,7 @@
 
 #### similar_property_angle_equal(ABC,DEF)
 <div>
-    <img src="cowork-pic/similar_property_angle_equal.png"  width="20%">
+    <img src="cowork-pic/similar_property_angle_equal.png"  width="40%">
 </div>
 
     # branch 1
@@ -734,7 +734,7 @@
 
 #### similar_property_area_square_ratio(ABC,DEF)
 <div>
-    <img src="cowork-pic/similar_property_area_square_ratio.png"  width="20%">
+    <img src="cowork-pic/similar_property_area_square_ratio.png"  width="40%">
 </div>
 
     # branch 1
@@ -747,7 +747,7 @@
 
 #### similar_property_line_ratio(ABC,DEF)
 <div>
-    <img src="cowork-pic/similar_property_line_ratio.png"  width="20%">
+    <img src="cowork-pic/similar_property_line_ratio.png"  width="40%">
 </div>
 
     # branch 1
@@ -760,7 +760,7 @@
 
 #### similar_property_perimeter_ratio(ABC,DEF)
 <div>
-    <img src="cowork-pic/similar_property_perimeter_ratio.png"  width="20%">
+    <img src="cowork-pic/similar_property_perimeter_ratio.png"  width="40%">
 </div>
 
     # branch 1

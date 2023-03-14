@@ -320,7 +320,7 @@
 
 #### Congruent(ABC,DEF)
 <div>
-    <img src="cowork-pic/Congruent.png"  width="14%">
+    <img src="cowork-pic/Congruent.png"  width="25%">
 </div>
 
     ee_check: Triangle(ABC)
@@ -335,7 +335,7 @@
 
 #### Similar(ABC,DEF)
 <div>
-    <img src="cowork-pic/Similar.png"  width="14%">
+    <img src="cowork-pic/Similar.png"  width="25%">
 </div>
 
     ee_check: Triangle(ABC)
@@ -350,7 +350,7 @@
 
 #### MirrorCongruent(ABC,DEF)
 <div>
-    <img src="cowork-pic/MirrorCongruent.png"  width="14%">
+    <img src="cowork-pic/MirrorCongruent.png"  width="25%">
 </div>
 
     ee_check: Triangle(ABC)
@@ -365,7 +365,7 @@
 
 #### MirrorSimilar(ABC,DEF)
 <div>
-    <img src="cowork-pic/MirrorSimilar.png"  width="14%">
+    <img src="cowork-pic/MirrorSimilar.png"  width="25%">
 </div>
 
     ee_check: Triangle(ABC)

@@ -1,330 +1,471 @@
 ## 附录2 谓词标注对照手册
 ### A、基本构图谓词
-| 名称 | 格式 | 多种表示 | 实体存在性约束 | 扩展 |
-|:---:|:---:|:---:|:---:|:---:|
-| 基本形状 | Polygon(*) | * | / | Angle,Triangle,Quadrilateral |
-| 共线点 | Collinear(*) | * | / | Angle |
-| 共圆点 | Cocircular(O,*) | * | / | Arc,Circle |
-#### Polygon
+#### Polygon(*)
 <div>
     <img src="cowork-pic/Polygon.png" width="40%">
 </div>
 
     Polygon(ABCDE),Polygon(BCDEA),Polygon(CDEAB),Polygon(DEABC),Polygon(EABCD)
-    例1: Polygon(ADE),Polygon(DBCE)
-    例2: Polygon(ABC),Polygon(ACD),Polygon(ADE),Polygon(AEF)
 
-备注：  
-#### Collinear
+**Notes**:  
+例1 Polygon(ADE),Polygon(DBCE)    
+例2 Polygon(ABC),Polygon(ACD),Polygon(ADE),Polygon(AEF)   
+
+#### Collinear(*)
 <div>
     <img src="cowork-pic/Collinear.png" width="40%">
 </div>
 
     Collinear(AMB),Collinear(BMA)
-    例1: Collinear(AOB),Collinear(COD)
-    例2: Collinear(BCDEF)
 
-备注：  
-#### Cocircular
+**Notes**:  
+例1 Collinear(AOB),Collinear(COD)  
+例2 Collinear(BCDEF)  
+
+#### Cocircular(O,*)
 <div>
     <img src="cowork-pic/Cocircular.png" width="27%">
 </div>
 
     Cocircular(O,AC),Cocircular(O,CA)
-    例1: Cocircular(O,ABCD)
 
-备注：  
+**Notes**:  
+例1 Cocircular(O,ABCD)  
+
 ### B、基本实体
-| 名称 | 格式 | 多种表示 | 实体存在性约束 | 扩展 |
-|:---:|:---:|:---:|:---:|:---:|
-| 点 | Point(A) | / | / | / |
-| 线 | Line(AB) | BA | / | Point(A),Point(B) |
-| 角 | Angle(ABC) | / | / | Line(AB),Line(BC) |
-| 三角形 | Triangle(ABC) | BCA,CAB | / | / |
-| 四边形 | Quadrilateral(ABCD) | BCDA,CDAB,DABC | / | / |
-| 弧 | Arc(AB) | / | / | Point(A),Point(B) |
-| 圆 | Circle(O) | / | / | Point(O) |
-#### Point
+#### Point(A)
 <div>
     <img src="cowork-pic/Point.png" width="40%">
 </div>
 
     Point(A)
-    例1: Point(A),Point(B),Point(C)
-    例2: Point(O),Point(A),Point(C)
 
-备注：  
-#### Line
+**Notes**:  
+例1 Point(A),Point(B),Point(C)  
+例2 Point(O),Point(A),Point(C)  
+
+#### Line(AB)
 <div>
     <img src="cowork-pic/Line.png" width="40%">
 </div>
 
     Line(AB),Line(BA)
-    例1: Line(AB),Line(CD)
-    例2: Line(AO),Line(BO)
 
-备注：  
-#### Angle
+**Notes**:  
+例1 Line(AB),Line(CD)  
+例2 Line(AO),Line(BO)  
+
+#### Angle(ABC)
 <div>
     <img src="cowork-pic/Angle.png" width="40%">
 </div>
 
     Angle(AOB)
-    例1: Angle(ABC),Angle(BCA),Angle(CAB)
-    例2: Angle(AOC),Angle(COB),Angle(BOD),Angle(DOA)
 
-备注：  
-#### Triangle
+**Notes**:   
+例1 Angle(ABC),Angle(BCA),Angle(CAB)  
+例2 Angle(AOC),Angle(COB),Angle(BOD),Angle(DOA)  
+
+#### Triangle(ABC)
 <div>
     <img src="cowork-pic/Triangle.png" width="40%">
 </div>
 
     Triangle(ABC),Triangle(BCA),Triangle(CAB)
-    例1: Triangle(ADE),Triangle(ABC)
-    例2: Triangle(ABD),Triangle(ADC),Triangle(ABC)
 
-备注：  
-#### Quadrilateral
+
+**Notes**:  
+例1 Triangle(ADE),Triangle(ABC)  
+例2 Triangle(ABD),Triangle(ADC),Triangle(ABC)  
+
+#### Quadrilateral(ABCD)
 <div>
     <img src="cowork-pic/Quadrilateral.png" width="40%">
 </div>
 
     Quadrilateral(ABCD),Quadrilateral(BCDA),Quadrilateral(CDAB),Quadrilateral(DABC)
-    例1: Quadrilateral(DBCE)
-    例2: Quadrilateral(ABCD)
 
-备注：  
-#### Arc
+**Notes**:  
+例1 Quadrilateral(DBCE)  
+例2 Quadrilateral(ABCD)  
+
+#### Arc(AB)
 <div>
     <img src="cowork-pic/Arc.png" width="40%">
 </div>
 
     Arc(AB)
-    例1: Arc(AC),Arc(CA)
-    例2: Arc(AB),Arc(BC),Arc(CD),...
 
-备注：  
-#### Circle
+**Notes**:  
+例1: Arc(AC),Arc(CA)  
+例2: Arc(AB),Arc(BC),Arc(CD),...  
+
+#### Circle(O)
 <div>
     <img src="cowork-pic/Circle.png" width="40%">
 </div>
 
     Circle(O)
-    例1: Circle(A),Circle(B)
-    例2: Circle(O)
 
-备注：  
+**Notes**:  
+例1: Circle(A),Circle(B)  
+例2: Circle(O)  
 
 ### C、实体
-| 名称 | 格式 | 多种表示 | 实体存在性约束 | 扩展 |
-|:---:|:---:|:---:|:---:|:---:|
-| 直角三角形 | RightTriangle(ABC) | / | Triangle(ABC) | Perpendicular(AB,CB) |
-| 等腰三角形 | IsoscelesTriangle(ABC) | / | Triangle(ABC) | Equal(LengthOfLine(AB),LengthOfLine(AC)) |
-| 等边三角形 | EquilateralTriangle(ABC) | BCA,<br>CAB | Triangle(ABC) | Equal(LengthOfLine(AB),LengthOfLine(AC))<br>Equal(LengthOfLine(AB),LengthOfLine(BC)) |
-#### RightTriangle
+#### RightTriangle(ABC)
 <div>
     <img src="cowork-pic/RightTriangle.png"  width="14%">
 </div>
 
-    RightTriangle(ABC)
+    ee_check: Triangle(ABC)
+    multi: 
+    extend: Perpendicular(AB,CB)
+            IsAltitude(AB,ABC)
+**Notes**:  
 
-备注：  
-#### IsoscelesTriangle
+#### IsoscelesTriangle(ABC)
 <div>
     <img src="cowork-pic/IsoscelesTriangle.png"  width="14%">
 </div>
 
-    IsoscelesTriangle(ABC)
+    ee_check: Triangle(ABC)
+    multi: 
+    extend: Equal(LengthOfLine(AB),LengthOfLine(AC))
+**Notes**:  
 
-备注：  
-#### EquilateralTriangle
+#### EquilateralTriangle(ABC)
 <div>
     <img src="cowork-pic/EquilateralTriangle.png"  width="14%">
 </div>
 
-    EquilateralTriangle(ABC),EquilateralTriangle(BCA),EquilateralTriangle(CAB)
+    ee_check: Triangle(ABC)
+    multi: BCA
+           CAB
+    extend: Equal(LengthOfLine(AB),LengthOfLine(AC))
+            Equal(LengthOfLine(AB),LengthOfLine(BC))
+**Notes**:  
 
-备注：  
 ### D、实体关系
-|名称|格式|多种表示|实体存在性约束|扩展|
-|:---:|:---:|:---:|:---:|:---:|
-| 中点 | Midpoint(M,AB) | MBA | Point(M),<br>Line(AB) | Equal(LengthOfLine(AM),LengthOfLine(MB)) |
-| 两线相交 | Intersect(O,AB,CD) | OCDBA,<br>OBADC,<br>ODCAB | Point(O),<br>Line(AB),<br>Line(CD) | / |
-| 两线平行 | Parallel(AB,CD) | DCBA | Line(AB),<br>Line(CD) | / |
-| 两线垂直 | Perpendicular(AO,OC) | / | Line(AO),<br>Line(OC) | Equal(MeasureOfAngle(AOC),90) |
-| 垂直平分线 | PerpendicularBisector(AB,CO) | / | Line(AB),<br>Line(CO) | Perpendicular(AO,CO)<br>Perpendicular(CO,BO)<br>Midpoint(AO,OB) |
-| 角平分线 | Bisector(BD,ABC) | / | Line(BD),<br>Angle(ABC) | Equal(MeasureOfAngle(ABD),MeasureOfAngle(DBC)) |
-| 三角形的中线 | Median(AD,ABC) | / | Line(AD),<br>Triangle(ABC),<br>Collinear(BDC) | Midpoint(D,BC) |
-| 三角形的高 | IsAltitude(AD,ABC) | / | Line(AD),<br>Triangle(ABC),<br>Collinear(BDC) | Perpendicular(BD,AD)<br>Perpendicular(AD,CD)<br>Equal(LengthOfLine(AD),AltitudeOfTriangle(ABC)) |
-| 三角形的中位线 | Neutrality(DE,ABC) | / | Line(DE),<br>Triangle(ABC) | Parallel(DE,BC) |
-| 三角形的外心 | Circumcenter(O,ABC) | OBCA,<br>OCAB | Point(O),<br>Triangle(ABC) | / |
-| 三角形的内心 | Incenter(O,ABC) | OBCA,<br>OCAB | Point(O),<br>Triangle(ABC) | / |
-| 三角形的重心 | Centroid(O,ABC) | OBCA,<br>OCAB | Point(O),<br>Triangle(ABC) | / |
-| 三角形的垂心 | Orthocenter(O,ABC) | OBCA,<br>OCAB | Point(O),<br>Triangle(ABC) | / |
-| 三角形全等 | Congruent(ABC,DEF) | DEFABC,<br>BCAEFD,<br>EFDBCA,<br>CABFDE,<br>FDECAB | Triangle(ABC),<br>Triangle(DEF) | / |
-| 三角形相似 | Similar(ABC,DEF) | DEFABC,<br>BCAEFD,<br>EFDBCA,<br>CABFDE,<br>FDECAB | Triangle(ABC),<br>Triangle(DEF) | / |
-| 三角形镜像全等 | MirrorCongruent(ABC,DEF) | DEFABC,<br>BCAFDE,<br>FDEBCA,<br>CABEFD,<br>EFDCAB | Triangle(ABC),<br>Triangle(DEF) | / |
-| 三角形镜像相似 | MirrorSimilar(ABC,DEF) | DEFABC,<br>BCAFDE,<br>FDEBCA,<br>CABEFD,<br>EFDCAB | Triangle(ABC),<br>Triangle(DEF) | / |
-#### Midpoint
+#### Midpoint(M,AB)
 <div>
-    <img src="cowork-pic/MidPoint.png"  width="14%">
+    <img src="cowork-pic/Midpoint.png"  width="14%">
 </div>
 
-    Midpoint(M,AB),Midpoint(M,BA)
+    ee_check: Point(M)
+              Line(AB)
+    fv_check: M,AB
+    multi: M,BA
+    extend: Equal(LengthOfLine(AM),LengthOfLine(MB))
+**Notes**:  
 
-备注：  
-#### Intersect
+#### Intersect(O,AB,CD)
 <div>
     <img src="cowork-pic/Intersect.png"  width="14%">
 </div>
 
-    Intersect(O,AB,CD),Intersect(O,CD,BA),Intersect(O,BA,DC),Intersect(O,DC,AB)
+    ee_check: Point(O)
+              Line(AB)
+              Line(CD)
+    fv_check: O,AB,CD
+    multi: O,CD,BA
+           O,BA,DC
+           O,DC,AB
+    extend: 
+**Notes**:  
 
-备注：  
-#### Parallel
+#### Parallel(AB,CD)
 <div>
     <img src="cowork-pic/Parallel.png"  width="14%">
 </div>
 
-    Parallel(AB,CD),Parallel(DC,BA)
+    ee_check: Line(AB)
+              Line(CD)
+    fv_check: AB,CD
+    multi: DC,BA
+    extend: 
+**Notes**:  
 
-备注：  
-#### Perpendicular
+#### Perpendicular(AO,CO)
 <div>
     <img src="cowork-pic/Perpendicular.png"  width="14%">
 </div>
 
-    Perpendicular(AO,BO)
+    ee_check: Line(AO)
+              Line(CO)
+    fv_check: AO,CO
+    multi: 
+    extend: Equal(MeasureOfAngle(AOC),90)
+**Notes**:  
 
-备注：  
-#### PerpendicularBisector
+#### PerpendicularBisector(AB,CO)
 <div>
     <img src="cowork-pic/PerpendicularBisector.png"  width="14%">
 </div>
 
-    PerpendicularBisector(AB,CO)
+    ee_check: Line(AB)
+              Line(CO)
+    fv_check: AB,CO
+    multi: 
+    extend: Perpendicular(AO,CO)
+            Perpendicular(CO,BO)
+            Midpoint(O,AB)
+**Notes**:  
 
-备注：  
-#### Bisector
+#### Bisector(BD,ABC)
 <div>
     <img src="cowork-pic/Bisector.png"  width="14%">
 </div>
 
-    Bisector(BD,ABC)
+    ee_check: Line(BD)
+              Angle(ABC)
+    fv_check: BD,ABC
+    multi: 
+    extend: Equal(MeasureOfAngle(ABD),MeasureOfAngle(DBC))
+**Notes**:  
 
-备注：  
-#### Median
+#### Median(AD,ABC)
 <div>
     <img src="cowork-pic/Median.png"  width="14%">
 </div>
 
-    Median(AM,ABC)
+    ee_check: Line(AD)
+              Triangle(ABC)
+    fv_check: AD,ABC
+    multi: 
+    extend: Midpoint(D,BC)
+**Notes**:  
 
-备注：  
-#### IsAltitude
+#### IsAltitude(AD,ABC)
 <div>
     <img src="cowork-pic/IsAltitude.png"  width="14%">
 </div>
 
-    IsAltitude(AD,ABC)
+    ee_check: Line(AD)
+              Triangle(ABC)
+    fv_check: AD,ABC
+              AB,ABC
+              AC,ABC
+    multi: 
+    extend: Perpendicular(BD,AD)
+            Perpendicular(AD,CD)
+            Equal(LengthOfLine(AD),AltitudeOfTriangle(ABC))
+**Notes**:  
 
-备注：  
-#### Neutrality
+#### Neutrality(DE,ABC)
 <div>
     <img src="cowork-pic/Neutrality.png"  width="14%">
 </div>
 
-    Neutrality(DE,ABC)
+    ee_check: Line(DE)
+              Triangle(ABC)
+    fv_check: DE,ABC
+    multi: 
+    extend: Parallel(DE,BC)
+**Notes**:  
 
-备注：  
-#### Circumcenter
+#### Circumcenter(O,ABC)
 <div>
     <img src="cowork-pic/Circumcenter.png"  width="14%">
 </div>
 
-    Circumcenter(O,ABC),Circumcenter(O,BCA),Circumcenter(O,CAB)
+    ee_check: Point(O)
+              Triangle(ABC)
+    fv_check: O,ABC
+    multi: O,BCA
+           O,CAB
+    extend: 
+**Notes**:  
 
-备注：  
-#### Incenter
+#### Incenter(O,ABC)
 <div>
     <img src="cowork-pic/Incenter.png"  width="14%">
 </div>
 
-    Incenter(O,ABC),Incenter(O,BCA),Incenter(O,CAB)
+    ee_check: Point(O)
+              Triangle(ABC)
+    fv_check: O,ABC
+    multi: O,BCA
+           O,CAB
+    extend: 
+**Notes**:  
 
-备注：  
-#### Centroid
+#### Centroid(O,ABC)
 <div>
     <img src="cowork-pic/Centroid.png"  width="14%">
 </div>
 
-    Centroid(O,ABC),Centroid(O,BCA),Centroid(O,CAB)
+    ee_check: Point(O)
+              Triangle(ABC)
+    fv_check: O,ABC
+    multi: O,BCA
+           O,CAB
+    extend: 
+**Notes**:  
 
-备注：  
-#### Orthocenter
+#### Orthocenter(O,ABC)
 <div>
     <img src="cowork-pic/Orthocenter.png"  width="14%">
 </div>
 
-    Orthocenter(O,ABC),Orthocenter(O,BCA),Orthocenter(O,CAB)
+    ee_check: Point(O)
+              Triangle(ABC)
+    fv_check: O,ABC
+              A,ABC
+              B,ABC
+              C,ABC
+    multi: O,BCA
+           O,CAB
+    extend: 
+**Notes**:  
 
-备注：  
-#### Congruent
+#### Congruent(ABC,DEF)
 <div>
     <img src="cowork-pic/Congruent.png"  width="14%">
 </div>
 
-    Congruent(ABC,DEF),Congruent(DEF,ABC),Congruent(BCA,EFD),
-    Congruent(EFD,BCA),Congruent(CAB,FDE),Congruent(FDE,CAB)
+    ee_check: Triangle(ABC)
+              Triangle(DEF)
+    multi: DEF,ABC
+           BCA,EFD
+           EFD,BCA
+           CAB,FDE
+           FDE,CAB
+    extend: 
+**Notes**:  
 
-备注：  
-#### Similar
+#### Similar(ABC,DEF)
 <div>
     <img src="cowork-pic/Similar.png"  width="14%">
 </div>
 
-    Similar(ABC,DEF),Similar(DEF,ABC),Similar(BCA,EFD),
-    Similar(EFD,BCA),Similar(CAB,FDE),Similar(FDE,CAB)
+    ee_check: Triangle(ABC)
+              Triangle(DEF)
+    multi: DEF,ABC
+           BCA,EFD
+           EFD,BCA
+           CAB,FDE
+           FDE,CAB
+    extend: 
+**Notes**:  
 
-备注：  
-#### MirrorCongruent
+#### MirrorCongruent(ABC,DEF)
 <div>
     <img src="cowork-pic/MirrorCongruent.png"  width="14%">
 </div>
 
-    MirrorCongruent(ABC,DEF),MirrorCongruent(DEF,ABC),MirrorCongruent(BCA,FDE)
-    MirrorCongruent(FDE,BCA),MirrorCongruent(CAB,EFD),MirrorCongruent(EFD,CAB)
+    ee_check: Triangle(ABC)
+              Triangle(DEF)
+    multi: DEF,ABC
+           BCA,FDE
+           FDE,BCA
+           CAB,EFD
+           EFD,CAB
+    extend: 
+**Notes**:  
 
-备注：  
-#### MirrorSimilar
+#### MirrorSimilar(ABC,DEF)
 <div>
     <img src="cowork-pic/MirrorSimilar.png"  width="14%">
 </div>
 
-    MirrorSimilar(ABC,DEF),MirrorSimilar(DEF,ABC),MirrorSimilar(BCA,FDE)
-    MirrorSimilar(FDE,BCA),MirrorSimilar(CAB,EFD),MirrorSimilar(EFD,CAB)
+    ee_check: Triangle(ABC)
+              Triangle(DEF)
+    multi: DEF,ABC
+           BCA,FDE
+           FDE,BCA
+           CAB,EFD
+           EFD,CAB
+    extend: 
+**Notes**:  
 
-备注：  
 ### E、基本实体属性
-|名称|格式|符号|多种表示|实体存在性约束|
-|:--:|:--:|:--:|:--:|:--:|
-|长度|LengthOfLine(AB)|ll|BA|Line(AB)|
-|弧长|LengthOfArc(AB)|la|/|Arc(AB)|
-|角度|MeasureOfAngle(ABC)|ma|/|Angle(ABC)|
+#### LengthOfLine(AB)
+<div>
+    <img src="cowork-pic/LengthOfLine.png"  width="14%">
+</div>
 
+    ee_check: Line(AB)
+    multi: BA
+    sym: ll
+**Notes**:  
+
+#### LengthOfArc(AB)
+<div>
+    <img src="cowork-pic/LengthOfArc.png"  width="14%">
+</div>
+
+    ee_check: Arc(AB)
+    multi: 
+    sym: la
+**Notes**:  
+
+#### MeasureOfAngle(ABC)
+<div>
+    <img src="cowork-pic/MeasureOfAngle.png"  width="14%">
+</div>
+
+    ee_check: Angle(ABC)
+    multi: 
+    sym: ma
+**Notes**:  
 
 ### F、实体属性
-|名称|格式|符号|多种表示|实体存在性约束|
-|:--:|:--:|:--:|:--:|:--:|
-|三角形面积|AreaOfTriangle(ABC)|at|BCA,CAB|Triangle(ABC)|
-|三角形周长|PerimeterOfTriangle(ABC)|pt|BCA,CAB|Triangle(ABC)|
-|三角形高的长度|AltitudeOfTriangle(ABC)|alt|/|Triangle(ABC)|
-|点到直线的距离|DistanceOfPointToLine(O,AB)|dpl|OBA|Point(O),Line(AB)|
+#### AreaOfTriangle(ABC)
+<div>
+    <img src="cowork-pic/AreaOfTriangle.png"  width="14%">
+</div>
+
+    ee_check: Triangle(ABC)
+    multi: BCA
+           CAB
+    sym: at
+**Notes**:  
+例 Equal(AreaOfTriangle(ABC),10)  
+
+#### PerimeterOfTriangle(ABC)
+<div>
+    <img src="cowork-pic/PerimeterOfTriangle.png"  width="14%">
+</div>
+
+    ee_check: Triangle(ABC)
+    multi: BCA
+           CAB
+    sym: pt
+**Notes**:  
+例 Equal(PerimeterOfTriangle(ABC),10)  
+
+#### AltitudeOfTriangle(ABC)
+<div>
+    <img src="cowork-pic/AltitudeOfTriangle.png"  width="14%">
+</div>
+
+    ee_check: Triangle(ABC)
+    multi: 
+    sym: alt
+**Notes**:  
+例 Equal(AltitudeOfTriangle(ABC),5)  
+
+#### DistanceOfPointToLine(O,AB)
+<div>
+    <img src="cowork-pic/DistanceOfPointToLine.png"  width="14%">
+</div>
+
+    ee_check: Point(O)
+              Line(AB)
+    fv_check: O,AB
+              B,AB
+              A,AB
+    multi: OBA
+    sym: dpl
+**Notes**:  
+例 Equal(DistanceOfPointToLine(O,AB),3)  
 
 ### G、代数关系
-|名称|格式|备注|
-|:--:|:--:|:--:|
-|相等|Equal(expr1,expr2)|expr可以是表达式，也可以是实体属性，并且可以嵌套表示|
+
+    Equal(expr1,expr2)
+    
+**Notes**:  
+expr可以是表达式，也可以是实体属性，并且可以嵌套表示。  
 
 ### H、代数运算
 |名称|格式|表达式符号|
@@ -341,28 +482,36 @@
 |自由变量|x|a,b,c,...|
 |左括号| / |{|
 |右括号| / |}|
- 
+
 ### I、解题目标
-|名称|格式|备注|
-|:--:|:--:|:--:|
-|证相等|Equal(expr1,expr2)|expr可以是表达式，也可以是实体属性，并且可以嵌套表示|
-|求值|Value(expr)|expr表示由运算和实体属性构成的表达式|
-|求关系|Relation($)|Relation表示任意实体、实体关系|
 #### Value
-代数型解题目标，求某个表达式或属性的值。
 
     Value(LengthOfLine(AB))
     Value(Add(MeasureOfAngle(ABC),MeasureOfAngle(DEF)))
     Value(x+y)
 
+**Notes**:  
+代数型解题目标，求某个表达式或属性的值。  
+expr可以是表达式，也可以是实体属性，并且可以嵌套表示。  
+
 #### Equal
-代数型解题目标，证明左右俩个部分相等。
+
 
     Equal(LengthOfLine(AB),x+y)
     Equal(Add(MeasureOfAngle(ABC),MeasureOfAngle(DEF)),Pow(x,2))
+    
+**Notes**:  
+代数型解题目标，证明左右俩个部分相等。  
+expr可以是表达式，也可以是实体属性，并且可以嵌套表示。  
 
 #### Relation
-逻辑型解题目标，求某个实体或属性。
+逻辑型解题目标，求某个实体或属性。  
+
 
     Relation(Parallel(AB,CD))
-    Relation(RightTriangle(ABC))
+    Relation(RightTriangle(ABC))    
+
+**Notes**:  
+代数型解题目标，证明左右俩个部分相等。  
+Relation表示任意实体、实体关系。  
+

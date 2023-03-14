@@ -1,969 +1,896 @@
-## 定理标注对照手册
-| 名称 | 类别 | 描述 |
-| :--: | :--: | :--: |
-| line_addition(AB,BC) | / | / |
-| angle_addition(ABC,CBD) | / | / |
-| flat_angle(ABC) | / | / |
-| adjacent_complementary_angle(AOB,BOC) | / | / |
-| midpoint_judgment(M,AB) | / | / |
-| triangle_area_formula_common(AD,ABC) | / | / |
-| triangle_area_formula_heron(ABC) | / | / |
-| triangle_area_formula_sine(ABC) | / | / |
-| triangle_perimeter_formula(ABC) | / | / |
-| triangle_property_angle_sum(ABC) | / | / |
-| triangle_property_equal_line_to_equal_angle(ABC) | / | / |
-| triangle_property_equal_angle_to_equal_line(ABC) | / | / |
-| sine_theorem(ABC) | / | / |
-| cosine_theorem(ABC) | / | / |
-| parallel_judgment_alternate_interior_angle(AB,CD) | / | / |
-| parallel_judgment_Ipsilateral_internal_angle(AB,CD) | / | / |
-| parallel_judgment_par_par(AB,CD,EF) | / | / |
-| parallel_judgment_per_per(AB,CD) | / | / |
-| parallel_property_collinear_extend(AB,CD,M) | / | / |
-| parallel_property_alternate_interior_angle(AB,CD) | / | / |
-| parallel_property_Ipsilateral_internal_angle(AB,CD) | / | / |
-| parallel_property_corresponding_angle(AB,CD,E) | / | / |
-| parallel_property_extend_perpendicular(AB,CD) | / | / |
-| intersect_property_vertical_angle(O,AB,CD) | / | / |
-| bisector_judgment_angle_equal(BD,ABC) | / | / |
-| bisector_property_line_ratio(BD,ABC) | / | / |
-| median_judgment(AD,ABC) | / | / |
-| neutrality_judgment_parallel(DE,ABC) | / | / |
-| neutrality_property_angle_equal(DE,ABC) | / | / |
-| neutrality_property_line_ratio(DE,ABC) | / | / |
-| neutrality_property_similar(DE,ABC) | / | / |
-| altitude_judgment(AD,ABC) | / | / |
-| perpendicular_bisector_judgment(AB,CO) | / | / |
-| perpendicular_bisector_property_distance_equal(AB,CO) | / | / |
-| perpendicular_bisector_property_bisector(AB,CO) | / | / |
-| perpendicular_judgment_angle(AO,CO) | / | / |
-| perpendicular_property_collinear_extend(AO,CO,B) | / | / |
-| right_triangle_judgment_angle(ABC) | / | / |
-| right_triangle_judgment_pythagorean_inverse(ABC) | / | / |
-| right_triangle_property_pythagorean(ABC) | / | / |
-| right_triangle_property_special_rt_30_60(ABC) | / | / |
-| right_triangle_property_special_rt_45_45(ABC) | / | / |
-| isosceles_triangle_judgment_angle_equal(ABC) | / | / |
-| isosceles_triangle_judgment_equilateral(ABC) | / | / |
-| isosceles_triangle_judgment_line_equal(ABC) | / | / |
-| isosceles_triangle_property_angle_equal(ABC) | / | / |
-| isosceles_triangle_property_line_coincidence(ABC) | / | / |
-| equilateral_triangle_judgment_angle_equal(ABC) | / | / |
-| equilateral_triangle_judgment_isos_and_angle(ABC) | / | / |
-| equilateral_triangle_judgment_line_equal(ABC) | / | / |
-| equilateral_triangle_property_angle(ABC) | / | / |
-| equilateral_triangle_property_line_equal(ABC) | / | / |
-| congruent_judgment_aas(ABC,DEF) | / | / |
-| congruent_judgment_asa(ABC,DEF) | / | / |
-| congruent_judgment_hl(ABC,DEF) | / | / |
-| congruent_judgment_sas(ABC,DEF) | / | / |
-| congruent_judgment_sss(ABC,DEF) | / | / |
-| congruent_property_angle_equal(ABC,DEF) | / | / |
-| congruent_property_area_equal(ABC,DEF) | / | / |
-| congruent_property_line_equal(ABC,DEF) | / | / |
-| congruent_property_perimeter_equal(ABC,DEF) | / | / |
-| similar_judgment_aa(ABC,DEF) | / | / |
-| similar_judgment_sas(ABC,DEF) | / | / |
-| similar_judgment_sss(ABC,DEF) | / | / |
-| similar_property_angle_equal(ABC,DEF) | / | / |
-| similar_property_area_square_ratio(ABC,DEF) | / | / |
-| similar_property_line_ratio(ABC,DEF) | / | / |
-| similar_property_perimeter_ratio(ABC,DEF) | / | / |
-| circumcenter_judgment(O,ABC,D,E) | / | / |
-| circumcenter_property_intersect(O,ABC,D) | / | / |
-| circumcenter_property_line_equal(O,ABC) | / | / |
-| incenter_property_intersect(O,ABC) | / | / |
-| incenter_property_judgment(O,ABC) | / | / |
-| incenter_property_line_equal(O,ABC,D,E) | / | / |
-| centroid_judgment(O,ABC,M,N) | / | / |
-| centroid_property_intersect(O,ABC,M) | / | / |
-| centroid_property_line_equal(O,ABC,M) | / | / |
-| orthocenter_property_intersect(O,ABC,D) | / | / |
-| orthocenter_property_judgment(O,ABC,D,E) | / | / |
-| orthocenter_property_line_equal(O,ABC) | / | / |
-
-### line_addition
+## 附录3 定理标注对照手册
+#### line_addition(AB,BC)
 <div>
     <img src="cowork-pic/line_addition.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Collinear(ABC)
-    Conclusion:['Equal(LengthOfLine(AC),Add(LengthOfLine(AB),LengthOfLine(BC)))']
-备注：  
+    premise: Collinear(ABC)
+    conclusion: Equal(LengthOfLine(AC),Add(LengthOfLine(AB),LengthOfLine(BC)))
+**Notes**:  
 
-### angle_addition
+#### angle_addition(ABC,CBD)
 <div>
     <img src="cowork-pic/angle_addition.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Angle(ABC)&Angle(CBD)
-    Conclusion:['Equal(MeasureOfAngle(ABD),Add(MeasureOfAngle(ABC),MeasureOfAngle(CBD)))']
-备注：  
+    premise: Angle(ABC)&Angle(CBD)
+    conclusion: Equal(MeasureOfAngle(ABD),Add(MeasureOfAngle(ABC),MeasureOfAngle(CBD)))
+**Notes**:  
 
-### flat_angle
+#### flat_angle(ABC)
 <div>
     <img src="cowork-pic/flat_angle.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Collinear(ABC)
-    Conclusion:['Equal(MeasureOfAngle(ABC),180)', 'Equal(MeasureOfAngle(CBA),180)']
-备注：  
+    premise: Collinear(ABC)
+    conclusion: Equal(MeasureOfAngle(ABC),180)
+                Equal(MeasureOfAngle(CBA),180)
+**Notes**:  
 
-### adjacent_complementary_angle
+#### adjacent_complementary_angle(AOB,BOC)
 <div>
     <img src="cowork-pic/adjacent_complementary_angle.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Angle(AOB)&Angle(BOC)&Collinear(AOC)
-    Conclusion:['Equal(Add(MeasureOfAngle(AOB),MeasureOfAngle(BOC)),180)']
-备注：  
+    premise: Angle(AOB)&Angle(BOC)&Collinear(AOC)
+    conclusion: Equal(Add(MeasureOfAngle(AOB),MeasureOfAngle(BOC)),180)
+**Notes**:  
 
-### midpoint_judgment
+#### midpoint_judgment(M,AB)
 <div>
     <img src="cowork-pic/midpoint_judgment.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Collinear(AMB)&Equal(LengthOfLine(AM),LengthOfLine(MB))
-    Conclusion:['Midpoint(M,AB)']
-备注：  
+    premise: Collinear(AMB)&Equal(LengthOfLine(AM),LengthOfLine(MB))
+    conclusion: Midpoint(M,AB)
+**Notes**:  
 
-### triangle_area_formula_common
+#### triangle_area_formula_common(AD,ABC)
 <div>
     <img src="cowork-pic/triangle_area_formula_common.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:IsAltitude(AD,ABC)
-    Conclusion:['Equal(AreaOfTriangle(ABC),Mul(LengthOfLine(AD),LengthOfLine(BC),0.5))']
-备注：  
+    premise: IsAltitude(AD,ABC)
+    conclusion: Equal(AreaOfTriangle(ABC),Mul(LengthOfLine(AD),LengthOfLine(BC),0.5))
+**Notes**:  
 
-### triangle_area_formula_heron
+#### triangle_area_formula_heron(ABC)
 <div>
     <img src="cowork-pic/triangle_area_formula_heron.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)
-    Conclusion:['Equal(AreaOfTriangle(ABC),Pow(Mul(Mul(Add(LengthOfLine(AB),LengthOfLine(BC),LengthOfLine(AC)),0.5),Sub(Mul(Add(LengthOfLine(AB),LengthOfLine(BC),LengthOfLine(AC)),0.5),LengthOfLine(AB)),Sub(Mul(Add(LengthOfLine(AB),LengthOfLine(BC),LengthOfLine(AC)),0.5),LengthOfLine(BC)),Sub(Mul(Add(LengthOfLine(AB),LengthOfLine(BC),LengthOfLine(AC)),0.5),LengthOfLine(CA))),0.5))']
-备注：  
+    premise: Triangle(ABC)
+    conclusion: Equal(AreaOfTriangle(ABC),Pow(Mul(Mul(Add(LengthOfLine(AB),LengthOfLine(BC),LengthOfLine(AC)),0.5),Sub(Mul(Add(LengthOfLine(AB),LengthOfLine(BC),LengthOfLine(AC)),0.5),LengthOfLine(AB)),Sub(Mul(Add(LengthOfLine(AB),LengthOfLine(BC),LengthOfLine(AC)),0.5),LengthOfLine(BC)),Sub(Mul(Add(LengthOfLine(AB),LengthOfLine(BC),LengthOfLine(AC)),0.5),LengthOfLine(CA))),0.5))
+**Notes**:  
 
-### triangle_area_formula_sine
+#### triangle_area_formula_sine(ABC)
 <div>
     <img src="cowork-pic/triangle_area_formula_sine.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)
-    Conclusion:['Equal(AreaOfTriangle(ABC),Mul(LengthOfLine(AB),LengthOfLine(AC),Sin(MeasureOfAngle(CAB)),1/2))']
-备注：  
+    premise: Triangle(ABC)
+    conclusion: Equal(AreaOfTriangle(ABC),Mul(LengthOfLine(AB),LengthOfLine(AC),Sin(MeasureOfAngle(CAB)),1/2))
+**Notes**:  
 
-### triangle_perimeter_formula
+#### triangle_perimeter_formula(ABC)
 <div>
     <img src="cowork-pic/triangle_perimeter_formula.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)
-    Conclusion:['Equal(PerimeterOfTriangle(ABC),Add(LengthOfLine(AB),LengthOfLine(BC),LengthOfLine(CA)))']
-备注：  
+    premise: Triangle(ABC)
+    conclusion: Equal(PerimeterOfTriangle(ABC),Add(LengthOfLine(AB),LengthOfLine(BC),LengthOfLine(CA)))
+**Notes**:  
 
-### triangle_property_angle_sum
+#### triangle_property_angle_sum(ABC)
 <div>
     <img src="cowork-pic/triangle_property_angle_sum.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)
-    Conclusion:['Equal(Add(MeasureOfAngle(ABC),MeasureOfAngle(BCA),MeasureOfAngle(CAB)),180)']
-备注：  
+    premise: Triangle(ABC)
+    conclusion: Equal(Add(MeasureOfAngle(ABC),MeasureOfAngle(BCA),MeasureOfAngle(CAB)),180)
+**Notes**:  
 
-### triangle_property_equal_line_to_equal_angle
+#### triangle_property_equal_line_to_equal_angle(ABC)
 <div>
     <img src="cowork-pic/triangle_property_equal_line_to_equal_angle.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)&Equal(LengthOfLine(AB),LengthOfLine(AC))
-    Conclusion:['Equal(MeasureOfAngle(ABC),MeasureOfAngle(BCA))']
-备注：  
+    premise: Triangle(ABC)&Equal(LengthOfLine(AB),LengthOfLine(AC))
+    conclusion: Equal(MeasureOfAngle(ABC),MeasureOfAngle(BCA))
+**Notes**:  
 
-### triangle_property_equal_angle_to_equal_line
+#### triangle_property_equal_angle_to_equal_line(ABC)
 <div>
     <img src="cowork-pic/triangle_property_equal_angle_to_equal_line.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(BCA))
-    Conclusion:['Equal(LengthOfLine(AB),LengthOfLine(AC))']
-备注：  
+    premise: Triangle(ABC)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(BCA))
+    conclusion: Equal(LengthOfLine(AB),LengthOfLine(AC))
+**Notes**:  
 
-### sine_theorem
+#### sine_theorem(ABC)
 <div>
     <img src="cowork-pic/sine_theorem.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)
-    Conclusion:['Equal(Mul(LengthOfLine(AB),Sin(MeasureOfAngle(ABC))),Mul(LengthOfLine(AC),Sin(MeasureOfAngle(BCA))))']
-备注：  
+    premise: Triangle(ABC)
+    conclusion: Equal(Mul(LengthOfLine(AB),Sin(MeasureOfAngle(ABC))),Mul(LengthOfLine(AC),Sin(MeasureOfAngle(BCA))))
+**Notes**:  
 
-### cosine_theorem
+#### cosine_theorem(ABC)
 <div>
     <img src="cowork-pic/cosine_theorem.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)
-    Conclusion:['Equal(Add(Pow(LengthOfLine(BC),2),Mul(2,LengthOfLine(AB),LengthOfLine(AC),Cos(MeasureOfAngle(CAB)))),Add(Pow(LengthOfLine(AB),2),Pow(LengthOfLine(AC),2)))']
-备注：  
+    premise: Triangle(ABC)
+    conclusion: Equal(Add(Pow(LengthOfLine(BC),2),Mul(2,LengthOfLine(AB),LengthOfLine(AC),Cos(MeasureOfAngle(CAB)))),Add(Pow(LengthOfLine(AB),2),Pow(LengthOfLine(AC),2)))
+**Notes**:  
 
-### parallel_judgment_alternate_interior_angle
+#### parallel_judgment_alternate_interior_angle(AB,CD)
 <div>
     <img src="cowork-pic/parallel_judgment_alternate_interior_angle.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Angle(BAD)&Angle(CDA)&Equal(MeasureOfAngle(BAD),MeasureOfAngle(CDA))
-    Conclusion:['Parallel(AB,CD)']
-备注：  
+    premise: Angle(BAD)&Angle(CDA)&Equal(MeasureOfAngle(BAD),MeasureOfAngle(CDA))
+    conclusion: Parallel(AB,CD)
+**Notes**:  
 
-### parallel_judgment_Ipsilateral_internal_angle
+#### parallel_judgment_Ipsilateral_internal_angle(AB,CD)
 <div>
     <img src="cowork-pic/parallel_judgment_Ipsilateral_internal_angle.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Angle(BAC)&Angle(ACD)&Equal(Add(MeasureOfAngle(BAC),MeasureOfAngle(ACD)),180)
-    Conclusion:['Parallel(AB,CD)']
-备注：  
+    premise: Angle(BAC)&Angle(ACD)&Equal(Add(MeasureOfAngle(BAC),MeasureOfAngle(ACD)),180)
+    conclusion: Parallel(AB,CD)
+**Notes**:  
 
-### parallel_judgment_par_par
+#### parallel_judgment_par_par(AB,CD,EF)
 <div>
     <img src="cowork-pic/parallel_judgment_par_par.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Parallel(AB,CD)&Parallel(CD,EF)
-    Conclusion:['Parallel(AB,EF)']
-备注：  
+    premise: Parallel(AB,CD)&Parallel(CD,EF)
+    conclusion: Parallel(AB,EF)
+**Notes**:  
 
-### parallel_judgment_per_per
+#### parallel_judgment_per_per(AB,CD)
 <div>
     <img src="cowork-pic/parallel_judgment_per_per.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Perpendicular(BA,CA)&Perpendicular(AC,DC)
-    Conclusion:['Parallel(AB,CD)']
+    premise: Perpendicular(BA,CA)&Perpendicular(AC,DC)
+    conclusion: Parallel(AB,CD)
     # branch 2
-    Premise:Perpendicular(CD,AD)&Perpendicular(BA,DA)
-    Conclusion:['Parallel(AB,CD)']
-备注：  
+    premise: Perpendicular(CD,AD)&Perpendicular(BA,DA)
+    conclusion: Parallel(AB,CD)
+**Notes**:  
 
-### parallel_property_collinear_extend
+#### parallel_property_collinear_extend(AB,CD,M)
 <div>
     <img src="cowork-pic/parallel_property_collinear_extend.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Collinear(AMB)&Parallel(AB,CD)
-    Conclusion:['Parallel(AM,CD)', 'Parallel(MB,CD)']
+    premise: Collinear(AMB)&Parallel(AB,CD)
+    conclusion: Parallel(AM,CD)
+                Parallel(MB,CD)
     # branch 2
-    Premise:Collinear(MAB)&Parallel(AB,CD)
-    Conclusion:['Parallel(MA,CD)', 'Parallel(MB,CD)']
+    premise: Collinear(MAB)&Parallel(AB,CD)
+    conclusion: Parallel(MA,CD)
+                Parallel(MB,CD)
     # branch 3
-    Premise:Collinear(ABM)&Parallel(AB,CD)
-    Conclusion:['Parallel(AM,CD)', 'Parallel(BM,CD)']
-备注：  
+    premise: Collinear(ABM)&Parallel(AB,CD)
+    conclusion: Parallel(AM,CD)
+                Parallel(BM,CD)
+**Notes**:  
 
-### parallel_property_alternate_interior_angle
+#### parallel_property_alternate_interior_angle(AB,CD)
 <div>
     <img src="cowork-pic/parallel_property_alternate_interior_angle.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Parallel(AB,CD)&Line(AD)
-    Conclusion:['Equal(MeasureOfAngle(BAD),MeasureOfAngle(CDA))']
-备注：  
+    premise: Parallel(AB,CD)&Line(AD)
+    conclusion: Equal(MeasureOfAngle(BAD),MeasureOfAngle(CDA))
+**Notes**:  
 
-### parallel_property_Ipsilateral_internal_angle
+#### parallel_property_Ipsilateral_internal_angle(AB,CD)
 <div>
     <img src="cowork-pic/parallel_property_Ipsilateral_internal_angle.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Parallel(AB,CD)&Line(AC)
-    Conclusion:['Equal(Add(MeasureOfAngle(BAC),MeasureOfAngle(ACD)),180)']
-备注：  
+    premise: Parallel(AB,CD)&Line(AC)
+    conclusion: Equal(Add(MeasureOfAngle(BAC),MeasureOfAngle(ACD)),180)
+**Notes**:  
 
-### parallel_property_corresponding_angle
+#### parallel_property_corresponding_angle(AB,CD,E)
 <div>
     <img src="cowork-pic/parallel_property_corresponding_angle.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Parallel(AB,CD)&Collinear(EAC)
-    Conclusion:['Equal(MeasureOfAngle(EAB),MeasureOfAngle(ACD))']
+    premise: Parallel(AB,CD)&Collinear(EAC)
+    conclusion: Equal(MeasureOfAngle(EAB),MeasureOfAngle(ACD))
     # branch 2
-    Premise:Parallel(AB,CD)&Collinear(ACE)
-    Conclusion:['Equal(MeasureOfAngle(BAC),MeasureOfAngle(DCE))']
-备注：  
+    premise: Parallel(AB,CD)&Collinear(ACE)
+    conclusion: Equal(MeasureOfAngle(BAC),MeasureOfAngle(DCE))
+**Notes**:  
 
-### parallel_property_extend_perpendicular
+#### parallel_property_extend_perpendicular(AB,CD)
 <div>
     <img src="cowork-pic/parallel_property_extend_perpendicular.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Parallel(AB,CD)&Perpendicular(AC,DC)
-    Conclusion:['Perpendicular(BA,CA)']
+    premise: Parallel(AB,CD)&Perpendicular(AC,DC)
+    conclusion: Perpendicular(BA,CA)
     # branch 2
-    Premise:Parallel(AB,CD)&Perpendicular(BA,CA)
-    Conclusion:['Perpendicular(AC,DC)']
-备注：  
+    premise: Parallel(AB,CD)&Perpendicular(BA,CA)
+    conclusion: Perpendicular(AC,DC)
+**Notes**:  
 
-### intersect_property_vertical_angle
+#### intersect_property_vertical_angle(O,AB,CD)
 <div>
     <img src="cowork-pic/intersect_property_vertical_angle.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Intersect(O,AB,CD)
-    Conclusion:['Equal(MeasureOfAngle(AOC),MeasureOfAngle(BOD))']
-备注：  
+    premise: Intersect(O,AB,CD)
+    conclusion: Equal(MeasureOfAngle(AOC),MeasureOfAngle(BOD))
+**Notes**:  
 
-### bisector_judgment_angle_equal
+#### bisector_judgment_angle_equal(BD,ABC)
 <div>
     <img src="cowork-pic/bisector_judgment_angle_equal.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Angle(ABD)&Angle(DBC)&Equal(MeasureOfAngle(ABD),MeasureOfAngle(DBC))
-    Conclusion:['Bisector(BD,ABC)']
-备注：  
+    premise: Angle(ABD)&Angle(DBC)&Equal(MeasureOfAngle(ABD),MeasureOfAngle(DBC))
+    conclusion: Bisector(BD,ABC)
+**Notes**:  
 
-### bisector_property_line_ratio
+#### bisector_property_line_ratio(BD,ABC)
 <div>
     <img src="cowork-pic/bisector_property_line_ratio.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Bisector(BD,ABC)&Collinear(CDA)
-    Conclusion:['Equal(Mul(LengthOfLine(CD),LengthOfLine(BA)),Mul(LengthOfLine(DA),LengthOfLine(BC)))']
-备注：  
+    premise: Bisector(BD,ABC)&Collinear(CDA)
+    conclusion: Equal(Mul(LengthOfLine(CD),LengthOfLine(BA)),Mul(LengthOfLine(DA),LengthOfLine(BC)))
+**Notes**:  
 
-### median_judgment
+#### median_judgment(AD,ABC)
 <div>
     <img src="cowork-pic/median_judgment.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)&Midpoint(D,BC)&Line(AD)
-    Conclusion:['Median(AD,ABC)']
-备注：  
+    premise: Triangle(ABC)&Midpoint(D,BC)&Line(AD)
+    conclusion: Median(AD,ABC)
+**Notes**:  
 
-### neutrality_judgment_parallel
+#### neutrality_judgment_parallel(DE,ABC)
 <div>
     <img src="cowork-pic/neutrality_judgment_parallel.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)&Collinear(ADB)&Collinear(AEC)&Parallel(DE,BC)
-    Conclusion:['Neutrality(DE,ABC)']
-备注：  
+    premise: Triangle(ABC)&Collinear(ADB)&Collinear(AEC)&Parallel(DE,BC)
+    conclusion: Neutrality(DE,ABC)
+**Notes**:  
 
-### neutrality_property_angle_equal
+#### neutrality_property_angle_equal(DE,ABC)
 <div>
     <img src="cowork-pic/neutrality_property_angle_equal.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Neutrality(DE,ABC)
-    Conclusion:['Equal(MeasureOfAngle(ADE),MeasureOfAngle(ABC))', 'Equal(MeasureOfAngle(DEA),MeasureOfAngle(BCA))']
-备注：  
+    premise: Neutrality(DE,ABC)
+    conclusion: Equal(MeasureOfAngle(ADE),MeasureOfAngle(ABC))
+                Equal(MeasureOfAngle(DEA),MeasureOfAngle(BCA))
+**Notes**:  
 
-### neutrality_property_line_ratio
+#### neutrality_property_line_ratio(DE,ABC)
 <div>
     <img src="cowork-pic/neutrality_property_line_ratio.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Neutrality(DE,ABC)
-    Conclusion:['Equal(Mul(LengthOfLine(AD),LengthOfLine(EC)),Mul(LengthOfLine(DB),LengthOfLine(AE)))']
-备注：  
+    premise: Neutrality(DE,ABC)
+    conclusion: Equal(Mul(LengthOfLine(AD),LengthOfLine(EC)),Mul(LengthOfLine(DB),LengthOfLine(AE)))
+**Notes**:  
 
-### neutrality_property_similar
+#### neutrality_property_similar(DE,ABC)
 <div>
     <img src="cowork-pic/neutrality_property_similar.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Neutrality(DE,ABC)
-    Conclusion:['Similar(ABC,ADE)']
-备注：  
+    premise: Neutrality(DE,ABC)
+    conclusion: Similar(ABC,ADE)
+**Notes**:  
 
-### altitude_judgment
+#### altitude_judgment(AD,ABC)
 <div>
     <img src="cowork-pic/altitude_judgment.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)&Collinear(BDC)&Line(AD)&(Equal(MeasureOfAngle(BDA),90)|Equal(MeasureOfAngle(ADC),90))
-    Conclusion:['IsAltitude(AD,ABC)']
-备注：  
+    premise: Triangle(ABC)&Collinear(BDC)&Line(AD)&(Equal(MeasureOfAngle(BDA),90)|Equal(MeasureOfAngle(ADC),90))
+    conclusion: IsAltitude(AD,ABC)
+**Notes**:  
 
-### perpendicular_bisector_judgment
+#### perpendicular_bisector_judgment(AB,CO)
 <div>
     <img src="cowork-pic/perpendicular_bisector_judgment.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Collinear(AOB)&(Perpendicular(AO,CO)|Equal(MeasureOfAngle(AOC),90)|Perpendicular(CO,BO)|Equal(MeasureOfAngle(COB),90))&(Midpoint(O,AB)|Equal(LengthOfLine(AO),LengthOfLine(OB)))
-    Conclusion:['PerpendicularBisector(AB,CO)']
-备注：  
+    premise: Collinear(AOB)&(Perpendicular(AO,CO)|Equal(MeasureOfAngle(AOC),90)|Perpendicular(CO,BO)|Equal(MeasureOfAngle(COB),90))&(Midpoint(O,AB)|Equal(LengthOfLine(AO),LengthOfLine(OB)))
+    conclusion: PerpendicularBisector(AB,CO)
+**Notes**:  
 
-### perpendicular_bisector_property_distance_equal
+#### perpendicular_bisector_property_distance_equal(AB,CO)
 <div>
     <img src="cowork-pic/perpendicular_bisector_property_distance_equal.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:PerpendicularBisector(AB,CO)
-    Conclusion:['Equal(LengthOfLine(CA),LengthOfLine(CB))']
-备注：  
+    premise: PerpendicularBisector(AB,CO)
+    conclusion: Equal(LengthOfLine(CA),LengthOfLine(CB))
+**Notes**:  
 
-### perpendicular_bisector_property_bisector
+#### perpendicular_bisector_property_bisector(AB,CO)
 <div>
     <img src="cowork-pic/perpendicular_bisector_property_bisector.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:PerpendicularBisector(AB,CO)&Angle(BCO)&Angle(OCA)
-    Conclusion:['Bisector(CO,BCA)']
-备注：  
+    premise: PerpendicularBisector(AB,CO)&Angle(BCO)&Angle(OCA)
+    conclusion: Bisector(CO,BCA)
+**Notes**:  
 
-### perpendicular_judgment_angle
+#### perpendicular_judgment_angle(AO,CO)
 <div>
     <img src="cowork-pic/perpendicular_judgment_angle.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Angle(AOC)&Equal(MeasureOfAngle(AOC),90)
-    Conclusion:['Perpendicular(AO,CO)']
-备注：  
+    premise: Angle(AOC)&Equal(MeasureOfAngle(AOC),90)
+    conclusion: Perpendicular(AO,CO)
+**Notes**:  
 
-### perpendicular_property_collinear_extend
+#### perpendicular_property_collinear_extend(AO,CO,B)
 <div>
     <img src="cowork-pic/perpendicular_property_collinear_extend.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Perpendicular(AO,CO)&Collinear(AOB)
-    Conclusion:['Perpendicular(CO,BO)']
+    premise: Perpendicular(AO,CO)&Collinear(AOB)
+    conclusion: Perpendicular(CO,BO)
     # branch 2
-    Premise:Perpendicular(AO,CO)&Collinear(BOC)
-    Conclusion:['Perpendicular(BO,AO)']
+    premise: Perpendicular(AO,CO)&Collinear(BOC)
+    conclusion: Perpendicular(BO,AO)
     # branch 3
-    Premise:Perpendicular(AO,CO)&(Collinear(ABO)|Collinear(BAO))
-    Conclusion:['Perpendicular(BO,CO)']
+    premise: Perpendicular(AO,CO)&(Collinear(ABO)|Collinear(BAO))
+    conclusion: Perpendicular(BO,CO)
     # branch 4
-    Premise:Perpendicular(AO,CO)&(Collinear(OBC)|Collinear(OCB))
-    Conclusion:['Perpendicular(AO,BO)']
-备注：  
+    premise: Perpendicular(AO,CO)&(Collinear(OBC)|Collinear(OCB))
+    conclusion: Perpendicular(AO,BO)
+**Notes**:  
 
-### right_triangle_judgment_angle
+#### right_triangle_judgment_angle(ABC)
 <div>
     <img src="cowork-pic/right_triangle_judgment_angle.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)&(Perpendicular(AB,CB)|Equal(MeasureOfAngle(ABC),90))
-    Conclusion:['RightTriangle(ABC)']
-备注：  
+    premise: Triangle(ABC)&(Perpendicular(AB,CB)|Equal(MeasureOfAngle(ABC),90))
+    conclusion: RightTriangle(ABC)
+**Notes**:  
 
-### right_triangle_judgment_pythagorean_inverse
+#### right_triangle_judgment_pythagorean_inverse(ABC)
 <div>
     <img src="cowork-pic/right_triangle_judgment_pythagorean_inverse.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)&Equal(Add(Pow(LengthOfLine(AB),2),Pow(LengthOfLine(BC),2)),Pow(LengthOfLine(AC),2))
-    Conclusion:['RightTriangle(ABC)']
-备注：  
+    premise: Triangle(ABC)&Equal(Add(Pow(LengthOfLine(AB),2),Pow(LengthOfLine(BC),2)),Pow(LengthOfLine(AC),2))
+    conclusion: RightTriangle(ABC)
+**Notes**:  
 
-### right_triangle_property_pythagorean
+#### right_triangle_property_pythagorean(ABC)
 <div>
     <img src="cowork-pic/right_triangle_property_pythagorean.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:RightTriangle(ABC)
-    Conclusion:['Equal(Add(Pow(LengthOfLine(AB),2),Pow(LengthOfLine(BC),2)),Pow(LengthOfLine(AC),2))']
-备注：  
+    premise: RightTriangle(ABC)
+    conclusion: Equal(Add(Pow(LengthOfLine(AB),2),Pow(LengthOfLine(BC),2)),Pow(LengthOfLine(AC),2))
+**Notes**:  
 
-### right_triangle_property_special_rt_30_60
+#### right_triangle_property_special_rt_30_60(ABC)
 <div>
     <img src="cowork-pic/right_triangle_property_special_rt_30_60.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:RightTriangle(ABC)&(Equal(MeasureOfAngle(CAB),30)|Equal(MeasureOfAngle(BCA),60))
-    Conclusion:['Equal(LengthOfLine(AB),Mul(LengthOfLine(BC),1.7321))', 'Equal(LengthOfLine(AC),Mul(LengthOfLine(BC),2))']
+    premise: RightTriangle(ABC)&(Equal(MeasureOfAngle(CAB),30)|Equal(MeasureOfAngle(BCA),60))
+    conclusion: Equal(LengthOfLine(AB),Mul(LengthOfLine(BC),1.7321))
+                Equal(LengthOfLine(AC),Mul(LengthOfLine(BC),2))
     # branch 2
-    Premise:RightTriangle(ABC)&(Equal(MeasureOfAngle(CAB),60)|Equal(MeasureOfAngle(BCA),30))
-    Conclusion:['Equal(LengthOfLine(BC),Mul(LengthOfLine(AB),1.7321))', 'Equal(LengthOfLine(AC),Mul(LengthOfLine(AB),2))']
-备注：  
+    premise: RightTriangle(ABC)&(Equal(MeasureOfAngle(CAB),60)|Equal(MeasureOfAngle(BCA),30))
+    conclusion: Equal(LengthOfLine(BC),Mul(LengthOfLine(AB),1.7321))
+                Equal(LengthOfLine(AC),Mul(LengthOfLine(AB),2))
+**Notes**:  
 
-### right_triangle_property_special_rt_45_45
+#### right_triangle_property_special_rt_45_45(ABC)
 <div>
     <img src="cowork-pic/right_triangle_property_special_rt_45_45.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:RightTriangle(ABC)&(Equal(MeasureOfAngle(CAB),45)|Equal(MeasureOfAngle(BCA),45))
-    Conclusion:['Equal(LengthOfLine(AB),LengthOfLine(BC))', 'Equal(LengthOfLine(AC),Mul(LengthOfLine(AB),1.4142))']
-备注：  
+    premise: RightTriangle(ABC)&(Equal(MeasureOfAngle(CAB),45)|Equal(MeasureOfAngle(BCA),45))
+    conclusion: Equal(LengthOfLine(AB),LengthOfLine(BC))
+                Equal(LengthOfLine(AC),Mul(LengthOfLine(AB),1.4142))
+**Notes**:  
 
-### isosceles_triangle_judgment_angle_equal
+#### isosceles_triangle_judgment_angle_equal(ABC)
 <div>
     <img src="cowork-pic/isosceles_triangle_judgment_angle_equal.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(BCA))
-    Conclusion:['IsoscelesTriangle(ABC)']
-备注：  
+    premise: Triangle(ABC)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(BCA))
+    conclusion: IsoscelesTriangle(ABC)
+**Notes**:  
 
-### isosceles_triangle_judgment_equilateral
+#### isosceles_triangle_judgment_equilateral(ABC)
 <div>
     <img src="cowork-pic/isosceles_triangle_judgment_equilateral.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:EquilateralTriangle(ABC)
-    Conclusion:['IsoscelesTriangle(ABC)']
-备注：  
+    premise: EquilateralTriangle(ABC)
+    conclusion: IsoscelesTriangle(ABC)
+**Notes**:  
 
-### isosceles_triangle_judgment_line_equal
+#### isosceles_triangle_judgment_line_equal(ABC)
 <div>
     <img src="cowork-pic/isosceles_triangle_judgment_line_equal.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)&Equal(LengthOfLine(AB),LengthOfLine(AC))
-    Conclusion:['IsoscelesTriangle(ABC)']
-备注：  
+    premise: Triangle(ABC)&Equal(LengthOfLine(AB),LengthOfLine(AC))
+    conclusion: IsoscelesTriangle(ABC)
+**Notes**:  
 
-### isosceles_triangle_property_angle_equal
+#### isosceles_triangle_property_angle_equal(ABC)
 <div>
     <img src="cowork-pic/isosceles_triangle_property_angle_equal.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:IsoscelesTriangle(ABC)
-    Conclusion:['Equal(MeasureOfAngle(ABC),MeasureOfAngle(BCA))']
-备注：  
+    premise: IsoscelesTriangle(ABC)
+    conclusion: Equal(MeasureOfAngle(ABC),MeasureOfAngle(BCA))
+**Notes**:  
 
-### isosceles_triangle_property_line_coincidence
+#### isosceles_triangle_property_line_coincidence(ABC)
 <div>
     <img src="cowork-pic/isosceles_triangle_property_line_coincidence.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:IsoscelesTriangle(ABC)&IsAltitude(AM,ABC)
-    Conclusion:['Median(AM,ABC)', 'Bisector(AM,CAB)']
+    premise: IsoscelesTriangle(ABC)&IsAltitude(AM,ABC)
+    conclusion: Median(AM,ABC)
+                Bisector(AM,CAB)
     # branch 2
-    Premise:IsoscelesTriangle(ABC)&Median(AM,ABC)
-    Conclusion:['IsAltitude(AM,ABC)', 'Bisector(AM,CAB)']
+    premise: IsoscelesTriangle(ABC)&Median(AM,ABC)
+    conclusion: IsAltitude(AM,ABC)
+                Bisector(AM,CAB)
     # branch 3
-    Premise:IsoscelesTriangle(ABC)&Collinear(BMC)&Bisector(AM,CAB)
-    Conclusion:['IsAltitude(AM,ABC)', 'Median(AM,ABC)']
-备注：  
+    premise: IsoscelesTriangle(ABC)&Collinear(BMC)&Bisector(AM,CAB)
+    conclusion: IsAltitude(AM,ABC)
+                Median(AM,ABC)
+**Notes**:  
 
-### equilateral_triangle_judgment_angle_equal
+#### equilateral_triangle_judgment_angle_equal(ABC)
 <div>
     <img src="cowork-pic/equilateral_triangle_judgment_angle_equal.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(BCA))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(CAB))
-    Conclusion:['EquilateralTriangle(ABC)']
-备注：  
+    premise: Triangle(ABC)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(BCA))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(CAB))
+    conclusion: EquilateralTriangle(ABC)
+**Notes**:  
 
-### equilateral_triangle_judgment_isos_and_angle
+#### equilateral_triangle_judgment_isos_and_angle(ABC)
 <div>
     <img src="cowork-pic/equilateral_triangle_judgment_isos_and_angle.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:IsoscelesTriangle(ABC)&(Equal(MeasureOfAngle(ABC),60)|Equal(MeasureOfAngle(BCA),60)|Equal(MeasureOfAngle(CAB),60))
-    Conclusion:['EquilateralTriangle(ABC)']
-备注：  
+    premise: IsoscelesTriangle(ABC)&(Equal(MeasureOfAngle(ABC),60)|Equal(MeasureOfAngle(BCA),60)|Equal(MeasureOfAngle(CAB),60))
+    conclusion: EquilateralTriangle(ABC)
+**Notes**:  
 
-### equilateral_triangle_judgment_line_equal
+#### equilateral_triangle_judgment_line_equal(ABC)
 <div>
     <img src="cowork-pic/equilateral_triangle_judgment_line_equal.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)&Equal(LengthOfLine(AB),LengthOfLine(BC))&Equal(LengthOfLine(BC),LengthOfLine(AC))
-    Conclusion:['EquilateralTriangle(ABC)']
-备注：  
+    premise: Triangle(ABC)&Equal(LengthOfLine(AB),LengthOfLine(BC))&Equal(LengthOfLine(BC),LengthOfLine(AC))
+    conclusion: EquilateralTriangle(ABC)
+**Notes**:  
 
-### equilateral_triangle_property_angle
+#### equilateral_triangle_property_angle(ABC)
 <div>
     <img src="cowork-pic/equilateral_triangle_property_angle.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:EquilateralTriangle(ABC)
-    Conclusion:['Equal(MeasureOfAngle(ABC),60)']
-备注：  
+    premise: EquilateralTriangle(ABC)
+    conclusion: Equal(MeasureOfAngle(CAB),60)
+**Notes**:  
 
-### equilateral_triangle_property_line_equal
+#### equilateral_triangle_property_line_equal(ABC)
 <div>
     <img src="cowork-pic/equilateral_triangle_property_line_equal.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:EquilateralTriangle(ABC)
-    Conclusion:['Equal(LengthOfLine(AB),LengthOfLine(BC))']
-备注：  
+    premise: EquilateralTriangle(ABC)
+    conclusion: Equal(LengthOfLine(AB),LengthOfLine(AC))
+**Notes**:  
 
-### congruent_judgment_aas
+#### congruent_judgment_aas(ABC,DEF)
 <div>
     <img src="cowork-pic/congruent_judgment_aas.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))&Equal(LengthOfLine(CA),LengthOfLine(FD))
-    Conclusion:['Congruent(ABC,DEF)']
+    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))&Equal(LengthOfLine(CA),LengthOfLine(FD))
+    conclusion: Congruent(ABC,DEF)
     # branch 2
-    Premise:Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))&Equal(LengthOfLine(CA),LengthOfLine(DE))
-    Conclusion:['MirrorCongruent(ABC,DEF)']
-备注：  
+    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))&Equal(LengthOfLine(CA),LengthOfLine(DE))
+    conclusion: MirrorCongruent(ABC,DEF)
+**Notes**:  
 
-### congruent_judgment_asa
+#### congruent_judgment_asa(ABC,DEF)
 <div>
     <img src="cowork-pic/congruent_judgment_asa.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(LengthOfLine(BC),LengthOfLine(EF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))
-    Conclusion:['Congruent(ABC,DEF)']
+    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(LengthOfLine(BC),LengthOfLine(EF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))
+    conclusion: Congruent(ABC,DEF)
     # branch 2
-    Premise:Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(LengthOfLine(BC),LengthOfLine(EF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))
-    Conclusion:['MirrorCongruent(ABC,DEF)']
-备注：  
+    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(LengthOfLine(BC),LengthOfLine(EF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))
+    conclusion: MirrorCongruent(ABC,DEF)
+**Notes**:  
 
-### congruent_judgment_hl
+#### congruent_judgment_hl(ABC,DEF)
 <div>
     <img src="cowork-pic/congruent_judgment_hl.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:RightTriangle(ABC)&RightTriangle(DEF)&Equal(LengthOfLine(AC),LengthOfLine(DF))&(Equal(LengthOfLine(AB),LengthOfLine(DE))|Equal(LengthOfLine(BC),LengthOfLine(EF)))
-    Conclusion:['Congruent(ABC,DEF)']
+    premise: RightTriangle(ABC)&RightTriangle(DEF)&Equal(LengthOfLine(AC),LengthOfLine(DF))&(Equal(LengthOfLine(AB),LengthOfLine(DE))|Equal(LengthOfLine(BC),LengthOfLine(EF)))
+    conclusion: Congruent(ABC,DEF)
     # branch 2
-    Premise:RightTriangle(BCA)&RightTriangle(DEF)&Equal(LengthOfLine(AB),LengthOfLine(DF))&(Equal(LengthOfLine(AC),LengthOfLine(DE))|Equal(LengthOfLine(BC),LengthOfLine(EF)))
-    Conclusion:['MirrorCongruent(ABC,DEF)']
-备注：  
+    premise: RightTriangle(BCA)&RightTriangle(DEF)&Equal(LengthOfLine(AB),LengthOfLine(DF))&(Equal(LengthOfLine(AC),LengthOfLine(DE))|Equal(LengthOfLine(BC),LengthOfLine(EF)))
+    conclusion: MirrorCongruent(ABC,DEF)
+**Notes**:  
 
-### congruent_judgment_sas
+#### congruent_judgment_sas(ABC,DEF)
 <div>
     <img src="cowork-pic/congruent_judgment_sas.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)&Triangle(DEF)&Equal(LengthOfLine(AB),LengthOfLine(DE))&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(LengthOfLine(BC),LengthOfLine(EF))
-    Conclusion:['Congruent(ABC,DEF)']
+    premise: Triangle(ABC)&Triangle(DEF)&Equal(LengthOfLine(AB),LengthOfLine(DE))&Equal(MeasureOfAngle(CAB),MeasureOfAngle(FDE))&Equal(LengthOfLine(AC),LengthOfLine(DF))
+    conclusion: Congruent(ABC,DEF)
     # branch 2
-    Premise:Triangle(ABC)&Triangle(DEF)&Equal(LengthOfLine(AB),LengthOfLine(FD))&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(LengthOfLine(BC),LengthOfLine(EF))
-    Conclusion:['MirrorCongruent(ABC,DEF)']
-备注：  
+    premise: Triangle(ABC)&Triangle(DEF)&Equal(LengthOfLine(AB),LengthOfLine(DF))&Equal(MeasureOfAngle(CAB),MeasureOfAngle(FDE))&Equal(LengthOfLine(AC),LengthOfLine(DE))
+    conclusion: MirrorCongruent(ABC,DEF)
+**Notes**:  
 
-### congruent_judgment_sss
+#### congruent_judgment_sss(ABC,DEF)
 <div>
     <img src="cowork-pic/congruent_judgment_sss.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)&Triangle(DEF)&Equal(LengthOfLine(AB),LengthOfLine(DE))&Equal(LengthOfLine(BC),LengthOfLine(EF))&Equal(LengthOfLine(CA),LengthOfLine(FD))
-    Conclusion:['Congruent(ABC,DEF)']
+    premise: Triangle(ABC)&Triangle(DEF)&Equal(LengthOfLine(AB),LengthOfLine(DE))&Equal(LengthOfLine(BC),LengthOfLine(EF))&Equal(LengthOfLine(CA),LengthOfLine(FD))
+    conclusion: Congruent(ABC,DEF)
     # branch 2
-    Premise:Triangle(ABC)&Triangle(DEF)&Equal(LengthOfLine(AB),LengthOfLine(FD))&Equal(LengthOfLine(BC),LengthOfLine(EF))&Equal(LengthOfLine(CA),LengthOfLine(DE))
-    Conclusion:['MirrorCongruent(ABC,DEF)']
-备注：  
+    premise: Triangle(ABC)&Triangle(DEF)&Equal(LengthOfLine(AB),LengthOfLine(FD))&Equal(LengthOfLine(BC),LengthOfLine(EF))&Equal(LengthOfLine(CA),LengthOfLine(DE))
+    conclusion: MirrorCongruent(ABC,DEF)
+**Notes**:  
 
-### congruent_property_angle_equal
+#### congruent_property_angle_equal(ABC,DEF)
 <div>
     <img src="cowork-pic/congruent_property_angle_equal.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Congruent(ABC,DEF)
-    Conclusion:['Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))']
+    premise: Congruent(ABC,DEF)
+    conclusion: Equal(MeasureOfAngle(CAB),MeasureOfAngle(FDE))
     # branch 2
-    Premise:MirrorCongruent(ABC,DEF)
-    Conclusion:['Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))']
-备注：  
+    premise: MirrorCongruent(ABC,DEF)
+    conclusion: Equal(MeasureOfAngle(CAB),MeasureOfAngle(FDE))
+**Notes**:  
 
-### congruent_property_area_equal
+#### congruent_property_area_equal(ABC,DEF)
 <div>
     <img src="cowork-pic/congruent_property_area_equal.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Congruent(ABC,DEF)
-    Conclusion:['Equal(AreaOfTriangle(ABC),AreaOfTriangle(DEF))']
+    premise: Congruent(ABC,DEF)
+    conclusion: Equal(AreaOfTriangle(ABC),AreaOfTriangle(DEF))
     # branch 2
-    Premise:MirrorCongruent(ABC,DEF)
-    Conclusion:['Equal(AreaOfTriangle(ABC),AreaOfTriangle(DEF))']
-备注：  
+    premise: MirrorCongruent(ABC,DEF)
+    conclusion: Equal(AreaOfTriangle(ABC),AreaOfTriangle(DEF))
+**Notes**:  
 
-### congruent_property_line_equal
+#### congruent_property_line_equal(ABC,DEF)
 <div>
     <img src="cowork-pic/congruent_property_line_equal.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Congruent(ABC,DEF)
-    Conclusion:['Equal(LengthOfLine(AB),LengthOfLine(DE))']
+    premise: Congruent(ABC,DEF)
+    conclusion: Equal(LengthOfLine(AB),LengthOfLine(DE))
     # branch 2
-    Premise:MirrorCongruent(ABC,DEF)
-    Conclusion:['Equal(LengthOfLine(AB),LengthOfLine(DF))']
-备注：  
+    premise: MirrorCongruent(ABC,DEF)
+    conclusion: Equal(LengthOfLine(AB),LengthOfLine(DF))
+**Notes**:  
 
-### congruent_property_perimeter_equal
+#### congruent_property_perimeter_equal(ABC,DEF)
 <div>
     <img src="cowork-pic/congruent_property_perimeter_equal.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Congruent(ABC,DEF)
-    Conclusion:['Equal(PerimeterOfTriangle(ABC),PerimeterOfTriangle(DEF))']
+    premise: Congruent(ABC,DEF)
+    conclusion: Equal(PerimeterOfTriangle(ABC),PerimeterOfTriangle(DEF))
     # branch 2
-    Premise:MirrorCongruent(ABC,DEF)
-    Conclusion:['Equal(PerimeterOfTriangle(ABC),PerimeterOfTriangle(DEF))']
-备注：  
+    premise: MirrorCongruent(ABC,DEF)
+    conclusion: Equal(PerimeterOfTriangle(ABC),PerimeterOfTriangle(DEF))
+**Notes**:  
 
-### similar_judgment_aa
+#### similar_judgment_aa(ABC,DEF)
 <div>
     <img src="cowork-pic/similar_judgment_aa.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(CAB),MeasureOfAngle(FDE))&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))
-    Conclusion:['Similar(ABC,DEF)']
+    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))
+    conclusion: Similar(ABC,DEF)
     # branch 2
-    Premise:Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(CAB),MeasureOfAngle(FDE))&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))
-    Conclusion:['MirrorSimilar(ABC,DEF)']
-备注：  
+    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))
+    conclusion: MirrorSimilar(ABC,DEF)
+**Notes**:  
 
-### similar_judgment_sas
+#### similar_judgment_sas(ABC,DEF)
 <div>
     <img src="cowork-pic/similar_judgment_sas.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)&Triangle(DEF)&Equal(Mul(LengthOfLine(AB),LengthOfLine(EF)),Mul(LengthOfLine(DE),LengthOfLine(BC)))&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))
-    Conclusion:['Similar(ABC,DEF)']
+    premise: Triangle(ABC)&Triangle(DEF)&Equal(Mul(LengthOfLine(AB),LengthOfLine(DF)),Mul(LengthOfLine(DE),LengthOfLine(AC)))&Equal(MeasureOfAngle(CAB),MeasureOfAngle(FDE))
+    conclusion: Similar(ABC,DEF)
     # branch 2
-    Premise:Triangle(ABC)&Triangle(DEF)&Equal(Mul(LengthOfLine(AB),LengthOfLine(EF)),Mul(LengthOfLine(FD),LengthOfLine(BC)))&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))
-    Conclusion:['MirrorSimilar(ABC,DEF)']
-备注：  
+    premise: Triangle(ABC)&Triangle(DEF)&Equal(Mul(LengthOfLine(AB),LengthOfLine(DE)),Mul(LengthOfLine(DF),LengthOfLine(AC)))&Equal(MeasureOfAngle(CAB),MeasureOfAngle(FDE))
+    conclusion: MirrorSimilar(ABC,DEF)
+**Notes**:  
 
-### similar_judgment_sss
+#### similar_judgment_sss(ABC,DEF)
 <div>
     <img src="cowork-pic/similar_judgment_sss.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)&Triangle(DEF)&Equal(Mul(LengthOfLine(AB),LengthOfLine(EF)),Mul(LengthOfLine(DE),LengthOfLine(BC)))&Equal(Mul(LengthOfLine(AB),LengthOfLine(DF)),Mul(LengthOfLine(DE),LengthOfLine(CA)))
-    Conclusion:['Similar(ABC,DEF)']
+    premise: Triangle(ABC)&Triangle(DEF)&Equal(Mul(LengthOfLine(AB),LengthOfLine(EF)),Mul(LengthOfLine(DE),LengthOfLine(BC)))&Equal(Mul(LengthOfLine(AB),LengthOfLine(DF)),Mul(LengthOfLine(DE),LengthOfLine(CA)))
+    conclusion: Similar(ABC,DEF)
     # branch 2
-    Premise:Triangle(ABC)&Triangle(DEF)&Equal(Mul(LengthOfLine(AB),LengthOfLine(EF)),Mul(LengthOfLine(FD),LengthOfLine(BC)))&Equal(Mul(LengthOfLine(AB),LengthOfLine(DE)),Mul(LengthOfLine(FD),LengthOfLine(CA)))
-    Conclusion:['MirrorSimilar(ABC,DEF)']
-备注：  
+    premise: Triangle(ABC)&Triangle(DEF)&Equal(Mul(LengthOfLine(AB),LengthOfLine(EF)),Mul(LengthOfLine(FD),LengthOfLine(BC)))&Equal(Mul(LengthOfLine(AB),LengthOfLine(DE)),Mul(LengthOfLine(FD),LengthOfLine(CA)))
+    conclusion: MirrorSimilar(ABC,DEF)
+**Notes**:  
 
-### similar_property_angle_equal
+#### similar_property_angle_equal(ABC,DEF)
 <div>
     <img src="cowork-pic/similar_property_angle_equal.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Similar(ABC,DEF)
-    Conclusion:['Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))']
+    premise: Similar(ABC,DEF)
+    conclusion: Equal(MeasureOfAngle(CAB),MeasureOfAngle(FDE))
     # branch 2
-    Premise:MirrorSimilar(ABC,DEF)
-    Conclusion:['Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))']
-备注：  
+    premise: MirrorSimilar(ABC,DEF)
+    conclusion: Equal(MeasureOfAngle(CAB),MeasureOfAngle(FDE))
+**Notes**:  
 
-### similar_property_area_square_ratio
+#### similar_property_area_square_ratio(ABC,DEF)
 <div>
     <img src="cowork-pic/similar_property_area_square_ratio.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Similar(ABC,DEF)
-    Conclusion:['Equal(Mul(LengthOfLine(AB),LengthOfLine(AB),AreaOfTriangle(DEF)),Mul(LengthOfLine(DE),LengthOfLine(DE),AreaOfTriangle(ABC)))']
+    premise: Similar(ABC,DEF)
+    conclusion: Equal(Mul(LengthOfLine(AB),LengthOfLine(AB),AreaOfTriangle(DEF)),Mul(LengthOfLine(DE),LengthOfLine(DE),AreaOfTriangle(ABC)))
     # branch 2
-    Premise:MirrorSimilar(ABC,DEF)
-    Conclusion:['Equal(Mul(LengthOfLine(AB),LengthOfLine(AB),AreaOfTriangle(DEF)),Mul(LengthOfLine(FD),LengthOfLine(FD),AreaOfTriangle(ABC)))']
-备注：  
+    premise: MirrorSimilar(ABC,DEF)
+    conclusion: Equal(Mul(LengthOfLine(AB),LengthOfLine(AB),AreaOfTriangle(DEF)),Mul(LengthOfLine(FD),LengthOfLine(FD),AreaOfTriangle(ABC)))
+**Notes**:  
 
-### similar_property_line_ratio
+#### similar_property_line_ratio(ABC,DEF)
 <div>
     <img src="cowork-pic/similar_property_line_ratio.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Similar(ABC,DEF)
-    Conclusion:['Equal(Mul(LengthOfLine(AB),LengthOfLine(EF)),Mul(LengthOfLine(DE),LengthOfLine(BC)))']
+    premise: Similar(ABC,DEF)
+    conclusion: Equal(Mul(LengthOfLine(AB),LengthOfLine(DF)),Mul(LengthOfLine(DE),LengthOfLine(AC)))
     # branch 2
-    Premise:MirrorSimilar(ABC,DEF)
-    Conclusion:['Equal(Mul(LengthOfLine(AB),LengthOfLine(EF)),Mul(LengthOfLine(FD),LengthOfLine(BC)))']
-备注：  
+    premise: MirrorSimilar(ABC,DEF)
+    conclusion: Equal(Mul(LengthOfLine(AB),LengthOfLine(DE)),Mul(LengthOfLine(DF),LengthOfLine(AC)))
+**Notes**:  
 
-### similar_property_perimeter_ratio
+#### similar_property_perimeter_ratio(ABC,DEF)
 <div>
     <img src="cowork-pic/similar_property_perimeter_ratio.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Similar(ABC,DEF)
-    Conclusion:['Equal(Mul(LengthOfLine(AB),PerimeterOfTriangle(DEF)),Mul(LengthOfLine(DE),PerimeterOfTriangle(ABC)))']
+    premise: Similar(ABC,DEF)
+    conclusion: Equal(Mul(LengthOfLine(AB),PerimeterOfTriangle(DEF)),Mul(LengthOfLine(DE),PerimeterOfTriangle(ABC)))
     # branch 2
-    Premise:MirrorSimilar(ABC,DEF)
-    Conclusion:['Equal(Mul(LengthOfLine(AB),PerimeterOfTriangle(DEF)),Mul(LengthOfLine(FD),PerimeterOfTriangle(ABC)))']
-备注：  
+    premise: MirrorSimilar(ABC,DEF)
+    conclusion: Equal(Mul(LengthOfLine(AB),PerimeterOfTriangle(DEF)),Mul(LengthOfLine(FD),PerimeterOfTriangle(ABC)))
+**Notes**:  
 
-### circumcenter_judgment
+#### circumcenter_judgment(O,ABC,D,E)
 <div>
     <img src="cowork-pic/circumcenter_judgment.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)&Collinear(BDC)&Collinear(CEA)&PerpendicularBisector(BC,OD)&PerpendicularBisector(CA,OE)
-    Conclusion:['Circumcenter(O,ABC)']
-备注：  
+    premise: Triangle(ABC)&Collinear(ADB)&Collinear(CEA)&(PerpendicularBisector(AD,OD)|PerpendicularBisector(OD,BD))&(PerpendicularBisector(CE,OE)|PerpendicularBisector(OE,AE))
+    conclusion: Circumcenter(O,ABC)
+**Notes**:  
 
-### circumcenter_property_intersect
+#### circumcenter_property_intersect(O,ABC,D)
 <div>
     <img src="cowork-pic/circumcenter_property_intersect.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Circumcenter(O,ABC)&Collinear(BDC)&(Perpendicular(BD,OD)|Perpendicular(OD,CD))
-    Conclusion:['PerpendicularBisector(BC,OD)']
+    premise: Circumcenter(O,ABC)&Collinear(BDC)&(Perpendicular(BD,OD)|Perpendicular(OD,CD))
+    conclusion: PerpendicularBisector(BC,OD)
     # branch 2
-    Premise:Circumcenter(O,ABC)&Midpoint(M,BC)
-    Conclusion:['PerpendicularBisector(BC,OM)']
-备注：  
+    premise: Circumcenter(O,ABC)&Midpoint(D,BC)
+    conclusion: PerpendicularBisector(BC,OD)
+**Notes**:  
 
-### circumcenter_property_line_equal
+#### circumcenter_property_line_equal(O,ABC)
 <div>
     <img src="cowork-pic/circumcenter_property_line_equal.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Circumcenter(O,ABC)
-    Conclusion:['Equal(LengthOfLine(OA),LengthOfLine(OB))']
-备注：  
+    premise: Circumcenter(O,ABC)
+    conclusion: Equal(LengthOfLine(OB),LengthOfLine(OC))
+**Notes**:  
 
-### incenter_property_intersect
+#### incenter_judgment(O,ABC)
+<div>
+    <img src="cowork-pic/incenter_judgment.png"  width="20%">
+</div>
+
+    # branch 1
+    premise: Triangle(ABC)&Bisector(BO,ABC)&Bisector(CO,BCA)
+    conclusion: Incenter(O,ABC)
+**Notes**:  
+
+#### incenter_property_intersect(O,ABC)
 <div>
     <img src="cowork-pic/incenter_property_intersect.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Incenter(O,ABC)
-    Conclusion:['Bisector(AO,CAB)']
-备注：  
+    premise: Incenter(O,ABC)
+    conclusion: Bisector(AO,CAB)
+**Notes**:  
 
-### incenter_property_judgment
-<div>
-    <img src="cowork-pic/incenter_property_judgment.png"  width="20%">
-</div>
-
-    # branch 1
-    Premise:Triangle(ABC)&Bisector(AO,CAB)&Bisector(CO,BCA)
-    Conclusion:['Incenter(O,ABC)']
-备注：  
-
-### incenter_property_line_equal
+#### incenter_property_line_equal(O,ABC,D,E)
 <div>
     <img src="cowork-pic/incenter_property_line_equal.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Incenter(O,ABC)&Collinear(ADB)&Collinear(BEC)&(Perpendicular(AD,OD)|Perpendicular(OD,BD))&(Perpendicular(BE,OE)|Perpendicular(OE,CE))
-    Conclusion:['Equal(LengthOfLine(OD),LengthOfLine(OE))']
-备注：  
+    premise: Incenter(O,ABC)&Collinear(ADB)&Collinear(AEC)&(Perpendicular(AD,OD)|Perpendicular(OD,BD))&(Perpendicular(CE,OE)|Perpendicular(OE,AE))
+    conclusion: Equal(LengthOfLine(OD),LengthOfLine(OE))
+**Notes**:  
 
-### centroid_judgment
+#### centroid_judgment(O,ABC,M,N)
 <div>
     <img src="cowork-pic/centroid_judgment.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)&Median(AM,ABC)&Median(BN,BCA)&Collinear(AOM)&Collinear(BON)
-    Conclusion:['Centroid(O,ABC)']
-备注：  
+    premise: Triangle(ABC)&Median(CM,CAB)&Median(BN,BCA)&Collinear(COM)&Collinear(BON)
+    conclusion: Centroid(O,ABC)
+**Notes**:  
 
-### centroid_property_intersect
+#### centroid_property_intersect(O,ABC,M)
 <div>
     <img src="cowork-pic/centroid_property_intersect.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Centroid(O,ABC)&Collinear(AOM)&Collinear(BMC)
-    Conclusion:['Median(AM,ABC)']
-备注：  
+    premise: Centroid(O,ABC)&Collinear(AOM)&Collinear(BMC)
+    conclusion: Median(AM,ABC)
+**Notes**:  
 
-### centroid_property_line_equal
+#### centroid_property_line_equal(O,ABC,M)
 <div>
     <img src="cowork-pic/centroid_property_line_equal.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Centroid(O,ABC)&Collinear(AOM)&Collinear(BMC)
-    Conclusion:['Equal(LengthOfLine(OA),Mul(LengthOfLine(OM),2))']
-备注：  
+    premise: Centroid(O,ABC)&Collinear(AOM)&Collinear(BMC)
+    conclusion: Equal(LengthOfLine(OA),Mul(LengthOfLine(OM),2))
+**Notes**:  
 
-### orthocenter_property_intersect
+#### orthocenter_judgment(O,ABC,D,E)
+<div>
+    <img src="cowork-pic/orthocenter_judgment.png"  width="20%">
+</div>
+
+    # branch 1
+    premise: Triangle(ABC)&IsAltitude(CD,CAB)&IsAltitude(BE,BCA)&Collinear(COD)&Collinear(BOE)
+    conclusion: Orthocenter(O,ABC)
+**Notes**:  
+
+#### orthocenter_property_intersect(O,ABC,D)
 <div>
     <img src="cowork-pic/orthocenter_property_intersect.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Orthocenter(O,ABC)&Collinear(AOD)&Collinear(BDC)
-    Conclusion:['IsAltitude(AD,ABC)']
-备注：  
+    premise: Orthocenter(O,ABC)&Collinear(AOD)&Collinear(BDC)
+    conclusion: IsAltitude(AD,ABC)
+**Notes**:  
 
-### orthocenter_property_judgment
+#### orthocenter_property_angle(O,ABC)
 <div>
-    <img src="cowork-pic/orthocenter_property_judgment.png"  width="20%">
+    <img src="cowork-pic/orthocenter_property_angle.png"  width="20%">
 </div>
 
     # branch 1
-    Premise:Triangle(ABC)&IsAltitude(AD,ABC)&IsAltitude(BE,BCA)&Intersect(O,DA,BE)
-    Conclusion:['Orthocenter(O,ABC)']
-备注：  
-
-### orthocenter_property_line_equal
-<div>
-    <img src="cowork-pic/orthocenter_property_line_equal.png"  width="20%">
-</div>
-
-    # branch 1
-    Premise:Orthocenter(O,ABC)&Angle(COB)
-    Conclusion:['Equal(MeasureOfAngle(COB),Add(MeasureOfAngle(ABC),MeasureOfAngle(BCA)))']
-备注：  
-
+    premise: Orthocenter(O,ABC)&Angle(COB)
+    conclusion: Equal(MeasureOfAngle(COB),Add(MeasureOfAngle(ABC),MeasureOfAngle(BCA)))
+**Notes**:  
 

@@ -317,7 +317,9 @@ C、每个人第N周提交的内容将会在第N+1周周日日24点之前合并�
     <img src="cowork-pic/41.png" width="40%">
 </div>
 
-    Triangle(ABC),Triangle(ABC),Triangle(ABC)
+    Triangle(ABC)
+    Triangle(BCA)
+    Triangle(CAB)
 
 **4.从左到右，从上到下**  
 有些不封闭的图形，如平行、相交关系等，用逆时针法则不符合人的思维习惯，这时候就使用第三条口诀。  
@@ -330,7 +332,7 @@ C、每个人第N周提交的内容将会在第N+1周周日日24点之前合并�
     Perpendicular(AO,BO)
 
 ## 附录2 谓词标注对照手册
-见predicate.md
+见 predicate.md
 
 ## 附录3 定理标注对照手册
-见theorem.md
+见 theorem.md

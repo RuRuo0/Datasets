@@ -240,9 +240,9 @@ class FLParser:
 
         for theorem_name in theorem_GDL:
             body = []
-            for branch in theorem_GDL[theorem_name]:
-                parsed_premise = FLParser._parse_premise([theorem_GDL[theorem_name][branch]["premise"]])
-                parsed_conclusion = FLParser._parse_conclusion(theorem_GDL[theorem_name][branch]["conclusion"])
+            for branch in theorem_GDL[theorem_name]["body"]:
+                parsed_premise = FLParser._parse_premise([theorem_GDL[theorem_name]["body"][branch]["premise"]])
+                parsed_conclusion = FLParser._parse_conclusion(theorem_GDL[theorem_name]["body"][branch]["conclusion"])
                 for p in parsed_premise:
                     body.append([p, parsed_conclusion])  # premise, conclusion
 

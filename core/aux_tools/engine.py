@@ -398,9 +398,75 @@ class EquationKiller:
 class GeoLogic:
 
     @staticmethod
-    def logic_and(r1, r2):
-        pass
+    def logic_and(r1, r2_logic, problem):
+        """
+        Underlying implementation of <relational reasoning>: logic part.
+        :param r1: triplet, (r1_ids, r1_items, r1_vars).
+        :param r2_logic: geo predicate logic, such as ['Collinear', ['a', 'b', 'c']].
+        :param problem: instance of class <Problem>.
+        :return r: triplet, (r_ids, r_items, r_vars), reasoning result.
+        >> logic_and(([(1,), (2,)], [('A', 'B'), ('C', 'D')], [0, 1]), ([(3,), (4,)], [('B', 'C'), ('D', 'E')], [1, 2]))
+        ([(1, 3), (2, 4)], [('A', 'B', 'C'), ('C', 'D', 'E')], [0, 1, 2])
+        """
+        negate = False  # Distinguishing operation ‘&’ and '&~'
+        if "~" in r2_logic[0]:
+            negate = True
+            r2_logic[0] = r2_logic[0].replace("~", "")
+
+        r1_ids, r1_items, r1_vars = r1
+        r2_ids, r2_items, r2_vars = problem.conditions[r2_logic[0]].get_items(r2_logic[1])
+
+        inter = list(set(r1_vars) & set(r2_vars))  # intersection
+        for i in range(len(inter)):
+            inter[i] = (r1_vars.index(inter[i]), r2_vars.index(inter[i]))  # change to index
+
+        difference = list(set(r2_vars) - set(r1_vars))  # difference
+        for i in range(len(difference)):
+            difference[i] = r2_vars.index(difference[i])  # change to index
+
+        r_ids = []    # result
+        r_items = []
+        r_vars = list(r1_vars)
+        for dif in difference:  # add r2 vars
+            r_vars.append(r2_vars[dif])
+        r_vars = tuple(r_vars)
+
+        if not negate:  # &
+            for i in range(len(r1_items)):
+                r1_data = r1_items[i]
+                for j in range(len(r2_items)):
+                    r2_data = r2_items[j]
+                    passed = True
+                    for r1_i, r2_i in inter:
+                        if r1_data[r1_i] != r2_data[r2_i]:  # the corresponding points are inconsistent.
+                            passed = False
+                            break
+                    if passed:
+                        item = list(r1_data)
+                        for dif in difference:
+                            item.append(r2_data[dif])
+                        r_items.append(tuple(item))
+                        r_ids.append(tuple(set(list(r1_ids[i]) + list(r2_ids[j]))))
+        else:  # &~
+            for i in range(len(r1_items)):
+                r1_data = r1_items[i]
+                valid = True
+                for j in range(len(r2_items)):
+                    r2_data = r2_items[j]
+                    passed = True
+                    for r1_i, r2_i in inter:
+                        if r1_data[r1_i] != r2_data[r2_i]:  # the corresponding points are inconsistent.
+                            passed = False
+                            break
+                    if passed:
+                        valid = False
+                        break
+                if valid:
+                    r_items.append(r1_items[i])
+                    r_ids.append(r1_ids[i])
+
+        return r_ids, r_items, r_vars
 
     @staticmethod
-    def algebra_and(r1, problem, r2):
+    def algebra_and(r1, r2_equal_tree, problem):
         pass

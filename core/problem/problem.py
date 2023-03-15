@@ -2,7 +2,7 @@ import warnings
 from core.problem.object import *
 from itertools import combinations
 from sympy import symbols
-from core.aux_tools.parse import EqParser
+from core.aux_tools.parser import EqParser
 import copy
 
 

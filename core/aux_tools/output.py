@@ -1,4 +1,4 @@
-from core.aux_tools.parse import InverseParser
+from core.aux_tools.parser import InverseParser
 from core.aux_tools.utils import save_json
 from sympy import Float
 from graphviz import Digraph

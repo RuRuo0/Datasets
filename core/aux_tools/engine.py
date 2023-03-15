@@ -1,6 +1,8 @@
 from sympy import symbols, solve
 from func_timeout import func_set_timeout, FunctionTimedOut
 from core.aux_tools.utils import number_round
+from core.aux_tools.parser import EqParser
+from core.aux_tools.utils import rough_equal
 import warnings
 
 
@@ -310,6 +312,9 @@ class EquationKiller:
         :param hard_mode: solve difficult_mini_eq_sets when hard_mode=True.
         :param trh: solve difficult_mini_eq_sets when len(mini_eq_set) < tsh.
         """
+        if target_expr is None:
+            return None, None
+
         equation = problem.conditions["Equation"]  # class <Equation>
 
         if target_expr in equation.get_id_by_item:    # no need to solve
@@ -398,23 +403,72 @@ class EquationKiller:
 class GeoLogic:
 
     @staticmethod
-    def logic_and(r1, r2_logic, problem):
+    def run(gpl, problem):
         """
-        Underlying implementation of <relational reasoning>: logic part.
-        :param r1: triplet, (r1_ids, r1_items, r1_vars).
-        :param r2_logic: geo predicate logic, such as ['Collinear', ['a', 'b', 'c']].
+        Run reason step by step.
+        :param gpl: geometric predicate logic.
         :param problem: instance of class <Problem>.
-        :return r: triplet, (r_ids, r_items, r_vars), reasoning result.
-        >> logic_and(([(1,), (2,)], [('A', 'B'), ('C', 'D')], [0, 1]), ([(3,), (4,)], [('B', 'C'), ('D', 'E')], [1, 2]))
-        ([(1, 3), (2, 4)], [('A', 'B', 'C'), ('C', 'D', 'E')], [0, 1, 2])
+        :return r: triplet, (r_ids, r_items, r_vars).
         """
-        negate = False  # Distinguishing operation ‘&’ and '&~'
-        if "~" in r2_logic[0]:
-            negate = True
-            r2_logic[0] = r2_logic[0].replace("~", "")
+        r_ids, r_items, r_vars = problem.conditions[gpl[0][0]](gpl[0][1])
 
+        for i in range(len(r_items)):  # delete duplicated vars and corresponding item
+            r_items[i] = list(r_items[i])
+        r1_vars = list(r_vars)
+        deleted_vars_index = []  # deleted vars index
+        for i in range(len(r1_vars)):
+            if r1_vars[i] in r1_vars[0:i]:
+                deleted_vars_index.append(i)
+        for index in deleted_vars_index[::-1]:  # delete
+            r1_vars.pop(index)
+            for i in range(len(r_items)):
+                r_items[i].pop(index)
+
+        for i in range(1, len(gpl)):
+            r2_gpl = gpl[i]
+            oppose = False
+            if "~" in r2_gpl[0]:
+                r2_gpl[0] = r2_gpl[0].replace("~", "")
+                oppose = True
+
+            if r2_gpl[0] == "Equal":    # algebra constraint
+                r_ids, r_items, r_vars = GeoLogic.constraint_algebra(
+                    (r_ids, r_items, r_vars),
+                    r2_gpl,
+                    oppose,
+                    problem
+                )
+            else:
+                if len(set(r2_gpl[1]) - set(r_vars)) == 0:    # logic constraint
+                    r_ids, r_items, r_vars = GeoLogic.constraint_logic(
+                        (r_ids, r_items, r_vars),
+                        r2_gpl,
+                        oppose,
+                        problem
+                    )
+                else:    # constrained cartesian product
+                    r_ids, r_items, r_vars = GeoLogic.product(
+                        (r_ids, r_items, r_vars),
+                        problem.conditions[r2_gpl[0]].get_items(r2_gpl[1]),
+                    )
+            if len(r_items) == 0:
+                break
+
+        return r_ids, r_items, r_vars
+
+    @staticmethod
+    def product(r1, r2):
+        """
+        Constrained Cartesian product.
+        :param r1: triplet, (r1_ids, r1_items, r1_vars).
+        :param r2: triplet, (r2_ids, r2_items, r2_vars).
+        :return r: triplet, (r_ids, r_items, r_vars).
+        >> product(([(1,), (2,)], [('A', 'B'), ('C', 'D')], ['a', 'b']),
+                   ([(3,), (4,)], [('B', 'C'), ('D', 'E')], ['b', 'c']))
+        ([(1, 3), (2, 4)], [('A', 'B', 'C'), ('C', 'D', 'E')], ['a', 'b', 'c'])
+        """
         r1_ids, r1_items, r1_vars = r1
-        r2_ids, r2_items, r2_vars = problem.conditions[r2_logic[0]].get_items(r2_logic[1])
+        r2_ids, r2_items, r2_vars = r2
 
         inter = list(set(r1_vars) & set(r2_vars))  # intersection
         for i in range(len(inter)):
@@ -424,49 +478,125 @@ class GeoLogic:
         for i in range(len(difference)):
             difference[i] = r2_vars.index(difference[i])  # change to index
 
-        r_ids = []    # result
+        r_ids = []  # result
         r_items = []
         r_vars = list(r1_vars)
         for dif in difference:  # add r2 vars
             r_vars.append(r2_vars[dif])
         r_vars = tuple(r_vars)
 
-        if not negate:  # &
-            for i in range(len(r1_items)):
-                r1_data = r1_items[i]
-                for j in range(len(r2_items)):
-                    r2_data = r2_items[j]
-                    passed = True
-                    for r1_i, r2_i in inter:
-                        if r1_data[r1_i] != r2_data[r2_i]:  # the corresponding points are inconsistent.
-                            passed = False
-                            break
-                    if passed:
-                        item = list(r1_data)
-                        for dif in difference:
-                            item.append(r2_data[dif])
-                        r_items.append(tuple(item))
-                        r_ids.append(tuple(set(list(r1_ids[i]) + list(r2_ids[j]))))
-        else:  # &~
-            for i in range(len(r1_items)):
-                r1_data = r1_items[i]
-                valid = True
-                for j in range(len(r2_items)):
-                    r2_data = r2_items[j]
-                    passed = True
-                    for r1_i, r2_i in inter:
-                        if r1_data[r1_i] != r2_data[r2_i]:  # the corresponding points are inconsistent.
-                            passed = False
-                            break
-                    if passed:
-                        valid = False
+        for i in range(len(r1_items)):
+            r1_data = r1_items[i]
+            for j in range(len(r2_items)):
+                r2_data = r2_items[j]
+                passed = True
+                for r1_i, r2_i in inter:
+                    if r1_data[r1_i] != r2_data[r2_i]:  # the corresponding points are inconsistent.
+                        passed = False
                         break
-                if valid:
-                    r_items.append(r1_items[i])
-                    r_ids.append(r1_ids[i])
+                if passed:
+                    item = list(r1_data)
+                    for dif in difference:
+                        item.append(r2_data[dif])
+                    r_items.append(tuple(item))
+                    r_ids.append(tuple(set(list(r1_ids[i]) + list(r2_ids[j]))))
 
         return r_ids, r_items, r_vars
 
     @staticmethod
-    def algebra_and(r1, r2_equal_tree, problem):
-        pass
+    def constraint_logic(r1, r2_logic, oppose, problem):
+        """
+        Logic constraint.
+        :param r1: triplet, (r1_ids, r1_items, r1_vars).
+        :param r2_logic: geo predicate logic, such as ['Collinear', ['a', 'b', 'c']].
+        :param oppose: indicate '&' or '&~'.
+        :param problem: instance of class <Problem>.
+        :return r: triplet, (r_ids, r_items, r_vars), reasoning result.
+        >> problem.conditions['Line'].get_item_by_id  # supposed
+        {3: ('B', 'C')}
+        >> constraint_logic(([(1,), (2,)], [('A', 'B', 'C'), ('C', 'D', 'E')], ['a', 'b', 'c']),
+                            False
+                            ['Line', ['b', 'c']],
+                            problem)
+        ([(1, 3)], [('A', 'B', 'C')], ['a', 'b', 'c'])
+        >> constraint_logic(([(1,), (2,)], [('A', 'B', 'C'), ('C', 'D', 'E')], ['a', 'b', 'c']),
+                            True
+                            ['Line', ['b', 'c']],
+                            problem)
+        ([(2,)], [('C', 'D', 'E')], ['a', 'b', 'c'])
+        """
+        r1_ids, r1_items, r1_vars = r1
+        index = [r1_vars.index(v) for v in r2_logic[1]]
+        r_ids = []
+        r_items = []
+        if not oppose:    # &
+            for i in range(len(r1_items)):
+                r2_item = tuple(r1_items[i][j] for j in index)
+                if r2_item in problem.conditions[r2_logic[0]].get_id_by_item:
+                    r2_id = problem.conditions[r2_logic[0]].get_id_by_item[r2_item]
+                    r_ids.append(tuple(set(list(r1_ids[i]) + [r2_id])))
+                    r_items.append(r1_items[i])
+        else:    # &~
+            for i in range(len(r1_items)):
+                r2_item = tuple(r1_items[i][j] for j in index)
+                if r2_item not in problem.conditions[r2_logic[0]].get_id_by_item:
+                    r_ids.append(r1_ids[i])
+                    r_items.append(r1_items[i])
+        return r_ids, r_items, r1_vars
+
+    @staticmethod
+    def constraint_algebra(r1, r2_algebra, oppose, problem):
+        """
+        Algebra constraint.
+        :param r1: triplet, (r1_ids, r1_items, r1_vars).
+        :param r2_algebra: geo predicate logic, such as ['Equal', [['Length', ['a', 'b']], 5]].
+        :param oppose: indicate '&' or '&~'.
+        :param problem: instance of class <Problem>.
+        :return r: triplet, (r_ids, r_items, r_vars), reasoning result.
+        >> problem.conditions['Equation'].get_value_of_sym  # supposed
+        {ll_ab: 1}
+        >> problem.conditions['Equation'].get_item_by_id  # supposed
+        {3: ll_ab - 1}
+        >> constraint_algebra(([(1,), (2,)], [('A', 'B', 'C'), ('C', 'D', 'E')], ['a', 'b', 'c']),
+                              False
+                              ['Equal', [['Length', ['a', 'b']], 1]],
+                              problem)
+        ([(1, 3)], [('A', 'B', 'C')], ['a', 'b', 'c'])
+        >> constraint_algebra(([(1,), (2,)], [('A', 'B', 'C'), ('C', 'D', 'E')], ['a', 'b', 'c']),
+                              True
+                              ['Equal', [['Length', ['a', 'b']], 1]],
+                              problem)
+        ([(2,)], [('C', 'D', 'E')], ['a', 'b', 'c'])
+        """
+        r1_ids, r1_items, r1_vars = r1
+        r_ids = []
+        r_items = []
+        if not oppose:    # &
+            for i in range(len(r1_items)):
+                letters = {}
+                for j in range(len(r1_vars)):
+                    letters[r1_vars[j]] = r1_items[i][j]
+                eq = EqParser.get_equation_from_tree(problem, r2_algebra[1], True, letters)
+                result, premise = EquationKiller.solve_target(problem, eq)
+                if result is not None and rough_equal(result, 0):  # meet constraints
+                    r_id = tuple(set(premise + list(r1_ids[i])))
+                    r_ids.append(r_id)
+                    r_items.append(r1_items[i])
+        else:    # &~
+            for i in range(len(r1_items)):
+                letters = {}
+                for j in range(len(r1_vars)):
+                    letters[r1_vars[j]] = r1_items[i][j]
+                eq = EqParser.get_equation_from_tree(problem, r2_algebra[1], True, letters)
+                result, premise = EquationKiller.solve_target(problem, eq)
+                if result is None or not rough_equal(result, 0):  # meet constraints
+                    r_id = tuple(set(premise + list(r1_ids[i])))
+                    r_ids.append(r_id)
+                    r_items.append(r1_items[i])
+
+        return r_ids, r_items, r1_vars
+
+
+class GoalFinder:
+
+    pass

@@ -1,5 +1,6 @@
 import json
 from sympy import Float
+operator = ["Add", "Mul", "Sub", "Div", "Pow", "Sin", "Cos", "Tan"]
 
 
 def load_json(filename):

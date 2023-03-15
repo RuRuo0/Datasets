@@ -2,7 +2,7 @@ import warnings
 from core.solver.solver import Solver
 from core.aux_tools.utils import load_json, save_json
 from core.aux_tools.output import show, simple_show, save_step_msg, save_solution_tree
-from core.aux_tools.parse import FLParser
+from core.aux_tools.parser import FLParser
 import os
 predicate_GDL_file_path = "data/preset/predicate_GDL.json"
 theorem_GDL_file_path = "data/preset/theorem_GDL.json"

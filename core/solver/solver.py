@@ -1,7 +1,7 @@
 from core.problem.problem import Problem
-from core.aux_tools.parse import FLParser, EqParser, InverseParser
+from core.aux_tools.parser import FLParser, EqParser, InverseParser
 from core.aux_tools.utils import rough_equal
-from core.aux_tools.engine import EquationKiller
+from core.aux_tools.engine import EquationKiller, GeoLogic
 import warnings
 import time
 
@@ -71,11 +71,9 @@ class Solver:
             for i in range(len(theorem_vars)):
                 letters[theorem_vars[i]] = theorem_para[i]
 
-            for branch in self.theorem_GDL[theorem_name]["body"]:
-                premises_GDL = branch[0]
-                conclusions_GDL = branch[1]
-                passed = True
+            for premises_GDL, conclusions_GDL in self.theorem_GDL[theorem_name]["body"]:
                 premises = []
+                passed = True
                 for predicate, item in premises_GDL:
                     if predicate == "Equal":  # algebra premise
                         eq = EqParser.get_equation_from_tree(self.problem, item, True, letters)
@@ -109,7 +107,24 @@ class Solver:
             self.problem.applied(theorem, time.time() - s_time)
 
         elif theorem_name is not None:    # mode 3, rough mode
-            pass
+            for premises_GDL, conclusions_GDL in self.theorem_GDL[theorem_name]["body"]:
+                r_ids, r_items, r_vars = GeoLogic.run(premises_GDL, self.problem)
+
+                for i in range(len(r_items)):
+                    letters = {}
+                    for j in range(len(r_vars)):
+                        letters[r_vars[j]] = r_items[i][j]
+
+                    for predicate, item in conclusions_GDL:
+                        if predicate == "Equal":  # algebra conclusion
+                            eq = EqParser.get_equation_from_tree(self.problem, item, True, letters)
+                            update = self.problem.add("Equation", eq, r_ids[i], theorem_name) or update
+                        else:  # logic conclusion
+                            item = tuple(letters[i] for i in item)
+                            update = self.problem.add(predicate, item, r_ids[i], theorem_name) or update
+
+            EquationKiller.solve_equations(self.problem)
+            self.problem.applied(theorem_name, time.time() - s_time)
 
         else:    # invalid if-else branch
             e_msg = "Wrong parameter in function <apply_theorem>: (None, None, None)"
@@ -153,7 +168,7 @@ class Solver:
 
     def try_theorem(self, theorem_name):
         """
-        Try a theorem and return added conclusions.
+        Try a theorem and return can-added conclusions.
         :param theorem_name: <str>.
         :return selection: {(theorem_name, theorem_para): [(predicate, item, premise)]}.
         """
@@ -165,198 +180,39 @@ class Solver:
             warnings.warn(w_msg)
             return False
 
+        selection = {}
+        for premises_GDL, conclusions_GDL in self.theorem_GDL[theorem_name]["body"]:
+            r_ids, r_items, r_vars = GeoLogic.run(premises_GDL, self.problem)
+
+            for i in range(len(r_items)):
+                added = []
+
+                letters = {}
+                for j in range(len(r_vars)):
+                    letters[r_vars[j]] = r_items[i][j]
+
+                for predicate, item in conclusions_GDL:
+                    if predicate == "Equal":  # algebra conclusion
+                        eq = EqParser.get_equation_from_tree(self.problem, item, True, letters)
+                        if self.problem.can_add("Equation", eq, r_ids[i], theorem_name):
+                            added.append(("Equation", eq, r_ids[i]))
+                    else:  # logic conclusion
+                        item = tuple(letters[i] for i in item)
+                        if self.problem.can_add(predicate, item, r_ids[i], theorem_name):
+                            added.append((predicate, item, r_ids[i]))
+
+                if len(added) > 0:    # add to selection
+                    t_vars = self.theorem_GDL[theorem_name]["vars"]
+                    theorem_para = tuple(r_items[i][r_vars.index(t)] for t in t_vars)
+                    if (theorem_name, theorem_para) not in selection:
+                        selection[(theorem_name, theorem_para)] = added
+                    else:
+                        selection[(theorem_name, theorem_para)] += added
+
+        return selection
+
     def find_sub_goal(self, goal):
         pass
-
-    def old_apply_theorem(self, theorem_name):
-        # print("apply {}".format(theorem_name))
-        """
-        Forward reasoning.
-        :param theorem_name: theorem's name. Such as 'pythagorean'.
-        :return update: whether condition update or not.
-        """
-        if self.problem is None:
-            raise Exception(
-                "<ProblemNotLoaded> Please run <load_problem> before run <apply_theorem>."
-            )
-
-        if theorem_name not in self.theorem_GDL:
-            raise Exception(
-                "<TheoremNotDefined> Theorem {} not defined.".format(
-                    theorem_name
-                )
-            )
-
-        s_start_time = time.time()
-        update = False
-
-        for branch in self.theorem_GDL[theorem_name]:
-            b_premise = self.theorem_GDL[theorem_name][branch]["premise"]
-            b_conclusion = self.theorem_GDL[theorem_name][branch]["conclusion"]
-            for normal_form in b_premise:
-                results = self.problem.conditions[normal_form[0][0]](normal_form[0][1])  # (ids, items, vars)
-                results = Solver._duplicate_removal(results)
-                for i in range(1, len(normal_form)):
-                    if len(results[0]) == 0:    # if no satisfied results, stop reasoning
-                        break
-                    if normal_form[i][0] == "Equal":
-                        results = self._algebra_and(results, normal_form[i])
-                    else:
-                        results = self._logic_and(results, normal_form[i])
-
-                r_ids, r_items, r_vars = results  # add satisfied results to conclusion
-                for i in range(len(r_items)):
-                    for predicate, para in b_conclusion:
-                        if predicate != "Equal":  # logic relation
-                            item = [r_items[i][r_vars.index(j)] for j in para]
-                            # if theorem_name == "similar_judgment_aa":
-                            #     print(item)
-                            update = self.problem.add(predicate, tuple(item), r_ids[i], theorem_name) or update
-                        else:  # algebra relation
-                            equation = EqParser.get_equation_from_tree(self.problem, para, True, r_items[i])
-                            if equation is not None:
-                                update = self.problem.add("Equation", equation, r_ids[i], theorem_name) or update
-        if update:  # add theorem to problem theorem_applied list when update
-            EquationKiller.solve_equations(self.problem)
-            self.problem.applied(theorem_name, "theorem_para", time.time() - s_start_time)  # save applied theorem and update step
-
-        return update
-
-    @staticmethod
-    def _duplicate_removal(results):
-        """
-        Remove redundant variables.
-        :param results: (r_ids, r_items, r_vars)
-        >> duplicate_removal([(0)], [('A', 'C', 'A', 'D')], [0, 1, 0, 3])
-        >> ([(0)], [('A', 'C', 'D')], [0, 1, 3])
-        :return: (r_ids, r_items, r_vars)
-        """
-        r1_ids, r1_items, r1_vars = results
-        for i in range(len(r1_items)):  # delete co-vars
-            r1_items[i] = list(r1_items[i])
-        r1_vars = list(r1_vars)
-        deleted_vars_index = []  # deleted vars index
-        for i in range(len(r1_vars)):
-            if r1_vars[i] in r1_vars[0:i]:
-                deleted_vars_index.append(i)
-        for index in deleted_vars_index[::-1]:  # delete
-            r1_vars.pop(index)
-            for i in range(len(r1_items)):
-                r1_items[i].pop(index)
-
-        return r1_ids, r1_items, r1_vars
-
-    def _logic_and(self, results, logic):
-        """
-        Underlying implementation of <relational reasoning>: logic part.
-        Note that logic[0] may start with '~'.
-        :param results: triplet, (r1_ids, r1_items, r1_vars).
-        :param logic: predicate and vars.
-        :return: triplet, reasoning result.
-        >> self.problem.conditions['Line']([1, 2])
-        ([(3,), (4,)], [('B', 'C'), ('D', 'E')], [1, 2])
-        >> logic_and(([(1,), (2,)], [('A', 'B'), ('C', 'D')], [0, 1]), ['Line', [1, 2]])
-        ([(1, 3), (2, 4)], [('A', 'B', 'C'), ('C', 'D', 'E')], [0, 1, 2])
-        """
-        negate = False  # Distinguishing operation ‘&’ and '&~'
-        if logic[0].startswith("~"):
-            negate = True
-            logic[0] = logic[0].replace("~", "")
-
-        r1_ids, r1_items, r1_vars = results
-        r2_ids, r2_items, r2_vars = self.problem.conditions[logic[0]](logic[1])
-        r_ids = []
-        r_items = []
-        r_vars = tuple(set(r1_vars) | set(r2_vars))  # union
-
-        inter = list(set(r1_vars) & set(r2_vars))  # intersection
-        for i in range(len(inter)):
-            inter[i] = (r1_vars.index(inter[i]), r2_vars.index(inter[i]))  # change to index
-        difference = list(set(r2_vars) - set(r1_vars))  # difference
-        for i in range(len(difference)):
-            difference[i] = r2_vars.index(difference[i])  # change to index
-
-        if not negate:  # &
-            for i in range(len(r1_items)):
-                r1_data = r1_items[i]
-                for j in range(len(r2_items)):
-                    r2_data = r2_items[j]
-                    correspondence = True
-                    for r1_i, r2_i in inter:
-                        if r1_data[r1_i] != r2_data[r2_i]:  # the corresponding points are inconsistent.
-                            correspondence = False
-                            break
-                    if correspondence:
-                        item = list(r1_data)
-                        for dif in difference:
-                            item.append(r2_data[dif])
-                        r_items.append(tuple(item))
-                        r_ids.append(tuple(set(list(r1_ids[i]) + list(r2_ids[j]))))
-        else:  # &~
-            r_vars = r1_vars
-            for i in range(len(r1_items)):
-                r1_data = r1_items[i]
-                valid = True
-                for j in range(len(r2_items)):
-                    r2_data = r2_items[j]
-                    correspondence = True
-                    for r1_i, r2_i in inter:
-                        if r1_data[r1_i] != r2_data[r2_i]:  # the corresponding points are inconsistent.
-                            correspondence = False
-                            break
-                    if correspondence:
-                        valid = False
-                        break
-                if valid:
-                    r_items.append(r1_items[i])
-                    r_ids.append(r1_ids[i])
-
-        return r_ids, r_items, r_vars
-
-    def _algebra_and(self, results, equal_tree):
-        """
-        Underlying implementation of <relational reasoning>: algebra part.
-        Note that equal[0] may start with '~'.
-        :param results: triplet, (r1_ids, r1_items, r1_vars).
-        :param equal_tree: equal tree.
-        :return: triplet, reasoning result.
-        >> self.problem.conditions['Equation'].value_of_sym
-        {ll_ab: 1, ll_cd: 2}
-        >> logic_and(([(1,), (2,)], [('A', 'B'), ('C', 'D')], [0, 1]), ['Equal', [['Line', [0, 1]], 1]])
-        ([(1, N)], [('A', 'B')], [0, 1])
-        """
-        negate = False  # Distinguishing operation ‘&’ and '&~'
-        if equal_tree[0].startswith("~"):
-            negate = True
-            equal_tree[0] = equal_tree[0].replace("~", "")
-
-        r1_ids, r1_items, r1_vars = results
-        r_ids, r_items = [], []
-
-        if not negate:  # &
-            for i in range(len(r1_items)):
-                equation = EqParser.get_equation_from_tree(self.problem, equal_tree[1], True, r1_items[i])
-                if equation is None:
-                    continue
-                result, premise = EquationKiller.solve_target(self.problem, equation)
-
-                if result is not None and rough_equal(result, 0):
-                    r_items.append(r1_items[i])
-                    r_ids.append(tuple(set(list(r1_ids[i]) + premise)))
-        else:  # &~
-            for i in range(len(r1_items)):
-                equation = EqParser.get_equation_from_tree(self.problem, equal_tree[1], True, r1_items[i])
-                if equation is None:
-                    r_items.append(r1_items[i])
-                    r_ids.append(r1_ids[i])
-                    continue
-                result, premise = EquationKiller.solve_target(self.problem, equation)
-
-                if result is None or not rough_equal(result, 0):
-                    r_items.append(r1_items[i])
-                    r_ids.append(tuple(set(list(r1_ids[i]) + premise)))
-
-        return r_ids, r_items, r1_vars
 
     def find_prerequisite(self, target_predicate, target_item):
         """

@@ -1,0 +1,38 @@
+{
+  "problem_id": 3012,
+  "annotation": "yiminghe_2023-03-16",
+  "source": "Geometry3k-1428",
+  "problem_level": 1,
+  "problem_text_cn": "",
+  "problem_text_en": "If P R \\parallel K L, K N = 9, L N = 16, and P M = 2K P, find M N.",
+  "problem_img": "3012.png",
+  "construction_cdl": [
+    "Polygon(LRQN)",
+    "Polygon(RMQ)",
+    "Polygon(NQPK)",
+    "Polygon(QMP)",
+    "Collinear(LNK)",
+    "Collinear(RQP)",
+    "Collinear(NQM)",
+    "Collinear(LRM)",
+    "Collinear(MPK)"
+  ],
+  "text_cdl": [],
+  "image_cdl": [
+    "Parallel(LK,RP)",
+    "Equal(LengthOfLine(KN),9)",
+    "Equal(LengthOfLine(LN),16)",
+    "Equal(LengthOfLine(PM),Mul(LengthOfLine(KP),2))",
+    "Perpendicular(KN,MN)",
+    "Perpendicular(LM,KM)"
+  ],
+  "goal_cdl": "Value(LengthOfLine(MN))",
+  "problem_answer": "12",
+  "theorem_seqs": [
+    "perpendicular_property_collinear_extend(KN,MN,L)",
+    "triangle_property_angle_sum(KNM)",
+    "triangle_property_angle_sum(KLM)",
+    "similar_judgment_aa(KNM,MNL)",
+    "similar_property_line_ratio(NMK,NLM)"
+  ]
+}

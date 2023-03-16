@@ -410,7 +410,8 @@ class GeoLogic:
         :param problem: instance of class <Problem>.
         :return r: triplet, (r_ids, r_items, r_vars).
         """
-        r_ids, r_items, r_vars = problem.conditions[gpl[0][0]](gpl[0][1])
+        print(gpl)
+        r_ids, r_items, r_vars = problem.conditions[gpl[0][0]].get_items(gpl[0][1])
 
         for i in range(len(r_items)):  # delete duplicated vars and corresponding item
             r_items[i] = list(r_items[i])

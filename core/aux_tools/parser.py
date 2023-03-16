@@ -399,10 +399,16 @@ class FLParser:
 
     @staticmethod
     def parse_theorem_seqs(theorem_seqs):
+        """parse theorem_seqs to logic form."""
         results = []
+
         for theorem in theorem_seqs:
-            name, para, _ = FLParser._parse_one_predicate(theorem)
-            results.append([name, para])
+            if "(" not in theorem:
+                results.append([theorem, None])
+            else:
+                name, para, _ = FLParser._parse_one_predicate(theorem)
+                results.append([name, para])
+
         return results
 
     @staticmethod

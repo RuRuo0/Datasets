@@ -42,7 +42,7 @@ So we designed a plane geometry formalization system and provided a python imple
 **predicates/theorems**: 50/77  
 **problems**: 319  
 **new functions**:  
-1.A new theorem GDL format and corresponding problem-solving theorem sequence labeling method. (theorem seqs with para)  
+1.A new theorem GDL format and corresponding problem-solving theorem sequence annotating method. (theorem seqs with para)  
 2.Better error handling mechanism. It make data set annotation more convenient.  
 3.Prepare for greedy search (forward and backward) and AI-assisted search. (rough definition of program interface and framework)   
 4.merge problem annotated in this week.  

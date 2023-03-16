@@ -1,7 +1,7 @@
 from core.problem.problem import Problem
-from core.aux_tools.parser import FLParser, EqParser, InverseParser
+from core.aux_tools.parser import *
 from core.aux_tools.utils import rough_equal
-from core.aux_tools.engine import EquationKiller, GeoLogic
+from core.solver.engine import *
 import warnings
 import time
 
@@ -22,7 +22,7 @@ class Solver:
 
     def apply_theorem(self, theorem_name=None, theorem_para=None, selection=None):
         """
-        Apply a theorem and return whether it is successful.
+        Apply a theorem and return whether it is successfully applied.
         :param theorem_name: <str>.
         :param theorem_para: tuple of <str>, set None when rough apply theorem.
         :param selection: {(theorem_name, theorem_para): [(predicate, item, premise)]}.
@@ -212,7 +212,30 @@ class Solver:
         return selection
 
     def find_sub_goal(self, goal):
-        pass
+        """
+        Backward reasoning. Find sub-goal of given goal.
+        :param goal: (predicate, item), such as ('Line', (‘A’, 'B')), ('Equation', a - b + c).
+        :return sub_goal: [(theorem_name, theorem_para, (sub_goal_1, sub_goal_2,...))]
+        """
+        if not self.problem.loaded:
+            e_msg = "Problem not loaded. Please run Problem.<load_problem> before run other functions."
+            raise Exception(e_msg)
+        predicate, item = goal
+        if predicate not in self.problem.conditions:
+            e_msg = "Predicate {} not defined in current GDL.".format(predicate)
+            raise Exception(e_msg)
+
+        if predicate == "Equation":    # algebra goal
+            equation = self.problem.conditions["Equation"]
+            unsolved_syms = []
+            for sym in item.free_symbols:
+                if equation.value_of_sym[sym] is None and equation.attr_of_sym[sym][1] != "Free":
+                    unsolved_syms.append(sym)
+            sub_goal = GoalFinder.find_algebra_sub_goal(unsolved_syms, self.problem, self.theorem_GDL)
+        else:     # logic goal
+            sub_goal = GoalFinder.find_logic_sub_goal(predicate, item, self.problem, self.theorem_GDL)
+
+        return sub_goal
 
     def find_prerequisite(self, target_predicate, target_item):
         """

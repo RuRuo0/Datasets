@@ -1,5 +1,5 @@
 import warnings
-from core.problem.object import *
+from core.problem.condition import *
 from itertools import combinations
 from sympy import symbols
 from core.aux_tools.parser import EqParser

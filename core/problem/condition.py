@@ -1,6 +1,3 @@
-from sympy import Eq
-
-
 class Condition:
     id = 0
     step = 0

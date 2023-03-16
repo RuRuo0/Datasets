@@ -600,4 +600,11 @@ class GeoLogic:
 
 class GoalFinder:
 
-    pass
+    @staticmethod
+    def find_algebra_sub_goal(unsolved_syms, problem, theorem_GDL):
+        pass
+
+    @staticmethod
+    def find_logic_sub_goal(predicate, item, problem, theorem_GDL):
+        pass
+

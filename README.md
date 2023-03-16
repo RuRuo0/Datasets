@@ -14,7 +14,7 @@ Formal representation and solving for SAT-level Euclidean plane geometry problem
 | XiaokaiZhang | 70 | 2397-2570 | / | × |
 | NaZhu | 70 | 2572-2742 | / | × |
 | JiaZou | 70 | 2744-2885 | / | × |
-| YimingHe | 70 | 2887-3083 | / | × |
+| YimingHe | 70 | 2887-3083 | / | √ |
 
 #### Week 1 (230306): form 2023-03-06 to 2023-03-12.
 **Attention:** Annotate problems in directory **Geometry3k-Triangle**.  

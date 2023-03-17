@@ -1,0 +1,50 @@
+{
+  "problem_id": 2750,
+  "notes": "比例",
+  "annotation": "jiazou_2023-03-17",
+  "source": "Geometry3k-1166",
+  "problem_level": 1,
+  "problem_text_cn": "",
+  "problem_text_en": "If P R \\parallel K L, K N = 9, L N = 16, P M = 2 K P, find K P.",
+  "problem_img": "2750.png",
+  "construction_cdl": [
+    "Polygon(LRQN)",
+    "Polygon(NQPK)",
+    "Polygon(RMQ)",
+    "Polygon(QMP)",
+    "Collinear(LRM)",
+    "Collinear(LNK)",
+    "Collinear(NQM)",
+    "Collinear(KPM)",
+    "Collinear(RQP)"
+  ],
+  "text_cdl": [
+    "Parallel(LK,RP)"
+  ],
+  "image_cdl": [
+    "Equal(LengthOfLine(KN),9)",
+    "Equal(LengthOfLine(LN),16)",
+    "Equal(LengthOfLine(PM),Mul(LengthOfLine(KP),2))",
+    "Perpendicular(KN,MN)",
+    "Perpendicular(RM,PM)"
+  ],
+  "goal_cdl": "Value(LengthOfLine(KP))",
+  "problem_answer": "5",
+  "theorem_seqs": [
+    "parallel_property_collinear_extend(LK,RP,N)",
+    "parallel_property_collinear_extend(PR,KN,Q)",
+    "parallel_property_corresponding_angle(NK,QP,M)",
+    "right_triangle_judgment_angle(KNM)",
+    "right_triangle_judgment_angle(PQM)",
+    "neutrality_judgment_parallel(QP,MKN)",
+    "neutrality_property_line_ratio(QP,MKN)",
+    "line_addition",
+    "parallel_property_collinear_extend(AB,CD,M)",
+    "neutrality_judgment_parallel(QP,MKN)",
+    "neutrality_property_similar(QP,MKN)",
+    "parallel_property_extend_perpendicular(NK,QP)",
+    "perpendicular_property_collinear_extend(NQ,PQ,M)",
+    "right_triangle_property_pythagorean(PQM)",
+    "right_triangle_property_pythagorean(KNM)"
+  ]
+}

@@ -8,26 +8,30 @@ predicate_GDL_file_path = "data/preset/predicate_GDL.json"
 theorem_GDL_file_path = "data/preset/theorem_GDL.json"
 
 
-def save_parsed_cdl(solver):
-    save_json(solver.problem.problem_CDL, "data/solved/problems/{}_parsed.json".format(solver.problem.problem_CDL["id"]))
-    save_step_msg(solver.problem, "data/solved/problems/")
-    save_solution_tree(solver.problem, "data/solved/problems/")
+def backward_run():
+    """Backward run."""
+    solver = Solver(load_json(predicate_GDL_file_path), load_json(theorem_GDL_file_path))  # init solver
+    while True:
+        pid = int(input("pid:"))
+        problem_CDL = load_json("data/formalized-problems/{}.json".format(pid))
+        solver.load_problem(problem_CDL)
 
-
-def show_backward_reasoning(solver):
-    if solver.problem.goal["type"] in ["equal", "value"]:
-        results = solver.find_prerequisite("Equation", solver.problem.goal["item"])
-    else:
-        results = solver.find_prerequisite(solver.problem.goal["item"], solver.problem.goal["answer"])
-    for r in results:
-        print(r)
-    print()
+        if solver.problem.goal["type"] in ["equal", "value"]:
+            print("Goal: (Equation, {})".format(solver.problem.goal["item"]))
+            sub_goals = solver.find_sub_goals(("Equation", solver.problem.goal["item"]))
+        else:
+            print("Goal: ({}, {})".format(solver.problem.goal["item"], solver.problem.goal["answer"]))
+            sub_goals = solver.find_sub_goals((solver.problem.goal["item"], solver.problem.goal["answer"]))
+        print()
+        for t_msg in sub_goals:
+            print(t_msg)
+            print(sub_goals[t_msg])
+            print()
+        print()
 
 
 def run(save_GDL=False, save_CDL=False, auto=False):
-    """
-    Run solver and load problem from problem_GDL.
-    """
+    """Run solver and load problem from problem_GDL."""
     solver = Solver(load_json(predicate_GDL_file_path), load_json(theorem_GDL_file_path))   # init solver
     if save_GDL:   # when save_GDL=True, save parsed GDL and exit
         save_json(solver.predicate_GDL, "data/solved/predicate_parsed.json")
@@ -52,7 +56,10 @@ def run(save_GDL=False, save_CDL=False, auto=False):
                 solver.check_goal()    # check goal after applied theorem seqs
                 simple_show(solver.problem)    # show solving process
                 if save_CDL:
-                    save_parsed_cdl(solver)
+                    save_json(solver.problem.problem_CDL,
+                              "data/solved/problems/{}_parsed.json".format(solver.problem.problem_CDL["id"]))
+                    save_step_msg(solver.problem, "data/solved/problems/")
+                    save_solution_tree(solver.problem, "data/solved/problems/")
 
             except Exception as e:    # exception
                 msg = "Raise Exception {} in problem {}.".format(e, filename.split(".")[0])
@@ -74,8 +81,12 @@ def run(save_GDL=False, save_CDL=False, auto=False):
 
             show(solver.problem)    # show solving process
             if save_CDL:
-                save_parsed_cdl(solver)
+                save_json(solver.problem.problem_CDL,
+                          "data/solved/problems/{}_parsed.json".format(solver.problem.problem_CDL["id"]))
+                save_step_msg(solver.problem, "data/solved/problems/")
+                save_solution_tree(solver.problem, "data/solved/problems/")
 
 
 if __name__ == '__main__':
     run(save_GDL=False, save_CDL=False, auto=False)
+    # backward_run()

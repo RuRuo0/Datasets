@@ -1,3 +1,4 @@
+import copy
 from sympy import symbols, solve
 from func_timeout import func_set_timeout, FunctionTimedOut
 from core.aux_tools.utils import number_round
@@ -9,153 +10,64 @@ import warnings
 class EquationKiller:
 
     @staticmethod
-    def get_minimum_equations(equations):
-        """Group equations to speed up solution."""
-        get_eq_set_by_sym = {}    # dict, sym: [equation]
-        for eq in equations:
+    def get_minimum_equations(target_eq, sym_to_eqs):
+        """
+        Return minimum equations.
+        :param target_eq: target equation, such as a - b + c.
+        :param sym_to_eqs: equations that has sym, such as {a: [a - b, a - c, a + c + d]}.
+        :return mini_eqs: minimum equations.
+        :return mini_syms: all sym of minimum equations.
+        """
+        mini_eqs = {target_eq}  # new group
+        mini_syms = target_eq.free_symbols
+
+        new_syms = mini_syms
+        while True:
+            last_new_syms = new_syms
+            new_syms = set()    # new added sym
+            for sym in last_new_syms:
+                for added_eq in sym_to_eqs[sym]:
+                    if added_eq not in mini_eqs:
+                        mini_eqs.add(added_eq)
+                        new_syms = new_syms | (added_eq.free_symbols - mini_syms)  # new symbol introduced
+            if len(new_syms) > 0:
+                mini_syms |= new_syms
+            else:
+                break
+
+        return list(mini_eqs), list(mini_syms)
+
+    @staticmethod
+    def get_sym_to_eqs(eqs):
+        """
+        Return map sym to equations.
+        :param eqs: all equations.
+        :return sym_to_eqs: equations that has sym, such as {a: [a - b, a - c, a + c + d]}.
+        """
+        sym_to_eqs = {}  # dict, sym: [equation]
+        for eq in eqs:
             for sym in eq.free_symbols:
-                if sym in get_eq_set_by_sym:
-                    get_eq_set_by_sym[sym].append(eq)
+                if sym in sym_to_eqs:
+                    sym_to_eqs[sym].append(eq)
                 else:
-                    get_eq_set_by_sym[sym] = [eq]
-        # print(get_eq_set_by_sym)
+                    sym_to_eqs[sym] = [eq]
+        return sym_to_eqs
 
-        equations_group = []    # list of (equations, syms)
-        checked_equations = []
-        for eq in equations:
-            if eq in checked_equations:    # eq is already in a group
-                continue
-            checked_equations.append(eq)
+    @staticmethod
+    def get_eqs_and_premises(problem):
+        """Return problem.conditions['Equation'].equations.values() and it's premise."""
+        equation = problem.conditions["Equation"]
 
-            eq_group_item = {eq}    # new group
-            sym_group_item = eq.free_symbols
-            update = True
-            while update:
-                update = False
-                for sym in list(sym_group_item):
-                    for added_eq in get_eq_set_by_sym[sym]:
-                        if added_eq not in eq_group_item:
-                            checked_equations.append(added_eq)
-                            eq_group_item.add(added_eq)
-                            if len(added_eq.free_symbols - sym_group_item) > 0:   # new symbol introduced
-                                sym_group_item |= added_eq.free_symbols
-                                update = True
+        equations = []  # unsolved equation list and its premise
+        premises = []
+        for raw_eq in equation.equations:
+            equations.append(equation.equations[raw_eq])
+            premises.append([equation.get_id_by_item[raw_eq]])
+            for sym in raw_eq.free_symbols:
+                if equation.value_of_sym[sym] is not None:
+                    premises[-1].append(equation.get_id_by_item[sym - equation.value_of_sym[sym]])
 
-            equations_group.append((eq_group_item, sym_group_item))
-
-        simple_mini_eq_sets = []
-        difficult_mini_eq_sets = []
-        for eq_group_item, sym_group_item in equations_group:
-            if len(eq_group_item) > len(sym_group_item):  # The number of equations > the number of syms
-                # eqs = eq_group_item
-                # syms = sym_group_item
-                while True:
-                    for eq in list(eq_group_item):
-                        new_eqs = eq_group_item - {eq}    # remove the equation
-                        new_syms = set()
-                        for new_eq in new_eqs:
-                            new_syms |= new_eq.free_symbols
-                        if len(new_syms) == len(sym_group_item):  # the number of syms not change
-                            eq_group_item = new_eqs
-                            sym_group_item = new_syms
-                        if len(eq_group_item) == len(sym_group_item):
-                            break
-                    if len(eq_group_item) == len(sym_group_item):
-                        break
-
-                # print((eq_group_item, sym_group_item))
-                # print((len(eq_group_item), len(sym_group_item)))
-                # print((eqs, syms))
-                # print((len(eqs), len(syms)))
-                # print()
-                simple_mini_eq_sets.append(eq_group_item)
-
-            elif len(eq_group_item) == len(sym_group_item):  # The number of equations = the number of syms
-                simple_mini_eq_sets.append(eq_group_item)
-            else:  # The number of equations < the number of syms
-                eqs = eq_group_item
-                syms = sym_group_item
-                update = True
-                while update:
-                    update = False
-                    for sym in list(syms):
-                        new_eqs = eqs - set(get_eq_set_by_sym[sym])
-                        new_syms = set()
-                        for new_eq in new_eqs:
-                            new_syms |= new_eq.free_symbols
-                        if len(eqs) - len(new_eqs) < len(syms) - len(new_syms):
-                            update = True
-                            eqs = new_eqs
-                            syms = new_syms
-                        if len(eqs) == len(syms):
-                            break
-                    if len(eqs) == len(syms):
-                        break
-                if len(eqs) > 0 and len(eqs) == len(syms):
-                    simple_mini_eq_sets.append(eqs)
-                else:
-                    difficult_mini_eq_sets.append(eq_group_item)
-
-        # print(simple_mini_eq_sets)
-        # print(difficult_mini_eq_sets)
-        # print()
-
-        # checked_eq_sets = []
-        # unchecked_eq_sets = [{eq} for eq in equations]
-        # unchecked_eq_syms = [eq.free_symbols for eq in equations]
-        # print(unchecked_eq_sets)
-        # print(unchecked_eq_syms)
-        # print()
-        # print()
-        # exit(0)
-
-        # while True:
-        #     # print(unchecked_eq_sets)
-        #     for eq_set in unchecked_eq_sets:
-        #         # print("eq_set: {}".format(eq_set))
-        #         eq_set_id = unchecked_eq_sets.index(eq_set)
-        #         syms = unchecked_eq_syms[eq_set_id]
-        #         unchecked_eq_sets.pop(eq_set_id)
-        #         unchecked_eq_syms.pop(eq_set_id)
-        #
-        #         if eq_set in checked_eq_sets:
-        #             continue
-        #         checked_eq_sets.append(eq_set)
-        #
-        #         if len(eq_set) == len(syms) and eq_set not in simple_mini_eq_sets:
-        #             simple_mini_eq_sets.append(eq_set)
-        #             continue
-        #
-        #         update = False
-        #         for sym in syms:
-        #             for added_eq in get_eq_set_by_sym[sym]:
-        #                 new_eq_set = eq_set | {added_eq}
-        #                 new_sym = syms | added_eq.free_symbols
-        #                 if new_eq_set not in checked_eq_sets and new_eq_set not in unchecked_eq_sets:
-        #                     unchecked_eq_sets.append(new_eq_set)
-        #                     unchecked_eq_syms.append(new_sym)
-        #                     update = True
-        #
-        #         if not update and eq_set not in difficult_mini_eq_sets:
-        #             difficult_mini_eq_sets.append(eq_set)
-        #
-        #     if len(unchecked_eq_sets) == 0:
-        #         break
-
-        for i in range(len(simple_mini_eq_sets)):    # Bubble sort. Let the short equations come first.
-            for j in range(len(simple_mini_eq_sets) - 1):
-                if len(simple_mini_eq_sets[j + 1]) < len(simple_mini_eq_sets[j]):
-                    box = simple_mini_eq_sets[j + 1]
-                    simple_mini_eq_sets[j + 1] = simple_mini_eq_sets[j]
-                    simple_mini_eq_sets[j] = box
-        for i in range(len(difficult_mini_eq_sets)):
-            for j in range(len(difficult_mini_eq_sets) - 1):
-                if len(difficult_mini_eq_sets[j + 1]) < len(difficult_mini_eq_sets[j]):
-                    box = difficult_mini_eq_sets[j + 1]
-                    difficult_mini_eq_sets[j + 1] = difficult_mini_eq_sets[j]
-                    difficult_mini_eq_sets[j] = box
-
-        return simple_mini_eq_sets, difficult_mini_eq_sets
+        return equations, premises
 
     @staticmethod
     def simplification_value_replace(problem):
@@ -242,75 +154,56 @@ class EquationKiller:
         Solve equations in problem.conditions["Equation"].equations.
         :param problem: Instance of class <Problem>.
         """
-        # print("in solve_equations")
         equation = problem.conditions["Equation"]  # class <Equation>
 
         if equation.solved:
             return
 
         EquationKiller.simplification_value_replace(problem)  # simplify equations before solving
-        # print("after EquationKiller")
-        # for raw_eq in equation.equations:
-        #     print("{}: {}".format(raw_eq, equation.equations[raw_eq]))
-        # exit(0)
-        equations = []    # unsolved equation list and its premise
-        premises = []
-        for raw_eq in equation.equations:
-            equations.append(equation.equations[raw_eq])
-            premises.append([equation.get_id_by_item[raw_eq]])
-            for sym in raw_eq.free_symbols:
-                if equation.value_of_sym[sym] is not None:
-                    premises[-1].append(equation.get_id_by_item[sym - equation.value_of_sym[sym]])
-        # print(equations)
-        # print(premises)
-        # print("after equations & premises")
 
-        simple_mini_eq_sets, _ = EquationKiller.get_minimum_equations(equations)   # get mini_eq_sets
-        # print(equation.equations)
-        # print(simple_mini_eq_sets)
-        # print(_)
-        # print()
-        for mini_eq_set in simple_mini_eq_sets:
-            mini_eq_set = list(mini_eq_set)
+        equations, premises = EquationKiller.get_eqs_and_premises(problem)    # known equations
 
-            premise = []    # premise of solved sym
-            for eq in mini_eq_set:
-                premise += premises[equations.index(eq)]
+        sym_to_eqs = EquationKiller.get_sym_to_eqs(equations)
+        solved_eqs = []
+        for target_eq in equations:
+            if target_eq in solved_eqs:    # ignore already solved equation
+                continue
 
-            for i in range(len(mini_eq_set)):    # replace sym with its value
-                # print(mini_eq_set[i])
-                for sym in mini_eq_set[i].free_symbols:
+            mini_eqs, mini_syms = EquationKiller.get_minimum_equations(target_eq, sym_to_eqs)    # mini equations
+            solved_eqs += mini_eqs
+            premise = []
+
+            for i in range(len(mini_eqs)):    # replace sym with its value
+                for sym in mini_eqs[i].free_symbols:
                     if equation.value_of_sym[sym] is not None:
-                        mini_eq_set[i] = mini_eq_set[i].subs(sym, equation.value_of_sym[sym])
+                        mini_eqs[i] = mini_eqs[i].subs(sym, equation.value_of_sym[sym])
                         premise.append(equation.get_id_by_item[sym - equation.value_of_sym[sym]])
 
-            # print(mini_eq_set)
-            for eq in mini_eq_set:    # no sym in equation, then delete it
-                if len(eq.free_symbols) == 0:
-                    mini_eq_set.pop(mini_eq_set.index(eq))
+            for mini_eq in mini_eqs:    # no sym in equation, then delete it
+                if len(mini_eq.free_symbols) == 0:
+                    mini_eqs.pop(mini_eqs.index(mini_eq))
 
-            if len(mini_eq_set) > 0:
-                try:
-                    results = EquationKiller.solve(mini_eq_set)  # solve equations
-                except FunctionTimedOut:
-                    msg = "Timeout when solve equations: {}".format(equations)
-                    warnings.warn(msg)
-                else:
-                    for sym in results:  # save solved value
-                        if equation.value_of_sym[sym] is None:
-                            problem.set_value_of_sym(sym, results[sym], tuple(set(premise)), "solve_eq")
+            if len(mini_eqs) == 0:   # no equations need to solve
+                continue
 
-        equation.solved = True
-        # print("solve_equations out")
+            try:
+                results = EquationKiller.solve(mini_eqs)  # solve equations
+            except FunctionTimedOut:
+                msg = "Timeout when solve equations: {}".format(equations)
+                warnings.warn(msg)
+            else:
+                for mini_eq in mini_eqs:
+                    premise += premises[equations.index(mini_eq)]
+                for sym in results:  # save solved value
+                    if equation.value_of_sym[sym] is None:
+                        problem.set_value_of_sym(sym, results[sym], tuple(set(premise)), "solve_eq")
 
     @staticmethod
-    def solve_target(problem, target_expr, hard_mode=True, trh=20):
+    def solve_target(target_expr, problem):
         """
         Solve target_expr in the constraint of problem.conditions["Equation"].
         :param problem: Instance of class <Problem>.
         :param target_expr: symbol expression.
-        :param hard_mode: solve difficult_mini_eq_sets when hard_mode=True.
-        :param trh: solve difficult_mini_eq_sets when len(mini_eq_set) < tsh.
         """
         if target_expr is None:
             return None, None
@@ -332,70 +225,27 @@ class EquationKiller:
         if len(target_expr.free_symbols) == 0:
             return number_round(target_expr), premise
 
-        target_sym = symbols("t_s")
+        equations, premises = EquationKiller.get_eqs_and_premises(problem)  # known equations
+
+        target_sym = symbols("t_s")    # build target equation
         target_eq = target_sym - target_expr
-        equations = [target_sym - target_expr]  # unsolved equation list and its premise
-        premises = [premise]
+        equations.append(target_eq)
+        premises.append(premise)
 
-        sym_set = target_eq.free_symbols
+        sym_to_eqs = EquationKiller.get_sym_to_eqs(equations)
+        mini_eqs, mini_syms = EquationKiller.get_minimum_equations(target_eq, sym_to_eqs)
 
-        while True:    # select relevant equation from problem.conditions["Equation"].equations
-            length_before_added = len(equations)
-            for sym in sym_set:
-                for raw_eq in equation.equations:
-                    if sym in equation.equations[raw_eq].free_symbols \
-                            and equation.equations[raw_eq] not in equations:
-                        equations.append(equation.equations[raw_eq])
-                        premises.append([equation.get_id_by_item[raw_eq]])
-                        for raw_sym in raw_eq.free_symbols:
-                            if equation.value_of_sym[raw_sym] is not None:
-                                premises[-1].append(equation.get_id_by_item[raw_sym - equation.value_of_sym[raw_sym]])
-
-            if length_before_added == len(equations):
-                break
-
-        for raw_eq in equation.equations:
-            equations.append(equation.equations[raw_eq])
-            premises.append([equation.get_id_by_item[raw_eq]])
-            for sym in raw_eq.free_symbols:
-                if equation.value_of_sym[sym] is not None:
-                    premises[-1].append(equation.get_id_by_item[sym - equation.value_of_sym[sym]])
-
-        simple_mini_eq_sets, difficult_mini_eq_sets = EquationKiller.get_minimum_equations(equations)
-
-        for mini_eq_set in simple_mini_eq_sets:
-            if target_eq in mini_eq_set:
-                try:
-                    results = EquationKiller.solve(mini_eq_set)  # solve equations
-                    # print(mini_eq_set)
-                    # print(results)
-                    # print()
-                except FunctionTimedOut:
-                    msg = "Timeout when solve equations: {}".format(equations)
-                    warnings.warn(msg)
-                else:
-                    if target_sym in results:
-                        premise = []
-                        for eq in mini_eq_set:
-                            premise += premises[equations.index(eq)]
-                        return results[target_sym], list(set(premise))
-        if hard_mode:
-            for mini_eq_set in difficult_mini_eq_sets:
-                if target_eq in mini_eq_set and len(mini_eq_set) < trh:
-                    try:
-                        results = EquationKiller.solve(mini_eq_set)  # solve equations
-                        # print(mini_eq_set)
-                        # print(results)
-                        # print()
-                    except FunctionTimedOut:
-                        msg = "Timeout when solve equations: {}".format(equations)
-                        warnings.warn(msg)
-                    else:
-                        if target_sym in results:
-                            premise = []
-                            for eq in mini_eq_set:
-                                premise += premises[equations.index(eq)]
-                            return results[target_sym], list(set(premise))
+        try:
+            results = EquationKiller.solve(mini_eqs)  # solve equations
+        except FunctionTimedOut:
+            msg = "Timeout when solve equations: {}".format(equations)
+            warnings.warn(msg)
+        else:
+            if target_sym in results:
+                premise = []
+                for mini_eq in mini_eqs:
+                    premise += premises[equations.index(mini_eq)]
+                return results[target_sym], list(set(premise))
 
         return None, None
 
@@ -410,7 +260,6 @@ class GeoLogic:
         :param problem: instance of class <Problem>.
         :return r: triplet, (r_ids, r_items, r_vars).
         """
-        print(gpl)
         r_ids, r_items, r_vars = problem.conditions[gpl[0][0]].get_items(gpl[0][1])
 
         for i in range(len(r_items)):  # delete duplicated vars and corresponding item
@@ -578,7 +427,7 @@ class GeoLogic:
                 for j in range(len(r1_vars)):
                     letters[r1_vars[j]] = r1_items[i][j]
                 eq = EqParser.get_equation_from_tree(problem, r2_algebra[1], True, letters)
-                result, premise = EquationKiller.solve_target(problem, eq)
+                result, premise = EquationKiller.solve_target(eq, problem)
                 if result is not None and rough_equal(result, 0):  # meet constraints
                     r_id = tuple(set(premise + list(r1_ids[i])))
                     r_ids.append(r_id)
@@ -589,7 +438,7 @@ class GeoLogic:
                 for j in range(len(r1_vars)):
                     letters[r1_vars[j]] = r1_items[i][j]
                 eq = EqParser.get_equation_from_tree(problem, r2_algebra[1], True, letters)
-                result, premise = EquationKiller.solve_target(problem, eq)
+                result, premise = EquationKiller.solve_target(eq, problem)
                 if result is None or not rough_equal(result, 0):  # meet constraints
                     r_id = tuple(set(premise + list(r1_ids[i])))
                     r_ids.append(r_id)
@@ -599,12 +448,181 @@ class GeoLogic:
 
 
 class GoalFinder:
+    @staticmethod
+    def find_vars_from_tree(tree, attr, predicate_GDL):
+        """
+        Find all vars of attr from equal tree's para.
+        >> find_vars_from_tree([['LengthOfLine', ['a', 'c']], ['LengthOfLine', ['a', 'b']]], 'LengthOfLine')
+        [['a', 'c'], ['a', 'b']]
+        """
+        results = []
+        GoalFinder.find_vars_by_attr(tree[0], attr, predicate_GDL, results)
+        GoalFinder.find_vars_by_attr(tree[1], attr, predicate_GDL, results)
+        return results
 
     @staticmethod
-    def find_algebra_sub_goal(unsolved_syms, problem, theorem_GDL):
-        pass
+    def find_vars_by_attr(tree, attr, predicate_GDL, results):
+        """
+        Find all vars of attr from one equal tree para.
+        >> find_vars_by_attr(['LengthOfLine', ['a', 'c']], 'LengthOfLine')
+        [['a', 'c']]
+        """
+        if not isinstance(tree, list):  # expr
+            return []
+
+        if tree[0] in predicate_GDL["Attribution"]:  # attr
+            if tree[0] == attr:
+                results.append(tuple(tree[1]))
+        elif tree[0] in ["Add", "Mul", "Sub", "Div", "Pow", "Sin", "Cos", "Tan"]:  # operate
+            for item in tree[1]:
+                GoalFinder.find_vars_by_attr(item, attr, predicate_GDL, results)
+        else:
+            e_msg = "<OperatorNotDefined> No operation {}, please check your expression.".format(tree[0])
+            raise Exception(e_msg)
 
     @staticmethod
-    def find_logic_sub_goal(predicate, item, problem, theorem_GDL):
-        pass
+    def theorem_para_completion(theorem_paras, points):
+        """
+        Replace free vars with points.
+        >> theorem_para_completion([['a', 'R', 'S']], ['A', 'R', 'S'])
+        >> [['A', 'R', 'S'], ['R', 'R', 'S'], ['S', 'R', 'S']]
+        """
+        results = []
+        for para in theorem_paras:
+            GoalFinder.completion_one(para, points, results)
+
+        return results
+
+    @staticmethod
+    def completion_one(para, points, results):
+        """
+        Recursive replace var with point.
+        >> completion_one(['a', 'R', 'S'], ['S', 'R', 'S'])
+        >> [['A', 'R', 'S'], ['R', 'R', 'S'], ['S', 'R', 'S']]
+        """
+        passed = True
+        for i in range(len(para)):
+            if para[i].islower():
+                for point in points:
+                    new_para = copy.copy(para)
+                    new_para[i] = point[0]
+                    GoalFinder.completion_one(new_para, points, results)
+                passed = False
+                break
+        if passed:
+            results.append(para)
+
+    @staticmethod
+    def gen_sub_goals(theorem_name, theorem_paras, theorem_vars, premises_GDL, problem):
+        """
+        Select vars by theorem's premise. Construct and return legitimate sub goal.
+        :param theorem_name:
+        :param theorem_paras:
+        :param theorem_vars:
+        :param premises_GDL:
+        :param problem:
+        :return sub_goals: {(theorem_name, theorem_para): [(sub_goal_1, sub_goal_2,...)]}.
+        """
+        sub_goals = {}
+        for para in theorem_paras:
+            letters = {}
+            for j in range(len(theorem_vars)):
+                letters[theorem_vars[j]] = para[j]
+
+            passed = True
+            sub_goal = []
+            for predicate, p_vars in premises_GDL:
+                if predicate == "Equal":    # algebra sub goal
+                    eq = EqParser.get_equation_from_tree(problem, p_vars, True, letters)
+                    if problem.fv_check("Equation", eq):
+                        sub_goal.append(("Equation", eq))
+                    else:
+                        passed = False
+                        break
+                else:    # logic sub goal
+                    item = tuple(letters[i] for i in p_vars)
+                    if problem.ee_check(predicate, item) and problem.fv_check(predicate, item):
+                        if (predicate in problem.predicate_GDL["BasicEntity"] or
+                            predicate in problem.predicate_GDL["Construction"]) and \
+                                item not in problem.conditions[predicate].get_id_by_item:
+                            passed = False
+                            break
+                        sub_goal.append((predicate, item))
+                    else:
+                        passed = False
+                        break
+
+            if passed:
+                sub_goals[(theorem_name, tuple(para))] = [tuple(sub_goal)]
+
+        return sub_goals
+
+    @staticmethod
+    def find_algebra_sub_goals(unsolved_syms, problem, theorem_GDL):
+        """
+        Find sub goals from algebra goal.
+        """
+        sub_goals = {}
+        equation = problem.conditions["Equation"]
+        for sym in unsolved_syms:
+            attr, items = equation.attr_of_sym[sym]
+            for theorem_name in theorem_GDL:
+                t_vars = theorem_GDL[theorem_name]["vars"]
+                for premises_GDL, conclusions_GDL in theorem_GDL[theorem_name]["body"]:
+                    for conclusion in conclusions_GDL:
+                        if conclusion[0] != "Equal":   # not algebra sub goal
+                            continue
+                        attr_vars = GoalFinder.find_vars_from_tree(conclusion[1], attr, problem.predicate_GDL)
+                        theorem_paras = []
+                        for item in items:
+                            for attr_var in attr_vars:
+                                theorem_para = [item[attr_var.index(t)] if t in attr_var else t for t in t_vars]
+                                theorem_paras.append(theorem_para)
+                        theorem_paras = GoalFinder.theorem_para_completion(
+                            theorem_paras, problem.conditions["Point"].get_id_by_item
+                        )
+                        current_sub_goals = GoalFinder.gen_sub_goals(
+                            theorem_name,  theorem_paras,  t_vars, premises_GDL, problem
+                        )
+                        for theorem_msg in current_sub_goals:
+                            if theorem_msg in sub_goals:
+                                sub_goals[theorem_msg] += current_sub_goals[theorem_msg]
+                            else:
+                                sub_goals[theorem_msg] = current_sub_goals[theorem_msg]
+
+        for theorem_msg in sub_goals:
+            sub_goals[theorem_msg] = tuple(set(sub_goals[theorem_msg]))
+
+        return sub_goals
+
+    @staticmethod
+    def find_logic_sub_goals(predicate, item, problem, theorem_GDL):
+        """
+        Find sub goals from logic goal.
+        """
+        sub_goals = {}
+        for theorem_name in theorem_GDL:
+            t_vars = theorem_GDL[theorem_name]["vars"]
+            for premises_GDL, conclusions_GDL in theorem_GDL[theorem_name]["body"]:
+                for conclusion in conclusions_GDL:
+                    if conclusion[0] == predicate:
+                        theorem_paras = [
+                            [item[conclusion[1].index(t)] if t in conclusion[1] else t for t in t_vars]
+                        ]
+                        theorem_paras = GoalFinder.theorem_para_completion(
+                            theorem_paras, problem.conditions["Point"].get_id_by_item
+                        )
+                        current_sub_goals = GoalFinder.gen_sub_goals(
+                            theorem_name, theorem_paras, t_vars, premises_GDL, problem
+                        )
+                        for theorem_msg in current_sub_goals:
+                            if theorem_msg in sub_goals:
+                                sub_goals[theorem_msg] += current_sub_goals[theorem_msg]
+                            else:
+                                sub_goals[theorem_msg] = current_sub_goals[theorem_msg]
+
+        for theorem_msg in sub_goals:
+            sub_goals[theorem_msg] = tuple(set(sub_goals[theorem_msg]))
+
+        return sub_goals
 

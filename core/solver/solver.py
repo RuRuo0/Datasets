@@ -77,7 +77,7 @@ class Solver:
                 for predicate, item in premises_GDL:
                     if predicate == "Equal":  # algebra premise
                         eq = EqParser.get_equation_from_tree(self.problem, item, True, letters)
-                        result, premise = EquationKiller.solve_target(self.problem, eq)
+                        result, premise = EquationKiller.solve_target(eq, self.problem)
                         if result is None or not rough_equal(result, 0):  # not passed
                             passed = False
                             break
@@ -142,7 +142,7 @@ class Solver:
         s_start_time = time.time()  # timing
 
         if self.problem.goal["type"] in ["value", "equal"]:    # algebra relation
-            result, premise = EquationKiller.solve_target(self.problem, self.problem.goal["item"])
+            result, premise = EquationKiller.solve_target(self.problem.goal["item"], self.problem)
             if result is not None:
                 if rough_equal(result, self.problem.goal["answer"]):
                     self.problem.goal["solved"] = True
@@ -211,191 +211,37 @@ class Solver:
 
         return selection
 
-    def find_sub_goal(self, goal):
+    def find_sub_goals(self, goal):
         """
         Backward reasoning. Find sub-goal of given goal.
         :param goal: (predicate, item), such as ('Line', (‘A’, 'B')), ('Equation', a - b + c).
-        :return sub_goal: [(theorem_name, theorem_para, (sub_goal_1, sub_goal_2,...))]
+        :return sub_goals: {(theorem_name, theorem_para): [(sub_goal_1, sub_goal_2,...)]}.
         """
         if not self.problem.loaded:
             e_msg = "Problem not loaded. Please run Problem.<load_problem> before run other functions."
             raise Exception(e_msg)
-        predicate, item = goal
-        if predicate not in self.problem.conditions:
-            e_msg = "Predicate {} not defined in current GDL.".format(predicate)
+        if goal[0] not in self.problem.conditions:
+            e_msg = "Predicate {} not defined in current GDL.".format(goal[0])
             raise Exception(e_msg)
+
+        predicate, item = goal
 
         if predicate == "Equation":    # algebra goal
             equation = self.problem.conditions["Equation"]
-            unsolved_syms = []
+            sym_to_eqs = EquationKiller.get_sym_to_eqs(list(equation.equations.values()))
+
             for sym in item.free_symbols:
-                if equation.value_of_sym[sym] is None and equation.attr_of_sym[sym][1] != "Free":
+                if equation.value_of_sym[sym] is not None:
+                    item = item.subs(sym, equation.value_of_sym[sym])
+
+            mini_eqs, mini_syms = EquationKiller.get_minimum_equations(item, sym_to_eqs)
+            unsolved_syms = []
+            for sym in mini_syms:
+                if equation.value_of_sym[sym] is None and equation.attr_of_sym[sym][0] != "Free":
                     unsolved_syms.append(sym)
-            sub_goal = GoalFinder.find_algebra_sub_goal(unsolved_syms, self.problem, self.theorem_GDL)
+            sub_goals = GoalFinder.find_algebra_sub_goals(unsolved_syms, self.problem, self.theorem_GDL)
         else:     # logic goal
-            sub_goal = GoalFinder.find_logic_sub_goal(predicate, item, self.problem, self.theorem_GDL)
+            sub_goals = GoalFinder.find_logic_sub_goals(predicate, item, self.problem, self.theorem_GDL)
 
-        return sub_goal
-
-    def find_prerequisite(self, target_predicate, target_item):
-        """
-        Backward reasoning.
-        Find prerequisite of given condition.
-        :param target_predicate: condition's predicate. Such as 'Triangle', 'Equation'.
-        :param target_item: condition para. Such as (‘A’, 'B', 'C'), a - b + c.
-        """
-        if self.problem is None:
-            raise Exception(
-                "<ProblemNotLoaded> Please run <load_problem> before run <find_prerequisite>."
-            )
-
-        results = []
-
-        if target_predicate == "Equation":  # algebraic target
-            equation = self.problem.conditions["Equation"]
-            _, _, _, sym_set = self._get_minimum_equations(target_item)
-
-            unsolved_sym = []  # only need to find unsolved symbol
-            for sym in sym_set:
-                if equation.value_of_sym[sym] is None and equation.attr_of_sym[sym][1] != "Free":
-                    unsolved_sym.append(sym)
-
-            for sym in unsolved_sym:  # find algebraic conclusion containing unsolved_sym
-                attr_paras, attr_name = equation.attr_of_sym[sym]  # such as ('A', 'B'), 'Length'
-                for theorem_name in self.theorem_GDL:
-                    for branch in self.theorem_GDL[theorem_name]:
-                        one_theorem = self.theorem_GDL[theorem_name][branch]
-                        for conclusion in one_theorem["conclusion"]:
-                            if conclusion[0] == "Equal":
-                                attr_vars = self._find_vars_from_equal_tree(conclusion[1][0], attr_name) + \
-                                            self._find_vars_from_equal_tree(conclusion[1][1], attr_name)
-                                replaced = []
-                                for attr_var in list(set(attr_vars)):  # fast redundancy removal and ergodic
-                                    for attr_para in attr_paras:  # multi rep
-                                        if len(attr_var) == len(attr_para):  # filter Area, Perimeter
-                                            replaced.append([attr_para[attr_var.index(v)] if v in attr_var else v
-                                                             for v in one_theorem["vars"]])
-                                pres = self._prerequisite_generation(replaced, one_theorem["premise"])
-                                for pre in pres:
-                                    results.append((theorem_name, pre))  # add to results
-        else:  # entity target
-            for theorem_name in self.theorem_GDL:
-                for branch in self.theorem_GDL[theorem_name]:
-                    one_theorem = self.theorem_GDL[theorem_name][branch]
-                    for conclusion in one_theorem["conclusion"]:
-                        if conclusion[0] == target_predicate:
-                            replaced = [[target_item[conclusion[1].index(v)] if v in conclusion[1] else v
-                                         for v in one_theorem["vars"]]]
-                            pres = self._prerequisite_generation(replaced, one_theorem["premise"])
-                            for pre in pres:
-                                results.append((theorem_name, pre))  # add to results
-
-        unique = []  # redundancy removal
-        for result in results:
-            if result not in unique:
-                unique.append(result)
-        return unique
-
-    def _find_vars_from_equal_tree(self, tree, attr_name):
-        """
-        Called by <find_prerequisite>.
-        Recursively find attr in equal tree.
-        :param tree: equal tree, such as ['Length', [0, 1]].
-        :param attr_name: attribution name, such as 'Length'.
-        :return results: searching result, such as [[0, 1]].
-        >> find_vars_from_equal_tree(['Add', [['Length', [0, 1]], '2*x-14', ['Length', [2, 3]]], 'Length')
-        [[0, 1], [2, 3]]
-        >> get_expr_from_tree(['Sin', [['Measure', ['0', '1', '2']]]], 'Measure')
-        [[0, 1, 2]]
-        """
-        if not isinstance(tree, list):  # expr
-            return []
-
-        if tree[0] in self.predicate_GDL["Attribution"]:  # attr
-            if tree[0] == attr_name:
-                return [tuple(tree[1])]
-            else:
-                return []
-
-        if tree[0] in ["Add", "Mul", "Sub", "Div", "Pow", "Sin", "Cos", "Tan"]:  # operate
-            result = []
-            for item in tree[1]:
-                result += self._find_vars_from_equal_tree(item, attr_name)
-            return result
-        else:
-            raise Exception(
-                "<OperatorNotDefined> No operation {}, please check your expression.".format(
-                    tree[0]
-                )
-            )
-
-    def _prerequisite_generation(self, replaced, premise):
-        """
-        Called by <find_prerequisite>.
-        :param replaced: points set, contain points and vars, such as ('A', 1, 'C').
-        :param premise: one normal form of current theorem's premise.
-        :return results: prerequisite, such as [('incenter_property_intersect', (('Incenter', ('D', 'A', 'B', 'C')),))].
-        """
-        replaced = self._theorem_vars_completion(replaced)
-        results = []
-        for premise_normal in premise:
-            selected = self._theorem_vars_selection(replaced, premise_normal)
-            for para in selected:
-                result = []
-                for p in premise_normal:
-                    if p[0] == "Equal":  # algebra premise
-                        result.append(("Equation", EqParser.get_equation_from_tree(self.problem, p[1], True, para)))
-                    else:  # logic premise
-                        item = [para[i] for i in p[1]]
-                        result.append((p[0], tuple(item)))
-                results.append(tuple(result))
-        return results
-
-    def _theorem_vars_completion(self, replaced):
-        """
-        Called by <prerequisite_generation>.
-        Replace free vars with points. Suppose there are four points ['A', 'B', 'C', 'D'].
-        >> replace_free_vars_with_letters([['A', 'B', 2]])
-        >> [['A', 'B', 'C'], ['A', 'B', 'D']]
-        >> replace_free_vars_with_letters([['A', 'B', 2, 3]])
-        >> [['A', 'B', 'C', 'D'], ['A', 'B', 'D', 'C']]
-        """
-        update = True
-        while update:
-            update = False
-            for i in range(len(replaced)):
-                for j in range(len(replaced[i])):
-                    if isinstance(replaced[i][j], int):  # replace var with letter
-                        for point, in self.problem.conditions["Point"].get_id_by_item:
-                            replaced.append([item for item in replaced[i]])
-                            replaced[-1][j] = point
-                            update = True
-                        replaced.pop(i)  # delete being replaced para
-                        break
-        return replaced
-
-    def _theorem_vars_selection(self, replaced, premise_normal):
-        """
-        Called by <prerequisite_generation>.
-        Select vars by theorem's premise..
-        >> theorem_vars_selection([['B', 'A', 'A'], ['B', 'A', 'B'], ['B', 'A', 'C']], [['Triangle', [0, 1, 2]]])
-        >> [['B', 'A', 'C']]
-        """
-        selected = []
-        for para in replaced:
-            valid = True
-            for p in premise_normal:
-                if p[0] == "Equal":  # algebra premise
-                    if EqParser.get_equation_from_tree(self.problem, p[1], True, para) is None:
-                        valid = False
-                        break
-                else:  # logic premise
-                    item = [para[i] for i in p[1]]
-                    if not self.problem.item_is_valid(p[0], tuple(item)):
-                        valid = False
-                        break
-            if valid:
-                selected.append(para)
-        return selected
-
+        return sub_goals
 

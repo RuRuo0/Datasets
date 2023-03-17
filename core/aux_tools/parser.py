@@ -498,11 +498,12 @@ class EqParser:
         :param tree: An expression in the form of a list tree.
         :param replaced: Optional. Set True when tree's item is expressed by vars.
         :param letters: Optional. Letters that will replace vars. Dict = {var: letter}.
-        >> get_expr_from_tree(problem, ['Length', ['T', 'R']])
+        >> get_expr_from_tree(problem, ['LengthOfLine', ['T', 'R']])
         l_tr
-        >> get_expr_from_tree(problem, ['Add', [['Length', ['Z', 'X']], '2*x-14']])
+        >> get_expr_from_tree(problem, ['Add', [['LengthOfLine', ['Z', 'X']], '2*x-14']])
         2.0*f_x + l_zx - 14.0
-        >> get_expr_from_tree(problem, ['Sin', [['Measure', ['a', 'b', 'c']]]], True, {'a': 'X', 'b': 'Y', 'c': 'Z'})
+        >> get_expr_from_tree(problem, ['Sin', [['MeasureOfAngle', ['a', 'b', 'c']]]],
+                              True, {'a': 'X', 'b': 'Y', 'c': 'Z'})
         sin(pi*m_zxy/180)
         """
         if not isinstance(tree, list):  # expr
@@ -564,9 +565,9 @@ class EqParser:
     def get_equation_from_tree(problem, tree, replaced=False, letters=None):
         """
         Trans expr_tree to symbolic algebraic expression.
-        >> get_expr_from_tree(problem, ['Equal', [['Length', ['a', 'b']], '2*x-14']], True, {'a': 'Z', 'b': 'X'})
+        >> get_expr_from_tree(problem, [['LengthOfLine', ['a', 'b']], '2*x-14'], True, {'a': 'Z', 'b': 'X'})
         - 2.0*f_x + l_zx + 14.0
-        >> get_expr_from_tree(problem, ['Equal', [['Length', ['Z', 'X']], '2*x-14']])
+        >> get_expr_from_tree(problem, [['LengthOfLine', ['Z', 'X']], '2*x-14'])
         - 2.0*f_x + l_zx + 14.0
         """
         left_expr = EqParser.get_expr_from_tree(problem, tree[0], replaced, letters)

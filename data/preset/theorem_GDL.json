@@ -165,10 +165,27 @@
 			},
 			"notes": []
 		},
-		"parallel_judgment_Ipsilateral_internal_angle(AB,CD)": {
+		"parallel_judgment_ipsilateral_internal_angle(AB,CD)": {
 			"body": {
 				"1": {
 					"premise": "Angle(BAC)&Angle(ACD)&Equal(Add(MeasureOfAngle(BAC),MeasureOfAngle(ACD)),180)",
+					"conclusion": [
+						"Parallel(AB,CD)"
+					]
+				}
+			},
+			"notes": []
+		},
+		"parallel_judgment_corresponding_angle(AB,CD,E)": {
+			"body": {
+				"1": {
+					"premise": "Angle(EAB)&Angle(ACD)&Collinear(EAC)&Equal(MeasureOfAngle(EAB),MeasureOfAngle(ACD))",
+					"conclusion": [
+						"Parallel(AB,CD)"
+					]
+				},
+				"2": {
+					"premise": "Angle(BAC)&Angle(DCE)&Collinear(ACE)&Equal(MeasureOfAngle(BAC),MeasureOfAngle(DCE))",
 					"conclusion": [
 						"Parallel(AB,CD)"
 					]
@@ -237,11 +254,17 @@
 					"conclusion": [
 						"Equal(MeasureOfAngle(BAD),MeasureOfAngle(CDA))"
 					]
+				},
+				"2": {
+					"premise": "Parallel(AB,CD)&Line(BC)",
+					"conclusion": [
+						"Equal(MeasureOfAngle(CBA),MeasureOfAngle(BCD))"
+					]
 				}
 			},
 			"notes": []
 		},
-		"parallel_property_Ipsilateral_internal_angle(AB,CD)": {
+		"parallel_property_ipsilateral_internal_angle(AB,CD)": {
 			"body": {
 				"1": {
 					"premise": "Parallel(AB,CD)&Line(AC)",
@@ -375,10 +398,16 @@
 			},
 			"notes": []
 		},
-		"altitude_judgment(AD,ABC)": {
+		"is_altitude_judgment(AD,ABC)": {
 			"body": {
 				"1": {
 					"premise": "Triangle(ABC)&Collinear(BDC)&Line(AD)&(Equal(MeasureOfAngle(BDA),90)|Equal(MeasureOfAngle(ADC),90))",
+					"conclusion": [
+						"IsAltitude(AD,ABC)"
+					]
+				},
+				"2": {
+					"premise": "Triangle(ABC)&Line(AD)&(Collinear(DBC)&Equal(MeasureOfAngle(ADB),90)|Collinear(BCD)&Equal(MeasureOfAngle(ACD),90))",
 					"conclusion": [
 						"IsAltitude(AD,ABC)"
 					]
@@ -386,10 +415,21 @@
 			},
 			"notes": []
 		},
-		"perpendicular_bisector_judgment(AB,CO)": {
+		"perpendicular_bisector_judgment_definition(AB,CO)": {
 			"body": {
 				"1": {
-					"premise": "Collinear(AOB)&(Perpendicular(AO,CO)|Equal(MeasureOfAngle(AOC),90)|Perpendicular(CO,BO)|Equal(MeasureOfAngle(COB),90))&(Midpoint(O,AB)|Equal(LengthOfLine(AO),LengthOfLine(OB)))",
+					"premise": "Collinear(AOB)&(Equal(MeasureOfAngle(AOC),90)|Equal(MeasureOfAngle(COB),90))&Equal(LengthOfLine(AO),LengthOfLine(OB))",
+					"conclusion": [
+						"PerpendicularBisector(AB,CO)"
+					]
+				}
+			},
+			"notes": []
+		},
+		"perpendicular_bisector_judgment_distance_equal(AB,CO)": {
+			"body": {
+				"1": {
+					"premise": "Collinear(AOB)&(Equal(MeasureOfAngle(AOC),90)|Equal(MeasureOfAngle(COB),90))&Equal(LengthOfLine(CA),LengthOfLine(CB))",
 					"conclusion": [
 						"PerpendicularBisector(AB,CO)"
 					]
@@ -462,7 +502,7 @@
 		"right_triangle_judgment_angle(ABC)": {
 			"body": {
 				"1": {
-					"premise": "Triangle(ABC)&(Perpendicular(AB,CB)|Equal(MeasureOfAngle(ABC),90))",
+					"premise": "Triangle(ABC)&Equal(MeasureOfAngle(ABC),90)",
 					"conclusion": [
 						"RightTriangle(ABC)"
 					]
@@ -567,7 +607,7 @@
 			},
 			"notes": []
 		},
-		"isosceles_triangle_property_line_coincidence(ABC)": {
+		"isosceles_triangle_property_line_coincidence(ABC,M)": {
 			"body": {
 				"1": {
 					"premise": "IsoscelesTriangle(ABC)&IsAltitude(AM,ABC)",
@@ -772,13 +812,13 @@
 				"1": {
 					"premise": "Congruent(ABC,DEF)",
 					"conclusion": [
-						"Equal(LengthOfLine(AB),LengthOfLine(DE))"
+						"Equal(LengthOfLine(BC),LengthOfLine(EF))"
 					]
 				},
 				"2": {
 					"premise": "MirrorCongruent(ABC,DEF)",
 					"conclusion": [
-						"Equal(LengthOfLine(AB),LengthOfLine(DF))"
+						"Equal(LengthOfLine(BC),LengthOfLine(EF))"
 					]
 				}
 			},
@@ -874,13 +914,13 @@
 				"1": {
 					"premise": "Similar(ABC,DEF)",
 					"conclusion": [
-						"Equal(Mul(LengthOfLine(AB),LengthOfLine(AB),AreaOfTriangle(DEF)),Mul(LengthOfLine(DE),LengthOfLine(DE),AreaOfTriangle(ABC)))"
+						"Equal(Mul(LengthOfLine(BC),LengthOfLine(BC),AreaOfTriangle(DEF)),Mul(LengthOfLine(EF),LengthOfLine(EF),AreaOfTriangle(ABC)))"
 					]
 				},
 				"2": {
 					"premise": "MirrorSimilar(ABC,DEF)",
 					"conclusion": [
-						"Equal(Mul(LengthOfLine(AB),LengthOfLine(AB),AreaOfTriangle(DEF)),Mul(LengthOfLine(FD),LengthOfLine(FD),AreaOfTriangle(ABC)))"
+						"Equal(Mul(LengthOfLine(BC),LengthOfLine(BC),AreaOfTriangle(DEF)),Mul(LengthOfLine(EF),LengthOfLine(EF),AreaOfTriangle(ABC)))"
 					]
 				}
 			},

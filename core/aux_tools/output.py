@@ -86,7 +86,7 @@ def show(problem):
                         condition.theorems[_id])
                     )
                 else:
-                    print("\033[35m{0:^6}{1:^15}{2:^25}{3:^6}\033[0m".format(
+                    print("\033[35m{0:^6}{1:^25}{2:^25}{3:^6}\033[0m".format(
                         _id,
                         ",".join(condition.get_item_by_id[_id]),
                         str(condition.premises[_id]),

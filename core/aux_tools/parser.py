@@ -446,6 +446,11 @@ class FLParser:
                 stack.pop()  # pop "("
                 stack.append([stack.pop(), item[::-1]])
             j = j + 1
+
+        if len(stack) > 1:
+            e_msg = "Wrong format: {}. May be missing ')'.".format(s)
+            raise Exception(e_msg)
+
         return FLParser._listing(stack.pop(), make_vars)
 
     @staticmethod

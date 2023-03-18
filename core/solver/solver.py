@@ -112,6 +112,8 @@ class Solver:
 
                 for i in range(len(r_items)):
                     letters = {}
+                    print(r_vars)
+                    print(r_items)
                     for j in range(len(r_vars)):
                         letters[r_vars[j]] = r_items[i][j]
 

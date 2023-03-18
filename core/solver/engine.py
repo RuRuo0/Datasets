@@ -264,13 +264,13 @@ class GeoLogic:
 
         for i in range(len(r_items)):  # delete duplicated vars and corresponding item
             r_items[i] = list(r_items[i])
-        r1_vars = list(r_vars)
+        r_vars = list(r_vars)
         deleted_vars_index = []  # deleted vars index
-        for i in range(len(r1_vars)):
-            if r1_vars[i] in r1_vars[0:i]:
+        for i in range(len(r_vars)):
+            if r_vars[i] in r_vars[0:i]:
                 deleted_vars_index.append(i)
         for index in deleted_vars_index[::-1]:  # delete
-            r1_vars.pop(index)
+            r_vars.pop(index)
             for i in range(len(r_items)):
                 r_items[i].pop(index)
 
@@ -350,7 +350,7 @@ class GeoLogic:
                         item.append(r2_data[dif])
                     r_items.append(tuple(item))
                     r_ids.append(tuple(set(list(r1_ids[i]) + list(r2_ids[j]))))
-
+        print(r_vars)
         return r_ids, r_items, r_vars
 
     @staticmethod

@@ -425,7 +425,7 @@ class FLParser:
         stack = []
         while j < len(s):
             if s[j] == "(":
-                stack.append(s[i: j])
+                stack.append(s[i:j])
                 stack.append(s[j])
                 i = j + 1
             elif s[j] == ",":
@@ -443,7 +443,7 @@ class FLParser:
                 item = []
                 while stack[-1] != "(":
                     item.append(stack.pop())
-                stack.pop()  # pop "("
+                stack.pop()  # pop '('
                 stack.append([stack.pop(), item[::-1]])
             j = j + 1
 

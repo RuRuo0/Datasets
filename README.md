@@ -6,12 +6,22 @@ Formal representation and solving for SAT-level Euclidean plane geometry problem
 **FormalGeo-SAT** is an extended version of **[FormalGeo](https://github.com/BitSecret/FormalGeo)**. It supports solving more types of plane geometric problems.
 
 ## Cowork
+#### Week 3 (230320): form 2023-03-20 to 2023-03-26.
+**Attention:** Annotate problems in directory **Geometry3k-Triangle**.  
+
+| Worker | WorkLoad | PID | Skip | Submitted |
+|:---:|:---:|:---:|:---:|:---:|
+| XiaokaiZhang | 70 | 3089-3270 | / | × |
+| NaZhu | 70 | 3273-3448 | / | × |
+| JiaZou | 70 | 3451-3624 | / | × |
+| YimingHe | 70 | 3625-3791 | / | × |
+
 #### Week 2 (230313): form 2023-03-13 to 2023-03-19.
 **Attention:** Annotate problems in directory **Geometry3k-Triangle**.  
 
 | Worker | WorkLoad | PID | Skip | Submitted |
 |:---:|:---:|:---:|:---:|:---:|
-| XiaokaiZhang | 70 | 2397-2570 | / | × |
+| XiaokaiZhang | 70 | 2397-2570 | / | √ |
 | NaZhu | 70 | 2572-2742 | / | × |
 | JiaZou | 70 | 2744-2885 | / | × |
 | YimingHe | 70 | 2887-3083 | / | √ |

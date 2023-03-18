@@ -22,8 +22,8 @@ Formal representation and solving for SAT-level Euclidean plane geometry problem
 | Worker | WorkLoad | PID | Skip | Submitted |
 |:---:|:---:|:---:|:---:|:---:|
 | XiaokaiZhang | 70 | 2397-2570 | / | √ |
-| NaZhu | 70 | 2572-2742 | / | × |
-| JiaZou | 70 | 2744-2885 | / | × |
+| NaZhu | 70 | 2572-2742 | / | √ |
+| JiaZou | 70 | 2744-2885 | / | √ |
 | YimingHe | 70 | 2887-3083 | / | √ |
 
 #### Week 1 (230306): form 2023-03-06 to 2023-03-12.

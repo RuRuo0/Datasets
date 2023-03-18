@@ -1,0 +1,42 @@
+{
+  "problem_id": 2733,
+  "annotation": "nazhu_2023-03-17",
+  "source": "Geometry3k-1149",
+  "problem_level": 1,
+  "problem_text_cn": "",
+  "problem_text_en": "If \\frac { I J } { X J } = \\frac { H J } { Y J }, m \\angle W X J = 130, and m \\angle W Z G = 20, find m \\angle J H G.",
+  "problem_img": "2733.png",
+  "construction_cdl": [
+    "Polygon(HXYI)",
+    "Polygon(IYZ)",
+    "Polygon(JHI)",
+    "Collinear(JHX)",
+    "Collinear(JIY)",
+    "Collinear(GHIZ)",
+    "Collinear(WXYZ)",
+    "Angle(GHJ)",
+    "Angle(WXJ)"
+  ],
+  "text_cdl": [],
+  "image_cdl": [
+    "Equal(MeasureOfAngle(WXH),130)",
+    "Equal(MeasureOfAngle(YZI),20)",
+    "Equal(Mul(LengthOfLine(IJ),LengthOfLine(YJ)),Mul(LengthOfLine(XJ),LengthOfLine(HJ)))",
+    "Intersect(I,HZ,JY)"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(GHJ))",
+  "problem_answer": "110",
+  "theorem_seqs": [
+    "flat_angle(WXY)",
+    "angle_addition(WXH,HXY)",
+    "similar_judgment_sas(JHI,JXY)",
+    "similar_property_angle_equal(XYJ,IJH)",
+    "intersect_property_vertical_angle(I,HZ,JY)",
+    "triangle_property_angle_sum(IYZ)",
+    "flat_angle(XYZ)",
+    "angle_addition(XYI,IYZ)",
+    "similar_property_angle_equal(YJX,HIJ)",
+    "flat_angle(GHI)",
+    "angle_addition(GHJ,JHI)"
+  ]
+}

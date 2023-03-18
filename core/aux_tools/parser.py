@@ -1,5 +1,5 @@
 import string
-from sympy import sin, cos, tan, pi, Float, Integer
+from sympy import sin, cos, tan, sqrt, pi, Float, Integer
 from core.aux_tools.utils import number_round
 
 
@@ -265,7 +265,7 @@ class FLParser:
                 "vars": parsed_predicate_GDL["Entity"][predicate]["vars"],
                 "para_len": parsed_predicate_GDL["Entity"][predicate]["para_len"],
                 "body": [[[[predicate, parsed_predicate_GDL["Entity"][predicate]["vars"]]],
-                         parsed_predicate_GDL["Entity"][predicate]["extend"]]]
+                          parsed_predicate_GDL["Entity"][predicate]["extend"]]]
             }
         return parsed_GDL
 
@@ -487,11 +487,13 @@ class FLParser:
 
 
 class EqParser:
-    operator = ["+", "-", "*", "/", "^", "{", "}", "@", "#", "$", "~"]
-    stack_priority = {"+": 1, "-": 1, "*": 2, "/": 2, "^": 3,
-                      "{": 0, "}": None,
-                      "@": 4, "#": 4, "$": 4, "~": 0}
-    outside_priority = {"+": 1, "-": 1, "*": 2, "/": 2, "^": 3,
+    operator_predicate = ["Add", "Sub", "Mul", "Div", "Pow", "Sqrt", "Sin", "Cos", "Tan"]
+    operator = ["+", "-", "*", "/", "^", "@", "#", "$", "√", "{", "}", "~"]
+    stack_priority = {"+": 1, "-": 1, "*": 2, "/": 2, "^": 3, "√": 4,
+                      "@": 4, "#": 4, "$": 4,
+                      "{": 0, "}": None, "~": 0,
+                      }
+    outside_priority = {"+": 1, "-": 1, "*": 2, "/": 2, "^": 3, "√": 4,
                         "{": 5, "}": 0,
                         "@": 4, "#": 4, "$": 4, "~": 0}
 
@@ -549,7 +551,7 @@ class EqParser:
                 return expr_left / expr_right
             else:
                 return expr_left ** expr_right
-        elif tree[0] in ["Sin", "Cos", "Tan"]:
+        elif tree[0] in ["Sin", "Cos", "Tan", "Sqrt"]:
             expr = EqParser.get_expr_from_tree(problem, tree[1][0], replaced, letters)
             if expr is None:
                 return None
@@ -557,14 +559,13 @@ class EqParser:
                 return sin(expr * pi / 180)
             elif tree[0] == "Cos":
                 return cos(expr * pi / 180)
-            else:
+            elif tree[0] == "Tan":
                 return tan(expr * pi / 180)
+            else:
+                return sqrt(expr)
         else:
-            raise Exception(
-                "<OperatorNotDefined> No operation {}, please check your expression.".format(
-                    tree[0]
-                )
-            )
+            e_msg = "Operator {} not defined, please check your expression.".format(tree[0])
+            raise Exception(e_msg)
 
     @staticmethod
     def get_equation_from_tree(problem, tree, replaced=False, letters=None):
@@ -630,8 +631,9 @@ class EqParser:
                         expr_2 = expr_stack.pop()
                         expr_1 = expr_stack.pop()
                         expr_stack.append(expr_1 ** expr_2)
-                    elif operator_unit == "{":  # 只有unit为"}"，才能到达这个判断
-                        i = i + 1
+                    elif operator_unit == "√":
+                        expr_1 = expr_stack.pop()
+                        expr_stack.append(sqrt(expr_1))
                     elif operator_unit == "@":  # sin
                         expr_1 = expr_stack.pop()
                         expr_stack.append(sin(expr_1))
@@ -641,6 +643,8 @@ class EqParser:
                     elif operator_unit == "$":  # tan
                         expr_1 = expr_stack.pop()
                         expr_stack.append(tan(expr_1))
+                    elif operator_unit == "{":  # 只有unit为"}"，才能到达这个判断
+                        i = i + 1
                     elif operator_unit == "~":  # 只有unit为"~"，才能到达这个判断，表示表达式处理完成
                         break
             else:  # symbol or number
@@ -653,6 +657,10 @@ class EqParser:
                         unit = Integer(unit)
                 expr_stack.append(unit)
                 i = i + 1
+
+        if len(expr_stack) > 1:
+            e_msg = "Wrong format: {}.".format(expr)
+            raise Exception(e_msg)
 
         return number_round(expr_stack.pop())
 
@@ -721,8 +729,8 @@ class InverseParser:
         """
         if predicate == "Equation":
             return InverseParser._inverse_parse_equation(item, problem.conditions["Equation"])
-        elif predicate in problem.predicate_GDL["Construction"] or\
-                predicate in problem.predicate_GDL["BasicEntity"] or\
+        elif predicate in problem.predicate_GDL["Construction"] or \
+                predicate in problem.predicate_GDL["BasicEntity"] or \
                 predicate in problem.predicate_GDL["Entity"]:
             return InverseParser.inverse_parse_logic(predicate, item, [1])
         else:
@@ -768,4 +776,3 @@ class InverseParser:
                 return attr + "(" + "".join(items[0]) + ")"
 
         return "Equation" + "(" + str(item).replace(" ", "") + ")"
-

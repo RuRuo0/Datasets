@@ -1,4 +1,6 @@
 import warnings
+
+import core.aux_tools.utils
 from core.solver.solver import Solver
 from core.aux_tools.utils import load_json, save_json
 from core.aux_tools.output import show, simple_show, save_step_msg, save_solution_tree
@@ -88,5 +90,9 @@ def run(save_GDL=False, save_CDL=False, auto=False):
 
 
 if __name__ == '__main__':
-    run(save_GDL=False, save_CDL=False, auto=False)
+    # run(save_GDL=False, save_CDL=False, auto=False)
     # backward_run()
+    for i in core.aux_tools.utils.text_expr:
+        print(i)
+        print(core.aux_tools.parser.EqParser._parse_expr(None, i))
+        print()

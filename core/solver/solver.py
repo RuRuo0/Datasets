@@ -10,12 +10,11 @@ class Solver:
     def __init__(self, predicate_GDL, theorem_GDL):
         self.predicate_GDL = FLParser.parse_predicate(predicate_GDL)
         self.theorem_GDL = FLParser.parse_theorem(theorem_GDL, self.predicate_GDL)
-        self.problem = None
+        self.problem = Problem(self.predicate_GDL)
 
     def load_problem(self, problem_CDL):
         """Load problem through problem_CDL."""
         s_start_time = time.time()
-        self.problem = Problem(self.predicate_GDL)
         self.problem.load_problem_from_cdl(FLParser.parse_problem(problem_CDL))   # load problem
         EquationKiller.solve_equations(self.problem)  # Solve the equations after initialization
         self.problem.applied("init_problem", time.time() - s_start_time)  # save applied theorem and update step

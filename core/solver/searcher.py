@@ -1,5 +1,4 @@
 from core.solver.solver import Solver
-import warnings
 
 
 class ForwardTree:

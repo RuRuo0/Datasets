@@ -53,19 +53,7 @@ def show(problem):
             print("{0:^3}{1:<20}".format(step, cdl))
     print()
 
-    used_id = []
-    get_item_by_id, _ = InverseParser.solution_msg(problem)
-    if problem.goal["solved"]:
-        used_id = list(set(problem.goal["premise"]))
-        while True:
-            len_used_id = len(used_id)
-            for _id in used_id:
-                if _id >= 0:
-                    predicate, _ = get_item_by_id[_id]
-                    used_id += list(problem.conditions[predicate].premises[_id])
-                    used_id = list(set(used_id))
-            if len_used_id == len(used_id):
-                break
+    used_id, used_theorem = get_used_theorem(problem)
 
     """-----------Logic Form-----------"""
     print("\033[33mRelations:\033[0m")
@@ -147,7 +135,10 @@ def show(problem):
 
     print("\033[34mTime consumption:\033[0m")
     for i in range(len(problem.theorems_applied)):
-        print("\033[32m{}\033[0m: {:.6f}s".format(problem.theorems_applied[i], problem.time_consuming[i]))
+        if problem.theorems_applied[i] in used_theorem:
+            print("\033[35m{}\033[0m: {:.6f}s".format(problem.theorems_applied[i], problem.time_consuming[i]))
+        else:
+            print("{}: {:.6f}s".format(problem.theorems_applied[i], problem.time_consuming[i]))
     print()
 
 
@@ -248,7 +239,7 @@ def _add_node(dot, nodes, node):
 
     added_node_id = len(nodes)
     nodes.append(node)
-    if "(" in node:
+    if node[0].isupper():
         dot.node(str(added_node_id), node, shape='box')  # condition node
     else:
         dot.node(str(added_node_id), node)  # theorem node
@@ -276,3 +267,28 @@ def save_step_msg(problem, path):
         step_msg,
         path + "{}_step.json".format(problem.problem_CDL["id"])
     )
+
+
+def get_used_theorem(problem):
+    used_id = []
+    selected_theorem = []
+    if problem.goal["solved"]:
+        used_theorem = []
+        get_item_by_id, _ = InverseParser.solution_msg(problem)
+        used_id = list(set(problem.goal["premise"]))
+        while True:
+            len_used_id = len(used_id)
+            for _id in used_id:
+                if _id >= 0:
+                    predicate, _ = get_item_by_id[_id]
+                    used_id += list(problem.conditions[predicate].premises[_id])
+                    used_theorem.append(problem.conditions[predicate].theorems[_id])
+            used_id = list(set(used_id))  # 快速去重
+            if len_used_id == len(used_id):
+                break
+
+        for t in problem.theorems_applied:
+            if t in used_theorem:
+                selected_theorem.append(t)
+
+    return used_id, selected_theorem

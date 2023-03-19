@@ -1,5 +1,5 @@
 import copy
-from sympy import symbols, solve
+from sympy import symbols, solve, Float
 from func_timeout import func_set_timeout, FunctionTimedOut
 from core.aux_tools.utils import number_round
 from core.aux_tools.parser import EqParser
@@ -8,6 +8,8 @@ import warnings
 
 
 class EquationKiller:
+    solve_eqs = True    # whether to solve the equation in the intermediate process
+    sym_simplify = True    # whether to apply symbol substitution simplification
 
     @staticmethod
     def get_minimum_equations(target_eq, sym_to_eqs):
@@ -18,7 +20,7 @@ class EquationKiller:
         :return mini_eqs: minimum equations.
         :return mini_syms: all sym of minimum equations.
         """
-        mini_eqs = {target_eq}  # new group
+        mini_eqs = [target_eq]  # new group
         mini_syms = target_eq.free_symbols
 
         new_syms = mini_syms
@@ -28,14 +30,14 @@ class EquationKiller:
             for sym in last_new_syms:
                 for added_eq in sym_to_eqs[sym]:
                     if added_eq not in mini_eqs:
-                        mini_eqs.add(added_eq)
+                        mini_eqs.append(added_eq)
                         new_syms = new_syms | (added_eq.free_symbols - mini_syms)  # new symbol introduced
             if len(new_syms) > 0:
                 mini_syms |= new_syms
             else:
                 break
 
-        return list(mini_eqs), list(mini_syms)
+        return mini_eqs, list(mini_syms)
 
     @staticmethod
     def get_sym_to_eqs(eqs):
@@ -84,7 +86,6 @@ class EquationKiller:
                 for sym in equation.equations[raw_eq].free_symbols:
                     if equation.value_of_sym[sym] is not None:  # replace sym with value when the value solved
                         equation.equations[raw_eq] = equation.equations[raw_eq].subs(sym, equation.value_of_sym[sym])
-                        update = True
 
                 if len(equation.equations[raw_eq].free_symbols) == 0:  # remove equation when it's all sym known
                     remove_lists.append(raw_eq)
@@ -104,49 +105,73 @@ class EquationKiller:
                                     premise.append(equation.get_id_by_item[sym - equation.value_of_sym[sym]])
                             problem.set_value_of_sym(target_sym, result[target_sym], tuple(premise), "solve_eq")
                             remove_lists.append(raw_eq)
+                            update = True
 
             for remove_eq in remove_lists:  # remove useless equation
                 equation.equations.pop(remove_eq)
 
     @staticmethod
-    def simplification_sym_replace(equations, target_expr):
+    def simplification_sym_replace(equations, target_sym):
         """ High level simplify based on symbol replacement."""
         update = True
         while update:
             update = False
-            for equation in equations:
-                if len(equation.free_symbols) == 2:
-                    result = solve(equation)
-                    if len(result) > 0:
-                        if isinstance(result, list):
-                            result = result[0]
-                        sym = list(result.keys())[0]
-                        target_expr = target_expr.subs(sym, result[sym])
-                        for i in range(len(equations)):
-                            equations[i] = equations[i].subs(sym, result[sym])
+            for i in range(len(equations)):
+                eq = equations[i]
+
+                if target_sym in eq.free_symbols or\
+                        len(eq.free_symbols) != 2 or \
+                        len(eq.atoms()) > 5:   # too many atoms, no need to replace
+                    continue
+
+                try:
+                    result = EquationKiller.solve(eq, keep_sym=True)  # solve sym
+                except FunctionTimedOut:
+                    msg = "Timeout when solve equations: {}".format(equations)
+                    warnings.warn(msg)
+                    continue
+
+                if len(result) == 0:    # no solved result
+                    continue
+
+                sym = list(result.keys())[0]
+                has_float = False
+                for atom in result[sym].atoms():
+                    if isinstance(atom, Float):
+                        has_float = True
+                        break
+                if has_float:  # float has precision error
+                    continue
+
+                for j in range(len(equations)):    # replace sym with solved sym_expr
+                    if sym in equations[j].free_symbols:
+                        equations[j] = equations[j].subs(sym, result[sym])
                         update = True
 
-        equations.append(target_expr)
-
-        return equations
+        for i in range(len(equations))[::-1]:    # remove 0
+            if len(equations[i].free_symbols) == 0:
+                equations.pop(i)
 
     @staticmethod
     @func_set_timeout(2)
-    def solve(equations):
-        cleaned_results = {}  # real number solution
+    def solve(equations, keep_sym=False):
+        real_results = {}  # real number solution
         try:
             results = solve(equations, dict=True)
             if len(results) > 0:
                 if isinstance(results, list):    # multi results, choose the first
                     results = results[0]
-                for sym in results:  # filter out real number solution
-                    if len(results[sym].free_symbols) == 0:
-                        cleaned_results[sym] = number_round(results[sym])
+                if keep_sym:
+                    real_results = results
+                else:
+                    for sym in results:  # filter out real number solution
+                        if len(results[sym].free_symbols) == 0:
+                            real_results[sym] = number_round(results[sym])
         except Exception as e:
             msg = "Exception <{}> occur when solve {}".format(e, equations)
             warnings.warn(msg)
 
-        return cleaned_results
+        return real_results
 
     @staticmethod
     def solve_equations(problem):
@@ -156,47 +181,49 @@ class EquationKiller:
         """
         equation = problem.conditions["Equation"]  # class <Equation>
 
-        if equation.solved:
+        if not EquationKiller.solve_eqs or equation.solved:
             return
 
-        EquationKiller.simplification_value_replace(problem)  # simplify equations before solving
-
-        equations, premises = EquationKiller.get_eqs_and_premises(problem)    # known equations
-
-        sym_to_eqs = EquationKiller.get_sym_to_eqs(equations)
         solved_eqs = []
-        for target_eq in equations:
-            if target_eq in solved_eqs:    # ignore already solved equation
-                continue
+        update = True
+        while update:
+            update = False
+            EquationKiller.simplification_value_replace(problem)  # simplify equations before solving
+            equations, premises = EquationKiller.get_eqs_and_premises(problem)    # known equations
+            sym_to_eqs = EquationKiller.get_sym_to_eqs(equations)   # map sym to eq
 
-            mini_eqs, mini_syms = EquationKiller.get_minimum_equations(target_eq, sym_to_eqs)    # mini equations
-            solved_eqs += mini_eqs
-            premise = []
+            solved_eq = []
+            for target_eq in equations:
+                if target_eq in solved_eq:    # ignore already solved equation
+                    continue
 
-            for i in range(len(mini_eqs)):    # replace sym with its value
-                for sym in mini_eqs[i].free_symbols:
-                    if equation.value_of_sym[sym] is not None:
-                        mini_eqs[i] = mini_eqs[i].subs(sym, equation.value_of_sym[sym])
-                        premise.append(equation.get_id_by_item[sym - equation.value_of_sym[sym]])
+                mini_eqs, mini_syms = EquationKiller.get_minimum_equations(target_eq, sym_to_eqs)    # mini equations
+                solved_eq += mini_eqs
 
-            for mini_eq in mini_eqs:    # no sym in equation, then delete it
-                if len(mini_eq.free_symbols) == 0:
-                    mini_eqs.pop(mini_eqs.index(mini_eq))
+                if set(mini_eqs) in solved_eqs:
+                    continue
 
-            if len(mini_eqs) == 0:   # no equations need to solve
-                continue
+                solved_eqs.append(set(mini_eqs))
 
-            try:
-                results = EquationKiller.solve(mini_eqs)  # solve equations
-            except FunctionTimedOut:
-                msg = "Timeout when solve equations: {}".format(equations)
-                warnings.warn(msg)
-            else:
-                for mini_eq in mini_eqs:
-                    premise += premises[equations.index(mini_eq)]
-                for sym in results:  # save solved value
-                    if equation.value_of_sym[sym] is None:
-                        problem.set_value_of_sym(sym, results[sym], tuple(set(premise)), "solve_eq")
+                try:
+                    premise = []
+                    results = EquationKiller.solve(mini_eqs)  # solve equations
+                except FunctionTimedOut:
+                    msg = "Timeout when solve equations: {}".format(equations)
+                    warnings.warn(msg)
+                else:
+                    for mini_eq in mini_eqs:
+                        premise += premises[equations.index(mini_eq)]
+                    for sym in results:  # save solved value
+                        if equation.value_of_sym[sym] is None:
+                            update = True
+                            problem.set_value_of_sym(sym, results[sym], tuple(set(premise)), "solve_eq")
+
+                if update:
+                    break
+
+            if not update:
+                break
 
     @staticmethod
     def solve_target(target_expr, problem):
@@ -233,7 +260,12 @@ class EquationKiller:
         premises.append(premise)
 
         sym_to_eqs = EquationKiller.get_sym_to_eqs(equations)
-        mini_eqs, mini_syms = EquationKiller.get_minimum_equations(target_eq, sym_to_eqs)
+        mini_eqs, _ = EquationKiller.get_minimum_equations(target_eq, sym_to_eqs)
+        for mini_eq in mini_eqs:
+            premise += premises[equations.index(mini_eq)]
+
+        if EquationKiller.sym_simplify:
+            EquationKiller.simplification_sym_replace(mini_eqs, target_sym)
 
         try:
             results = EquationKiller.solve(mini_eqs)  # solve equations
@@ -242,9 +274,6 @@ class EquationKiller:
             warnings.warn(msg)
         else:
             if target_sym in results:
-                premise = []
-                for mini_eq in mini_eqs:
-                    premise += premises[equations.index(mini_eq)]
                 return results[target_sym], list(set(premise))
 
         return None, None
@@ -350,7 +379,6 @@ class GeoLogic:
                         item.append(r2_data[dif])
                     r_items.append(tuple(item))
                     r_ids.append(tuple(set(list(r1_ids[i]) + list(r2_ids[j]))))
-        print(r_vars)
         return r_ids, r_items, r_vars
 
     @staticmethod

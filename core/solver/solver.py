@@ -1,6 +1,5 @@
 from core.problem.problem import Problem
 from core.aux_tools.parser import *
-from core.aux_tools.utils import rough_equal
 from core.solver.engine import *
 import warnings
 import time
@@ -11,11 +10,12 @@ class Solver:
     def __init__(self, predicate_GDL, theorem_GDL):
         self.predicate_GDL = FLParser.parse_predicate(predicate_GDL)
         self.theorem_GDL = FLParser.parse_theorem(theorem_GDL, self.predicate_GDL)
-        self.problem = Problem(self.predicate_GDL)
+        self.problem = None
 
     def load_problem(self, problem_CDL):
         """Load problem through problem_CDL."""
         s_start_time = time.time()
+        self.problem = Problem(self.predicate_GDL)
         self.problem.load_problem_from_cdl(FLParser.parse_problem(problem_CDL))   # load problem
         EquationKiller.solve_equations(self.problem)  # Solve the equations after initialization
         self.problem.applied("init_problem", time.time() - s_start_time)  # save applied theorem and update step
@@ -107,26 +107,32 @@ class Solver:
             self.problem.applied(theorem, time.time() - s_time)
 
         elif theorem_name is not None:    # mode 3, rough mode
+            theorem_list = []
             for premises_GDL, conclusions_GDL in self.theorem_GDL[theorem_name]["body"]:
                 r_ids, r_items, r_vars = GeoLogic.run(premises_GDL, self.problem)
 
                 for i in range(len(r_items)):
                     letters = {}
-                    print(r_vars)
-                    print(r_items)
                     for j in range(len(r_vars)):
                         letters[r_vars[j]] = r_items[i][j]
+
+                    theorem_para = [letters[i] for i in self.theorem_GDL[theorem_name]["vars"]]
+                    theorem = InverseParser.inverse_parse_logic(  # theorem + para, add in problem
+                        theorem_name, theorem_para, self.theorem_GDL[theorem_name]["para_len"])
+                    theorem_list.append(theorem)
 
                     for predicate, item in conclusions_GDL:
                         if predicate == "Equal":  # algebra conclusion
                             eq = EqParser.get_equation_from_tree(self.problem, item, True, letters)
-                            update = self.problem.add("Equation", eq, r_ids[i], theorem_name) or update
+                            update = self.problem.add("Equation", eq, r_ids[i], theorem) or update
                         else:  # logic conclusion
                             item = tuple(letters[i] for i in item)
-                            update = self.problem.add(predicate, item, r_ids[i], theorem_name) or update
+                            update = self.problem.add(predicate, item, r_ids[i], theorem) or update
 
             EquationKiller.solve_equations(self.problem)
             self.problem.applied(theorem_name, time.time() - s_time)
+            for t in theorem_list:
+                self.problem.applied(t, 0)
 
         else:    # invalid if-else branch
             e_msg = "Wrong parameter in function <apply_theorem>: (None, None, None)"
@@ -246,4 +252,3 @@ class Solver:
             sub_goals = GoalFinder.find_logic_sub_goals(predicate, item, self.problem, self.theorem_GDL)
 
         return sub_goals
-

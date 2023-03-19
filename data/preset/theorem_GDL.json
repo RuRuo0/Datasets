@@ -22,6 +22,23 @@
 			},
 			"notes": []
 		},
+		"area_addition(BCA,ACD)": {
+			"body": {
+				"1": {
+					"premise": "Quadrilateral(ABCD)&Triangle(BCA)&Triangle(ACD)",
+					"conclusion": [
+						"Equal(AreaOfQuadrilateral(ABCD),Add(AreaOfTriangle(BCA),AreaOfTriangle(ACD)))"
+					]
+				},
+				"2": {
+					"premise": "Triangle(ABD)&Triangle(BCA)&Triangle(ACD)",
+					"conclusion": [
+						"Equal(AreaOfTriangle(ABD),Add(AreaOfTriangle(BCA),AreaOfTriangle(ACD)))"
+					]
+				}
+			},
+			"notes": []
+		},
 		"flat_angle(ABC)": {
 			"body": {
 				"1": {
@@ -44,6 +61,17 @@
 			},
 			"notes": []
 		},
+		"vertical_angle(AOC,BOD)": {
+			"body": {
+				"1": {
+					"premise": "Collinear(AOB)&Collinear(COD)",
+					"conclusion": [
+						"Equal(MeasureOfAngle(AOC),MeasureOfAngle(BOD))"
+					]
+				}
+			},
+			"notes": []
+		},
 		"midpoint_judgment(M,AB)": {
 			"body": {
 				"1": {
@@ -60,7 +88,7 @@
 				"1": {
 					"premise": "IsAltitude(AD,ABC)",
 					"conclusion": [
-						"Equal(AreaOfTriangle(ABC),Mul(LengthOfLine(AD),LengthOfLine(BC),0.5))"
+						"Equal(AreaOfTriangle(ABC),Mul(LengthOfLine(AD),LengthOfLine(BC),1/2))"
 					]
 				}
 			},
@@ -309,21 +337,21 @@
 			},
 			"notes": []
 		},
-		"intersect_property_vertical_angle(O,AB,CD)": {
+		"bisector_judgment_angle_equal(BD,ABC)": {
 			"body": {
 				"1": {
-					"premise": "Intersect(O,AB,CD)",
+					"premise": "Angle(ABD)&Angle(DBC)&Equal(MeasureOfAngle(ABD),MeasureOfAngle(DBC))",
 					"conclusion": [
-						"Equal(MeasureOfAngle(AOC),MeasureOfAngle(BOD))"
+						"Bisector(BD,ABC)"
 					]
 				}
 			},
 			"notes": []
 		},
-		"bisector_judgment_angle_equal(BD,ABC)": {
+		"bisector_judgment_distance_equal(BD,ABC)": {
 			"body": {
 				"1": {
-					"premise": "Angle(ABD)&Angle(DBC)&Equal(MeasureOfAngle(ABD),MeasureOfAngle(DBC))",
+					"premise": "Angle(ABC)&Line(BD)&Perpendicular(DA,BA)&Perpendicular(BC,DC)&Equal(LengthOfLine(DA),LengthOfLine(DC))",
 					"conclusion": [
 						"Bisector(BD,ABC)"
 					]
@@ -398,6 +426,17 @@
 			},
 			"notes": []
 		},
+		"midsegment_property_similar(DE,ABC)": {
+			"body": {
+				"1": {
+					"premise": "Midsegment(DE,ABC)",
+					"conclusion": [
+						"Similar(ABC,ADE)"
+					]
+				}
+			},
+			"notes": []
+		},
 		"is_altitude_judgment(AD,ABC)": {
 			"body": {
 				"1": {
@@ -415,7 +454,7 @@
 			},
 			"notes": []
 		},
-		"perpendicular_bisector_judgment_definition(AB,CO)": {
+		"perpendicular_bisector_judgment_per_and_mid(AB,CO)": {
 			"body": {
 				"1": {
 					"premise": "Collinear(AOB)&(Equal(MeasureOfAngle(AOC),90)|Equal(MeasureOfAngle(COB),90))&Equal(LengthOfLine(AO),LengthOfLine(OB))",
@@ -850,7 +889,7 @@
 					]
 				},
 				"2": {
-					"premise": "Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))",
+					"premise": "Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))",
 					"conclusion": [
 						"MirrorSimilar(ABC,DEF)"
 					]

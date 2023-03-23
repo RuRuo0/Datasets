@@ -1,402 +1,828 @@
 {
-	"Predicates": {
-		"Entity": {
-			"RightTriangle(ABC)": {
-				"ee_check": [
-					"Triangle(ABC)"
-				],
-				"multi": [],
-				"extend": [
-					"Perpendicular(AB,CB)",
-					"IsAltitude(AB,ABC)"
-				],
-				"notes": []
-			},
-			"IsoscelesTriangle(ABC)": {
-				"ee_check": [
-					"Triangle(ABC)"
-				],
-				"multi": [],
-				"extend": [
-					"Equal(LengthOfLine(AB),LengthOfLine(AC))"
-				],
-				"notes": []
-			},
-			"EquilateralTriangle(ABC)": {
-				"ee_check": [
-					"Triangle(ABC)"
-				],
-				"multi": [
-					"BCA",
-					"CAB"
-				],
-				"extend": [
-					"Equal(LengthOfLine(AB),LengthOfLine(AC))",
-					"Equal(LengthOfLine(AB),LengthOfLine(BC))"
-				],
-				"notes": []
-			}
-		},
-		"Relation": {
-			"Midpoint(M,AB)": {
-				"ee_check": [
-					"Point(M)",
-					"Line(AB)"
-				],
-				"fv_check": [
-					"M,AB"
-				],
-				"multi": [
-					"M,BA"
-				],
-				"extend": [
-					"Equal(LengthOfLine(AM),LengthOfLine(MB))"
-				],
-				"notes": []
-			},
-			"Intersect(O,AB,CD)": {
-				"ee_check": [
-					"Point(O)",
-					"Line(AB)",
-					"Line(CD)"
-				],
-				"fv_check": [
-					"O,AB,CD"
-				],
-				"multi": [
-					"O,CD,BA",
-					"O,BA,DC",
-					"O,DC,AB"
-				],
-				"extend": [],
-				"notes": []
-			},
-			"Parallel(AB,CD)": {
-				"ee_check": [
-					"Line(AB)",
-					"Line(CD)"
-				],
-				"fv_check": [
-					"AB,CD"
-				],
-				"multi": [
-					"DC,BA"
-				],
-				"extend": [],
-				"notes": []
-			},
-			"Perpendicular(AO,CO)": {
-				"ee_check": [
-					"Line(AO)",
-					"Line(CO)"
-				],
-				"fv_check": [
-					"AO,CO"
-				],
-				"multi": [],
-				"extend": [
-					"Equal(MeasureOfAngle(AOC),90)"
-				],
-				"notes": []
-			},
-			"PerpendicularBisector(AB,CO)": {
-				"ee_check": [
-					"Line(AB)",
-					"Line(CO)"
-				],
-				"fv_check": [
-					"AB,CO"
-				],
-				"multi": [],
-				"extend": [
-					"Perpendicular(AO,CO)",
-					"Perpendicular(CO,BO)",
-					"Midpoint(O,AB)"
-				],
-				"notes": []
-			},
-			"Bisector(BD,ABC)": {
-				"ee_check": [
-					"Line(BD)",
-					"Angle(ABC)"
-				],
-				"fv_check": [
-					"BD,ABC"
-				],
-				"multi": [],
-				"extend": [
-					"Equal(MeasureOfAngle(ABD),MeasureOfAngle(DBC))"
-				],
-				"notes": []
-			},
-			"Median(AD,ABC)": {
-				"ee_check": [
-					"Line(AD)",
-					"Triangle(ABC)"
-				],
-				"fv_check": [
-					"AD,ABC"
-				],
-				"multi": [],
-				"extend": [
-					"Midpoint(D,BC)"
-				],
-				"notes": []
-			},
-			"IsAltitude(AD,ABC)": {
-				"ee_check": [
-					"Line(AD)",
-					"Triangle(ABC)"
-				],
-				"fv_check": [
-					"AD,ABC",
-					"AB,ABC",
-					"AC,ABC"
-				],
-				"multi": [],
-				"extend": [
-					"Perpendicular(BD,AD)",
-					"Perpendicular(AD,CD)",
-					"Equal(LengthOfLine(AD),AltitudeOfTriangle(ABC))"
-				],
-				"notes": []
-			},
-			"Neutrality(DE,ABC)": {
-				"ee_check": [
-					"Line(DE)",
-					"Triangle(ABC)"
-				],
-				"fv_check": [
-					"DE,ABC"
-				],
-				"multi": [],
-				"extend": [
-					"Parallel(DE,BC)"
-				],
-				"notes": []
-			},
-			"Midsegment(DE,ABC)": {
-				"ee_check": [
-					"Line(DE)",
-					"Triangle(ABC)"
-				],
-				"fv_check": [
-					"DE,ABC"
-				],
-				"multi": [],
-				"extend": [
-					"Neutrality(DE,ABC)",
-					"Midpoint(D,AB)",
-					"Midpoint(E,AC)"
-				],
-				"notes": []
-			},
-			"Circumcenter(O,ABC)": {
-				"ee_check": [
-					"Point(O)",
-					"Triangle(ABC)"
-				],
-				"fv_check": [
-					"O,ABC"
-				],
-				"multi": [
-					"O,BCA",
-					"O,CAB"
-				],
-				"extend": [],
-				"notes": []
-			},
-			"Incenter(O,ABC)": {
-				"ee_check": [
-					"Point(O)",
-					"Triangle(ABC)"
-				],
-				"fv_check": [
-					"O,ABC"
-				],
-				"multi": [
-					"O,BCA",
-					"O,CAB"
-				],
-				"extend": [],
-				"notes": []
-			},
-			"Centroid(O,ABC)": {
-				"ee_check": [
-					"Point(O)",
-					"Triangle(ABC)"
-				],
-				"fv_check": [
-					"O,ABC"
-				],
-				"multi": [
-					"O,BCA",
-					"O,CAB"
-				],
-				"extend": [],
-				"notes": []
-			},
-			"Orthocenter(O,ABC)": {
-				"ee_check": [
-					"Point(O)",
-					"Triangle(ABC)"
-				],
-				"fv_check": [
-					"O,ABC",
-					"A,ABC",
-					"B,ABC",
-					"C,ABC"
-				],
-				"multi": [
-					"O,BCA",
-					"O,CAB"
-				],
-				"extend": [],
-				"notes": []
-			},
-			"Congruent(ABC,DEF)": {
-				"ee_check": [
-					"Triangle(ABC)",
-					"Triangle(DEF)"
-				],
-				"multi": [
-					"DEF,ABC",
-					"BCA,EFD",
-					"EFD,BCA",
-					"CAB,FDE",
-					"FDE,CAB"
-				],
-				"extend": [],
-				"notes": []
-			},
-			"Similar(ABC,DEF)": {
-				"ee_check": [
-					"Triangle(ABC)",
-					"Triangle(DEF)"
-				],
-				"multi": [
-					"DEF,ABC",
-					"BCA,EFD",
-					"EFD,BCA",
-					"CAB,FDE",
-					"FDE,CAB"
-				],
-				"extend": [],
-				"notes": []
-			},
-			"MirrorCongruent(ABC,DEF)": {
-				"ee_check": [
-					"Triangle(ABC)",
-					"Triangle(DEF)"
-				],
-				"multi": [
-					"DEF,ABC",
-					"BCA,FDE",
-					"FDE,BCA",
-					"CAB,EFD",
-					"EFD,CAB"
-				],
-				"extend": [],
-				"notes": []
-			},
-			"MirrorSimilar(ABC,DEF)": {
-				"ee_check": [
-					"Triangle(ABC)",
-					"Triangle(DEF)"
-				],
-				"multi": [
-					"DEF,ABC",
-					"BCA,FDE",
-					"FDE,BCA",
-					"CAB,EFD",
-					"EFD,CAB"
-				],
-				"extend": [],
-				"notes": []
-			}
-		},
-		"Attribution": {
-			"AreaOfTriangle(ABC)": {
-				"ee_check": [
-					"Triangle(ABC)"
-				],
-				"sym": "at",
-				"multi": [
-					"BCA",
-					"CAB"
-				],
-				"notes": ["例 Equal(AreaOfTriangle(ABC),10)"]
-			},
-			"PerimeterOfTriangle(ABC)": {
-				"ee_check": [
-					"Triangle(ABC)"
-				],
-				"sym": "pt",
-				"multi": [
-					"BCA",
-					"CAB"
-				],
-				"notes": ["例 Equal(PerimeterOfTriangle(ABC),10)"]
-			},
-			"AreaOfQuadrilateral(ABCD)": {
-				"ee_check": [
-					"Quadrilateral(ABCD)"
-				],
-				"sym": "aq",
-				"multi": [
-					"BCDA",
-					"CDAB",
-					"DABC"
-				],
-				"notes": ["例 Equal(AreaOfQuadrilateral(ABCD),20)"]
-			},
-			"PerimeterOfQuadrilateral(ABCD)": {
-				"ee_check": [
-					"Quadrilateral(ABCD)"
-				],
-				"sym": "pq",
-				"multi": [
-					"BCDA",
-					"CDAB",
-					"DABC"
-				],
-				"notes": ["例 Equal(PerimeterOfQuadrilateral(ABCD),20)"]
-			},
-			"AltitudeOfTriangle(ABC)": {
-				"ee_check": [
-					"Triangle(ABC)"
-				],
-				"sym": "alt",
-				"multi": [],
-				"notes": ["例 Equal(AltitudeOfTriangle(ABC),5)"]
-			},
-			"DistanceOfPointToLine(O,AB)": {
-				"ee_check": [
-					"Point(O)",
-					"Line(AB)"
-				],
-				"fv_check": [
-					"O,AB",
-					"B,AB",
-					"A,AB"
-				],
-				"sym": "dpl",
-				"multi": [
-					"OBA"
-				],
-				"notes": ["例 Equal(DistanceOfPointToLine(O,AB),3)"]
-			}
-		}
-	},
-	"Notes": {
-		"built-in": [
-			"3 Construction definitions: Polygon, Collinear and Cocircular.",
-			"7 BasicEntity definitions: Point, Line, Angle, Arc, Circle, Triangle and Quadrilateral.",
-			"4 BasicAttribution definitions: Free, LengthOfLine, LengthOfArc and MeasureOfAngle."
-		],
-		"ee_check": "For entity existence check (EE check). It only contains BasicEntity.",
-		"fv_check": "For format validity check (FV check). More stringent than the default FV check.",
-		"multi": "Multi representation.",
-		"extend": "For automatic extension of conditions. It only contains Entity or Relation. It usually used for the definition of predicate."
-	}
+  "Construction": [
+    "Polygon",
+    "Collinear",
+    "Cocircular"
+  ],
+  "BasicEntity": {
+    "Point(A)": {
+      "multi": [],
+      "extend": []
+    },
+    "Line(AB)": {
+      "multi": [
+        "BA"
+      ],
+      "extend": [
+        "Point(A)",
+        "Point(B)"
+      ]
+    },
+    "Angle(ABC)": {
+      "multi": [],
+      "extend": [
+        "Line(AB)",
+        "Line(BC)"
+      ]
+    },
+    "Triangle(ABC)": {
+      "multi": [
+        "BCA",
+        "CAB"
+      ],
+      "extend": []
+    },
+    "Quadrilateral(ABCD)": {
+      "multi": [
+        "BCDA",
+        "CDAB",
+        "DABC"
+      ],
+      "extend": []
+    },
+    "Pentagon(ABCDE)": {
+      "multi": [
+        "BCDEA",
+        "CDEAB",
+        "DEABC",
+        "EABCD"
+      ],
+      "extend": []
+    },
+    "Hexagon(ABCDEF)": {
+      "multi": [
+        "BCDEFA",
+        "CDEFAB",
+        "DEFABC",
+        "EFABCD",
+        "FABCDE"
+      ],
+      "extend": []
+    },
+    "Arc(AB)": {
+      "multi": [],
+      "extend": [
+        "Point(A)",
+        "Point(B)"
+      ]
+    },
+    "Circle(O)": {
+      "multi": [],
+      "extend": [
+        "Point(O)"
+      ]
+    },
+    "Sector(OAB)": {
+      "multi": [],
+      "extend": [
+        "Arc(AB)"
+      ]
+    }
+  },
+  "Entity": {
+    "RightTriangle(ABC)": {
+      "ee_check": [
+        "Triangle(ABC)"
+      ],
+      "multi": [],
+      "extend": [
+        "Perpendicular(CA,BA)",
+        "IsAltitude(CA,CAB)"
+      ]
+    },
+    "IsoscelesTriangle(ABC)": {
+      "ee_check": [
+        "Triangle(ABC)"
+      ],
+      "multi": [],
+      "extend": [
+        "Equal(LengthOfLine(AB),LengthOfLine(AC))"
+      ]
+    },
+    "IsoscelesRightTriangle(ABC)": {
+      "ee_check": [
+        "Triangle(ABC)"
+      ],
+      "multi": [],
+      "extend": [
+        "RightTriangle(ABC)",
+        "IsoscelesRightTriangle(ABC)"
+      ]
+    },
+    "EquilateralTriangle(ABC)": {
+      "ee_check": [
+        "Triangle(ABC)"
+      ],
+      "multi": [
+        "BCA",
+        "CAB"
+      ],
+      "extend": [
+        "IsoscelesTriangle(ABC)",
+        "IsoscelesTriangle(BCA)",
+        "IsoscelesTriangle(CAB)"
+      ]
+    },
+    "Kite(ABCD)": {
+      "ee_check": [
+        "Quadrilateral(ABCD)"
+      ],
+      "multi": [
+        "CDAB"
+      ],
+      "extend": [
+        "Equal(LengthOfLine(AB),LengthOfLine(AD))",
+        "Equal(LengthOfLine(CB),LengthOfLine(CD))"
+      ]
+    },
+    "Parallelogram(ABCD)": {
+      "ee_check": [
+        "Quadrilateral(ABCD)"
+      ],
+      "multi": [
+        "BCDA",
+        "CDAB",
+        "DABC"
+      ],
+      "extend": [
+        "Parallel(AD,BC)",
+        "Parallel(BA,CD)"
+      ]
+    },
+    "Rhombus(ABCD)": {
+      "ee_check": [
+        "Quadrilateral(ABCD)"
+      ],
+      "multi": [
+        "BCDA",
+        "CDAB",
+        "DABC"
+      ],
+      "extend": [
+        "Parallelogram(ABCD)",
+        "Kite(ABCD)",
+        "Kite(BCDA)"
+      ]
+    },
+    "Rectangle(ABCD)": {
+      "ee_check": [
+        "Quadrilateral(ABCD)"
+      ],
+      "multi": [
+        "BCDA",
+        "CDAB",
+        "DABC"
+      ],
+      "extend": [
+        "Parallelogram(ABCD)",
+        "Perpendicular(AB,CB)",
+        "Perpendicular(BC,DC)",
+        "Perpendicular(CD,AD)",
+        "Perpendicular(DA,BA)"
+      ]
+    },
+    "Square(ABCD)": {
+      "ee_check": [
+        "Quadrilateral(ABCD)"
+      ],
+      "multi": [
+        "BCDA",
+        "CDAB",
+        "DABC"
+      ],
+      "extend": [
+        "Rhombus(ABCD)",
+        "Rectangle(ABCD)"
+      ]
+    },
+    "Trapezoid(ABCD)": {
+      "ee_check": [
+        "Quadrilateral(ABCD)"
+      ],
+      "multi": [
+        "CDAB"
+      ],
+      "extend": [
+        "Parallel(AD,BC)"
+      ]
+    },
+    "IsoscelesTrapezoid(ABCD)": {
+      "ee_check": [
+        "Quadrilateral(ABCD)"
+      ],
+      "multi": [
+        "CDAB"
+      ],
+      "extend": [
+        "Trapezoid(ABCD)",
+        "Equal(LengthOfLine(AB),LengthOfLine(CD))"
+      ]
+    },
+    "RightTrapezoid(ABCD)": {
+      "ee_check": [
+        "Quadrilateral(ABCD)"
+      ],
+      "multi": [],
+      "extend": [
+        "Trapezoid(ABCD)",
+        "Perpendicular(DA,BA)",
+        "Perpendicular(AB,CB)"
+      ]
+    },
+    "EquilateralPentagon(ABCDE)": {
+      "ee_check": [
+        "Pentagon(ABCDE)"
+      ],
+      "multi": [
+        "BCDEA",
+        "CDEAB",
+        "DEABC",
+        "EABCD"
+      ],
+      "extend": [
+        "Equal(LengthOfLine(AB),LengthOfLine(BC))",
+        "Equal(LengthOfLine(BC),LengthOfLine(CD))",
+        "Equal(LengthOfLine(CD),LengthOfLine(DE))",
+        "Equal(LengthOfLine(DE),LengthOfLine(EA))"
+      ]
+    },
+    "RegularPentagon(ABCDE)": {
+      "ee_check": [
+        "Pentagon(ABCDE)"
+      ],
+      "multi": [
+        "BCDEA",
+        "CDEAB",
+        "DEABC",
+        "EABCD"
+      ],
+      "extend": [
+        "EquilateralPentagon(ABCDE)",
+        "Equal(MeasureOfAngle(ABC),108)",
+        "Equal(MeasureOfAngle(BCD),108)",
+        "Equal(MeasureOfAngle(CDE),108)",
+        "Equal(MeasureOfAngle(DEA),108)",
+        "Equal(MeasureOfAngle(EAB),108)"
+      ]
+    },
+    "EquilateralHexagon(ABCDEF)": {
+      "ee_check": [
+        "Hexagon(ABCDEF)"
+      ],
+      "multi": [
+        "BCDEFA",
+        "CDEFAB",
+        "DEFABC",
+        "EFABCD",
+        "FABCDE"
+      ],
+      "extend": [
+        "Equal(LengthOfLine(AB),LengthOfLine(BC))",
+        "Equal(LengthOfLine(BC),LengthOfLine(CD))",
+        "Equal(LengthOfLine(CD),LengthOfLine(DE))",
+        "Equal(LengthOfLine(DE),LengthOfLine(EF))",
+        "Equal(LengthOfLine(EF),LengthOfLine(FA))"
+      ]
+    },
+    "RegularHexagon(ABCDEF)": {
+      "ee_check": [
+        "Hexagon(ABCDEF)"
+      ],
+      "multi": [
+        "BCDEFA",
+        "CDEFAB",
+        "DEFABC",
+        "EFABCD",
+        "FABCDE"
+      ],
+      "extend": [
+        "EquilateralHexagon(ABCDEF)",
+        "Equal(MeasureOfAngle(ABC),120)",
+        "Equal(MeasureOfAngle(BCD),120)",
+        "Equal(MeasureOfAngle(CDE),120)",
+        "Equal(MeasureOfAngle(DEF),120)",
+        "Equal(MeasureOfAngle(EFA),120)",
+        "Equal(MeasureOfAngle(FAB),120)"
+      ]
+    }
+  },
+  "Relation": {
+    "IsMidpointOfLine(M,AB)": {
+      "ee_check": [
+        "Point(M)",
+        "Line(AB)"
+      ],
+      "fv_check": [
+        "M,AB"
+      ],
+      "multi": [
+        "M,BA"
+      ],
+      "extend": [
+        "Equal(LengthOfLine(AM),LengthOfLine(MB))"
+      ]
+    },
+    "ParallelBetweenLine(AB,CD)": {
+      "ee_check": [
+        "Line(AB)",
+        "Line(CD)"
+      ],
+      "fv_check": [
+        "AB,CD"
+      ],
+      "multi": [
+        "DC,BA"
+      ],
+      "extend": []
+    },
+    "PerpendicularBetweenLine(AO,CO)": {
+      "ee_check": [
+        "Line(AO)",
+        "Line(CO)"
+      ],
+      "fv_check": [
+        "AO,CO"
+      ],
+      "multi": [],
+      "extend": [
+        "Equal(MeasureOfAngle(AOC),90)"
+      ]
+    },
+    "IsPerpendicularBisectorOfLine(CO,AB)": {
+      "ee_check": [
+        "Line(CO)",
+        "Line(AB)"
+      ],
+      "fv_check": [
+        "CO,AB"
+      ],
+      "multi": [],
+      "extend": [
+        "Perpendicular(AO,CO)",
+        "Perpendicular(CO,BO)",
+        "Midpoint(O,AB)"
+      ]
+    },
+    "IsBisectorOfAngle(BD,ABC)": {
+      "ee_check": [
+        "Line(BD)",
+        "Angle(ABC)"
+      ],
+      "fv_check": [
+        "BD,ABC"
+      ],
+      "multi": [],
+      "extend": [
+        "Equal(MeasureOfAngle(ABD),MeasureOfAngle(DBC))"
+      ]
+    },
+    "IsMedianOfTriangle(AD,ABC)": {
+      "ee_check": [
+        "Line(AD)",
+        "Triangle(ABC)"
+      ],
+      "fv_check": [
+        "AD,ABC"
+      ],
+      "multi": [],
+      "extend": [
+        "Midpoint(D,BC)"
+      ]
+    },
+    "IsAltitudeOfTriangle(AD,ABC)": {
+      "ee_check": [
+        "Line(AD)",
+        "Triangle(ABC)"
+      ],
+      "fv_check": [
+        "AD,ABC",
+        "AB,ABC",
+        "AC,ABC"
+      ],
+      "multi": [],
+      "extend": [
+        "Perpendicular(BD,AD)",
+        "Perpendicular(AD,CD)",
+        "Equal(LengthOfLine(AD),HeightOfTriangle(ABC))"
+      ]
+    },
+    "IsMidsegmentOfTriangle(DE,ABC)": {
+      "ee_check": [
+        "Line(DE)",
+        "Triangle(ABC)"
+      ],
+      "fv_check": [
+        "DE,ABC"
+      ],
+      "multi": [],
+      "extend": [
+        "Midpoint(D,AB)",
+        "Midpoint(E,AC)"
+      ]
+    },
+    "IsMidsegmentOfTrapezoid(EF,ABCD)": {
+      "ee_check": [
+        "Line(EF)",
+        "Quadrilateral(ABCD)"
+      ],
+      "fv_check": [
+        "FE,CDAB"
+      ],
+      "multi": [],
+      "extend": [
+        "Midpoint(E,AB)",
+        "Midpoint(F,CD)"
+      ]
+    },
+    "IsCircumcenterOfTriangle(O,ABC)": {
+      "ee_check": [
+        "Point(O)",
+        "Triangle(ABC)"
+      ],
+      "fv_check": [
+        "O,ABC"
+      ],
+      "multi": [
+        "O,BCA",
+        "O,CAB"
+      ],
+      "extend": []
+    },
+    "IsIncenterOfTriangle(O,ABC)": {
+      "ee_check": [
+        "Point(O)",
+        "Triangle(ABC)"
+      ],
+      "fv_check": [
+        "O,ABC"
+      ],
+      "multi": [
+        "O,BCA",
+        "O,CAB"
+      ],
+      "extend": []
+    },
+    "IsCentroidOfTriangle(O,ABC)": {
+      "ee_check": [
+        "Point(O)",
+        "Triangle(ABC)"
+      ],
+      "fv_check": [
+        "O,ABC"
+      ],
+      "multi": [
+        "O,BCA",
+        "O,CAB"
+      ],
+      "extend": []
+    },
+    "IsOrthocenterOfTriangle(O,ABC)": {
+      "ee_check": [
+        "Point(O)",
+        "Triangle(ABC)"
+      ],
+      "fv_check": [
+        "O,ABC",
+        "A,ABC",
+        "B,ABC",
+        "C,ABC"
+      ],
+      "multi": [
+        "O,BCA",
+        "O,CAB"
+      ],
+      "extend": []
+    },
+    "IsCircumcenterOfQuadrilateral(O,ABCD)": {
+      "ee_check": [
+        "Point(O)",
+        "Triangle(ABC)"
+      ],
+      "fv_check": [
+        "O,ABC"
+      ],
+      "multi": [
+        "O,BCA",
+        "O,CAB"
+      ],
+      "extend": []
+    },
+    "IsIncenterOfQuadrilateral(O,ABCD)": {
+      "ee_check": [
+        "Point(O)",
+        "Triangle(ABC)"
+      ],
+      "fv_check": [
+        "O,ABC"
+      ],
+      "multi": [
+        "O,BCA",
+        "O,CAB"
+      ],
+      "extend": []
+    },
+    "CongruentBetweenTriangle(ABC,DEF)": {
+      "ee_check": [
+        "Triangle(ABC)",
+        "Triangle(DEF)"
+      ],
+      "multi": [
+        "DEF,ABC",
+        "BCA,EFD",
+        "EFD,BCA",
+        "CAB,FDE",
+        "FDE,CAB"
+      ],
+      "extend": []
+    },
+    "SimilarBetweenTriangle(ABC,DEF)": {
+      "ee_check": [
+        "Triangle(ABC)",
+        "Triangle(DEF)"
+      ],
+      "multi": [
+        "DEF,ABC",
+        "BCA,EFD",
+        "EFD,BCA",
+        "CAB,FDE",
+        "FDE,CAB"
+      ],
+      "extend": []
+    },
+    "MirrorCongruentBetweenTriangle(ABC,DEF)": {
+      "ee_check": [
+        "Triangle(ABC)",
+        "Triangle(DEF)"
+      ],
+      "multi": [
+        "DEF,ABC",
+        "BCA,FDE",
+        "FDE,BCA",
+        "CAB,EFD",
+        "EFD,CAB"
+      ],
+      "extend": []
+    },
+    "MirrorSimilarBetweenTriangle(ABC,DEF)": {
+      "ee_check": [
+        "Triangle(ABC)",
+        "Triangle(DEF)"
+      ],
+      "multi": [
+        "DEF,ABC",
+        "BCA,FDE",
+        "FDE,BCA",
+        "CAB,EFD",
+        "EFD,CAB"
+      ],
+      "extend": []
+    },
+    "CongruentBetweenQuadrilateral(ABCD,EFGH)": {
+      "ee_check": [
+        "Quadrilateral(ABCD)",
+        "Quadrilateral(EFGH)"
+      ],
+      "multi": [
+        "BCDA,FGHE",
+        "CDAB,GHEF",
+        "DABC,HEFG",
+        "EFGH,ABCD",
+        "FGHE,BCDA",
+        "GHEF,CDAB",
+        "HEFG,DABC"
+      ],
+      "extend": []
+    },
+    "SimilarBetweenQuadrilateral(ABCD,EFGH)": {
+      "ee_check": [
+        "Quadrilateral(ABCD)",
+        "Quadrilateral(EFGH)"
+      ],
+      "multi": [
+        "BCDA,FGHE",
+        "CDAB,GHEF",
+        "DABC,HEFG",
+        "EFGH,ABCD",
+        "FGHE,BCDA",
+        "GHEF,CDAB",
+        "HEFG,DABC"
+      ],
+      "extend": []
+    },
+    "MirrorCongruentBetweenQuadrilateral(ABCD,EFGH)": {
+      "ee_check": [
+        "Quadrilateral(ABCD)",
+        "Quadrilateral(EFGH)"
+      ],
+      "multi": [
+        "BCDA,HEFG",
+        "CDAB,GHEF",
+        "DABC,FGHE",
+        "EFGH,ABCD",
+        "HEFG,BCDA",
+        "GHEF,CDAB",
+        "FGHE,DABC"
+      ],
+      "extend": []
+    },
+    "MirrorSimilarBetweenQuadrilateral(ABCD,EFGH)": {
+      "ee_check": [
+        "Quadrilateral(ABCD)",
+        "Quadrilateral(EFGH)"
+      ],
+      "multi": [
+        "BCDA,HEFG",
+        "CDAB,GHEF",
+        "DABC,FGHE",
+        "EFGH,ABCD",
+        "HEFG,BCDA",
+        "GHEF,CDAB",
+        "FGHE,DABC"
+      ],
+      "extend": []
+    },
+    "IsRadiusOfCircle(AO,O)": {
+      "ee_check": [
+        "Line(AO)",
+        "Circle(O)"
+      ],
+      "fv_check": [
+        "AO,O"
+      ],
+      "multi": [],
+      "extend": []
+    },
+    "IsDiameterOfCircle(AB,O)": {
+      "ee_check": [
+        "Line(AB)",
+        "Circle(O)"
+      ],
+      "fv_check": [
+        "AB,O"
+      ],
+      "multi": [
+        "BA,O"
+      ],
+      "extend": [
+        "IsRadiusOfCircle(AO,O)",
+        "IsRadiusOfCircle(BO,O)"
+      ]
+    },
+    "IsChordOfCircle(AB,O)": {
+      "ee_check": [
+        "Line(AB)",
+        "Circle(O)"
+      ],
+      "fv_check": [
+        "AB,O"
+      ],
+      "multi": [],
+      "extend": []
+    },
+    "IsTangentOfCircle(AB,O,P)": {
+      "ee_check": [
+        "Line(AB)",
+        "Circle(O)",
+        "Point(P)"
+      ],
+      "fv_check": [
+        "AB,O,P",
+        "AB,O,A",
+        "AB,O,B"
+      ],
+      "multi": [],
+      "extend": []
+    }
+  },
+  "Attribution": {
+    "LengthOfLine(AB)": {
+      "ee_check": [
+        "Line(AB)"
+      ],
+      "sym": "ll",
+      "multi": [
+        "BA"
+      ]
+    },
+    "LengthOfArc(AB)": {
+      "ee_check": [
+        "Arc(AB)"
+      ],
+      "sym": "la",
+      "multi": []
+    },
+    "MeasureOfAngle(ABC)": {
+      "ee_check": [
+        "Angle(ABC)"
+      ],
+      "sym": "ma",
+      "multi": []
+    },
+    "AreaOfTriangle(ABC)": {
+      "ee_check": [
+        "Triangle(ABC)"
+      ],
+      "sym": "at",
+      "multi": [
+        "BCA",
+        "CAB"
+      ]
+    },
+    "PerimeterOfTriangle(ABC)": {
+      "ee_check": [
+        "Triangle(ABC)"
+      ],
+      "sym": "pt",
+      "multi": [
+        "BCA",
+        "CAB"
+      ]
+    },
+    "AreaOfQuadrilateral(ABCD)": {
+      "ee_check": [
+        "Quadrilateral(ABCD)"
+      ],
+      "sym": "aq",
+      "multi": [
+        "BCDA",
+        "CDAB",
+        "DABC"
+      ]
+    },
+    "PerimeterOfQuadrilateral(ABCD)": {
+      "ee_check": [
+        "Quadrilateral(ABCD)"
+      ],
+      "sym": "pq",
+      "multi": [
+        "BCDA",
+        "CDAB",
+        "DABC"
+      ]
+    },
+    "HeightOfTriangle(ABC)": {
+      "ee_check": [
+        "Triangle(ABC)"
+      ],
+      "sym": "ht",
+      "multi": []
+    },
+    "HeightOfQuadrilateral(ABCD)": {
+      "ee_check": [
+        "Triangle(ABC)"
+      ],
+      "sym": "hq",
+      "multi": []
+    },
+    "RatioOfSimilarTriangle(ABC,DEF)": {
+      "ee_check": [
+        "Triangle(ABC)",
+        "Triangle(DEF)"
+      ],
+      "sym": "rt",
+      "multi": [
+        "BCA,EFD",
+        "CAB,FDE"
+      ]
+    },
+    "RatioOfMirrorSimilarTriangle(ABC,DEF)": {
+      "ee_check": [
+        "Triangle(ABC)",
+        "Triangle(DEF)"
+      ],
+      "sym": "rmt",
+      "multi": [
+        "BCA,FDE",
+        "CAB,EFD"
+      ]
+    },
+    "RatioOfSimilarQuadrilateral(ABCD,EFGH)": {
+      "ee_check": [
+        "Quadrilateral(ABCD)",
+        "Quadrilateral(EFGH)"
+      ],
+      "sym": "rq",
+      "multi": [
+        "BCDA,FGHE",
+        "CDAB,GHEF",
+        "DABC,HEFG"
+      ]
+    },
+    "RatioOfMirrorSimilarQuadrilateral(ABCD,EFGH)": {
+      "ee_check": [
+        "Quadrilateral(ABCD)",
+        "Quadrilateral(EFGH)"
+      ],
+      "sym": "rmq",
+      "multi": [
+        "BCDA,HEFG",
+        "CDAB,GHEF",
+        "DABC,FGHE"
+      ]
+    }
+  },
+  "Preset": [
+    "Attribution-Free",
+    "Algebra-Equal"
+  ]
 }

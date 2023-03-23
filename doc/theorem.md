@@ -1,7 +1,7 @@
 ## 附录3 定理标注对照手册
 #### line_addition(AB,BC)
 <div>
-    <img src="cowork-pic/line_addition.png"  width="20%">
+    <img src="cowork-pic/line_addition.png"   width="20%"
 </div>
 
     # branch 1
@@ -11,7 +11,7 @@
 
 #### angle_addition(ABC,CBD)
 <div>
-    <img src="cowork-pic/angle_addition.png"  width="20%">
+    <img src="cowork-pic/angle_addition.png"   width="20%"
 </div>
 
     # branch 1
@@ -19,20 +19,32 @@
     conclusion: Equal(MeasureOfAngle(ABD),Add(MeasureOfAngle(ABC),MeasureOfAngle(CBD)))
 **Notes**:  
 
+#### area_addition(BCA,ACD)
+<div>
+    <img src="cowork-pic/area_addition.png"   width="20%"
+</div>
+
+    # branch 1
+    premise: Quadrilateral(ABCD)&Triangle(BCA)&Triangle(ACD)
+    conclusion: Equal(AreaOfQuadrilateral(ABCD),Add(AreaOfTriangle(BCA),AreaOfTriangle(ACD)))
+    # branch 2
+    premise: Triangle(ABD)&Triangle(BCA)&Triangle(ACD)
+    conclusion: Equal(AreaOfTriangle(ABD),Add(AreaOfTriangle(BCA),AreaOfTriangle(ACD)))
+**Notes**:  
+
 #### flat_angle(ABC)
 <div>
-    <img src="cowork-pic/flat_angle.png"  width="20%">
+    <img src="cowork-pic/flat_angle.png"   width="20%"
 </div>
 
     # branch 1
     premise: Collinear(ABC)
     conclusion: Equal(MeasureOfAngle(ABC),180)
-
 **Notes**:  
 
 #### adjacent_complementary_angle(AOB,BOC)
 <div>
-    <img src="cowork-pic/adjacent_complementary_angle.png"  width="20%">
+    <img src="cowork-pic/adjacent_complementary_angle.png"   width="20%"
 </div>
 
     # branch 1
@@ -40,9 +52,19 @@
     conclusion: Equal(Add(MeasureOfAngle(AOB),MeasureOfAngle(BOC)),180)
 **Notes**:  
 
+#### vertical_angle(AOC,BOD)
+<div>
+    <img src="cowork-pic/vertical_angle.png"   width="20%"
+</div>
+
+    # branch 1
+    premise: Collinear(AOB)&Collinear(COD)
+    conclusion: Equal(MeasureOfAngle(AOC),MeasureOfAngle(BOD))
+**Notes**:  
+
 #### midpoint_judgment(M,AB)
 <div>
-    <img src="cowork-pic/midpoint_judgment.png"  width="20%">
+    <img src="cowork-pic/midpoint_judgment.png"   width="20%"
 </div>
 
     # branch 1
@@ -52,17 +74,17 @@
 
 #### triangle_area_formula_common(AD,ABC)
 <div>
-    <img src="cowork-pic/triangle_area_formula_common.png"  width="20%">
+    <img src="cowork-pic/triangle_area_formula_common.png"   width="20%"
 </div>
 
     # branch 1
     premise: IsAltitude(AD,ABC)
-    conclusion: Equal(AreaOfTriangle(ABC),Mul(LengthOfLine(AD),LengthOfLine(BC),0.5))
+    conclusion: Equal(AreaOfTriangle(ABC),Mul(LengthOfLine(AD),LengthOfLine(BC),1/2))
 **Notes**:  
 
 #### triangle_area_formula_heron(ABC)
 <div>
-    <img src="cowork-pic/triangle_area_formula_heron.png"  width="20%">
+    <img src="cowork-pic/triangle_area_formula_heron.png"   width="20%"
 </div>
 
     # branch 1
@@ -72,7 +94,7 @@
 
 #### triangle_area_formula_sine(ABC)
 <div>
-    <img src="cowork-pic/triangle_area_formula_sine.png"  width="20%">
+    <img src="cowork-pic/triangle_area_formula_sine.png"   width="20%"
 </div>
 
     # branch 1
@@ -82,7 +104,7 @@
 
 #### triangle_perimeter_formula(ABC)
 <div>
-    <img src="cowork-pic/triangle_perimeter_formula.png"  width="20%">
+    <img src="cowork-pic/triangle_perimeter_formula.png"   width="20%"
 </div>
 
     # branch 1
@@ -92,7 +114,7 @@
 
 #### triangle_property_angle_sum(ABC)
 <div>
-    <img src="cowork-pic/triangle_property_angle_sum.png"  width="20%">
+    <img src="cowork-pic/triangle_property_angle_sum.png"   width="20%"
 </div>
 
     # branch 1
@@ -102,7 +124,7 @@
 
 #### triangle_property_equal_line_to_equal_angle(ABC)
 <div>
-    <img src="cowork-pic/triangle_property_equal_line_to_equal_angle.png"  width="20%">
+    <img src="cowork-pic/triangle_property_equal_line_to_equal_angle.png"   width="20%"
 </div>
 
     # branch 1
@@ -112,7 +134,7 @@
 
 #### triangle_property_equal_angle_to_equal_line(ABC)
 <div>
-    <img src="cowork-pic/triangle_property_equal_angle_to_equal_line.png"  width="20%">
+    <img src="cowork-pic/triangle_property_equal_angle_to_equal_line.png"   width="20%"
 </div>
 
     # branch 1
@@ -122,7 +144,7 @@
 
 #### sine_theorem(ABC)
 <div>
-    <img src="cowork-pic/sine_theorem.png"  width="20%">
+    <img src="cowork-pic/sine_theorem.png"   width="20%"
 </div>
 
     # branch 1
@@ -132,7 +154,7 @@
 
 #### cosine_theorem(ABC)
 <div>
-    <img src="cowork-pic/cosine_theorem.png"  width="20%">
+    <img src="cowork-pic/cosine_theorem.png"   width="20%"
 </div>
 
     # branch 1
@@ -142,7 +164,7 @@
 
 #### parallel_judgment_alternate_interior_angle(AB,CD)
 <div>
-    <img src="cowork-pic/parallel_judgment_alternate_interior_angle.png"  width="20%">
+    <img src="cowork-pic/parallel_judgment_alternate_interior_angle.png"   width="20%"
 </div>
 
     # branch 1
@@ -150,9 +172,9 @@
     conclusion: Parallel(AB,CD)
 **Notes**:  
 
-#### parallel_judgment_Ipsilateral_internal_angle(AB,CD)
+#### parallel_judgment_ipsilateral_internal_angle(AB,CD)
 <div>
-    <img src="cowork-pic/parallel_judgment_Ipsilateral_internal_angle.png"  width="20%">
+    <img src="cowork-pic/parallel_judgment_ipsilateral_internal_angle.png"   width="20%"
 </div>
 
     # branch 1
@@ -160,9 +182,22 @@
     conclusion: Parallel(AB,CD)
 **Notes**:  
 
+#### parallel_judgment_corresponding_angle(AB,CD,E)
+<div>
+    <img src="cowork-pic/parallel_judgment_corresponding_angle.png"   width="20%"
+</div>
+
+    # branch 1
+    premise: Angle(EAB)&Angle(ACD)&Collinear(EAC)&Equal(MeasureOfAngle(EAB),MeasureOfAngle(ACD))
+    conclusion: Parallel(AB,CD)
+    # branch 2
+    premise: Angle(BAC)&Angle(DCE)&Collinear(ACE)&Equal(MeasureOfAngle(BAC),MeasureOfAngle(DCE))
+    conclusion: Parallel(AB,CD)
+**Notes**:  
+
 #### parallel_judgment_par_par(AB,CD,EF)
 <div>
-    <img src="cowork-pic/parallel_judgment_par_par.png"  width="20%">
+    <img src="cowork-pic/parallel_judgment_par_par.png"   width="20%"
 </div>
 
     # branch 1
@@ -172,7 +207,7 @@
 
 #### parallel_judgment_per_per(AB,CD)
 <div>
-    <img src="cowork-pic/parallel_judgment_per_per.png"  width="40%">
+    <img src="cowork-pic/parallel_judgment_per_per.png"   width="20%"
 </div>
 
     # branch 1
@@ -185,7 +220,7 @@
 
 #### parallel_property_collinear_extend(AB,CD,M)
 <div>
-    <img src="cowork-pic/parallel_property_collinear_extend.png"  width="60%">
+    <img src="cowork-pic/parallel_property_collinear_extend.png"   width="20%"
 </div>
 
     # branch 1
@@ -204,17 +239,20 @@
 
 #### parallel_property_alternate_interior_angle(AB,CD)
 <div>
-    <img src="cowork-pic/parallel_property_alternate_interior_angle.png"  width="20%">
+    <img src="cowork-pic/parallel_property_alternate_interior_angle.png"   width="20%"
 </div>
 
     # branch 1
     premise: Parallel(AB,CD)&Line(AD)
     conclusion: Equal(MeasureOfAngle(BAD),MeasureOfAngle(CDA))
+    # branch 2
+    premise: Parallel(AB,CD)&Line(BC)
+    conclusion: Equal(MeasureOfAngle(CBA),MeasureOfAngle(BCD))
 **Notes**:  
 
-#### parallel_property_Ipsilateral_internal_angle(AB,CD)
+#### parallel_property_ipsilateral_internal_angle(AB,CD)
 <div>
-    <img src="cowork-pic/parallel_property_Ipsilateral_internal_angle.png"  width="20%">
+    <img src="cowork-pic/parallel_property_ipsilateral_internal_angle.png"   width="20%"
 </div>
 
     # branch 1
@@ -224,7 +262,7 @@
 
 #### parallel_property_corresponding_angle(AB,CD,E)
 <div>
-    <img src="cowork-pic/parallel_property_corresponding_angle.png"  width="40%">
+    <img src="cowork-pic/parallel_property_corresponding_angle.png"   width="20%"
 </div>
 
     # branch 1
@@ -237,7 +275,7 @@
 
 #### parallel_property_extend_perpendicular(AB,CD)
 <div>
-    <img src="cowork-pic/parallel_property_extend_perpendicular.png"  width="30%">
+    <img src="cowork-pic/parallel_property_extend_perpendicular.png"   width="20%"
 </div>
 
     # branch 1
@@ -248,19 +286,9 @@
     conclusion: Perpendicular(AC,DC)
 **Notes**:  
 
-#### intersect_property_vertical_angle(O,AB,CD)
-<div>
-    <img src="cowork-pic/intersect_property_vertical_angle.png"  width="20%">
-</div>
-
-    # branch 1
-    premise: Intersect(O,AB,CD)
-    conclusion: Equal(MeasureOfAngle(AOC),MeasureOfAngle(BOD))
-**Notes**:  
-
 #### bisector_judgment_angle_equal(BD,ABC)
 <div>
-    <img src="cowork-pic/bisector_judgment_angle_equal.png"  width="20%">
+    <img src="cowork-pic/bisector_judgment_angle_equal.png"   width="20%"
 </div>
 
     # branch 1
@@ -268,9 +296,19 @@
     conclusion: Bisector(BD,ABC)
 **Notes**:  
 
+#### bisector_judgment_distance_equal(BD,ABC)
+<div>
+    <img src="cowork-pic/bisector_judgment_distance_equal.png"   width="20%"
+</div>
+
+    # branch 1
+    premise: Angle(ABC)&Line(BD)&Perpendicular(DA,BA)&Perpendicular(BC,DC)&Equal(LengthOfLine(DA),LengthOfLine(DC))
+    conclusion: Bisector(BD,ABC)
+**Notes**:  
+
 #### bisector_property_line_ratio(BD,ABC)
 <div>
-    <img src="cowork-pic/bisector_property_line_ratio.png"  width="20%">
+    <img src="cowork-pic/bisector_property_line_ratio.png"   width="20%"
 </div>
 
     # branch 1
@@ -280,7 +318,7 @@
 
 #### median_judgment(AD,ABC)
 <div>
-    <img src="cowork-pic/median_judgment.png"  width="20%">
+    <img src="cowork-pic/median_judgment.png"   width="20%"
 </div>
 
     # branch 1
@@ -290,7 +328,7 @@
 
 #### neutrality_judgment_parallel(DE,ABC)
 <div>
-    <img src="cowork-pic/neutrality_judgment_parallel.png"  width="20%">
+    <img src="cowork-pic/neutrality_judgment_parallel.png"   width="20%"
 </div>
 
     # branch 1
@@ -300,7 +338,7 @@
 
 #### neutrality_property_angle_equal(DE,ABC)
 <div>
-    <img src="cowork-pic/neutrality_property_angle_equal.png"  width="20%">
+    <img src="cowork-pic/neutrality_property_angle_equal.png"   width="20%"
 </div>
 
     # branch 1
@@ -311,7 +349,7 @@
 
 #### neutrality_property_line_ratio(DE,ABC)
 <div>
-    <img src="cowork-pic/neutrality_property_line_ratio.png"  width="20%">
+    <img src="cowork-pic/neutrality_property_line_ratio.png"   width="20%"
 </div>
 
     # branch 1
@@ -321,7 +359,7 @@
 
 #### neutrality_property_similar(DE,ABC)
 <div>
-    <img src="cowork-pic/neutrality_property_similar.png"  width="20%">
+    <img src="cowork-pic/neutrality_property_similar.png"   width="20%"
 </div>
 
     # branch 1
@@ -329,29 +367,52 @@
     conclusion: Similar(ABC,ADE)
 **Notes**:  
 
-#### altitude_judgment(AD,ABC)
+#### midsegment_property_similar(DE,ABC)
 <div>
-    <img src="cowork-pic/altitude_judgment.png"  width="20%">
+    <img src="cowork-pic/midsegment_property_similar.png"   width="20%"
+</div>
+
+    # branch 1
+    premise: Midsegment(DE,ABC)
+    conclusion: Similar(ABC,ADE)
+**Notes**:  
+
+#### is_altitude_judgment(AD,ABC)
+<div>
+    <img src="cowork-pic/is_altitude_judgment.png"   width="20%"
 </div>
 
     # branch 1
     premise: Triangle(ABC)&Collinear(BDC)&Line(AD)&(Equal(MeasureOfAngle(BDA),90)|Equal(MeasureOfAngle(ADC),90))
     conclusion: IsAltitude(AD,ABC)
+    # branch 2
+    premise: Triangle(ABC)&Line(AD)&(Collinear(DBC)&Equal(MeasureOfAngle(ADB),90)|Collinear(BCD)&Equal(MeasureOfAngle(ACD),90))
+    conclusion: IsAltitude(AD,ABC)
 **Notes**:  
 
-#### perpendicular_bisector_judgment(AB,CO)
+#### perpendicular_bisector_judgment_per_and_mid(AB,CO)
 <div>
-    <img src="cowork-pic/perpendicular_bisector_judgment.png"  width="20%">
+    <img src="cowork-pic/perpendicular_bisector_judgment_per_and_mid.png"   width="20%"
 </div>
 
     # branch 1
-    premise: Collinear(AOB)&(Perpendicular(AO,CO)|Equal(MeasureOfAngle(AOC),90)|Perpendicular(CO,BO)|Equal(MeasureOfAngle(COB),90))&(Midpoint(O,AB)|Equal(LengthOfLine(AO),LengthOfLine(OB)))
+    premise: Collinear(AOB)&(Equal(MeasureOfAngle(AOC),90)|Equal(MeasureOfAngle(COB),90))&Equal(LengthOfLine(AO),LengthOfLine(OB))
+    conclusion: PerpendicularBisector(AB,CO)
+**Notes**:  
+
+#### perpendicular_bisector_judgment_distance_equal(AB,CO)
+<div>
+    <img src="cowork-pic/perpendicular_bisector_judgment_distance_equal.png"   width="20%"
+</div>
+
+    # branch 1
+    premise: Collinear(AOB)&(Equal(MeasureOfAngle(AOC),90)|Equal(MeasureOfAngle(COB),90))&Equal(LengthOfLine(CA),LengthOfLine(CB))
     conclusion: PerpendicularBisector(AB,CO)
 **Notes**:  
 
 #### perpendicular_bisector_property_distance_equal(AB,CO)
 <div>
-    <img src="cowork-pic/perpendicular_bisector_property_distance_equal.png"  width="20%">
+    <img src="cowork-pic/perpendicular_bisector_property_distance_equal.png"   width="20%"
 </div>
 
     # branch 1
@@ -361,7 +422,7 @@
 
 #### perpendicular_bisector_property_bisector(AB,CO)
 <div>
-    <img src="cowork-pic/perpendicular_bisector_property_bisector.png"  width="20%">
+    <img src="cowork-pic/perpendicular_bisector_property_bisector.png"   width="20%"
 </div>
 
     # branch 1
@@ -371,7 +432,7 @@
 
 #### perpendicular_judgment_angle(AO,CO)
 <div>
-    <img src="cowork-pic/perpendicular_judgment_angle.png"  width="20%">
+    <img src="cowork-pic/perpendicular_judgment_angle.png"   width="20%"
 </div>
 
     # branch 1
@@ -381,7 +442,7 @@
 
 #### perpendicular_property_collinear_extend(AO,CO,B)
 <div>
-    <img src="cowork-pic/perpendicular_property_collinear_extend.png"  width="80%">
+    <img src="cowork-pic/perpendicular_property_collinear_extend.png"   width="20%"
 </div>
 
     # branch 1
@@ -400,17 +461,17 @@
 
 #### right_triangle_judgment_angle(ABC)
 <div>
-    <img src="cowork-pic/right_triangle_judgment_angle.png"  width="20%">
+    <img src="cowork-pic/right_triangle_judgment_angle.png"   width="20%"
 </div>
 
     # branch 1
-    premise: Triangle(ABC)&(Perpendicular(AB,CB)|Equal(MeasureOfAngle(ABC),90))
+    premise: Triangle(ABC)&Equal(MeasureOfAngle(ABC),90)
     conclusion: RightTriangle(ABC)
 **Notes**:  
 
 #### right_triangle_judgment_pythagorean_inverse(ABC)
 <div>
-    <img src="cowork-pic/right_triangle_judgment_pythagorean_inverse.png"  width="20%">
+    <img src="cowork-pic/right_triangle_judgment_pythagorean_inverse.png"   width="20%"
 </div>
 
     # branch 1
@@ -420,7 +481,7 @@
 
 #### right_triangle_property_pythagorean(ABC)
 <div>
-    <img src="cowork-pic/right_triangle_property_pythagorean.png"  width="20%">
+    <img src="cowork-pic/right_triangle_property_pythagorean.png"   width="20%"
 </div>
 
     # branch 1
@@ -430,33 +491,33 @@
 
 #### right_triangle_property_special_rt_30_60(ABC)
 <div>
-    <img src="cowork-pic/right_triangle_property_special_rt_30_60.png"  width="40%">
+    <img src="cowork-pic/right_triangle_property_special_rt_30_60.png"   width="20%"
 </div>
 
     # branch 1
     premise: RightTriangle(ABC)&(Equal(MeasureOfAngle(CAB),30)|Equal(MeasureOfAngle(BCA),60))
-    conclusion: Equal(LengthOfLine(AB),Mul(LengthOfLine(BC),1.7321))
+    conclusion: Equal(LengthOfLine(AB),Mul(LengthOfLine(BC),√3))
                 Equal(LengthOfLine(AC),Mul(LengthOfLine(BC),2))
     # branch 2
     premise: RightTriangle(ABC)&(Equal(MeasureOfAngle(CAB),60)|Equal(MeasureOfAngle(BCA),30))
-    conclusion: Equal(LengthOfLine(BC),Mul(LengthOfLine(AB),1.7321))
+    conclusion: Equal(LengthOfLine(BC),Mul(LengthOfLine(AB),√3))
                 Equal(LengthOfLine(AC),Mul(LengthOfLine(AB),2))
 **Notes**:  
 
 #### right_triangle_property_special_rt_45_45(ABC)
 <div>
-    <img src="cowork-pic/right_triangle_property_special_rt_45_45.png"  width="20%">
+    <img src="cowork-pic/right_triangle_property_special_rt_45_45.png"   width="20%"
 </div>
 
     # branch 1
     premise: RightTriangle(ABC)&(Equal(MeasureOfAngle(CAB),45)|Equal(MeasureOfAngle(BCA),45))
     conclusion: Equal(LengthOfLine(AB),LengthOfLine(BC))
-                Equal(LengthOfLine(AC),Mul(LengthOfLine(AB),1.4142))
+                Equal(LengthOfLine(AC),Mul(LengthOfLine(AB),√2))
 **Notes**:  
 
 #### isosceles_triangle_judgment_angle_equal(ABC)
 <div>
-    <img src="cowork-pic/isosceles_triangle_judgment_angle_equal.png"  width="20%">
+    <img src="cowork-pic/isosceles_triangle_judgment_angle_equal.png"   width="20%"
 </div>
 
     # branch 1
@@ -466,7 +527,7 @@
 
 #### isosceles_triangle_judgment_equilateral(ABC)
 <div>
-    <img src="cowork-pic/isosceles_triangle_judgment_equilateral.png"  width="20%">
+    <img src="cowork-pic/isosceles_triangle_judgment_equilateral.png"   width="20%"
 </div>
 
     # branch 1
@@ -476,7 +537,7 @@
 
 #### isosceles_triangle_judgment_line_equal(ABC)
 <div>
-    <img src="cowork-pic/isosceles_triangle_judgment_line_equal.png"  width="20%">
+    <img src="cowork-pic/isosceles_triangle_judgment_line_equal.png"   width="20%"
 </div>
 
     # branch 1
@@ -486,7 +547,7 @@
 
 #### isosceles_triangle_property_angle_equal(ABC)
 <div>
-    <img src="cowork-pic/isosceles_triangle_property_angle_equal.png"  width="20%">
+    <img src="cowork-pic/isosceles_triangle_property_angle_equal.png"   width="20%"
 </div>
 
     # branch 1
@@ -494,9 +555,9 @@
     conclusion: Equal(MeasureOfAngle(ABC),MeasureOfAngle(BCA))
 **Notes**:  
 
-#### isosceles_triangle_property_line_coincidence(ABC)
+#### isosceles_triangle_property_line_coincidence(ABC,M)
 <div>
-    <img src="cowork-pic/isosceles_triangle_property_line_coincidence.png"  width="20%">
+    <img src="cowork-pic/isosceles_triangle_property_line_coincidence.png"   width="20%"
 </div>
 
     # branch 1
@@ -515,7 +576,7 @@
 
 #### equilateral_triangle_judgment_angle_equal(ABC)
 <div>
-    <img src="cowork-pic/equilateral_triangle_judgment_angle_equal.png"  width="20%">
+    <img src="cowork-pic/equilateral_triangle_judgment_angle_equal.png"   width="20%"
 </div>
 
     # branch 1
@@ -525,7 +586,7 @@
 
 #### equilateral_triangle_judgment_isos_and_angle(ABC)
 <div>
-    <img src="cowork-pic/equilateral_triangle_judgment_isos_and_angle.png"  width="20%">
+    <img src="cowork-pic/equilateral_triangle_judgment_isos_and_angle.png"   width="20%"
 </div>
 
     # branch 1
@@ -535,7 +596,7 @@
 
 #### equilateral_triangle_judgment_line_equal(ABC)
 <div>
-    <img src="cowork-pic/equilateral_triangle_judgment_line_equal.png"  width="20%">
+    <img src="cowork-pic/equilateral_triangle_judgment_line_equal.png"   width="20%"
 </div>
 
     # branch 1
@@ -545,7 +606,7 @@
 
 #### equilateral_triangle_property_angle(ABC)
 <div>
-    <img src="cowork-pic/equilateral_triangle_property_angle.png"  width="20%">
+    <img src="cowork-pic/equilateral_triangle_property_angle.png"   width="20%"
 </div>
 
     # branch 1
@@ -555,7 +616,7 @@
 
 #### equilateral_triangle_property_line_equal(ABC)
 <div>
-    <img src="cowork-pic/equilateral_triangle_property_line_equal.png"  width="20%">
+    <img src="cowork-pic/equilateral_triangle_property_line_equal.png"   width="20%"
 </div>
 
     # branch 1
@@ -565,7 +626,7 @@
 
 #### congruent_judgment_aas(ABC,DEF)
 <div>
-    <img src="cowork-pic/congruent_judgment_aas.png"  width="40%">
+    <img src="cowork-pic/congruent_judgment_aas.png"   width="20%"
 </div>
 
     # branch 1
@@ -578,7 +639,7 @@
 
 #### congruent_judgment_asa(ABC,DEF)
 <div>
-    <img src="cowork-pic/congruent_judgment_asa.png"  width="40%">
+    <img src="cowork-pic/congruent_judgment_asa.png"   width="20%"
 </div>
 
     # branch 1
@@ -591,7 +652,7 @@
 
 #### congruent_judgment_hl(ABC,DEF)
 <div>
-    <img src="cowork-pic/congruent_judgment_hl.png"  width="40%">
+    <img src="cowork-pic/congruent_judgment_hl.png"   width="20%"
 </div>
 
     # branch 1
@@ -604,7 +665,7 @@
 
 #### congruent_judgment_sas(ABC,DEF)
 <div>
-    <img src="cowork-pic/congruent_judgment_sas.png"  width="40%">
+    <img src="cowork-pic/congruent_judgment_sas.png"   width="20%"
 </div>
 
     # branch 1
@@ -617,7 +678,7 @@
 
 #### congruent_judgment_sss(ABC,DEF)
 <div>
-    <img src="cowork-pic/congruent_judgment_sss.png"  width="40%">
+    <img src="cowork-pic/congruent_judgment_sss.png"   width="20%"
 </div>
 
     # branch 1
@@ -630,7 +691,7 @@
 
 #### congruent_property_angle_equal(ABC,DEF)
 <div>
-    <img src="cowork-pic/congruent_property_angle_equal.png"  width="40%">
+    <img src="cowork-pic/congruent_property_angle_equal.png"   width="20%"
 </div>
 
     # branch 1
@@ -643,7 +704,7 @@
 
 #### congruent_property_area_equal(ABC,DEF)
 <div>
-    <img src="cowork-pic/congruent_property_area_equal.png"  width="40%">
+    <img src="cowork-pic/congruent_property_area_equal.png"   width="20%"
 </div>
 
     # branch 1
@@ -656,20 +717,20 @@
 
 #### congruent_property_line_equal(ABC,DEF)
 <div>
-    <img src="cowork-pic/congruent_property_line_equal.png"  width="40%">
+    <img src="cowork-pic/congruent_property_line_equal.png"   width="20%"
 </div>
 
     # branch 1
     premise: Congruent(ABC,DEF)
-    conclusion: Equal(LengthOfLine(AB),LengthOfLine(DE))
+    conclusion: Equal(LengthOfLine(BC),LengthOfLine(EF))
     # branch 2
     premise: MirrorCongruent(ABC,DEF)
-    conclusion: Equal(LengthOfLine(AB),LengthOfLine(DF))
+    conclusion: Equal(LengthOfLine(BC),LengthOfLine(EF))
 **Notes**:  
 
 #### congruent_property_perimeter_equal(ABC,DEF)
 <div>
-    <img src="cowork-pic/congruent_property_perimeter_equal.png"  width="40%">
+    <img src="cowork-pic/congruent_property_perimeter_equal.png"   width="20%"
 </div>
 
     # branch 1
@@ -682,7 +743,7 @@
 
 #### similar_judgment_aa(ABC,DEF)
 <div>
-    <img src="cowork-pic/similar_judgment_aa.png"  width="40%">
+    <img src="cowork-pic/similar_judgment_aa.png"   width="20%"
 </div>
 
     # branch 1
@@ -695,7 +756,7 @@
 
 #### similar_judgment_sas(ABC,DEF)
 <div>
-    <img src="cowork-pic/similar_judgment_sas.png"  width="40%">
+    <img src="cowork-pic/similar_judgment_sas.png"   width="20%"
 </div>
 
     # branch 1
@@ -708,7 +769,7 @@
 
 #### similar_judgment_sss(ABC,DEF)
 <div>
-    <img src="cowork-pic/similar_judgment_sss.png"  width="40%">
+    <img src="cowork-pic/similar_judgment_sss.png"   width="20%"
 </div>
 
     # branch 1
@@ -721,7 +782,7 @@
 
 #### similar_property_angle_equal(ABC,DEF)
 <div>
-    <img src="cowork-pic/similar_property_angle_equal.png"  width="40%">
+    <img src="cowork-pic/similar_property_angle_equal.png"   width="20%"
 </div>
 
     # branch 1
@@ -734,20 +795,20 @@
 
 #### similar_property_area_square_ratio(ABC,DEF)
 <div>
-    <img src="cowork-pic/similar_property_area_square_ratio.png"  width="40%">
+    <img src="cowork-pic/similar_property_area_square_ratio.png"   width="20%"
 </div>
 
     # branch 1
     premise: Similar(ABC,DEF)
-    conclusion: Equal(Mul(LengthOfLine(AB),LengthOfLine(AB),AreaOfTriangle(DEF)),Mul(LengthOfLine(DE),LengthOfLine(DE),AreaOfTriangle(ABC)))
+    conclusion: Equal(Mul(LengthOfLine(BC),LengthOfLine(BC),AreaOfTriangle(DEF)),Mul(LengthOfLine(EF),LengthOfLine(EF),AreaOfTriangle(ABC)))
     # branch 2
     premise: MirrorSimilar(ABC,DEF)
-    conclusion: Equal(Mul(LengthOfLine(AB),LengthOfLine(AB),AreaOfTriangle(DEF)),Mul(LengthOfLine(FD),LengthOfLine(FD),AreaOfTriangle(ABC)))
+    conclusion: Equal(Mul(LengthOfLine(BC),LengthOfLine(BC),AreaOfTriangle(DEF)),Mul(LengthOfLine(EF),LengthOfLine(EF),AreaOfTriangle(ABC)))
 **Notes**:  
 
 #### similar_property_line_ratio(ABC,DEF)
 <div>
-    <img src="cowork-pic/similar_property_line_ratio.png"  width="40%">
+    <img src="cowork-pic/similar_property_line_ratio.png"   width="20%"
 </div>
 
     # branch 1
@@ -760,7 +821,7 @@
 
 #### similar_property_perimeter_ratio(ABC,DEF)
 <div>
-    <img src="cowork-pic/similar_property_perimeter_ratio.png"  width="40%">
+    <img src="cowork-pic/similar_property_perimeter_ratio.png"   width="20%"
 </div>
 
     # branch 1
@@ -773,7 +834,7 @@
 
 #### circumcenter_judgment(O,ABC,D,E)
 <div>
-    <img src="cowork-pic/circumcenter_judgment.png"  width="20%">
+    <img src="cowork-pic/circumcenter_judgment.png"   width="20%"
 </div>
 
     # branch 1
@@ -783,7 +844,7 @@
 
 #### circumcenter_property_intersect(O,ABC,D)
 <div>
-    <img src="cowork-pic/circumcenter_property_intersect.png"  width="20%">
+    <img src="cowork-pic/circumcenter_property_intersect.png"   width="20%"
 </div>
 
     # branch 1
@@ -796,7 +857,7 @@
 
 #### circumcenter_property_line_equal(O,ABC)
 <div>
-    <img src="cowork-pic/circumcenter_property_line_equal.png"  width="20%">
+    <img src="cowork-pic/circumcenter_property_line_equal.png"   width="20%"
 </div>
 
     # branch 1
@@ -806,7 +867,7 @@
 
 #### incenter_judgment(O,ABC)
 <div>
-    <img src="cowork-pic/incenter_judgment.png"  width="20%">
+    <img src="cowork-pic/incenter_judgment.png"   width="20%"
 </div>
 
     # branch 1
@@ -816,7 +877,7 @@
 
 #### incenter_property_intersect(O,ABC)
 <div>
-    <img src="cowork-pic/incenter_property_intersect.png"  width="20%">
+    <img src="cowork-pic/incenter_property_intersect.png"   width="20%"
 </div>
 
     # branch 1
@@ -826,7 +887,7 @@
 
 #### incenter_property_line_equal(O,ABC,D,E)
 <div>
-    <img src="cowork-pic/incenter_property_line_equal.png"  width="20%">
+    <img src="cowork-pic/incenter_property_line_equal.png"   width="20%"
 </div>
 
     # branch 1
@@ -836,7 +897,7 @@
 
 #### centroid_judgment(O,ABC,M,N)
 <div>
-    <img src="cowork-pic/centroid_judgment.png"  width="20%">
+    <img src="cowork-pic/centroid_judgment.png"   width="20%"
 </div>
 
     # branch 1
@@ -846,7 +907,7 @@
 
 #### centroid_property_intersect(O,ABC,M)
 <div>
-    <img src="cowork-pic/centroid_property_intersect.png"  width="20%">
+    <img src="cowork-pic/centroid_property_intersect.png"   width="20%"
 </div>
 
     # branch 1
@@ -856,7 +917,7 @@
 
 #### centroid_property_line_equal(O,ABC,M)
 <div>
-    <img src="cowork-pic/centroid_property_line_equal.png"  width="20%">
+    <img src="cowork-pic/centroid_property_line_equal.png"   width="20%"
 </div>
 
     # branch 1
@@ -866,7 +927,7 @@
 
 #### orthocenter_judgment(O,ABC,D,E)
 <div>
-    <img src="cowork-pic/orthocenter_judgment.png"  width="20%">
+    <img src="cowork-pic/orthocenter_judgment.png"   width="20%"
 </div>
 
     # branch 1
@@ -876,7 +937,7 @@
 
 #### orthocenter_property_intersect(O,ABC,D)
 <div>
-    <img src="cowork-pic/orthocenter_property_intersect.png"  width="20%">
+    <img src="cowork-pic/orthocenter_property_intersect.png"   width="20%"
 </div>
 
     # branch 1
@@ -886,7 +947,7 @@
 
 #### orthocenter_property_angle(O,ABC)
 <div>
-    <img src="cowork-pic/orthocenter_property_angle.png"  width="20%">
+    <img src="cowork-pic/orthocenter_property_angle.png"   width="20%"
 </div>
 
     # branch 1

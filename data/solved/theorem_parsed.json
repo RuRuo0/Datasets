@@ -130,6 +130,152 @@
       ]
     ]
   },
+  "area_addition": {
+    "vars": [
+      "b",
+      "c",
+      "a",
+      "a",
+      "c",
+      "d"
+    ],
+    "para_len": [
+      3,
+      3
+    ],
+    "body": [
+      [
+        [
+          [
+            "Quadrilateral",
+            [
+              "a",
+              "b",
+              "c",
+              "d"
+            ]
+          ],
+          [
+            "Triangle",
+            [
+              "b",
+              "c",
+              "a"
+            ]
+          ],
+          [
+            "Triangle",
+            [
+              "a",
+              "c",
+              "d"
+            ]
+          ]
+        ],
+        [
+          [
+            "Equal",
+            [
+              [
+                "AreaOfQuadrilateral",
+                [
+                  "a",
+                  "b",
+                  "c",
+                  "d"
+                ]
+              ],
+              [
+                "Add",
+                [
+                  [
+                    "AreaOfTriangle",
+                    [
+                      "b",
+                      "c",
+                      "a"
+                    ]
+                  ],
+                  [
+                    "AreaOfTriangle",
+                    [
+                      "a",
+                      "c",
+                      "d"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "Triangle",
+            [
+              "a",
+              "b",
+              "d"
+            ]
+          ],
+          [
+            "Triangle",
+            [
+              "b",
+              "c",
+              "a"
+            ]
+          ],
+          [
+            "Triangle",
+            [
+              "a",
+              "c",
+              "d"
+            ]
+          ]
+        ],
+        [
+          [
+            "Equal",
+            [
+              [
+                "AreaOfTriangle",
+                [
+                  "a",
+                  "b",
+                  "d"
+                ]
+              ],
+              [
+                "Add",
+                [
+                  [
+                    "AreaOfTriangle",
+                    [
+                      "b",
+                      "c",
+                      "a"
+                    ]
+                  ],
+                  [
+                    "AreaOfTriangle",
+                    [
+                      "a",
+                      "c",
+                      "d"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  },
   "flat_angle": {
     "vars": [
       "a",
@@ -165,20 +311,6 @@
               ],
               "180"
             ]
-          ],
-          [
-            "Equal",
-            [
-              [
-                "MeasureOfAngle",
-                [
-                  "c",
-                  "b",
-                  "a"
-                ]
-              ],
-              "180"
-            ]
           ]
         ]
       ]
@@ -188,10 +320,10 @@
     "vars": [
       "a",
       "o",
-      "c",
-      "c",
+      "b",
+      "b",
       "o",
-      "b"
+      "c"
     ],
     "para_len": [
       3,
@@ -205,15 +337,15 @@
             [
               "a",
               "o",
-              "c"
+              "b"
             ]
           ],
           [
             "Angle",
             [
-              "c",
+              "b",
               "o",
-              "b"
+              "c"
             ]
           ],
           [
@@ -221,7 +353,7 @@
             [
               "a",
               "o",
-              "b"
+              "c"
             ]
           ]
         ],
@@ -237,15 +369,15 @@
                     [
                       "a",
                       "o",
-                      "c"
+                      "b"
                     ]
                   ],
                   [
                     "MeasureOfAngle",
                     [
-                      "c",
+                      "b",
                       "o",
-                      "b"
+                      "c"
                     ]
                   ]
                 ]
@@ -257,11 +389,70 @@
       ]
     ]
   },
+  "vertical_angle": {
+    "vars": [
+      "a",
+      "o",
+      "c",
+      "b",
+      "o",
+      "d"
+    ],
+    "para_len": [
+      3,
+      3
+    ],
+    "body": [
+      [
+        [
+          [
+            "Collinear",
+            [
+              "a",
+              "o",
+              "b"
+            ]
+          ],
+          [
+            "Collinear",
+            [
+              "c",
+              "o",
+              "d"
+            ]
+          ]
+        ],
+        [
+          [
+            "Equal",
+            [
+              [
+                "MeasureOfAngle",
+                [
+                  "a",
+                  "o",
+                  "c"
+                ]
+              ],
+              [
+                "MeasureOfAngle",
+                [
+                  "b",
+                  "o",
+                  "d"
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  },
   "midpoint_judgment": {
     "vars": [
       "m",
       "a",
-      "c"
+      "b"
     ],
     "para_len": [
       1,
@@ -275,7 +466,7 @@
             [
               "a",
               "m",
-              "c"
+              "b"
             ]
           ],
           [
@@ -292,7 +483,7 @@
                 "LengthOfLine",
                 [
                   "m",
-                  "c"
+                  "b"
                 ]
               ]
             ]
@@ -300,11 +491,11 @@
         ],
         [
           [
-            "Midpoint",
+            "IsMidpointOfLine",
             [
               "m",
               "a",
-              "c"
+              "b"
             ]
           ]
         ]
@@ -327,7 +518,7 @@
       [
         [
           [
-            "IsAltitude",
+            "IsAltitudeOfTriangle",
             [
               "a",
               "d",
@@ -353,10 +544,11 @@
                 "Mul",
                 [
                   [
-                    "LengthOfLine",
+                    "HeightOfTriangle",
                     [
                       "a",
-                      "d"
+                      "b",
+                      "c"
                     ]
                   ],
                   [
@@ -366,7 +558,7 @@
                       "c"
                     ]
                   ],
-                  "0.5"
+                  "1/2"
                 ]
               ]
             ]
@@ -409,7 +601,7 @@
                 ]
               ],
               [
-                "Pow",
+                "Sqrt",
                 [
                   [
                     "Mul",
@@ -443,7 +635,7 @@
                               ]
                             ]
                           ],
-                          "0.5"
+                          "1/2"
                         ]
                       ],
                       [
@@ -478,7 +670,7 @@
                                   ]
                                 ]
                               ],
-                              "0.5"
+                              "1/2"
                             ]
                           ],
                           [
@@ -522,7 +714,7 @@
                                   ]
                                 ]
                               ],
-                              "0.5"
+                              "1/2"
                             ]
                           ],
                           [
@@ -566,7 +758,7 @@
                                   ]
                                 ]
                               ],
-                              "0.5"
+                              "1/2"
                             ]
                           ],
                           [
@@ -579,8 +771,7 @@
                         ]
                       ]
                     ]
-                  ],
-                  "0.5"
+                  ]
                 ]
               ]
             ]
@@ -635,7 +826,7 @@
                   [
                     "LengthOfLine",
                     [
-                      "b",
+                      "a",
                       "c"
                     ]
                   ],
@@ -645,14 +836,14 @@
                       [
                         "MeasureOfAngle",
                         [
+                          "c",
                           "a",
-                          "b",
-                          "c"
+                          "b"
                         ]
                       ]
                     ]
                   ],
-                  "0.5"
+                  "1/2"
                 ]
               ]
             ]
@@ -850,7 +1041,19 @@
             ]
           ]
         ]
-      ],
+      ]
+    ]
+  },
+  "triangle_property_equal_angle_to_equal_line": {
+    "vars": [
+      "a",
+      "b",
+      "c"
+    ],
+    "para_len": [
+      3
+    ],
+    "body": [
       [
         [
           [
@@ -938,8 +1141,8 @@
                   [
                     "LengthOfLine",
                     [
-                      "b",
-                      "c"
+                      "a",
+                      "b"
                     ]
                   ],
                   [
@@ -973,9 +1176,9 @@
                       [
                         "MeasureOfAngle",
                         [
+                          "b",
                           "c",
-                          "a",
-                          "b"
+                          "a"
                         ]
                       ]
                     ]
@@ -1022,7 +1225,7 @@
                       [
                         "LengthOfLine",
                         [
-                          "a",
+                          "b",
                           "c"
                         ]
                       ],
@@ -1036,15 +1239,15 @@
                       [
                         "LengthOfLine",
                         [
-                          "b",
-                          "c"
+                          "a",
+                          "b"
                         ]
                       ],
                       [
                         "LengthOfLine",
                         [
                           "a",
-                          "b"
+                          "c"
                         ]
                       ],
                       [
@@ -1053,9 +1256,9 @@
                           [
                             "MeasureOfAngle",
                             [
+                              "c",
                               "a",
-                              "b",
-                              "c"
+                              "b"
                             ]
                           ]
                         ]
@@ -1073,8 +1276,8 @@
                       [
                         "LengthOfLine",
                         [
-                          "b",
-                          "c"
+                          "a",
+                          "b"
                         ]
                       ],
                       "2"
@@ -1087,7 +1290,7 @@
                         "LengthOfLine",
                         [
                           "a",
-                          "b"
+                          "c"
                         ]
                       ],
                       "2"
@@ -1155,7 +1358,59 @@
         ],
         [
           [
-            "Parallel",
+            "ParallelBetweenLine",
+            [
+              "a",
+              "b",
+              "c",
+              "d"
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "Angle",
+            [
+              "c",
+              "b",
+              "a"
+            ]
+          ],
+          [
+            "Angle",
+            [
+              "b",
+              "c",
+              "d"
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "MeasureOfAngle",
+                [
+                  "c",
+                  "b",
+                  "a"
+                ]
+              ],
+              [
+                "MeasureOfAngle",
+                [
+                  "b",
+                  "c",
+                  "d"
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          [
+            "ParallelBetweenLine",
             [
               "a",
               "b",
@@ -1167,7 +1422,7 @@
       ]
     ]
   },
-  "parallel_judgment_Ipsilateral_internal_angle": {
+  "parallel_judgment_ipsilateral_internal_angle": {
     "vars": [
       "a",
       "b",
@@ -1227,7 +1482,143 @@
         ],
         [
           [
-            "Parallel",
+            "ParallelBetweenLine",
+            [
+              "a",
+              "b",
+              "c",
+              "d"
+            ]
+          ]
+        ]
+      ]
+    ]
+  },
+  "parallel_judgment_corresponding_angle": {
+    "vars": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e"
+    ],
+    "para_len": [
+      2,
+      2,
+      1
+    ],
+    "body": [
+      [
+        [
+          [
+            "Angle",
+            [
+              "e",
+              "a",
+              "b"
+            ]
+          ],
+          [
+            "Angle",
+            [
+              "a",
+              "c",
+              "d"
+            ]
+          ],
+          [
+            "Collinear",
+            [
+              "e",
+              "a",
+              "c"
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "MeasureOfAngle",
+                [
+                  "e",
+                  "a",
+                  "b"
+                ]
+              ],
+              [
+                "MeasureOfAngle",
+                [
+                  "a",
+                  "c",
+                  "d"
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          [
+            "ParallelBetweenLine",
+            [
+              "a",
+              "b",
+              "c",
+              "d"
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "Angle",
+            [
+              "b",
+              "a",
+              "c"
+            ]
+          ],
+          [
+            "Angle",
+            [
+              "d",
+              "c",
+              "e"
+            ]
+          ],
+          [
+            "Collinear",
+            [
+              "a",
+              "c",
+              "e"
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "MeasureOfAngle",
+                [
+                  "b",
+                  "a",
+                  "c"
+                ]
+              ],
+              [
+                "MeasureOfAngle",
+                [
+                  "d",
+                  "c",
+                  "e"
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          [
+            "ParallelBetweenLine",
             [
               "a",
               "b",
@@ -1257,7 +1648,7 @@
       [
         [
           [
-            "Parallel",
+            "ParallelBetweenLine",
             [
               "a",
               "b",
@@ -1266,7 +1657,7 @@
             ]
           ],
           [
-            "Parallel",
+            "ParallelBetweenLine",
             [
               "c",
               "d",
@@ -1277,7 +1668,7 @@
         ],
         [
           [
-            "Parallel",
+            "ParallelBetweenLine",
             [
               "a",
               "b",
@@ -1304,27 +1695,27 @@
       [
         [
           [
-            "Perpendicular",
+            "PerpendicularBetweenLine",
             [
-              "c",
-              "d",
               "b",
-              "d"
+              "a",
+              "c",
+              "a"
             ]
           ],
           [
-            "Perpendicular",
+            "PerpendicularBetweenLine",
             [
-              "d",
-              "b",
               "a",
-              "b"
+              "c",
+              "d",
+              "c"
             ]
           ]
         ],
         [
           [
-            "Parallel",
+            "ParallelBetweenLine",
             [
               "a",
               "b",
@@ -1337,7 +1728,7 @@
       [
         [
           [
-            "Perpendicular",
+            "PerpendicularBetweenLine",
             [
               "c",
               "d",
@@ -1346,7 +1737,7 @@
             ]
           ],
           [
-            "Perpendicular",
+            "PerpendicularBetweenLine",
             [
               "b",
               "a",
@@ -1357,7 +1748,7 @@
         ],
         [
           [
-            "Parallel",
+            "ParallelBetweenLine",
             [
               "a",
               "b",
@@ -1394,7 +1785,7 @@
             ]
           ],
           [
-            "Parallel",
+            "ParallelBetweenLine",
             [
               "a",
               "b",
@@ -1405,7 +1796,7 @@
         ],
         [
           [
-            "Parallel",
+            "ParallelBetweenLine",
             [
               "a",
               "m",
@@ -1414,7 +1805,48 @@
             ]
           ],
           [
-            "Parallel",
+            "ParallelBetweenLine",
+            [
+              "m",
+              "b",
+              "c",
+              "d"
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "Collinear",
+            [
+              "m",
+              "a",
+              "b"
+            ]
+          ],
+          [
+            "ParallelBetweenLine",
+            [
+              "a",
+              "b",
+              "c",
+              "d"
+            ]
+          ]
+        ],
+        [
+          [
+            "ParallelBetweenLine",
+            [
+              "m",
+              "a",
+              "c",
+              "d"
+            ]
+          ],
+          [
+            "ParallelBetweenLine",
             [
               "m",
               "b",
@@ -1435,7 +1867,7 @@
             ]
           ],
           [
-            "Parallel",
+            "ParallelBetweenLine",
             [
               "a",
               "b",
@@ -1446,7 +1878,7 @@
         ],
         [
           [
-            "Parallel",
+            "ParallelBetweenLine",
             [
               "a",
               "m",
@@ -1455,51 +1887,10 @@
             ]
           ],
           [
-            "Parallel",
+            "ParallelBetweenLine",
             [
               "b",
               "m",
-              "c",
-              "d"
-            ]
-          ]
-        ]
-      ],
-      [
-        [
-          [
-            "Collinear",
-            [
-              "m",
-              "a",
-              "b"
-            ]
-          ],
-          [
-            "Parallel",
-            [
-              "a",
-              "b",
-              "c",
-              "d"
-            ]
-          ]
-        ],
-        [
-          [
-            "Parallel",
-            [
-              "m",
-              "b",
-              "c",
-              "d"
-            ]
-          ],
-          [
-            "Parallel",
-            [
-              "m",
-              "a",
               "c",
               "d"
             ]
@@ -1523,7 +1914,7 @@
       [
         [
           [
-            "Parallel",
+            "ParallelBetweenLine",
             [
               "a",
               "b",
@@ -1566,7 +1957,7 @@
       [
         [
           [
-            "Parallel",
+            "ParallelBetweenLine",
             [
               "a",
               "b",
@@ -1608,7 +1999,7 @@
       ]
     ]
   },
-  "parallel_property_Ipsilateral_internal_angle": {
+  "parallel_property_ipsilateral_internal_angle": {
     "vars": [
       "a",
       "b",
@@ -1623,7 +2014,7 @@
       [
         [
           [
-            "Parallel",
+            "ParallelBetweenLine",
             [
               "a",
               "b",
@@ -1668,55 +2059,6 @@
             ]
           ]
         ]
-      ],
-      [
-        [
-          [
-            "Parallel",
-            [
-              "a",
-              "b",
-              "c",
-              "d"
-            ]
-          ],
-          [
-            "Line",
-            [
-              "d",
-              "b"
-            ]
-          ]
-        ],
-        [
-          [
-            "Equal",
-            [
-              [
-                "Add",
-                [
-                  [
-                    "MeasureOfAngle",
-                    [
-                      "c",
-                      "d",
-                      "b"
-                    ]
-                  ],
-                  [
-                    "MeasureOfAngle",
-                    [
-                      "d",
-                      "b",
-                      "a"
-                    ]
-                  ]
-                ]
-              ],
-              "180"
-            ]
-          ]
-        ]
       ]
     ]
   },
@@ -1726,7 +2068,7 @@
       "b",
       "c",
       "d",
-      "m"
+      "e"
     ],
     "para_len": [
       2,
@@ -1737,7 +2079,7 @@
       [
         [
           [
-            "Parallel",
+            "ParallelBetweenLine",
             [
               "a",
               "b",
@@ -1748,7 +2090,7 @@
           [
             "Collinear",
             [
-              "m",
+              "e",
               "a",
               "c"
             ]
@@ -1761,7 +2103,7 @@
               [
                 "MeasureOfAngle",
                 [
-                  "m",
+                  "e",
                   "a",
                   "b"
                 ]
@@ -1781,7 +2123,7 @@
       [
         [
           [
-            "Parallel",
+            "ParallelBetweenLine",
             [
               "a",
               "b",
@@ -1792,9 +2134,9 @@
           [
             "Collinear",
             [
-              "m",
+              "a",
               "c",
-              "a"
+              "e"
             ]
           ]
         ],
@@ -1815,7 +2157,7 @@
                 [
                   "d",
                   "c",
-                  "m"
+                  "e"
                 ]
               ]
             ]
@@ -1839,7 +2181,7 @@
       [
         [
           [
-            "Parallel",
+            "ParallelBetweenLine",
             [
               "a",
               "b",
@@ -1848,7 +2190,7 @@
             ]
           ],
           [
-            "Perpendicular",
+            "PerpendicularBetweenLine",
             [
               "a",
               "c",
@@ -1859,7 +2201,7 @@
         ],
         [
           [
-            "Perpendicular",
+            "PerpendicularBetweenLine",
             [
               "b",
               "a",
@@ -1872,7 +2214,7 @@
       [
         [
           [
-            "Parallel",
+            "ParallelBetweenLine",
             [
               "a",
               "b",
@@ -1881,7 +2223,7 @@
             ]
           ],
           [
-            "Perpendicular",
+            "PerpendicularBetweenLine",
             [
               "b",
               "a",
@@ -1892,65 +2234,12 @@
         ],
         [
           [
-            "Perpendicular",
+            "PerpendicularBetweenLine",
             [
               "a",
               "c",
               "d",
               "c"
-            ]
-          ]
-        ]
-      ]
-    ]
-  },
-  "intersect_property_vertical_angle": {
-    "vars": [
-      "o",
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "para_len": [
-      1,
-      2,
-      2
-    ],
-    "body": [
-      [
-        [
-          [
-            "Intersect",
-            [
-              "o",
-              "a",
-              "b",
-              "c",
-              "d"
-            ]
-          ]
-        ],
-        [
-          [
-            "Equal",
-            [
-              [
-                "MeasureOfAngle",
-                [
-                  "a",
-                  "o",
-                  "c"
-                ]
-              ],
-              [
-                "MeasureOfAngle",
-                [
-                  "b",
-                  "o",
-                  "d"
-                ]
-              ]
             ]
           ]
         ]
@@ -2012,7 +2301,90 @@
         ],
         [
           [
-            "Bisector",
+            "IsBisectorOfAngle",
+            [
+              "b",
+              "d",
+              "a",
+              "b",
+              "c"
+            ]
+          ]
+        ]
+      ]
+    ]
+  },
+  "bisector_judgment_distance_equal": {
+    "vars": [
+      "b",
+      "d",
+      "a",
+      "b",
+      "c"
+    ],
+    "para_len": [
+      2,
+      3
+    ],
+    "body": [
+      [
+        [
+          [
+            "Angle",
+            [
+              "a",
+              "b",
+              "c"
+            ]
+          ],
+          [
+            "Line",
+            [
+              "b",
+              "d"
+            ]
+          ],
+          [
+            "PerpendicularBetweenLine",
+            [
+              "d",
+              "a",
+              "b",
+              "a"
+            ]
+          ],
+          [
+            "PerpendicularBetweenLine",
+            [
+              "b",
+              "c",
+              "d",
+              "c"
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "LengthOfLine",
+                [
+                  "d",
+                  "a"
+                ]
+              ],
+              [
+                "LengthOfLine",
+                [
+                  "d",
+                  "c"
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          [
+            "IsBisectorOfAngle",
             [
               "b",
               "d",
@@ -2041,7 +2413,7 @@
       [
         [
           [
-            "Bisector",
+            "IsBisectorOfAngle",
             [
               "b",
               "d",
@@ -2131,7 +2503,7 @@
             ]
           ],
           [
-            "Midpoint",
+            "IsMidpointOfLine",
             [
               "d",
               "b",
@@ -2148,7 +2520,7 @@
         ],
         [
           [
-            "Median",
+            "IsMedianOfTriangle",
             [
               "a",
               "d",
@@ -2161,7 +2533,7 @@
       ]
     ]
   },
-  "neutrality_judgment": {
+  "midsegment_property_similar": {
     "vars": [
       "d",
       "e",
@@ -2177,71 +2549,7 @@
       [
         [
           [
-            "Triangle",
-            [
-              "a",
-              "b",
-              "c"
-            ]
-          ],
-          [
-            "Collinear",
-            [
-              "a",
-              "d",
-              "b"
-            ]
-          ],
-          [
-            "Collinear",
-            [
-              "a",
-              "e",
-              "c"
-            ]
-          ],
-          [
-            "Parallel",
-            [
-              "d",
-              "e",
-              "b",
-              "c"
-            ]
-          ]
-        ],
-        [
-          [
-            "Neutrality",
-            [
-              "d",
-              "e",
-              "a",
-              "b",
-              "c"
-            ]
-          ]
-        ]
-      ]
-    ]
-  },
-  "neutrality_property_angle_equal": {
-    "vars": [
-      "d",
-      "e",
-      "a",
-      "b",
-      "c"
-    ],
-    "para_len": [
-      2,
-      3
-    ],
-    "body": [
-      [
-        [
-          [
-            "Neutrality",
+            "IsMidsegmentOfTriangle",
             [
               "d",
               "e",
@@ -2253,154 +2561,7 @@
         ],
         [
           [
-            "Equal",
-            [
-              [
-                "MeasureOfAngle",
-                [
-                  "a",
-                  "d",
-                  "e"
-                ]
-              ],
-              [
-                "MeasureOfAngle",
-                [
-                  "a",
-                  "b",
-                  "c"
-                ]
-              ]
-            ]
-          ],
-          [
-            "Equal",
-            [
-              [
-                "MeasureOfAngle",
-                [
-                  "d",
-                  "e",
-                  "a"
-                ]
-              ],
-              [
-                "MeasureOfAngle",
-                [
-                  "b",
-                  "c",
-                  "a"
-                ]
-              ]
-            ]
-          ]
-        ]
-      ]
-    ]
-  },
-  "neutrality_property_line_ratio": {
-    "vars": [
-      "d",
-      "e",
-      "a",
-      "b",
-      "c"
-    ],
-    "para_len": [
-      2,
-      3
-    ],
-    "body": [
-      [
-        [
-          [
-            "Neutrality",
-            [
-              "d",
-              "e",
-              "a",
-              "b",
-              "c"
-            ]
-          ]
-        ],
-        [
-          [
-            "Equal",
-            [
-              [
-                "Mul",
-                [
-                  [
-                    "LengthOfLine",
-                    [
-                      "a",
-                      "d"
-                    ]
-                  ],
-                  [
-                    "LengthOfLine",
-                    [
-                      "e",
-                      "c"
-                    ]
-                  ]
-                ]
-              ],
-              [
-                "Mul",
-                [
-                  [
-                    "LengthOfLine",
-                    [
-                      "d",
-                      "b"
-                    ]
-                  ],
-                  [
-                    "LengthOfLine",
-                    [
-                      "a",
-                      "e"
-                    ]
-                  ]
-                ]
-              ]
-            ]
-          ]
-        ]
-      ]
-    ]
-  },
-  "neutrality_property_similar": {
-    "vars": [
-      "d",
-      "e",
-      "a",
-      "b",
-      "c"
-    ],
-    "para_len": [
-      2,
-      3
-    ],
-    "body": [
-      [
-        [
-          [
-            "Neutrality",
-            [
-              "d",
-              "e",
-              "a",
-              "b",
-              "c"
-            ]
-          ]
-        ],
-        [
-          [
-            "Similar",
+            "SimilarBetweenTriangle",
             [
               "a",
               "b",
@@ -2469,7 +2630,7 @@
         ],
         [
           [
-            "IsAltitude",
+            "IsAltitudeOfTriangle",
             [
               "a",
               "d",
@@ -2522,7 +2683,113 @@
         ],
         [
           [
-            "IsAltitude",
+            "IsAltitudeOfTriangle",
+            [
+              "a",
+              "d",
+              "a",
+              "b",
+              "c"
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "Triangle",
+            [
+              "a",
+              "b",
+              "c"
+            ]
+          ],
+          [
+            "Line",
+            [
+              "a",
+              "d"
+            ]
+          ],
+          [
+            "Collinear",
+            [
+              "d",
+              "b",
+              "c"
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "MeasureOfAngle",
+                [
+                  "a",
+                  "d",
+                  "b"
+                ]
+              ],
+              "90"
+            ]
+          ]
+        ],
+        [
+          [
+            "IsAltitudeOfTriangle",
+            [
+              "a",
+              "d",
+              "a",
+              "b",
+              "c"
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "Triangle",
+            [
+              "a",
+              "b",
+              "c"
+            ]
+          ],
+          [
+            "Line",
+            [
+              "a",
+              "d"
+            ]
+          ],
+          [
+            "Collinear",
+            [
+              "b",
+              "c",
+              "d"
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "MeasureOfAngle",
+                [
+                  "a",
+                  "c",
+                  "d"
+                ]
+              ],
+              "90"
+            ]
+          ]
+        ],
+        [
+          [
+            "IsAltitudeOfTriangle",
             [
               "a",
               "d",
@@ -2535,12 +2802,12 @@
       ]
     ]
   },
-  "perpendicular_bisector_judgment": {
+  "perpendicular_bisector_judgment_per_and_mid": {
     "vars": [
-      "a",
-      "b",
       "c",
-      "o"
+      "o",
+      "a",
+      "b"
     ],
     "para_len": [
       2,
@@ -2550,62 +2817,25 @@
       [
         [
           [
-            "Perpendicular",
+            "Collinear",
             [
               "a",
               "o",
-              "c",
-              "o"
-            ]
-          ],
-          [
-            "Perpendicular",
-            [
-              "c",
-              "o",
-              "b",
-              "o"
-            ]
-          ],
-          [
-            "Midpoint",
-            [
-              "o",
-              "a",
               "b"
             ]
-          ]
-        ],
-        [
-          [
-            "PerpendicularBisector",
-            [
-              "a",
-              "b",
-              "c",
-              "o"
-            ]
-          ]
-        ]
-      ],
-      [
-        [
-          [
-            "Perpendicular",
-            [
-              "a",
-              "o",
-              "c",
-              "o"
-            ]
           ],
           [
-            "Perpendicular",
+            "Equal",
             [
-              "c",
-              "o",
-              "b",
-              "o"
+              [
+                "MeasureOfAngle",
+                [
+                  "a",
+                  "o",
+                  "c"
+                ]
+              ],
+              "90"
             ]
           ],
           [
@@ -2630,71 +2860,24 @@
         ],
         [
           [
-            "PerpendicularBisector",
+            "IsPerpendicularBisectorOfLine",
             [
-              "a",
-              "b",
               "c",
-              "o"
-            ]
-          ]
-        ]
-      ],
-      [
-        [
-          [
-            "Perpendicular",
-            [
-              "a",
-              "o",
-              "c",
-              "o"
-            ]
-          ],
-          [
-            "Equal",
-            [
-              [
-                "MeasureOfAngle",
-                [
-                  "c",
-                  "o",
-                  "b"
-                ]
-              ],
-              "90"
-            ]
-          ],
-          [
-            "Midpoint",
-            [
               "o",
               "a",
               "b"
             ]
           ]
-        ],
-        [
-          [
-            "PerpendicularBisector",
-            [
-              "a",
-              "b",
-              "c",
-              "o"
-            ]
-          ]
         ]
       ],
       [
         [
           [
-            "Perpendicular",
+            "Collinear",
             [
               "a",
               "o",
-              "c",
-              "o"
+              "b"
             ]
           ],
           [
@@ -2733,64 +2916,40 @@
         ],
         [
           [
-            "PerpendicularBisector",
-            [
-              "a",
-              "b",
-              "c",
-              "o"
-            ]
-          ]
-        ]
-      ],
-      [
-        [
-          [
-            "Equal",
-            [
-              [
-                "MeasureOfAngle",
-                [
-                  "a",
-                  "o",
-                  "c"
-                ]
-              ],
-              "90"
-            ]
-          ],
-          [
-            "Perpendicular",
+            "IsPerpendicularBisectorOfLine",
             [
               "c",
-              "o",
-              "b",
-              "o"
-            ]
-          ],
-          [
-            "Midpoint",
-            [
               "o",
               "a",
               "b"
             ]
           ]
-        ],
-        [
-          [
-            "PerpendicularBisector",
-            [
-              "a",
-              "b",
-              "c",
-              "o"
-            ]
-          ]
         ]
-      ],
+      ]
+    ]
+  },
+  "perpendicular_bisector_judgment_distance_equal": {
+    "vars": [
+      "c",
+      "o",
+      "a",
+      "b"
+    ],
+    "para_len": [
+      2,
+      2
+    ],
+    "body": [
       [
         [
+          [
+            "Collinear",
+            [
+              "a",
+              "o",
+              "b"
+            ]
+          ],
           [
             "Equal",
             [
@@ -2806,28 +2965,19 @@
             ]
           ],
           [
-            "Perpendicular",
-            [
-              "c",
-              "o",
-              "b",
-              "o"
-            ]
-          ],
-          [
             "Equal",
             [
               [
                 "LengthOfLine",
                 [
-                  "a",
-                  "o"
+                  "c",
+                  "a"
                 ]
               ],
               [
                 "LengthOfLine",
                 [
-                  "o",
+                  "c",
                   "b"
                 ]
               ]
@@ -2836,81 +2986,24 @@
         ],
         [
           [
-            "PerpendicularBisector",
+            "IsPerpendicularBisectorOfLine",
             [
-              "a",
-              "b",
               "c",
-              "o"
-            ]
-          ]
-        ]
-      ],
-      [
-        [
-          [
-            "Equal",
-            [
-              [
-                "MeasureOfAngle",
-                [
-                  "a",
-                  "o",
-                  "c"
-                ]
-              ],
-              "90"
-            ]
-          ],
-          [
-            "Equal",
-            [
-              [
-                "MeasureOfAngle",
-                [
-                  "c",
-                  "o",
-                  "b"
-                ]
-              ],
-              "90"
-            ]
-          ],
-          [
-            "Midpoint",
-            [
               "o",
               "a",
               "b"
             ]
           ]
-        ],
-        [
-          [
-            "PerpendicularBisector",
-            [
-              "a",
-              "b",
-              "c",
-              "o"
-            ]
-          ]
         ]
       ],
       [
         [
           [
-            "Equal",
+            "Collinear",
             [
-              [
-                "MeasureOfAngle",
-                [
-                  "a",
-                  "o",
-                  "c"
-                ]
-              ],
-              "90"
+              "a",
+              "o",
+              "b"
             ]
           ],
           [
@@ -2933,14 +3026,14 @@
               [
                 "LengthOfLine",
                 [
-                  "a",
-                  "o"
+                  "c",
+                  "a"
                 ]
               ],
               [
                 "LengthOfLine",
                 [
-                  "o",
+                  "c",
                   "b"
                 ]
               ]
@@ -2949,12 +3042,12 @@
         ],
         [
           [
-            "PerpendicularBisector",
+            "IsPerpendicularBisectorOfLine",
             [
-              "a",
-              "b",
               "c",
-              "o"
+              "o",
+              "a",
+              "b"
             ]
           ]
         ]
@@ -2963,10 +3056,10 @@
   },
   "perpendicular_bisector_property_distance_equal": {
     "vars": [
-      "a",
-      "b",
       "c",
-      "o"
+      "o",
+      "a",
+      "b"
     ],
     "para_len": [
       2,
@@ -2976,12 +3069,12 @@
       [
         [
           [
-            "PerpendicularBisector",
+            "IsPerpendicularBisectorOfLine",
             [
-              "a",
-              "b",
               "c",
-              "o"
+              "o",
+              "a",
+              "b"
             ]
           ]
         ],
@@ -3003,6 +3096,61 @@
                   "b"
                 ]
               ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  },
+  "perpendicular_bisector_property_bisector": {
+    "vars": [
+      "c",
+      "o",
+      "a",
+      "b"
+    ],
+    "para_len": [
+      2,
+      2
+    ],
+    "body": [
+      [
+        [
+          [
+            "IsPerpendicularBisectorOfLine",
+            [
+              "c",
+              "o",
+              "a",
+              "b"
+            ]
+          ],
+          [
+            "Angle",
+            [
+              "b",
+              "c",
+              "o"
+            ]
+          ],
+          [
+            "Angle",
+            [
+              "o",
+              "c",
+              "a"
+            ]
+          ]
+        ],
+        [
+          [
+            "IsBisectorOfAngle",
+            [
+              "c",
+              "o",
+              "b",
+              "c",
+              "a"
             ]
           ]
         ]
@@ -3048,7 +3196,7 @@
         ],
         [
           [
-            "Perpendicular",
+            "PerpendicularBetweenLine",
             [
               "a",
               "o",
@@ -3077,7 +3225,7 @@
       [
         [
           [
-            "Perpendicular",
+            "PerpendicularBetweenLine",
             [
               "a",
               "o",
@@ -3096,7 +3244,7 @@
         ],
         [
           [
-            "Perpendicular",
+            "PerpendicularBetweenLine",
             [
               "c",
               "o",
@@ -3109,7 +3257,7 @@
       [
         [
           [
-            "Perpendicular",
+            "PerpendicularBetweenLine",
             [
               "a",
               "o",
@@ -3128,7 +3276,7 @@
         ],
         [
           [
-            "Perpendicular",
+            "PerpendicularBetweenLine",
             [
               "b",
               "o",
@@ -3141,7 +3289,7 @@
       [
         [
           [
-            "Perpendicular",
+            "PerpendicularBetweenLine",
             [
               "a",
               "o",
@@ -3160,7 +3308,7 @@
         ],
         [
           [
-            "Perpendicular",
+            "PerpendicularBetweenLine",
             [
               "b",
               "o",
@@ -3173,7 +3321,7 @@
       [
         [
           [
-            "Perpendicular",
+            "PerpendicularBetweenLine",
             [
               "a",
               "o",
@@ -3192,7 +3340,7 @@
         ],
         [
           [
-            "Perpendicular",
+            "PerpendicularBetweenLine",
             [
               "b",
               "o",
@@ -3205,7 +3353,7 @@
       [
         [
           [
-            "Perpendicular",
+            "PerpendicularBetweenLine",
             [
               "a",
               "o",
@@ -3224,7 +3372,7 @@
         ],
         [
           [
-            "Perpendicular",
+            "PerpendicularBetweenLine",
             [
               "a",
               "o",
@@ -3237,7 +3385,7 @@
       [
         [
           [
-            "Perpendicular",
+            "PerpendicularBetweenLine",
             [
               "a",
               "o",
@@ -3256,7 +3404,7 @@
         ],
         [
           [
-            "Perpendicular",
+            "PerpendicularBetweenLine",
             [
               "a",
               "o",
@@ -3278,37 +3426,6 @@
       3
     ],
     "body": [
-      [
-        [
-          [
-            "Triangle",
-            [
-              "a",
-              "b",
-              "c"
-            ]
-          ],
-          [
-            "Perpendicular",
-            [
-              "a",
-              "b",
-              "c",
-              "b"
-            ]
-          ]
-        ],
-        [
-          [
-            "RightTriangle",
-            [
-              "a",
-              "b",
-              "c"
-            ]
-          ]
-        ]
-      ],
       [
         [
           [
@@ -3561,7 +3678,7 @@
                       "c"
                     ]
                   ],
-                  "1.7321"
+                  "√3"
                 ]
               ]
             ]
@@ -3639,7 +3756,7 @@
                       "c"
                     ]
                   ],
-                  "1.7321"
+                  "√3"
                 ]
               ]
             ]
@@ -3717,7 +3834,7 @@
                       "b"
                     ]
                   ],
-                  "1.7321"
+                  "√3"
                 ]
               ]
             ]
@@ -3795,7 +3912,7 @@
                       "b"
                     ]
                   ],
-                  "1.7321"
+                  "√3"
                 ]
               ]
             ]
@@ -3904,7 +4021,7 @@
                       "b"
                     ]
                   ],
-                  "1.4142"
+                  "√2"
                 ]
               ]
             ]
@@ -3976,7 +4093,7 @@
                       "b"
                     ]
                   ],
-                  "1.4142"
+                  "√2"
                 ]
               ]
             ]
@@ -4024,40 +4141,6 @@
                   "a"
                 ]
               ]
-            ]
-          ]
-        ],
-        [
-          [
-            "IsoscelesTriangle",
-            [
-              "a",
-              "b",
-              "c"
-            ]
-          ]
-        ]
-      ]
-    ]
-  },
-  "isosceles_triangle_judgment_equilateral": {
-    "vars": [
-      "a",
-      "b",
-      "c"
-    ],
-    "para_len": [
-      3
-    ],
-    "body": [
-      [
-        [
-          [
-            "EquilateralTriangle",
-            [
-              "a",
-              "b",
-              "c"
             ]
           ]
         ],
@@ -4178,10 +4261,12 @@
     "vars": [
       "a",
       "b",
-      "c"
+      "c",
+      "m"
     ],
     "para_len": [
-      3
+      3,
+      1
     ],
     "body": [
       [
@@ -4195,7 +4280,7 @@
             ]
           ],
           [
-            "IsAltitude",
+            "IsAltitudeOfTriangle",
             [
               "a",
               "m",
@@ -4207,7 +4292,7 @@
         ],
         [
           [
-            "Median",
+            "IsMedianOfTriangle",
             [
               "a",
               "m",
@@ -4217,7 +4302,7 @@
             ]
           ],
           [
-            "Bisector",
+            "IsBisectorOfAngle",
             [
               "a",
               "m",
@@ -4239,7 +4324,7 @@
             ]
           ],
           [
-            "Median",
+            "IsMedianOfTriangle",
             [
               "a",
               "m",
@@ -4251,7 +4336,7 @@
         ],
         [
           [
-            "IsAltitude",
+            "IsAltitudeOfTriangle",
             [
               "a",
               "m",
@@ -4261,7 +4346,7 @@
             ]
           ],
           [
-            "Bisector",
+            "IsBisectorOfAngle",
             [
               "a",
               "m",
@@ -4291,7 +4376,7 @@
             ]
           ],
           [
-            "Bisector",
+            "IsBisectorOfAngle",
             [
               "a",
               "m",
@@ -4303,7 +4388,7 @@
         ],
         [
           [
-            "IsAltitude",
+            "IsAltitudeOfTriangle",
             [
               "a",
               "m",
@@ -4313,7 +4398,7 @@
             ]
           ],
           [
-            "Median",
+            "IsMedianOfTriangle",
             [
               "a",
               "m",
@@ -4402,7 +4487,7 @@
       ]
     ]
   },
-  "equilateral_triangle_judgment_isos_and_angle": {
+  "equilateral_triangle_judgment_isosceles_and_angle": {
     "vars": [
       "a",
       "b",
@@ -4622,57 +4707,12 @@
               [
                 "MeasureOfAngle",
                 [
-                  "a",
-                  "b",
-                  "c"
-                ]
-              ],
-              "60"
-            ]
-          ]
-        ]
-      ]
-    ]
-  },
-  "equilateral_triangle_property_line_equal": {
-    "vars": [
-      "a",
-      "b",
-      "c"
-    ],
-    "para_len": [
-      3
-    ],
-    "body": [
-      [
-        [
-          [
-            "EquilateralTriangle",
-            [
-              "a",
-              "b",
-              "c"
-            ]
-          ]
-        ],
-        [
-          [
-            "Equal",
-            [
-              [
-                "LengthOfLine",
-                [
+                  "c",
                   "a",
                   "b"
                 ]
               ],
-              [
-                "LengthOfLine",
-                [
-                  "b",
-                  "c"
-                ]
-              ]
+              "60"
             ]
           ]
         ]
@@ -4775,7 +4815,7 @@
         ],
         [
           [
-            "Congruent",
+            "CongruentBetweenTriangle",
             [
               "a",
               "b",
@@ -4869,7 +4909,7 @@
         ],
         [
           [
-            "MirrorCongruent",
+            "MirrorCongruentBetweenTriangle",
             [
               "a",
               "b",
@@ -4979,7 +5019,7 @@
         ],
         [
           [
-            "Congruent",
+            "CongruentBetweenTriangle",
             [
               "a",
               "b",
@@ -5073,7 +5113,7 @@
         ],
         [
           [
-            "MirrorCongruent",
+            "MirrorCongruentBetweenTriangle",
             [
               "a",
               "b",
@@ -5160,7 +5200,7 @@
         ],
         [
           [
-            "Congruent",
+            "CongruentBetweenTriangle",
             [
               "a",
               "b",
@@ -5231,7 +5271,7 @@
         ],
         [
           [
-            "Congruent",
+            "CongruentBetweenTriangle",
             [
               "a",
               "b",
@@ -5248,36 +5288,17 @@
           [
             "RightTriangle",
             [
+              "a",
               "b",
-              "c",
-              "a"
+              "c"
             ]
           ],
           [
             "RightTriangle",
             [
-              "d",
               "e",
-              "f"
-            ]
-          ],
-          [
-            "Equal",
-            [
-              [
-                "LengthOfLine",
-                [
-                  "a",
-                  "b"
-                ]
-              ],
-              [
-                "LengthOfLine",
-                [
-                  "d",
-                  "f"
-                ]
-              ]
+              "f",
+              "d"
             ]
           ],
           [
@@ -5295,58 +5316,6 @@
                 [
                   "d",
                   "e"
-                ]
-              ]
-            ]
-          ]
-        ],
-        [
-          [
-            "MirrorCongruent",
-            [
-              "a",
-              "b",
-              "c",
-              "d",
-              "e",
-              "f"
-            ]
-          ]
-        ]
-      ],
-      [
-        [
-          [
-            "RightTriangle",
-            [
-              "b",
-              "c",
-              "a"
-            ]
-          ],
-          [
-            "RightTriangle",
-            [
-              "d",
-              "e",
-              "f"
-            ]
-          ],
-          [
-            "Equal",
-            [
-              [
-                "LengthOfLine",
-                [
-                  "a",
-                  "b"
-                ]
-              ],
-              [
-                "LengthOfLine",
-                [
-                  "d",
-                  "f"
                 ]
               ]
             ]
@@ -5373,7 +5342,78 @@
         ],
         [
           [
-            "MirrorCongruent",
+            "MirrorCongruentBetweenTriangle",
+            [
+              "a",
+              "b",
+              "c",
+              "d",
+              "e",
+              "f"
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "RightTriangle",
+            [
+              "a",
+              "b",
+              "c"
+            ]
+          ],
+          [
+            "RightTriangle",
+            [
+              "e",
+              "f",
+              "d"
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "LengthOfLine",
+                [
+                  "a",
+                  "c"
+                ]
+              ],
+              [
+                "LengthOfLine",
+                [
+                  "d",
+                  "e"
+                ]
+              ]
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "LengthOfLine",
+                [
+                  "a",
+                  "b"
+                ]
+              ],
+              [
+                "LengthOfLine",
+                [
+                  "d",
+                  "f"
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          [
+            "MirrorCongruentBetweenTriangle",
             [
               "a",
               "b",
@@ -5444,17 +5484,17 @@
               [
                 "MeasureOfAngle",
                 [
+                  "c",
                   "a",
-                  "b",
-                  "c"
+                  "b"
                 ]
               ],
               [
                 "MeasureOfAngle",
                 [
+                  "f",
                   "d",
-                  "e",
-                  "f"
+                  "e"
                 ]
               ]
             ]
@@ -5465,14 +5505,14 @@
               [
                 "LengthOfLine",
                 [
-                  "b",
+                  "a",
                   "c"
                 ]
               ],
               [
                 "LengthOfLine",
                 [
-                  "e",
+                  "d",
                   "f"
                 ]
               ]
@@ -5481,7 +5521,7 @@
         ],
         [
           [
-            "Congruent",
+            "CongruentBetweenTriangle",
             [
               "a",
               "b",
@@ -5524,8 +5564,8 @@
               [
                 "LengthOfLine",
                 [
-                  "f",
-                  "d"
+                  "d",
+                  "f"
                 ]
               ]
             ]
@@ -5535,37 +5575,37 @@
             [
               [
                 "MeasureOfAngle",
+                [
+                  "c",
+                  "a",
+                  "b"
+                ]
+              ],
+              [
+                "MeasureOfAngle",
+                [
+                  "f",
+                  "d",
+                  "e"
+                ]
+              ]
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "LengthOfLine",
                 [
                   "a",
-                  "b",
-                  "c"
-                ]
-              ],
-              [
-                "MeasureOfAngle",
-                [
-                  "e",
-                  "f",
-                  "d"
-                ]
-              ]
-            ]
-          ],
-          [
-            "Equal",
-            [
-              [
-                "LengthOfLine",
-                [
-                  "b",
                   "c"
                 ]
               ],
               [
                 "LengthOfLine",
                 [
-                  "e",
-                  "f"
+                  "d",
+                  "e"
                 ]
               ]
             ]
@@ -5573,7 +5613,7 @@
         ],
         [
           [
-            "MirrorCongruent",
+            "MirrorCongruentBetweenTriangle",
             [
               "a",
               "b",
@@ -5679,7 +5719,7 @@
         ],
         [
           [
-            "Congruent",
+            "CongruentBetweenTriangle",
             [
               "a",
               "b",
@@ -5769,7 +5809,7 @@
         ],
         [
           [
-            "MirrorCongruent",
+            "MirrorCongruentBetweenTriangle",
             [
               "a",
               "b",
@@ -5777,6 +5817,94 @@
               "d",
               "e",
               "f"
+            ]
+          ]
+        ]
+      ]
+    ]
+  },
+  "congruent_property_line_equal": {
+    "vars": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+      "f"
+    ],
+    "para_len": [
+      3,
+      3
+    ],
+    "body": [
+      [
+        [
+          [
+            "CongruentBetweenTriangle",
+            [
+              "a",
+              "b",
+              "c",
+              "d",
+              "e",
+              "f"
+            ]
+          ]
+        ],
+        [
+          [
+            "Equal",
+            [
+              [
+                "LengthOfLine",
+                [
+                  "b",
+                  "c"
+                ]
+              ],
+              [
+                "LengthOfLine",
+                [
+                  "e",
+                  "f"
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "MirrorCongruentBetweenTriangle",
+            [
+              "a",
+              "b",
+              "c",
+              "d",
+              "e",
+              "f"
+            ]
+          ]
+        ],
+        [
+          [
+            "Equal",
+            [
+              [
+                "LengthOfLine",
+                [
+                  "b",
+                  "c"
+                ]
+              ],
+              [
+                "LengthOfLine",
+                [
+                  "e",
+                  "f"
+                ]
+              ]
             ]
           ]
         ]
@@ -5800,7 +5928,7 @@
       [
         [
           [
-            "Congruent",
+            "CongruentBetweenTriangle",
             [
               "a",
               "b",
@@ -5818,17 +5946,17 @@
               [
                 "MeasureOfAngle",
                 [
+                  "c",
                   "a",
-                  "b",
-                  "c"
+                  "b"
                 ]
               ],
               [
                 "MeasureOfAngle",
                 [
+                  "f",
                   "d",
-                  "e",
-                  "f"
+                  "e"
                 ]
               ]
             ]
@@ -5838,7 +5966,7 @@
       [
         [
           [
-            "MirrorCongruent",
+            "MirrorCongruentBetweenTriangle",
             [
               "a",
               "b",
@@ -5856,17 +5984,17 @@
               [
                 "MeasureOfAngle",
                 [
+                  "c",
                   "a",
-                  "b",
-                  "c"
+                  "b"
                 ]
               ],
               [
                 "MeasureOfAngle",
                 [
-                  "e",
                   "f",
-                  "d"
+                  "d",
+                  "e"
                 ]
               ]
             ]
@@ -5892,7 +6020,7 @@
       [
         [
           [
-            "Congruent",
+            "CongruentBetweenTriangle",
             [
               "a",
               "b",
@@ -5930,7 +6058,7 @@
       [
         [
           [
-            "MirrorCongruent",
+            "MirrorCongruentBetweenTriangle",
             [
               "a",
               "b",
@@ -5958,94 +6086,6 @@
                 [
                   "d",
                   "e",
-                  "f"
-                ]
-              ]
-            ]
-          ]
-        ]
-      ]
-    ]
-  },
-  "congruent_property_line_equal": {
-    "vars": [
-      "a",
-      "b",
-      "c",
-      "d",
-      "e",
-      "f"
-    ],
-    "para_len": [
-      3,
-      3
-    ],
-    "body": [
-      [
-        [
-          [
-            "Congruent",
-            [
-              "a",
-              "b",
-              "c",
-              "d",
-              "e",
-              "f"
-            ]
-          ]
-        ],
-        [
-          [
-            "Equal",
-            [
-              [
-                "LengthOfLine",
-                [
-                  "a",
-                  "b"
-                ]
-              ],
-              [
-                "LengthOfLine",
-                [
-                  "d",
-                  "e"
-                ]
-              ]
-            ]
-          ]
-        ]
-      ],
-      [
-        [
-          [
-            "MirrorCongruent",
-            [
-              "a",
-              "b",
-              "c",
-              "d",
-              "e",
-              "f"
-            ]
-          ]
-        ],
-        [
-          [
-            "Equal",
-            [
-              [
-                "LengthOfLine",
-                [
-                  "a",
-                  "b"
-                ]
-              ],
-              [
-                "LengthOfLine",
-                [
-                  "d",
                   "f"
                 ]
               ]
@@ -6072,7 +6112,7 @@
       [
         [
           [
-            "Congruent",
+            "CongruentBetweenTriangle",
             [
               "a",
               "b",
@@ -6110,7 +6150,7 @@
       [
         [
           [
-            "MirrorCongruent",
+            "MirrorCongruentBetweenTriangle",
             [
               "a",
               "b",
@@ -6141,6 +6181,80 @@
                   "f"
                 ]
               ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  },
+  "similar_judgment_parallel": {
+    "vars": [
+      "a",
+      "d",
+      "e",
+      "a",
+      "b",
+      "c"
+    ],
+    "para_len": [
+      3,
+      3
+    ],
+    "body": [
+      [
+        [
+          [
+            "Triangle",
+            [
+              "a",
+              "d",
+              "e"
+            ]
+          ],
+          [
+            "Triangle",
+            [
+              "a",
+              "b",
+              "c"
+            ]
+          ],
+          [
+            "Collinear",
+            [
+              "a",
+              "d",
+              "b"
+            ]
+          ],
+          [
+            "Collinear",
+            [
+              "a",
+              "e",
+              "c"
+            ]
+          ],
+          [
+            "ParallelBetweenLine",
+            [
+              "d",
+              "e",
+              "b",
+              "c"
+            ]
+          ]
+        ],
+        [
+          [
+            "SimilarBetweenTriangle",
+            [
+              "a",
+              "d",
+              "e",
+              "a",
+              "b",
+              "c"
             ]
           ]
         ]
@@ -6185,27 +6299,6 @@
               [
                 "MeasureOfAngle",
                 [
-                  "c",
-                  "a",
-                  "b"
-                ]
-              ],
-              [
-                "MeasureOfAngle",
-                [
-                  "f",
-                  "d",
-                  "e"
-                ]
-              ]
-            ]
-          ],
-          [
-            "Equal",
-            [
-              [
-                "MeasureOfAngle",
-                [
                   "a",
                   "b",
                   "c"
@@ -6220,11 +6313,32 @@
                 ]
               ]
             ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "MeasureOfAngle",
+                [
+                  "b",
+                  "c",
+                  "a"
+                ]
+              ],
+              [
+                "MeasureOfAngle",
+                [
+                  "e",
+                  "f",
+                  "d"
+                ]
+              ]
+            ]
           ]
         ],
         [
           [
-            "Similar",
+            "SimilarBetweenTriangle",
             [
               "a",
               "b",
@@ -6260,27 +6374,6 @@
               [
                 "MeasureOfAngle",
                 [
-                  "c",
-                  "a",
-                  "b"
-                ]
-              ],
-              [
-                "MeasureOfAngle",
-                [
-                  "f",
-                  "d",
-                  "e"
-                ]
-              ]
-            ]
-          ],
-          [
-            "Equal",
-            [
-              [
-                "MeasureOfAngle",
-                [
                   "a",
                   "b",
                   "c"
@@ -6295,11 +6388,32 @@
                 ]
               ]
             ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "MeasureOfAngle",
+                [
+                  "b",
+                  "c",
+                  "a"
+                ]
+              ],
+              [
+                "MeasureOfAngle",
+                [
+                  "d",
+                  "e",
+                  "f"
+                ]
+              ]
+            ]
           ]
         ],
         [
           [
-            "MirrorSimilar",
+            "MirrorSimilarBetweenTriangle",
             [
               "a",
               "b",
@@ -6361,7 +6475,7 @@
                   [
                     "LengthOfLine",
                     [
-                      "e",
+                      "d",
                       "f"
                     ]
                   ]
@@ -6380,7 +6494,7 @@
                   [
                     "LengthOfLine",
                     [
-                      "b",
+                      "a",
                       "c"
                     ]
                   ]
@@ -6394,17 +6508,17 @@
               [
                 "MeasureOfAngle",
                 [
+                  "c",
                   "a",
-                  "b",
-                  "c"
+                  "b"
                 ]
               ],
               [
                 "MeasureOfAngle",
                 [
+                  "f",
                   "d",
-                  "e",
-                  "f"
+                  "e"
                 ]
               ]
             ]
@@ -6412,7 +6526,7 @@
         ],
         [
           [
-            "Similar",
+            "SimilarBetweenTriangle",
             [
               "a",
               "b",
@@ -6458,8 +6572,8 @@
                   [
                     "LengthOfLine",
                     [
-                      "e",
-                      "f"
+                      "d",
+                      "e"
                     ]
                   ]
                 ]
@@ -6470,14 +6584,14 @@
                   [
                     "LengthOfLine",
                     [
-                      "f",
-                      "d"
+                      "d",
+                      "f"
                     ]
                   ],
                   [
                     "LengthOfLine",
                     [
-                      "b",
+                      "a",
                       "c"
                     ]
                   ]
@@ -6491,17 +6605,17 @@
               [
                 "MeasureOfAngle",
                 [
+                  "c",
                   "a",
-                  "b",
-                  "c"
+                  "b"
                 ]
               ],
               [
                 "MeasureOfAngle",
                 [
-                  "e",
                   "f",
-                  "d"
+                  "d",
+                  "e"
                 ]
               ]
             ]
@@ -6509,7 +6623,7 @@
         ],
         [
           [
-            "MirrorSimilar",
+            "MirrorSimilarBetweenTriangle",
             [
               "a",
               "b",
@@ -6644,7 +6758,7 @@
         ],
         [
           [
-            "Similar",
+            "SimilarBetweenTriangle",
             [
               "a",
               "b",
@@ -6763,7 +6877,7 @@
         ],
         [
           [
-            "MirrorSimilar",
+            "MirrorSimilarBetweenTriangle",
             [
               "a",
               "b",
@@ -6771,6 +6885,446 @@
               "d",
               "e",
               "f"
+            ]
+          ]
+        ]
+      ]
+    ]
+  },
+  "similar_judgment_hl": {
+    "vars": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+      "f"
+    ],
+    "para_len": [
+      3,
+      3
+    ],
+    "body": [
+      [
+        [
+          [
+            "RightTriangle",
+            [
+              "a",
+              "b",
+              "c"
+            ]
+          ],
+          [
+            "RightTriangle",
+            [
+              "d",
+              "e",
+              "f"
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "Mul",
+                [
+                  [
+                    "LengthOfLine",
+                    [
+                      "a",
+                      "c"
+                    ]
+                  ],
+                  [
+                    "LengthOfLine",
+                    [
+                      "d",
+                      "e"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "Mul",
+                [
+                  [
+                    "LengthOfLine",
+                    [
+                      "a",
+                      "b"
+                    ]
+                  ],
+                  [
+                    "LengthOfLine",
+                    [
+                      "d",
+                      "f"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          [
+            "SimilarBetweenTriangle",
+            [
+              "a",
+              "b",
+              "c",
+              "d",
+              "e",
+              "f"
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "RightTriangle",
+            [
+              "a",
+              "b",
+              "c"
+            ]
+          ],
+          [
+            "RightTriangle",
+            [
+              "d",
+              "e",
+              "f"
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "Mul",
+                [
+                  [
+                    "LengthOfLine",
+                    [
+                      "a",
+                      "c"
+                    ]
+                  ],
+                  [
+                    "LengthOfLine",
+                    [
+                      "e",
+                      "f"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "Mul",
+                [
+                  [
+                    "LengthOfLine",
+                    [
+                      "b",
+                      "c"
+                    ]
+                  ],
+                  [
+                    "LengthOfLine",
+                    [
+                      "d",
+                      "f"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          [
+            "SimilarBetweenTriangle",
+            [
+              "a",
+              "b",
+              "c",
+              "d",
+              "e",
+              "f"
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "RightTriangle",
+            [
+              "b",
+              "c",
+              "a"
+            ]
+          ],
+          [
+            "RightTriangle",
+            [
+              "d",
+              "e",
+              "f"
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "Mul",
+                [
+                  [
+                    "LengthOfLine",
+                    [
+                      "a",
+                      "c"
+                    ]
+                  ],
+                  [
+                    "LengthOfLine",
+                    [
+                      "d",
+                      "f"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "Mul",
+                [
+                  [
+                    "LengthOfLine",
+                    [
+                      "a",
+                      "b"
+                    ]
+                  ],
+                  [
+                    "LengthOfLine",
+                    [
+                      "d",
+                      "e"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          [
+            "MirrorSimilarBetweenTriangle",
+            [
+              "a",
+              "b",
+              "c",
+              "d",
+              "e",
+              "f"
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "RightTriangle",
+            [
+              "b",
+              "c",
+              "a"
+            ]
+          ],
+          [
+            "RightTriangle",
+            [
+              "d",
+              "e",
+              "f"
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "Mul",
+                [
+                  [
+                    "LengthOfLine",
+                    [
+                      "a",
+                      "c"
+                    ]
+                  ],
+                  [
+                    "LengthOfLine",
+                    [
+                      "e",
+                      "f"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "Mul",
+                [
+                  [
+                    "LengthOfLine",
+                    [
+                      "b",
+                      "c"
+                    ]
+                  ],
+                  [
+                    "LengthOfLine",
+                    [
+                      "d",
+                      "e"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          [
+            "MirrorSimilarBetweenTriangle",
+            [
+              "a",
+              "b",
+              "c",
+              "d",
+              "e",
+              "f"
+            ]
+          ]
+        ]
+      ]
+    ]
+  },
+  "similar_property_line_ratio": {
+    "vars": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+      "f"
+    ],
+    "para_len": [
+      3,
+      3
+    ],
+    "body": [
+      [
+        [
+          [
+            "SimilarBetweenTriangle",
+            [
+              "a",
+              "b",
+              "c",
+              "d",
+              "e",
+              "f"
+            ]
+          ]
+        ],
+        [
+          [
+            "Equal",
+            [
+              [
+                "LengthOfLine",
+                [
+                  "b",
+                  "c"
+                ]
+              ],
+              [
+                "Mul",
+                [
+                  [
+                    "LengthOfLine",
+                    [
+                      "e",
+                      "f"
+                    ]
+                  ],
+                  [
+                    "RatioOfSimilarTriangle",
+                    [
+                      "a",
+                      "b",
+                      "c",
+                      "d",
+                      "e",
+                      "f"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "MirrorSimilarBetweenTriangle",
+            [
+              "a",
+              "b",
+              "c",
+              "d",
+              "e",
+              "f"
+            ]
+          ]
+        ],
+        [
+          [
+            "Equal",
+            [
+              [
+                "LengthOfLine",
+                [
+                  "b",
+                  "c"
+                ]
+              ],
+              [
+                "Mul",
+                [
+                  [
+                    "LengthOfLine",
+                    [
+                      "e",
+                      "f"
+                    ]
+                  ],
+                  [
+                    "RatioOfMirrorSimilarTriangle",
+                    [
+                      "a",
+                      "b",
+                      "c",
+                      "d",
+                      "e",
+                      "f"
+                    ]
+                  ]
+                ]
+              ]
             ]
           ]
         ]
@@ -6794,7 +7348,7 @@
       [
         [
           [
-            "Similar",
+            "SimilarBetweenTriangle",
             [
               "a",
               "b",
@@ -6812,17 +7366,17 @@
               [
                 "MeasureOfAngle",
                 [
+                  "c",
                   "a",
-                  "b",
-                  "c"
+                  "b"
                 ]
               ],
               [
                 "MeasureOfAngle",
                 [
+                  "f",
                   "d",
-                  "e",
-                  "f"
+                  "e"
                 ]
               ]
             ]
@@ -6832,7 +7386,7 @@
       [
         [
           [
-            "MirrorSimilar",
+            "MirrorSimilarBetweenTriangle",
             [
               "a",
               "b",
@@ -6850,17 +7404,17 @@
               [
                 "MeasureOfAngle",
                 [
+                  "c",
                   "a",
-                  "b",
-                  "c"
+                  "b"
                 ]
               ],
               [
                 "MeasureOfAngle",
                 [
-                  "e",
                   "f",
-                  "d"
+                  "d",
+                  "e"
                 ]
               ]
             ]
@@ -6886,7 +7440,7 @@
       [
         [
           [
-            "Similar",
+            "SimilarBetweenTriangle",
             [
               "a",
               "b",
@@ -6902,22 +7456,16 @@
             "Equal",
             [
               [
+                "AreaOfTriangle",
+                [
+                  "a",
+                  "b",
+                  "c"
+                ]
+              ],
+              [
                 "Mul",
                 [
-                  [
-                    "LengthOfLine",
-                    [
-                      "a",
-                      "b"
-                    ]
-                  ],
-                  [
-                    "LengthOfLine",
-                    [
-                      "a",
-                      "b"
-                    ]
-                  ],
                   [
                     "AreaOfTriangle",
                     [
@@ -6925,32 +7473,27 @@
                       "e",
                       "f"
                     ]
-                  ]
-                ]
-              ],
-              [
-                "Mul",
-                [
-                  [
-                    "LengthOfLine",
-                    [
-                      "d",
-                      "e"
-                    ]
                   ],
                   [
-                    "LengthOfLine",
-                    [
-                      "d",
-                      "e"
-                    ]
-                  ],
-                  [
-                    "AreaOfTriangle",
+                    "RatioOfSimilarTriangle",
                     [
                       "a",
                       "b",
-                      "c"
+                      "c",
+                      "d",
+                      "e",
+                      "f"
+                    ]
+                  ],
+                  [
+                    "RatioOfSimilarTriangle",
+                    [
+                      "a",
+                      "b",
+                      "c",
+                      "d",
+                      "e",
+                      "f"
                     ]
                   ]
                 ]
@@ -6962,7 +7505,7 @@
       [
         [
           [
-            "MirrorSimilar",
+            "MirrorSimilarBetweenTriangle",
             [
               "a",
               "b",
@@ -6978,22 +7521,16 @@
             "Equal",
             [
               [
+                "AreaOfTriangle",
+                [
+                  "a",
+                  "b",
+                  "c"
+                ]
+              ],
+              [
                 "Mul",
                 [
-                  [
-                    "LengthOfLine",
-                    [
-                      "a",
-                      "b"
-                    ]
-                  ],
-                  [
-                    "LengthOfLine",
-                    [
-                      "a",
-                      "b"
-                    ]
-                  ],
                   [
                     "AreaOfTriangle",
                     [
@@ -7001,168 +7538,27 @@
                       "e",
                       "f"
                     ]
-                  ]
-                ]
-              ],
-              [
-                "Mul",
-                [
-                  [
-                    "LengthOfLine",
-                    [
-                      "f",
-                      "d"
-                    ]
                   ],
                   [
-                    "LengthOfLine",
-                    [
-                      "f",
-                      "d"
-                    ]
-                  ],
-                  [
-                    "AreaOfTriangle",
+                    "RatioOfMirrorSimilarTriangle",
                     [
                       "a",
                       "b",
-                      "c"
-                    ]
-                  ]
-                ]
-              ]
-            ]
-          ]
-        ]
-      ]
-    ]
-  },
-  "similar_property_line_ratio": {
-    "vars": [
-      "a",
-      "b",
-      "c",
-      "d",
-      "e",
-      "f"
-    ],
-    "para_len": [
-      3,
-      3
-    ],
-    "body": [
-      [
-        [
-          [
-            "Similar",
-            [
-              "a",
-              "b",
-              "c",
-              "d",
-              "e",
-              "f"
-            ]
-          ]
-        ],
-        [
-          [
-            "Equal",
-            [
-              [
-                "Mul",
-                [
-                  [
-                    "LengthOfLine",
-                    [
-                      "a",
-                      "b"
-                    ]
-                  ],
-                  [
-                    "LengthOfLine",
-                    [
-                      "e",
-                      "f"
-                    ]
-                  ]
-                ]
-              ],
-              [
-                "Mul",
-                [
-                  [
-                    "LengthOfLine",
-                    [
+                      "c",
                       "d",
-                      "e"
-                    ]
-                  ],
-                  [
-                    "LengthOfLine",
-                    [
-                      "b",
-                      "c"
-                    ]
-                  ]
-                ]
-              ]
-            ]
-          ]
-        ]
-      ],
-      [
-        [
-          [
-            "MirrorSimilar",
-            [
-              "a",
-              "b",
-              "c",
-              "d",
-              "e",
-              "f"
-            ]
-          ]
-        ],
-        [
-          [
-            "Equal",
-            [
-              [
-                "Mul",
-                [
-                  [
-                    "LengthOfLine",
-                    [
-                      "a",
-                      "b"
-                    ]
-                  ],
-                  [
-                    "LengthOfLine",
-                    [
                       "e",
                       "f"
                     ]
-                  ]
-                ]
-              ],
-              [
-                "Mul",
-                [
-                  [
-                    "LengthOfLine",
-                    [
-                      "f",
-                      "d"
-                    ]
                   ],
                   [
-                    "LengthOfLine",
+                    "RatioOfMirrorSimilarTriangle",
                     [
+                      "a",
                       "b",
-                      "c"
+                      "c",
+                      "d",
+                      "e",
+                      "f"
                     ]
                   ]
                 ]
@@ -7190,7 +7586,7 @@
       [
         [
           [
-            "Similar",
+            "SimilarBetweenTriangle",
             [
               "a",
               "b",
@@ -7206,15 +7602,16 @@
             "Equal",
             [
               [
+                "PerimeterOfTriangle",
+                [
+                  "a",
+                  "b",
+                  "c"
+                ]
+              ],
+              [
                 "Mul",
                 [
-                  [
-                    "LengthOfLine",
-                    [
-                      "a",
-                      "b"
-                    ]
-                  ],
                   [
                     "PerimeterOfTriangle",
                     [
@@ -7222,25 +7619,16 @@
                       "e",
                       "f"
                     ]
-                  ]
-                ]
-              ],
-              [
-                "Mul",
-                [
-                  [
-                    "LengthOfLine",
-                    [
-                      "d",
-                      "e"
-                    ]
                   ],
                   [
-                    "PerimeterOfTriangle",
+                    "RatioOfSimilarTriangle",
                     [
                       "a",
                       "b",
-                      "c"
+                      "c",
+                      "d",
+                      "e",
+                      "f"
                     ]
                   ]
                 ]
@@ -7252,7 +7640,7 @@
       [
         [
           [
-            "MirrorSimilar",
+            "MirrorSimilarBetweenTriangle",
             [
               "a",
               "b",
@@ -7268,15 +7656,16 @@
             "Equal",
             [
               [
+                "PerimeterOfTriangle",
+                [
+                  "a",
+                  "b",
+                  "c"
+                ]
+              ],
+              [
                 "Mul",
                 [
-                  [
-                    "LengthOfLine",
-                    [
-                      "a",
-                      "b"
-                    ]
-                  ],
                   [
                     "PerimeterOfTriangle",
                     [
@@ -7284,25 +7673,16 @@
                       "e",
                       "f"
                     ]
-                  ]
-                ]
-              ],
-              [
-                "Mul",
-                [
-                  [
-                    "LengthOfLine",
-                    [
-                      "f",
-                      "d"
-                    ]
                   ],
                   [
-                    "PerimeterOfTriangle",
+                    "RatioOfMirrorSimilarTriangle",
                     [
                       "a",
                       "b",
-                      "c"
+                      "c",
+                      "d",
+                      "e",
+                      "f"
                     ]
                   ]
                 ]
@@ -7313,7 +7693,7 @@
       ]
     ]
   },
-  "circumcenter_judgment": {
+  "circumcenter_judgment_intersection": {
     "vars": [
       "o",
       "a",
@@ -7342,9 +7722,9 @@
           [
             "Collinear",
             [
-              "b",
+              "a",
               "d",
-              "c"
+              "b"
             ]
           ],
           [
@@ -7356,27 +7736,27 @@
             ]
           ],
           [
-            "PerpendicularBisector",
+            "IsPerpendicularBisectorOfLine",
             [
-              "b",
-              "c",
               "o",
-              "d"
+              "d",
+              "a",
+              "b"
             ]
           ],
           [
-            "PerpendicularBisector",
+            "IsPerpendicularBisectorOfLine",
             [
-              "c",
-              "a",
               "o",
-              "e"
+              "e",
+              "c",
+              "a"
             ]
           ]
         ],
         [
           [
-            "Circumcenter",
+            "IsCircumcenterOfTriangle",
             [
               "o",
               "a",
@@ -7388,7 +7768,7 @@
       ]
     ]
   },
-  "circumcenter_property_intersect": {
+  "circumcenter_property_intersection": {
     "vars": [
       "o",
       "a",
@@ -7405,7 +7785,7 @@
       [
         [
           [
-            "Circumcenter",
+            "IsCircumcenterOfTriangle",
             [
               "o",
               "a",
@@ -7422,7 +7802,7 @@
             ]
           ],
           [
-            "Perpendicular",
+            "PerpendicularBetweenLine",
             [
               "b",
               "d",
@@ -7433,12 +7813,12 @@
         ],
         [
           [
-            "PerpendicularBisector",
+            "IsPerpendicularBisectorOfLine",
             [
-              "b",
-              "c",
               "o",
-              "d"
+              "d",
+              "b",
+              "c"
             ]
           ]
         ]
@@ -7446,7 +7826,7 @@
       [
         [
           [
-            "Circumcenter",
+            "IsCircumcenterOfTriangle",
             [
               "o",
               "a",
@@ -7463,7 +7843,7 @@
             ]
           ],
           [
-            "Perpendicular",
+            "PerpendicularBetweenLine",
             [
               "o",
               "d",
@@ -7474,12 +7854,12 @@
         ],
         [
           [
-            "PerpendicularBisector",
+            "IsPerpendicularBisectorOfLine",
             [
-              "b",
-              "c",
               "o",
-              "d"
+              "d",
+              "b",
+              "c"
             ]
           ]
         ]
@@ -7487,7 +7867,7 @@
       [
         [
           [
-            "Circumcenter",
+            "IsCircumcenterOfTriangle",
             [
               "o",
               "a",
@@ -7496,9 +7876,9 @@
             ]
           ],
           [
-            "Midpoint",
+            "IsMidpointOfLine",
             [
-              "m",
+              "d",
               "b",
               "c"
             ]
@@ -7506,106 +7886,19 @@
         ],
         [
           [
-            "PerpendicularBisector",
-            [
-              "b",
-              "c",
-              "o",
-              "m"
-            ]
-          ]
-        ]
-      ]
-    ]
-  },
-  "circumcenter_property_line_equal": {
-    "vars": [
-      "o",
-      "a",
-      "b",
-      "c"
-    ],
-    "para_len": [
-      1,
-      3
-    ],
-    "body": [
-      [
-        [
-          [
-            "Circumcenter",
+            "IsPerpendicularBisectorOfLine",
             [
               "o",
-              "a",
+              "d",
               "b",
               "c"
             ]
           ]
-        ],
-        [
-          [
-            "Equal",
-            [
-              [
-                "LengthOfLine",
-                [
-                  "o",
-                  "a"
-                ]
-              ],
-              [
-                "LengthOfLine",
-                [
-                  "o",
-                  "b"
-                ]
-              ]
-            ]
-          ]
         ]
       ]
     ]
   },
-  "incenter_property_intersect": {
-    "vars": [
-      "o",
-      "a",
-      "b",
-      "c"
-    ],
-    "para_len": [
-      1,
-      3
-    ],
-    "body": [
-      [
-        [
-          [
-            "Incenter",
-            [
-              "o",
-              "a",
-              "b",
-              "c"
-            ]
-          ]
-        ],
-        [
-          [
-            "Bisector",
-            [
-              "a",
-              "o",
-              "c",
-              "a",
-              "b"
-            ]
-          ]
-        ]
-      ]
-    ]
-  },
-  "incenter_property_judgment": {
+  "incenter_judgment_intersection": {
     "vars": [
       "o",
       "a",
@@ -7628,17 +7921,17 @@
             ]
           ],
           [
-            "Bisector",
+            "IsBisectorOfAngle",
             [
-              "a",
+              "b",
               "o",
-              "c",
               "a",
-              "b"
+              "b",
+              "c"
             ]
           ],
           [
-            "Bisector",
+            "IsBisectorOfAngle",
             [
               "c",
               "o",
@@ -7650,7 +7943,7 @@
         ],
         [
           [
-            "Incenter",
+            "IsIncenterOfTriangle",
             [
               "o",
               "a",
@@ -7662,297 +7955,46 @@
       ]
     ]
   },
-  "incenter_property_line_equal": {
+  "incenter_property_intersection": {
     "vars": [
       "o",
       "a",
       "b",
-      "c",
-      "d",
-      "e"
+      "c"
     ],
     "para_len": [
       1,
-      3,
-      1,
-      1
+      3
     ],
     "body": [
       [
         [
           [
-            "Incenter",
+            "IsIncenterOfTriangle",
             [
               "o",
               "a",
               "b",
               "c"
-            ]
-          ],
-          [
-            "Collinear",
-            [
-              "a",
-              "d",
-              "b"
-            ]
-          ],
-          [
-            "Collinear",
-            [
-              "b",
-              "e",
-              "c"
-            ]
-          ],
-          [
-            "Perpendicular",
-            [
-              "a",
-              "d",
-              "o",
-              "d"
-            ]
-          ],
-          [
-            "Perpendicular",
-            [
-              "b",
-              "e",
-              "o",
-              "e"
             ]
           ]
         ],
         [
           [
-            "Equal",
-            [
-              [
-                "LengthOfLine",
-                [
-                  "o",
-                  "d"
-                ]
-              ],
-              [
-                "LengthOfLine",
-                [
-                  "o",
-                  "e"
-                ]
-              ]
-            ]
-          ]
-        ]
-      ],
-      [
-        [
-          [
-            "Incenter",
-            [
-              "o",
-              "a",
-              "b",
-              "c"
-            ]
-          ],
-          [
-            "Collinear",
+            "IsBisectorOfAngle",
             [
               "a",
-              "d",
-              "b"
-            ]
-          ],
-          [
-            "Collinear",
-            [
-              "b",
-              "e",
-              "c"
-            ]
-          ],
-          [
-            "Perpendicular",
-            [
-              "a",
-              "d",
               "o",
-              "d"
-            ]
-          ],
-          [
-            "Perpendicular",
-            [
-              "o",
-              "e",
               "c",
-              "e"
-            ]
-          ]
-        ],
-        [
-          [
-            "Equal",
-            [
-              [
-                "LengthOfLine",
-                [
-                  "o",
-                  "d"
-                ]
-              ],
-              [
-                "LengthOfLine",
-                [
-                  "o",
-                  "e"
-                ]
-              ]
-            ]
-          ]
-        ]
-      ],
-      [
-        [
-          [
-            "Incenter",
-            [
-              "o",
               "a",
-              "b",
-              "c"
-            ]
-          ],
-          [
-            "Collinear",
-            [
-              "a",
-              "d",
               "b"
-            ]
-          ],
-          [
-            "Collinear",
-            [
-              "b",
-              "e",
-              "c"
-            ]
-          ],
-          [
-            "Perpendicular",
-            [
-              "o",
-              "d",
-              "b",
-              "d"
-            ]
-          ],
-          [
-            "Perpendicular",
-            [
-              "b",
-              "e",
-              "o",
-              "e"
-            ]
-          ]
-        ],
-        [
-          [
-            "Equal",
-            [
-              [
-                "LengthOfLine",
-                [
-                  "o",
-                  "d"
-                ]
-              ],
-              [
-                "LengthOfLine",
-                [
-                  "o",
-                  "e"
-                ]
-              ]
-            ]
-          ]
-        ]
-      ],
-      [
-        [
-          [
-            "Incenter",
-            [
-              "o",
-              "a",
-              "b",
-              "c"
-            ]
-          ],
-          [
-            "Collinear",
-            [
-              "a",
-              "d",
-              "b"
-            ]
-          ],
-          [
-            "Collinear",
-            [
-              "b",
-              "e",
-              "c"
-            ]
-          ],
-          [
-            "Perpendicular",
-            [
-              "o",
-              "d",
-              "b",
-              "d"
-            ]
-          ],
-          [
-            "Perpendicular",
-            [
-              "o",
-              "e",
-              "c",
-              "e"
-            ]
-          ]
-        ],
-        [
-          [
-            "Equal",
-            [
-              [
-                "LengthOfLine",
-                [
-                  "o",
-                  "d"
-                ]
-              ],
-              [
-                "LengthOfLine",
-                [
-                  "o",
-                  "e"
-                ]
-              ]
             ]
           ]
         ]
       ]
     ]
   },
-  "centroid_judgment": {
+  "centroid_judgment_intersection": {
     "vars": [
       "o",
       "a",
@@ -7979,17 +8021,17 @@
             ]
           ],
           [
-            "Median",
+            "IsMedianOfTriangle",
             [
-              "a",
+              "c",
               "m",
+              "c",
               "a",
-              "b",
-              "c"
+              "b"
             ]
           ],
           [
-            "Median",
+            "IsMedianOfTriangle",
             [
               "b",
               "n",
@@ -8001,7 +8043,7 @@
           [
             "Collinear",
             [
-              "a",
+              "c",
               "o",
               "m"
             ]
@@ -8017,7 +8059,7 @@
         ],
         [
           [
-            "Centroid",
+            "IsCentroidOfTriangle",
             [
               "o",
               "a",
@@ -8029,7 +8071,7 @@
       ]
     ]
   },
-  "centroid_property_intersect": {
+  "centroid_property_intersection": {
     "vars": [
       "o",
       "a",
@@ -8046,7 +8088,7 @@
       [
         [
           [
-            "Centroid",
+            "IsCentroidOfTriangle",
             [
               "o",
               "a",
@@ -8073,7 +8115,7 @@
         ],
         [
           [
-            "Median",
+            "IsMedianOfTriangle",
             [
               "a",
               "m",
@@ -8103,7 +8145,7 @@
       [
         [
           [
-            "Centroid",
+            "IsCentroidOfTriangle",
             [
               "o",
               "a",
@@ -8158,64 +8200,7 @@
       ]
     ]
   },
-  "orthocenter_property_intersect": {
-    "vars": [
-      "o",
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "para_len": [
-      1,
-      3,
-      1
-    ],
-    "body": [
-      [
-        [
-          [
-            "Orthocenter",
-            [
-              "o",
-              "a",
-              "b",
-              "c"
-            ]
-          ],
-          [
-            "Collinear",
-            [
-              "a",
-              "o",
-              "d"
-            ]
-          ],
-          [
-            "Collinear",
-            [
-              "b",
-              "d",
-              "c"
-            ]
-          ]
-        ],
-        [
-          [
-            "IsAltitude",
-            [
-              "a",
-              "d",
-              "a",
-              "b",
-              "c"
-            ]
-          ]
-        ]
-      ]
-    ]
-  },
-  "orthocenter_property_judgment": {
+  "orthocenter_judgment_intersection": {
     "vars": [
       "o",
       "a",
@@ -8242,17 +8227,17 @@
             ]
           ],
           [
-            "IsAltitude",
+            "IsAltitudeOfTriangle",
             [
-              "a",
+              "c",
               "d",
+              "c",
               "a",
-              "b",
-              "c"
+              "b"
             ]
           ],
           [
-            "IsAltitude",
+            "IsAltitudeOfTriangle",
             [
               "b",
               "e",
@@ -8262,19 +8247,25 @@
             ]
           ],
           [
-            "Intersect",
+            "Collinear",
             [
+              "c",
               "o",
-              "d",
-              "a",
+              "d"
+            ]
+          ],
+          [
+            "Collinear",
+            [
               "b",
+              "o",
               "e"
             ]
           ]
         ],
         [
           [
-            "Orthocenter",
+            "IsOrthocenterOfTriangle",
             [
               "o",
               "a",
@@ -8286,7 +8277,64 @@
       ]
     ]
   },
-  "orthocenter_property_line_equal": {
+  "orthocenter_property_intersection": {
+    "vars": [
+      "o",
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "para_len": [
+      1,
+      3,
+      1
+    ],
+    "body": [
+      [
+        [
+          [
+            "IsOrthocenterOfTriangle",
+            [
+              "o",
+              "a",
+              "b",
+              "c"
+            ]
+          ],
+          [
+            "Collinear",
+            [
+              "a",
+              "o",
+              "d"
+            ]
+          ],
+          [
+            "Collinear",
+            [
+              "b",
+              "d",
+              "c"
+            ]
+          ]
+        ],
+        [
+          [
+            "IsAltitudeOfTriangle",
+            [
+              "a",
+              "d",
+              "a",
+              "b",
+              "c"
+            ]
+          ]
+        ]
+      ]
+    ]
+  },
+  "orthocenter_property_angle": {
     "vars": [
       "o",
       "a",
@@ -8301,7 +8349,7 @@
       [
         [
           [
-            "Orthocenter",
+            "IsOrthocenterOfTriangle",
             [
               "o",
               "a",
@@ -8382,20 +8430,20 @@
           [
             "Perpendicular",
             [
+              "c",
               "a",
               "b",
-              "c",
-              "b"
+              "a"
             ]
           ],
           [
             "IsAltitude",
             [
+              "c",
               "a",
-              "b",
+              "c",
               "a",
-              "b",
-              "c"
+              "b"
             ]
           ]
         ]
@@ -8447,6 +8495,48 @@
       ]
     ]
   },
+  "isosceles_right_triangle_definition": {
+    "vars": [
+      "a",
+      "b",
+      "c"
+    ],
+    "para_len": [
+      3
+    ],
+    "body": [
+      [
+        [
+          [
+            "IsoscelesRightTriangle",
+            [
+              "a",
+              "b",
+              "c"
+            ]
+          ]
+        ],
+        [
+          [
+            "RightTriangle",
+            [
+              "a",
+              "b",
+              "c"
+            ]
+          ],
+          [
+            "IsoscelesRightTriangle",
+            [
+              "a",
+              "b",
+              "c"
+            ]
+          ]
+        ]
+      ]
+    ]
+  },
   "equilateral_triangle_definition": {
     "vars": [
       "a",
@@ -8470,6 +8560,58 @@
         ],
         [
           [
+            "IsoscelesTriangle",
+            [
+              "a",
+              "b",
+              "c"
+            ]
+          ],
+          [
+            "IsoscelesTriangle",
+            [
+              "b",
+              "c",
+              "a"
+            ]
+          ],
+          [
+            "IsoscelesTriangle",
+            [
+              "c",
+              "a",
+              "b"
+            ]
+          ]
+        ]
+      ]
+    ]
+  },
+  "kite_definition": {
+    "vars": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "para_len": [
+      4
+    ],
+    "body": [
+      [
+        [
+          [
+            "Kite",
+            [
+              "a",
+              "b",
+              "c",
+              "d"
+            ]
+          ]
+        ],
+        [
+          [
             "Equal",
             [
               [
@@ -8483,11 +8625,428 @@
                 "LengthOfLine",
                 [
                   "a",
-                  "c"
+                  "d"
                 ]
               ]
             ]
           ],
+          [
+            "Equal",
+            [
+              [
+                "LengthOfLine",
+                [
+                  "c",
+                  "b"
+                ]
+              ],
+              [
+                "LengthOfLine",
+                [
+                  "c",
+                  "d"
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  },
+  "parallelogram_definition": {
+    "vars": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "para_len": [
+      4
+    ],
+    "body": [
+      [
+        [
+          [
+            "Parallelogram",
+            [
+              "a",
+              "b",
+              "c",
+              "d"
+            ]
+          ]
+        ],
+        [
+          [
+            "Parallel",
+            [
+              "a",
+              "d",
+              "b",
+              "c"
+            ]
+          ],
+          [
+            "Parallel",
+            [
+              "b",
+              "a",
+              "c",
+              "d"
+            ]
+          ]
+        ]
+      ]
+    ]
+  },
+  "rhombus_definition": {
+    "vars": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "para_len": [
+      4
+    ],
+    "body": [
+      [
+        [
+          [
+            "Rhombus",
+            [
+              "a",
+              "b",
+              "c",
+              "d"
+            ]
+          ]
+        ],
+        [
+          [
+            "Parallelogram",
+            [
+              "a",
+              "b",
+              "c",
+              "d"
+            ]
+          ],
+          [
+            "Kite",
+            [
+              "a",
+              "b",
+              "c",
+              "d"
+            ]
+          ],
+          [
+            "Kite",
+            [
+              "b",
+              "c",
+              "d",
+              "a"
+            ]
+          ]
+        ]
+      ]
+    ]
+  },
+  "rectangle_definition": {
+    "vars": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "para_len": [
+      4
+    ],
+    "body": [
+      [
+        [
+          [
+            "Rectangle",
+            [
+              "a",
+              "b",
+              "c",
+              "d"
+            ]
+          ]
+        ],
+        [
+          [
+            "Parallelogram",
+            [
+              "a",
+              "b",
+              "c",
+              "d"
+            ]
+          ],
+          [
+            "Perpendicular",
+            [
+              "a",
+              "b",
+              "c",
+              "b"
+            ]
+          ],
+          [
+            "Perpendicular",
+            [
+              "b",
+              "c",
+              "d",
+              "c"
+            ]
+          ],
+          [
+            "Perpendicular",
+            [
+              "c",
+              "d",
+              "a",
+              "d"
+            ]
+          ],
+          [
+            "Perpendicular",
+            [
+              "d",
+              "a",
+              "b",
+              "a"
+            ]
+          ]
+        ]
+      ]
+    ]
+  },
+  "square_definition": {
+    "vars": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "para_len": [
+      4
+    ],
+    "body": [
+      [
+        [
+          [
+            "Square",
+            [
+              "a",
+              "b",
+              "c",
+              "d"
+            ]
+          ]
+        ],
+        [
+          [
+            "Rhombus",
+            [
+              "a",
+              "b",
+              "c",
+              "d"
+            ]
+          ],
+          [
+            "Rectangle",
+            [
+              "a",
+              "b",
+              "c",
+              "d"
+            ]
+          ]
+        ]
+      ]
+    ]
+  },
+  "trapezoid_definition": {
+    "vars": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "para_len": [
+      4
+    ],
+    "body": [
+      [
+        [
+          [
+            "Trapezoid",
+            [
+              "a",
+              "b",
+              "c",
+              "d"
+            ]
+          ]
+        ],
+        [
+          [
+            "Parallel",
+            [
+              "a",
+              "d",
+              "b",
+              "c"
+            ]
+          ]
+        ]
+      ]
+    ]
+  },
+  "isosceles_trapezoid_definition": {
+    "vars": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "para_len": [
+      4
+    ],
+    "body": [
+      [
+        [
+          [
+            "IsoscelesTrapezoid",
+            [
+              "a",
+              "b",
+              "c",
+              "d"
+            ]
+          ]
+        ],
+        [
+          [
+            "Trapezoid",
+            [
+              "a",
+              "b",
+              "c",
+              "d"
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "LengthOfLine",
+                [
+                  "a",
+                  "b"
+                ]
+              ],
+              [
+                "LengthOfLine",
+                [
+                  "c",
+                  "d"
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  },
+  "right_trapezoid_definition": {
+    "vars": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "para_len": [
+      4
+    ],
+    "body": [
+      [
+        [
+          [
+            "RightTrapezoid",
+            [
+              "a",
+              "b",
+              "c",
+              "d"
+            ]
+          ]
+        ],
+        [
+          [
+            "Trapezoid",
+            [
+              "a",
+              "b",
+              "c",
+              "d"
+            ]
+          ],
+          [
+            "Perpendicular",
+            [
+              "d",
+              "a",
+              "b",
+              "a"
+            ]
+          ],
+          [
+            "Perpendicular",
+            [
+              "a",
+              "b",
+              "c",
+              "b"
+            ]
+          ]
+        ]
+      ]
+    ]
+  },
+  "equilateral_pentagon_definition": {
+    "vars": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e"
+    ],
+    "para_len": [
+      5
+    ],
+    "body": [
+      [
+        [
+          [
+            "EquilateralPentagon",
+            [
+              "a",
+              "b",
+              "c",
+              "d",
+              "e"
+            ]
+          ]
+        ],
+        [
           [
             "Equal",
             [
@@ -8505,6 +9064,427 @@
                   "c"
                 ]
               ]
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "LengthOfLine",
+                [
+                  "b",
+                  "c"
+                ]
+              ],
+              [
+                "LengthOfLine",
+                [
+                  "c",
+                  "d"
+                ]
+              ]
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "LengthOfLine",
+                [
+                  "c",
+                  "d"
+                ]
+              ],
+              [
+                "LengthOfLine",
+                [
+                  "d",
+                  "e"
+                ]
+              ]
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "LengthOfLine",
+                [
+                  "d",
+                  "e"
+                ]
+              ],
+              [
+                "LengthOfLine",
+                [
+                  "e",
+                  "a"
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  },
+  "regular_pentagon_definition": {
+    "vars": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e"
+    ],
+    "para_len": [
+      5
+    ],
+    "body": [
+      [
+        [
+          [
+            "RegularPentagon",
+            [
+              "a",
+              "b",
+              "c",
+              "d",
+              "e"
+            ]
+          ]
+        ],
+        [
+          [
+            "EquilateralPentagon",
+            [
+              "a",
+              "b",
+              "c",
+              "d",
+              "e"
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "MeasureOfAngle",
+                [
+                  "a",
+                  "b",
+                  "c"
+                ]
+              ],
+              "108"
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "MeasureOfAngle",
+                [
+                  "b",
+                  "c",
+                  "d"
+                ]
+              ],
+              "108"
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "MeasureOfAngle",
+                [
+                  "c",
+                  "d",
+                  "e"
+                ]
+              ],
+              "108"
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "MeasureOfAngle",
+                [
+                  "d",
+                  "e",
+                  "a"
+                ]
+              ],
+              "108"
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "MeasureOfAngle",
+                [
+                  "e",
+                  "a",
+                  "b"
+                ]
+              ],
+              "108"
+            ]
+          ]
+        ]
+      ]
+    ]
+  },
+  "equilateral_hexagon_definition": {
+    "vars": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+      "f"
+    ],
+    "para_len": [
+      6
+    ],
+    "body": [
+      [
+        [
+          [
+            "EquilateralHexagon",
+            [
+              "a",
+              "b",
+              "c",
+              "d",
+              "e",
+              "f"
+            ]
+          ]
+        ],
+        [
+          [
+            "Equal",
+            [
+              [
+                "LengthOfLine",
+                [
+                  "a",
+                  "b"
+                ]
+              ],
+              [
+                "LengthOfLine",
+                [
+                  "b",
+                  "c"
+                ]
+              ]
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "LengthOfLine",
+                [
+                  "b",
+                  "c"
+                ]
+              ],
+              [
+                "LengthOfLine",
+                [
+                  "c",
+                  "d"
+                ]
+              ]
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "LengthOfLine",
+                [
+                  "c",
+                  "d"
+                ]
+              ],
+              [
+                "LengthOfLine",
+                [
+                  "d",
+                  "e"
+                ]
+              ]
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "LengthOfLine",
+                [
+                  "d",
+                  "e"
+                ]
+              ],
+              [
+                "LengthOfLine",
+                [
+                  "e",
+                  "f"
+                ]
+              ]
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "LengthOfLine",
+                [
+                  "e",
+                  "f"
+                ]
+              ],
+              [
+                "LengthOfLine",
+                [
+                  "f",
+                  "a"
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  },
+  "regular_hexagon_definition": {
+    "vars": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+      "f"
+    ],
+    "para_len": [
+      6
+    ],
+    "body": [
+      [
+        [
+          [
+            "RegularHexagon",
+            [
+              "a",
+              "b",
+              "c",
+              "d",
+              "e",
+              "f"
+            ]
+          ]
+        ],
+        [
+          [
+            "EquilateralHexagon",
+            [
+              "a",
+              "b",
+              "c",
+              "d",
+              "e",
+              "f"
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "MeasureOfAngle",
+                [
+                  "a",
+                  "b",
+                  "c"
+                ]
+              ],
+              "120"
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "MeasureOfAngle",
+                [
+                  "b",
+                  "c",
+                  "d"
+                ]
+              ],
+              "120"
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "MeasureOfAngle",
+                [
+                  "c",
+                  "d",
+                  "e"
+                ]
+              ],
+              "120"
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "MeasureOfAngle",
+                [
+                  "d",
+                  "e",
+                  "f"
+                ]
+              ],
+              "120"
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "MeasureOfAngle",
+                [
+                  "e",
+                  "f",
+                  "a"
+                ]
+              ],
+              "120"
+            ]
+          ],
+          [
+            "Equal",
+            [
+              [
+                "MeasureOfAngle",
+                [
+                  "f",
+                  "a",
+                  "b"
+                ]
+              ],
+              "120"
             ]
           ]
         ]

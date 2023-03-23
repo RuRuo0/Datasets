@@ -6,10 +6,10 @@
 </div>
 
     Polygon(ABCDE),Polygon(BCDEA),Polygon(CDEAB),Polygon(DEABC),Polygon(EABCD)
+    example: 1 Polygon(ADE),Polygon(DBCE)
+             2 Polygon(ABC),Polygon(ACD),Polygon(ADE),Polygon(AEF)
 
-**Notes**:  
-例1 Polygon(ADE),Polygon(DBCE)    
-例2 Polygon(ABC),Polygon(ACD),Polygon(ADE),Polygon(AEF)   
+**Notes**:    
 
 #### Collinear(*)
 <div>
@@ -17,10 +17,10 @@
 </div>
 
     Collinear(AMB),Collinear(BMA)
+    example: 1 Collinear(AOB),Collinear(COD)
+             2 Collinear(BCDEF)
 
 **Notes**:  
-例1 Collinear(AOB),Collinear(COD)  
-例2 Collinear(BCDEF)  
 
 #### Cocircular(O,*)
 <div>
@@ -28,9 +28,9 @@
 </div>
 
     Cocircular(O,AC),Cocircular(O,CA)
+    example: 1 Cocircular(O,ABCD)
 
 **Notes**:  
-例1 Cocircular(O,ABCD)  
 
 ### B、基本实体
 #### Point(A)
@@ -39,10 +39,10 @@
 </div>
 
     Point(A)
+    example: 1 Point(A),Point(B),Point(C)
+             2 Point(O),Point(A),Point(C)
 
 **Notes**:  
-例1 Point(A),Point(B),Point(C)  
-例2 Point(O),Point(A),Point(C)  
 
 #### Line(AB)
 <div>
@@ -50,10 +50,10 @@
 </div>
 
     Line(AB),Line(BA)
+    example: 1 Line(AB),Line(CD)
+             2 Line(AO),Line(BO)
 
 **Notes**:  
-例1 Line(AB),Line(CD)  
-例2 Line(AO),Line(BO)  
 
 #### Angle(ABC)
 <div>
@@ -61,10 +61,10 @@
 </div>
 
     Angle(AOB)
+    example: 1 Angle(ABC),Angle(BCA),Angle(CAB)
+             2 Angle(AOC),Angle(COB),Angle(BOD),Angle(DOA)
 
-**Notes**:   
-例1 Angle(ABC),Angle(BCA),Angle(CAB)  
-例2 Angle(AOC),Angle(COB),Angle(BOD),Angle(DOA)  
+**Notes**:  
 
 #### Triangle(ABC)
 <div>
@@ -72,11 +72,11 @@
 </div>
 
     Triangle(ABC),Triangle(BCA),Triangle(CAB)
+    example: 1 Triangle(ADE),Triangle(ABC)
+             2 Triangle(ABD),Triangle(ADC),Triangle(ABC)
 
 
 **Notes**:  
-例1 Triangle(ADE),Triangle(ABC)  
-例2 Triangle(ABD),Triangle(ADC),Triangle(ABC)  
 
 #### Quadrilateral(ABCD)
 <div>
@@ -84,10 +84,10 @@
 </div>
 
     Quadrilateral(ABCD),Quadrilateral(BCDA),Quadrilateral(CDAB),Quadrilateral(DABC)
+    example: 1 Quadrilateral(DBCE)
+             2 Quadrilateral(ABCD)
 
 **Notes**:  
-例1 Quadrilateral(DBCE)  
-例2 Quadrilateral(ABCD)  
 
 #### Arc(AB)
 <div>
@@ -95,10 +95,10 @@
 </div>
 
     Arc(AB)
+    example: 1 Arc(AC),Arc(CA)
+             2 Arc(AB),Arc(BC),Arc(CD),...
 
 **Notes**:  
-例1: Arc(AC),Arc(CA)  
-例2: Arc(AB),Arc(BC),Arc(CD),...  
 
 #### Circle(O)
 <div>
@@ -106,11 +106,11 @@
 </div>
 
     Circle(O)
+    example: 1 Circle(A),Circle(B)
+             2 Circle(O)
 
 **Notes**:  
-例1: Circle(A),Circle(B)  
-例2: Circle(O)  
-
+ 
 ### C、实体
 #### RightTriangle(ABC)
 <div>
@@ -121,6 +121,7 @@
     multi: 
     extend: Perpendicular(AB,CB)
             IsAltitude(AB,ABC)
+    example: 
 **Notes**:  
 
 #### IsoscelesTriangle(ABC)
@@ -131,6 +132,7 @@
     ee_check: Triangle(ABC)
     multi: 
     extend: Equal(LengthOfLine(AB),LengthOfLine(AC))
+    example: 
 **Notes**:  
 
 #### EquilateralTriangle(ABC)
@@ -143,6 +145,7 @@
            CAB
     extend: Equal(LengthOfLine(AB),LengthOfLine(AC))
             Equal(LengthOfLine(AB),LengthOfLine(BC))
+    example: 
 **Notes**:  
 
 ### D、实体关系
@@ -156,6 +159,7 @@
     fv_check: M,AB
     multi: M,BA
     extend: Equal(LengthOfLine(AM),LengthOfLine(MB))
+    example: 
 **Notes**:  
 
 #### Intersect(O,AB,CD)
@@ -171,6 +175,7 @@
            O,BA,DC
            O,DC,AB
     extend: 
+    example: 
 **Notes**:  
 
 #### Parallel(AB,CD)
@@ -183,6 +188,7 @@
     fv_check: AB,CD
     multi: DC,BA
     extend: 
+    example: 
 **Notes**:  
 
 #### Perpendicular(AO,CO)
@@ -195,6 +201,7 @@
     fv_check: AO,CO
     multi: 
     extend: Equal(MeasureOfAngle(AOC),90)
+    example: 
 **Notes**:  
 
 #### PerpendicularBisector(AB,CO)
@@ -209,6 +216,7 @@
     extend: Perpendicular(AO,CO)
             Perpendicular(CO,BO)
             Midpoint(O,AB)
+    example: 
 **Notes**:  
 
 #### Bisector(BD,ABC)
@@ -221,6 +229,7 @@
     fv_check: BD,ABC
     multi: 
     extend: Equal(MeasureOfAngle(ABD),MeasureOfAngle(DBC))
+    example: 
 **Notes**:  
 
 #### Median(AD,ABC)
@@ -233,6 +242,7 @@
     fv_check: AD,ABC
     multi: 
     extend: Midpoint(D,BC)
+    example: 
 **Notes**:  
 
 #### IsAltitude(AD,ABC)
@@ -249,6 +259,7 @@
     extend: Perpendicular(BD,AD)
             Perpendicular(AD,CD)
             Equal(LengthOfLine(AD),AltitudeOfTriangle(ABC))
+    example: 
 **Notes**:  
 
 #### Neutrality(DE,ABC)
@@ -261,6 +272,22 @@
     fv_check: DE,ABC
     multi: 
     extend: Parallel(DE,BC)
+    example: 
+**Notes**:  
+
+#### Midsegment(DE,ABC)
+<div>
+    <img src="cowork-pic/Midsegment.png"  width="14%">
+</div>
+
+    ee_check: Line(DE)
+              Triangle(ABC)
+    fv_check: DE,ABC
+    multi: 
+    extend: Neutrality(DE,ABC)
+            Midpoint(D,AB)
+            Midpoint(E,AC)
+    example: 
 **Notes**:  
 
 #### Circumcenter(O,ABC)
@@ -274,6 +301,7 @@
     multi: O,BCA
            O,CAB
     extend: 
+    example: 
 **Notes**:  
 
 #### Incenter(O,ABC)
@@ -287,6 +315,7 @@
     multi: O,BCA
            O,CAB
     extend: 
+    example: 
 **Notes**:  
 
 #### Centroid(O,ABC)
@@ -300,6 +329,7 @@
     multi: O,BCA
            O,CAB
     extend: 
+    example: 
 **Notes**:  
 
 #### Orthocenter(O,ABC)
@@ -316,11 +346,12 @@
     multi: O,BCA
            O,CAB
     extend: 
+    example: 
 **Notes**:  
 
 #### Congruent(ABC,DEF)
 <div>
-    <img src="cowork-pic/Congruent.png"  width="25%">
+    <img src="cowork-pic/Congruent.png"  width="20%">
 </div>
 
     ee_check: Triangle(ABC)
@@ -331,11 +362,12 @@
            CAB,FDE
            FDE,CAB
     extend: 
+    example: 
 **Notes**:  
 
 #### Similar(ABC,DEF)
 <div>
-    <img src="cowork-pic/Similar.png"  width="25%">
+    <img src="cowork-pic/Similar.png"  width="20%">
 </div>
 
     ee_check: Triangle(ABC)
@@ -346,11 +378,12 @@
            CAB,FDE
            FDE,CAB
     extend: 
+    example: 
 **Notes**:  
 
 #### MirrorCongruent(ABC,DEF)
 <div>
-    <img src="cowork-pic/MirrorCongruent.png"  width="25%">
+    <img src="cowork-pic/MirrorCongruent.png"  width="20%">
 </div>
 
     ee_check: Triangle(ABC)
@@ -361,11 +394,12 @@
            CAB,EFD
            EFD,CAB
     extend: 
+    example: 
 **Notes**:  
 
 #### MirrorSimilar(ABC,DEF)
 <div>
-    <img src="cowork-pic/MirrorSimilar.png"  width="25%">
+    <img src="cowork-pic/MirrorSimilar.png"  width="20%">
 </div>
 
     ee_check: Triangle(ABC)
@@ -376,6 +410,7 @@
            CAB,EFD
            EFD,CAB
     extend: 
+    example: 
 **Notes**:  
 
 ### E、基本实体属性
@@ -408,7 +443,6 @@
     multi: 
     sym: ma
 **Notes**:  
-
 ### F、实体属性
 #### AreaOfTriangle(ABC)
 <div>
@@ -419,8 +453,8 @@
     multi: BCA
            CAB
     sym: at
+    example: 1 Equal(AreaOfTriangle(ABC),10)
 **Notes**:  
-例 Equal(AreaOfTriangle(ABC),10)  
 
 #### PerimeterOfTriangle(ABC)
 <div>
@@ -431,8 +465,34 @@
     multi: BCA
            CAB
     sym: pt
+    example: 1 Equal(PerimeterOfTriangle(ABC),10)
 **Notes**:  
-例 Equal(PerimeterOfTriangle(ABC),10)  
+
+#### AreaOfQuadrilateral(ABCD)
+<div>
+    <img src="cowork-pic/AreaOfQuadrilateral.png"  width="14%">
+</div>
+
+    ee_check: Quadrilateral(ABCD)
+    multi: BCDA
+           CDAB
+           DABC
+    sym: aq
+    example: 1 Equal(AreaOfQuadrilateral(ABCD),20)
+**Notes**:  
+
+#### PerimeterOfQuadrilateral(ABCD)
+<div>
+    <img src="cowork-pic/PerimeterOfQuadrilateral.png"  width="14%">
+</div>
+
+    ee_check: Quadrilateral(ABCD)
+    multi: BCDA
+           CDAB
+           DABC
+    sym: pq
+    example: 1 Equal(PerimeterOfQuadrilateral(ABCD),20)
+**Notes**:  
 
 #### AltitudeOfTriangle(ABC)
 <div>
@@ -442,8 +502,8 @@
     ee_check: Triangle(ABC)
     multi: 
     sym: alt
+    example: 1 Equal(AltitudeOfTriangle(ABC),5)
 **Notes**:  
-例 Equal(AltitudeOfTriangle(ABC),5)  
 
 #### DistanceOfPointToLine(O,AB)
 <div>
@@ -457,8 +517,8 @@
               A,AB
     multi: OBA
     sym: dpl
+    example: 1 Equal(DistanceOfPointToLine(O,AB),3)
 **Notes**:  
-例 Equal(DistanceOfPointToLine(O,AB),3)  
 
 ### G、代数关系
 
@@ -475,6 +535,7 @@ expr可以是表达式，也可以是实体属性，并且可以嵌套表示。
 |乘|Mul(expr1,expr2,…)|*|
 |除|Div(expr1,expr2)|/|
 |幂|Pow(expr1,expr2)|^|
+|根号|Sqrt(expr1)|√|
 |正弦|Sin(expr)|@|
 |余弦|Cos(expr)|#|
 |正切|Tan(expr)|$|
@@ -486,9 +547,9 @@ expr可以是表达式，也可以是实体属性，并且可以嵌套表示。
 ### I、解题目标
 #### Value
 
-    Value(LengthOfLine(AB))
-    Value(Add(MeasureOfAngle(ABC),MeasureOfAngle(DEF)))
-    Value(x+y)
+    example: 1 Value(LengthOfLine(AB))
+             2 Value(Add(MeasureOfAngle(ABC),MeasureOfAngle(DEF)))
+             3 Value(x+y)
 
 **Notes**:  
 代数型解题目标，求某个表达式或属性的值。  
@@ -496,22 +557,18 @@ expr可以是表达式，也可以是实体属性，并且可以嵌套表示。
 
 #### Equal
 
-
-    Equal(LengthOfLine(AB),x+y)
-    Equal(Add(MeasureOfAngle(ABC),MeasureOfAngle(DEF)),Pow(x,2))
+    example: 1 Equal(LengthOfLine(AB),x+y)
+             2 Equal(Add(MeasureOfAngle(ABC),MeasureOfAngle(DEF)),Pow(x,2))
     
 **Notes**:  
 代数型解题目标，证明左右俩个部分相等。  
 expr可以是表达式，也可以是实体属性，并且可以嵌套表示。  
 
 #### Relation
-逻辑型解题目标，求某个实体或属性。  
 
-
-    Relation(Parallel(AB,CD))
-    Relation(RightTriangle(ABC))    
+    example: 1 Relation(Parallel(AB,CD))
+             2 Relation(RightTriangle(ABC))    
 
 **Notes**:  
-代数型解题目标，证明左右俩个部分相等。  
+逻辑型解题目标，求某个实体或属性。  
 Relation表示任意实体、实体关系。  
-

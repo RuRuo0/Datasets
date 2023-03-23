@@ -302,8 +302,8 @@ C、每个人第N周提交的内容将会在第N+1周周日日24点之前合并�
     <img src="cowork-pic/auto-expand.png" width="50%">
 </div>
 
-**2.逆时针法则**  
-很多图形的文字表示都是按照逆时针的方向，将图形的点按顺序列出，如多边形、角、三角形等。逆时针法则主要是为了区分镜像图形。  
+**2.逆时针原则**  
+很多图形的文字表示都是按照逆时针的方向，将图形的点按顺序列出，如多边形、角、三角形等。逆时针原则主要是为了区分镜像图形。  
 <div>
     <img src="cowork-pic/40.png" width="40%">
 </div>
@@ -331,10 +331,6 @@ C、每个人第N周提交的内容将会在第N+1周周日日24点之前合并�
     Parallel(AB,CD)
     Intersect(O,AB,CD)
     Perpendicular(AO,BO)
-
-
-### 定理标注口诀
-coming soon...
 
 ## 附录2 谓词标注对照手册
 见 doc/predicate.md

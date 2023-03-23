@@ -30,88 +30,22 @@ class FLParser:
     @staticmethod
     def parse_predicate(predicate_GDL):
         """parse predicate_GDL to logic form."""
-        predicate_GDL = predicate_GDL["Predicates"]
         parsed_GDL = {  # preset Construction
             "Construction": ["Polygon", "Collinear", "Cocircular"],
-            "BasicEntity": {  # preset Entity
-                "Point": {
-                    "vars": ["p"],
-                    "para_len": [1],
-                    "ee_check": [],
-                    "multi": [],
-                    "extend": []
-                },
-                "Line": {
-                    "vars": ["a", "b"],
-                    "para_len": [2],
-                    "ee_check": [],
-                    "multi": [["b", "a"]],
-                    "extend": [["Point", ["a"]], ["Point", ["b"]]]
-                },
-                "Angle": {
-                    "vars": ["a", "b", "c"],
-                    "para_len": [3],
-                    "ee_check": [],
-                    "multi": [],
-                    "extend": [["Line", ["a", "b"]], ["Line", ["b", "c"]]]
-                },
-                "Triangle": {
-                    "vars": ["a", "b", "c"],
-                    "para_len": [3],
-                    "ee_check": [],
-                    "multi": [["b", "c", "a"], ["c", "a", "b"]],
-                    "extend": []
-                },
-                "Quadrilateral": {
-                    "vars": ["a", "b", "c", "d"],
-                    "para_len": [4],
-                    "ee_check": [],
-                    "multi": [["b", "c", "d", "a"], ["c", "d", "a", "b"], ["d", "a", "b", "c"]],
-                    "extend": []
-                },
-                "Arc": {
-                    "vars": ["a", "b"],
-                    "para_len": [2],
-                    "ee_check": [],
-                    "multi": [],
-                    "extend": [["Point", ["a"]], ["Point", ["b"]]]
-                },
-                "Circle": {
-                    "vars": ["o"],
-                    "para_len": [1],
-                    "ee_check": [],
-                    "multi": [],
-                    "extend": [["Point", ["o"]]]
-                }
-            },
-            "BasicAttribution": ["Free"],
-            "Equation": ["Equal"],
+            "BasicEntity": {},
             "Entity": {},
             "Relation": {},
-            "Attribution": {
-                "LengthOfLine": {
-                    "vars": ["a", "b"],
-                    "para_len": [2],
-                    "ee_check": [["Line", ["a", "b"]]],
-                    "sym": "ll",
-                    "multi": [["b", "a"]]
-                },
-                "LengthOfArc": {
-                    "vars": ["a", "b"],
-                    "para_len": [2],
-                    "ee_check": [["Arc", ["a", "b"]]],
-                    "sym": "la",
-                    "multi": []
-                },
-                "MeasureOfAngle": {
-                    "vars": ["a", "b", "c"],
-                    "para_len": [3],
-                    "ee_check": [["Angle", ["a", "b", "c"]]],
-                    "sym": "ma",
-                    "multi": []
-                }
-            }
+            "Attribution": {}
         }
+        basic_entities = predicate_GDL["BasicEntity"]  # parse entity
+        for item in basic_entities:
+            name, para, para_len = FLParser._parse_one_predicate(item, True)
+            parsed_GDL["BasicEntity"][name] = {
+                "vars": para,
+                "para_len": para_len,
+                "multi": FLParser._parse_multi(basic_entities[item]["multi"]),
+                "extend": FLParser._parse_extend(basic_entities[item]["extend"])
+            }
 
         entities = predicate_GDL["Entity"]  # parse entity
         for item in entities:
@@ -235,14 +169,13 @@ class FLParser:
     @staticmethod
     def parse_theorem(theorem_GDL, parsed_predicate_GDL):
         """parse theorem_GDL to logic form."""
-        theorem_GDL = theorem_GDL["Theorems"]
         parsed_GDL = {}
 
         for theorem_name in theorem_GDL:
             body = []
-            for branch in theorem_GDL[theorem_name]["body"]:
-                parsed_premise = FLParser._parse_premise([theorem_GDL[theorem_name]["body"][branch]["premise"]])
-                parsed_conclusion = FLParser._parse_conclusion(theorem_GDL[theorem_name]["body"][branch]["conclusion"])
+            for branch in theorem_GDL[theorem_name]:
+                parsed_premise = FLParser._parse_premise([theorem_GDL[theorem_name][branch]["premise"]])
+                parsed_conclusion = FLParser._parse_conclusion(theorem_GDL[theorem_name][branch]["conclusion"])
                 for p in parsed_premise:
                     body.append([p, parsed_conclusion])  # premise, conclusion
 

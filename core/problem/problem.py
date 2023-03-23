@@ -233,6 +233,10 @@ class Problem:
                         self.add("Triangle", item, (_id,), "extended")
                     elif l == 4:
                         self.add("Quadrilateral", item, (_id,), "extended")
+                    elif l == 5:
+                        self.add("Pentagon", item, (_id,), "extended")
+                    elif l == 6:
+                        self.add("Hexagon", item, (_id,), "extended")
                 elif predicate == "Collinear":  # Construction predicate: Collinear
                     for l in range(3, len(item) + 1):  # extend collinear
                         for extended_item in combinations(item, l):
@@ -312,8 +316,7 @@ class Problem:
                 predicate in self.predicate_GDL["Construction"] or \
                 predicate in self.predicate_GDL["BasicEntity"]:
             return True
-
-        if predicate in self.predicate_GDL["Entity"]:
+        elif predicate in self.predicate_GDL["Entity"]:
             item_GDL = self.predicate_GDL["Entity"][predicate]
         elif predicate in self.predicate_GDL["Relation"]:
             item_GDL = self.predicate_GDL["Relation"][predicate]
@@ -344,6 +347,9 @@ class Problem:
             if len(item) != len(set(item)):    # default check 1: mutex points
                 return False
             item_GDL = self.predicate_GDL["BasicEntity"][predicate]
+            if len(item) != len(item_GDL["vars"]):  # default check 2: correct para len
+                return False
+            return True
         elif predicate in self.predicate_GDL["Entity"]:
             if len(item) != len(set(item)):    # default check 1: mutex points
                 return False

@@ -1,0 +1,56 @@
+{
+  "problem_id": 3336,
+  "annotation": "nazhu_2023-03-23",
+  "source": "Geometry3k-1752",
+  "problem_level": 1,
+  "problem_text_cn": "",
+  "problem_text_en": "If P R \\parallel K L, K N = 9, L N = 16, P M = 2 K P, find M R.",
+  "problem_img": "3336.png",
+  "construction_cdl": [
+    "Polygon(LRQN)",
+    "Polygon(KNQP)",
+    "Polygon(RMQ)",
+    "Polygon(QMP)",
+    "Collinear(LNK)",
+    "Collinear(RQP)",
+    "Collinear(LRM)",
+    "Collinear(KPM)",
+    "Collinear(NQM)"
+  ],
+  "text_cdl": [
+    "Parallel(LK,RP)",
+    "Equal(LengthOfLine(KN),9)",
+    "Equal(LengthOfLine(LN),16)",
+    "Equal(LengthOfLine(PM),Mul(LengthOfLine(KP),2))"
+  ],
+  "image_cdl": [
+    "Perpendicular(RM,PM)",
+    "Perpendicular(KN,QN)"
+  ],
+  "goal_cdl": "Value(LengthOfLine(MR))",
+  "problem_answer": "40/3",
+  "theorem_seqs": [
+    "neutrality_judgment_parallel(PR,MKL)",
+    "neutrality_property_similar(PR,MKL)",
+    "similar_property_angle_equal(KLM,PRM)",
+    "similar_judgment_aa(QMP,NMK)",
+
+    "line_addition(KP,PM)",
+    "similar_property_line_ratio(PQM,KNM)",
+    "line_addition(LN,NK)",
+    "line_addition(RQ,QP)",
+    "similar_property_line_ratio(KLM,PRM)",
+    "similar_judgment_aa(MKN,LMK)",
+    "similar_property_angle_equal(MKN,LMK)",
+    "perpendicular_property_collinear_extend(KN,QN,L)",
+    "similar_judgment_aa(KNM,MNL)",
+    "similar_property_line_ratio(NMK,NLM)",
+    "line_addition(NQ,QM)",
+    "similar_property_line_ratio(MPQ,MKN)",
+    "parallel_property_collinear_extend(LK,RP,N)",
+    "parallel_property_collinear_extend(PR,NL,Q)",
+    "parallel_property_corresponding_angle(QR,NL,M)",
+    "right_triangle_judgment_angle(MQR)",
+    "right_triangle_property_pythagorean(MQR)"
+  ]
+}

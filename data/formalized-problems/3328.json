@@ -1,0 +1,33 @@
+{
+  "problem_id": 3328,
+  "annotation": "nazhu_2023-03-23",
+  "source": "Geometry3k-1744",
+  "problem_level": 1,
+  "problem_text_cn": "",
+  "problem_text_en": "Find the perimeter of \\triangle P Q R, if \\triangle P Q M \\sim \\triangle P R Q.",
+  "problem_img": "3328.png",
+  "construction_cdl": [
+    "Polygon(QPM)",
+    "Polygon(QMR)",
+    "Collinear(PMR)"
+  ],
+  "text_cdl": [],
+  "image_cdl": [
+    "MirrorSimilar(QPM,RQP)",
+    "Equal(LengthOfLine(QP),13)",
+    "Equal(LengthOfLine(QM),12)",
+    "Perpendicular(RQ,PQ)",
+    "Perpendicular(QM,RM)"
+  ],
+  "goal_cdl": "Value(PerimeterOfTriangle(RQP))",
+  "problem_answer": "78",
+  "theorem_seqs": [
+    "perpendicular_property_collinear_extend(QM,RM,P)",
+    "right_triangle_judgment_angle(PMQ)",
+    "right_triangle_property_pythagorean(PMQ)",
+    "line_addition(PM,MR)",
+    "similar_property_line_ratio(PMQ,PRQ)",
+    "similar_property_line_ratio(MQP,QPR)",
+    "triangle_perimeter_formula(PRQ)"
+  ]
+}

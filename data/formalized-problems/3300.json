@@ -1,0 +1,40 @@
+{
+  "problem_id": 3300,
+  "annotation": "nazhu_2023-03-22",
+  "source": "Geometry3k-1716",
+  "problem_level": 1,
+  "problem_text_cn": "",
+  "problem_text_en": "Find F B if S A and F B are altitudes and \\triangle R S T \\sim \\triangle E F G.",
+  "problem_img": "3300.png",
+  "construction_cdl": [
+    "Polygon(SRT)",
+    "Polygon(STA)",
+    "Polygon(FEG)",
+    "Polygon(FGB)",
+    "Collinear(RTA)",
+    "Collinear(EGB)"
+  ],
+  "text_cdl": [],
+  "image_cdl": [
+    "IsAltitude(SA,STA)",
+    "IsAltitude(FB,FGB)",
+    "Similar(SRT,FEG)",
+    "Equal(LengthOfLine(GF),5)",
+    "Equal(LengthOfLine(FB),7-x)",
+    "Equal(LengthOfLine(SA),2)",
+    "Equal(LengthOfLine(ST),x)",
+    "Perpendicular(AS,AT)",
+    "Perpendicular(FB,BG)"
+  ],
+  "goal_cdl": "Value(LengthOfLine(FB))",
+  "problem_answer": "2",
+  "theorem_seqs": [
+    "similar_property_angle_equal(TSR,GFE)",
+    "flat_angle(RTA)",
+    "flat_angle(EGB)",
+    "angle_addition(RTS,STA)",
+    "angle_addition(EGF,FGB)",
+    "similar_judgment_aa(STA,FGB)",
+    "similar_property_line_ratio(STA,FGB)"
+  ]
+}

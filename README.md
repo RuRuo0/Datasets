@@ -1,18 +1,31 @@
 # FormalGeo-SAT
-[![Version](https://img.shields.io/badge/Version-1.3.0-brightgreen)](https://github.com/BitSecret/FormalGeo-SAT)
+[![Version](https://img.shields.io/badge/Version-1.3.5-brightgreen)](https://github.com/BitSecret/FormalGeo-SAT)
 [![License](https://img.shields.io/badge/License-MIT-green)](https://opensource.org/licenses/MIT)
 [![Survey](https://img.shields.io/badge/Survey-FormalGeo-blue)](https://github.com/BitSecret/FormalGeo-SAT)  
 Formal representation and solving for SAT-level Euclidean plane geometry problems.  
 **FormalGeo-SAT** is an extended version of **[FormalGeo](https://github.com/BitSecret/FormalGeo)**. It supports solving more types of plane geometric problems.
 
 ## Cowork
+#### Week 5 (230403): form 2023-04-03 to 2023-04-09.
+Triangle: 34*8+37, Other: 26*8+23+70*4
+
+#### Week 4 (230327): form 2023-03-27 to 2023-04-02.
+**Attention:** Annotate problems in directory **Geometry3K-Other**.  
+
+| Worker | WorkLoad | PID | Skip | Submitted |
+|:---:|:---:|:---:|:---:|:---:|
+| XiaokaiZhang | 70 | 1585-1694 | / | × |
+| NaZhu | 70 | 1696-1803 | / | × |
+| JiaZou | 70 | 1804-1924 | / | × |
+| YimingHe | 70 | 1926-2046 | / | × |
+
 #### Week 3 (230320): form 2023-03-20 to 2023-03-26.
 **Attention:** Annotate problems in directory **Geometry3k-Triangle**.  
 
 | Worker | WorkLoad | PID | Skip | Submitted |
 |:---:|:---:|:---:|:---:|:---:|
 | XiaokaiZhang | 70 | 3089-3270 | / | × |
-| NaZhu | 70 | 3273-3448 | / | × |
+| NaZhu | 70 | 3273-3448 | / | √ |
 | JiaZou | 70 | 3451-3624 | / | × |
 | YimingHe | 70 | 3625-3791 | / | × |
 

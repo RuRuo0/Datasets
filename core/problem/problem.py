@@ -330,9 +330,6 @@ class Problem:
             letters[item_GDL["vars"][i]] = item[i]
 
         for name, para in item_GDL["ee_check"]:
-            print(tuple(letters[i] for i in para))
-            print(self.conditions[name].get_id_by_item)
-            print()
             if tuple(letters[i] for i in para) not in self.conditions[name].get_id_by_item:
                 return False
         return True

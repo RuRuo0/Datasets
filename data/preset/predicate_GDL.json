@@ -59,7 +59,7 @@
       ],
       "extend": []
     },
-    "Arc(AB)": {
+    "Arc(OAB)": {
       "multi": [],
       "extend": [
         "Point(A)",
@@ -75,7 +75,7 @@
     "Sector(OAB)": {
       "multi": [],
       "extend": [
-        "Arc(AB)"
+        "Arc(OAB)"
       ]
     }
   },
@@ -86,8 +86,7 @@
       ],
       "multi": [],
       "extend": [
-        "Perpendicular(CA,BA)",
-        "IsAltitude(CA,CAB)"
+        "PerpendicularBetweenLine(AB,CB)"
       ]
     },
     "IsoscelesTriangle(ABC)": {
@@ -105,7 +104,7 @@
       ],
       "multi": [],
       "extend": [
-        "RightTriangle(ABC)",
+        "RightTriangle(CAB)",
         "IsoscelesRightTriangle(ABC)"
       ]
     },
@@ -145,8 +144,8 @@
         "DABC"
       ],
       "extend": [
-        "Parallel(AD,BC)",
-        "Parallel(BA,CD)"
+        "ParallelBetweenLine(AD,BC)",
+        "ParallelBetweenLine(BA,CD)"
       ]
     },
     "Rhombus(ABCD)": {
@@ -175,10 +174,10 @@
       ],
       "extend": [
         "Parallelogram(ABCD)",
-        "Perpendicular(AB,CB)",
-        "Perpendicular(BC,DC)",
-        "Perpendicular(CD,AD)",
-        "Perpendicular(DA,BA)"
+        "PerpendicularBetweenLine(AB,CB)",
+        "PerpendicularBetweenLine(BC,DC)",
+        "PerpendicularBetweenLine(CD,AD)",
+        "PerpendicularBetweenLine(DA,BA)"
       ]
     },
     "Square(ABCD)": {
@@ -203,7 +202,7 @@
         "CDAB"
       ],
       "extend": [
-        "Parallel(AD,BC)"
+        "ParallelBetweenLine(AD,BC)"
       ]
     },
     "IsoscelesTrapezoid(ABCD)": {
@@ -225,8 +224,8 @@
       "multi": [],
       "extend": [
         "Trapezoid(ABCD)",
-        "Perpendicular(DA,BA)",
-        "Perpendicular(AB,CB)"
+        "PerpendicularBetweenLine(DA,BA)",
+        "PerpendicularBetweenLine(AB,CB)"
       ]
     },
     "EquilateralPentagon(ABCDE)": {
@@ -310,7 +309,8 @@
     "IsMidpointOfLine(M,AB)": {
       "ee_check": [
         "Point(M)",
-        "Line(AB)"
+        "Line(AB)",
+        "Collinear(AMB)"
       ],
       "fv_check": [
         "M,AB"
@@ -358,8 +358,8 @@
       ],
       "multi": [],
       "extend": [
-        "Perpendicular(AO,CO)",
-        "Perpendicular(CO,BO)",
+        "PerpendicularBetweenLine(AO,CO)",
+        "PerpendicularBetweenLine(CO,BO)",
         "Midpoint(O,AB)"
       ]
     },
@@ -379,7 +379,8 @@
     "IsMedianOfTriangle(AD,ABC)": {
       "ee_check": [
         "Line(AD)",
-        "Triangle(ABC)"
+        "Triangle(ABC)",
+        "Collinear(BDC)"
       ],
       "fv_check": [
         "AD,ABC"
@@ -395,21 +396,34 @@
         "Triangle(ABC)"
       ],
       "fv_check": [
-        "AD,ABC",
-        "AB,ABC",
-        "AC,ABC"
+        "AD,ABC"
       ],
       "multi": [],
       "extend": [
-        "Perpendicular(BD,AD)",
-        "Perpendicular(AD,CD)",
         "Equal(LengthOfLine(AD),HeightOfTriangle(ABC))"
+      ]
+    },
+    "IsAltitudeOfQuadrilateral(EF,ABCD)": {
+      "ee_check": [
+        "Line(EF)",
+        "Quadrilateral(ABCD)"
+      ],
+      "fv_check": [
+        "EF,ABCD",
+        "AF,ABCD",
+        "DF,ABCD"
+      ],
+      "multi": [],
+      "extend": [
+        "Equal(LengthOfLine(EF),HeightOfQuadrilateral(ABCD))"
       ]
     },
     "IsMidsegmentOfTriangle(DE,ABC)": {
       "ee_check": [
         "Line(DE)",
-        "Triangle(ABC)"
+        "Triangle(ABC)",
+        "Collinear(ADB)",
+        "Collinear(AEC)"
       ],
       "fv_check": [
         "DE,ABC"
@@ -423,7 +437,9 @@
     "IsMidsegmentOfTrapezoid(EF,ABCD)": {
       "ee_check": [
         "Line(EF)",
-        "Quadrilateral(ABCD)"
+        "Quadrilateral(ABCD)",
+        "Collinear(AEB)",
+        "Collinear(DFC)"
       ],
       "fv_check": [
         "FE,CDAB"
@@ -643,19 +659,21 @@
     },
     "IsRadiusOfCircle(AO,O)": {
       "ee_check": [
-        "Line(AO)",
-        "Circle(O)"
+        "Cocircular(O,A)",
+        "Line(AO)"
       ],
       "fv_check": [
         "AO,O"
       ],
       "multi": [],
-      "extend": []
+      "extend": [
+        "Equal(LengthOfLine(AO),LengthOfRadius(O))"
+      ]
     },
     "IsDiameterOfCircle(AB,O)": {
       "ee_check": [
         "Line(AB)",
-        "Circle(O)"
+        "Cocircular(O,AB)"
       ],
       "fv_check": [
         "AB,O"
@@ -665,13 +683,17 @@
       ],
       "extend": [
         "IsRadiusOfCircle(AO,O)",
-        "IsRadiusOfCircle(BO,O)"
+        "IsRadiusOfCircle(BO,O)",
+        "IsChordOfCircle(AB,O)",
+        "IsChordOfCircle(BA,O)",
+        "Equal(LengthOfLine(AB),LengthOfDiameter(O))",
+        "Equal(LengthOfDiameter(O),Mul(LengthOfRadius(O),2))"
       ]
     },
     "IsChordOfCircle(AB,O)": {
       "ee_check": [
         "Line(AB)",
-        "Circle(O)"
+        "Cocircular(O,AB)"
       ],
       "fv_check": [
         "AB,O"
@@ -682,8 +704,7 @@
     "IsTangentOfCircle(AB,O,P)": {
       "ee_check": [
         "Line(AB)",
-        "Circle(O)",
-        "Point(P)"
+        "Cocircular(O,P)"
       ],
       "fv_check": [
         "AB,O,P",
@@ -704,11 +725,25 @@
         "BA"
       ]
     },
-    "LengthOfArc(AB)": {
+    "LengthOfArc(OAB)": {
       "ee_check": [
-        "Arc(AB)"
+        "Arc(OAB)"
       ],
       "sym": "la",
+      "multi": []
+    },
+    "LengthOfRadius(O)": {
+      "ee_check": [
+        "Circle(O)"
+      ],
+      "sym": "lr",
+      "multi": []
+    },
+    "LengthOfDiameter(O)": {
+      "ee_check": [
+        "Circle(O)"
+      ],
+      "sym": "ld",
       "multi": []
     },
     "MeasureOfAngle(ABC)": {
@@ -728,16 +763,6 @@
         "CAB"
       ]
     },
-    "PerimeterOfTriangle(ABC)": {
-      "ee_check": [
-        "Triangle(ABC)"
-      ],
-      "sym": "pt",
-      "multi": [
-        "BCA",
-        "CAB"
-      ]
-    },
     "AreaOfQuadrilateral(ABCD)": {
       "ee_check": [
         "Quadrilateral(ABCD)"
@@ -747,6 +772,23 @@
         "BCDA",
         "CDAB",
         "DABC"
+      ]
+    },
+    "AreaOfCircle(O)": {
+      "ee_check": [
+        "Circle(O)"
+      ],
+      "sym": "ac",
+      "multi": []
+    },
+    "PerimeterOfTriangle(ABC)": {
+      "ee_check": [
+        "Triangle(ABC)"
+      ],
+      "sym": "pt",
+      "multi": [
+        "BCA",
+        "CAB"
       ]
     },
     "PerimeterOfQuadrilateral(ABCD)": {
@@ -760,6 +802,13 @@
         "DABC"
       ]
     },
+    "PerimeterOfCircle(O)": {
+      "ee_check": [
+        "Circle(O)"
+      ],
+      "sym": "pc",
+      "multi": []
+    },
     "HeightOfTriangle(ABC)": {
       "ee_check": [
         "Triangle(ABC)"
@@ -769,7 +818,7 @@
     },
     "HeightOfQuadrilateral(ABCD)": {
       "ee_check": [
-        "Triangle(ABC)"
+        "Quadrilateral(ABCD)"
       ],
       "sym": "hq",
       "multi": []

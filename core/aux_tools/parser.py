@@ -581,13 +581,14 @@ class EqParser:
                     elif operator_unit == "~":  # 只有unit为"~"，才能到达这个判断，表示表达式处理完成
                         break
             else:  # symbol or number
-                if unit.isalpha():
+                if unit == "π":    # pi
+                    unit = pi
+                elif unit.isalpha():   # free sym
                     unit = problem.get_sym_of_attr("Free", (unit,))
-                else:
-                    if "." in unit:
-                        unit = Float(unit)
-                    else:
-                        unit = Integer(unit)
+                elif "." in unit:   # float
+                    unit = Float(unit)
+                else:    # int
+                    unit = Integer(unit)
                 expr_stack.append(unit)
                 i = i + 1
 

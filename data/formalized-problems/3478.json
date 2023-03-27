@@ -1,0 +1,45 @@
+{
+  "problem_id": 3478,
+  "annotation": "jiazou_2023-03-23",
+  "source": "Geometry3k-1894",
+  "problem_level": 1,
+  "problem_text_cn": "",
+  "problem_text_en": "Find E H if \\triangle A B C \\sim \\triangle D E F, B G is an altitude of \\triangle A B C, E H is an altitude of \\triangle D E F, B G = 3, B F = 4, F C = 2, and C E = 1.",
+  "problem_img": "3478.png",
+  "construction_cdl": [
+    "Polygon(ABG)",
+    "Polygon(GBFI)",
+    "Polygon(IFC)",
+    "Polygon(ICEH)",
+    "Polygon(HED)",
+    "Collinear(AGIC)",
+    "Collinear(FIHD)",
+    "Collinear(BFCE)"
+  ],
+  "text_cdl": [
+    "MirrorSimilar(ABC,DFE)"
+  ],
+  "image_cdl": [
+    "Equal(LengthOfLine(BG),AltitudeOfTriangle(ABC))",
+    "Equal(LengthOfLine(EH),AltitudeOfTriangle(DFE))",
+    "Equal(LengthOfLine(BG),3)",
+    "Equal(LengthOfLine(BF),4)",
+    "Equal(LengthOfLine(FC),2)",
+    "Equal(LengthOfLine(CE),1)",
+    "Equal(LengthOfLine(BG),3)",
+    "Perpendicular(BG,AG)",
+    "Perpendicular(EH,FH)",
+    "Perpendicular(AB,FB)",
+    "Perpendicular(CE,DE)"
+  ],
+  "goal_cdl": "Value(LengthOfLine(EH))",
+  "problem_answer": "3/2",
+  "theorem_seqs": [
+    "similar_property_angle_equal(CAB,FED)",
+    "perpendicular_property_collinear_extend(BG,AG,C)",
+    "similar_judgment_aa(BCG,EHF)",
+    "line_addition(BF,FC)",
+    "line_addition(FC,CE)",
+    "similar_property_line_ratio(BCG,EHF)"
+  ]
+}

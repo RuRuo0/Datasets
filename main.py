@@ -63,6 +63,12 @@ def run(save_GDL=False, save_CDL=False, auto=False):
 
                 solver.check_goal()    # check goal after applied theorem seqs
 
+                # if solver.problem.goal["solved"]:   # clean theorem
+                #     problem_CDL = load_json(path_formalized + filename)
+                #     _id, seqs = get_used_theorem(solver.problem)
+                #     problem_CDL["theorem_seqs"] = seqs
+                #     save_json(problem_CDL, path_formalized + filename)
+
                 simple_show(solver.problem)   # show solved msg
 
                 if save_CDL:  # save solved msg

@@ -1,5 +1,5 @@
 # FormalGeo-SAT
-[![Version](https://img.shields.io/badge/Version-1.3.5-brightgreen)](https://github.com/BitSecret/FormalGeo-SAT)
+[![Version](https://img.shields.io/badge/Version-1.3.6-brightgreen)](https://github.com/BitSecret/FormalGeo-SAT)
 [![License](https://img.shields.io/badge/License-MIT-green)](https://opensource.org/licenses/MIT)
 [![Survey](https://img.shields.io/badge/Survey-FormalGeo-blue)](https://github.com/BitSecret/FormalGeo-SAT)  
 Formal representation and solving for SAT-level Euclidean plane geometry problems.  
@@ -43,8 +43,8 @@ Formal representation and solving for SAT-level Euclidean plane geometry problem
 |:---:|:---:|:---:|:---:|:---:|
 | XiaokaiZhang | 70 | 3089-3270 | / | × |
 | NaZhu | 70 | 3273-3448 | / | √ |
-| JiaZou | 70 | 3451-3624 | / | × |
-| YimingHe | 70 | 3625-3791 | / | × |
+| JiaZou | 70 | 3451-3624 | / | √ |
+| YimingHe | 70 | 3625-3791 | / | √ |
 
 #### Week 2 (230313): form 2023-03-13 to 2023-03-19.
 **Attention:** Annotate problems in directory **Geometry3k-Triangle**.  

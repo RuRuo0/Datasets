@@ -1,6 +1,6 @@
 {
   "Construction": [
-    "Polygon",
+    "Shape",
     "Collinear",
     "Cocircular"
   ],
@@ -62,6 +62,7 @@
     "Arc(OAB)": {
       "multi": [],
       "extend": [
+        "Circle(O)",
         "Point(A)",
         "Point(B)"
       ]
@@ -74,9 +75,7 @@
     },
     "Sector(OAB)": {
       "multi": [],
-      "extend": [
-        "Arc(OAB)"
-      ]
+      "extend": []
     }
   },
   "Entity": {
@@ -351,7 +350,8 @@
     "IsPerpendicularBisectorOfLine(CO,AB)": {
       "ee_check": [
         "Line(CO)",
-        "Line(AB)"
+        "Line(AB)",
+        "Collinear(AOB)"
       ],
       "fv_check": [
         "CO,AB"
@@ -593,70 +593,6 @@
       ],
       "extend": []
     },
-    "CongruentBetweenQuadrilateral(ABCD,EFGH)": {
-      "ee_check": [
-        "Quadrilateral(ABCD)",
-        "Quadrilateral(EFGH)"
-      ],
-      "multi": [
-        "BCDA,FGHE",
-        "CDAB,GHEF",
-        "DABC,HEFG",
-        "EFGH,ABCD",
-        "FGHE,BCDA",
-        "GHEF,CDAB",
-        "HEFG,DABC"
-      ],
-      "extend": []
-    },
-    "SimilarBetweenQuadrilateral(ABCD,EFGH)": {
-      "ee_check": [
-        "Quadrilateral(ABCD)",
-        "Quadrilateral(EFGH)"
-      ],
-      "multi": [
-        "BCDA,FGHE",
-        "CDAB,GHEF",
-        "DABC,HEFG",
-        "EFGH,ABCD",
-        "FGHE,BCDA",
-        "GHEF,CDAB",
-        "HEFG,DABC"
-      ],
-      "extend": []
-    },
-    "MirrorCongruentBetweenQuadrilateral(ABCD,EFGH)": {
-      "ee_check": [
-        "Quadrilateral(ABCD)",
-        "Quadrilateral(EFGH)"
-      ],
-      "multi": [
-        "BCDA,HEFG",
-        "CDAB,GHEF",
-        "DABC,FGHE",
-        "EFGH,ABCD",
-        "HEFG,BCDA",
-        "GHEF,CDAB",
-        "FGHE,DABC"
-      ],
-      "extend": []
-    },
-    "MirrorSimilarBetweenQuadrilateral(ABCD,EFGH)": {
-      "ee_check": [
-        "Quadrilateral(ABCD)",
-        "Quadrilateral(EFGH)"
-      ],
-      "multi": [
-        "BCDA,HEFG",
-        "CDAB,GHEF",
-        "DABC,FGHE",
-        "EFGH,ABCD",
-        "HEFG,BCDA",
-        "GHEF,CDAB",
-        "FGHE,DABC"
-      ],
-      "extend": []
-    },
     "IsRadiusOfCircle(AO,O)": {
       "ee_check": [
         "Cocircular(O,A)",
@@ -712,7 +648,10 @@
         "AB,O,B"
       ],
       "multi": [],
-      "extend": []
+      "extend": [
+        "PerpendicularBetweenLine(AP,OP)",
+        "PerpendicularBetweenLine(OP,BP)"
+      ]
     }
   },
   "Attribution": {
@@ -732,6 +671,83 @@
       "sym": "la",
       "multi": []
     },
+    "MeasureOfAngle(ABC)": {
+      "ee_check": [
+        "Angle(ABC)"
+      ],
+      "sym": "ma",
+      "multi": []
+    },
+    "PerimeterOfTriangle(ABC)": {
+      "ee_check": [
+        "Triangle(ABC)"
+      ],
+      "sym": "pt",
+      "multi": [
+        "BCA",
+        "CAB"
+      ]
+    },
+    "AreaOfTriangle(ABC)": {
+      "ee_check": [
+        "Triangle(ABC)"
+      ],
+      "sym": "at",
+      "multi": [
+        "BCA",
+        "CAB"
+      ]
+    },
+    "HeightOfTriangle(ABC)": {
+      "ee_check": [
+        "Triangle(ABC)"
+      ],
+      "sym": "ht",
+      "multi": []
+    },
+    "PerimeterOfQuadrilateral(ABCD)": {
+      "ee_check": [
+        "Quadrilateral(ABCD)"
+      ],
+      "sym": "pq",
+      "multi": [
+        "BCDA",
+        "CDAB",
+        "DABC"
+      ]
+    },
+    "AreaOfQuadrilateral(ABCD)": {
+      "ee_check": [
+        "Quadrilateral(ABCD)"
+      ],
+      "sym": "aq",
+      "multi": [
+        "BCDA",
+        "CDAB",
+        "DABC"
+      ]
+    },
+    "HeightOfQuadrilateral(ABCD)": {
+      "ee_check": [
+        "Quadrilateral(ABCD)"
+      ],
+      "sym": "hq",
+      "multi": []
+    },
+    "PerimeterOfCircle(O)": {
+      "ee_check": [
+        "Circle(O)"
+      ],
+      "sym": "pc",
+      "multi": []
+    },
+    "AreaOfCircle(O)": {
+      "ee_check": [
+        "Circle(O)"
+      ],
+      "sym": "ac",
+      "multi": []
+    },
     "LengthOfRadius(O)": {
       "ee_check": [
         "Circle(O)"
@@ -746,81 +762,18 @@
       "sym": "ld",
       "multi": []
     },
-    "MeasureOfAngle(ABC)": {
+    "PerimeterOfSector(OAB)": {
       "ee_check": [
-        "Angle(ABC)"
+        "Sector(OAB)"
       ],
-      "sym": "ma",
+      "sym": "ps",
       "multi": []
     },
-    "AreaOfTriangle(ABC)": {
+    "AreaOfSector(OAB)": {
       "ee_check": [
-        "Triangle(ABC)"
+        "Sector(OAB)"
       ],
-      "sym": "at",
-      "multi": [
-        "BCA",
-        "CAB"
-      ]
-    },
-    "AreaOfQuadrilateral(ABCD)": {
-      "ee_check": [
-        "Quadrilateral(ABCD)"
-      ],
-      "sym": "aq",
-      "multi": [
-        "BCDA",
-        "CDAB",
-        "DABC"
-      ]
-    },
-    "AreaOfCircle(O)": {
-      "ee_check": [
-        "Circle(O)"
-      ],
-      "sym": "ac",
-      "multi": []
-    },
-    "PerimeterOfTriangle(ABC)": {
-      "ee_check": [
-        "Triangle(ABC)"
-      ],
-      "sym": "pt",
-      "multi": [
-        "BCA",
-        "CAB"
-      ]
-    },
-    "PerimeterOfQuadrilateral(ABCD)": {
-      "ee_check": [
-        "Quadrilateral(ABCD)"
-      ],
-      "sym": "pq",
-      "multi": [
-        "BCDA",
-        "CDAB",
-        "DABC"
-      ]
-    },
-    "PerimeterOfCircle(O)": {
-      "ee_check": [
-        "Circle(O)"
-      ],
-      "sym": "pc",
-      "multi": []
-    },
-    "HeightOfTriangle(ABC)": {
-      "ee_check": [
-        "Triangle(ABC)"
-      ],
-      "sym": "ht",
-      "multi": []
-    },
-    "HeightOfQuadrilateral(ABCD)": {
-      "ee_check": [
-        "Quadrilateral(ABCD)"
-      ],
-      "sym": "hq",
+      "sym": "as",
       "multi": []
     },
     "RatioOfSimilarTriangle(ABC,DEF)": {
@@ -843,30 +796,6 @@
       "multi": [
         "BCA,FDE",
         "CAB,EFD"
-      ]
-    },
-    "RatioOfSimilarQuadrilateral(ABCD,EFGH)": {
-      "ee_check": [
-        "Quadrilateral(ABCD)",
-        "Quadrilateral(EFGH)"
-      ],
-      "sym": "rq",
-      "multi": [
-        "BCDA,FGHE",
-        "CDAB,GHEF",
-        "DABC,HEFG"
-      ]
-    },
-    "RatioOfMirrorSimilarQuadrilateral(ABCD,EFGH)": {
-      "ee_check": [
-        "Quadrilateral(ABCD)",
-        "Quadrilateral(EFGH)"
-      ],
-      "sym": "rmq",
-      "multi": [
-        "BCDA,HEFG",
-        "CDAB,GHEF",
-        "DABC,FGHE"
       ]
     }
   },

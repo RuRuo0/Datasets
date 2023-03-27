@@ -66,20 +66,18 @@ def show(problem):
         if len(condition.get_item_by_id) > 0:
             print(predicate + ":")
             for _id in condition.get_item_by_id:
-                if _id not in used_id:
-                    print("{0:^6}{1:^25}{2:^25}{3:^6}".format(
-                        _id,
-                        ",".join(condition.get_item_by_id[_id]),
-                        str(condition.premises[_id]),
-                        condition.theorems[_id])
-                    )
+                items = ",".join(condition.get_item_by_id[_id])
+                if len(items) > 35:
+                    items = items[0:35] + "..."
+                if len(condition.premises[_id]) <= 3:
+                    premises = "(" + ",".join([str(i) for i in condition.premises[_id]]) + ")"
                 else:
-                    print("\033[35m{0:^6}{1:^25}{2:^25}{3:^6}\033[0m".format(
-                        _id,
-                        ",".join(condition.get_item_by_id[_id]),
-                        str(condition.premises[_id]),
-                        condition.theorems[_id])
-                    )
+                    premises = "(" + ",".join([str(i) for i in condition.premises[_id][0:3]]) + ",...)"
+                theorem = condition.theorems[_id]
+                if _id not in used_id:
+                    print("{0:^6}{1:^50}{2:^25}{3:^6}".format(_id, items, premises, theorem))
+                else:
+                    print("\033[35m{0:^6}{1:^50}{2:^25}{3:^6}\033[0m".format(_id, items, premises, theorem))
     print()
 
     print("\033[33mSymbols and Value:\033[0m")
@@ -88,30 +86,27 @@ def show(problem):
         sym = equation.sym_of_attr[attr]
         if isinstance(equation.value_of_sym[sym], Float):
             print("{0:^50}{1:^15}{2:^20.3f}".format(
-                str(("".join(attr[0]), attr[1])), str(sym), equation.value_of_sym[sym])
-            )
+                str(("".join(attr[0]), attr[1])), str(sym), equation.value_of_sym[sym]))
         else:
             print("{0:^50}{1:^15}{2:^20}".format(
-                str(("".join(attr[0]), attr[1])), str(sym), str(equation.value_of_sym[sym]))
-            )
+                str(("".join(attr[0]), attr[1])), str(sym), str(equation.value_of_sym[sym])))
 
     print("\033[33mEquations:\033[0m")
     if len(equation.get_item_by_id) > 0:
         for _id in equation.get_item_by_id:
+            items = str(equation.get_item_by_id[_id]).replace(" ", "")
+            if len(items) > 40:
+                items = items[0:40] + "..."
+            if len(equation.premises[_id]) <= 3:
+                premises = "(" + ",".join([str(i) for i in equation.premises[_id]]) + ")"
+            else:
+                premises = "(" + ",".join([str(i) for i in equation.premises[_id][0:3]]) + ",...)"
+            theorem = equation.theorems[_id]
+
             if _id not in used_id:
-                print_str = "{0:^6}{1:^70}{2:^25}{3:>6}"
+                print("{0:^6}{1:^60}{2:^25}{3:>6}".format(_id, items, premises, theorem))
             else:
-                print_str = "\033[35m{0:^6}{1:^70}{2:^25}{3:>6}\033[0m"
-            if len(equation.premises[_id]) > 4:
-                print(print_str.format(_id,
-                                       str(equation.get_item_by_id[_id]),
-                                       str(equation.premises[_id][0:4]) + "...",
-                                       equation.theorems[_id]))
-            else:
-                print(print_str.format(_id,
-                                       str(equation.get_item_by_id[_id]),
-                                       str(equation.premises[_id]),
-                                       equation.theorems[_id]))
+                print("\033[35m{0:^6}{1:^60}{2:^25}{3:>6}\033[0m".format(_id, items, premises, theorem))
     print()
 
     # goal
@@ -147,27 +142,27 @@ def save_solution_tree(problem, path):
     get_item_by_id, _ = InverseParser.solution_msg(problem)  # gather conditions msg before generate CDL.
 
     st_dot = Digraph(name=str(problem.problem_CDL["id"]))  # Tree
-    nodes = []    # list of node(cdl or theorem).
-    t_nodes = []    # theorem nodes, used for DAG generating.
-    edges = {}      # node(cdl or theorem): [node(cdl or theorem)], used for DAG generating.
-    group = {}    # (premise, theorem): [_id], used for building hyper graph.
-    cdl = {}      # _id: anti_parsed_cdl, user for getting cdl by id.
+    nodes = []  # list of node(cdl or theorem).
+    t_nodes = []  # theorem nodes, used for DAG generating.
+    edges = {}  # node(cdl or theorem): [node(cdl or theorem)], used for DAG generating.
+    group = {}  # (premise, theorem): [_id], used for building hyper graph.
+    cdl = {}  # _id: anti_parsed_cdl, user for getting cdl by id.
 
-    for _id in get_item_by_id:    # summary information
+    for _id in get_item_by_id:  # summary information
         predicate, item = get_item_by_id[_id]
         cdl[_id] = InverseParser.inverse_parse_one(predicate, item, problem)
         premise = problem.conditions[predicate].premises[_id]
         theorem = problem.conditions[predicate].theorems[_id]
-        if theorem == "prerequisite":    # prerequisite not show in graph
+        if theorem == "prerequisite":  # prerequisite not show in graph
             continue
         if (premise, theorem) not in group:
             group[(premise, theorem)] = [_id]
         else:
             group[(premise, theorem)].append(_id)
 
-    if problem.goal["solved"] and problem.goal["type"] in ["value", "equal"]:    # if target solved, add target
+    if problem.goal["solved"] and problem.goal["type"] in ["value", "equal"]:  # if target solved, add target
         eq = problem.goal["item"] - problem.goal["answer"]
-        if eq not in problem.conditions["Equation"].get_id_by_item:    # target not in condition set
+        if eq not in problem.conditions["Equation"].get_id_by_item:  # target not in condition set
             target_equation = InverseParser.inverse_parse_one("Equation", eq, problem)
             _id = len(cdl)
             cdl[_id] = target_equation
@@ -178,15 +173,15 @@ def save_solution_tree(problem, path):
     for key in group:  # generate solution tree
         premise, theorem = key
 
-        theorem_node = theorem + "_{}".format(count)    # theorem name in hyper
+        theorem_node = theorem + "_{}".format(count)  # theorem name in hyper
         t_nodes.append(theorem_node)
         _add_node(st_dot, nodes, theorem_node)
 
         start_nodes = []
         for _id in premise:
-            _add_node(st_dot, nodes, cdl[_id])    # add node to graph
-            start_nodes.append(cdl[_id])    # add to json output
-            _add_edge(st_dot, nodes,  cdl[_id], theorem_node, edges)    # add edge to graph
+            _add_node(st_dot, nodes, cdl[_id])  # add node to graph
+            start_nodes.append(cdl[_id])  # add to json output
+            _add_edge(st_dot, nodes, cdl[_id], theorem_node, edges)  # add edge to graph
 
         end_nodes = []
         for _id in group[key]:
@@ -214,11 +209,11 @@ def save_solution_tree(problem, path):
     dag = {}
 
     for s_node in edges:
-        if s_node in t_nodes:    # s_node is theorem node
+        if s_node in t_nodes:  # s_node is theorem node
             dag[s_node] = []
             _add_node(dag_dot, nodes, s_node)
-            for m_node in edges[s_node]:    # middle condition
-                if m_node in edges:    # theorem
+            for m_node in edges[s_node]:  # middle condition
+                if m_node in edges:  # theorem
                     for e_node in edges[m_node]:
                         _add_node(dag_dot, nodes, e_node)
                         _add_edge(dag_dot, nodes, s_node, e_node)

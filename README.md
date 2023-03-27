@@ -7,17 +7,34 @@ Formal representation and solving for SAT-level Euclidean plane geometry problem
 
 ## Cowork
 #### Week 5 (230403): form 2023-04-03 to 2023-04-09.
-Triangle: 34*8+37, Other: 26*8+23+70*4
+**Attention:** Annotate problems in directory **Geometry3K-Triangle** and **Geometry3K-Other**.  
+
+| Worker | WorkLoad | PID | Skip | Submitted |
+|:---:|:---:|:---:|:---:|:---:|
+| XiaokaiZhang | 70 | 2155-2261 (Other) | / | × |
+| NaZhu | 70 | 2265-2386 (Other) | / | × |
+| JiaZou | 70 | 2387-2502 (Other) | / | × |
+| YimingHe | 70 | 2503-2625 (Other) | / | × |
+| YanjunGuo | 50 | 3089-3194 (Triangle) <br> 2626-2635 (Other) | / | × |
+| QikeHuang | 50 | 3195-3270 (Triangle) <br> 3795-3834 (Triangle) <br> 2636-2643 (Other) | / | × |
+| XiaoxiaoJin | 50 | 3836-3920 (Triangle) <br> 2646-2661 (Other) | / | × |
+| YangLi | 50 | 3921-4030 (Triangle) <br> 2662-2670 (Other) | / | × |
+| ChenyangMao | 50 | 4032-4127 (Triangle) <br> 2671-2684 (Other) | / | × |
+| ChanghaoWu | 50 | 4133-4244 (Triangle) <br> 2685-2697 (Other) | / | × |
+| DengfengYue | 50 | 4245-4366 (Triangle) <br> 2698-2711 (Other) | / | × |
+| FangzhenZhu | 50 | 4370-4485 (Triangle) <br> 2712-2722 (Other) | / | × |
+| Zhezhu | 50 | 4486-4582 (Triangle) <br> 2724-2740 (Other) | / | × |
+
 
 #### Week 4 (230327): form 2023-03-27 to 2023-04-02.
 **Attention:** Annotate problems in directory **Geometry3K-Other**.  
 
 | Worker | WorkLoad | PID | Skip | Submitted |
 |:---:|:---:|:---:|:---:|:---:|
-| XiaokaiZhang | 70 | 1585-1694 | / | × |
-| NaZhu | 70 | 1696-1803 | / | × |
-| JiaZou | 70 | 1804-1924 | / | × |
-| YimingHe | 70 | 1926-2046 | / | × |
+| XiaokaiZhang | 140 | 1585-1803 | / | × |
+| NaZhu | 70 | 1804-1924 | / | × |
+| JiaZou | 70 | 1926-2046 | / | × |
+| YimingHe | 70 | 2048-2154 | / | × |
 
 #### Week 3 (230320): form 2023-03-20 to 2023-03-26.
 **Attention:** Annotate problems in directory **Geometry3k-Triangle**.  

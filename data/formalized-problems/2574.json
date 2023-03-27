@@ -7,8 +7,8 @@
   "problem_text_en": "Find y.",
   "problem_img": "2574.png",
   "construction_cdl": [
-    "Polygon(CAD)",
-    "Polygon(DAB)",
+    "Shape(CA,AD,DC)",
+    "Shape(DA,AB,BD)",
     "Collinear(CDB)"
   ],
   "text_cdl": [],
@@ -18,17 +18,18 @@
     "Equal(LengthOfLine(CA),x)",
     "Equal(LengthOfLine(AD),z)",
     "Equal(LengthOfLine(AB),y)",
-    "Perpendicular(BD,AD)",
-    "Perpendicular(CA,BA)"
+    "PerpendicularBetweenLine(BD,AD)",
+    "PerpendicularBetweenLine(CA,BA)"
   ],
   "goal_cdl": "Value(y)",
   "problem_answer": "3*√13",
   "theorem_seqs": [
     "perpendicular_property_collinear_extend(BD,AD,C)",
-    "similar_judgment_aa(ADC,BCA)",
-    "similar_property_angle_equal(ADC,BCA)",
-    "similar_judgment_aa(CAD,ABD)",
-    "similar_property_line_ratio(DCA,DAB)",
+    "similar_triangle_judgment_aa(ADC,BCA)",
+    "similar_triangle_property_angle_equal(ADC,BCA)",
+    "similar_triangle_judgment_aa(CAD,ABD)",
+    "similar_triangle_property_line_ratio(ADC,BDA)",
+    "similar_triangle_property_line_ratio(CAD,ABD)",
     "right_triangle_judgment_angle(BDA)",
     "right_triangle_property_pythagorean(BDA)"
   ]

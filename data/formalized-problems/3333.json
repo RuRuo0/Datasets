@@ -7,16 +7,16 @@
   "problem_text_en": "X Y and X Z are midsegments of \\triangle R S T. Find X Z.",
   "problem_img": "3333.png",
   "construction_cdl": [
-    "Polygon(SXZ)",
-    "Polygon(XRY)",
-    "Polygon(XYTZ)",
+    "Shape(SX,XZ,ZS)",
+    "Shape(XR,RY,YX)",
+    "Shape(XY,YT,TZ,ZX)",
     "Collinear(SXR)",
     "Collinear(SZT)",
     "Collinear(RYT)"
   ],
   "text_cdl": [
-    "Midsegment(YX,RTS)",
-    "Midsegment(XZ,SRT)"
+    "IsMidsegmentOfTriangle(YX,RTS)",
+    "IsMidsegmentOfTriangle(XZ,SRT)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(RT),13)",
@@ -28,6 +28,7 @@
   "theorem_seqs": [
     "midsegment_property_similar(XZ,SRT)",
     "line_addition(SX,XR)",
-    "similar_property_line_ratio(RTS,XZS)"
+    "similar_triangle_property_line_ratio(SRT,SXZ)",
+    "similar_triangle_property_line_ratio(TSR,ZSX)"
   ]
 }

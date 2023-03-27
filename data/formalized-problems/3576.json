@@ -7,12 +7,12 @@
   "problem_text_en": "P is the incenter of \\angle X Y Z. Find m \\angle L Z P.",
   "problem_img": "3576.png",
   "construction_cdl": [
-    "Polygon(XLP)",
-    "Polygon(PLZ)",
-    "Polygon(PZJ)",
-    "Polygon(PJY)",
-    "Polygon(PYK)",
-    "Polygon(PKX)",
+    "Shape(XL,LP,PX)",
+    "Shape(PL,LZ,ZP)",
+    "Shape(PZ,ZJ,JP)",
+    "Shape(PJ,JY,YP)",
+    "Shape(PY,YK,KP)",
+    "Shape(PK,KX,XP)",
     "Collinear(XLZ)",
     "Collinear(ZJY)",
     "Collinear(XKY)",
@@ -21,23 +21,22 @@
     "Collinear(XPJ)"
   ],
   "text_cdl": [
-    "Incenter(P,XZY)"
+    "IsIncenterOfTriangle(P,XZY)"
   ],
   "image_cdl": [
     "Equal(MeasureOfAngle(YXP),31)",
     "Equal(MeasureOfAngle(ZYP),27)",
     "Equal(LengthOfLine(ZP),20)",
     "Equal(LengthOfLine(ZJ),12)",
-    "Perpendicular(PJ,YJ)",
-    "Perpendicular(PL,ZL)",
-    "Perpendicular(YK,PK)"
+    "PerpendicularBetweenLine(PJ,YJ)",
+    "PerpendicularBetweenLine(PL,ZL)",
+    "PerpendicularBetweenLine(YK,PK)"
   ],
   "goal_cdl": "Value(MeasureOfAngle(LZP))",
   "problem_answer": "31.5",
   "theorem_seqs": [
     "triangle_property_angle_sum(ZYL)",
-    "incenter_property_intersect(P,ZYX)",
+    "incenter_of_triangle_property_intersection(P,ZYX)",
     "angle_addition(LZP,PZJ)"
-
   ]
 }

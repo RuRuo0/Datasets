@@ -7,14 +7,14 @@
   "problem_text_en": "If XM=4, XN=6, and NZ=9, find the length of line XY.",
   "problem_img": "1816.png",
   "construction_cdl": [
-    "Polygon(MXN)",
-    "Polygon(MNZY)",
+    "Shape(MX,XN,NM)",
+    "Shape(MN,NZ,ZY,YM)",
     "Collinear(XNZ)",
     "Collinear(XMY)"
   ],
   "text_cdl": [],
   "image_cdl": [
-    "Parallel(NM,ZY)",
+    "ParallelBetweenLine(NM,ZY)",
     "Equal(LengthOfLine(XM),4)",
     "Equal(LengthOfLine(XN),6)",
     "Equal(LengthOfLine(NZ),9)"
@@ -22,7 +22,7 @@
   "goal_cdl": "Value(LengthOfLine(XY))",
   "problem_answer": "10",
   "theorem_seqs": [
-    "neutrality_judgment_parallel(NM,XZY)",
+    "similar_triangle_judgment_parallel(XNM,XZY)",
     "neutrality_property_line_ratio(NM,XZY)",
     "line_addition(XM,MY)"
   ]

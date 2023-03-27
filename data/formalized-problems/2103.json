@@ -7,8 +7,8 @@
   "problem_text_en": "Find z.",
   "problem_img": "2103.png",
   "construction_cdl": [
-    "Polygon(DAB)",
-    "Polygon(BAC)"
+    "Shape(DA,AB,BD)",
+    "Shape(BA,AC,CB)"
   ],
   "text_cdl": [],
   "image_cdl": [
@@ -18,15 +18,19 @@
     "Equal(MeasureOfAngle(BAC),45)",
     "Equal(MeasureOfAngle(BDA),60)",
     "Equal(LengthOfLine(AD),x)",
-    "Perpendicular(AC,BC)",
-    "Perpendicular(DA,BA)"
+    "PerpendicularBetweenLine(AC,BC)",
+    "PerpendicularBetweenLine(DA,BA)"
   ],
   "goal_cdl": "Value(z)",
   "problem_answer": "2*√6",
   "theorem_seqs": [
     "right_triangle_judgment_angle(DAB)",
     "right_triangle_judgment_angle(ACB)",
-    "right_triangle_property_special_rt_30_60(DAB)",
-    "right_triangle_property_special_rt_45_45(ACB)"
+    "triangle_property_angle_sum(DAB)",
+    "sine_theorem(DAB)",
+    "sine_theorem(BDA)",
+    "triangle_property_angle_sum(ACB)",
+    "sine_theorem(ACB)",
+    "sine_theorem(BAC)"
   ]
 }

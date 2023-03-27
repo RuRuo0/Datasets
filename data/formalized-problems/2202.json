@@ -7,8 +7,8 @@
   "problem_text_en": "Find E D if A B = 6, B C = 4, and A E = 9.",
   "problem_img": "2202.png",
   "construction_cdl": [
-    "Polygon(AEB)",
-    "Polygon(BEDC)",
+    "Shape(AE,EB,BA)",
+    "Shape(BE,ED,DC,CB)",
     "Collinear(ABC)",
     "Collinear(AED)"
   ],
@@ -17,12 +17,12 @@
     "Equal(LengthOfLine(AB),6)",
     "Equal(LengthOfLine(BC),4)",
     "Equal(LengthOfLine(AE),9)",
-    "Parallel(CD,BE)"
+    "ParallelBetweenLine(CD,BE)"
   ],
   "goal_cdl": "Value(LengthOfLine(ED))",
   "problem_answer": "6",
   "theorem_seqs": [
-    "neutrality_judgment_parallel(EB,ADC)",
+    "similar_triangle_judgment_parallel(AEB,ADC)",
     "neutrality_property_line_ratio(EB,ADC)"
   ]
 }

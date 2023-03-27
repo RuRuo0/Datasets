@@ -7,8 +7,8 @@
   "problem_text_en": "Find x.",
   "problem_img": "1984.png",
   "construction_cdl": [
-    "Polygon(AYB)",
-    "Polygon(BYC)",
+    "Shape(AY,YB,BA)",
+    "Shape(BY,YC,CB)",
     "Collinear(AYC)"
   ],
   "text_cdl": [],
@@ -18,13 +18,15 @@
     "Equal(LengthOfLine(YC),y)",
     "Equal(MeasureOfAngle(BAY),30)",
     "Equal(MeasureOfAngle(YCB),60)",
-    "Perpendicular(CB,AB)",
-    "Perpendicular(AY,BY)"
+    "PerpendicularBetweenLine(CB,AB)",
+    "PerpendicularBetweenLine(AY,BY)"
   ],
   "goal_cdl": "Value(x)",
   "problem_answer": "3",
   "theorem_seqs": [
     "right_triangle_judgment_angle(AYB)",
-    "right_triangle_property_special_rt_30_60(AYB)"
+    "triangle_property_angle_sum(AYB)",
+    "sine_theorem(AYB)",
+    "sine_theorem(BAY)"
   ]
 }

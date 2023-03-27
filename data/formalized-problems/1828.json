@@ -7,10 +7,10 @@
   "problem_text_en": "If line PR is parallel to line KL, LR=10, PM=2*KP, find the length of line RM.",
   "problem_img": "1828.png",
   "construction_cdl": [
-    "Polygon(LRQN)",
-    "Polygon(RMQ)",
-    "Polygon(QMP)",
-    "Polygon(NQPK)",
+    "Shape(LR,RQ,QN,NL)",
+    "Shape(RM,MQ,QR)",
+    "Shape(QM,MP,PQ)",
+    "Shape(NQ,QP,PK,KN)",
     "Collinear(LRM)",
     "Collinear(MPK)",
     "Collinear(LNK)",
@@ -18,17 +18,17 @@
     "Collinear(NQM)"
   ],
   "text_cdl": [
-    "Parallel(PR,KL)",
+    "ParallelBetweenLine(PR,KL)",
     "Equal(LengthOfLine(LR),10)",
     "Equal(LengthOfLine(PM),Mul(LengthOfLine(KP),2))",
-    "Perpendicular(RM,PM)",
-    "Perpendicular(KN,MN)"
+    "PerpendicularBetweenLine(RM,PM)",
+    "PerpendicularBetweenLine(KN,MN)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(RM))",
   "problem_answer": "20",
   "theorem_seqs": [
-    "neutrality_judgment_parallel(PR,MKL)",
+    "similar_triangle_judgment_parallel(MPR,MKL)",
     "neutrality_property_line_ratio(PR,MKL)"
   ]
 }

@@ -7,8 +7,8 @@
   "problem_text_en": "Find G K if G I = 14, G H = 7, and K J = 6.",
   "problem_img": "3764.png",
   "construction_cdl": [
-    "Polygon(GKH)",
-    "Polygon(KJIH)",
+    "Shape(GK,KH,HG)",
+    "Shape(KJ,JI,IH,HK)",
     "Collinear(GKJ)",
     "Collinear(GHI)"
   ],
@@ -17,14 +17,15 @@
     "Equal(LengthOfLine(GI),14)",
     "Equal(LengthOfLine(GH),7)",
     "Equal(LengthOfLine(KJ),6)",
-    "Parallel(KH,JI)"
+    "ParallelBetweenLine(KH,JI)"
   ],
   "goal_cdl": "Value(LengthOfLine(GK))",
   "problem_answer": "6",
   "theorem_seqs": [
-        "neutrality_judgment_parallel(KH,GJI)",
+    "similar_triangle_judgment_parallel(GKH,GJI)",
     "neutrality_property_similar(KH,GJI)",
-    "similar_property_line_ratio(GKH,GJI)",
+    "similar_triangle_property_line_ratio(HGK,IGJ)",
+    "similar_triangle_property_line_ratio(KHG,JIG)",
     "line_addition(GK,KJ)"
   ]
 }

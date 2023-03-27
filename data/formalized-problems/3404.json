@@ -7,8 +7,8 @@
   "problem_text_en": "Find S T.",
   "problem_img": "3404.png",
   "construction_cdl": [
-    "Polygon(TRS)",
-    "Polygon(PTSQ)",
+    "Shape(TR,RS,ST)",
+    "Shape(PT,TS,SQ,QP)",
     "Collinear(PTR)",
     "Collinear(RSQ)"
   ],
@@ -18,15 +18,16 @@
     "Equal(LengthOfLine(RT),x)",
     "Equal(LengthOfLine(RS),10)",
     "Equal(LengthOfLine(SQ),5)",
-    "Perpendicular(TR,SR)",
-    "Parallel(PQ,TS)"
+    "PerpendicularBetweenLine(TR,SR)",
+    "ParallelBetweenLine(PQ,TS)"
   ],
   "goal_cdl": "Value(LengthOfLine(ST))",
   "problem_answer": "50/3",
   "theorem_seqs": [
     "line_addition(RS,SQ)",
-    "neutrality_judgment_parallel(ST,RQP)",
+    "similar_triangle_judgment_parallel(RST,RQP)",
     "neutrality_property_similar(ST,RQP)",
-    "similar_property_line_ratio(QPR,STR)"
+    "similar_triangle_property_line_ratio(RQP,RST)",
+    "similar_triangle_property_line_ratio(PRQ,TRS)"
   ]
 }

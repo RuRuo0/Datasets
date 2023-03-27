@@ -7,13 +7,13 @@
   "problem_text_en": "B C \\parallel D F. A B = x + 5, B D = 12, A C = 3 x + 1, and C F = 15. Find x.",
   "problem_img": "2741.png",
   "construction_cdl": [
-    "Polygon(ABC)",
-    "Polygon(BDFC)",
+    "Shape(AB,BC,CA)",
+    "Shape(BD,DF,FC,CB)",
     "Collinear(ABD)",
     "Collinear(ACF)"
   ],
   "text_cdl": [
-    "Parallel(BC,DF)",
+    "ParallelBetweenLine(BC,DF)",
     "Equal(LengthOfLine(AB),x+5)",
     "Equal(LengthOfLine(BD),12)",
     "Equal(LengthOfLine(AC),3*x+1)",
@@ -25,8 +25,9 @@
   "theorem_seqs": [
     "line_addition(AB,BD)",
     "line_addition(AC,CF)",
-    "neutrality_judgment_parallel(BC,ADF)",
+    "similar_triangle_judgment_parallel(ABC,ADF)",
     "neutrality_property_similar(BC,ADF)",
-    "similar_property_line_ratio(ABC,ADF)"
+    "similar_triangle_property_line_ratio(CAB,FAD)",
+    "similar_triangle_property_line_ratio(BCA,DFA)"
   ]
 }

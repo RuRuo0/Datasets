@@ -7,8 +7,8 @@
   "problem_text_en": "If X N = t - 2, N Z = t + 1, X M = 2, and X Y = 10, solve for t.",
   "problem_img": "2704.png",
   "construction_cdl": [
-    "Polygon(MXN)",
-    "Polygon(MNZY)",
+    "Shape(MX,XN,NM)",
+    "Shape(MN,NZ,ZY,YM)",
     "Collinear(XMY)",
     "Collinear(XNZ)"
   ],
@@ -19,14 +19,15 @@
     "Equal(LengthOfLine(XY),10)"
   ],
   "image_cdl": [
-    "Parallel(YZ,MN)"
+    "ParallelBetweenLine(YZ,MN)"
   ],
   "goal_cdl": "Value(t)",
   "problem_answer": "3",
   "theorem_seqs": [
-    "neutrality_judgment_parallel(NM,XZY)",
+    "similar_triangle_judgment_parallel(XNM,XZY)",
     "neutrality_property_similar(NM,XZY)",
     "line_addition(XN,NZ)",
-    "similar_property_line_ratio(XZY,XNM)"
+    "similar_triangle_property_line_ratio(YXZ,MXN)",
+    "similar_triangle_property_line_ratio(ZYX,NMX)"
   ]
 }

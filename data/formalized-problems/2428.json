@@ -7,8 +7,8 @@
   "problem_text_en": "Find x.",
   "problem_img": "2428.png",
   "construction_cdl": [
-    "Polygon(BCD)",
-    "Polygon(BDA)",
+    "Shape(BC,CD,DB)",
+    "Shape(BD,DA,AB)",
     "Collinear(CDA)"
   ],
   "text_cdl": [],
@@ -17,7 +17,7 @@
     "Equal(LengthOfLine(BD),12)",
     "Equal(LengthOfLine(CA),x)",
     "Equal(MeasureOfAngle(BCD),60)",
-    "Perpendicular(BD,AD)",
+    "PerpendicularBetweenLine(BD,AD)",
     "Equal(LengthOfLine(BC),LengthOfLine(BA))"
   ],
   "goal_cdl": "Value(x)",
@@ -25,7 +25,9 @@
   "theorem_seqs": [
     "perpendicular_property_collinear_extend(BD,AD,C)",
     "right_triangle_judgment_angle(CDB)",
-    "right_triangle_property_special_rt_30_60(CDB)",
+    "triangle_property_angle_sum(CDB)",
+    "sine_theorem(CDB)",
+    "sine_theorem(BCD)",
     "perpendicular_bisector_judgment_distance_equal(CA,BD)",
     "line_addition(CD,DA)"
   ]

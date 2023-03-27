@@ -7,16 +7,16 @@
   "problem_text_en": "Find the measure of the altitude drawn to the hypotenuse.",
   "problem_img": "2931.png",
   "construction_cdl": [
-    "Polygon(ADB)",
-    "Polygon(BDC)",
+    "Shape(AD,DB,BA)",
+    "Shape(BD,DC,CB)",
     "Collinear(ADC)"
   ],
   "text_cdl": [],
   "image_cdl": [
     "Equal(LengthOfLine(AD),21)",
     "Equal(LengthOfLine(CD),7)",
-    "Perpendicular(CB,AB)",
-    "Perpendicular(BD,CD)"
+    "PerpendicularBetweenLine(CB,AB)",
+    "PerpendicularBetweenLine(BD,CD)"
   ],
   "goal_cdl": "Value(LengthOfLine(BD))",
   "problem_answer": "7*√3",
@@ -24,7 +24,8 @@
     "perpendicular_property_collinear_extend(BD,CD,A)",
     "triangle_property_angle_sum(ACB)",
     "triangle_property_angle_sum(BDC)",
-    "similar_judgment_aa(BAD,CBD)",
-    "similar_property_line_ratio(DCB,DBA)"
+    "similar_triangle_judgment_aa(BAD,CBD)",
+    "similar_triangle_property_line_ratio(BDC,ADB)",
+    "similar_triangle_property_line_ratio(CBD,BAD)"
   ]
 }

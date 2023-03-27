@@ -7,17 +7,18 @@
   "problem_text_en": "X Y and X Z are midsegments of \\triangle R S T. Find m \\angle R Y X.",
   "problem_img": "2941.png",
   "construction_cdl": [
-    "Polygon(SXZ)",
-    "Polygon(XRY)",
-    "Polygon(XYTZ)",
+    "Shape(SX,XZ,ZS)",
+    "Shape(XR,RY,YX)",
+    "Shape(XY,YT,TZ,ZX)",
     "Collinear(RXS)",
     "Collinear(RYT)",
     "Collinear(SZT)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "IsMidsegmentOfTriangle(XZ,SRT)",
+    "IsMidsegmentOfTriangle(YX,RTS)"
+  ],
   "image_cdl": [
-    "Neutrality(XZ,SRT)",
-    "Neutrality(YX,RTS)",
     "Equal(LengthOfLine(RT),13)",
     "Equal(LengthOfLine(XY),7)",
     "Equal(MeasureOfAngle(ZXY),124)"
@@ -25,6 +26,7 @@
   "goal_cdl": "Value(MeasureOfAngle(RYX))",
   "problem_answer": "124",
   "theorem_seqs": [
+    "midsegment_of_triangle_property_parallel(XZ,SRT)",
     "parallel_property_collinear_extend(TR,ZX,Y)",
     "parallel_property_ipsilateral_internal_angle(XZ,YT)",
     "flat_angle(RYT)",

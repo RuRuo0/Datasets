@@ -7,30 +7,31 @@
   "problem_text_en": "If A B and J K are altitudes, \\triangle D A C \\sim \\triangle M J L, A B = 9, A D = 4 x - 8, J K = 21, and J M = 5 x + 3, find x.",
   "problem_img": "3554.png",
   "construction_cdl": [
-    "Polygon(ABC)",
-    "Polygon(ACD)",
-    "Polygon(JKL)",
-    "Polygon(JLM)",
+    "Shape(AB,BC,CA)",
+    "Shape(AC,CD,DA)",
+    "Shape(JK,KL,LJ)",
+    "Shape(JL,LM,MJ)",
     "Collinear(BCD)",
     "Collinear(KLM)"
   ],
   "text_cdl": [],
   "image_cdl": [
-    "IsAltitude(AB,ABD)",
-    "IsAltitude(JK,JKM)",
-    "Similar(DAC,MJL)",
+    "IsAltitudeOfTriangle(AB,ABD)",
+    "IsAltitudeOfTriangle(JK,JKM)",
+    "SimilarBetweenTriangle(DAC,MJL)",
     "Equal(LengthOfLine(AB),9)",
     "Equal(LengthOfLine(AD),4*x-8)",
     "Equal(LengthOfLine(JK),21)",
     "Equal(LengthOfLine(JM),5*x+3)",
-    "Perpendicular(AB,CB)",
-    "Perpendicular(JK,LK)"
+    "PerpendicularBetweenLine(AB,CB)",
+    "PerpendicularBetweenLine(JK,LK)"
   ],
   "goal_cdl": "Value(x)",
   "problem_answer": "5",
   "theorem_seqs": [
-    "similar_property_angle_equal(DAC,MJL)",
-    "similar_judgment_aa(ABD,JKM)",
-    "similar_property_line_ratio(ABD,JKM)"
+    "similar_triangle_property_angle_equal(DAC,MJL)",
+    "similar_triangle_judgment_aa(ABD,JKM)",
+    "similar_triangle_property_line_ratio(DAB,MJK)",
+    "similar_triangle_property_line_ratio(BDA,KMJ)"
   ]
 }

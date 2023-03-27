@@ -7,13 +7,13 @@
   "problem_text_en": "If M N \\parallel P Q, use a proportion to find the value of x.",
   "problem_img": "2686.png",
   "construction_cdl": [
-    "Polygon(MNQP)",
-    "Polygon(PQT)",
+    "Shape(MN,NQ,QP,PM)",
+    "Shape(PQ,QT,TP)",
     "Collinear(MPT)",
     "Collinear(NQT)"
   ],
   "text_cdl": [
-    "Parallel(PQ,MN)"
+    "ParallelBetweenLine(PQ,MN)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(TM),15)",
@@ -24,9 +24,10 @@
   "goal_cdl": "Value(x)",
   "problem_answer": "10",
   "theorem_seqs": [
-    "neutrality_judgment_parallel(PQ,TMN)",
+    "similar_triangle_judgment_parallel(TPQ,TMN)",
     "neutrality_property_similar(PQ,TMN)",
     "line_addition(NQ,QT)",
-    "similar_property_line_ratio(TPQ,TMN)"
+    "similar_triangle_property_line_ratio(QTP,NTM)",
+    "similar_triangle_property_line_ratio(PQT,MNT)"
   ]
 }

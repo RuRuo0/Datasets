@@ -7,8 +7,8 @@
   "problem_text_en": "Find x.",
   "problem_img": "1609.png",
   "construction_cdl": [
-    "Polygon(CAD)",
-    "Polygon(DAB)",
+    "Shape(CA,AD,DC)",
+    "Shape(DA,AB,BD)",
     "Collinear(BDC)"
   ],
   "text_cdl": [],
@@ -19,14 +19,16 @@
     "Equal(LengthOfLine(AD),3*√3})",
     "Equal(MeasureOfAngle(ABC),30)",
     "Equal(MeasureOfAngle(BCA),60)",
-    "Perpendicular(CA,BA)",
-    "Perpendicular(AD,CD)"
+    "PerpendicularBetweenLine(CA,BA)",
+    "PerpendicularBetweenLine(AD,CD)"
   ],
   "goal_cdl": "Value(x)",
   "problem_answer": "6*√3",
   "theorem_seqs": [
     "perpendicular_property_collinear_extend(AD,CD,B)",
     "right_triangle_judgment_angle(BDA)",
-    "right_triangle_property_special_rt_30_60(BDA)"
+    "triangle_property_angle_sum(BDA)",
+    "sine_theorem(BDA)",
+    "sine_theorem(ABD)"
   ]
 }

@@ -7,14 +7,14 @@
   "problem_text_en": "The orthocenter of \\triangle A B C is located 6.4 units from point D. Find B C.",
   "problem_img": "2262.png",
   "construction_cdl": [
-    "Polygon(ABD)",
-    "Polygon(DBC)",
+    "Shape(AB,BD,DA)",
+    "Shape(DB,BC,CD)",
     "Collinear(ADC)"
   ],
   "text_cdl": [],
   "image_cdl": [
-    "Perpendicular(CD,BD)",
-    "Perpendicular(AB,CB)",
+    "PerpendicularBetweenLine(CD,BD)",
+    "PerpendicularBetweenLine(AB,CB)",
     "Equal(LengthOfLine(BD),6.4)",
     "Equal(LengthOfLine(AD),5.3)"
   ],
@@ -24,13 +24,18 @@
     "perpendicular_property_collinear_extend(CD,BD,A)",
     "right_triangle_judgment_angle(CDB)",
     "right_triangle_judgment_angle(ABC)",
-    "similar_judgment_aa(BDA,CAB)",
-    "similar_judgment_aa(BCD,ABC)",
-    "similar_property_line_ratio(BDA,CAB)",
-    "similar_property_line_ratio(DAB,BCA)",
-    "similar_property_line_ratio(ABD,ABC)",
-    "similar_property_line_ratio(CDB,CAB)",
-    "similar_property_line_ratio(DBC,BCA)",
+    "similar_triangle_judgment_aa(BDA,CAB)",
+    "similar_triangle_judgment_aa(BCD,ABC)",
+    "similar_triangle_property_line_ratio(ABD,BCA)",
+    "similar_triangle_property_line_ratio(DAB,ABC)",
+    "similar_triangle_property_line_ratio(BDA,ABC)",
+    "similar_triangle_property_line_ratio(ABD,CAB)",
+    "similar_triangle_property_line_ratio(DAB,CAB)",
+    "similar_triangle_property_line_ratio(BDA,BCA)",
+    "similar_triangle_property_line_ratio(BCD,BCA)",
+    "similar_triangle_property_line_ratio(DBC,ABC)",
+    "similar_triangle_property_line_ratio(CDB,ABC)",
+    "similar_triangle_property_line_ratio(BCD,CAB)",
     "right_triangle_property_pythagorean(CDB)"
   ]
 }

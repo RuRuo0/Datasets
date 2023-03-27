@@ -7,8 +7,8 @@
   "problem_text_en": "Find the length of line JM.",
   "problem_img": "1749.png",
   "construction_cdl": [
-    "Polygon(KJM)",
-    "Polygon(KML)",
+    "Shape(KJ,JM,MK)",
+    "Shape(KM,ML,LK)",
     "Collinear(JML)"
   ],
   "text_cdl": [],
@@ -17,13 +17,15 @@
     "Equal(LengthOfLine(KL),11)",
     "Equal(LengthOfLine(ML),5.5)",
     "Equal(MeasureOfAngle(KJM),60)",
-    "Perpendicular(KM,LM)"
+    "PerpendicularBetweenLine(KM,LM)"
   ],
   "goal_cdl": "Value(LengthOfLine(JM))",
   "problem_answer": "5.5",
   "theorem_seqs": [
     "perpendicular_property_collinear_extend(KM,LM,J)",
     "right_triangle_judgment_angle(JMK)",
-    "right_triangle_property_special_rt_30_60(JMK)"
+    "triangle_property_angle_sum(JMK)",
+    "sine_theorem(JMK)",
+    "sine_theorem(KJM)"
   ]
 }

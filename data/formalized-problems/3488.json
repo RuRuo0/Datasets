@@ -7,18 +7,18 @@
   "problem_text_en": "H is the incenter of \\triangle A B C. Find B D.",
   "problem_img": "3488.png",
   "construction_cdl": [
-    "Polygon(ADH)",
-    "Polygon(HFA)",
-    "Polygon(HDB)",
-    "Polygon(HGC)",
-    "Polygon(HCF)",
-    "Polygon(HBG)",
+    "Shape(AD,DH,HA)",
+    "Shape(HF,FA,AH)",
+    "Shape(HD,DB,BH)",
+    "Shape(HG,GC,CH)",
+    "Shape(HC,CF,FH)",
+    "Shape(HB,BG,GH)",
     "Collinear(ADB)",
     "Collinear(BGC)",
     "Collinear(AFC)"
   ],
   "text_cdl": [
-    "Incenter(H,ABC)"
+    "IsIncenterOfTriangle(H,ABC)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(AF),24)",
@@ -26,14 +26,16 @@
     "Equal(MeasureOfAngle(GCH),28)",
     "Equal(LengthOfLine(BH),11)",
     "Equal(MeasureOfAngle(ABH),30)",
-    "Perpendicular(HF,AF)",
-    "Perpendicular(HD,BD)",
-    "Perpendicular(BG,HG)"
+    "PerpendicularBetweenLine(HF,AF)",
+    "PerpendicularBetweenLine(HD,BD)",
+    "PerpendicularBetweenLine(BG,HG)"
   ],
   "goal_cdl": "Value(LengthOfLine(BD))",
   "problem_answer": "11*√3/2",
   "theorem_seqs": [
     "right_triangle_judgment_angle(HDB)",
-    "right_triangle_property_special_rt_30_60(HDB)"
+    "triangle_property_angle_sum(HDB)",
+    "sine_theorem(HDB)",
+    "sine_theorem(BHD)"
   ]
 }

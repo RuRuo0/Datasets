@@ -7,8 +7,8 @@
   "problem_text_en": "Find the perimeter of the given triangle. \\triangle A B C, if \\triangle A B C \\sim \\triangle C B D, C D = 4, D B = 3, and C B = 5.",
   "problem_img": "2603.png",
   "construction_cdl": [
-    "Polygon(CAD)",
-    "Polygon(CDB)",
+    "Shape(CA,AD,DC)",
+    "Shape(CD,DB,BC)",
     "Collinear(ADB)"
   ],
   "text_cdl": [],
@@ -16,16 +16,18 @@
     "Equal(LengthOfLine(CD),4)",
     "Equal(LengthOfLine(DB),3)",
     "Equal(LengthOfLine(CB),5)",
-    "Perpendicular(AD,CD)",
-    "Perpendicular(BC,AC)"
+    "PerpendicularBetweenLine(AD,CD)",
+    "PerpendicularBetweenLine(BC,AC)"
   ],
   "goal_cdl": "Value(PerimeterOfTriangle(ABC))",
   "problem_answer": "20",
   "theorem_seqs": [
     "perpendicular_property_collinear_extend(AD,CD,B)",
-    "similar_judgment_aa(CDB,ABC)",
-    "similar_property_line_ratio(DBC,CAB)",
-    "similar_property_line_ratio(BCD,BCA)",
+    "similar_triangle_judgment_aa(CDB,ABC)",
+    "similar_triangle_property_line_ratio(CDB,BCA)",
+    "similar_triangle_property_line_ratio(BCD,ABC)",
+    "similar_triangle_property_line_ratio(DBC,ABC)",
+    "similar_triangle_property_line_ratio(CDB,CAB)",
     "triangle_perimeter_formula(ABC)"
   ]
 }

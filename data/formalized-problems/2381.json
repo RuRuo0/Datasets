@@ -7,8 +7,8 @@
   "problem_text_en": "In \\triangle P Q R, R S = 3 and Q S = 14. Find P S.",
   "problem_img": "2381.png",
   "construction_cdl": [
-    "Polygon(PRS)",
-    "Polygon(PSQ)",
+    "Shape(PR,RS,SP)",
+    "Shape(PS,SQ,QP)",
     "Collinear(RSQ)"
   ],
   "text_cdl": [],
@@ -16,8 +16,8 @@
     "Triangle(P,Q,R)",
     "Equal(LengthOfLine(RS),3)",
     "Equal(LengthOfLine(QS),14)",
-    "Perpendicular(PS,QS)",
-    "Perpendicular(QP,RP)"
+    "PerpendicularBetweenLine(PS,QS)",
+    "PerpendicularBetweenLine(QP,RP)"
   ],
   "goal_cdl": "Value(LengthOfLine(PS))",
   "problem_answer": "√42",
@@ -25,12 +25,17 @@
     "perpendicular_property_collinear_extend(PS,QS,R)",
     "right_triangle_judgment_angle(PSQ)",
     "right_triangle_judgment_angle(QPR)",
-    "similar_judgment_aa(PRS,QPR)",
-    "similar_judgment_aa(PSQ,RQP)",
-    "similar_property_line_ratio(PRS,QPR)",
-    "similar_property_line_ratio(RSP,RQP)",
-    "similar_property_line_ratio(SPR,PRQ)",
-    "similar_property_line_ratio(SQP,PRQ)",
-    "similar_property_line_ratio(QPS,QPR)"
+    "similar_triangle_judgment_aa(PRS,QPR)",
+    "similar_triangle_judgment_aa(PSQ,RQP)",
+    "similar_triangle_property_line_ratio(SPR,RQP)",
+    "similar_triangle_property_line_ratio(RSP,PRQ)",
+    "similar_triangle_property_line_ratio(PRS,PRQ)",
+    "similar_triangle_property_line_ratio(SPR,QPR)",
+    "similar_triangle_property_line_ratio(RSP,QPR)",
+    "similar_triangle_property_line_ratio(PRS,RQP)",
+    "similar_triangle_property_line_ratio(PSQ,QPR)",
+    "similar_triangle_property_line_ratio(QPS,RQP)",
+    "similar_triangle_property_line_ratio(SQP,RQP)",
+    "similar_triangle_property_line_ratio(PSQ,PRQ)"
   ]
 }

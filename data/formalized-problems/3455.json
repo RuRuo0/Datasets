@@ -7,8 +7,8 @@
   "problem_text_en": "If J L = 27, B L = 9, and J K = 18, find J A.",
   "problem_img": "3455.png",
   "construction_cdl": [
-    "Polygon(JBA)",
-    "Polygon(BLKA)",
+    "Shape(JB,BA,AJ)",
+    "Shape(BL,LK,KA,AB)",
     "Collinear(JAK)",
     "Collinear(JBL)"
   ],
@@ -17,15 +17,14 @@
     "Equal(LengthOfLine(JL),27)",
     "Equal(LengthOfLine(BL),9)",
     "Equal(LengthOfLine(JK),18)",
-    "Parallel(BA,LK)"
+    "ParallelBetweenLine(BA,LK)"
   ],
   "goal_cdl": "Value(LengthOfLine(JA))",
   "problem_answer": "12",
   "theorem_seqs": [
     "line_addition(JA,AK)",
     "line_addition(JB,BL)",
-    "neutrality_judgment_parallel(BA,JLK)",
+    "similar_triangle_judgment_parallel(JBA,JLK)",
     "neutrality_property_line_ratio(BA,JLK)"
-
   ]
 }

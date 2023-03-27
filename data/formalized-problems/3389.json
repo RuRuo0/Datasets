@@ -7,10 +7,10 @@
   "problem_text_en": "If P R \\parallel K L, K N = 9, L N = 16, P M = 2 K P, find M L.",
   "problem_img": "3389.png",
   "construction_cdl": [
-    "Polygon(LRQN)",
-    "Polygon(NQPK)",
-    "Polygon(RMQ)",
-    "Polygon(QMP)",
+    "Shape(LR,RQ,QN,NL)",
+    "Shape(NQ,QP,PK,KN)",
+    "Shape(RM,MQ,QR)",
+    "Shape(QM,MP,PQ)",
     "Collinear(LNK)",
     "Collinear(RQP)",
     "Collinear(LRM)",
@@ -18,23 +18,24 @@
     "Collinear(NQM)"
   ],
   "text_cdl": [
-    "Parallel(PR,KL)",
+    "ParallelBetweenLine(PR,KL)",
     "Equal(LengthOfLine(KN),9)",
     "Equal(LengthOfLine(LN),16)",
     "Equal(LengthOfLine(PM),Mul(LengthOfLine(KP),2))"
   ],
   "image_cdl": [
-    "Perpendicular(KN,QN)",
-    "Perpendicular(RM,PM)"
+    "PerpendicularBetweenLine(KN,QN)",
+    "PerpendicularBetweenLine(RM,PM)"
   ],
   "goal_cdl": "Value(LengthOfLine(ML))",
   "problem_answer": "20",
   "theorem_seqs": [
-    "similar_judgment_aa(MKN,LMK)",
-    "similar_property_angle_equal(MKN,LMK)",
+    "similar_triangle_judgment_aa(MKN,LMK)",
+    "similar_triangle_property_angle_equal(MKN,LMK)",
     "perpendicular_property_collinear_extend(KN,QN,L)",
-    "similar_judgment_aa(KNM,MNL)",
-    "similar_property_line_ratio(NMK,NLM)",
+    "similar_triangle_judgment_aa(KNM,MNL)",
+    "similar_triangle_property_line_ratio(KNM,MNL)",
+    "similar_triangle_property_line_ratio(MKN,LMN)",
     "right_triangle_judgment_angle(MNL)",
     "right_triangle_property_pythagorean(MNL)"
   ]

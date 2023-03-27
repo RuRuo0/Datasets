@@ -7,8 +7,8 @@
   "problem_text_en": "In \\triangle A B C, C D is an altitude and m \\angle A C B = 90. If A D = 12 and B D = 3, find A C to the nearest tenth.",
   "problem_img": "2592.png",
   "construction_cdl": [
-    "Polygon(CAD)",
-    "Polygon(CDB)",
+    "Shape(CA,AD,DC)",
+    "Shape(CD,DB,BC)",
     "Collinear(ADB)"
   ],
   "text_cdl": [
@@ -17,16 +17,17 @@
   "image_cdl": [
     "Equal(LengthOfLine(AD),12)",
     "Equal(LengthOfLine(BD),3)",
-    "Perpendicular(AD,CD)"
+    "PerpendicularBetweenLine(AD,CD)"
   ],
   "goal_cdl": "Value(LengthOfLine(AC))",
   "problem_answer": "6*√5",
   "theorem_seqs": [
     "perpendicular_property_collinear_extend(AD,CD,B)",
-    "similar_judgment_aa(ABC,CDB)",
-    "similar_property_angle_equal(ABC,CDB)",
-    "similar_judgment_aa(BCD,CAD)",
-    "similar_property_line_ratio(DBC,DCA)",
+    "similar_triangle_judgment_aa(ABC,CDB)",
+    "similar_triangle_property_angle_equal(ABC,CDB)",
+    "similar_triangle_judgment_aa(BCD,CAD)",
+    "similar_triangle_property_line_ratio(CDB,ADC)",
+    "similar_triangle_property_line_ratio(BCD,CAD)",
     "right_triangle_judgment_angle(ADC)",
     "right_triangle_property_pythagorean(ADC)"
   ]

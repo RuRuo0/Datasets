@@ -7,8 +7,8 @@
   "problem_text_en": "Find y.",
   "problem_img": "2559.png",
   "construction_cdl": [
-    "Polygon(BCD)",
-    "Polygon(BDA)",
+    "Shape(BC,CD,DB)",
+    "Shape(BD,DA,AB)",
     "Collinear(CDA)"
   ],
   "text_cdl": [],
@@ -18,15 +18,16 @@
     "Equal(LengthOfLine(BD),x)",
     "Equal(LengthOfLine(AD),10)",
     "Equal(LengthOfLine(CD),z)",
-    "Perpendicular(BD,AD)",
-    "Perpendicular(AB,CB)"
+    "PerpendicularBetweenLine(BD,AD)",
+    "PerpendicularBetweenLine(AB,CB)"
   ],
   "goal_cdl": "Value(y)",
   "problem_answer": "12/5*√11",
   "theorem_seqs": [
     "right_triangle_judgment_angle(BDA)",
     "right_triangle_property_pythagorean(BDA)",
-    "similar_judgment_aa(BDA,CAB)",
-    "similar_property_line_ratio(DAB,BCA)"
+    "similar_triangle_judgment_aa(BDA,CAB)",
+    "similar_triangle_property_line_ratio(BDA,ABC)",
+    "similar_triangle_property_line_ratio(ABD,CAB)"
   ]
 }

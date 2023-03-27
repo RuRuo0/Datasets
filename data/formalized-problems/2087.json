@@ -7,8 +7,8 @@
   "problem_text_en": "Refer to the triangle shown below. Find z to the nearest tenth.",
   "problem_img": "2087.png",
   "construction_cdl": [
-    "Polygon(CAD)",
-    "Polygon(CDB)",
+    "Shape(CA,AD,DC)",
+    "Shape(CD,DB,BC)",
     "Collinear(ADB)"
   ],
   "text_cdl": [],
@@ -18,14 +18,15 @@
     "Equal(LengthOfLine(BD),12.5)",
     "Equal(LengthOfLine(AD),8)",
     "Equal(LengthOfLine(BC),z)",
-    "Perpendicular(CD,BD)",
-    "Perpendicular(BC,AC)"
+    "PerpendicularBetweenLine(CD,BD)",
+    "PerpendicularBetweenLine(BC,AC)"
   ],
   "goal_cdl": "Value(z)",
   "problem_answer": "5/2*√41",
   "theorem_seqs": [
     "line_addition(AD,DB)",
-    "similar_judgment_aa(CDB,ABC)",
-    "similar_property_line_ratio(BCD,BCA)"
+    "similar_triangle_judgment_aa(CDB,ABC)",
+    "similar_triangle_property_line_ratio(DBC,ABC)",
+    "similar_triangle_property_line_ratio(CDB,CAB)"
   ]
 }

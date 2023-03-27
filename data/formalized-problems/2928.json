@@ -7,8 +7,8 @@
   "problem_text_en": "Find the value of the variable w.",
   "problem_img": "2928.png",
   "construction_cdl": [
-    "Polygon(BCD)",
-    "Polygon(BDA)",
+    "Shape(BC,CD,DB)",
+    "Shape(BD,DA,AB)",
     "Collinear(CDA)"
   ],
   "text_cdl": [],
@@ -16,8 +16,8 @@
     "Equal(LengthOfLine(BD),w+4)",
     "Equal(LengthOfLine(AD),6)",
     "Equal(LengthOfLine(CD),24)",
-    "Perpendicular(AB,CB)",
-    "Perpendicular(CD,BD)"
+    "PerpendicularBetweenLine(AB,CB)",
+    "PerpendicularBetweenLine(CD,BD)"
   ],
   "goal_cdl": "Value(w)",
   "problem_answer": "8",
@@ -25,7 +25,8 @@
     "perpendicular_property_collinear_extend(CD,BD,A)",
     "triangle_property_angle_sum(ABC)",
     "triangle_property_angle_sum(CDB)",
-    "similar_judgment_aa(BDA,CDB)",
-    "similar_property_line_ratio(DAB,DBC)"
+    "similar_triangle_judgment_aa(BDA,CDB)",
+    "similar_triangle_property_line_ratio(BDA,CDB)",
+    "similar_triangle_property_line_ratio(ABD,BCD)"
   ]
 }

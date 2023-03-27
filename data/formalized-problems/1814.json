@@ -7,24 +7,25 @@
   "problem_text_en": "Find the length of line AC.",
   "problem_img": "83_g3k-230.png",
   "construction_cdl": [
-    "Polygon(ABD)",
-    "Polygon(BCD)",
+    "Shape(AB,BD,DA)",
+    "Shape(BC,CD,DB)",
     "Collinear(ADC)"
   ],
   "text_cdl": [],
   "image_cdl": [
     "Equal(LengthOfLine(DA),5*x-6)",
     "Equal(LengthOfLine(DC),3*x+4)",
-    "Perpendicular(BD,AD)",
+    "PerpendicularBetweenLine(BD,AD)",
     "Equal(LengthOfLine(AB),LengthOfLine(CB))"
   ],
   "goal_cdl": "Value(LengthOfLine(AC))",
   "problem_answer": "38",
   "theorem_seqs": [
-    "triangle_property_equal_line_to_equal_angle(BCA)",
+    "isosceles_triangle_judgment_line_equal(BCA)",
+    "isosceles_triangle_property_angle_equal(BCA)",
     "perpendicular_property_collinear_extend(BD,AD,C)",
-    "congruent_judgment_aas(BDA,BCD)",
-    "congruent_property_line_equal(BDA,BCD)",
+    "congruent_triangle_judgment_aas(BDA,BCD)",
+    "congruent_triangle_property_line_equal(BDA,BCD)",
     "line_addition(AD,DC)"
   ]
 }

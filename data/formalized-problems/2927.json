@@ -7,21 +7,21 @@
   "problem_text_en": "The height of a triangle is 5 centimeters more than its base. The area of the triangle is 52 square centimeters. Find the height.",
   "problem_img": "2927.png",
   "construction_cdl": [
-    "Polygon(CED)",
-    "Polygon(CDA)",
+    "Shape(CE,ED,DC)",
+    "Shape(CD,DA,AC)",
     "Collinear(EDA)"
   ],
   "text_cdl": [],
   "image_cdl": [
-    "IsAltitude(CD,CEA)",
+    "IsAltitudeOfTriangle(CD,CEA)",
     "Equal(AreaOfTriangle(CEA),52)",
     "Equal(LengthOfLine(CD),b+5)",
     "Equal(LengthOfLine(AE),b)",
-    "Perpendicular(ED,CD)"
+    "PerpendicularBetweenLine(ED,CD)"
   ],
   "goal_cdl": "Value(LengthOfLine(CD))",
   "problem_answer": "13",
   "theorem_seqs": [
-    "triangle_area_formula_common(CD,CEA)"
+    "triangle_area_formula_common(CEA)"
   ]
 }

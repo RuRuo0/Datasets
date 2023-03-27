@@ -7,10 +7,10 @@
   "problem_text_en": "If P R \\parallel K L, K N = 9, L N = 16, and P M = 2K P, find K P.",
   "problem_img": "2301.png",
   "construction_cdl": [
-    "Polygon(LRQN)",
-    "Polygon(RMQ)",
-    "Polygon(QMP)",
-    "Polygon(NQPK)",
+    "Shape(LR,RQ,QN,NL)",
+    "Shape(RM,MQ,QR)",
+    "Shape(QM,MP,PQ)",
+    "Shape(NQ,QP,PK,KN)",
     "Collinear(LNK)",
     "Collinear(RQP)",
     "Collinear(LRM)",
@@ -19,19 +19,20 @@
   ],
   "text_cdl": [],
   "image_cdl": [
-    "Parallel(PR,KL)",
+    "ParallelBetweenLine(PR,KL)",
     "Equal(LengthOfLine(KN),9)",
     "Equal(LengthOfLine(LN),16)",
     "Equal(LengthOfLine(PM),Mul(LengthOfLine(KP),2))",
-    "Perpendicular(KN,MN)",
-    "Perpendicular(LM,KM)"
+    "PerpendicularBetweenLine(KN,MN)",
+    "PerpendicularBetweenLine(LM,KM)"
   ],
   "goal_cdl": "Value(LengthOfLine(KP))",
   "problem_answer": "5",
   "theorem_seqs": [
     "line_addition(LN,NK)",
     "line_addition(MP,PK)",
-    "similar_judgment_aa(MKN,LMK)",
-    "similar_property_line_ratio(KNM,KLM)"
+    "similar_triangle_judgment_aa(MKN,LMK)",
+    "similar_triangle_property_line_ratio(MKN,MKL)",
+    "similar_triangle_property_line_ratio(NMK,LMK)"
   ]
 }

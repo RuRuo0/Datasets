@@ -7,12 +7,12 @@
   "problem_text_en": "P is the incenter of \\angle X Y Z. Find P K.",
   "problem_img": "2772.png",
   "construction_cdl": [
-    "Polygon(XLP)",
-    "Polygon(LZP)",
-    "Polygon(ZJP)",
-    "Polygon(JYP)",
-    "Polygon(YKP)",
-    "Polygon(KXP)",
+    "Shape(XL,LP,PX)",
+    "Shape(LZ,ZP,PL)",
+    "Shape(ZJ,JP,PZ)",
+    "Shape(JY,YP,PJ)",
+    "Shape(YK,KP,PY)",
+    "Shape(KX,XP,PK)",
     "Collinear(XLZ)",
     "Collinear(ZJY)",
     "Collinear(XKY)",
@@ -21,15 +21,15 @@
     "Collinear(ZPK)"
   ],
   "text_cdl": [
-    "Incenter(P,XZY)"
+    "IsIncenterOfTriangle(P,XZY)"
   ],
   "image_cdl": [
     "Equal(MeasureOfAngle(YXP),31)",
     "Equal(MeasureOfAngle(JYP),27)",
     "Equal(LengthOfLine(PZ),20)",
     "Equal(LengthOfLine(JZ),12)",
-    "Perpendicular(YK,PK)",
-    "Perpendicular(PJ,YJ)"
+    "PerpendicularBetweenLine(YK,PK)",
+    "PerpendicularBetweenLine(PJ,YJ)"
   ],
   "goal_cdl": "Value(LengthOfLine(PK))",
   "problem_answer": "16",
@@ -37,6 +37,8 @@
     "perpendicular_property_collinear_extend(PJ,YJ,Z)",
     "right_triangle_judgment_angle(ZJP)",
     "right_triangle_property_pythagorean(ZJP)",
-    "incenter_property_line_equal(P,YXZ,K,J)"
+    "incenter_of_triangle_property_intersection(P,YXZ)",
+    "bisector_judgment_angle_equal(YP,JYK)",
+    "bisector_property_distance_equal(YP,JYK)"
   ]
 }

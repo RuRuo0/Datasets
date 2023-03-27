@@ -7,8 +7,8 @@
   "problem_text_en": "Find z.",
   "problem_img": "2302.png",
   "construction_cdl": [
-    "Polygon(CAB)",
-    "Polygon(ADB)",
+    "Shape(CA,AB,BC)",
+    "Shape(AD,DB,BA)",
     "Collinear(CAD)"
   ],
   "text_cdl": [],
@@ -18,16 +18,17 @@
     "Equal(LengthOfLine(AB),20)",
     "Equal(LengthOfLine(AD),10)",
     "Equal(LengthOfLine(BD),y)",
-    "Perpendicular(CA,BA)",
-    "Perpendicular(DB,CB)"
+    "PerpendicularBetweenLine(CA,BA)",
+    "PerpendicularBetweenLine(DB,CB)"
   ],
   "goal_cdl": "Value(LengthOfLine(CB))",
   "problem_answer": "20*√5",
   "theorem_seqs": [
     "perpendicular_property_collinear_extend(CA,BA,D)",
     "right_triangle_judgment_angle(BAD)",
-    "similar_judgment_aa(BAD,CDB)",
+    "similar_triangle_judgment_aa(BAD,CDB)",
     "right_triangle_property_pythagorean(BAD)",
-    "similar_property_line_ratio(ADB,BCD)"
+    "similar_triangle_property_line_ratio(BAD,DBC)",
+    "similar_triangle_property_line_ratio(DBA,CDB)"
   ]
 }

@@ -7,8 +7,8 @@
   "problem_text_en": "Find z.",
   "problem_img": "2575.png",
   "construction_cdl": [
-    "Polygon(BAY)",
-    "Polygon(ACY)",
+    "Shape(BA,AY,YB)",
+    "Shape(AC,CY,YA)",
     "Collinear(BYC)"
   ],
   "text_cdl": [],
@@ -18,8 +18,8 @@
     "Equal(LengthOfLine(AC),x)",
     "Equal(LengthOfLine(YC),6)",
     "Equal(LengthOfLine(BC),y)",
-    "Perpendicular(AY,BY)",
-    "Perpendicular(BA,CA)"
+    "PerpendicularBetweenLine(AY,BY)",
+    "PerpendicularBetweenLine(BA,CA)"
   ],
   "goal_cdl": "Value(z)",
   "problem_answer": "85*√13/6",
@@ -27,7 +27,8 @@
     "perpendicular_property_collinear_extend(AY,BY,C)",
     "right_triangle_judgment_angle(CYA)",
     "right_triangle_property_pythagorean(CYA)",
-    "similar_judgment_aa(ACY,BAC)",
-    "similar_property_line_ratio(YAC,ACB)"
+    "similar_triangle_judgment_aa(ACY,BAC)",
+    "similar_triangle_property_line_ratio(CYA,BAC)",
+    "similar_triangle_property_line_ratio(ACY,CBA)"
   ]
 }

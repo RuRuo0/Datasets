@@ -7,9 +7,9 @@
   "problem_text_en": "If \\frac { I J } { X J } = \\frac { H J } { Y J }, m \\angle W X J = 130, and m \\angle W Z G = 20, find m \\angle J H G.",
   "problem_img": "2733.png",
   "construction_cdl": [
-    "Polygon(HXYI)",
-    "Polygon(IYZ)",
-    "Polygon(JHI)",
+    "Shape(HX,XY,YI,IH)",
+    "Shape(IY,YZ,ZI)",
+    "Shape(JH,HI,IJ)",
     "Collinear(JHX)",
     "Collinear(JIY)",
     "Collinear(GHIZ)",
@@ -21,21 +21,20 @@
   "image_cdl": [
     "Equal(MeasureOfAngle(WXH),130)",
     "Equal(MeasureOfAngle(YZI),20)",
-    "Equal(Mul(LengthOfLine(IJ),LengthOfLine(YJ)),Mul(LengthOfLine(XJ),LengthOfLine(HJ)))",
-    "Intersect(I,HZ,JY)"
+    "Equal(Mul(LengthOfLine(IJ),LengthOfLine(YJ)),Mul(LengthOfLine(XJ),LengthOfLine(HJ)))"
   ],
   "goal_cdl": "Value(MeasureOfAngle(GHJ))",
   "problem_answer": "110",
   "theorem_seqs": [
     "flat_angle(WXY)",
     "angle_addition(WXH,HXY)",
-    "similar_judgment_sas(JHI,JXY)",
-    "similar_property_angle_equal(XYJ,IJH)",
+    "similar_triangle_judgment_sas(JHI,JXY)",
+    "similar_triangle_property_angle_equal(XYJ,IJH)",
     "vertical_angle(HIJ,ZIY)",
     "triangle_property_angle_sum(IYZ)",
     "flat_angle(XYZ)",
     "angle_addition(XYI,IYZ)",
-    "similar_property_angle_equal(YJX,HIJ)",
+    "similar_triangle_property_angle_equal(YJX,HIJ)",
     "flat_angle(GHI)",
     "angle_addition(GHJ,JHI)"
   ]

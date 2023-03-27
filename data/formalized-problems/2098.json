@@ -7,8 +7,8 @@
   "problem_text_en": "If R T = 15, Q P = 21, and P T = 8, find T S.",
   "problem_img": "2098.png",
   "construction_cdl": [
-    "Polygon(QPTR)",
-    "Polygon(RTS)",
+    "Shape(QP,PT,TR,RQ)",
+    "Shape(RT,TS,SR)",
     "Collinear(QRS)",
     "Collinear(PTS)"
   ],
@@ -17,17 +17,20 @@
     "Equal(LengthOfLine(TR),15)",
     "Equal(LengthOfLine(PQ),21)",
     "Equal(LengthOfLine(PT),8)",
-    "Parallel(PQ,TR)"
+    "ParallelBetweenLine(PQ,TR)"
   ],
   "goal_cdl": "Value(LengthOfLine(TS))",
   "problem_answer": "20",
   "theorem_seqs": [
     "line_addition(QR,RS)",
     "line_addition(PT,TS)",
-    "neutrality_judgment_parallel(RT,SQP)",
+    "similar_triangle_judgment_parallel(SRT,SQP)",
     "neutrality_property_similar(RT,SQP)",
-    "similar_property_line_ratio(SQP,SRT)",
-    "similar_property_line_ratio(QPS,RTS)",
-    "similar_property_line_ratio(PSQ,TSR)"
+    "similar_triangle_property_line_ratio(PSQ,TSR)",
+    "similar_triangle_property_line_ratio(QPS,RTS)",
+    "similar_triangle_property_line_ratio(SQP,SRT)",
+    "similar_triangle_property_line_ratio(PSQ,TSR)",
+    "similar_triangle_property_line_ratio(QPS,RTS)",
+    "similar_triangle_property_line_ratio(SQP,SRT)"
   ]
 }

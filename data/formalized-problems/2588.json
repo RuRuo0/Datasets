@@ -7,8 +7,8 @@
   "problem_text_en": "Find x.",
   "problem_img": "2588.png",
   "construction_cdl": [
-    "Polygon(ADB)",
-    "Polygon(DCB)",
+    "Shape(AD,DB,BA)",
+    "Shape(DC,CB,BD)",
     "Collinear(ADC)"
   ],
   "text_cdl": [],
@@ -18,16 +18,17 @@
     "Equal(LengthOfLine(CB),y)",
     "Equal(LengthOfLine(BD),z)",
     "Equal(LengthOfLine(CD),3)",
-    "Perpendicular(CB,AB)",
-    "Perpendicular(AD,BD)"
+    "PerpendicularBetweenLine(CB,AB)",
+    "PerpendicularBetweenLine(AD,BD)"
   ],
   "goal_cdl": "Value(x)",
   "problem_answer": "2*√22",
   "theorem_seqs": [
     "perpendicular_property_collinear_extend(AD,BD,C)",
-    "similar_judgment_aa(BDC,ACB)",
+    "similar_triangle_judgment_aa(BDC,ACB)",
     "line_addition(CD,DA)",
-    "similar_property_line_ratio(CBD,CBA)",
+    "similar_triangle_property_line_ratio(DCB,ACB)",
+    "similar_triangle_property_line_ratio(BDC,BAC)",
     "right_triangle_judgment_angle(CBA)",
     "right_triangle_property_pythagorean(CBA)"
   ]

@@ -7,8 +7,8 @@
   "problem_text_en": "If A D = 8, A E = 12, and E C = 18, find A B.",
   "problem_img": "3599.png",
   "construction_cdl": [
-    "Polygon(AED)",
-    "Polygon(DECB)",
+    "Shape(AE,ED,DA)",
+    "Shape(DE,EC,CB,BD)",
     "Collinear(ADB)",
     "Collinear(AEC)"
   ],
@@ -17,13 +17,13 @@
     "Equal(LengthOfLine(AD),8)",
     "Equal(LengthOfLine(AE),12)",
     "Equal(LengthOfLine(EC),18)",
-    "Parallel(BC,DE)"
+    "ParallelBetweenLine(BC,DE)"
   ],
   "goal_cdl": "Value(LengthOfLine(AB))",
   "problem_answer": "20",
   "theorem_seqs": [
     "line_addition(AD,DB)",
-    "neutrality_judgment_parallel(ED,ACB)",
+    "similar_triangle_judgment_parallel(AED,ACB)",
     "neutrality_property_line_ratio(ED,ACB)"
   ]
 }

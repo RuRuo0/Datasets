@@ -7,8 +7,8 @@
   "problem_text_en": "Find y.",
   "problem_img": "3614.png",
   "construction_cdl": [
-    "Polygon(AYB)",
-    "Polygon(BYC)",
+    "Shape(AY,YB,BA)",
+    "Shape(BY,YC,CB)",
     "Collinear(AYC)"
   ],
   "text_cdl": [],
@@ -18,8 +18,8 @@
     "Equal(LengthOfLine(AY),x)",
     "Equal(LengthOfLine(CY),y)",
     "Equal(MeasureOfAngle(ACB),60)",
-    "Perpendicular(CB,AB)",
-    "Perpendicular(AY,BY)"
+    "PerpendicularBetweenLine(CB,AB)",
+    "PerpendicularBetweenLine(AY,BY)"
   ],
   "goal_cdl": "Value(y)",
   "problem_answer": "1",
@@ -27,7 +27,11 @@
     "perpendicular_property_collinear_extend(AY,BY,C)",
     "right_triangle_judgment_angle(AYB)",
     "right_triangle_judgment_angle(BYC)",
-    "right_triangle_property_special_rt_30_60(AYB)",
-    "right_triangle_property_special_rt_30_60(BYC)"
+    "triangle_property_angle_sum(AYB)",
+    "sine_theorem(AYB)",
+    "sine_theorem(BAY)",
+    "triangle_property_angle_sum(BYC)",
+    "sine_theorem(BYC)",
+    "sine_theorem(CBY)"
   ]
 }

@@ -7,25 +7,26 @@
   "problem_text_en": "Find the measure of the altitude drawn to the hypotenuse.",
   "problem_img": "3351.png",
   "construction_cdl": [
-    "Polygon(NMP)",
-    "Polygon(NPO)",
+    "Shape(NM,MP,PN)",
+    "Shape(NP,PO,ON)",
     "Collinear(MPO)"
   ],
   "text_cdl": [],
   "image_cdl": [
     "Equal(LengthOfLine(MP),11)",
     "Equal(LengthOfLine(OP),27)",
-    "Perpendicular(ON,MN)",
-    "Perpendicular(NP,OP)"
+    "PerpendicularBetweenLine(ON,MN)",
+    "PerpendicularBetweenLine(NP,OP)"
   ],
-  "goal_cdl": "Value(AltitudeOfTriangle(NMO))",
+  "goal_cdl": "Value(HeightOfTriangle(NMO))",
   "problem_answer": "√297",
   "theorem_seqs": [
     "perpendicular_property_collinear_extend(NP,OP,M)",
     "angle_addition(ONP,PNM)",
     "triangle_property_angle_sum(NPO)",
-    "similar_judgment_aa(MPN,NPO)",
-    "similar_property_line_ratio(PNM,PON)",
-    "is_altitude_judgment(NP,NMO)"
+    "similar_triangle_judgment_aa(MPN,NPO)",
+    "similar_triangle_property_line_ratio(MPN,NPO)",
+    "similar_triangle_property_line_ratio(NMP,ONP)",
+    "altitude_of_triangle_judgment(NP,NMO)"
   ]
 }

@@ -7,9 +7,9 @@
   "problem_text_en": "Find F E if A B = 6, A F = 8, B C = x, C D = y, D E = 2 y - 3, and F E = x + \\frac { 10 } { 3 }.",
   "problem_img": "2232.png",
   "construction_cdl": [
-    "Polygon(ABF)",
-    "Polygon(BCDF)",
-    "Polygon(FDE)",
+    "Shape(AB,BF,FA)",
+    "Shape(BC,CD,DF,FB)",
+    "Shape(FD,DE,EF)",
     "Collinear(ABC)",
     "Collinear(AFE)",
     "Collinear(CDE)"
@@ -22,8 +22,8 @@
     "Equal(LengthOfLine(CD),y)",
     "Equal(LengthOfLine(DE),2*y-3)",
     "Equal(LengthOfLine(FE),x+10/3)",
-    "Parallel(BF,CD)",
-    "Parallel(BC,FD)"
+    "ParallelBetweenLine(BF,CD)",
+    "ParallelBetweenLine(BC,FD)"
   ],
   "goal_cdl": "Value(LengthOfLine(FE))",
   "problem_answer": "40/3",
@@ -31,7 +31,7 @@
     "line_addition(AB,BC)",
     "line_addition(AF,FE)",
     "parallel_property_collinear_extend(DC,FB,E)",
-    "neutrality_judgment_parallel(BF,ACE)",
+    "similar_triangle_judgment_parallel(ABF,ACE)",
     "neutrality_property_line_ratio(BF,ACE)"
   ]
 }

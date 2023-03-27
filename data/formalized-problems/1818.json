@@ -7,9 +7,9 @@
   "problem_text_en": "Find the length of line DE, if AD=12 and BD=4.",
   "problem_img": "1818.png",
   "construction_cdl": [
-    "Polygon(CAD)",
-    "Polygon(CDE)",
-    "Polygon(EDB)",
+    "Shape(CA,AD,DC)",
+    "Shape(CD,DE,EC)",
+    "Shape(ED,DB,BE)",
     "Collinear(ADB)",
     "Collinear(CEB)"
   ],
@@ -18,18 +18,32 @@
     "Equal(LengthOfLine(BD),4)"
   ],
   "image_cdl": [
-    "Perpendicular(AD,CD)",
-    "Perpendicular(DE,CE)",
-    "Perpendicular(EC,AC)"
+    "PerpendicularBetweenLine(AD,CD)",
+    "PerpendicularBetweenLine(DE,CE)",
+    "PerpendicularBetweenLine(EC,AC)"
   ],
   "goal_cdl": "Value(LengthOfLine(DE))",
   "problem_answer": "2*√3",
   "theorem_seqs": [
     "line_addition(AD,DB)",
     "perpendicular_property_collinear_extend(DE,CE,B)",
-    "similar_judgment_aa(DBE,ABC)",
-    "similar_judgment_aa(CAD,BCA)",
-    "similar_property_line_ratio(DBE,ABC)",
-    "similar_property_line_ratio(ADC,ABC)"
+    "similar_triangle_judgment_aa(DBE,ABC)",
+    "similar_triangle_judgment_aa(CAD,BCA)",
+    "similar_triangle_property_line_ratio(DBE,ABC)",
+    "similar_triangle_property_line_ratio(EDB,CAB)",
+    "similar_triangle_property_line_ratio(EDB,CAB)",
+    "similar_triangle_property_line_ratio(BED,BCA)",
+    "similar_triangle_property_line_ratio(EDB,CAB)",
+    "similar_triangle_property_line_ratio(BED,BCA)",
+    "similar_triangle_property_line_ratio(BED,BCA)",
+    "similar_triangle_property_line_ratio(DBE,ABC)",
+    "similar_triangle_property_line_ratio(ADC,ABC)",
+    "similar_triangle_property_line_ratio(CAD,CAB)",
+    "similar_triangle_property_line_ratio(CAD,CAB)",
+    "similar_triangle_property_line_ratio(DCA,BCA)",
+    "similar_triangle_property_line_ratio(CAD,CAB)",
+    "similar_triangle_property_line_ratio(DCA,BCA)",
+    "similar_triangle_property_line_ratio(DCA,BCA)",
+    "similar_triangle_property_line_ratio(ADC,ABC)"
   ]
 }

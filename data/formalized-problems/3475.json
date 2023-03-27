@@ -7,8 +7,8 @@
   "problem_text_en": "Find B C if B E = 24, C D = 32, and A B = 33.",
   "problem_img": "3475.png",
   "construction_cdl": [
-    "Polygon(AEB)",
-    "Polygon(BEDC)",
+    "Shape(AE,EB,BA)",
+    "Shape(BE,ED,DC,CB)",
     "Collinear(ABC)",
     "Collinear(AED)"
   ],
@@ -17,15 +17,16 @@
     "Equal(LengthOfLine(BE),24)",
     "Equal(LengthOfLine(CD),32)",
     "Equal(LengthOfLine(AB),33)",
-    "Parallel(EB,DC)"
+    "ParallelBetweenLine(EB,DC)"
   ],
   "goal_cdl": "Value(LengthOfLine(BC))",
   "problem_answer": "11",
   "theorem_seqs": [
     "line_addition(AB,BC)",
     "line_addition(AE,ED)",
-    "neutrality_judgment_parallel(EB,ADC)",
+    "similar_triangle_judgment_parallel(AEB,ADC)",
     "neutrality_property_similar(EB,ADC)",
-    "similar_property_line_ratio(BAE,CAD)"
+    "similar_triangle_property_line_ratio(EBA,DCA)",
+    "similar_triangle_property_line_ratio(AEB,ADC)"
   ]
 }

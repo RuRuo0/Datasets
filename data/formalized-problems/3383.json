@@ -7,8 +7,8 @@
   "problem_text_en": "Find z.",
   "problem_img": "3383.png",
   "construction_cdl": [
-    "Polygon(CAP)",
-    "Polygon(PAB)",
+    "Shape(CA,AP,PC)",
+    "Shape(PA,AB,BP)",
     "Collinear(CPB)"
   ],
   "text_cdl": [],
@@ -18,8 +18,8 @@
     "Equal(LengthOfLine(BP),8)",
     "Equal(LengthOfLine(AP),y)",
     "Equal(LengthOfLine(AB),x)",
-    "Perpendicular(AP,CP)",
-    "Perpendicular(CA,BA)"
+    "PerpendicularBetweenLine(AP,CP)",
+    "PerpendicularBetweenLine(CA,BA)"
   ],
   "goal_cdl": "Value(z)",
   "problem_answer": "4*√3",
@@ -28,8 +28,9 @@
     "angle_addition(CAP,PAB)",
     "triangle_property_angle_sum(CAP)",
     "perpendicular_property_collinear_extend(AP,CP,B)",
-    "similar_judgment_aa(APC,BPA)",
-    "similar_property_line_ratio(PCA,PAB)",
+    "similar_triangle_judgment_aa(APC,BPA)",
+    "similar_triangle_property_line_ratio(APC,BPA)",
+    "similar_triangle_property_line_ratio(CAP,ABP)",
     "right_triangle_judgment_angle(APC)",
     "right_triangle_property_pythagorean(APC)"
   ]

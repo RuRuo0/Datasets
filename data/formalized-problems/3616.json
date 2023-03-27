@@ -7,33 +7,35 @@
   "problem_text_en": "J is the incenter of \\angle A B C. Find J F.",
   "problem_img": "3616.png",
   "construction_cdl": [
-    "Polygon(JDB)",
-    "Polygon(JBE)",
-    "Polygon(JEA)",
-    "Polygon(JAF)",
-    "Polygon(JFC)",
-    "Polygon(JCD)",
+    "Shape(JD,DB,BJ)",
+    "Shape(JB,BE,EJ)",
+    "Shape(JE,EA,AJ)",
+    "Shape(JA,AF,FJ)",
+    "Shape(JF,FC,CJ)",
+    "Shape(JC,CD,DJ)",
     "Collinear(BDC)",
     "Collinear(BEA)",
     "Collinear(CFA)"
   ],
   "text_cdl": [
-    "Incenter(J,ACB)"
+    "IsIncenterOfTriangle(J,ACB)"
   ],
   "image_cdl": [
     "Equal(MeasureOfAngle(JCB),32)",
     "Equal(MeasureOfAngle(JBA),34)",
     "Equal(LengthOfLine(AJ),15)",
     "Equal(LengthOfLine(AE),12)",
-    "Perpendicular(CD,JD)",
-    "Perpendicular(JF,CF)",
-    "Perpendicular(JE,AE)"
+    "PerpendicularBetweenLine(CD,JD)",
+    "PerpendicularBetweenLine(JF,CF)",
+    "PerpendicularBetweenLine(JE,AE)"
   ],
   "goal_cdl": "Value(LengthOfLine(JF))",
   "problem_answer": "9",
   "theorem_seqs": [
     "right_triangle_judgment_angle(JEA)",
     "right_triangle_property_pythagorean(JEA)",
-    "incenter_property_line_equal(J,ACB,F,E)"
+    "incenter_of_triangle_property_intersection(J,ACB)",
+    "bisector_judgment_angle_equal(AJ,EAF)",
+    "bisector_property_distance_equal(AJ,EAF)"
   ]
 }

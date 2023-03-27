@@ -7,8 +7,8 @@
   "problem_text_en": "Find V W.",
   "problem_img": "3652.png",
   "construction_cdl": [
-    "Polygon(VZW)",
-    "Polygon(WXY)",
+    "Shape(VZ,ZW,WV)",
+    "Shape(WX,XY,YW)",
     "Collinear(VWX)",
     "Collinear(ZWY)"
   ],
@@ -18,13 +18,14 @@
     "Equal(LengthOfLine(YW),5)",
     "Equal(LengthOfLine(ZW),6)",
     "Equal(LengthOfLine(WX),x+4)",
-    "Parallel(YX,VZ)"
+    "ParallelBetweenLine(YX,VZ)"
   ],
   "goal_cdl": "Value(LengthOfLine(VW))",
   "problem_answer": "12",
   "theorem_seqs": [
     "parallel_property_alternate_interior_angle(YX,VZ)",
-    "similar_judgment_aa(WVZ,WXY)",
-    "similar_property_line_ratio(WVZ,WXY)"
+    "similar_triangle_judgment_aa(WVZ,WXY)",
+    "similar_triangle_property_line_ratio(ZWV,YWX)",
+    "similar_triangle_property_line_ratio(VZW,XYW)"
   ]
 }

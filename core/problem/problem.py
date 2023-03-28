@@ -213,6 +213,8 @@ class Problem:
             shape_old += shape_cache
             shape_cache = shape_new
 
+        self._angle_collinear_expand()   # align angle's representation
+
     def _check_two_shape(self, shape1, shape2):
         """Check whether two shape can form a new shape."""
         same_length = 0  # number of same sides
@@ -330,6 +332,54 @@ class Problem:
                     self.add("Sector", tuple(list(shape[0])), premise, "extended")
 
         return True, set(all_forms)
+
+    def _angle_collinear_expand(self):
+        """Find same angle."""
+        for angle in list(self.conditions["Angle"].get_id_by_item):
+            a, v, b = angle
+            a_collinear = None
+            b_collinear = None
+            for predicate, item in self.problem_CDL["parsed_cdl"]["construction_cdl"]:
+                if predicate == "Collinear" and v in item:
+                    if a in item:
+                        a_collinear = item
+                    if b in item:
+                        b_collinear = item
+
+            a_points = []  # Points collinear with a and on the same side with a
+            b_points = []
+            if a_collinear is not None:
+                if a_collinear.index(v) < a_collinear.index(a):  # .....V...P..
+                    i = a_collinear.index(v) + 1
+                    while i < len(a_collinear):
+                        a_points.append(a_collinear[i])
+                        i += 1
+                else:  # ...P.....V...
+                    i = 0
+                    while i < a_collinear.index(v):
+                        a_points.append(a_collinear[i])
+                        i += 1
+            else:
+                a_points.append(a)
+
+            if b_collinear is not None:
+                if b_collinear.index(v) < b_collinear.index(b):  # .....V...P..
+                    i = b_collinear.index(v) + 1
+                    while i < len(b_collinear):
+                        b_points.append(b_collinear[i])
+                        i += 1
+                else:  # ...P.....V...
+                    i = 0
+                    while i < b_collinear.index(v):
+                        b_points.append(b_collinear[i])
+                        i += 1
+            else:
+                b_points.append(b)
+
+            for a_point in a_points:
+                for b_point in b_points:
+                    premise = (self.conditions["Angle"].get_id_by_item[angle],)
+                    self.add("Angle", (a_point, v, b_point), premise, "extended")
 
     def _align_angle_sym(self, angle):
         """
@@ -505,14 +555,14 @@ class Problem:
             return True
         elif predicate in self.predicate_GDL["Construction"]:
             if predicate == "Shape":
-                if len(item) != len(set(item)):
+                if len(item) != len(set(item)):    # default check 1: mutex points
                     return False
                 for shape in item:
                     if not 2 <= len(shape) <= 3 or len(shape) != len(set(shape)):
                         return False
-                if len(item) == 2 and len(item[0]) == 2 and len(item[1]) == 2:
-                    if item[0][1] != item[1][0] or item[0][0] == item[1][1]:
-                        return False
+                if len(item) == 2 and len(item[0]) == 2 and len(item[1]) == 2 and\
+                        (item[0][1] != item[1][0] or item[0][0] == item[1][1]):
+                    return False
                 return True
             else:
                 return len(item) == len(set(item))    # default check 1: mutex points

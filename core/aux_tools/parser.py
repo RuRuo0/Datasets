@@ -313,8 +313,8 @@ class FLParser:
             elif predicate == "Cocircular":
                 parsed_CDL["parsed_cdl"]["construction_cdl"].append([predicate, list(para.replace(",", ""))])
             else:
-                predicate, para, _ = FLParser._parse_one_predicate(fl)
-                parsed_CDL["parsed_cdl"]["construction_cdl"].append([predicate, para])
+                e_msg = "The predicate <{}> should not appear in construction_cdl.".format(predicate)
+                raise Exception(e_msg)
 
         for fl in problem_CDL["text_cdl"] + problem_CDL["image_cdl"]:
             if fl.startswith("Equal"):

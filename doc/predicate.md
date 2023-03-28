@@ -1,186 +1,515 @@
 ## 附录2 谓词标注对照手册
 ### A、基本构图谓词
-#### Polygon(*)
-<div>
-    <img src="cowork-pic/Polygon.png" width="40%">
+基本构图谓词有三个，分别是Shape(图形)、Collinear(点共线)和Cocircular(点共圆)。推理器可以根据这三个构图谓词自动扩展出基本谓词，其扩展树如下图所示：  
+<div align=center>
+    <img src="cowork-pic/auto-expand.png" width="50%">
 </div>
 
-    Polygon(ABCDE),Polygon(BCDEA),Polygon(CDEAB),Polygon(DEABC),Polygon(EABCD)
-    example: 1 Polygon(ADE),Polygon(DBCE)
-             2 Polygon(ABC),Polygon(ACD),Polygon(ADE),Polygon(AEF)
+#### Shape(*)
+Shape是最基本的构图谓词，它使用若干个边或弧来声明一个几何图形，这个几何图形可以是一条边，可以是一个角，也可以是边和弧围成的图形。使用Shape声明几何图形时，我们需要依据有序原则、逆时针原则和旋转不变原则，这三大原则的介绍可参考cowork.md。  
+<div>
+    <img src="gdl-pic/P001.png" width="60%">
+</div>
 
-**Notes**:    
+**1.声明一条线段**  
+如图1所示，AB是线段的两点，我们可以这样声明线段：  
+
+    Shape(AB)
+
+当使用Shape声明线段时，默认线段是无向的，所以这样声明也是合法的：
+
+    Shape(BA)
+
+**2.声明一条弧**  
+如图2所示，AC是圆O上的两点。弧与线段不同，弧本身自带方向信息，逆时针方向就是弧的方向，我们可以这样声明图2中较小的那段弧：  
+
+    Shape(OAC)
+
+较大的那段弧这样声明：  
+
+    Shape(OCA)
+
+**3.声明一个角**  
+如图3所示，角B由两条线段构成。需要注意，在声明角时，线段是有向的，两条线出现的顺序按照逆时针的方向，首尾相接。因此角B可以表示为：  
+
+    Shape(AB,BC)
+
+**4.声明一个图形**  
+如果一个边一个边或一个角一个角来声明图形，未免也太麻烦了。我们可以直接声明一个由若干线段和弧构成的图形，在构图阶段，推理器会自动扩展出图形中的角、线和弧。因此我们在标注图形的构图语句时，先使用Shape声明所有的最小封闭图形，然后在把那些不封闭的图形如角、线段等声明，就可以声明整个图形。  
+对于图3中的四边形，我们可以这样声明：  
+
+    Shape(AB,BC,CD,DA)
+    Shape(BC,CD,DA,AB)
+    Shape(CD,DA,AB,BC)
+    Shape(DA,AB,BC,CD)
+
+根据旋转不变原则，一个四边形有上述四种表示，我们选择一种就可以。  
+更复杂的图形，如图4，可以声明为：  
+
+    Shape(OAB,BE,EA)
+    Shape(OBC,CE,EB)
+    Shape(EC,OCD,DO,OE)
+    Shape(AE,EO,OD,ODA)
 
 #### Collinear(*)
+Collinear用来声明3个及3个以上的共线点，2点一定是共线的，所以不用声明2点。  
 <div>
-    <img src="cowork-pic/Collinear.png" width="40%">
+    <img src="gdl-pic/P002.png" width="45%">
 </div>
 
-    Collinear(AMB),Collinear(BMA)
-    example: 1 Collinear(AOB),Collinear(COD)
-             2 Collinear(BCDEF)
+共线声明是及其简单的，只要按顺序列出一条线上所有的点即可，如图1中的共线可声明为：  
 
-**Notes**:  
+    Collinear(AMB)
+
+共线没有方向之分，从另一个方向声明也是合法的：  
+
+    Collinear(BMA)
+
+图2中的共线可声明为：  
+
+    Collinear(BCDEF)
+
+图3中的共线可声明为：  
+
+    Collinear(ADB)
+    Collinear(AEC)
+
+共线会在推理器中自动扩展出所有的线和平角，如Collinear(AMB)会扩展得到Line(AM),Line(MB),Line(AM),Angle(AMB),Angle(BMA)。  
 
 #### Cocircular(O,*)
+Cocircular用来声明共圆的若干个点，与Collinear相同，按照顺序列出若干点即可；但也与Collinear不同，一是即使1个点在圆上也要声明，二是共圆的声明按照逆时针方向，且从任何点开始都可。  
 <div>
-    <img src="cowork-pic/Cocircular.png" width="27%">
+    <img src="gdl-pic/P003.png" width="60%">
 </div>
 
-    Cocircular(O,AC),Cocircular(O,CA)
-    example: 1 Cocircular(O,ABCD)
+在图1中，共圆的几点可声明为：  
 
-**Notes**:  
+    Cocircular(O,ABCD)
+    Cocircular(O,BCDA)
+    Cocircular(O,CDAB)
+    Cocircular(O,DABC)
+
+依据三大原则，图1的共圆声明可以有上述4种形式，任选其1即可。图2到图4是几种比较特殊的共圆声明。
+图2的圆上只有1个点，也要声明：  
+
+    Cocircular(O,A)
+
+图3圆上没有点，也要声明：  
+
+    Cocircular(O)
+
+图4两圆圆心互为圆上的点，声明：  
+
+    Cocircular(B,A)
+    Cocircular(A,B)
+
+共圆声明后，会自动扩展出所有的弧和圆。  
 
 ### B、基本实体
+基本实体是由基本构图扩展来的实体，在构图结束后不会再改变。我们无需声明基本实体，下述内容是为了让我们理解形式化系统的内在逻辑。基本构图谓词声明一个图形的结构信息，也就是点的相对位置信息。基本实体相当于是基本构图的 'unzip' 版本，在推理过程中更方便使用。目前推理器内置了10个基本实体。  
+
 #### Point(A)
+就是点，没什么好说的。  
 <div>
-    <img src="cowork-pic/Point.png" width="40%">
+    <img src="gdl-pic/P004.png"  width="45%">
 </div>
+
+图1-3的点的声明：  
 
     Point(A)
-    example: 1 Point(A),Point(B),Point(C)
-             2 Point(O),Point(A),Point(C)
-
-**Notes**:  
+    Point(A),Point(B),Point(C)
+    Point(A),Point(C),Point(O)
 
 #### Line(AB)
+Line声明一个无向线段。
 <div>
-    <img src="cowork-pic/Line.png" width="40%">
+    <img src="gdl-pic/P005.png"  width="45%">
 </div>
 
-    Line(AB),Line(BA)
-    example: 1 Line(AB),Line(CD)
-             2 Line(AO),Line(BO)
+因为是无向的，所以图1的线段有两种声明方法，选其一即可：  
 
-**Notes**:  
+    Line(AB)
+    Line(BA)
+
+图2和图3的线段声明：  
+
+    Line(AB),Line(CD)  
+    Line(AO),Line(BO) 
 
 #### Angle(ABC)
+角由3个点构成，在声明角时，需要按照逆时针原则。  
 <div>
-    <img src="cowork-pic/Angle.png" width="40%">
+    <img src="gdl-pic/P006.png"  width="45%">
 </div>
+
+图1-3的角的声明：  
 
     Angle(AOB)
-    example: 1 Angle(ABC),Angle(BCA),Angle(CAB)
-             2 Angle(AOC),Angle(COB),Angle(BOD),Angle(DOA)
-
-**Notes**:  
+    Angle(ABC),Angle(BCA),Angle(CAB)
+    Angle(AOC),Angle(COB),Angle(BOD),Angle(DOA)
 
 #### Triangle(ABC)
+三角形由3个点构成，按照逆时针的方向列出所有的点。依据旋转不变原则，一个三角形有3种表示方式。  
 <div>
-    <img src="cowork-pic/Triangle.png" width="40%">
+    <img src="gdl-pic/P007.png"  width="15%">
 </div>
 
-    Triangle(ABC),Triangle(BCA),Triangle(CAB)
-    example: 1 Triangle(ADE),Triangle(ABC)
-             2 Triangle(ABD),Triangle(ADC),Triangle(ABC)
+    Triangle(ABC)
+    Triangle(BCA)
+    Triangle(CAB)  
 
-
-**Notes**:  
 
 #### Quadrilateral(ABCD)
+与三角形类似。  
 <div>
-    <img src="cowork-pic/Quadrilateral.png" width="40%">
+    <img src="gdl-pic/P008.png"  width="15%">
 </div>
 
-    Quadrilateral(ABCD),Quadrilateral(BCDA),Quadrilateral(CDAB),Quadrilateral(DABC)
-    example: 1 Quadrilateral(DBCE)
-             2 Quadrilateral(ABCD)
+    Quadrilateral(ABCD)
+    Quadrilateral(BCDA)
+    Quadrilateral(CDAB)
+    Quadrilateral(DABC)
 
-**Notes**:  
-
-#### Arc(AB)
+#### Pentagon(ABCDE)
+与三角形类似。  
 <div>
-    <img src="cowork-pic/Arc.png" width="40%">
+    <img src="gdl-pic/P009.png"  width="15%">
 </div>
 
-    Arc(AB)
-    example: 1 Arc(AC),Arc(CA)
-             2 Arc(AB),Arc(BC),Arc(CD),...
+    Pentagon(ABCDE)
+    Pentagon(BCDEA)
+    Pentagon(CDEAB)
+    Pentagon(DEABC)
+    Pentagon(EABCD)
 
-**Notes**:  
+#### Hexagon(ABCDEF)
+与三角形类似。  
+<div>
+    <img src="gdl-pic/P010.png"  width="15%">
+</div>
+
+    Hexagon(ABCDEF)
+    Hexagon(BCDEFA)
+    Hexagon(CDEFAB)
+    Hexagon(DEFABC)
+    Hexagon(EFABCD)
+    Hexagon(FABCDE)
+
+#### Arc(OAB)
+Arc声明一段弧，由3个点组成，第1个点是弧所在的圆，其余2点是构成弧的点，按照逆时针的方向有序列出。  
+<div>
+    <img src="gdl-pic/P011.png"  width="45%">
+</div>
+
+图1-3中弧的声明：  
+
+    Arc(OAB)
+    Arc(OAC),Arc(OCA)
+    Arc(OAB),Arc(OBC),Arc(OCD),Arc(ODA)
 
 #### Circle(O)
+Circle用于声明一个圆，O表示圆心。  
 <div>
-    <img src="cowork-pic/Circle.png" width="40%">
+    <img src="gdl-pic/P012.png"  width="45%">
 </div>
 
-    Circle(O)
-    example: 1 Circle(A),Circle(B)
-             2 Circle(O)
+图1-3中圆的声明： 
 
-**Notes**:  
- 
+    Cirlce(O)
+    Cirlce(A),Cirlce(B)
+    Cirlce(O)
+
+#### Sector(OAB)
+Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点是圆心，其余两个点是组成扇形的弧。扇形的声明与弧的声明是一致的。  
+<div>
+    <img src="gdl-pic/P013.png"  width="30%">
+</div>
+
+图1和图2的扇形可声明为：  
+
+    Sector(BCD),Sector(BDC)
+    Sector(OAB),Sector(OBC),Sector(OCD),Sector(ODA)
+
 ### C、实体
 #### RightTriangle(ABC)
 <div>
-    <img src="cowork-pic/RightTriangle.png"  width="14%">
+    <img src="gdl-pic/P014.png"  width="15%">
 </div>
 
     ee_check: Triangle(ABC)
     multi: 
-    extend: Perpendicular(AB,CB)
-            IsAltitude(AB,ABC)
-    example: 
+    extend: PerpendicularBetweenLine(AB,CB)
 **Notes**:  
+1.有一个角是直角的三角形称为直角三角形  
+2.按照逆时针原则标注点的顺序  
+3.∠ABC为直角  
 
 #### IsoscelesTriangle(ABC)
 <div>
-    <img src="cowork-pic/IsoscelesTriangle.png"  width="14%">
+    <img src="gdl-pic/P015.png"  width="15%">
 </div>
 
     ee_check: Triangle(ABC)
     multi: 
     extend: Equal(LengthOfLine(AB),LengthOfLine(AC))
-    example: 
 **Notes**:  
+1.两腰相等的三角形称为等腰三角形  
+2.按照逆时针原则标注点的顺序  
+3.第一个点作为顶点，与其他两点的连线作为腰，如IsoscelesTriangle(ABC)的两腰为AB和AC  
+
+#### IsoscelesRightTriangle(ABC)
+<div>
+    <img src="gdl-pic/P016.png"  width="15%">
+</div>
+
+    ee_check: Triangle(ABC)
+    multi: 
+    extend: RightTriangle(CAB)
+            IsoscelesRightTriangle(ABC)
+**Notes**:  
+1.参照等腰三角形标注方法  
 
 #### EquilateralTriangle(ABC)
 <div>
-    <img src="cowork-pic/EquilateralTriangle.png"  width="14%">
+    <img src="gdl-pic/P017.png"  width="15%">
 </div>
 
     ee_check: Triangle(ABC)
     multi: BCA
            CAB
-    extend: Equal(LengthOfLine(AB),LengthOfLine(AC))
-            Equal(LengthOfLine(AB),LengthOfLine(BC))
-    example: 
+    extend: IsoscelesTriangle(ABC)
+            IsoscelesTriangle(BCA)
+            IsoscelesTriangle(CAB)
 **Notes**:  
+1.三条边相等的三角形称为等腰三角形  
+2.按照逆时针原则标注点的顺序  
+3.根据旋转不变性原则，有3种表示方法，选其一即可  
+
+#### Kite(ABCD)
+<div>
+    <img src="gdl-pic/P018.png"  width="15%">
+</div>
+
+    ee_check: Quadrilateral(ABCD)
+    multi: CDAB
+    extend: Equal(LengthOfLine(AB),LengthOfLine(AD))
+            Equal(LengthOfLine(CB),LengthOfLine(CD))
+**Notes**:  
+1.两组临边相等的四边形称为风筝形  
+2.按照逆时针原则标注点的顺序  
+3.第一个点和第三个点分别作为两组临边的交点，如Quadrilateral(ABCD)是AB=AD，CB=CD  
+4.根据旋转不变性原则，1个风筝形有2种表示方法，选其一即可  
+
+#### Parallelogram(ABCD)
+<div>
+    <img src="gdl-pic/P019.png"  width="15%">
+</div>
+
+    ee_check: Quadrilateral(ABCD)
+    multi: BCDA
+           CDAB
+           DABC
+    extend: ParallelBetweenLine(AD,BC)
+            ParallelBetweenLine(BA,CD)
+**Notes**:  
+1.两组对边分别平行的四边形称为平行四边形  
+2.按照逆时针原则标注点的顺序  
+3.根据旋转不变性原则，1个平行四边形有4种表示方法，选其一即可  
+
+#### Rhombus(ABCD)
+<div>
+    <img src="gdl-pic/P020.png"  width="15%">
+</div>
+
+    ee_check: Quadrilateral(ABCD)
+    multi: BCDA
+           CDAB
+           DABC
+    extend: Parallelogram(ABCD)
+            Kite(ABCD)
+            Kite(BCDA)
+**Notes**:  
+1.四条边相等的四边形称为菱形  
+2.按照逆时针原则标注点的顺序  
+3.根据旋转不变性原则，1个菱形有4种表示方法，选其一即可  
+
+#### Rectangle(ABCD)
+<div>
+    <img src="gdl-pic/P021.png"  width="15%">
+</div>
+
+    ee_check: Quadrilateral(ABCD)
+    multi: BCDA
+           CDAB
+           DABC
+    extend: Parallelogram(ABCD)
+            PerpendicularBetweenLine(AB,CB)
+            PerpendicularBetweenLine(BC,DC)
+            PerpendicularBetweenLine(CD,AD)
+            PerpendicularBetweenLine(DA,BA)
+**Notes**:  
+1.四个角都是直角的四边形称为矩形  
+2.按照逆时针原则标注点的顺序  
+3.根据旋转不变性原则，1个矩形有4种表示方法，选其一即可  
+
+#### Square(ABCD)
+<div>
+    <img src="gdl-pic/P022.png"  width="15%">
+</div>
+
+    ee_check: Quadrilateral(ABCD)
+    multi: BCDA
+           CDAB
+           DABC
+    extend: Rhombus(ABCD)
+            Rectangle(ABCD)
+**Notes**:  
+1.四个角都是直角且四条边相等的四边形称为正方形  
+2.按照逆时针原则标注点的顺序  
+3.根据旋转不变性原则，1个正方形有4种表示方法，选其一即可  
+
+#### Trapezoid(ABCD)
+<div>
+    <img src="gdl-pic/P023.png"  width="15%">
+</div>
+
+    ee_check: Quadrilateral(ABCD)
+    multi: CDAB
+    extend: ParallelBetweenLine(AD,BC)
+**Notes**:  
+1.一组对边平行且另一组对边延长后相交的四边形称为梯形  
+2.按照逆时针原则标注点的顺序  
+3.前两个点和后两个点构成腰，如Trapezoid(ABCD)的两腰为AB和CD  
+4.根据旋转不变性原则，1个梯形有2种表示方法，选其一即可  
+
+#### IsoscelesTrapezoid(ABCD)
+<div>
+    <img src="gdl-pic/P024.png"  width="15%">
+</div>
+
+    ee_check: Quadrilateral(ABCD)
+    multi: CDAB
+    extend: Trapezoid(ABCD)
+            Equal(LengthOfLine(AB),LengthOfLine(CD))
+**Notes**:  
+1.腰相等的梯形称为等腰梯形  
+2.按照逆时针原则标注点的顺序  
+3.根据旋转不变性原则，1个等腰梯形有2种表示方法，选其一即可  
+
+#### RightTrapezoid(ABCD)
+<div>
+    <img src="gdl-pic/P025.png"  width="15%">
+</div>
+
+    ee_check: Quadrilateral(ABCD)
+    multi: 
+    extend: Trapezoid(ABCD)
+            PerpendicularBetweenLine(DA,BA)
+            PerpendicularBetweenLine(AB,CB)
+**Notes**:  
+1.一侧角是直角的梯形称为直角梯形  
+2.按照逆时针原则标注点的顺序  
+3.左侧的两个角为直角，如RightTrapezoid(ABCD)表示角A和角B为直角  
+
+#### EquilateralPentagon(ABCDE)
+<div>
+    <img src="gdl-pic/P026.png"  width="15%">
+</div>
+
+    ee_check: Pentagon(ABCDE)
+    multi: BCDEA
+           CDEAB
+           DEABC
+           EABCD
+    extend: Equal(LengthOfLine(AB),LengthOfLine(BC))
+            Equal(LengthOfLine(BC),LengthOfLine(CD))
+            Equal(LengthOfLine(CD),LengthOfLine(DE))
+            Equal(LengthOfLine(DE),LengthOfLine(EA))
+**Notes**:  
+1.五条边相等的五边形称为等边五边形  
+2.按照逆时针原则标注点的顺序  
+3.根据旋转不变性原则，1个等边五边形有5种表示方法，选其一即可  
+
+#### RegularPentagon(ABCDE)
+<div>
+    <img src="gdl-pic/P027.png"  width="15%">
+</div>
+
+    ee_check: Pentagon(ABCDE)
+    multi: BCDEA
+           CDEAB
+           DEABC
+           EABCD
+    extend: EquilateralPentagon(ABCDE)
+            Equal(MeasureOfAngle(ABC),108)
+            Equal(MeasureOfAngle(BCD),108)
+            Equal(MeasureOfAngle(CDE),108)
+            Equal(MeasureOfAngle(DEA),108)
+            Equal(MeasureOfAngle(EAB),108)
+**Notes**:  
+1.五条边相等且五个角相等的五边形称为正五边形  
+2.按照逆时针原则标注点的顺序  
+3.根据旋转不变性原则，1个正五边形有5种表示方法，选其一即可  
+
+#### EquilateralHexagon(ABCDEF)
+<div>
+    <img src="gdl-pic/P028.png"  width="15%">
+</div>
+
+    ee_check: Hexagon(ABCDEF)
+    multi: BCDEFA
+           CDEFAB
+           DEFABC
+           EFABCD
+           FABCDE
+    extend: Equal(LengthOfLine(AB),LengthOfLine(BC))
+            Equal(LengthOfLine(BC),LengthOfLine(CD))
+            Equal(LengthOfLine(CD),LengthOfLine(DE))
+            Equal(LengthOfLine(DE),LengthOfLine(EF))
+            Equal(LengthOfLine(EF),LengthOfLine(FA))
+**Notes**:  
+1.六条边相等的六边形称为等边六边形  
+
+#### RegularHexagon(ABCDEF)
+<div>
+    <img src="gdl-pic/P029.png"  width="15%">
+</div>
+
+    ee_check: Hexagon(ABCDEF)
+    multi: BCDEFA
+           CDEFAB
+           DEFABC
+           EFABCD
+           FABCDE
+    extend: EquilateralHexagon(ABCDEF)
+            Equal(MeasureOfAngle(ABC),120)
+            Equal(MeasureOfAngle(BCD),120)
+            Equal(MeasureOfAngle(CDE),120)
+            Equal(MeasureOfAngle(DEF),120)
+            Equal(MeasureOfAngle(EFA),120)
+            Equal(MeasureOfAngle(FAB),120)
+**Notes**:  
+1.六条边相等且六个角相等的六边形称为正六边形  
 
 ### D、实体关系
-#### Midpoint(M,AB)
+#### IsMidpointOfLine(M,AB)
 <div>
-    <img src="cowork-pic/Midpoint.png"  width="14%">
+    <img src="gdl-pic/P030.png"  width="15%">
 </div>
 
     ee_check: Point(M)
               Line(AB)
+              Collinear(AMB)
     fv_check: M,AB
     multi: M,BA
     extend: Equal(LengthOfLine(AM),LengthOfLine(MB))
-    example: 
 **Notes**:  
+1.点M是线AB的中点  
+2.根据旋转不变性原则，有2种表示，选其一即可  
 
-#### Intersect(O,AB,CD)
+#### ParallelBetweenLine(AB,CD)
 <div>
-    <img src="cowork-pic/Intersect.png"  width="14%">
-</div>
-
-    ee_check: Point(O)
-              Line(AB)
-              Line(CD)
-    fv_check: O,AB,CD
-    multi: O,CD,BA
-           O,BA,DC
-           O,DC,AB
-    extend: 
-    example: 
-**Notes**:  
-
-#### Parallel(AB,CD)
-<div>
-    <img src="cowork-pic/Parallel.png"  width="14%">
+    <img src="gdl-pic/P031.png"  width="15%">
 </div>
 
     ee_check: Line(AB)
@@ -188,12 +517,14 @@
     fv_check: AB,CD
     multi: DC,BA
     extend: 
-    example: 
 **Notes**:  
+1.线AB和线CD相互平行  
+2.从左到右，从上到下原则，AB是上面的直线，CD是下面的直线  
+3.根据旋转不变性原则，有2种表示，选其一即可  
 
-#### Perpendicular(AO,CO)
+#### PerpendicularBetweenLine(AO,CO)
 <div>
-    <img src="cowork-pic/Perpendicular.png"  width="14%">
+    <img src="gdl-pic/P032.png"  width="15%">
 </div>
 
     ee_check: Line(AO)
@@ -201,27 +532,31 @@
     fv_check: AO,CO
     multi: 
     extend: Equal(MeasureOfAngle(AOC),90)
-    example: 
 **Notes**:  
+1.线AO和线CO相互垂直  
+2.按照逆时针原则，AO是直角的第一条边，CO是直角的第二条边  
+3.遇到角的朝向与示例不同，可以想象着把直角转到朝向第二象限  
 
-#### PerpendicularBisector(AB,CO)
+#### IsPerpendicularBisectorOfLine(CO,AB)
 <div>
-    <img src="cowork-pic/PerpendicularBisector.png"  width="14%">
+    <img src="gdl-pic/P033.png"  width="15%">
 </div>
 
-    ee_check: Line(AB)
-              Line(CO)
-    fv_check: AB,CO
+    ee_check: Line(CO)
+              Line(AB)
+              Collinear(AOB)
+    fv_check: CO,AB
     multi: 
-    extend: Perpendicular(AO,CO)
-            Perpendicular(CO,BO)
-            Midpoint(O,AB)
-    example: 
+    extend: PerpendicularBetweenLine(AO,CO)
+            PerpendicularBetweenLine(CO,BO)
+            IsMidpointOfLine(O,AB)
 **Notes**:  
+1.线CO是线AB的垂直平分线，与AB交与点O  
+2.从左到右，从上到下原则  
 
-#### Bisector(BD,ABC)
+#### IsBisectorOfAngle(BD,ABC)
 <div>
-    <img src="cowork-pic/Bisector.png"  width="14%">
+    <img src="gdl-pic/P034.png"  width="15%">
 </div>
 
     ee_check: Line(BD)
@@ -229,25 +564,28 @@
     fv_check: BD,ABC
     multi: 
     extend: Equal(MeasureOfAngle(ABD),MeasureOfAngle(DBC))
-    example: 
 **Notes**:  
+1.线BD是角ABC的平分线，与角ABC交与点B  
+2.角要按照逆时针原则标注，角平分线的第一个点应是角的顶点  
 
-#### Median(AD,ABC)
+#### IsMedianOfTriangle(AD,ABC)
 <div>
-    <img src="cowork-pic/Median.png"  width="14%">
+    <img src="gdl-pic/P035.png"  width="15%">
 </div>
 
     ee_check: Line(AD)
               Triangle(ABC)
+              Collinear(BDC)
     fv_check: AD,ABC
     multi: 
-    extend: Midpoint(D,BC)
-    example: 
+    extend: IsMidpointOfLine(D,BC)
 **Notes**:  
+1.线AD是三角形ABC的中线，即顶点A与底边BC重点D的连线  
+2.线的第一个点应是三角形的顶点  
 
-#### IsAltitude(AD,ABC)
+#### IsAltitudeOfTriangle(AD,ABC)
 <div>
-    <img src="cowork-pic/IsAltitude.png"  width="14%">
+    <img src="gdl-pic/P036.png"  width="15%">
 </div>
 
     ee_check: Line(AD)
@@ -256,43 +594,80 @@
               AB,ABC
               AC,ABC
     multi: 
-    extend: Perpendicular(BD,AD)
-            Perpendicular(AD,CD)
-            Equal(LengthOfLine(AD),AltitudeOfTriangle(ABC))
-    example: 
+    extend: Equal(LengthOfLine(AD),HeightOfTriangle(ABC))
+            PerpendicularBetweenLine(BD,AD)
+            PerpendicularBetweenLine(AD,CD)
 **Notes**:  
+1.线AD是三角形ABC的高  
+2.线的第一个点应是三角形的顶点  
+3.要跟属性HeightOfTriangle区分开来，这里是声明线和三角形的关系，属性那里是表示高的长度  
 
-#### Neutrality(DE,ABC)
+#### IsAltitudeOfQuadrilateral(EF,ABCD)
 <div>
-    <img src="cowork-pic/Neutrality.png"  width="14%">
+    <img src="gdl-pic/P037.png"  width="15%">
+</div>
+
+    ee_check: Line(EF)
+              Quadrilateral(ABCD)
+    fv_check: EF,ABCD
+              EB,ABCD
+              EC,ABCD
+              AF,ABCD
+              AB,ABCD
+              AC,ABCD
+              DF,ABCD
+              DB,ABCD
+              DC,ABCD
+    multi: 
+    extend: Equal(LengthOfLine(EF),HeightOfQuadrilateral(ABCD))
+            PerpendicularBetweenLine(BF,EF)
+            PerpendicularBetweenLine(EF,CF)
+            PerpendicularBetweenLine(DE,FE)
+            PerpendicularBetweenLine(FE,AE)
+**Notes**:  
+1.线EF是四边形ABCD的高  
+2.线的第一个点应是四边形的第一个点  
+3.要跟属性HeightOfQuadrilateral区分开来  
+4.注意，平行四边形每个边都有高，梯形只有平行边有高，筝形没有高  
+
+#### IsMidsegmentOfTriangle(DE,ABC)
+<div>
+    <img src="gdl-pic/P038.png"  width="15%">
 </div>
 
     ee_check: Line(DE)
               Triangle(ABC)
+              Collinear(ADB)
+              Collinear(AEC)
     fv_check: DE,ABC
     multi: 
-    extend: Parallel(DE,BC)
-    example: 
+    extend: IsMidpointOfLine(D,AB)
+            IsMidpointOfLine(E,AC)
 **Notes**:  
+1.线DE是三角形ABC的中位线，即三角形两腰中点的连线  
+2.线DE点的顺序应和三角形ABC底边BC点的顺序一致  
 
-#### Midsegment(DE,ABC)
+#### IsMidsegmentOfTrapezoid(EF,ABCD)
 <div>
-    <img src="cowork-pic/Midsegment.png"  width="14%">
+    <img src="gdl-pic/P039.png"  width="15%">
 </div>
 
-    ee_check: Line(DE)
-              Triangle(ABC)
-    fv_check: DE,ABC
+    ee_check: Line(EF)
+              Quadrilateral(ABCD)
+              Collinear(AEB)
+              Collinear(DFC)
+    fv_check: FE,CDAB
     multi: 
-    extend: Neutrality(DE,ABC)
-            Midpoint(D,AB)
-            Midpoint(E,AC)
-    example: 
+    extend: IsMidpointOfLine(E,AB)
+            IsMidpointOfLine(F,CD)
 **Notes**:  
+1.线EF是梯形ABCD的中位线，即梯形两腰中点的连线  
+2.线DE点的顺序应和梯形ABCD底边BC点的顺序一致  
+3.根据旋转不变性原则，有2种表示方法，选其一即可  
 
-#### Circumcenter(O,ABC)
+#### IsCircumcenterOfTriangle(O,ABC)
 <div>
-    <img src="cowork-pic/Circumcenter.png"  width="14%">
+    <img src="gdl-pic/P040.png"  width="15%">
 </div>
 
     ee_check: Point(O)
@@ -301,12 +676,13 @@
     multi: O,BCA
            O,CAB
     extend: 
-    example: 
 **Notes**:  
+1.点O是三角形ABC的外心  
+2.外心是三角形外接圆的圆心，是三角形三边垂直平分线的交点  
 
-#### Incenter(O,ABC)
+#### IsIncenterOfTriangle(O,ABC)
 <div>
-    <img src="cowork-pic/Incenter.png"  width="14%">
+    <img src="gdl-pic/P041.png"  width="15%">
 </div>
 
     ee_check: Point(O)
@@ -315,12 +691,13 @@
     multi: O,BCA
            O,CAB
     extend: 
-    example: 
 **Notes**:  
+1.点O是三角形ABC的内心  
+2.内心是三角形内切圆的圆心，是三角形三角的角平分线的交点  
 
-#### Centroid(O,ABC)
+#### IsCentroidOfTriangle(O,ABC)
 <div>
-    <img src="cowork-pic/Centroid.png"  width="14%">
+    <img src="gdl-pic/P042.png"  width="15%">
 </div>
 
     ee_check: Point(O)
@@ -329,12 +706,13 @@
     multi: O,BCA
            O,CAB
     extend: 
-    example: 
 **Notes**:  
+1.点O是三角形ABC的重心  
+2.内心是三角形三边的中线的交点  
 
-#### Orthocenter(O,ABC)
+#### IsOrthocenterOfTriangle(O,ABC)
 <div>
-    <img src="cowork-pic/Orthocenter.png"  width="14%">
+    <img src="gdl-pic/P043.png"  width="15%">
 </div>
 
     ee_check: Point(O)
@@ -346,144 +724,245 @@
     multi: O,BCA
            O,CAB
     extend: 
-    example: 
 **Notes**:  
+1.点O是三角形ABC的垂心  
+2.垂心是三角形三个底边上的高的交点  
 
-#### Congruent(ABC,DEF)
+#### IsCircumcenterOfQuadrilateral(O,ABCD)
 <div>
-    <img src="cowork-pic/Congruent.png"  width="20%">
+    <img src="gdl-pic/P044.png"  width="15%">
+</div>
+
+    ee_check: Point(O)
+              Triangle(ABC)
+    fv_check: O,ABC
+    multi: O,BCA
+           O,CAB
+    extend: 
+**Notes**:  
+1.点O是四边形ABCD的外心  
+2.外心是四边形外接圆的圆心，但不一定有  
+
+#### IsIncenterOfQuadrilateral(O,ABCD)
+<div>
+    <img src="gdl-pic/P045.png"  width="15%">
+</div>
+
+    ee_check: Point(O)
+              Triangle(ABC)
+    fv_check: O,ABC
+    multi: O,BCA
+           O,CAB
+    extend: 
+**Notes**:  
+1.点O是四边形ABCD的内心  
+2.内心是四边形内切圆的圆心，但不一定有  
+
+#### CongruentBetweenTriangle(ABC,DEF)
+<div>
+    <img src="gdl-pic/P046.png"  width="30%">
 </div>
 
     ee_check: Triangle(ABC)
               Triangle(DEF)
-    multi: DEF,ABC
-           BCA,EFD
-           EFD,BCA
+    multi: BCA,EFD
            CAB,FDE
-           FDE,CAB
     extend: 
-    example: 
 **Notes**:  
+1.三角形ABC与三角形DEF全等  
+2.两个三角形的点应一一对应  
+3.根据旋转不变性原则，有6种表示方法，选其一即可  
 
-#### Similar(ABC,DEF)
+#### MirrorCongruentBetweenTriangle(ABC,DEF)
 <div>
-    <img src="cowork-pic/Similar.png"  width="20%">
+    <img src="gdl-pic/P047.png"  width="30%">
 </div>
 
     ee_check: Triangle(ABC)
               Triangle(DEF)
-    multi: DEF,ABC
-           BCA,EFD
-           EFD,BCA
+    multi: BCA,FDE
+           CAB,EFD
+    extend: 
+**Notes**:  
+1.三角形ABC与三角形DEF镜像全等  
+2.标注方法：①点一一对应得(ABC,DFE)②没有三角形DFE，第一个点D不动，将其他点逆序，得DEF③标注(ABC,DEF)  
+3.根据旋转不变性原则，有6种表示方法，选其一即可  
+
+#### SimilarBetweenTriangle(ABC,DEF)
+<div>
+    <img src="gdl-pic/P048.png"  width="30%">
+</div>
+
+    ee_check: Triangle(ABC)
+              Triangle(DEF)
+    multi: BCA,EFD
            CAB,FDE
-           FDE,CAB
     extend: 
-    example: 
 **Notes**:  
+1.三角形ABC与三角形DEF相似  
+2.两个三角形的点应一一对应  
+3.根据旋转不变性原则，有6种表示方法，选其一即可  
 
-#### MirrorCongruent(ABC,DEF)
+#### MirrorSimilarBetweenTriangle(ABC,DEF)
 <div>
-    <img src="cowork-pic/MirrorCongruent.png"  width="20%">
+    <img src="gdl-pic/P049.png"  width="30%">
 </div>
 
     ee_check: Triangle(ABC)
               Triangle(DEF)
-    multi: DEF,ABC
-           BCA,FDE
-           FDE,BCA
+    multi: BCA,FDE
            CAB,EFD
-           EFD,CAB
     extend: 
-    example: 
 **Notes**:  
+1.三角形ABC与三角形DEF镜像相似  
+2.标注方法：①点一一对应得(ABC,DFE)②没有三角形DFE，第一个点D不动，将其他点逆序，得DEF③标注(ABC,DEF)  
+3.根据旋转不变性原则，有6种表示方法，选其一即可  
 
-#### MirrorSimilar(ABC,DEF)
+#### IsRadiusOfCircle(AO,O)
 <div>
-    <img src="cowork-pic/MirrorSimilar.png"  width="20%">
+    <img src="gdl-pic/P050.png"  width="15%">
 </div>
 
-    ee_check: Triangle(ABC)
-              Triangle(DEF)
-    multi: DEF,ABC
-           BCA,FDE
-           FDE,BCA
-           CAB,EFD
-           EFD,CAB
-    extend: 
-    example: 
+    ee_check: Cocircular(O,A)
+              Line(AO)
+    fv_check: AO,O
+    multi: 
+    extend: Equal(LengthOfLine(AO),LengthOfRadius(O))
 **Notes**:  
+1.线AO是圆O的半径  
+2.线的第2个点应是圆的圆心  
 
-### E、基本实体属性
+#### IsDiameterOfCircle(AB,O)
+<div>
+    <img src="gdl-pic/P051.png"  width="15%">
+</div>
+
+    ee_check: Line(AB)
+              Cocircular(O,AB)
+    fv_check: AB,O
+    multi: BA,O
+    extend: IsRadiusOfCircle(AO,O)
+            IsRadiusOfCircle(BO,O)
+            IsChordOfCircle(AB,O)
+            IsChordOfCircle(BA,O)
+            Equal(LengthOfLine(AB),LengthOfDiameter(O))
+            Equal(LengthOfDiameter(O),Mul(LengthOfRadius(O),2))
+**Notes**:  
+1.线AB是圆O的直径  
+2.根据旋转不变性原则，有2种表示方法，选其一即可  
+
+#### IsChordOfCircle(AB,O)
+<div>
+    <img src="gdl-pic/P052.png"  width="15%">
+</div>
+
+    ee_check: Line(AB)
+              Cocircular(O,AB)
+    fv_check: AB,O
+    multi: 
+    extend: 
+**Notes**:  
+1.线AB是圆O的弦  
+2.构成弦两点的标注顺序，应与弦所对的劣弧一致  
+
+#### IsTangentOfCircle(AB,O,P)
+<div>
+    <img src="gdl-pic/P053.png"  width="15%">
+</div>
+
+    ee_check: Line(AB)
+              Cocircular(O,P)
+    fv_check: AB,O,P
+              AB,O,A
+              AB,O,B
+    multi: 
+    extend: PerpendicularBetweenLine(AP,OP)
+            PerpendicularBetweenLine(OP,BP)
+**Notes**:  
+1.线AB是圆O的切线，与圆交于点P  
+2.应注意线AB两点的先后顺序，若OAB三点构成一个以O为顶点的三角形，根据逆时针原则，安排AB两点的顺序  
+
+### F、实体属性
 #### LengthOfLine(AB)
 <div>
-    <img src="cowork-pic/LengthOfLine.png"  width="14%">
+    <img src="gdl-pic/P054.png"  width="15%">
 </div>
 
     ee_check: Line(AB)
     multi: BA
     sym: ll
 **Notes**:  
+1.直线AB的长度  
+2.根据旋转不变性原则，有2种表示方法，选其一即可  
+3.例 Equal(LengthOfLine(AB),3)  
 
-#### LengthOfArc(AB)
+#### LengthOfArc(OAB)
 <div>
-    <img src="cowork-pic/LengthOfArc.png"  width="14%">
+    <img src="gdl-pic/P055.png"  width="15%">
 </div>
 
-    ee_check: Arc(AB)
+    ee_check: Arc(OAB)
     multi: 
     sym: la
 **Notes**:  
+1.圆O上弧AB的长度  
+2.例 Equal(LengthOfArc(OAB),1)  
 
 #### MeasureOfAngle(ABC)
 <div>
-    <img src="cowork-pic/MeasureOfAngle.png"  width="14%">
+    <img src="gdl-pic/P056.png"  width="15%">
 </div>
 
     ee_check: Angle(ABC)
     multi: 
     sym: ma
 **Notes**:  
-### F、实体属性
-#### AreaOfTriangle(ABC)
-<div>
-    <img src="cowork-pic/AreaOfTriangle.png"  width="14%">
-</div>
-
-    ee_check: Triangle(ABC)
-    multi: BCA
-           CAB
-    sym: at
-    example: 1 Equal(AreaOfTriangle(ABC),10)
-**Notes**:  
+1.角ABC的大小  
+2.例 Equal(MeasureOfAngle(ABC),4)  
 
 #### PerimeterOfTriangle(ABC)
 <div>
-    <img src="cowork-pic/PerimeterOfTriangle.png"  width="14%">
+    <img src="gdl-pic/P057.png"  width="15%">
 </div>
 
     ee_check: Triangle(ABC)
     multi: BCA
            CAB
     sym: pt
-    example: 1 Equal(PerimeterOfTriangle(ABC),10)
 **Notes**:  
+1.三角形ABC的周长  
+2.根据旋转不变性原则，有3种表示方法，选其一即可  
+3.例 Equal(PerimeterOfTriangle(ABC),1)  
 
-#### AreaOfQuadrilateral(ABCD)
+#### AreaOfTriangle(ABC)
 <div>
-    <img src="cowork-pic/AreaOfQuadrilateral.png"  width="14%">
+    <img src="gdl-pic/P058.png"  width="15%">
 </div>
 
-    ee_check: Quadrilateral(ABCD)
-    multi: BCDA
-           CDAB
-           DABC
-    sym: aq
-    example: 1 Equal(AreaOfQuadrilateral(ABCD),20)
+    ee_check: Triangle(ABC)
+    multi: BCA
+           CAB
+    sym: at
 **Notes**:  
+1.三角形ABC的面积  
+2.根据旋转不变性原则，有3种表示方法，选其一即可  
+3.例 Equal(AreaOfTriangle(ABC),5)  
+
+#### HeightOfTriangle(ABC)
+<div>
+    <img src="gdl-pic/P059.png"  width="15%">
+</div>
+
+    ee_check: Triangle(ABC)
+    multi: 
+    sym: ht
+**Notes**:  
+1.三角形ABC底边BC上的高的长度  
+2.例 Equal(HeightOfTriangle(ABC),9)  
 
 #### PerimeterOfQuadrilateral(ABCD)
 <div>
-    <img src="cowork-pic/PerimeterOfQuadrilateral.png"  width="14%">
+    <img src="gdl-pic/P060.png"  width="15%">
 </div>
 
     ee_check: Quadrilateral(ABCD)
@@ -491,84 +970,187 @@
            CDAB
            DABC
     sym: pq
-    example: 1 Equal(PerimeterOfQuadrilateral(ABCD),20)
 **Notes**:  
+1.四边形ABCD的周长  
+2.根据旋转不变性原则，有4种表示方法，选其一即可  
+3.例 Equal(PerimeterOfQuadrilateral(ABCD),2)  
 
-#### AltitudeOfTriangle(ABC)
+#### AreaOfQuadrilateral(ABCD)
 <div>
-    <img src="cowork-pic/AltitudeOfTriangle.png"  width="14%">
+    <img src="gdl-pic/P061.png"  width="15%">
+</div>
+
+    ee_check: Quadrilateral(ABCD)
+    multi: BCDA
+           CDAB
+           DABC
+    sym: aq
+**Notes**:  
+1.四边形ABCD的面积  
+2.根据旋转不变性原则，有4种表示方法，选其一即可  
+3.例 Equal(AreaOfQuadrilateral(ABCD),6)  
+
+#### HeightOfQuadrilateral(ABCD)
+<div>
+    <img src="gdl-pic/P062.png"  width="15%">
+</div>
+
+    ee_check: Quadrilateral(ABCD)
+    multi: 
+    sym: hq
+**Notes**:  
+1.四边形ABCD底边BC上的高的长度  
+2.例 Equal(HeightOfQuadrilateral(ABCD),5)  
+
+#### PerimeterOfCircle(O)
+<div>
+    <img src="gdl-pic/P063.png"  width="15%">
+</div>
+
+    ee_check: Circle(O)
+    multi: 
+    sym: pc
+**Notes**:  
+1.圆O的周长  
+2.例 Equal(PerimeterOfCircle(O),3)  
+
+#### AreaOfCircle(O)
+<div>
+    <img src="gdl-pic/P064.png"  width="15%">
+</div>
+
+    ee_check: Circle(O)
+    multi: 
+    sym: ac
+**Notes**:  
+1.圆O的面积  
+2.例 Equal(AreaOfCircle(O),5)  
+
+#### LengthOfRadius(O)
+<div>
+    <img src="gdl-pic/P065.png"  width="15%">
+</div>
+
+    ee_check: Circle(O)
+    multi: 
+    sym: lr
+**Notes**:  
+1.圆O半径的长度  
+2.例 Equal(LengthOfRadius(O),8)  
+
+#### LengthOfDiameter(O)
+<div>
+    <img src="gdl-pic/P066.png"  width="15%">
+</div>
+
+    ee_check: Circle(O)
+    multi: 
+    sym: ld
+**Notes**:  
+1.圆O直径的长度  
+2.例 Equal(LengthOfDiameter(O),9)  
+
+#### PerimeterOfSector(OAB)
+<div>
+    <img src="gdl-pic/P067.png"  width="15%">
+</div>
+
+    ee_check: Sector(OAB)
+    multi: 
+    sym: ps
+**Notes**:  
+1.扇形OAB的周长  
+2.例 Equal(PerimeterOfSector(OAB),7)  
+
+#### AreaOfSector(OAB)
+<div>
+    <img src="gdl-pic/P068.png"  width="15%">
+</div>
+
+    ee_check: Sector(OAB)
+    multi: 
+    sym: as
+**Notes**:  
+1.扇形OAB的面积  
+2.例 Equal(AreaOfSector(OAB),9)  
+
+#### RatioOfSimilarTriangle(ABC,DEF)
+<div>
+    <img src="gdl-pic/P069.png"  width="30%">
 </div>
 
     ee_check: Triangle(ABC)
-    multi: 
-    sym: alt
-    example: 1 Equal(AltitudeOfTriangle(ABC),5)
+              Triangle(DEF)
+    multi: BCA,EFD
+           CAB,FDE
+    sym: rt
 **Notes**:  
+1.相似三角形的相似比  
+2.例 Equal(RatioOfSimilarTriangle(ABC,DEF),3)  
 
-#### DistanceOfPointToLine(O,AB)
+#### RatioOfMirrorSimilarTriangle(ABC,DEF)
 <div>
-    <img src="cowork-pic/DistanceOfPointToLine.png"  width="14%">
+    <img src="gdl-pic/P070.png"  width="30%">
 </div>
 
-    ee_check: Point(O)
-              Line(AB)
-    fv_check: O,AB
-              B,AB
-              A,AB
-    multi: OBA
-    sym: dpl
-    example: 1 Equal(DistanceOfPointToLine(O,AB),3)
+    ee_check: Triangle(ABC)
+              Triangle(DEF)
+    multi: BCA,FDE
+           CAB,EFD
+    sym: rmt
 **Notes**:  
+1.镜像相似三角形的相似比  
+2.例 Equal(RatioOfMirrorSimilarTriangle(ABC,DEF),2)  
 
 ### G、代数关系
+expr可以是表达式，也可以是实体属性，并且可以嵌套表示。  
 
     Equal(expr1,expr2)
-    
-**Notes**:  
-expr可以是表达式，也可以是实体属性，并且可以嵌套表示。  
+
+例：  
+Equal(a,5)  
+Equal(MeasureOfAngle(ABC),30)  
+Equal(Add(LengthOfLine(AB),a+5,x),y^2)  
 
 ### H、代数运算
-|名称|格式|表达式符号|
-|:--:|:--:|:--:|
-|加|Add(expr1,expr2,…)|+|
-|减|Sub(expr1,expr2)|-|
-|乘|Mul(expr1,expr2,…)|*|
-|除|Div(expr1,expr2)|/|
-|幂|Pow(expr1,expr2)|^|
-|根号|Sqrt(expr1)|√|
-|正弦|Sin(expr)|@|
-|余弦|Cos(expr)|#|
-|正切|Tan(expr)|$|
-|实数|R|1,2,3,...|
-|自由变量|x|a,b,c,...|
-|左括号| / |{|
-|右括号| / |}|
+|名称|格式|表达式符号|运算符优先级|
+|:--:|:--:|:--:|:--:|
+|加|Add(expr1,expr2,…)|+| 1 |
+|减|Sub(expr1,expr2)|-| 1 |
+|乘|Mul(expr1,expr2,…)|*| 2 |
+|除|Div(expr1,expr2)|/| 2 |
+|幂|Pow(expr1,expr2)|^| 3 |
+|根号|Sqrt(expr1)|√| 4 |
+|正弦|Sin(expr)|@| 4 |
+|余弦|Cos(expr)|#| 4 |
+|正切|Tan(expr)|$| 4 |
+|实数|R|1,2,3,...| / |
+|自由变量|x|a,b,c,...| / |
+|左括号| / |{| 5 |
+|右括号| / |}| 0 |
+在使用表达式，若无法判断运算符的优先级，可以使用中括号来代替。  
+前5个运算符是双目运算符，如a+5,b-c,x^2；在接下来4个运算符是单目运算符，如√2,@30,#60。
 
 ### I、解题目标
-#### Value
-
-    example: 1 Value(LengthOfLine(AB))
-             2 Value(Add(MeasureOfAngle(ABC),MeasureOfAngle(DEF)))
-             3 Value(x+y)
-
-**Notes**:  
+#### Value(expr)
+expr可以是表达式，也可以是实体属性，并且可以嵌套表示。  
 代数型解题目标，求某个表达式或属性的值。  
-expr可以是表达式，也可以是实体属性，并且可以嵌套表示。  
 
-#### Equal
+    example: Value(LengthOfLine(AB))
+             Value(Add(MeasureOfAngle(ABC),MeasureOfAngle(DEF)))
+             Value(x+y)
 
-    example: 1 Equal(LengthOfLine(AB),x+y)
-             2 Equal(Add(MeasureOfAngle(ABC),MeasureOfAngle(DEF)),Pow(x,2))
-    
-**Notes**:  
-代数型解题目标，证明左右俩个部分相等。  
-expr可以是表达式，也可以是实体属性，并且可以嵌套表示。  
+#### Equal(expr1,expr2)
+expr可以是表达式，也可以是实体属性，并且可以嵌套表示。 
+代数型解题目标，证明左右俩个部分相等。   
 
-#### Relation
+    example: Equal(LengthOfLine(AB),x+y)
+             Equal(Add(MeasureOfAngle(ABC),MeasureOfAngle(DEF)),Pow(x,2))
 
-    example: 1 Relation(Parallel(AB,CD))
-             2 Relation(RightTriangle(ABC))    
-
-**Notes**:  
+#### Relation(*)
 逻辑型解题目标，求某个实体或属性。  
 Relation表示任意实体、实体关系。  
+
+    example: Relation(Parallel(AB,CD))
+             Relation(RightTriangle(ABC))    
+

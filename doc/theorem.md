@@ -1,5 +1,5 @@
-## 附录3 定理标注对照手册
-#### line_addition(AB,BC)
+# 附录3 定理标注对照手册
+### line_addition(AB,BC)
 <div>
     <img src="gdl-pic/T001.png"   width="15%"
 </div>
@@ -9,7 +9,7 @@
 **Notes**:  
 1.常识：若ABC三点共线，则AB+BC=AC  
 
-#### angle_addition(ABC,CBD)
+### angle_addition(ABC,CBD)
 <div>
     <img src="gdl-pic/T002.png"   width="15%"
 </div>
@@ -19,7 +19,7 @@
 **Notes**:  
 1.常识：若∠ABC与∠CBD相邻，则∠ABC+∠CBD=∠ABD  
 
-#### area_addition(BCA,ACD)
+### area_addition(BCA,ACD)
 <div>
     <img src="gdl-pic/T003.png"   width="15%"
 </div>
@@ -34,7 +34,7 @@
 1.常识：若三角形BCA与三角形ACD相邻，则Area(BCA)+Area(ACD)=Area(ABCD)  
 2.若BCD共线，则Area(BCA)+Area(ACD)=Area(ABD)  
 
-#### flat_angle(ABC)
+### flat_angle(ABC)
 <div>
     <img src="gdl-pic/T004.png"   width="15%"
 </div>
@@ -44,7 +44,7 @@
 **Notes**:  
 1.平角定理：平角为180°  
 
-#### adjacent_complementary_angle(AOB,BOC)
+### adjacent_complementary_angle(AOB,BOC)
 <div>
     <img src="gdl-pic/T005.png"   width="15%"
 </div>
@@ -54,7 +54,7 @@
 **Notes**:  
 1.邻补角定理：一对邻补角的角度和为180°  
 
-#### vertical_angle(AOC,BOD)
+### vertical_angle(AOC,BOD)
 <div>
     <img src="gdl-pic/T006.png"   width="15%"
 </div>
@@ -64,7 +64,7 @@
 **Notes**:  
 1.对顶角相等：两直线相交，对顶角相等  
 
-#### midpoint_judgment(M,AB)
+### midpoint_judgment(M,AB)
 <div>
     <img src="gdl-pic/T007.png"   width="15%"
 </div>
@@ -74,7 +74,7 @@
 **Notes**:  
 1.中点的判定：点到线段两端的距离相等  
 
-#### parallel_judgment_corresponding_angle(AB,CD,E)
+### parallel_judgment_corresponding_angle(AB,CD,E)
 <div>
     <img src="gdl-pic/T008.png"   width="15%"
 </div>
@@ -89,7 +89,7 @@
 1.平行的判定，同位角相等  
 2.注意标注的参数：只判断左侧的同位角，点E是构成同位角的另外一点  
 
-#### parallel_judgment_alternate_interior_angle(AB,CD)
+### parallel_judgment_alternate_interior_angle(AB,CD)
 <div>
     <img src="gdl-pic/T009.png"   width="15%"
 </div>
@@ -103,7 +103,7 @@
 **Notes**:  
 1.平行的判定：内错角相等  
 
-#### parallel_judgment_ipsilateral_internal_angle(AB,CD)
+### parallel_judgment_ipsilateral_internal_angle(AB,CD)
 <div>
     <img src="gdl-pic/T010.png"   width="15%"
 </div>
@@ -114,7 +114,7 @@
 1.平行的判定，同旁内角互补  
 2.注意标注的参数：只判断左侧的同旁内角  
 
-#### parallel_judgment_par_par(AB,CD,EF)
+### parallel_judgment_par_par(AB,CD,EF)
 <div>
     <img src="gdl-pic/T011.png"   width="15%"
 </div>
@@ -124,7 +124,7 @@
 **Notes**:  
 1.平行的传递性  
 
-#### parallel_judgment_per_per(AB,CD)
+### parallel_judgment_per_per(AB,CD)
 <div>
     <img src="gdl-pic/T012.png"   width="30%"
 </div>
@@ -138,7 +138,7 @@
 **Notes**:  
 1.由垂直推出平行  
 
-#### parallel_property_collinear_extend(AB,CD,M)
+### parallel_property_collinear_extend(AB,CD,M)
 <div>
     <img src="gdl-pic/T013.png"   width="45%"
 </div>
@@ -158,7 +158,7 @@
 **Notes**:  
 1.平行的共线扩展：由一个平行关系和一条平行线（上方那条）的共线点推出其他平行关系  
 
-#### parallel_property_corresponding_angle(AB,CD,E)
+### parallel_property_corresponding_angle(AB,CD,E)
 <div>
     <img src="gdl-pic/T014.png"   width="30%"
 </div>
@@ -172,7 +172,7 @@
 **Notes**:  
 1.平行的性质：同位角相等  
 
-#### parallel_property_alternate_interior_angle(AB,CD)
+### parallel_property_alternate_interior_angle(AB,CD)
 <div>
     <img src="gdl-pic/T015.png"   width="15%"
 </div>
@@ -186,7 +186,7 @@
 **Notes**:  
 1.平行的性质：内错角相等  
 
-#### parallel_property_ipsilateral_internal_angle(AB,CD)
+### parallel_property_ipsilateral_internal_angle(AB,CD)
 <div>
     <img src="gdl-pic/T016.png"   width="15%"
 </div>
@@ -196,7 +196,7 @@
 **Notes**:  
 1.平行的性质：同旁内角互补  
 
-#### parallel_property_par_per(AB,CD)
+### parallel_property_par_per(AB,CD)
 <div>
     <img src="gdl-pic/T017.png"   width="30%"
 </div>
@@ -210,7 +210,7 @@
 **Notes**:  
 1.平行线的性质：垂直+平行-->垂直  
 
-#### perpendicular_judgment_angle(AO,CO)
+### perpendicular_judgment_angle(AO,CO)
 <div>
     <img src="gdl-pic/T018.png"   width="15%"
 </div>
@@ -220,7 +220,7 @@
 **Notes**:  
 1.垂直的判定：角为90°  
 
-#### perpendicular_property_collinear_extend(AO,CO,B)
+### perpendicular_property_collinear_extend(AO,CO,B)
 <div>
     <img src="gdl-pic/T019.png"   width="90%"
 </div>
@@ -240,7 +240,7 @@
 **Notes**:  
 1.垂直关系的共线扩展，B是与任意一条垂线共线的一点  
 
-#### bisector_judgment_angle_equal(BD,ABC)
+### bisector_judgment_angle_equal(BD,ABC)
 <div>
     <img src="gdl-pic/T020.png"   width="15%"
 </div>
@@ -250,7 +250,7 @@
 **Notes**:  
 1.角平分线的判定：平分的两角相等  
 
-#### bisector_judgment_distance_equal(BD,ABC)
+### bisector_judgment_distance_equal(BD,ABC)
 <div>
     <img src="gdl-pic/T021.png"   width="15%"
 </div>
@@ -260,7 +260,7 @@
 **Notes**:  
 1.角平分线的判定：角平分线上的点到两端的距离相等  
 
-#### bisector_property_distance_equal(BD,ABC)
+### bisector_property_distance_equal(BD,ABC)
 <div>
     <img src="gdl-pic/T022.png"   width="15%"
 </div>
@@ -270,7 +270,7 @@
 **Notes**:  
 1.角平分线的判定：角平分线上的点到两端的距离相等  
 
-#### bisector_property_line_ratio(BD,ABC)
+### bisector_property_line_ratio(BD,ABC)
 <div>
     <img src="gdl-pic/T023.png"   width="15%"
 </div>
@@ -280,7 +280,7 @@
 **Notes**:  
 1.角平分线的性质：边成比例  
 
-#### perpendicular_bisector_judgment_per_and_mid(CO,AB)
+### perpendicular_bisector_judgment_per_and_mid(CO,AB)
 <div>
     <img src="gdl-pic/T024.png"   width="15%"
 </div>
@@ -290,7 +290,7 @@
 **Notes**:  
 1.垂直平分线判定：垂直且平分  
 
-#### perpendicular_bisector_judgment_distance_equal(CO,AB)
+### perpendicular_bisector_judgment_distance_equal(CO,AB)
 <div>
     <img src="gdl-pic/T025.png"   width="15%"
 </div>
@@ -300,7 +300,7 @@
 **Notes**:  
 1.垂直平分线判定：垂直平分线上的点到两个端点的距离相等  
 
-#### perpendicular_bisector_property_distance_equal(CO,AB)
+### perpendicular_bisector_property_distance_equal(CO,AB)
 <div>
     <img src="gdl-pic/T026.png"   width="15%"
 </div>
@@ -310,7 +310,7 @@
 **Notes**:  
 1.垂直平分线性质：垂直平分线上的点到两个端点的距离相等  
 
-#### perpendicular_bisector_property_bisector(CO,AB)
+### perpendicular_bisector_property_bisector(CO,AB)
 <div>
     <img src="gdl-pic/T027.png"   width="15%"
 </div>
@@ -320,7 +320,7 @@
 **Notes**:  
 1.垂直平分线性质：垂直平分线也是角平分线  
 
-#### circumcenter_of_triangle_judgment_intersection(O,ABC,D,E)
+### circumcenter_of_triangle_judgment_intersection(O,ABC,D,E)
 <div>
     <img src="gdl-pic/T028.png"   width="15%"
 </div>
@@ -330,7 +330,7 @@
 **Notes**:  
 1.三角形外心判定：垂直平分线交点  
 
-#### circumcenter_of_triangle_property_intersection(O,ABC,D)
+### circumcenter_of_triangle_property_intersection(O,ABC,D)
 <div>
     <img src="gdl-pic/T029.png"   width="15%"
 </div>
@@ -344,7 +344,7 @@
 **Notes**:  
 1.三角形外心性质：垂直平分线交点  
 
-#### incenter_of_triangle_judgment_intersection(O,ABC)
+### incenter_of_triangle_judgment_intersection(O,ABC)
 <div>
     <img src="gdl-pic/T030.png"   width="15%"
 </div>
@@ -354,7 +354,7 @@
 **Notes**:  
 1.三角形内心判定：角平分线交点  
 
-#### incenter_of_triangle_property_intersection(O,ABC)
+### incenter_of_triangle_property_intersection(O,ABC)
 <div>
     <img src="gdl-pic/T031.png"   width="15%"
 </div>
@@ -364,7 +364,7 @@
 **Notes**:  
 1.三角形内心性质：角平分线交点  
 
-#### centroid_of_triangle_judgment_intersection(O,ABC,M,N)
+### centroid_of_triangle_judgment_intersection(O,ABC,M,N)
 <div>
     <img src="gdl-pic/T032.png"   width="15%"
 </div>
@@ -374,7 +374,7 @@
 **Notes**:  
 1.三角形重心判定：中线的交点  
 
-#### centroid_of_triangle_property_intersection(O,ABC,M)
+### centroid_of_triangle_property_intersection(O,ABC,M)
 <div>
     <img src="gdl-pic/T033.png"   width="15%"
 </div>
@@ -384,7 +384,7 @@
 **Notes**:  
 1.三角形重心性质：中线交点  
 
-#### centroid_of_triangle_property_line_equal(O,ABC,M)
+### centroid_of_triangle_property_line_equal(O,ABC,M)
 <div>
     <img src="gdl-pic/T034.png"   width="15%"
 </div>
@@ -394,7 +394,7 @@
 **Notes**:  
 1.三角形重心性质：中线被重心分开的两部分成比例  
 
-#### orthocenter_of_triangle_judgment_intersection(O,ABC,D,E)
+### orthocenter_of_triangle_judgment_intersection(O,ABC,D,E)
 <div>
     <img src="gdl-pic/T035.png"   width="15%"
 </div>
@@ -404,7 +404,7 @@
 **Notes**:  
 1.三角形垂心判定：高的交点  
 
-#### orthocenter_of_triangle_property_intersection(O,ABC,D)
+### orthocenter_of_triangle_property_intersection(O,ABC,D)
 <div>
     <img src="gdl-pic/T036.png"   width="15%"
 </div>
@@ -414,7 +414,7 @@
 **Notes**:  
 1.三角形垂心性质：高的交点  
 
-#### orthocenter_of_triangle_property_angle(O,ABC)
+### orthocenter_of_triangle_property_angle(O,ABC)
 <div>
     <img src="gdl-pic/T037.png"   width="15%"
 </div>
@@ -424,7 +424,7 @@
 **Notes**:  
 1.三角形垂心性质：底边两点与O构成的角的大小等于三角形两底角之和  
 
-#### median_of_triangle_judgment(AD,ABC)
+### median_of_triangle_judgment(AD,ABC)
 <div>
     <img src="gdl-pic/T038.png"   width="15%"
 </div>
@@ -434,7 +434,7 @@
 **Notes**:  
 1.三角形中线的判定：顶点与底边中点的连线  
 
-#### midsegment_of_triangle_judgment_midpoint(DE,ABC)
+### midsegment_of_triangle_judgment_midpoint(DE,ABC)
 <div>
     <img src="gdl-pic/T039.png"   width="15%"
 </div>
@@ -444,7 +444,7 @@
 **Notes**:  
 1.中位线判定：两边中点的连线  
 
-#### midsegment_of_triangle_judgment_parallel(DE,ABC)
+### midsegment_of_triangle_judgment_parallel(DE,ABC)
 <div>
     <img src="gdl-pic/T040.png"   width="15%"
 </div>
@@ -454,7 +454,7 @@
 **Notes**:  
 1.中位线判定：平行且某边成比例  
 
-#### midsegment_of_triangle_property_parallel(DE,ABC)
+### midsegment_of_triangle_property_parallel(DE,ABC)
 <div>
     <img src="gdl-pic/T041.png"   width="15%"
 </div>
@@ -464,7 +464,7 @@
 **Notes**:  
 1.中位线性质：平行于底边  
 
-#### midsegment_of_triangle_property_similar(DE,ABC)
+### midsegment_of_triangle_property_similar(DE,ABC)
 <div>
     <img src="gdl-pic/T042.png"   width="15%"
 </div>
@@ -475,7 +475,7 @@
 **Notes**:  
 1.中位线性质：三角形相似  
 
-#### altitude_of_triangle_judgment(AD,ABC)
+### altitude_of_triangle_judgment(AD,ABC)
 <div>
     <img src="gdl-pic/T043.png"   width="15%"
 </div>
@@ -495,7 +495,7 @@
 **Notes**:  
 1.三角形高的判定：垂直于底边  
 
-#### congruent_triangle_judgment_sss(ABC,DEF)
+### congruent_triangle_judgment_sss(ABC,DEF)
 <div>
     <img src="gdl-pic/T044.png"   width="30%"
 </div>
@@ -505,7 +505,7 @@
 **Notes**:  
 1.全等三角形判定：SSS  
 
-#### mirror_congruent_triangle_judgment_sss(ABC,DEF)
+### mirror_congruent_triangle_judgment_sss(ABC,DEF)
 <div>
     <img src="gdl-pic/T045.png"   width="30%"
 </div>
@@ -515,7 +515,7 @@
 **Notes**:  
 1.全等三角形判定：SSS  
 
-#### congruent_triangle_judgment_sas(ABC,DEF)
+### congruent_triangle_judgment_sas(ABC,DEF)
 <div>
     <img src="gdl-pic/T046.png"   width="30%"
 </div>
@@ -525,7 +525,7 @@
 **Notes**:  
 1.全等三角形判定：SAS  
 
-#### mirror_congruent_triangle_judgment_sas(ABC,DEF)
+### mirror_congruent_triangle_judgment_sas(ABC,DEF)
 <div>
     <img src="gdl-pic/T047.png"   width="30%"
 </div>
@@ -535,7 +535,7 @@
 **Notes**:  
 1.全等三角形判定：SAS  
 
-#### congruent_triangle_judgment_aas(ABC,DEF)
+### congruent_triangle_judgment_aas(ABC,DEF)
 <div>
     <img src="gdl-pic/T048.png"   width="30%"
 </div>
@@ -545,7 +545,7 @@
 **Notes**:  
 1.全等三角形判定：AAS  
 
-#### mirror_congruent_triangle_judgment_aas(ABC,DEF)
+### mirror_congruent_triangle_judgment_aas(ABC,DEF)
 <div>
     <img src="gdl-pic/T049.png"   width="30%"
 </div>
@@ -555,7 +555,7 @@
 **Notes**:  
 1.全等三角形判定：AAS  
 
-#### congruent_triangle_judgment_asa(ABC,DEF)
+### congruent_triangle_judgment_asa(ABC,DEF)
 <div>
     <img src="gdl-pic/T050.png"   width="30%"
 </div>
@@ -565,7 +565,7 @@
 **Notes**:  
 1.全等三角形判定：ASA  
 
-#### mirror_congruent_triangle_judgment_asa(ABC,DEF)
+### mirror_congruent_triangle_judgment_asa(ABC,DEF)
 <div>
     <img src="gdl-pic/T051.png"   width="30%"
 </div>
@@ -575,7 +575,7 @@
 **Notes**:  
 1.全等三角形判定：ASA  
 
-#### congruent_triangle_judgment_hl(ABC,DEF)
+### congruent_triangle_judgment_hl(ABC,DEF)
 <div>
     <img src="gdl-pic/T052.png"   width="30%"
 </div>
@@ -585,7 +585,7 @@
 **Notes**:  
 1.全等三角形判定：HL  
 
-#### mirror_congruent_triangle_judgment_hl(ABC,DEF)
+### mirror_congruent_triangle_judgment_hl(ABC,DEF)
 <div>
     <img src="gdl-pic/T053.png"   width="30%"
 </div>
@@ -595,7 +595,7 @@
 **Notes**:  
 1.全等三角形判定：HL  
 
-#### congruent_triangle_property_line_equal(ABC,DEF)
+### congruent_triangle_property_line_equal(ABC,DEF)
 <div>
     <img src="gdl-pic/T054.png"   width="30%"
 </div>
@@ -605,7 +605,7 @@
 **Notes**:  
 1.全等三角形性质：边相等  
 
-#### mirror_congruent_triangle_property_line_equal(ABC,DEF)
+### mirror_congruent_triangle_property_line_equal(ABC,DEF)
 <div>
     <img src="gdl-pic/T055.png"   width="30%"
 </div>
@@ -615,7 +615,7 @@
 **Notes**:  
 1.全等三角形性质：边相等  
 
-#### congruent_triangle_property_angle_equal(ABC,DEF)
+### congruent_triangle_property_angle_equal(ABC,DEF)
 <div>
     <img src="gdl-pic/T056.png"   width="30%"
 </div>
@@ -625,7 +625,7 @@
 **Notes**:  
 1.全等三角形性质：角相等  
 
-#### mirror_congruent_triangle_property_angle_equal(ABC,DEF)
+### mirror_congruent_triangle_property_angle_equal(ABC,DEF)
 <div>
     <img src="gdl-pic/T057.png"   width="30%"
 </div>
@@ -635,7 +635,7 @@
 **Notes**:  
 1.全等三角形性质：角相等  
 
-#### congruent_triangle_property_area_equal(ABC,DEF)
+### congruent_triangle_property_area_equal(ABC,DEF)
 <div>
     <img src="gdl-pic/T058.png"   width="30%"
 </div>
@@ -645,7 +645,7 @@
 **Notes**:  
 1.全等三角形性质：面积相等  
 
-#### mirror_congruent_triangle_property_area_equal(ABC,DEF)
+### mirror_congruent_triangle_property_area_equal(ABC,DEF)
 <div>
     <img src="gdl-pic/T059.png"   width="30%"
 </div>
@@ -655,7 +655,7 @@
 **Notes**:  
 1.全等三角形性质：面积相等  
 
-#### congruent_triangle_property_perimeter_equal(ABC,DEF)
+### congruent_triangle_property_perimeter_equal(ABC,DEF)
 <div>
     <img src="gdl-pic/T060.png"   width="30%"
 </div>
@@ -665,7 +665,7 @@
 **Notes**:  
 1.全等三角形性质：周长相等  
 
-#### mirror_congruent_triangle_property_perimeter_equal(ABC,DEF)
+### mirror_congruent_triangle_property_perimeter_equal(ABC,DEF)
 <div>
     <img src="gdl-pic/T061.png"   width="30%"
 </div>
@@ -675,7 +675,7 @@
 **Notes**:  
 1.全等三角形性质：周长相等  
 
-#### similar_triangle_judgment_parallel(ADE,ABC)
+### similar_triangle_judgment_parallel(ADE,ABC)
 <div>
     <img src="gdl-pic/T062.png"   width="15%"
 </div>
@@ -685,7 +685,7 @@
 **Notes**:  
 1.相似三角形判定：平行于底边的线与三角形顶点构成的三角形与原三角形相似  
 
-#### similar_triangle_judgment_sss(ABC,DEF)
+### similar_triangle_judgment_sss(ABC,DEF)
 <div>
     <img src="gdl-pic/T063.png"   width="30%"
 </div>
@@ -695,7 +695,7 @@
 **Notes**:  
 1.相似三角形判定：SSS  
 
-#### mirror_similar_triangle_judgment_sss(ABC,DEF)
+### mirror_similar_triangle_judgment_sss(ABC,DEF)
 <div>
     <img src="gdl-pic/T064.png"   width="30%"
 </div>
@@ -705,7 +705,7 @@
 **Notes**:  
 1.相似三角形判定：SSS  
 
-#### similar_triangle_judgment_sas(ABC,DEF)
+### similar_triangle_judgment_sas(ABC,DEF)
 <div>
     <img src="gdl-pic/T065.png"   width="30%"
 </div>
@@ -715,7 +715,7 @@
 **Notes**:  
 1.相似三角形判定：SAS  
 
-#### mirror_similar_triangle_judgment_sas(ABC,DEF)
+### mirror_similar_triangle_judgment_sas(ABC,DEF)
 <div>
     <img src="gdl-pic/T066.png"   width="30%"
 </div>
@@ -725,7 +725,7 @@
 **Notes**:  
 1.相似三角形判定：SAS  
 
-#### similar_triangle_judgment_aa(ABC,DEF)
+### similar_triangle_judgment_aa(ABC,DEF)
 <div>
     <img src="gdl-pic/T067.png"   width="30%"
 </div>
@@ -735,7 +735,7 @@
 **Notes**:  
 1.相似三角形判定：AA  
 
-#### mirror_similar_triangle_judgment_aa(ABC,DEF)
+### mirror_similar_triangle_judgment_aa(ABC,DEF)
 <div>
     <img src="gdl-pic/T068.png"   width="30%"
 </div>
@@ -745,7 +745,7 @@
 **Notes**:  
 1.相似三角形判定：AA  
 
-#### similar_triangle_judgment_hl(ABC,DEF)
+### similar_triangle_judgment_hl(ABC,DEF)
 <div>
     <img src="gdl-pic/T069.png"   width="30%"
 </div>
@@ -755,7 +755,7 @@
 **Notes**:  
 1.全等三角形判定：HL  
 
-#### mirror_similar_triangle_judgment_hl(ABC,DEF)
+### mirror_similar_triangle_judgment_hl(ABC,DEF)
 <div>
     <img src="gdl-pic/T070.png"   width="30%"
 </div>
@@ -765,7 +765,7 @@
 **Notes**:  
 1.全等三角形判定：HL  
 
-#### similar_triangle_property_ratio(ABC,DEF)
+### similar_triangle_property_ratio(ABC,DEF)
 <div>
     <img src="gdl-pic/T071.png"   width="30%"
 </div>
@@ -775,7 +775,7 @@
 **Notes**:  
 1.相似三角形的比值 ABC/DEF * DEF/ABC = 1  
 
-#### mirror_similar_triangle_property_ratio(ABC,DEF)
+### mirror_similar_triangle_property_ratio(ABC,DEF)
 <div>
     <img src="gdl-pic/T072.png"   width="30%"
 </div>
@@ -785,7 +785,7 @@
 **Notes**:  
 1.相似三角形的比值 ABC/DEF * DEF/ABC = 1  
 
-#### similar_triangle_property_line_ratio(ABC,DEF)
+### similar_triangle_property_line_ratio(ABC,DEF)
 <div>
     <img src="gdl-pic/T073.png"   width="30%"
 </div>
@@ -796,7 +796,7 @@
 1.相似三角形性质：边成比例  
 2.使用一次定理只声明底边成比例  
 
-#### mirror_similar_triangle_property_line_ratio(ABC,DEF)
+### mirror_similar_triangle_property_line_ratio(ABC,DEF)
 <div>
     <img src="gdl-pic/T074.png"   width="30%"
 </div>
@@ -807,7 +807,7 @@
 1.相似三角形性质：边成比例  
 2.使用一次定理只声明底边成比例  
 
-#### similar_triangle_property_angle_equal(ABC,DEF)
+### similar_triangle_property_angle_equal(ABC,DEF)
 <div>
     <img src="gdl-pic/T075.png"   width="30%"
 </div>
@@ -817,7 +817,7 @@
 **Notes**:  
 1.相似三角形性质：角相等  
 
-#### mirror_similar_triangle_property_angle_equal(ABC,DEF)
+### mirror_similar_triangle_property_angle_equal(ABC,DEF)
 <div>
     <img src="gdl-pic/T076.png"   width="30%"
 </div>
@@ -827,7 +827,7 @@
 **Notes**:  
 1.相似三角形性质：角相等  
 
-#### similar_triangle_property_area_square_ratio(ABC,DEF)
+### similar_triangle_property_area_square_ratio(ABC,DEF)
 <div>
     <img src="gdl-pic/T077.png"   width="30%"
 </div>
@@ -837,7 +837,7 @@
 **Notes**:  
 1.相似三角形性质：面积成比例  
 
-#### mirror_similar_triangle_property_area_square_ratio(ABC,DEF)
+### mirror_similar_triangle_property_area_square_ratio(ABC,DEF)
 <div>
     <img src="gdl-pic/T078.png"   width="30%"
 </div>
@@ -847,7 +847,7 @@
 **Notes**:  
 1.相似三角形性质：面积成比例  
 
-#### similar_triangle_property_perimeter_ratio(ABC,DEF)
+### similar_triangle_property_perimeter_ratio(ABC,DEF)
 <div>
     <img src="gdl-pic/T079.png"   width="30%"
 </div>
@@ -857,7 +857,7 @@
 **Notes**:  
 1.相似三角形性质：周长成比例  
 
-#### mirror_similar_triangle_property_perimeter_ratio(ABC,DEF)
+### mirror_similar_triangle_property_perimeter_ratio(ABC,DEF)
 <div>
     <img src="gdl-pic/T080.png"   width="30%"
 </div>
@@ -867,7 +867,7 @@
 **Notes**:  
 1.相似三角形性质：周长成比例  
 
-#### circumcenter_of_quadrilateral_property_intersection(O,ABCD,E)
+### circumcenter_of_quadrilateral_property_intersection(O,ABCD,E)
 <div>
     <img src="gdl-pic/T081.png"   width="15%"
 </div>
@@ -881,7 +881,7 @@
 **Notes**:  
 1.四边形外心性质：垂直平分线交点  
 
-#### incenter_of_quadrilateral_property_intersection(O,ABCD)
+### incenter_of_quadrilateral_property_intersection(O,ABCD)
 <div>
     <img src="gdl-pic/T082.png"   width="15%"
 </div>
@@ -891,7 +891,7 @@
 **Notes**:  
 1.四边形内心性质：角平分线交点  
 
-#### altitude_of_quadrilateral_judgment(EF,ABCD)
+### altitude_of_quadrilateral_judgment(EF,ABCD)
 <div>
     <img src="gdl-pic/T083.png"   width="15%"
 </div>
@@ -905,7 +905,7 @@
 **Notes**:  
 1.平行四边形/梯形高的判定：垂直于底边  
 
-#### diameter_of_circle_property_circumference_angle(AB,O,C)
+### diameter_of_circle_property_circumference_angle(AB,O,C)
 <div>
     <img src="gdl-pic/T084.png"   width="15%"
 </div>
@@ -916,7 +916,7 @@
 1.直径所对的圆周角是直角  
 2.点C在AB的左侧  
 
-#### chord_of_circle_property_intersection(AB,CD,O,E)
+### chord_of_circle_property_intersection(AB,CD,O,E)
 <div>
     <img src="gdl-pic/T085.png"   width="15%"
 </div>
@@ -926,7 +926,7 @@
 **Notes**:  
 1.相交弦定理：圆O的两个弦AB和CD交与点E，则EA*EB=EC*ED  
 
-#### arc_of_circle_property_center_and_circumference_angle(AB,O,C)
+### arc_of_circle_property_center_and_circumference_angle(AB,O,C)
 <div>
     <img src="gdl-pic/T086.png"   width="15%"
 </div>
@@ -936,7 +936,7 @@
 **Notes**:  
 1.同弧所对的圆周角等于圆心角的一半  
 
-#### tangent_of_circle_judgment(AB,O,P)
+### tangent_of_circle_judgment(AB,O,P)
 <div>
     <img src="gdl-pic/T087.png"   width="15%"
 </div>
@@ -946,7 +946,7 @@
 **Notes**:  
 1.圆切线的判定：垂直  
 
-#### midsegment_of_trapezoid_judgment_midpoint(EF,ABCD)
+### midsegment_of_trapezoid_judgment_midpoint(EF,ABCD)
 <div>
     <img src="gdl-pic/T088.png"   width="15%"
 </div>
@@ -956,7 +956,7 @@
 **Notes**:  
 1.梯形中位线判定：两边中点的连线  
 
-#### midsegment_of_trapezoid_judgment_parallel(EF,ABCD)
+### midsegment_of_trapezoid_judgment_parallel(EF,ABCD)
 <div>
     <img src="gdl-pic/T089.png"   width="15%"
 </div>
@@ -966,7 +966,7 @@
 **Notes**:  
 1.梯形中位线判定：平行且某边成比例  
 
-#### midsegment_of_trapezoid_property_line(EF,ABCD)
+### midsegment_of_trapezoid_property_line(EF,ABCD)
 <div>
     <img src="gdl-pic/T090.png"   width="15%"
 </div>
@@ -976,7 +976,7 @@
 **Notes**:  
 1.梯形中位线性质：上底和下底的一半  
 
-#### midsegment_of_trapezoid_property_parallel(EF,ABCD)
+### midsegment_of_trapezoid_property_parallel(EF,ABCD)
 <div>
     <img src="gdl-pic/T091.png"   width="15%"
 </div>
@@ -987,7 +987,7 @@
 **Notes**:  
 1.中位线性质：平行于底边  
 
-#### triangle_property_angle_sum(ABC)
+### triangle_property_angle_sum(ABC)
 <div>
     <img src="gdl-pic/T092.png"   width="15%"
 </div>
@@ -997,7 +997,7 @@
 **Notes**:  
 1.三角形内角和为180°  
 
-#### sine_theorem(ABC)
+### sine_theorem(ABC)
 <div>
     <img src="gdl-pic/T093.png"   width="15%"
 </div>
@@ -1008,7 +1008,7 @@
 1.正弦定理  
 2.注意标注参数，三角形两腰和和两底角的正弦值成比例  
 
-#### cosine_theorem(ABC)
+### cosine_theorem(ABC)
 <div>
     <img src="gdl-pic/T094.png"   width="15%"
 </div>
@@ -1019,7 +1019,7 @@
 1.余弦定理  
 2.注意标注参数，角是顶角  
 
-#### triangle_area_formula_common(ABC)
+### triangle_area_formula_common(ABC)
 <div>
     <img src="gdl-pic/T095.png"   width="15%"
 </div>
@@ -1030,7 +1030,7 @@
 1.三角形面积公式：底乘高除2  
 2.对应的底边是BC  
 
-#### triangle_area_formula_sine(ABC)
+### triangle_area_formula_sine(ABC)
 <div>
     <img src="gdl-pic/T096.png"   width="15%"
 </div>
@@ -1041,7 +1041,7 @@
 1.三角形面积公式：已知一角和两临边即可求面积  
 2.角是三角形的顶角，边是三角形的两腰，如triangle_area_formula_sine(ABC)会用∠CAB、边AB和边AC  
 
-#### triangle_area_formula_heron(ABC)
+### triangle_area_formula_heron(ABC)
 <div>
     <img src="gdl-pic/T097.png"   width="15%"
 </div>
@@ -1051,7 +1051,7 @@
 **Notes**:  
 1.三角形面积公式：已知三边即可求面积  
 
-#### triangle_perimeter_formula(ABC)
+### triangle_perimeter_formula(ABC)
 <div>
     <img src="gdl-pic/T098.png"   width="15%"
 </div>
@@ -1061,7 +1061,7 @@
 **Notes**:  
 1.三角形周长公式：三边之和  
 
-#### right_triangle_judgment_angle(ABC)
+### right_triangle_judgment_angle(ABC)
 <div>
     <img src="gdl-pic/T99.png"   width="15%"
 </div>
@@ -1071,7 +1071,7 @@
 **Notes**:  
 1.直角三角形判定：有一个角是直角  
 
-#### right_triangle_judgment_pythagorean_inverse(ABC)
+### right_triangle_judgment_pythagorean_inverse(ABC)
 <div>
     <img src="gdl-pic/T100.png"   width="15%"
 </div>
@@ -1081,7 +1081,7 @@
 **Notes**:  
 1.直角三角形判定：勾股定理  
 
-#### right_triangle_property_pythagorean(ABC)
+### right_triangle_property_pythagorean(ABC)
 <div>
     <img src="gdl-pic/T101.png"   width="15%"
 </div>
@@ -1091,7 +1091,7 @@
 **Notes**:  
 1.直角三角形性质：勾股定理  
 
-#### isosceles_triangle_judgment_line_equal(ABC)
+### isosceles_triangle_judgment_line_equal(ABC)
 <div>
     <img src="gdl-pic/T102.png"   width="15%"
 </div>
@@ -1101,7 +1101,7 @@
 **Notes**:  
 1.等腰三角形判定：两腰相等  
 
-#### isosceles_triangle_judgment_angle_equal(ABC)
+### isosceles_triangle_judgment_angle_equal(ABC)
 <div>
     <img src="gdl-pic/T103.png"   width="15%"
 </div>
@@ -1111,7 +1111,7 @@
 **Notes**:  
 1.等腰三角形判定：两底角相等  
 
-#### isosceles_triangle_property_angle_equal(ABC)
+### isosceles_triangle_property_angle_equal(ABC)
 <div>
     <img src="gdl-pic/T104.png"   width="15%"
 </div>
@@ -1121,7 +1121,7 @@
 **Notes**:  
 1.等腰三角形性质：两底角相等  
 
-#### isosceles_triangle_property_line_coincidence(ABC,M)
+### isosceles_triangle_property_line_coincidence(ABC,M)
 <div>
     <img src="gdl-pic/T105.png"   width="15%"
 </div>
@@ -1141,7 +1141,7 @@
 **Notes**:  
 1.等腰三角形性质：三线合一  
 
-#### equilateral_triangle_judgment_isosceles_and_isosceles(ABC)
+### equilateral_triangle_judgment_isosceles_and_isosceles(ABC)
 <div>
     <img src="gdl-pic/T106.png"   width="15%"
 </div>
@@ -1151,7 +1151,7 @@
 **Notes**:  
 1.等边三角形判定：两个等腰三角形  
 
-#### equilateral_triangle_judgment_isosceles_and_angle(ABC)
+### equilateral_triangle_judgment_isosceles_and_angle(ABC)
 <div>
     <img src="gdl-pic/T107.png"   width="15%"
 </div>
@@ -1161,7 +1161,7 @@
 **Notes**:  
 1.等边三角形判定：有一个角是60°的等腰三角形  
 
-#### equilateral_triangle_property_angle(ABC)
+### equilateral_triangle_property_angle(ABC)
 <div>
     <img src="gdl-pic/T108.png"   width="15%"
 </div>
@@ -1172,7 +1172,7 @@
 1.等边三角形性质：内角为60°  
 2.内角指的是顶角，应用一次定理只得到一个角的角度  
 
-#### quadrilateral_property_angle_sum(ABCD)
+### quadrilateral_property_angle_sum(ABCD)
 <div>
     <img src="gdl-pic/T109.png"   width="15%"
 </div>
@@ -1182,7 +1182,7 @@
 **Notes**:  
 1.四边形性质：内角为360°  
 
-#### quadrilateral_perimeter_formula(ABCD)
+### quadrilateral_perimeter_formula(ABCD)
 <div>
     <img src="gdl-pic/T110.png"   width="15%"
 </div>
@@ -1192,7 +1192,7 @@
 **Notes**:  
 1.四边形面积公式  
 
-#### parallelogram_judgment_parallel_and_parallel(ABCD)
+### parallelogram_judgment_parallel_and_parallel(ABCD)
 <div>
     <img src="gdl-pic/T111.png"   width="15%"
 </div>
@@ -1202,7 +1202,7 @@
 **Notes**:  
 1.平行四边形判定：两组对边分别平行  
 
-#### parallelogram_judgment_parallel_and_equal(ABCD)
+### parallelogram_judgment_parallel_and_equal(ABCD)
 <div>
     <img src="gdl-pic/T112.png"   width="15%"
 </div>
@@ -1212,7 +1212,7 @@
 **Notes**:  
 1.平行四边形判定：一组对边平行且相等  
 
-#### parallelogram_judgment_equal_and_equal(ABCD)
+### parallelogram_judgment_equal_and_equal(ABCD)
 <div>
     <img src="gdl-pic/T113.png"   width="15%"
 </div>
@@ -1222,7 +1222,7 @@
 **Notes**:  
 1.平行四边形判定：两组对边分别相等  
 
-#### parallelogram_judgment_angle_and_angle(ABCD)
+### parallelogram_judgment_angle_and_angle(ABCD)
 <div>
     <img src="gdl-pic/T114.png"   width="15%"
 </div>
@@ -1232,7 +1232,7 @@
 **Notes**:  
 1.平行四边形判定：两组对角分别相等  
 
-#### parallelogram_judgment_diagonal_bisection(ABCD)
+### parallelogram_judgment_diagonal_bisection(ABCD)
 <div>
     <img src="gdl-pic/T115.png"   width="15%"
 </div>
@@ -1242,7 +1242,7 @@
 **Notes**:  
 1.平行四边形判定：对角线相互平分  
 
-#### parallelogram_property_opposite_line_equal(ABCD)
+### parallelogram_property_opposite_line_equal(ABCD)
 <div>
     <img src="gdl-pic/T116.png"   width="15%"
 </div>
@@ -1252,7 +1252,7 @@
 **Notes**:  
 1.平行四边形性质：对边相等  
 
-#### parallelogram_property_opposite_angle_equal(ABCD)
+### parallelogram_property_opposite_angle_equal(ABCD)
 <div>
     <img src="gdl-pic/T117.png"   width="15%"
 </div>
@@ -1262,7 +1262,7 @@
 **Notes**:  
 1.平行四边形性质：对角相等  
 
-#### parallelogram_property_diagonal_bisection(ABCD)
+### parallelogram_property_diagonal_bisection(ABCD)
 <div>
     <img src="gdl-pic/T118.png"   width="15%"
 </div>
@@ -1273,7 +1273,7 @@
 **Notes**:  
 1.平行四边形性质：角平分线相互平分  
 
-#### parallelogram_area_formula_common(ABCD)
+### parallelogram_area_formula_common(ABCD)
 <div>
     <img src="gdl-pic/T119.png"   width="15%"
 </div>
@@ -1283,7 +1283,7 @@
 **Notes**:  
 1.平行四边形的面积公式：S=底*高  
 
-#### parallelogram_area_formula_sine(ABCD)
+### parallelogram_area_formula_sine(ABCD)
 <div>
     <img src="gdl-pic/T120.png"   width="15%"
 </div>
@@ -1293,7 +1293,7 @@
 **Notes**:  
 1.平行四边形面积公式：S=a*b*sinC  
 
-#### kite_judgment_equal_and_equal(ABCD)
+### kite_judgment_equal_and_equal(ABCD)
 <div>
     <img src="gdl-pic/T121.png"   width="15%"
 </div>
@@ -1303,7 +1303,7 @@
 **Notes**:  
 1.筝形判定：两组临边分别相等  
 
-#### kite_property_diagonal_perpendicular_bisection(ABCD)
+### kite_property_diagonal_perpendicular_bisection(ABCD)
 <div>
     <img src="gdl-pic/T122.png"   width="15%"
 </div>
@@ -1313,7 +1313,7 @@
 **Notes**:  
 1.筝形性质：一个对角线是另一个的垂直平分线  
 
-#### kite_property_opposite_angle_equal(ABCD)
+### kite_property_opposite_angle_equal(ABCD)
 <div>
     <img src="gdl-pic/T123.png"   width="15%"
 </div>
@@ -1323,7 +1323,7 @@
 **Notes**:  
 1.筝形性质：一组对角(等角)相等  
 
-#### kite_area_formula_diagonal(ABCD)
+### kite_area_formula_diagonal(ABCD)
 <div>
     <img src="gdl-pic/T124.png"   width="15%"
 </div>
@@ -1333,7 +1333,7 @@
 **Notes**:  
 1.筝形面积公式：S=m*l /2  
 
-#### kite_area_formula_sine(ABCD)
+### kite_area_formula_sine(ABCD)
 <div>
     <img src="gdl-pic/T125.png"   width="15%"
 </div>
@@ -1343,7 +1343,7 @@
 **Notes**:  
 1.筝形面积公式：S=a*b*sinC  
 
-#### rectangle_judgment_right_angle(ABCD)
+### rectangle_judgment_right_angle(ABCD)
 <div>
     <img src="gdl-pic/T126.png"   width="15%"
 </div>
@@ -1353,7 +1353,7 @@
 **Notes**:  
 1.矩形判定：有一个角是直角的平行四边形  
 
-#### rectangle_judgment_diagonal_equal(ABCD)
+### rectangle_judgment_diagonal_equal(ABCD)
 <div>
     <img src="gdl-pic/T127.png"   width="15%"
 </div>
@@ -1363,7 +1363,7 @@
 **Notes**:  
 1.矩形判定：对角线相等的平行四边形  
 
-#### rectangle_property_diagonal_equal(ABCD)
+### rectangle_property_diagonal_equal(ABCD)
 <div>
     <img src="gdl-pic/T128.png"   width="15%"
 </div>
@@ -1373,7 +1373,7 @@
 **Notes**:  
 1.矩形性质：对角线相等  
 
-#### rhombus_judgment_parallelogram_and_kite(ABCD)
+### rhombus_judgment_parallelogram_and_kite(ABCD)
 <div>
     <img src="gdl-pic/T129.png"   width="15%"
 </div>
@@ -1383,7 +1383,7 @@
 **Notes**:  
 1.菱形判定：既是平行四边形又是筝形  
 
-#### square_judgment_rhombus_and_rectangle(ABCD)
+### square_judgment_rhombus_and_rectangle(ABCD)
 <div>
     <img src="gdl-pic/T130.png"   width="15%"
 </div>
@@ -1393,7 +1393,7 @@
 **Notes**:  
 1.正方形判定：既是菱形也是矩形  
 
-#### trapezoid_judgment_parallel(ABCD)
+### trapezoid_judgment_parallel(ABCD)
 <div>
     <img src="gdl-pic/T131.png"   width="15%"
 </div>
@@ -1403,7 +1403,7 @@
 **Notes**:  
 1.梯形判定：两边平行的四边形  
 
-#### trapezoid_area_formula(ABCD)
+### trapezoid_area_formula(ABCD)
 <div>
     <img src="gdl-pic/T132.png"   width="15%"
 </div>
@@ -1413,7 +1413,7 @@
 **Notes**:  
 1.梯形的面积公式：S=(上底+下底)*高/2  
 
-#### right_trapezoid_judgment_right_angle(ABCD)
+### right_trapezoid_judgment_right_angle(ABCD)
 <div>
     <img src="gdl-pic/T133.png"   width="15%"
 </div>
@@ -1423,7 +1423,7 @@
 **Notes**:  
 1.直角梯形的判定：有一侧是直角的梯形  
 
-#### isosceles_trapezoid_judgment_line_equal(ABCD)
+### isosceles_trapezoid_judgment_line_equal(ABCD)
 <div>
     <img src="gdl-pic/T134.png"   width="15%"
 </div>
@@ -1433,7 +1433,7 @@
 **Notes**:  
 1.等腰梯形的判定：腰相等的梯形  
 
-#### isosceles_trapezoid_judgment_angle_equal(ABCD)
+### isosceles_trapezoid_judgment_angle_equal(ABCD)
 <div>
     <img src="gdl-pic/T135.png"   width="15%"
 </div>
@@ -1443,7 +1443,7 @@
 **Notes**:  
 1.等腰梯形的判定：底角相等的梯形  
 
-#### isosceles_trapezoid_judgment_diagonal_equal(ABCD)
+### isosceles_trapezoid_judgment_diagonal_equal(ABCD)
 <div>
     <img src="gdl-pic/T136.png"   width="15%"
 </div>
@@ -1453,7 +1453,7 @@
 **Notes**:  
 1.等腰梯形的判定：对角线相等的梯形  
 
-#### isosceles_trapezoid_property_angle_equal(ABCD)
+### isosceles_trapezoid_property_angle_equal(ABCD)
 <div>
     <img src="gdl-pic/T137.png"   width="15%"
 </div>
@@ -1463,7 +1463,7 @@
 **Notes**:  
 1.等腰梯形的性质：底角相等  
 
-#### isosceles_trapezoid_property_diagonal_equal(ABCD)
+### isosceles_trapezoid_property_diagonal_equal(ABCD)
 <div>
     <img src="gdl-pic/T138.png"   width="15%"
 </div>
@@ -1473,7 +1473,7 @@
 **Notes**:  
 1.等腰梯形的性质：对角线相等  
 
-#### arc_length_formula(OAB)
+### arc_length_formula(OAB)
 <div>
     <img src="gdl-pic/T139.png"   width="15%"
 </div>
@@ -1483,7 +1483,7 @@
 **Notes**:  
 1.弧长公式：L=n/180*pi*r  
 
-#### sector_perimeter_formula(OAB)
+### sector_perimeter_formula(OAB)
 <div>
     <img src="gdl-pic/T140.png"   width="15%"
 </div>
@@ -1493,7 +1493,7 @@
 **Notes**:  
 1.扇形周长公式：P=2*r+L  
 
-#### sector_area_formula(OAB)
+### sector_area_formula(OAB)
 <div>
     <img src="gdl-pic/T141.png"   width="15%"
 </div>
@@ -1503,7 +1503,7 @@
 **Notes**:  
 1.扇形面积公式：S=n/360*pi*r*r  
 
-#### circle_perimeter_formula(O)
+### circle_perimeter_formula(O)
 <div>
     <img src="gdl-pic/T142.png"   width="15%"
 </div>
@@ -1513,7 +1513,7 @@
 **Notes**:  
 1.圆的周长公式：P=2*pi*r  
 
-#### circle_area_formula(O)
+### circle_area_formula(O)
 <div>
     <img src="gdl-pic/T143.png"   width="15%"
 </div>

@@ -1,11 +1,11 @@
-## 附录2 谓词标注对照手册
-### A、基本构图谓词
+# 附录2 谓词标注对照手册
+## A、基本构图谓词
 基本构图谓词有三个，分别是Shape(图形)、Collinear(点共线)和Cocircular(点共圆)。推理器可以根据这三个构图谓词自动扩展出基本谓词，其扩展树如下图所示：  
 <div align=center>
     <img src="cowork-pic/auto-expand.png" width="50%">
 </div>
 
-#### Shape(*)
+### Shape(*)
 Shape是最基本的构图谓词，它使用若干个边或弧来声明一个几何图形，这个几何图形可以是一条边，可以是一个角，也可以是边和弧围成的图形。使用Shape声明几何图形时，我们需要依据有序原则、逆时针原则和旋转不变原则，这三大原则的介绍可参考cowork.md。  
 <div>
     <img src="gdl-pic/P001.png" width="60%">
@@ -51,7 +51,7 @@ Shape是最基本的构图谓词，它使用若干个边或弧来声明一个几
     Shape(EC,OCD,DO,OE)
     Shape(AE,EO,OD,ODA)
 
-#### Collinear(*)
+### Collinear(*)
 Collinear用来声明3个及3个以上的共线点，2点一定是共线的，所以不用声明2点。  
 <div>
     <img src="gdl-pic/P002.png" width="45%">
@@ -76,7 +76,7 @@ Collinear用来声明3个及3个以上的共线点，2点一定是共线的，�
 
 共线会在推理器中自动扩展出所有的线和平角，如Collinear(AMB)会扩展得到Line(AM),Line(MB),Line(AM),Angle(AMB),Angle(BMA)。  
 
-#### Cocircular(O,*)
+### Cocircular(O,*)
 Cocircular用来声明共圆的若干个点，与Collinear相同，按照顺序列出若干点即可；但也与Collinear不同，一是即使1个点在圆上也要声明，二是共圆的声明按照逆时针方向，且从任何点开始都可。  
 <div>
     <img src="gdl-pic/P003.png" width="60%">
@@ -105,10 +105,10 @@ Cocircular用来声明共圆的若干个点，与Collinear相同，按照顺序�
 
 共圆声明后，会自动扩展出所有的弧和圆。  
 
-### B、基本实体
+## B、基本实体
 基本实体是由基本构图扩展来的实体，在构图结束后不会再改变。我们无需声明基本实体，下述内容是为了让我们理解形式化系统的内在逻辑。基本构图谓词声明一个图形的结构信息，也就是点的相对位置信息。基本实体相当于是基本构图的 'unzip' 版本，在推理过程中更方便使用。目前推理器内置了10个基本实体。  
 
-#### Point(A)
+### Point(A)
 就是点，没什么好说的。  
 <div>
     <img src="gdl-pic/P004.png"  width="45%">
@@ -120,7 +120,7 @@ Cocircular用来声明共圆的若干个点，与Collinear相同，按照顺序�
     Point(A),Point(B),Point(C)
     Point(A),Point(C),Point(O)
 
-#### Line(AB)
+### Line(AB)
 Line声明一个无向线段。
 <div>
     <img src="gdl-pic/P005.png"  width="45%">
@@ -136,7 +136,7 @@ Line声明一个无向线段。
     Line(AB),Line(CD)  
     Line(AO),Line(BO) 
 
-#### Angle(ABC)
+### Angle(ABC)
 角由3个点构成，在声明角时，需要按照逆时针原则。  
 <div>
     <img src="gdl-pic/P006.png"  width="45%">
@@ -148,7 +148,7 @@ Line声明一个无向线段。
     Angle(ABC),Angle(BCA),Angle(CAB)
     Angle(AOC),Angle(COB),Angle(BOD),Angle(DOA)
 
-#### Triangle(ABC)
+### Triangle(ABC)
 三角形由3个点构成，按照逆时针的方向列出所有的点。依据旋转不变原则，一个三角形有3种表示方式。  
 <div>
     <img src="gdl-pic/P007.png"  width="15%">
@@ -159,7 +159,7 @@ Line声明一个无向线段。
     Triangle(CAB)  
 
 
-#### Quadrilateral(ABCD)
+### Quadrilateral(ABCD)
 与三角形类似。  
 <div>
     <img src="gdl-pic/P008.png"  width="15%">
@@ -170,7 +170,7 @@ Line声明一个无向线段。
     Quadrilateral(CDAB)
     Quadrilateral(DABC)
 
-#### Pentagon(ABCDE)
+### Pentagon(ABCDE)
 与三角形类似。  
 <div>
     <img src="gdl-pic/P009.png"  width="15%">
@@ -182,7 +182,7 @@ Line声明一个无向线段。
     Pentagon(DEABC)
     Pentagon(EABCD)
 
-#### Hexagon(ABCDEF)
+### Hexagon(ABCDEF)
 与三角形类似。  
 <div>
     <img src="gdl-pic/P010.png"  width="15%">
@@ -195,7 +195,7 @@ Line声明一个无向线段。
     Hexagon(EFABCD)
     Hexagon(FABCDE)
 
-#### Arc(OAB)
+### Arc(OAB)
 Arc声明一段弧，由3个点组成，第1个点是弧所在的圆，其余2点是构成弧的点，按照逆时针的方向有序列出。  
 <div>
     <img src="gdl-pic/P011.png"  width="45%">
@@ -207,7 +207,7 @@ Arc声明一段弧，由3个点组成，第1个点是弧所在的圆，其余2�
     Arc(OAC),Arc(OCA)
     Arc(OAB),Arc(OBC),Arc(OCD),Arc(ODA)
 
-#### Circle(O)
+### Circle(O)
 Circle用于声明一个圆，O表示圆心。  
 <div>
     <img src="gdl-pic/P012.png"  width="45%">
@@ -219,7 +219,7 @@ Circle用于声明一个圆，O表示圆心。
     Cirlce(A),Cirlce(B)
     Cirlce(O)
 
-#### Sector(OAB)
+### Sector(OAB)
 Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点是圆心，其余两个点是组成扇形的弧。扇形的声明与弧的声明是一致的。  
 <div>
     <img src="gdl-pic/P013.png"  width="30%">
@@ -230,8 +230,8 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     Sector(BCD),Sector(BDC)
     Sector(OAB),Sector(OBC),Sector(OCD),Sector(ODA)
 
-### C、实体
-#### RightTriangle(ABC)
+## C、实体
+### RightTriangle(ABC)
 <div>
     <img src="gdl-pic/P014.png"  width="15%">
 </div>
@@ -244,7 +244,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 2.按照逆时针原则标注点的顺序  
 3.∠ABC为直角  
 
-#### IsoscelesTriangle(ABC)
+### IsoscelesTriangle(ABC)
 <div>
     <img src="gdl-pic/P015.png"  width="15%">
 </div>
@@ -257,7 +257,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 2.按照逆时针原则标注点的顺序  
 3.第一个点作为顶点，与其他两点的连线作为腰，如IsoscelesTriangle(ABC)的两腰为AB和AC  
 
-#### IsoscelesRightTriangle(ABC)
+### IsoscelesRightTriangle(ABC)
 <div>
     <img src="gdl-pic/P016.png"  width="15%">
 </div>
@@ -269,7 +269,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 **Notes**:  
 1.参照等腰三角形标注方法  
 
-#### EquilateralTriangle(ABC)
+### EquilateralTriangle(ABC)
 <div>
     <img src="gdl-pic/P017.png"  width="15%">
 </div>
@@ -285,7 +285,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 2.按照逆时针原则标注点的顺序  
 3.根据旋转不变性原则，有3种表示方法，选其一即可  
 
-#### Kite(ABCD)
+### Kite(ABCD)
 <div>
     <img src="gdl-pic/P018.png"  width="15%">
 </div>
@@ -300,7 +300,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 3.第一个点和第三个点分别作为两组临边的交点，如Quadrilateral(ABCD)是AB=AD，CB=CD  
 4.根据旋转不变性原则，1个风筝形有2种表示方法，选其一即可  
 
-#### Parallelogram(ABCD)
+### Parallelogram(ABCD)
 <div>
     <img src="gdl-pic/P019.png"  width="15%">
 </div>
@@ -316,7 +316,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 2.按照逆时针原则标注点的顺序  
 3.根据旋转不变性原则，1个平行四边形有4种表示方法，选其一即可  
 
-#### Rhombus(ABCD)
+### Rhombus(ABCD)
 <div>
     <img src="gdl-pic/P020.png"  width="15%">
 </div>
@@ -333,7 +333,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 2.按照逆时针原则标注点的顺序  
 3.根据旋转不变性原则，1个菱形有4种表示方法，选其一即可  
 
-#### Rectangle(ABCD)
+### Rectangle(ABCD)
 <div>
     <img src="gdl-pic/P021.png"  width="15%">
 </div>
@@ -352,7 +352,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 2.按照逆时针原则标注点的顺序  
 3.根据旋转不变性原则，1个矩形有4种表示方法，选其一即可  
 
-#### Square(ABCD)
+### Square(ABCD)
 <div>
     <img src="gdl-pic/P022.png"  width="15%">
 </div>
@@ -368,7 +368,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 2.按照逆时针原则标注点的顺序  
 3.根据旋转不变性原则，1个正方形有4种表示方法，选其一即可  
 
-#### Trapezoid(ABCD)
+### Trapezoid(ABCD)
 <div>
     <img src="gdl-pic/P023.png"  width="15%">
 </div>
@@ -382,7 +382,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 3.前两个点和后两个点构成腰，如Trapezoid(ABCD)的两腰为AB和CD  
 4.根据旋转不变性原则，1个梯形有2种表示方法，选其一即可  
 
-#### IsoscelesTrapezoid(ABCD)
+### IsoscelesTrapezoid(ABCD)
 <div>
     <img src="gdl-pic/P024.png"  width="15%">
 </div>
@@ -396,7 +396,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 2.按照逆时针原则标注点的顺序  
 3.根据旋转不变性原则，1个等腰梯形有2种表示方法，选其一即可  
 
-#### RightTrapezoid(ABCD)
+### RightTrapezoid(ABCD)
 <div>
     <img src="gdl-pic/P025.png"  width="15%">
 </div>
@@ -411,7 +411,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 2.按照逆时针原则标注点的顺序  
 3.左侧的两个角为直角，如RightTrapezoid(ABCD)表示角A和角B为直角  
 
-#### EquilateralPentagon(ABCDE)
+### EquilateralPentagon(ABCDE)
 <div>
     <img src="gdl-pic/P026.png"  width="15%">
 </div>
@@ -430,7 +430,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 2.按照逆时针原则标注点的顺序  
 3.根据旋转不变性原则，1个等边五边形有5种表示方法，选其一即可  
 
-#### RegularPentagon(ABCDE)
+### RegularPentagon(ABCDE)
 <div>
     <img src="gdl-pic/P027.png"  width="15%">
 </div>
@@ -451,7 +451,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 2.按照逆时针原则标注点的顺序  
 3.根据旋转不变性原则，1个正五边形有5种表示方法，选其一即可  
 
-#### EquilateralHexagon(ABCDEF)
+### EquilateralHexagon(ABCDEF)
 <div>
     <img src="gdl-pic/P028.png"  width="15%">
 </div>
@@ -470,7 +470,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 **Notes**:  
 1.六条边相等的六边形称为等边六边形  
 
-#### RegularHexagon(ABCDEF)
+### RegularHexagon(ABCDEF)
 <div>
     <img src="gdl-pic/P029.png"  width="15%">
 </div>
@@ -491,8 +491,8 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 **Notes**:  
 1.六条边相等且六个角相等的六边形称为正六边形  
 
-### D、实体关系
-#### IsMidpointOfLine(M,AB)
+## D、实体关系
+### IsMidpointOfLine(M,AB)
 <div>
     <img src="gdl-pic/P030.png"  width="15%">
 </div>
@@ -507,7 +507,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.点M是线AB的中点  
 2.根据旋转不变性原则，有2种表示，选其一即可  
 
-#### ParallelBetweenLine(AB,CD)
+### ParallelBetweenLine(AB,CD)
 <div>
     <img src="gdl-pic/P031.png"  width="15%">
 </div>
@@ -522,7 +522,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 2.从左到右，从上到下原则，AB是上面的直线，CD是下面的直线  
 3.根据旋转不变性原则，有2种表示，选其一即可  
 
-#### PerpendicularBetweenLine(AO,CO)
+### PerpendicularBetweenLine(AO,CO)
 <div>
     <img src="gdl-pic/P032.png"  width="15%">
 </div>
@@ -537,7 +537,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 2.按照逆时针原则，AO是直角的第一条边，CO是直角的第二条边  
 3.遇到角的朝向与示例不同，可以想象着把直角转到朝向第二象限  
 
-#### IsPerpendicularBisectorOfLine(CO,AB)
+### IsPerpendicularBisectorOfLine(CO,AB)
 <div>
     <img src="gdl-pic/P033.png"  width="15%">
 </div>
@@ -554,7 +554,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.线CO是线AB的垂直平分线，与AB交与点O  
 2.从左到右，从上到下原则  
 
-#### IsBisectorOfAngle(BD,ABC)
+### IsBisectorOfAngle(BD,ABC)
 <div>
     <img src="gdl-pic/P034.png"  width="15%">
 </div>
@@ -568,7 +568,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.线BD是角ABC的平分线，与角ABC交与点B  
 2.角要按照逆时针原则标注，角平分线的第一个点应是角的顶点  
 
-#### IsMedianOfTriangle(AD,ABC)
+### IsMedianOfTriangle(AD,ABC)
 <div>
     <img src="gdl-pic/P035.png"  width="15%">
 </div>
@@ -583,7 +583,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.线AD是三角形ABC的中线，即顶点A与底边BC重点D的连线  
 2.线的第一个点应是三角形的顶点  
 
-#### IsAltitudeOfTriangle(AD,ABC)
+### IsAltitudeOfTriangle(AD,ABC)
 <div>
     <img src="gdl-pic/P036.png"  width="15%">
 </div>
@@ -602,7 +602,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 2.线的第一个点应是三角形的顶点  
 3.要跟属性HeightOfTriangle区分开来，这里是声明线和三角形的关系，属性那里是表示高的长度  
 
-#### IsAltitudeOfQuadrilateral(EF,ABCD)
+### IsAltitudeOfQuadrilateral(EF,ABCD)
 <div>
     <img src="gdl-pic/P037.png"  width="15%">
 </div>
@@ -630,7 +630,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 3.要跟属性HeightOfQuadrilateral区分开来  
 4.注意，平行四边形每个边都有高，梯形只有平行边有高，筝形没有高  
 
-#### IsMidsegmentOfTriangle(DE,ABC)
+### IsMidsegmentOfTriangle(DE,ABC)
 <div>
     <img src="gdl-pic/P038.png"  width="15%">
 </div>
@@ -647,7 +647,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.线DE是三角形ABC的中位线，即三角形两腰中点的连线  
 2.线DE点的顺序应和三角形ABC底边BC点的顺序一致  
 
-#### IsMidsegmentOfTrapezoid(EF,ABCD)
+### IsMidsegmentOfTrapezoid(EF,ABCD)
 <div>
     <img src="gdl-pic/P039.png"  width="15%">
 </div>
@@ -665,7 +665,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 2.线DE点的顺序应和梯形ABCD底边BC点的顺序一致  
 3.根据旋转不变性原则，有2种表示方法，选其一即可  
 
-#### IsCircumcenterOfTriangle(O,ABC)
+### IsCircumcenterOfTriangle(O,ABC)
 <div>
     <img src="gdl-pic/P040.png"  width="15%">
 </div>
@@ -680,7 +680,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.点O是三角形ABC的外心  
 2.外心是三角形外接圆的圆心，是三角形三边垂直平分线的交点  
 
-#### IsIncenterOfTriangle(O,ABC)
+### IsIncenterOfTriangle(O,ABC)
 <div>
     <img src="gdl-pic/P041.png"  width="15%">
 </div>
@@ -695,7 +695,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.点O是三角形ABC的内心  
 2.内心是三角形内切圆的圆心，是三角形三角的角平分线的交点  
 
-#### IsCentroidOfTriangle(O,ABC)
+### IsCentroidOfTriangle(O,ABC)
 <div>
     <img src="gdl-pic/P042.png"  width="15%">
 </div>
@@ -710,7 +710,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.点O是三角形ABC的重心  
 2.内心是三角形三边的中线的交点  
 
-#### IsOrthocenterOfTriangle(O,ABC)
+### IsOrthocenterOfTriangle(O,ABC)
 <div>
     <img src="gdl-pic/P043.png"  width="15%">
 </div>
@@ -728,7 +728,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.点O是三角形ABC的垂心  
 2.垂心是三角形三个底边上的高的交点  
 
-#### IsCircumcenterOfQuadrilateral(O,ABCD)
+### IsCircumcenterOfQuadrilateral(O,ABCD)
 <div>
     <img src="gdl-pic/P044.png"  width="15%">
 </div>
@@ -743,7 +743,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.点O是四边形ABCD的外心  
 2.外心是四边形外接圆的圆心，但不一定有  
 
-#### IsIncenterOfQuadrilateral(O,ABCD)
+### IsIncenterOfQuadrilateral(O,ABCD)
 <div>
     <img src="gdl-pic/P045.png"  width="15%">
 </div>
@@ -758,7 +758,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.点O是四边形ABCD的内心  
 2.内心是四边形内切圆的圆心，但不一定有  
 
-#### CongruentBetweenTriangle(ABC,DEF)
+### CongruentBetweenTriangle(ABC,DEF)
 <div>
     <img src="gdl-pic/P046.png"  width="30%">
 </div>
@@ -773,7 +773,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 2.两个三角形的点应一一对应  
 3.根据旋转不变性原则，有6种表示方法，选其一即可  
 
-#### MirrorCongruentBetweenTriangle(ABC,DEF)
+### MirrorCongruentBetweenTriangle(ABC,DEF)
 <div>
     <img src="gdl-pic/P047.png"  width="30%">
 </div>
@@ -788,7 +788,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 2.标注方法：①点一一对应得(ABC,DFE)②没有三角形DFE，第一个点D不动，将其他点逆序，得DEF③标注(ABC,DEF)  
 3.根据旋转不变性原则，有6种表示方法，选其一即可  
 
-#### SimilarBetweenTriangle(ABC,DEF)
+### SimilarBetweenTriangle(ABC,DEF)
 <div>
     <img src="gdl-pic/P048.png"  width="30%">
 </div>
@@ -803,7 +803,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 2.两个三角形的点应一一对应  
 3.根据旋转不变性原则，有6种表示方法，选其一即可  
 
-#### MirrorSimilarBetweenTriangle(ABC,DEF)
+### MirrorSimilarBetweenTriangle(ABC,DEF)
 <div>
     <img src="gdl-pic/P049.png"  width="30%">
 </div>
@@ -818,7 +818,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 2.标注方法：①点一一对应得(ABC,DFE)②没有三角形DFE，第一个点D不动，将其他点逆序，得DEF③标注(ABC,DEF)  
 3.根据旋转不变性原则，有6种表示方法，选其一即可  
 
-#### IsRadiusOfCircle(AO,O)
+### IsRadiusOfCircle(AO,O)
 <div>
     <img src="gdl-pic/P050.png"  width="15%">
 </div>
@@ -832,7 +832,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.线AO是圆O的半径  
 2.线的第2个点应是圆的圆心  
 
-#### IsDiameterOfCircle(AB,O)
+### IsDiameterOfCircle(AB,O)
 <div>
     <img src="gdl-pic/P051.png"  width="15%">
 </div>
@@ -851,7 +851,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.线AB是圆O的直径  
 2.根据旋转不变性原则，有2种表示方法，选其一即可  
 
-#### IsChordOfCircle(AB,O)
+### IsChordOfCircle(AB,O)
 <div>
     <img src="gdl-pic/P052.png"  width="15%">
 </div>
@@ -865,7 +865,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.线AB是圆O的弦  
 2.构成弦两点的标注顺序，应与弦所对的劣弧一致  
 
-#### IsTangentOfCircle(AB,O,P)
+### IsTangentOfCircle(AB,O,P)
 <div>
     <img src="gdl-pic/P053.png"  width="15%">
 </div>
@@ -882,8 +882,8 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.线AB是圆O的切线，与圆交于点P  
 2.应注意线AB两点的先后顺序，若OAB三点构成一个以O为顶点的三角形，根据逆时针原则，安排AB两点的顺序  
 
-### F、实体属性
-#### LengthOfLine(AB)
+## F、实体属性
+### LengthOfLine(AB)
 <div>
     <img src="gdl-pic/P054.png"  width="15%">
 </div>
@@ -896,7 +896,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 2.根据旋转不变性原则，有2种表示方法，选其一即可  
 3.例 Equal(LengthOfLine(AB),3)  
 
-#### LengthOfArc(OAB)
+### LengthOfArc(OAB)
 <div>
     <img src="gdl-pic/P055.png"  width="15%">
 </div>
@@ -908,7 +908,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.圆O上弧AB的长度  
 2.例 Equal(LengthOfArc(OAB),1)  
 
-#### MeasureOfAngle(ABC)
+### MeasureOfAngle(ABC)
 <div>
     <img src="gdl-pic/P056.png"  width="15%">
 </div>
@@ -920,7 +920,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.角ABC的大小  
 2.例 Equal(MeasureOfAngle(ABC),4)  
 
-#### PerimeterOfTriangle(ABC)
+### PerimeterOfTriangle(ABC)
 <div>
     <img src="gdl-pic/P057.png"  width="15%">
 </div>
@@ -934,7 +934,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 2.根据旋转不变性原则，有3种表示方法，选其一即可  
 3.例 Equal(PerimeterOfTriangle(ABC),1)  
 
-#### AreaOfTriangle(ABC)
+### AreaOfTriangle(ABC)
 <div>
     <img src="gdl-pic/P058.png"  width="15%">
 </div>
@@ -948,7 +948,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 2.根据旋转不变性原则，有3种表示方法，选其一即可  
 3.例 Equal(AreaOfTriangle(ABC),5)  
 
-#### HeightOfTriangle(ABC)
+### HeightOfTriangle(ABC)
 <div>
     <img src="gdl-pic/P059.png"  width="15%">
 </div>
@@ -960,7 +960,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.三角形ABC底边BC上的高的长度  
 2.例 Equal(HeightOfTriangle(ABC),9)  
 
-#### PerimeterOfQuadrilateral(ABCD)
+### PerimeterOfQuadrilateral(ABCD)
 <div>
     <img src="gdl-pic/P060.png"  width="15%">
 </div>
@@ -975,7 +975,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 2.根据旋转不变性原则，有4种表示方法，选其一即可  
 3.例 Equal(PerimeterOfQuadrilateral(ABCD),2)  
 
-#### AreaOfQuadrilateral(ABCD)
+### AreaOfQuadrilateral(ABCD)
 <div>
     <img src="gdl-pic/P061.png"  width="15%">
 </div>
@@ -990,7 +990,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 2.根据旋转不变性原则，有4种表示方法，选其一即可  
 3.例 Equal(AreaOfQuadrilateral(ABCD),6)  
 
-#### HeightOfQuadrilateral(ABCD)
+### HeightOfQuadrilateral(ABCD)
 <div>
     <img src="gdl-pic/P062.png"  width="15%">
 </div>
@@ -1002,7 +1002,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.四边形ABCD底边BC上的高的长度  
 2.例 Equal(HeightOfQuadrilateral(ABCD),5)  
 
-#### PerimeterOfCircle(O)
+### PerimeterOfCircle(O)
 <div>
     <img src="gdl-pic/P063.png"  width="15%">
 </div>
@@ -1014,7 +1014,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.圆O的周长  
 2.例 Equal(PerimeterOfCircle(O),3)  
 
-#### AreaOfCircle(O)
+### AreaOfCircle(O)
 <div>
     <img src="gdl-pic/P064.png"  width="15%">
 </div>
@@ -1026,7 +1026,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.圆O的面积  
 2.例 Equal(AreaOfCircle(O),5)  
 
-#### LengthOfRadius(O)
+### LengthOfRadius(O)
 <div>
     <img src="gdl-pic/P065.png"  width="15%">
 </div>
@@ -1038,7 +1038,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.圆O半径的长度  
 2.例 Equal(LengthOfRadius(O),8)  
 
-#### LengthOfDiameter(O)
+### LengthOfDiameter(O)
 <div>
     <img src="gdl-pic/P066.png"  width="15%">
 </div>
@@ -1050,7 +1050,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.圆O直径的长度  
 2.例 Equal(LengthOfDiameter(O),9)  
 
-#### PerimeterOfSector(OAB)
+### PerimeterOfSector(OAB)
 <div>
     <img src="gdl-pic/P067.png"  width="15%">
 </div>
@@ -1062,7 +1062,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.扇形OAB的周长  
 2.例 Equal(PerimeterOfSector(OAB),7)  
 
-#### AreaOfSector(OAB)
+### AreaOfSector(OAB)
 <div>
     <img src="gdl-pic/P068.png"  width="15%">
 </div>
@@ -1074,7 +1074,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.扇形OAB的面积  
 2.例 Equal(AreaOfSector(OAB),9)  
 
-#### RatioOfSimilarTriangle(ABC,DEF)
+### RatioOfSimilarTriangle(ABC,DEF)
 <div>
     <img src="gdl-pic/P069.png"  width="30%">
 </div>
@@ -1088,7 +1088,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.相似三角形的相似比  
 2.例 Equal(RatioOfSimilarTriangle(ABC,DEF),3)  
 
-#### RatioOfMirrorSimilarTriangle(ABC,DEF)
+### RatioOfMirrorSimilarTriangle(ABC,DEF)
 <div>
     <img src="gdl-pic/P070.png"  width="30%">
 </div>
@@ -1102,7 +1102,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.镜像相似三角形的相似比  
 2.例 Equal(RatioOfMirrorSimilarTriangle(ABC,DEF),2)  
 
-### G、代数关系
+## G、代数关系
 expr可以是表达式，也可以是实体属性，并且可以嵌套表示。  
 
     Equal(expr1,expr2)
@@ -1112,7 +1112,7 @@ Equal(a,5)
 Equal(MeasureOfAngle(ABC),30)  
 Equal(Add(LengthOfLine(AB),a+5,x),y^2)  
 
-### H、代数运算
+## H、代数运算
 |名称|格式|表达式符号|运算符优先级|
 |:--:|:--:|:--:|:--:|
 |加|Add(expr1,expr2,…)|+| 1 |
@@ -1132,8 +1132,8 @@ Equal(Add(LengthOfLine(AB),a+5,x),y^2)
 在使用表达式，若无法判断运算符的优先级，可以使用中括号来代替。  
 前5个运算符是双目运算符，如a+5,b-c,x^2；在接下来4个运算符是单目运算符，如√2,@30,#60。
 
-### I、解题目标
-#### Value(expr)
+## I、解题目标
+### Value(expr)
 expr可以是表达式，也可以是实体属性，并且可以嵌套表示。  
 代数型解题目标，求某个表达式或属性的值。  
 
@@ -1141,14 +1141,14 @@ expr可以是表达式，也可以是实体属性，并且可以嵌套表示。
              Value(Add(MeasureOfAngle(ABC),MeasureOfAngle(DEF)))
              Value(x+y)
 
-#### Equal(expr1,expr2)
+### Equal(expr1,expr2)
 expr可以是表达式，也可以是实体属性，并且可以嵌套表示。 
 代数型解题目标，证明左右俩个部分相等。   
 
     example: Equal(LengthOfLine(AB),x+y)
              Equal(Add(MeasureOfAngle(ABC),MeasureOfAngle(DEF)),Pow(x,2))
 
-#### Relation(*)
+### Relation(*)
 逻辑型解题目标，求某个实体或属性。  
 Relation表示任意实体、实体关系。  
 

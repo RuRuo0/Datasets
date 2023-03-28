@@ -308,7 +308,7 @@ C、每个人第N周提交的内容将会在第N+1周周日24点之前合并到�
 **3.逆时针原则**  
 按照逆时针的方向，将图形的点按顺序列出，如多边形、角、三角形等。逆时针原则主要是为了区分镜像图形。  
 <div>
-    <img src="cowork-pic/counter-clockwise-principle.png" width="40%">
+    <img src="cowork-pic/counter-clockwise-principle.png" width="45%">
 </div>
 
     Triangle(ABC)
@@ -318,7 +318,7 @@ C、每个人第N周提交的内容将会在第N+1周周日24点之前合并到�
 **4.旋转不变原则**  
 图形旋转后还是原图形，各种性质不变，但点的位置变化了，因此一个图形可能有多个文字表示。在标注时，我们仅需标注一个表示即可，其他表示会由推理器自动构建。如下图三角形有三种表示方法，在标注时我们任选其一即可。    
 <div>
-    <img src="cowork-pic/rotation-invariance-principle.png" width="40%">
+    <img src="cowork-pic/rotation-invariance-principle.png" width="45%">
 </div>
 
     Triangle(ABC)
@@ -326,9 +326,9 @@ C、每个人第N周提交的内容将会在第N+1周周日24点之前合并到�
     Triangle(CAB)
 
 **4.具体情况具体分析**  
-有些不封闭的图形，如平行、相交关系等，用逆时针法则不符合人的思维习惯。这些特殊的图形将会在 doc/predicate.md 中写明它们的标注方法，请查阅。  
+有些不封闭的图形，如平行、垂直等，用逆时针法则不符合人的思维习惯。这些特殊的图形将会在 doc/predicate.md 中写明它们的标注方法，请查阅。  
 <div>
-    <img src="cowork-pic/specific.png" width="40%">
+    <img src="cowork-pic/specific.png" width="30%">
 </div>
 
     Parallel(AB,CD)

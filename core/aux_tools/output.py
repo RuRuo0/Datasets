@@ -85,10 +85,10 @@ def show(problem):
     for attr in equation.sym_of_attr:
         sym = equation.sym_of_attr[attr]
         if isinstance(equation.value_of_sym[sym], Float):
-            print("{0:^50}{1:^15}{2:^20.3f}".format(
+            print("{0:^70}{1:^15}{2:^20.3f}".format(
                 str(("".join(attr[0]), attr[1])), str(sym), equation.value_of_sym[sym]))
         else:
-            print("{0:^50}{1:^15}{2:^20}".format(
+            print("{0:^70}{1:^15}{2:^20}".format(
                 str(("".join(attr[0]), attr[1])), str(sym), str(equation.value_of_sym[sym])))
 
     print("\033[33mEquations:\033[0m")

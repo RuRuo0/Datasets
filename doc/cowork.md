@@ -324,7 +324,16 @@ C、每个人第N周提交的内容将会在第N+1周周日24点之前合并到�
     Triangle(BCA)
     Triangle(CAB)
 
-**4.具体情况具体分析**  
+**4.就近标注**  
+一条线上有多个点时，有些图形就会存在多个表示方法，这种情况以离图形最近的几个点为准。  
+<div>
+    <img src="cowork-pic/nearest.png" width="30%">
+</div>
+
+    Perpendicular(AO,BO)
+    Angle(AOB)
+
+**5.具体情况具体分析**  
 有些不封闭的图形，如平行、垂直等，用逆时针法则不符合人的思维习惯。这些特殊的图形将会在 doc/predicate.md 中写明它们的标注方法，请查阅。  
 <div>
     <img src="cowork-pic/specific.png" width="30%">

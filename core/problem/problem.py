@@ -148,7 +148,7 @@ class Problem:
                 warnings.warn(w_msg)
                 continue
 
-            if len(item) == 1:    # arc or line
+            if len(item) == 1:  # arc or line
                 if len(item[0]) == 2:
                     self.add("Line", tuple(item[0]), (-1,), "prerequisite")
                 else:
@@ -213,7 +213,7 @@ class Problem:
             shape_old += shape_cache
             shape_cache = shape_new
 
-        self._angle_collinear_expand()   # align angle's representation
+        self._angle_collinear_expand()  # align angle's representation
 
     def _check_two_shape(self, shape1, shape2):
         """Check whether two shape can form a new shape."""
@@ -260,6 +260,10 @@ class Problem:
         if not added:
             return False, None
 
+        # show = False
+        # if shape == ("OBF", "FE", "EB"):
+        #     show = True
+
         l = len(shape)
         for bias in range(1, l):  # all forms
             new_item = tuple([shape[(i + bias) % l] for i in range(l)])
@@ -283,7 +287,7 @@ class Problem:
                     premise.append(self.conditions["Collinear"].get_id_by_item[try_coll])
                 else:
                     i += 1
-            elif len(shape[i]) == 3 and len(shape[(i + 1) % len(shape)]) == 3 and\
+            elif len(shape[i]) == 3 and len(shape[(i + 1) % len(shape)]) == 3 and \
                     shape[i][1] != shape[i][2] and shape[j][1] != shape[j][2]:
                 has_arc = True
                 if shape[i][0] == shape[j][0] and shape[i][1] == shape[j][2]:  # (OBC, OAB)
@@ -303,6 +307,9 @@ class Problem:
             else:
                 has_arc = True
                 i += 1
+
+        # if show:
+        #     print(shape)
 
         l = len(shape)
         premise = tuple(set(premise))
@@ -329,6 +336,13 @@ class Problem:
                     shape = shape[1:] + [shape[0]]
                 if shape[0][1] == shape[2][1] and shape[0][2] == shape[1][0] \
                         and shape[0][0] == shape[1][1] and shape[0][0] == shape[2][0]:  # (OAB, BO, OA)
+                    self.add("Sector", tuple(list(shape[0])), premise, "extended")
+
+            elif len(shape) == 2 and len("".join(shape)) == 5:  # ensure (arc,line)
+                if len(shape[0]) != 3:  # adjust to (OAB, BA)
+                    shape = shape[::-1]
+                if (shape[0][1], shape[0][0], shape[0][2]) in coll and \
+                        shape[0][1] == shape[1][1] and shape[0][2] == shape[1][0]:
                     self.add("Sector", tuple(list(shape[0])), premise, "extended")
 
         return True, set(all_forms)
@@ -555,17 +569,17 @@ class Problem:
             return True
         elif predicate in self.predicate_GDL["Construction"]:
             if predicate == "Shape":
-                if len(item) != len(set(item)):    # default check 1: mutex points
+                if len(item) != len(set(item)):  # default check 1: mutex points
                     return False
                 for shape in item:
                     if not 2 <= len(shape) <= 3 or len(shape) != len(set(shape)):
                         return False
-                if len(item) == 2 and len(item[0]) == 2 and len(item[1]) == 2 and\
+                if len(item) == 2 and len(item[0]) == 2 and len(item[1]) == 2 and \
                         (item[0][1] != item[1][0] or item[0][0] == item[1][1]):
                     return False
                 return True
             else:
-                return len(item) == len(set(item))    # default check 1: mutex points
+                return len(item) == len(set(item))  # default check 1: mutex points
         elif predicate in self.predicate_GDL["BasicEntity"]:
             if len(item) != len(set(item)):  # default check 1: mutex points
                 return False

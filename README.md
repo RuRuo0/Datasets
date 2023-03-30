@@ -11,19 +11,22 @@ Formal representation and solving for SAT-level Euclidean plane geometry problem
 
 | Worker | WorkLoad | PID | Skip | Submitted |
 |:---:|:---:|:---:|:---:|:---:|
-| XiaokaiZhang | 70 | 2155-2261 (Other) | / | × |
-| NaZhu | 70 | 2265-2386 (Other) | / | × |
-| JiaZou | 70 | 2387-2502 (Other) | / | × |
-| YimingHe | 70 | 2503-2625 (Other) | / | × |
-| YanjunGuo | 50 | 3089-3194 (Triangle) <br> 2626-2635 (Other) | / | × |
-| QikeHuang | 50 | 3195-3270 (Triangle) <br> 3795-3834 (Triangle) <br> 2636-2643 (Other) | / | × |
-| XiaoxiaoJin | 50 | 3836-3920 (Triangle) <br> 2646-2661 (Other) | / | × |
-| YangLi | 50 | 3921-4030 (Triangle) <br> 2662-2670 (Other) | / | × |
-| ChenyangMao | 50 | 4032-4127 (Triangle) <br> 2671-2684 (Other) | / | × |
-| ChanghaoWu | 50 | 4133-4244 (Triangle) <br> 2685-2697 (Other) | / | × |
-| DengfengYue | 50 | 4245-4366 (Triangle) <br> 2698-2711 (Other) | / | × |
-| FangzhenZhu | 50 | 4370-4485 (Triangle) <br> 2712-2722 (Other) | / | × |
-| Zhezhu | 50 | 4486-4582 (Triangle) <br> 2724-2740 (Other) | / | × |
+| 贺艺铭 | 70 | 2155-2261 (Other) | / | × |
+| 邹佳 | 70 | 2265-2386 (Other) | / | × |
+| 朱娜 | 70 | 2387-2502 (Other) | / | × |
+| 张效凯 | 70 | 2503-2625 (Other) | / | × |
+| 郭彦钧 | 50 | 3089-3165 (Triangle) <br> 2626-2652 (Other) | / | × |
+| 黄琦珂 | 50 | 3171-3253 (Triangle) <br> 2653-2680 (Other) | / | × |
+| 黄一雯 | 50 | 3254-3270 (Triangle) <br> 3795-3855 (Triangle) <br> 2682-2711 (Other) | / | × |
+| 金啸笑 | 50 | 3857-3919 (Triangle) <br> 2712-2747 (Other) | / | × |
+| 李阳 | 50 | 3920-4007 (Triangle) <br> 2748-2780 (Other) | / | × |
+| 毛晨扬 | 50 | 4009-4075 (Triangle) <br> 2781-2809 (Other) | / | × |
+| 王茹楠 | 50 | 4079-4169 (Triangle) <br> 2810-2844 (Other) | / | × |
+| 王一凡 | 50 | 4170-4244 (Triangle) <br> 2849-2890 (Other) | / | × |
+| 吴昌昊 | 50 | 4245-4330 (Triangle) <br> 2895-2921 (Other) | / | × |
+| 岳登峰 | 50 | 4335-4430 (Triangle) <br> 2923-2956 (Other) | / | × |
+| 朱方震 | 50 | 4435-4501 (Triangle) <br> 2957-2984 (Other) | / | × |
+| 朱哲 | 50 | 4502-4582 (Triangle) <br> 2986-3007 (Other) | / | × |
 
 
 #### Week 4 (230327): form 2023-03-27 to 2023-04-02.
@@ -31,10 +34,10 @@ Formal representation and solving for SAT-level Euclidean plane geometry problem
 
 | Worker | WorkLoad | PID | Skip | Submitted |
 |:---:|:---:|:---:|:---:|:---:|
-| XiaokaiZhang | 140 | 1585-1803 | / | × |
-| NaZhu | 70 | 1804-1924 | / | × |
-| JiaZou | 70 | 1926-2046 | / | × |
-| YimingHe | 70 | 2048-2154 | / | × |
+| XiaokaiZhang | 140 | 1585-1803 (other) | / | × |
+| NaZhu | 70 | 1804-1924 (other) | / | × |
+| JiaZou | 70 | 1926-2046 (other) | / | × |
+| YimingHe | 70 | 2048-2154 (other) | / | × |
 
 #### Week 3 (230320): form 2023-03-20 to 2023-03-26.
 **Attention:** Annotate problems in directory **Geometry3k-Triangle**.  

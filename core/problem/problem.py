@@ -84,6 +84,7 @@ class Problem:
         1.Collinear expand.
         2.Cocircular expand.
         3.Jigsaw construction. Shape(s1,s2,s3), Shape(s3,s2,s4) ==> Shape(s1,s4)
+        4.Angle representation alignment.
         """
         if not self.loaded:  # problem must be loaded
             e_msg = "Problem not loaded. Please run <load_problem> before run other functions."
@@ -138,8 +139,8 @@ class Problem:
                         self.conditions["Cocircular"].add(
                             tuple([circle] + [cocircular[(i + bias) % l] for i in range(l)]), (_id,), "extended")
 
-        jigsaw = {}
-        shape_cache = []
+        jigsaw_unit = {}
+        shape_unit = []    # mini shape unit
         for predicate, item in self.problem_CDL["parsed_cdl"]["construction_cdl"]:  # Shape
             if predicate != "Shape":
                 continue
@@ -164,94 +165,72 @@ class Problem:
                 continue
 
             for shape in all_forms:
-                jigsaw[shape] = all_forms
-                shape_cache.append(shape)
+                jigsaw_unit[shape] = all_forms
+                shape_unit.append(shape)
 
-        shape_old = []
-        while len(shape_cache) > 0:
-            shape_new = []
-            for shape1 in shape_old:
-                for shape2 in shape_cache:
-                    if len(jigsaw[shape1] & jigsaw[shape2]) > 0:  # ensure no intersecting part
-                        continue
-                    checked, new_shape = self._check_two_shape(shape1, shape2)
-                    if not checked:
+        shape_comb = shape_unit    # combination shape
+        jigsaw_comb = jigsaw_unit   # shape's jigsaw
+        while len(shape_comb):
+            shape_comb_new = []
+            jigsaw_comb_new = {}
+            for unit in shape_unit:
+                for comb in shape_comb:
+
+                    if unit in jigsaw_comb[comb]:    # comb is combined from unit
                         continue
 
-                    premise = (self.conditions["Shape"].get_id_by_item[shape1],
-                               self.conditions["Shape"].get_id_by_item[shape2])
+                    same_length = 0  # number of same sides
+                    while same_length < len(unit) and same_length < len(comb):
+                        if (len(unit[- same_length - 1]) == len(comb[same_length]) and    # same type (line or arc)
+                                ((len(unit[- same_length - 1]) == 3 and    # arc and same
+                                  unit[- same_length - 1] == comb[same_length]) or
+                                 (unit[- same_length - 1] == comb[same_length][::-1]))):   # line and same
+                            same_length += 1
+                        else:
+                            break
+
+                    if same_length == 0:  # ensure has same sides
+                        continue
+
+                    new_shape = list(unit[0:len(unit) - same_length])  # diff sides in polygon1
+                    new_shape += list(comb[same_length:len(comb)])  # diff sides in polygon2
+
+                    if not len(new_shape) == len(set(new_shape)):  # ensure no ring
+                        continue
+
+                    new_shape = tuple(new_shape)
+                    if not self.conditions["Shape"].can_add(new_shape):  # ensure new shape
+                        continue
+
+                    all_sides = ""
+                    for item in new_shape:   # remove circle center point
+                        if len(item) == 3:
+                            item = item[1:]
+                        all_sides += item
+                    checked = True
+                    for point in all_sides:
+                        if all_sides.count(point) > 2:
+                            checked = False
+                            break
+                    if not checked:  # ensure no holes
+                        continue
+
+                    premise = (self.conditions["Shape"].get_id_by_item[unit],
+                               self.conditions["Shape"].get_id_by_item[comb])
 
                     added, all_forms = self._add_shape(new_shape, premise, "extended")  # add shape
-                    if not added:
+                    if not added:    # ensure added
                         continue
 
-                    new_shape_jigsaw = jigsaw[shape1] | jigsaw[shape2]
+                    new_shape_jigsaw = jigsaw_unit[unit] | jigsaw_comb[comb]
                     for shape in all_forms:
-                        jigsaw[shape] = new_shape_jigsaw
-                        shape_new.append(shape)
+                        jigsaw_comb_new[shape] = new_shape_jigsaw
+                        shape_comb_new.append(shape)
 
-            for shape1 in shape_cache:
-                for shape2 in shape_cache:
-                    if len(jigsaw[shape1] & jigsaw[shape2]) > 0:  # ensure no intersecting part
-                        continue
-                    checked, new_shape = self._check_two_shape(shape1, shape2)
-                    if not checked:
-                        continue
-
-                    premise = (self.conditions["Shape"].get_id_by_item[shape1],
-                               self.conditions["Shape"].get_id_by_item[shape2])
-
-                    added, all_forms = self._add_shape(new_shape, premise, "extended")  # add shape
-                    if not added:
-                        continue
-
-                    new_shape_jigsaw = jigsaw[shape1] | jigsaw[shape2]
-                    for shape in all_forms:
-                        jigsaw[shape] = new_shape_jigsaw
-                        shape_new.append(shape)
-
-            shape_old += shape_cache
-            shape_cache = shape_new
+            shape_comb = shape_comb_new
+            jigsaw_comb = jigsaw_comb_new
 
         self._angle_collinear_expand()  # align angle's representation
-
-    def _check_two_shape(self, shape1, shape2):
-        """Check whether two shape can form a new shape."""
-        same_length = 0  # number of same sides
-        while same_length < len(shape1) and same_length < len(shape2):
-            if len(shape1[- same_length - 1]) == len(shape2[same_length]):
-                if (len(shape1[- same_length - 1]) == 3 and
-                    shape1[- same_length - 1] == shape2[same_length]) \
-                        or (shape1[- same_length - 1] == shape2[same_length][::-1]):
-                    same_length += 1
-                else:
-                    break
-            else:
-                break
-
-        if same_length == 0:  # ensure has same sides
-            return False, None
-
-        new_shape = list(shape1[0:len(shape1) - same_length])  # diff sides in polygon1
-        new_shape += list(shape2[same_length:len(shape2)])  # diff sides in polygon2
-
-        if not len(new_shape) == len(set(new_shape)):  # ensure no ring
-            return False, None
-
-        new_shape = tuple(new_shape)
-        if new_shape in self.conditions["Shape"].get_id_by_item:  # ensure new shape
-            return False, None
-
-        all_sides = ""
-        for item in new_shape:  # ensure no holes
-            if len(item) == 3:
-                item = item[1:]
-            all_sides += item
-        for point in all_sides:
-            if all_sides.count(point) > 2:
-                return False, None
-
-        return True, new_shape
 
     def _add_shape(self, shape, premise, theorem):
         """pass"""

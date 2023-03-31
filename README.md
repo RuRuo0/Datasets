@@ -9,65 +9,65 @@ Formal representation and solving for SAT-level Euclidean plane geometry problem
 #### Week 5 (230403): form 2023-04-03 to 2023-04-09.
 **Attention:** Annotate problems in directory **Geometry3K-Triangle** and **Geometry3K-Other**.  
 
-| Worker | WorkLoad | PID | Skip | Submitted |
-|:---:|:---:|:---:|:---:|:---:|
-| 贺艺铭 | 70 | 2155-2261 (Other) | / | × |
-| 邹佳 | 70 | 2265-2386 (Other) | / | × |
-| 朱娜 | 70 | 2387-2502 (Other) | / | × |
-| 张效凯 | 70 | 2503-2625 (Other) | / | × |
-| 郭彦钧 | 50 | 3089-3165 (Triangle) <br> 2626-2652 (Other) | / | × |
-| 黄琦珂 | 50 | 3171-3253 (Triangle) <br> 2653-2680 (Other) | / | × |
-| 黄一雯 | 50 | 3254-3270 (Triangle) <br> 3795-3855 (Triangle) <br> 2682-2711 (Other) | / | × |
-| 金啸笑 | 50 | 3857-3919 (Triangle) <br> 2712-2747 (Other) | / | × |
-| 李阳 | 50 | 3920-4007 (Triangle) <br> 2748-2780 (Other) | / | × |
-| 毛晨扬 | 50 | 4009-4075 (Triangle) <br> 2781-2809 (Other) | / | × |
-| 王茹楠 | 50 | 4079-4169 (Triangle) <br> 2810-2844 (Other) | / | × |
-| 王一凡 | 50 | 4170-4244 (Triangle) <br> 2849-2890 (Other) | / | × |
-| 吴昌昊 | 50 | 4245-4330 (Triangle) <br> 2895-2921 (Other) | / | × |
-| 岳登峰 | 50 | 4335-4430 (Triangle) <br> 2923-2956 (Other) | / | × |
-| 朱方震 | 50 | 4435-4501 (Triangle) <br> 2957-2984 (Other) | / | × |
-| 朱哲 | 50 | 4502-4582 (Triangle) <br> 2986-3007 (Other) | / | × |
+| Id | Worker | WorkLoad | PID | Skip | Submitted |
+|:---:||:---:|:---:|:---:|:---:|:---:|
+| 1 || 贺艺铭 | 70 | 2155-2261 (Other) | / | × |
+| 2 || 邹佳 | 70 | 2265-2386 (Other) | / | × |
+| 3 || 朱娜 | 70 | 2387-2502 (Other) | / | × |
+| 4 || 张效凯 | 70 | 2503-2625 (Other) | / | × |
+| 5 || 郭彦钧 | 50 | 3089-3165 (Triangle) <br> 2626-2652 (Other) | / | × |
+| 6 || 黄琦珂 | 50 | 3171-3253 (Triangle) <br> 2653-2680 (Other) | / | × |
+| 7 || 黄一雯 | 50 | 3254-3270 (Triangle) <br> 3795-3855 (Triangle) <br> 2682-2711 (Other) | / | × |
+| 8 || 金啸笑 | 50 | 3857-3919 (Triangle) <br> 2712-2747 (Other) | / | × |
+| 9 || 李阳 | 50 | 3920-4007 (Triangle) <br> 2748-2780 (Other) | / | × |
+| 10 || 毛晨扬 | 50 | 4009-4075 (Triangle) <br> 2781-2809 (Other) | / | × |
+| 11 || 王茹楠 | 50 | 4079-4169 (Triangle) <br> 2810-2844 (Other) | / | × |
+| 12 || 王一凡 | 50 | 4170-4244 (Triangle) <br> 2849-2890 (Other) | / | × |
+| 13 || 吴昌昊 | 50 | 4245-4330 (Triangle) <br> 2895-2921 (Other) | / | × |
+| 14 || 岳登峰 | 50 | 4335-4430 (Triangle) <br> 2923-2956 (Other) | / | × |
+| 15 || 朱方震 | 50 | 4435-4501 (Triangle) <br> 2957-2984 (Other) | / | × |
+| 16 || 朱哲 | 50 | 4502-4582 (Triangle) <br> 2986-3007 (Other) | / | × |
 
 
 #### Week 4 (230327): form 2023-03-27 to 2023-04-02.
 **Attention:** Annotate problems in directory **Geometry3K-Other**.  
 
-| Worker | WorkLoad | PID | Skip | Submitted |
-|:---:|:---:|:---:|:---:|:---:|
-| XiaokaiZhang | 140 | 1585-1803 (other) | / | × |
-| NaZhu | 70 | 1804-1924 (other) | / | × |
-| JiaZou | 70 | 1926-2046 (other) | / | × |
-| YimingHe | 70 | 2048-2154 (other) | / | × |
+| Id | Worker | WorkLoad | PID | Skip | Submitted |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| 1 | XiaokaiZhang | 140 | 1585-1803 (other) | / | × |
+| 2 | NaZhu | 70 | 1804-1924 (other) | / | × |
+| 3 | JiaZou | 70 | 1926-2046 (other) | / | × |
+| 4 | YimingHe | 70 | 2048-2154 (other) | / | × |
 
 #### Week 3 (230320): form 2023-03-20 to 2023-03-26.
 **Attention:** Annotate problems in directory **Geometry3k-Triangle**.  
 
-| Worker | WorkLoad | PID | Skip | Submitted |
-|:---:|:---:|:---:|:---:|:---:|
-| XiaokaiZhang | 70 | 3089-3270 | / | × (add to next week) |
-| NaZhu | 70 | 3273-3448 | / | √ |
-| JiaZou | 70 | 3451-3624 | / | √ |
-| YimingHe | 70 | 3625-3791 | / | √ |
+| Id | Worker | WorkLoad | PID | Skip | Submitted |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| 1 | XiaokaiZhang | 70 | 3089-3270 | / | × (add to next week) |
+| 2 | NaZhu | 70 | 3273-3448 | / | √ |
+| 3 | JiaZou | 70 | 3451-3624 | / | √ |
+| 4 | YimingHe | 70 | 3625-3791 | / | √ |
 
 #### Week 2 (230313): form 2023-03-13 to 2023-03-19.
 **Attention:** Annotate problems in directory **Geometry3k-Triangle**.  
 
-| Worker | WorkLoad | PID | Skip | Submitted |
-|:---:|:---:|:---:|:---:|:---:|
-| XiaokaiZhang | 70 | 2397-2570 | / | √ |
-| NaZhu | 70 | 2572-2742 | / | √ |
-| JiaZou | 70 | 2744-2885 | / | √ |
-| YimingHe | 70 | 2887-3083 | / | √ |
+| Id | Worker | WorkLoad | PID | Skip | Submitted |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| 1 | XiaokaiZhang | 70 | 2397-2570 | / | √ |
+| 2 | NaZhu | 70 | 2572-2742 | / | √ |
+| 3 | JiaZou | 70 | 2744-2885 | / | √ |
+| 4 | YimingHe | 70 | 2887-3083 | / | √ |
 
 #### Week 1 (230306): form 2023-03-06 to 2023-03-12.
 **Attention:** Annotate problems in directory **Geometry3k-Triangle**.  
 
-| Worker | WorkLoad | PID | Skip | Submitted |
-|:---:|:---:|:---:|:---:|:---:|
-| XiaokaiZhang | 107 | 1584-1864 | / | √ |
-| NaZhu | 70 | 1865-2026 | / | √ |
-| JiaZou | 70 | 2028-2233 | / | √ |
-| YimingHe | 70 | 2236-2396 | / | √ |
+| Id | Worker | WorkLoad | PID | Skip | Submitted |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| 1 | XiaokaiZhang | 107 | 1584-1864 | / | √ |
+| 2 | NaZhu | 70 | 1865-2026 | / | √ |
+| 3 | JiaZou | 70 | 2028-2233 | / | √ |
+| 4 | YimingHe | 70 | 2236-2396 | / | √ |
 
 ## Introduction
 Formal mathematics plays an important role in mathematical research, especially with the deepening of mathematical research, the theory becomes obscure and difficult to understand, and computer aided verification is more needed. Geometry involves the literal description and image representation of knowledge, the unity of algebraic calculation and symbolic reasoning, so it is difficult to formalize.  

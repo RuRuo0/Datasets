@@ -44,7 +44,7 @@ Formal representation and solving for SAT-level Euclidean plane geometry problem
 
 | Worker | WorkLoad | PID | Skip | Submitted |
 |:---:|:---:|:---:|:---:|:---:|
-| XiaokaiZhang | 70 | 3089-3270 | / | √ |
+| XiaokaiZhang | 70 | 3089-3270 | / | × (add to next week) |
 | NaZhu | 70 | 3273-3448 | / | √ |
 | JiaZou | 70 | 3451-3624 | / | √ |
 | YimingHe | 70 | 3625-3791 | / | √ |

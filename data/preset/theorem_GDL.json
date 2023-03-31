@@ -75,20 +75,13 @@
   },
   "parallel_property_collinear_extend(AB,CD,M)": {
     "1": {
-      "premise": "Collinear(AMB)&ParallelBetweenLine(AB,CD)",
-      "conclusion": [
-        "ParallelBetweenLine(AM,CD)",
-        "ParallelBetweenLine(MB,CD)"
-      ]
-    },
-    "2": {
       "premise": "Collinear(MAB)&ParallelBetweenLine(AB,CD)",
       "conclusion": [
         "ParallelBetweenLine(MA,CD)",
         "ParallelBetweenLine(MB,CD)"
       ]
     },
-    "3": {
+    "2": {
       "premise": "Collinear(ABM)&ParallelBetweenLine(AB,CD)",
       "conclusion": [
         "ParallelBetweenLine(AM,CD)",
@@ -162,19 +155,19 @@
       ]
     },
     "2": {
-      "premise": "PerpendicularBetweenLine(AO,CO)&Collinear(BOC)",
+      "premise": "PerpendicularBetweenLine(AO,CO)&Collinear(COB)",
       "conclusion": [
         "PerpendicularBetweenLine(BO,AO)"
       ]
     },
     "3": {
-      "premise": "PerpendicularBetweenLine(AO,CO)&(Collinear(ABO)|Collinear(BAO))",
+      "premise": "PerpendicularBetweenLine(AO,CO)&Collinear(BAO)",
       "conclusion": [
         "PerpendicularBetweenLine(BO,CO)"
       ]
     },
     "4": {
-      "premise": "PerpendicularBetweenLine(AO,CO)&(Collinear(OBC)|Collinear(OCB))",
+      "premise": "PerpendicularBetweenLine(AO,CO)&Collinear(BCO)",
       "conclusion": [
         "PerpendicularBetweenLine(AO,BO)"
       ]
@@ -233,6 +226,14 @@
       "premise": "Angle(AOB)&Angle(BOC)&Collinear(AOC)",
       "conclusion": [
         "Equal(Add(MeasureOfAngle(AOB),MeasureOfAngle(BOC)),180)"
+      ]
+    }
+  },
+  "round_angle(AOB,BOA)": {
+    "1": {
+      "premise": "Angle(AOB)&Angle(BOA))",
+      "conclusion": [
+        "Equal(Add(MeasureOfAngle(AOB),MeasureOfAngle(BOA)),360)"
       ]
     }
   },
@@ -508,7 +509,7 @@
   },
   "congruent_triangle_judgment_hl(ABC,DEF)": {
     "1": {
-      "premise": "RightTriangle(ABC)&RightTriangle(DEF)&Equal(LengthOfLine(AC),LengthOfLine(DF))&(Equal(LengthOfLine(AB),LengthOfLine(DE))|Equal(LengthOfLine(BC),LengthOfLine(EF)))",
+      "premise": "Triangle(ABC)&Triangle(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(DE,FE)&Equal(LengthOfLine(AC),LengthOfLine(DF))&(Equal(LengthOfLine(AB),LengthOfLine(DE))|Equal(LengthOfLine(BC),LengthOfLine(EF)))",
       "conclusion": [
         "CongruentBetweenTriangle(ABC,DEF)"
       ]
@@ -580,7 +581,7 @@
   },
   "mirror_congruent_triangle_judgment_hl(ABC,DEF)": {
     "1": {
-      "premise": "RightTriangle(ABC)&RightTriangle(EFD)&Equal(LengthOfLine(AC),LengthOfLine(DE))&(Equal(LengthOfLine(BC),LengthOfLine(EF))|Equal(LengthOfLine(AB),LengthOfLine(DF)))",
+      "premise": "Triangle(ABC)&Triangle(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(EF,DF)&Equal(LengthOfLine(AC),LengthOfLine(DE))&(Equal(LengthOfLine(BC),LengthOfLine(EF))|Equal(LengthOfLine(AB),LengthOfLine(DF)))",
       "conclusion": [
         "MirrorCongruentBetweenTriangle(ABC,DEF)"
       ]
@@ -644,7 +645,7 @@
   },
   "similar_triangle_judgment_hl(ABC,DEF)": {
     "1": {
-      "premise": "RightTriangle(ABC)&RightTriangle(DEF)&(Equal(Mul(LengthOfLine(AC),LengthOfLine(DE)),Mul(LengthOfLine(AB),LengthOfLine(DF)))|Equal(Mul(LengthOfLine(AC),LengthOfLine(EF)),Mul(LengthOfLine(BC),LengthOfLine(DF))))",
+      "premise": "Triangle(ABC)&Triangle(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(DE,FE)&(Equal(Mul(LengthOfLine(AB),LengthOfLine(DF)),Mul(LengthOfLine(AC),LengthOfLine(DE)))|Equal(Mul(LengthOfLine(BC),LengthOfLine(DF)),Mul(LengthOfLine(AC),LengthOfLine(EF))))",
       "conclusion": [
         "SimilarBetweenTriangle(ABC,DEF)"
       ]
@@ -716,7 +717,7 @@
   },
   "mirror_similar_triangle_judgment_hl(ABC,DEF)": {
     "1": {
-      "premise": "RightTriangle(BCA)&RightTriangle(DEF)&(Equal(Mul(LengthOfLine(AC),LengthOfLine(DF)),Mul(LengthOfLine(AB),LengthOfLine(DE)))|Equal(Mul(LengthOfLine(AC),LengthOfLine(EF)),Mul(LengthOfLine(BC),LengthOfLine(DE))))",
+      "premise": "Triangle(BCA)&Triangle(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(EF,DF)&(Equal(Mul(LengthOfLine(AB),LengthOfLine(DE)),Mul(LengthOfLine(DF),LengthOfLine(AC)))|Equal(Mul(LengthOfLine(BC),LengthOfLine(DE)),Mul(LengthOfLine(AC),LengthOfLine(EF))))",
       "conclusion": [
         "MirrorSimilarBetweenTriangle(ABC,DEF)"
       ]
@@ -1168,7 +1169,7 @@
       ]
     }
   },
-  "arc_to_angle(OAB)": {
+  "arc_measure_and_angle_measure(OAB)": {
     "1": {
       "premise": "Arc(OAB)&Angle(BOA)",
       "conclusion": [
@@ -1194,7 +1195,7 @@
   },
   "arc_length_formula(OAB)": {
     "1": {
-      "premise": "Arc(OAB)&Angle(BOA)",
+      "premise": "Arc(OAB)",
       "conclusion": [
         "Equal(LengthOfArc(OAB),Mul(MeasureOfArc(OAB),1/180*π,RadiusOfCircle(O)))"
       ]

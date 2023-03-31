@@ -1,5 +1,6 @@
 import json
 from sympy import Float
+sym = ["√", "π"]
 
 
 def load_json(filename):

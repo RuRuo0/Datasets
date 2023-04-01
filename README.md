@@ -1,5 +1,5 @@
 # FormalGeo-SAT
-[![Version](https://img.shields.io/badge/Version-1.3.6-brightgreen)](https://github.com/BitSecret/FormalGeo-SAT)
+[![Version](https://img.shields.io/badge/Version-1.4.0-brightgreen)](https://github.com/BitSecret/FormalGeo-SAT)
 [![License](https://img.shields.io/badge/License-MIT-green)](https://opensource.org/licenses/MIT)
 [![Survey](https://img.shields.io/badge/Survey-FormalGeo-blue)](https://github.com/BitSecret/FormalGeo-SAT)  
 Formal representation and solving for SAT-level Euclidean plane geometry problems.  
@@ -10,23 +10,23 @@ Formal representation and solving for SAT-level Euclidean plane geometry problem
 **Attention:** Annotate problems in directory **Geometry3K-Triangle** and **Geometry3K-Other**.  
 
 | Id | Worker | WorkLoad | PID | Skip | Submitted |
-|:---:||:---:|:---:|:---:|:---:|:---:|
-| 1 || 贺艺铭 | 70 | 2155-2261 (Other) | / | × |
-| 2 || 邹佳 | 70 | 2265-2386 (Other) | / | × |
-| 3 || 朱娜 | 70 | 2387-2502 (Other) | / | × |
-| 4 || 张效凯 | 70 | 2503-2625 (Other) | / | × |
-| 5 || 郭彦钧 | 50 | 3089-3165 (Triangle) <br> 2626-2652 (Other) | / | × |
-| 6 || 黄琦珂 | 50 | 3171-3253 (Triangle) <br> 2653-2680 (Other) | / | × |
-| 7 || 黄一雯 | 50 | 3254-3270 (Triangle) <br> 3795-3855 (Triangle) <br> 2682-2711 (Other) | / | × |
-| 8 || 金啸笑 | 50 | 3857-3919 (Triangle) <br> 2712-2747 (Other) | / | × |
-| 9 || 李阳 | 50 | 3920-4007 (Triangle) <br> 2748-2780 (Other) | / | × |
-| 10 || 毛晨扬 | 50 | 4009-4075 (Triangle) <br> 2781-2809 (Other) | / | × |
-| 11 || 王茹楠 | 50 | 4079-4169 (Triangle) <br> 2810-2844 (Other) | / | × |
-| 12 || 王一凡 | 50 | 4170-4244 (Triangle) <br> 2849-2890 (Other) | / | × |
-| 13 || 吴昌昊 | 50 | 4245-4330 (Triangle) <br> 2895-2921 (Other) | / | × |
-| 14 || 岳登峰 | 50 | 4335-4430 (Triangle) <br> 2923-2956 (Other) | / | × |
-| 15 || 朱方震 | 50 | 4435-4501 (Triangle) <br> 2957-2984 (Other) | / | × |
-| 16 || 朱哲 | 50 | 4502-4582 (Triangle) <br> 2986-3007 (Other) | / | × |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| 1 | 贺艺铭 | 70 | 2155-2261 (Other) | / | × |
+| 2 | 邹佳 | 70 | 2265-2386 (Other) | / | × |
+| 3 | 朱娜 | 70 | 2387-2502 (Other) | / | × |
+| 4 | 张效凯 | 70 | 2503-2625 (Other) | / | × |
+| 5 | 郭彦钧 | 50 | 3089-3165 (Triangle) <br> 2626-2652 (Other) | / | × |
+| 6 | 黄琦珂 | 50 | 3171-3253 (Triangle) <br> 2653-2680 (Other) | / | × |
+| 7 | 黄一雯 | 50 | 3254-3270 (Triangle) <br> 3795-3855 (Triangle) <br> 2682-2711 (Other) | / | × |
+| 8 | 金啸笑 | 50 | 3857-3919 (Triangle) <br> 2712-2747 (Other) | / | × |
+| 9 | 李阳 | 50 | 3920-4007 (Triangle) <br> 2748-2780 (Other) | / | × |
+| 10 | 毛晨扬 | 50 | 4009-4075 (Triangle) <br> 2781-2809 (Other) | / | × |
+| 11 | 王茹楠 | 50 | 4079-4169 (Triangle) <br> 2810-2844 (Other) | / | × |
+| 12 | 王一凡 | 50 | 4170-4244 (Triangle) <br> 2849-2890 (Other) | / | × |
+| 13 | 吴昌昊 | 50 | 4245-4330 (Triangle) <br> 2895-2921 (Other) | / | × |
+| 14 | 岳登峰 | 50 | 4335-4430 (Triangle) <br> 2923-2956 (Other) | / | × |
+| 15 | 朱方震 | 50 | 4435-4501 (Triangle) <br> 2957-2984 (Other) | / | × |
+| 16 | 朱哲 | 50 | 4502-4582 (Triangle) <br> 2986-3007 (Other) | / | × |
 
 
 #### Week 4 (230327): form 2023-03-27 to 2023-04-02.
@@ -81,6 +81,15 @@ So we designed a plane geometry formalization system and provided a python imple
 4.Generate information about problem-solving process, such as solution hypertree, CDL of every step, Directed acyclic graph of applied theorem, etc. These interfaces provide verification information for correctness of problem-solving and facilitate AI-assisted reasoning.
 
 ## Version
+#### FormalGeo-SAT 1.4 (Apr 1, 2023) 
+**predicates/theorems**: 71/164  
+**problems**: 1166  
+**new functions**:  
+1.Defining geometric knowledge graph to guide the design of predicate and theorem.  
+2.New Construction method that unifies all shapes in plane geometry.  
+4.Added problems about circle and polygon.  
+3.More readable documents.  
+
 #### FormalGeo-SAT 1.3 (Mar 12, 2023) 
 **predicates/theorems**: 50/77  
 **problems**: 319  

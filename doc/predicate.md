@@ -136,10 +136,23 @@ Line声明一个无向线段。
     Line(AB),Line(CD)  
     Line(AO),Line(BO) 
 
+
+### Arc(OAB)
+Arc声明一段弧，由3个点组成，第1个点是弧所在的圆，其余2点是构成弧的点，按照逆时针的方向有序列出。  
+<div>
+    <img src="gdl-pic/P006.png"  width="45%">
+</div>
+
+图1-3中弧的声明：  
+
+    Arc(OAB)
+    Arc(OAC),Arc(OCA)
+    Arc(OAB),Arc(OBC),Arc(OCD),Arc(ODA)
+
 ### Angle(ABC)
 角由3个点构成，在声明角时，需要按照逆时针原则。  
 <div>
-    <img src="gdl-pic/P006.png"  width="45%">
+    <img src="gdl-pic/P007.png"  width="45%">
 </div>
 
 图1-3的角的声明：  
@@ -151,7 +164,7 @@ Line声明一个无向线段。
 ### Triangle(ABC)
 三角形由3个点构成，按照逆时针的方向列出所有的点。依据旋转不变原则，一个三角形有3种表示方式。  
 <div>
-    <img src="gdl-pic/P007.png"  width="15%">
+    <img src="gdl-pic/P008.png"  width="15%">
 </div>
 
     Triangle(ABC)
@@ -162,7 +175,7 @@ Line声明一个无向线段。
 ### Quadrilateral(ABCD)
 与三角形类似。  
 <div>
-    <img src="gdl-pic/P008.png"  width="15%">
+    <img src="gdl-pic/P009.png"  width="15%">
 </div>
 
     Quadrilateral(ABCD)
@@ -173,7 +186,7 @@ Line声明一个无向线段。
 ### Pentagon(ABCDE)
 与三角形类似。  
 <div>
-    <img src="gdl-pic/P009.png"  width="15%">
+    <img src="gdl-pic/P010.png"  width="15%">
 </div>
 
     Pentagon(ABCDE)
@@ -185,7 +198,7 @@ Line声明一个无向线段。
 ### Hexagon(ABCDEF)
 与三角形类似。  
 <div>
-    <img src="gdl-pic/P010.png"  width="15%">
+    <img src="gdl-pic/P011.png"  width="15%">
 </div>
 
     Hexagon(ABCDEF)
@@ -194,18 +207,6 @@ Line声明一个无向线段。
     Hexagon(DEFABC)
     Hexagon(EFABCD)
     Hexagon(FABCDE)
-
-### Arc(OAB)
-Arc声明一段弧，由3个点组成，第1个点是弧所在的圆，其余2点是构成弧的点，按照逆时针的方向有序列出。  
-<div>
-    <img src="gdl-pic/P011.png"  width="45%">
-</div>
-
-图1-3中弧的声明：  
-
-    Arc(OAB)
-    Arc(OAC),Arc(OCA)
-    Arc(OAB),Arc(OBC),Arc(OCD),Arc(ODA)
 
 ### Circle(O)
 Circle用于声明一个圆，O表示圆心。  
@@ -233,7 +234,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 ## C、实体
 ### RightTriangle(ABC)
 <div>
-    <img src="gdl-pic/P014.png"  width="15%">
+    <img src="gdl-pic/P014.png" width="15%">
 </div>
 
     ee_check: Triangle(ABC)
@@ -246,7 +247,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
 ### IsoscelesTriangle(ABC)
 <div>
-    <img src="gdl-pic/P015.png"  width="15%">
+    <img src="gdl-pic/P015.png" width="15%">
 </div>
 
     ee_check: Triangle(ABC)
@@ -259,7 +260,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
 ### IsoscelesRightTriangle(ABC)
 <div>
-    <img src="gdl-pic/P016.png"  width="15%">
+    <img src="gdl-pic/P016.png" width="15%">
 </div>
 
     ee_check: Triangle(ABC)
@@ -271,7 +272,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
 ### EquilateralTriangle(ABC)
 <div>
-    <img src="gdl-pic/P017.png"  width="15%">
+    <img src="gdl-pic/P017.png" width="15%">
 </div>
 
     ee_check: Triangle(ABC)
@@ -287,7 +288,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
 ### Kite(ABCD)
 <div>
-    <img src="gdl-pic/P018.png"  width="15%">
+    <img src="gdl-pic/P018.png" width="15%">
 </div>
 
     ee_check: Quadrilateral(ABCD)
@@ -302,7 +303,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
 ### Parallelogram(ABCD)
 <div>
-    <img src="gdl-pic/P019.png"  width="15%">
+    <img src="gdl-pic/P019.png" width="15%">
 </div>
 
     ee_check: Quadrilateral(ABCD)
@@ -318,7 +319,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
 ### Rhombus(ABCD)
 <div>
-    <img src="gdl-pic/P020.png"  width="15%">
+    <img src="gdl-pic/P020.png" width="15%">
 </div>
 
     ee_check: Quadrilateral(ABCD)
@@ -335,7 +336,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
 ### Rectangle(ABCD)
 <div>
-    <img src="gdl-pic/P021.png"  width="15%">
+    <img src="gdl-pic/P021.png" width="15%">
 </div>
 
     ee_check: Quadrilateral(ABCD)
@@ -354,7 +355,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
 ### Square(ABCD)
 <div>
-    <img src="gdl-pic/P022.png"  width="15%">
+    <img src="gdl-pic/P022.png" width="15%">
 </div>
 
     ee_check: Quadrilateral(ABCD)
@@ -370,7 +371,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
 ### Trapezoid(ABCD)
 <div>
-    <img src="gdl-pic/P023.png"  width="15%">
+    <img src="gdl-pic/P023.png" width="15%">
 </div>
 
     ee_check: Quadrilateral(ABCD)
@@ -384,7 +385,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
 ### IsoscelesTrapezoid(ABCD)
 <div>
-    <img src="gdl-pic/P024.png"  width="15%">
+    <img src="gdl-pic/P024.png" width="15%">
 </div>
 
     ee_check: Quadrilateral(ABCD)
@@ -398,7 +399,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
 ### RightTrapezoid(ABCD)
 <div>
-    <img src="gdl-pic/P025.png"  width="15%">
+    <img src="gdl-pic/P025.png" width="15%">
 </div>
 
     ee_check: Quadrilateral(ABCD)
@@ -413,7 +414,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
 ### EquilateralPentagon(ABCDE)
 <div>
-    <img src="gdl-pic/P026.png"  width="15%">
+    <img src="gdl-pic/P026.png" width="15%">
 </div>
 
     ee_check: Pentagon(ABCDE)
@@ -432,7 +433,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
 ### RegularPentagon(ABCDE)
 <div>
-    <img src="gdl-pic/P027.png"  width="15%">
+    <img src="gdl-pic/P027.png" width="15%">
 </div>
 
     ee_check: Pentagon(ABCDE)
@@ -453,7 +454,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
 ### EquilateralHexagon(ABCDEF)
 <div>
-    <img src="gdl-pic/P028.png"  width="15%">
+    <img src="gdl-pic/P028.png" width="15%">
 </div>
 
     ee_check: Hexagon(ABCDEF)
@@ -472,7 +473,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
 ### RegularHexagon(ABCDEF)
 <div>
-    <img src="gdl-pic/P029.png"  width="15%">
+    <img src="gdl-pic/P029.png" width="15%">
 </div>
 
     ee_check: Hexagon(ABCDEF)
@@ -602,9 +603,152 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 2.线的第一个点应是三角形的顶点  
 3.要跟属性HeightOfTriangle区分开来，这里是声明线和三角形的关系，属性那里是表示高的长度  
 
-### IsAltitudeOfQuadrilateral(EF,ABCD)
+### IsMidsegmentOfTriangle(DE,ABC)
 <div>
     <img src="gdl-pic/P037.png"  width="15%">
+</div>
+
+    ee_check: Line(DE)
+              Triangle(ABC)
+              Collinear(ADB)
+              Collinear(AEC)
+    fv_check: DE,ABC
+    multi: 
+    extend: IsMidpointOfLine(D,AB)
+            IsMidpointOfLine(E,AC)
+**Notes**:  
+1.线DE是三角形ABC的中位线，即三角形两腰中点的连线  
+2.线DE点的顺序应和三角形ABC底边BC点的顺序一致  
+
+### IsCircumcenterOfTriangle(O,ABC)
+<div>
+    <img src="gdl-pic/P038.png"  width="15%">
+</div>
+
+    ee_check: Point(O)
+              Triangle(ABC)
+    fv_check: O,ABC
+    multi: O,BCA
+           O,CAB
+    extend: 
+**Notes**:  
+1.点O是三角形ABC的外心  
+2.外心是三角形外接圆的圆心，是三角形三边垂直平分线的交点  
+
+### IsIncenterOfTriangle(O,ABC)
+<div>
+    <img src="gdl-pic/P039.png"  width="15%">
+</div>
+
+    ee_check: Point(O)
+              Triangle(ABC)
+    fv_check: O,ABC
+    multi: O,BCA
+           O,CAB
+    extend: IsBisectorOfAngle(AO,CAB)
+            IsBisectorOfAngle(BO,ABC)
+            IsBisectorOfAngle(CO,BCA)
+**Notes**:  
+1.点O是三角形ABC的内心  
+2.内心是三角形内切圆的圆心，是三角形三角的角平分线的交点  
+
+### IsCentroidOfTriangle(O,ABC)
+<div>
+    <img src="gdl-pic/P040.png"  width="15%">
+</div>
+
+    ee_check: Point(O)
+              Triangle(ABC)
+    fv_check: O,ABC
+    multi: O,BCA
+           O,CAB
+    extend: 
+**Notes**:  
+1.点O是三角形ABC的重心  
+2.内心是三角形三边的中线的交点  
+
+### IsOrthocenterOfTriangle(O,ABC)
+<div>
+    <img src="gdl-pic/P041.png"  width="15%">
+</div>
+
+    ee_check: Point(O)
+              Triangle(ABC)
+    fv_check: O,ABC
+              A,ABC
+              B,ABC
+              C,ABC
+    multi: O,BCA
+           O,CAB
+    extend: 
+**Notes**:  
+1.点O是三角形ABC的垂心  
+2.垂心是三角形三个底边上的高的交点  
+
+### CongruentBetweenTriangle(ABC,DEF)
+<div>
+    <img src="gdl-pic/P042.png"  width="30%">
+</div>
+
+    ee_check: Triangle(ABC)
+              Triangle(DEF)
+    multi: BCA,EFD
+           CAB,FDE
+    extend: 
+**Notes**:  
+1.三角形ABC与三角形DEF全等  
+2.两个三角形的点应一一对应  
+3.根据旋转不变性原则，有6种表示方法，选其一即可  
+
+### MirrorCongruentBetweenTriangle(ABC,DEF)
+<div>
+    <img src="gdl-pic/P043.png"  width="30%">
+</div>
+
+    ee_check: Triangle(ABC)
+              Triangle(DEF)
+    multi: BCA,FDE
+           CAB,EFD
+    extend: 
+**Notes**:  
+1.三角形ABC与三角形DEF镜像全等  
+2.标注方法：①点一一对应得(ABC,DFE)②没有三角形DFE，第一个点D不动，将其他点逆序，得DEF③标注(ABC,DEF)  
+3.根据旋转不变性原则，有6种表示方法，选其一即可  
+
+### SimilarBetweenTriangle(ABC,DEF)
+<div>
+    <img src="gdl-pic/P044.png"  width="30%">
+</div>
+
+    ee_check: Triangle(ABC)
+              Triangle(DEF)
+    multi: BCA,EFD
+           CAB,FDE
+    extend: 
+**Notes**:  
+1.三角形ABC与三角形DEF相似  
+2.两个三角形的点应一一对应  
+3.根据旋转不变性原则，有6种表示方法，选其一即可  
+4.在这6中表示中，(ABC,DEF)和(DEF,ABC)相似比互为倒数，所以为了方便计算，我们一般只在3种表示方法种选其一  
+
+### MirrorSimilarBetweenTriangle(ABC,DEF)
+<div>
+    <img src="gdl-pic/P045.png"  width="30%">
+</div>
+
+    ee_check: Triangle(ABC)
+              Triangle(DEF)
+    multi: BCA,FDE
+           CAB,EFD
+    extend: 
+**Notes**:  
+1.三角形ABC与三角形DEF镜像相似  
+2.标注方法：①点一一对应得(ABC,DFE)②没有三角形DFE，第一个点D不动，将其他点逆序，得DEF③标注(ABC,DEF)  
+3.根据旋转不变性原则，有6种表示方法，选其一即可  
+
+### IsAltitudeOfQuadrilateral(EF,ABCD)
+<div>
+    <img src="gdl-pic/P046.png"  width="15%">
 </div>
 
     ee_check: Line(EF)
@@ -630,26 +774,9 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 3.要跟属性HeightOfQuadrilateral区分开来  
 4.注意，平行四边形每个边都有高，梯形只有平行边有高，筝形没有高  
 
-### IsMidsegmentOfTriangle(DE,ABC)
+### IsMidsegmentOfQuadrilateral(EF,ABCD)
 <div>
-    <img src="gdl-pic/P038.png"  width="15%">
-</div>
-
-    ee_check: Line(DE)
-              Triangle(ABC)
-              Collinear(ADB)
-              Collinear(AEC)
-    fv_check: DE,ABC
-    multi: 
-    extend: IsMidpointOfLine(D,AB)
-            IsMidpointOfLine(E,AC)
-**Notes**:  
-1.线DE是三角形ABC的中位线，即三角形两腰中点的连线  
-2.线DE点的顺序应和三角形ABC底边BC点的顺序一致  
-
-### IsMidsegmentOfTrapezoid(EF,ABCD)
-<div>
-    <img src="gdl-pic/P039.png"  width="15%">
+    <img src="gdl-pic/P047.png"  width="15%">
 </div>
 
     ee_check: Line(EF)
@@ -657,80 +784,17 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
               Collinear(AEB)
               Collinear(DFC)
     fv_check: FE,CDAB
-    multi: 
+    multi: FE,CDAB
     extend: IsMidpointOfLine(E,AB)
             IsMidpointOfLine(F,CD)
 **Notes**:  
-1.线EF是梯形ABCD的中位线，即梯形两腰中点的连线  
-2.线DE点的顺序应和梯形ABCD底边BC点的顺序一致  
+1.线EF是四边形ABCD的中位线，即AB中点和CD中点的连线  
+2.线DE点的顺序应和四边形ABCD底边BC点的顺序一致  
 3.根据旋转不变性原则，有2种表示方法，选其一即可  
-
-### IsCircumcenterOfTriangle(O,ABC)
-<div>
-    <img src="gdl-pic/P040.png"  width="15%">
-</div>
-
-    ee_check: Point(O)
-              Triangle(ABC)
-    fv_check: O,ABC
-    multi: O,BCA
-           O,CAB
-    extend: 
-**Notes**:  
-1.点O是三角形ABC的外心  
-2.外心是三角形外接圆的圆心，是三角形三边垂直平分线的交点  
-
-### IsIncenterOfTriangle(O,ABC)
-<div>
-    <img src="gdl-pic/P041.png"  width="15%">
-</div>
-
-    ee_check: Point(O)
-              Triangle(ABC)
-    fv_check: O,ABC
-    multi: O,BCA
-           O,CAB
-    extend: 
-**Notes**:  
-1.点O是三角形ABC的内心  
-2.内心是三角形内切圆的圆心，是三角形三角的角平分线的交点  
-
-### IsCentroidOfTriangle(O,ABC)
-<div>
-    <img src="gdl-pic/P042.png"  width="15%">
-</div>
-
-    ee_check: Point(O)
-              Triangle(ABC)
-    fv_check: O,ABC
-    multi: O,BCA
-           O,CAB
-    extend: 
-**Notes**:  
-1.点O是三角形ABC的重心  
-2.内心是三角形三边的中线的交点  
-
-### IsOrthocenterOfTriangle(O,ABC)
-<div>
-    <img src="gdl-pic/P043.png"  width="15%">
-</div>
-
-    ee_check: Point(O)
-              Triangle(ABC)
-    fv_check: O,ABC
-              A,ABC
-              B,ABC
-              C,ABC
-    multi: O,BCA
-           O,CAB
-    extend: 
-**Notes**:  
-1.点O是三角形ABC的垂心  
-2.垂心是三角形三个底边上的高的交点  
 
 ### IsCircumcenterOfQuadrilateral(O,ABCD)
 <div>
-    <img src="gdl-pic/P044.png"  width="15%">
+    <img src="gdl-pic/P048.png"  width="15%">
 </div>
 
     ee_check: Point(O)
@@ -745,7 +809,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
 ### IsIncenterOfQuadrilateral(O,ABCD)
 <div>
-    <img src="gdl-pic/P045.png"  width="15%">
+    <img src="gdl-pic/P049.png"  width="15%">
 </div>
 
     ee_check: Point(O)
@@ -753,139 +817,57 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     fv_check: O,ABC
     multi: O,BCA
            O,CAB
-    extend: 
+    extend: IsBisectorOfAngle(AO,DAB)
+            IsBisectorOfAngle(BO,ABC)
+            IsBisectorOfAngle(CO,BCD)
+            IsBisectorOfAngle(DO,CDA)
 **Notes**:  
 1.点O是四边形ABCD的内心  
 2.内心是四边形内切圆的圆心，但不一定有  
 
-### CongruentBetweenTriangle(ABC,DEF)
-<div>
-    <img src="gdl-pic/P046.png"  width="30%">
-</div>
-
-    ee_check: Triangle(ABC)
-              Triangle(DEF)
-    multi: BCA,EFD
-           CAB,FDE
-    extend: 
-**Notes**:  
-1.三角形ABC与三角形DEF全等  
-2.两个三角形的点应一一对应  
-3.根据旋转不变性原则，有6种表示方法，选其一即可  
-
-### MirrorCongruentBetweenTriangle(ABC,DEF)
-<div>
-    <img src="gdl-pic/P047.png"  width="30%">
-</div>
-
-    ee_check: Triangle(ABC)
-              Triangle(DEF)
-    multi: BCA,FDE
-           CAB,EFD
-    extend: 
-**Notes**:  
-1.三角形ABC与三角形DEF镜像全等  
-2.标注方法：①点一一对应得(ABC,DFE)②没有三角形DFE，第一个点D不动，将其他点逆序，得DEF③标注(ABC,DEF)  
-3.根据旋转不变性原则，有6种表示方法，选其一即可  
-
-### SimilarBetweenTriangle(ABC,DEF)
-<div>
-    <img src="gdl-pic/P048.png"  width="30%">
-</div>
-
-    ee_check: Triangle(ABC)
-              Triangle(DEF)
-    multi: BCA,EFD
-           CAB,FDE
-    extend: 
-**Notes**:  
-1.三角形ABC与三角形DEF相似  
-2.两个三角形的点应一一对应  
-3.根据旋转不变性原则，有6种表示方法，选其一即可  
-
-### MirrorSimilarBetweenTriangle(ABC,DEF)
-<div>
-    <img src="gdl-pic/P049.png"  width="30%">
-</div>
-
-    ee_check: Triangle(ABC)
-              Triangle(DEF)
-    multi: BCA,FDE
-           CAB,EFD
-    extend: 
-**Notes**:  
-1.三角形ABC与三角形DEF镜像相似  
-2.标注方法：①点一一对应得(ABC,DFE)②没有三角形DFE，第一个点D不动，将其他点逆序，得DEF③标注(ABC,DEF)  
-3.根据旋转不变性原则，有6种表示方法，选其一即可  
-
-### IsRadiusOfCircle(AO,O)
+### CongruentBetweenArc(XAB,YCD)
 <div>
     <img src="gdl-pic/P050.png"  width="15%">
 </div>
 
-    ee_check: Cocircular(O,A)
-              Line(AO)
-    fv_check: AO,O
+    ee_check: Arc(XAB)
+              Arc(YCD)
     multi: 
-    extend: Equal(LengthOfLine(AO),LengthOfRadius(O))
+    extend: 
 **Notes**:  
-1.线AO是圆O的半径  
-2.线的第2个点应是圆的圆心  
+1.两个弧全等  
+2.在同一个圆上的弧才有意义  
 
-### IsDiameterOfCircle(AB,O)
+### SimilarBetweenArc(XAB,YCD)
 <div>
     <img src="gdl-pic/P051.png"  width="15%">
 </div>
 
-    ee_check: Line(AB)
-              Cocircular(O,AB)
-    fv_check: AB,O
-    multi: BA,O
-    extend: IsRadiusOfCircle(AO,O)
-            IsRadiusOfCircle(BO,O)
-            IsChordOfCircle(AB,O)
-            IsChordOfCircle(BA,O)
-            Equal(LengthOfLine(AB),LengthOfDiameter(O))
-            Equal(LengthOfDiameter(O),Mul(LengthOfRadius(O),2))
+    ee_check: Arc(XAB)
+              Arc(YCD)
+    multi: 
+    extend: 
 **Notes**:  
-1.线AB是圆O的直径  
-2.根据旋转不变性原则，有2种表示方法，选其一即可  
+1.两个弧相似  
+2.在同一个圆上的弧才有意义  
 
-### IsChordOfCircle(AB,O)
+### IsTangentOfCircle(PA,O)
 <div>
     <img src="gdl-pic/P052.png"  width="15%">
 </div>
 
-    ee_check: Line(AB)
-              Cocircular(O,AB)
-    fv_check: AB,O
+    ee_check: Line(PA)
+              Cocircular(O,A)
+    fv_check: PA,O
     multi: 
     extend: 
 **Notes**:  
-1.线AB是圆O的弦  
-2.构成弦两点的标注顺序，应与弦所对的劣弧一致  
-
-### IsTangentOfCircle(AB,O,P)
-<div>
-    <img src="gdl-pic/P053.png"  width="15%">
-</div>
-
-    ee_check: Line(AB)
-              Cocircular(O,P)
-    fv_check: AB,O,P
-              AB,O,A
-              AB,O,B
-    multi: 
-    extend: PerpendicularBetweenLine(AP,OP)
-            PerpendicularBetweenLine(OP,BP)
-**Notes**:  
-1.线AB是圆O的切线，与圆交于点P  
-2.应注意线AB两点的先后顺序，若OAB三点构成一个以O为顶点的三角形，根据逆时针原则，安排AB两点的顺序  
+1.过P做圆的切线交圆于点A  
 
 ## F、实体属性
 ### LengthOfLine(AB)
 <div>
-    <img src="gdl-pic/P054.png"  width="15%">
+    <img src="gdl-pic/P053.png"  width="15%">
 </div>
 
     ee_check: Line(AB)
@@ -896,21 +878,9 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 2.根据旋转不变性原则，有2种表示方法，选其一即可  
 3.例 Equal(LengthOfLine(AB),3)  
 
-### LengthOfArc(OAB)
-<div>
-    <img src="gdl-pic/P055.png"  width="15%">
-</div>
-
-    ee_check: Arc(OAB)
-    multi: 
-    sym: la
-**Notes**:  
-1.圆O上弧AB的长度  
-2.例 Equal(LengthOfArc(OAB),1)  
-
 ### MeasureOfAngle(ABC)
 <div>
-    <img src="gdl-pic/P056.png"  width="15%">
+    <img src="gdl-pic/P054.png"  width="15%">
 </div>
 
     ee_check: Angle(ABC)
@@ -922,7 +892,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
 ### PerimeterOfTriangle(ABC)
 <div>
-    <img src="gdl-pic/P057.png"  width="15%">
+    <img src="gdl-pic/P055.png"  width="15%">
 </div>
 
     ee_check: Triangle(ABC)
@@ -936,7 +906,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
 ### AreaOfTriangle(ABC)
 <div>
-    <img src="gdl-pic/P058.png"  width="15%">
+    <img src="gdl-pic/P056.png"  width="15%">
 </div>
 
     ee_check: Triangle(ABC)
@@ -950,7 +920,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
 ### HeightOfTriangle(ABC)
 <div>
-    <img src="gdl-pic/P059.png"  width="15%">
+    <img src="gdl-pic/P057.png"  width="15%">
 </div>
 
     ee_check: Triangle(ABC)
@@ -959,6 +929,34 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 **Notes**:  
 1.三角形ABC底边BC上的高的长度  
 2.例 Equal(HeightOfTriangle(ABC),9)  
+
+### RatioOfSimilarTriangle(ABC,DEF)
+<div>
+    <img src="gdl-pic/P058.png"  width="30%">
+</div>
+
+    ee_check: Triangle(ABC)
+              Triangle(DEF)
+    multi: BCA,EFD
+           CAB,FDE
+    sym: rst
+**Notes**:  
+1.相似三角形的相似比  
+2.例 Equal(RatioOfSimilarTriangle(ABC,DEF),3)  
+
+### RatioOfMirrorSimilarTriangle(ABC,DEF)
+<div>
+    <img src="gdl-pic/P059.png"  width="30%">
+</div>
+
+    ee_check: Triangle(ABC)
+              Triangle(DEF)
+    multi: BCA,FDE
+           CAB,EFD
+    sym: rmt
+**Notes**:  
+1.镜像相似三角形的相似比  
+2.例 Equal(RatioOfMirrorSimilarTriangle(ABC,DEF),2)  
 
 ### PerimeterOfQuadrilateral(ABCD)
 <div>
@@ -1002,9 +1000,70 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.四边形ABCD底边BC上的高的长度  
 2.例 Equal(HeightOfQuadrilateral(ABCD),5)  
 
-### PerimeterOfCircle(O)
+### LengthOfArc(OAB)
 <div>
     <img src="gdl-pic/P063.png"  width="15%">
+</div>
+
+    ee_check: Arc(OAB)
+    multi: 
+    sym: la
+**Notes**:  
+1.圆O上弧AB的长度  
+2.例 Equal(LengthOfArc(OAB),1)  
+
+### MeasureOfArc(OAB)
+<div>
+    <img src="gdl-pic/P064.png"  width="15%">
+</div>
+
+    ee_check: Arc(OAB)
+    multi: 
+    sym: mar
+**Notes**:  
+1.圆O上弧AB所对圆心角的大小  
+2.例 Equal(MeasureOfArc(OAB),1)  
+
+### RatioOfSimilarArc(XAB,YCD)
+<div>
+    <img src="gdl-pic/P065.png"  width="15%">
+</div>
+
+    ee_check: Arc(XAB)
+              Arc(YCD)
+    multi: 
+    sym: rsa
+**Notes**:  
+1.相似弧的相似比  
+2.例 Equal(RatioOfSimilarArc(XAB,YCD),3)  
+
+### RadiusOfCircle(O)
+<div>
+    <img src="gdl-pic/P066.png"  width="15%">
+</div>
+
+    ee_check: Circle(O)
+    multi: 
+    sym: rc
+**Notes**:  
+1.圆O半径的长度  
+2.例 Equal(RadiusOfCircle(O),8)  
+
+### DiameterOfCircle(O)
+<div>
+    <img src="gdl-pic/P067.png"  width="15%">
+</div>
+
+    ee_check: Circle(O)
+    multi: 
+    sym: dc
+**Notes**:  
+1.圆O直径的长度  
+2.例 Equal(DiameterOfCircle(O),9)  
+
+### PerimeterOfCircle(O)
+<div>
+    <img src="gdl-pic/P068.png"  width="15%">
 </div>
 
     ee_check: Circle(O)
@@ -1016,7 +1075,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
 ### AreaOfCircle(O)
 <div>
-    <img src="gdl-pic/P064.png"  width="15%">
+    <img src="gdl-pic/P069.png"  width="15%">
 </div>
 
     ee_check: Circle(O)
@@ -1026,33 +1085,9 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.圆O的面积  
 2.例 Equal(AreaOfCircle(O),5)  
 
-### LengthOfRadius(O)
-<div>
-    <img src="gdl-pic/P065.png"  width="15%">
-</div>
-
-    ee_check: Circle(O)
-    multi: 
-    sym: lr
-**Notes**:  
-1.圆O半径的长度  
-2.例 Equal(LengthOfRadius(O),8)  
-
-### LengthOfDiameter(O)
-<div>
-    <img src="gdl-pic/P066.png"  width="15%">
-</div>
-
-    ee_check: Circle(O)
-    multi: 
-    sym: ld
-**Notes**:  
-1.圆O直径的长度  
-2.例 Equal(LengthOfDiameter(O),9)  
-
 ### PerimeterOfSector(OAB)
 <div>
-    <img src="gdl-pic/P067.png"  width="15%">
+    <img src="gdl-pic/P070.png"  width="15%">
 </div>
 
     ee_check: Sector(OAB)
@@ -1064,7 +1099,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
 ### AreaOfSector(OAB)
 <div>
-    <img src="gdl-pic/P068.png"  width="15%">
+    <img src="gdl-pic/P071.png"  width="15%">
 </div>
 
     ee_check: Sector(OAB)
@@ -1073,34 +1108,6 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 **Notes**:  
 1.扇形OAB的面积  
 2.例 Equal(AreaOfSector(OAB),9)  
-
-### RatioOfSimilarTriangle(ABC,DEF)
-<div>
-    <img src="gdl-pic/P069.png"  width="30%">
-</div>
-
-    ee_check: Triangle(ABC)
-              Triangle(DEF)
-    multi: BCA,EFD
-           CAB,FDE
-    sym: rt
-**Notes**:  
-1.相似三角形的相似比  
-2.例 Equal(RatioOfSimilarTriangle(ABC,DEF),3)  
-
-### RatioOfMirrorSimilarTriangle(ABC,DEF)
-<div>
-    <img src="gdl-pic/P070.png"  width="30%">
-</div>
-
-    ee_check: Triangle(ABC)
-              Triangle(DEF)
-    multi: BCA,FDE
-           CAB,EFD
-    sym: rmt
-**Notes**:  
-1.镜像相似三角形的相似比  
-2.例 Equal(RatioOfMirrorSimilarTriangle(ABC,DEF),2)  
 
 ## G、代数关系
 expr可以是表达式，也可以是实体属性，并且可以嵌套表示。  
@@ -1129,7 +1136,7 @@ Equal(Add(LengthOfLine(AB),a+5,x),y^2)
 |左括号| / |{| 5 |
 |右括号| / |}| 0 |  
 
-在使用表达式，若无法判断运算符的优先级，可以使用中括号来代替。  
+在使用表达式，若无法判断运算符的优先级，可以使用中括号来强制优先级。  
 前5个运算符是双目运算符，如a+5,b-c,x^2；在接下来4个运算符是单目运算符，如√2,@30,#60。
 
 ## I、解题目标

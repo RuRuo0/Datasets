@@ -1671,7 +1671,7 @@
 
 ### circle_property_chord_perpendicular_bisect_chord(OM,AB)
 <div>
-    <img src="gdl-pic/T156.png" width="15%"
+    <img src="gdl-pic/T156.png" width="30%"
 </div>
 
     # branch 1

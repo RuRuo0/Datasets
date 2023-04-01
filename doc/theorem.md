@@ -1675,9 +1675,9 @@
 </div>
 
     premise: Cocircular(O,ACDB)&Collinear(PAB)&Collinear(PCD)
-    conclusion: Equal(Add(MeasureOfArc(OAC),MeasureOfArc(ODB)),Mul(MeasureOfAngle(APC),2))
+    conclusion: Equal(Sub(MeasureOfArc(ODB),MeasureOfArc(OAC)),Mul(MeasureOfAngle(APC),2))
 **Notes**:  
-1.圆幂定理之割线角度关系：P引割线PAB切圆O于AB，引割线PCD交圆O于CD，则两端弧所对圆心角等于2倍角P  
+1.圆幂定理之割线角度关系：P引割线PAB切圆O于AB，引割线PCD交圆O于CD，则两端弧所对圆心角之差等于2倍角P  
 
 ### circle_property_chord_perpendicular_bisect_chord(OM,AB)
 <div>

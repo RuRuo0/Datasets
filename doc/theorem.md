@@ -1617,6 +1617,16 @@
 **Notes**:  
 1.圆的所有半径长度相等  
 
+### circle_property_length_of_radius_and_diameter(O)
+<div>
+    <img src="gdl-pic/T165.png" width="15%"
+</div>
+
+    premise: Circle(O)
+    conclusion: Equal(DiameterOfCircle(O),Mul(RadiusOfCircle(O),2))
+**Notes**:  
+1.常识：圆的直径是半径的两倍  
+
 ### circle_property_diameter_to_circumference_angle(AB,O,C)
 <div>
     <img src="gdl-pic/T151.png" width="15%"

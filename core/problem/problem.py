@@ -92,7 +92,7 @@ class Problem:
             raise Exception(e_msg)
 
         for predicate, item in self.problem_CDL["parsed_cdl"]["construction_cdl"]:  # Collinear
-            if predicate != "Collinear":   # 1.Collinear expand.
+            if predicate != "Collinear":  # 1.Collinear expand.
                 continue
             if not self.fv_check("Collinear", item):  # FV check
                 w_msg = "FV check not passed: [{}, {}]".format(predicate, item)
@@ -112,7 +112,7 @@ class Problem:
                 self.add("Angle", extended_item[::-1], (_id,), "extended")
 
         for predicate, item in self.problem_CDL["parsed_cdl"]["construction_cdl"]:  # Cocircular
-            if predicate != "Cocircular":   # 2.Cocircular expand.
+            if predicate != "Cocircular":  # 2.Cocircular expand.
                 continue
             if not self.fv_check("Cocircular", item):  # FV check
                 w_msg = "FV check not passed: [{}, {}]".format(predicate, item)
@@ -157,7 +157,7 @@ class Problem:
                 self.add("Angle", tuple(item[0] + item[1][1]), (-1,), "prerequisite")
                 continue
 
-            added, all_forms = self._add_shape(tuple(item), (-1,), "prerequisite", True)  # shape
+            added, all_forms = self._add_shape(tuple(item), (-1,), "prerequisite")  # shape
             if not added:
                 continue
 
@@ -246,7 +246,16 @@ class Problem:
                     if not (unit[1] == comb[1] and unit[2] == comb[0] and unit[0] != comb[2]):  # ensure adjacent
                         continue
 
+                    if (unit[0], unit[1], comb[2]) in self.conditions["Angle"].get_id_by_item or \
+                            (unit[0], comb[2], unit[1]) in self.conditions["Angle"].get_id_by_item or \
+                            (comb[2], unit[0], unit[1]) in self.conditions["Angle"].get_id_by_item:
+                        continue
+
                     new_angle = (unit[0], unit[1], comb[2])
+
+                    if not len(new_angle) == len(set(new_angle)):  # ensure same points
+                        continue
+
                     premise = (self.conditions["Angle"].get_id_by_item[unit],
                                self.conditions["Angle"].get_id_by_item[comb])
                     added, _ = self.conditions["Angle"].add(new_angle, premise, "extended")  # need to expand line
@@ -306,7 +315,7 @@ class Problem:
                     premise = (self.conditions["Angle"].get_id_by_item[angle],)
                     self.add("Angle", (a_point, v, b_point), premise, "extended")
 
-    def _add_shape(self, shape, premise, theorem, is_unit_shape=False):
+    def _add_shape(self, shape, premise, theorem):
         """pass"""
         added, _id = self.conditions["Shape"].add(shape, premise, theorem)
         if not added:
@@ -319,17 +328,6 @@ class Problem:
             self.conditions["Shape"].add(new_item, (_id,), "extended")
             all_forms.append(new_item)
 
-        if is_unit_shape:  # extend line and angle. no need to extend arc because cocircular extend all.
-            i = 0
-            l = len(shape)
-            while i < l:
-                j = (i + 1) % l
-                if len(shape[i]) == 2 and len(shape[j]) == 2:
-                    self.add("Angle", (shape[i][0], shape[i][1], shape[j][1]), (_id,), "extended")  # extend angle
-                elif len(shape[i]) == 2:
-                    self.add("Line", tuple(shape[i]), (_id,), "extended")  # extend line
-                i += 1
-
         shape = list(shape)
         _, col, _ = self.conditions["Collinear"].get_items(["a", "b", "c"])
         _, coc, _ = self.conditions["Cocircular"].get_items(["o", "a", "b", "c"])
@@ -340,6 +338,7 @@ class Problem:
         while i < len(shape):
             j = (i + 1) % len(shape)
             if len(shape[i]) == 2 and len(shape[j]) == 2:
+                self.add("Angle", (shape[i][0], shape[i][1], shape[j][1]), (_id,), "extended")  # extend angle
                 co = (shape[i][0], shape[i][1], shape[j][1])
                 if co in col:
                     shape[i] = shape[i][0] + shape[j][1]
@@ -347,23 +346,25 @@ class Problem:
                     shape.pop(j)
                     continue  # no need +1 about i
 
-            elif len(shape[i]) == 3 and len(shape[j]) == 3 and \
-                    shape[i][1] != shape[i][2] and shape[j][1] != shape[j][2]:
+            elif len(shape[i]) == 3 and len(shape[j]) == 3:
                 has_arc = True
-                if shape[i][0] == shape[j][0] and shape[i][1] == shape[j][2]:  # (OBC, OAB)
-                    co = (shape[j][0], shape[j][1], shape[j][2], shape[i][2])  # OABC
-                    if co in coc:
-                        premise.append(self.conditions["Cocircular"].get_id_by_item[co])
-                    shape[i] = shape[j][0] + shape[j][1] + shape[i][2]  # OAC
-                    shape.pop(j)
-                    continue  # no need +1 about i
-                elif shape[i][0] == shape[j][0] and shape[i][2] == shape[j][1]:  # (OAB, OBC)
-                    co = (shape[i][0], shape[i][1], shape[i][2], shape[j][2])  # OABC
-                    if co in coc:
-                        premise.append(self.conditions["Cocircular"].get_id_by_item[co])
-                    shape[i] = shape[i][0] + shape[i][1] + shape[j][2]  # OAC
-                    shape.pop(j)
-                    continue  # no need +1 about i
+                if shape[i][1] != shape[i][2] and shape[j][1] != shape[j][2]:
+                    if shape[i][0] == shape[j][0] and shape[i][1] == shape[j][2]:  # (OBC, OAB)
+                        co = (shape[j][0], shape[j][1], shape[j][2], shape[i][2])  # OABC
+                        if co in coc:
+                            premise.append(self.conditions["Cocircular"].get_id_by_item[co])
+                        shape[i] = shape[j][0] + shape[j][1] + shape[i][2]  # OAC
+                        shape.pop(j)
+                        continue  # no need +1 about i
+                    elif shape[i][0] == shape[j][0] and shape[i][2] == shape[j][1]:  # (OAB, OBC)
+                        co = (shape[i][0], shape[i][1], shape[i][2], shape[j][2])  # OABC
+                        if co in coc:
+                            premise.append(self.conditions["Cocircular"].get_id_by_item[co])
+                        shape[i] = shape[i][0] + shape[i][1] + shape[j][2]  # OAC
+                        shape.pop(j)
+                        continue  # no need +1 about i
+            elif len(shape[i]) == 2:
+                self.add("Line", tuple(shape[i]), (_id,), "extended")  # extend line
             else:
                 has_arc = True
 

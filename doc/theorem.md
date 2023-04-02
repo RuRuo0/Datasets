@@ -1487,16 +1487,6 @@
 **Notes**:  
 1.五边形性质：内角和为540°  
 
-### arc_measure_and_angle_measure(OAB)
-<div>
-    <img src="gdl-pic/T133.png" width="15%"
-</div>
-
-    premise: Arc(OAB)&Angle(BOA)
-    conclusion: Equal(MeasureOfArc(OAB),MeasureOfAngle(BOA))
-**Notes**:  
-1.常识：弧所对的角度等于弧所对圆心角角度  
-
 ### arc_addition_length(OAB,OBC)
 <div>
     <img src="gdl-pic/T134.png" width="15%"
@@ -1517,15 +1507,35 @@
 **Notes**:  
 1.常识：临弧角度相加  
 
-### arc_property_center_and_circumference_angle(OAB,C)
+### arc_property_center_angle(OAB)
+<div>
+    <img src="gdl-pic/T133.png" width="15%"
+</div>
+
+    premise: Arc(OAB)&Angle(BOA)
+    conclusion: Equal(MeasureOfArc(OAB),MeasureOfAngle(BOA))
+**Notes**:  
+1.常识：弧所对的角度等于弧所对圆心角角度  
+
+### arc_property_circumference_angle_external(OAB,C)
 <div>
     <img src="gdl-pic/T136.png" width="15%"
 </div>
 
-    premise: Cocircular(O,ABC)&Arc(OAB)&Angle(BCA)
+    premise: Cocircular(O,ABC)&Angle(BCA)
     conclusion: Equal(MeasureOfAngle(BCA),Mul(MeasureOfArc(OAB),1/2))
 **Notes**:  
 1.同弧所对的圆周角等于圆心角的一半  
+
+### arc_property_circumference_angle_internal(OAB,D)
+<div>
+    <img src="gdl-pic/T170.png" width="15%"
+</div>
+
+    premise: Cocircular(O,ADB)&Angle(ADB)
+    conclusion: Equal(MeasureOfAngle(ADB),Sub(180,Mul(MeasureOfArc(OAB),1/2)))
+**Notes**:  
+1.由圆内接四边形对角互补得此定理  
 
 ### arc_length_formula(OAB)
 <div>

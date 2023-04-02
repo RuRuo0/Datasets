@@ -1270,14 +1270,6 @@
       ]
     }
   },
-  "arc_measure_and_angle_measure(OAB)": {
-    "1": {
-      "premise": "Arc(OAB)&Angle(BOA)",
-      "conclusion": [
-        "Equal(MeasureOfArc(OAB),MeasureOfAngle(BOA))"
-      ]
-    }
-  },
   "arc_addition_length(OAB,OBC)": {
     "1": {
       "premise": "Arc(OAB)&Arc(OBC)&Arc(OAC)",
@@ -1294,11 +1286,27 @@
       ]
     }
   },
-  "arc_property_center_and_circumference_angle(OAB,C)": {
+  "arc_property_center_angle(OAB)": {
     "1": {
-      "premise": "Cocircular(O,ABC)&Arc(OAB)&Angle(BCA)",
+      "premise": "Arc(OAB)&Angle(BOA)",
+      "conclusion": [
+        "Equal(MeasureOfArc(OAB),MeasureOfAngle(BOA))"
+      ]
+    }
+  },
+  "arc_property_circumference_angle_external(OAB,C)": {
+    "1": {
+      "premise": "Cocircular(O,ABC)&Angle(BCA)",
       "conclusion": [
         "Equal(MeasureOfAngle(BCA),Mul(MeasureOfArc(OAB),1/2))"
+      ]
+    }
+  },
+  "arc_property_circumference_angle_internal(OAB,D)": {
+    "1": {
+      "premise": "Cocircular(O,ADB)&Angle(ADB)",
+      "conclusion": [
+        "Equal(MeasureOfAngle(ADB),Sub(180,Mul(MeasureOfArc(OAB),1/2)))"
       ]
     }
   },

@@ -153,7 +153,7 @@ class Problem:
             if len(item) == 1:  # line
                 self.add("Line", tuple(item[0]), (-1,), "prerequisite")
                 continue
-            elif len(item) == 2:  # angle
+            elif len(item) == 2 and len(item[0]) == 2 and len(item[1]) == 2:  # angle
                 self.add("Angle", tuple(item[0] + item[1][1]), (-1,), "prerequisite")
                 continue
 
@@ -576,8 +576,6 @@ class Problem:
                 if len(item) != len(set(item)):  # default check 1: mutex points
                     return False
                 if len(item) == 1 and len(item[0]) != 2:
-                    return False
-                elif len(item) == 2 and not (len(item[0]) == 2 and len(item[1]) == 2):
                     return False
                 for shape in item:
                     if not 2 <= len(shape) <= 3 or len(shape) != len(set(shape)):

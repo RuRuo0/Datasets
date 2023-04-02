@@ -87,6 +87,13 @@
         "ParallelBetweenLine(AM,CD)",
         "ParallelBetweenLine(BM,CD)"
       ]
+    },
+    "3": {
+      "premise": "Collinear(AMB)&ParallelBetweenLine(AB,CD)",
+      "conclusion": [
+        "ParallelBetweenLine(AM,CD)",
+        "ParallelBetweenLine(MB,CD)"
+      ]
     }
   },
   "parallel_property_corresponding_angle(AB,CD,E)": {
@@ -1495,7 +1502,13 @@
   },
   "tangent_of_circle_judgment_perpendicular(PA,O)": {
     "1": {
-      "premise": "Cocircular(O,A)&(PerpendicularBetweenLine(OA,PA)|PerpendicularBetweenLine(PA,OA))",
+      "premise": "Cocircular(O,A)&Angle(OAP)&PerpendicularBetweenLine(OA,PA)",
+      "conclusion": [
+        "IsTangentOfCircle(PA,O)"
+      ]
+    },
+    "2": {
+      "premise": "Cocircular(O,A)&Angle(PAO)&PerpendicularBetweenLine(PA,OA)",
       "conclusion": [
         "IsTangentOfCircle(PA,O)"
       ]
@@ -1503,10 +1516,15 @@
   },
   "tangent_of_circle_property_perpendicular(PA,O)": {
     "1": {
-      "premise": "IsTangentOfCircle(AB,O,P)",
+      "premise": "IsTangentOfCircle(PA,O)&Angle(OAP)",
       "conclusion": [
-        "PerpendicularBetweenLine(AP,OP)",
-        "PerpendicularBetweenLine(OP,BP)"
+        "PerpendicularBetweenLine(OA,PA)"
+      ]
+    },
+    "2": {
+      "premise": "IsTangentOfCircle(PA,O)&Angle(PAO)",
+      "conclusion": [
+        "PerpendicularBetweenLine(PA,OA)"
       ]
     }
   },

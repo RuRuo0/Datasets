@@ -85,7 +85,7 @@
 
 ### parallel_property_collinear_extend(AB,CD,M)
 <div>
-    <img src="gdl-pic/T008.png" width="30%"
+    <img src="gdl-pic/T008.png" width="45%"
 </div>
 
     # branch 1
@@ -96,6 +96,10 @@
     premise: Collinear(ABM)&ParallelBetweenLine(AB,CD)
     conclusion: ParallelBetweenLine(AM,CD)
                 ParallelBetweenLine(BM,CD)
+    # branch 3
+    premise: Collinear(AMB)&ParallelBetweenLine(AB,CD)
+    conclusion: ParallelBetweenLine(AM,CD)
+                ParallelBetweenLine(MB,CD)
 **Notes**:  
 1.平行的共线扩展：由一个平行关系和一条平行线（上方那条）的共线点推出其他平行关系  
 
@@ -1774,7 +1778,11 @@
     <img src="gdl-pic/T160.png" width="15%"
 </div>
 
-    premise: Cocircular(O,A)&(PerpendicularBetweenLine(OA,PA)|PerpendicularBetweenLine(PA,OA))
+    # branch 1
+    premise: Cocircular(O,A)&Angle(OAP)&PerpendicularBetweenLine(OA,PA)
+    conclusion: IsTangentOfCircle(PA,O)
+    # branch 2
+    premise: Cocircular(O,A)&Angle(PAO)&PerpendicularBetweenLine(PA,OA)
     conclusion: IsTangentOfCircle(PA,O)
 **Notes**:  
 1.圆切线的判定：垂直  
@@ -1784,9 +1792,12 @@
     <img src="gdl-pic/T161.png" width="15%"
 </div>
 
-    premise: IsTangentOfCircle(AB,O,P)
-    conclusion: PerpendicularBetweenLine(AP,OP)
-                PerpendicularBetweenLine(OP,BP)
+    # branch 1
+    premise: IsTangentOfCircle(PA,O)&Angle(OAP)
+    conclusion: PerpendicularBetweenLine(OA,PA)
+    # branch 2
+    premise: IsTangentOfCircle(PA,O)&Angle(PAO)
+    conclusion: PerpendicularBetweenLine(PA,OA)
 **Notes**:  
 1.圆切线的性质：垂直  
 

@@ -403,24 +403,18 @@
 
 ### altitude_of_triangle_judgment(AD,ABC)
 <div>
-    <img src="gdl-pic/T036.png" width="75%"
+    <img src="gdl-pic/T036.png" width="45%"
 </div>
 
     # branch 1
-    premise: Triangle(ABC)&Collinear(BDC)&Line(AD)&PerpendicularBetweenLine(BD,AD)
+    premise: Triangle(ABC)&Line(AD)&Collinear(BDC)&PerpendicularBetweenLine(BD,AD)
     conclusion: IsAltitudeOfTriangle(AD,ABC)
     # branch 2
     premise: Triangle(ABC)&Line(AD)&Collinear(DBC)&PerpendicularBetweenLine(AD,BD)
     conclusion: IsAltitudeOfTriangle(AD,ABC)
     # branch 3
-    premise: Triangle(ABC)&Line(AD)&Collinear(BCD)&PerpendicularBetweenLine(AC,DC)
+    premise: Triangle(ABC)&Line(AD)&Collinear(BCD)&PerpendicularBetweenLine(CD,AD)
     conclusion: IsAltitudeOfTriangle(AD,ABC)
-    # branch 4
-    premise: Triangle(ABC)&PerpendicularBetweenLine(AB,CB)
-    conclusion: IsAltitudeOfTriangle(AB,ABC)
-    # branch 5
-    premise: Triangle(ABC)&PerpendicularBetweenLine(BC,AC)
-    conclusion: IsAltitudeOfTriangle(AC,ABC)
 **Notes**:  
 1.三角形高的判定：垂直于底边  
 
@@ -1062,24 +1056,66 @@
 
 ### altitude_of_quadrilateral_judgment(EF,ABCD)
 <div>
-    <img src="gdl-pic/T098.png" width="75%"
+    <img src="gdl-pic/T098.png" width="45%"
 </div>
 
     # branch 1
-    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(EF)&Collinear(BFC)&Collinear(AED)&PerpendicularBetweenLine(BF,EF)
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(EF)&Collinear(AED)&Collinear(BFC)&PerpendicularBetweenLine(BF,EF)
     conclusion: IsAltitudeOfQuadrilateral(EF,ABCD)
     # branch 2
-    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(EF)&Collinear(FBC)&Collinear(AED)&PerpendicularBetweenLine(EF,BF)
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(EF)&Collinear(AED)&Collinear(FBC)&PerpendicularBetweenLine(EF,BF)
     conclusion: IsAltitudeOfQuadrilateral(EF,ABCD)
     # branch 3
-    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(EF)&Collinear(BCF)&Collinear(AED)&PerpendicularBetweenLine(CF,EF)
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(EF)&Collinear(AED)&Collinear(BCF)&PerpendicularBetweenLine(CF,EF)
     conclusion: IsAltitudeOfQuadrilateral(EF,ABCD)
-    # branch 4
-    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&PerpendicularBetweenLine(AB,CB)
-    conclusion: IsAltitudeOfQuadrilateral(AB,ABCD)
-    # branch 5
-    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&PerpendicularBetweenLine(BC,DC)
-    conclusion: IsAltitudeOfQuadrilateral(DC,ABCD)
+**Notes**:  
+1.平行四边形/梯形高的判定：垂直于底边  
+
+### altitude_of_quadrilateral_judgment_left_vertex(AF,ABCD)
+<div>
+    <img src="gdl-pic/T166.png" width="45%"
+</div>
+
+    # branch 1
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(AF)&Collinear(BFC)&PerpendicularBetweenLine(BF,AF)
+    conclusion: IsAltitudeOfQuadrilateral(AF,ABCD)
+    # branch 2
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(AF)&Collinear(FBC)&PerpendicularBetweenLine(AF,BF)
+    conclusion: IsAltitudeOfQuadrilateral(AF,ABCD)
+    # branch 3
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(AF)&Collinear(BCF)&PerpendicularBetweenLine(CF,AF)
+    conclusion: IsAltitudeOfQuadrilateral(AF,ABCD)
+**Notes**:  
+1.平行四边形/梯形高的判定：垂直于底边  
+
+### altitude_of_quadrilateral_judgment_right_vertex(DF,ABCD)
+<div>
+    <img src="gdl-pic/T167.png" width="45%"
+</div>
+
+    # branch 1
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(DF)&Collinear(BFC)&PerpendicularBetweenLine(BF,DF)
+    conclusion: IsAltitudeOfQuadrilateral(DF,ABCD)
+    # branch 2
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(DF)&Collinear(FBC)&PerpendicularBetweenLine(DF,BF)
+    conclusion: IsAltitudeOfQuadrilateral(DF,ABCD)
+    # branch 3
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(DF)&Collinear(BCF)&PerpendicularBetweenLine(CF,DF)
+    conclusion: IsAltitudeOfQuadrilateral(DF,ABCD)
+**Notes**:  
+1.平行四边形/梯形高的判定：垂直于底边  
+
+### altitude_of_quadrilateral_judgment_diagonal(ABCD)
+<div>
+    <img src="gdl-pic/T168.png" width="30%"
+</div>
+
+    # branch 1
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(AC)&PerpendicularBetweenLine(BC,AC)
+    conclusion: IsAltitudeOfQuadrilateral(AC,ABCD)
+    # branch 2
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(DB)&PerpendicularBetweenLine(DB,CB)
+    conclusion: IsAltitudeOfQuadrilateral(DB,ABCD)
 **Notes**:  
 1.平行四边形/梯形高的判定：垂直于底边  
 
@@ -1376,6 +1412,16 @@
     conclusion: RightTrapezoid(ABCD)
 **Notes**:  
 1.直角梯形的判定：有一侧是直角的梯形  
+
+### right_trapezoid_area_formular(ABCD)
+<div>
+    <img src="gdl-pic/T169.png" width="15%"
+</div>
+
+    premise: RightTrapezoid(ABCD)
+    conclusion: Equal(AreaOfQuadrilateral(ABCD),Mul(Add(LengthOfLine(AD),LengthOfLine(BC)),LengthOfLine(AB),1/2))
+**Notes**:  
+1.直角梯形面积公式：S=(AD+BC)*AB/2  
 
 ### isosceles_trapezoid_judgment_line_equal(ABCD)
 <div>

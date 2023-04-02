@@ -592,8 +592,6 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     ee_check: Line(AD)
               Triangle(ABC)
     fv_check: AD,ABC
-              AB,ABC
-              AC,ABC
     multi: 
     extend: Equal(LengthOfLine(AD),HeightOfTriangle(ABC))
             PerpendicularBetweenLine(BD,AD)
@@ -754,14 +752,10 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     ee_check: Line(EF)
               Quadrilateral(ABCD)
     fv_check: EF,ABCD
-              EB,ABCD
-              EC,ABCD
               AF,ABCD
-              AB,ABCD
-              AC,ABCD
               DF,ABCD
+              AC,ABCD
               DB,ABCD
-              DC,ABCD
     multi: 
     extend: Equal(LengthOfLine(EF),HeightOfQuadrilateral(ABCD))
             PerpendicularBetweenLine(BF,EF)

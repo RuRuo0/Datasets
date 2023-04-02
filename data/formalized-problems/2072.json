@@ -1,0 +1,37 @@
+{
+  "problem_id": 2072,
+  "annotation": "yiminghe_2023-03-31",
+  "source": "Geometry3k-488",
+  "problem_level": 1,
+  "problem_text_cn": "",
+  "problem_text_en": "The radius of \\odot P is 5 and P R = 3. Find Q S.",
+  "problem_img": "2072.png",
+  "construction_cdl": [
+    "Shape(PQ,PQS,SP)",
+    "Shape(PR,RQ,QP)",
+    "Shape(PS,SR,RP)",
+    "Shape(PSQ,QS)",
+    "Collinear(QRS)",
+    "Cocircular(P,SQ)"
+  ],
+  "text_cdl": [
+    "Equal(RadiusOfCircle(P),5)",
+    "Equal(LengthOfLine(PR),3)"
+  ],
+  "image_cdl": [
+    "PerpendicularBetweenLine(PR,QR)"
+  ],
+  "goal_cdl": "Value(LengthOfLine(QS))",
+  "problem_answer": "8",
+  "theorem_seqs": [
+
+    "circle_property_radius_length_equal(PQ)",
+    "circle_property_radius_length_equal(PS)",
+    "perpendicular_property_collinear_extend(PR,QR,S)",
+    "right_triangle_judgment_angle(PRQ)",
+    "right_triangle_property_pythagorean(PRQ)",
+    "right_triangle_judgment_angle(SRP)",
+    "right_triangle_property_pythagorean(SRP)",
+        "line_addition(QR,RS)"
+  ]
+}

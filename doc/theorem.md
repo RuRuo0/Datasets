@@ -571,20 +571,17 @@
     <img src="gdl-pic/T051.png" width="30%"
 </div>
 
-    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))&Equal(LengthOfLine(CA),LengthOfLine(FD))
+    # branch 1
+    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))&Equal(LengthOfLine(AB),LengthOfLine(DE))
+    conclusion: CongruentBetweenTriangle(ABC,DEF)
+    # branch 2
+    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))&Equal(LengthOfLine(BC),LengthOfLine(EF))
+    conclusion: CongruentBetweenTriangle(ABC,DEF)
+    # branch 3
+    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))&Equal(LengthOfLine(AC),LengthOfLine(DF))
     conclusion: CongruentBetweenTriangle(ABC,DEF)
 **Notes**:  
 1.全等三角形判定：AAS  
-
-### congruent_triangle_judgment_asa(ABC,DEF)
-<div>
-    <img src="gdl-pic/T052.png" width="30%"
-</div>
-
-    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(LengthOfLine(BC),LengthOfLine(EF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))
-    conclusion: CongruentBetweenTriangle(ABC,DEF)
-**Notes**:  
-1.全等三角形判定：ASA  
 
 ### congruent_triangle_judgment_hl(ABC,DEF)
 <div>

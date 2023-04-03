@@ -10,16 +10,17 @@ def simple_show(problem):
     time_sum = 0
     for t in problem.time_consuming:
         time_sum += t
-    printed = "pid\t{}\tcorrect_answer\t{}\t".format(problem.problem_CDL["id"], str(problem.goal["answer"]))
+
+    printed = "{}\t{}\t".format(problem.problem_CDL["id"], str(problem.goal["answer"]))
     if problem.goal["solved"]:
-        printed += "solved:\033[32mTrue\t1\033[0m\t"
+        printed += "\033[32m1\033[0m\t"
     else:
-        printed += "solved:\033[31mFalse\t0\033[0m\t"
-    printed += "solved_answer\t{}\t".format(str(problem.goal["solved_answer"]))
+        printed += "\033[31m0\033[0m\t"
+    printed += "{}\t".format(str(problem.goal["solved_answer"]))
     if time_sum < 2:
-        printed += "spend(s)\t{:.6f}".format(time_sum)
+        printed += "{:.6f}".format(time_sum)
     else:
-        printed += "spend(s)\t\033[31m{:.6f}\033[0m".format(time_sum)
+        printed += "\033[31m{:.6f}\033[0m".format(time_sum)
     print(printed)
 
 
@@ -283,7 +284,7 @@ def get_used_theorem(problem):
                 break
 
         for t in problem.theorems_applied:
-            if t in used_theorem:
+            if t in used_theorem and t not in selected_theorem:
                 selected_theorem.append(t)
 
     return used_id, selected_theorem

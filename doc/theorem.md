@@ -85,7 +85,7 @@
 
 ### parallel_property_collinear_extend(AB,CD,M)
 <div>
-    <img src="gdl-pic/T008.png" width="30%"
+    <img src="gdl-pic/T008.png" width="45%"
 </div>
 
     # branch 1
@@ -96,6 +96,10 @@
     premise: Collinear(ABM)&ParallelBetweenLine(AB,CD)
     conclusion: ParallelBetweenLine(AM,CD)
                 ParallelBetweenLine(BM,CD)
+    # branch 3
+    premise: Collinear(AMB)&ParallelBetweenLine(AB,CD)
+    conclusion: ParallelBetweenLine(AM,CD)
+                ParallelBetweenLine(MB,CD)
 **Notes**:  
 1.平行的共线扩展：由一个平行关系和一条平行线（上方那条）的共线点推出其他平行关系  
 
@@ -403,24 +407,18 @@
 
 ### altitude_of_triangle_judgment(AD,ABC)
 <div>
-    <img src="gdl-pic/T036.png" width="75%"
+    <img src="gdl-pic/T036.png" width="45%"
 </div>
 
     # branch 1
-    premise: Triangle(ABC)&Collinear(BDC)&Line(AD)&PerpendicularBetweenLine(BD,AD)
+    premise: Triangle(ABC)&Line(AD)&Collinear(BDC)&PerpendicularBetweenLine(BD,AD)
     conclusion: IsAltitudeOfTriangle(AD,ABC)
     # branch 2
     premise: Triangle(ABC)&Line(AD)&Collinear(DBC)&PerpendicularBetweenLine(AD,BD)
     conclusion: IsAltitudeOfTriangle(AD,ABC)
     # branch 3
-    premise: Triangle(ABC)&Line(AD)&Collinear(BCD)&PerpendicularBetweenLine(AC,DC)
+    premise: Triangle(ABC)&Line(AD)&Collinear(BCD)&PerpendicularBetweenLine(CD,AD)
     conclusion: IsAltitudeOfTriangle(AD,ABC)
-    # branch 4
-    premise: Triangle(ABC)&PerpendicularBetweenLine(AB,CB)
-    conclusion: IsAltitudeOfTriangle(AB,ABC)
-    # branch 5
-    premise: Triangle(ABC)&PerpendicularBetweenLine(BC,AC)
-    conclusion: IsAltitudeOfTriangle(AC,ABC)
 **Notes**:  
 1.三角形高的判定：垂直于底边  
 
@@ -1062,24 +1060,66 @@
 
 ### altitude_of_quadrilateral_judgment(EF,ABCD)
 <div>
-    <img src="gdl-pic/T098.png" width="75%"
+    <img src="gdl-pic/T098.png" width="45%"
 </div>
 
     # branch 1
-    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(EF)&Collinear(BFC)&Collinear(AED)&PerpendicularBetweenLine(BF,EF)
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(EF)&Collinear(AED)&Collinear(BFC)&PerpendicularBetweenLine(BF,EF)
     conclusion: IsAltitudeOfQuadrilateral(EF,ABCD)
     # branch 2
-    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(EF)&Collinear(FBC)&Collinear(AED)&PerpendicularBetweenLine(EF,BF)
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(EF)&Collinear(AED)&Collinear(FBC)&PerpendicularBetweenLine(EF,BF)
     conclusion: IsAltitudeOfQuadrilateral(EF,ABCD)
     # branch 3
-    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(EF)&Collinear(BCF)&Collinear(AED)&PerpendicularBetweenLine(CF,EF)
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(EF)&Collinear(AED)&Collinear(BCF)&PerpendicularBetweenLine(CF,EF)
     conclusion: IsAltitudeOfQuadrilateral(EF,ABCD)
-    # branch 4
-    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&PerpendicularBetweenLine(AB,CB)
-    conclusion: IsAltitudeOfQuadrilateral(AB,ABCD)
-    # branch 5
-    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&PerpendicularBetweenLine(BC,DC)
-    conclusion: IsAltitudeOfQuadrilateral(DC,ABCD)
+**Notes**:  
+1.平行四边形/梯形高的判定：垂直于底边  
+
+### altitude_of_quadrilateral_judgment_left_vertex(AF,ABCD)
+<div>
+    <img src="gdl-pic/T166.png" width="45%"
+</div>
+
+    # branch 1
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(AF)&Collinear(BFC)&PerpendicularBetweenLine(BF,AF)
+    conclusion: IsAltitudeOfQuadrilateral(AF,ABCD)
+    # branch 2
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(AF)&Collinear(FBC)&PerpendicularBetweenLine(AF,BF)
+    conclusion: IsAltitudeOfQuadrilateral(AF,ABCD)
+    # branch 3
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(AF)&Collinear(BCF)&PerpendicularBetweenLine(CF,AF)
+    conclusion: IsAltitudeOfQuadrilateral(AF,ABCD)
+**Notes**:  
+1.平行四边形/梯形高的判定：垂直于底边  
+
+### altitude_of_quadrilateral_judgment_right_vertex(DF,ABCD)
+<div>
+    <img src="gdl-pic/T167.png" width="45%"
+</div>
+
+    # branch 1
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(DF)&Collinear(BFC)&PerpendicularBetweenLine(BF,DF)
+    conclusion: IsAltitudeOfQuadrilateral(DF,ABCD)
+    # branch 2
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(DF)&Collinear(FBC)&PerpendicularBetweenLine(DF,BF)
+    conclusion: IsAltitudeOfQuadrilateral(DF,ABCD)
+    # branch 3
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(DF)&Collinear(BCF)&PerpendicularBetweenLine(CF,DF)
+    conclusion: IsAltitudeOfQuadrilateral(DF,ABCD)
+**Notes**:  
+1.平行四边形/梯形高的判定：垂直于底边  
+
+### altitude_of_quadrilateral_judgment_diagonal(ABCD)
+<div>
+    <img src="gdl-pic/T168.png" width="30%"
+</div>
+
+    # branch 1
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(AC)&PerpendicularBetweenLine(BC,AC)
+    conclusion: IsAltitudeOfQuadrilateral(AC,ABCD)
+    # branch 2
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(DB)&PerpendicularBetweenLine(DB,CB)
+    conclusion: IsAltitudeOfQuadrilateral(DB,ABCD)
 **Notes**:  
 1.平行四边形/梯形高的判定：垂直于底边  
 
@@ -1377,6 +1417,16 @@
 **Notes**:  
 1.直角梯形的判定：有一侧是直角的梯形  
 
+### right_trapezoid_area_formular(ABCD)
+<div>
+    <img src="gdl-pic/T169.png" width="15%"
+</div>
+
+    premise: RightTrapezoid(ABCD)
+    conclusion: Equal(AreaOfQuadrilateral(ABCD),Mul(Add(LengthOfLine(AD),LengthOfLine(BC)),LengthOfLine(AB),1/2))
+**Notes**:  
+1.直角梯形面积公式：S=(AD+BC)*AB/2  
+
 ### isosceles_trapezoid_judgment_line_equal(ABCD)
 <div>
     <img src="gdl-pic/T127.png" width="15%"
@@ -1437,16 +1487,6 @@
 **Notes**:  
 1.五边形性质：内角和为540°  
 
-### arc_measure_and_angle_measure(OAB)
-<div>
-    <img src="gdl-pic/T133.png" width="15%"
-</div>
-
-    premise: Arc(OAB)&Angle(BOA)
-    conclusion: Equal(MeasureOfArc(OAB),MeasureOfAngle(BOA))
-**Notes**:  
-1.常识：弧所对的角度等于弧所对圆心角角度  
-
 ### arc_addition_length(OAB,OBC)
 <div>
     <img src="gdl-pic/T134.png" width="15%"
@@ -1467,15 +1507,35 @@
 **Notes**:  
 1.常识：临弧角度相加  
 
-### arc_property_center_and_circumference_angle(OAB,C)
+### arc_property_center_angle(OAB)
+<div>
+    <img src="gdl-pic/T133.png" width="15%"
+</div>
+
+    premise: Arc(OAB)&Angle(BOA)
+    conclusion: Equal(MeasureOfArc(OAB),MeasureOfAngle(BOA))
+**Notes**:  
+1.常识：弧所对的角度等于弧所对圆心角角度  
+
+### arc_property_circumference_angle_external(OAB,C)
 <div>
     <img src="gdl-pic/T136.png" width="15%"
 </div>
 
-    premise: Cocircular(O,ABC)&Arc(OAB)&Angle(BCA)
+    premise: Cocircular(O,ABC)&Angle(BCA)
     conclusion: Equal(MeasureOfAngle(BCA),Mul(MeasureOfArc(OAB),1/2))
 **Notes**:  
 1.同弧所对的圆周角等于圆心角的一半  
+
+### arc_property_circumference_angle_internal(OAB,D)
+<div>
+    <img src="gdl-pic/T170.png" width="15%"
+</div>
+
+    premise: Cocircular(O,ADB)&Angle(ADB)
+    conclusion: Equal(MeasureOfAngle(ADB),Sub(180,Mul(MeasureOfArc(OAB),1/2)))
+**Notes**:  
+1.由圆内接四边形对角互补得此定理  
 
 ### arc_length_formula(OAB)
 <div>
@@ -1617,6 +1677,16 @@
 **Notes**:  
 1.圆的所有半径长度相等  
 
+### circle_property_length_of_radius_and_diameter(O)
+<div>
+    <img src="gdl-pic/T165.png" width="15%"
+</div>
+
+    premise: Circle(O)
+    conclusion: Equal(DiameterOfCircle(O),Mul(RadiusOfCircle(O),2))
+**Notes**:  
+1.常识：圆的直径是半径的两倍  
+
 ### circle_property_diameter_to_circumference_angle(AB,O,C)
 <div>
     <img src="gdl-pic/T151.png" width="15%"
@@ -1665,9 +1735,9 @@
 </div>
 
     premise: Cocircular(O,ACDB)&Collinear(PAB)&Collinear(PCD)
-    conclusion: Equal(Add(MeasureOfArc(OAC),MeasureOfArc(ODB)),Mul(MeasureOfAngle(APC),2))
+    conclusion: Equal(Sub(MeasureOfArc(ODB),MeasureOfArc(OAC)),Mul(MeasureOfAngle(APC),2))
 **Notes**:  
-1.圆幂定理之割线角度关系：P引割线PAB切圆O于AB，引割线PCD交圆O于CD，则两端弧所对圆心角等于2倍角P  
+1.圆幂定理之割线角度关系：P引割线PAB切圆O于AB，引割线PCD交圆O于CD，则两端弧所对圆心角之差等于2倍角P  
 
 ### circle_property_chord_perpendicular_bisect_chord(OM,AB)
 <div>
@@ -1718,7 +1788,11 @@
     <img src="gdl-pic/T160.png" width="15%"
 </div>
 
-    premise: Cocircular(O,A)&(PerpendicularBetweenLine(OA,PA)|PerpendicularBetweenLine(PA,OA))
+    # branch 1
+    premise: Cocircular(O,A)&Angle(OAP)&PerpendicularBetweenLine(OA,PA)
+    conclusion: IsTangentOfCircle(PA,O)
+    # branch 2
+    premise: Cocircular(O,A)&Angle(PAO)&PerpendicularBetweenLine(PA,OA)
     conclusion: IsTangentOfCircle(PA,O)
 **Notes**:  
 1.圆切线的判定：垂直  
@@ -1728,9 +1802,12 @@
     <img src="gdl-pic/T161.png" width="15%"
 </div>
 
-    premise: IsTangentOfCircle(AB,O,P)
-    conclusion: PerpendicularBetweenLine(AP,OP)
-                PerpendicularBetweenLine(OP,BP)
+    # branch 1
+    premise: IsTangentOfCircle(PA,O)&Angle(OAP)
+    conclusion: PerpendicularBetweenLine(OA,PA)
+    # branch 2
+    premise: IsTangentOfCircle(PA,O)&Angle(PAO)
+    conclusion: PerpendicularBetweenLine(PA,OA)
 **Notes**:  
 1.圆切线的性质：垂直  
 

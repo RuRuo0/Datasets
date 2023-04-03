@@ -568,7 +568,7 @@
 
 ### congruent_triangle_judgment_aas(ABC,DEF)
 <div>
-    <img src="gdl-pic/T051.png" width="30%"
+    <img src="gdl-pic/T051.png" width="90%"
 </div>
 
     # branch 1
@@ -655,23 +655,20 @@
 
 ### mirror_congruent_triangle_judgment_aas(ABC,DEF)
 <div>
-    <img src="gdl-pic/T060.png" width="30%"
+    <img src="gdl-pic/T060.png" width="90%"
 </div>
 
+    # branch 1
+    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))&Equal(LengthOfLine(CA),LengthOfLine(DE))
+    conclusion: MirrorCongruentBetweenTriangle(ABC,DEF)
+    # branch 2
+    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))&Equal(LengthOfLine(CA),LengthOfLine(DE))
+    conclusion: MirrorCongruentBetweenTriangle(ABC,DEF)
+    # branch 3
     premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))&Equal(LengthOfLine(CA),LengthOfLine(DE))
     conclusion: MirrorCongruentBetweenTriangle(ABC,DEF)
 **Notes**:  
 1.全等三角形判定：AAS  
-
-### mirror_congruent_triangle_judgment_asa(ABC,DEF)
-<div>
-    <img src="gdl-pic/T061.png" width="30%"
-</div>
-
-    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(LengthOfLine(BC),LengthOfLine(EF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))
-    conclusion: MirrorCongruentBetweenTriangle(ABC,DEF)
-**Notes**:  
-1.全等三角形判定：ASA  
 
 ### mirror_congruent_triangle_judgment_hl(ABC,DEF)
 <div>

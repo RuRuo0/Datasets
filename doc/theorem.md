@@ -1297,7 +1297,6 @@
 
     premise: Kite(ABCD)&Collinear(AOC)&Collinear(BOD)
     conclusion: IsPerpendicularBisectorOfLine(AO,BD)
-                IsPerpendicularBisectorOfLine(CO,DB)
 **Notes**:  
 1.筝形性质：一个对角线是另一个的垂直平分线  
 
@@ -1702,7 +1701,7 @@
 **Notes**:  
 1.圆幂定理之相交弦定理：圆O的两个弦AB和CD交与点E，则EA*EB=EC*ED  
 
-### circle_property_circular_power_tangent_and_segment(PA,PCD,O)
+### circle_property_circular_power_tangent_and_segment_line(PA,PCD,O)
 <div>
     <img src="gdl-pic/T153.png" width="15%"
 </div>
@@ -1712,24 +1711,41 @@
 **Notes**:  
 1.圆幂定理之切割线定理：P引直线PAB切圆O于A，引割线PCD交圆O于CD，则PA*PA=PC*PD  
 
-### circle_property_circular_power_segment_and_segment(PAB,PCD,O)
+### circle_property_circular_power_segment_and_segment_line(PAB,PCD,O)
 <div>
     <img src="gdl-pic/T154.png" width="15%"
 </div>
 
-    premise: Cocircular(O,ACDB)&Collinear(PAB)&Collinear(PCD)
+    premise: Cocircular(O,AB)&Cocircular(O,CD)&Collinear(PAB)&Collinear(PCD)
     conclusion: Equal(Mul(LengthOfLine(PA),LengthOfLine(PB)),Mul(LengthOfLine(PC),LengthOfLine(PD)))
 **Notes**:  
-1.圆幂定理之割线定理：P引割线PAB切圆O于AB，引割线PCD交圆O于CD，则PA*PB=PC*PD  
-2.注意两条割线的先后顺序  
+1.圆幂定理之割线定理：园外P引割线PAB切圆O于AB，引割线PCD交圆O于CD，则PA*PB=PC*PD  
 
-### circle_property_circular_power_angle(PAB,PCD,O)
+### circle_property_circular_power_tangent_and_segment_angle(PA,PCD,O)
 <div>
-    <img src="gdl-pic/T155.png" width="15%"
+    <img src="gdl-pic/T052.png" width="30%"
 </div>
 
+    # branch 1
+    premise: Cocircular(O,ACD)&Collinear(PCD)
+    conclusion: Equal(Sub(MeasureOfArc(ODA),MeasureOfArc(OAC)),Mul(MeasureOfAngle(APC),2))
+    # branch 2
+    premise: Cocircular(O,CAD)&Collinear(PCD)
+    conclusion: Equal(Sub(MeasureOfArc(OAD),MeasureOfArc(OCA)),Mul(MeasureOfAngle(CPA),2))
+**Notes**:  
+1.圆幂定理之割线角度关系：P引切线PA切圆O于A，引割线PCD交圆O于CD，则两端弧所对圆心角之差等于2倍角P  
+
+### circle_property_circular_power_segment_and_segment_angle(PAB,PCD,O)
+<div>
+    <img src="gdl-pic/T155.png" width="30%"
+</div>
+
+    # branch 1
     premise: Cocircular(O,ACDB)&Collinear(PAB)&Collinear(PCD)
     conclusion: Equal(Sub(MeasureOfArc(ODB),MeasureOfArc(OAC)),Mul(MeasureOfAngle(APC),2))
+    # branch 2
+    premise: Cocircular(O,CABD)&Collinear(PAB)&Collinear(PCD)
+    conclusion: Equal(Sub(MeasureOfArc(OBD),MeasureOfArc(OCA)),Mul(MeasureOfAngle(CPA),2))
 **Notes**:  
 1.圆幂定理之割线角度关系：P引割线PAB切圆O于AB，引割线PCD交圆O于CD，则两端弧所对圆心角之差等于2倍角P  
 

@@ -683,8 +683,11 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
     ee_check: Triangle(ABC)
               Triangle(DEF)
-    multi: BCA,EFD
+    multi: DEF,ABC
+           BCA,EFD
+           EFD,BCA
            CAB,FDE
+           FDE,CAB
     extend: 
 **Notes**:  
 1.三角形ABC与三角形DEF全等  
@@ -698,8 +701,11 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
     ee_check: Triangle(ABC)
               Triangle(DEF)
-    multi: BCA,FDE
+    multi: DEF,ABC
+           BCA,FDE
+           FDE,BCA
            CAB,EFD
+           EFD,CAB
     extend: 
 **Notes**:  
 1.三角形ABC与三角形DEF镜像全等  
@@ -713,8 +719,11 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
     ee_check: Triangle(ABC)
               Triangle(DEF)
-    multi: BCA,EFD
+    multi: DEF,ABC
+           BCA,EFD
+           EFD,BCA
            CAB,FDE
+           FDE,CAB
     extend: 
 **Notes**:  
 1.三角形ABC与三角形DEF相似  
@@ -729,8 +738,11 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
     ee_check: Triangle(ABC)
               Triangle(DEF)
-    multi: BCA,FDE
+    multi: DEF,ABC
+           BCA,FDE
+           FDE,BCA
            CAB,EFD
+           EFD,CAB
     extend: 
 **Notes**:  
 1.三角形ABC与三角形DEF镜像相似  

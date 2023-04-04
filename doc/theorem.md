@@ -316,21 +316,6 @@
 **Notes**:  
 1.角平分线的性质：边成比例  
 
-### area_addition(BCA,ACD)
-<div>
-    <img src="gdl-pic/T028.png" width="30%"
-</div>
-
-    # branch 1
-    premise: Quadrilateral(ABCD)&Triangle(BCA)&Triangle(ACD)
-    conclusion: Equal(AreaOfQuadrilateral(ABCD),Add(AreaOfTriangle(BCA),AreaOfTriangle(ACD)))
-    # branch 2
-    premise: Triangle(ABD)&Triangle(BCA)&Triangle(ACD)
-    conclusion: Equal(AreaOfTriangle(ABD),Add(AreaOfTriangle(BCA),AreaOfTriangle(ACD)))
-**Notes**:  
-1.常识：若三角形BCA与三角形ACD相邻，则Area(BCA)+Area(ACD)=Area(ABCD)  
-2.若BCD共线，则Area(BCA)+Area(ACD)=Area(ABD)  
-
 ### triangle_property_angle_sum(ABC)
 <div>
     <img src="gdl-pic/T029.png" width="15%"
@@ -1682,14 +1667,17 @@
 
 ### circle_property_diameter_to_circumference_angle(AB,O,C)
 <div>
-    <img src="gdl-pic/T151.png" width="15%"
+    <img src="gdl-pic/T151.png" width="30%"
 </div>
 
-    premise: Cocircular(O,ABC)&Collinear(AOB)&Line(BC)&Line(CA)
+    # branch 1
+    premise: Cocircular(O,ABC)&Collinear(AOB)&Angle(BCA)
     conclusion: PerpendicularBetweenLine(BC,AC)
+    # branch 2
+    premise: Cocircular(O,ACB)&Collinear(AOB)&Angle(ACB)
+    conclusion: PerpendicularBetweenLine(AC,BC)
 **Notes**:  
 1.直径所对的圆周角是直角  
-2.三点在圆上的逆时针顺序为ABC  
 
 ### circle_property_circular_power_chord_and_chord(AEB,CED,O)
 <div>
@@ -1769,7 +1757,7 @@
 </div>
 
     premise: Arc(OAB)&Cocircular(O,ADB)&Collinear(ACB)&Collinear(OCD)&PerpendicularBetweenLine(AC,OC)
-    conclusion: Equal(LengthOfArc(OAD)LengthOfArc(ODB))
+    conclusion: Equal(LengthOfArc(OAD),LengthOfArc(ODB))
 **Notes**:  
 1.弦中点和圆心的连线是弦的垂直平分线  
 

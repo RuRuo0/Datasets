@@ -284,20 +284,6 @@
       ]
     }
   },
-  "area_addition(BCA,ACD)": {
-    "1": {
-      "premise": "Quadrilateral(ABCD)&Triangle(BCA)&Triangle(ACD)",
-      "conclusion": [
-        "Equal(AreaOfQuadrilateral(ABCD),Add(AreaOfTriangle(BCA),AreaOfTriangle(ACD)))"
-      ]
-    },
-    "2": {
-      "premise": "Triangle(ABD)&Triangle(BCA)&Triangle(ACD)",
-      "conclusion": [
-        "Equal(AreaOfTriangle(ABD),Add(AreaOfTriangle(BCA),AreaOfTriangle(ACD)))"
-      ]
-    }
-  },
   "triangle_property_angle_sum(ABC)": {
     "1": {
       "premise": "Triangle(ABC)",
@@ -1439,9 +1425,15 @@
   },
   "circle_property_diameter_to_circumference_angle(AB,O,C)": {
     "1": {
-      "premise": "Cocircular(O,ABC)&Collinear(AOB)&Line(BC)&Line(CA)",
+      "premise": "Cocircular(O,ABC)&Collinear(AOB)&Angle(BCA)",
       "conclusion": [
         "PerpendicularBetweenLine(BC,AC)"
+      ]
+    },
+    "2": {
+      "premise": "Cocircular(O,ACB)&Collinear(AOB)&Angle(ACB)",
+      "conclusion": [
+        "PerpendicularBetweenLine(AC,BC)"
       ]
     }
   },
@@ -1515,7 +1507,7 @@
     "1": {
       "premise": "Arc(OAB)&Cocircular(O,ADB)&Collinear(ACB)&Collinear(OCD)&PerpendicularBetweenLine(AC,OC)",
       "conclusion": [
-        "Equal(LengthOfArc(OAD)LengthOfArc(ODB))"
+        "Equal(LengthOfArc(OAD),LengthOfArc(ODB))"
       ]
     }
   },

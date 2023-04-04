@@ -83,14 +83,16 @@ class Problem:
         Constructive process.
         1.Collinear expand.
         2.Cocircular expand.
-        3.Jigsaw construction. Shape(s1,s2,s3), Shape(s3,s2,s4) ==> Shape(s1,s4)
+        3.Shape expand. Shape(s1,s2,s3), Shape(s3,s2,s4) ==> Shape(s1,s4).
+        4.Angle expand.
+        5.Angle collinear expand.
         """
         if not self.loaded:  # problem must be loaded
             e_msg = "Problem not loaded. Please run <load_problem> before run other functions."
             raise Exception(e_msg)
 
         for predicate, item in self.problem_CDL["parsed_cdl"]["construction_cdl"]:  # Collinear
-            if predicate != "Collinear":
+            if predicate != "Collinear":  # 1.Collinear expand.
                 continue
             if not self.fv_check("Collinear", item):  # FV check
                 w_msg = "FV check not passed: [{}, {}]".format(predicate, item)
@@ -101,17 +103,16 @@ class Problem:
             if not added:
                 continue
 
-            for l in range(3, len(item) + 1):  # extend collinear
-                for extended_item in combinations(item, l):
-                    self.conditions["Collinear"].add(extended_item, (_id,), "extended")
-                    self.conditions["Collinear"].add(extended_item[::-1], (_id,), "extended")
-                    if len(extended_item) == 3:  # extend angle
-                        self.add("Angle", extended_item, (_id,), "extended")
-                        self.add("Angle", extended_item[::-1], (_id,), "extended")
+            self.conditions[predicate].add(tuple(item[::-1]), (_id,), "extended")
             self.add("Line", (item[0], item[-1]), (_id,), "extended")
+            for extended_item in combinations(item, 3):  # l=3 is enough
+                self.conditions["Collinear"].add(extended_item, (_id,), "extended")
+                self.conditions["Collinear"].add(extended_item[::-1], (_id,), "extended")
+                self.add("Angle", extended_item, (_id,), "extended")
+                self.add("Angle", extended_item[::-1], (_id,), "extended")
 
         for predicate, item in self.problem_CDL["parsed_cdl"]["construction_cdl"]:  # Cocircular
-            if predicate != "Cocircular":
+            if predicate != "Cocircular":  # 2.Cocircular expand.
                 continue
             if not self.fv_check("Cocircular", item):  # FV check
                 w_msg = "FV check not passed: [{}, {}]".format(predicate, item)
@@ -122,12 +123,13 @@ class Problem:
             if not added:
                 continue
 
-            self.add("Circle", (item[0],), (_id,), "extended")
-            if len(item) == 1:  # only circle
-                continue
             circle = item[0]
+            self.add("Circle", (circle,), (_id,), "extended")
+            if len(item) == 1:
+                continue
+
             item = item[1:]
-            for com in range(1, len(item) + 1)[::-1]:  # extend cocircular
+            for com in range(1, len(item) + 1):  # extend cocircular
                 for extended_item in combinations(item, com):
                     if com == 2:
                         self.conditions["Arc"].add((circle, extended_item[0], extended_item[-1]), (_id,), "extended")
@@ -138,8 +140,8 @@ class Problem:
                         self.conditions["Cocircular"].add(
                             tuple([circle] + [cocircular[(i + bias) % l] for i in range(l)]), (_id,), "extended")
 
-        jigsaw = {}
-        shape_cache = []
+        jigsaw_unit = {}  #
+        shape_unit = []  # mini shape unit
         for predicate, item in self.problem_CDL["parsed_cdl"]["construction_cdl"]:  # Shape
             if predicate != "Shape":
                 continue
@@ -148,208 +150,126 @@ class Problem:
                 warnings.warn(w_msg)
                 continue
 
-            if len(item) == 1:  # arc or line
-                if len(item[0]) == 2:
-                    self.add("Line", tuple(item[0]), (-1,), "prerequisite")
-                else:
-                    self.add("Arc", tuple(item[0]), (-1,), "prerequisite")
+            if len(item) == 1:  # line
+                self.add("Line", tuple(item[0]), (-1,), "prerequisite")
                 continue
-
-            if len(item) == 2 and len(item[0]) == 2 and len(item[1]) == 2:
+            elif len(item) == 2 and len(item[0]) == 2 and len(item[1]) == 2:  # angle
                 self.add("Angle", tuple(item[0] + item[1][1]), (-1,), "prerequisite")
                 continue
 
-            added, all_forms = self._add_shape(tuple(item), (-1,), "prerequisite")  # add shape
+            added, all_forms = self._add_shape(tuple(item), (-1,), "prerequisite")  # shape
             if not added:
                 continue
 
             for shape in all_forms:
-                jigsaw[shape] = all_forms
-                shape_cache.append(shape)
+                jigsaw_unit[shape] = all_forms
+                shape_unit.append(shape)
 
-        shape_old = []
-        while len(shape_cache) > 0:
-            shape_new = []
-            for shape1 in shape_old:
-                for shape2 in shape_cache:
-                    if len(jigsaw[shape1] & jigsaw[shape2]) > 0:  # ensure no intersecting part
-                        continue
-                    checked, new_shape = self._check_two_shape(shape1, shape2)
-                    if not checked:
+        shape_comb = shape_unit  # 3.Shape expand.
+        jigsaw_comb = jigsaw_unit
+        while len(shape_comb):
+            shape_comb_new = []
+            jigsaw_comb_new = {}
+            for unit in shape_unit:
+                for comb in shape_comb:
+
+                    if unit in jigsaw_comb[comb]:  # comb is combined from unit
                         continue
 
-                    premise = (self.conditions["Shape"].get_id_by_item[shape1],
-                               self.conditions["Shape"].get_id_by_item[shape2])
+                    same_length = 0  # number of same sides
+                    while same_length < len(unit) and same_length < len(comb):
+                        if (len(unit[- same_length - 1]) == len(comb[same_length]) and  # same type (line or arc)
+                                ((len(unit[- same_length - 1]) == 3 and  # arc and same
+                                  unit[- same_length - 1] == comb[same_length]) or
+                                 (unit[- same_length - 1] == comb[same_length][::-1]))):  # line and same
+                            same_length += 1
+                        else:
+                            break
+
+                    if same_length == 0:  # ensure has same sides
+                        continue
+
+                    new_shape = list(unit[0:len(unit) - same_length])  # diff sides in polygon1
+                    new_shape += list(comb[same_length:len(comb)])  # diff sides in polygon2
+
+                    if not len(new_shape) == len(set(new_shape)):  # ensure no ring
+                        continue
+
+                    new_shape = tuple(new_shape)
+                    if not self.conditions["Shape"].can_add(new_shape):  # ensure new shape
+                        continue
+
+                    all_sides = ""
+                    for item in new_shape:  # remove circle center point
+                        if len(item) == 3:
+                            item = item[1:]
+                        all_sides += item
+                    checked = True
+                    for point in all_sides:
+                        if all_sides.count(point) > 2:
+                            checked = False
+                            break
+                    if not checked:  # ensure no holes
+                        continue
+
+                    premise = (self.conditions["Shape"].get_id_by_item[unit],
+                               self.conditions["Shape"].get_id_by_item[comb])
 
                     added, all_forms = self._add_shape(new_shape, premise, "extended")  # add shape
+                    if not added:  # ensure added
+                        continue
+
+                    new_shape_jigsaw = jigsaw_unit[unit] | jigsaw_comb[comb]
+                    for shape in all_forms:
+                        jigsaw_comb_new[shape] = new_shape_jigsaw
+                        shape_comb_new.append(shape)
+
+            shape_comb = shape_comb_new
+            jigsaw_comb = jigsaw_comb_new
+
+        angle_unit = list(self.conditions["Angle"].get_id_by_item)  # 4.Angle expand.
+        jigsaw_unit = {}
+        for angle in angle_unit:
+            jigsaw_unit[angle] = {angle}
+
+        angle_comb = angle_unit  # combination angle
+        jigsaw_comb = jigsaw_unit  # angle's jigsaw
+        while len(angle_comb):
+            angle_comb_new = []
+            jigsaw_comb_new = {}
+            for unit in angle_unit:
+                for comb in angle_comb:
+
+                    if unit in jigsaw_comb[comb]:  # comb is combined from unit
+                        continue
+
+                    if not (unit[1] == comb[1] and unit[2] == comb[0] and unit[0] != comb[2]):  # ensure adjacent
+                        continue
+
+                    if (unit[0], unit[1], comb[2]) in self.conditions["Angle"].get_id_by_item or \
+                            (unit[0], comb[2], unit[1]) in self.conditions["Angle"].get_id_by_item or \
+                            (comb[2], unit[0], unit[1]) in self.conditions["Angle"].get_id_by_item:
+                        continue
+
+                    new_angle = (unit[0], unit[1], comb[2])
+
+                    if not len(new_angle) == len(set(new_angle)):  # ensure same points
+                        continue
+
+                    premise = (self.conditions["Angle"].get_id_by_item[unit],
+                               self.conditions["Angle"].get_id_by_item[comb])
+                    added, _ = self.conditions["Angle"].add(new_angle, premise, "extended")  # need to expand line
                     if not added:
                         continue
 
-                    new_shape_jigsaw = jigsaw[shape1] | jigsaw[shape2]
-                    for shape in all_forms:
-                        jigsaw[shape] = new_shape_jigsaw
-                        shape_new.append(shape)
+                    new_angle_jigsaw = jigsaw_unit[unit] | jigsaw_comb[comb]
+                    jigsaw_comb_new[new_angle] = new_angle_jigsaw
+                    angle_comb_new.append(new_angle)
 
-            for shape1 in shape_cache:
-                for shape2 in shape_cache:
-                    if len(jigsaw[shape1] & jigsaw[shape2]) > 0:  # ensure no intersecting part
-                        continue
-                    checked, new_shape = self._check_two_shape(shape1, shape2)
-                    if not checked:
-                        continue
+            angle_comb = angle_comb_new
+            jigsaw_comb = jigsaw_comb_new
 
-                    premise = (self.conditions["Shape"].get_id_by_item[shape1],
-                               self.conditions["Shape"].get_id_by_item[shape2])
-
-                    added, all_forms = self._add_shape(new_shape, premise, "extended")  # add shape
-                    if not added:
-                        continue
-
-                    new_shape_jigsaw = jigsaw[shape1] | jigsaw[shape2]
-                    for shape in all_forms:
-                        jigsaw[shape] = new_shape_jigsaw
-                        shape_new.append(shape)
-
-            shape_old += shape_cache
-            shape_cache = shape_new
-
-        self._angle_collinear_expand()  # align angle's representation
-
-    def _check_two_shape(self, shape1, shape2):
-        """Check whether two shape can form a new shape."""
-        same_length = 0  # number of same sides
-        while same_length < len(shape1) and same_length < len(shape2):
-            if len(shape1[- same_length - 1]) == len(shape2[same_length]):
-                if (len(shape1[- same_length - 1]) == 3 and
-                    shape1[- same_length - 1] == shape2[same_length]) \
-                        or (shape1[- same_length - 1] == shape2[same_length][::-1]):
-                    same_length += 1
-                else:
-                    break
-            else:
-                break
-
-        if same_length == 0:  # ensure has same sides
-            return False, None
-
-        new_shape = list(shape1[0:len(shape1) - same_length])  # diff sides in polygon1
-        new_shape += list(shape2[same_length:len(shape2)])  # diff sides in polygon2
-
-        if not len(new_shape) == len(set(new_shape)):  # ensure no ring
-            return False, None
-
-        new_shape = tuple(new_shape)
-        if new_shape in self.conditions["Shape"].get_id_by_item:  # ensure new shape
-            return False, None
-
-        all_sides = ""
-        for item in new_shape:  # ensure no holes
-            if len(item) == 3:
-                item = item[1:]
-            all_sides += item
-        for point in all_sides:
-            if all_sides.count(point) > 2:
-                return False, None
-
-        return True, new_shape
-
-    def _add_shape(self, shape, premise, theorem):
-        """pass"""
-        all_forms = [shape]
-        added, _id = self.conditions["Shape"].add(shape, premise, theorem)
-        if not added:
-            return False, None
-
-        # show = False
-        # if shape == ("OBF", "FE", "EB"):
-        #     show = True
-
-        l = len(shape)
-        for bias in range(1, l):  # all forms
-            new_item = tuple([shape[(i + bias) % l] for i in range(l)])
-            self.conditions["Shape"].add(new_item, (_id,), "extended")
-            all_forms.append(new_item)
-
-        shape = list(shape)
-        _, coll, _ = self.conditions["Collinear"].get_items(["a", "b", "c"])
-        premise = [_id]
-
-        has_arc = False
-        i = 0
-        while i < len(shape):
-            j = (i + 1) % len(shape)
-
-            if len(shape[i]) == 2 and len(shape[j]) == 2:
-                try_coll = (shape[i][0], shape[i][1], shape[j][1])
-                if try_coll in coll:  # collinear
-                    shape[i] = shape[i][0] + shape[j][1]
-                    shape.pop(j)
-                    premise.append(self.conditions["Collinear"].get_id_by_item[try_coll])
-                else:
-                    i += 1
-            elif len(shape[i]) == 3 and len(shape[(i + 1) % len(shape)]) == 3 and \
-                    shape[i][1] != shape[i][2] and shape[j][1] != shape[j][2]:
-                has_arc = True
-                if shape[i][0] == shape[j][0] and shape[i][1] == shape[j][2]:  # (OBC, OAB)
-                    co_cir = (shape[j][0], shape[j][1], shape[j][2], shape[i][2])  # OABC
-                    shape[i] = shape[j][0] + shape[j][1] + shape[i][2]  # OAC
-                    shape.pop(j)
-                    if co_cir in self.conditions["Cocircular"].get_id_by_item:
-                        premise.append(self.conditions["Cocircular"].get_id_by_item[co_cir])
-                elif shape[i][0] == shape[j][0] and shape[i][2] == shape[j][1]:  # (OAB, OBC)
-                    co_cir = (shape[i][0], shape[i][1], shape[i][2], shape[j][2])  # OABC
-                    shape[i] = shape[i][0] + shape[i][1] + shape[j][2]  # OAC
-                    shape.pop(j)
-                    if co_cir in self.conditions["Cocircular"].get_id_by_item:
-                        premise.append(self.conditions["Cocircular"].get_id_by_item[co_cir])
-                else:
-                    i += 1
-            else:
-                has_arc = True
-                i += 1
-
-        # if show:
-        #     print(shape)
-
-        l = len(shape)
-        premise = tuple(set(premise))
-
-        for i in range(l):  # extend angle and line
-            if len(shape[i]) == 2 and len(shape[(i + 1) % l]) == 2:
-                self.add("Angle", (shape[i][0], shape[i][1], shape[(i + 1) % l][1]), premise, "extended")
-            elif len(shape[i]) == 2:
-                self.add("Line", (shape[i][0], shape[i][1]), premise, "extended")
-
-        if not has_arc:  # extend polygon
-            polygon = tuple([item[0] for item in shape])
-            if len(shape) == 3:
-                self.add("Triangle", polygon, premise, "extended")
-            elif len(shape) == 4:
-                self.add("Quadrilateral", polygon, premise, "extended")
-            elif len(shape) == 5:
-                self.add("Pentagon", polygon, premise, "extended")
-            elif len(shape) == 6:
-                self.add("Hexagon", polygon, premise, "extended")
-        else:  # has acr
-            if len(shape) == 3 and len("".join(shape)) == 7:  # ensure (arc,line,line)
-                while len(shape[0]) != 3:  # adjust to (OAB, BO, OA)
-                    shape = shape[1:] + [shape[0]]
-                if shape[0][1] == shape[2][1] and shape[0][2] == shape[1][0] \
-                        and shape[0][0] == shape[1][1] and shape[0][0] == shape[2][0]:  # (OAB, BO, OA)
-                    self.add("Sector", tuple(list(shape[0])), premise, "extended")
-
-            elif len(shape) == 2 and len("".join(shape)) == 5:  # ensure (arc,line)
-                if len(shape[0]) != 3:  # adjust to (OAB, BA)
-                    shape = shape[::-1]
-                if (shape[0][1], shape[0][0], shape[0][2]) in coll and \
-                        shape[0][1] == shape[1][1] and shape[0][2] == shape[1][0]:
-                    self.add("Sector", tuple(list(shape[0])), premise, "extended")
-
-        return True, set(all_forms)
-
-    def _angle_collinear_expand(self):
-        """Find same angle."""
-        for angle in list(self.conditions["Angle"].get_id_by_item):
+        for angle in list(self.conditions["Angle"].get_id_by_item):  # 5.Angle collinear expand.
             a, v, b = angle
             a_collinear = None
             b_collinear = None
@@ -394,6 +314,90 @@ class Problem:
                 for b_point in b_points:
                     premise = (self.conditions["Angle"].get_id_by_item[angle],)
                     self.add("Angle", (a_point, v, b_point), premise, "extended")
+
+    def _add_shape(self, shape, premise, theorem):
+        """pass"""
+        added, _id = self.conditions["Shape"].add(shape, premise, theorem)
+        if not added:
+            return False, None
+
+        all_forms = [shape]
+        l = len(shape)
+        for bias in range(1, l):  # all forms
+            new_item = tuple([shape[(i + bias) % l] for i in range(l)])
+            self.conditions["Shape"].add(new_item, (_id,), "extended")
+            all_forms.append(new_item)
+
+        shape = list(shape)
+        _, col, _ = self.conditions["Collinear"].get_items(["a", "b", "c"])
+        _, coc, _ = self.conditions["Cocircular"].get_items(["o", "a", "b", "c"])
+        premise = [_id]
+
+        i = 0
+        has_arc = False
+        while i < len(shape):
+            j = (i + 1) % len(shape)
+            if len(shape[i]) == 2 and len(shape[j]) == 2:
+                self.add("Angle", (shape[i][0], shape[i][1], shape[j][1]), (_id,), "extended")  # extend angle
+                co = (shape[i][0], shape[i][1], shape[j][1])
+                if co in col:
+                    shape[i] = shape[i][0] + shape[j][1]
+                    premise.append(self.conditions["Collinear"].get_id_by_item[co])
+                    shape.pop(j)
+                    continue  # no need +1 about i
+
+            elif len(shape[i]) == 3 and len(shape[j]) == 3:
+                has_arc = True
+                if shape[i][1] != shape[i][2] and shape[j][1] != shape[j][2]:
+                    if shape[i][0] == shape[j][0] and shape[i][1] == shape[j][2]:  # (OBC, OAB)
+                        co = (shape[j][0], shape[j][1], shape[j][2], shape[i][2])  # OABC
+                        if co in coc:
+                            premise.append(self.conditions["Cocircular"].get_id_by_item[co])
+                        shape[i] = shape[j][0] + shape[j][1] + shape[i][2]  # OAC
+                        shape.pop(j)
+                        continue  # no need +1 about i
+                    elif shape[i][0] == shape[j][0] and shape[i][2] == shape[j][1]:  # (OAB, OBC)
+                        co = (shape[i][0], shape[i][1], shape[i][2], shape[j][2])  # OABC
+                        if co in coc:
+                            premise.append(self.conditions["Cocircular"].get_id_by_item[co])
+                        shape[i] = shape[i][0] + shape[i][1] + shape[j][2]  # OAC
+                        shape.pop(j)
+                        continue  # no need +1 about i
+            elif len(shape[i]) == 2:
+                self.add("Line", tuple(shape[i]), (_id,), "extended")  # extend line
+            else:
+                has_arc = True
+
+            i += 1
+
+        premise = tuple(set(premise))
+
+        if not has_arc:  # extend polygon
+            polygon = tuple([item[0] for item in shape])
+            if len(shape) == 3:
+                self.add("Triangle", polygon, premise, "extended")
+            elif len(shape) == 4:
+                self.add("Quadrilateral", polygon, premise, "extended")
+            elif len(shape) == 5:
+                self.add("Pentagon", polygon, premise, "extended")
+            elif len(shape) == 6:
+                self.add("Hexagon", polygon, premise, "extended")
+        else:  # has acr
+            if len(shape) == 3 and len(shape[0]) + len(shape[1]) + len(shape[2]) == 7:  # ensure (arc,line,line)
+                while len(shape[0]) != 3:  # adjust to (OAB, BO, OA)
+                    shape = shape[1:] + [shape[0]]
+                if shape[0][1] == shape[2][1] and shape[0][2] == shape[1][0] \
+                        and shape[0][0] == shape[1][1] and shape[0][0] == shape[2][0]:  # (OAB, BO, OA)
+                    self.add("Sector", tuple(list(shape[0])), premise, "extended")
+
+            elif len(shape) == 2 and len(shape[0]) + len(shape[1]) == 5:  # ensure (arc,line)
+                if len(shape[0]) != 3:  # adjust to (OAB, BA)
+                    shape = shape[::-1]
+                if (shape[0][1], shape[0][0], shape[0][2]) in col and \
+                        shape[0][1] == shape[1][1] and shape[0][2] == shape[1][0]:
+                    self.add("Sector", tuple(list(shape[0])), premise, "extended")
+
+        return True, set(all_forms)
 
     def _align_angle_sym(self, angle):
         """
@@ -571,12 +575,11 @@ class Problem:
             if predicate == "Shape":
                 if len(item) != len(set(item)):  # default check 1: mutex points
                     return False
+                if len(item) == 1 and len(item[0]) != 2:
+                    return False
                 for shape in item:
                     if not 2 <= len(shape) <= 3 or len(shape) != len(set(shape)):
                         return False
-                if len(item) == 2 and len(item[0]) == 2 and len(item[1]) == 2 and \
-                        (item[0][1] != item[1][0] or item[0][0] == item[1][1]):
-                    return False
                 return True
             else:
                 return len(item) == len(set(item))  # default check 1: mutex points

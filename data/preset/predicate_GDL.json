@@ -18,6 +18,13 @@
         "Point(B)"
       ]
     },
+    "Arc(OAB)": {
+      "multi": [],
+      "extend": [
+        "Point(A)",
+        "Point(B)"
+      ]
+    },
     "Angle(ABC)": {
       "multi": [],
       "extend": [
@@ -58,14 +65,6 @@
         "FABCDE"
       ],
       "extend": []
-    },
-    "Arc(OAB)": {
-      "multi": [],
-      "extend": [
-        "Circle(O)",
-        "Point(A)",
-        "Point(B)"
-      ]
     },
     "Circle(O)": {
       "multi": [],
@@ -396,9 +395,7 @@
         "Triangle(ABC)"
       ],
       "fv_check": [
-        "AD,ABC",
-        "AB,ABC",
-        "AC,ABC"
+        "AD,ABC"
       ],
       "multi": [],
       "extend": [
@@ -492,8 +489,11 @@
         "Triangle(DEF)"
       ],
       "multi": [
+        "DEF,ABC",
         "BCA,EFD",
-        "CAB,FDE"
+        "EFD,BCA",
+        "CAB,FDE",
+        "FDE,CAB"
       ],
       "extend": []
     },
@@ -503,8 +503,11 @@
         "Triangle(DEF)"
       ],
       "multi": [
+        "DEF,ABC",
         "BCA,FDE",
-        "CAB,EFD"
+        "FDE,BCA",
+        "CAB,EFD",
+        "EFD,CAB"
       ],
       "extend": []
     },
@@ -514,8 +517,11 @@
         "Triangle(DEF)"
       ],
       "multi": [
+        "DEF,ABC",
         "BCA,EFD",
-        "CAB,FDE"
+        "EFD,BCA",
+        "CAB,FDE",
+        "FDE,CAB"
       ],
       "extend": []
     },
@@ -525,8 +531,11 @@
         "Triangle(DEF)"
       ],
       "multi": [
+        "DEF,ABC",
         "BCA,FDE",
-        "CAB,EFD"
+        "FDE,BCA",
+        "CAB,EFD",
+        "EFD,CAB"
       ],
       "extend": []
     },
@@ -537,14 +546,10 @@
       ],
       "fv_check": [
         "EF,ABCD",
-        "EB,ABCD",
-        "EC,ABCD",
         "AF,ABCD",
-        "AB,ABCD",
-        "AC,ABCD",
         "DF,ABCD",
-        "DB,ABCD",
-        "DC,ABCD"
+        "AC,ABCD",
+        "DB,ABCD"
       ],
       "multi": [],
       "extend": [
@@ -622,15 +627,13 @@
       "multi": [],
       "extend": []
     },
-    "IsTangentOfCircle(AB,O,P)": {
+    "IsTangentOfCircle(PA,O)": {
       "ee_check": [
-        "Line(AB)",
-        "Cocircular(O,P)"
+        "Line(PA)",
+        "Cocircular(O,A)"
       ],
       "fv_check": [
-        "AB,O,P",
-        "AB,O,A",
-        "AB,O,B"
+        "PA,O"
       ],
       "multi": [],
       "extend": []
@@ -753,20 +756,6 @@
       "sym": "rsa",
       "multi": []
     },
-    "PerimeterOfCircle(O)": {
-      "ee_check": [
-        "Circle(O)"
-      ],
-      "sym": "pc",
-      "multi": []
-    },
-    "AreaOfCircle(O)": {
-      "ee_check": [
-        "Circle(O)"
-      ],
-      "sym": "ac",
-      "multi": []
-    },
     "RadiusOfCircle(O)": {
       "ee_check": [
         "Circle(O)"
@@ -779,6 +768,20 @@
         "Circle(O)"
       ],
       "sym": "dc",
+      "multi": []
+    },
+    "PerimeterOfCircle(O)": {
+      "ee_check": [
+        "Circle(O)"
+      ],
+      "sym": "pc",
+      "multi": []
+    },
+    "AreaOfCircle(O)": {
+      "ee_check": [
+        "Circle(O)"
+      ],
+      "sym": "ac",
       "multi": []
     },
     "PerimeterOfSector(OAB)": {

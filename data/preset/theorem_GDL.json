@@ -75,24 +75,24 @@
   },
   "parallel_property_collinear_extend(AB,CD,M)": {
     "1": {
-      "premise": "Collinear(AMB)&ParallelBetweenLine(AB,CD)",
-      "conclusion": [
-        "ParallelBetweenLine(AM,CD)",
-        "ParallelBetweenLine(MB,CD)"
-      ]
-    },
-    "2": {
       "premise": "Collinear(MAB)&ParallelBetweenLine(AB,CD)",
       "conclusion": [
         "ParallelBetweenLine(MA,CD)",
         "ParallelBetweenLine(MB,CD)"
       ]
     },
-    "3": {
+    "2": {
       "premise": "Collinear(ABM)&ParallelBetweenLine(AB,CD)",
       "conclusion": [
         "ParallelBetweenLine(AM,CD)",
         "ParallelBetweenLine(BM,CD)"
+      ]
+    },
+    "3": {
+      "premise": "Collinear(AMB)&ParallelBetweenLine(AB,CD)",
+      "conclusion": [
+        "ParallelBetweenLine(AM,CD)",
+        "ParallelBetweenLine(MB,CD)"
       ]
     }
   },
@@ -162,19 +162,19 @@
       ]
     },
     "2": {
-      "premise": "PerpendicularBetweenLine(AO,CO)&Collinear(BOC)",
+      "premise": "PerpendicularBetweenLine(AO,CO)&Collinear(COB)",
       "conclusion": [
         "PerpendicularBetweenLine(BO,AO)"
       ]
     },
     "3": {
-      "premise": "PerpendicularBetweenLine(AO,CO)&(Collinear(ABO)|Collinear(BAO))",
+      "premise": "PerpendicularBetweenLine(AO,CO)&Collinear(BAO)",
       "conclusion": [
         "PerpendicularBetweenLine(BO,CO)"
       ]
     },
     "4": {
-      "premise": "PerpendicularBetweenLine(AO,CO)&(Collinear(OBC)|Collinear(OCB))",
+      "premise": "PerpendicularBetweenLine(AO,CO)&Collinear(BCO)",
       "conclusion": [
         "PerpendicularBetweenLine(AO,BO)"
       ]
@@ -236,6 +236,14 @@
       ]
     }
   },
+  "round_angle(AOB,BOA)": {
+    "1": {
+      "premise": "Angle(AOB)&Angle(BOA))",
+      "conclusion": [
+        "Equal(Add(MeasureOfAngle(AOB),MeasureOfAngle(BOA)),360)"
+      ]
+    }
+  },
   "vertical_angle(AOC,BOD)": {
     "1": {
       "premise": "Collinear(AOB)&Collinear(COD)",
@@ -273,20 +281,6 @@
       "premise": "IsBisectorOfAngle(BD,ABC)&Collinear(CDA)",
       "conclusion": [
         "Equal(Mul(LengthOfLine(CD),LengthOfLine(BA)),Mul(LengthOfLine(DA),LengthOfLine(BC)))"
-      ]
-    }
-  },
-  "area_addition(BCA,ACD)": {
-    "1": {
-      "premise": "Quadrilateral(ABCD)&Triangle(BCA)&Triangle(ACD)",
-      "conclusion": [
-        "Equal(AreaOfQuadrilateral(ABCD),Add(AreaOfTriangle(BCA),AreaOfTriangle(ACD)))"
-      ]
-    },
-    "2": {
-      "premise": "Triangle(ABD)&Triangle(BCA)&Triangle(ACD)",
-      "conclusion": [
-        "Equal(AreaOfTriangle(ABD),Add(AreaOfTriangle(BCA),AreaOfTriangle(ACD)))"
       ]
     }
   },
@@ -348,27 +342,21 @@
   },
   "altitude_of_triangle_judgment(AD,ABC)": {
     "1": {
-      "premise": "Triangle(ABC)&Collinear(BDC)&Line(AD)&PerpendicularBetweenLine(BD,AD)",
+      "premise": "Triangle(ABC)&Line(AD)&Collinear(BDC)&PerpendicularBetweenLine(BD,AD)",
       "conclusion": [
         "IsAltitudeOfTriangle(AD,ABC)"
       ]
     },
     "2": {
-      "premise": "Triangle(ABC)&Line(AD)&(Collinear(DBC)&PerpendicularBetweenLine(AD,BD)|Collinear(BCD)&PerpendicularBetweenLine(AC,DC))",
+      "premise": "Triangle(ABC)&Line(AD)&Collinear(DBC)&PerpendicularBetweenLine(AD,BD)",
       "conclusion": [
         "IsAltitudeOfTriangle(AD,ABC)"
       ]
     },
     "3": {
-      "premise": "Triangle(ABC)&PerpendicularBetweenLine(AB,CB)",
+      "premise": "Triangle(ABC)&Line(AD)&Collinear(BCD)&PerpendicularBetweenLine(CD,AD)",
       "conclusion": [
-        "IsAltitudeOfTriangle(AB,ABC)"
-      ]
-    },
-    "4": {
-      "premise": "Triangle(ABC)&PerpendicularBetweenLine(BC,AC)",
-      "conclusion": [
-        "IsAltitudeOfTriangle(AC,ABC)"
+        "IsAltitudeOfTriangle(AD,ABC)"
       ]
     }
   },
@@ -492,15 +480,19 @@
   },
   "congruent_triangle_judgment_aas(ABC,DEF)": {
     "1": {
-      "premise": "Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))&Equal(LengthOfLine(CA),LengthOfLine(FD))",
+      "premise": "Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))&Equal(LengthOfLine(AB),LengthOfLine(DE))",
       "conclusion": [
         "CongruentBetweenTriangle(ABC,DEF)"
       ]
-    }
-  },
-  "congruent_triangle_judgment_asa(ABC,DEF)": {
-    "1": {
-      "premise": "Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(LengthOfLine(BC),LengthOfLine(EF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))",
+    },
+    "2": {
+      "premise": "Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))&Equal(LengthOfLine(BC),LengthOfLine(EF))",
+      "conclusion": [
+        "CongruentBetweenTriangle(ABC,DEF)"
+      ]
+    },
+    "3": {
+      "premise": "Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))&Equal(LengthOfLine(AC),LengthOfLine(DF))",
       "conclusion": [
         "CongruentBetweenTriangle(ABC,DEF)"
       ]
@@ -508,7 +500,7 @@
   },
   "congruent_triangle_judgment_hl(ABC,DEF)": {
     "1": {
-      "premise": "RightTriangle(ABC)&RightTriangle(DEF)&Equal(LengthOfLine(AC),LengthOfLine(DF))&(Equal(LengthOfLine(AB),LengthOfLine(DE))|Equal(LengthOfLine(BC),LengthOfLine(EF)))",
+      "premise": "Triangle(ABC)&Triangle(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(DE,FE)&Equal(LengthOfLine(AC),LengthOfLine(DF))&(Equal(LengthOfLine(AB),LengthOfLine(DE))|Equal(LengthOfLine(BC),LengthOfLine(EF)))",
       "conclusion": [
         "CongruentBetweenTriangle(ABC,DEF)"
       ]
@@ -564,15 +556,19 @@
   },
   "mirror_congruent_triangle_judgment_aas(ABC,DEF)": {
     "1": {
-      "premise": "Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))&Equal(LengthOfLine(CA),LengthOfLine(DE))",
+      "premise": "Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))&Equal(LengthOfLine(AB),LengthOfLine(DF))",
       "conclusion": [
         "MirrorCongruentBetweenTriangle(ABC,DEF)"
       ]
-    }
-  },
-  "mirror_congruent_triangle_judgment_asa(ABC,DEF)": {
-    "1": {
-      "premise": "Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(LengthOfLine(BC),LengthOfLine(EF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))",
+    },
+    "2": {
+      "premise": "Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))&Equal(LengthOfLine(BC),LengthOfLine(EF))",
+      "conclusion": [
+        "MirrorCongruentBetweenTriangle(ABC,DEF)"
+      ]
+    },
+    "3": {
+      "premise": "Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))&Equal(LengthOfLine(CA),LengthOfLine(DE))",
       "conclusion": [
         "MirrorCongruentBetweenTriangle(ABC,DEF)"
       ]
@@ -580,7 +576,7 @@
   },
   "mirror_congruent_triangle_judgment_hl(ABC,DEF)": {
     "1": {
-      "premise": "RightTriangle(ABC)&RightTriangle(EFD)&Equal(LengthOfLine(AC),LengthOfLine(DE))&(Equal(LengthOfLine(BC),LengthOfLine(EF))|Equal(LengthOfLine(AB),LengthOfLine(DF)))",
+      "premise": "Triangle(ABC)&Triangle(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(EF,DF)&Equal(LengthOfLine(AC),LengthOfLine(DE))&(Equal(LengthOfLine(BC),LengthOfLine(EF))|Equal(LengthOfLine(AB),LengthOfLine(DF)))",
       "conclusion": [
         "MirrorCongruentBetweenTriangle(ABC,DEF)"
       ]
@@ -644,7 +640,13 @@
   },
   "similar_triangle_judgment_hl(ABC,DEF)": {
     "1": {
-      "premise": "RightTriangle(ABC)&RightTriangle(DEF)&(Equal(Mul(LengthOfLine(AC),LengthOfLine(DE)),Mul(LengthOfLine(AB),LengthOfLine(DF)))|Equal(Mul(LengthOfLine(AC),LengthOfLine(EF)),Mul(LengthOfLine(BC),LengthOfLine(DF))))",
+      "premise": "Triangle(ABC)&Triangle(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(DE,FE)&Equal(Mul(LengthOfLine(AB),LengthOfLine(DF)),Mul(LengthOfLine(AC),LengthOfLine(DE)))",
+      "conclusion": [
+        "SimilarBetweenTriangle(ABC,DEF)"
+      ]
+    },
+    "q": {
+      "premise": "Triangle(ABC)&Triangle(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(DE,FE)&Equal(Mul(LengthOfLine(BC),LengthOfLine(DF)),Mul(LengthOfLine(AC),LengthOfLine(EF)))",
       "conclusion": [
         "SimilarBetweenTriangle(ABC,DEF)"
       ]
@@ -716,7 +718,13 @@
   },
   "mirror_similar_triangle_judgment_hl(ABC,DEF)": {
     "1": {
-      "premise": "RightTriangle(BCA)&RightTriangle(DEF)&(Equal(Mul(LengthOfLine(AC),LengthOfLine(DF)),Mul(LengthOfLine(AB),LengthOfLine(DE)))|Equal(Mul(LengthOfLine(AC),LengthOfLine(EF)),Mul(LengthOfLine(BC),LengthOfLine(DE))))",
+      "premise": "Triangle(BCA)&Triangle(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(EF,DF)&Equal(Mul(LengthOfLine(AB),LengthOfLine(DE)),Mul(LengthOfLine(DF),LengthOfLine(AC)))",
+      "conclusion": [
+        "MirrorSimilarBetweenTriangle(ABC,DEF)"
+      ]
+    },
+    "2": {
+      "premise": "Triangle(BCA)&Triangle(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(EF,DF)&Equal(Mul(LengthOfLine(BC),LengthOfLine(DE)),Mul(LengthOfLine(AC),LengthOfLine(EF)))",
       "conclusion": [
         "MirrorSimilarBetweenTriangle(ABC,DEF)"
       ]
@@ -884,15 +892,75 @@
   },
   "altitude_of_quadrilateral_judgment(EF,ABCD)": {
     "1": {
-      "premise": "(Parallelogram(ABCD)|Trapezoid(ABCD))&Collinear(BFC)&Line(EF)&PerpendicularBetweenLine(BF,EF)",
+      "premise": "(Parallelogram(ABCD)|Trapezoid(ABCD))&Line(EF)&Collinear(AED)&Collinear(BFC)&PerpendicularBetweenLine(BF,EF)",
       "conclusion": [
         "IsAltitudeOfQuadrilateral(EF,ABCD)"
       ]
     },
     "2": {
-      "premise": "(Parallelogram(ABCD)|Trapezoid(ABCD))&Line(EF)&(Collinear(FBC)&PerpendicularBetweenLine(EF,BD)|Collinear(BCF)&PerpendicularBetweenLine(CF,EF))",
+      "premise": "(Parallelogram(ABCD)|Trapezoid(ABCD))&Line(EF)&Collinear(AED)&Collinear(FBC)&PerpendicularBetweenLine(EF,BF)",
       "conclusion": [
         "IsAltitudeOfQuadrilateral(EF,ABCD)"
+      ]
+    },
+    "3": {
+      "premise": "(Parallelogram(ABCD)|Trapezoid(ABCD))&Line(EF)&Collinear(AED)&Collinear(BCF)&PerpendicularBetweenLine(CF,EF)",
+      "conclusion": [
+        "IsAltitudeOfQuadrilateral(EF,ABCD)"
+      ]
+    }
+  },
+  "altitude_of_quadrilateral_judgment_left_vertex(AF,ABCD)": {
+    "1": {
+      "premise": "(Parallelogram(ABCD)|Trapezoid(ABCD))&Line(AF)&Collinear(BFC)&PerpendicularBetweenLine(BF,AF)",
+      "conclusion": [
+        "IsAltitudeOfQuadrilateral(AF,ABCD)"
+      ]
+    },
+    "2": {
+      "premise": "(Parallelogram(ABCD)|Trapezoid(ABCD))&Line(AF)&Collinear(FBC)&PerpendicularBetweenLine(AF,BF)",
+      "conclusion": [
+        "IsAltitudeOfQuadrilateral(AF,ABCD)"
+      ]
+    },
+    "3": {
+      "premise": "(Parallelogram(ABCD)|Trapezoid(ABCD))&Line(AF)&Collinear(BCF)&PerpendicularBetweenLine(CF,AF)",
+      "conclusion": [
+        "IsAltitudeOfQuadrilateral(AF,ABCD)"
+      ]
+    }
+  },
+  "altitude_of_quadrilateral_judgment_right_vertex(DF,ABCD)": {
+    "1": {
+      "premise": "(Parallelogram(ABCD)|Trapezoid(ABCD))&Line(DF)&Collinear(BFC)&PerpendicularBetweenLine(BF,DF)",
+      "conclusion": [
+        "IsAltitudeOfQuadrilateral(DF,ABCD)"
+      ]
+    },
+    "2": {
+      "premise": "(Parallelogram(ABCD)|Trapezoid(ABCD))&Line(DF)&Collinear(FBC)&PerpendicularBetweenLine(DF,BF)",
+      "conclusion": [
+        "IsAltitudeOfQuadrilateral(DF,ABCD)"
+      ]
+    },
+    "3": {
+      "premise": "(Parallelogram(ABCD)|Trapezoid(ABCD))&Line(DF)&Collinear(BCF)&PerpendicularBetweenLine(CF,DF)",
+      "conclusion": [
+        "IsAltitudeOfQuadrilateral(DF,ABCD)"
+      ]
+    }
+  },
+  "altitude_of_quadrilateral_judgment_diagonal(ABCD)": {
+    "1": {
+      "premise": "(Parallelogram(ABCD)|Trapezoid(ABCD))&Line(AC)&PerpendicularBetweenLine(BC,AC)",
+      "conclusion": [
+        "IsAltitudeOfQuadrilateral(AC,ABCD)"
+      ]
+    },
+    "2": {
+      "premise": "(Parallelogram(ABCD)|Trapezoid(ABCD))&Line(DB)&PerpendicularBetweenLine(DB,CB)",
+      "conclusion": [
+        "IsAltitudeOfQuadrilateral(DB,ABCD)"
       ]
     }
   },
@@ -906,7 +974,19 @@
   },
   "midsegment_of_quadrilateral_judgment_parallel(EF,ABCD)": {
     "1": {
-      "premise": "Collinear(AEB)&Collinear(DFC)&Line(EF)&(Trapezoid(ABCD)|Parallelogram(ABCD))&ParallelBetweenLine(EF,BC)&(IsMidpointOfLine(E,AB)|IsMidpointOfLine(F,CD)|Equal(Add(LengthOfLine(AD),LengthOfLine(BC)),Mul(LengthOfLine(EF),2)))",
+      "premise": "Collinear(AEB)&Collinear(DFC)&Line(EF)&(Trapezoid(ABCD)|Parallelogram(ABCD))&ParallelBetweenLine(EF,BC)&IsMidpointOfLine(E,AB)",
+      "conclusion": [
+        "IsMidsegmentOfQuadrilateral(EF,ABCD)"
+      ]
+    },
+    "2": {
+      "premise": "Collinear(AEB)&Collinear(DFC)&Line(EF)&(Trapezoid(ABCD)|Parallelogram(ABCD))&ParallelBetweenLine(EF,BC)&IsMidpointOfLine(F,CD)",
+      "conclusion": [
+        "IsMidsegmentOfQuadrilateral(EF,ABCD)"
+      ]
+    },
+    "3": {
+      "premise": "Collinear(AEB)&Collinear(DFC)&Line(EF)&(Trapezoid(ABCD)|Parallelogram(ABCD))&ParallelBetweenLine(EF,BC)&Equal(Add(LengthOfLine(AD),LengthOfLine(BC)),Mul(LengthOfLine(EF),2))",
       "conclusion": [
         "IsMidsegmentOfQuadrilateral(EF,ABCD)"
       ]
@@ -1003,8 +1083,7 @@
     "1": {
       "premise": "Parallelogram(ABCD)&Collinear(AOC)&Collinear(BOD)",
       "conclusion": [
-        "IsMidpointOfLine(O,AC)",
-        "IsMidpointOfLine(O,BD)"
+        "IsMidpointOfLine(O,AC)"
       ]
     }
   },
@@ -1128,6 +1207,14 @@
       ]
     }
   },
+  "right_trapezoid_area_formular(ABCD)": {
+    "1": {
+      "premise": "RightTrapezoid(ABCD)",
+      "conclusion": [
+        "Equal(AreaOfQuadrilateral(ABCD),Mul(Add(LengthOfLine(AD),LengthOfLine(BC)),LengthOfLine(AB),1/2))"
+      ]
+    }
+  },
   "isosceles_trapezoid_judgment_line_equal(ABCD)": {
     "1": {
       "premise": "Trapezoid(ABCD)&Equal(LengthOfLine(AB),LengthOfLine(CD))",
@@ -1168,11 +1255,11 @@
       ]
     }
   },
-  "arc_to_angle(OAB)": {
+  "pentagon_property_angle_sum(ABCDE)": {
     "1": {
-      "premise": "Arc(OAB)&Angle(BOA)",
+      "premise": "Pentagon(ABCDE)",
       "conclusion": [
-        "Equal(MeasureOfArc(OAB),MeasureOfAngle(BOA))"
+        "Equal(Add(MeasureOfAngle(ABC),MeasureOfAngle(BCD),MeasureOfAngle(CDE),MeasureOfAngle(DEA),MeasureOfAngle(EAB)),540)"
       ]
     }
   },
@@ -1192,9 +1279,33 @@
       ]
     }
   },
-  "arc_length_formula(OAB)": {
+  "arc_property_center_angle(OAB)": {
     "1": {
       "premise": "Arc(OAB)&Angle(BOA)",
+      "conclusion": [
+        "Equal(MeasureOfArc(OAB),MeasureOfAngle(BOA))"
+      ]
+    }
+  },
+  "arc_property_circumference_angle_external(OAB,C)": {
+    "1": {
+      "premise": "Cocircular(O,ABC)&Angle(BCA)",
+      "conclusion": [
+        "Equal(MeasureOfAngle(BCA),Mul(MeasureOfArc(OAB),1/2))"
+      ]
+    }
+  },
+  "arc_property_circumference_angle_internal(OAB,D)": {
+    "1": {
+      "premise": "Cocircular(O,ADB)&Angle(ADB)",
+      "conclusion": [
+        "Equal(MeasureOfAngle(ADB),Sub(180,Mul(MeasureOfArc(OAB),1/2)))"
+      ]
+    }
+  },
+  "arc_length_formula(OAB)": {
+    "1": {
+      "premise": "Arc(OAB)",
       "conclusion": [
         "Equal(LengthOfArc(OAB),Mul(MeasureOfArc(OAB),1/180*π,RadiusOfCircle(O)))"
       ]
@@ -1288,7 +1399,7 @@
       ]
     }
   },
-  "circle_property_diameter_length_equal(AB)": {
+  "circle_property_diameter_length_equal(AB,O)": {
     "1": {
       "premise": "Cocircular(O,AB)&Collinear(AOB)",
       "conclusion": [
@@ -1296,7 +1407,7 @@
       ]
     }
   },
-  "circle_property_radius_length_equal(OA)": {
+  "circle_property_radius_length_equal(OA,O)": {
     "1": {
       "premise": "Cocircular(O,A)&Line(OA)",
       "conclusion": [
@@ -1304,27 +1415,77 @@
       ]
     }
   },
+  "circle_property_length_of_radius_and_diameter(O)": {
+    "1": {
+      "premise": "Circle(O)",
+      "conclusion": [
+        "Equal(DiameterOfCircle(O),Mul(RadiusOfCircle(O),2))"
+      ]
+    }
+  },
   "circle_property_diameter_to_circumference_angle(AB,O,C)": {
     "1": {
       "premise": "Cocircular(O,ABC)&Collinear(AOB)&Angle(BCA)",
       "conclusion": [
-        "Equal(MeasureOfAngle(BCA),90)"
+        "PerpendicularBetweenLine(BC,AC)"
       ]
-    }
-  },
-  "circle_property_arc_to_center_and_circumference_angle(AB,O,C)": {
-    "1": {
-      "premise": "Cocircular(O,ABC)&Angle(BOA)&Angle(BCA)",
+    },
+    "2": {
+      "premise": "Cocircular(O,ACB)&Collinear(AOB)&Angle(ACB)",
       "conclusion": [
-        "Equal(MeasureOfAngle(BOA),Mul(MeasureOfAngle(BCA),2))"
+        "PerpendicularBetweenLine(AC,BC)"
       ]
     }
   },
-  "circle_property_chord_intersection(AB,CD,O,E)": {
+  "circle_property_circular_power_chord_and_chord(AEB,CED,O)": {
     "1": {
       "premise": "Cocircular(O,AB)&Cocircular(O,CD)&Collinear(AEB)&Collinear(CED)",
       "conclusion": [
         "Equal(Mul(LengthOfLine(EC),LengthOfLine(ED)),Mul(LengthOfLine(EA),LengthOfLine(EB)))"
+      ]
+    }
+  },
+  "circle_property_circular_power_tangent_and_segment_line(PA,PCD,O)": {
+    "1": {
+      "premise": "IsTangentOfCircle(PA,O)&Cocircular(O,CD)&Collinear(PCD)",
+      "conclusion": [
+        "Equal(Mul(LengthOfLine(PA),LengthOfLine(PA)),Mul(LengthOfLine(PC),LengthOfLine(PD)))"
+      ]
+    }
+  },
+  "circle_property_circular_power_segment_and_segment_line(PAB,PCD,O)": {
+    "1": {
+      "premise": "Cocircular(O,AB)&Cocircular(O,CD)&Collinear(PAB)&Collinear(PCD)",
+      "conclusion": [
+        "Equal(Mul(LengthOfLine(PA),LengthOfLine(PB)),Mul(LengthOfLine(PC),LengthOfLine(PD)))"
+      ]
+    }
+  },
+  "circle_property_circular_power_tangent_and_segment_angle(PA,PCD,O)": {
+    "1": {
+      "premise": "Cocircular(O,ACD)&Collinear(PCD)",
+      "conclusion": [
+        "Equal(Sub(MeasureOfArc(ODA),MeasureOfArc(OAC)),Mul(MeasureOfAngle(APC),2))"
+      ]
+    },
+    "2": {
+      "premise": "Cocircular(O,CAD)&Collinear(PCD)",
+      "conclusion": [
+        "Equal(Sub(MeasureOfArc(OAD),MeasureOfArc(OCA)),Mul(MeasureOfAngle(CPA),2))"
+      ]
+    }
+  },
+  "circle_property_circular_power_segment_and_segment_angle(PAB,PCD,O)": {
+    "1": {
+      "premise": "Cocircular(O,ACDB)&Collinear(PAB)&Collinear(PCD)",
+      "conclusion": [
+        "Equal(Sub(MeasureOfArc(ODB),MeasureOfArc(OAC)),Mul(MeasureOfAngle(APC),2))"
+      ]
+    },
+    "2": {
+      "premise": "Cocircular(O,CABD)&Collinear(PAB)&Collinear(PCD)",
+      "conclusion": [
+        "Equal(Sub(MeasureOfArc(OBD),MeasureOfArc(OCA)),Mul(MeasureOfAngle(CPA),2))"
       ]
     }
   },
@@ -1346,7 +1507,7 @@
     "1": {
       "premise": "Arc(OAB)&Cocircular(O,ADB)&Collinear(ACB)&Collinear(OCD)&PerpendicularBetweenLine(AC,OC)",
       "conclusion": [
-        "Equal(LengthOfArc(OAD)LengthOfArc(ODB))"
+        "Equal(LengthOfArc(OAD),LengthOfArc(ODB))"
       ]
     }
   },
@@ -1366,20 +1527,39 @@
       ]
     }
   },
-  "tangent_of_circle_judgment_perpendicular(AB,O,P)": {
+  "tangent_of_circle_judgment_perpendicular(PA,O)": {
     "1": {
-      "premise": "Cocircular(O,P)&Line(AB)&PerpendicularBetweenLine(AP,OP)",
+      "premise": "Cocircular(O,A)&Angle(OAP)&PerpendicularBetweenLine(OA,PA)",
       "conclusion": [
-        "IsTangentOfCircle(AB,O,P)"
+        "IsTangentOfCircle(PA,O)"
+      ]
+    },
+    "2": {
+      "premise": "Cocircular(O,A)&Angle(PAO)&PerpendicularBetweenLine(PA,OA)",
+      "conclusion": [
+        "IsTangentOfCircle(PA,O)"
       ]
     }
   },
-  "tangent_of_circle_property_perpendicular(AB,O,P)": {
+  "tangent_of_circle_property_perpendicular(PA,O)": {
     "1": {
-      "premise": "IsTangentOfCircle(AB,O,P)",
+      "premise": "IsTangentOfCircle(PA,O)&Angle(OAP)",
       "conclusion": [
-        "PerpendicularBetweenLine(AP,OP)",
-        "PerpendicularBetweenLine(OP,BP)"
+        "PerpendicularBetweenLine(OA,PA)"
+      ]
+    },
+    "2": {
+      "premise": "IsTangentOfCircle(PA,O)&Angle(PAO)",
+      "conclusion": [
+        "PerpendicularBetweenLine(PA,OA)"
+      ]
+    }
+  },
+  "tangent_of_circle_property_length_equal(PA,PB,O)": {
+    "1": {
+      "premise": "IsTangentOfCircle(PA,O)&IsTangentOfCircle(PB,O)",
+      "conclusion": [
+        "Equal(LengthOfLine(PA),LengthOfLine(PB))"
       ]
     }
   },

@@ -316,21 +316,6 @@
 **Notes**:  
 1.角平分线的性质：边成比例  
 
-### area_addition(BCA,ACD)
-<div>
-    <img src="gdl-pic/T028.png" width="30%"
-</div>
-
-    # branch 1
-    premise: Quadrilateral(ABCD)&Triangle(BCA)&Triangle(ACD)
-    conclusion: Equal(AreaOfQuadrilateral(ABCD),Add(AreaOfTriangle(BCA),AreaOfTriangle(ACD)))
-    # branch 2
-    premise: Triangle(ABD)&Triangle(BCA)&Triangle(ACD)
-    conclusion: Equal(AreaOfTriangle(ABD),Add(AreaOfTriangle(BCA),AreaOfTriangle(ACD)))
-**Notes**:  
-1.常识：若三角形BCA与三角形ACD相邻，则Area(BCA)+Area(ACD)=Area(ABCD)  
-2.若BCD共线，则Area(BCA)+Area(ACD)=Area(ABD)  
-
 ### triangle_property_angle_sum(ABC)
 <div>
     <img src="gdl-pic/T029.png" width="15%"
@@ -568,23 +553,20 @@
 
 ### congruent_triangle_judgment_aas(ABC,DEF)
 <div>
-    <img src="gdl-pic/T051.png" width="30%"
+    <img src="gdl-pic/T051.png" width="90%"
 </div>
 
-    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))&Equal(LengthOfLine(CA),LengthOfLine(FD))
+    # branch 1
+    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))&Equal(LengthOfLine(AB),LengthOfLine(DE))
+    conclusion: CongruentBetweenTriangle(ABC,DEF)
+    # branch 2
+    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))&Equal(LengthOfLine(BC),LengthOfLine(EF))
+    conclusion: CongruentBetweenTriangle(ABC,DEF)
+    # branch 3
+    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))&Equal(LengthOfLine(AC),LengthOfLine(DF))
     conclusion: CongruentBetweenTriangle(ABC,DEF)
 **Notes**:  
 1.全等三角形判定：AAS  
-
-### congruent_triangle_judgment_asa(ABC,DEF)
-<div>
-    <img src="gdl-pic/T052.png" width="30%"
-</div>
-
-    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(LengthOfLine(BC),LengthOfLine(EF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))
-    conclusion: CongruentBetweenTriangle(ABC,DEF)
-**Notes**:  
-1.全等三角形判定：ASA  
 
 ### congruent_triangle_judgment_hl(ABC,DEF)
 <div>
@@ -658,23 +640,20 @@
 
 ### mirror_congruent_triangle_judgment_aas(ABC,DEF)
 <div>
-    <img src="gdl-pic/T060.png" width="30%"
+    <img src="gdl-pic/T060.png" width="90%"
 </div>
 
+    # branch 1
+    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))&Equal(LengthOfLine(AB),LengthOfLine(DF))
+    conclusion: MirrorCongruentBetweenTriangle(ABC,DEF)
+    # branch 2
+    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))&Equal(LengthOfLine(BC),LengthOfLine(EF))
+    conclusion: MirrorCongruentBetweenTriangle(ABC,DEF)
+    # branch 3
     premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))&Equal(LengthOfLine(CA),LengthOfLine(DE))
     conclusion: MirrorCongruentBetweenTriangle(ABC,DEF)
 **Notes**:  
 1.全等三角形判定：AAS  
-
-### mirror_congruent_triangle_judgment_asa(ABC,DEF)
-<div>
-    <img src="gdl-pic/T061.png" width="30%"
-</div>
-
-    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(LengthOfLine(BC),LengthOfLine(EF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))
-    conclusion: MirrorCongruentBetweenTriangle(ABC,DEF)
-**Notes**:  
-1.全等三角形判定：ASA  
 
 ### mirror_congruent_triangle_judgment_hl(ABC,DEF)
 <div>
@@ -1303,7 +1282,6 @@
 
     premise: Kite(ABCD)&Collinear(AOC)&Collinear(BOD)
     conclusion: IsPerpendicularBisectorOfLine(AO,BD)
-                IsPerpendicularBisectorOfLine(CO,DB)
 **Notes**:  
 1.筝形性质：一个对角线是另一个的垂直平分线  
 
@@ -1689,14 +1667,17 @@
 
 ### circle_property_diameter_to_circumference_angle(AB,O,C)
 <div>
-    <img src="gdl-pic/T151.png" width="15%"
+    <img src="gdl-pic/T151.png" width="30%"
 </div>
 
-    premise: Cocircular(O,ABC)&Collinear(AOB)&Line(BC)&Line(CA)
+    # branch 1
+    premise: Cocircular(O,ABC)&Collinear(AOB)&Angle(BCA)
     conclusion: PerpendicularBetweenLine(BC,AC)
+    # branch 2
+    premise: Cocircular(O,ACB)&Collinear(AOB)&Angle(ACB)
+    conclusion: PerpendicularBetweenLine(AC,BC)
 **Notes**:  
 1.直径所对的圆周角是直角  
-2.三点在圆上的逆时针顺序为ABC  
 
 ### circle_property_circular_power_chord_and_chord(AEB,CED,O)
 <div>
@@ -1708,7 +1689,7 @@
 **Notes**:  
 1.圆幂定理之相交弦定理：圆O的两个弦AB和CD交与点E，则EA*EB=EC*ED  
 
-### circle_property_circular_power_tangent_and_segment(PA,PCD,O)
+### circle_property_circular_power_tangent_and_segment_line(PA,PCD,O)
 <div>
     <img src="gdl-pic/T153.png" width="15%"
 </div>
@@ -1718,24 +1699,41 @@
 **Notes**:  
 1.圆幂定理之切割线定理：P引直线PAB切圆O于A，引割线PCD交圆O于CD，则PA*PA=PC*PD  
 
-### circle_property_circular_power_segment_and_segment(PAB,PCD,O)
+### circle_property_circular_power_segment_and_segment_line(PAB,PCD,O)
 <div>
     <img src="gdl-pic/T154.png" width="15%"
 </div>
 
-    premise: Cocircular(O,ACDB)&Collinear(PAB)&Collinear(PCD)
+    premise: Cocircular(O,AB)&Cocircular(O,CD)&Collinear(PAB)&Collinear(PCD)
     conclusion: Equal(Mul(LengthOfLine(PA),LengthOfLine(PB)),Mul(LengthOfLine(PC),LengthOfLine(PD)))
 **Notes**:  
-1.圆幂定理之割线定理：P引割线PAB切圆O于AB，引割线PCD交圆O于CD，则PA*PB=PC*PD  
-2.注意两条割线的先后顺序  
+1.圆幂定理之割线定理：园外P引割线PAB切圆O于AB，引割线PCD交圆O于CD，则PA*PB=PC*PD  
 
-### circle_property_circular_power_angle(PAB,PCD,O)
+### circle_property_circular_power_tangent_and_segment_angle(PA,PCD,O)
 <div>
-    <img src="gdl-pic/T155.png" width="15%"
+    <img src="gdl-pic/T052.png" width="30%"
 </div>
 
+    # branch 1
+    premise: Cocircular(O,ACD)&Collinear(PCD)
+    conclusion: Equal(Sub(MeasureOfArc(ODA),MeasureOfArc(OAC)),Mul(MeasureOfAngle(APC),2))
+    # branch 2
+    premise: Cocircular(O,CAD)&Collinear(PCD)
+    conclusion: Equal(Sub(MeasureOfArc(OAD),MeasureOfArc(OCA)),Mul(MeasureOfAngle(CPA),2))
+**Notes**:  
+1.圆幂定理之割线角度关系：P引切线PA切圆O于A，引割线PCD交圆O于CD，则两端弧所对圆心角之差等于2倍角P  
+
+### circle_property_circular_power_segment_and_segment_angle(PAB,PCD,O)
+<div>
+    <img src="gdl-pic/T155.png" width="30%"
+</div>
+
+    # branch 1
     premise: Cocircular(O,ACDB)&Collinear(PAB)&Collinear(PCD)
     conclusion: Equal(Sub(MeasureOfArc(ODB),MeasureOfArc(OAC)),Mul(MeasureOfAngle(APC),2))
+    # branch 2
+    premise: Cocircular(O,CABD)&Collinear(PAB)&Collinear(PCD)
+    conclusion: Equal(Sub(MeasureOfArc(OBD),MeasureOfArc(OCA)),Mul(MeasureOfAngle(CPA),2))
 **Notes**:  
 1.圆幂定理之割线角度关系：P引割线PAB切圆O于AB，引割线PCD交圆O于CD，则两端弧所对圆心角之差等于2倍角P  
 
@@ -1759,7 +1757,7 @@
 </div>
 
     premise: Arc(OAB)&Cocircular(O,ADB)&Collinear(ACB)&Collinear(OCD)&PerpendicularBetweenLine(AC,OC)
-    conclusion: Equal(LengthOfArc(OAD)LengthOfArc(ODB))
+    conclusion: Equal(LengthOfArc(OAD),LengthOfArc(ODB))
 **Notes**:  
 1.弦中点和圆心的连线是弦的垂直平分线  
 

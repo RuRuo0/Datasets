@@ -1,0 +1,37 @@
+{
+  "problem_id": 2658,
+  "annotation": "qikehuang_2023-04-06",
+  "source": "Geometry3k-1074",
+  "problem_level": 1,
+  "problem_text_cn": "",
+  "problem_text_en": "Find the area of the shaded region. Assume that the triangle is equilateral.",
+  "problem_img": "2658.png",
+  "construction_cdl": [
+    "Shape(FAD,DA)",
+    "Shape(FDC,CD)",
+    "Shape(AC,FCA)",
+    "Shape(FA,AD,DF)",
+    "Shape(FD,DC,CA,AF)",
+    "Cocircular(F,ADC)"
+  ],
+  "text_cdl": [
+    "EquilateralTriangle(ADC)"
+  ],
+  "image_cdl": [
+    "Equal(LengthOfLine(AF),4)",
+    "Equal(Sub(AreaOfCircle(F),AreaOfTriangle(ADC)),x)"
+  ],
+  "goal_cdl": "Value(x)",
+  "problem_answer": "29.48",
+  "theorem_seqs": [
+    "equilateral_triangle_property_angle(ADC)",
+    "equilateral_triangle_property_angle(CAD)",
+    "arc_property_circumference_angle_external(FAD,C)",
+    "arc_property_center_angle(FAD)",
+    "circle_property_radius_length_equal(FA,F)",
+    "circle_property_radius_length_equal(FD,F)",
+    "cosine_theorem(FAD)",
+    "triangle_area_formula_sine(ADC)",
+    "circle_area_formula(F)"
+  ]
+}

@@ -1035,7 +1035,7 @@
     premise: Quadrilateral(ABCD)
     conclusion: Equal(Add(LengthOfLine(AB),LengthOfLine(BC),LengthOfLine(CD),LengthOfLine(DA)),PerimeterOfQuadrilateral(ABCD))
 **Notes**:  
-1.四边形面积公式  
+1.四边形周长公式  
 
 ### altitude_of_quadrilateral_judgment(EF,ABCD)
 <div>

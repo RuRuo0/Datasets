@@ -1,0 +1,54 @@
+{
+  "problem_id": 2432,
+  "annotation": "nazhu_2023-04-06",
+  "source": "Geometry3k-848",
+  "problem_level": 1,
+  "problem_text_cn": "",
+  "problem_text_en": "A regular hexagon is inscribed in a circle with a diameter of 14. Find the area of the red segment.",
+  "problem_img": "2432.png",
+  "construction_cdl": [
+    "Shape(OAB,BA)",
+    "Shape(OBC,CB)",
+    "Shape(OCD,DC)",
+    "Shape(ODE,ED)",
+    "Shape(OEF,FE)",
+    "Shape(OFA,AF)",
+    "Shape(OA,AB,BO)",
+    "Shape(BC,CO,OB)",
+    "Shape(CD,DO,OC)",
+    "Shape(DE,EO,OD)",
+    "Shape(EF,FO,OE)",
+    "Shape(FA,AO,OF)",
+    "Collinear(AOD)",
+    "Collinear(DOE)",
+    "Collinear(COF)",
+    "Cocircular(O,ABCDEF)"
+  ],
+  "text_cdl": [
+    "RegularHexagon(ABCDEF)"
+  ],
+  "image_cdl": [
+    "Equal(DiameterOfCircle(O),14)"
+  ],
+  "goal_cdl": "Value(Sub(AreaOfSector(OAB),AreaOfTriangle(OAB)))",
+  "problem_answer": "4.44",
+  "theorem_seqs": [
+    "circle_property_radius_length_equal(OA,O)",
+    "circle_property_radius_length_equal(OB,O)",
+    "circle_property_radius_length_equal(OC,O)",
+    "circle_property_length_of_radius_and_diameter(O)",
+    "kite_judgment_equal_and_equal(BCOA)",
+    "kite_property_opposite_angle_equal(BCOA)",
+    "isosceles_triangle_judgment_line_equal(OAB)",
+    "isosceles_triangle_judgment_line_equal(OBC)",
+    "isosceles_triangle_property_angle_equal(OAB)",
+    "isosceles_triangle_property_angle_equal(OBC)",
+    "angle_addition(ABO,OBC)",
+    "triangle_property_angle_sum(OAB)",
+    "arc_property_center_angle(OAB)",
+    "sector_area_formula(OAB)",
+    "triangle_area_formula_sine(OAB)"
+
+  ],
+  "notes": "也能解，但加个正六边形对角线相等且平分的定理会简化解题序列"
+}

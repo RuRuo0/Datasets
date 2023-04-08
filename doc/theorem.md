@@ -618,6 +618,16 @@
 **Notes**:  
 1.全等三角形性质：面积相等  
 
+### congruent_triangle_property_exchange(ABC,DEF)
+<div>
+    <img src="gdl-pic/T057.png" width="30%"
+</div>
+
+    premise: CongruentBetweenTriangle(ABC,DEF)
+    conclusion: CongruentBetweenTriangle(DEF,ABC)
+**Notes**:  
+1.全等三角形性质：先后顺序不影响三角形的全等  
+
 ### mirror_congruent_triangle_judgment_sss(ABC,DEF)
 <div>
     <img src="gdl-pic/T058.png" width="30%"
@@ -705,6 +715,16 @@
 **Notes**:  
 1.全等三角形性质：面积相等  
 
+### mirror_congruent_triangle_property_exchange(ABC,DEF)
+<div>
+    <img src="gdl-pic/T057.png" width="30%"
+</div>
+
+    premise: MirrorCongruentBetweenTriangle(ABC,DEF)
+    conclusion: MirrorCongruentBetweenTriangle(DEF,ABC)
+**Notes**:  
+1.镜像全等三角形性质：先后顺序不影响三角形的镜像全等  
+
 ### similar_triangle_judgment_sss(ABC,DEF)
 <div>
     <img src="gdl-pic/T067.png" width="30%"
@@ -754,8 +774,9 @@
     <img src="gdl-pic/T071.png" width="30%"
 </div>
 
-    premise: SimilarBetweenTriangle(ABC,DEF)&SimilarBetweenTriangle(DEF,ABC)
-    conclusion: Equal(Mul(RatioOfSimilarTriangle(ABC,DEF),RatioOfSimilarTriangle(DEF,ABC)),1)
+    premise: SimilarBetweenTriangle(ABC,DEF)
+    conclusion: SimilarBetweenTriangle(DEF,ABC)
+                Equal(Mul(RatioOfSimilarTriangle(ABC,DEF),RatioOfSimilarTriangle(DEF,ABC)),1)
 **Notes**:  
 1.相似三角形的比值 ABC/DEF * DEF/ABC = 1  
 
@@ -850,7 +871,8 @@
 </div>
 
     premise: MirrorSimilarBetweenTriangle(ABC,DEF)
-    conclusion: Equal(Mul(RatioOfMirrorSimilarTriangle(ABC,DEF),RatioOfMirrorSimilarTriangle(DEF,ABC)),1)
+    conclusion: MirrorSimilarBetweenTriangle(DEF,ABC)
+                Equal(Mul(RatioOfMirrorSimilarTriangle(ABC,DEF),RatioOfMirrorSimilarTriangle(DEF,ABC)),1)
 **Notes**:  
 1.镜像相似三角形的比值 ABC/DEF * DEF/ABC = 1  
 
@@ -1163,6 +1185,208 @@
     conclusion: IsPerpendicularBisectorOfLine(OE,BC)
 **Notes**:  
 1.四边形外心性质：垂直平分线交点  
+
+### congruent_quadrilateral_property_line_equal(ABCD,EFGH)
+<div>
+    <img src="gdl-pic/T028.png" width="30%"
+</div>
+
+    premise: CongruentBetweenQuadrilateral(ABCD,EFGH)
+    conclusion: Equal(LengthOfLine(AB),LengthOfLine(EF))
+**Notes**:  
+1.全等四边形性质：边相等  
+
+### congruent_quadrilateral_property_angle_equal(ABCD,EFGH)
+<div>
+    <img src="gdl-pic/T061.png" width="30%"
+</div>
+
+    premise: CongruentBetweenQuadrilateral(ABCD,EFGH)
+    conclusion: Equal(MeasureOfAngle(DAB),MeasureOfAngle(HEF))
+**Notes**:  
+1.全等四边形性质：角相等  
+
+### congruent_quadrilateral_property_perimeter_equal(ABCD,EFGH)
+<div>
+    <img src="gdl-pic/P072.png" width="30%"
+</div>
+
+    premise: CongruentBetweenQuadrilateral(ABCD,EFGH)
+    conclusion: Equal(PerimeterOfQuadrilateral(ABC),PerimeterOfQuadrilateral(DEF))
+**Notes**:  
+1.全等四边形性质：周长相等  
+
+### congruent_quadrilateral_property_area_equal(ABCD,EFGH)
+<div>
+    <img src="gdl-pic/P072.png" width="30%"
+</div>
+
+    premise: CongruentBetweenQuadrilateral(ABCD,EFGH)
+    conclusion: Equal(AreaOfQuadrilateral(ABC),AreaOfQuadrilateral(DEF))
+**Notes**:  
+1.全等四边形性质：面积相等  
+
+### congruent_quadrilateral_property_exchange(ABCD,EFGH)
+<div>
+    <img src="gdl-pic/P072.png" width="30%"
+</div>
+
+    premise: CongruentBetweenQuadrilateral(ABCD,EFGH)
+    conclusion: CongruentBetweenQuadrilateral(EFGH,ABCD)
+**Notes**:  
+1.全等四边形性质：先后顺序不影响三角形的全等  
+
+### mirror_congruent_quadrilateral_property_line_equal(ABCD,EFGH)
+<div>
+    <img src="gdl-pic/T171.png" width="30%"
+</div>
+
+    premise: MirrorCongruentBetweenQuadrilateral(ABCD,EFGH)
+    conclusion: Equal(LengthOfLine(AB),LengthOfLine(EH))
+**Notes**:  
+1.全等四边形性质：边相等  
+
+### mirror_congruent_quadrilateral_property_angle_equal(ABCD,EFGH)
+<div>
+    <img src="gdl-pic/T172.png" width="30%"
+</div>
+
+    premise: MirrorCongruentBetweenQuadrilateral(ABCD,EFGH)
+    conclusion: Equal(MeasureOfAngle(DAB),MeasureOfAngle(HEF))
+**Notes**:  
+1.全等四边形性质：角相等  
+
+### mirror_congruent_quadrilateral_property_perimeter_equal(ABCD,EFGH)
+<div>
+    <img src="gdl-pic/P073.png" width="30%"
+</div>
+
+    premise: MirrorCongruentBetweenQuadrilateral(ABCD,EFGH)
+    conclusion: Equal(PerimeterOfQuadrilateral(ABC),PerimeterOfQuadrilateral(DEF))
+**Notes**:  
+1.全等四边形性质：周长相等  
+
+### mirror_congruent_quadrilateral_property_area_equal(ABCD,EFGH)
+<div>
+    <img src="gdl-pic/P073.png" width="30%"
+</div>
+
+    premise: MirrorCongruentBetweenQuadrilateral(ABCD,EFGH)
+    conclusion: Equal(AreaOfQuadrilateral(ABC),AreaOfQuadrilateral(DEF))
+**Notes**:  
+1.全等四边形性质：面积相等  
+
+### mirror_congruent_quadrilateral_property_exchange(ABCD,EFGHF)
+<div>
+    <img src="gdl-pic/P073.png" width="30%"
+</div>
+
+    premise: MirrorCongruentBetweenQuadrilateral(ABCD,EFGH)
+    conclusion: MirrorCongruentBetweenQuadrilateral(EFGH,ABCD)
+**Notes**:  
+1.镜像全等四边形性质：先后顺序不影响四边形的镜像全等  
+
+### similar_quadrilateral_property_ratio(ABCD,EFGH)
+<div>
+    <img src="gdl-pic/P074.png" width="30%"
+</div>
+
+    premise: SimilarBetweenQuadrilateral(ABCD,EFGH)
+    conclusion: SimilarBetweenQuadrilateral(EFGH,ABCD)
+                Equal(Mul(RatioOfSimilarQuadrilateral(ABCD,EFGH),RatioOfSimilarABCD,EFGH(EFGH,ABCD)),1)
+**Notes**:  
+1.相似三角形的比值  
+
+### similar_quadrilateral_property_line_ratio(ABCD,EFGH)
+<div>
+    <img src="gdl-pic/T173.png" width="30%"
+</div>
+
+    premise: SimilarBetweenQuadrilateral(ABCD,EFGH)
+    conclusion: Equal(LengthOfLine(AB),Mul(LengthOfLine(EF),RatioOfSimilarTriangle(ABCD,EFGH)))
+**Notes**:  
+1.相似四边形性质：边成比例  
+
+### similar_quadrilateral_property_angle_equal(ABCD,EFGH)
+<div>
+    <img src="gdl-pic/T174.png" width="30%"
+</div>
+
+    premise: SimilarBetweenQuadrilateral(ABCD,EFGH)
+    conclusion: Equal(MeasureOfAngle(DAB),MeasureOfAngle(HEF))
+**Notes**:  
+1.相似四边形性质：角相等  
+
+### similar_quadrilateral_property_perimeter_ratio(ABCD,EFGH)
+<div>
+    <img src="gdl-pic/P074.png" width="30%"
+</div>
+
+    premise: SimilarBetweenQuadrilateral(ABCD,EFGH)
+    conclusion: Equal(PerimeterOfQuadrilateral(ABCD),Mul(PerimeterOfQuadrilateral(EFGH),RatioOfSimilarQuadrilateral(ABCD,EFGH)))
+**Notes**:  
+1.相似四边形性质：周长成比例  
+
+### similar_quadrilateral_property_area_square_ratio(ABCD,EFGH)
+<div>
+    <img src="gdl-pic/P074.png" width="30%"
+</div>
+
+    premise: SimilarBetweenQuadrilateral(ABCD,EFGH)
+    conclusion: Equal(AreaOfQuadrilateral(ABCD),Mul(AreaOfQuadrilateral(EFGH),RatioOfSimilarQuadrilateral(ABCD,EFGH),RatioOfSimilarQuadrilateral(ABCD,EFGH)))
+**Notes**:  
+1.相似四边形性质：面积成比例  
+
+### mirror_similar_quadrilateral_property_ratio(ABCD,EFGH)
+<div>
+    <img src="gdl-pic/P075.png" width="30%"
+</div>
+
+    premise: MirrorSimilarBetweenQuadrilateral(ABCD,EFGH)
+    conclusion: MirrorSimilarBetweenQuadrilateral(EFGH,ABCD)
+                Equal(Mul(RatioOfMirrorSimilarQuadrilateral(ABCD,EFGH),RatioOfMirrorSimilarQuadrilateral(EFGH,ABCD)),1)
+**Notes**:  
+1.镜像相似四边形的比值  
+
+### mirror_similar_quadrilateral_property_line_ratio(ABCD,EFGH)
+<div>
+    <img src="gdl-pic/T175.png" width="30%"
+</div>
+
+    premise: MirrorSimilarBetweenQuadrilateral(ABCD,EFGH)
+    conclusion: Equal(LengthOfLine(AB),Mul(LengthOfLine(EH),RatioOfMirrorSimilarQuadrilateral(ABCD,EFGH)))
+**Notes**:  
+1.相似四边形性质：边成比例  
+
+### mirror_similar_quadrilateral_property_angle_equal(ABCD,EFGH)
+<div>
+    <img src="gdl-pic/T176.png" width="30%"
+</div>
+
+    premise: MirrorSimilarBetweenQuadrilateral(ABCD,EFGH)
+    conclusion: Equal(MeasureOfAngle(DAB),MeasureOfAngle(HEF))
+**Notes**:  
+1.相似四边形性质：角相等  
+
+### mirror_similar_quadrilateral_property_perimeter_ratio(ABCD,EFGH)
+<div>
+    <img src="gdl-pic/P075.png" width="30%"
+</div>
+
+    premise: MirrorSimilarBetweenQuadrilateral(ABCD,EFGH)
+    conclusion: Equal(PerimeterOfQuadrilateral(ABCD),Mul(PerimeterOfQuadrilateral(EFGH),RatioOfMirrorSimilarQuadrilateral(ABCD,EFGH)))
+**Notes**:  
+1.相似四边形性质：周长成比例  
+
+### mirror_similar_quadrilateral_property_area_square_ratio(ABCD,EFGH)
+<div>
+    <img src="gdl-pic/P075.png" width="30%"
+</div>
+
+    premise: MirrorSimilarBetweenQuadrilateral(ABCD,EFGH)
+    conclusion: Equal(AreaOfQuadrilateral(ABCD),Mul(AreaOfQuadrilateral(EFGH),RatioOfMirrorSimilarQuadrilateral(ABCD,EFGH),RatioOfMirrorSimilarQuadrilateral(ABCD,EFGH)))
+**Notes**:  
+1.相似四边形性质：面积成比例  
 
 ### parallelogram_judgment_parallel_and_parallel(ABCD)
 <div>

@@ -683,16 +683,14 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
     ee_check: Triangle(ABC)
               Triangle(DEF)
-    multi: DEF,ABC
-           BCA,EFD
-           EFD,BCA
+    multi: BCA,EFD
            CAB,FDE
-           FDE,CAB
     extend: 
 **Notes**:  
 1.三角形ABC与三角形DEF全等  
 2.两个三角形的点应一一对应  
 3.根据旋转不变性原则，有6种表示方法，选其一即可  
+4.在这6中表示中，(ABC,DEF)和(DEF,ABC)是等价的，为了方便计算，我们一般只在3种表示方法种选其1  
 
 ### MirrorCongruentBetweenTriangle(ABC,DEF)
 <div>
@@ -701,16 +699,14 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
     ee_check: Triangle(ABC)
               Triangle(DEF)
-    multi: DEF,ABC
-           BCA,FDE
-           FDE,BCA
+    multi: BCA,FDE
            CAB,EFD
-           EFD,CAB
     extend: 
 **Notes**:  
 1.三角形ABC与三角形DEF镜像全等  
 2.标注方法：①点一一对应得(ABC,DFE)②没有三角形DFE，第一个点D不动，将其他点逆序，得DEF③标注(ABC,DEF)  
-3.根据旋转不变性原则，有6种表示方法，选其一即可  
+3.根据旋转不变性原则，有6种表示方法  
+4.在这6中表示中，(ABC,DEF)和(DEF,ABC)是等价的，为了方便计算，我们一般只在3种表示方法种选其1  
 
 ### SimilarBetweenTriangle(ABC,DEF)
 <div>
@@ -719,11 +715,8 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
     ee_check: Triangle(ABC)
               Triangle(DEF)
-    multi: DEF,ABC
-           BCA,EFD
-           EFD,BCA
+    multi: BCA,EFD
            CAB,FDE
-           FDE,CAB
     extend: 
 **Notes**:  
 1.三角形ABC与三角形DEF相似  
@@ -738,16 +731,14 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
     ee_check: Triangle(ABC)
               Triangle(DEF)
-    multi: DEF,ABC
-           BCA,FDE
-           FDE,BCA
+    multi: BCA,FDE
            CAB,EFD
-           EFD,CAB
     extend: 
 **Notes**:  
 1.三角形ABC与三角形DEF镜像相似  
 2.标注方法：①点一一对应得(ABC,DFE)②没有三角形DFE，第一个点D不动，将其他点逆序，得DEF③标注(ABC,DEF)  
-3.根据旋转不变性原则，有6种表示方法，选其一即可  
+3.根据旋转不变性原则，有6种表示方法  
+4.在这6中表示中，(ABC,DEF)和(DEF,ABC)是等价的，为了方便计算，我们一般只在3种表示方法种选其1  
 
 ### IsAltitudeOfQuadrilateral(EF,ABCD)
 <div>
@@ -824,6 +815,66 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.点O是四边形ABCD的内心  
 2.内心是四边形内切圆的圆心，但不一定有  
 
+### CongruentBetweenQuadrilateral(ABCD,EFGH)
+<div>
+    <img src="gdl-pic/P072.png"  width="30%">
+</div>
+
+    ee_check: Quadrilateral(ABCD)
+              Quadrilateral(EFGH)
+    multi: BCDA,FGHE
+           CDAB,GHEF
+           DABC,HEFG
+    extend: 
+**Notes**:  
+1.四边形ABCD与四边形EFGH全等  
+2.根据旋转不变性，有8种表示方法，有4种是等价的，为了方便计算，只在4种选其1  
+
+### MirrorCongruentBetweenQuadrilateral(ABCD,EFGH)
+<div>
+    <img src="gdl-pic/P073.png"  width="30%">
+</div>
+
+    ee_check: Quadrilateral(ABCD)
+              Quadrilateral(EFGH)
+    multi: BCDA,HEFG
+           CDAB,GHEF
+           DABC,FGHE
+    extend: 
+**Notes**:  
+1.四边形ABCD与四边形EFGH镜像全等  
+2.根据旋转不变性，有8种表示方法，有4种是等价的，为了方便计算，只在4种选其1  
+
+### SimilarBetweenQuadrilateral(ABCD,EFGH)
+<div>
+    <img src="gdl-pic/P074.png"  width="30%">
+</div>
+
+    ee_check: Quadrilateral(ABCD)
+              Quadrilateral(EFGH)
+    multi: BCDA,FGHE
+           CDAB,GHEF
+           DABC,HEFG
+    extend: 
+**Notes**:  
+1.四边形ABCD与四边形EFGH相似  
+2.根据旋转不变性，有8种表示方法，有4种是等价的，为了方便计算，只在4种选其1  
+
+### MirrorSimilarBetweenQuadrilateral(ABCD,EFGH)
+<div>
+    <img src="gdl-pic/P075.png"  width="30%">
+</div>
+
+    ee_check: Quadrilateral(ABCD)
+              Quadrilateral(EFGH)
+    multi: BCDA,HEFG
+           CDAB,GHEF
+           DABC,FGHE
+    extend: 
+**Notes**:  
+1.四边形ABCD与四边形EFGH镜像相似  
+2.根据旋转不变性，有8种表示方法，有4种是等价的，为了方便计算，只在4种选其1  
+
 ### CongruentBetweenArc(XAB,YCD)
 <div>
     <img src="gdl-pic/P050.png"  width="15%">
@@ -862,6 +913,19 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     extend: 
 **Notes**:  
 1.过P做圆的切线交圆于点A  
+
+### ConcentricBetweenCircle(X,Y)
+<div>
+    <img src="gdl-pic/P076.png"  width="15%">
+</div>
+
+    ee_check: Circle(X)
+              Circle(Y)
+    fv_check: X,Y
+    multi: 
+    extend: 
+**Notes**:  
+1.两个圆同心  
 
 ## F、实体属性
 ### LengthOfLine(AB)
@@ -998,6 +1062,34 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 **Notes**:  
 1.四边形ABCD底边BC上的高的长度  
 2.例 Equal(HeightOfQuadrilateral(ABCD),5)  
+
+### RatioOfSimilarQuadrilateral(ABCD,EFGH)
+<div>
+    <img src="gdl-pic/P074.png"  width="30%">
+</div>
+
+    ee_check: Quadrilateral(ABCD)
+              Quadrilateral(EFGH)
+    multi: BCDA,FGHE
+           CDAB,GHEF
+           DABC,HEFG
+    sym: rsq
+**Notes**:  
+1.相似四边形的相似比  
+
+### RatioOfMirrorSimilarQuadrilateral(ABCD,EFGH)
+<div>
+    <img src="gdl-pic/P075.png"  width="30%">
+</div>
+
+    ee_check: Quadrilateral(ABCD)
+              Quadrilateral(EFGH)
+    multi: BCDA,HEFG
+           CDAB,GHEF
+           DABC,FGHE
+    sym: rmq
+**Notes**:  
+1.镜像相似四边形的相似比  
 
 ### LengthOfArc(OAB)
 <div>

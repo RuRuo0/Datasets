@@ -25,8 +25,8 @@ Formal representation and solving for SAT-level Euclidean plane geometry problem
 | 12 | 王一凡 | 50 | 4170-4244 (Triangle) <br> 2849-2890 (Other) | / | × |
 | 13 | 吴昌昊 | 50 | 4245-4330 (Triangle) <br> 2895-2921 (Other) | / | × |
 | 14 | 岳登峰 | 50 | 4335-4430 (Triangle) <br> 2923-2956 (Other) | / | × |
-| 15 | 朱方震 | 50 | 4435-4501 (Triangle) <br> 2957-2984 (Other) | / | × |
-| 16 | 朱哲 | 50 | 4502-4582 (Triangle) <br> 2986-3007 (Other) | / | × |
+| 15 | 朱方震 | 50 | 4435-4501 (Triangle) <br> 2957-2984 (Other) | / | √ |
+| 16 | 朱哲 | 50 | 4502-4582 (Triangle) <br> 2986-3007 (Other) | / | √ |
 
 
 #### Week 4 (230327): form 2023-03-27 to 2023-04-02.

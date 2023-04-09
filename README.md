@@ -6,6 +6,28 @@ Formal representation and solving for SAT-level Euclidean plane geometry problem
 **FormalGeo-SAT** is an extended version of **[FormalGeo](https://github.com/BitSecret/FormalGeo)**. It supports solving more types of plane geometric problems.
 
 ## Cowork
+#### Week 6 (230410): form 2023-04-10 to 2023-04-16.
+**Attention:** Annotate problems in directory **Geometry3K-Other** and **GeoQA**.  
+
+| Id | Worker | WorkLoad | PID | Skip | Submitted |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| 1 | 贺艺铭 | 60 | 4586-4645 (data/raw-prolbems/GeoQA) | / | × |
+| 2 | 邹佳 | 60 | 4646-4705 (data/raw-prolbems/GeoQA)| / | × |
+| 3 | 朱娜 | 60 | 4706-4765 (data/raw-prolbems/GeoQA) | / | × |
+| 4 | 张效凯 | 60 | 4766-4825 (data/raw-prolbems/GeoQA) | / | × |
+| 5 | 郭彦钧 | 60 | 3008-3097 (data/raw-prolbems/Geometry3K-Other) | / | × |
+| 6 | 黄琦珂 | 60 | 3100-3193 (data/raw-prolbems/Geometry3K-Other) | / | × |
+| 7 | 黄一雯 | 60 | 3196-3290 (data/raw-prolbems/Geometry3K-Other) | / | × |
+| 8 | 金啸笑 | 60 | 3293-3396 (data/raw-prolbems/Geometry3K-Other) | / | × |
+| 9 | 李阳 | 60 | 3398-3485 (data/raw-prolbems/Geometry3K-Other) | / | × |
+| 10 | 毛晨扬 | 60 | 3486-3583 (data/raw-prolbems/Geometry3K-Other) | / | × |
+| 11 | 王茹楠 | 60 | 3584-3681 (data/raw-prolbems/Geometry3K-Other) | / | × |
+| 12 | 王一凡 | 60 | 3684-3792 (data/raw-prolbems/Geometry3K-Other) | / | × |
+| 13 | 吴昌昊 | 60 | 3793-3900 (data/raw-prolbems/Geometry3K-Other) | / | × |
+| 14 | 岳登峰 | 60 | 3901-3997 (data/raw-prolbems/Geometry3K-Other) | / | × |
+| 15 | 朱方震 | 60 | 3999-4108 (data/raw-prolbems/Geometry3K-Other) | / | × |
+| 16 | 朱哲 | 60 | 4109-4195 (data/raw-prolbems/Geometry3K-Other) | / | × |
+
 #### Week 5 (230403): form 2023-04-03 to 2023-04-09.
 **Attention:** Annotate problems in directory **Geometry3K-Triangle** and **Geometry3K-Other**.  
 
@@ -27,7 +49,6 @@ Formal representation and solving for SAT-level Euclidean plane geometry problem
 | 14 | 岳登峰 | 50 | 4335-4430 (Triangle) <br> 2923-2956 (Other) | / | × |
 | 15 | 朱方震 | 50 | 4435-4501 (Triangle) <br> 2957-2984 (Other) | / | √ |
 | 16 | 朱哲 | 50 | 4502-4582 (Triangle) <br> 2986-3007 (Other) | / | √ |
-
 
 #### Week 4 (230327): form 2023-03-27 to 2023-04-02.
 **Attention:** Annotate problems in directory **Geometry3K-Other**.  

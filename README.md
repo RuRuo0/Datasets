@@ -34,7 +34,7 @@ Formal representation and solving for SAT-level Euclidean plane geometry problem
 | Id | Worker | WorkLoad | PID | Skip | Submitted |
 |:---:|:---:|:---:|:---:|:---:|:---:|
 | 1 | 贺艺铭 | 70 | 2155-2261 (Other) | / | √ |
-| 2 | 邹佳 | 70 | 1926-2046 (other) <br> 2265-2386 (Other) | / | × |
+| 2 | 邹佳 | 140 | 1926-2046 (other) <br> 2265-2386 (Other) | / | × |
 | 3 | 朱娜 | 70 | 2387-2502 (Other) | / | √ |
 | 4 | 张效凯 | 70 | 2503-2625 (Other) | / | √ |
 | 5 | 郭彦钧 | 50 | 3089-3165 (Triangle) <br> 2626-2652 (Other) | / | √ |

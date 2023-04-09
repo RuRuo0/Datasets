@@ -1,0 +1,45 @@
+{
+  "problem_id": 2021,
+  "annotation": "jiazou_2023-04-06",
+  "source": "Geometry3k-437",
+  "problem_level": 1,
+  "problem_text_cn": "",
+  "problem_text_en": "The sum of the circumference of circles H, J, K is 56 \\pi units. Find K J.",
+  "problem_img": "2021.png",
+  "construction_cdl": [
+    "Shape(KA,KAB,BK)",
+    "Shape(AK,KB,KBA)",
+    "Shape(KBA,JBC,HCA)",
+    "Shape(CH,HA,HAC)",
+    "Shape(HC,HCA,AH)",
+    "Shape(BJ,JC,JCB)",
+    "Shape(CJ,JB,JBC)",
+    "Collinear(KAH)",
+    "Collinear(HCJ)",
+    "Collinear(KBJ)",
+    "Cocircular(KBA)",
+    "Cocircular(JCB)",
+    "Cocircular(HAC)"
+  ],
+  "text_cdl": [],
+  "image_cdl": [
+    "Equal(Add(PerimeterOfCircle(K),PerimeterOfCircle(J),PerimeterOfCircle(H)),56*π)",
+    "Equal(LengthOfLine(KA),4*x)",
+    "Equal(LengthOfLine(CJ),2*x)",
+    "Equal(LengthOfLine(HA),x)",
+    "Equal(LengthOfLine(HC),x)"
+  ],
+  "goal_cdl": "Value(LengthOfLine(KJ))",
+  "problem_answer": "24",
+  "theorem_seqs": [
+    "circle_property_radius_length_equal(KA,K)",
+    "circle_property_radius_length_equal(KB,K)",
+    "circle_property_radius_length_equal(HC,H)",
+    "circle_property_radius_length_equal(JC,J)",
+    "circle_property_radius_length_equal(JB,J)",
+    "circle_perimeter_formula(K)",
+    "circle_perimeter_formula(J)",
+    "circle_perimeter_formula(H)",
+    "line_addition(KB,BJ)"
+  ]
+}

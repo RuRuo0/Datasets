@@ -19,7 +19,7 @@ Formal representation and solving for SAT-level Euclidean plane geometry problem
 | 6 | 黄琦珂 | 50 | 3171-3253 (Triangle) <br> 2653-2680 (Other) | / | √ |
 | 7 | 黄一雯 | 50 | 3254-3270 (Triangle) <br> 3795-3855 (Triangle) <br> 2682-2711 (Other) | / | × |
 | 8 | 金啸笑 | 50 | 3857-3919 (Triangle) <br> 2712-2747 (Other) | / | √ |
-| 9 | 李阳 | 50 | 3920-4007 (Triangle) <br> 2748-2780 (Other) | / | × |
+| 9 | 李阳 | 50 | 3920-4007 (Triangle) <br> 2748-2780 (Other) | / | √ |
 | 10 | 毛晨扬 | 50 | 4009-4075 (Triangle) <br> 2781-2809 (Other) | / | √ |
 | 11 | 王茹楠 | 50 | 4079-4169 (Triangle) <br> 2810-2844 (Other) | / | × |
 | 12 | 王一凡 | 50 | 4170-4244 (Triangle) <br> 2849-2890 (Other) | / | × |

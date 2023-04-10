@@ -17,16 +17,16 @@ Formal representation and solving for SAT-level Euclidean plane geometry problem
 | 4 | 张效凯 | 60 | 4766-4825 (data/raw-prolbems/GeoQA) | / | × |
 | 5 | 郭彦钧 | 60 | 3008-3097 (data/raw-prolbems/Geometry3K-Other) | / | × |
 | 6 | 黄琦珂 | 60 | 3100-3193 (data/raw-prolbems/Geometry3K-Other) | / | × |
-| 7 | 黄一雯 | 60 | 3196-3290 (data/raw-prolbems/Geometry3K-Other) | / | × |
-| 8 | 金啸笑 | 60 | 3293-3396 (data/raw-prolbems/Geometry3K-Other) | / | × |
-| 9 | 李阳 | 60 | 3398-3485 (data/raw-prolbems/Geometry3K-Other) | / | × |
-| 10 | 毛晨扬 | 60 | 3486-3583 (data/raw-prolbems/Geometry3K-Other) | / | × |
-| 11 | 王茹楠 | 60 | 3584-3681 (data/raw-prolbems/Geometry3K-Other) | / | × |
-| 12 | 王一凡 | 60 | 3684-3792 (data/raw-prolbems/Geometry3K-Other) | / | × |
-| 13 | 吴昌昊 | 60 | 3793-3900 (data/raw-prolbems/Geometry3K-Other) | / | × |
-| 14 | 岳登峰 | 60 | 3901-3997 (data/raw-prolbems/Geometry3K-Other) | / | × |
-| 15 | 朱方震 | 60 | 3999-4108 (data/raw-prolbems/Geometry3K-Other) | / | × |
-| 16 | 朱哲 | 60 | 4109-4195 (data/raw-prolbems/Geometry3K-Other) | / | × |
+| 7 | 黄一雯 | 60 | same as week 5 | / | × |
+| 8 | 金啸笑 | 60 | 3196-3290 (data/raw-prolbems/Geometry3K-Other) | / | × |
+| 9 | 李阳 | 60 | 3293-3396 (data/raw-prolbems/Geometry3K-Other) | / | × |
+| 10 | 毛晨扬 | 60 | 3398-3485 (data/raw-prolbems/Geometry3K-Other) | / | × |
+| 11 | 王茹楠 | 60 | same as week 5 | / | × |
+| 12 | 王一凡 | 60 | same as week 5 | / | × |
+| 13 | 吴昌昊 | 60 | 3486-3583(data/raw-prolbems/Geometry3K-Other) | / | × |
+| 14 | 岳登峰 | 60 | 3584-3681(data/raw-prolbems/Geometry3K-Other) | / | × |
+| 15 | 朱方震 | 60 | 3684-3792(data/raw-prolbems/Geometry3K-Other) | / | × |
+| 16 | 朱哲 | 60 | 3793-3900 (data/raw-prolbems/Geometry3K-Other) | / | × |
 
 #### Week 5 (230403): form 2023-04-03 to 2023-04-09.
 **Attention:** Annotate problems in directory **Geometry3K-Triangle** and **Geometry3K-Other**.  

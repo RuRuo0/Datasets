@@ -24,8 +24,8 @@ Formal representation and solving for SAT-level Euclidean plane geometry problem
 | 11 | 王茹楠 | 60 | same as week 5 | / | × |
 | 12 | 王一凡 | 60 | same as week 5 | / | × |
 | 13 | 吴昌昊 | 60 | 3486-3583(data/raw-prolbems/Geometry3K-Other) | / | × |
-| 14 | 岳登峰 | 60 | 3584-3681(data/raw-prolbems/Geometry3K-Other) | / | × |
-| 15 | 朱方震 | 60 | 3684-3792(data/raw-prolbems/Geometry3K-Other) | / | × |
+| 14 | 岳登峰 | 60 | 3901-3997(data/raw-prolbems/Geometry3K-Other) | / | × |
+| 15 | 朱方震 | 60 | 3999-4108(data/raw-prolbems/Geometry3K-Other) | / | × |
 | 16 | 朱哲 | 60 | 3793-3900 (data/raw-prolbems/Geometry3K-Other) | / | × |
 
 #### Week 5 (230403): form 2023-04-03 to 2023-04-09.

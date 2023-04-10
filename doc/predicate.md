@@ -788,10 +788,11 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 </div>
 
     ee_check: Point(O)
-              Triangle(ABC)
-    fv_check: O,ABC
-    multi: O,BCA
-           O,CAB
+              Quadrilateral(ABCD)
+    fv_check: O,ABCD
+    multi: O,BCDA
+           O,CDAB
+           O,DABC
     extend: 
 **Notes**:  
 1.点O是四边形ABCD的外心  
@@ -803,10 +804,11 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 </div>
 
     ee_check: Point(O)
-              Triangle(ABC)
-    fv_check: O,ABC
-    multi: O,BCA
-           O,CAB
+              Quadrilateral(ABCD)
+    fv_check: O,ABCD
+    multi: O,BCDA
+           O,CDAB
+           O,DABC
     extend: IsBisectorOfAngle(AO,DAB)
             IsBisectorOfAngle(BO,ABC)
             IsBisectorOfAngle(CO,BCD)

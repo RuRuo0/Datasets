@@ -1002,7 +1002,7 @@
     <img src="gdl-pic/T092.png" width="15%"
 </div>
 
-    premise: IsoscelesRightTriangle(ABC)&RightTriangle(CAB)
+    premise: IsoscelesTriangle(ABC)&RightTriangle(CAB)
     conclusion: IsoscelesRightTriangle(ABC)
 **Notes**:  
 1.等腰直角三角形判定：即是等腰三角形也是直角三角形  

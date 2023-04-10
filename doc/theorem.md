@@ -437,6 +437,16 @@
 **Notes**:  
 1.中位线性质：平行于底边  
 
+### midsegment_of_triangle_property_length(DE,ABC)
+<div>
+    <img src="gdl-pic/T039.png" width="15%"
+</div>
+
+    premise: IsMidsegmentOfTriangle(DE,ABC)
+    conclusion: Equal(LengthOfLine(DE),Mul(LengthOfLine(BC),1/2))
+**Notes**:  
+1.中位线性质：中位线长度等于底边的一半  
+
 ### circumcenter_of_triangle_judgment_intersection(O,ABC,D,E)
 <div>
     <img src="gdl-pic/T040.png" width="15%"
@@ -1293,7 +1303,7 @@
 
     premise: SimilarBetweenQuadrilateral(ABCD,EFGH)
     conclusion: SimilarBetweenQuadrilateral(EFGH,ABCD)
-                Equal(Mul(RatioOfSimilarQuadrilateral(ABCD,EFGH),RatioOfSimilarABCD,EFGH(EFGH,ABCD)),1)
+                Equal(Mul(RatioOfSimilarQuadrilateral(ABCD,EFGH),RatioOfSimilarQuadrilateral(EFGH,ABCD)),1)
 **Notes**:  
 1.相似三角形的比值  
 
@@ -1303,7 +1313,7 @@
 </div>
 
     premise: SimilarBetweenQuadrilateral(ABCD,EFGH)
-    conclusion: Equal(LengthOfLine(AB),Mul(LengthOfLine(EF),RatioOfSimilarTriangle(ABCD,EFGH)))
+    conclusion: Equal(LengthOfLine(AB),Mul(LengthOfLine(EF),RatioOfSimilarQuadrilateral(ABCD,EFGH)))
 **Notes**:  
 1.相似四边形性质：边成比例  
 

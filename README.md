@@ -14,7 +14,7 @@ Formal representation and solving for SAT-level Euclidean plane geometry problem
 | 1 | 贺艺铭 | 60 | 4586-4645 (data/raw-prolbems/GeoQA) | / | × |
 | 2 | 邹佳 | 60 | 4646-4705 (data/raw-prolbems/GeoQA)| / | × |
 | 3 | 朱娜 | 60 | 4706-4765 (data/raw-prolbems/GeoQA) | / | × |
-| 4 | 张效凯 | 60 | 4766-4825 (data/raw-prolbems/GeoQA) | / | × |
+| 4 | 张效凯 | 60 | 4766-4825 (data/raw-prolbems/GeoQA) | / | √ |
 | 5 | 郭彦钧 | 60 | 3008-3097 (data/raw-prolbems/Geometry3K-Other) | / | × |
 | 6 | 黄琦珂 | 60 | 3100-3193 (data/raw-prolbems/Geometry3K-Other) | / | × |
 | 7 | 黄一雯 | 60 | same as week 5 | / | × |

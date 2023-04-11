@@ -6,6 +6,7 @@ from core.aux_tools.parser import FLParser
 import os
 path_preset = "data/preset/"
 path_formalized = "data/formalized-problems/"
+path_test = "data/test-problems/"
 path_solved = "data/solved/"
 path_solved_problems = "data/solved/problems/"
 
@@ -34,7 +35,7 @@ def backward_run():
         print()
 
 
-def run(save_GDL=False, save_CDL=False, auto=False):
+def run(save_GDL=False, save_CDL=False, auto=False, test=False, clean_theorem=False):
     """Run solver and load problem from problem_GDL."""
     solver = Solver(load_json(path_preset + "predicate_GDL.json"),    # init solver
                     load_json(path_preset + "theorem_GDL.json"))
@@ -48,9 +49,8 @@ def run(save_GDL=False, save_CDL=False, auto=False):
         warnings.filterwarnings("ignore")
         unsolved = []
         print("pid\tcorrect_answer\tsolved\tsolved_answer\tspend(s)")
-        for filename in os.listdir(path_formalized):
-            pid = int(filename.split(".")[0])
-            if pid >= 30000:
+        for filename in os.listdir(path_test if test else path_formalized):
+            if "json" not in filename:   # png
                 continue
 
             problem_CDL = load_json(path_formalized + filename)
@@ -67,18 +67,18 @@ def run(save_GDL=False, save_CDL=False, auto=False):
 
                 solver.check_goal()    # check goal after applied theorem seqs
 
-                # if solver.problem.goal["solved"]:   # clean theorem
-                #     problem_CDL = load_json(path_formalized + filename)
-                #     _id, seqs = get_used_theorem(solver.problem)
-                #     problem_CDL["theorem_seqs"] = seqs
-                #     save_json(problem_CDL, path_formalized + filename)
+                if clean_theorem and solver.problem.goal["solved"]:   # clean theorem
+                    problem_CDL = load_json(path_formalized + filename)
+                    _id, seqs = get_used_theorem(solver.problem)
+                    problem_CDL["theorem_seqs"] = seqs
+                    save_json(problem_CDL, path_formalized + filename)
 
                 simple_show(solver.problem)   # show solved msg
 
                 if save_CDL:  # save solved msg
                     save_json(
                         solver.problem.problem_CDL,
-                        path_solved_problems + "{}_parsed.json".format(pid)
+                        path_solved_problems + "{}_parsed.json".format(filename.split(".")[0])
                     )
                     save_step_msg(solver.problem, path_solved_problems)
                     save_solution_tree(solver.problem, path_solved_problems)
@@ -92,8 +92,14 @@ def run(save_GDL=False, save_CDL=False, auto=False):
 
     else:    # interactive mode, run one problem according input pid
         while True:
-            pid = int(input("pid:"))
-            problem_CDL = load_json(path_formalized + "{}.json".format(pid))
+            pid = input("pid:")
+            path = path_test if test else path_formalized
+            filename = "{}.json".format(pid)
+            if filename not in os.listdir(path):
+                print("No file \'{}\' in \'{}\'.".format(filename, path))
+                continue
+
+            problem_CDL = load_json(path + filename)
             solver.load_problem(problem_CDL)
 
             for theorem_name, theorem_para in FLParser.parse_theorem_seqs(problem_CDL["theorem_seqs"]):
@@ -113,5 +119,5 @@ def run(save_GDL=False, save_CDL=False, auto=False):
 
 
 if __name__ == '__main__':
-    run(save_GDL=False, save_CDL=False, auto=False)
+    run(save_GDL=False, save_CDL=False, auto=False, test=False, clean_theorem=False)
     # backward_run()

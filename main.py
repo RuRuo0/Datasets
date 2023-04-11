@@ -50,6 +50,9 @@ def run(save_GDL=False, save_CDL=False, auto=False):
         print("pid\tcorrect_answer\tsolved\tsolved_answer\tspend(s)")
         for filename in os.listdir(path_formalized):
             pid = int(filename.split(".")[0])
+            if pid >= 30000:
+                continue
+
             problem_CDL = load_json(path_formalized + filename)
 
             if "notes" in problem_CDL:    # problems can't solve

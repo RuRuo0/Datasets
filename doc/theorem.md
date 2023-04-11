@@ -1989,6 +1989,20 @@
 **Notes**:  
 1.弦中点和圆心的连线是弦的垂直平分线  
 
+### circle_property_angle_of_osculation(OAB,P)
+<div>
+    <img src="gdl-pic/T177.png" width="30%"
+</div>
+
+    # branch 1
+    premise: Arc(OAB)&Angle(BAP)&IsTangentOfCircle(PA,O)
+    conclusion: Equal(MeasureOfAngle(BAP),Mul(MeasureOfArc(OAB),1/2))
+    # branch 2
+    premise: Arc(OAB)&Angle(PBA)&IsTangentOfCircle(PB,O)
+    conclusion: Equal(MeasureOfAngle(PBA),Mul(MeasureOfArc(OAB),1/2))
+**Notes**:  
+1.弦切角定理：弦切角的度数等于它所夹的弧的圆心角度数的一半  
+
 ### circle_perimeter_formula(O)
 <div>
     <img src="gdl-pic/T158.png" width="15%"

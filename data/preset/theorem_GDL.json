@@ -166,18 +166,6 @@
       "conclusion": [
         "PerpendicularBetweenLine(BO,AO)"
       ]
-    },
-    "3": {
-      "premise": "PerpendicularBetweenLine(AO,CO)&Collinear(BAO)",
-      "conclusion": [
-        "PerpendicularBetweenLine(BO,CO)"
-      ]
-    },
-    "4": {
-      "premise": "PerpendicularBetweenLine(AO,CO)&Collinear(BCO)",
-      "conclusion": [
-        "PerpendicularBetweenLine(AO,BO)"
-      ]
     }
   },
   "perpendicular_bisector_judgment_per_and_mid(CO,AB)": {
@@ -270,7 +258,7 @@
   },
   "bisector_of_angle_property_distance_equal(BD,ABC)": {
     "1": {
-      "premise": "Angle(ABC)&Line(BD)&IsBisectorOfAngle(BD,ABC)&PerpendicularBetweenLine(DA,BA)&PerpendicularBetweenLine(BC,DC)",
+      "premise": "IsBisectorOfAngle(BD,ABC)&PerpendicularBetweenLine(DA,BA)&PerpendicularBetweenLine(BC,DC)",
       "conclusion": [
         "Equal(LengthOfLine(DA),LengthOfLine(DC))"
       ]
@@ -381,6 +369,14 @@
       "premise": "IsMidsegmentOfTriangle(DE,ABC)",
       "conclusion": [
         "ParallelBetweenLine(DE,BC)"
+      ]
+    }
+  },
+  "midsegment_of_triangle_property_length(DE,ABC)": {
+    "1": {
+      "premise": "IsMidsegmentOfTriangle(DE,ABC)",
+      "conclusion": [
+        "Equal(LengthOfLine(DE),Mul(LengthOfLine(BC),1/2))"
       ]
     }
   },
@@ -861,7 +857,7 @@
   },
   "isosceles_right_triangle_judgment_isosceles_and_right(ABC)": {
     "1": {
-      "premise": "IsoscelesRightTriangle(ABC)&RightTriangle(CAB)",
+      "premise": "IsoscelesTriangle(ABC)&RightTriangle(CAB)",
       "conclusion": [
         "IsoscelesRightTriangle(ABC)"
       ]
@@ -1126,7 +1122,7 @@
       "premise": "SimilarBetweenQuadrilateral(ABCD,EFGH)",
       "conclusion": [
         "SimilarBetweenQuadrilateral(EFGH,ABCD)",
-        "Equal(Mul(RatioOfSimilarQuadrilateral(ABCD,EFGH),RatioOfSimilarABCD,EFGH(EFGH,ABCD)),1)"
+        "Equal(Mul(RatioOfSimilarQuadrilateral(ABCD,EFGH),RatioOfSimilarQuadrilateral(EFGH,ABCD)),1)"
       ]
     }
   },
@@ -1134,7 +1130,7 @@
     "1": {
       "premise": "SimilarBetweenQuadrilateral(ABCD,EFGH)",
       "conclusion": [
-        "Equal(LengthOfLine(AB),Mul(LengthOfLine(EF),RatioOfSimilarTriangle(ABCD,EFGH)))"
+        "Equal(LengthOfLine(AB),Mul(LengthOfLine(EF),RatioOfSimilarQuadrilateral(ABCD,EFGH)))"
       ]
     }
   },
@@ -1688,6 +1684,20 @@
       "premise": "Arc(OAB)&Cocircular(O,ADB)&Collinear(ACB)&Collinear(OCD)&PerpendicularBetweenLine(AC,OC)",
       "conclusion": [
         "Equal(LengthOfArc(OAD),LengthOfArc(ODB))"
+      ]
+    }
+  },
+  "circle_property_angle_of_osculation(OAB,P)": {
+    "1": {
+      "premise": "Arc(OAB)&Angle(BAP)&IsTangentOfCircle(PA,O)",
+      "conclusion": [
+        "Equal(MeasureOfAngle(BAP),Mul(MeasureOfArc(OAB),1/2))"
+      ]
+    },
+    "2": {
+      "premise": "Arc(OAB)&Angle(PBA)&IsTangentOfCircle(PB,O)",
+      "conclusion": [
+        "Equal(MeasureOfAngle(PBA),Mul(MeasureOfArc(OAB),1/2))"
       ]
     }
   },

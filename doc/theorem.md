@@ -168,7 +168,7 @@
 
 ### perpendicular_property_collinear_extend(AO,CO,B)
 <div>
-    <img src="gdl-pic/T014.png" width="60%"
+    <img src="gdl-pic/T014.png" width="30%"
 </div>
 
     # branch 1
@@ -177,12 +177,6 @@
     # branch 2
     premise: PerpendicularBetweenLine(AO,CO)&Collinear(COB)
     conclusion: PerpendicularBetweenLine(BO,AO)
-    # branch 3
-    premise: PerpendicularBetweenLine(AO,CO)&Collinear(BAO)
-    conclusion: PerpendicularBetweenLine(BO,CO)
-    # branch 4
-    premise: PerpendicularBetweenLine(AO,CO)&Collinear(BCO)
-    conclusion: PerpendicularBetweenLine(AO,BO)
 **Notes**:  
 1.垂直关系的共线扩展，B是与任意一条垂线共线的一点  
 
@@ -301,7 +295,7 @@
     <img src="gdl-pic/T026.png" width="15%"
 </div>
 
-    premise: Angle(ABC)&Line(BD)&IsBisectorOfAngle(BD,ABC)&PerpendicularBetweenLine(DA,BA)&PerpendicularBetweenLine(BC,DC)
+    premise: IsBisectorOfAngle(BD,ABC)&PerpendicularBetweenLine(DA,BA)&PerpendicularBetweenLine(BC,DC)
     conclusion: Equal(LengthOfLine(DA),LengthOfLine(DC))
 **Notes**:  
 1.角平分线的判定：角平分线上的点到两端的距离相等  
@@ -436,6 +430,16 @@
     conclusion: ParallelBetweenLine(DE,BC)
 **Notes**:  
 1.中位线性质：平行于底边  
+
+### midsegment_of_triangle_property_length(DE,ABC)
+<div>
+    <img src="gdl-pic/T039.png" width="15%"
+</div>
+
+    premise: IsMidsegmentOfTriangle(DE,ABC)
+    conclusion: Equal(LengthOfLine(DE),Mul(LengthOfLine(BC),1/2))
+**Notes**:  
+1.中位线性质：中位线长度等于底边的一半  
 
 ### circumcenter_of_triangle_judgment_intersection(O,ABC,D,E)
 <div>
@@ -1002,7 +1006,7 @@
     <img src="gdl-pic/T092.png" width="15%"
 </div>
 
-    premise: IsoscelesRightTriangle(ABC)&RightTriangle(CAB)
+    premise: IsoscelesTriangle(ABC)&RightTriangle(CAB)
     conclusion: IsoscelesRightTriangle(ABC)
 **Notes**:  
 1.等腰直角三角形判定：即是等腰三角形也是直角三角形  
@@ -1293,7 +1297,7 @@
 
     premise: SimilarBetweenQuadrilateral(ABCD,EFGH)
     conclusion: SimilarBetweenQuadrilateral(EFGH,ABCD)
-                Equal(Mul(RatioOfSimilarQuadrilateral(ABCD,EFGH),RatioOfSimilarABCD,EFGH(EFGH,ABCD)),1)
+                Equal(Mul(RatioOfSimilarQuadrilateral(ABCD,EFGH),RatioOfSimilarQuadrilateral(EFGH,ABCD)),1)
 **Notes**:  
 1.相似三角形的比值  
 
@@ -1303,7 +1307,7 @@
 </div>
 
     premise: SimilarBetweenQuadrilateral(ABCD,EFGH)
-    conclusion: Equal(LengthOfLine(AB),Mul(LengthOfLine(EF),RatioOfSimilarTriangle(ABCD,EFGH)))
+    conclusion: Equal(LengthOfLine(AB),Mul(LengthOfLine(EF),RatioOfSimilarQuadrilateral(ABCD,EFGH)))
 **Notes**:  
 1.相似四边形性质：边成比例  
 
@@ -1984,6 +1988,20 @@
     conclusion: Equal(LengthOfArc(OAD),LengthOfArc(ODB))
 **Notes**:  
 1.弦中点和圆心的连线是弦的垂直平分线  
+
+### circle_property_angle_of_osculation(OAB,P)
+<div>
+    <img src="gdl-pic/T177.png" width="30%"
+</div>
+
+    # branch 1
+    premise: Arc(OAB)&Angle(BAP)&IsTangentOfCircle(PA,O)
+    conclusion: Equal(MeasureOfAngle(BAP),Mul(MeasureOfArc(OAB),1/2))
+    # branch 2
+    premise: Arc(OAB)&Angle(PBA)&IsTangentOfCircle(PB,O)
+    conclusion: Equal(MeasureOfAngle(PBA),Mul(MeasureOfArc(OAB),1/2))
+**Notes**:  
+1.弦切角定理：弦切角的度数等于它所夹的弧的圆心角度数的一半  
 
 ### circle_perimeter_formula(O)
 <div>

@@ -168,7 +168,7 @@
 
 ### perpendicular_property_collinear_extend(AO,CO,B)
 <div>
-    <img src="gdl-pic/T014.png" width="60%"
+    <img src="gdl-pic/T014.png" width="30%"
 </div>
 
     # branch 1
@@ -177,12 +177,6 @@
     # branch 2
     premise: PerpendicularBetweenLine(AO,CO)&Collinear(COB)
     conclusion: PerpendicularBetweenLine(BO,AO)
-    # branch 3
-    premise: PerpendicularBetweenLine(AO,CO)&Collinear(BAO)
-    conclusion: PerpendicularBetweenLine(BO,CO)
-    # branch 4
-    premise: PerpendicularBetweenLine(AO,CO)&Collinear(BCO)
-    conclusion: PerpendicularBetweenLine(AO,BO)
 **Notes**:  
 1.垂直关系的共线扩展，B是与任意一条垂线共线的一点  
 
@@ -301,7 +295,7 @@
     <img src="gdl-pic/T026.png" width="15%"
 </div>
 
-    premise: Angle(ABC)&Line(BD)&IsBisectorOfAngle(BD,ABC)&PerpendicularBetweenLine(DA,BA)&PerpendicularBetweenLine(BC,DC)
+    premise: IsBisectorOfAngle(BD,ABC)&PerpendicularBetweenLine(DA,BA)&PerpendicularBetweenLine(BC,DC)
     conclusion: Equal(LengthOfLine(DA),LengthOfLine(DC))
 **Notes**:  
 1.角平分线的判定：角平分线上的点到两端的距离相等  

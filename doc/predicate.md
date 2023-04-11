@@ -259,7 +259,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     ee_check: Triangle(ABC)
     multi: 
     extend: RightTriangle(CAB)
-            IsoscelesRightTriangle(ABC)
+            IsoscelesTriangle(ABC)
 **Notes**:  
 1.参照等腰三角形标注方法  
 

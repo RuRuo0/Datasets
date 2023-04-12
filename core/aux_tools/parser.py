@@ -291,6 +291,7 @@ class FLParser:
         """parse problem_CDL to logic form."""
         parsed_CDL = {
             "id": problem_CDL["problem_id"],
+            "annotation": problem_CDL["annotation"],
             "cdl": {
                 "construction_cdl": problem_CDL["construction_cdl"],
                 "text_cdl": problem_CDL["text_cdl"],

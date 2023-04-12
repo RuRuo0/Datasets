@@ -88,6 +88,7 @@ def run(save_GDL=False, save_CDL=False, auto=False, test=False, clean_theorem=Fa
                 msg = "Raise Exception {} in problem {}.".format(e, filename.split(".")[0])
                 unsolved.append("{}\t{}\t{}".format(problem_CDL["problem_id"], problem_CDL["annotation"], msg))
 
+        print("pid\tannotation\tnotes")
         for n in unsolved:   # show unsolved
             print(n)
 
@@ -120,5 +121,6 @@ def run(save_GDL=False, save_CDL=False, auto=False, test=False, clean_theorem=Fa
 
 
 if __name__ == '__main__':
-    run(save_GDL=False, save_CDL=False, auto=False, test=False, clean_theorem=False)
+    run(auto=True)
+    # run()
     # backward_run()

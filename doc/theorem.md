@@ -1693,6 +1693,16 @@
 **Notes**:  
 1.五边形性质：内角和为540°  
 
+### hexagon_property_angle_sum(ABCDEF)
+<div>
+    <img src="gdl-pic/P011.png" width="15%"
+</div>
+
+    premise: Hexagon(ABCDEF)
+    conclusion: Equal(Add(MeasureOfAngle(ABC),MeasureOfAngle(BCD),MeasureOfAngle(CDE),MeasureOfAngle(DEF),MeasureOfAngle(EFA),MeasureOfAngle(FAB)),720)
+**Notes**:  
+1.六边形性质：内角和为720°  
+
 ### arc_addition_length(OAB,OBC)
 <div>
     <img src="gdl-pic/T134.png" width="15%"

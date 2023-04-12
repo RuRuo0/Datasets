@@ -48,7 +48,7 @@ def run(save_GDL=False, save_CDL=False, auto=False, test=False, clean_theorem=Fa
     if auto:    # auto run all problems in formalized-problems
         warnings.filterwarnings("ignore")
         unsolved = []
-        print("pid\tcorrect_answer\tsolved\tsolved_answer\tspend(s)")
+        print("pid\tannotation\tcorrect_answer\tsolved\tsolved_answer\tspend(s)")
         for filename in os.listdir(path_test if test else path_formalized):
             if "json" not in filename:   # png
                 continue
@@ -56,7 +56,8 @@ def run(save_GDL=False, save_CDL=False, auto=False, test=False, clean_theorem=Fa
             problem_CDL = load_json(path_formalized + filename)
 
             if "notes" in problem_CDL:    # problems can't solve
-                unsolved.append("{}\t{}".format(problem_CDL["problem_id"], problem_CDL["notes"]))
+                unsolved.append("{}\t{}\t{}".format(
+                    problem_CDL["problem_id"], problem_CDL["annotation"], problem_CDL["notes"]))
                 continue
 
             try:    # try solve
@@ -85,7 +86,7 @@ def run(save_GDL=False, save_CDL=False, auto=False, test=False, clean_theorem=Fa
 
             except Exception as e:    # exception
                 msg = "Raise Exception {} in problem {}.".format(e, filename.split(".")[0])
-                unsolved.append("{}\t{}".format(problem_CDL["problem_id"], msg))
+                unsolved.append("{}\t{}\t{}".format(problem_CDL["problem_id"], problem_CDL["annotation"], msg))
 
         for n in unsolved:   # show unsolved
             print(n)

@@ -390,7 +390,7 @@ class FLParser:
             j = j + 1
 
         if len(stack) > 1:
-            e_msg = "Wrong format: {}. May be missing ')'.".format(s)
+            e_msg = "Sym stack not empty. Miss ')' in {}?.".format(s)
             raise Exception(e_msg)
 
         return FLParser._listing(stack.pop(), make_vars)

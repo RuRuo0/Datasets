@@ -155,23 +155,44 @@ class EquationKiller:
     @staticmethod
     @func_set_timeout(2)
     def solve(equations, keep_sym=False):
-        real_results = {}  # real number solution
         try:
-            results = solve(equations, dict=True)
-            if len(results) > 0:
-                if isinstance(results, list):    # multi results, choose the first
-                    results = results[0]
-                if keep_sym:
-                    real_results = results
-                else:
-                    for sym in results:  # filter out real number solution
-                        if len(results[sym].free_symbols) == 0:
-                            real_results[sym] = number_round(results[sym])
-        except Exception as e:
+            solved = solve(equations, dict=True)
+            if len(solved) == 0:  # no result solved
+                return {}
+        except Exception as e:   # exception
             msg = "Exception <{}> occur when solve {}".format(e, equations)
             warnings.warn(msg)
+            return {}
+        else:    # has result
+            if keep_sym:    # keep sym result
+                if isinstance(solved, list):
+                    return solved[0]
+                return solved
 
-        return real_results
+            if isinstance(solved, list):
+                update = True
+                while update and len(solved) > 1:   # choose min when has multi result
+                    update = False
+                    for i in range(1, len(solved)):
+                        for sym in solved[0]:
+                            if len(solved[0][sym].free_symbols) != 0:
+                                continue
+
+                            if solved[0][sym] > solved[i][sym]:
+                                solved.pop(0)
+                                update = True
+                                break
+                            elif solved[0][sym] < solved[i][sym]:
+                                solved.pop(i)
+                                update = True
+                                break
+                solved = solved[0]
+
+            real_results = {}  # real_number
+            for sym in solved:  # filter out real number solution
+                if len(solved[sym].free_symbols) == 0:
+                    real_results[sym] = number_round(solved[sym])
+            return real_results
 
     @staticmethod
     def solve_equations(problem):

@@ -4,23 +4,27 @@
   "source": "Geometry3k-2118",
   "problem_level": 1,
   "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of quadrilateral A B C D to the nearest tenth.",
+  "problem_text_en": "Find the Area of quadrilateral A B C D to the nearest tenth.",
   "problem_img": "3702.png",
   "construction_cdl": [
-    "Polygon()",
-    "Collinear()",
-    "Cocircular()"
+    "Shape(AD,DB,BA)",
+    "Shape(BD,DC,CB)"
   ],
   "text_cdl": [],
   "image_cdl": [
-    "Equal(MeasureOfAngle(DBA),28)",
     "Equal(LengthOfLine(DA),12)",
-    "Equal(MeasureOfAngle(ADB),40)",
+    "Equal(MeasureOfAngle(ADB),28)",
+    "Equal(MeasureOfAngle(DBA),40)",
     "Equal(LengthOfLine(DA),LengthOfLine(BC))",
-    "Equal(LengthOfLine(BC),LengthOfLine(CD))"
+    "Equal(LengthOfLine(AB),LengthOfLine(CD))"
   ],
-  "goal_cdl": "Value(PerimeterOf(Quadrilateral(A,B,C,D)))",
-  "problem_answer": "56.9",
-  "theorem_seqs": [],
-  "notes": "平行四边形面积"
+  "goal_cdl": "Value(AreaOfQuadrilateral(ADCB))",
+  "problem_answer": "97.51",
+  "theorem_seqs": [
+    "sine_theorem(ADB)",
+    "parallelogram_judgment_equal_and_equal(ADCB)",
+    "parallel_property_alternate_interior_angle(AB,DC)",
+    "angle_addition(ADB,BDC)",
+    "parallelogram_area_formula_sine(ADCB)"
+  ]
 }

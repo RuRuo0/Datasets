@@ -4,29 +4,32 @@
   "source": "Geometry3k-2465",
   "problem_level": 1,
   "problem_text_cn": "",
-  "problem_text_en": "Lines l, m, and n are perpendicular bisectors of \\triangle P Q R and meet at T. If T Q = 2 x, P T = 3 y - 1, and T R = 8, find z.",
+  "problem_text_en": "Lines l, m, and n are perpendicular bisectors of \\triangle P Q R and meet at T. find z.",
   "problem_img": "4049.png",
   "construction_cdl": [
-    "Shape()",
-    "Collinear()",
-    "Cocircular()"
+    "Shape(QH,HT,TQ)",
+    "Shape(HP,PT,TH)",
+    "Shape(TP,PG,GT)",
+    "Shape(TG,GR,RT)",
+    "Shape(TR,RF,FT)",
+    "Shape(TF,FQ,QT)",
+    "Collinear(QHP)",
+    "Collinear(PGR)",
+    "Collinear(RFQ)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "IsPerpendicularBisectorOfLine(TH,QP)",
+    "IsPerpendicularBisectorOfLine(TG,PR)",
+    "IsPerpendicularBisectorOfLine(TF,RQ)"
+  ],
   "image_cdl": [
-    "IsPerpendicularBisectorOf(Line(l),Triangle(P,Q,R))",
-    "IsPerpendicularBisectorOf(Line(m),Triangle(P,Q,R))",
-    "IsPerpendicularBisectorOf(Line(n),Triangle(P,Q,R))",
+    "Equal(LengthOfLine(PT),3*y-1)",
+    "Equal(LengthOfLine(TR),8)",
     "Equal(LengthOfLine(TQ),2*x)",
-    "Equal(LengthOfLine(PT),3*y-1)",
-    "Equal(LengthOfLine(TR),8)",
-    "Equal(LengthOfLine(QT),2*x)",
-    "Equal(LengthOfLine(TR),8)",
-    "Equal(LengthOfLine(PT),3*y-1)",
     "Equal(LengthOfLine(PG),z+4)",
     "Equal(LengthOfLine(GR),7)"
   ],
   "goal_cdl": "Value(z)",
   "problem_answer": "3",
-  "theorem_seqs": [],
-  "notes": "太难辣！"
+  "theorem_seqs": []
 }

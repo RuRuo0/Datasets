@@ -7,24 +7,26 @@
   "problem_text_en": "Each pair of polygons is similar. Find A B.",
   "problem_img": "2621.png",
   "construction_cdl": [
-    "Shape()",
-    "Collinear()",
-    "Cocircular()"
+    "Shape(BA,AD,DC,CB)",
+    "Shape(EH,HG,GF,FE)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "SimilarBetweenQuadrilateral(BADC,FEHG)"
+  ],
   "image_cdl": [
-    "Similar(Polygon($1),Polygon($2))",
-    "Equal(LengthOfLine(FE),8)",
     "Equal(LengthOfLine(AB),x+1)",
     "Equal(LengthOfLine(CD),x-1)",
+    "Equal(LengthOfLine(FE),8)",
     "Equal(LengthOfLine(HG),5)",
-    "Equal(MeasureOfAngle(BAD),MeasureOfAngle(EHG))",
-    "Equal(MeasureOfAngle(ADC),MeasureOfAngle(HGF))",
-    "Equal(MeasureOfAngle(BCD),MeasureOfAngle(GFE))",
-    "Equal(MeasureOfAngle(ABC),MeasureOfAngle(HEF))"
+    "Equal(MeasureOfAngle(CBA),MeasureOfAngle(GFE))",
+    "Equal(MeasureOfAngle(BAD),MeasureOfAngle(FEH))",
+    "Equal(MeasureOfAngle(ADC),MeasureOfAngle(EHG))",
+    "Equal(MeasureOfAngle(DCB),MeasureOfAngle(HGF))"
   ],
   "goal_cdl": "Value(LengthOfLine(AB))",
   "problem_answer": "16/3",
-  "theorem_seqs": [],
-  "notes": "缺少四边形相似定理。无法标注"
+  "theorem_seqs": [
+    "similar_quadrilateral_property_line_ratio(BADC,FEHG)",
+    "similar_quadrilateral_property_line_ratio(DCBA,HGFE)"
+  ]
 }

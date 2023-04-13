@@ -167,27 +167,41 @@ class Problem:
 
         shape_comb = shape_unit  # 3.Shape expand.
         jigsaw_comb = jigsaw_unit
+        i = 0
         while len(shape_comb):
             shape_comb_new = []
             jigsaw_comb_new = {}
+            i += 1
             for unit in shape_unit:
+                print("unit:{}/{}, comb:{}, n: {}".format(
+                    shape_unit.index(unit), len(shape_unit), len(shape_comb), i))
                 for comb in shape_comb:
+
+                    if len(unit[-1]) != len(comb[0]):   # has same sides ?
+                        continue
+                    elif len(unit[-1]) == 3:
+                        if unit[-1] != comb[0]:
+                            continue
+                    else:
+                        if unit[-1] != comb[0][::-1]:
+                            continue
 
                     if unit in jigsaw_comb[comb]:  # comb is combined from unit
                         continue
 
-                    same_length = 0  # number of same sides
-                    while same_length < len(unit) and same_length < len(comb):
-                        if (len(unit[- same_length - 1]) == len(comb[same_length]) and  # same type (line or arc)
-                                ((len(unit[- same_length - 1]) == 3 and  # arc and same
-                                  unit[- same_length - 1] == comb[same_length]) or
-                                 (unit[- same_length - 1] == comb[same_length][::-1]))):  # line and same
-                            same_length += 1
-                        else:
+                    same_length = 1  # number of same sides
+                    mini_length = len(unit) if len(unit) < len(comb) else len(comb)   # mini length
+                    while same_length < mini_length:
+                        if len(unit[- same_length - 1]) != len(comb[same_length]):    # all arcs or all lines
                             break
+                        elif len(unit[- same_length - 1]) == 3:   # arc
+                            if unit[- same_length - 1] != comb[same_length]:
+                                break
+                        else:   # line
+                            if unit[- same_length - 1] != comb[same_length][::-1]:
+                                break
 
-                    if same_length == 0:  # ensure has same sides
-                        continue
+                        same_length += 1
 
                     new_shape = list(unit[0:len(unit) - same_length])  # diff sides in polygon1
                     new_shape += list(comb[same_length:len(comb)])  # diff sides in polygon2
@@ -327,6 +341,7 @@ class Problem:
             new_item = tuple([shape[(i + bias) % l] for i in range(l)])
             self.conditions["Shape"].add(new_item, (_id,), "extended")
             all_forms.append(new_item)
+        return True, set(all_forms)
 
         shape = list(shape)
         _, col, _ = self.conditions["Collinear"].get_items(["a", "b", "c"])

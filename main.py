@@ -50,9 +50,6 @@ def run(save_GDL=False, save_CDL=False, auto=False, test=False, clean_theorem=Fa
         unsolved = []
         print("pid\tannotation\tcorrect_answer\tsolved\tsolved_answer\tspend(s)")
         for filename in os.listdir(path_test if test else path_formalized):
-            if "json" not in filename:   # png
-                continue
-
             problem_CDL = load_json(path_formalized + filename)
 
             if "notes" in problem_CDL:    # problems can't solve
@@ -121,6 +118,6 @@ def run(save_GDL=False, save_CDL=False, auto=False, test=False, clean_theorem=Fa
 
 
 if __name__ == '__main__':
-    run(auto=True)
+    run(test=True)
     # run()
     # backward_run()

@@ -167,14 +167,10 @@ class Problem:
 
         shape_comb = shape_unit  # 3.Shape expand.
         jigsaw_comb = jigsaw_unit
-        i = 0
         while len(shape_comb):
             shape_comb_new = []
             jigsaw_comb_new = {}
-            i += 1
             for unit in shape_unit:
-                print("unit:{}/{}, comb:{}, n: {}".format(
-                    shape_unit.index(unit), len(shape_unit), len(shape_comb), i))
                 for comb in shape_comb:
 
                     if len(unit[-1]) != len(comb[0]):   # has same sides ?

@@ -341,7 +341,6 @@ class Problem:
             new_item = tuple([shape[(i + bias) % l] for i in range(l)])
             self.conditions["Shape"].add(new_item, (_id,), "extended")
             all_forms.append(new_item)
-        return True, set(all_forms)
 
         shape = list(shape)
         _, col, _ = self.conditions["Collinear"].get_items(["a", "b", "c"])

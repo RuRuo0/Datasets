@@ -7,16 +7,27 @@
   "problem_text_en": "Find x.",
   "problem_img": "3464.png",
   "construction_cdl": [
-    "Shape()",
-    "Collinear()",
-    "Cocircular()"
+    "Shape(JLK,KA,AL)",
+    "Shape(LA,AJ,JL)",
+    "Shape(JKR,RJ,JA,AK)",
+    "Shape(JRL,LA,AJ,JR)",
+    "Collinear(LAK)",
+    "Cocircular(J,LKR)"
   ],
   "text_cdl": [],
   "image_cdl": [
+    "Equal(RadiusOfCircle(J),10)",
     "Equal(LengthOfLine(JA),x)",
-    "Equal(LengthOfLine(LK),10)"
+    "Equal(LengthOfLine(LK),10)",
+    "PerpendicularBetweenLine(LA,JA)"
   ],
   "goal_cdl": "Value(x)",
   "problem_answer": "5*√3",
-  "theorem_seqs": []
+  "theorem_seqs": [
+    "circle_property_radius_length_equal(JL,J)",
+    "circle_property_chord_perpendicular_bisect_chord(JA,LK)",
+    "right_triangle_judgment_angle(LAJ)",
+    "line_addition(LA,AK)",
+    "right_triangle_property_pythagorean(LAJ)"
+  ]
 }

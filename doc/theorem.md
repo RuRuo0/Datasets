@@ -1903,15 +1903,11 @@
 **Notes**:  
 1.常识：圆的直径是半径的两倍  
 
-### circle_property_diameter_to_circumference_angle(AB,O,C)
+### circle_property_diameter_to_circumference_angle(O,ACB)
 <div>
-    <img src="gdl-pic/T151.png" width="30%"
+    <img src="gdl-pic/T151.png" width="15%"
 </div>
 
-    # branch 1
-    premise: Cocircular(O,ABC)&Collinear(AOB)&Angle(BCA)
-    conclusion: PerpendicularBetweenLine(BC,AC)
-    # branch 2
     premise: Cocircular(O,ACB)&Collinear(AOB)&Angle(ACB)
     conclusion: PerpendicularBetweenLine(AC,BC)
 **Notes**:  

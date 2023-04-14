@@ -35,7 +35,7 @@ def backward_run():
         print()
 
 
-def run(save_GDL=False, save_CDL=False, auto=False, test=False, clean_theorem=False):
+def run(save_GDL=False, save_CDL=False, auto=False, clean_theorem=False):
     """Run solver and load problem from problem_GDL."""
     solver = Solver(load_json(path_preset + "predicate_GDL.json"),    # init solver
                     load_json(path_preset + "theorem_GDL.json"))
@@ -49,8 +49,10 @@ def run(save_GDL=False, save_CDL=False, auto=False, test=False, clean_theorem=Fa
         warnings.filterwarnings("ignore")
         unsolved = []
         print("pid\tannotation\tcorrect_answer\tsolved\tsolved_answer\tspend(s)")
-        for filename in os.listdir(path_test if test else path_formalized):
+        for filename in os.listdir(path_formalized):
             problem_CDL = load_json(path_formalized + filename)
+            if int(filename.split(".")[0]) >= 30000:
+                continue
 
             if "notes" in problem_CDL:    # problems can't solve
                 unsolved.append("{}\t{}\t{}".format(
@@ -92,13 +94,12 @@ def run(save_GDL=False, save_CDL=False, auto=False, test=False, clean_theorem=Fa
     else:    # interactive mode, run one problem according input pid
         while True:
             pid = input("pid:")
-            path = path_test if test else path_formalized
             filename = "{}.json".format(pid)
-            if filename not in os.listdir(path):
-                print("No file \'{}\' in \'{}\'.".format(filename, path))
+            if filename not in os.listdir(path_formalized):
+                print("No file \'{}\' in \'{}\'.".format(filename, path_formalized))
                 continue
 
-            problem_CDL = load_json(path + filename)
+            problem_CDL = load_json(path_formalized + filename)
             solver.load_problem(problem_CDL)
 
             for theorem_name, theorem_para in FLParser.parse_theorem_seqs(problem_CDL["theorem_seqs"]):
@@ -118,6 +119,6 @@ def run(save_GDL=False, save_CDL=False, auto=False, test=False, clean_theorem=Fa
 
 
 if __name__ == '__main__':
-    run(test=True)
+    run()
     # run()
     # backward_run()

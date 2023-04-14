@@ -140,7 +140,7 @@ class Problem:
                         self.conditions["Cocircular"].add(
                             tuple([circle] + [cocircular[(i + bias) % l] for i in range(l)]), (_id,), "extended")
 
-        jigsaw_unit = {}  #
+        jigsaw_unit = {}  # shape's jigsaw
         shape_unit = []  # mini shape unit
         for predicate, item in self.problem_CDL["parsed_cdl"]["construction_cdl"]:  # Shape
             if predicate != "Shape":
@@ -173,13 +173,13 @@ class Problem:
             for unit in shape_unit:
                 for comb in shape_comb:
 
-                    if len(unit[-1]) != len(comb[0]):   # has same sides ?
+                    if len(unit[-1]) != len(comb[0]):   # has same sides?
                         continue
-                    elif len(unit[-1]) == 3:
+                    elif len(unit[-1]) == 3:   # is arc and same?
                         if unit[-1] != comb[0]:
                             continue
                     else:
-                        if unit[-1] != comb[0][::-1]:
+                        if unit[-1] != comb[0][::-1]:   # is line and same?
                             continue
 
                     if unit in jigsaw_comb[comb]:  # comb is combined from unit

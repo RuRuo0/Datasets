@@ -6,28 +6,47 @@ Formal representation and solving for SAT-level Euclidean plane geometry problem
 **FormalGeo-SAT** is an extended version of **[FormalGeo](https://github.com/BitSecret/FormalGeo)**. It supports solving more types of plane geometric problems.
 
 ## Cowork
+#### Week 6 (230410): form 2023-04-10 to 2023-04-16.
+**Attention:** Annotate problems in directory **Geometry3K-Other** and **GeoQA**.  
+
+| Id | Worker | WorkLoad | PID | Skip | Submitted |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| 1 | 贺艺铭 | 60 | 4586-4645 (data/raw-prolbems/GeoQA) | / | × |
+| 2 | 邹佳 | 60 | 4646-4705 (data/raw-prolbems/GeoQA)| / | × |
+| 3 | 朱娜 | 60 | 4706-4765 (data/raw-prolbems/GeoQA) | / | × |
+| 4 | 张效凯 | 60 | 4766-4825 (data/raw-prolbems/GeoQA) | / | √ |
+| 5 | 郭彦钧 | 60 | 3008-3097 (data/raw-prolbems/Geometry3K-Other) | / | × |
+| 6 | 黄琦珂 | 60 | 3100-3193 (data/raw-prolbems/Geometry3K-Other) | / | × |
+| 7 | 黄一雯 | 60 | same as week 5 | / | × |
+| 8 | 金啸笑 | 60 | 3196-3290 (data/raw-prolbems/Geometry3K-Other) | / | √ |
+| 9 | 李阳 | 60 | 3293-3396 (data/raw-prolbems/Geometry3K-Other) | / | × |
+| 10 | 毛晨扬 | 60 | 3398-3485 (data/raw-prolbems/Geometry3K-Other) | / | × |
+| 11 | 王茹楠 | 60 | same as week 5 | / | × |
+| 12 | 王一凡 | 60 | same as week 5 | / | × |
+| 13 | 岳登峰 | 60 | 3901-3997(data/raw-prolbems/Geometry3K-Other) | / | × |
+| 14 | 朱方震 | 60 | 3999-4108(data/raw-prolbems/Geometry3K-Other) | / | × |
+| 15 | 朱哲 | 60 | 3584-3681 (data/raw-prolbems/Geometry3K-Other) | / | √ |
+
 #### Week 5 (230403): form 2023-04-03 to 2023-04-09.
 **Attention:** Annotate problems in directory **Geometry3K-Triangle** and **Geometry3K-Other**.  
 
 | Id | Worker | WorkLoad | PID | Skip | Submitted |
 |:---:|:---:|:---:|:---:|:---:|:---:|
 | 1 | 贺艺铭 | 70 | 2155-2261 (Other) | / | √ |
-| 2 | 邹佳 | 70 | 1926-2046 (other) <br> 2265-2386 (Other) | / | × |
+| 2 | 邹佳 | 140 | 1926-2046 (other), 2265-2386 (Other) | / | √ |
 | 3 | 朱娜 | 70 | 2387-2502 (Other) | / | √ |
 | 4 | 张效凯 | 70 | 2503-2625 (Other) | / | √ |
-| 5 | 郭彦钧 | 50 | 3089-3165 (Triangle) <br> 2626-2652 (Other) | / | √ |
-| 6 | 黄琦珂 | 50 | 3171-3253 (Triangle) <br> 2653-2680 (Other) | / | √ |
-| 7 | 黄一雯 | 50 | 3254-3270 (Triangle) <br> 3795-3855 (Triangle) <br> 2682-2711 (Other) | / | × |
-| 8 | 金啸笑 | 50 | 3857-3919 (Triangle) <br> 2712-2747 (Other) | / | √ |
-| 9 | 李阳 | 50 | 3920-4007 (Triangle) <br> 2748-2780 (Other) | / | √ |
-| 10 | 毛晨扬 | 50 | 4009-4075 (Triangle) <br> 2781-2809 (Other) | / | √ |
-| 11 | 王茹楠 | 50 | 4079-4169 (Triangle) <br> 2810-2844 (Other) | / | × |
-| 12 | 王一凡 | 50 | 4170-4244 (Triangle) <br> 2849-2890 (Other) | / | × |
-| 13 | 吴昌昊 | 50 | 4245-4330 (Triangle) <br> 2895-2921 (Other) | / | × |
-| 14 | 岳登峰 | 50 | 4335-4430 (Triangle) <br> 2923-2956 (Other) | / | × |
-| 15 | 朱方震 | 50 | 4435-4501 (Triangle) <br> 2957-2984 (Other) | / | √ |
-| 16 | 朱哲 | 50 | 4502-4582 (Triangle) <br> 2986-3007 (Other) | / | √ |
-
+| 5 | 郭彦钧 | 50 | 3089-3165 (Triangle), 2626-2652 (Other) | / | √ |
+| 6 | 黄琦珂 | 50 | 3171-3253 (Triangle), 2653-2680 (Other) | / | √ |
+| 7 | 黄一雯 | 50 | 3254-3270 (Triangle), 3795-3855 (Triangle), 2682-2711 (Other) | / | × |
+| 8 | 金啸笑 | 50 | 3857-3919 (Triangle), 2712-2747 (Other) | / | √ |
+| 9 | 李阳 | 50 | 3920-4007 (Triangle), 2748-2780 (Other) | / | √ |
+| 10 | 毛晨扬 | 50 | 4009-4075 (Triangle), 2781-2809 (Other) | / | √ |
+| 11 | 王茹楠 | 50 | 4079-4169 (Triangle), 2810-2844 (Other) | / | × |
+| 12 | 王一凡 | 50 | 4170-4244 (Triangle), 2849-2890 (Other) | / | × |
+| 13 | 岳登峰 | 50 | 4335-4430 (Triangle), 2923-2956 (Other) | / | √ |
+| 14 | 朱方震 | 50 | 4435-4501 (Triangle), 2957-2984 (Other) | / | √ |
+| 15 | 朱哲 | 50 | 4502-4582 (Triangle), 2986-3007 (Other) | / | √ |
 
 #### Week 4 (230327): form 2023-03-27 to 2023-04-02.
 **Attention:** Annotate problems in directory **Geometry3K-Other**.  

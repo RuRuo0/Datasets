@@ -1,0 +1,32 @@
+{
+  "problem_id": 4771,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-234",
+  "problem_level": 1,
+  "problem_text_cn": "如图,PA,PB分别与⊙O相切于A,B两点,若∠C=65°,则∠P的度数为()",
+  "problem_text_en": "As shown in the figure, PA and PB are tangent to ⊙O at A and B respectively. If ∠C = N_0, then the degree of ∠P is ()",
+  "problem_img": "4771.png",
+  "construction_cdl": [
+    "Shape(OAC,CA)",
+    "Shape(OCB,BC)",
+    "Shape(AC,CB,BO,OA)",
+    "Shape(OBA,AO,OB)",
+    "Shape(PA,OBA,BP)",
+    "Cocircular(O,CBA)"
+  ],
+  "text_cdl": [
+    "IsTangentOfCircle(PA,O)",
+    "IsTangentOfCircle(PB,O)",
+    "Equal(MeasureOfAngle(ACB),65)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(BPA))",
+  "problem_answer": "50",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular(PA,O)",
+    "tangent_of_circle_property_perpendicular(PB,O)",
+    "arc_property_center_angle(OBA)",
+    "arc_property_circumference_angle_external(OBA,C)",
+    "quadrilateral_property_angle_sum(AOBP)"
+  ]
+}

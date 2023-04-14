@@ -291,6 +291,7 @@ class FLParser:
         """parse problem_CDL to logic form."""
         parsed_CDL = {
             "id": problem_CDL["problem_id"],
+            "annotation": problem_CDL["annotation"],
             "cdl": {
                 "construction_cdl": problem_CDL["construction_cdl"],
                 "text_cdl": problem_CDL["text_cdl"],
@@ -390,7 +391,7 @@ class FLParser:
             j = j + 1
 
         if len(stack) > 1:
-            e_msg = "Wrong format: {}. May be missing ')'.".format(s)
+            e_msg = "Sym stack not empty. Miss ')' in {}?.".format(s)
             raise Exception(e_msg)
 
         return FLParser._listing(stack.pop(), make_vars)

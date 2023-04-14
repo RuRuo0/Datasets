@@ -103,7 +103,7 @@
       "multi": [],
       "extend": [
         "RightTriangle(CAB)",
-        "IsoscelesRightTriangle(ABC)"
+        "IsoscelesTriangle(ABC)"
       ]
     },
     "EquilateralTriangle(ABC)": {
@@ -569,28 +569,30 @@
     "IsCircumcenterOfQuadrilateral(O,ABCD)": {
       "ee_check": [
         "Point(O)",
-        "Triangle(ABC)"
+        "Quadrilateral(ABCD)"
       ],
       "fv_check": [
-        "O,ABC"
+        "O,ABCD"
       ],
       "multi": [
-        "O,BCA",
-        "O,CAB"
+        "O,BCDA",
+        "O,CDAB",
+        "O,DABC"
       ],
       "extend": []
     },
     "IsIncenterOfQuadrilateral(O,ABCD)": {
       "ee_check": [
         "Point(O)",
-        "Triangle(ABC)"
+        "Quadrilateral(ABCD)"
       ],
       "fv_check": [
-        "O,ABC"
+        "O,ABCD"
       ],
       "multi": [
-        "O,BCA",
-        "O,CAB"
+        "O,BCDA",
+        "O,CDAB",
+        "O,DABC"
       ],
       "extend": [
         "IsBisectorOfAngle(AO,DAB)",
@@ -674,13 +676,14 @@
       "multi": [],
       "extend": []
     },
-    "ConcentricBetweenCircle(X,Y)": {
+    "IsCentreOfCircle(P,O)": {
       "ee_check": [
-        "Circle(X)",
-        "Circle(Y)"
+        "Point(P)",
+        "Circle(O)"
       ],
       "fv_check": [
-        "X,Y"
+        "P,O",
+        "O,O"
       ],
       "multi": [],
       "extend": []

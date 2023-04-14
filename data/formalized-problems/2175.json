@@ -1,28 +1,33 @@
 {
   "problem_id": 2175,
-  "annotation": "yiminghe_2023-04-04",
+  "annotation": "YimingHe_2023-04-09",
   "source": "Geometry3k-591",
   "problem_level": 1,
   "problem_text_cn": "",
   "problem_text_en": "Find the area of the shaded region. Round to the nearest tenth.",
   "problem_img": "2175.png",
   "construction_cdl": [
-    "Shape(AC,DCA)",
-    "Shape(AB,BC,CA)",
-  "Shape(BA,DAB)",
+    "Shape(AD,DC,DCA)",
+    "Shape(AB,BC,CD,DA)",
+    "Shape(BA,DAB)",
     "Shape(CB,DBC)",
     "Collinear(ADC)",
     "Cocircular(D,ABC)"
   ],
   "text_cdl": [],
   "image_cdl": [
-    "Equal(LengthOfLine(BC),5*2^0.5)",
+    "Equal(LengthOfLine(BC),5*√2)",
     "Equal(LengthOfLine(AB),LengthOfLine(BC))"
   ],
-  "goal_cdl": "Value(AreaOf(Shaded(Shape($))))",
-  "problem_answer": "53.5",
+  "goal_cdl": "Value(Sub(AreaOfCircle(D),AreaOfTriangle(ABC)))",
+  "problem_answer": "25*{π-1}",
   "theorem_seqs": [
-
-  ],
-  "notes": "圆形面积减三角形"
+    "circle_property_diameter_to_circumference_angle(AC,D,B)",
+    "right_triangle_judgment_angle(ABC)",
+    "right_triangle_property_pythagorean(ABC)",
+    "triangle_area_formula_sine(BCA)",
+    "circle_property_diameter_length_equal(AC,D)",
+    "circle_property_length_of_radius_and_diameter(D)",
+    "circle_area_formula(D)"
+  ]
 }

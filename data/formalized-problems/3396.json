@@ -1,0 +1,46 @@
+{
+  "problem_id": 3396,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "Geometry3k-1812",
+  "problem_level": 1,
+  "problem_text_cn": "",
+  "problem_text_en": "In \\odot X, A B = 30, C D = 30, and m \\widehat C Z = 40. Find C N.",
+  "problem_img": "3396.png",
+  "construction_cdl": [
+    "Shape(AM,MY,XYA)",
+    "Shape(YM,MB,XBY)",
+    "Shape(CX,XM,MA,XAC)",
+    "Shape(BM,MX,XD,XDB)",
+    "Shape(XC,CN,NX)",
+    "Shape(XN,ND,DX)",
+    "Shape(ZN,NC,XCZ)",
+    "Shape(DN,NZ,XZD)",
+    "Collinear(YMX)",
+    "Collinear(XNZ)",
+    "Collinear(AMB)",
+    "Collinear(CND)",
+    "Cocircular(X,CZDBYA)"
+  ],
+  "text_cdl": [],
+  "image_cdl": [
+    "Equal(LengthOfLine(AB),30)",
+    "Equal(LengthOfLine(CD),30)",
+    "Equal(MeasureOfArc(XCZ),40)",
+    "PerpendicularBetweenLine(AM,MY)",
+    "PerpendicularBetweenLine(DN,ZN)"
+  ],
+  "goal_cdl": "Value(LengthOfLine(CN))",
+  "problem_answer": "15",
+  "theorem_seqs": [
+    "line_addition(CN,ND)",
+    "arc_property_center_angle(XCZ)",
+    "circle_property_radius_length_equal(XC,X)",
+    "circle_property_radius_length_equal(XD,X)",
+    "isosceles_triangle_judgment_line_equal(XCD)",
+    "isosceles_triangle_property_angle_equal(XCD)",
+    "perpendicular_property_collinear_extend(DN,ZN,X)",
+    "perpendicular_property_collinear_extend(XN,DN,C)",
+    "mirror_congruent_triangle_judgment_aas(XCN,XND)",
+    "mirror_congruent_triangle_property_line_equal(XCN,XND)"
+  ]
+}

@@ -259,7 +259,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     ee_check: Triangle(ABC)
     multi: 
     extend: RightTriangle(CAB)
-            IsoscelesRightTriangle(ABC)
+            IsoscelesTriangle(ABC)
 **Notes**:  
 1.参照等腰三角形标注方法  
 
@@ -916,18 +916,19 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 **Notes**:  
 1.过P做圆的切线交圆于点A  
 
-### ConcentricBetweenCircle(X,Y)
+### IsCentreOfCircle(P,O)
 <div>
     <img src="gdl-pic/P076.png"  width="15%">
 </div>
 
-    ee_check: Circle(X)
-              Circle(Y)
-    fv_check: X,Y
+    ee_check: Point(P)
+              Circle(O)
+    fv_check: P,O
+              O,O
     multi: 
     extend: 
 **Notes**:  
-1.两个圆同心  
+1.点P是圆O的圆心  
 
 ## F、实体属性
 ### LengthOfLine(AB)

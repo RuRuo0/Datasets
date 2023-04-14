@@ -7,20 +7,21 @@
   "problem_text_en": "For the pair of similar figures, use the given areas to find the scale factor of the blue to the green figure.",
   "problem_img": "1692.png",
   "construction_cdl": [
-    "Shape()",
-    "Collinear()",
-    "Cocircular()"
+    "Shape(DA,AB,BC,CD)",
+    "Shape(HE,EF,FG,GH)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "SimilarBetweenQuadrilateral(ABCD,EFGH)",
+    "Equal(AreaOfQuadrilateral(ABCD),846)",
+    "Equal(AreaOfQuadrilateral(EFGH),376)"
+  ],
   "image_cdl": [
-    "Similar(Shape($1),Shape($2))",
     "Equal(LengthOfLine(FG),24)",
-    "Equal(LengthOfLine(CB),x)",
-    "Equal(AreaOf(Kite(ABCD)),846)",
-    "Equal(AreaOf(Kite(EFGH)),376)"
+    "Equal(LengthOfLine(CB),x)"
   ],
-  "goal_cdl": "Value(ScaleFactorOf(Blue(Shape($)),Green(Shape($))))",
+  "goal_cdl": "Value(RatioOfSimilarQuadrilateral(ABCD,EFGH))",
   "problem_answer": "3/2",
-  "theorem_seqs": [],
-  "notes": "缺少相关定理无法求解"
+  "theorem_seqs": [
+    "similar_quadrilateral_property_area_square_ratio(ABCD,EFGH)"
+  ]
 }

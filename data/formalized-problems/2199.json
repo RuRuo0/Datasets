@@ -7,21 +7,26 @@
   "problem_text_en": "Find m \\widehat R Q.",
   "problem_img": "2199.png",
   "construction_cdl": [
-    "Shape(RA,AN,ANR)",
-    "Shape(QA,AR,ARQ)",
-    "Shape(PA,AQ,AQP)",
-    "Shape(NA,AP,APN)",
+    "Shape(ONR,RA,AN)",
+    "Shape(OPN,NA,AP)",
+    "Shape(ORQ,QA,AR)",
+    "Shape(AQ,QP,PA)",
+    "Shape(PQ,OQP)",
     "Collinear(NAQ)",
     "Collinear(RAP)",
-    "Cocircular(A,RQPN)"
+    "Cocircular(O,RQPN)"
   ],
   "text_cdl": [],
   "image_cdl": [
-    "Equal(MeasureOfAngle(NCP),74)",
+    "Equal(MeasureOfArc(OPN),74)",
     "Equal(MeasureOfAngle(NAP),51)"
   ],
-  "goal_cdl": "Value(MeasureOfArc(ARQ))",
+  "goal_cdl": "Value(MeasureOfArc(ORQ))",
   "problem_answer": "28",
-  "theorem_seqs": [],
-  "notes": "题目有问题，图不对"
+  "theorem_seqs": [
+    "arc_property_circumference_angle_external(OPN,Q)",
+    "adjacent_complementary_angle(NAP,PAQ)",
+    "triangle_property_angle_sum(PAQ)",
+    "arc_property_circumference_angle_external(ORQ,P)"
+  ]
 }

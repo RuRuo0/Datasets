@@ -7,17 +7,22 @@
   "problem_text_en": "Find the area of the shaded region. Round to the nearest tenth.",
   "problem_img": "2800.png",
   "construction_cdl": [
-    "Shape()",
-    "Collinear()",
-    "Cocircular()"
+    "Shape(DAE,EF,BCF,CA)",
+    "Shape(BC,BCF,FB)",
+    "Shape(FE,DEA,AC,BFC)",
+    "Shape(BF,BFC,CB)",
+    "Collinear(EFB)",
+    "Collinear(BCA)",
+    "Cocircular(B,FC)",
+    "Cocircular(D,EA)"
   ],
   "text_cdl": [],
   "image_cdl": [
-    "Equal(LengthOfLine(ED),10.5)",
-    "Equal(LengthOf(DiameterOfCircle(B)),35)"
+    "Equal(LengthOfLine(EF),10.5)",
+    "Equal(DiameterOfCircle(D),35)"
   ],
-  "goal_cdl": "Value(AreaOf(Shaded(Shape($))))",
+  "goal_cdl": "Value(Sub(AreaOfSector(DEA),AreaOfSector(BFC)))",
   "problem_answer": "449.0",
   "theorem_seqs": [],
-  "notes": "同心圆"
+  "notes": "同心圆的表示问题"
 }

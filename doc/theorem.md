@@ -1693,6 +1693,16 @@
 **Notes**:  
 1.五边形性质：内角和为540°  
 
+### hexagon_property_angle_sum(ABCDEF)
+<div>
+    <img src="gdl-pic/P011.png" width="15%"
+</div>
+
+    premise: Hexagon(ABCDEF)
+    conclusion: Equal(Add(MeasureOfAngle(ABC),MeasureOfAngle(BCD),MeasureOfAngle(CDE),MeasureOfAngle(DEF),MeasureOfAngle(EFA),MeasureOfAngle(FAB)),720)
+**Notes**:  
+1.六边形性质：内角和为720°  
+
 ### arc_addition_length(OAB,OBC)
 <div>
     <img src="gdl-pic/T134.png" width="15%"
@@ -1893,15 +1903,11 @@
 **Notes**:  
 1.常识：圆的直径是半径的两倍  
 
-### circle_property_diameter_to_circumference_angle(AB,O,C)
+### circle_property_diameter_to_circumference_angle(O,ACB)
 <div>
-    <img src="gdl-pic/T151.png" width="30%"
+    <img src="gdl-pic/T151.png" width="15%"
 </div>
 
-    # branch 1
-    premise: Cocircular(O,ABC)&Collinear(AOB)&Angle(BCA)
-    conclusion: PerpendicularBetweenLine(BC,AC)
-    # branch 2
     premise: Cocircular(O,ACB)&Collinear(AOB)&Angle(ACB)
     conclusion: PerpendicularBetweenLine(AC,BC)
 **Notes**:  

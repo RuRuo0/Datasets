@@ -7,18 +7,23 @@
   "problem_text_en": "Find the scale factor from W to W'.",
   "problem_img": "4072.png",
   "construction_cdl": [
-    "Shape()",
-    "Collinear(FW'W)",
-    "Cocircular()"
+    "Shape(AD,DE,EG,GC,CB,BA)",
+    "Shape(DF,FG,GE,ED)",
+    "Collinear(ADF)",
+    "Collinear(FGC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "SimilarBetweenQuadrilateral(DFGE,AFCB)"
+  ],
   "image_cdl": [
-    "Equal(LengthOfLine(FW),12)",
-    "Equal(LengthOf(Line(F,W')),x)",
-    "Equal(LengthOf(Line(W',W)),8)"
+    "Equal(LengthOfLine(FC),12)",
+    "Equal(LengthOfLine(FG),x)",
+    "Equal(LengthOfLine(GC),8)"
   ],
-  "goal_cdl": "Value(ScaleFactorOf(Shape(W),Shape(W')))",
+  "goal_cdl": "Value(RatioOfSimilarQuadrilateral(DFGE,AFCB))",
   "problem_answer": "1/3",
-  "theorem_seqs": [],
-  "notes": "没法表示"
+  "theorem_seqs": [
+    "line_addition(FG,GC)",
+    "similar_quadrilateral_property_line_ratio(FGED,FCBA)"
+  ]
 }

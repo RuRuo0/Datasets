@@ -4,24 +4,23 @@
   "source": "Geometry3k-186",
   "problem_level": 1,
   "problem_text_cn": "",
-  "problem_text_en": "In the figure at the right, which cannot be true if m \\parallel l and m \\angle 1 = 73?",
+  "problem_text_en": "In the figure at the right, which can be true if m \\parallel l and m \\angle 1 = 73?",
   "problem_img": "1770.png",
   "construction_cdl": [
-    "Shape()",
-    "Collinear()",
-    "Cocircular()"
+    "Shape(TC,CB)",
+    "Shape(CD,DE,EB,BC)",
+    "Shape(ED,DG)",
+    "Collinear(TCDG)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "ParallelBetweenLine(CB,DE)"
+  ],
   "image_cdl": [
-    "ParallelBetweenLine(Line(m),Line(l))",
-    "Equal(MeasureOf(Angle(1)),73)",
-    "Equal(MeasureOfAngle(TCB),MeasureOf(angle1))",
-    "Equal(MeasureOfAngle(BCD),MeasureOf(angle2))",
-    "Equal(MeasureOfAngle(CDE),MeasureOf(angle3))",
-    "Equal(MeasureOfAngle(EDG),MeasureOf(angle4))"
   ],
-  "goal_cdl": "",
-  "problem_answer": "\\angle1\\cong\\angle4",
-  "theorem_seqs": [],
-  "notes": "这题目有点奇怪"
+  "goal_cdl": "Equal(Add(MeasureOfAngle(TCB),MeasureOfAngle(EDG)),180)",
+  "problem_answer": "0",
+  "theorem_seqs": [
+    "parallel_property_corresponding_angle(CB,DE,T)",
+    "adjacent_complementary_angle(CDE,EDG)"
+  ]
 }

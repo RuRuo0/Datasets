@@ -7,29 +7,32 @@
   "problem_text_en": "For the pair of similar figures, use the given areas to find x.",
   "problem_img": "2506.png",
   "construction_cdl": [
-    "Polygon(BAD)",
-    "Polygon(BDC)",
-    "Polygon(GHE)",
-    "Polygon(GEF)",
-    "Collinear(ADC)",
-    "Collinear(HEF)"
+    "Shape(BA,AM,MB)",
+    "Shape(BM,MC,CB)",
+    "Shape(DE,EN,ND)",
+    "Shape(DN,NF,FD)",
+    "Collinear(AMC)",
+    "Collinear(ENF)"
   ],
   "text_cdl": [
-    "Similar(BAC,HFG)"
+    "SimilarBetweenTriangle(BAC,DEF)"
   ],
   "image_cdl": [
-    "Perpendicular(AD,BD)",
-    "Perpendicular(HE,GE)",
-    "Equal(LengthOfLine(BD),x)",
-    "Equal(LengthOfLine(GE),21)",
-    "Equal(AreaOfTriangle(ABC),875)",
+    "PerpendicularBetweenLine(AM,BM)",
+    "PerpendicularBetweenLine(EN,DN)",
+    "Equal(LengthOfLine(BM),x)",
+    "Equal(LengthOfLine(DN),21)",
+    "Equal(AreaOfTriangle(BAC),875)",
     "Equal(AreaOfTriangle(DEF),315)"
   ],
   "goal_cdl": "Value(x)",
   "problem_answer": "35",
   "theorem_seqs": [
-    "similar_property_angle_equal(ACB,FGH)",
-    ""
-  ],
-  "notes": "缺少对相似三角形比值的定义，无法求解"
+    "altitude_of_triangle_judgment(BM,BAC)",
+    "altitude_of_triangle_judgment(DN,DEF)",
+    "triangle_area_formula_common(BAC)",
+    "triangle_area_formula_common(DEF)",
+    "similar_triangle_property_line_ratio(BAC,DEF)",
+    "similar_triangle_property_area_square_ratio(BAC,DEF)"
+  ]
 }

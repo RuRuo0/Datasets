@@ -7,18 +7,22 @@
   "problem_text_en": "In the figure, m \\angle 3 = 43. Find the measure of \\angle 10.",
   "problem_img": "1788.png",
   "construction_cdl": [
-    "Shape()",
-    "Collinear()",
-    "Cocircular()"
+    "Shape(AB,BC,CD,DA)",
+    "Shape(AD,DE)",
+    "Collinear(EDC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(ADE),43)"
+  ],
   "image_cdl": [
-    "Equal(MeasureOf(Angle(3)),43)",
-    "ParallelBetweenLine(BF,MQ)",
-    "ParallelBetweenLine(KC,GJ)"
+    "ParallelBetweenLine(AD,BC)",
+    "ParallelBetweenLine(DC,AB)"
   ],
-  "goal_cdl": "Value(MeasureOf(Angle(10)))",
+  "goal_cdl": "Value(MeasureOfAngle(ABC))",
   "problem_answer": "137",
-  "theorem_seqs": [],
-  "notes": "吐了，这个图有多少"
+  "theorem_seqs": [
+    "adjacent_complementary_angle(CDA,ADE)",
+    "parallelogram_judgment_parallel_and_parallel(ABCD)",
+    "parallelogram_property_opposite_angle_equal(BCDA)"
+  ]
 }

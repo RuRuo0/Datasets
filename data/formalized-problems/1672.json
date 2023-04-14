@@ -7,19 +7,21 @@
   "problem_text_en": "For the pair of similar figures, find the area of the green figure.",
   "problem_img": "1672.png",
   "construction_cdl": [
-    "Shape()",
-    "Collinear()",
-    "Cocircular()"
+    "Shape(BC,CA,AW,WB)",
+    "Shape(DE,EF,FG,GD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "SimilarBetweenQuadrilateral(BCAW,DEFG)"
+  ],
   "image_cdl": [
-    "Similar(Shape($1),Shape($2))",
     "Equal(LengthOfLine(BW),28)",
-    "Equal(LengthOfLine(GH),15.4)",
-    "Equal(AreaOf(Trapezoid(ACBW)),28)"
+    "Equal(LengthOfLine(DG),15.4)",
+    "Equal(AreaOfQuadrilateral(BCAW),500)"
   ],
-  "goal_cdl": "Value(AreaOf(Green(Shape($))))",
+  "goal_cdl": "Value(AreaOfQuadrilateral(DEFG))",
   "problem_answer": "151.25",
-  "theorem_seqs": [],
-  "notes": "无相关定理无法求解"
+  "theorem_seqs": [
+    "similar_quadrilateral_property_line_ratio(WBCA,GDEF)",
+    "similar_quadrilateral_property_area_square_ratio(BCAW,DEFG)"
+  ]
 }

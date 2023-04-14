@@ -35,7 +35,7 @@ def backward_run():
         print()
 
 
-def run(save_GDL=False, save_CDL=False, auto=False, test=False, clean_theorem=False):
+def run(save_GDL=False, save_CDL=False, auto=False, clean_theorem=False):
     """Run solver and load problem from problem_GDL."""
     solver = Solver(load_json(path_preset + "predicate_GDL.json"),    # init solver
                     load_json(path_preset + "theorem_GDL.json"))
@@ -48,15 +48,15 @@ def run(save_GDL=False, save_CDL=False, auto=False, test=False, clean_theorem=Fa
     if auto:    # auto run all problems in formalized-problems
         warnings.filterwarnings("ignore")
         unsolved = []
-        print("pid\tcorrect_answer\tsolved\tsolved_answer\tspend(s)")
-        for filename in os.listdir(path_test if test else path_formalized):
-            if "json" not in filename:   # png
+        print("pid\tannotation\tcorrect_answer\tsolved\tsolved_answer\tspend(s)")
+        for filename in os.listdir(path_formalized):
+            problem_CDL = load_json(path_formalized + filename)
+            if int(filename.split(".")[0]) >= 30000:
                 continue
 
-            problem_CDL = load_json(path_formalized + filename)
-
             if "notes" in problem_CDL:    # problems can't solve
-                unsolved.append("{}\t{}".format(problem_CDL["problem_id"], problem_CDL["notes"]))
+                unsolved.append("{}\t{}\t{}".format(
+                    problem_CDL["problem_id"], problem_CDL["annotation"], problem_CDL["notes"]))
                 continue
 
             try:    # try solve
@@ -85,21 +85,21 @@ def run(save_GDL=False, save_CDL=False, auto=False, test=False, clean_theorem=Fa
 
             except Exception as e:    # exception
                 msg = "Raise Exception {} in problem {}.".format(e, filename.split(".")[0])
-                unsolved.append("{}\t{}".format(problem_CDL["problem_id"], msg))
+                unsolved.append("{}\t{}\t{}".format(problem_CDL["problem_id"], problem_CDL["annotation"], msg))
 
+        print("pid\tannotation\tnotes")
         for n in unsolved:   # show unsolved
             print(n)
 
     else:    # interactive mode, run one problem according input pid
         while True:
             pid = input("pid:")
-            path = path_test if test else path_formalized
             filename = "{}.json".format(pid)
-            if filename not in os.listdir(path):
-                print("No file \'{}\' in \'{}\'.".format(filename, path))
+            if filename not in os.listdir(path_formalized):
+                print("No file \'{}\' in \'{}\'.".format(filename, path_formalized))
                 continue
 
-            problem_CDL = load_json(path + filename)
+            problem_CDL = load_json(path_formalized + filename)
             solver.load_problem(problem_CDL)
 
             for theorem_name, theorem_para in FLParser.parse_theorem_seqs(problem_CDL["theorem_seqs"]):
@@ -119,5 +119,6 @@ def run(save_GDL=False, save_CDL=False, auto=False, test=False, clean_theorem=Fa
 
 
 if __name__ == '__main__':
-    run(save_GDL=False, save_CDL=False, auto=False, test=False, clean_theorem=False)
+    run()
+    # run()
     # backward_run()

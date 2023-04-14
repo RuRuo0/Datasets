@@ -11,7 +11,8 @@ def simple_show(problem):
     for t in problem.time_consuming:
         time_sum += t
 
-    printed = "{}\t{}\t".format(problem.problem_CDL["id"], str(problem.goal["answer"]))
+    printed = "{}\t{}\t{}\t".format(
+        problem.problem_CDL["id"], problem.problem_CDL["annotation"], str(problem.goal["answer"]))
     if problem.goal["solved"]:
         printed += "\033[32m1\033[0m\t"
     else:
@@ -286,5 +287,7 @@ def get_used_theorem(problem):
         for t in problem.theorems_applied:
             if t in used_theorem and t not in selected_theorem:
                 selected_theorem.append(t)
+
+        selected_theorem.append(problem.goal["theorem"])
 
     return used_id, selected_theorem

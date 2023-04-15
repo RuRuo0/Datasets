@@ -1,0 +1,44 @@
+{
+  "problem_id": 4737,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-194",
+  "problem_level": 1,
+  "problem_text_cn": "如图,直线a与直线b被直线c所截,b⊥c,垂足为点A,∠1=70°．若使直线b与直线a平行,则可将直线b绕着点A顺时针旋转()",
+  "problem_text_en": "As shown in the figure, the straight line a and the straight line b are intercepted by the straight line c, b ⊥ c, the foot of perpendicular is the point A, ∠1 = N_0. If the line b is parallel to the line a, the line b can be rotated () clockwise around the point A ",
+  "problem_img": "4737.png",
+  "construction_cdl": [
+    "Shape(CA,AP)",
+    "Shape(CA,AM)",
+    "Shape(PA,AM)",
+    "Shape(MA,AD)",
+    "Shape(BA,AC)",
+    "Shape(QA,AB)",
+    "Shape(DA,AQ)",
+    "Shape(EB,BA)",
+    "Shape(AB,BF)",
+    "Shape(NB,BE)",
+    "Shape(FB,BN)",
+    "Collinear(PAQ)",
+    "Collinear(CAD)",
+    "Collinear(EBF)",
+    "Collinear(MABN)"
+  ],
+  "text_cdl": [
+    "PerpendicularBetweenLine(BA,CA)"
+  ],
+  "image_cdl": [
+    "ParallelBetweenLine(PQ,EF)",
+    "Equal(MeasureOfAngle(EBA),70)"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(CAP))",
+  "problem_answer": "20",
+  "theorem_seqs": [
+    "parallel_property_collinear_extend(FE,QP,B)",
+    "parallel_property_collinear_extend(PQ,EB,A)",
+    "parallel_property_collinear_extend(FE,QP,B)",
+    "parallel_property_corresponding_angle(BE,AP,M)",
+    "perpendicular_property_collinear_extend(BA,CA,M)",
+    "angle_addition(CAP,PAM)"
+  ],
+  "raw_answer": "试题解析:∵b⊥c,∴∠2=90°.∵∠1=70°,a//b,∴直线b绕着点A顺时针旋转的度数=90°-70°=20°.故选D."
+}

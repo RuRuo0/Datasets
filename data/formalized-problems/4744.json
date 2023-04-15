@@ -1,0 +1,32 @@
+{
+  "problem_id": 4744,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-203",
+  "problem_level": 1,
+  "problem_text_cn": "如图,BC⊥AE于点C,CD∥AB,∠B=40°,则∠ECD的度数是()",
+  "problem_text_en": "As shown in the figure, BC ⊥ AE is at point C, CD ∥ AB, ∠B = N_0, then the degree of ∠ECD is () ",
+  "problem_img": "4744.png",
+  "construction_cdl": [
+    "Shape(CA,AB,BC)",
+    "Shape(EC,CD)",
+    "Shape(DC,CB)",
+    "Shape(EC,CB)",
+    "Collinear(ECA)"
+  ],
+  "text_cdl": [
+    "PerpendicularBetweenLine(BC,AC)",
+    "ParallelBetweenLine(CD,AB)",
+    "Equal(MeasureOfAngle(ABC),40)"
+  ],
+  "image_cdl": [
+    "PerpendicularBetweenLine(BC,AC)"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(ECD))",
+  "problem_answer": "50",
+  "theorem_seqs": [
+    "parallel_property_alternate_interior_angle(CD,AB)",
+    "angle_addition(ECD,DCB)",
+    "perpendicular_property_collinear_extend(BC,AC,E)"
+  ],
+  "raw_answer": "试题分析:∵BC⊥AE,∴∠ACB=90°,在Rt△ABC中,∠B=40°,∴∠A=90°-∠B=50°,∵CD//AB,∴∠ECD=∠A=50°,故选C."
+}

@@ -1,0 +1,36 @@
+{
+  "problem_id": 4713,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-165",
+  "problem_level": 1,
+  "problem_text_cn": "如图,直线AB∥CD,Rt△DEF如图放置,∠EDF=90°,若∠1+∠F=70°,则∠2的度数为()",
+  "problem_text_en": "As shown in the figure, the straight line AB ∥ CD, Rt△DEF is placed as shown, ∠EDF = N_0, if ∠1 + ∠F = N_1, then the degree of ∠2 is ()",
+  "problem_img": "4713.png",
+  "construction_cdl": [
+    "Shape(QE,EP,PB,BQ)",
+    "Shape(FQ,QB,BF)",
+    "Shape(ED,DP,PE)",
+    "Shape(CD,DE)",
+    "Collinear(AQB)",
+    "Collinear(EQF)",
+    "Collinear(FBPD)"
+  ],
+  "text_cdl": [
+    "ParallelBetweenLine(QB,CD)",
+    "Equal(MeasureOfAngle(EDP),90)",
+    "Equal(Add(MeasureOfAngle(FQB),MeasureOfAngle(BFQ)),70)"
+  ],
+  "image_cdl": [
+    "ParallelBetweenLine(QB,EP)",
+    "ParallelBetweenLine(EP,CD)"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(CDE))",
+  "problem_answer": "20",
+  "theorem_seqs": [
+    "parallel_property_corresponding_angle(QB,EP,F)",
+    "parallel_property_alternate_interior_angle(EP,CD)",
+    "triangle_property_angle_sum(FED)",
+    "angle_addition(QEP,PED)"
+  ],
+  "raw_answer": "试题分析:根据∠1+∠F=70°以及三角形的外角的性质可得∠ABD=70°,根据AB//CD可得∠ABD+∠BDC=180°,则∠BDC=110°,根据∠EDF=90°可得∠2=110°-90°=20°."
+}

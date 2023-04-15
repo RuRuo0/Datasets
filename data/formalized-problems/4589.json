@@ -1,0 +1,40 @@
+{
+  "problem_id": 4589,
+  "annotation": "yiminghe_2023-04-14",
+  "source": "GeoQA-3",
+  "problem_level": 1,
+  "problem_text_cn": "如图,已知OA=OB=OC且∠ACB=30°,则∠AOB的大小是()",
+  "problem_text_en": "As shown in the figure, it is known that OA = OB = OC and ∠ACB = N_0, then the size of ∠AOB is ()",
+  "problem_img": "4589.png",
+  "construction_cdl": [
+    "Shape(AD,DO,OA)",
+     "Shape(AB,BD,DA)",
+   "Shape(DB,BC,CD)",
+   "Shape(DC,CO,OD)",
+    "Collinear(ODB)",
+    "Collinear(ADC)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(OA),LengthOfLine(OB))",
+    "Equal(LengthOfLine(OB),LengthOfLine(OC))",
+    "Equal(MeasureOfAngle(BCD),30)"
+  ],
+  "image_cdl": [
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(DOA))",
+  "problem_answer": "60",
+  "theorem_seqs": [
+    "angle_addition(BCD,DCO)",
+    "angle_addition(OAD,DAB)",
+    "angle_addition(ABD,DBC)",
+    "isosceles_triangle_judgment_line_equal(OAB)",
+    "isosceles_triangle_judgment_line_equal(OAC)",
+    "isosceles_triangle_judgment_line_equal(OBC)",
+    "isosceles_triangle_property_angle_equal(OAB)",
+    "isosceles_triangle_property_angle_equal(OAC)",
+    "isosceles_triangle_property_angle_equal(OBC)",
+    "triangle_property_angle_sum(OAB)",
+    "triangle_property_angle_sum(ABC)"
+  ],
+  "raw_answer": "∵OA=OB=OC,∴A、B、C在以O为圆心OA为半径的圆上.作⊙O.∵∠ACB和∠AOB是同弧AB所对的圆周角和圆心角,且∠ACB=30°,∴根据同弧所对的圆周角是圆心角的一半的性质,得∠AOB=60°.故选C."
+}

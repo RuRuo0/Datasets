@@ -9,6 +9,28 @@ more types of plane geometric problems.
 
 ## Co-work
 
+#### Week 7 (230417): form 2023-04-17 to 2023-04-23.
+
+**Attention:** Annotate problems in directory **Geometry3K-Other** and **GeoQA**.
+
+| Id  | Worker | WorkLoad |                      PID                       | Skip | Submitted |
+|:---:|:------:|:--------:|:----------------------------------------------:|:----:|:---------:|
+|  1  |  贺艺铭   |    60    |      4826-4885 (data/raw-problems/GeoQA)       |  /   |     ×     |
+|  2  |   邹佳   |    60    |      4886-4945 (data/raw-problems/GeoQA)       |  /   |     ×     |
+|  3  |   朱娜   |    60    |      4946-5005 (data/raw-problems/GeoQA)       |  /   |     ×     |
+|  4  |  张效凯   |    60    |      5006-5065 (data/raw-problems/GeoQA)       |  /   |     ×     |
+|  5  |  郭彦钧   |    60    | 3486-3583 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
+|  6  |  黄琦珂   |    60    | 3684-3792 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
+|  7  |  黄一雯   |    50    |                 same as week 6                 |  /   |     ×     |
+|  8  |  金啸笑   |    60    | 3793-3900 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
+|  9  |   李阳   |    60    | 4109-4195 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
+| 10  |  毛晨扬   |    60    | 4196-4289 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
+| 11  |  王茹楠   |    50    |                 same as week 6                 |  /   |     ×     |
+| 12  |  王一凡   |    50    |                 same as week 6                 |  /   |     ×     |
+| 13  |  岳登峰   |    60    | 4290-4380(data/raw-problems/Geometry3K-Other)  |  /   |     ×     |
+| 14  |  朱方震   |    60    |                 same as week 6                 |  /   |     ×     |
+| 15  |   朱哲   |    60    | 4382-4471 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
+
 #### Week 6 (230410): form 2023-04-10 to 2023-04-16.
 
 **Attention:** Annotate problems in directory **Geometry3K-Other** and **GeoQA**.

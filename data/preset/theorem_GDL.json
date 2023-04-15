@@ -1463,11 +1463,11 @@
       ]
     }
   },
-  "arc_property_center_angle(OAB)": {
+  "arc_property_center_angle(OAB,P)": {
     "1": {
-      "premise": "Arc(OAB)&Angle(BOA)",
+      "premise": "Arc(OAB)&Angle(BPA)&IsCentreOfCircle(P,O)",
       "conclusion": [
-        "Equal(MeasureOfArc(OAB),MeasureOfAngle(BOA))"
+        "Equal(MeasureOfArc(OAB),MeasureOfAngle(BPA))"
       ]
     }
   },
@@ -1583,17 +1583,17 @@
       ]
     }
   },
-  "circle_property_diameter_length_equal(AB,O)": {
+  "circle_property_diameter_length_equal(APB,O)": {
     "1": {
-      "premise": "Cocircular(O,AB)&Collinear(AOB)",
+      "premise": "Cocircular(O,AB)&Collinear(APB)&IsCentreOfCircle(P,O)",
       "conclusion": [
         "Equal(LengthOfLine(AB),DiameterOfCircle(O))"
       ]
     }
   },
-  "circle_property_radius_length_equal(OA,O)": {
+  "circle_property_radius_length_equal(PA,O)": {
     "1": {
-      "premise": "Cocircular(O,A)&Line(OA)",
+      "premise": "Cocircular(O,A)&Line(PA)&IsCentreOfCircle(P,O)",
       "conclusion": [
         "Equal(LengthOfLine(OA),RadiusOfCircle(O))"
       ]
@@ -1607,9 +1607,15 @@
       ]
     }
   },
-  "circle_property_diameter_to_circumference_angle(O,ACB)": {
+  "circle_property_diameter_to_circumference_angle(O,APB,C)": {
     "1": {
-      "premise": "Cocircular(O,ACB)&Collinear(AOB)&Angle(ACB)",
+      "premise": "Cocircular(O,ACB)&Collinear(APB)&Angle(BCA)&IsCentreOfCircle(P,O)",
+      "conclusion": [
+        "PerpendicularBetweenLine(BC,AC)"
+      ]
+    },
+    "2": {
+      "premise": "Cocircular(O,ACB)&Collinear(APB)&Angle(ACB)&IsCentreOfCircle(P,O)",
       "conclusion": [
         "PerpendicularBetweenLine(AC,BC)"
       ]
@@ -1667,23 +1673,29 @@
       ]
     }
   },
-  "circle_property_chord_perpendicular_bisect_chord(OM,AB)": {
+  "circle_property_chord_perpendicular_bisect_chord(O,PM,AB)": {
     "1": {
-      "premise": "Cocircular(O,AB)&Collinear(AMB)&PerpendicularBetweenLine(AM,OM)",
+      "premise": "Cocircular(O,AB)&Collinear(AMB)&IsCentreOfCircle(P,O)&PerpendicularBetweenLine(AM,PM)",
       "conclusion": [
-        "IsPerpendicularBisectorOfLine(OM,AB)"
+        "IsPerpendicularBisectorOfLine(PM,AB)"
       ]
     },
     "2": {
-      "premise": "Cocircular(O,AB)&Collinear(AMB)&IsMidpointOfLine(M,AB)",
+      "premise": "Cocircular(O,AB)&Collinear(AMB)&IsCentreOfCircle(P,O)&IsMidpointOfLine(M,AB)",
       "conclusion": [
-        "IsPerpendicularBisectorOfLine(OM,AB)"
+        "IsPerpendicularBisectorOfLine(PM,AB)"
       ]
     }
   },
-  "circle_property_chord_perpendicular_bisect_arc(OAB,CD)": {
+  "circle_property_chord_perpendicular_bisect_arc(OAB,PMD)": {
     "1": {
-      "premise": "Arc(OAB)&Cocircular(O,ADB)&Collinear(ACB)&Collinear(OCD)&PerpendicularBetweenLine(AC,OC)",
+      "premise": "Arc(OAB)&Cocircular(O,ADB)&Collinear(AMB)&Collinear(PMD)&IsCentreOfCircle(P,O)&PerpendicularBetweenLine(AM,PM)",
+      "conclusion": [
+        "Equal(LengthOfArc(OAD),LengthOfArc(ODB))"
+      ]
+    },
+    "2": {
+      "premise": "Arc(OAB)&Cocircular(O,ADB)&Collinear(AMB)&Collinear(PMD)&IsCentreOfCircle(P,O)&IsMidpointOfLine(M,AB)",
       "conclusion": [
         "Equal(LengthOfArc(OAD),LengthOfArc(ODB))"
       ]
@@ -1719,31 +1731,31 @@
       ]
     }
   },
-  "tangent_of_circle_judgment_perpendicular(PA,O)": {
+  "tangent_of_circle_judgment_perpendicular(PA,O,Q)": {
     "1": {
-      "premise": "Cocircular(O,A)&Angle(OAP)&PerpendicularBetweenLine(OA,PA)",
+      "premise": "Cocircular(O,A)&IsCentreOfCircle(Q,O)&PerpendicularBetweenLine(QA,PA)",
       "conclusion": [
         "IsTangentOfCircle(PA,O)"
       ]
     },
     "2": {
-      "premise": "Cocircular(O,A)&Angle(PAO)&PerpendicularBetweenLine(PA,OA)",
+      "premise": "Cocircular(O,A)&IsCentreOfCircle(Q,O)&PerpendicularBetweenLine(PA,QA)",
       "conclusion": [
         "IsTangentOfCircle(PA,O)"
       ]
     }
   },
-  "tangent_of_circle_property_perpendicular(PA,O)": {
+  "tangent_of_circle_property_perpendicular(PA,O,Q)": {
     "1": {
-      "premise": "IsTangentOfCircle(PA,O)&Angle(OAP)",
+      "premise": "IsTangentOfCircle(PA,O)&Angle(QAP)&IsCentreOfCircle(Q,O)",
       "conclusion": [
-        "PerpendicularBetweenLine(OA,PA)"
+        "PerpendicularBetweenLine(QA,PA)"
       ]
     },
     "2": {
-      "premise": "IsTangentOfCircle(PA,O)&Angle(PAO)",
+      "premise": "IsTangentOfCircle(PA,O)&Angle(PAQ)&IsCentreOfCircle(Q,O)",
       "conclusion": [
-        "PerpendicularBetweenLine(PA,OA)"
+        "PerpendicularBetweenLine(PA,QA)"
       ]
     }
   },

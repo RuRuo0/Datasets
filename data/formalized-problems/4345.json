@@ -1,10 +1,10 @@
 {
   "problem_id": 4345,
-  "annotation": "DengfengYue_2023-04-06",
+  "annotation": "DengfengYue_2023-04-09",
   "source": "Geometry3k-2761",
   "problem_level": 1,
   "problem_text_cn": "",
-  "problem_text_en": "Find z.",
+  "problem_text_en": "Find x.",
   "problem_img": "4345.png",
   "construction_cdl": [
     "Shape(CB,BX,XC)",
@@ -18,19 +18,23 @@
   "image_cdl": [
     "Equal(LengthOfLine(BC),3*x)",
     "Equal(LengthOfLine(BX),8)",
-    "Equal(LengthOfLine(FH),z)",
+    "Equal(LengthOfLine(FH),x)",
     "Equal(LengthOfLine(FG),6)",
     "Equal(LengthOfLine(AX),LengthOfLine(CX))",
     "Equal(LengthOfLine(GH),LengthOfLine(HE))",
     "Equal(MeasureOfAngle(ACB),MeasureOfAngle(EGF))",
     "Equal(MeasureOfAngle(BAC),MeasureOfAngle(FEG))"
   ],
-  "goal_cdl": "Value(z)",
+  "goal_cdl": "Value(x)",
   "problem_answer": "4",
   "theorem_seqs": [
     "similar_triangle_judgment_aa(BAC,FEG)",
+    "similar_triangle_property_line_ratio(BAC,FEG)",
+    "similar_triangle_property_line_ratio(ACB,EGF)",
+    "line_addition(AX,XC)",
+    "line_addition(EH,HG)",
     "similar_triangle_judgment_sas(CBX,GFH)",
-    "similar_triangle_property_line_ratio(ACB,EGF)"
-  ],
-  "notes": "三角形BXC的相似不好证明"
+    "similar_triangle_property_line_ratio(CBX,GFH)",
+    "similar_triangle_property_line_ratio(XCB,HGF)"
+  ]
 }

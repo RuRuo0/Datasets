@@ -11,8 +11,13 @@ Shape是最基本的构图谓词，它使用若干个边或弧来声明一个几
     <img src="gdl-pic/P001.png" width="60%">
 </div>
 
-**1.声明一条线段**  
-如图1所示，AB是线段的两点，我们可以这样声明线段：  
+**1.声明一个点**  
+如图1所示，P是圆O的圆心，我们可以这样声明一个点：  
+
+    Shape(P)
+
+**2.声明一条线段**  
+如图2所示，AB是线段的两点，我们可以这样声明线段：  
 
     Shape(AB)
 
@@ -20,13 +25,13 @@ Shape是最基本的构图谓词，它使用若干个边或弧来声明一个几
 
     Shape(BA)
 
-**2.声明一个角**  
+**3.声明一个角**  
 如图3所示，角B由两条线段构成。需要注意，在声明角时，线段是有向的，两条线出现的顺序按照逆时针的方向，首尾相接。因此角B可以表示为：  
 
     Shape(AB,BC)
 
-**3.声明一个图形**  
-如果一个边一个边或一个角一个角来声明图形，未免也太麻烦了。我们可以直接声明一个由若干线段和弧构成的图形，在构图阶段，推理器会自动扩展出图形中的角、线和弧。因此我们在标注图形的构图语句时，先使用Shape声明所有的最小封闭图形，然后在把那些不封闭的图形如角、线段等声明，就可以声明整个图形。  
+**4.声明一个封闭图形**  
+如果一个边一个边或一个角一个角来声明图形，未免也太麻烦了。我们可以直接声明一个由若干线段和弧构成的图形，在构图阶段，推理器会自动扩展出图形中的角、线和弧。因此我们在标注图形的构图语句时，先使用Shape声明所有的最小封闭图形，然后在把那些不封闭的最小图形如角、线段、点等声明，就可以声明整个图形。  
 对于图3中的四边形，我们可以这样声明：  
 
     Shape(AB,BC,CD,DA)
@@ -39,10 +44,12 @@ Shape是最基本的构图谓词，它使用若干个边或弧来声明一个几
 
     Shape(OAB,BE,EA)
     Shape(OBC,CE,EB)
-    Shape(EC,OCD,DO,OE)
-    Shape(AE,EO,OD,ODA)
+    Shape(EC,OCD,DP,PE)
+    Shape(AE,EP,PD,ODA)
 
-需注意，当弧单独出现时，不需要使用Shape来声明，因为弧的出现必然伴随着Cocircular谓词，所有弧将会由Cocircular谓词自动扩展得到。  
+需注意，虽然EP和PD是共线的，但在声明封闭图形时，不能直接声明ED，需要把最小的边都声明出来。  
+封闭图形可以由线和弧构成，线有两个方向，弧只有一个方向。在声明线时，需要按照逆时针的方向，各点首尾相接；声明弧时，需注意弧只有一种表示方法。  
+当弧单独出现时，不需要使用Shape来声明，因为弧的出现必然伴随着Cocircular谓词，所有弧将会由Cocircular谓词自动扩展得到。  
 
 ### Collinear(*)
 Collinear用来声明3个及3个以上的共线点，2点一定是共线的，所以不用声明2点。  
@@ -91,10 +98,10 @@ Cocircular用来声明共圆的若干个点，与Collinear相同，按照顺序�
 
     Cocircular(O)
 
-图4两圆圆心互为圆上的点，声明：  
+图4两圆有公共点，要分别声明：  
 
-    Cocircular(B,A)
-    Cocircular(A,B)
+    Cocircular(O,AB)
+    Cocircular(P,BA)
 
 共圆声明后，会自动扩展出所有的弧和圆。  
 
@@ -210,7 +217,7 @@ Circle用于声明一个圆，O表示圆心。
 图1-3中圆的声明： 
 
     Cirlce(O)
-    Cirlce(A),Cirlce(B)
+    Cirlce(B),Cirlce(A)
     Cirlce(O)
 
 ### Sector(OAB)
@@ -221,7 +228,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 
 图1和图2的扇形可声明为：  
 
-    Sector(BCD),Sector(BDC)
+    Sector(OCD),Sector(ODC)
     Sector(OAB),Sector(OBC),Sector(OCD),Sector(ODA)
 
 ## C、实体
@@ -259,7 +266,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     ee_check: Triangle(ABC)
     multi: 
     extend: RightTriangle(CAB)
-            IsoscelesRightTriangle(ABC)
+            IsoscelesTriangle(ABC)
 **Notes**:  
 1.参照等腰三角形标注方法  
 
@@ -788,10 +795,11 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 </div>
 
     ee_check: Point(O)
-              Triangle(ABC)
-    fv_check: O,ABC
-    multi: O,BCA
-           O,CAB
+              Quadrilateral(ABCD)
+    fv_check: O,ABCD
+    multi: O,BCDA
+           O,CDAB
+           O,DABC
     extend: 
 **Notes**:  
 1.点O是四边形ABCD的外心  
@@ -803,10 +811,11 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 </div>
 
     ee_check: Point(O)
-              Triangle(ABC)
-    fv_check: O,ABC
-    multi: O,BCA
-           O,CAB
+              Quadrilateral(ABCD)
+    fv_check: O,ABCD
+    multi: O,BCDA
+           O,CDAB
+           O,DABC
     extend: IsBisectorOfAngle(AO,DAB)
             IsBisectorOfAngle(BO,ABC)
             IsBisectorOfAngle(CO,BCD)
@@ -875,31 +884,31 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.四边形ABCD与四边形EFGH镜像相似  
 2.根据旋转不变性，有8种表示方法，有4种是等价的，为了方便计算，只在4种选其1  
 
-### CongruentBetweenArc(XAB,YCD)
+### CongruentBetweenArc(OAB,OCD)
 <div>
     <img src="gdl-pic/P050.png"  width="15%">
 </div>
 
-    ee_check: Arc(XAB)
-              Arc(YCD)
+    ee_check: Arc(OAB)
+              Arc(OCD)
     multi: 
     extend: 
 **Notes**:  
 1.两个弧全等  
-2.在同一个圆上的弧才有意义  
+2.两个弧在同一个圆上才有意义  
 
-### SimilarBetweenArc(XAB,YCD)
+### SimilarBetweenArc(OAB,OCD)
 <div>
     <img src="gdl-pic/P051.png"  width="15%">
 </div>
 
-    ee_check: Arc(XAB)
-              Arc(YCD)
+    ee_check: Arc(OAB)
+              Arc(OCD)
     multi: 
     extend: 
 **Notes**:  
 1.两个弧相似  
-2.在同一个圆上的弧才有意义  
+2.两个弧在同一个圆上才有意义  
 
 ### IsTangentOfCircle(PA,O)
 <div>
@@ -914,18 +923,19 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 **Notes**:  
 1.过P做圆的切线交圆于点A  
 
-### ConcentricBetweenCircle(X,Y)
+### IsCentreOfCircle(P,O)
 <div>
     <img src="gdl-pic/P076.png"  width="15%">
 </div>
 
-    ee_check: Circle(X)
-              Circle(Y)
-    fv_check: X,Y
+    ee_check: Point(P)
+              Circle(O)
+    fv_check: P,O
+              O,O
     multi: 
     extend: 
 **Notes**:  
-1.两个圆同心  
+1.点P是圆O的圆心  
 
 ## F、实体属性
 ### LengthOfLine(AB)
@@ -1113,20 +1123,20 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     sym: mar
 **Notes**:  
 1.圆O上弧AB所对圆心角的大小  
-2.例 Equal(MeasureOfArc(OAB),1)  
+2.例 Equal(MeasureOfArc(OAB),15)  
 
-### RatioOfSimilarArc(XAB,YCD)
+### RatioOfSimilarArc(OAB,OCD)
 <div>
     <img src="gdl-pic/P065.png"  width="15%">
 </div>
 
-    ee_check: Arc(XAB)
-              Arc(YCD)
+    ee_check: Arc(OAB)
+              Arc(OCD)
     multi: 
     sym: rsa
 **Notes**:  
 1.相似弧的相似比  
-2.例 Equal(RatioOfSimilarArc(XAB,YCD),3)  
+2.例 Equal(RatioOfSimilarArc(OAB,OCD),2)  
 
 ### RadiusOfCircle(O)
 <div>

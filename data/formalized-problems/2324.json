@@ -1,26 +1,28 @@
 {
   "problem_id": 2324,
-  "annotation": "xiaokaizhang_2023-03-06",
+  "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-740",
-  "notes": "缺少定理",
   "problem_level": 1,
   "problem_text_cn": "",
-  "problem_text_en": "For the pair of similar figures, use the given areas to find the scale factor of the blue to the green figure.",
+  "problem_text_en": "For the pair of similar figures, use the given areas to find x.",
   "problem_img": "2324.png",
   "construction_cdl": [
-    "Shape()",
-    "Collinear()",
-    "Cocircular()"
+    "Shape(AD,DB,BC,CA)",
+    "Shape(EF,FG,GH,HE)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "SimilarBetweenQuadrilateral(ADBC,EFGH)"
+  ],
   "image_cdl": [
-    "Similar(Shape($1),Shape($2))",
     "Equal(LengthOfLine(CB),40)",
-    "Equal(LengthOfLine(FG),x)",
-    "Equal(AreaOf(Kite(ACBD)),400)",
-    "Equal(AreaOf(Kite(EFGH)),64)"
+    "Equal(LengthOfLine(GH),x)",
+    "Equal(AreaOfQuadrilateral(ADBC),400)",
+    "Equal(AreaOfQuadrilateral(EFGH),64)"
   ],
-  "goal_cdl": "Value(ScaleFactorOf(Blue(Shape($)),Green(Shape($))))",
-  "problem_answer": "5/2",
-  "theorem_seqs": []
+  "goal_cdl": "Value(x)",
+  "problem_answer": "16",
+  "theorem_seqs": [
+    "similar_quadrilateral_property_area_square_ratio(ADBC,EFGH)",
+    "similar_quadrilateral_property_line_ratio(BCAD,GHEF)"
+  ]
 }

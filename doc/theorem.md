@@ -168,7 +168,7 @@
 
 ### perpendicular_property_collinear_extend(AO,CO,B)
 <div>
-    <img src="gdl-pic/T014.png" width="60%"
+    <img src="gdl-pic/T014.png" width="30%"
 </div>
 
     # branch 1
@@ -177,12 +177,6 @@
     # branch 2
     premise: PerpendicularBetweenLine(AO,CO)&Collinear(COB)
     conclusion: PerpendicularBetweenLine(BO,AO)
-    # branch 3
-    premise: PerpendicularBetweenLine(AO,CO)&Collinear(BAO)
-    conclusion: PerpendicularBetweenLine(BO,CO)
-    # branch 4
-    premise: PerpendicularBetweenLine(AO,CO)&Collinear(BCO)
-    conclusion: PerpendicularBetweenLine(AO,BO)
 **Notes**:  
 1.垂直关系的共线扩展，B是与任意一条垂线共线的一点  
 
@@ -301,7 +295,7 @@
     <img src="gdl-pic/T026.png" width="15%"
 </div>
 
-    premise: Angle(ABC)&Line(BD)&IsBisectorOfAngle(BD,ABC)&PerpendicularBetweenLine(DA,BA)&PerpendicularBetweenLine(BC,DC)
+    premise: IsBisectorOfAngle(BD,ABC)&PerpendicularBetweenLine(DA,BA)&PerpendicularBetweenLine(BC,DC)
     conclusion: Equal(LengthOfLine(DA),LengthOfLine(DC))
 **Notes**:  
 1.角平分线的判定：角平分线上的点到两端的距离相等  
@@ -436,6 +430,16 @@
     conclusion: ParallelBetweenLine(DE,BC)
 **Notes**:  
 1.中位线性质：平行于底边  
+
+### midsegment_of_triangle_property_length(DE,ABC)
+<div>
+    <img src="gdl-pic/T039.png" width="15%"
+</div>
+
+    premise: IsMidsegmentOfTriangle(DE,ABC)
+    conclusion: Equal(LengthOfLine(DE),Mul(LengthOfLine(BC),1/2))
+**Notes**:  
+1.中位线性质：中位线长度等于底边的一半  
 
 ### circumcenter_of_triangle_judgment_intersection(O,ABC,D,E)
 <div>
@@ -1002,7 +1006,7 @@
     <img src="gdl-pic/T092.png" width="15%"
 </div>
 
-    premise: IsoscelesRightTriangle(ABC)&RightTriangle(CAB)
+    premise: IsoscelesTriangle(ABC)&RightTriangle(CAB)
     conclusion: IsoscelesRightTriangle(ABC)
 **Notes**:  
 1.等腰直角三角形判定：即是等腰三角形也是直角三角形  
@@ -1293,7 +1297,7 @@
 
     premise: SimilarBetweenQuadrilateral(ABCD,EFGH)
     conclusion: SimilarBetweenQuadrilateral(EFGH,ABCD)
-                Equal(Mul(RatioOfSimilarQuadrilateral(ABCD,EFGH),RatioOfSimilarABCD,EFGH(EFGH,ABCD)),1)
+                Equal(Mul(RatioOfSimilarQuadrilateral(ABCD,EFGH),RatioOfSimilarQuadrilateral(EFGH,ABCD)),1)
 **Notes**:  
 1.相似三角形的比值  
 
@@ -1303,7 +1307,7 @@
 </div>
 
     premise: SimilarBetweenQuadrilateral(ABCD,EFGH)
-    conclusion: Equal(LengthOfLine(AB),Mul(LengthOfLine(EF),RatioOfSimilarTriangle(ABCD,EFGH)))
+    conclusion: Equal(LengthOfLine(AB),Mul(LengthOfLine(EF),RatioOfSimilarQuadrilateral(ABCD,EFGH)))
 **Notes**:  
 1.相似四边形性质：边成比例  
 
@@ -1689,6 +1693,16 @@
 **Notes**:  
 1.五边形性质：内角和为540°  
 
+### hexagon_property_angle_sum(ABCDEF)
+<div>
+    <img src="gdl-pic/P011.png" width="15%"
+</div>
+
+    premise: Hexagon(ABCDEF)
+    conclusion: Equal(Add(MeasureOfAngle(ABC),MeasureOfAngle(BCD),MeasureOfAngle(CDE),MeasureOfAngle(DEF),MeasureOfAngle(EFA),MeasureOfAngle(FAB)),720)
+**Notes**:  
+1.六边形性质：内角和为720°  
+
 ### arc_addition_length(OAB,OBC)
 <div>
     <img src="gdl-pic/T134.png" width="15%"
@@ -1701,7 +1715,7 @@
 
 ### arc_addition_measure(OAB,OBC)
 <div>
-    <img src="gdl-pic/T135.png" width="15%"
+    <img src="gdl-pic/T134.png" width="15%"
 </div>
 
     premise: Arc(OAB)&Arc(OBC)&Arc(OAC)
@@ -1709,13 +1723,13 @@
 **Notes**:  
 1.常识：临弧角度相加  
 
-### arc_property_center_angle(OAB)
+### arc_property_center_angle(OAB,P)
 <div>
     <img src="gdl-pic/T133.png" width="15%"
 </div>
 
-    premise: Arc(OAB)&Angle(BOA)
-    conclusion: Equal(MeasureOfArc(OAB),MeasureOfAngle(BOA))
+    premise: Arc(OAB)&Angle(BPA)&IsCentreOfCircle(P,O)
+    conclusion: Equal(MeasureOfArc(OAB),MeasureOfAngle(BPA))
 **Notes**:  
 1.常识：弧所对的角度等于弧所对圆心角角度  
 
@@ -1751,7 +1765,7 @@
 
 ### congruent_arc_judgment_length_equal(XAB,YCD)
 <div>
-    <img src="gdl-pic/T138.png" width="15%"
+    <img src="gdl-pic/P050.png" width="15%"
 </div>
 
     premise: Arc(XAB)&Arc(YCD)&Cocircular(X,CD)&Equal(LengthOfArc(XAB),LengthOfArc(YCD))
@@ -1761,7 +1775,7 @@
 
 ### congruent_arc_judgment_measure_equal(XAB,YCD)
 <div>
-    <img src="gdl-pic/T139.png" width="15%"
+    <img src="gdl-pic/P050.png" width="15%"
 </div>
 
     premise: Arc(XAB)&Arc(YCD)&Cocircular(X,CD)&Equal(MeasureOfArc(XAB),MeasureOfArc(YCD))
@@ -1781,7 +1795,7 @@
 
 ### congruent_arc_property_length_equal(XAB,YCD)
 <div>
-    <img src="gdl-pic/T141.png" width="15%"
+    <img src="gdl-pic/P050.png" width="15%"
 </div>
 
     premise: CongruentBetweenArc(XAB,YCD)
@@ -1791,7 +1805,7 @@
 
 ### congruent_arc_property_measure_equal(XAB,YCD)
 <div>
-    <img src="gdl-pic/T142.png" width="15%"
+    <img src="gdl-pic/P050.png" width="15%"
 </div>
 
     premise: CongruentBetweenArc(XAB,YCD)
@@ -1801,7 +1815,7 @@
 
 ### congruent_arc_property_chord_equal(XAB,YCD)
 <div>
-    <img src="gdl-pic/T143.png" width="15%"
+    <img src="gdl-pic/T140.png" width="15%"
 </div>
 
     premise: CongruentBetweenArc(XAB,YCD)&Line(AB)&Line(CD)
@@ -1811,7 +1825,7 @@
 
 ### similar_arc_judgment_cocircular(XAB,YCD)
 <div>
-    <img src="gdl-pic/T144.png" width="15%"
+    <img src="gdl-pic/P051.png" width="15%"
 </div>
 
     premise: Arc(XAB)&Arc(YCD)&Cocircular(X,CD)
@@ -1821,7 +1835,7 @@
 
 ### similar_arc_property_ratio(XAB,YCD)
 <div>
-    <img src="gdl-pic/T145.png" width="15%"
+    <img src="gdl-pic/P051.png" width="15%"
 </div>
 
     premise: SimilarBetweenArc(XAB,YCD)&SimilarBetweenArc(YCD,XAB)
@@ -1831,7 +1845,7 @@
 
 ### similar_arc_property_length_ratio(XAB,YCD)
 <div>
-    <img src="gdl-pic/T146.png" width="15%"
+    <img src="gdl-pic/P051.png" width="15%"
 </div>
 
     premise: SimilarBetweenArc(XAB,YCD)
@@ -1841,7 +1855,7 @@
 
 ### similar_arc_property_measure_ratio(XAB,YCD)
 <div>
-    <img src="gdl-pic/T147.png" width="15%"
+    <img src="gdl-pic/P051.png" width="15%"
 </div>
 
     premise: SimilarBetweenArc(XAB,YCD)
@@ -1859,22 +1873,22 @@
 **Notes**:  
 1.相似弧性质：所对弦长成比例  
 
-### circle_property_diameter_length_equal(AB,O)
+### circle_property_diameter_length_equal(APB,O)
 <div>
     <img src="gdl-pic/T149.png" width="15%"
 </div>
 
-    premise: Cocircular(O,AB)&Collinear(AOB)
+    premise: Cocircular(O,AB)&Collinear(APB)&IsCentreOfCircle(P,O)
     conclusion: Equal(LengthOfLine(AB),DiameterOfCircle(O))
 **Notes**:  
 1.圆的所有直径长度相等  
 
-### circle_property_radius_length_equal(OA,O)
+### circle_property_radius_length_equal(PA,O)
 <div>
     <img src="gdl-pic/T150.png" width="15%"
 </div>
 
-    premise: Cocircular(O,A)&Line(OA)
+    premise: Cocircular(O,A)&Line(PA)&IsCentreOfCircle(P,O)
     conclusion: Equal(LengthOfLine(OA),RadiusOfCircle(O))
 **Notes**:  
 1.圆的所有半径长度相等  
@@ -1889,16 +1903,16 @@
 **Notes**:  
 1.常识：圆的直径是半径的两倍  
 
-### circle_property_diameter_to_circumference_angle(AB,O,C)
+### circle_property_diameter_to_circumference_angle(O,APB,C)
 <div>
     <img src="gdl-pic/T151.png" width="30%"
 </div>
 
     # branch 1
-    premise: Cocircular(O,ABC)&Collinear(AOB)&Angle(BCA)
+    premise: Cocircular(O,ACB)&Collinear(APB)&Angle(BCA)&IsCentreOfCircle(P,O)
     conclusion: PerpendicularBetweenLine(BC,AC)
     # branch 2
-    premise: Cocircular(O,ACB)&Collinear(AOB)&Angle(ACB)
+    premise: Cocircular(O,ACB)&Collinear(APB)&Angle(ACB)&IsCentreOfCircle(P,O)
     conclusion: PerpendicularBetweenLine(AC,BC)
 **Notes**:  
 1.直径所对的圆周角是直角  
@@ -1961,29 +1975,47 @@
 **Notes**:  
 1.圆幂定理之割线角度关系：P引割线PAB切圆O于AB，引割线PCD交圆O于CD，则两端弧所对圆心角之差等于2倍角P  
 
-### circle_property_chord_perpendicular_bisect_chord(OM,AB)
+### circle_property_chord_perpendicular_bisect_chord(O,PM,AB)
 <div>
     <img src="gdl-pic/T156.png" width="30%"
 </div>
 
     # branch 1
-    premise: Cocircular(O,AB)&Collinear(AMB)&PerpendicularBetweenLine(AM,OM)
-    conclusion: IsPerpendicularBisectorOfLine(OM,AB)
+    premise: Cocircular(O,AB)&Collinear(AMB)&IsCentreOfCircle(P,O)&PerpendicularBetweenLine(AM,PM)
+    conclusion: IsPerpendicularBisectorOfLine(PM,AB)
     # branch 2
-    premise: Cocircular(O,AB)&Collinear(AMB)&IsMidpointOfLine(M,AB)
-    conclusion: IsPerpendicularBisectorOfLine(OM,AB)
+    premise: Cocircular(O,AB)&Collinear(AMB)&IsCentreOfCircle(P,O)&IsMidpointOfLine(M,AB)
+    conclusion: IsPerpendicularBisectorOfLine(PM,AB)
 **Notes**:  
 1.弦中点和圆心的连线是弦的垂直平分线  
 
-### circle_property_chord_perpendicular_bisect_arc(OAB,CD)
+### circle_property_chord_perpendicular_bisect_arc(OAB,PMD)
 <div>
-    <img src="gdl-pic/T157.png" width="15%"
+    <img src="gdl-pic/T157.png" width="30%"
 </div>
 
-    premise: Arc(OAB)&Cocircular(O,ADB)&Collinear(ACB)&Collinear(OCD)&PerpendicularBetweenLine(AC,OC)
+    # branch 1
+    premise: Arc(OAB)&Cocircular(O,ADB)&Collinear(AMB)&Collinear(PMD)&IsCentreOfCircle(P,O)&PerpendicularBetweenLine(AM,PM)
+    conclusion: Equal(LengthOfArc(OAD),LengthOfArc(ODB))
+    # branch 2
+    premise: Arc(OAB)&Cocircular(O,ADB)&Collinear(AMB)&Collinear(PMD)&IsCentreOfCircle(P,O)&IsMidpointOfLine(M,AB)
     conclusion: Equal(LengthOfArc(OAD),LengthOfArc(ODB))
 **Notes**:  
-1.弦中点和圆心的连线是弦的垂直平分线  
+1.圆心过弦中点与弦所对的弧的交点平分弧  
+
+### circle_property_angle_of_osculation(OAB,P)
+<div>
+    <img src="gdl-pic/T177.png" width="30%"
+</div>
+
+    # branch 1
+    premise: Arc(OAB)&Angle(BAP)&IsTangentOfCircle(PA,O)
+    conclusion: Equal(MeasureOfAngle(BAP),Mul(MeasureOfArc(OAB),1/2))
+    # branch 2
+    premise: Arc(OAB)&Angle(PBA)&IsTangentOfCircle(PB,O)
+    conclusion: Equal(MeasureOfAngle(PBA),Mul(MeasureOfArc(OAB),1/2))
+**Notes**:  
+1.弦切角定理：弦切角的度数等于它所夹的弧的圆心角度数的一半  
 
 ### circle_perimeter_formula(O)
 <div>
@@ -1997,7 +2029,7 @@
 
 ### circle_area_formula(O)
 <div>
-    <img src="gdl-pic/T159.png" width="15%"
+    <img src="gdl-pic/T158.png" width="15%"
 </div>
 
     premise: Circle(O)
@@ -2005,31 +2037,31 @@
 **Notes**:  
 1.圆的面积公式：S=pi*r*r  
 
-### tangent_of_circle_judgment_perpendicular(PA,O)
+### tangent_of_circle_judgment_perpendicular(PA,O,Q)
 <div>
-    <img src="gdl-pic/T160.png" width="15%"
+    <img src="gdl-pic/T160.png" width="30%"
 </div>
 
     # branch 1
-    premise: Cocircular(O,A)&Angle(OAP)&PerpendicularBetweenLine(OA,PA)
+    premise: Cocircular(O,A)&IsCentreOfCircle(Q,O)&PerpendicularBetweenLine(QA,PA)
     conclusion: IsTangentOfCircle(PA,O)
     # branch 2
-    premise: Cocircular(O,A)&Angle(PAO)&PerpendicularBetweenLine(PA,OA)
+    premise: Cocircular(O,A)&IsCentreOfCircle(Q,O)&PerpendicularBetweenLine(PA,QA)
     conclusion: IsTangentOfCircle(PA,O)
 **Notes**:  
 1.圆切线的判定：垂直  
 
-### tangent_of_circle_property_perpendicular(PA,O)
+### tangent_of_circle_property_perpendicular(PA,O,Q)
 <div>
-    <img src="gdl-pic/T161.png" width="15%"
+    <img src="gdl-pic/T160.png" width="30%"
 </div>
 
     # branch 1
-    premise: IsTangentOfCircle(PA,O)&Angle(OAP)
-    conclusion: PerpendicularBetweenLine(OA,PA)
+    premise: IsTangentOfCircle(PA,O)&Angle(QAP)&IsCentreOfCircle(Q,O)
+    conclusion: PerpendicularBetweenLine(QA,PA)
     # branch 2
-    premise: IsTangentOfCircle(PA,O)&Angle(PAO)
-    conclusion: PerpendicularBetweenLine(PA,OA)
+    premise: IsTangentOfCircle(PA,O)&Angle(PAQ)&IsCentreOfCircle(Q,O)
+    conclusion: PerpendicularBetweenLine(PA,QA)
 **Notes**:  
 1.圆切线的性质：垂直  
 
@@ -2055,7 +2087,7 @@
 
 ### sector_area_formula(OAB)
 <div>
-    <img src="gdl-pic/T164.png" width="15%"
+    <img src="gdl-pic/T163.png" width="15%"
 </div>
 
     premise: Sector(OAB)

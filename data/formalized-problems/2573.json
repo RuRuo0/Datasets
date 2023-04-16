@@ -1,16 +1,16 @@
 {
   "problem_id": 2573,
-  "annotation": "nazhu_2023-03-16",
+  "annotation": "NaZhu_2023-03-19",
   "source": "Geometry3k-989",
   "problem_level": 1,
   "problem_text_cn": "",
   "problem_text_en": "Find the area of the quadrilateral.",
   "problem_img": "2573.png",
   "construction_cdl": [
-    "Polygon(DFB)",
-    "Polygon(DBC)",
-    "Polygon(FEA)",
-    "Polygon(AEC)",
+    "Shape(DF,FB,BD)",
+    "Shape(DB,BA,AC,CD)",
+    "Shape(FE,EA,AB,BF)",
+    "Shape(AE,EC,CA)",
     "Collinear(FBAC)"
   ],
   "text_cdl": [],
@@ -18,17 +18,16 @@
     "Equal(LengthOfLine(DB),7)",
     "Equal(LengthOfLine(FC),16)",
     "Equal(LengthOfLine(AE),6)",
-    "Perpendicular(FB,DB)",
-    "Perpendicular(EA,BA)"
+    "PerpendicularBetweenLine(FB,DB)",
+    "PerpendicularBetweenLine(EA,BA)"
   ],
-  "goal_cdl": "Value(AreaOfQuadrilateral(DFEC))",
+  "goal_cdl": "Value(Add(AreaOfTriangle(DFC),AreaOfTriangle(ECF)))",
   "problem_answer": "104",
   "theorem_seqs": [
-    "is_altitude_judgment(DB,DFC)",
-    "is_altitude_judgment(EA,ECF)",
-    "triangle_area_formula_common(DB,DFC)",
-    "triangle_area_formula_common(EA,ECF)",
-    "area_addition(DFC,CFE)"
-  ],
-  "notes": "该问题需要求四边形面积，且题目所给条件不完整或错误"
+    "perpendicular_property_collinear_extend(EA,BA,C)",
+    "altitude_of_triangle_judgment(DB,DFC)",
+    "altitude_of_triangle_judgment(EA,ECF)",
+    "triangle_area_formula_common(DFC)",
+    "triangle_area_formula_common(ECF)"
+  ]
 }

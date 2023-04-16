@@ -140,7 +140,7 @@ class Problem:
                         self.conditions["Cocircular"].add(
                             tuple([circle] + [cocircular[(i + bias) % l] for i in range(l)]), (_id,), "extended")
 
-        jigsaw_unit = {}  #
+        jigsaw_unit = {}  # shape's jigsaw
         shape_unit = []  # mini shape unit
         for predicate, item in self.problem_CDL["parsed_cdl"]["construction_cdl"]:  # Shape
             if predicate != "Shape":
@@ -150,8 +150,11 @@ class Problem:
                 warnings.warn(w_msg)
                 continue
 
-            if len(item) == 1:  # line
-                self.add("Line", tuple(item[0]), (-1,), "prerequisite")
+            if len(item) == 1:  # point or line
+                if len(item[0]) == 1:
+                    self.add("Point", tuple(item[0]), (-1,), "prerequisite")
+                else:
+                    self.add("Line", tuple(item[0]), (-1,), "prerequisite")
                 continue
             elif len(item) == 2 and len(item[0]) == 2 and len(item[1]) == 2:  # angle
                 self.add("Angle", tuple(item[0] + item[1][1]), (-1,), "prerequisite")
@@ -173,21 +176,31 @@ class Problem:
             for unit in shape_unit:
                 for comb in shape_comb:
 
+                    if len(unit[-1]) != len(comb[0]):   # has same sides?
+                        continue
+                    elif len(unit[-1]) == 3:   # is arc and same?
+                        if unit[-1] != comb[0]:
+                            continue
+                    else:
+                        if unit[-1] != comb[0][::-1]:   # is line and same?
+                            continue
+
                     if unit in jigsaw_comb[comb]:  # comb is combined from unit
                         continue
 
-                    same_length = 0  # number of same sides
-                    while same_length < len(unit) and same_length < len(comb):
-                        if (len(unit[- same_length - 1]) == len(comb[same_length]) and  # same type (line or arc)
-                                ((len(unit[- same_length - 1]) == 3 and  # arc and same
-                                  unit[- same_length - 1] == comb[same_length]) or
-                                 (unit[- same_length - 1] == comb[same_length][::-1]))):  # line and same
-                            same_length += 1
-                        else:
+                    same_length = 1  # number of same sides
+                    mini_length = len(unit) if len(unit) < len(comb) else len(comb)   # mini length
+                    while same_length < mini_length:
+                        if len(unit[- same_length - 1]) != len(comb[same_length]):    # all arcs or all lines
                             break
+                        elif len(unit[- same_length - 1]) == 3:   # arc
+                            if unit[- same_length - 1] != comb[same_length]:
+                                break
+                        else:   # line
+                            if unit[- same_length - 1] != comb[same_length][::-1]:
+                                break
 
-                    if same_length == 0:  # ensure has same sides
-                        continue
+                        same_length += 1
 
                     new_shape = list(unit[0:len(unit) - same_length])  # diff sides in polygon1
                     new_shape += list(comb[same_length:len(comb)])  # diff sides in polygon2
@@ -575,7 +588,7 @@ class Problem:
             if predicate == "Shape":
                 if len(item) != len(set(item)):  # default check 1: mutex points
                     return False
-                if len(item) == 1 and len(item[0]) != 2:
+                if len(item) == 1 and len(item[0]) not in [1, 2]:
                     return False
                 for shape in item:
                     if not 2 <= len(shape) <= 3 or len(shape) != len(set(shape)):

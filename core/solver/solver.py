@@ -77,21 +77,39 @@ class Solver:
                 premises = []
                 passed = True
                 for predicate, item in premises_GDL:
-                    if predicate == "Equal":  # algebra premise
-                        eq = EqParser.get_equation_from_tree(self.problem, item, True, letters)
-                        result, premise = EquationKiller.solve_target(eq, self.problem)
-                        if result is None or not rough_equal(result, 0):  # not passed
-                            passed = False
-                            break
-                        else:  # add premise if passed
-                            premises += premise
-                    else:  # logic premise
-                        item = tuple(letters[i] for i in item)
-                        if not self.problem.conditions[predicate].has(item):  # not passed
-                            passed = False
-                            break
-                        else:  # add premise if passed
-                            premises.append(self.problem.conditions[predicate].get_id_by_item[item])
+                    negation = False
+                    if "~" in predicate:
+                        negation = True
+                        predicate = predicate.replace("~", "")
+
+                    if not negation:    # 'Predicate'
+                        if predicate == "Equal":  # algebra premise
+                            eq = EqParser.get_equation_from_tree(self.problem, item, True, letters)
+                            result, premise = EquationKiller.solve_target(eq, self.problem)
+                            if result is None or not rough_equal(result, 0):  # not passed
+                                passed = False
+                                break
+                            else:  # add premise if passed
+                                premises += premise
+                        else:  # logic premise
+                            item = tuple(letters[i] for i in item)
+                            if not self.problem.conditions[predicate].has(item):  # not passed
+                                passed = False
+                                break
+                            else:  # add premise if passed
+                                premises.append(self.problem.conditions[predicate].get_id_by_item[item])
+                    else:    # '~Predicate'
+                        if predicate == "Equal":  # algebra premise
+                            eq = EqParser.get_equation_from_tree(self.problem, item, True, letters)
+                            result, premise = EquationKiller.solve_target(eq, self.problem)
+                            if result is not None and rough_equal(result, 0):  # not passed
+                                passed = False
+                                break
+                        else:  # logic premise
+                            item = tuple(letters[i] for i in item)
+                            if self.problem.conditions[predicate].has(item):  # not passed
+                                passed = False
+                                break
 
                 if not passed:  # If the premise is not met, no conclusion will be generated
                     continue

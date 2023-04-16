@@ -1,0 +1,39 @@
+{
+  "problem_id": 4752,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-211",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在⊙O中,直径AB⊥CD,垂足为E,∠BOD=48°,则∠BAC的大小是()",
+  "problem_text_en": "As shown in the figure, in ⊙O, diameter AB ⊥ CD, the foot of perpendicular is E, ∠BOD = N_0, then the size of ∠BAC is ()",
+  "problem_img": "4752.png",
+  "construction_cdl": [
+    "Shape(OAC,CA)",
+    "Shape(ODA,AO,OD)",
+    "Shape(OCB,BE,EC)",
+    "Shape(OBD,DE,EB)",
+    "Shape(AC,CO,OA)",
+    "Shape(OC,CE,EO)",
+    "Shape(ED,DO,OE)",
+    "Collinear(CED)",
+    "Collinear(AOEB)",
+    "Cocircular(O,ACBD)"
+  ],
+  "text_cdl": [
+    "PerpendicularBetweenLine(OE,DE)",
+    "Equal(MeasureOfAngle(DOE),48)"
+  ],
+  "image_cdl": [
+    "PerpendicularBetweenLine(OE,DE)"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(OAC))",
+  "problem_answer": "24",
+  "theorem_seqs": [
+    "perpendicular_property_collinear_extend(OE,DE,C)",
+    "circle_property_chord_perpendicular_bisect_arc(OCD,EB)",
+    "congruent_arc_judgment_length_equal(OCB,OBD)",
+    "congruent_arc_property_measure_equal(OCB,OBD)",
+    "arc_property_center_angle(OBD)",
+    "arc_property_circumference_angle_external(OCB,A)"
+  ],
+  "raw_answer": "试题分析:∵直径AB⊥CD,∴BC=BD,∴∠BAC=\\frac{1}{2}∠BOD=\\frac{1}{2}×48^{°}=24^°.故选D"
+}

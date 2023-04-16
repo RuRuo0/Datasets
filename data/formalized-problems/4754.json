@@ -1,0 +1,34 @@
+{
+  "problem_id": 4754,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-213",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在△ABC中,AB=AC,∠BAC=100°,AB的垂直平分线DE分别交AB、BC于点D、E,则∠BAE=()",
+  "problem_text_en": "As shown in the figure, in △ABC, AB = AC, ∠BAC = N_0, the perpendicular bisector of AB intersects AB and BC at points D, E, then ∠BAE = ()",
+  "problem_img": "4754.png",
+  "construction_cdl": [
+    "Shape(AD,DE,EA)",
+    "Shape(DB,BE,ED)",
+    "Shape(AE,EC,CA)",
+    "Collinear(ADB)",
+    "Collinear(BEC)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),LengthOfLine(AC))",
+    "Equal(MeasureOfAngle(CAD),100)",
+    "IsPerpendicularBisectorOfLine(ED,AB)"
+  ],
+  "image_cdl": [
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(EAD))",
+  "problem_answer": "40",
+  "theorem_seqs": [
+    "isosceles_triangle_judgment_line_equal(ABC)",
+    "isosceles_triangle_property_angle_equal(ABC)",
+    "triangle_property_angle_sum(ABC)",
+    "perpendicular_bisector_property_distance_equal(ED,AB)",
+    "isosceles_triangle_judgment_line_equal(EAB)",
+    "isosceles_triangle_property_angle_equal(EAB)"
+  ],
+  "raw_answer": "解:∵AB=AC,∠BAC=100°,∴∠B=∠C=(180°-100°)÷2=40°,∵DE是AB的垂直平分线,∴AE=BE,∴∠BAE=∠B=40°故选D."
+}

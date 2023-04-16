@@ -1,0 +1,33 @@
+{
+  "problem_id": 4717,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-170",
+  "problem_level": 1,
+  "problem_text_cn": "如图,铁道口的栏杆短臂OA长1m,长臂OB长8m．当短臂外端A下降0.5m时,长臂外端B升高()",
+  "problem_text_en": "As shown in the figure, the short arm OA of the railing at the railway crossing is long N_0, and the long arm OB is long N_1. When the outer end A of the short arm drops by N_2, the outer end B of the long arm rises () ",
+  "problem_img": "4717.png",
+  "construction_cdl": [
+    "Shape(OA,AC,CO)",
+    "Shape(DO,OB,BD)",
+    "Collinear(AOB)",
+    "Collinear(COD)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(AO),1)",
+    "Equal(LengthOfLine(OB),8)",
+    "Equal(LengthOfLine(AC),0.5)"
+  ],
+  "image_cdl": [
+    "PerpendicularBetweenLine(OA,CA)",
+    "PerpendicularBetweenLine(OB,DB)"
+  ],
+  "goal_cdl": "Value(LengthOfLine(DB))",
+  "problem_answer": "4",
+  "theorem_seqs": [
+    "vertical_angle(COA,DOB)",
+    "similar_triangle_judgment_aa(COA,DOB)",
+    "similar_triangle_property_line_ratio(COA,DOB)",
+    "similar_triangle_property_line_ratio(OAC,OBD)"
+  ],
+  "raw_answer": "设长臂外端B升高xm,根据三角形相似得\\frac{0.5}{x}=\\frac{1}{8},∴X=4,故选B."
+}

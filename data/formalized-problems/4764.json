@@ -1,0 +1,35 @@
+{
+  "problem_id": 4764,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-225",
+  "problem_level": 1,
+  "problem_text_cn": "如图,⊙O是△ABC的外接圆,∠OBC=42°,则∠A的度数是()",
+  "problem_text_en": "As shown in the figure, ⊙O is the circumcircle of △ABC, ∠OBC = N_0, then the degree of ∠A is ()",
+  "problem_img": "4764.png",
+  "construction_cdl": [
+    "Shape(OCA,AC)",
+    "Shape(OAB,BA)",
+    "Shape(OBC,CB)",
+    "Shape(CA,AB,BO,OC)",
+    "Shape(CO,OB,BC)",
+    "Cocircular(O,ABC)"
+  ],
+  "text_cdl": [
+    "IsCircumcenterOfTriangle(O,ABC)",
+    "Equal(MeasureOfAngle(OBC),42)"
+  ],
+  "image_cdl": [
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(CAB))",
+  "problem_answer": "48",
+  "theorem_seqs": [
+    "circle_property_radius_length_equal(OB,O)",
+    "circle_property_radius_length_equal(OC,O)",
+    "isosceles_triangle_judgment_line_equal(OBC)",
+    "isosceles_triangle_property_angle_equal(OBC)",
+    "triangle_property_angle_sum(OBC)",
+    "arc_property_center_angle(OBC)",
+    "arc_property_circumference_angle_external(OBC,A)"
+  ],
+  "raw_answer": "试题解析:连接OC,∵OB=OC,∠OBC=42°,∴∠OCB=∠OBC=42°∴∠BOC=180°-∠OBC-∠OCB=96°,∴∠A=\\frac{1}{2}∠BOC=48^{°}.故选B."
+}

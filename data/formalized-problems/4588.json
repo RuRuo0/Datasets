@@ -1,0 +1,44 @@
+{
+  "problem_id": 4588,
+  "annotation": "yiminghe_2023-04-14",
+  "source": "GeoQA-2",
+  "problem_level": 1,
+  "problem_text_cn": "如图,两个同心圆的半径分别为4cm和5cm,大圆的一条弦AB与小圆相切,则弦AB的长为()",
+  "problem_text_en": "As shown in the figure, the radii of the two concentric circles are N_0 and N_1 respectively, and a chord AB of the great circle is tangent to the small circle, then the length of the chord AB is () ",
+  "problem_img": "4588.png",
+  "construction_cdl": [
+    "Shape(CO,OD,ODC)",
+    "Shape(EO,OC,OCE)",
+    "Shape(DO,OE,OED)",
+    "Shape(EB,XBA,AD,OED)",
+    "Shape(DA,AC,ODC)",
+    "Shape(CB,BE,OCE)",
+    "Shape(BC,CA,OAB)",
+    "Collinear(ACB)",
+     "Collinear(ADO)",
+     "Collinear(OEB)",
+    "Cocircular(O,DCE)",
+    "Cocircular(X,AB)"
+  ],
+  "text_cdl": [
+    "ConcentricBetweenCircle(O,X)",
+"Equal(RadiusOfCircle(O),4)",
+    "Equal(RadiusOfCircle(X),5)",
+    "IsTangentOfCircle(AC,O)",
+    "IsTangentOfCircle(BC,O)"
+  ],
+  "image_cdl": [
+
+  ],
+  "goal_cdl": "Value(LengthOfLine(AB))",
+  "problem_answer": "6",
+  "theorem_seqs": [
+    "circle_property_radius_length_equal(XA,X)",
+    "circle_property_radius_length_equal(XB,X)",
+    "circle_property_radius_length_equal(OC,O)",
+    "right_triangle_property_pythagorean(ACO)",
+    "right_triangle_property_pythagorean(OCB)"
+  ],
+  "notes": "同心圆标注问题",
+  "raw_answer": "如图1连接OC1AO,.大圆的一条弦AB与小圆相切,∴OC⊥AB,∴AC=BC=\\frac{1}{2}AB,∵OA=5cm,OC=4cm,在Rt△AOC中,AC=√{OA²-OC²}=3cm,∴AB=2AC=6(cm).故选C."
+}

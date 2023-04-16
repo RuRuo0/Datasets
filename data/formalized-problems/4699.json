@@ -1,0 +1,36 @@
+{
+  "problem_id": 4699,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-150",
+  "problem_level": 1,
+  "problem_text_cn": "如图,△ABC中,AB=AC,∠A=36°,AB的垂直平分线DE交AC于D,交AB于E,则∠BDC的度数为()",
+  "problem_text_en": "As shown in the figure, in △ABC, AB = AC, ∠A = N_0, the perpendicular bisector of AB intersects AC at D, and intersects AB at E, then the degree of ∠BDC is ()",
+  "problem_img": "4699.png",
+  "construction_cdl": [
+    "Shape(AE,ED,DA)",
+    "Shape(EB,BD,DE)",
+    "Shape(DB,BC,CD)",
+    "Collinear(AEB)",
+    "Collinear(ADC)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(DAE),36)",
+    "Equal(LengthOfLine(AB),LengthOfLine(AC))",
+    "IsPerpendicularBisectorOfLine(DE,AB)"
+  ],
+  "image_cdl": [
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(CDB))",
+  "problem_answer": "72",
+  "theorem_seqs": [
+    "isosceles_triangle_judgment_line_equal(ABC)",
+    "isosceles_triangle_property_angle_equal(ABC)",
+    "triangle_property_angle_sum(ABC)",
+    "perpendicular_bisector_property_distance_equal(DE,AB)",
+    "isosceles_triangle_judgment_line_equal(DAB)",
+    "isosceles_triangle_property_angle_equal(DAB)",
+    "angle_addition(EBD,DBC)",
+    "triangle_property_angle_sum(DBC)"
+  ],
+  "raw_answer": "试题分析:∵AB=AC,∠A=36°,∴∠ABC=∠C=\\frac{180^{°}-∠A}}{2}=\\frac{180^{°}-36^{°}}{2}=72^{°}∵DE垂直平分AB,∴∠A=∠ABD=36°,∴∠BDC=∠A+∠ABD=36^{°}+36^{°}=72^{°}.故选A."
+}

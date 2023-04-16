@@ -1,0 +1,28 @@
+{
+  "problem_id": 4687,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-131",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AC平分∠BAD,∠B=∠D,AB=8cm,则AD=()",
+  "problem_text_en": "As shown in the figure, AC equally divides ∠BAD, ∠B = ∠D, AB = N_0, then AD = ()",
+  "problem_img": "4687.png",
+  "construction_cdl": [
+    "Shape(DA,AC,CD)",
+    "Shape(AB,BC,CA)"
+  ],
+  "text_cdl": [
+    "IsBisectorOfAngle(AC,DAB)",
+    "Equal(LengthOfLine(AB),8)",
+    "Equal(MeasureOfAngle(ABC),MeasureOfAngle(CDA))"
+
+  ],
+  "image_cdl": [
+  ],
+  "goal_cdl": "Value(LengthOfLine(AD))",
+  "problem_answer": "8",
+  "theorem_seqs": [
+    "mirror_congruent_triangle_judgment_aas(CDA,CAB)",
+    "mirror_congruent_triangle_property_line_equal(CDA,CAB)"
+  ],
+  "raw_answer": "试题分析:根据AC平分∠BAD可知∠DAC=∠BAC,再由∠B=∠D,AC=AC可证△DAC≌△BAC,因此可得AB=AD=8cm.故选B"
+}

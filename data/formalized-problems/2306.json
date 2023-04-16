@@ -7,23 +7,24 @@
   "problem_text_en": "Find m \\angle 3.",
   "problem_img": "2306.png",
   "construction_cdl": [
-    "Shape()",
-    "Collinear()",
-    "Cocircular()"
+    "Shape(AF,FB,BA)",
+    "Shape(FE,ED,DF)",
+    "Shape(FD,DC,CB,BF)",
+    "Collinear(FBC)"
   ],
   "text_cdl": [],
   "image_cdl": [
-    "Equal(MeasureOfAngle(ABF),48)",
-    "Equal(MeasureOfAngle(FAB),MeasureOf(angle1))",
-    "Equal(MeasureOfAngle(CFD),MeasureOf(angle2))",
-    "Equal(MeasureOfAngle(FDC),MeasureOf(angle3))",
+    "Equal(MeasureOfAngle(FBA),48)",
     "Equal(MeasureOfAngle(EDF),39)",
-    "PerpendicularBetweenLine(FA,FB)",
-    "PerpendicularBetweenLine(CF,DC)",
-    "PerpendicularBetweenLine(FE,ED)",
-    "ParallelBetweenLine(CF,DE)"
+    "PerpendicularBetweenLine(AF,BF)",
+    "PerpendicularBetweenLine(DC,FC)",
+    "PerpendicularBetweenLine(FE,DE)",
+    "ParallelBetweenLine(FC,ED)"
   ],
-  "goal_cdl": "Value(MeasureOf(Angle(3)))",
+  "goal_cdl": "Value(MeasureOfAngle(FDC))",
   "problem_answer": "51",
-  "theorem_seqs": []
+  "theorem_seqs": [
+    "parallel_property_alternate_interior_angle(FC,ED)",
+    "triangle_property_angle_sum(FDC)"
+  ]
 }

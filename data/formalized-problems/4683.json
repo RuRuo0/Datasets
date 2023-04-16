@@ -1,0 +1,39 @@
+{
+  "problem_id": 4683,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-127",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB是⊙O的弦,半径OC⊥AB于点D,且AB=6cm,OD=4cm．则DC的长为()",
+  "problem_text_en": "As shown in the figure, AB is the chord of O, radius OC ⊥ AB at point D, and AB = N_0, OD = N_1. Then the length of DC is ()",
+  "problem_img": "4683.png",
+  "construction_cdl": [
+    "Shape(OA,AD,DO)",
+    "Shape(OD,DB,BO)",
+    "Shape(CD,DA,OAC)",
+    "Shape(BD,DC,OCB)",
+    "Shape(AO,OB,OBA)",
+    "Collinear(ADB)",
+    "Collinear(ODC)",
+    "Cocircular(O,ACB)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),6)",
+    "Equal(LengthOfLine(OD),4)",
+    "PerpendicularBetweenLine(AD,OD)"
+  ],
+  "image_cdl": [
+
+  ],
+  "goal_cdl": "Value(LengthOfLine(DC))",
+  "problem_answer": "1",
+  "theorem_seqs": [
+    "circle_property_chord_perpendicular_bisect_chord(OD,AB)",
+    "line_addition(AD,DB)",
+    "right_triangle_judgment_angle(ADO)",
+    "right_triangle_property_pythagorean(ADO)",
+    "circle_property_radius_length_equal(OA,O)",
+    "circle_property_radius_length_equal(OC,O)",
+    "line_addition(OD,DC)"
+  ],
+  "raw_answer": "连接OA,∴半径OC⊥AB,∴AD=BD=\\frac{1}{2}AB=\\frac{1}{2}×6=3(cm),∵OD=4cm∴OA=√{AD²+OD²}=5(cm),∴OC=OA=5cm,∴DC=OC-OD=5-4=1(cm).故选D."
+}

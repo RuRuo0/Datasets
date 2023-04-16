@@ -1,0 +1,28 @@
+{
+  "problem_id": 4654,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-92",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB=AC,AD∥BC,∠BAC=100°,则∠CAD的度数是()",
+  "problem_text_en": "As shown in the figure, AB = AC, AD ∥ BC, ∠BAC = N_0, then the degree of ∠CAD is ()",
+  "problem_img": "4654.png",
+  "construction_cdl": [
+    "Shape(AB,BC,CA)",
+    "Shape(DA,AC)"
+  ],
+  "text_cdl": [],
+  "image_cdl": [
+    "ParallelBetweenLine(AD,BC)",
+    "Equal(MeasureOfAngle(CAB),100)",
+    "Equal(LengthOfLine(AB),LengthOfLine(AC))"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(DAC))",
+  "problem_answer": "40",
+  "theorem_seqs": [
+    "isosceles_triangle_judgment_line_equal(ABC)",
+    "isosceles_triangle_property_angle_equal(ABC)",
+    "triangle_property_angle_sum(ABC)",
+    "parallel_property_alternate_interior_angle(AD,BC)"
+  ],
+  "raw_answer": "试题分析:根据等腰三角形性质,三角形内角和定理求出∠C,根据平行线的性质得出∠CAD=∠C,即可求出答案:∵AB=AC,∠BAC=100°,∴∠B=∠C=40°∵AD//BC,∴∠CAD=∠C=40°故选C."
+}

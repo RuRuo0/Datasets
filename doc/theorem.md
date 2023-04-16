@@ -89,15 +89,15 @@
 </div>
 
     # branch 1
-    premise: Collinear(MAB)&ParallelBetweenLine(AB,CD)
+    premise: ParallelBetweenLine(AB,CD)&Collinear(MAB)
     conclusion: ParallelBetweenLine(MA,CD)
                 ParallelBetweenLine(MB,CD)
     # branch 2
-    premise: Collinear(ABM)&ParallelBetweenLine(AB,CD)
+    premise: ParallelBetweenLine(AB,CD)&Collinear(ABM)
     conclusion: ParallelBetweenLine(AM,CD)
                 ParallelBetweenLine(BM,CD)
     # branch 3
-    premise: Collinear(AMB)&ParallelBetweenLine(AB,CD)
+    premise: ParallelBetweenLine(AB,CD)&Collinear(AMB)
     conclusion: ParallelBetweenLine(AM,CD)
                 ParallelBetweenLine(MB,CD)
 **Notes**:  
@@ -195,7 +195,7 @@
     <img src="gdl-pic/T016.png" width="15%"
 </div>
 
-    premise: Collinear(AOB)&PerpendicularBetweenLine(AO,CO)&Equal(LengthOfLine(CA),LengthOfLine(CB))
+    premise: PerpendicularBetweenLine(AO,CO)&Collinear(AOB)&Equal(LengthOfLine(CA),LengthOfLine(CB))
     conclusion: IsPerpendicularBisectorOfLine(CO,AB)
 **Notes**:  
 1.垂直平分线判定：垂直平分线上的点到两个端点的距离相等  
@@ -245,7 +245,7 @@
     <img src="gdl-pic/T021.png" width="15%"
 </div>
 
-    premise: Angle(AOB)&Angle(BOC)&Collinear(AOC)
+    premise: Collinear(AOC)&Angle(AOB)&Angle(BOC)
     conclusion: Equal(Add(MeasureOfAngle(AOB),MeasureOfAngle(BOC)),180)
 **Notes**:  
 1.邻补角定理：一对邻补角的角度和为180°  
@@ -255,7 +255,7 @@
     <img src="gdl-pic/T022.png" width="15%"
 </div>
 
-    premise: Angle(AOB)&Angle(BOA))
+    premise: Angle(AOB)&Angle(BOA)
     conclusion: Equal(Add(MeasureOfAngle(AOB),MeasureOfAngle(BOA)),360)
 **Notes**:  
 1.周角定理：周角为360°  
@@ -265,7 +265,7 @@
     <img src="gdl-pic/T023.png" width="15%"
 </div>
 
-    premise: Collinear(AOB)&Collinear(COD)
+    premise: Collinear(AOB)&Collinear(COD)&Angle(AOC)&Angle(BOD)
     conclusion: Equal(MeasureOfAngle(AOC),MeasureOfAngle(BOD))
 **Notes**:  
 1.对顶角相等：两直线相交，对顶角相等  
@@ -280,19 +280,9 @@
 **Notes**:  
 1.角平分线的判定：平分的两角相等  
 
-### bisector_of_angle_judgment_distance_equal(BD,ABC)
-<div>
-    <img src="gdl-pic/T025.png" width="15%"
-</div>
-
-    premise: Angle(ABC)&Line(BD)&PerpendicularBetweenLine(DA,BA)&PerpendicularBetweenLine(BC,DC)&Equal(LengthOfLine(DA),LengthOfLine(DC))
-    conclusion: IsBisectorOfAngle(BD,ABC)
-**Notes**:  
-1.角平分线的判定：角平分线上的点到两端的距离相等  
-
 ### bisector_of_angle_property_distance_equal(BD,ABC)
 <div>
-    <img src="gdl-pic/T026.png" width="15%"
+    <img src="gdl-pic/T025.png" width="15%"
 </div>
 
     premise: IsBisectorOfAngle(BD,ABC)&PerpendicularBetweenLine(DA,BA)&PerpendicularBetweenLine(BC,DC)
@@ -302,7 +292,7 @@
 
 ### bisector_of_angle_property_line_ratio(BD,ABC)
 <div>
-    <img src="gdl-pic/T027.png" width="15%"
+    <img src="gdl-pic/T026.png" width="15%"
 </div>
 
     premise: IsBisectorOfAngle(BD,ABC)&Collinear(CDA)
@@ -310,12 +300,22 @@
 **Notes**:  
 1.角平分线的性质：边成比例  
 
+### bisector_of_angle_property_length_formula(BD,ABC)
+<div>
+    <img src="gdl-pic/T026.png" width="15%"
+</div>
+
+    premise: IsBisectorOfAngle(BD,ABC)&Collinear(CDA)
+    conclusion: Equal(Mul(LengthOfLine(BD),LengthOfLine(BD)),Sub(Mul(LengthOfLine(BC),LengthOfLine(BA)),Mul(LengthOfLine(DC),LengthOfLine(DA))))
+**Notes**:  
+1.角平分线的性质：长度公式  
+
 ### triangle_property_angle_sum(ABC)
 <div>
     <img src="gdl-pic/T029.png" width="15%"
 </div>
 
-    premise: Triangle(ABC)
+    premise: Polygon(ABC)
     conclusion: Equal(Add(MeasureOfAngle(ABC),MeasureOfAngle(BCA),MeasureOfAngle(CAB)),180)
 **Notes**:  
 1.三角形内角和为180°  
@@ -325,7 +325,7 @@
     <img src="gdl-pic/T030.png" width="15%"
 </div>
 
-    premise: Triangle(ABC)
+    premise: Polygon(ABC)
     conclusion: Equal(Mul(LengthOfLine(AB),Sin(MeasureOfAngle(ABC))),Mul(LengthOfLine(AC),Sin(MeasureOfAngle(BCA))))
 **Notes**:  
 1.正弦定理  
@@ -336,7 +336,7 @@
     <img src="gdl-pic/T031.png" width="15%"
 </div>
 
-    premise: Triangle(ABC)
+    premise: Polygon(ABC)
     conclusion: Equal(Add(Pow(LengthOfLine(BC),2),Mul(2,LengthOfLine(AB),LengthOfLine(AC),Cos(MeasureOfAngle(CAB)))),Add(Pow(LengthOfLine(AB),2),Pow(LengthOfLine(AC),2)))
 **Notes**:  
 1.余弦定理  
@@ -347,7 +347,7 @@
     <img src="gdl-pic/T032.png" width="15%"
 </div>
 
-    premise: Triangle(ABC)
+    premise: Polygon(ABC)
     conclusion: Equal(PerimeterOfTriangle(ABC),Add(LengthOfLine(AB),LengthOfLine(BC),LengthOfLine(CA)))
 **Notes**:  
 1.三角形周长公式：三边之和  
@@ -357,7 +357,7 @@
     <img src="gdl-pic/T033.png" width="15%"
 </div>
 
-    premise: Triangle(ABC)
+    premise: Polygon(ABC)
     conclusion: Equal(AreaOfTriangle(ABC),Mul(HeightOfTriangle(ABC),LengthOfLine(BC),1/2))
 **Notes**:  
 1.三角形面积公式：底乘高除2  
@@ -368,7 +368,7 @@
     <img src="gdl-pic/T034.png" width="15%"
 </div>
 
-    premise: Triangle(ABC)
+    premise: Polygon(ABC)
     conclusion: Equal(AreaOfTriangle(ABC),Mul(LengthOfLine(AB),LengthOfLine(AC),Sin(MeasureOfAngle(CAB)),1/2))
 **Notes**:  
 1.三角形面积公式：已知一角和两临边即可求面积  
@@ -379,7 +379,7 @@
     <img src="gdl-pic/T035.png" width="15%"
 </div>
 
-    premise: Triangle(ABC)&IsMidpointOfLine(D,BC)&Line(AD)
+    premise: Polygon(ABC)&IsMidpointOfLine(D,BC)&Line(AD)
     conclusion: IsMedianOfTriangle(AD,ABC)
 **Notes**:  
 1.三角形中线的判定：顶点与底边中点的连线  
@@ -390,13 +390,13 @@
 </div>
 
     # branch 1
-    premise: Triangle(ABC)&Line(AD)&Collinear(BDC)&PerpendicularBetweenLine(BD,AD)
+    premise: Polygon(ABC)&Line(AD)&Collinear(BDC)&PerpendicularBetweenLine(BD,AD)
     conclusion: IsAltitudeOfTriangle(AD,ABC)
     # branch 2
-    premise: Triangle(ABC)&Line(AD)&Collinear(DBC)&PerpendicularBetweenLine(AD,BD)
+    premise: Polygon(ABC)&Line(AD)&Collinear(DBC)&PerpendicularBetweenLine(AD,BD)
     conclusion: IsAltitudeOfTriangle(AD,ABC)
     # branch 3
-    premise: Triangle(ABC)&Line(AD)&Collinear(BCD)&PerpendicularBetweenLine(CD,AD)
+    premise: Polygon(ABC)&Line(AD)&Collinear(BCD)&PerpendicularBetweenLine(CD,AD)
     conclusion: IsAltitudeOfTriangle(AD,ABC)
 **Notes**:  
 1.三角形高的判定：垂直于底边  
@@ -406,17 +406,24 @@
     <img src="gdl-pic/T037.png" width="15%"
 </div>
 
-    premise: Collinear(ADB)&Collinear(AEC)&Line(DE)&IsMidpointOfLine(D,AB)&IsMidpointOfLine(E,AC)
+    premise: Polygon(ABC)&Collinear(ADB)&Collinear(AEC)&Line(DE)&IsMidpointOfLine(D,AB)&IsMidpointOfLine(E,AC)
     conclusion: IsMidsegmentOfTriangle(DE,ABC)
 **Notes**:  
 1.中位线判定：两边中点的连线  
 
 ### midsegment_of_triangle_judgment_parallel(DE,ABC)
 <div>
-    <img src="gdl-pic/T038.png" width="15%"
+    <img src="gdl-pic/T038.png" width="45%"
 </div>
 
-    premise: Collinear(ADB)&Collinear(AEC)&Line(DE)&ParallelBetweenLine(DE,BC)&(IsMidpointOfLine(D,AB)|IsMidpointOfLine(E,AC)|Equal(LengthOfLine(BC),Mul(LengthOfLine(DE),2)))
+    # branch 1
+    premise: Polygon(ABC)&Collinear(ADB)&Collinear(AEC)&Line(DE)&ParallelBetweenLine(DE,BC)&IsMidpointOfLine(D,AB)
+    conclusion: IsMidsegmentOfTriangle(DE,ABC)
+    # branch 2
+    premise: Polygon(ABC)&Collinear(ADB)&Collinear(AEC)&Line(DE)&ParallelBetweenLine(DE,BC)&IsMidpointOfLine(E,AC)
+    conclusion: IsMidsegmentOfTriangle(DE,ABC)
+    # branch 3
+    premise: Polygon(ABC)&Collinear(ADB)&Collinear(AEC)&Line(DE)&ParallelBetweenLine(DE,BC)&Equal(LengthOfLine(BC),Mul(LengthOfLine(DE),2))
     conclusion: IsMidsegmentOfTriangle(DE,ABC)
 **Notes**:  
 1.中位线判定：平行且与三角形某腰的交点是该腰的中点  
@@ -446,7 +453,7 @@
     <img src="gdl-pic/T040.png" width="15%"
 </div>
 
-    premise: Triangle(ABC)&Collinear(ADB)&Collinear(CEA)&IsPerpendicularBisectorOfLine(OD,AB)&IsPerpendicularBisectorOfLine(OE,CA)
+    premise: Polygon(ABC)&Collinear(ADB)&Collinear(CEA)&IsPerpendicularBisectorOfLine(OD,AB)&IsPerpendicularBisectorOfLine(OE,CA)
     conclusion: IsCircumcenterOfTriangle(O,ABC)
 **Notes**:  
 1.三角形外心判定：垂直平分线交点  
@@ -470,7 +477,7 @@
     <img src="gdl-pic/T042.png" width="15%"
 </div>
 
-    premise: Triangle(ABC)&IsBisectorOfAngle(BO,ABC)&IsBisectorOfAngle(CO,BCA)
+    premise: Polygon(ABC)&IsBisectorOfAngle(BO,ABC)&IsBisectorOfAngle(CO,BCA)
     conclusion: IsIncenterOfTriangle(O,ABC)
 **Notes**:  
 1.三角形内心判定：角平分线交点  
@@ -480,7 +487,7 @@
     <img src="gdl-pic/T043.png" width="15%"
 </div>
 
-    premise: Triangle(ABC)&IsMedianOfTriangle(CM,CAB)&IsMedianOfTriangle(BN,BCA)&Collinear(COM)&Collinear(BON)
+    premise: IsMedianOfTriangle(CM,CAB)&IsMedianOfTriangle(BN,BCA)&Collinear(COM)&Collinear(BON)
     conclusion: IsCentroidOfTriangle(O,ABC)
 **Notes**:  
 1.三角形重心判定：中线的交点  
@@ -510,7 +517,7 @@
     <img src="gdl-pic/T046.png" width="15%"
 </div>
 
-    premise: Triangle(ABC)&IsAltitudeOfTriangle(CD,CAB)&IsAltitudeOfTriangle(BE,BCA)&Collinear(COD)&Collinear(BOE)
+    premise: IsAltitudeOfTriangle(CD,CAB)&IsAltitudeOfTriangle(BE,BCA)&Collinear(COD)&Collinear(BOE)
     conclusion: IsOrthocenterOfTriangle(O,ABC)
 **Notes**:  
 1.三角形垂心判定：高的交点  
@@ -540,7 +547,7 @@
     <img src="gdl-pic/T049.png" width="30%"
 </div>
 
-    premise: Triangle(ABC)&Triangle(DEF)&Equal(LengthOfLine(AB),LengthOfLine(DE))&Equal(LengthOfLine(BC),LengthOfLine(EF))&Equal(LengthOfLine(CA),LengthOfLine(FD))
+    premise: Polygon(ABC)&Polygon(DEF)&Equal(LengthOfLine(AB),LengthOfLine(DE))&Equal(LengthOfLine(BC),LengthOfLine(EF))&Equal(LengthOfLine(CA),LengthOfLine(FD))
     conclusion: CongruentBetweenTriangle(ABC,DEF)
 **Notes**:  
 1.全等三角形判定：SSS  
@@ -550,7 +557,7 @@
     <img src="gdl-pic/T050.png" width="30%"
 </div>
 
-    premise: Triangle(ABC)&Triangle(DEF)&Equal(LengthOfLine(AB),LengthOfLine(DE))&Equal(MeasureOfAngle(CAB),MeasureOfAngle(FDE))&Equal(LengthOfLine(AC),LengthOfLine(DF))
+    premise: Polygon(ABC)&Polygon(DEF)&Equal(LengthOfLine(AB),LengthOfLine(DE))&Equal(MeasureOfAngle(CAB),MeasureOfAngle(FDE))&Equal(LengthOfLine(AC),LengthOfLine(DF))
     conclusion: CongruentBetweenTriangle(ABC,DEF)
 **Notes**:  
 1.全等三角形判定：SAS  
@@ -561,13 +568,13 @@
 </div>
 
     # branch 1
-    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))&Equal(LengthOfLine(AB),LengthOfLine(DE))
+    premise: Polygon(ABC)&Polygon(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))&Equal(LengthOfLine(AB),LengthOfLine(DE))
     conclusion: CongruentBetweenTriangle(ABC,DEF)
     # branch 2
-    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))&Equal(LengthOfLine(BC),LengthOfLine(EF))
+    premise: Polygon(ABC)&Polygon(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))&Equal(LengthOfLine(BC),LengthOfLine(EF))
     conclusion: CongruentBetweenTriangle(ABC,DEF)
     # branch 3
-    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))&Equal(LengthOfLine(AC),LengthOfLine(DF))
+    premise: Polygon(ABC)&Polygon(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))&Equal(LengthOfLine(AC),LengthOfLine(DF))
     conclusion: CongruentBetweenTriangle(ABC,DEF)
 **Notes**:  
 1.全等三角形判定：AAS  
@@ -577,7 +584,7 @@
     <img src="gdl-pic/T053.png" width="60%"
 </div>
 
-    premise: Triangle(ABC)&Triangle(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(DE,FE)&Equal(LengthOfLine(AC),LengthOfLine(DF))&(Equal(LengthOfLine(AB),LengthOfLine(DE))|Equal(LengthOfLine(BC),LengthOfLine(EF)))
+    premise: Polygon(ABC)&Polygon(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(DE,FE)&Equal(LengthOfLine(AC),LengthOfLine(DF))&(Equal(LengthOfLine(AB),LengthOfLine(DE))|Equal(LengthOfLine(BC),LengthOfLine(EF)))
     conclusion: CongruentBetweenTriangle(ABC,DEF)
 **Notes**:  
 1.全等三角形判定：HL  
@@ -637,7 +644,7 @@
     <img src="gdl-pic/T058.png" width="30%"
 </div>
 
-    premise: Triangle(ABC)&Triangle(DEF)&Equal(LengthOfLine(AB),LengthOfLine(FD))&Equal(LengthOfLine(BC),LengthOfLine(EF))&Equal(LengthOfLine(CA),LengthOfLine(DE))
+    premise: Polygon(ABC)&Polygon(DEF)&Equal(LengthOfLine(AB),LengthOfLine(FD))&Equal(LengthOfLine(BC),LengthOfLine(EF))&Equal(LengthOfLine(CA),LengthOfLine(DE))
     conclusion: MirrorCongruentBetweenTriangle(ABC,DEF)
 **Notes**:  
 1.全等三角形判定：SSS  
@@ -647,7 +654,7 @@
     <img src="gdl-pic/T059.png" width="30%"
 </div>
 
-    premise: Triangle(ABC)&Triangle(DEF)&Equal(LengthOfLine(AB),LengthOfLine(DF))&Equal(MeasureOfAngle(CAB),MeasureOfAngle(FDE))&Equal(LengthOfLine(AC),LengthOfLine(DE))
+    premise: Polygon(ABC)&Polygon(DEF)&Equal(LengthOfLine(AB),LengthOfLine(DF))&Equal(MeasureOfAngle(CAB),MeasureOfAngle(FDE))&Equal(LengthOfLine(AC),LengthOfLine(DE))
     conclusion: MirrorCongruentBetweenTriangle(ABC,DEF)
 **Notes**:  
 1.全等三角形判定：SAS  
@@ -658,13 +665,13 @@
 </div>
 
     # branch 1
-    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))&Equal(LengthOfLine(AB),LengthOfLine(DF))
+    premise: Polygon(ABC)&Polygon(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))&Equal(LengthOfLine(AB),LengthOfLine(DF))
     conclusion: MirrorCongruentBetweenTriangle(ABC,DEF)
     # branch 2
-    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))&Equal(LengthOfLine(BC),LengthOfLine(EF))
+    premise: Polygon(ABC)&Polygon(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))&Equal(LengthOfLine(BC),LengthOfLine(EF))
     conclusion: MirrorCongruentBetweenTriangle(ABC,DEF)
     # branch 3
-    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))&Equal(LengthOfLine(CA),LengthOfLine(DE))
+    premise: Polygon(ABC)&Polygon(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))&Equal(LengthOfLine(CA),LengthOfLine(DE))
     conclusion: MirrorCongruentBetweenTriangle(ABC,DEF)
 **Notes**:  
 1.全等三角形判定：AAS  
@@ -674,7 +681,7 @@
     <img src="gdl-pic/T062.png" width="60%"
 </div>
 
-    premise: Triangle(ABC)&Triangle(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(EF,DF)&Equal(LengthOfLine(AC),LengthOfLine(DE))&(Equal(LengthOfLine(BC),LengthOfLine(EF))|Equal(LengthOfLine(AB),LengthOfLine(DF)))
+    premise: Polygon(ABC)&Polygon(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(EF,DF)&Equal(LengthOfLine(AC),LengthOfLine(DE))&(Equal(LengthOfLine(BC),LengthOfLine(EF))|Equal(LengthOfLine(AB),LengthOfLine(DF)))
     conclusion: MirrorCongruentBetweenTriangle(ABC,DEF)
 **Notes**:  
 1.全等三角形判定：HL  
@@ -734,7 +741,7 @@
     <img src="gdl-pic/T067.png" width="30%"
 </div>
 
-    premise: Triangle(ABC)&Triangle(DEF)&Equal(Mul(LengthOfLine(AB),LengthOfLine(EF)),Mul(LengthOfLine(DE),LengthOfLine(BC)))&Equal(Mul(LengthOfLine(AB),LengthOfLine(DF)),Mul(LengthOfLine(DE),LengthOfLine(CA)))
+    premise: Polygon(ABC)&Polygon(DEF)&Equal(Mul(LengthOfLine(AB),LengthOfLine(EF)),Mul(LengthOfLine(DE),LengthOfLine(BC)))&Equal(Mul(LengthOfLine(AB),LengthOfLine(DF)),Mul(LengthOfLine(DE),LengthOfLine(CA)))
     conclusion: SimilarBetweenTriangle(ABC,DEF)
 **Notes**:  
 1.相似三角形判定：SSS  
@@ -744,7 +751,7 @@
     <img src="gdl-pic/T068.png" width="30%"
 </div>
 
-    premise: Triangle(ABC)&Triangle(DEF)&Equal(Mul(LengthOfLine(AB),LengthOfLine(DF)),Mul(LengthOfLine(DE),LengthOfLine(AC)))&Equal(MeasureOfAngle(CAB),MeasureOfAngle(FDE))
+    premise: Polygon(ABC)&Polygon(DEF)&Equal(Mul(LengthOfLine(AB),LengthOfLine(DF)),Mul(LengthOfLine(DE),LengthOfLine(AC)))&Equal(MeasureOfAngle(CAB),MeasureOfAngle(FDE))
     conclusion: SimilarBetweenTriangle(ABC,DEF)
 **Notes**:  
 1.相似三角形判定：SAS  
@@ -754,7 +761,7 @@
     <img src="gdl-pic/T069.png" width="30%"
 </div>
 
-    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))
+    premise: Polygon(ABC)&Polygon(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(DEF))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(EFD))
     conclusion: SimilarBetweenTriangle(ABC,DEF)
 **Notes**:  
 1.相似三角形判定：AA  
@@ -765,10 +772,10 @@
 </div>
 
     # branch 1
-    premise: Triangle(ABC)&Triangle(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(DE,FE)&Equal(Mul(LengthOfLine(AB),LengthOfLine(DF)),Mul(LengthOfLine(AC),LengthOfLine(DE)))
+    premise: Polygon(ABC)&Polygon(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(DE,FE)&Equal(Mul(LengthOfLine(AB),LengthOfLine(DF)),Mul(LengthOfLine(AC),LengthOfLine(DE)))
     conclusion: SimilarBetweenTriangle(ABC,DEF)
-    # branch q
-    premise: Triangle(ABC)&Triangle(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(DE,FE)&Equal(Mul(LengthOfLine(BC),LengthOfLine(DF)),Mul(LengthOfLine(AC),LengthOfLine(EF)))
+    # branch 2
+    premise: Polygon(ABC)&Polygon(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(DE,FE)&Equal(Mul(LengthOfLine(BC),LengthOfLine(DF)),Mul(LengthOfLine(AC),LengthOfLine(EF)))
     conclusion: SimilarBetweenTriangle(ABC,DEF)
 **Notes**:  
 1.全等三角形判定：HL  
@@ -830,7 +837,7 @@
     <img src="gdl-pic/T076.png" width="30%"
 </div>
 
-    premise: Triangle(ABC)&Triangle(DEF)&Equal(Mul(LengthOfLine(AB),LengthOfLine(EF)),Mul(LengthOfLine(FD),LengthOfLine(BC)))&Equal(Mul(LengthOfLine(AB),LengthOfLine(DE)),Mul(LengthOfLine(FD),LengthOfLine(CA)))
+    premise: Polygon(ABC)&Polygon(DEF)&Equal(Mul(LengthOfLine(AB),LengthOfLine(EF)),Mul(LengthOfLine(FD),LengthOfLine(BC)))&Equal(Mul(LengthOfLine(AB),LengthOfLine(DE)),Mul(LengthOfLine(FD),LengthOfLine(CA)))
     conclusion: MirrorSimilarBetweenTriangle(ABC,DEF)
 **Notes**:  
 1.相似三角形判定：SSS  
@@ -840,7 +847,7 @@
     <img src="gdl-pic/T077.png" width="30%"
 </div>
 
-    premise: Triangle(ABC)&Triangle(DEF)&Equal(Mul(LengthOfLine(AB),LengthOfLine(DE)),Mul(LengthOfLine(DF),LengthOfLine(AC)))&Equal(MeasureOfAngle(CAB),MeasureOfAngle(FDE))
+    premise: Polygon(ABC)&Polygon(DEF)&Equal(Mul(LengthOfLine(AB),LengthOfLine(DE)),Mul(LengthOfLine(DF),LengthOfLine(AC)))&Equal(MeasureOfAngle(CAB),MeasureOfAngle(FDE))
     conclusion: MirrorSimilarBetweenTriangle(ABC,DEF)
 **Notes**:  
 1.相似三角形判定：SAS  
@@ -850,7 +857,7 @@
     <img src="gdl-pic/T078.png" width="30%"
 </div>
 
-    premise: Triangle(ABC)&Triangle(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))
+    premise: Polygon(ABC)&Polygon(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))
     conclusion: MirrorSimilarBetweenTriangle(ABC,DEF)
 **Notes**:  
 1.相似三角形判定：AA  
@@ -861,10 +868,10 @@
 </div>
 
     # branch 1
-    premise: Triangle(BCA)&Triangle(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(EF,DF)&Equal(Mul(LengthOfLine(AB),LengthOfLine(DE)),Mul(LengthOfLine(DF),LengthOfLine(AC)))
+    premise: Polygon(BCA)&Polygon(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(EF,DF)&Equal(Mul(LengthOfLine(AB),LengthOfLine(DE)),Mul(LengthOfLine(DF),LengthOfLine(AC)))
     conclusion: MirrorSimilarBetweenTriangle(ABC,DEF)
     # branch 2
-    premise: Triangle(BCA)&Triangle(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(EF,DF)&Equal(Mul(LengthOfLine(BC),LengthOfLine(DE)),Mul(LengthOfLine(AC),LengthOfLine(EF)))
+    premise: Polygon(BCA)&Polygon(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(EF,DF)&Equal(Mul(LengthOfLine(BC),LengthOfLine(DE)),Mul(LengthOfLine(AC),LengthOfLine(EF)))
     conclusion: MirrorSimilarBetweenTriangle(ABC,DEF)
 **Notes**:  
 1.镜像相似三角形判定：HL  
@@ -926,7 +933,7 @@
     <img src="gdl-pic/T085.png" width="15%"
 </div>
 
-    premise: Triangle(ABC)&PerpendicularBetweenLine(AB,CB)
+    premise: Polygon(ABC)&PerpendicularBetweenLine(AB,CB)
     conclusion: RightTriangle(ABC)
 **Notes**:  
 1.直角三角形判定：有一个角是直角  
@@ -936,7 +943,7 @@
     <img src="gdl-pic/T086.png" width="15%"
 </div>
 
-    premise: Triangle(ABC)&Equal(Add(Pow(LengthOfLine(AB),2),Pow(LengthOfLine(BC),2)),Pow(LengthOfLine(AC),2))
+    premise: Polygon(ABC)&Equal(Add(Pow(LengthOfLine(AB),2),Pow(LengthOfLine(BC),2)),Pow(LengthOfLine(AC),2))
     conclusion: RightTriangle(ABC)
 **Notes**:  
 1.直角三角形判定：勾股定理  
@@ -956,7 +963,7 @@
     <img src="gdl-pic/T088.png" width="15%"
 </div>
 
-    premise: Triangle(ABC)&Equal(LengthOfLine(AB),LengthOfLine(AC))
+    premise: Polygon(ABC)&Equal(LengthOfLine(AB),LengthOfLine(AC))
     conclusion: IsoscelesTriangle(ABC)
 **Notes**:  
 1.等腰三角形判定：两腰相等  
@@ -966,7 +973,7 @@
     <img src="gdl-pic/T089.png" width="15%"
 </div>
 
-    premise: Triangle(ABC)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(BCA))
+    premise: Polygon(ABC)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(BCA))
     conclusion: IsoscelesTriangle(ABC)
 **Notes**:  
 1.等腰三角形判定：两底角相等  
@@ -1048,7 +1055,7 @@
     <img src="gdl-pic/T096.png" width="15%"
 </div>
 
-    premise: Quadrilateral(ABCD)
+    premise: Polygon(ABCD)
     conclusion: Equal(Add(MeasureOfAngle(ABC),MeasureOfAngle(BCD),MeasureOfAngle(CDA),MeasureOfAngle(DAB)),360)
 **Notes**:  
 1.四边形性质：内角为360°  
@@ -1058,7 +1065,7 @@
     <img src="gdl-pic/T097.png" width="15%"
 </div>
 
-    premise: Quadrilateral(ABCD)
+    premise: Polygon(ABCD)
     conclusion: Equal(Add(LengthOfLine(AB),LengthOfLine(BC),LengthOfLine(CD),LengthOfLine(DA)),PerimeterOfQuadrilateral(ABCD))
 **Notes**:  
 1.四边形周长公式  
@@ -1397,7 +1404,7 @@
     <img src="gdl-pic/T104.png" width="15%"
 </div>
 
-    premise: Quadrilateral(ABCD)&ParallelBetweenLine(AD,BC)&ParallelBetweenLine(BA,CD)
+    premise: Polygon(ABCD)&ParallelBetweenLine(AD,BC)&ParallelBetweenLine(BA,CD)
     conclusion: Parallelogram(ABCD)
 **Notes**:  
 1.平行四边形判定：两组对边分别平行  
@@ -1407,7 +1414,7 @@
     <img src="gdl-pic/T105.png" width="15%"
 </div>
 
-    premise: Quadrilateral(ABCD)&ParallelBetweenLine(BA,CD)&Equal(LengthOfLine(BA),LengthOfLine(CD))
+    premise: Polygon(ABCD)&ParallelBetweenLine(BA,CD)&Equal(LengthOfLine(BA),LengthOfLine(CD))
     conclusion: Parallelogram(ABCD)
 **Notes**:  
 1.平行四边形判定：一组对边平行且相等  
@@ -1417,7 +1424,7 @@
     <img src="gdl-pic/T106.png" width="15%"
 </div>
 
-    premise: Quadrilateral(ABCD)&Equal(LengthOfLine(AD),LengthOfLine(BC))&Equal(LengthOfLine(BA),LengthOfLine(CD))
+    premise: Polygon(ABCD)&Equal(LengthOfLine(AD),LengthOfLine(BC))&Equal(LengthOfLine(BA),LengthOfLine(CD))
     conclusion: Parallelogram(ABCD)
 **Notes**:  
 1.平行四边形判定：两组对边分别相等  
@@ -1427,7 +1434,7 @@
     <img src="gdl-pic/T107.png" width="15%"
 </div>
 
-    premise: Quadrilateral(ABCD)&Equal(MeasureOfAngle(DAB),MeasureOfAngle(BCD))&Equal(MeasureOfAngle(ABC),MeasureOfAngle(CDA))
+    premise: Polygon(ABCD)&Equal(MeasureOfAngle(DAB),MeasureOfAngle(BCD))&Equal(MeasureOfAngle(ABC),MeasureOfAngle(CDA))
     conclusion: Parallelogram(ABCD)
 **Notes**:  
 1.平行四边形判定：两组对角分别相等  
@@ -1437,7 +1444,7 @@
     <img src="gdl-pic/T108.png" width="15%"
 </div>
 
-    premise: Quadrilateral(ABCD)&Collinear(AOC)&Collinear(BOD)&IsMidpointOfLine(O,AC)&IsMidpointOfLine(O,BD)
+    premise: Polygon(ABCD)&Collinear(AOC)&Collinear(BOD)&IsMidpointOfLine(O,AC)&IsMidpointOfLine(O,BD)
     conclusion: Parallelogram(ABCD)
 **Notes**:  
 1.平行四边形判定：对角线相互平分  
@@ -1498,7 +1505,7 @@
     <img src="gdl-pic/T114.png" width="15%"
 </div>
 
-    premise: Quadrilateral(ABCD)&Equal(LengthOfLine(AB),LengthOfLine(AD))&Equal(LengthOfLine(CB),LengthOfLine(CD))
+    premise: Polygon(ABCD)&Equal(LengthOfLine(AB),LengthOfLine(AD))&Equal(LengthOfLine(CB),LengthOfLine(CD))
     conclusion: Kite(ABCD)
 **Notes**:  
 1.筝形判定：两组临边分别相等  
@@ -1598,7 +1605,7 @@
     <img src="gdl-pic/T124.png" width="15%"
 </div>
 
-    premise: Quadrilateral(ABCD)&ParallelBetweenLine(AD,BC)
+    premise: Polygon(ABCD)&ParallelBetweenLine(AD,BC)&~ParallelBetweenLine(BA,CD)
     conclusion: Trapezoid(ABCD)
 **Notes**:  
 1.梯形判定：两边平行的四边形  
@@ -1682,26 +1689,6 @@
     conclusion: Equal(LengthOfLine(AC),LengthOfLine(BD))
 **Notes**:  
 1.等腰梯形的性质：对角线相等  
-
-### pentagon_property_angle_sum(ABCDE)
-<div>
-    <img src="gdl-pic/T132.png" width="15%"
-</div>
-
-    premise: Pentagon(ABCDE)
-    conclusion: Equal(Add(MeasureOfAngle(ABC),MeasureOfAngle(BCD),MeasureOfAngle(CDE),MeasureOfAngle(DEA),MeasureOfAngle(EAB)),540)
-**Notes**:  
-1.五边形性质：内角和为540°  
-
-### hexagon_property_angle_sum(ABCDEF)
-<div>
-    <img src="gdl-pic/P011.png" width="15%"
-</div>
-
-    premise: Hexagon(ABCDEF)
-    conclusion: Equal(Add(MeasureOfAngle(ABC),MeasureOfAngle(BCD),MeasureOfAngle(CDE),MeasureOfAngle(DEF),MeasureOfAngle(EFA),MeasureOfAngle(FAB)),720)
-**Notes**:  
-1.六边形性质：内角和为720°  
 
 ### arc_addition_length(OAB,OBC)
 <div>
@@ -2077,10 +2064,10 @@
 
 ### sector_perimeter_formula(OAB)
 <div>
-    <img src="gdl-pic/T163.png" width="15%"
+    <img src="gdl-pic/T164.png" width="15%"
 </div>
 
-    premise: Sector(OAB)
+    premise: Arc(OAB)
     conclusion: Equal(PerimeterOfSector(OAB),Add(RadiusOfCircle(O),RadiusOfCircle(O),LengthOfArc(OAB)))
 **Notes**:  
 1.扇形周长公式：P=2*r+L  
@@ -2090,7 +2077,7 @@
     <img src="gdl-pic/T163.png" width="15%"
 </div>
 
-    premise: Sector(OAB)
+    premise: Arc(OAB)
     conclusion: Equal(AreaOfSector(OAB),Mul(MeasureOfArc(OAB),1/360*π,RadiusOfCircle(O),RadiusOfCircle(O)))
 **Notes**:  
 1.扇形面积公式：S=n/360*pi*r*r  

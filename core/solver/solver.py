@@ -1,3 +1,4 @@
+from core.problem.condition import Condition
 from core.problem.problem import Problem
 from core.aux_tools.parser import *
 from core.solver.engine import *
@@ -15,7 +16,9 @@ class Solver:
     def load_problem(self, problem_CDL):
         """Load problem through problem_CDL."""
         s_start_time = time.time()
-        self.problem.load_problem_from_cdl(FLParser.parse_problem(problem_CDL))   # load problem
+        Condition.id = 0  # init step and id
+        Condition.step = 0
+        self.problem.load_problem_from_cdl(FLParser.parse_problem(problem_CDL))  # load problem
         EquationKiller.solve_equations(self.problem)  # Solve the equations after initialization
         self.problem.applied("init_problem", time.time() - s_start_time)  # save applied theorem and update step
 
@@ -42,7 +45,7 @@ class Solver:
         update = False
         s_time = time.time()  # timing
 
-        if selection is not None:    # mode 1, search mode
+        if selection is not None:  # mode 1, search mode
             theorem_msg = list(selection.keys())
             last_theorem_msg = theorem_msg.pop(-1)
 
@@ -62,7 +65,7 @@ class Solver:
             EquationKiller.solve_equations(self.problem)
             self.problem.applied(theorem, time.time() - s_time)
 
-        elif theorem_para is not None:    # mode 2, accurate mode
+        elif theorem_para is not None:  # mode 2, accurate mode
             theorem = InverseParser.inverse_parse_logic(  # theorem + para, add in problem
                 theorem_name, theorem_para, self.theorem_GDL[theorem_name]["para_len"])
             theorem_vars = self.theorem_GDL[theorem_name]["vars"]
@@ -105,7 +108,7 @@ class Solver:
             EquationKiller.solve_equations(self.problem)
             self.problem.applied(theorem, time.time() - s_time)
 
-        elif theorem_name is not None:    # mode 3, rough mode
+        elif theorem_name is not None:  # mode 3, rough mode
             theorem_list = []
             for premises_GDL, conclusions_GDL in self.theorem_GDL[theorem_name]["body"]:
                 r_ids, r_items, r_vars = GeoLogic.run(premises_GDL, self.problem)
@@ -133,7 +136,7 @@ class Solver:
             for t in theorem_list:
                 self.problem.applied(t, 0)
 
-        else:    # invalid if-else branch
+        else:  # invalid if-else branch
             e_msg = "Wrong parameter in function <apply_theorem>: (None, None, None)"
             raise Exception(e_msg)
 
@@ -148,7 +151,7 @@ class Solver:
         """Check whether the solution is completed."""
         s_start_time = time.time()  # timing
 
-        if self.problem.goal["type"] in ["value", "equal"]:    # algebra relation
+        if self.problem.goal["type"] in ["value", "equal"]:  # algebra relation
             result, premise = EquationKiller.solve_target(self.problem.goal["item"], self.problem)
             if result is not None:
                 if rough_equal(result, self.problem.goal["answer"]):
@@ -208,7 +211,7 @@ class Solver:
                         if self.problem.can_add(predicate, item, r_ids[i], theorem_name):
                             added.append((predicate, item, r_ids[i]))
 
-                if len(added) > 0:    # add to selection
+                if len(added) > 0:  # add to selection
                     t_vars = self.theorem_GDL[theorem_name]["vars"]
                     theorem_para = tuple(r_items[i][r_vars.index(t)] for t in t_vars)
                     if (theorem_name, theorem_para) not in selection:
@@ -233,7 +236,7 @@ class Solver:
 
         predicate, item = goal
 
-        if predicate == "Equation":    # algebra goal
+        if predicate == "Equation":  # algebra goal
             equation = self.problem.conditions["Equation"]
             sym_to_eqs = EquationKiller.get_sym_to_eqs(list(equation.equations.values()))
 
@@ -247,7 +250,7 @@ class Solver:
                 if equation.value_of_sym[sym] is None and equation.attr_of_sym[sym][0] != "Free":
                     unsolved_syms.append(sym)
             sub_goals = GoalFinder.find_algebra_sub_goals(unsolved_syms, self.problem, self.theorem_GDL)
-        else:     # logic goal
+        else:  # logic goal
             sub_goals = GoalFinder.find_logic_sub_goals(predicate, item, self.problem, self.theorem_GDL)
 
         return sub_goals

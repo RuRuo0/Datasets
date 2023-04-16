@@ -1,292 +1,17 @@
 {
   "Construction": [
-    "Polygon",
+    "Shape",
     "Collinear",
     "Cocircular"
   ],
-  "BasicEntity": {
-    "Point": {
-      "vars": [
-        "a"
-      ],
-      "para_len": [
-        1
-      ],
-      "multi": [],
-      "extend": []
-    },
-    "Line": {
-      "vars": [
-        "a",
-        "b"
-      ],
-      "para_len": [
-        2
-      ],
-      "multi": [
-        [
-          "b",
-          "a"
-        ]
-      ],
-      "extend": [
-        [
-          "Point",
-          [
-            "a"
-          ]
-        ],
-        [
-          "Point",
-          [
-            "b"
-          ]
-        ]
-      ]
-    },
-    "Angle": {
-      "vars": [
-        "a",
-        "b",
-        "c"
-      ],
-      "para_len": [
-        3
-      ],
-      "multi": [],
-      "extend": [
-        [
-          "Line",
-          [
-            "a",
-            "b"
-          ]
-        ],
-        [
-          "Line",
-          [
-            "b",
-            "c"
-          ]
-        ]
-      ]
-    },
-    "Triangle": {
-      "vars": [
-        "a",
-        "b",
-        "c"
-      ],
-      "para_len": [
-        3
-      ],
-      "multi": [
-        [
-          "b",
-          "c",
-          "a"
-        ],
-        [
-          "c",
-          "a",
-          "b"
-        ]
-      ],
-      "extend": []
-    },
-    "Quadrilateral": {
-      "vars": [
-        "a",
-        "b",
-        "c",
-        "d"
-      ],
-      "para_len": [
-        4
-      ],
-      "multi": [
-        [
-          "b",
-          "c",
-          "d",
-          "a"
-        ],
-        [
-          "c",
-          "d",
-          "a",
-          "b"
-        ],
-        [
-          "d",
-          "a",
-          "b",
-          "c"
-        ]
-      ],
-      "extend": []
-    },
-    "Pentagon": {
-      "vars": [
-        "a",
-        "b",
-        "c",
-        "d",
-        "e"
-      ],
-      "para_len": [
-        5
-      ],
-      "multi": [
-        [
-          "b",
-          "c",
-          "d",
-          "e",
-          "a"
-        ],
-        [
-          "c",
-          "d",
-          "e",
-          "a",
-          "b"
-        ],
-        [
-          "d",
-          "e",
-          "a",
-          "b",
-          "c"
-        ],
-        [
-          "e",
-          "a",
-          "b",
-          "c",
-          "d"
-        ]
-      ],
-      "extend": []
-    },
-    "Hexagon": {
-      "vars": [
-        "a",
-        "b",
-        "c",
-        "d",
-        "e",
-        "f"
-      ],
-      "para_len": [
-        6
-      ],
-      "multi": [
-        [
-          "b",
-          "c",
-          "d",
-          "e",
-          "f",
-          "a"
-        ],
-        [
-          "c",
-          "d",
-          "e",
-          "f",
-          "a",
-          "b"
-        ],
-        [
-          "d",
-          "e",
-          "f",
-          "a",
-          "b",
-          "c"
-        ],
-        [
-          "e",
-          "f",
-          "a",
-          "b",
-          "c",
-          "d"
-        ],
-        [
-          "f",
-          "a",
-          "b",
-          "c",
-          "d",
-          "e"
-        ]
-      ],
-      "extend": []
-    },
-    "Arc": {
-      "vars": [
-        "a",
-        "b"
-      ],
-      "para_len": [
-        2
-      ],
-      "multi": [],
-      "extend": [
-        [
-          "Point",
-          [
-            "a"
-          ]
-        ],
-        [
-          "Point",
-          [
-            "b"
-          ]
-        ]
-      ]
-    },
-    "Circle": {
-      "vars": [
-        "o"
-      ],
-      "para_len": [
-        1
-      ],
-      "multi": [],
-      "extend": [
-        [
-          "Point",
-          [
-            "o"
-          ]
-        ]
-      ]
-    },
-    "Sector": {
-      "vars": [
-        "o",
-        "a",
-        "b"
-      ],
-      "para_len": [
-        3
-      ],
-      "multi": [],
-      "extend": [
-        [
-          "Arc",
-          [
-            "a",
-            "b"
-          ]
-        ]
-      ]
-    }
-  },
+  "BasicEntity": [
+    "Point",
+    "Line",
+    "Arc",
+    "Angle",
+    "Polygon",
+    "Circle"
+  ],
   "Entity": {
     "RightTriangle": {
       "vars": [
@@ -299,7 +24,7 @@
       ],
       "ee_check": [
         [
-          "Triangle",
+          "Polygon",
           [
             "a",
             "b",
@@ -310,21 +35,11 @@
       "multi": [],
       "extend": [
         [
-          "Perpendicular",
+          "PerpendicularBetweenLine",
           [
-            "c",
             "a",
             "b",
-            "a"
-          ]
-        ],
-        [
-          "IsAltitude",
-          [
             "c",
-            "a",
-            "c",
-            "a",
             "b"
           ]
         ]
@@ -341,7 +56,7 @@
       ],
       "ee_check": [
         [
-          "Triangle",
+          "Polygon",
           [
             "a",
             "b",
@@ -383,7 +98,7 @@
       ],
       "ee_check": [
         [
-          "Triangle",
+          "Polygon",
           [
             "a",
             "b",
@@ -396,13 +111,13 @@
         [
           "RightTriangle",
           [
+            "c",
             "a",
-            "b",
-            "c"
+            "b"
           ]
         ],
         [
-          "IsoscelesRightTriangle",
+          "IsoscelesTriangle",
           [
             "a",
             "b",
@@ -422,7 +137,7 @@
       ],
       "ee_check": [
         [
-          "Triangle",
+          "Polygon",
           [
             "a",
             "b",
@@ -481,7 +196,7 @@
       ],
       "ee_check": [
         [
-          "Quadrilateral",
+          "Polygon",
           [
             "a",
             "b",
@@ -551,7 +266,7 @@
       ],
       "ee_check": [
         [
-          "Quadrilateral",
+          "Polygon",
           [
             "a",
             "b",
@@ -582,7 +297,7 @@
       ],
       "extend": [
         [
-          "Parallel",
+          "ParallelBetweenLine",
           [
             "a",
             "d",
@@ -591,7 +306,7 @@
           ]
         ],
         [
-          "Parallel",
+          "ParallelBetweenLine",
           [
             "b",
             "a",
@@ -613,7 +328,7 @@
       ],
       "ee_check": [
         [
-          "Quadrilateral",
+          "Polygon",
           [
             "a",
             "b",
@@ -684,7 +399,7 @@
       ],
       "ee_check": [
         [
-          "Quadrilateral",
+          "Polygon",
           [
             "a",
             "b",
@@ -724,7 +439,7 @@
           ]
         ],
         [
-          "Perpendicular",
+          "PerpendicularBetweenLine",
           [
             "a",
             "b",
@@ -733,7 +448,7 @@
           ]
         ],
         [
-          "Perpendicular",
+          "PerpendicularBetweenLine",
           [
             "b",
             "c",
@@ -742,7 +457,7 @@
           ]
         ],
         [
-          "Perpendicular",
+          "PerpendicularBetweenLine",
           [
             "c",
             "d",
@@ -751,7 +466,7 @@
           ]
         ],
         [
-          "Perpendicular",
+          "PerpendicularBetweenLine",
           [
             "d",
             "a",
@@ -773,7 +488,7 @@
       ],
       "ee_check": [
         [
-          "Quadrilateral",
+          "Polygon",
           [
             "a",
             "b",
@@ -835,7 +550,7 @@
       ],
       "ee_check": [
         [
-          "Quadrilateral",
+          "Polygon",
           [
             "a",
             "b",
@@ -854,7 +569,7 @@
       ],
       "extend": [
         [
-          "Parallel",
+          "ParallelBetweenLine",
           [
             "a",
             "d",
@@ -876,7 +591,7 @@
       ],
       "ee_check": [
         [
-          "Quadrilateral",
+          "Polygon",
           [
             "a",
             "b",
@@ -936,7 +651,7 @@
       ],
       "ee_check": [
         [
-          "Quadrilateral",
+          "Polygon",
           [
             "a",
             "b",
@@ -957,7 +672,7 @@
           ]
         ],
         [
-          "Perpendicular",
+          "PerpendicularBetweenLine",
           [
             "d",
             "a",
@@ -966,610 +681,12 @@
           ]
         ],
         [
-          "Perpendicular",
+          "PerpendicularBetweenLine",
           [
             "a",
             "b",
             "c",
             "b"
-          ]
-        ]
-      ]
-    },
-    "EquilateralPentagon": {
-      "vars": [
-        "a",
-        "b",
-        "c",
-        "d",
-        "e"
-      ],
-      "para_len": [
-        5
-      ],
-      "ee_check": [
-        [
-          "Pentagon",
-          [
-            "a",
-            "b",
-            "c",
-            "d",
-            "e"
-          ]
-        ]
-      ],
-      "multi": [
-        [
-          "b",
-          "c",
-          "d",
-          "e",
-          "a"
-        ],
-        [
-          "c",
-          "d",
-          "e",
-          "a",
-          "b"
-        ],
-        [
-          "d",
-          "e",
-          "a",
-          "b",
-          "c"
-        ],
-        [
-          "e",
-          "a",
-          "b",
-          "c",
-          "d"
-        ]
-      ],
-      "extend": [
-        [
-          "Equal",
-          [
-            [
-              "LengthOfLine",
-              [
-                "a",
-                "b"
-              ]
-            ],
-            [
-              "LengthOfLine",
-              [
-                "b",
-                "c"
-              ]
-            ]
-          ]
-        ],
-        [
-          "Equal",
-          [
-            [
-              "LengthOfLine",
-              [
-                "b",
-                "c"
-              ]
-            ],
-            [
-              "LengthOfLine",
-              [
-                "c",
-                "d"
-              ]
-            ]
-          ]
-        ],
-        [
-          "Equal",
-          [
-            [
-              "LengthOfLine",
-              [
-                "c",
-                "d"
-              ]
-            ],
-            [
-              "LengthOfLine",
-              [
-                "d",
-                "e"
-              ]
-            ]
-          ]
-        ],
-        [
-          "Equal",
-          [
-            [
-              "LengthOfLine",
-              [
-                "d",
-                "e"
-              ]
-            ],
-            [
-              "LengthOfLine",
-              [
-                "e",
-                "a"
-              ]
-            ]
-          ]
-        ]
-      ]
-    },
-    "RegularPentagon": {
-      "vars": [
-        "a",
-        "b",
-        "c",
-        "d",
-        "e"
-      ],
-      "para_len": [
-        5
-      ],
-      "ee_check": [
-        [
-          "Pentagon",
-          [
-            "a",
-            "b",
-            "c",
-            "d",
-            "e"
-          ]
-        ]
-      ],
-      "multi": [
-        [
-          "b",
-          "c",
-          "d",
-          "e",
-          "a"
-        ],
-        [
-          "c",
-          "d",
-          "e",
-          "a",
-          "b"
-        ],
-        [
-          "d",
-          "e",
-          "a",
-          "b",
-          "c"
-        ],
-        [
-          "e",
-          "a",
-          "b",
-          "c",
-          "d"
-        ]
-      ],
-      "extend": [
-        [
-          "EquilateralPentagon",
-          [
-            "a",
-            "b",
-            "c",
-            "d",
-            "e"
-          ]
-        ],
-        [
-          "Equal",
-          [
-            [
-              "MeasureOfAngle",
-              [
-                "a",
-                "b",
-                "c"
-              ]
-            ],
-            "108"
-          ]
-        ],
-        [
-          "Equal",
-          [
-            [
-              "MeasureOfAngle",
-              [
-                "b",
-                "c",
-                "d"
-              ]
-            ],
-            "108"
-          ]
-        ],
-        [
-          "Equal",
-          [
-            [
-              "MeasureOfAngle",
-              [
-                "c",
-                "d",
-                "e"
-              ]
-            ],
-            "108"
-          ]
-        ],
-        [
-          "Equal",
-          [
-            [
-              "MeasureOfAngle",
-              [
-                "d",
-                "e",
-                "a"
-              ]
-            ],
-            "108"
-          ]
-        ],
-        [
-          "Equal",
-          [
-            [
-              "MeasureOfAngle",
-              [
-                "e",
-                "a",
-                "b"
-              ]
-            ],
-            "108"
-          ]
-        ]
-      ]
-    },
-    "EquilateralHexagon": {
-      "vars": [
-        "a",
-        "b",
-        "c",
-        "d",
-        "e",
-        "f"
-      ],
-      "para_len": [
-        6
-      ],
-      "ee_check": [
-        [
-          "Hexagon",
-          [
-            "a",
-            "b",
-            "c",
-            "d",
-            "e",
-            "f"
-          ]
-        ]
-      ],
-      "multi": [
-        [
-          "b",
-          "c",
-          "d",
-          "e",
-          "f",
-          "a"
-        ],
-        [
-          "c",
-          "d",
-          "e",
-          "f",
-          "a",
-          "b"
-        ],
-        [
-          "d",
-          "e",
-          "f",
-          "a",
-          "b",
-          "c"
-        ],
-        [
-          "e",
-          "f",
-          "a",
-          "b",
-          "c",
-          "d"
-        ],
-        [
-          "f",
-          "a",
-          "b",
-          "c",
-          "d",
-          "e"
-        ]
-      ],
-      "extend": [
-        [
-          "Equal",
-          [
-            [
-              "LengthOfLine",
-              [
-                "a",
-                "b"
-              ]
-            ],
-            [
-              "LengthOfLine",
-              [
-                "b",
-                "c"
-              ]
-            ]
-          ]
-        ],
-        [
-          "Equal",
-          [
-            [
-              "LengthOfLine",
-              [
-                "b",
-                "c"
-              ]
-            ],
-            [
-              "LengthOfLine",
-              [
-                "c",
-                "d"
-              ]
-            ]
-          ]
-        ],
-        [
-          "Equal",
-          [
-            [
-              "LengthOfLine",
-              [
-                "c",
-                "d"
-              ]
-            ],
-            [
-              "LengthOfLine",
-              [
-                "d",
-                "e"
-              ]
-            ]
-          ]
-        ],
-        [
-          "Equal",
-          [
-            [
-              "LengthOfLine",
-              [
-                "d",
-                "e"
-              ]
-            ],
-            [
-              "LengthOfLine",
-              [
-                "e",
-                "f"
-              ]
-            ]
-          ]
-        ],
-        [
-          "Equal",
-          [
-            [
-              "LengthOfLine",
-              [
-                "e",
-                "f"
-              ]
-            ],
-            [
-              "LengthOfLine",
-              [
-                "f",
-                "a"
-              ]
-            ]
-          ]
-        ]
-      ]
-    },
-    "RegularHexagon": {
-      "vars": [
-        "a",
-        "b",
-        "c",
-        "d",
-        "e",
-        "f"
-      ],
-      "para_len": [
-        6
-      ],
-      "ee_check": [
-        [
-          "Hexagon",
-          [
-            "a",
-            "b",
-            "c",
-            "d",
-            "e",
-            "f"
-          ]
-        ]
-      ],
-      "multi": [
-        [
-          "b",
-          "c",
-          "d",
-          "e",
-          "f",
-          "a"
-        ],
-        [
-          "c",
-          "d",
-          "e",
-          "f",
-          "a",
-          "b"
-        ],
-        [
-          "d",
-          "e",
-          "f",
-          "a",
-          "b",
-          "c"
-        ],
-        [
-          "e",
-          "f",
-          "a",
-          "b",
-          "c",
-          "d"
-        ],
-        [
-          "f",
-          "a",
-          "b",
-          "c",
-          "d",
-          "e"
-        ]
-      ],
-      "extend": [
-        [
-          "EquilateralHexagon",
-          [
-            "a",
-            "b",
-            "c",
-            "d",
-            "e",
-            "f"
-          ]
-        ],
-        [
-          "Equal",
-          [
-            [
-              "MeasureOfAngle",
-              [
-                "a",
-                "b",
-                "c"
-              ]
-            ],
-            "120"
-          ]
-        ],
-        [
-          "Equal",
-          [
-            [
-              "MeasureOfAngle",
-              [
-                "b",
-                "c",
-                "d"
-              ]
-            ],
-            "120"
-          ]
-        ],
-        [
-          "Equal",
-          [
-            [
-              "MeasureOfAngle",
-              [
-                "c",
-                "d",
-                "e"
-              ]
-            ],
-            "120"
-          ]
-        ],
-        [
-          "Equal",
-          [
-            [
-              "MeasureOfAngle",
-              [
-                "d",
-                "e",
-                "f"
-              ]
-            ],
-            "120"
-          ]
-        ],
-        [
-          "Equal",
-          [
-            [
-              "MeasureOfAngle",
-              [
-                "e",
-                "f",
-                "a"
-              ]
-            ],
-            "120"
-          ]
-        ],
-        [
-          "Equal",
-          [
-            [
-              "MeasureOfAngle",
-              [
-                "f",
-                "a",
-                "b"
-              ]
-            ],
-            "120"
           ]
         ]
       ]
@@ -1597,6 +714,14 @@
           "Line",
           [
             "a",
+            "b"
+          ]
+        ],
+        [
+          "Collinear",
+          [
+            "a",
+            "m",
             "b"
           ]
         ]
@@ -1746,6 +871,14 @@
             "a",
             "b"
           ]
+        ],
+        [
+          "Collinear",
+          [
+            "a",
+            "o",
+            "b"
+          ]
         ]
       ],
       "fv_check": [
@@ -1754,7 +887,7 @@
       "multi": [],
       "extend": [
         [
-          "Perpendicular",
+          "PerpendicularBetweenLine",
           [
             "a",
             "o",
@@ -1763,7 +896,7 @@
           ]
         ],
         [
-          "Perpendicular",
+          "PerpendicularBetweenLine",
           [
             "c",
             "o",
@@ -1772,7 +905,7 @@
           ]
         ],
         [
-          "Midpoint",
+          "IsMidpointOfLine",
           [
             "o",
             "a",
@@ -1859,10 +992,18 @@
           ]
         ],
         [
-          "Triangle",
+          "Polygon",
           [
             "a",
             "b",
+            "c"
+          ]
+        ],
+        [
+          "Collinear",
+          [
+            "b",
+            "d",
             "c"
           ]
         ]
@@ -1873,7 +1014,7 @@
       "multi": [],
       "extend": [
         [
-          "Midpoint",
+          "IsMidpointOfLine",
           [
             "d",
             "b",
@@ -1903,7 +1044,7 @@
           ]
         ],
         [
-          "Triangle",
+          "Polygon",
           [
             "a",
             "b",
@@ -1912,30 +1053,10 @@
         ]
       ],
       "fv_check": [
-        "01023",
-        "01012",
-        "01021"
+        "01023"
       ],
       "multi": [],
       "extend": [
-        [
-          "Perpendicular",
-          [
-            "b",
-            "d",
-            "a",
-            "d"
-          ]
-        ],
-        [
-          "Perpendicular",
-          [
-            "a",
-            "d",
-            "c",
-            "d"
-          ]
-        ],
         [
           "Equal",
           [
@@ -1954,6 +1075,24 @@
                 "c"
               ]
             ]
+          ]
+        ],
+        [
+          "PerpendicularBetweenLine",
+          [
+            "b",
+            "d",
+            "a",
+            "d"
+          ]
+        ],
+        [
+          "PerpendicularBetweenLine",
+          [
+            "a",
+            "d",
+            "c",
+            "d"
           ]
         ]
       ]
@@ -1979,10 +1118,26 @@
           ]
         ],
         [
-          "Triangle",
+          "Polygon",
           [
             "a",
             "b",
+            "c"
+          ]
+        ],
+        [
+          "Collinear",
+          [
+            "a",
+            "d",
+            "b"
+          ]
+        ],
+        [
+          "Collinear",
+          [
+            "a",
+            "e",
             "c"
           ]
         ]
@@ -1993,7 +1148,7 @@
       "multi": [],
       "extend": [
         [
-          "Midpoint",
+          "IsMidpointOfLine",
           [
             "d",
             "a",
@@ -2001,65 +1156,11 @@
           ]
         ],
         [
-          "Midpoint",
+          "IsMidpointOfLine",
           [
             "e",
             "a",
             "c"
-          ]
-        ]
-      ]
-    },
-    "IsMidsegmentOfTrapezoid": {
-      "vars": [
-        "e",
-        "f",
-        "a",
-        "b",
-        "c",
-        "d"
-      ],
-      "para_len": [
-        2,
-        4
-      ],
-      "ee_check": [
-        [
-          "Line",
-          [
-            "e",
-            "f"
-          ]
-        ],
-        [
-          "Quadrilateral",
-          [
-            "a",
-            "b",
-            "c",
-            "d"
-          ]
-        ]
-      ],
-      "fv_check": [
-        "012345"
-      ],
-      "multi": [],
-      "extend": [
-        [
-          "Midpoint",
-          [
-            "e",
-            "a",
-            "b"
-          ]
-        ],
-        [
-          "Midpoint",
-          [
-            "f",
-            "c",
-            "d"
           ]
         ]
       ]
@@ -2083,7 +1184,7 @@
           ]
         ],
         [
-          "Triangle",
+          "Polygon",
           [
             "a",
             "b",
@@ -2129,7 +1230,7 @@
           ]
         ],
         [
-          "Triangle",
+          "Polygon",
           [
             "a",
             "b",
@@ -2154,7 +1255,38 @@
           "b"
         ]
       ],
-      "extend": []
+      "extend": [
+        [
+          "IsBisectorOfAngle",
+          [
+            "a",
+            "o",
+            "c",
+            "a",
+            "b"
+          ]
+        ],
+        [
+          "IsBisectorOfAngle",
+          [
+            "b",
+            "o",
+            "a",
+            "b",
+            "c"
+          ]
+        ],
+        [
+          "IsBisectorOfAngle",
+          [
+            "c",
+            "o",
+            "b",
+            "c",
+            "a"
+          ]
+        ]
+      ]
     },
     "IsCentroidOfTriangle": {
       "vars": [
@@ -2175,7 +1307,7 @@
           ]
         ],
         [
-          "Triangle",
+          "Polygon",
           [
             "a",
             "b",
@@ -2221,7 +1353,7 @@
           ]
         ],
         [
-          "Triangle",
+          "Polygon",
           [
             "a",
             "b",
@@ -2234,100 +1366,6 @@
         "0012",
         "0102",
         "0120"
-      ],
-      "multi": [
-        [
-          "o",
-          "b",
-          "c",
-          "a"
-        ],
-        [
-          "o",
-          "c",
-          "a",
-          "b"
-        ]
-      ],
-      "extend": []
-    },
-    "IsCircumcenterOfQuadrilateral": {
-      "vars": [
-        "o",
-        "a",
-        "b",
-        "c",
-        "d"
-      ],
-      "para_len": [
-        1,
-        4
-      ],
-      "ee_check": [
-        [
-          "Point",
-          [
-            "o"
-          ]
-        ],
-        [
-          "Triangle",
-          [
-            "a",
-            "b",
-            "c"
-          ]
-        ]
-      ],
-      "fv_check": [
-        "0123"
-      ],
-      "multi": [
-        [
-          "o",
-          "b",
-          "c",
-          "a"
-        ],
-        [
-          "o",
-          "c",
-          "a",
-          "b"
-        ]
-      ],
-      "extend": []
-    },
-    "IsIncenterOfQuadrilateral": {
-      "vars": [
-        "o",
-        "a",
-        "b",
-        "c",
-        "d"
-      ],
-      "para_len": [
-        1,
-        4
-      ],
-      "ee_check": [
-        [
-          "Point",
-          [
-            "o"
-          ]
-        ],
-        [
-          "Triangle",
-          [
-            "a",
-            "b",
-            "c"
-          ]
-        ]
-      ],
-      "fv_check": [
-        "0123"
       ],
       "multi": [
         [
@@ -2360,7 +1398,7 @@
       ],
       "ee_check": [
         [
-          "Triangle",
+          "Polygon",
           [
             "a",
             "b",
@@ -2368,7 +1406,7 @@
           ]
         ],
         [
-          "Triangle",
+          "Polygon",
           [
             "d",
             "e",
@@ -2378,14 +1416,6 @@
       ],
       "multi": [
         [
-          "d",
-          "e",
-          "f",
-          "a",
-          "b",
-          "c"
-        ],
-        [
           "b",
           "c",
           "a",
@@ -2394,103 +1424,12 @@
           "d"
         ],
         [
-          "e",
-          "f",
-          "d",
-          "b",
-          "c",
-          "a"
-        ],
-        [
           "c",
           "a",
           "b",
           "f",
           "d",
           "e"
-        ],
-        [
-          "f",
-          "d",
-          "e",
-          "c",
-          "a",
-          "b"
-        ]
-      ],
-      "extend": []
-    },
-    "SimilarBetweenTriangle": {
-      "vars": [
-        "a",
-        "b",
-        "c",
-        "d",
-        "e",
-        "f"
-      ],
-      "para_len": [
-        3,
-        3
-      ],
-      "ee_check": [
-        [
-          "Triangle",
-          [
-            "a",
-            "b",
-            "c"
-          ]
-        ],
-        [
-          "Triangle",
-          [
-            "d",
-            "e",
-            "f"
-          ]
-        ]
-      ],
-      "multi": [
-        [
-          "d",
-          "e",
-          "f",
-          "a",
-          "b",
-          "c"
-        ],
-        [
-          "b",
-          "c",
-          "a",
-          "e",
-          "f",
-          "d"
-        ],
-        [
-          "e",
-          "f",
-          "d",
-          "b",
-          "c",
-          "a"
-        ],
-        [
-          "c",
-          "a",
-          "b",
-          "f",
-          "d",
-          "e"
-        ],
-        [
-          "f",
-          "d",
-          "e",
-          "c",
-          "a",
-          "b"
         ]
       ],
       "extend": []
@@ -2510,7 +1449,7 @@
       ],
       "ee_check": [
         [
-          "Triangle",
+          "Polygon",
           [
             "a",
             "b",
@@ -2518,7 +1457,7 @@
           ]
         ],
         [
-          "Triangle",
+          "Polygon",
           [
             "d",
             "e",
@@ -2528,14 +1467,6 @@
       ],
       "multi": [
         [
-          "d",
-          "e",
-          "f",
-          "a",
-          "b",
-          "c"
-        ],
-        [
           "b",
           "c",
           "a",
@@ -2544,28 +1475,63 @@
           "e"
         ],
         [
-          "f",
-          "d",
-          "e",
-          "b",
-          "c",
-          "a"
-        ],
-        [
           "c",
           "a",
           "b",
           "e",
           "f",
           "d"
+        ]
+      ],
+      "extend": []
+    },
+    "SimilarBetweenTriangle": {
+      "vars": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f"
+      ],
+      "para_len": [
+        3,
+        3
+      ],
+      "ee_check": [
+        [
+          "Polygon",
+          [
+            "a",
+            "b",
+            "c"
+          ]
         ],
         [
-          "e",
-          "f",
-          "d",
+          "Polygon",
+          [
+            "d",
+            "e",
+            "f"
+          ]
+        ]
+      ],
+      "multi": [
+        [
+          "b",
           "c",
           "a",
-          "b"
+          "e",
+          "f",
+          "d"
+        ],
+        [
+          "c",
+          "a",
+          "b",
+          "f",
+          "d",
+          "e"
         ]
       ],
       "extend": []
@@ -2585,7 +1551,7 @@
       ],
       "ee_check": [
         [
-          "Triangle",
+          "Polygon",
           [
             "a",
             "b",
@@ -2593,7 +1559,7 @@
           ]
         ],
         [
-          "Triangle",
+          "Polygon",
           [
             "d",
             "e",
@@ -2603,14 +1569,6 @@
       ],
       "multi": [
         [
-          "d",
-          "e",
-          "f",
-          "a",
-          "b",
-          "c"
-        ],
-        [
           "b",
           "c",
           "a",
@@ -2619,31 +1577,348 @@
           "e"
         ],
         [
-          "f",
-          "d",
-          "e",
-          "b",
-          "c",
-          "a"
-        ],
-        [
           "c",
           "a",
           "b",
           "e",
           "f",
           "d"
+        ]
+      ],
+      "extend": []
+    },
+    "IsAltitudeOfQuadrilateral": {
+      "vars": [
+        "e",
+        "f",
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "para_len": [
+        2,
+        4
+      ],
+      "ee_check": [
+        [
+          "Line",
+          [
+            "e",
+            "f"
+          ]
         ],
         [
-          "e",
+          "Polygon",
+          [
+            "a",
+            "b",
+            "c",
+            "d"
+          ]
+        ]
+      ],
+      "fv_check": [
+        "012345",
+        "010234",
+        "012340",
+        "010213",
+        "012130"
+      ],
+      "multi": [],
+      "extend": [
+        [
+          "Equal",
+          [
+            [
+              "LengthOfLine",
+              [
+                "e",
+                "f"
+              ]
+            ],
+            [
+              "HeightOfQuadrilateral",
+              [
+                "a",
+                "b",
+                "c",
+                "d"
+              ]
+            ]
+          ]
+        ],
+        [
+          "PerpendicularBetweenLine",
+          [
+            "b",
+            "f",
+            "e",
+            "f"
+          ]
+        ],
+        [
+          "PerpendicularBetweenLine",
+          [
+            "e",
+            "f",
+            "c",
+            "f"
+          ]
+        ],
+        [
+          "PerpendicularBetweenLine",
+          [
+            "d",
+            "e",
+            "f",
+            "e"
+          ]
+        ],
+        [
+          "PerpendicularBetweenLine",
+          [
+            "f",
+            "e",
+            "a",
+            "e"
+          ]
+        ]
+      ]
+    },
+    "IsMidsegmentOfQuadrilateral": {
+      "vars": [
+        "e",
+        "f",
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "para_len": [
+        2,
+        4
+      ],
+      "ee_check": [
+        [
+          "Line",
+          [
+            "e",
+            "f"
+          ]
+        ],
+        [
+          "Polygon",
+          [
+            "a",
+            "b",
+            "c",
+            "d"
+          ]
+        ],
+        [
+          "Collinear",
+          [
+            "a",
+            "e",
+            "b"
+          ]
+        ],
+        [
+          "Collinear",
+          [
+            "d",
+            "f",
+            "c"
+          ]
+        ]
+      ],
+      "fv_check": [
+        "012345"
+      ],
+      "multi": [
+        [
           "f",
-          "d",
+          "e",
           "c",
+          "d",
           "a",
           "b"
         ]
       ],
+      "extend": [
+        [
+          "IsMidpointOfLine",
+          [
+            "e",
+            "a",
+            "b"
+          ]
+        ],
+        [
+          "IsMidpointOfLine",
+          [
+            "f",
+            "c",
+            "d"
+          ]
+        ]
+      ]
+    },
+    "IsCircumcenterOfQuadrilateral": {
+      "vars": [
+        "o",
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "para_len": [
+        1,
+        4
+      ],
+      "ee_check": [
+        [
+          "Point",
+          [
+            "o"
+          ]
+        ],
+        [
+          "Polygon",
+          [
+            "a",
+            "b",
+            "c",
+            "d"
+          ]
+        ]
+      ],
+      "fv_check": [
+        "01234"
+      ],
+      "multi": [
+        [
+          "o",
+          "b",
+          "c",
+          "d",
+          "a"
+        ],
+        [
+          "o",
+          "c",
+          "d",
+          "a",
+          "b"
+        ],
+        [
+          "o",
+          "d",
+          "a",
+          "b",
+          "c"
+        ]
+      ],
       "extend": []
+    },
+    "IsIncenterOfQuadrilateral": {
+      "vars": [
+        "o",
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "para_len": [
+        1,
+        4
+      ],
+      "ee_check": [
+        [
+          "Point",
+          [
+            "o"
+          ]
+        ],
+        [
+          "Polygon",
+          [
+            "a",
+            "b",
+            "c",
+            "d"
+          ]
+        ]
+      ],
+      "fv_check": [
+        "01234"
+      ],
+      "multi": [
+        [
+          "o",
+          "b",
+          "c",
+          "d",
+          "a"
+        ],
+        [
+          "o",
+          "c",
+          "d",
+          "a",
+          "b"
+        ],
+        [
+          "o",
+          "d",
+          "a",
+          "b",
+          "c"
+        ]
+      ],
+      "extend": [
+        [
+          "IsBisectorOfAngle",
+          [
+            "a",
+            "o",
+            "d",
+            "a",
+            "b"
+          ]
+        ],
+        [
+          "IsBisectorOfAngle",
+          [
+            "b",
+            "o",
+            "a",
+            "b",
+            "c"
+          ]
+        ],
+        [
+          "IsBisectorOfAngle",
+          [
+            "c",
+            "o",
+            "b",
+            "c",
+            "d"
+          ]
+        ],
+        [
+          "IsBisectorOfAngle",
+          [
+            "d",
+            "o",
+            "c",
+            "d",
+            "a"
+          ]
+        ]
+      ]
     },
     "CongruentBetweenQuadrilateral": {
       "vars": [
@@ -2662,7 +1937,7 @@
       ],
       "ee_check": [
         [
-          "Quadrilateral",
+          "Polygon",
           [
             "a",
             "b",
@@ -2671,7 +1946,7 @@
           ]
         ],
         [
-          "Quadrilateral",
+          "Polygon",
           [
             "e",
             "f",
@@ -2710,155 +1985,6 @@
           "e",
           "f",
           "g"
-        ],
-        [
-          "e",
-          "f",
-          "g",
-          "h",
-          "a",
-          "b",
-          "c",
-          "d"
-        ],
-        [
-          "f",
-          "g",
-          "h",
-          "e",
-          "b",
-          "c",
-          "d",
-          "a"
-        ],
-        [
-          "g",
-          "h",
-          "e",
-          "f",
-          "c",
-          "d",
-          "a",
-          "b"
-        ],
-        [
-          "h",
-          "e",
-          "f",
-          "g",
-          "d",
-          "a",
-          "b",
-          "c"
-        ]
-      ],
-      "extend": []
-    },
-    "SimilarBetweenQuadrilateral": {
-      "vars": [
-        "a",
-        "b",
-        "c",
-        "d",
-        "e",
-        "f",
-        "g",
-        "h"
-      ],
-      "para_len": [
-        4,
-        4
-      ],
-      "ee_check": [
-        [
-          "Quadrilateral",
-          [
-            "a",
-            "b",
-            "c",
-            "d"
-          ]
-        ],
-        [
-          "Quadrilateral",
-          [
-            "e",
-            "f",
-            "g",
-            "h"
-          ]
-        ]
-      ],
-      "multi": [
-        [
-          "b",
-          "c",
-          "d",
-          "a",
-          "f",
-          "g",
-          "h",
-          "e"
-        ],
-        [
-          "c",
-          "d",
-          "a",
-          "b",
-          "g",
-          "h",
-          "e",
-          "f"
-        ],
-        [
-          "d",
-          "a",
-          "b",
-          "c",
-          "h",
-          "e",
-          "f",
-          "g"
-        ],
-        [
-          "e",
-          "f",
-          "g",
-          "h",
-          "a",
-          "b",
-          "c",
-          "d"
-        ],
-        [
-          "f",
-          "g",
-          "h",
-          "e",
-          "b",
-          "c",
-          "d",
-          "a"
-        ],
-        [
-          "g",
-          "h",
-          "e",
-          "f",
-          "c",
-          "d",
-          "a",
-          "b"
-        ],
-        [
-          "h",
-          "e",
-          "f",
-          "g",
-          "d",
-          "a",
-          "b",
-          "c"
         ]
       ],
       "extend": []
@@ -2880,7 +2006,7 @@
       ],
       "ee_check": [
         [
-          "Quadrilateral",
+          "Polygon",
           [
             "a",
             "b",
@@ -2889,7 +2015,7 @@
           ]
         ],
         [
-          "Quadrilateral",
+          "Polygon",
           [
             "e",
             "f",
@@ -2928,46 +2054,75 @@
           "g",
           "h",
           "e"
+        ]
+      ],
+      "extend": []
+    },
+    "SimilarBetweenQuadrilateral": {
+      "vars": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h"
+      ],
+      "para_len": [
+        4,
+        4
+      ],
+      "ee_check": [
+        [
+          "Polygon",
+          [
+            "a",
+            "b",
+            "c",
+            "d"
+          ]
         ],
         [
-          "e",
-          "f",
-          "g",
-          "h",
-          "a",
-          "b",
-          "c",
-          "d"
-        ],
+          "Polygon",
+          [
+            "e",
+            "f",
+            "g",
+            "h"
+          ]
+        ]
+      ],
+      "multi": [
         [
-          "h",
-          "e",
-          "f",
-          "g",
           "b",
           "c",
           "d",
-          "a"
-        ],
-        [
+          "a",
+          "f",
           "g",
           "h",
-          "e",
-          "f",
+          "e"
+        ],
+        [
           "c",
           "d",
           "a",
-          "b"
-        ],
-        [
-          "f",
+          "b",
           "g",
           "h",
           "e",
+          "f"
+        ],
+        [
           "d",
           "a",
           "b",
-          "c"
+          "c",
+          "h",
+          "e",
+          "f",
+          "g"
         ]
       ],
       "extend": []
@@ -2989,7 +2144,7 @@
       ],
       "ee_check": [
         [
-          "Quadrilateral",
+          "Polygon",
           [
             "a",
             "b",
@@ -2998,7 +2153,7 @@
           ]
         ],
         [
-          "Quadrilateral",
+          "Polygon",
           [
             "e",
             "f",
@@ -3037,184 +2192,124 @@
           "g",
           "h",
           "e"
-        ],
-        [
-          "e",
-          "f",
-          "g",
-          "h",
-          "a",
-          "b",
-          "c",
-          "d"
-        ],
-        [
-          "h",
-          "e",
-          "f",
-          "g",
-          "b",
-          "c",
-          "d",
-          "a"
-        ],
-        [
-          "g",
-          "h",
-          "e",
-          "f",
-          "c",
-          "d",
-          "a",
-          "b"
-        ],
-        [
-          "f",
-          "g",
-          "h",
-          "e",
-          "d",
-          "a",
-          "b",
-          "c"
         ]
       ],
       "extend": []
     },
-    "IsRadiusOfCircle": {
+    "CongruentBetweenArc": {
       "vars": [
-        "a",
         "o",
-        "o"
+        "a",
+        "b",
+        "o",
+        "c",
+        "d"
       ],
       "para_len": [
-        2,
-        1
+        3,
+        3
       ],
       "ee_check": [
         [
-          "Line",
+          "Arc",
           [
+            "o",
             "a",
-            "o"
+            "b"
           ]
         ],
         [
-          "Circle",
+          "Arc",
           [
-            "o"
+            "o",
+            "c",
+            "d"
           ]
         ]
-      ],
-      "fv_check": [
-        "011"
       ],
       "multi": [],
       "extend": []
     },
-    "IsDiameterOfCircle": {
+    "SimilarBetweenArc": {
       "vars": [
+        "o",
         "a",
         "b",
-        "o"
+        "o",
+        "c",
+        "d"
       ],
       "para_len": [
-        2,
-        1
+        3,
+        3
       ],
       "ee_check": [
         [
-          "Line",
+          "Arc",
           [
+            "o",
             "a",
             "b"
           ]
         ],
         [
-          "Circle",
+          "Arc",
           [
-            "o"
-          ]
-        ]
-      ],
-      "fv_check": [
-        "012"
-      ],
-      "multi": [
-        [
-          "b",
-          "a",
-          "o"
-        ]
-      ],
-      "extend": [
-        [
-          "IsRadiusOfCircle",
-          [
-            "a",
             "o",
-            "o"
-          ]
-        ],
-        [
-          "IsRadiusOfCircle",
-          [
-            "b",
-            "o",
-            "o"
+            "c",
+            "d"
           ]
         ]
-      ]
-    },
-    "IsChordOfCircle": {
-      "vars": [
-        "a",
-        "b",
-        "o"
-      ],
-      "para_len": [
-        2,
-        1
-      ],
-      "ee_check": [
-        [
-          "Line",
-          [
-            "a",
-            "b"
-          ]
-        ],
-        [
-          "Circle",
-          [
-            "o"
-          ]
-        ]
-      ],
-      "fv_check": [
-        "012"
       ],
       "multi": [],
       "extend": []
     },
     "IsTangentOfCircle": {
       "vars": [
+        "p",
         "a",
-        "b",
-        "o",
-        "p"
+        "o"
       ],
       "para_len": [
         2,
-        1,
         1
       ],
       "ee_check": [
         [
           "Line",
           [
-            "a",
-            "b"
+            "p",
+            "a"
+          ]
+        ],
+        [
+          "Cocircular",
+          [
+            "o",
+            "a"
+          ]
+        ]
+      ],
+      "fv_check": [
+        "012"
+      ],
+      "multi": [],
+      "extend": []
+    },
+    "IsCentreOfCircle": {
+      "vars": [
+        "p",
+        "o"
+      ],
+      "para_len": [
+        1,
+        1
+      ],
+      "ee_check": [
+        [
+          "Point",
+          [
+            "p"
           ]
         ],
         [
@@ -3222,18 +2317,11 @@
           [
             "o"
           ]
-        ],
-        [
-          "Point",
-          [
-            "p"
-          ]
         ]
       ],
       "fv_check": [
-        "0123",
-        "0120",
-        "0121"
+        "01",
+        "00"
       ],
       "multi": [],
       "extend": []
@@ -3265,26 +2353,6 @@
         ]
       ]
     },
-    "LengthOfArc": {
-      "vars": [
-        "a",
-        "b"
-      ],
-      "para_len": [
-        2
-      ],
-      "ee_check": [
-        [
-          "Arc",
-          [
-            "a",
-            "b"
-          ]
-        ]
-      ],
-      "sym": "la",
-      "multi": []
-    },
     "MeasureOfAngle": {
       "vars": [
         "a",
@@ -3307,39 +2375,6 @@
       "sym": "ma",
       "multi": []
     },
-    "AreaOfTriangle": {
-      "vars": [
-        "a",
-        "b",
-        "c"
-      ],
-      "para_len": [
-        3
-      ],
-      "ee_check": [
-        [
-          "Triangle",
-          [
-            "a",
-            "b",
-            "c"
-          ]
-        ]
-      ],
-      "sym": "at",
-      "multi": [
-        [
-          "b",
-          "c",
-          "a"
-        ],
-        [
-          "c",
-          "a",
-          "b"
-        ]
-      ]
-    },
     "PerimeterOfTriangle": {
       "vars": [
         "a",
@@ -3351,7 +2386,7 @@
       ],
       "ee_check": [
         [
-          "Triangle",
+          "Polygon",
           [
             "a",
             "b",
@@ -3373,89 +2408,36 @@
         ]
       ]
     },
-    "AreaOfQuadrilateral": {
+    "AreaOfTriangle": {
       "vars": [
         "a",
         "b",
-        "c",
-        "d"
+        "c"
       ],
       "para_len": [
-        4
+        3
       ],
       "ee_check": [
         [
-          "Quadrilateral",
+          "Polygon",
           [
             "a",
             "b",
-            "c",
-            "d"
+            "c"
           ]
         ]
       ],
-      "sym": "aq",
+      "sym": "at",
       "multi": [
         [
           "b",
           "c",
-          "d",
           "a"
         ],
         [
           "c",
-          "d",
           "a",
           "b"
-        ],
-        [
-          "d",
-          "a",
-          "b",
-          "c"
-        ]
-      ]
-    },
-    "PerimeterOfQuadrilateral": {
-      "vars": [
-        "a",
-        "b",
-        "c",
-        "d"
-      ],
-      "para_len": [
-        4
-      ],
-      "ee_check": [
-        [
-          "Quadrilateral",
-          [
-            "a",
-            "b",
-            "c",
-            "d"
-          ]
-        ]
-      ],
-      "sym": "pq",
-      "multi": [
-        [
-          "b",
-          "c",
-          "d",
-          "a"
-        ],
-        [
-          "c",
-          "d",
-          "a",
-          "b"
-        ],
-        [
-          "d",
-          "a",
-          "b",
-          "c"
         ]
       ]
     },
@@ -3470,7 +2452,7 @@
       ],
       "ee_check": [
         [
-          "Triangle",
+          "Polygon",
           [
             "a",
             "b",
@@ -3479,29 +2461,6 @@
         ]
       ],
       "sym": "ht",
-      "multi": []
-    },
-    "HeightOfQuadrilateral": {
-      "vars": [
-        "a",
-        "b",
-        "c",
-        "d"
-      ],
-      "para_len": [
-        4
-      ],
-      "ee_check": [
-        [
-          "Triangle",
-          [
-            "a",
-            "b",
-            "c"
-          ]
-        ]
-      ],
-      "sym": "hq",
       "multi": []
     },
     "RatioOfSimilarTriangle": {
@@ -3519,7 +2478,7 @@
       ],
       "ee_check": [
         [
-          "Triangle",
+          "Polygon",
           [
             "a",
             "b",
@@ -3527,7 +2486,7 @@
           ]
         ],
         [
-          "Triangle",
+          "Polygon",
           [
             "d",
             "e",
@@ -3535,7 +2494,7 @@
           ]
         ]
       ],
-      "sym": "rt",
+      "sym": "rst",
       "multi": [
         [
           "b",
@@ -3570,7 +2529,7 @@
       ],
       "ee_check": [
         [
-          "Triangle",
+          "Polygon",
           [
             "a",
             "b",
@@ -3578,7 +2537,7 @@
           ]
         ],
         [
-          "Triangle",
+          "Polygon",
           [
             "d",
             "e",
@@ -3606,6 +2565,116 @@
         ]
       ]
     },
+    "PerimeterOfQuadrilateral": {
+      "vars": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "para_len": [
+        4
+      ],
+      "ee_check": [
+        [
+          "Polygon",
+          [
+            "a",
+            "b",
+            "c",
+            "d"
+          ]
+        ]
+      ],
+      "sym": "pq",
+      "multi": [
+        [
+          "b",
+          "c",
+          "d",
+          "a"
+        ],
+        [
+          "c",
+          "d",
+          "a",
+          "b"
+        ],
+        [
+          "d",
+          "a",
+          "b",
+          "c"
+        ]
+      ]
+    },
+    "AreaOfQuadrilateral": {
+      "vars": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "para_len": [
+        4
+      ],
+      "ee_check": [
+        [
+          "Polygon",
+          [
+            "a",
+            "b",
+            "c",
+            "d"
+          ]
+        ]
+      ],
+      "sym": "aq",
+      "multi": [
+        [
+          "b",
+          "c",
+          "d",
+          "a"
+        ],
+        [
+          "c",
+          "d",
+          "a",
+          "b"
+        ],
+        [
+          "d",
+          "a",
+          "b",
+          "c"
+        ]
+      ]
+    },
+    "HeightOfQuadrilateral": {
+      "vars": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "para_len": [
+        4
+      ],
+      "ee_check": [
+        [
+          "Polygon",
+          [
+            "a",
+            "b",
+            "c",
+            "d"
+          ]
+        ]
+      ],
+      "sym": "hq",
+      "multi": []
+    },
     "RatioOfSimilarQuadrilateral": {
       "vars": [
         "a",
@@ -3623,7 +2692,7 @@
       ],
       "ee_check": [
         [
-          "Quadrilateral",
+          "Polygon",
           [
             "a",
             "b",
@@ -3632,7 +2701,7 @@
           ]
         ],
         [
-          "Quadrilateral",
+          "Polygon",
           [
             "e",
             "f",
@@ -3641,7 +2710,7 @@
           ]
         ]
       ],
-      "sym": "rq",
+      "sym": "rsq",
       "multi": [
         [
           "b",
@@ -3692,7 +2761,7 @@
       ],
       "ee_check": [
         [
-          "Quadrilateral",
+          "Polygon",
           [
             "a",
             "b",
@@ -3701,7 +2770,7 @@
           ]
         ],
         [
-          "Quadrilateral",
+          "Polygon",
           [
             "e",
             "f",
@@ -3743,6 +2812,200 @@
           "e"
         ]
       ]
+    },
+    "LengthOfArc": {
+      "vars": [
+        "o",
+        "a",
+        "b"
+      ],
+      "para_len": [
+        3
+      ],
+      "ee_check": [
+        [
+          "Arc",
+          [
+            "o",
+            "a",
+            "b"
+          ]
+        ]
+      ],
+      "sym": "la",
+      "multi": []
+    },
+    "MeasureOfArc": {
+      "vars": [
+        "o",
+        "a",
+        "b"
+      ],
+      "para_len": [
+        3
+      ],
+      "ee_check": [
+        [
+          "Arc",
+          [
+            "o",
+            "a",
+            "b"
+          ]
+        ]
+      ],
+      "sym": "mar",
+      "multi": []
+    },
+    "RatioOfSimilarArc": {
+      "vars": [
+        "o",
+        "a",
+        "b",
+        "o",
+        "c",
+        "d"
+      ],
+      "para_len": [
+        3,
+        3
+      ],
+      "ee_check": [
+        [
+          "Arc",
+          [
+            "o",
+            "a",
+            "b"
+          ]
+        ],
+        [
+          "Arc",
+          [
+            "o",
+            "c",
+            "d"
+          ]
+        ]
+      ],
+      "sym": "rsa",
+      "multi": []
+    },
+    "RadiusOfCircle": {
+      "vars": [
+        "o"
+      ],
+      "para_len": [
+        1
+      ],
+      "ee_check": [
+        [
+          "Circle",
+          [
+            "o"
+          ]
+        ]
+      ],
+      "sym": "rc",
+      "multi": []
+    },
+    "DiameterOfCircle": {
+      "vars": [
+        "o"
+      ],
+      "para_len": [
+        1
+      ],
+      "ee_check": [
+        [
+          "Circle",
+          [
+            "o"
+          ]
+        ]
+      ],
+      "sym": "dc",
+      "multi": []
+    },
+    "PerimeterOfCircle": {
+      "vars": [
+        "o"
+      ],
+      "para_len": [
+        1
+      ],
+      "ee_check": [
+        [
+          "Circle",
+          [
+            "o"
+          ]
+        ]
+      ],
+      "sym": "pc",
+      "multi": []
+    },
+    "AreaOfCircle": {
+      "vars": [
+        "o"
+      ],
+      "para_len": [
+        1
+      ],
+      "ee_check": [
+        [
+          "Circle",
+          [
+            "o"
+          ]
+        ]
+      ],
+      "sym": "ac",
+      "multi": []
+    },
+    "PerimeterOfSector": {
+      "vars": [
+        "o",
+        "a",
+        "b"
+      ],
+      "para_len": [
+        3
+      ],
+      "ee_check": [
+        [
+          "Arc",
+          [
+            "o",
+            "a",
+            "b"
+          ]
+        ]
+      ],
+      "sym": "ps",
+      "multi": []
+    },
+    "AreaOfSector": {
+      "vars": [
+        "o",
+        "a",
+        "b"
+      ],
+      "para_len": [
+        3
+      ],
+      "ee_check": [
+        [
+          "Arc",
+          [
+            "o",
+            "a",
+            "b"
+          ]
+        ]
+      ],
+      "sym": "as",
+      "multi": []
     }
   }
 }

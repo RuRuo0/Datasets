@@ -363,81 +363,18 @@ class Problem:
             i += 1
 
         premise = tuple(set(premise))
-        if not has_arc:  # extend polygon
-            self.add("Polygon", tuple([item[0] for item in shape]), premise, "extended")
+        if not has_arc and len(shape) > 2:  # extend polygon
+            valid = True
+            i = 0
+            l = len(shape)
+            while valid and i < l:
+                if shape[i][1] != shape[(i + 1) % l][0]:
+                    valid = False
+                i += 1
+            if valid:
+                self.add("Polygon", tuple([item[0] for item in shape]), premise, "extended")
 
         return True, set(all_forms)
-
-        # shape = list(shape)
-        # _, col, _ = self.conditions["Collinear"].get_items(["a", "b", "c"])
-        # _, coc, _ = self.conditions["Cocircular"].get_items(["o", "a", "b", "c"])
-        # premise = [_id]
-        #
-        # i = 0
-        # has_arc = False
-        # while i < len(shape):
-        #     j = (i + 1) % len(shape)
-        #     if len(shape[i]) == 2 and len(shape[j]) == 2:
-        #         self.add("Angle", (shape[i][0], shape[i][1], shape[j][1]), (_id,), "extended")  # extend angle
-        #         co = (shape[i][0], shape[i][1], shape[j][1])
-        #         if co in col:
-        #             shape[i] = shape[i][0] + shape[j][1]
-        #             premise.append(self.conditions["Collinear"].get_id_by_item[co])
-        #             shape.pop(j)
-        #             continue  # no need +1 about i
-        #
-        #     elif len(shape[i]) == 3 and len(shape[j]) == 3:
-        #         has_arc = True
-        #         if shape[i][1] != shape[i][2] and shape[j][1] != shape[j][2]:
-        #             if shape[i][0] == shape[j][0] and shape[i][1] == shape[j][2]:  # (OBC, OAB)
-        #                 co = (shape[j][0], shape[j][1], shape[j][2], shape[i][2])  # OABC
-        #                 if co in coc:
-        #                     premise.append(self.conditions["Cocircular"].get_id_by_item[co])
-        #                 shape[i] = shape[j][0] + shape[j][1] + shape[i][2]  # OAC
-        #                 shape.pop(j)
-        #                 continue  # no need +1 about i
-        #             elif shape[i][0] == shape[j][0] and shape[i][2] == shape[j][1]:  # (OAB, OBC)
-        #                 co = (shape[i][0], shape[i][1], shape[i][2], shape[j][2])  # OABC
-        #                 if co in coc:
-        #                     premise.append(self.conditions["Cocircular"].get_id_by_item[co])
-        #                 shape[i] = shape[i][0] + shape[i][1] + shape[j][2]  # OAC
-        #                 shape.pop(j)
-        #                 continue  # no need +1 about i
-        #     elif len(shape[i]) == 2:
-        #         self.add("Line", tuple(shape[i]), (_id,), "extended")  # extend line
-        #     else:
-        #         has_arc = True
-        #
-        #     i += 1
-        #
-        # premise = tuple(set(premise))
-        #
-        # if not has_arc:  # extend polygon
-        #     polygon = tuple([item[0] for item in shape])
-        #     if len(shape) == 3:
-        #         self.add("Triangle", polygon, premise, "extended")
-        #     elif len(shape) == 4:
-        #         self.add("Quadrilateral", polygon, premise, "extended")
-        #     elif len(shape) == 5:
-        #         self.add("Pentagon", polygon, premise, "extended")
-        #     elif len(shape) == 6:
-        #         self.add("Hexagon", polygon, premise, "extended")
-        # else:  # has acr
-        #     if len(shape) == 3 and len(shape[0]) + len(shape[1]) + len(shape[2]) == 7:  # ensure (arc,line,line)
-        #         while len(shape[0]) != 3:  # adjust to (OAB, BO, OA)
-        #             shape = shape[1:] + [shape[0]]
-        #         if shape[0][1] == shape[2][1] and shape[0][2] == shape[1][0] \
-        #                 and shape[0][0] == shape[1][1] and shape[0][0] == shape[2][0]:  # (OAB, BO, OA)
-        #             self.add("Sector", tuple(list(shape[0])), premise, "extended")
-        #
-        #     elif len(shape) == 2 and len(shape[0]) + len(shape[1]) == 5:  # ensure (arc,line)
-        #         if len(shape[0]) != 3:  # adjust to (OAB, BA)
-        #             shape = shape[::-1]
-        #         if (shape[0][1], shape[0][0], shape[0][2]) in col and \
-        #                 shape[0][1] == shape[1][1] and shape[0][2] == shape[1][0]:
-        #             self.add("Sector", tuple(list(shape[0])), premise, "extended")
-        #
-        # return True, set(all_forms)
 
     def _align_angle_sym(self, angle):
         """
@@ -546,7 +483,7 @@ class Problem:
                     for bias in range(1, l):  # all forms
                         new_item = tuple([item[(i + bias) % l] for i in range(l)])
                         self.conditions["Polygon"].add(new_item, (_id,), "extended")
-                return True   # Point and Circle no need to extend
+                return True  # Point and Circle no need to extend
             elif predicate in self.predicate_GDL["Entity"]:  # user defined Entity
                 item_GDL = self.predicate_GDL["Entity"][predicate]
             else:  # user defined Relation
@@ -709,7 +646,7 @@ class Problem:
                         l = len(mutex_item)
                         for bias in range(0, l):
                             mutex_sets_multi.append(tuple([mutex_item[(i + bias) % l] for i in range(l)]))
-                    else:    # Point Arc Angle Circle
+                    else:  # Point Arc Angle Circle
                         mutex_sets_multi.append(tuple(mutex_item))
 
                 if len(mutex_sets_multi) != len(set(mutex_sets_multi)):

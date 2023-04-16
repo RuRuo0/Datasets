@@ -61,7 +61,31 @@ def show(problem):
     print("\033[33mRelations:\033[0m")
     predicates = list(problem.predicate_GDL["Construction"])
     predicates += list(problem.predicate_GDL["BasicEntity"])
-    predicates += list(problem.predicate_GDL["Entity"])
+    for predicate in predicates:
+        condition = problem.conditions[predicate]
+        ids = list(condition.get_item_by_id)
+        if len(ids) > 0:
+            print(predicate + ":")
+            if len(ids) > 20:
+                ids = ids[0:10] + ["..."] + ids[len(ids) - 10:]
+            for _id in ids:
+                if isinstance(_id, str):
+                    print(_id)
+                    continue
+                items = ",".join(condition.get_item_by_id[_id])
+                if len(items) > 35:
+                    items = items[0:35] + "..."
+                if len(condition.premises[_id]) <= 3:
+                    premises = "(" + ",".join([str(i) for i in condition.premises[_id]]) + ")"
+                else:
+                    premises = "(" + ",".join([str(i) for i in condition.premises[_id][0:3]]) + ",...)"
+                theorem = condition.theorems[_id]
+                if _id not in used_id:
+                    print("{0:^6}{1:^50}{2:^25}{3:^6}".format(_id, items, premises, theorem))
+                else:
+                    print("\033[35m{0:^6}{1:^50}{2:^25}{3:^6}\033[0m".format(_id, items, premises, theorem))
+
+    predicates = list(problem.predicate_GDL["Entity"])
     predicates += list(problem.predicate_GDL["Relation"])
     for predicate in predicates:
         condition = problem.conditions[predicate]
@@ -269,13 +293,16 @@ def save_solution_tree(problem, path):
                 for new_tail in dag[tail]:
                     dag[head].append(new_tail)
                     update = True
-    remove_list = []
+
+    cleaned = {}
     for key in dag:
-        if not (key.startswith("extended") or key.startswith("solve_eq")):
+        if key.startswith("extended") or key.startswith("solve_eq"):
             continue
-        remove_list.append(key)
-    for key in remove_list:
-        dag.pop(key)
+        new_key = key.split(")")[0] + ")"
+        cleaned[new_key] = []
+        for tail in dag[key]:
+            cleaned[new_key].append(tail.split(")")[0] + ")")
+    dag = cleaned
 
     root_nodes = []
     child_nodes = []
@@ -287,7 +314,7 @@ def save_solution_tree(problem, path):
         if len(dag[head]) == 0:
             real_child_nodes.append(head)
             continue
-        for tail in dag[head]:
+        for tail in set(dag[head]):
             _add_node(dag_dot, nodes, tail)
             _add_edge(dag_dot, nodes, head, tail)
             child_nodes.append(tail)
@@ -300,12 +327,6 @@ def save_solution_tree(problem, path):
         _add_node(dag_dot, nodes, root)
         _add_edge(dag_dot, nodes, "START", root)
     dag["START"] = real_root_nodes
-
-    # _add_node(dag_dot, nodes, "END")   # add END node
-    # for real_child in real_child_nodes:
-    #     _add_node(dag_dot, nodes, real_child)
-    #     _add_edge(dag_dot, nodes, real_child, "END")
-    #     dag[real_child] = "END"
 
     save_json(dag, path + "{}_dag.json".format(problem.problem_CDL["id"]))  # save solution tree
     dag_dot.render(directory=path, view=False, format="png")  # save hyper graph

@@ -1700,6 +1700,16 @@
 **Notes**:  
 1.常识：临弧弧长相加  
 
+### round_arc(OAB,OBA)
+<div>
+    <img src="gdl-pic/T027.png" width="15%"
+</div>
+
+    premise: Arc(OAB)&Arc(OBA)
+    conclusion: Equal(Add(MeasureOfArc(OAB),MeasureOfArc(OBA)),360)
+**Notes**:  
+1.常识：一整个圆弧为360°  
+
 ### arc_addition_measure(OAB,OBC)
 <div>
     <img src="gdl-pic/T134.png" width="15%"
@@ -1896,7 +1906,7 @@
 </div>
 
     # branch 1
-    premise: Cocircular(O,ACB)&Collinear(APB)&Angle(BCA)&IsCentreOfCircle(P,O)
+    premise: Cocircular(O,BCA)&Collinear(APB)&Angle(BCA)&IsCentreOfCircle(P,O)
     conclusion: PerpendicularBetweenLine(BC,AC)
     # branch 2
     premise: Cocircular(O,ACB)&Collinear(APB)&Angle(ACB)&IsCentreOfCircle(P,O)

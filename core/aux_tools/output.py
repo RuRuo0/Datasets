@@ -395,7 +395,8 @@ def get_used_theorem(problem):
             if t in used_theorem and t not in selected_theorem:
                 selected_theorem.append(t)
 
-        if problem.goal["theorem"] not in ["solve_eq", "extended", "prerequisite"]:
+        if problem.goal["theorem"] not in ["solve_eq", "extended", "prerequisite"] and\
+                problem.goal["theorem"] not in selected_theorem:
             selected_theorem.append(problem.goal["theorem"])
 
     return used_id, selected_theorem

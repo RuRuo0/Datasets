@@ -63,7 +63,6 @@ def run(save_GDL=False, save_CDL=False, auto=False):
                 solver.load_problem(problem_CDL)
 
                 for theorem_name, theorem_para in FLParser.parse_theorem_seqs(problem_CDL["theorem_seqs"]):
-
                     solver.apply_theorem(theorem_name, theorem_para)
 
                 solver.check_goal()    # check goal after applied theorem seqs
@@ -120,4 +119,4 @@ def run(save_GDL=False, save_CDL=False, auto=False):
 
 
 if __name__ == '__main__':
-    run(auto=True)
+    run()

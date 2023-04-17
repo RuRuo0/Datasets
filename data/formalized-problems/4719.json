@@ -1,0 +1,37 @@
+{
+  "problem_id": 4719,
+  "annotation": "NaZhu_2023-04-16",
+  "source": "GeoQA-172",
+  "problem_level": 1,
+  "problem_text_cn": "如下图,在△ABC中,D,E分别是边AB,AC的中点,∠B=30°.现将△ADE沿DE折叠,点A落在三角形所在平面内的点为A′,则∠BDA′的度数为()",
+  "problem_text_en": "As shown in the figure below, in △ABC, D and E are the midpoints of sides AB and AC respectively, ∠B = N_0. Now fold △ADE along DE, and the point where point A falls on the plane of the triangle is A′, then the degree of ∠BDA′ is () ",
+  "problem_img": "4719.png",
+  "construction_cdl": [
+    "Shape(AD,DE,EA)",
+    "Shape(ED,DQ,QE)",
+    "Shape(PE,EQ,QP)",
+    "Shape(QD,DB,BC,CQ)",
+    "Collinear(AEQC)",
+    "Collinear(ADB)",
+    "Collinear(DQP)"
+  ],
+  "text_cdl": [
+    "IsMidpointOfLine(D,AB)",
+    "IsMidpointOfLine(E,AC)",
+    "MirrorCongruentBetweenTriangle(ADE,PED)",
+    "Equal(MeasureOfAngle(DBC),30)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(QDB))",
+  "problem_answer": "120",
+  "theorem_seqs": [
+    "midsegment_of_triangle_judgment_midpoint(DE,ABC)",
+    "midsegment_of_triangle_property_parallel(DE,ABC)",
+    "parallel_property_corresponding_angle(DE,BC,A)",
+    "mirror_congruent_triangle_property_angle_equal(DEA,DPE)",
+    "angle_addition(ADE,EDQ)",
+    "flat_angle(ADB)",
+    "angle_addition(ADQ,QDB)"
+  ],
+  "raw_answer": "试题分析:该题主要考查了翻折变换及其应用问题;同时还考查了三角形的中位线定理等几何知识点.如图,证明∠ADE=∠A'DE;证明DE//BC,得到∠ADE=∠B=30°,即可解决问题.解:由题意得:∠ADE=∠A'DE;∵D、E分别是边AB、AC的中点,∴DE//BC,∴∠ADE=∠B=30°,∠BDA_{1}=180^{°}-60^{°}=120^{°}.故选B."
+}

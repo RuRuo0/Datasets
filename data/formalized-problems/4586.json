@@ -1,0 +1,29 @@
+{
+  "problem_id": 4586,
+  "annotation": "YimingHe_2023-04-16",
+  "source": "GeoQA-0",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在△ABC中,已知∠A=80°,∠B=60°,DE∥BC,那么∠CED的大小是()",
+  "problem_text_en": "As shown in the figure, in △ABC, it is known that ∠A = N_0, ∠B = N_1, DE ∥ BC, then the size of ∠CED is ()",
+  "problem_img": "4586.png",
+  "construction_cdl": [
+    "Shape(AD,DE,EA)",
+    "Shape(DB,BC,CE,ED)",
+    "Collinear(ADB)",
+    "Collinear(AEC)"
+  ],
+  "text_cdl": [
+    "ParallelBetweenLine(DE,BC)"
+  ],
+  "image_cdl": [
+    "Equal(MeasureOfAngle(EAD),80)",
+    "Equal(MeasureOfAngle(DBC),60)"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(CED))",
+  "problem_answer": "140",
+  "theorem_seqs": [
+    "triangle_property_angle_sum(ABC)",
+    "parallel_property_ipsilateral_internal_angle(CB,ED)"
+  ],
+  "raw_answer": "∵∠A+∠B+∠C=180°(三角形内角和定理),∠A=80°,∠B=60°,∴∠C=180°-∠A-∠B=180°-80°-60°=40°,又∵DE//BC,∴∠CED+∠C=180°(两直线平行,同旁内角互补).∴∠CED=180°-40°=140°.故选D."
+}

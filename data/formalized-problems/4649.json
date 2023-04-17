@@ -1,0 +1,31 @@
+{
+  "problem_id": 4649,
+  "annotation": "JiaZou_2023-04-16",
+  "source": "GeoQA-87",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB∥CD,AF交CD于点O,且OF平分∠EOD,如果∠A=34°,那么∠EOD的度数是()",
+  "problem_text_en": "As shown in the figure, AB ∥ CD, AF intersects CD at point O, and OF bisects ∠EOD, if ∠A = N_0, then the degree of ∠EOD is ()",
+  "problem_img": "4649.png",
+  "construction_cdl": [
+    "Shape(AO,OC)",
+    "Shape(CO,OE)",
+    "Shape(EO,OF)",
+    "Shape(OA,AB)",
+    "Shape(DO,OA)",
+    "Shape(FO,OD)",
+    "Collinear(AOF)"
+  ],
+  "text_cdl": [
+    "IsBisectorOfAngle(OF,EOD)",
+    "ParallelBetweenLine(OD,AB)",
+    "Equal(MeasureOfAngle(OAB),34)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(EOD))",
+  "problem_answer": "68",
+  "theorem_seqs": [
+    "parallel_property_corresponding_angle(OD,AB,F)",
+    "angle_addition(EOF,FOD)"
+  ],
+  "raw_answer": "试题分析:根据平行线的性质求出∠FOD,根据角平分线定义得出∠EOD=2∠FOD,代入求出即可:∵AB//CD,∠A=34°,∴∠DOF=∠A=34°∵∠EOD平分∠EOD,∴∠EOD=2∠FOD=68°.故选B"
+}

@@ -1,0 +1,29 @@
+{
+  "problem_id": 4663,
+  "annotation": "JiaZou_2023-04-16",
+  "source": "GeoQA-102",
+  "problem_level": 1,
+  "problem_text_cn": "如图,已知AB∥CD,AD平分∠BAE,∠D=38°,则∠AEC的度数是()",
+  "problem_text_en": "As shown in the figure, it is known that AB ∥ CD, AD bisects ∠BAE, ∠D = N_0, then the degree of ∠AEC is ()",
+  "problem_img": "4663.png",
+  "construction_cdl": [
+    "Shape(AE,EC)",
+    "Shape(EA,AD,DE)",
+    "Shape(DA,AB)",
+    "Collinear(CED)"
+  ],
+  "text_cdl": [
+    "IsBisectorOfAngle(AD,EAB)",
+    "ParallelBetweenLine(CD,AB)",
+    "Equal(MeasureOfAngle(ADE),38)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(AEC))",
+  "problem_answer": "76",
+  "theorem_seqs": [
+    "parallel_property_alternate_interior_angle(CD,AB)",
+    "triangle_property_angle_sum(ADE)",
+    "adjacent_complementary_angle(DEA,AEC)"
+  ],
+  "raw_answer": "试题分析:∵CD//AB,∴∠CEA=∠EAB,∠D=∠BAD=38°,∵AD平分∠BAE,∴∠EAB=2∠DAB=76°,∴∠AEC=∠EAB=76^{°},故选D."
+}

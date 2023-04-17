@@ -120,4 +120,4 @@ def run(save_GDL=False, save_CDL=False, auto=False):
 
 
 if __name__ == '__main__':
-    run()
+    run(auto=True)

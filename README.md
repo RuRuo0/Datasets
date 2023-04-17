@@ -9,49 +9,68 @@ more types of plane geometric problems.
 
 ## Co-work
 
-#### Week 6 (230410): form 2023-04-10 to 2023-04-16.
+#### Week 7 (230417): form 2023-04-17 to 2023-04-23.
 
 **Attention:** Annotate problems in directory **Geometry3K-Other** and **GeoQA**.
 
 | Id  | Worker | WorkLoad |                      PID                       | Skip | Submitted |
 |:---:|:------:|:--------:|:----------------------------------------------:|:----:|:---------:|
-|  1  |  贺艺铭   |    60    |      4586-4645 (data/raw-problems/GeoQA)       |  /   |     ×     |
-|  2  |   邹佳   |    60    |      4646-4705 (data/raw-problems/GeoQA)       |  /   |     ×     |
-|  3  |   朱娜   |    60    |      4706-4765 (data/raw-problems/GeoQA)       |  /   |     ×     |
-|  4  |  张效凯   |    60    |      4766-4825 (data/raw-problems/GeoQA)       |  /   |     √     |
-|  5  |  郭彦钧   |    60    | 3008-3097 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
-|  6  |  黄琦珂   |    60    | 3100-3193 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
-|  7  |  黄一雯   |    60    |                 same as week 5                 |  /   |     ×     |
-|  8  |  金啸笑   |    60    | 3196-3290 (data/raw-problems/Geometry3K-Other) |  /   |     √     |
-|  9  |   李阳   |    60    | 3293-3396 (data/raw-problems/Geometry3K-Other) |  /   |     √     |
-| 10  |  毛晨扬   |    60    | 3398-3485 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
-| 11  |  王茹楠   |    60    |                 same as week 5                 |  /   |     ×     |
-| 12  |  王一凡   |    60    |                 same as week 5                 |  /   |     ×     |
-| 13  |  岳登峰   |    60    | 3901-3997(data/raw-problems/Geometry3K-Other)  |  /   |     ×     |
-| 14  |  朱方震   |    60    | 3999-4108(data/raw-problems/Geometry3K-Other)  |  /   |     ×     |
-| 15  |   朱哲   |    60    | 3584-3681 (data/raw-problems/Geometry3K-Other) |  /   |     √     |
+|  1  |  贺艺铭   |    60    |      4826-4885 (data/raw-problems/GeoQA)       |  /   |     ×     |
+|  2  |   邹佳   |    60    |      4886-4945 (data/raw-problems/GeoQA)       |  /   |     ×     |
+|  3  |   朱娜   |    60    |      4946-5005 (data/raw-problems/GeoQA)       |  /   |     ×     |
+|  4  |  张效凯   |    60    |      5006-5065 (data/raw-problems/GeoQA)       |  /   |     ×     |
+|  5  |  郭彦钧   |    60    | 3486-3583 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
+|  6  |  黄琦珂   |    60    | 3684-3792 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
+|  7  |  黄一雯   |    50    |                 same as week 6                 |  /   |     ×     |
+|  8  |  金啸笑   |    60    | 3793-3900 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
+|  9  |   李阳   |    60    | 4109-4195 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
+| 10  |  毛晨扬   |    60    | 4196-4289 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
+| 11  |  王茹楠   |    50    |                 same as week 6                 |  /   |     ×     |
+| 12  |  王一凡   |    50    |                 same as week 6                 |  /   |     ×     |
+| 13  |  岳登峰   |    60    | 4290-4380(data/raw-problems/Geometry3K-Other)  |  /   |     ×     |
+| 14  |  朱方震   |    60    |                 same as week 6                 |  /   |     ×     |
+| 15  |   朱哲   |    60    | 4382-4471 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
+
+#### Week 6 (230410): form 2023-04-10 to 2023-04-16.
+
+**Attention:** Annotate problems in directory **Geometry3K-Other** and **GeoQA**.
+
+| Id  | Worker | WorkLoad |                                                                           PID                                                                            | Skip | Submitted |
+|:---:|:------:|:--------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:----:|:---------:|
+|  1  |  贺艺铭   |    60    |                                                           4586-4645 (data/raw-problems/GeoQA)                                                            |  /   |     √     |
+|  2  |   邹佳   |    60    |                                                           4646-4705 (data/raw-problems/GeoQA)                                                            |  /   |     √     |
+|  3  |   朱娜   |    60    |                                                           4706-4765 (data/raw-problems/GeoQA)                                                            |  /   |     √     |
+|  4  |  张效凯   |    60    |                                                           4766-4825 (data/raw-problems/GeoQA)                                                            |  /   |     √     |
+|  5  |  郭彦钧   |    60    |                                                      3008-3097 (data/raw-problems/Geometry3K-Other)                                                      |  /   |     ×     |
+|  6  |  黄琦珂   |    60    |                                                      3100-3193 (data/raw-problems/Geometry3K-Other)                                                      |  /   |     √     |
+|  7  |  黄一雯   |    50    | 3254-3270 (data/raw-problems/Geometry3K-Triangle)<br>3795-3855 (data/raw-problems/Geometry3K-Triangle)<br>2682-2711 (data/raw-problems/Geometry3K-Other) |  /   |     /     |
+|  8  |  金啸笑   |    60    |                                                      3196-3290 (data/raw-problems/Geometry3K-Other)                                                      |  /   |     √     |
+|  9  |   李阳   |    60    |                                                      3293-3396 (data/raw-problems/Geometry3K-Other)                                                      |  /   |     √     |
+| 10  |  毛晨扬   |    60    |                                                      3398-3485 (data/raw-problems/Geometry3K-Other)                                                      |  /   |     √     |
+| 11  |  王茹楠   |    50    |                           4079-4169 (data/raw-problems/Geometry3K-Triangle)<br>2810-2844 (data/raw-problems/Geometry3K-Other)                            |  /   |     /     |
+| 12  |  王一凡   |    50    |                           4170-4244 (data/raw-problems/Geometry3K-Triangle)<br>2849-2890 (data/raw-problems/Geometry3K-Other)                            |  /   |     /     |
+| 13  |  岳登峰   |    60    |                                                      3901-3997(data/raw-problems/Geometry3K-Other)                                                       |  /   |     √     |
+| 14  |  朱方震   |    60    |                                                      3999-4108(data/raw-problems/Geometry3K-Other)                                                       |  /   |     /     |
+| 15  |   朱哲   |    60    |                                                      3584-3681 (data/raw-problems/Geometry3K-Other)                                                      |  /   |     √     |
 
 #### Week 5 (230403): form 2023-04-03 to 2023-04-09.
 
 **Attention:** Annotate problems in directory **Geometry3K-Triangle** and **Geometry3K-Other**.
 
-| Id  | Worker | WorkLoad |                              PID                              | Skip | Submitted |
-|:---:|:------:|:--------:|:-------------------------------------------------------------:|:----:|:---------:|
-|  1  |  贺艺铭   |    70    |                       2155-2261 (Other)                       |  /   |     √     |
-|  2  |   邹佳   |   140    |             1926-2046 (other), 2265-2386 (Other)              |  /   |     √     |
-|  3  |   朱娜   |    70    |                       2387-2502 (Other)                       |  /   |     √     |
-|  4  |  张效凯   |    70    |                       2503-2625 (Other)                       |  /   |     √     |
-|  5  |  郭彦钧   |    50    |            3089-3165 (Triangle), 2626-2652 (Other)            |  /   |     √     |
-|  6  |  黄琦珂   |    50    |            3171-3253 (Triangle), 2653-2680 (Other)            |  /   |     √     |
-|  7  |  黄一雯   |    50    | 3254-3270 (Triangle), 3795-3855 (Triangle), 2682-2711 (Other) |  /   |     ×     |
-|  8  |  金啸笑   |    50    |            3857-3919 (Triangle), 2712-2747 (Other)            |  /   |     √     |
-|  9  |   李阳   |    50    |            3920-4007 (Triangle), 2748-2780 (Other)            |  /   |     √     |
-| 10  |  毛晨扬   |    50    |            4009-4075 (Triangle), 2781-2809 (Other)            |  /   |     √     |
-| 11  |  王茹楠   |    50    |            4079-4169 (Triangle), 2810-2844 (Other)            |  /   |     ×     |
-| 12  |  王一凡   |    50    |            4170-4244 (Triangle), 2849-2890 (Other)            |  /   |     ×     |
-| 13  |  岳登峰   |    50    |            4335-4430 (Triangle), 2923-2956 (Other)            |  /   |     √     |
-| 14  |  朱方震   |    50    |            4435-4501 (Triangle), 2957-2984 (Other)            |  /   |     √     |
-| 15  |   朱哲   |    50    |            4502-4582 (Triangle), 2986-3007 (Other)            |  /   |     √     |
+| Id  | Worker | WorkLoad |                   PID                   | Skip | Submitted |
+|:---:|:------:|:--------:|:---------------------------------------:|:----:|:---------:|
+|  1  |  贺艺铭   |    70    |            2155-2261 (Other)            |  /   |     √     |
+|  2  |   邹佳   |   140    |  1926-2046 (other), 2265-2386 (Other)   |  /   |     √     |
+|  3  |   朱娜   |    70    |            2387-2502 (Other)            |  /   |     √     |
+|  4  |  张效凯   |    70    |            2503-2625 (Other)            |  /   |     √     |
+|  5  |  郭彦钧   |    50    | 3089-3165 (Triangle), 2626-2652 (Other) |  /   |     √     |
+|  6  |  黄琦珂   |    50    | 3171-3253 (Triangle), 2653-2680 (Other) |  /   |     √     |
+|  7  |  金啸笑   |    50    | 3857-3919 (Triangle), 2712-2747 (Other) |  /   |     √     |
+|  8  |   李阳   |    50    | 3920-4007 (Triangle), 2748-2780 (Other) |  /   |     √     |
+|  9  |  毛晨扬   |    50    | 4009-4075 (Triangle), 2781-2809 (Other) |  /   |     √     |
+| 10  |  岳登峰   |    50    | 4335-4430 (Triangle), 2923-2956 (Other) |  /   |     √     |
+| 11  |  朱方震   |    50    | 4435-4501 (Triangle), 2957-2984 (Other) |  /   |     √     |
+| 12  |   朱哲   |    50    | 4502-4582 (Triangle), 2986-3007 (Other) |  /   |     √     |
 
 #### Week 4 (230327): form 2023-03-27 to 2023-04-02.
 
@@ -107,7 +126,7 @@ In addition, with the development of artificial intelligence, AI-assisted mathem
 research direction. For the answers to the mathematical problems generated by AI, it is also necessary to design a
 reasoning machine for automatic verification.  
 So we designed a plane geometry formalization system and provided a python implementation of this system, which we call
-FormalGeo. It can accept formalized problem description, infer the goal and output the problem solving process.
+FormalGeo. It can accept formalized problem description, infer the goal and output the problem-solving process.
 
 ## Function
 
@@ -140,7 +159,7 @@ facilitate AI-assisted reasoning.
 **new functions**:  
 1.A new theorem GDL format and corresponding problem-solving theorem sequence annotating method. (theorem seqs with
 para)  
-2.Better error handling mechanism. It make data set annotation more convenient.  
+2.Better error handling mechanism. It makes data set annotation more convenient.  
 3.Prepare for greedy search (forward and backward) and AI-assisted search. (rough definition of program interface and
 framework)   
 4.merge problem annotated in this week.

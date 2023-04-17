@@ -23,21 +23,25 @@ class Problem:
 
     def load_problem_from_cdl(self, problem_CDL):
         """Load problem through problem CDL."""
-        Condition.id = 0  # init step and id
-        Condition.step = 0
         self.problem_CDL = problem_CDL  # cdl
         self.loaded = True
 
-        self.conditions = {}
-        for predicate in self.predicate_GDL["Construction"]:  # init conditions
-            self.conditions[predicate] = VariableLengthCondition(predicate)
-        for predicate in self.predicate_GDL["BasicEntity"]:
-            self.conditions[predicate] = FixedLengthCondition(predicate)
-        for predicate in self.predicate_GDL["Entity"]:
+        self.conditions = {  # preset predicate
+            "Shape": VariableLengthCondition("Shape"),
+            "Collinear": VariableLengthCondition("Collinear"),
+            "Cocircular": VariableLengthCondition("Cocircular"),
+            "Point": FixedLengthCondition("Point"),
+            "Line": FixedLengthCondition("Line"),
+            "Arc": FixedLengthCondition("Arc"),
+            "Angle": FixedLengthCondition("Angle"),
+            "Polygon": VariableLengthCondition("Polygon"),
+            "Circle": FixedLengthCondition("Circle"),
+            "Equation": Equation("Equation")
+        }
+        for predicate in self.predicate_GDL["Entity"]:  # user defined predicate
             self.conditions[predicate] = FixedLengthCondition(predicate)
         for predicate in self.predicate_GDL["Relation"]:
             self.conditions[predicate] = FixedLengthCondition(predicate)
-        self.conditions["Equation"] = Equation("Equation", self.predicate_GDL["Attribution"])
 
         self._construction_init()  # start construction
 
@@ -68,8 +72,6 @@ class Problem:
 
     def load_problem_by_copy(self, problem):
         """Load problem through copying existing problem."""
-        Condition.id = 0  # init step and id
-        Condition.step = 0
         self.problem_CDL = problem.problem_CDL  # cdl
         self.loaded = True
 
@@ -140,7 +142,7 @@ class Problem:
                         self.conditions["Cocircular"].add(
                             tuple([circle] + [cocircular[(i + bias) % l] for i in range(l)]), (_id,), "extended")
 
-        jigsaw_unit = {}  #
+        jigsaw_unit = {}  # shape's jigsaw
         shape_unit = []  # mini shape unit
         for predicate, item in self.problem_CDL["parsed_cdl"]["construction_cdl"]:  # Shape
             if predicate != "Shape":
@@ -150,8 +152,11 @@ class Problem:
                 warnings.warn(w_msg)
                 continue
 
-            if len(item) == 1:  # line
-                self.add("Line", tuple(item[0]), (-1,), "prerequisite")
+            if len(item) == 1:  # point or line
+                if len(item[0]) == 1:
+                    self.add("Point", tuple(item[0]), (-1,), "prerequisite")
+                else:
+                    self.add("Line", tuple(item[0]), (-1,), "prerequisite")
                 continue
             elif len(item) == 2 and len(item[0]) == 2 and len(item[1]) == 2:  # angle
                 self.add("Angle", tuple(item[0] + item[1][1]), (-1,), "prerequisite")
@@ -173,21 +178,31 @@ class Problem:
             for unit in shape_unit:
                 for comb in shape_comb:
 
+                    if len(unit[-1]) != len(comb[0]):  # has same sides?
+                        continue
+                    elif len(unit[-1]) == 3:  # is arc and same?
+                        if unit[-1] != comb[0]:
+                            continue
+                    else:
+                        if unit[-1] != comb[0][::-1]:  # is line and same?
+                            continue
+
                     if unit in jigsaw_comb[comb]:  # comb is combined from unit
                         continue
 
-                    same_length = 0  # number of same sides
-                    while same_length < len(unit) and same_length < len(comb):
-                        if (len(unit[- same_length - 1]) == len(comb[same_length]) and  # same type (line or arc)
-                                ((len(unit[- same_length - 1]) == 3 and  # arc and same
-                                  unit[- same_length - 1] == comb[same_length]) or
-                                 (unit[- same_length - 1] == comb[same_length][::-1]))):  # line and same
-                            same_length += 1
-                        else:
+                    same_length = 1  # number of same sides
+                    mini_length = len(unit) if len(unit) < len(comb) else len(comb)  # mini length
+                    while same_length < mini_length:
+                        if len(unit[- same_length - 1]) != len(comb[same_length]):  # all arcs or all lines
                             break
+                        elif len(unit[- same_length - 1]) == 3:  # arc
+                            if unit[- same_length - 1] != comb[same_length]:
+                                break
+                        else:  # line
+                            if unit[- same_length - 1] != comb[same_length][::-1]:
+                                break
 
-                    if same_length == 0:  # ensure has same sides
-                        continue
+                        same_length += 1
 
                     new_shape = list(unit[0:len(unit) - same_length])  # diff sides in polygon1
                     new_shape += list(comb[same_length:len(comb)])  # diff sides in polygon2
@@ -330,9 +345,7 @@ class Problem:
 
         shape = list(shape)
         _, col, _ = self.conditions["Collinear"].get_items(["a", "b", "c"])
-        _, coc, _ = self.conditions["Cocircular"].get_items(["o", "a", "b", "c"])
         premise = [_id]
-
         i = 0
         has_arc = False
         while i < len(shape):
@@ -345,57 +358,21 @@ class Problem:
                     premise.append(self.conditions["Collinear"].get_id_by_item[co])
                     shape.pop(j)
                     continue  # no need +1 about i
-
-            elif len(shape[i]) == 3 and len(shape[j]) == 3:
-                has_arc = True
-                if shape[i][1] != shape[i][2] and shape[j][1] != shape[j][2]:
-                    if shape[i][0] == shape[j][0] and shape[i][1] == shape[j][2]:  # (OBC, OAB)
-                        co = (shape[j][0], shape[j][1], shape[j][2], shape[i][2])  # OABC
-                        if co in coc:
-                            premise.append(self.conditions["Cocircular"].get_id_by_item[co])
-                        shape[i] = shape[j][0] + shape[j][1] + shape[i][2]  # OAC
-                        shape.pop(j)
-                        continue  # no need +1 about i
-                    elif shape[i][0] == shape[j][0] and shape[i][2] == shape[j][1]:  # (OAB, OBC)
-                        co = (shape[i][0], shape[i][1], shape[i][2], shape[j][2])  # OABC
-                        if co in coc:
-                            premise.append(self.conditions["Cocircular"].get_id_by_item[co])
-                        shape[i] = shape[i][0] + shape[i][1] + shape[j][2]  # OAC
-                        shape.pop(j)
-                        continue  # no need +1 about i
-            elif len(shape[i]) == 2:
-                self.add("Line", tuple(shape[i]), (_id,), "extended")  # extend line
             else:
                 has_arc = True
-
             i += 1
 
         premise = tuple(set(premise))
-
-        if not has_arc:  # extend polygon
-            polygon = tuple([item[0] for item in shape])
-            if len(shape) == 3:
-                self.add("Triangle", polygon, premise, "extended")
-            elif len(shape) == 4:
-                self.add("Quadrilateral", polygon, premise, "extended")
-            elif len(shape) == 5:
-                self.add("Pentagon", polygon, premise, "extended")
-            elif len(shape) == 6:
-                self.add("Hexagon", polygon, premise, "extended")
-        else:  # has acr
-            if len(shape) == 3 and len(shape[0]) + len(shape[1]) + len(shape[2]) == 7:  # ensure (arc,line,line)
-                while len(shape[0]) != 3:  # adjust to (OAB, BO, OA)
-                    shape = shape[1:] + [shape[0]]
-                if shape[0][1] == shape[2][1] and shape[0][2] == shape[1][0] \
-                        and shape[0][0] == shape[1][1] and shape[0][0] == shape[2][0]:  # (OAB, BO, OA)
-                    self.add("Sector", tuple(list(shape[0])), premise, "extended")
-
-            elif len(shape) == 2 and len(shape[0]) + len(shape[1]) == 5:  # ensure (arc,line)
-                if len(shape[0]) != 3:  # adjust to (OAB, BA)
-                    shape = shape[::-1]
-                if (shape[0][1], shape[0][0], shape[0][2]) in col and \
-                        shape[0][1] == shape[1][1] and shape[0][2] == shape[1][0]:
-                    self.add("Sector", tuple(list(shape[0])), premise, "extended")
+        if not has_arc and len(shape) > 2:  # extend polygon
+            valid = True
+            i = 0
+            l = len(shape)
+            while valid and i < l:
+                if shape[i][1] != shape[(i + 1) % l][0]:
+                    valid = False
+                i += 1
+            if valid:
+                self.add("Polygon", tuple([item[0] for item in shape]), premise, "extended")
 
         return True, set(all_forms)
 
@@ -458,7 +435,7 @@ class Problem:
 
         return sym
 
-    def add(self, predicate, item, premise, theorem, force=False):
+    def add(self, predicate, item, premise, theorem, skip_check=False):
         """
         Add item to condition of specific predicate category.
         Also consider condition expansion and equation construction.
@@ -466,7 +443,7 @@ class Problem:
         :param item: <tuple> or equation.
         :param premise: tuple of <int>, premise of item.
         :param theorem: <str>, theorem of item.
-        :param force: <bool>, set to True when you are confident that the format of item must be legal.
+        :param skip_check: <bool>, set to True when you are confident that the format of item must be legal.
         :return: True or False.
         """
         if not self.loaded:  # problem must be loaded
@@ -476,7 +453,7 @@ class Problem:
             e_msg = "Predicate '{}' not defined in current predicate GDL.".format(predicate)
             raise Exception(e_msg)
 
-        if not force:
+        if not skip_check:
             if not self.ee_check(predicate, item):  # ee check
                 w_msg = "EE check not passed: [{}, {}, {}, {}]".format(predicate, item, premise, theorem)
                 warnings.warn(w_msg)
@@ -488,13 +465,28 @@ class Problem:
 
         added, _id = self.conditions[predicate].add(item, tuple(premise), theorem)
         if added:
-            if predicate == "Equation":  # Equation
+            if predicate == "Equation":  # preset Equation
                 return True
-            elif predicate in self.predicate_GDL["BasicEntity"]:
-                item_GDL = self.predicate_GDL["BasicEntity"][predicate]
-            elif predicate in self.predicate_GDL["Entity"]:
+            elif predicate in self.predicate_GDL["BasicEntity"]:  # preset BasicEntity
+                if predicate == "Line":
+                    self.conditions["Line"].add(item[::-1], (_id,), "extended")
+                    self.conditions["Point"].add((item[0],), (_id,), "extended")
+                    self.conditions["Point"].add((item[1],), (_id,), "extended")
+                elif predicate == "Arc":
+                    self.conditions["Point"].add((item[1],), (_id,), "extended")
+                    self.conditions["Point"].add((item[2],), (_id,), "extended")
+                elif predicate == "Angle":
+                    self.add("Line", (item[0], item[1]), (_id,), "extended", skip_check=True)
+                    self.add("Line", (item[1], item[2]), (_id,), "extended", skip_check=True)
+                elif predicate == "Polygon":
+                    l = len(item)
+                    for bias in range(1, l):  # all forms
+                        new_item = tuple([item[(i + bias) % l] for i in range(l)])
+                        self.conditions["Polygon"].add(new_item, (_id,), "extended")
+                return True  # Point and Circle no need to extend
+            elif predicate in self.predicate_GDL["Entity"]:  # user defined Entity
                 item_GDL = self.predicate_GDL["Entity"][predicate]
-            else:
+            else:  # user defined Relation
                 item_GDL = self.predicate_GDL["Relation"][predicate]
 
             predicate_vars = item_GDL["vars"]
@@ -575,8 +567,10 @@ class Problem:
             if predicate == "Shape":
                 if len(item) != len(set(item)):  # default check 1: mutex points
                     return False
-                if len(item) == 1 and len(item[0]) != 2:
-                    return False
+                if len(item) == 1:
+                    if len(item[0]) not in [1, 2]:
+                        return False
+                    return True
                 for shape in item:
                     if not 2 <= len(shape) <= 3 or len(shape) != len(set(shape)):
                         return False
@@ -586,8 +580,17 @@ class Problem:
         elif predicate in self.predicate_GDL["BasicEntity"]:
             if len(item) != len(set(item)):  # default check 1: mutex points
                 return False
-            item_GDL = self.predicate_GDL["BasicEntity"][predicate]
-            if len(item) != len(item_GDL["vars"]):  # default check 2: correct para len
+            if predicate == "Point" and len(item) != 1:
+                return False
+            elif predicate == "Line" and len(item) != 2:
+                return False
+            elif predicate == "Arc" and len(item) != 3:
+                return False
+            elif predicate == "Angle" and len(item) != 3:
+                return False
+            elif predicate == "Polygon" and len(item) < 3:
+                return False
+            elif predicate == "Circle" and len(item) != 1:
                 return False
             return True
         elif predicate in self.predicate_GDL["Entity"]:
@@ -638,14 +641,15 @@ class Problem:
 
                 mutex_sets_multi = []  # mutex_item multi representation
                 for mutex_item in mutex_sets:
-                    mutex_sets_multi.append(tuple(mutex_item))
-
-                    mutex_item_letters = {}  # used for vars-letters replacement
-                    for i in range(len(self.predicate_GDL["BasicEntity"][predicate]["vars"])):
-                        mutex_item_letters[self.predicate_GDL["BasicEntity"][predicate]["vars"][i]] = mutex_item[i]
-
-                    for multi_var in self.predicate_GDL["BasicEntity"][predicate]["multi"]:
-                        mutex_sets_multi.append(tuple(mutex_item_letters[i] for i in multi_var))
+                    if predicate == "Line":
+                        mutex_sets_multi.append(tuple(mutex_item))
+                        mutex_sets_multi.append(tuple(mutex_item[::-1]))
+                    elif predicate == "Polygon":
+                        l = len(mutex_item)
+                        for bias in range(0, l):
+                            mutex_sets_multi.append(tuple([mutex_item[(i + bias) % l] for i in range(l)]))
+                    else:  # Point Arc Angle Circle
+                        mutex_sets_multi.append(tuple(mutex_item))
 
                 if len(mutex_sets_multi) != len(set(mutex_sets_multi)):
                     return False

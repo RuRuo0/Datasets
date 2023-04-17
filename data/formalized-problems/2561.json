@@ -1,25 +1,65 @@
 {
   "problem_id": 2561,
-  "annotation": "xiaokaizhang_2023-03-06",
+  "annotation": "XiaokaiZhang_2023-04-09",
   "source": "Geometry3k-977",
   "problem_level": 1,
   "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the polygon for the given information. B Y = C Z = A X = 2.5 diameter of \\odot G = 5.",
+  "problem_text_en": "Find the perimeter of the polygon for the given information. B Y=2.5 diameter of \\odot O = 5.",
   "problem_img": "2561.png",
   "construction_cdl": [
-    "Shape()",
-    "Collinear()",
-    "Cocircular()"
+    "Shape(AD,OXD,XA)",
+    "Shape(OX,OXD,DO)",
+    "Shape(AX,OFX,FA)",
+    "Shape(XO,OF,OFX)",
+    "Shape(OD,ODZ,ZO)",
+    "Shape(DC,CZ,ODZ)",
+    "Shape(OZ,OZE,EO)",
+    "Shape(ZC,CE,OZE)",
+    "Shape(OE,OEY,YO)",
+    "Shape(OEY,EB,BY)",
+    "Shape(OY,OYF,FO)",
+    "Shape(YB,BF,OYF)",
+    "Collinear(ADC)",
+    "Collinear(CEB)",
+    "Collinear(BFA)",
+    "Collinear(AXOE)",
+    "Collinear(CZOF)",
+    "Collinear(BYOD)",
+    "Cocircular(O,XDZEYF)"
   ],
-  "text_cdl": [],
-  "image_cdl": [
+  "text_cdl": [
     "Equal(LengthOfLine(BY),2.5)",
-    "Equal(LengthOfLine(CZ),2.5)",
-    "Equal(LengthOfLine(AX),2.5)",
-    "Equal(DiameterOfCircle(G),5)"
+    "Equal(DiameterOfCircle(O),5)",
+    "IsTangentOfCircle(AF,O)",
+    "IsTangentOfCircle(AD,O)",
+    "IsTangentOfCircle(CD,O)",
+    "IsTangentOfCircle(CE,O)",
+    "IsTangentOfCircle(BE,O)",
+    "IsTangentOfCircle(BF,O)",
+    "IsMidpointOfLine(D,AC)",
+    "IsMidpointOfLine(E,CB)",
+    "IsMidpointOfLine(F,AB)"
+  ],
+  "image_cdl": [
+    "IsCentreOfCircle(O,O)"
   ],
   "goal_cdl": "Value(PerimeterOfTriangle(ACB))",
   "problem_answer": "15*√3",
-  "theorem_seqs": [],
-  "notes": "太复杂了不想搞了"
+  "theorem_seqs": [
+    "circle_property_diameter_length_equal(DOY,O)",
+    "line_addition(DY,YB)",
+    "line_addition(AD,DC)",
+    "line_addition(CE,EB)",
+    "line_addition(AF,FB)",
+    "tangent_of_circle_property_length_equal(AD,AF,O)",
+    "tangent_of_circle_property_length_equal(CD,CE,O)",
+    "tangent_of_circle_property_length_equal(BE,BF,O)",
+    "isosceles_triangle_judgment_line_equal(ACB)",
+    "isosceles_triangle_judgment_line_equal(CBA)",
+    "equilateral_triangle_judgment_isosceles_and_isosceles(ACB)",
+    "equilateral_triangle_property_angle(CBA)",
+    "tangent_of_circle_property_perpendicular(CD,O,O)",
+    "sine_theorem(BDC)",
+    "triangle_perimeter_formula(ACB)"
+  ]
 }

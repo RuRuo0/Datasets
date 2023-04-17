@@ -1,0 +1,30 @@
+{
+  "problem_id": 4652,
+  "annotation": "JiaZou_2023-04-16",
+  "source": "GeoQA-90",
+  "problem_level": 1,
+  "problem_text_cn": "如图,已知AB∥CD,EA是∠CEB的平分线,若∠BED=40°,则∠A的度数是()",
+  "problem_text_en": "As shown in the figure, it is known that AB ∥ CD, EA is the bisector of ∠CEB, if ∠BED = N_0, then the degree of ∠A is ()",
+  "problem_img": "4652.png",
+  "construction_cdl": [
+    "Shape(CE,EA)",
+    "Shape(AE,EB,BA)",
+    "Shape(BE,ED)",
+    "Collinear(CED)"
+  ],
+  "text_cdl": [],
+  "image_cdl": [
+    "ParallelBetweenLine(AB,CD)",
+    "IsBisectorOfAngle(EA,CEB)",
+    "Equal(MeasureOfAngle(BED),40)"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(BAE))",
+  "problem_answer": "70",
+  "theorem_seqs": [
+    "adjacent_complementary_angle(CEB,BED)",
+    "angle_addition(CEA,AEB)",
+    "parallel_property_collinear_extend(DC,BA,E)",
+    "parallel_property_alternate_interior_angle(AB,CE)"
+  ],
+  "raw_answer": "试题分析:根据邻补角性质可得∠BEC=180°40°=140°,然后算出∠AEC的度数,再根据两直线平行,内错角相等可得答案:∴∠BED=40°,∴∠BEC=180°-40°=140°.∵EA是∠CEB的平分线,∴∠AEC=70°∵AB//CD,∴∠A=∠AEC=70°.故选C."
+}

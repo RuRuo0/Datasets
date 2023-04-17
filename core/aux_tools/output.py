@@ -11,7 +11,8 @@ def simple_show(problem):
     for t in problem.time_consuming:
         time_sum += t
 
-    printed = "{}\t{}\t".format(problem.problem_CDL["id"], str(problem.goal["answer"]))
+    printed = "{}\t{}\t{}\t".format(
+        problem.problem_CDL["id"], problem.problem_CDL["annotation"], str(problem.goal["answer"]))
     if problem.goal["solved"]:
         printed += "\033[32m1\033[0m\t"
     else:
@@ -60,7 +61,31 @@ def show(problem):
     print("\033[33mRelations:\033[0m")
     predicates = list(problem.predicate_GDL["Construction"])
     predicates += list(problem.predicate_GDL["BasicEntity"])
-    predicates += list(problem.predicate_GDL["Entity"])
+    for predicate in predicates:
+        condition = problem.conditions[predicate]
+        ids = list(condition.get_item_by_id)
+        if len(ids) > 0:
+            print(predicate + ":")
+            if len(ids) > 20:
+                ids = ids[0:10] + ["..."] + ids[len(ids) - 10:]
+            for _id in ids:
+                if isinstance(_id, str):
+                    print(_id)
+                    continue
+                items = ",".join(condition.get_item_by_id[_id])
+                if len(items) > 35:
+                    items = items[0:35] + "..."
+                if len(condition.premises[_id]) <= 3:
+                    premises = "(" + ",".join([str(i) for i in condition.premises[_id]]) + ")"
+                else:
+                    premises = "(" + ",".join([str(i) for i in condition.premises[_id][0:3]]) + ",...)"
+                theorem = condition.theorems[_id]
+                if _id not in used_id:
+                    print("{0:^6}{1:^50}{2:^25}{3:^6}".format(_id, items, premises, theorem))
+                else:
+                    print("\033[35m{0:^6}{1:^50}{2:^25}{3:^6}\033[0m".format(_id, items, premises, theorem))
+
+    predicates = list(problem.predicate_GDL["Entity"])
     predicates += list(problem.predicate_GDL["Relation"])
     for predicate in predicates:
         condition = problem.conditions[predicate]
@@ -161,6 +186,7 @@ def save_solution_tree(problem, path):
         else:
             group[(premise, theorem)].append(_id)
 
+    used_id, _ = get_used_theorem(problem)  # just keep useful solution msg
     if problem.goal["solved"] and problem.goal["type"] in ["value", "equal"]:  # if target solved, add target
         eq = problem.goal["item"] - problem.goal["answer"]
         if eq not in problem.conditions["Equation"].get_id_by_item:  # target not in condition set
@@ -168,11 +194,42 @@ def save_solution_tree(problem, path):
             _id = len(cdl)
             cdl[_id] = target_equation
             group[(problem.goal["premise"], problem.goal["theorem"])] = [_id]
+            used_id.append(_id)
+        else:
+            used_id.append(problem.conditions["Equation"].get_id_by_item[eq])
+        used_id += list(problem.goal["premise"])
+
+    remove_list = []
+    for key in group:
+        premise = key[0]
+        not_used_in_premise = True
+        l = 0
+        while not_used_in_premise and l < len(premise):
+            if premise[l] in used_id:
+                not_used_in_premise = False
+                break
+            l += 1
+
+        conclusion = group[key]
+        not_used_in_conclusion = True
+        l = 0
+        while not_used_in_conclusion and l < len(conclusion):
+            if conclusion[l] in used_id:
+                not_used_in_conclusion = False
+                break
+            l += 1
+
+        if not_used_in_premise or not_used_in_conclusion:
+            remove_list.append(key)
+
+    for key in remove_list:
+        group.pop(key)
 
     count = 0
     solution_tree = {}
     for key in group:  # generate solution tree
         premise, theorem = key
+        conclusion = group[key]
 
         theorem_node = theorem + "_{}".format(count)  # theorem name in hyper
         t_nodes.append(theorem_node)
@@ -180,12 +237,16 @@ def save_solution_tree(problem, path):
 
         start_nodes = []
         for _id in premise:
+            if _id not in used_id:
+                continue
             _add_node(st_dot, nodes, cdl[_id])  # add node to graph
             start_nodes.append(cdl[_id])  # add to json output
             _add_edge(st_dot, nodes, cdl[_id], theorem_node, edges)  # add edge to graph
 
         end_nodes = []
-        for _id in group[key]:
+        for _id in conclusion:
+            if _id not in used_id:
+                continue
             _add_node(st_dot, nodes, cdl[_id])  # add node to graph
             end_nodes.append(cdl[_id])  # add to json output
             _add_edge(st_dot, nodes, theorem_node, cdl[_id], edges)  # add edge to graph
@@ -209,16 +270,63 @@ def save_solution_tree(problem, path):
     nodes = []  # list of theorem.
     dag = {}
 
-    for s_node in edges:
-        if s_node in t_nodes:  # s_node is theorem node
-            dag[s_node] = []
-            _add_node(dag_dot, nodes, s_node)
-            for m_node in edges[s_node]:  # middle condition
-                if m_node in edges:  # theorem
-                    for e_node in edges[m_node]:
-                        _add_node(dag_dot, nodes, e_node)
-                        _add_edge(dag_dot, nodes, s_node, e_node)
-                        dag[s_node].append(e_node)
+    for s_node in edges:  # select theorem nodes
+        if s_node not in t_nodes:
+            continue
+        dag[s_node] = []
+        for m_node in edges[s_node]:  # middle condition
+            if m_node not in edges:
+                continue
+            for e_node in edges[m_node]:
+                dag[s_node].append(e_node)
+
+    update = True
+    while update:  # remove extended and solve_eq nodes
+        update = False
+        for head in dag:
+            for tail in dag[head]:
+                if not (tail.startswith("extended") or tail.startswith("solve_eq")):
+                    continue
+                dag[head].pop(dag[head].index(tail))
+                if tail not in dag:
+                    continue
+                for new_tail in dag[tail]:
+                    dag[head].append(new_tail)
+                    update = True
+
+    cleaned = {}
+    for key in dag:
+        if key.startswith("extended") or key.startswith("solve_eq"):
+            continue
+        new_key = key.split(")")[0] + ")"
+        cleaned[new_key] = []
+        for tail in dag[key]:
+            cleaned[new_key].append(tail.split(")")[0] + ")")
+    dag = cleaned
+
+    root_nodes = []
+    child_nodes = []
+    real_root_nodes = []
+    real_child_nodes = []
+    for head in dag:  # build DAG graph
+        _add_node(dag_dot, nodes, head)
+        root_nodes.append(head)
+        if len(dag[head]) == 0:
+            real_child_nodes.append(head)
+            continue
+        for tail in set(dag[head]):
+            _add_node(dag_dot, nodes, tail)
+            _add_edge(dag_dot, nodes, head, tail)
+            child_nodes.append(tail)
+
+    _add_node(dag_dot, nodes, "START")   # add START node
+    for root in root_nodes:
+        if root in child_nodes:
+            continue
+        real_root_nodes.append(root)
+        _add_node(dag_dot, nodes, root)
+        _add_edge(dag_dot, nodes, "START", root)
+    dag["START"] = real_root_nodes
 
     save_json(dag, path + "{}_dag.json".format(problem.problem_CDL["id"]))  # save solution tree
     dag_dot.render(directory=path, view=False, format="png")  # save hyper graph
@@ -286,5 +394,8 @@ def get_used_theorem(problem):
         for t in problem.theorems_applied:
             if t in used_theorem and t not in selected_theorem:
                 selected_theorem.append(t)
+
+        if problem.goal["theorem"] not in ["solve_eq", "extended", "prerequisite"]:
+            selected_theorem.append(problem.goal["theorem"])
 
     return used_id, selected_theorem

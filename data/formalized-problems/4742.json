@@ -1,0 +1,39 @@
+{
+  "problem_id": 4742,
+  "annotation": "NaZhu_2023-04-16",
+  "source": "GeoQA-201",
+  "problem_level": 1,
+  "problem_text_cn": "如图,已知AB=AC=AD,∠CBD=2∠BDC,∠BAC=44°,则∠CAD的度数为()",
+  "problem_text_en": "As shown in the figure, it is known that AB = AC = AD, ∠CBD = N_0 ∠BDC, ∠BAC = N_1, then the degree of ∠CAD is () ",
+  "problem_img": "4742.png",
+  "construction_cdl": [
+    "Shape(ADB,BA,AD)",
+    "Shape(ABC,CB)",
+    "Shape(ACD,DC)",
+    "Shape(AB,BE,EA)",
+    "Shape(AE,ED,DA)",
+    "Shape(EB,BC,CE)",
+    "Shape(EC,CD,DE)",
+    "Collinear(AEC)",
+    "Collinear(BED)",
+    "Cocircular(A,BCD)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),LengthOfLine(AC))",
+    "Equal(LengthOfLine(AC),LengthOfLine(AD))",
+    "Equal(MeasureOfAngle(EBC),Mul(MeasureOfAngle(CDE),2))",
+    "Equal(MeasureOfAngle(EAB),44)"
+  ],
+  "image_cdl": [
+    "IsCentreOfCircle(A,A)"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(DAE))",
+  "problem_answer": "88",
+  "theorem_seqs": [
+    "arc_property_circumference_angle_external(ABC,D)",
+    "arc_property_circumference_angle_external(ACD,B)",
+    "arc_property_center_angle(ABC,A)",
+    "arc_property_center_angle(ACD,A)"
+  ],
+  "raw_answer": "试题分析:本题考查了等腰三角形的性质,主要利用了等腰三角形两底角相等,熟记性质是解题的关键.根据等腰三角形两底角相等求出∠ABC=∠ACB,再求出∠CBD,然后根据∠ABD=∠ABC-∠CBD计算即可得解.如图,∵AB=AC=AD,∴点B、C、D在以点A为圆心,以AB的长为半径的圆上;∵∠CBD=2∠BDC,∠CAD=2∠CBD,∠BAC=2∠BDC,∴∠CAD=2∠BAC,而∠BAC=44°,∴∠CAD=88°"
+}

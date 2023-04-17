@@ -6,6 +6,7 @@ from core.aux_tools.parser import FLParser
 import os
 path_preset = "data/preset/"
 path_formalized = "data/formalized-problems/"
+path_test = "data/test-problems/"
 path_solved = "data/solved/"
 path_solved_problems = "data/solved/problems/"
 
@@ -47,50 +48,59 @@ def run(save_GDL=False, save_CDL=False, auto=False):
     if auto:    # auto run all problems in formalized-problems
         warnings.filterwarnings("ignore")
         unsolved = []
-        print("pid\tcorrect_answer\tsolved\tsolved_answer\tspend(s)")
+        print("pid\tannotation\tcorrect_answer\tsolved\tsolved_answer\tspend(s)")
         for filename in os.listdir(path_formalized):
-            pid = int(filename.split(".")[0])
             problem_CDL = load_json(path_formalized + filename)
+            if int(filename.split(".")[0]) >= 30000:
+                continue
 
             if "notes" in problem_CDL:    # problems can't solve
-                unsolved.append("{}\t{}".format(problem_CDL["problem_id"], problem_CDL["notes"]))
+                unsolved.append("{}\t{}\t{}".format(
+                    problem_CDL["problem_id"], problem_CDL["annotation"], problem_CDL["notes"]))
                 continue
 
             try:    # try solve
                 solver.load_problem(problem_CDL)
 
                 for theorem_name, theorem_para in FLParser.parse_theorem_seqs(problem_CDL["theorem_seqs"]):
+
                     solver.apply_theorem(theorem_name, theorem_para)
 
                 solver.check_goal()    # check goal after applied theorem seqs
 
-                # if solver.problem.goal["solved"]:   # clean theorem
-                #     problem_CDL = load_json(path_formalized + filename)
-                #     _id, seqs = get_used_theorem(solver.problem)
-                #     problem_CDL["theorem_seqs"] = seqs
-                #     save_json(problem_CDL, path_formalized + filename)
+                if solver.problem.goal["solved"]:   # clean theorem
+                    problem_CDL = load_json(path_formalized + filename)
+                    _id, seqs = get_used_theorem(solver.problem)
+                    problem_CDL["theorem_seqs"] = seqs
+                    save_json(problem_CDL, path_formalized + filename)
 
                 simple_show(solver.problem)   # show solved msg
 
                 if save_CDL:  # save solved msg
                     save_json(
                         solver.problem.problem_CDL,
-                        path_solved_problems + "{}_parsed.json".format(pid)
+                        path_solved_problems + "{}_parsed.json".format(filename.split(".")[0])
                     )
                     save_step_msg(solver.problem, path_solved_problems)
                     save_solution_tree(solver.problem, path_solved_problems)
 
             except Exception as e:    # exception
                 msg = "Raise Exception {} in problem {}.".format(e, filename.split(".")[0])
-                unsolved.append("{}\t{}".format(problem_CDL["problem_id"], msg))
+                unsolved.append("{}\t{}\t{}".format(problem_CDL["problem_id"], problem_CDL["annotation"], msg))
 
+        print("pid\tannotation\tnotes")
         for n in unsolved:   # show unsolved
             print(n)
 
     else:    # interactive mode, run one problem according input pid
         while True:
-            pid = int(input("pid:"))
-            problem_CDL = load_json(path_formalized + "{}.json".format(pid))
+            pid = input("pid:")
+            filename = "{}.json".format(pid)
+            if filename not in os.listdir(path_formalized):
+                print("No file \'{}\' in \'{}\'.".format(filename, path_formalized))
+                continue
+
+            problem_CDL = load_json(path_formalized + filename)
             solver.load_problem(problem_CDL)
 
             for theorem_name, theorem_para in FLParser.parse_theorem_seqs(problem_CDL["theorem_seqs"]):
@@ -110,5 +120,4 @@ def run(save_GDL=False, save_CDL=False, auto=False):
 
 
 if __name__ == '__main__':
-    run(save_GDL=False, save_CDL=False, auto=False)
-    # backward_run()
+    run()

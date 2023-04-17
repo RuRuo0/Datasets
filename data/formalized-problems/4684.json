@@ -1,0 +1,37 @@
+{
+  "problem_id": 4684,
+  "annotation": "JiaZou_2023-04-16",
+  "source": "GeoQA-128",
+  "problem_level": 1,
+  "problem_text_cn": "如图,BD为⊙O的直径,∠A=30°,则∠CBD的度数为()",
+  "problem_text_en": "As shown in the figure, BD is the diameter of ⊙O, ∠A = N_0, then the degree of ∠CBD is ()",
+  "problem_img": "4684.png",
+  "construction_cdl": [
+    "Shape(AB,BO,OE,EA)",
+    "Shape(EO,OB,BC,CE)",
+    "Shape(DE,EC,CD)",
+    "Shape(BA,OAB)",
+    "Shape(CB,OBC)",
+    "Shape(DC,OCD)",
+    "Shape(AE,ED,ODA)",
+    "Collinear(BOED)",
+    "Collinear(CEA)",
+    "Cocircular(O,ABCD)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(EAB),30)",
+    "Equal(LengthOfLine(BD),DiameterOfCircle(O))"
+  ],
+  "image_cdl": [
+    "IsCentreOfCircle(O,O)"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(DBC))",
+  "problem_answer": "60",
+  "theorem_seqs": [
+    "arc_property_circumference_angle_external(OBC,A)",
+    "arc_property_circumference_angle_external(OBC,D)",
+    "circle_property_diameter_to_circumference_angle(C,OCB,D)",
+    "triangle_property_angle_sum(BCD)"
+  ],
+  "raw_answer": "试题分析:∵BD为⊙O的直径,∴∠BCD=90^{°},∴∠D=∠A=30°,∴∠CBD=90^{°}-∠D=60^{°}.故选C."
+}

@@ -31,22 +31,12 @@ class FLParser:
     def parse_predicate(predicate_GDL):
         """parse predicate_GDL to logic form."""
         parsed_GDL = {  # preset Construction
-            "Construction": ["Shape", "Collinear", "Cocircular"],
-            "BasicEntity": {},
+            "Construction": predicate_GDL["Preset"]["Construction"],
+            "BasicEntity": predicate_GDL["Preset"]["BasicEntity"],
             "Entity": {},
             "Relation": {},
             "Attribution": {}
         }
-        basic_entities = predicate_GDL["BasicEntity"]  # parse entity
-        for item in basic_entities:
-            name, para, para_len = FLParser._parse_one_predicate(item, True)
-            parsed_GDL["BasicEntity"][name] = {
-                "vars": para,
-                "para_len": para_len,
-                "multi": FLParser._parse_multi(basic_entities[item]["multi"]),
-                "extend": FLParser._parse_extend(basic_entities[item]["extend"])
-            }
-
         entities = predicate_GDL["Entity"]  # parse entity
         for item in entities:
             name, para, para_len = FLParser._parse_one_predicate(item, True)
@@ -291,6 +281,7 @@ class FLParser:
         """parse problem_CDL to logic form."""
         parsed_CDL = {
             "id": problem_CDL["problem_id"],
+            "annotation": problem_CDL["annotation"],
             "cdl": {
                 "construction_cdl": problem_CDL["construction_cdl"],
                 "text_cdl": problem_CDL["text_cdl"],
@@ -390,7 +381,7 @@ class FLParser:
             j = j + 1
 
         if len(stack) > 1:
-            e_msg = "Wrong format: {}. May be missing ')'.".format(s)
+            e_msg = "Sym stack not empty. Miss ')' in {}?.".format(s)
             raise Exception(e_msg)
 
         return FLParser._listing(stack.pop(), make_vars)
@@ -590,13 +581,13 @@ class EqParser:
                     elif operator_unit == "~":  # 只有unit为"~"，才能到达这个判断，表示表达式处理完成
                         break
             else:  # symbol or number
-                if unit == "π":    # pi
+                if unit == "π":  # pi
                     unit = pi
-                elif unit.isalpha():   # free sym
+                elif unit.isalpha():  # free sym
                     unit = problem.get_sym_of_attr("Free", (unit,))
-                elif "." in unit:   # float
+                elif "." in unit:  # float
                     unit = Float(unit)
-                else:    # int
+                else:  # int
                     unit = Integer(unit)
                 expr_stack.append(unit)
                 i = i + 1
@@ -640,13 +631,9 @@ class InverseParser:
             i = 0
             while i < len(get_id_by_step[step]):
                 predicate, item = get_item_by_id[get_id_by_step[step][i]]
-                if predicate in ["Shape", "Collinear", "Cocircular"]:  # skip construction
-                    if predicate == "Shape":
-                        i += len(item)
-                    elif predicate == "Collinear":
-                        i += 2
-                    elif predicate == "Cocircular":
-                        i += len(item) - 1
+                if predicate in problem.predicate_GDL["Construction"] or \
+                        predicate in problem.predicate_GDL["BasicEntity"]:  # skip preset
+                    i += 1
                     continue
 
                 result = InverseParser.inverse_parse_one(predicate, item, problem)
@@ -656,9 +643,7 @@ class InverseParser:
                 else:
                     inverse_parsed_cdl[step].append(result)
 
-                if predicate in problem.predicate_GDL["BasicEntity"]:  # remove duplicate representation
-                    i += len(problem.predicate_GDL["BasicEntity"][predicate]["multi"]) + 1
-                elif predicate in problem.predicate_GDL["Entity"]:
+                if predicate in problem.predicate_GDL["Entity"]:  # remove duplicate representation
                     i += len(problem.predicate_GDL["Entity"][predicate]["multi"]) + 1
                 elif predicate in problem.predicate_GDL["Relation"]:
                     i += len(problem.predicate_GDL["Relation"][predicate]["multi"]) + 1
@@ -675,33 +660,19 @@ class InverseParser:
         """
         if predicate == "Equation":
             return InverseParser._inverse_parse_equation(item, problem.conditions["Equation"])
-        elif predicate in problem.predicate_GDL["Construction"]:
-            return InverseParser.inverse_parse_construction(predicate, item)
-        elif predicate in problem.predicate_GDL["BasicEntity"] or \
-                predicate in problem.predicate_GDL["Entity"]:
+        elif predicate in problem.predicate_GDL["Entity"]:
             return InverseParser.inverse_parse_logic(predicate, item, [1])
-        else:
+        elif predicate in problem.predicate_GDL["Relation"]:
             para_len = problem.predicate_GDL["Relation"][predicate]["para_len"]
             return InverseParser.inverse_parse_logic(predicate, item, para_len)
-
-    @staticmethod
-    def inverse_parse_construction(predicate, item):
-        """
-        Inverse parse conditions of logic form to CDL.
-        >> inverse_parse_logic(Parallel, ('A', 'B', 'C', 'D'), [2, 2])
-        'Parallel(AB,CD)'
-        """
-        if predicate == "Shape":
-            return predicate + "(" + ",".join(item) + ")"
-        elif predicate == "Collinear":
-            return predicate + "(" + "".join(item) + ")"
         else:
-            return predicate + "(" + item[0] + "," + "".join(item[1:]) + ")"
+            return InverseParser._inverse_parse_preset(predicate, item)
 
     @staticmethod
     def inverse_parse_logic(predicate, item, para_len):
         """
         Inverse parse conditions of logic form to CDL.
+        Note that this function also used by Solver for theorem inverse parse.
         >> inverse_parse_logic(Parallel, ('A', 'B', 'C', 'D'), [2, 2])
         'Parallel(AB,CD)'
         """
@@ -735,3 +706,21 @@ class InverseParser:
                 return attr + "(" + "".join(items[0]) + ")"
 
         return "Equation" + "(" + str(item).replace(" ", "") + ")"
+
+    @staticmethod
+    def _inverse_parse_preset(predicate, item):
+        """
+        Inverse parse conditions of logic form to CDL.
+        Note that this function only inverse parse preset predicate.
+        >> inverse_parse_logic(Line, ('A', 'B'))
+        'Line(AB)'
+        """
+        if predicate == "Cocircular":
+            if len(item) == 1:
+                return "Cocircular({})".format(item[0])
+            else:
+                return "Cocircular({},{})".format(item[0], item[1:])
+        elif predicate == "Shape":
+            return "Shape({})".format(",".join(item))
+        else:
+            return "{}({})".format(predicate, "".join(item))

@@ -1,16 +1,18 @@
 {
   "problem_id": 1868,
-  "annotation": "nazhu_2023-03-08",
+  "annotation": "NaZhu_2023-03-12",
   "source": "Geometry3k-284",
   "problem_level": 1,
   "problem_text_cn": "",
   "problem_text_en": "Find y.",
   "problem_img": "1868.png",
   "construction_cdl": [
-    "Polygon(RQPO)",
-    "Collinear(CAYB)"
+    "Shape(RQ,QP,PO,OR)",
+    "Shape(AY,YB,BC,CA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "SimilarBetweenQuadrilateral(RQPO,BCAY)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(QP),y)",
     "Equal(LengthOfLine(PO),x)",
@@ -21,6 +23,8 @@
   ],
   "goal_cdl": "Value(y)",
   "problem_answer": "6",
-  "theorem_seqs": [],
-  "notes": "该题目需要用到四边形相似定理"
+  "theorem_seqs": [
+    "similar_quadrilateral_property_line_ratio(QPOR,CAYB)",
+    "similar_quadrilateral_property_line_ratio(ORQP,YBCA)"
+  ]
 }

@@ -716,7 +716,7 @@ class Problem:
         :param sym: <symbol>
         :param value: <float>
         :param premise: tuple of <int>, premise of getting value.
-        :param theorem: <str>, theorem of getting value. such as 'solved_eq'.
+        :param theorem: <str>, theorem of getting value. such as 'solve_eq'.
         """
 
         if self.conditions["Equation"].value_of_sym[sym] is None:

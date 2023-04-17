@@ -1886,7 +1886,7 @@
 </div>
 
     premise: Cocircular(O,A)&Line(PA)&IsCentreOfCircle(P,O)
-    conclusion: Equal(LengthOfLine(OA),RadiusOfCircle(O))
+    conclusion: Equal(LengthOfLine(PA),RadiusOfCircle(O))
 **Notes**:  
 1.圆的所有半径长度相等  
 

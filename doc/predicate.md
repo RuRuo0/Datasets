@@ -161,57 +161,20 @@ Arc声明一段弧，由3个点组成，第1个点是弧所在的圆，其余2�
     Angle(ABC),Angle(BCA),Angle(CAB)
     Angle(AOC),Angle(COB),Angle(BOD),Angle(DOA)
 
-### Triangle(ABC)
-三角形由3个点构成，按照逆时针的方向列出所有的点。依据旋转不变原则，一个三角形有3种表示方式。  
+### Polygon(*)
+多边形由若干个直线构成，按照逆时针的方向列出所有的点。依据旋转不变原则，一个n边形有n种表示方式。  
 <div>
-    <img src="gdl-pic/P008.png"  width="15%">
+    <img src="gdl-pic/P008.png"  width="45%">
 </div>
 
-    Triangle(ABC)
-    Triangle(BCA)
-    Triangle(CAB)  
-
-
-### Quadrilateral(ABCD)
-与三角形类似。  
-<div>
-    <img src="gdl-pic/P009.png"  width="15%">
-</div>
-
-    Quadrilateral(ABCD)
-    Quadrilateral(BCDA)
-    Quadrilateral(CDAB)
-    Quadrilateral(DABC)
-
-### Pentagon(ABCDE)
-与三角形类似。  
-<div>
-    <img src="gdl-pic/P010.png"  width="15%">
-</div>
-
-    Pentagon(ABCDE)
-    Pentagon(BCDEA)
-    Pentagon(CDEAB)
-    Pentagon(DEABC)
-    Pentagon(EABCD)
-
-### Hexagon(ABCDEF)
-与三角形类似。  
-<div>
-    <img src="gdl-pic/P011.png"  width="15%">
-</div>
-
-    Hexagon(ABCDEF)
-    Hexagon(BCDEFA)
-    Hexagon(CDEFAB)
-    Hexagon(DEFABC)
-    Hexagon(EFABCD)
-    Hexagon(FABCDE)
+    Polygon(ABC),Polygon(BCA),Polygon(CAB)
+    Polygon(ABCD),Polygon(BCDA),Polygon(CDAB),Polygon(DABC)
+    Polygon(ABCDE),Polygon(BCDEA),Polygon(CDEAB),Polygon(DEABC),Polygon(EABCD)
 
 ### Circle(O)
 Circle用于声明一个圆，O表示圆心。  
 <div>
-    <img src="gdl-pic/P012.png"  width="45%">
+    <img src="gdl-pic/P009.png"  width="45%">
 </div>
 
 图1-3中圆的声明： 
@@ -220,24 +183,14 @@ Circle用于声明一个圆，O表示圆心。
     Cirlce(B),Cirlce(A)
     Cirlce(O)
 
-### Sector(OAB)
-Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点是圆心，其余两个点是组成扇形的弧。扇形的声明与弧的声明是一致的。  
-<div>
-    <img src="gdl-pic/P013.png"  width="30%">
-</div>
-
-图1和图2的扇形可声明为：  
-
-    Sector(OCD),Sector(ODC)
-    Sector(OAB),Sector(OBC),Sector(OCD),Sector(ODA)
 
 ## C、实体
 ### RightTriangle(ABC)
 <div>
-    <img src="gdl-pic/P014.png" width="15%">
+    <img src="gdl-pic/P010.png" width="15%">
 </div>
 
-    ee_check: Triangle(ABC)
+    ee_check: Polygon(ABC)
     multi: 
     extend: PerpendicularBetweenLine(AB,CB)
 **Notes**:  
@@ -250,7 +203,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P015.png" width="15%">
 </div>
 
-    ee_check: Triangle(ABC)
+    ee_check: Polygon(ABC)
     multi: 
     extend: Equal(LengthOfLine(AB),LengthOfLine(AC))
 **Notes**:  
@@ -263,7 +216,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P016.png" width="15%">
 </div>
 
-    ee_check: Triangle(ABC)
+    ee_check: Polygon(ABC)
     multi: 
     extend: RightTriangle(CAB)
             IsoscelesTriangle(ABC)
@@ -275,7 +228,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P017.png" width="15%">
 </div>
 
-    ee_check: Triangle(ABC)
+    ee_check: Polygon(ABC)
     multi: BCA
            CAB
     extend: IsoscelesTriangle(ABC)
@@ -291,7 +244,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P018.png" width="15%">
 </div>
 
-    ee_check: Quadrilateral(ABCD)
+    ee_check: Polygon(ABCD)
     multi: CDAB
     extend: Equal(LengthOfLine(AB),LengthOfLine(AD))
             Equal(LengthOfLine(CB),LengthOfLine(CD))
@@ -306,7 +259,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P019.png" width="15%">
 </div>
 
-    ee_check: Quadrilateral(ABCD)
+    ee_check: Polygon(ABCD)
     multi: BCDA
            CDAB
            DABC
@@ -322,7 +275,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P020.png" width="15%">
 </div>
 
-    ee_check: Quadrilateral(ABCD)
+    ee_check: Polygon(ABCD)
     multi: BCDA
            CDAB
            DABC
@@ -339,7 +292,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P021.png" width="15%">
 </div>
 
-    ee_check: Quadrilateral(ABCD)
+    ee_check: Polygon(ABCD)
     multi: BCDA
            CDAB
            DABC
@@ -358,7 +311,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P022.png" width="15%">
 </div>
 
-    ee_check: Quadrilateral(ABCD)
+    ee_check: Polygon(ABCD)
     multi: BCDA
            CDAB
            DABC
@@ -374,7 +327,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P023.png" width="15%">
 </div>
 
-    ee_check: Quadrilateral(ABCD)
+    ee_check: Polygon(ABCD)
     multi: CDAB
     extend: ParallelBetweenLine(AD,BC)
 **Notes**:  
@@ -388,7 +341,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P024.png" width="15%">
 </div>
 
-    ee_check: Quadrilateral(ABCD)
+    ee_check: Polygon(ABCD)
     multi: CDAB
     extend: Trapezoid(ABCD)
             Equal(LengthOfLine(AB),LengthOfLine(CD))
@@ -402,7 +355,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P025.png" width="15%">
 </div>
 
-    ee_check: Quadrilateral(ABCD)
+    ee_check: Polygon(ABCD)
     multi: 
     extend: Trapezoid(ABCD)
             PerpendicularBetweenLine(DA,BA)
@@ -411,86 +364,6 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 1.一侧角是直角的梯形称为直角梯形  
 2.按照逆时针原则标注点的顺序  
 3.左侧的两个角为直角，如RightTrapezoid(ABCD)表示角A和角B为直角  
-
-### EquilateralPentagon(ABCDE)
-<div>
-    <img src="gdl-pic/P026.png" width="15%">
-</div>
-
-    ee_check: Pentagon(ABCDE)
-    multi: BCDEA
-           CDEAB
-           DEABC
-           EABCD
-    extend: Equal(LengthOfLine(AB),LengthOfLine(BC))
-            Equal(LengthOfLine(BC),LengthOfLine(CD))
-            Equal(LengthOfLine(CD),LengthOfLine(DE))
-            Equal(LengthOfLine(DE),LengthOfLine(EA))
-**Notes**:  
-1.五条边相等的五边形称为等边五边形  
-2.按照逆时针原则标注点的顺序  
-3.根据旋转不变性原则，1个等边五边形有5种表示方法，选其一即可  
-
-### RegularPentagon(ABCDE)
-<div>
-    <img src="gdl-pic/P027.png" width="15%">
-</div>
-
-    ee_check: Pentagon(ABCDE)
-    multi: BCDEA
-           CDEAB
-           DEABC
-           EABCD
-    extend: EquilateralPentagon(ABCDE)
-            Equal(MeasureOfAngle(ABC),108)
-            Equal(MeasureOfAngle(BCD),108)
-            Equal(MeasureOfAngle(CDE),108)
-            Equal(MeasureOfAngle(DEA),108)
-            Equal(MeasureOfAngle(EAB),108)
-**Notes**:  
-1.五条边相等且五个角相等的五边形称为正五边形  
-2.按照逆时针原则标注点的顺序  
-3.根据旋转不变性原则，1个正五边形有5种表示方法，选其一即可  
-
-### EquilateralHexagon(ABCDEF)
-<div>
-    <img src="gdl-pic/P028.png" width="15%">
-</div>
-
-    ee_check: Hexagon(ABCDEF)
-    multi: BCDEFA
-           CDEFAB
-           DEFABC
-           EFABCD
-           FABCDE
-    extend: Equal(LengthOfLine(AB),LengthOfLine(BC))
-            Equal(LengthOfLine(BC),LengthOfLine(CD))
-            Equal(LengthOfLine(CD),LengthOfLine(DE))
-            Equal(LengthOfLine(DE),LengthOfLine(EF))
-            Equal(LengthOfLine(EF),LengthOfLine(FA))
-**Notes**:  
-1.六条边相等的六边形称为等边六边形  
-
-### RegularHexagon(ABCDEF)
-<div>
-    <img src="gdl-pic/P029.png" width="15%">
-</div>
-
-    ee_check: Hexagon(ABCDEF)
-    multi: BCDEFA
-           CDEFAB
-           DEFABC
-           EFABCD
-           FABCDE
-    extend: EquilateralHexagon(ABCDEF)
-            Equal(MeasureOfAngle(ABC),120)
-            Equal(MeasureOfAngle(BCD),120)
-            Equal(MeasureOfAngle(CDE),120)
-            Equal(MeasureOfAngle(DEF),120)
-            Equal(MeasureOfAngle(EFA),120)
-            Equal(MeasureOfAngle(FAB),120)
-**Notes**:  
-1.六条边相等且六个角相等的六边形称为正六边形  
 
 ## D、实体关系
 ### IsMidpointOfLine(M,AB)
@@ -575,7 +448,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 </div>
 
     ee_check: Line(AD)
-              Triangle(ABC)
+              Polygon(ABC)
               Collinear(BDC)
     fv_check: AD,ABC
     multi: 
@@ -590,7 +463,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 </div>
 
     ee_check: Line(AD)
-              Triangle(ABC)
+              Polygon(ABC)
     fv_check: AD,ABC
     multi: 
     extend: Equal(LengthOfLine(AD),HeightOfTriangle(ABC))
@@ -607,7 +480,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 </div>
 
     ee_check: Line(DE)
-              Triangle(ABC)
+              Polygon(ABC)
               Collinear(ADB)
               Collinear(AEC)
     fv_check: DE,ABC
@@ -624,7 +497,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 </div>
 
     ee_check: Point(O)
-              Triangle(ABC)
+              Polygon(ABC)
     fv_check: O,ABC
     multi: O,BCA
            O,CAB
@@ -639,7 +512,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 </div>
 
     ee_check: Point(O)
-              Triangle(ABC)
+              Polygon(ABC)
     fv_check: O,ABC
     multi: O,BCA
            O,CAB
@@ -656,7 +529,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 </div>
 
     ee_check: Point(O)
-              Triangle(ABC)
+              Polygon(ABC)
     fv_check: O,ABC
     multi: O,BCA
            O,CAB
@@ -671,7 +544,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 </div>
 
     ee_check: Point(O)
-              Triangle(ABC)
+              Polygon(ABC)
     fv_check: O,ABC
               A,ABC
               B,ABC
@@ -688,8 +561,8 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P042.png"  width="30%">
 </div>
 
-    ee_check: Triangle(ABC)
-              Triangle(DEF)
+    ee_check: Polygon(ABC)
+              Polygon(DEF)
     multi: BCA,EFD
            CAB,FDE
     extend: 
@@ -704,8 +577,8 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P043.png"  width="30%">
 </div>
 
-    ee_check: Triangle(ABC)
-              Triangle(DEF)
+    ee_check: Polygon(ABC)
+              Polygon(DEF)
     multi: BCA,FDE
            CAB,EFD
     extend: 
@@ -720,8 +593,8 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P044.png"  width="30%">
 </div>
 
-    ee_check: Triangle(ABC)
-              Triangle(DEF)
+    ee_check: Polygon(ABC)
+              Polygon(DEF)
     multi: BCA,EFD
            CAB,FDE
     extend: 
@@ -736,8 +609,8 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P045.png"  width="30%">
 </div>
 
-    ee_check: Triangle(ABC)
-              Triangle(DEF)
+    ee_check: Polygon(ABC)
+              Polygon(DEF)
     multi: BCA,FDE
            CAB,EFD
     extend: 
@@ -753,7 +626,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 </div>
 
     ee_check: Line(EF)
-              Quadrilateral(ABCD)
+              Polygon(ABCD)
     fv_check: EF,ABCD
               AF,ABCD
               DF,ABCD
@@ -777,7 +650,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 </div>
 
     ee_check: Line(EF)
-              Quadrilateral(ABCD)
+              Polygon(ABCD)
               Collinear(AEB)
               Collinear(DFC)
     fv_check: FE,CDAB
@@ -795,7 +668,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 </div>
 
     ee_check: Point(O)
-              Quadrilateral(ABCD)
+              Polygon(ABCD)
     fv_check: O,ABCD
     multi: O,BCDA
            O,CDAB
@@ -811,7 +684,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
 </div>
 
     ee_check: Point(O)
-              Quadrilateral(ABCD)
+              Polygon(ABCD)
     fv_check: O,ABCD
     multi: O,BCDA
            O,CDAB
@@ -829,8 +702,8 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P072.png"  width="30%">
 </div>
 
-    ee_check: Quadrilateral(ABCD)
-              Quadrilateral(EFGH)
+    ee_check: Polygon(ABCD)
+              Polygon(EFGH)
     multi: BCDA,FGHE
            CDAB,GHEF
            DABC,HEFG
@@ -844,8 +717,8 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P073.png"  width="30%">
 </div>
 
-    ee_check: Quadrilateral(ABCD)
-              Quadrilateral(EFGH)
+    ee_check: Polygon(ABCD)
+              Polygon(EFGH)
     multi: BCDA,HEFG
            CDAB,GHEF
            DABC,FGHE
@@ -859,8 +732,8 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P074.png"  width="30%">
 </div>
 
-    ee_check: Quadrilateral(ABCD)
-              Quadrilateral(EFGH)
+    ee_check: Polygon(ABCD)
+              Polygon(EFGH)
     multi: BCDA,FGHE
            CDAB,GHEF
            DABC,HEFG
@@ -874,8 +747,8 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P075.png"  width="30%">
 </div>
 
-    ee_check: Quadrilateral(ABCD)
-              Quadrilateral(EFGH)
+    ee_check: Polygon(ABCD)
+              Polygon(EFGH)
     multi: BCDA,HEFG
            CDAB,GHEF
            DABC,FGHE
@@ -968,7 +841,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P055.png"  width="15%">
 </div>
 
-    ee_check: Triangle(ABC)
+    ee_check: Polygon(ABC)
     multi: BCA
            CAB
     sym: pt
@@ -982,7 +855,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P056.png"  width="15%">
 </div>
 
-    ee_check: Triangle(ABC)
+    ee_check: Polygon(ABC)
     multi: BCA
            CAB
     sym: at
@@ -996,7 +869,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P057.png"  width="15%">
 </div>
 
-    ee_check: Triangle(ABC)
+    ee_check: Polygon(ABC)
     multi: 
     sym: ht
 **Notes**:  
@@ -1008,8 +881,8 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P058.png"  width="30%">
 </div>
 
-    ee_check: Triangle(ABC)
-              Triangle(DEF)
+    ee_check: Polygon(ABC)
+              Polygon(DEF)
     multi: BCA,EFD
            CAB,FDE
     sym: rst
@@ -1022,8 +895,8 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P059.png"  width="30%">
 </div>
 
-    ee_check: Triangle(ABC)
-              Triangle(DEF)
+    ee_check: Polygon(ABC)
+              Polygon(DEF)
     multi: BCA,FDE
            CAB,EFD
     sym: rmt
@@ -1036,7 +909,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P060.png"  width="15%">
 </div>
 
-    ee_check: Quadrilateral(ABCD)
+    ee_check: Polygon(ABCD)
     multi: BCDA
            CDAB
            DABC
@@ -1051,7 +924,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P061.png"  width="15%">
 </div>
 
-    ee_check: Quadrilateral(ABCD)
+    ee_check: Polygon(ABCD)
     multi: BCDA
            CDAB
            DABC
@@ -1066,7 +939,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P062.png"  width="15%">
 </div>
 
-    ee_check: Quadrilateral(ABCD)
+    ee_check: Polygon(ABCD)
     multi: 
     sym: hq
 **Notes**:  
@@ -1078,8 +951,8 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P074.png"  width="30%">
 </div>
 
-    ee_check: Quadrilateral(ABCD)
-              Quadrilateral(EFGH)
+    ee_check: Polygon(ABCD)
+              Polygon(EFGH)
     multi: BCDA,FGHE
            CDAB,GHEF
            DABC,HEFG
@@ -1092,8 +965,8 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P075.png"  width="30%">
 </div>
 
-    ee_check: Quadrilateral(ABCD)
-              Quadrilateral(EFGH)
+    ee_check: Polygon(ABCD)
+              Polygon(EFGH)
     multi: BCDA,HEFG
            CDAB,GHEF
            DABC,FGHE
@@ -1191,7 +1064,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P070.png"  width="15%">
 </div>
 
-    ee_check: Sector(OAB)
+    ee_check: Arc(OAB)
     multi: 
     sym: ps
 **Notes**:  
@@ -1203,7 +1076,7 @@ Sector用于声明圆的一部分，即扇形，由3个点组成，第一个点�
     <img src="gdl-pic/P071.png"  width="15%">
 </div>
 
-    ee_check: Sector(OAB)
+    ee_check: Arc(OAB)
     multi: 
     sym: as
 **Notes**:  

@@ -9,25 +9,47 @@ more types of plane geometric problems.
 
 ## Co-work
 
+#### Week 7 (230417): form 2023-04-17 to 2023-04-23.
+
+**Attention:** Annotate problems in directory **Geometry3K-Other** and **GeoQA**.
+
+| Id  | Worker | WorkLoad |                      PID                       | Skip | Submitted |
+|:---:|:------:|:--------:|:----------------------------------------------:|:----:|:---------:|
+|  1  |  贺艺铭   |    60    |      4826-4885 (data/raw-problems/GeoQA)       |  /   |     ×     |
+|  2  |   邹佳   |    60    |      4886-4945 (data/raw-problems/GeoQA)       |  /   |     ×     |
+|  3  |   朱娜   |    60    |      4946-5005 (data/raw-problems/GeoQA)       |  /   |     ×     |
+|  4  |  张效凯   |    60    |      5006-5065 (data/raw-problems/GeoQA)       |  /   |     ×     |
+|  5  |  郭彦钧   |    60    | 3486-3583 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
+|  6  |  黄琦珂   |    60    | 3684-3792 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
+|  7  |  黄一雯   |    50    |                 same as week 6                 |  /   |     ×     |
+|  8  |  金啸笑   |    60    | 3793-3900 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
+|  9  |   李阳   |    60    | 4109-4195 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
+| 10  |  毛晨扬   |    60    | 4196-4289 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
+| 11  |  王茹楠   |    50    |                 same as week 6                 |  /   |     ×     |
+| 12  |  王一凡   |    50    |                 same as week 6                 |  /   |     ×     |
+| 13  |  岳登峰   |    60    | 4290-4380(data/raw-problems/Geometry3K-Other)  |  /   |     ×     |
+| 14  |  朱方震   |    60    |                 same as week 6                 |  /   |     ×     |
+| 15  |   朱哲   |    60    | 4382-4471 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
+
 #### Week 6 (230410): form 2023-04-10 to 2023-04-16.
 
 **Attention:** Annotate problems in directory **Geometry3K-Other** and **GeoQA**.
 
 | Id  | Worker | WorkLoad |                                                                           PID                                                                            | Skip | Submitted |
 |:---:|:------:|:--------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:----:|:---------:|
-|  1  |  贺艺铭   |    60    |                                                           4586-4645 (data/raw-problems/GeoQA)                                                            |  /   |     ×     |
-|  2  |   邹佳   |    60    |                                                           4646-4705 (data/raw-problems/GeoQA)                                                            |  /   |     ×     |
-|  3  |   朱娜   |    60    |                                                           4706-4765 (data/raw-problems/GeoQA)                                                            |  /   |     ×     |
+|  1  |  贺艺铭   |    60    |                                                           4586-4645 (data/raw-problems/GeoQA)                                                            |  /   |     √     |
+|  2  |   邹佳   |    60    |                                                           4646-4705 (data/raw-problems/GeoQA)                                                            |  /   |     √     |
+|  3  |   朱娜   |    60    |                                                           4706-4765 (data/raw-problems/GeoQA)                                                            |  /   |     √     |
 |  4  |  张效凯   |    60    |                                                           4766-4825 (data/raw-problems/GeoQA)                                                            |  /   |     √     |
 |  5  |  郭彦钧   |    60    |                                                      3008-3097 (data/raw-problems/Geometry3K-Other)                                                      |  /   |     ×     |
-|  6  |  黄琦珂   |    60    |                                                      3100-3193 (data/raw-problems/Geometry3K-Other)                                                      |  /   |     ×     |
+|  6  |  黄琦珂   |    60    |                                                      3100-3193 (data/raw-problems/Geometry3K-Other)                                                      |  /   |     √     |
 |  7  |  黄一雯   |    50    | 3254-3270 (data/raw-problems/Geometry3K-Triangle)<br>3795-3855 (data/raw-problems/Geometry3K-Triangle)<br>2682-2711 (data/raw-problems/Geometry3K-Other) |  /   |     /     |
 |  8  |  金啸笑   |    60    |                                                      3196-3290 (data/raw-problems/Geometry3K-Other)                                                      |  /   |     √     |
 |  9  |   李阳   |    60    |                                                      3293-3396 (data/raw-problems/Geometry3K-Other)                                                      |  /   |     √     |
-| 10  |  毛晨扬   |    60    |                                                      3398-3485 (data/raw-problems/Geometry3K-Other)                                                      |  /   |     ×     |
+| 10  |  毛晨扬   |    60    |                                                      3398-3485 (data/raw-problems/Geometry3K-Other)                                                      |  /   |     √     |
 | 11  |  王茹楠   |    50    |                           4079-4169 (data/raw-problems/Geometry3K-Triangle)<br>2810-2844 (data/raw-problems/Geometry3K-Other)                            |  /   |     /     |
 | 12  |  王一凡   |    50    |                           4170-4244 (data/raw-problems/Geometry3K-Triangle)<br>2849-2890 (data/raw-problems/Geometry3K-Other)                            |  /   |     /     |
-| 13  |  岳登峰   |    60    |                                                      3901-3997(data/raw-problems/Geometry3K-Other)                                                       |  /   |     ×     |
+| 13  |  岳登峰   |    60    |                                                      3901-3997(data/raw-problems/Geometry3K-Other)                                                       |  /   |     √     |
 | 14  |  朱方震   |    60    |                                                      3999-4108(data/raw-problems/Geometry3K-Other)                                                       |  /   |     /     |
 | 15  |   朱哲   |    60    |                                                      3584-3681 (data/raw-problems/Geometry3K-Other)                                                      |  /   |     √     |
 

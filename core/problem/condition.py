@@ -82,9 +82,8 @@ class FixedLengthCondition(Condition):
 
 class Equation(Condition):
 
-    def __init__(self, name, attr_GDL):
+    def __init__(self, name):
         super().__init__(name)
-        self.attr_GDL = attr_GDL
         self.sym_of_attr = {}  # Sym of attribute values. Example: {('LengthOfLine', ('A', 'B')): l_ab}
         self.attr_of_sym = {}  # Attr of symbol. Example: {l_ab: ['LengthOfLine', (('A', 'B'))]}
         self.value_of_sym = {}  # Value of symbol. Example: {l_ab: 3.0}

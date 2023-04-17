@@ -7,28 +7,25 @@
   "problem_text_en": "In the figure, Q R \\parallel T S, Q T \\parallel R S, and m \\angle 1 = 131. Find the measure of \\angle 7.",
   "problem_img": "2298.png",
   "construction_cdl": [
-    "Shape()",
-    "Collinear()",
-    "Cocircular()"
+    "Shape(JQ,QR)",
+    "Shape(QR,RH)",
+    "Shape(QT,TS,SR,RQ)",
+    "Shape(ST,TC)",
+    "Shape(BS,ST)",
+    "Collinear(JQTC)",
+    "Collinear(HRSB)"
   ],
   "text_cdl": [],
   "image_cdl": [
     "ParallelBetweenLine(QR,TS)",
-    "ParallelBetweenLine(QT,RS)",
-    "Equal(MeasureOf(Angle(1)),131)",
-    "Equal(MeasureOfAngle(JQR),MeasureOf(angle1))",
-    "Equal(MeasureOfAngle(RQC),MeasureOf(angle2))",
-    "Equal(MeasureOfAngle(HRQ),MeasureOf(angle5))",
-    "Equal(MeasureOfAngle(QTS),MeasureOf(angle3))",
-    "Equal(MeasureOfAngle(QRS),MeasureOf(angle6))",
-    "Equal(MeasureOfAngle(CTS),MeasureOf(angle4))",
-    "Equal(MeasureOfAngle(TSR),MeasureOf(angle7))",
-    "Equal(MeasureOfAngle(QRH),MeasureOf(angle5))",
-    "Equal(MeasureOfAngle(TSB),MeasureOf(angle8))",
-    "ParallelBetweenLine(QT,RS)",
-    "ParallelBetweenLine(QR,TS)"
+    "ParallelBetweenLine(TQ,SR)",
+    "Equal(MeasureOfAngle(JQR),131)"
   ],
-  "goal_cdl": "Value(MeasureOf(Angle(7)))",
+  "goal_cdl": "Value(MeasureOfAngle(TSR))",
   "problem_answer": "49",
-  "theorem_seqs": []
+  "theorem_seqs": [
+    "parallelogram_judgment_parallel_and_parallel(QTSR)",
+    "adjacent_complementary_angle(JQR,RQT)",
+    "parallelogram_property_opposite_angle_equal(QTSR)"
+  ]
 }

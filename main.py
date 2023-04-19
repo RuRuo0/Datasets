@@ -35,7 +35,7 @@ def backward_run():
         print()
 
 
-def run(save_GDL=False, save_CDL=False, auto=False, clean_theorem=False):
+def run(save_GDL=False, save_CDL=False, auto=False):
     """Run solver and load problem from problem_GDL."""
     solver = Solver(load_json(path_preset + "predicate_GDL.json"),    # init solver
                     load_json(path_preset + "theorem_GDL.json"))
@@ -67,7 +67,7 @@ def run(save_GDL=False, save_CDL=False, auto=False, clean_theorem=False):
 
                 solver.check_goal()    # check goal after applied theorem seqs
 
-                if clean_theorem and solver.problem.goal["solved"]:   # clean theorem
+                if solver.problem.goal["solved"]:   # clean theorem
                     problem_CDL = load_json(path_formalized + filename)
                     _id, seqs = get_used_theorem(solver.problem)
                     problem_CDL["theorem_seqs"] = seqs

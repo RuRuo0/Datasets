@@ -567,8 +567,10 @@ class Problem:
             if predicate == "Shape":
                 if len(item) != len(set(item)):  # default check 1: mutex points
                     return False
-                if len(item) == 1 and len(item[0]) not in [1, 2]:
-                    return False
+                if len(item) == 1:
+                    if len(item[0]) not in [1, 2]:
+                        return False
+                    return True
                 for shape in item:
                     if not 2 <= len(shape) <= 3 or len(shape) != len(set(shape)):
                         return False
@@ -714,7 +716,7 @@ class Problem:
         :param sym: <symbol>
         :param value: <float>
         :param premise: tuple of <int>, premise of getting value.
-        :param theorem: <str>, theorem of getting value. such as 'solved_eq'.
+        :param theorem: <str>, theorem of getting value. such as 'solve_eq'.
         """
 
         if self.conditions["Equation"].value_of_sym[sym] is None:

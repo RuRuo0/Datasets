@@ -182,7 +182,7 @@ class Solver:
                     self.problem.goal["theorem"] = self.problem.conditions["Equation"].theorems[eq]
                 else:
                     self.problem.goal["premise"] = tuple(set(premise))
-                    self.problem.goal["theorem"] = "solved_eq"
+                    self.problem.goal["theorem"] = "solve_eq"
         else:  # logic relation
             condition = self.problem.conditions[self.problem.goal["item"]]
             answer = self.problem.goal["answer"]

@@ -46,7 +46,7 @@ more types of plane geometric problems.
 |  7  |  黄一雯   |    50    |                 same as week 6                 |  /   |     ×     |
 |  8  |  金啸笑   |    60    | 3793-3900 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
 |  9  |   李阳   |    60    | 4109-4195 (data/raw-problems/Geometry3K-Other) |  /   |     √     |
-| 10  |  毛晨扬   |    60    | 4196-4289 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
+| 10  |  毛晨扬   |    60    | 4196-4289 (data/raw-problems/Geometry3K-Other) |  /   |     √     |
 | 11  |  王茹楠   |    50    |                 same as week 6                 |  /   |     ×     |
 | 12  |  王一凡   |    50    |                 same as week 6                 |  /   |     √     |
 | 13  |  岳登峰   |    60    | 4290-4380(data/raw-problems/Geometry3K-Other)  |  /   |     ×     |

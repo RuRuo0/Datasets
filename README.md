@@ -9,6 +9,28 @@ more types of plane geometric problems.
 
 ## Co-work
 
+#### Week 8 (230424): form 2023-04-24 to 2023-04-30.
+
+**Attention:** Annotate problems in directory **GeoQA**.
+
+| Id  | Worker | WorkLoad |                                                                          PID                                                                          | Skip | Submitted |
+|:---:|:------:|:--------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------:|:----:|:---------:|
+|  1  |  贺艺铭   |    60    |                                                          5066-5125 (data/raw-problems/GeoQA)                                                          |  /   |     ×     |
+|  2  |   邹佳   |    60    |                                                          5126-5185 (data/raw-problems/GeoQA)                                                          |  /   |     ×     |
+|  3  |   朱娜   |    60    |                                                          5186-5245 (data/raw-problems/GeoQA)                                                          |  /   |     ×     |
+|  4  |  张效凯   |    60    |                                                          5246-5305 (data/raw-problems/GeoQA)                                                          |  /   |     ×     |
+|  5  |  郭彦钧   |    60    |                                                          5306-5365 (data/raw-problems/GeoQA)                                                          |  /   |     ×     |
+|  6  |  黄琦珂   |    60    |                                                          5366-5425 (data/raw-problems/GeoQA)                                                          |  /   |     ×     |
+|  7  |  黄一雯   |    50    | 4245-4330 (data/raw-problems/Geometry3K-Triangle)<br>2895-2921 (data/raw-problems/Geometry3K-Other)<br>4475-4498 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
+|  8  |  金啸笑   |    60    |                                                          5426-5485 (data/raw-problems/GeoQA)                                                          |  /   |     ×     |
+|  9  |   李阳   |    60    |                                                          5486-5545 (data/raw-problems/GeoQA)                                                          |  /   |     √     |
+| 10  |  毛晨扬   |    60    |                                                          5546-5605 (data/raw-problems/GeoQA)                                                          |  /   |     ×     |
+| 11  |  王茹楠   |    50    |                                 4499-4585 (data/raw-problems/Geometry3K-Other)<br>5606-5611 (data/raw-problems/GeoQA)                                 |  /   |     ×     |
+| 12  |  王一凡   |    50    |                                                          5612-5671 (data/raw-problems/GeoQA)                                                          |  /   |     √     |
+| 13  |  岳登峰   |    60    |                                                          5672-5731 (data/raw-problems/GeoQA)                                                          |  /   |     ×     |
+| 14  |  朱方震   |    60    |                                                          5732-5791 (data/raw-problems/GeoQA)                                                          |  /   |     √     |
+| 15  |   朱哲   |    60    |                                                          5792-5851 (data/raw-problems/GeoQA)                                                          |  /   |     √     |
+
 #### Week 7 (230417): form 2023-04-17 to 2023-04-23.
 
 **Attention:** Annotate problems in directory **Geometry3K-Other** and **GeoQA**.
@@ -809,10 +831,7 @@ contains formalized problems, which stores in *data/formalized-problems*.
 
 ## Acknowledge
 
-This project is developed and maintained by *
-*[Geometric Cognitive Reasoning Group of Shanghai University (GCRG, SHU)](https://euclidesprobationem.github.io/)**.   
-Thank you for participating in the dataset annotation. They
-are: [XiaokaiZhang](https://github.com/BitSecret), [YimingHe](https://github.com/748978460), [JiaZou](https://github.com/PersonNoName), [NaZhu](https://github.com/RuRuo0), [YanjunGuo](https://github.com/g826796047), [QikeHuang](https://github.com/huangqaqqk), [XiaoxiaoJin](https://github.com/J1372628520), [YangLi](https://github.com/leeyoung628), [ChenyangMao](https://github.com/shadymcy), [DengfengYue](https://github.com/331368068), [FangzhenZhu](https://github.com/pigsquare), [ZheZhu](https://github.com/zz863474396), [YiwenHuang](https://github.com/Eaven21), [RunanWang](https://github.com/RunanW), [YifanWang](https://github.com/yf0216).   
-Some original problems come from the following dataset, which
-are: [GeoS](https://geometry.allenai.org/), [Geometry3K](https://github.com/lupantech/InterGPS), [GeoQA](https://github.com/chen-judge/GeoQA), [GeometryQA](https://github.com/doublebite/Sequence-to-General-tree/), [GeoQA+](https://github.com/SCNU203/GeoQA-Plus), [UniGeo](https://github.com/chen-judge/UniGeo).  
+This project is developed and maintained by [Geometric Cognitive Reasoning Group of Shanghai University (GCRG, SHU)](https://euclidesprobationem.github.io/).   
+Thank you for participating in the dataset annotation. They are: [XiaokaiZhang](https://github.com/BitSecret), [YimingHe](https://github.com/748978460), [JiaZou](https://github.com/PersonNoName), [NaZhu](https://github.com/RuRuo0), [YanjunGuo](https://github.com/g826796047), [QikeHuang](https://github.com/huangqaqqk), [XiaoxiaoJin](https://github.com/J1372628520), [YangLi](https://github.com/leeyoung628), [ChenyangMao](https://github.com/shadymcy), [DengfengYue](https://github.com/331368068), [FangzhenZhu](https://github.com/pigsquare), [ZheZhu](https://github.com/zz863474396), [YiwenHuang](https://github.com/Eaven21), [RunanWang](https://github.com/RunanW), [YifanWang](https://github.com/yf0216).   
+Some original problems come from the following dataset, which are: [GeoS](https://geometry.allenai.org/), [Geometry3K](https://github.com/lupantech/InterGPS), [GeoQA](https://github.com/chen-judge/GeoQA), [GeometryQA](https://github.com/doublebite/Sequence-to-General-tree/), [GeoQA+](https://github.com/SCNU203/GeoQA-Plus), [UniGeo](https://github.com/chen-judge/UniGeo).  
 Please contact with the author (xiaokaizhang1999@163.com) if you encounter any issues.  

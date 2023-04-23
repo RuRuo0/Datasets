@@ -1,0 +1,43 @@
+{
+  "problem_id": 4996,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-538",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB为⊙O的直径,C为⊙O外一点,过点C作⊙O的切线,切点为B,连接AC交⊙O于点D,∠C=40°,点E在AB左侧的半圆上运动(不与A、B重合),则∠AED的大小是()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, C is a point outside of ⊙O, passing point C is the tangent of ⊙O, the tangent point is B, connect AC to ⊙O at point D, ∠C = N_0, point E moves on the semicircle which is on the left side of AB(not coincident with A and B), then the size of ∠AED is ()",
+  "problem_img": "4996.png",
+  "construction_cdl": [
+    "Shape(OAE,EA)",
+    "Shape(OEB,BO,OF,FE)",
+    "Shape(OBD,DO,OB)",
+    "Shape(ODA,AD)",
+    "Shape(AE,EF,FA)",
+    "Shape(AF,FD,DA)",
+    "Shape(OD,DF,FO)",
+    "Shape(OBD,BC,CD)",
+    "Collinear(EFD)",
+    "Collinear(AFOB)",
+    "Collinear(ADC)",
+    "Cocircular(O,AEBD)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(CB,O)",
+    "Equal(MeasureOfAngle(BCD),40)"
+  ],
+  "image_cdl": [
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(AEF))",
+  "problem_answer": "40",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular",
+    "triangle_property_angle_sum(ABC)",
+    "circle_property_radius_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum(AOD)",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external"
+  ],
+  "raw_answer": "试题分析:根据切线的性质和圆周角定理得到∠BAD+∠ABD=∠C+∠BAD=90°,再由同角的余角相等得到结论.连接BD,∵AB为⊙O的直径,∴∠ADB=90°,∵BC是⊙O的切线,∴∠ABC=90°,∴∠BAD+∠ABD=∠C+∠BAD=90°,∴∠ABD=∠C=40°,∴∠AED=40°."
+}

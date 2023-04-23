@@ -1,0 +1,39 @@
+{
+  "problem_id": 4967,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-502",
+  "problem_level": 1,
+  "problem_text_cn": "如图,有一平行四边形ABCD与一正方形CEFG,其中E点在AD上．若∠ECD=35°,∠AEF=15°,则∠B的度数为何？()",
+  "problem_text_en": "As shown in the figure, there is a parallelogram ABCD and a square CEFG, in which point E is on AD. If ∠ECD = N_0, ∠AEF = N_1, then what is the degree of ∠B? ()",
+  "problem_img": "4967.png",
+  "construction_cdl": [
+    "Shape(AM,ME,EA)",
+    "Shape(MF,FN,NM)",
+    "Shape(NB,BP,PN)",
+    "Shape(MN,NP,PC,CE,EM)",
+    "Shape(DE,EC,CD)",
+    "Shape(PG,GC,CP)",
+    "Collinear(AED)",
+    "Collinear(BPC)",
+    "Collinear(AMNB)",
+    "Collinear(FME)",
+    "Collinear(FNPG)"
+  ],
+  "text_cdl": [
+    "Parallelogram(ABCD)",
+    "Square(EFGC)",
+    "Equal(MeasureOfAngle(ECD),35)",
+    "Equal(MeasureOfAngle(MEA),15)"
+  ],
+  "image_cdl": [
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(NBP))",
+  "problem_answer": "70",
+  "theorem_seqs": [
+    "angle_addition",
+    "flat_angle(DEA)",
+    "triangle_property_angle_sum(DEC)",
+    "parallelogram_property_opposite_angle_equal"
+  ],
+  "raw_answer": "∵四边形CEFG是正方形,∴∠CEF=90°,∵∠CED=180°-∠AEF-∠CEF=180°-15°-90°=75°,∴∠D=180°-∠CED-∠ECD=180°-75°-35°=70°∵四边形ABCD是平行四边形,∴∠B=∠D=70°,故选C."
+}

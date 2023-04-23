@@ -1,0 +1,42 @@
+{
+  "problem_id": 4999,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-543",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在⊙O的内接四边形ABCD中,AB是直径,∠BCD=120°,过D点的切线PD与直线AB交于点P,则∠ADP的度数为()",
+  "problem_text_en": "As shown in the figure, in the inscribed quadrilateral ABCD of ⊙O, AB is the diameter, ∠BCD = N_0, the tangent PD passing through the point D and the straight line AB intersect at the point P, then the degree of ∠ADP is ()",
+  "problem_img": "4999.png",
+  "construction_cdl": [
+    "Shape(OBC,CB)",
+    "Shape(OCD,DC)",
+    "Shape(ODA,AD)",
+    "Shape(BC,CD,DO,OB)",
+    "Shape(OD,DA,AO)",
+    "Shape(OAB,BO,OA)",
+    "Shape(ODA,DP,PA)",
+    "Collinear(PAOB)",
+    "Cocircular(O,ABCD)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(PD,O)",
+    "Equal(MeasureOfAngle(BCD),120)"
+  ],
+  "image_cdl": [
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(ADP))",
+  "problem_answer": "30",
+  "theorem_seqs": [
+    "arc_property_circumference_angle_internal",
+    "arc_property_center_angle",
+    "flat_angle(AOB)",
+    "angle_addition(AOD,DOB)",
+    "circle_property_radius_length_equal",
+    "isosceles_triangle_judgment_line_equal(ODA)",
+    "isosceles_triangle_property_angle_equal(ODA)",
+    "triangle_property_angle_sum(ODA)",
+    "tangent_of_circle_property_perpendicular",
+    "angle_addition(ODA,ADP)"
+  ],
+  "raw_answer": "试题分析:连接BD,∵∠DAB=180°-∠C=60°,∵AB是直径,∴∠ADB=90°,∴∠ABD=90°-∠DAB=30°,∵PD是切线,∴∠ADP=∠ABD=30°,故选C."
+}

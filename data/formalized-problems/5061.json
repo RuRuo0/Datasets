@@ -1,0 +1,37 @@
+{
+  "problem_id": 5061,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-622",
+  "problem_level": 1,
+  "problem_text_cn": "如图,点O是△ABC外接圆的圆心,连接OB,若∠1=37°,则∠2的度数是()",
+  "problem_text_en": "As shown in the figure, point O is the center of the circumscribed circle of △ABC. Connect OB, if ∠1 = N_0, then the degree of ∠2 is ()",
+  "problem_img": "5061.png",
+  "construction_cdl": [
+    "Shape(OBA,AB)",
+    "Shape(OBC,CB)",
+    "Shape(DB,BA,AD)",
+    "Shape(BD,DC,CB)",
+    "Shape(DO,OC,CD)",
+    "Shape(OD,DA,OAC,CO)",
+    "Collinear(ADC)",
+    "Collinear(BDO)",
+    "Cocircular(O,CBA)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(BAC),37)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(CBO))",
+  "problem_answer": "53",
+  "theorem_seqs": [
+    "arc_property_circumference_angle_external(OCB,A)",
+    "arc_property_center_angle(OCB,O)",
+    "circle_property_radius_length_equal(OB,O)",
+    "circle_property_radius_length_equal(OC,O)",
+    "isosceles_triangle_judgment_line_equal(OCB)",
+    "isosceles_triangle_property_angle_equal(OCB)",
+    "triangle_property_angle_sum(OCB)"
+  ],
+  "raw_answer": "连接OC,∴∠1=37^{°},∴∠BOC=2∠1=74^{°}.∵OB=OC∴∠2=\\frac{180^{°}-74^{°}}{2}=53^{°}故选C."
+}

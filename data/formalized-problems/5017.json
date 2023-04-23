@@ -1,0 +1,35 @@
+{
+  "problem_id": 5017,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-562",
+  "problem_level": 1,
+  "problem_text_cn": "如图,已知AB∥CD∥EF,FC平分∠AFE,∠C=25°,则∠A的度数是()",
+  "problem_text_en": "As shown in the figure, it is known that AB ∥ CD ∥ EF and FC equally bisect ∠AFE, ∠C = N_0, then the degree of ∠A is ()",
+  "problem_img": "5017.png",
+  "construction_cdl": [
+    "Shape(AC,CG,GA)",
+    "Shape(AG,GD,DB,BA)",
+    "Shape(GC,CF,FG)",
+    "Shape(GF,FD,DG)",
+    "Shape(CE,EF,FC)",
+    "Collinear(AGF)",
+    "Collinear(CGD)",
+    "Collinear(BDF)"
+  ],
+  "text_cdl": [
+    "ParallelBetweenLine(AB,CD)",
+    "ParallelBetweenLine(CD,EF)",
+    "IsBisectorOfAngle(FC,EFA)",
+    "Equal(MeasureOfAngle(GCF),25)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(BAF))",
+  "problem_answer": "50",
+  "theorem_seqs": [
+    "parallel_property_alternate_interior_angle(CD,EF)",
+    "parallel_judgment_par_par(AB,CD,EF)",
+    "parallel_property_alternate_interior_angle(AB,EF)",
+    "angle_addition(EFC,CFA)"
+  ],
+  "raw_answer": "试题分析:∵CD//EF,∠C=∠CFE=25°,∵FC平分∠AFE,∴∠AFE=2∠CFE=50°,又∵AB//EF,∴∠A=∠AFE=50°,故选D."
+}

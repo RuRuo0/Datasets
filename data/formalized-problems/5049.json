@@ -1,0 +1,32 @@
+{
+  "problem_id": 5049,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-602",
+  "problem_level": 1,
+  "problem_text_cn": "如图,直线AB∥CD,∠B=50°,∠C=40°,则∠E等于()",
+  "problem_text_en": "As shown in the figure, the straight line AB ∥ CD, ∠B = N_0, ∠C = N_1, then ∠E is equal to ()",
+  "problem_img": "5049.png",
+  "construction_cdl": [
+    "Shape(DF,FE)",
+    "Shape(EF,FC,CE)",
+    "Shape(BF,FD)",
+    "Shape(CF,FB)",
+    "Shape(FB,BA)",
+    "Collinear(DFC)",
+    "Collinear(EFB)"
+  ],
+  "text_cdl": [
+    "ParallelBetweenLine(DC,BA)",
+    "Equal(MeasureOfAngle(FBA),50)",
+    "Equal(MeasureOfAngle(FCE),40)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(CEF))",
+  "problem_answer": "90",
+  "theorem_seqs": [
+    "parallel_property_collinear_extend(DC,BA,F)",
+    "parallel_property_corresponding_angle(FC,BA,E)",
+    "triangle_property_angle_sum(EFC)"
+  ],
+  "raw_answer": "试题分析:根据平行线的性质得到∠1=∠B=50°,由三角形的内角和定理可得∠E=180°-∠B-∠1=90°,故答案选C."
+}

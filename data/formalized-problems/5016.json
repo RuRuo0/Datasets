@@ -1,0 +1,35 @@
+{
+  "problem_id": 5016,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-561",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在菱形ABCD中,AC=8,BD=6,则△ABC的周长是()",
+  "problem_text_en": "As shown in the figure, in the diamond ABCD, AC = N_0, BD = N_1, then the perimeter of △ABC is ()",
+  "problem_img": "5016.png",
+  "construction_cdl": [
+    "Shape(AB,BO,OA)",
+    "Shape(AO,OD,DA)",
+    "Shape(OB,BC,CO)",
+    "Shape(DO,OC,CD)",
+    "Collinear(AOC)",
+    "Collinear(BOD)"
+  ],
+  "text_cdl": [
+    "Rhombus(ABCD)",
+    "Equal(LengthOfLine(AC),8)",
+    "Equal(LengthOfLine(BD),6)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(PerimeterOfTriangle(ABC))",
+  "problem_answer": "18",
+  "theorem_seqs": [
+    "kite_property_diagonal_perpendicular_bisection(ABCD,O)",
+    "kite_property_diagonal_perpendicular_bisection(BCDA,O)",
+    "line_addition(AO,OC)",
+    "line_addition(BO,OD)",
+    "right_triangle_judgment_angle(BOA)",
+    "right_triangle_property_pythagorean(BOA)",
+    "triangle_perimeter_formula(ABC)"
+  ],
+  "raw_answer": "∵在菱形ABCD中,AC=8,BD=6,∴AB=BC,∠AOB=90°,AO=4,BO=3,∴BC=AB=√{4²+3²}=5,∴△ABC的周长=AB+BC+AC=5+5+8=18.故选C."
+}

@@ -1,0 +1,29 @@
+{
+  "problem_id": 4834,
+  "annotation": "yiminghe_2023-04-18",
+  "source": "GeoQA-317",
+  "problem_level": 1,
+  "problem_text_cn": "如图,为测量池塘边上两点A、B之间的距离,小明在池塘的一侧选取一点O,测得OA、OB的中点分别是点D、E,且DE=14米,那么A、B间的距离是()",
+  "problem_text_en": "As shown in the figure, in order to measure the distance between two points A and B on the edge of the pond, Xiao Ming chooses a point O on one side of the pond, and the midpoints of OA and OB are measured as points D and E respectively, and DE = N_0, then A The distance between B and B is ()",
+  "problem_img": "4834.png",
+  "construction_cdl": [
+    "Shape(OD,DE,EO)",
+    "Shape(DA,AB,BE,ED)",
+    "Collinear(ODA)",
+       "Collinear(OEB)"
+  ],
+  "text_cdl": [
+    "IsMidpointOfLine(D,OA)",
+    "IsMidpointOfLine(E,OB)",
+     "Equal(LengthOfLine(DE),14)"
+  ],
+  "image_cdl": [
+  ],
+  "goal_cdl": "Value(LengthOfLine(AB))",
+  "problem_answer": "28",
+  "theorem_seqs": [
+    "midsegment_of_triangle_judgment_midpoint",
+    "midsegment_of_triangle_property_length"
+  ],
+  "raw_answer": "试题分析:三角形的中位线平行与第三边,且等于第三边的一半,则AB=2DE=28米."
+}

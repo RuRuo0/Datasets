@@ -1,0 +1,43 @@
+{
+  "problem_id": 4864,
+  "annotation": "yiminghe_2023-04-18",
+  "source": "GeoQA-365",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB为⊙O的直径,四边形ABCD为⊙O的内接四边形,点P在BA的延长线上,PD与⊙O相切,D为切点,若∠BCD=120°,则∠APD的大小为()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, quadrilateral ABCD is the inscribed quadrilateral of ⊙O, point P is on the extended line line of BA, PD and ⊙O are tangent, D is the tangent point, if ∠BCD = N_0, then ∠APD The size of ()",
+  "problem_img": "4864.png",
+  "construction_cdl": [
+    "Shape(DP,PA,ODA)",
+       "Shape(AD,ODA)",
+       "Shape(DO,OB,BC,CD)",
+    "Shape(AO,OD,DA)",
+       "Shape(DC,OCD)",
+       "Shape(CB,OBC)",
+       "Shape(BO,OA,OAB)",
+    "Collinear(PAOB)",
+    "Cocircular(O,BCDA)"
+  ],
+  "text_cdl": [
+ "Equal(MeasureOfAngle(BCD),120)",
+    "IsTangentOfCircle(PD,O)",
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(DPA))",
+  "problem_answer": "30",
+  "theorem_seqs": [
+    "arc_property_circumference_angle_external",
+    "arc_property_circumference_angle_internal(ODB,A)",
+
+    "circle_property_radius_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "tangent_of_circle_property_perpendicular(PD,O,O)",
+    "angle_addition(ODA,ADP)",
+    "adjacent_complementary_angle(PAD,DAO)",
+    "triangle_property_angle_sum(ADP)"
+
+  ],
+  "raw_answer": "试题解析:连接DO,∵∠BCD=120^{°},∴∠DAB=180^{°}-120^{°}=60^{°},∴△ADO为等边三角形,∴∠ODA=60°,∵PD与⊙O相切,∴∠PDO=90°,∴∠ADP=90^{°}-60^{°}=30^{°},∴∠APD=∠ODA-∠ADP=60°-30°=30°.故选D,"
+}

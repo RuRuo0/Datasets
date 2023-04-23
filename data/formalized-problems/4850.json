@@ -1,0 +1,44 @@
+{
+  "problem_id": 4850,
+  "annotation": "yiminghe_2023-04-18",
+  "source": "GeoQA-342",
+  "problem_level": 1,
+  "problem_text_cn": "如图,已知直线AB∥CD,∠GEB的平分线EF交CD于点F,∠1=42°,则∠2等于()",
+  "problem_text_en": "As shown in the figure, given the straight line AB ∥ CD, the bisector EF of ∠GEB intersects CD at point F, ∠1 = N_0, then ∠2 is equal to ()",
+  "problem_img": "4850.png",
+  "construction_cdl": [
+    "Shape(CG,GH)",
+     "Shape(HG,GF)",
+     "Shape(GF,FI)",
+     "Shape(IF,FD)",
+     "Shape(DF,FE)",
+     "Shape(EF,FG,GE)",
+     "Shape(EG,GC)",
+     "Shape(AE,EG)",
+     "Shape(FE,EB)",
+    "Collinear(CGFD)",
+    "Collinear(AEB)",
+    "Collinear(HGE)",
+    "Collinear(IFE)"
+  ],
+  "text_cdl": [
+    "ParallelBetweenLine(CD,AB)",
+    "Equal(MeasureOfAngle(HGF),42)",
+    "IsBisectorOfAngle(EF,GEB)"
+  ],
+  "image_cdl": [
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(DFE))",
+  "problem_answer": "159",
+  "theorem_seqs": [
+            "parallel_property_collinear_extend",
+        "parallel_property_collinear_extend",
+            "parallel_property_collinear_extend",
+    "angle_addition(GEF,FEB)",
+       "parallel_property_corresponding_angle",
+    "parallel_property_alternate_interior_angle",
+     "adjacent_complementary_angle"
+  ],
+  "raw_answer": "解:∵AB//CD,∴∠BAG=∠1=42°∵EF为∠GEB的平分线,∴∠3=\\frac{1}{2}∠BAG=\\frac{1}{2}×42°=21°,∵AB//CD,∴∠2=180°-∠1=180°-21°=159°.故选D.",
+  "notes": "题目没问题，运行成功了，但是有个定理不加参数跑不出来"
+}

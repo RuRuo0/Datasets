@@ -345,24 +345,29 @@ class Problem:
 
         shape = list(shape)
         _, col, _ = self.conditions["Collinear"].get_items(["a", "b", "c"])
-        premise = [_id]
+        # premise = [_id]
         i = 0
         has_arc = False
         while i < len(shape):
             j = (i + 1) % len(shape)
             if len(shape[i]) == 2 and len(shape[j]) == 2:
-                self.add("Angle", (shape[i][0], shape[i][1], shape[j][1]), (_id,), "extended")  # extend angle
-                co = (shape[i][0], shape[i][1], shape[j][1])
-                if co in col:
+                self.add("Angle", (shape[i][0], shape[i][1], shape[j][1]), (-1,), "prerequisite")   # extend angle
+                if (shape[i][0], shape[i][1], shape[j][1]) in col:
                     shape[i] = shape[i][0] + shape[j][1]
-                    premise.append(self.conditions["Collinear"].get_id_by_item[co])
                     shape.pop(j)
-                    continue  # no need +1 about i
+                    continue
+                # self.add("Angle", (shape[i][0], shape[i][1], shape[j][1]), (_id,), "extended")  # extend angle
+                # co = (shape[i][0], shape[i][1], shape[j][1])
+                # if co in col:
+                #     shape[i] = shape[i][0] + shape[j][1]
+                #     premise.append(self.conditions["Collinear"].get_id_by_item[co])
+                #     shape.pop(j)
+                #     continue  # no need +1 about i
             else:
                 has_arc = True
             i += 1
 
-        premise = tuple(set(premise))
+        # premise = tuple(set(premise))
         if not has_arc and len(shape) > 2:  # extend polygon
             valid = True
             i = 0
@@ -372,7 +377,8 @@ class Problem:
                     valid = False
                 i += 1
             if valid:
-                self.add("Polygon", tuple([item[0] for item in shape]), premise, "extended")
+                self.add("Polygon", tuple([item[0] for item in shape]), (-1,), "prerequisite")
+                # self.add("Polygon", tuple([item[0] for item in shape]), premise, "extended")
 
         return True, set(all_forms)
 

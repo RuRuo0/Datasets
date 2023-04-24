@@ -9,27 +9,49 @@ more types of plane geometric problems.
 
 ## Co-work
 
+#### Week 8 (230424): form 2023-04-24 to 2023-04-30.
+
+**Attention:** Annotate problems in directory **GeoQA**.
+
+| Id  | Worker | WorkLoad |                                                                          PID                                                                          | Skip | Submitted |
+|:---:|:------:|:--------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------:|:----:|:---------:|
+|  1  |  贺艺铭   |    60    |                                                          5066-5125 (data/raw-problems/GeoQA)                                                          |  /   |     ×     |
+|  2  |   邹佳   |    60    |                                                          5126-5185 (data/raw-problems/GeoQA)                                                          |  /   |     ×     |
+|  3  |   朱娜   |    60    |                                                          5186-5245 (data/raw-problems/GeoQA)                                                          |  /   |     ×     |
+|  4  |  张效凯   |    60    |                                                          5246-5305 (data/raw-problems/GeoQA)                                                          |  /   |     ×     |
+|  5  |  郭彦钧   |    60    |                                                          5306-5365 (data/raw-problems/GeoQA)                                                          |  /   |     ×     |
+|  6  |  黄琦珂   |    60    |                                                          5366-5425 (data/raw-problems/GeoQA)                                                          |  /   |     ×     |
+|  7  |  黄一雯   |    60    | 4245-4330 (data/raw-problems/Geometry3K-Triangle)<br>2895-2921 (data/raw-problems/Geometry3K-Other)<br>4475-4498 (data/raw-problems/Geometry3K-Other) |  /   |     /     |
+|  8  |  金啸笑   |    60    |                                                          5426-5485 (data/raw-problems/GeoQA)                                                          |  /   |     ×     |
+|  9  |   李阳   |    60    |                                                          5486-5545 (data/raw-problems/GeoQA)                                                          |  /   |     ×     |
+| 10  |  毛晨扬   |    60    |                                                          5546-5605 (data/raw-problems/GeoQA)                                                          |  /   |     ×     |
+| 11  |  王茹楠   |    60    |                                 4499-4585 (data/raw-problems/Geometry3K-Other)<br>5606-5611 (data/raw-problems/GeoQA)                                 |  /   |     /     |
+| 12  |  王一凡   |    60    |                                                          5612-5671 (data/raw-problems/GeoQA)                                                          |  /   |     /     |
+| 13  |  岳登峰   |    60    |                                                          5672-5731 (data/raw-problems/GeoQA)                                                          |  /   |     ×     |
+| 14  |  朱方震   |    60    |                                                          5732-5791 (data/raw-problems/GeoQA)                                                          |  /   |     /     |
+| 15  |   朱哲   |    60    |                                                          5792-5851 (data/raw-problems/GeoQA)                                                          |  /   |     ×     |
+
 #### Week 7 (230417): form 2023-04-17 to 2023-04-23.
 
 **Attention:** Annotate problems in directory **Geometry3K-Other** and **GeoQA**.
 
 | Id  | Worker | WorkLoad |                      PID                       | Skip | Submitted |
 |:---:|:------:|:--------:|:----------------------------------------------:|:----:|:---------:|
-|  1  |  贺艺铭   |    60    |      4826-4885 (data/raw-problems/GeoQA)       |  /   |     ×     |
+|  1  |  贺艺铭   |    60    |      4826-4885 (data/raw-problems/GeoQA)       |  /   |     √     |
 |  2  |   邹佳   |    60    |      4886-4945 (data/raw-problems/GeoQA)       |  /   |     ×     |
-|  3  |   朱娜   |    60    |      4946-5005 (data/raw-problems/GeoQA)       |  /   |     ×     |
-|  4  |  张效凯   |    60    |      5006-5065 (data/raw-problems/GeoQA)       |  /   |     ×     |
+|  3  |   朱娜   |    60    |      4946-5005 (data/raw-problems/GeoQA)       |  /   |     √     |
+|  4  |  张效凯   |    60    |      5006-5065 (data/raw-problems/GeoQA)       |  /   |     √     |
 |  5  |  郭彦钧   |    60    | 3486-3583 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
-|  6  |  黄琦珂   |    60    | 3684-3792 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
+|  6  |  黄琦珂   |    60    | 3684-3792 (data/raw-problems/Geometry3K-Other) |  /   |     √     |
 |  7  |  黄一雯   |    50    |                 same as week 6                 |  /   |     ×     |
-|  8  |  金啸笑   |    60    | 3793-3900 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
-|  9  |   李阳   |    60    | 4109-4195 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
-| 10  |  毛晨扬   |    60    | 4196-4289 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
-| 11  |  王茹楠   |    50    |                 same as week 6                 |  /   |     ×     |
-| 12  |  王一凡   |    50    |                 same as week 6                 |  /   |     ×     |
-| 13  |  岳登峰   |    60    | 4290-4380(data/raw-problems/Geometry3K-Other)  |  /   |     ×     |
-| 14  |  朱方震   |    60    |                 same as week 6                 |  /   |     ×     |
-| 15  |   朱哲   |    60    | 4382-4471 (data/raw-problems/Geometry3K-Other) |  /   |     ×     |
+|  8  |  金啸笑   |    60    | 3793-3900 (data/raw-problems/Geometry3K-Other) |  /   |     √     |
+|  9  |   李阳   |    60    | 4109-4195 (data/raw-problems/Geometry3K-Other) |  /   |     √     |
+| 10  |  毛晨扬   |    60    | 4196-4289 (data/raw-problems/Geometry3K-Other) |  /   |     √     |
+| 11  |  王茹楠   |    50    |                 same as week 6                 |  /   |     √     |
+| 12  |  王一凡   |    50    |                 same as week 6                 |  /   |     √     |
+| 13  |  岳登峰   |    60    | 4290-4380(data/raw-problems/Geometry3K-Other)  |  /   |     √     |
+| 14  |  朱方震   |    60    |                 same as week 6                 |  /   |     √     |
+| 15  |   朱哲   |    60    | 4382-4471 (data/raw-problems/Geometry3K-Other) |  /   |     √     |
 
 #### Week 6 (230410): form 2023-04-10 to 2023-04-16.
 
@@ -41,7 +63,7 @@ more types of plane geometric problems.
 |  2  |   邹佳   |    60    |                                                           4646-4705 (data/raw-problems/GeoQA)                                                            |  /   |     √     |
 |  3  |   朱娜   |    60    |                                                           4706-4765 (data/raw-problems/GeoQA)                                                            |  /   |     √     |
 |  4  |  张效凯   |    60    |                                                           4766-4825 (data/raw-problems/GeoQA)                                                            |  /   |     √     |
-|  5  |  郭彦钧   |    60    |                                                      3008-3097 (data/raw-problems/Geometry3K-Other)                                                      |  /   |     ×     |
+|  5  |  郭彦钧   |    60    |                                                      3008-3097 (data/raw-problems/Geometry3K-Other)                                                      |  /   |     √     |
 |  6  |  黄琦珂   |    60    |                                                      3100-3193 (data/raw-problems/Geometry3K-Other)                                                      |  /   |     √     |
 |  7  |  黄一雯   |    50    | 3254-3270 (data/raw-problems/Geometry3K-Triangle)<br>3795-3855 (data/raw-problems/Geometry3K-Triangle)<br>2682-2711 (data/raw-problems/Geometry3K-Other) |  /   |     /     |
 |  8  |  金啸笑   |    60    |                                                      3196-3290 (data/raw-problems/Geometry3K-Other)                                                      |  /   |     √     |
@@ -809,10 +831,7 @@ contains formalized problems, which stores in *data/formalized-problems*.
 
 ## Acknowledge
 
-This project is developed and maintained by *
-*[Geometric Cognitive Reasoning Group of Shanghai University (GCRG, SHU)](https://euclidesprobationem.github.io/)**.   
-Thank you for participating in the dataset annotation. They
-are: [XiaokaiZhang](https://github.com/BitSecret), [YimingHe](https://github.com/748978460), [JiaZou](https://github.com/PersonNoName), [NaZhu](https://github.com/RuRuo0), [YanjunGuo](https://github.com/g826796047), [QikeHuang](https://github.com/huangqaqqk), [XiaoxiaoJin](https://github.com/J1372628520), [YangLi](https://github.com/leeyoung628), [ChenyangMao](https://github.com/shadymcy), [DengfengYue](https://github.com/331368068), [FangzhenZhu](https://github.com/pigsquare), [ZheZhu](https://github.com/zz863474396), [YiwenHuang](https://github.com/Eaven21), [RunanWang](https://github.com/RunanW), [YifanWang](https://github.com/yf0216).   
-Some original problems come from the following dataset, which
-are: [GeoS](https://geometry.allenai.org/), [Geometry3K](https://github.com/lupantech/InterGPS), [GeoQA](https://github.com/chen-judge/GeoQA), [GeometryQA](https://github.com/doublebite/Sequence-to-General-tree/), [GeoQA+](https://github.com/SCNU203/GeoQA-Plus), [UniGeo](https://github.com/chen-judge/UniGeo).  
+This project is developed and maintained by [Geometric Cognitive Reasoning Group of Shanghai University (GCRG, SHU)](https://euclidesprobationem.github.io/).   
+Thank you for participating in the dataset annotation. They are: [XiaokaiZhang](https://github.com/BitSecret), [YimingHe](https://github.com/748978460), [JiaZou](https://github.com/PersonNoName), [NaZhu](https://github.com/RuRuo0), [YanjunGuo](https://github.com/g826796047), [QikeHuang](https://github.com/huangqaqqk), [XiaoxiaoJin](https://github.com/J1372628520), [YangLi](https://github.com/leeyoung628), [ChenyangMao](https://github.com/shadymcy), [DengfengYue](https://github.com/331368068), [FangzhenZhu](https://github.com/pigsquare), [ZheZhu](https://github.com/zz863474396), [YiwenHuang](https://github.com/Eaven21), [RunanWang](https://github.com/RunanW), [YifanWang](https://github.com/yf0216).   
+Some original problems come from the following dataset, which are: [GeoS](https://geometry.allenai.org/), [Geometry3K](https://github.com/lupantech/InterGPS), [GeoQA](https://github.com/chen-judge/GeoQA), [GeometryQA](https://github.com/doublebite/Sequence-to-General-tree/), [GeoQA+](https://github.com/SCNU203/GeoQA-Plus), [UniGeo](https://github.com/chen-judge/UniGeo).  
 Please contact with the author (xiaokaizhang1999@163.com) if you encounter any issues.  

@@ -232,13 +232,13 @@
 
 ### flat_angle(ABC)
 <div>
-    <img src="gdl-pic/T020.png" width="15%"
+    <img src="gdl-pic/T001.png" width="15%"
 </div>
 
     premise: Collinear(ABC)
     conclusion: Equal(MeasureOfAngle(ABC),180)
 **Notes**:  
-1.平角定理：平角为180°  
+1.常识：平角为180°  
 
 ### adjacent_complementary_angle(AOB,BOC)
 <div>
@@ -957,6 +957,16 @@
     conclusion: Equal(Add(Pow(LengthOfLine(AB),2),Pow(LengthOfLine(BC),2)),Pow(LengthOfLine(AC),2))
 **Notes**:  
 1.直角三角形性质：勾股定理  
+
+### right_triangle_property_length_of_median(ABC,M)
+<div>
+    <img src="gdl-pic/T020.png" width="15%"
+</div>
+
+    premise: RightTriangle(ABC)&IsMedianOfTriangle(BM,BCA)
+    conclusion: Equal(Mul(LengthOfLine(BM),2),LengthOfLine(CA))
+**Notes**:  
+1.直角三角形性质：斜边的中线等于斜边的一半  
 
 ### isosceles_triangle_judgment_line_equal(ABC)
 <div>
@@ -1870,26 +1880,6 @@
 **Notes**:  
 1.相似弧性质：所对弦长成比例  
 
-### circle_property_diameter_length_equal(APB,O)
-<div>
-    <img src="gdl-pic/T149.png" width="15%"
-</div>
-
-    premise: Cocircular(O,AB)&Collinear(APB)&IsCentreOfCircle(P,O)
-    conclusion: Equal(LengthOfLine(AB),DiameterOfCircle(O))
-**Notes**:  
-1.圆的所有直径长度相等  
-
-### circle_property_radius_length_equal(PA,O)
-<div>
-    <img src="gdl-pic/T150.png" width="15%"
-</div>
-
-    premise: Cocircular(O,A)&Line(PA)&IsCentreOfCircle(P,O)
-    conclusion: Equal(LengthOfLine(PA),RadiusOfCircle(O))
-**Notes**:  
-1.圆的所有半径长度相等  
-
 ### circle_property_length_of_radius_and_diameter(O)
 <div>
     <img src="gdl-pic/T165.png" width="15%"
@@ -1899,20 +1889,6 @@
     conclusion: Equal(DiameterOfCircle(O),Mul(RadiusOfCircle(O),2))
 **Notes**:  
 1.常识：圆的直径是半径的两倍  
-
-### circle_property_diameter_to_circumference_angle(O,APB,C)
-<div>
-    <img src="gdl-pic/T151.png" width="30%"
-</div>
-
-    # branch 1
-    premise: Cocircular(O,BCA)&Collinear(APB)&Angle(BCA)&IsCentreOfCircle(P,O)
-    conclusion: PerpendicularBetweenLine(BC,AC)
-    # branch 2
-    premise: Cocircular(O,ACB)&Collinear(APB)&Angle(ACB)&IsCentreOfCircle(P,O)
-    conclusion: PerpendicularBetweenLine(AC,BC)
-**Notes**:  
-1.直径所对的圆周角是直角  
 
 ### circle_property_circular_power_chord_and_chord(AEB,CED,O)
 <div>
@@ -2033,6 +2009,66 @@
     conclusion: Equal(AreaOfCircle(O),Mul(π,RadiusOfCircle(O),RadiusOfCircle(O)))
 **Notes**:  
 1.圆的面积公式：S=pi*r*r  
+
+### radius_of_circle_property_length_equal(PA,O)
+<div>
+    <img src="gdl-pic/T150.png" width="15%"
+</div>
+
+    premise: Cocircular(O,A)&Line(PA)&IsCentreOfCircle(P,O)
+    conclusion: Equal(LengthOfLine(PA),RadiusOfCircle(O))
+**Notes**:  
+1.圆的所有半径长度相等  
+
+### diameter_of_circle_judgment_pass_centre(APB,O)
+<div>
+    <img src="gdl-pic/T132.png" width="15%"
+</div>
+
+    premise: Cocircular(O,AB)&Collinear(APB)&IsCentreOfCircle(P,O)
+    conclusion: IsDiameterOfCircle(AB,O)
+**Notes**:  
+1.圆的直径的判定：过圆心且两端在圆上的直线  
+
+### diameter_of_circle_judgment_length_equal(AB,O)
+<div>
+    <img src="gdl-pic/P012.png" width="15%"
+</div>
+
+    premise: Cocircular(O,AB)&Equal(DiameterOfCircle(O),LengthOfLine(AB))
+    conclusion: IsDiameterOfCircle(AB,O)
+**Notes**:  
+1.圆的直径的判定：两端在圆上且长度与圆直径相等的直线  
+
+### diameter_of_circle_judgment_right_angle(BCA,O)
+<div>
+    <img src="gdl-pic/T135.png" width="15%"
+</div>
+
+    premise: Cocircular(O,BCA)&Angle(BCA)&PerpendicularBetweenLine(BC,AC)
+    conclusion: IsDiameterOfCircle(AB,O)
+**Notes**:  
+1.圆的直径的判定：两端在圆上且所对圆周角是直角  
+
+### diameter_of_circle_property_length_equal(AB,O)
+<div>
+    <img src="gdl-pic/P012.png" width="15%"
+</div>
+
+    premise: IsDiameterOfCircle(AB,O)
+    conclusion: Equal(LengthOfLine(AB),DiameterOfCircle(O))
+**Notes**:  
+1.圆的所有直径长度相等  
+
+### diameter_of_circle_property_right_angle(BCA,O)
+<div>
+    <img src="gdl-pic/T135.png" width="15%"
+</div>
+
+    premise: IsDiameterOfCircle(AB,O)&Cocircular(O,BCA)&Angle(BCA)
+    conclusion: PerpendicularBetweenLine(BC,AC)
+**Notes**:  
+1.直径所对的圆周角是直角  
 
 ### tangent_of_circle_judgment_perpendicular(PA,O,Q)
 <div>

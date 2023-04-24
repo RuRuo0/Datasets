@@ -381,6 +381,20 @@ Circle用于声明一个圆，O表示圆心。
 1.点M是线AB的中点  
 2.根据旋转不变性原则，有2种表示，选其一即可  
 
+### IsMidpointOfArc(M,OAB)
+<div>
+    <img src="gdl-pic/P011.png"  width="15%">
+</div>
+
+    ee_check: Point(M)
+              Arc(OAB)
+              Cocircular(O,AMB)
+    fv_check: M,OAB
+    multi: 
+    extend: Equal(LengthOfArc(OAM),LengthOfArc(OMB))
+**Notes**:  
+1.点M是弧OAB的中点  
+
 ### ParallelBetweenLine(AB,CD)
 <div>
     <img src="gdl-pic/P031.png"  width="15%">
@@ -782,6 +796,19 @@ Circle用于声明一个圆，O表示圆心。
 **Notes**:  
 1.两个弧相似  
 2.两个弧在同一个圆上才有意义  
+
+### IsDiameterOfCircle(AB,O)
+<div>
+    <img src="gdl-pic/P012.png"  width="15%">
+</div>
+
+    ee_check: Line(AB)
+              Cocircular(O,AB)
+    fv_check: AB,O
+    multi: BA,O
+    extend: 
+**Notes**:  
+1.圆的直径  
 
 ### IsTangentOfCircle(PA,O)
 <div>

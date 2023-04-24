@@ -1,0 +1,33 @@
+{
+  "problem_id": 4872,
+  "annotation": "YimingHe_2023-04-23",
+  "source": "GeoQA-373",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB∥CD,EF平分∠AEG,若∠EGF=40°,那么∠EFG的度数为()",
+  "problem_text_en": "As shown in the figure, AB ∥ CD, EF bisects ∠AEG, if ∠EGF = N_0, then the degree of ∠EFG is ()",
+  "problem_img": "4872.png",
+  "construction_cdl": [
+    "Shape(FE,EA)",
+    "Shape(CF,FE)",
+    "Shape(EF,FG,GE)",
+    "Shape(BE,EG)",
+    "Shape(EG,GD)",
+    "Collinear(AEB)",
+    "Collinear(CFGD)"
+  ],
+  "text_cdl": [
+    "ParallelBetweenLine(AB,CD)",
+    "IsBisectorOfAngle(EF,GEA)",
+    "Equal(MeasureOfAngle(FGE),40)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(EFG))",
+  "problem_answer": "70",
+  "theorem_seqs": [
+    "parallel_property_collinear_extend",
+    "parallel_property_collinear_extend",
+    "parallel_property_alternate_interior_angle",
+    "triangle_property_angle_sum"
+  ],
+  "raw_answer": "试题分析:先根据两直线平行同旁内角互补,求出∠AEG=140°,然后根据角平分线的定义求出∠AEF=\\frac{1}{2}∠AEG=70^{°},然后根据两直线平行内错角相等,即可求出∠EFG=∠AEF=70°故选C."
+}

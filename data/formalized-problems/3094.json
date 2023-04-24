@@ -7,16 +7,28 @@
   "problem_text_en": "Find m \\angle A B D.",
   "problem_img": "3094.png",
   "construction_cdl": [
-    "Shape()",
-    "Collinear()",
-    "Cocircular()"
+    "Shape(GB,BD,DG)",
+    "Shape(GD,GDB,BG)",
+    "Shape(DB,GBD)",
+    "Shape(AB,BG)",
+    "Cocircular(G,BD)"
   ],
   "text_cdl": [],
   "image_cdl": [
-    "Equal(MeasureOfAngle(DGB),154)",
-    "Tangent(Line(A,B),Circle(G))"
+    "Equal(MeasureOfArc(GBD),154)",
+    "IsTangentOfCircle(AB,G)",
+    "IsCentreOfCircle(G,G)"
   ],
   "goal_cdl": "Value(MeasureOfAngle(ABD))",
   "problem_answer": "103",
-  "theorem_seqs": []
+  "theorem_seqs": [
+    "arc_property_center_angle(GBD,G)",
+    "tangent_of_circle_property_perpendicular",
+    "circle_property_radius_length_equal(GD,G)",
+    "circle_property_radius_length_equal(GB,G)",
+    "isosceles_triangle_judgment_line_equal(GBD)",
+    "isosceles_triangle_property_angle_equal(GBD)",
+    "triangle_property_angle_sum(GBD)",
+    "angle_addition(ABG,GBD)"
+  ]
 }

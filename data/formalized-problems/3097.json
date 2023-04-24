@@ -7,16 +7,24 @@
   "problem_text_en": "Find the area of the figure. Round to the nearest tenth if necessary.",
   "problem_img": "3097.png",
   "construction_cdl": [
-    "Shape()",
-    "Collinear()",
-    "Cocircular()"
+    "Shape(DH,HF,FD)",
+    "Shape(FH,HB,BF)",
+    "Shape(DE,EH,HD)",
+    "Shape(HE,EB,BH)",
+    "Collinear(FHE)",
+    "Collinear(DHB)"
   ],
   "text_cdl": [],
   "image_cdl": [
+    "Rhombus(DEBF)",
     "Equal(LengthOfLine(HF),21)",
     "Equal(LengthOfLine(BH),74)"
   ],
-  "goal_cdl": "Value(AreaOf(Shape($)))",
+  "goal_cdl": "Value(AreaOfQuadrilateral(DEBF))",
   "problem_answer": "3108",
-  "theorem_seqs": []
+  "theorem_seqs": [
+    "parallelogram_property_diagonal_bisection",
+    "line_addition",
+    "kite_area_formula_diagonal"
+  ]
 }

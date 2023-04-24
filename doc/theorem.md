@@ -948,6 +948,16 @@
 **Notes**:  
 1.直角三角形性质：勾股定理  
 
+### right_triangle_property_length_of_median(ABC,M)
+<div>
+    <img src="gdl-pic/T020.png" width="15%"
+</div>
+
+    premise: RightTriangle(ABC)&IsMedianOfTriangle(BM,BCA)
+    conclusion: Equal(Mul(LengthOfLine(BM),2),LengthOfLine(CA))
+**Notes**:  
+1.直角三角形性质：斜边的中线等于斜边的一半  
+
 ### isosceles_triangle_judgment_line_equal(ABC)
 <div>
     <img src="gdl-pic/T088.png" width="15%"

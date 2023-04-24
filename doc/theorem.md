@@ -230,6 +230,16 @@
 **Notes**:  
 1.常识：若∠ABC与∠CBD相邻，则∠ABC+∠CBD=∠ABD  
 
+### flat_angle(ABC)
+<div>
+    <img src="gdl-pic/T001.png" width="15%"
+</div>
+
+    premise: Collinear(ABC)
+    conclusion: Equal(MeasureOfAngle(ABC),180)
+**Notes**:  
+1.常识：平角为180°  
+
 ### adjacent_complementary_angle(AOB,BOC)
 <div>
     <img src="gdl-pic/T021.png" width="15%"

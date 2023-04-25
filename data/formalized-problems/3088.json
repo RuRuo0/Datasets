@@ -7,18 +7,26 @@
   "problem_text_en": "Find y.",
   "problem_img": "3088.png",
   "construction_cdl": [
-    "Shape()",
-    "Collinear()",
-    "Cocircular()"
+    "Shape(FG,GB,BF)",
+    "Shape(BG,GD,DE,EB)",
+    "Collinear(FBE)",
+    "Collinear(FGD)"
   ],
   "text_cdl": [],
   "image_cdl": [
     "Equal(LengthOfLine(EB),3*y-6)",
     "Equal(LengthOfLine(BF),2*y+4)",
-    "Equal(LengthOfLine(FG),\\frac{1}{2}x+12)",
-    "Equal(LengthOfLine(DG),\\frac{3}{2}x+8)"
+    "Equal(LengthOfLine(FG),1/2*X+12)",
+    "Equal(LengthOfLine(DG),3/2*x+8)",
+    "Equal(LengthOfLine(FG),LengthOfLine(GD))",
+    "ParallelBetweenLine(GB,DE)"
   ],
   "goal_cdl": "Value(y)",
   "problem_answer": "10",
-  "theorem_seqs": []
+  "theorem_seqs": [
+    "parallel_property_corresponding_angle",
+    "similar_triangle_judgment_aa",
+    "similar_triangle_property_line_ratio",
+    "line_addition"
+  ]
 }

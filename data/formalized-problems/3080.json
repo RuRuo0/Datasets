@@ -7,25 +7,26 @@
   "problem_text_en": "Quadrilateral A B D C is a rectangle. Find m \\angle 6 if m \\angle 1 = 38.",
   "problem_img": "3080.png",
   "construction_cdl": [
-    "Shape()",
-    "Collinear()",
-    "Cocircular()"
+    "Shape(AB,BE,EA)",
+    "Shape(AE,EC,CA)",
+    "Shape(EB,BD,DE)",
+    "Shape(ED,DC,CE)",
+    "Collinear(AED)",
+    "Collinear(BEC)"
   ],
   "text_cdl": [],
   "image_cdl": [
     "Rectangle(ABDC)",
-    "Equal(MeasureOf(Angle(1)),38)",
-    "Equal(MeasureOfAngle(DCG),MeasureOf(angle7))",
-    "Equal(MeasureOfAngle(CGD),MeasureOf(angle8))",
-    "Equal(MeasureOfAngle(ADC),MeasureOf(angle3))",
-    "Equal(MeasureOfAngle(DGB),MeasureOf(angle5))",
-    "Equal(MeasureOfAngle(CAD),MeasureOf(angle1))",
-    "Equal(MeasureOfAngle(BDG),MeasureOf(angle4))",
-    "Equal(MeasureOfAngle(GBD),MeasureOf(angle6))",
-    "Equal(MeasureOfAngle(GAB),MeasureOf(angle2))",
-    "PerpendicularBetweenLine(BA,BD)"
+    "Equal(MeasureOfAngle(CAE),38)"
   ],
-  "goal_cdl": "Value(MeasureOf(Angle(6)))",
+  "goal_cdl": "Value(MeasureOfAngle(CBD))",
   "problem_answer": "38",
-  "theorem_seqs": []
+  "theorem_seqs": [
+    "parallel_property_alternate_interior_angle",
+    "rectangle_property_diagonal_equal",
+    "parallelogram_property_diagonal_bisection",
+    "line_addition",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal"
+  ]
 }

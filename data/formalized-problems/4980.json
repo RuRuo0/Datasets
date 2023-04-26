@@ -1,0 +1,31 @@
+{
+  "problem_id": 4980,
+  "annotation": "NaZhu_2023-04-23",
+  "source": "GeoQA-519",
+  "problem_level": 1,
+  "problem_text_cn": "如图,四边形ABCD,∠A=110°,若点D在AB、AC的垂直平分线上,则∠BDC为()",
+  "problem_text_en": "As shown in the figure, the quadrilateral ABCD, ∠A = N_0, if the point D is on the vertical bisector of AB and AC, then ∠BDC is ()",
+  "problem_img": "4980.png",
+  "construction_cdl": [
+    "Shape(DCA,AC)",
+    "Shape(DAB,BA)",
+    "Shape(DBE,EB)",
+    "Shape(DEC,CE)",
+    "Shape(DC,CA,AB,BD)",
+    "Shape(DB,BE,EC,CD)",
+    "Cocircular(D,ABEC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(D,D)",
+    "IsCircumcenterOfQuadrilateral(O,ABCD)",
+    "Equal(MeasureOfAngle(CAB),110)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(BDC))",
+  "problem_answer": "140",
+  "theorem_seqs": [
+    "arc_property_circumference_angle_internal",
+    "arc_property_center_angle"
+  ],
+  "raw_answer": "试题解析:连接AD,∵点D在AB、AC的垂直平分线上,∴BD=AD,DC=AD,∴∠B=∠BAD,∠C=∠CAD,∵∠BAC=110°=∠BAD+∠CAD,∴∠B+∠C=110°,∴∠BDC=360°-(∠B+∠C)-∠BAC=360°-110°-110°=140°故选D."
+}

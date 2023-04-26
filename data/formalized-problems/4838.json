@@ -1,0 +1,36 @@
+{
+  "problem_id": 4838,
+  "annotation": "YimingHe_2023-04-23",
+  "source": "GeoQA-323",
+  "problem_level": 1,
+  "problem_text_cn": "如图,直线AB∥CD,∠1=136°,∠E为直角,则∠C等于()",
+  "problem_text_en": "As shown in the figure, the straight line AB ∥ CD, ∠1 = N_0, ∠E is a right angle, then ∠C is equal to ()",
+  "problem_img": "4838.png",
+  "construction_cdl": [
+    "Shape(HA,AB)",
+    "Shape(BA,AE)",
+    "Shape(CE,EM)",
+    "Shape(ME,EA)",
+    "Shape(EC,CD)",
+    "Collinear(HAE)"
+  ],
+  "text_cdl": [
+    "ParallelBetweenLine(AB,CD)",
+    "ParallelBetweenLine(AB,ME)",
+    "ParallelBetweenLine(ME,CD)",
+    "Equal(MeasureOfAngle(CEA),90)",
+    "Equal(MeasureOfAngle(HAB),136)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(ECD))",
+  "problem_answer": "46",
+  "theorem_seqs": [
+    "adjacent_complementary_angle",
+    "parallel_judgment_par_par",
+    "parallel_property_alternate_interior_angle",
+    "angle_addition",
+    "parallel_property_alternate_interior_angle"
+  ],
+  "raw_answer": "试题解析:∵∠1=136^{°},∴∠BAE=180^{°}-∠1=44^{°},过E作EF//AB,∴AB//CD,∴AB//EF//CD,∴∠BAE=∠AEF,∠CEF=∠C,∵∠BAE=44°,∠E为直角,∴∠AEF=44°,∴∠C=∠CEF=90^{°}-44^{°}=46^{°},故选C.",
+  "notes": "平行的传递性是不是需要多加几种情况"
+}

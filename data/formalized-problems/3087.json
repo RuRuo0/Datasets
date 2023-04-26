@@ -7,17 +7,26 @@
   "problem_text_en": "Find x. Assume that segments that appear to be tangent are tangent.",
   "problem_img": "3087.png",
   "construction_cdl": [
-    "Shape()",
-    "Collinear()",
-    "Cocircular()"
+    "Shape(AV,VU,VUA)",
+    "Shape(UW,WA,VUA)",
+    "Shape(VA,VAU,UV)",
+    "Collinear(WAV)",
+    "Cocircular(V,AU)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "IsTangentOfCircle(WU,V)"
+  ],
   "image_cdl": [
-    "Tangent(Line($),Circle($))",
     "Equal(LengthOfLine(UV),7)",
-    "Equal(LengthOfLine(UX),12)"
+    "Equal(LengthOfLine(UW),12)",
+    "Equal(LengthOfLine(WV),x)",
+    "IsCentreOfCircle(V,V)"
   ],
   "goal_cdl": "Value(x)",
   "problem_answer": "√193",
-  "theorem_seqs": []
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular",
+    "right_triangle_judgment_angle(VUW)",
+    "right_triangle_property_pythagorean"
+  ]
 }

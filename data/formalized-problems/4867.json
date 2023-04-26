@@ -1,0 +1,36 @@
+{
+  "problem_id": 4867,
+  "annotation": "YimingHe_2023-04-23",
+  "source": "GeoQA-368",
+  "problem_level": 1,
+  "problem_text_cn": "如图,⊙O是△ABC的外接圆,连结OA、OB,且点C、O在弦AB的同侧,若∠ABO=50°,则∠ACB的度数为()",
+  "problem_text_en": "As shown in the figure, ⊙O is the circumscribed circle of △ABC, connecting OA and OB, and points C and O are on the same side of chord AB. If ∠ABO = N_0, then the degree of ∠ACB is ()",
+  "problem_img": "4867.png",
+  "construction_cdl": [
+    "Shape(CD,DO,OA,OAC)",
+    "Shape(OD,DA,AO)",
+    "Shape(CB,BD,DC)",
+    "Shape(DB,BA,AD)",
+    "Shape(BC,OCB)",
+    "Shape(AB,OBA)",
+    "Collinear(ADC)",
+    "Collinear(ODB)",
+    "Cocircular(O,CBA)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(DBA),50)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(DCB))",
+  "problem_answer": "40",
+  "theorem_seqs": [
+    "circle_property_radius_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external"
+  ],
+  "raw_answer": "试题分析:∵OA=OB,利用等边对等角求得∠BAO=∠ABO=50°,然后根据三角形内角和定理求得∠AOB=180°-50°-50°=80°.最后根据圆周角定理即∴∠ACB=\\frac{1}{2}∠AOB=40^{°},故选D."
+}

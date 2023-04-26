@@ -820,6 +820,14 @@
       ]
     }
   },
+  "right_triangle_property_length_of_median(ABC,M)": {
+    "1": {
+      "premise": "RightTriangle(ABC)&IsMedianOfTriangle(BM,BCA)",
+      "conclusion": [
+        "Equal(Mul(LengthOfLine(BM),2),LengthOfLine(CA))"
+      ]
+    }
+  },
   "isosceles_triangle_judgment_line_equal(ABC)": {
     "1": {
       "premise": "Polygon(ABC)&Equal(LengthOfLine(AB),LengthOfLine(AC))",
@@ -1587,41 +1595,11 @@
       ]
     }
   },
-  "circle_property_diameter_length_equal(APB,O)": {
-    "1": {
-      "premise": "Cocircular(O,AB)&Collinear(APB)&IsCentreOfCircle(P,O)",
-      "conclusion": [
-        "Equal(LengthOfLine(AB),DiameterOfCircle(O))"
-      ]
-    }
-  },
-  "circle_property_radius_length_equal(PA,O)": {
-    "1": {
-      "premise": "Cocircular(O,A)&Line(PA)&IsCentreOfCircle(P,O)",
-      "conclusion": [
-        "Equal(LengthOfLine(PA),RadiusOfCircle(O))"
-      ]
-    }
-  },
   "circle_property_length_of_radius_and_diameter(O)": {
     "1": {
       "premise": "Circle(O)",
       "conclusion": [
         "Equal(DiameterOfCircle(O),Mul(RadiusOfCircle(O),2))"
-      ]
-    }
-  },
-  "circle_property_diameter_to_circumference_angle(O,APB,C)": {
-    "1": {
-      "premise": "Cocircular(O,BCA)&Collinear(APB)&Angle(BCA)&IsCentreOfCircle(P,O)",
-      "conclusion": [
-        "PerpendicularBetweenLine(BC,AC)"
-      ]
-    },
-    "2": {
-      "premise": "Cocircular(O,ACB)&Collinear(APB)&Angle(ACB)&IsCentreOfCircle(P,O)",
-      "conclusion": [
-        "PerpendicularBetweenLine(AC,BC)"
       ]
     }
   },
@@ -1732,6 +1710,54 @@
       "premise": "Circle(O)",
       "conclusion": [
         "Equal(AreaOfCircle(O),Mul(π,RadiusOfCircle(O),RadiusOfCircle(O)))"
+      ]
+    }
+  },
+  "radius_of_circle_property_length_equal(PA,O)": {
+    "1": {
+      "premise": "Cocircular(O,A)&Line(PA)&IsCentreOfCircle(P,O)",
+      "conclusion": [
+        "Equal(LengthOfLine(PA),RadiusOfCircle(O))"
+      ]
+    }
+  },
+  "diameter_of_circle_judgment_pass_centre(APB,O)": {
+    "1": {
+      "premise": "Cocircular(O,AB)&Collinear(APB)&IsCentreOfCircle(P,O)",
+      "conclusion": [
+        "IsDiameterOfCircle(AB,O)"
+      ]
+    }
+  },
+  "diameter_of_circle_judgment_length_equal(AB,O)": {
+    "1": {
+      "premise": "Cocircular(O,AB)&Equal(DiameterOfCircle(O),LengthOfLine(AB))",
+      "conclusion": [
+        "IsDiameterOfCircle(AB,O)"
+      ]
+    }
+  },
+  "diameter_of_circle_judgment_right_angle(BCA,O)": {
+    "1": {
+      "premise": "Cocircular(O,BCA)&Angle(BCA)&PerpendicularBetweenLine(BC,AC)",
+      "conclusion": [
+        "IsDiameterOfCircle(AB,O)"
+      ]
+    }
+  },
+  "diameter_of_circle_property_length_equal(AB,O)": {
+    "1": {
+      "premise": "IsDiameterOfCircle(AB,O)",
+      "conclusion": [
+        "Equal(LengthOfLine(AB),DiameterOfCircle(O))"
+      ]
+    }
+  },
+  "diameter_of_circle_property_right_angle(BCA,O)": {
+    "1": {
+      "premise": "IsDiameterOfCircle(AB,O)&Cocircular(O,BCA)&Angle(BCA)",
+      "conclusion": [
+        "PerpendicularBetweenLine(BC,AC)"
       ]
     }
   },

@@ -1,0 +1,33 @@
+{
+  "problem_id": 4861,
+  "annotation": "YimingHe_2023-04-23",
+  "source": "GeoQA-361",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB是⊙O的直径,点C在⊙O上,过点C作⊙O的切线交AB的延长线于点D,连接AC．若∠D=50°,则∠A的度数是()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, point C is on ⊙O, passing point C to draw the tangent of ⊙O and it intersects the extended line of AB at point D. Connect AC. If ∠D = N_0, then the degree of ∠A is ()",
+  "problem_img": "4861.png",
+  "construction_cdl": [
+    "Shape(CA,OAC)",
+    "Shape(OA,AC,CO)",
+    "Shape(BO,OC,OCB)",
+    "Shape(CD,DB,OCB)",
+    "Shape(AO,OB,OBA)",
+    "Collinear(AOBD)",
+    "Cocircular(O,CBA)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(DC,O)",
+    "Equal(MeasureOfAngle(CDB),50)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(OAC))",
+  "problem_answer": "20",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular",
+    "triangle_property_angle_sum",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external"
+  ],
+  "raw_answer": "试题解析:∵CD切⊙O于C,∴OC⊥CD,∴∠OCD=90°,∵∠D=50^{°},∴∠COD=180^{°}-90^{°}-50^{°}=40^{°},∵OA=OC,∴∠A=∠OCA,∵∠A+∠OCA=∠COD=40^{°},∴∠A=20°故选A."
+}

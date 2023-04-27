@@ -1,0 +1,35 @@
+{
+  "problem_id": 5118,
+  "annotation": "yiminghe_2023-04-18",
+  "source": "GeoQA-808",
+  "problem_level": 1,
+  "problem_text_cn": "如图,⊙O是△ABC的外接圆,∠OCB=40°,则∠A的大小为()",
+  "problem_text_en": "As shown in the figure, ⊙O is the circumscribed circle of △ABC, ∠OCB = N_0, then the size of ∠A is ()",
+  "problem_img": "5118.png",
+  "construction_cdl": [
+    "Shape(BA,OAB)",
+     "Shape(BO,OC,CA,AB)",
+     "Shape(OB,BC,CO)",
+     "Shape(AC,OCA)",
+     "Shape(CB,OBC)",
+    "Cocircular(O,BCA)"
+  ],
+  "text_cdl": [
+     "IsCentreOfCircle(O,O)",
+        "Equal(MeasureOfAngle(BCO),40)"
+  ],
+  "image_cdl": [
+
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(CAB))",
+  "problem_answer": "50",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external"
+  ],
+  "raw_answer": "试题分析:∵OB=OC,∠OCB=40^{°},∴∠BOC=180^{°}-2∠OCB=100^{°},∴由圆周角定理可知∠A=\\frac{1}{2}∠BOC=50^{°}.故选B."
+}

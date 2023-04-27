@@ -1,0 +1,41 @@
+{
+  "problem_id": 5841,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-1972",
+  "problem_level": 1,
+  "problem_text_cn": "如图,Rt△ABC中,∠ABC=90°,AB=BC=2,以BC为直径的圆交AC于点D,则图中阴影部分的面积为()",
+  "problem_text_en": "As shown in the figure, in Rt△ABC, ∠ABC = N_0, AB = BC = N_1, the circle with BC as the diameter intersects AC at point D, then the area of ​​the shaded part in the figure is ()",
+  "problem_img": "5841.png",
+  "construction_cdl": [
+    "Shape(DC,CA,ODA)",
+    "Shape(ODA,AD)",
+    "Shape(BD,DA,AO,OB)",
+    "Shape(OBD,DB)",
+    "Shape(BO,OA,OAB)",
+    "Collinear(BOA)",
+    "Collinear(BDC)",
+    "Cocircular(O,BDA)"
+  ],
+  "text_cdl": [],
+  "image_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(LengthOfLine(AB),2)",
+    "Equal(LengthOfLine(AC),2)",
+    "Equal(MeasureOfAngle(BCA),45)",
+    "Equal(MeasureOfAngle(ABC),45)",
+    "Equal(MeasureOfAngle(CAB),90)"
+  ],
+  "goal_cdl": "Value(AreaOfTriangle(DCA))",
+  "problem_answer": "1",
+  "theorem_seqs": [
+        "circle_property_diameter_to_circumference_angle",
+    "flat_angle",
+    "angle_addition",
+    "triangle_property_angle_sum",
+    "isosceles_triangle_judgment_angle_equal",
+    "right_triangle_judgment_angle",
+    "right_triangle_property_pythagorean",
+    "triangle_area_formula_sine"
+  ],
+  "raw_answer": "解:AB=BC,∴∠C=45°,∴DC=BD,∴由BD,CD组成的两个弓形面积相等,所以阴影部分的面积就等于△ABD的面积,所以S△ABD=2×1÷2=1．故选:C．"
+}

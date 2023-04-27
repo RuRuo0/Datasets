@@ -1,0 +1,39 @@
+{
+  "problem_id": 5082,
+  "annotation": "yiminghe_2023-04-18",
+  "source": "GeoQA-701",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在⊙O中,若点C是弧AB的中点,∠A=50°,则∠BOC等于()",
+  "problem_text_en": "As shown in the figure, in ⊙O, if point C is the midpoint of arc AB, ∠A = N_0, then ∠BOC is equal to ()",
+  "problem_img": "5082.png",
+  "construction_cdl": [
+    "Shape(OA,AD,DO)",
+    "Shape(OD,DB,BO)",
+    "Shape(AO,OB,OBA)",
+    "Shape(CD,DA,OAC)",
+    "Shape(BD,DC,OCB)",
+    "Collinear(ADB)",
+    "Collinear(ODC)",
+    "Cocircular(O,ACB)"
+  ],
+  "text_cdl": [
+    "CongruentBetweenArc(OAC,OCB)",
+    "Equal(MeasureOfAngle(OAD),50)",
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(BOD))",
+  "problem_answer": "40",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum(OAB)",
+  "congruent_arc_property_measure_equal",
+    "arc_property_center_angle",
+    "angle_addition(BOD,DOA)"
+
+  ],
+  "raw_answer": "试题解析:∵∠A=50^{°},OA=OB,∴∠OBA=∠OAB=50^{°},∴∠AOB=180^{°}-50^{°}-50^{°}=80^{°},∵点C是AB的中点,∠BOC=\\frac{1}{2}∠AOB=40^{°}.故选C."
+}

@@ -1,0 +1,34 @@
+{
+  "problem_id": 5093,
+  "annotation": "yiminghe_2023-04-18",
+  "source": "GeoQA-728",
+  "problem_level": 1,
+  "problem_text_cn": "如图△ABC中,∠ACB=90°,AD平分∠BAC交BC于D,DE垂直AB于E,若DE=1.5cm,BD=3cm,则BC=()",
+  "problem_text_en": "As shown in △ABC, ∠ACB = N_0, AD bisects ∠BAC and it intersects BC at D, DE is perpendicular to AB to E, if DE = N_1, BD = N_2, then BC = ()",
+  "problem_img": "5093.png",
+  "construction_cdl": [
+    "Shape(BD,DE,EB)",
+    "Shape(ED,DA,AE)",
+    "Shape(AD,DC,CA)",
+    "Collinear(AEB)",
+     "Collinear(BDC)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(DCA),90)",
+    "Equal(LengthOfLine(DE),1.5)",
+    "Equal(LengthOfLine(BD),3)",
+    "IsBisectorOfAngle(AD,CAE)",
+    "PerpendicularBetweenLine(DE,BE)"
+  ],
+  "image_cdl": [
+  ],
+  "goal_cdl": "Value(LengthOfLine(BC))",
+  "problem_answer": "4.5",
+  "theorem_seqs": [
+    "perpendicular_property_collinear_extend",
+    "mirror_congruent_triangle_judgment_aas",
+    "mirror_congruent_triangle_property_line_equal",
+    "line_addition(BD,DC)"
+  ],
+  "raw_answer": "∠ACB=90^{°},DE垂直AB于E,AD平分∠BAC交BC于D,所以DC=DE=1.5.BD=3cm∴BC=4.5cm所以选D."
+}

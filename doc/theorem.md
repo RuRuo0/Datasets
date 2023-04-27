@@ -1940,10 +1940,10 @@
 </div>
 
     # branch 1
-    premise: Cocircular(O,AB)&Collinear(AMB)&IsCentreOfCircle(P,O)&PerpendicularBetweenLine(AM,PM)
+    premise: Cocircular(O,AB)&Collinear(AMB)&IsCentreOfCircle(P,O)&Equal(MeasureOfAngle(AMO),90)
     conclusion: IsPerpendicularBisectorOfLine(PM,AB)
     # branch 2
-    premise: Cocircular(O,AB)&Collinear(AMB)&IsCentreOfCircle(P,O)&IsMidpointOfLine(M,AB)
+    premise: Cocircular(O,AB)&Collinear(AMB)&IsCentreOfCircle(P,O)&Equal(LengthOfLine(AM),LengthOfLine(MB))
     conclusion: IsPerpendicularBisectorOfLine(PM,AB)
 **Notes**:  
 1.弦中点和圆心的连线是弦的垂直平分线  
@@ -1954,10 +1954,10 @@
 </div>
 
     # branch 1
-    premise: Arc(OAB)&Cocircular(O,ADB)&Collinear(AMB)&Collinear(PMD)&IsCentreOfCircle(P,O)&PerpendicularBetweenLine(AM,PM)
+    premise: Arc(OAB)&Cocircular(O,ADB)&Collinear(AMB)&Collinear(PMD)&IsCentreOfCircle(P,O)&Equal(MeasureOfAngle(AMO),90)
     conclusion: Equal(LengthOfArc(OAD),LengthOfArc(ODB))
     # branch 2
-    premise: Arc(OAB)&Cocircular(O,ADB)&Collinear(AMB)&Collinear(PMD)&IsCentreOfCircle(P,O)&IsMidpointOfLine(M,AB)
+    premise: Arc(OAB)&Cocircular(O,ADB)&Collinear(AMB)&Collinear(PMD)&IsCentreOfCircle(P,O)&Equal(LengthOfLine(AM),LengthOfLine(MB))
     conclusion: Equal(LengthOfArc(OAD),LengthOfArc(ODB))
 **Notes**:  
 1.圆心过弦中点与弦所对的弧的交点平分弧  

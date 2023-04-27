@@ -1,0 +1,34 @@
+{
+  "problem_id": 4917,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-433",
+  "problem_level": 1,
+  "problem_text_cn": "如图,弦AC∥OB,∠B=25°,则∠O=()",
+  "problem_text_en": "As shown in the figure, the string AC ∥ OB, ∠B = N_0, then ∠O = ()",
+  "problem_img": "4917.png",
+  "construction_cdl": [
+    "Shape(OB,BD,DO)",
+    "Shape(CD,DB,OBC)",
+    "Shape(DC,CA,AD)",
+    "Shape(AC,OCA)",
+    "Shape(BO,OD,DA,OAB)",
+    "Collinear(ODC)",
+    "Collinear(ADB)",
+    "Cocircular(O,ABC)"
+  ],
+  "text_cdl": [
+    "ParallelBetweenLine(BO,CA)",
+    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(OBD),25)"
+  ],
+  "image_cdl": [
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(DOB))",
+  "problem_answer": "50",
+  "theorem_seqs": [
+    "parallel_property_alternate_interior_angle(BO,CA)",
+    "arc_property_circumference_angle_external(OBC,A)",
+    "arc_property_center_angle(OBC,O)"
+  ],
+  "raw_answer": "试题分析:首先根据平行线的性质可得:∠BAC=∠B=25°,根据同弧所对的圆心角的度数等于圆周角度数的两倍可知:∠O=2∠BAC=50°."
+}

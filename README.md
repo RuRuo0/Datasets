@@ -7,30 +7,7 @@ Formal representation and solving for SAT-level Euclidean plane geometry problem
 **FormalGeo-SAT** is an extended version of **[FormalGeo](https://github.com/BitSecret/FormalGeo)**. It supports solving
 more types of plane geometric problems.
 
-## Co-work
-
-#### Week 9 (230501): form 2023-05-01 to 2023-05-07.
-
-**Attention:** Annotate problems in directory **Geometry3K-Other** and **GeoQA**.
-
-| Id  | Worker | WorkLoad |                 PID                 | Submitted |
-|:---:|:------:|:--------:|:-----------------------------------:|:---------:|
-|  1  |  贺艺铭   |    60    | 5852-5911 (data/raw-problems/GeoQA) |     ×     |
-|  2  |   邹佳   |    60    | 5912-5971 (data/raw-problems/GeoQA) |     ×     |
-|  3  |   朱娜   |    60    | 5972-6031 (data/raw-problems/GeoQA) |     ×     |
-|  4  |  张效凯   |    60    | 6032-6091 (data/raw-problems/GeoQA) |     ×     |
-|  5  |  郭彦钧   |    60    | 6092-6151 (data/raw-problems/GeoQA) |     ×     |
-|  6  |  黄琦珂   |    60    | 6152-6211 (data/raw-problems/GeoQA) |     ×     |
-|  7  |  黄一雯   |    50    |           same as week 8            |     ×     |
-|  8  |  金啸笑   |    60    | 6212-6271 (data/raw-problems/GeoQA) |     ×     |
-|  9  |   李阳   |    60    | 6272-6331 (data/raw-problems/GeoQA) |     ×     |
-| 10  |  毛晨扬   |    60    | 6332-6391 (data/raw-problems/GeoQA) |     ×     |
-| 11  |  王茹楠   |    50    |           same as week 8            |     ×     |
-| 12  |  王一凡   |    50    |           same as week 8            |     ×     |
-| 13  |  岳登峰   |    60    | 6392-6451 (data/raw-problems/GeoQA) |     ×     |
-| 14  |  朱方震   |    60    |           same as week 8            |     ×     |
-| 15  |   朱哲   |    60    | 6452-6511 (data/raw-problems/GeoQA) |     ×     |
-| 16  |   秦城   |    20    | 6512-6531 (data/raw-problems/GeoQA) |     ×     |
+## Co-work (Current Week)
 
 #### Week 8 (230424): form 2023-04-24 to 2023-04-30.
 
@@ -53,6 +30,125 @@ more types of plane geometric problems.
 | 13  |  岳登峰   |    60    |                                                          5672-5731 (data/raw-problems/GeoQA)                                                          |     ×     |
 | 14  |  朱方震   |    60    |                                                          5732-5791 (data/raw-problems/GeoQA)                                                          |     /     |
 | 15  |   朱哲   |    60    |                                                          5792-5851 (data/raw-problems/GeoQA)                                                          |     √     |
+
+## Co-work (After)
+
+#### Week 9 (230501): form 2023-05-01 to 2023-05-07.
+
+**Attention:** Annotate problems in directory **GeoQA**.
+
+| Id  | Worker | WorkLoad |                 PID                 | Submitted |
+|:---:|:------:|:--------:|:-----------------------------------:|:---------:|
+|  1  |  贺艺铭   |    60    | 5852-5911 (data/raw-problems/GeoQA) |     ×     |
+|  2  |   邹佳   |    60    | 5912-5971 (data/raw-problems/GeoQA) |     ×     |
+|  3  |   朱娜   |    60    | 5972-6031 (data/raw-problems/GeoQA) |     ×     |
+|  4  |  张效凯   |    60    | 6032-6091 (data/raw-problems/GeoQA) |     ×     |
+|  5  |  郭彦钧   |    60    | 6092-6151 (data/raw-problems/GeoQA) |     ×     |
+|  6  |  黄琦珂   |    60    | 6152-6211 (data/raw-problems/GeoQA) |     ×     |
+|  7  |  黄一雯   |    60    |           same as week 8            |     ×     |
+|  8  |  金啸笑   |    60    | 6212-6271 (data/raw-problems/GeoQA) |     ×     |
+|  9  |   李阳   |    60    | 6272-6331 (data/raw-problems/GeoQA) |     ×     |
+| 10  |  毛晨扬   |    60    | 6332-6391 (data/raw-problems/GeoQA) |     ×     |
+| 11  |  王茹楠   |    60    |           same as week 8            |     ×     |
+| 12  |  王一凡   |    60    |           same as week 8            |     ×     |
+| 13  |  岳登峰   |    60    | 6392-6451 (data/raw-problems/GeoQA) |     ×     |
+| 14  |  朱方震   |    60    |           same as week 8            |     ×     |
+| 15  |   朱哲   |    60    | 6452-6511 (data/raw-problems/GeoQA) |     ×     |
+| 16  |   秦城   |    20    | 6512-6531 (data/raw-problems/GeoQA) |     ×     |
+
+#### Week 10 (230508): form 2023-05-08 to 2023-05-14.
+
+**Attention:** Annotate problems in directory **GeoQA**.
+
+| Id  | Worker | WorkLoad |                 PID                 | Submitted |
+|:---:|:------:|:--------:|:-----------------------------------:|:---------:|
+|  1  |  贺艺铭   |    60    | 6532-6591 (data/raw-problems/GeoQA) |     ×     |
+|  2  |   邹佳   |    60    | 6592-6651 (data/raw-problems/GeoQA) |     ×     |
+|  3  |   朱娜   |    60    | 6652-6711 (data/raw-problems/GeoQA) |     ×     |
+|  4  |  张效凯   |    60    | 6712-6771 (data/raw-problems/GeoQA) |     ×     |
+|  5  |  郭彦钧   |    60    | 6772-6831 (data/raw-problems/GeoQA) |     ×     |
+|  6  |  黄琦珂   |    60    | 6832-6891 (data/raw-problems/GeoQA) |     ×     |
+|  7  |  黄一雯   |    60    | 6892-6951 (data/raw-problems/GeoQA) |     /     |
+|  8  |  金啸笑   |    60    | 6592-7011 (data/raw-problems/GeoQA) |     ×     |
+|  9  |   李阳   |    60    | 7012-7071 (data/raw-problems/GeoQA) |     ×     |
+| 10  |  毛晨扬   |    60    | 7072-7131 (data/raw-problems/GeoQA) |     ×     |
+| 11  |  王茹楠   |    60    | 7132-7191 (data/raw-problems/GeoQA) |     /     |
+| 12  |  王一凡   |    60    | 7192-7251 (data/raw-problems/GeoQA) |     /     |
+| 13  |  岳登峰   |    60    | 7252-7311 (data/raw-problems/GeoQA) |     ×     |
+| 14  |  朱方震   |    60    | 7312-7371 (data/raw-problems/GeoQA) |     /     |
+| 15  |   朱哲   |    60    | 7372-7431 (data/raw-problems/GeoQA) |     ×     |
+| 16  |   秦城   |    60    | 7432-7491 (data/raw-problems/GeoQA) |     /     |
+
+#### Week 11 (230515): form 2023-05-15 to 2023-05-21.
+
+**Attention:** Annotate problems in directory **GeoQA**.
+
+| Id  | Worker | WorkLoad |                 PID                 | Submitted |
+|:---:|:------:|:--------:|:-----------------------------------:|:---------:|
+|  1  |  贺艺铭   |    60    | 7492-7551 (data/raw-problems/GeoQA) |     ×     |
+|  2  |   邹佳   |    60    | 7552-7611 (data/raw-problems/GeoQA) |     ×     |
+|  3  |   朱娜   |    60    | 7612-7671 (data/raw-problems/GeoQA) |     ×     |
+|  4  |  张效凯   |    60    | 7672-7731 (data/raw-problems/GeoQA) |     ×     |
+|  5  |  郭彦钧   |    60    | 7732-7791 (data/raw-problems/GeoQA) |     ×     |
+|  6  |  黄琦珂   |    60    | 7792-7851 (data/raw-problems/GeoQA) |     ×     |
+|  7  |  黄一雯   |    60    |           same as week 10           |     ×     |
+|  8  |  金啸笑   |    60    | 7852-7911 (data/raw-problems/GeoQA) |     ×     |
+|  9  |   李阳   |    60    | 7912-7971 (data/raw-problems/GeoQA) |     ×     |
+| 10  |  毛晨扬   |    60    | 7972-8031 (data/raw-problems/GeoQA) |     ×     |
+| 11  |  王茹楠   |    60    |           same as week 10           |     ×     |
+| 12  |  王一凡   |    60    |           same as week 10           |     ×     |
+| 13  |  岳登峰   |    60    | 8032-8091 (data/raw-problems/GeoQA) |     ×     |
+| 14  |  朱方震   |    60    |           same as week 10           |     ×     |
+| 15  |   朱哲   |    60    | 8092-8151 (data/raw-problems/GeoQA) |     ×     |
+| 16  |   秦城   |    60    |           same as week 10           |     ×     |
+
+#### Week 12 (230522): form 2023-05-22 to 2023-05-28.
+
+**Attention:** Annotate problems in directory **GeoQA**.
+
+| Id  | Worker | WorkLoad |                 PID                 | Submitted |
+|:---:|:------:|:--------:|:-----------------------------------:|:---------:|
+|  1  |  贺艺铭   |    60    | 8152-8211 (data/raw-problems/GeoQA) |     ×     |
+|  2  |   邹佳   |    60    | 8212-8271 (data/raw-problems/GeoQA) |     ×     |
+|  3  |   朱娜   |    60    | 8272-8331 (data/raw-problems/GeoQA) |     ×     |
+|  4  |  张效凯   |    60    | 8332-8391 (data/raw-problems/GeoQA) |     ×     |
+|  5  |  郭彦钧   |    60    | 8392-8451 (data/raw-problems/GeoQA) |     ×     |
+|  6  |  黄琦珂   |    60    | 8452-8511 (data/raw-problems/GeoQA) |     ×     |
+|  7  |  黄一雯   |    60    | 8512-8571 (data/raw-problems/GeoQA) |     /     |
+|  8  |  金啸笑   |    60    | 8572-8631 (data/raw-problems/GeoQA) |     ×     |
+|  9  |   李阳   |    60    | 8632-8691 (data/raw-problems/GeoQA) |     ×     |
+| 10  |  毛晨扬   |    60    | 8692-8751 (data/raw-problems/GeoQA) |     ×     |
+| 11  |  王茹楠   |    60    | 8752-8811 (data/raw-problems/GeoQA) |     /     |
+| 12  |  王一凡   |    60    | 8812-8871 (data/raw-problems/GeoQA) |     /     |
+| 13  |  岳登峰   |    60    | 8872-8931 (data/raw-problems/GeoQA) |     ×     |
+| 14  |  朱方震   |    60    | 8932-8991 (data/raw-problems/GeoQA) |     ×     |
+| 15  |   朱哲   |    60    | 8992-9051 (data/raw-problems/GeoQA) |     ×     |
+| 16  |   秦城   |    60    | 9052-9111 (data/raw-problems/GeoQA) |     ×     |
+
+#### Week 13 (230501): form 2023-05-29 to 2023-06-04.
+
+**Attention:** Annotate problems in directory **GeoQA** and **GeoQAPlus**.
+
+| Id  | Worker | WorkLoad |                                      PID                                       | Submitted |
+|:---:|:------:|:--------:|:------------------------------------------------------------------------------:|:---------:|
+|  1  |  贺艺铭   |    60    |                      9112-9171 (data/raw-problems/GeoQA)                       |     ×     |
+|  2  |   邹佳   |    60    |                      9172-9231 (data/raw-problems/GeoQA)                       |     ×     |
+|  3  |   朱娜   |    60    |                      9232-9291 (data/raw-problems/GeoQA)                       |     ×     |
+|  4  |  张效凯   |    60    |                      9292-9351 (data/raw-problems/GeoQA)                       |     ×     |
+|  5  |  郭彦钧   |    60    |                      9352-9411 (data/raw-problems/GeoQA)                       |     ×     |
+|  6  |  黄琦珂   |    60    |                      9412-9471 (data/raw-problems/GeoQA)                       |     ×     |
+|  7  |  黄一雯   |    60    |                                same as week 12                                 |     /     |
+|  8  |  金啸笑   |    60    |                      9472-9531 (data/raw-problems/GeoQA)                       |     ×     |
+|  9  |   李阳   |    60    |                      9532-9591 (data/raw-problems/GeoQA)                       |     ×     |
+| 10  |  毛晨扬   |    60    | 9592-9595 (data/raw-problems/GeoQA)<br>9596-9651 (data/raw-problems/GeoQAPlus) |     ×     |
+| 11  |  王茹楠   |    60    |                                same as week 12                                 |     /     |
+| 12  |  王一凡   |    60    |                                same as week 12                                 |     /     |
+| 13  |  岳登峰   |    60    |                    9652-9711 (data/raw-problems/GeoQAPlus)                     |     ×     |
+| 14  |  朱方震   |    60    |                                same as week 12                                 |     /     |
+| 15  |   朱哲   |    60    |                    9712-9771 (data/raw-problems/GeoQAPlus)                     |     ×     |
+| 16  |   秦城   |    60    |                    9772-9831 (data/raw-problems/GeoQAPlus)                     |     ×     |
+
+## Co-work (Before)
 
 #### Week 7 (230417): form 2023-04-17 to 2023-04-23.
 
@@ -855,6 +951,6 @@ contains formalized problems, which stores in *data/formalized-problems*.
 ## Acknowledge
 
 This project is developed and maintained by [Geometric Cognitive Reasoning Group of Shanghai University (GCRG, SHU)](https://euclidesprobationem.github.io/).   
-Thank you for participating in the dataset annotation. They are: [XiaokaiZhang](https://github.com/BitSecret), [YimingHe](https://github.com/748978460), [JiaZou](https://github.com/PersonNoName), [NaZhu](https://github.com/RuRuo0), [YanjunGuo](https://github.com/g826796047), [QikeHuang](https://github.com/huangqaqqk), [XiaoxiaoJin](https://github.com/J1372628520), [YangLi](https://github.com/leeyoung628), [ChenyangMao](https://github.com/shadymcy), [DengfengYue](https://github.com/331368068), [FangzhenZhu](https://github.com/pigsquare), [ZheZhu](https://github.com/zz863474396), [YiwenHuang](https://github.com/Eaven21), [RunanWang](https://github.com/RunanW), [YifanWang](https://github.com/yf0216), [ChengQin](https://github.com/https://github.com/Vench115).   
+Thank you for participating in the dataset annotation. They are: [XiaokaiZhang](https://github.com/BitSecret), [JiaZou](https://github.com/PersonNoName), [YimingHe](https://github.com/748978460), [NaZhu](https://github.com/RuRuo0), [YanjunGuo](https://github.com/g826796047), [QikeHuang](https://github.com/huangqaqqk), [XiaoxiaoJin](https://github.com/J1372628520), [YangLi](https://github.com/leeyoung628), [ChenyangMao](https://github.com/shadymcy), [DengfengYue](https://github.com/331368068), [FangzhenZhu](https://github.com/pigsquare), [ZheZhu](https://github.com/zz863474396), [YiwenHuang](https://github.com/Eaven21), [RunanWang](https://github.com/RunanW), [YifanWang](https://github.com/yf0216), [ChengQin](https://github.com/https://github.com/Vench115).   
 Some original problems come from the following dataset, which are: [GeoS](https://geometry.allenai.org/), [Geometry3K](https://github.com/lupantech/InterGPS), [GeoQA](https://github.com/chen-judge/GeoQA), [GeometryQA](https://github.com/doublebite/Sequence-to-General-tree/), [GeoQA+](https://github.com/SCNU203/GeoQA-Plus), [UniGeo](https://github.com/chen-judge/UniGeo).  
 Please contact with the author (xiaokaizhang1999@163.com) if you encounter any issues.  

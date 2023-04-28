@@ -1,0 +1,35 @@
+{
+  "problem_id": 5526,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-1504",
+  "problem_level": 1,
+  "problem_text_cn": "如图,把矩形ABCD沿EF折叠,若∠1=40°,则∠AEF=()",
+  "problem_text_en": "As shown in the figure, fold the rectangle ABCD along EF, if ∠1 = N_0, then ∠AEF = ()",
+  "problem_img": "5526.png",
+  "construction_cdl": [
+    "Shape(EA,AB,BI,IE)",
+    "Shape(EI,IG,GF,FE)",
+    "Shape(HE,EF,FH)",
+    "Shape(FG,GI,IC,CD,DF)",
+    "Collinear(AEFD)",
+    "Collinear(BIC)",
+    "Collinear(HFG)"
+  ],
+  "text_cdl": [
+    "Rectangle(ABCD)",
+    "Equal(MeasureOfAngle(GIC),40)",
+    "Equal(MeasureOfAngle(BIE),MeasureOfAngle(EIG))",
+    "ParallelBetweenLine(IB,EA)"
+  ],
+  "image_cdl": [
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(IEA))",
+  "problem_answer": "110",
+  "theorem_seqs": [
+    "angle_addition(BIE,EIG)",
+    "angle_addition(BIG,GIC)",
+    "flat_angle(BIC)",
+    "parallel_property_ipsilateral_internal_angle(IB,EA)"
+  ],
+  "raw_answer": "解:如图设B的对应点为K∴∠BFE=∠EFK,∠1=40°,∴∠BFK=180°-40°=140°∴∠BFE=70°,∵AD||BC,∴∠AEF+∠BFE=180°,∴∠AEF=110°,故选:A."
+}

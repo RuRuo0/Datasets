@@ -1,0 +1,37 @@
+{
+  "problem_id": 4935,
+  "annotation": "JiaZou_2023-04-23",
+  "notes": "用到了代数技巧，不知道怎么表示",
+  "source": "GeoQA-459",
+  "problem_level": 1,
+  "problem_text_cn": "如图,△ABC,∠ABC、∠ACB的三等分线交于点E、D,若∠BFC=132°,∠BGC=118°,则∠A的度数为()",
+  "problem_text_en": "As shown in the figure, △ABC, the three bisectors of ∠ABC and ∠ACB intersect at points E and D, if ∠BFC = N_0, ∠BGC = N_1, then the degree of ∠A is ()",
+  "problem_img": "4935.png",
+  "construction_cdl": [
+    "Shape(AB,BF,FE,EG,GC,CA)",
+    "Shape(EF,FD,DG,GE)",
+    "Shape(FB,BD,DF)",
+    "Shape(DC,CG,GD)",
+    "Shape(BC,CD,DB)",
+    "Collinear(BFE)",
+    "Collinear(EGC)",
+    "Collinear(FDC)",
+    "Collinear(BDG)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(CGD),118)",
+    "Equal(MeasureOfAngle(DFB),132)",
+    "Equal(MeasureOfAngle(ABF),MeasureOfAngle(FBD))",
+    "Equal(MeasureOfAngle(DBC),MeasureOfAngle(FBD))",
+    "Equal(MeasureOfAngle(BCD),MeasureOfAngle(DCG))",
+    "Equal(MeasureOfAngle(DCG),MeasureOfAngle(GCA))"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(CAB))",
+  "problem_answer": "70",
+  "theorem_seqs": [
+    "triangle_property_angle_sum(FBC)",
+    "triangle_property_angle_sum(GBC)"
+  ],
+  "raw_answer": "本题解析:∵∠ABC、∠ACB的三等分线交于点E.D,∴∠FBC=2∠DBC,∠GCB=2∠DCB∵∠BFC=132°,∠BGC=118°,∴∠FBC+∠DCB=180°-∠BFC=180°-132°=48°,∠DBC+∠GCB=180°-∠BGC=180°-118°=62°由①+②可得:3(∠DBC+∠DCB)=110°,∴∠ABC+∠ACB=3(∠DBC+∠DCB)=110°,∴∠A=180°-(∠ABC+∠ACB)=180°-110°=70°,故选C."
+}

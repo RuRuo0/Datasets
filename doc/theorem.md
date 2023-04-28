@@ -2062,10 +2062,10 @@
 </div>
 
     # branch 1
-    premise: Cocircular(O,A)&IsCentreOfCircle(Q,O)&Equal(MeasureOfAngle(QAP),90)
+    premise: Cocircular(O,A)&IsCentreOfCircle(Q,O)&Angle(QAP)&Equal(MeasureOfAngle(QAP),90)
     conclusion: IsTangentOfCircle(PA,O)
     # branch 2
-    premise: Cocircular(O,A)&IsCentreOfCircle(Q,O)&Equal(MeasureOfAngle(PAQ),90)
+    premise: Cocircular(O,A)&IsCentreOfCircle(Q,O)&Angle(PAQ)&Equal(MeasureOfAngle(PAQ),90)
     conclusion: IsTangentOfCircle(PA,O)
 **Notes**:  
 1.圆切线的判定：垂直  

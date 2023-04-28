@@ -23,7 +23,7 @@ more types of plane geometric problems.
 |  6  |  黄琦珂   |    60    |                                                          5366-5425 (data/raw-problems/GeoQA)                                                          |     √     |
 |  7  |  黄一雯   |    60    | 4245-4330 (data/raw-problems/Geometry3K-Triangle)<br>2895-2921 (data/raw-problems/Geometry3K-Other)<br>4475-4498 (data/raw-problems/Geometry3K-Other) |     /     |
 |  8  |  金啸笑   |    60    |                                                          5426-5485 (data/raw-problems/GeoQA)                                                          |     ×     |
-|  9  |   李阳   |    60    |                                                          5486-5545 (data/raw-problems/GeoQA)                                                          |     ×     |
+|  9  |   李阳   |    60    |                                                          5486-5545 (data/raw-problems/GeoQA)                                                          |     √     |
 | 10  |  毛晨扬   |    60    |                                                          5546-5605 (data/raw-problems/GeoQA)                                                          |     ×     |
 | 11  |  王茹楠   |    60    |                                 4499-4585 (data/raw-problems/Geometry3K-Other)<br>5606-5611 (data/raw-problems/GeoQA)                                 |     /     |
 | 12  |  王一凡   |    60    |                                                          5612-5671 (data/raw-problems/GeoQA)                                                          |     /     |

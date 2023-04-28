@@ -1,0 +1,38 @@
+{
+  "problem_id": 5540,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-1526",
+  "problem_level": 1,
+  "problem_text_cn": "如图,一牧童在A处牧马,牧童家在B处,A、B距河岸的距离AC、BD的长分别为500米和700米,且C、D两地的距离为1600米,天黑前牧童从A点将马牵引到河边去饮水后再赶回家,那么牧童至少要走的距离是()",
+  "problem_text_en": "As shown in the figure, a shepherd boy is herding horses at A, and the shepherd boy’s home is at B. The distances between A and B from the river bank are N_0 and N_1, and the distance between C and D is N_2. The shepherd boy before dark Tow the horse from point A to the river to drink water and then drive home, then the shepherd boy must walk at least ()",
+  "problem_img": "5540.png",
+  "construction_cdl": [
+    "Shape(DB,BF,FD)",
+    "Shape(FC,CE,EF)",
+    "Shape(AC,CF)",
+    "Collinear(DFC)",
+    "Collinear(ECA)"
+  ],
+  "text_cdl": [
+     "Equal(LengthOfLine(AC),500)",
+     "Equal(LengthOfLine(CE),500)",
+     "Equal(LengthOfLine(FC),y)",
+     "Equal(LengthOfLine(DF),x)",
+     "Equal(LengthOfLine(DC),1600)",
+    " Equal(LengthOfLine(BD),700)",
+    "PerpendicularBetweenLine(AC,FC)",
+    "PerpendicularBetweenLine(FD,BD)"
+  ],
+  "image_cdl": [
+  ],
+  "goal_cdl": "Value(LengthOfLine(BE))",
+  "problem_answer": "2000",
+  "theorem_seqs": [
+    "perpendicular_property_collinear_extend(AC,FC,E)",
+    "line_addition(DF,FC)",
+    "line_addition(BF,FE)"
+
+  ],
+  "raw_answer": "延长AC到E点,使AC=CE,连接BE交CD边于点M,过点E作EN⊥BD交BD的延长线于点N,即可得四边形CENM是矩形,∴DN=EC,CD=NE,连接BE交CD于M,此时BM+AM的值最小,为线段BE的长,即BE为牧童要走的最短路程.∵EN=CD=1600米,BN=DN+BD=BD+AC=500+700=1200(米)∴在Rt△BNE中,BE=√{BN²+NE²}=√{1200²+1600²}=2000(米).∴牧童至少要走2000米.故选C.",
+  "notes": "emmm有点怪，少条件吧"
+}

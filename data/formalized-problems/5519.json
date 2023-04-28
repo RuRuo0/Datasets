@@ -1,0 +1,27 @@
+{
+  "problem_id": 5519,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-1491",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在山坡上种树,要求株距(相邻两树间的水平距离)是6米,测得斜坡的坡度为1:2.4,则斜坡上相邻两树间的坡面距离是()",
+  "problem_text_en": "As shown in the figure, to plant trees on a hillside, the plant spacing (the horizontal distance between two adjacent trees) is required to be N_0, and the slope of the slope is measured as N_1:N_2, then the slope distance between two adjacent trees on the slope is ()",
+  "problem_img": "5519.png",
+  "construction_cdl": [
+    "Shape(BC,CA,AB)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(CA),6)",
+    "Equal(LengthOfLine(BC),2.5)",
+    "PerpendicularBetweenLine(BC,AC)"
+  ],
+  "image_cdl": [
+  ],
+  "goal_cdl": "Value(LengthOfLine(AB))",
+  "problem_answer": "6.5",
+  "theorem_seqs": [
+    "right_triangle_judgment_angle(BCA)",
+    "right_triangle_property_pythagorean(BCA)"
+  ],
+  "raw_answer": "由题意得,BC:AC=1:2.4,∵AC=6米,∴BC=6x\\frac{1}{2.4}=2.5(米).则AB=√{A²+BC²}=6.5(米)故选C.",
+  "notes":"坡度怎么定义？"
+}

@@ -1,0 +1,35 @@
+{
+  "problem_id": 5350,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-1195",
+  "problem_level": 1,
+  "problem_text_cn": "如图,PA、PB、CD是⊙O的切线,切点分别是A、B、E,CD分别交PA、PB于C、D两点,若∠APB=60°,则∠COD的度数()",
+  "problem_text_en": "As shown in the figure, PA, PB, and CD are the tangent lines of ⊙O, and the tangent vertices are A, B, and E respectively. CD intersects PA and PB at C and D respectively. If ∠APB = N_0, then the degree of ∠COD is ()",
+  "problem_img": "5350.png",
+  "construction_cdl": [
+    "Shape(AP,PB,OAB)",
+    "Shape(OA,OAC,CO)",
+    "Shape(CO,OCD,DO)",
+    "Shape(OD,ODB,BO)",
+    "Shape(OB,OBA,AO)",
+    "Cocircular(O,ACDB)"
+  ],
+  "text_cdl": [
+    "IsTangentOfCircle(PA,O)",
+    "IsTangentOfCircle(PB,O)",
+    "Equal(MeasureOfAngle(APB),60)",
+    "Equal(MeasureOfAngle(DOC),Add(MeasureOfAngle(COA),MeasureOfAngle(BOD)))",
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(DOC))",
+  "problem_answer": "60",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular",
+    "quadrilateral_property_angle_sum",
+    "angle_addition(BOD,DOC)",
+    "angle_addition(BOC,COA)"
+  ],
+  "raw_answer": "连接AO,BO,OE,∵PA、PB是O的切线,∴∠PAO=∠PBO=90°,∵∠APB=60°∴∠AOB=360°-2×90°-60°=120°,∵PA、PB、CD是O的切线,∴∠ACO=∠ECO,∠DBO=∠DEO,∴∠AOC=∠EOC,∠EOD=∠BOD,∴∠COD=∠COE+∠EOD=\\frac{1}{2}∠AOB=60^{°}.故选B.",
+  "notes": "不知道问题出哪里了"
+}

@@ -1,0 +1,36 @@
+{
+  "problem_id": 5345,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-1189",
+  "problem_level": 1,
+  "problem_text_cn": "如图,PA,PB分别是⊙O的切线,A,B为切点,AC是⊙O的直径,已知∠BAC=35°,则∠P的度数是()",
+  "problem_text_en": "As shown in the figure, PA and PB are respectively the tangent of ⊙O, A and B are the tangent vertices, AC is the diameter of ⊙O, it is known that ∠BAC = N_0, then the degree of ∠P is ()",
+  "problem_img": "5345.png",
+  "construction_cdl": [
+    "Shape(AP,PB,OAB)",
+    "Shape(BA,OAB)",
+    "Shape(AB,BO,OA)",
+    "Shape(OB,OBC,CO)",
+    "Shape(AC,OCA)",
+    "Collinear(AOC)",
+    "Cocircular(O,ABC)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(OAB),35)",
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(PA,O)",
+    "IsTangentOfCircle(PB,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(APB))",
+  "problem_answer": "70",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular",
+    "radius_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum",
+    "quadrilateral_property_angle_sum"
+  ],
+  "raw_answer": "∵PA是⊙O的切线,∴∠CAP=90°,∠BAC=35°,∴∠BAP=55°,∵PA,PB分别是⊙O的切线,∴PA=PB,∴∠BAP=∠PBA=55°,∴∠P=180°-55°-55°=70°.故选C."
+}

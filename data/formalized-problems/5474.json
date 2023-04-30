@@ -1,0 +1,35 @@
+{
+  "problem_id": 5474,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-1417",
+  "problem_level": 1,
+  "problem_text_cn": "如图,⊙O中,AC为直径,MA,MB分别切⊙O于点A,B,∠BAC=25°,则∠AMB的大小为()",
+  "problem_text_en": "As shown in the figure, in ⊙O, AC is the diameter, MA and MB are tangent to ⊙O at points A, B, ∠BAC = N_0, then the size of ∠AMB is ()",
+  "problem_img": "5474.png",
+  "construction_cdl": [
+    "Shape(BM,MA,OBA)",
+    "Shape(AB,OBA)",
+    "Shape(BA,AO,OC,OCB)",
+    "Shape(CO,OA,OAC)",
+    "Collinear(COA)",
+    "Cocircular(O,ACB)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(MB,O)",
+    "IsTangentOfCircle(MA,O)",
+    "Equal(MeasureOfAngle(BAC),25)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(BMA))",
+  "problem_answer": "50",
+  "theorem_seqs": [
+    "angle_addition(MAB,BAC)",
+    "tangent_of_circle_property_perpendicular",
+    "tangent_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum"
+  ],
+  "raw_answer": "解:∵MA切⊙O于点A,AC为直径,∴∠MAC=90°,又∠BAC=25°,∠MAB=∠MAC-∠BAC=65°∵MA、MB分别切⊙O于点A、B,∴MA=MB,∴∠MAB=∠MBA=65°,∴∠AMB=180-(∠MAB+∠MBA)=50°故选:D."
+}

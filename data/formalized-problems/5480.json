@@ -1,0 +1,42 @@
+{
+  "problem_id": 5480,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-1427",
+  "problem_level": 1,
+  "problem_text_cn": "如图,将△ABC沿着点B到C的方向平移到△DEF的位置,AB=10,DO=4,平移距离为6,则阴影部分面积为()",
+  "problem_text_en": "As shown in the figure, move △ABC along the direction from point B to C to the position of △DEF, AB = N_0, DO = N_1, the translation distance is N_2, then the area of the shaded part is ()",
+  "problem_img": "5480.png",
+  "construction_cdl": [
+    "Shape(AB,BE,EO,OA)",
+    "Shape(OE,EC,CO)",
+    "Shape(DO,OC,CF,FD)",
+    "Shape(AO,OD)",
+    "Collinear(AOC)",
+    "Collinear(DOE)",
+    "Collinear(BECF)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),10)",
+    "Equal(LengthOfLine(DO),4)",
+    "Equal(LengthOfLine(BE),6)",
+    "Equal(MeasureOfAngle(ABC),90)",
+    "CongruentBetweenTriangle(ABC,DEF)",
+    "Equal(AreaOfQuadrilateral(DOCF),AreaOfQuadrilateral(ABEO))"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(AreaOfQuadrilateral(DOCF))",
+  "problem_answer": "48",
+  "theorem_seqs": [
+    "congruent_triangle_property_line_equal",
+    "congruent_triangle_property_angle_equal",
+    "parallel_judgment_corresponding_angle",
+    "line_addition",
+    "adjacent_complementary_angle",
+    "parallel_property_collinear_extend",
+    "trapezoid_judgment_parallel",
+    "right_trapezoid_judgment_right_angle",
+    "right_trapezoid_area_formular"
+  ],
+  "notes": "推不出梯形",
+  "raw_answer": "由平移的性质知,BE=6,DE=AB=10,∴OE=DE-DO=10-4=6,∴S_{四边形ODF}=S_{梯形ABEO}=\\frac{1}{2}(AB+OE)\\cdotBE=\\frac{1}{2}(10+6)×6=48.故选D."
+}

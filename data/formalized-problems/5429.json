@@ -1,0 +1,46 @@
+{
+  "problem_id": 5429,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-1330",
+  "problem_level": 1,
+  "problem_text_cn": "点P是正方形ABCD边AB上一点(不与A、B重合),连接PD并将线段PD绕点P顺时针旋转90°,得线段PE,连接BE,则∠CBE等于()",
+  "problem_text_en": "Point P is a point on the ABCD edge AB of the square (not coincident with A and B), connect PD and rotate the line segment PD clockwise around point P by N_0, to obtain line segment PE, connect BE, then ∠CBE is equal to ()",
+  "problem_img": "5429.png",
+  "construction_cdl": [
+    "Shape(DA,AP,PD)",
+    "Shape(DP,PF,FC,CD)",
+    "Shape(PB,BF,FP)",
+    "Shape(FB,BE,EF)",
+    "Shape(EB,BG,GE)",
+    "Collinear(APBG)",
+    "Collinear(CFB)",
+    "Collinear(PFE)"
+  ],
+  "text_cdl": [
+    "Square(ABCD)",
+    "Equal(MeasureOfAngle(DPE),90)",
+    "PerpendicularBetweenLine(BG,EG)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(CBE))",
+  "problem_answer": "45",
+  "theorem_seqs": [
+    "angle_addition",
+    "triangle_property_angle_sum(APD)",
+    "line_addition(AP,PB)",
+    "line_addition(PB,BG)",
+    "adjacent_complementary_angle(APE,EPB)",
+    "perpendicular_property_collinear_extend",
+    "right_triangle_judgment_angle(DAP)",
+    "right_triangle_judgment_angle(PGE)",
+    "right_triangle_judgment_angle(BGE)",
+    "congruent_triangle_judgment_aas(PDA,EPG)",
+    "congruent_triangle_property_line_equal",
+    "congruent_triangle_property_angle_equal",
+    "isosceles_triangle_judgment_line_equal(GEB)",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum(GEB)"
+  ],
+  "notes": "bug!",
+  "raw_answer": "过点E作EF⊥AF,交AB的延长线于点F,则∠F=90°,四边形ABCD为正方形,∴AD=AB,∠A=∠ABC=90°∴∠ADP+∠APD=90°,由旋转可得:PD=PE,∠DPE=90°∴∠APD+∠EPF=90°,∴∠ADP=∠EPF在△APD和△FEP中∵≥ft\\lbrace\\begin{array}{l}{∠ADP=∠FPE}\\\\{∠A=∠F}\\\\{PD=EP}\\end{array}\\right.∴△APD≌△FEP(AAS),∴AP=EF,AD=PF,又∵AD=AB,∴PF=AB,即AP+PB=PB+BF,∴AP=BF,∴BF=EF,又∠F=90°,∴△BEF为等腰直角三角形,∴∠EBF=45°,又∠CBF=90°,则∠CBE=45°故选D."
+}

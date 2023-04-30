@@ -1,0 +1,29 @@
+{
+  "problem_id": 5673,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-1731",
+  "problem_level": 1,
+  "problem_text_cn": "如图,点A,B,C在⊙O上,且∠ACB=112°,则∠α=()",
+  "problem_text_en": "As shown in the figure, points A, B, and C are on ⊙O, and ∠ACB = N_0, then ∠α = ()",
+  "problem_img": "5673.png",
+  "construction_cdl": [
+    "Shape(CB,OBC)",
+    "Shape(AC,OCA)",
+    "Shape(CA,AO,OB,BC)",
+    "Shape(BO,OA,OAB)",
+    "Cocircular(O,BCA)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(BCA),112)"
+  ],
+  "image_cdl": [
+    "IsCentreOfCircle(O,O)"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(AOB))",
+  "problem_answer": "136",
+  "theorem_seqs": [
+    "arc_property_circumference_angle_internal(OBA,C)",
+    "arc_property_center_angle(OBA,O)"
+  ],
+  "raw_answer": "解:作⁀{AB}对的圆周角∠ADB,如图,∵∠ACB+∠ADB=180°,∴∠ADB=180°-112°=68°,∴∠AOB=2∠ADB=2×68°=136°．故选:D．"
+}

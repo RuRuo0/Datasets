@@ -1,0 +1,39 @@
+{
+  "problem_id": 5191,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-963",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AE、AD和BC分别切⊙O于点E、D、F,如果AD=20,则△ABC的周长为()",
+  "problem_text_en": "As shown in the figure, AE, AD, and BC tangent ⊙O to vertices E, D, and F respectively. If AD = N_0, then the perimeter of △ABC is ()",
+  "problem_img": "5191.png",
+  "construction_cdl": [
+    "Shape(OED,DO,OE)",
+    "Shape(ODF,OFE,EO,OD)",
+    "Shape(ODF,DC,CF)",
+    "Shape(OFE,FB,BE)",
+    "Shape(AB,BF,FC,CA)",
+    "Collinear(ACD)",
+    "Collinear(ABE)",
+    "Collinear(BFC)",
+    "Cocircular(O,DFE)"
+  ],
+  "text_cdl": [
+    "IsTangentOfCircle(AD,O)",
+    "IsTangentOfCircle(AE,O)",
+    "IsTangentOfCircle(CF,O)",
+    "IsTangentOfCircle(BF,O)",
+    "IsCentreOfCircle(O,O)",
+    "Equal(LengthOfLine(AD),20)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(PerimeterOfTriangle(ABC))",
+  "problem_answer": "40",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular",
+    "tangent_of_circle_judgment_perpendicular",
+    "tangent_of_circle_property_length_equal",
+    "line_addition",
+    "triangle_perimeter_formula(ABC)"
+  ],
+  "raw_answer": "解:据切线长定理有AD=AE,BE=BF,CD=CF;则△ABC的周长=AB+BC+AC=AB+BF+CF+AC=AB+BE+AC+CD=AD+AE=2AD=40故选:C."
+}

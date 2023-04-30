@@ -1,0 +1,34 @@
+{
+  "problem_id": 5201,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-980",
+  "problem_level": 1,
+  "problem_text_cn": "如图,∠ABC=50°,BD平分∠ABC,过D作DE∥AB交BC于点E,若点F在AB上,且满足DF=DE,则∠DFB的度数为()",
+  "problem_text_en": "",
+  "problem_img": "5201.png",
+  "construction_cdl": [
+    "Shape(DF,FB,BD)",
+    "Shape(DB,BE,ED)",
+    "Shape(AF,FD)",
+    "Shape(DE,EC)",
+    "Collinear(AFB)",
+    "Collinear(BEC)",
+    "Collinear(BPG)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(FBE),50)",
+    "IsBisectorOfAngle(BD,FBE)",
+    "ParallelBetweenLine(DE,AB)",
+    "Equal(LengthOfLine(DF),LengthOfLine(DE))",
+    "Equal(LengthOfLine(BF),LengthOfLine(BE))"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(DFB))",
+  "problem_answer": "130",
+  "theorem_seqs": [
+    "parallel_property_ipsilateral_internal_angle",
+    "mirror_congruent_triangle_judgment_sas",
+    "mirror_congruent_triangle_property_angle_equal"
+  ],
+  "raw_answer": "如图,DF=DF'=DE;∵BD平分∠ABC1由图形的对称性可知:△BDE≌△BDF∴∠DFB=∠DEB;∵DE//AB,∠ABC=50°,∴∠DEB=180°-50°=130°;∴∠DFB=130°;当点F位于点F'处时,∵DF=DF',故答案选:C."
+}

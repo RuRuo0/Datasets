@@ -1,0 +1,38 @@
+{
+  "problem_id": 5192,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-964",
+  "problem_level": 1,
+  "problem_text_cn": "如图,△ABC中,∠A=90°,AB=AC,BD平分∠ABE,DE⊥BC,如果BC=10cm,则△DEC的周长是()",
+  "problem_text_en": "As shown in the figure, in △ABC, ∠A = N_0, AB = AC, BD bisects ∠ABE, DE ⊥ BC, if BC = N_1, then the perimeter of △DEC is ()",
+  "problem_img": "5192.png",
+  "construction_cdl": [
+    "Shape(AB,BD,DA)",
+    "Shape(DB,BE,ED)",
+    "Shape(DE,EC,CD)",
+    "Collinear(ADC)",
+    "Collinear(BEC)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(DAB),90)",
+    "Equal(LengthOfLine(AB),LengthOfLine(AC))",
+    "IsBisectorOfAngle(BD,ABE)",
+    "PerpendicularBetweenLine(DE,CE)",
+    "Equal(LengthOfLine(BC),10)"
+  ],
+  "image_cdl": [
+    "PerpendicularBetweenLine(DA,BA)"
+  ],
+  "goal_cdl": "Value(PerimeterOfTriangle(DEC))",
+  "problem_answer": "10",
+  "theorem_seqs": [
+    "adjacent_complementary_angle(BED,DEC)",
+    "bisector_of_angle_property_distance_equal",
+    "mirror_congruent_triangle_judgment_hl",
+    "mirror_congruent_triangle_property_line_equal",
+    "line_addition(BE,EC)",
+    "line_addition(AD,DC)",
+    "triangle_perimeter_formula(DEC)"
+  ],
+  "raw_answer": "解:∵BD平分∠ABE,DE⊥BC,DA⊥ABAD=DE又∵BD=BD,∴△BAD≌△BED(HL)AB=BE又∵AB=ACBE=ACBC=BE+EC=AC+EC=AD+DC+EC=DE+DC+EC=10cm∴△DEC的周长是10cm,故选B."
+}

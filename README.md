@@ -9,30 +9,6 @@ more types of plane geometric problems.
 
 ## Co-work (Current Week)
 
-#### Week 8 (230424): form 2023-04-24 to 2023-04-30.
-
-**Attention:** Annotate problems in directory **GeoQA**.
-
-| Id  | Worker | WorkLoad |                                                                          PID                                                                          | Submitted |
-|:---:|:------:|:--------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------:|:---------:|
-|  1  |  贺艺铭   |    60    |                                                          5066-5125 (data/raw-problems/GeoQA)                                                          |     √     |
-|  2  |   邹佳   |    60    |                                                          5126-5185 (data/raw-problems/GeoQA)                                                          |     ×     |
-|  3  |   朱娜   |    60    |                                                          5186-5245 (data/raw-problems/GeoQA)                                                          |     ×     |
-|  4  |  张效凯   |    60    |                                                          5246-5305 (data/raw-problems/GeoQA)                                                          |     √     |
-|  5  |  郭彦钧   |    60    |                                                          5306-5365 (data/raw-problems/GeoQA)                                                          |     √     |
-|  6  |  黄琦珂   |    60    |                                                          5366-5425 (data/raw-problems/GeoQA)                                                          |     √     |
-|  7  |  黄一雯   |    60    | 4245-4330 (data/raw-problems/Geometry3K-Triangle)<br>2895-2921 (data/raw-problems/Geometry3K-Other)<br>4475-4498 (data/raw-problems/Geometry3K-Other) |     /     |
-|  8  |  金啸笑   |    60    |                                                          5426-5485 (data/raw-problems/GeoQA)                                                          |     ×     |
-|  9  |   李阳   |    60    |                                                          5486-5545 (data/raw-problems/GeoQA)                                                          |     √     |
-| 10  |  毛晨扬   |    60    |                                                          5546-5605 (data/raw-problems/GeoQA)                                                          |     √     |
-| 11  |  王茹楠   |    60    |                                 4499-4585 (data/raw-problems/Geometry3K-Other)<br>5606-5611 (data/raw-problems/GeoQA)                                 |     /     |
-| 12  |  王一凡   |    60    |                                                          5612-5671 (data/raw-problems/GeoQA)                                                          |     /     |
-| 13  |  岳登峰   |    60    |                                                          5672-5731 (data/raw-problems/GeoQA)                                                          |     √     |
-| 14  |  朱方震   |    60    |                                                          5732-5791 (data/raw-problems/GeoQA)                                                          |     /     |
-| 15  |   朱哲   |    60    |                                                          5792-5851 (data/raw-problems/GeoQA)                                                          |     √     |
-
-## Co-work (After)
-
 #### Week 9 (230501): form 2023-05-01 to 2023-05-07.
 
 **Attention:** Annotate problems in directory **GeoQA**.
@@ -55,6 +31,9 @@ more types of plane geometric problems.
 | 14  |  朱方震   |    60    |           same as week 8            |     ×     |
 | 15  |   朱哲   |    60    | 6452-6511 (data/raw-problems/GeoQA) |     ×     |
 | 16  |   秦城   |    20    | 6512-6531 (data/raw-problems/GeoQA) |     ×     |
+
+
+## Co-work (After)
 
 #### Week 10 (230508): form 2023-05-08 to 2023-05-14.
 
@@ -149,6 +128,28 @@ more types of plane geometric problems.
 | 16  |   秦城   |    60    |                    9772-9831 (data/raw-problems/GeoQAPlus)                     |     ×     |
 
 ## Co-work (Before)
+
+#### Week 8 (230424): form 2023-04-24 to 2023-04-30.
+
+**Attention:** Annotate problems in directory **GeoQA**.
+
+| Id  | Worker | WorkLoad |                                                                          PID                                                                          | Submitted |
+|:---:|:------:|:--------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------:|:---------:|
+|  1  |  贺艺铭   |    60    |                                                          5066-5125 (data/raw-problems/GeoQA)                                                          |     √     |
+|  2  |   邹佳   |    60    |                                                          5126-5185 (data/raw-problems/GeoQA)                                                          |     ×     |
+|  3  |   朱娜   |    60    |                                                          5186-5245 (data/raw-problems/GeoQA)                                                          |     √     |
+|  4  |  张效凯   |    60    |                                                          5246-5305 (data/raw-problems/GeoQA)                                                          |     √     |
+|  5  |  郭彦钧   |    60    |                                                          5306-5365 (data/raw-problems/GeoQA)                                                          |     √     |
+|  6  |  黄琦珂   |    60    |                                                          5366-5425 (data/raw-problems/GeoQA)                                                          |     √     |
+|  7  |  黄一雯   |    60    | 4245-4330 (data/raw-problems/Geometry3K-Triangle)<br>2895-2921 (data/raw-problems/Geometry3K-Other)<br>4475-4498 (data/raw-problems/Geometry3K-Other) |     /     |
+|  8  |  金啸笑   |    60    |                                                          5426-5485 (data/raw-problems/GeoQA)                                                          |     √     |
+|  9  |   李阳   |    60    |                                                          5486-5545 (data/raw-problems/GeoQA)                                                          |     √     |
+| 10  |  毛晨扬   |    60    |                                                          5546-5605 (data/raw-problems/GeoQA)                                                          |     √     |
+| 11  |  王茹楠   |    60    |                                 4499-4585 (data/raw-problems/Geometry3K-Other)<br>5606-5611 (data/raw-problems/GeoQA)                                 |     /     |
+| 12  |  王一凡   |    60    |                                                          5612-5671 (data/raw-problems/GeoQA)                                                          |     /     |
+| 13  |  岳登峰   |    60    |                                                          5672-5731 (data/raw-problems/GeoQA)                                                          |     √     |
+| 14  |  朱方震   |    60    |                                                          5732-5791 (data/raw-problems/GeoQA)                                                          |     /     |
+| 15  |   朱哲   |    60    |                                                          5792-5851 (data/raw-problems/GeoQA)                                                          |     √     |
 
 #### Week 7 (230417): form 2023-04-17 to 2023-04-23.
 

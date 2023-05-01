@@ -1,0 +1,35 @@
+{
+  "problem_id": 5197,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-973",
+  "problem_level": 1,
+  "problem_text_cn": "将△ABC沿着平行于BC的直线折叠,点A落到点A′,若∠C=120°,∠A=26°,则∠A′DB的度数是()",
+  "problem_text_en": "Fold △ABC along a line parallel to BC, vertex A falls to vertex A′, if ∠C = N_0, ∠A = N_1, then the degree of ∠A′DB is ()",
+  "problem_img": "5197.png",
+  "construction_cdl": [
+    "Shape(AD,DE,EA)",
+    "Shape(FE,EG,GF)",
+    "Shape(ED,DG,GE)",
+    "Shape(DB,BC,CG,GD)",
+    "Collinear(ADB)",
+    "Collinear(AEGC)",
+    "Collinear(DGF)"
+  ],
+  "text_cdl": [
+    "ParallelBetweenLine(DE,BC)",
+    "MirrorCongruentBetweenTriangle(DFE,DEA)",
+    "Equal(MeasureOfAngle(BCG),120)",
+    "Equal(MeasureOfAngle(EAD),26)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(GDB))",
+  "problem_answer": "112",
+  "theorem_seqs": [
+    "mirror_congruent_triangle_property_angle_equal",
+    "parallel_property_corresponding_angle",
+    "triangle_property_angle_sum(ADE)",
+    "angle_addition(ADE,EDG)",
+    "adjacent_complementary_angle(ADG,GDB)"
+  ],
+  "raw_answer": "解:∵∠C=120°,∠A=26°1∴∠B=180°-(∠A+∠C)=34°,又∵DE//BC,∴∠ADE=∠B=34°,根据折叠的性质可得∠ADE=∠A'DE∴∠A'DE=∠ADE=∠B=34°,∴∠A'DB=180°∠ADE-∠A'DE=112°故选D."
+}

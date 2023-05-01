@@ -1,0 +1,38 @@
+{
+  "problem_id": 5199,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-977",
+  "problem_level": 1,
+  "problem_text_cn": "如图,OA是⊙O的半径,BC是⊙O的弦,且BC⊥OA,过BC的延长线上一点D作⊙O的切线DE,切点为E,连接AB,BE,若∠BDE=52°,则∠ABE的度数是()",
+  "problem_text_en": "As shown in the figure, OA is the radius of ⊙O, BC is the chord of ⊙O, and BC ⊥ OA, cross a vertex D on the extended line of BC as the tangent DE of ⊙O, the tangent vertex is E, connecting AB, BE, if ∠BDE = N_0, then the degree of ∠ABE is ()",
+  "problem_img": "5199.png",
+  "construction_cdl": [
+    "Shape(OCA,AH,HC)",
+    "Shape(OAB,BA)",
+    "Shape(AB,BH,HA)",
+    "Shape(HB,BE,EO,OH)",
+    "Shape(OEC,CH,HO,OE)",
+    "Shape(OEC,ED,DC)",
+    "Shape(OBE,EB)",
+    "Collinear(BHCD)",
+    "Collinear(AHO)",
+    "Cocircular(O,ABEC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(DE,O)",
+    "PerpendicularBetweenLine(BH,AH)",
+    "Equal(MeasureOfAngle(EDC),52)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(ABE))",
+  "problem_answer": "64",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular",
+    "vertical_angle",
+    "quadrilateral_property_angle_sum(DHOE)",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external"
+  ],
+  "raw_answer": "如图,连接OE,设OA交BC于H.∵DE是⊙O的切线,∴OE⊥DE,∴∠OED=90°.∵BC⊥OA于H,∴∠OHD=90°,∴∠HOE=360°-∠OHD-∠D-∠OED=360°-90°-52°-90°=128°,∴∠ABE=\\frac{1}{2}∠AOE=64°故选D."
+}

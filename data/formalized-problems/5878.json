@@ -1,0 +1,50 @@
+{
+  "problem_id": 5878,
+  "annotation": "yanjunguo_2023-04-28",
+  "source": "GeoQA-2046",
+  "problem_level": 1,
+  "problem_text_cn": "如图,四边形ABCD中,DC∥AB,BC=2,AB=AC=AD=3,则BD的长为()",
+  "problem_text_en": "As shown in the figure, in the quadrilateral ABCD, DC ∥ AB, BC = N_0, AB = AC = AD = N_1, then the length of BD is ()",
+  "problem_img": "5878.png",
+  "construction_cdl": [
+    "Shape(FD,ADF)",
+    "Shape(DF,FA,AD)",
+    "Shape(DA,AE,ED)",
+    "Shape(EA,AB,BE)",
+    "Shape(DE,EC,CD)",
+    "Shape(CE,EB,BC)",
+    "Shape(CB,ABC)",
+    "Shape(DC,ACD)",
+    "Shape(BA,AF,AFB)",
+    "Collinear(FAB)",
+        "Collinear(AEC)",
+        "Collinear(DEB)",
+    "Cocircular(A,DFBC)"
+  ],
+  "text_cdl": [
+     "IsCentreOfCircle(A,A)",
+    "ParallelBetweenLine(DC,AB)",
+      "Equal(LengthOfLine(BC),2)",
+      "Equal(LengthOfLine(AB),3)",
+      "Equal(LengthOfLine(AC),3)",
+      "Equal(LengthOfLine(AD),3)"
+  ],
+  "image_cdl": [
+  ],
+  "goal_cdl": "Value(LengthOfLine(BD))",
+  "problem_answer": "4*√2",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal(AB,A)",
+    "radius_of_circle_property_length_equal",
+    "diameter_of_circle_judgment_pass_centre",
+    "diameter_of_circle_property_right_angle",
+    "parallel_property_alternate_interior_angle",
+    "arc_property_circumference_angle_external",
+    "congruent_arc_judgment_measure_equal",
+    "congruent_arc_property_chord_equal",
+    "line_addition(FA,AB)",
+    "right_triangle_judgment_angle",
+    "right_triangle_property_pythagorean"
+  ],
+  "raw_answer": "解:如图,延长BA交⊙A于F,连接DF．∵BF是直径,∴∠BDF=90°,∵CD∥BF,∴∠CDB=∠DBF,∴⁀{DF}=⁀{BC},∴DF=BC=2,∵BF=2AB=6,∴BD=√{BF^{2}-DF^{2}}=√{6^{2}-2^{2}}=4√{2},故选:D．"
+}

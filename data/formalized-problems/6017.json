@@ -1,0 +1,37 @@
+{
+  "problem_id": 6017,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-2323",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB为⊙O直径,若∠DAB=20°,则∠ACD的度数为()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of O, if ∠DAB = N_0, then the degree of ∠ACD is ()",
+  "problem_img": "6017.png",
+  "construction_cdl": [
+    "Shape(OCA,AC)",
+    "Shape(ODC,CD)",
+    "Shape(OBD,DB)",
+    "Shape(DC,CE,ED)",
+    "Shape(BD,DE,EB)",
+    "Shape(CA,AE,EC)",
+    "Shape(BE,EA,AO,OB)",
+    "Shape(OAB,BO,OA)",
+    "Collinear(AOB)",
+    "Collinear(AED)",
+    "Collinear(CEB)",
+    "Cocircular(O,ABDC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(EAO),20)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(DCA))",
+  "problem_answer": "110",
+  "theorem_seqs": [
+    "diameter_of_circle_judgment_pass_centre",
+    "diameter_of_circle_property_right_angle",
+    "arc_property_circumference_angle_external",
+    "angle_addition(DCE,ECA)"
+  ],
+  "raw_answer": "解:∵AB为⊙O直径,∴∠ADB=90°,∴∠ABD=90°-∠DAB=70°,∵四边形ABDC是圆内接四边形,∴∠ACD=180°-∠ABD=110°,故选:A．"
+}

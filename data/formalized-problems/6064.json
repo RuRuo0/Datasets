@@ -1,0 +1,31 @@
+{
+  "problem_id": 6064,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-2392",
+  "problem_level": 1,
+  "problem_text_cn": "如图,小伟在打网球时,击球点距离球网的水平距离是8米．已知网高是0.8米,要使球恰好能打过网,且落在离网4米的位置,则球拍击打的高度h为()",
+  "problem_text_en": "As shown in the figure, when Xiaowei is playing tennis, the horizontal distance from the hitting point to the net is N_0. Given that the net height is N_1, if the ball can just hit the net and land at a position N_2 away from the net, the height h of the racket hit is ()",
+  "problem_img": "6064.png",
+  "construction_cdl": [
+    "Shape(AB,BD,DE,EA)",
+    "Shape(ED,DC,CE)",
+    "Collinear(AEC)",
+    "Collinear(BDC)"
+  ],
+  "text_cdl": [
+    "PerpendicularBetweenLine(AB,CB)",
+    "PerpendicularBetweenLine(ED,CD)",
+    "Equal(LengthOfLine(BD),8)",
+    "Equal(LengthOfLine(ED),0.8)",
+    "Equal(LengthOfLine(DC),4)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AB))",
+  "problem_answer": "2.4",
+  "theorem_seqs": [
+    "similar_triangle_judgment_aa",
+    "similar_triangle_property_line_ratio",
+    "line_addition(BD,DC)"
+  ],
+  "raw_answer": "解:如图,BD=8m,AD=4m,DE=0.8m,∵DE∥BC,∴△ADE∽△ABC,∴\\frac{DE}{BC}=\\frac{AD}{AB},即\\frac{0.8}{h}=\\frac{4}{4+8},∴h=2.4(m)．故选:D．"
+}

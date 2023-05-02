@@ -1,0 +1,30 @@
+{
+  "problem_id": 5317,
+  "annotation": "YanjunGuo_2023-04-30",
+  "source": "GeoQA-1155",
+  "problem_level": 1,
+  "problem_text_cn": "如图,将△ABC沿直线DE折叠后,使点B与点A重合,已知AC=5cm,△ADC的周长为14cm,则BC的长为()",
+  "problem_text_en": "As shown in the figure, after folding △ABC along the straight line DE, make point B coincide with point A, it is known that AC = N_0, the perimeter of △ADC is N_1, then the length of BC is ()",
+  "problem_img": "5317.png",
+  "construction_cdl": [
+    "Shape(BD,DE,EB)",
+    "Shape(ED,DA,AE)",
+    "Shape(AD,DC,CA)",
+    "Collinear(AEB)",
+    "Cocircular(BDC)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),5)",
+    "Equal(PerimeterOfTriangle(ADC),14)",
+    "MirrorCongruentBetweenTriangle(DEB,DAE)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(BC))",
+  "problem_answer": "9",
+  "theorem_seqs": [
+    "mirror_congruent_triangle_property_line_equal",
+    "line_addition"
+  ],
+  "notes": "已知三角形周长和一条边的长度，无法得到另外两条边长度之和",
+  "raw_answer": "根据折叠可得:AD=BD,∵△ADC的周长为14cm,AC=5cm,∴AD+DC=14-5=9(cm),∵AD=BD,∴BC=BD+CD=9cm.故选B"
+}

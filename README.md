@@ -67,7 +67,7 @@ more types of plane geometric problems.
 |  1  |  贺艺铭   |    60    | 7492-7551 (data/raw-problems/GeoQA) |     ×     |
 |  2  |   邹佳   |    60    | 7552-7611 (data/raw-problems/GeoQA) |     ×     |
 |  3  |   朱娜   |    60    | 7612-7671 (data/raw-problems/GeoQA) |     ×     |
-|  4  |  张效凯   |    60    | 7672-7731 (data/raw-problems/GeoQA) |     ×     |
+|  4  |  张效凯   |    60    | 7672-7731 (data/raw-problems/GeoQA) |     √     |
 |  5  |  郭彦钧   |    60    | 7732-7791 (data/raw-problems/GeoQA) |     ×     |
 |  6  |  黄琦珂   |    60    | 7792-7851 (data/raw-problems/GeoQA) |     ×     |
 |  7  |  黄一雯   |    60    |           same as week 10           |     ×     |

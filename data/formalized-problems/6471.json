@@ -1,0 +1,37 @@
+{
+  "problem_id": 6471,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-3168",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB是⊙O的直径,C,D是⊙O上的两点．若∠CAB=24°,则∠ADC的度数为()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, C and D are two points on ⊙O. If ∠CAB = N_0, then the degree of ∠ADC is ()",
+  "problem_img": "6471.png",
+  "construction_cdl": [
+    "Shape(OCA,AC)",
+    "Shape(CA,AO,OE,EC)",
+    "Shape(CE,EB,OBC)",
+    "Shape(OA,AD,DE,EO)",
+    "Shape(OAD,DA)",
+    "Shape(BE,ED,ODB)",
+    "Collinear(AOEB)",
+    "Collinear(CED)",
+    "Cocircular(O,CADB)"
+  ],
+  "text_cdl": [
+    "IsDiameterOfCircle(AB,O)",
+    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(CAB),24)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(ADC))",
+  "problem_answer": "66",
+  "theorem_seqs": [
+
+    "arc_property_center_angle",
+    "diameter_of_circle_judgment_right_angle",
+    "flat_angle",
+    "arc_property_circumference_angle_external",
+    "arc_addition_measure"
+  ],
+  "raw_answer": "解:连接BC．∵AB为⊙O的直径,∴∠ACB=90°,∵∠CAB=24°,∴∠ABC=90°-∠CAB=66°,∴∠ADC=∠ABC=66°．\n故选:C．"
+}

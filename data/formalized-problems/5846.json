@@ -1,0 +1,39 @@
+{
+  "problem_id": 5846,
+  "annotation": "ZheZhu_2023-04-30",
+  "source": "GeoQA-1981",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在⊙O中,弦AC和BD相交于点E,⁀{AB}=⁀{BC}=⁀{CD},若∠BEC=110°,则∠BDC=()",
+  "problem_text_en": "As shown in the figure, in ⊙O, chord AC and BD intersect at point E, ⁀AB = ⁀BC = ⁀CD, if ∠BEC = N_0, then ∠BDC = ()",
+  "problem_img": "5846.png",
+  "construction_cdl": [
+    "Shape(ED,ODA,AE)",
+    "Shape(EA,AB,BE)",
+    "Shape(OAB,BA)",
+    "Shape(EB,BC,CE)",
+    "Shape(OBC,CB)",
+    "Shape(EC,CD,DE)",
+    "Shape(OCD,DC)",
+    "Collinear(DEB)",
+    "Collinear(AEC)",
+    "Cocircular(O,DABC)"
+  ],
+  "text_cdl": [],
+  "image_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(LengthOfArc(OAB),LengthOfArc(OBC))",
+    "Equal(LengthOfArc(OCD),LengthOfArc(OBC))",
+    "Equal(LengthOfArc(OAB),LengthOfArc(OCD))",
+    "Equal(MeasureOfAngle(CEB),110)"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(CDB))",
+  "problem_answer": "35",
+  "theorem_seqs": [
+    "arc_property_center_angle",
+    "congruent_arc_judgment_length_equal",
+    "congruent_arc_property_measure_equal",
+    "arc_property_circumference_angle_external",
+    "triangle_property_angle_sum"
+  ],
+  "raw_answer": "解:∵⁀{AB}=⁀{BC}=⁀{CD},∴∠BDC=∠ACB=∠DBC,∵∠BEC=110°,∴∠ACB=∠DBC=35°．∴∠BDC=35°．故选:A．"
+}

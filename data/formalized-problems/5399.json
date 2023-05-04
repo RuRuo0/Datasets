@@ -1,0 +1,33 @@
+{
+  "problem_id": 5399,
+  "annotation": "QikeHuang_2023-04-30",
+  "source": "GeoQA-1280",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在△ABE中,AE的垂直平分线MN交BE于点C,∠E=30°,且AB=CE,则∠BAE的度数是()",
+  "problem_text_en": "As shown in the figure, in △ABE, the perpendicular bisector of AE MN intersects BE at point C, ∠E = N_0, and AB = CE, then the degree of ∠BAE is ()",
+  "problem_img": "5399.png",
+  "construction_cdl": [
+    "Shape(ME,EC,CM)",
+    "Shape(AM,MC,CA)",
+    "Shape(AC,CB,BA)",
+    "Collinear(AME)",
+    "Collinear(BCE)"
+  ],
+  "text_cdl": [
+    "IsPerpendicularBisectorOfLine(CM,AE)",
+    "Equal(LengthOfLine(AC),LengthOfLine(AB))",
+    "Equal(MeasureOfAngle(MEC),30)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(BAM))",
+  "problem_answer": "90",
+  "theorem_seqs": [
+    "perpendicular_bisector_property_distance_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "adjacent_complementary_angle",
+    "triangle_property_angle_sum(ECA)",
+    "triangle_property_angle_sum(EBA)"
+  ],
+  "raw_answer": "解:已知在△ABE中,AE的垂直平分线MN交BE于点C,∠E=30°,且AB=CE,故CE=CA=AB,∠ACB=∠ABC=∠CEA+∠CAE=60°,故∠CAB=60°即∠BAE=∠CAB+∠CAE=60+30°=90°.故选C."
+}

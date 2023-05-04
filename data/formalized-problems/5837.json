@@ -1,0 +1,31 @@
+{
+  "problem_id": 5837,
+  "annotation": "ZheZhu_2023-04-30",
+  "source": "GeoQA-1960",
+  "problem_level": 1,
+  "problem_text_cn": "如图,直角三角形ABC中,∠ACB=90°,CD是AB边上的高,且AB=5,AC=4,BC=3,则CD=()",
+  "problem_text_en": "As shown in the figure, in the right triangle ABC, ∠ACB = N_0, CD is the height on the side AB, and AB = N_1, AC = N_2, BC = N_3, then CD = ()",
+  "problem_img": "5837.png",
+  "construction_cdl": [
+    "Shape(CA,AD,DC)",
+    "Shape(CD,DB,BC)",
+    "Collinear(ADB)"
+  ],
+  "text_cdl": [],
+  "image_cdl": [
+    "PerpendicularBetweenLine(CD,BD)",
+    "PerpendicularBetweenLine(BC,AC)",
+    "Equal(LengthOfLine(AB),5)",
+    "Equal(LengthOfLine(AC),4)",
+    "Equal(LengthOfLine(BC),3)"
+  ],
+  "goal_cdl": "Value(LengthOfLine(CD))",
+  "problem_answer": "12/5",
+  "theorem_seqs": [
+    "line_addition",
+    "perpendicular_property_collinear_extend",
+    "right_triangle_judgment_angle",
+    "right_triangle_property_pythagorean"
+  ],
+  "raw_answer": "解:根据直角三角形的面积公式,得\\frac{1}{2}AC\\cdotBC=AB\\cdotCD,则CD=\\frac{AC\\cdotBC}{AB}=\\frac{12}{5}．故选:A．"
+}

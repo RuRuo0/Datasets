@@ -1,0 +1,39 @@
+{
+  "problem_id": 5343,
+  "annotation": "YanjunGuo_2023-04-30",
+  "source": "GeoQA-1187",
+  "problem_level": 1,
+  "problem_text_cn": "如图,⊙I是△ABC的内切圆,D,E,F为三个切点．若∠DEF=52°,则∠A的度数为()",
+  "problem_text_en": "As shown in the figure, ⊙I is the inscribed circle of △ABC, D, E, F are three tangent points. If ∠DEF = N_0, then the degree of ∠A is ()",
+  "problem_img": "5343.png",
+  "construction_cdl": [
+    "Shape(DB,BE,IDE)",
+    "Shape(ED,IDE)",
+    "Shape(DE,EF,FI,ID)",
+    "Shape(DI,IF,IFD)",
+    "Shape(FE,IEF)",
+    "Shape(EC,CF,IEF)",
+    "Shape(FA,AD,IFD)",
+    "Collinear(ADB)",
+    "Collinear(BEC)",
+    "Collinear(AFC)",
+    "Cocircular(I,DEF)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(DEF),52)",
+    "IsTangentOfCircle(AD,I)",
+    "IsTangentOfCircle(AF,I)",
+    "IsTangentOfCircle(CE,I)",
+    "IsCentreOfCircle(I,I)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(CAB))",
+  "problem_answer": "76",
+  "theorem_seqs": [
+    "arc_property_circumference_angle_external",
+    "arc_property_center_angle",
+    "tangent_of_circle_property_perpendicular",
+    "quadrilateral_property_angle_sum(ADIF)"
+  ],
+  "raw_answer": "连接ID、IF∵⊙I是△ABC的内切圆,∴ID⊥AB1IF⊥AC.又∵⊙I中,∠DIF=2∠DEF=104°,四边形DIFA中,∠IDA=∠IFA=90°,∴∠A=180°-∠DIF=76°.故选A."
+}

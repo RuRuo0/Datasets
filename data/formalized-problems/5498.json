@@ -1,0 +1,33 @@
+{
+  "problem_id": 5498,
+  "annotation": "Yangli_2023-04-30",
+  "source": "GeoQA-1458",
+  "problem_level": 1,
+  "problem_text_cn": "如图,四边形ABCD内接于⊙O,若它的一个外角∠DCE=70°,则∠BOD=()",
+  "problem_text_en": "As shown in the figure, the quadrilateral ABCD is inscribed in ⊙O, if one of its exterior angles ∠DCE = N_0, then ∠BOD = ()",
+  "problem_img": "5498.png",
+  "construction_cdl": [
+    "Shape(AB,BO,OD,DA)",
+    "Shape(OB,BC,CD,DO)",
+    "Shape(DC,CE)",
+    "Shape(AD,ODA)",
+    "Shape(BA,OAB)",
+    "Shape(BC,OCB)",
+    "Shape(CD,ODC)",
+    "Collinear(BCE)",
+    "Cocircular(O,BCDA)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(DCE),70)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(DOB))",
+  "problem_answer": "140",
+  "theorem_seqs": [
+    "adjacent_complementary_angle(BCD,DCE)",
+    "arc_property_circumference_angle_internal(ODB,C)",
+    "arc_property_circumference_angle_external(OBD,A)"
+  ],
+  "raw_answer": "∵四边形ABCD内接于⊙O∴∠A=∠DCE=70^{°}∴∠BOD=2∠A=140^{°}故选D.",
+  "notes": "圆的内接四边形的定理不大会用"
+}

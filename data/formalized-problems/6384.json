@@ -1,0 +1,38 @@
+{
+  "problem_id": 6384,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-3040",
+  "problem_level": 1,
+  "problem_text_cn": "如图,⊙O的半径为6,点A、B、C在⊙O上,且∠BCA=45°,则点O到弦AB的距离为()",
+  "problem_text_en": "As shown in the figure, the radius of ⊙O is N_0, vertices A, B, and C are on ⊙O, and ∠BCA = N_1, then the distance from vertex O to chord AB is ()",
+  "problem_img": "6384.png",
+  "construction_cdl": [
+    "Shape(OBA,AD,DB)",
+    "Shape(OAC,CA)",
+    "Shape(OCB,BC)",
+    "Shape(CB,BO,OA,AC)",
+    "Shape(OB,BD,DO)",
+    "Shape(OD,DA,AO)",
+    "Collinear(BDA)",
+    "Cocircular(O,BAC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(RadiusOfCircle(O),6)",
+    "PerpendicularBetweenLine(BD,OD)",
+    "Equal(MeasureOfAngle(ACB),45)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(OD))",
+  "problem_answer": "3*√2",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "arc_property_circumference_angle_external",
+    "arc_property_center_angle",
+    "right_triangle_judgment_angle",
+    "right_triangle_property_pythagorean",
+    "line_addition",
+    "circle_property_chord_perpendicular_bisect_chord"
+  ],
+  "raw_answer": "解:连接OA、OB、作OD⊥AB于点D．∵△OAB中,OB=OA=6,∠AOB=2∠ACB=90°,∴AB=√{0A^{2}+0B^{2}}=6√{2},又∵OD⊥AB于点D,∴OD=\\frac{1}{2}AB=3√{2}．故选:C．"
+}

@@ -1,0 +1,39 @@
+{
+  "problem_id": 5513,
+  "annotation": "Yangli_2023-04-30",
+  "source": "GeoQA-1483",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB是⊙O的直径,C,D两点在⊙O上,若∠BCD=40°,则∠ABD的度数为()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, and the two vertices C and D are on ⊙O. If ∠BCD = N_0, then the degree of ∠ABD is ()",
+  "problem_img": "5513.png",
+  "construction_cdl": [
+    "Shape(AC,CO,OA)",
+    "Shape(OC,CE,EO)",
+    "Shape(EC,CB,BE)",
+    "Shape(AO,OE,ED,DA)",
+    "Shape(DE,EB,BD)",
+    "Shape(AD,ODA)",
+    "Shape(CA,OAC)",
+    "Shape(BC,OCB)",
+    "Shape(DB,OBD)",
+    "Collinear(AOEB)",
+    "Collinear(DEC)",
+    "Cocircular(O,ACBD)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(ECB),40)",
+    "PerpendicularBetweenLine(BD,AD)"
+  ],
+  "image_cdl": [
+    "IsCentreOfCircle(O,O)"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(EBD))",
+  "problem_answer": "50",
+  "theorem_seqs": [
+    "arc_property_circumference_angle_external(OBD,C)",
+    "arc_property_circumference_angle_external(OBD,A),",
+    "triangle_property_angle_sum(DAB)"
+  ],
+  "raw_answer": "∵AB是⊙O的直径,∴∠ADB=90°;又∵∠DAB=∠DCB=40°(同弧所对的圆周角相等)∴∠ABD=90°-∠DAB=90°-40°=50°故选B.",
+  "notes": "新版本的直径所对的圆周角是90度我这里有问题，我添加了垂直条件，可以修改一下，然后删除多余条件"
+}

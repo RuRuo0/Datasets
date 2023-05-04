@@ -1,0 +1,37 @@
+{
+  "problem_id": 5120,
+  "annotation": "YimingHe_2023-04-30",
+  "source": "GeoQA-810",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在⊙O中,点C是弧AB的中点,∠A=50°,则∠BOC等于()",
+  "problem_text_en": "As shown in the figure, in ⊙O, point C is the midpoint of arc AB, ∠A = N_0, then ∠BOC is equal to ()",
+  "problem_img": "5120.png",
+  "construction_cdl": [
+    "Shape(AO,OB,OBA)",
+    "Shape(OA,AD,DO)",
+    "Shape(OD,DB,BO)",
+    "Shape(CD,DA,OAC)",
+    "Shape(BD,DC,OCB)",
+    "Collinear(ADB)",
+    "Collinear(ODC)",
+    "Cocircular(O,ACB)"
+  ],
+  "text_cdl": [
+    "CongruentBetweenArc(OAC,OCB)",
+    "Equal(MeasureOfAngle(OAB),50)",
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(BOC))",
+  "problem_answer": "40",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum(OAB)",
+    "congruent_arc_property_measure_equal",
+    "arc_property_center_angle",
+    "angle_addition(BOD,DOA)"
+  ],
+  "raw_answer": "试题分析:点C是弧AB的中点所以∠BOC=∠AOC,因为∠A=50°,AO=BO,所以∠A=∠B=50°,所以∠BOC=\\frac{1}{2}(:180°-2∠A)=40°.故选A"
+}

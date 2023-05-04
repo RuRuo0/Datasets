@@ -1,0 +1,33 @@
+{
+  "problem_id": 4905,
+  "annotation": "JiaZou_2023-04-23",
+  "notes": "题目边之比，解方程无法解决",
+  "source": "GeoQA-417",
+  "problem_level": 1,
+  "problem_text_cn": "如图是小刘做的一个风筝支架示意图,已知BC∥PQ,AB:AP=2:5,AQ=20cm,则CQ的长是()",
+  "problem_text_en": "The figure is a schematic diagram of a kite stand made by Xiao Liu. It is known that BC ∥ PQ, AB: AP = N_0:N_1, AQ = N_2, then the length of CQ is ()",
+  "problem_img": "4905.png",
+  "construction_cdl": [
+    "Shape(DA,AE,ED)",
+    "Shape(BP,PQ,QC,CB)",
+    "Collinear(ABP)",
+    "Collinear(ACQ)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(AP),Mul(LengthOfLine(AB),2.5))",
+    "Equal(LengthOfLine(AQ),20)",
+    "ParallelBetweenLine(BC,PQ)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(CQ))",
+  "problem_answer": "12",
+  "theorem_seqs": [
+    "line_addition(AB,BP)",
+    "line_addition(AC,CQ)",
+    "parallel_property_corresponding_angle(BC,PQ,A)",
+    "similar_triangle_judgment_aa(CAB,QAP)",
+    "similar_triangle_property_line_ratio(CAB,QAP)",
+    "similar_triangle_property_line_ratio(BCA,PQA)"
+  ],
+  "raw_answer": "[解析]试题解析:∵BC//PQ,∴△ABC\\sim△APQ,∴\\frac{AB}{AP}=\\frac{AC}{AQ},∵AB:AP=2:5,AQ=20cm,∴\\frac{Ac}{20}=\\frac{2}{5}解得:AC=8cm,∴CQ=AQ-AC=20-8=12(cm),故选B."
+}

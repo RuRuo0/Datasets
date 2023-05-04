@@ -1,0 +1,37 @@
+{
+  "problem_id": 5706,
+  "annotation": "DengfengYue_2023-04-30",
+  "source": "GeoQA-1771",
+  "problem_level": 1,
+  "problem_text_cn": "已知⊙O的直径AB=8cm,点C在⊙O上,且∠BOC=60°,则AC的长为()",
+  "problem_text_en": "Given that the diameter of ⊙O is AB = N_0, point C is on ⊙O, and ∠BOC = N_1, then the length of AC is ()",
+  "problem_img": "5706.png",
+  "construction_cdl": [
+    "Shape(CA,AO,OC)",
+    "Shape(AC,OCA)",
+    "Shape(CO,OB,BC)",
+    "Shape(CB,OBC)",
+    "Shape(BA,OAB)",
+    "Collinear(AOB)",
+    "Cocircular(O,BCA)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(LengthOfLine(AB),8)",
+    "IsDiameterOfCircle(AB,O)",
+    "Equal(MeasureOfAngle(COB),60)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AC))",
+  "problem_answer": "4*√3",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal(OC,O)",
+    "radius_of_circle_property_length_equal(OB,O)",
+    "isosceles_triangle_judgment_line_equal(OBC)",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum",
+    "diameter_of_circle_property_right_angle",
+    "sine_theorem(ABC)"
+  ],
+  "raw_answer": "解:∵OB=OC,∠BOC=60°,∴△OBC是等边三角形,∴∠ABC=60°,∵AB是直径,∴∠ACB=90°,∴AC=AB\\sin60°=8×\\frac{√{3}}{2}=4√{3}．故选:B．"
+}

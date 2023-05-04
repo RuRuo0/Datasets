@@ -1,0 +1,40 @@
+{
+  "problem_id": 6361,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-3007",
+  "problem_level": 1,
+  "problem_text_cn": "如图,已知⊙O的半径为5,弦AB,CD所对的圆心角分别是∠AOB,∠COD,若∠AOB与∠COD互补,弦CD=6,则弦AB的长为()",
+  "problem_text_en": "As shown in the figure, it is known that the radius of ⊙O is N_0, and the central angles of chord AB and CD are respectively ∠AOB and ∠COD. If ∠AOB and ∠COD are complementary, chord CD = N_1, then the length of chord AB is ()",
+  "problem_img": "6361.png",
+  "construction_cdl": [
+    "Shape(OA,AB,BO)",
+    "Shape(OB,BE,EO)",
+    "Shape(OC,CD,DO)",
+    "Shape(OAB,BA)",
+    "Shape(OBC,OCE,EB)",
+    "Shape(OCE,OED,DC)",
+    "Shape(ODA,AO,OD)",
+    "Collinear(AOE)",
+    "Cocircular(O,ABCED)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(RadiusOfCircle(O),5)",
+    "Equal(LengthOfLine(CD),6)",
+    "Equal(Add(MeasureOfAngle(BOA),MeasureOfAngle(DOC)),180)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AB))",
+  "problem_answer": "8",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "adjacent_complementary_angle",
+    "congruent_arc_judgment_measure_equal",
+    "congruent_arc_property_chord_equal",
+    "diameter_of_circle_property_right_angle",
+    "right_triangle_judgment_angle",
+    "right_triangle_property_pythagorean"
+  ],
+  "notes": "congruent_arc_judgment_measure_equal相关定理有问题",
+  "raw_answer": "解:如图,延长AO交⊙O于点E,连接BE,则∠AOB+∠BOE=180°,又∵∠AOB+∠COD=180°,∴∠BOE=∠COD,∴BE=CD=6,∵AE为⊙O的直径,∴∠ABE=90°,∴AB=√{AE^{2}-BE^{2}}=√{10^{2}-6^{2}}=8,故选:B．"
+}

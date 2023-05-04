@@ -1,0 +1,38 @@
+{
+  "problem_id": 5461,
+  "annotation": "XiaoxiaoJin_2023-04-30",
+  "source": "GeoQA-1397",
+  "problem_level": 1,
+  "problem_text_cn": "如图,一根长25m梯子,斜立在一竖直的墙上,这时梯足距墙底端7m,如果梯子的顶端下滑4m,那么梯足将滑动()",
+  "problem_text_en": "As shown in the figure, a long N_0 ladder stands obliquely on a vertical wall. At this time, the foot of the ladder is N_1 from the bottom of the wall. If the top of the ladder slides by N_2, then the foot of the ladder will slide ()",
+  "problem_img": "5461.png",
+  "construction_cdl": [
+    "Shape(AB,BC,CA)",
+    "Shape(CE,EF,FC)",
+    "Shape(AC,CF)",
+    "Shape(EC,CB,BD,DE)",
+    "Collinear(ABD)",
+    "Collinear(DEF)",
+    "Collinear(ACE)",
+    "Collinear(BCF)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(BF),25)",
+    "Equal(LengthOfLine(BD),7)",
+    "Equal(LengthOfLine(EF),4)",
+    "Equal(LengthOfLine(AE),25)",
+    "Equal(MeasureOfAngle(BDE),90)",
+    "PerpendicularBetweenLine(BD,ED)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AB))",
+  "problem_answer": "8",
+  "theorem_seqs": [
+    "line_addition",
+    "perpendicular_property_collinear_extend",
+    "right_triangle_judgment_angle",
+    "right_triangle_property_pythagorean"
+  ],
+  "notes": "无法识别直角三角形",
+  "raw_answer": "解:梯子顶端距离墙角地距离为√{25²-7²}=24(m),顶端下滑后梯子低端距离墙角的距离为√{25²-(24-4)²}=15(m),15m-7m=8m.故选:C."
+}

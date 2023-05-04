@@ -1,0 +1,35 @@
+{
+  "problem_id": 5314,
+  "annotation": "YanjunGuo_2023-04-30",
+  "source": "GeoQA-1150",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在Rt△ABC中,∠BAC=90°,将△ABC绕点A顺时针旋转90°后得到△AB′C′(点B的对应点是点B′,点C的对应点是点C′),连接CC′.若∠CC′B′=32°,则∠AC′B′的大小是()",
+  "problem_text_en": "As shown in the figure, in Rt△ABC, ∠BAC = N_0, rotate △ABC clockwise around point A by N_1 to obtain △AB′C′ (the corresponding point of point B is point B′, and the corresponding point of point C is point C ′), connect CC′. If ∠CC′B′ = N_2, then the size of ∠AC′B′ is ()",
+  "problem_img": "5314.png",
+  "construction_cdl": [
+    "Shape(BA,AC,CB)",
+    "Shape(EA,AF,FE)",
+    "Shape(EF,FC,CE)",
+    "Collinear(CEA)",
+    "Collinear(BAF)"
+  ],
+  "text_cdl": [
+    "RightTriangle(BAC)",
+    "Equal(MeasureOfAngle(EFC),32)",
+    "CongruentBetweenTriangle(BAC,EAF)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(AFE))",
+  "problem_answer": "13",
+  "theorem_seqs": [
+    "congruent_triangle_property_line_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "adjacent_complementary_angle",
+    "perpendicular_judgment_angle(CA,FA)",
+    "right_triangle_judgment_angle(CAF)",
+    "isosceles_right_triangle_judgment_isosceles_and_right",
+    "isosceles_right_triangle_property_angle",
+    "angle_addition"
+  ],
+  "raw_answer": "解:∵△ABC绕点A顺时针旋转90°后得到△AB'C',∴AC=AC',∠B=∠AB'C,∠CAC'=90°,∴△ACC为等腰直角三角形,∴∠ACC'=∠AC'C=45°,∵∠CC'B'=32°∴∠AC'B'=∠AC'C-∠CC'B'=45°-32°=13°,∴∠B=13°故答案选:C."
+}

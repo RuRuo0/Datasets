@@ -1,0 +1,39 @@
+{
+  "problem_id": 6336,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-2973",
+  "problem_level": 1,
+  "problem_text_cn": "如图,点A、B、C、D都在⊙O上,OB⊥CD,∠BOC=50°,则∠BAD的度数为()",
+  "problem_text_en": "As shown in the figure, vertices A, B, C, and D are all on ⊙O, OB ⊥ CD, ∠BOC = N_0, then the degree of ∠BAD is ()",
+  "problem_img": "6336.png",
+  "construction_cdl": [
+    "Shape(OCB,BE,EC)",
+    "Shape(OC,CE,EO)",
+    "Shape(OBD,DA,AB)",
+    "Shape(OCB,OBD,DC)",
+    "Shape(ODC,CE,ED)",
+    "Shape(OBD,DE,EB)",
+    "Collinear(CED)",
+    "Collinear(OEB)",
+    "Cocircular(O,CBDA)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(CE,OE)",
+    "Equal(MeasureOfAngle(BOC),50)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(DAB))",
+  "problem_answer": "25",
+  "theorem_seqs": [
+
+    "circle_property_chord_perpendicular_bisect_chord",
+    "circle_property_chord_perpendicular_bisect_arc",
+    "arc_property_center_angle",
+    "congruent_arc_judgment_length_equal",
+    "congruent_arc_property_measure_equal",
+    "arc_property_circumference_angle_external"
+  ],
+  "notes": "已知-la_obd+la_ocb，不知道怎么转化成角",
+  "raw_answer": "解:∵OB⊥DC,∴⁀{BC}=⁀{BD},∴∠BAD=\\frac{1}{2}∠BOC=\\frac{1}{2}×50°=25°．故选:D．"
+}

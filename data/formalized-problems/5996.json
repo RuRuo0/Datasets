@@ -1,0 +1,50 @@
+{
+  "problem_id": 5996,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-2302",
+  "problem_level": 1,
+  "problem_text_cn": "如图,有一块锐角三角形材料,边BC=120mm,高AD=80mm,要把它加工成正方形零件,使其一边在BC上,其余两个顶点分别在AB、AC上,则这个正方形零件的边长为()",
+  "problem_text_en": "As shown in the figure, there is a piece of acute-angled triangular material with side BC = N_0 and height AD = N_1. It is to be processed into a square part so that one side is on BC and the other two vertices are on AB and AC respectively. Then the edge length of this square part is () ",
+  "problem_img": "5996.png",
+  "construction_cdl": [
+    "Shape(AE,EK,KA)",
+    "Shape(AK,KH,HA)",
+    "Shape(EB,BF,FE)",
+    "Shape(EF,FD,DK,KE)",
+    "Shape(HK,KD,DG,GH)",
+    "Shape(HG,GC,CH)",
+    "Collinear(EKH)",
+    "Collinear(BFDGC)",
+    "Collinear(AKD)",
+    "Collinear(AEB)",
+    "Collinear(AHC)"
+  ],
+  "text_cdl": [
+    "Square(EFGH)",
+    "IsAltitudeOfTriangle(AD,ABC)",
+    "Equal(LengthOfLine(AD),80)",
+    "Equal(LengthOfLine(BC),120)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(EH))",
+  "problem_answer": "48",
+  "theorem_seqs": [
+    "parallel_judgment_corresponding_angle",
+    "parallel_property_collinear_extend",
+    "parallel_property_collinear_extend",
+    "parallelogram_judgment_parallel_and_parallel(KEFD)",
+    "parallelogram_property_opposite_line_equal(EFDK)",
+    "line_addition(AK,KD)",
+    "parallelogram_property_opposite_line_equal(EFGH)",
+    "parallel_property_collinear_extend",
+    "parallel_property_corresponding_angle",
+    "similar_triangle_judgment_aa(AEH,ABC)",
+    "altitude_of_triangle_judgment(AK,AEH)",
+    "triangle_area_formula_common(AEH)",
+    "triangle_area_formula_common(ABC)",
+    "similar_triangle_property_line_ratio",
+    "similar_triangle_property_area_square_ratio(AEH,ABC)"
+
+  ],
+  "raw_answer": "解:设正方形的边长为xmm,则AK=AD-x=80-x,∵EFGH是正方形,∴EH∥FG,∴△AEH∽△ABC,∴\\frac{EH}{BC}=\\frac{AK}{AD},即\\frac{x}{120}=\\frac{80-x}{80},解得x=48mm,故选:C．"
+}

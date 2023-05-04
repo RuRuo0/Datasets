@@ -1,0 +1,41 @@
+{
+  "problem_id": 5556,
+  "annotation": "ChenyangMao_2023-04-30",
+  "source": "GeoQA-1548",
+  "problem_level": 1,
+  "problem_text_cn": "如图,□ABCD的周长为16cm,AC、BD相交于点O,OE⊥AC交AD于点E,则△DCE的周长为()",
+  "problem_text_en": "As shown in the figure, the perimeter of □ABCD is N_0, AC and BD intersect at point O, and OE ⊥ AC and it intersects AD at point E, then the perimeter of △DCE is ()",
+  "problem_img": "5556.png",
+  "construction_cdl": [
+    "Shape(EA,AO,OE)",
+    "Shape(FE,EO,OF)",
+    "Shape(DE,EF,FD)",
+    "Shape(DF,FC,CD)",
+    "Shape(CF,FO,OC)",
+    "Shape(CO,OB,BC)",
+    "Shape(BO,OA,AB)",
+    "Collinear(AOC)",
+    "Collinear(AED)",
+    "Collinear(EFC)",
+    "Collinear(BOFD)"
+  ],
+  "text_cdl": [],
+  "image_cdl": [
+    "Parallelogram(ABCD)",
+    "PerpendicularBetweenLine(EO,CO)",
+    "Equal(PerimeterOfQuadrilateral(ABCD),16)"
+  ],
+  "goal_cdl": "Value(PerimeterOfTriangle(DEC))",
+  "problem_answer": "8",
+  "theorem_seqs": [
+    "quadrilateral_perimeter_formula",
+    "parallelogram_property_opposite_line_equal",
+    "parallelogram_property_diagonal_bisection",
+    "perpendicular_property_collinear_extend",
+    "perpendicular_bisector_judgment_per_and_mid",
+    "perpendicular_bisector_property_distance_equal",
+    "line_addition(AE,ED)",
+    "triangle_perimeter_formula(DEC)"
+  ],
+  "raw_answer": "∵平行四边形ABCD,∴AD=BC,AB=CD,OA=OC∵EO⊥AC∴AE=BC∵AB+BC+CD+AD=16cm∴AD+DC=8cm∴△DCE的周长是:CD+DE+CE-AE+DE+CD=AD+CD=8(cm)故选:B"
+}

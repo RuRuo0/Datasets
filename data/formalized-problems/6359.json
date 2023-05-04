@@ -1,0 +1,41 @@
+{
+  "problem_id": 6359,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-3005",
+  "problem_level": 1,
+  "problem_text_cn": "如图,点A是半径为2的⊙O上一点,BC是⊙O的弦,OD⊥BC于D,若∠BAC=60°,则OD的长是()",
+  "problem_text_en": "As shown in the figure, vertex A is a vertex on ⊙O with radius N_0, BC is the chord of ⊙O, OD ⊥ BC is at D, if ∠BAC = N_1, then the length of OD is ()",
+  "problem_img": "6359.png",
+  "construction_cdl": [
+    "Shape(OAB,BA)",
+    "Shape(OBC,CD,DB)",
+    "Shape(OB,BD,DO)",
+    "Shape(OD,DC,CO)",
+    "Shape(AB,BD,DC,CA)",
+    "Shape(OCA,AC)",
+    "Collinear(BDC)",
+    "Cocircular(O,ABC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(RadiusOfCircle(O),2)",
+    "PerpendicularBetweenLine(BD,OD)",
+    "Equal(MeasureOfAngle(CAB),60)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(OD))",
+  "problem_answer": "1",
+  "theorem_seqs": [
+        "radius_of_circle_property_length_equal",
+    "arc_property_circumference_angle_external",
+    "circle_property_chord_perpendicular_bisect_chord",
+    "angle_addition",
+    "perpendicular_bisector_property_bisector",
+    "right_triangle_judgment_angle",
+    "arc_property_center_angle",
+    "sine_theorem",
+    "right_triangle_property_pythagorean"
+  ],
+  "notes": "same as 6358",
+  "raw_answer": "解:∵∠BAC=60°,∴∠BOC=120°,∵OD⊥BC,∴∠BDO=90°,∠BOD=\\frac{1}{2}∠BOC=60°,在Rt△BOD中,∠OBD=90°-60°=30°,∴OD=\\frac{1}{2}OB=1,故选:C．"
+}

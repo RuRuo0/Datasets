@@ -1,0 +1,35 @@
+{
+  "problem_id": 5200,
+  "annotation": "NaZhu_2023-04-30",
+  "source": "GeoQA-979",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在△ABC中,∠ABC=120°,若DE、FG分别垂直平分AB、BC,那么∠EBF的度数为()",
+  "problem_text_en": "As shown in the figure, in △ABC, ∠ABC = N_0, if DE and FG bisect AB and BC perpendicularly, then the degree of ∠EBF is ()",
+  "problem_img": "5200.png",
+  "construction_cdl": [
+    "Shape(BD,DE,EB)",
+    "Shape(DA,AE,ED)",
+    "Shape(BE,EF,FB)",
+    "Shape(BF,FG,GB)",
+    "Shape(CG,GF,FC)",
+    "Collinear(ADB)",
+    "Collinear(BGC)",
+    "Collinear(AEFC)"
+  ],
+  "text_cdl": [
+    "IsPerpendicularBisectorOfLine(ED,BA)",
+    "IsPerpendicularBisectorOfLine(FG,CB)",
+    "Equal(MeasureOfAngle(GBD),120)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(FBE))",
+  "problem_answer": "60",
+  "theorem_seqs": [
+    "perpendicular_bisector_property_distance_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum(BAC)",
+    "angle_addition"
+  ],
+  "raw_answer": "解:∵DE、FG分别垂直平分AB、BC,∴AE=BE,BF=CF,∴∠A=∠ABE,∠C=∠CBF,∵∠A+∠C+∠ABC=180°,∠ABC=120°,∴∠A+∠C=60°∴∠ABE+∠CBF=60°∴∠EBF=120°60°=60°,故选C."
+}

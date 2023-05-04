@@ -1,0 +1,29 @@
+{
+  "problem_id": 5113,
+  "annotation": "YimingHe_2023-04-30",
+  "source": "GeoQA-786",
+  "problem_level": 1,
+  "problem_text_cn": "如图,A、B、C三点在⊙O上,∠AOC=100°,则∠ABC等于()",
+  "problem_text_en": "As shown in the figure, the three vertices A, B, and C are on ⊙O, ∠AOC = N_0, then ∠ABC is equal to ()",
+  "problem_img": "5113.png",
+  "construction_cdl": [
+    "Shape(AO,OC,OCA)",
+    "Shape(AB,BC,CO,OA)",
+    "Shape(BA,OAB)",
+    "Shape(CB,OBC)",
+    "Cocircular(O,ABC)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(COA),100)",
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(ABC))",
+  "problem_answer": "130",
+  "theorem_seqs": [
+    "round_angle",
+    "arc_property_center_angle(OCA,O)",
+    "arc_property_circumference_angle_external"
+  ],
+  "raw_answer": "设点E是优弧上的一点,连接AE、CE∵∠AOC=100^{°},∴∠AEC=\\frac{1}{2}∠AOC=50^{°}∴∠ABC=180^{°}-∠AEC=130^{°}.故选D.,"
+}

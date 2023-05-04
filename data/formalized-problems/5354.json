@@ -1,0 +1,35 @@
+{
+  "problem_id": 5354,
+  "annotation": "YanjunGuo_2023-04-30",
+  "source": "GeoQA-1199",
+  "problem_level": 1,
+  "problem_text_cn": "如图,已知△ABC内接于⊙O,BC是⊙O的直径,切点为A,若∠MAB=30°,要使MN与⊙O相切,则∠B的度数是()",
+  "problem_text_en": "As shown in the figure, it is known that △ABC is inscribed in ⊙O, BC is the diameter of ⊙O, and the tangent point is A. If ∠MAB = N_0, if MN is to be tangent to ⊙O, then the degree of ∠B is ()",
+  "problem_img": "5354.png",
+  "construction_cdl": [
+    "Shape(AM,MB,OAB)",
+    "Shape(BA,OAB)",
+    "Shape(BO,OA,AB)",
+    "Shape(OC,CA,AO)",
+    "Shape(CB,OBC)",
+    "Shape(AC,OCA)",
+    "Collinear(BOC)",
+    "Cocircular(O,ABC)"
+  ],
+  "text_cdl": [
+    "IsTangentOfCircle(MA,O)",
+    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(BAM),30)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(ABO))",
+  "problem_answer": "60",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular",
+    "angle_addition",
+    "radius_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal"
+  ],
+  "raw_answer": "∵MN与⊙O相切,∠MAB=30°,∴∠C=∠MAB=30°,∵BC是⊙O的直径,∴∠BAC=90°,∴∠B=90°-∠C=60°故选C."
+}

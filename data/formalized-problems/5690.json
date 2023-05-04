@@ -1,0 +1,41 @@
+{
+  "problem_id": 5690,
+  "annotation": "DengfengYue_2023-04-30",
+  "source": "GeoQA-1750",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB为⊙O的直径,C、D是⊙O上的两点,∠BAC=30°,⁀{AD}=⁀{CD}．则∠DAC等于()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, C and D are two points on ⊙O, ∠BAC = N_0, ⁀AD = ⁀CD. Then ∠DAC is equal to ()",
+  "problem_img": "5690.png",
+  "construction_cdl": [
+    "Shape(AD,ODA)",
+    "Shape(DC,OCD)",
+    "Shape(CB,OBC)",
+    "Shape(DA,AC,CD)",
+    "Shape(CA,AB,BC)",
+    "Shape(BA,OAB)",
+    "Collinear(AOB)",
+    "Cocircular(O,BCDA)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(CAB),30)",
+    "Equal(LengthOfLine(DA),LengthOfLine(DC))"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(DAC))",
+  "problem_answer": "30",
+  "theorem_seqs": [
+    "diameter_of_circle_judgment_pass_centre(AOB,O)",
+    "diameter_of_circle_property_right_angle",
+    "triangle_property_angle_sum(CAB)",
+    "round_arc(OAC,OCA)",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external",
+    "arc_property_circumference_angle_internal",
+    "arc_property_center_angle",
+    "isosceles_triangle_judgment_line_equal(DAC)",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum(DAC)"
+  ],
+  "raw_answer": "解:∵AB为⊙O的直径,∴∠ACB=90°,∴∠B=90°-∠BAC=90°-30°=60°,∴∠D=180°-∠B=120°,∵⁀{AD}=⁀{CD},∴AD=CD,∴∠DAC=∠DCA=\\frac{1}{2}(180°-120°)=30°．故选:C．"
+}

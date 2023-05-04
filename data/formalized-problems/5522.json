@@ -1,0 +1,40 @@
+{
+  "problem_id": 5522,
+  "annotation": "Yangli_2023-04-30",
+  "source": "GeoQA-1496",
+  "problem_level": 1,
+  "problem_text_cn": "如图所示,∠A=28°,∠BFC=92°,∠B=∠C,则∠BDC的度数是()",
+  "problem_text_en": "As shown in the figure, ∠A = N_0, ∠BFC = N_1, ∠B = ∠C, then the degree of ∠BDC is ()",
+  "problem_img": "5522.png",
+  "construction_cdl": [
+    "Shape(DA,AE,EF,FD)",
+    "Shape(FE,EB,BF)",
+    "Shape(CD,DF,FC)",
+    "Shape(CF,FB)",
+    "Collinear(AEB)",
+    "Collinear(ADC)",
+    "Collinear(CFE)",
+    "Collinear(DFB)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(DAE),28)",
+    "Equal(MeasureOfAngle(CFB),92)",
+    "Equal(MeasureOfAngle(EBF),MeasureOfAngle(FCD))"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(CDF))",
+  "problem_answer": "60",
+  "theorem_seqs": [
+    "adjacent_complementary_angle(DFC,CFB)",
+    "adjacent_complementary_angle(CFB,BFE)",
+    "vertical_angle(CFB,EFD)",
+    "triangle_property_angle_sum(CDF)",
+    "triangle_property_angle_sum(FEB)",
+    "mirror_similar_triangle_judgment_aa(CDF,BFE)",
+    "mirror_similar_triangle_property_angle_equal(DFC,EBF)",
+    "quadrilateral_property_angle_sum(DAEF)",
+    "adjacent_complementary_angle(CDF,FDA)",
+    "adjacent_complementary_angle(AEF,FEB)"
+  ],
+  "raw_answer": "由三角形外角定理可以得出∠BDC=∠A+∠B∠BFC=∠BDC+∠C整理得∠BDC=\\frac{1}{2}(∠A+∠BFC)=60^{°}故答案为D."
+}

@@ -1,0 +1,32 @@
+{
+  "problem_id": 5543,
+  "annotation": "Yangli_2023-04-30",
+  "source": "GeoQA-1531",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在菱形ABCD中,AC=8,BD=6,则△ABD的面积等于()",
+  "problem_text_en": "As shown in the figure, in the diamond ABCD, AC = N_0, BD = N_1, then the area of ​​△ABD is equal to ()",
+  "problem_img": "5543.png",
+  "construction_cdl": [
+    "Shape(DA,AO,OD)",
+    "Shape(OA,AB,BO)",
+    "Shape(OB,BC,CO)",
+    "Shape(OC,CD,DO)",
+    "Collinear(AOC)",
+    "Collinear(DOB)"
+  ],
+  "text_cdl": [
+    "Rhombus(ABCD)",
+    "Equal(LengthOfLine(AC),8)",
+    "Equal(LengthOfLine(BD),6)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(AreaOfTriangle(ABD))",
+  "problem_answer": "12",
+  "theorem_seqs": [
+    "kite_area_formula_diagonal(ABCD)",
+    "mirror_congruent_triangle_judgment_sss(ABD,CDB)",
+    "mirror_congruent_triangle_property_area_equal(ABD,CDB)"
+  ],
+  "raw_answer": "∵菱形ABCD中,AC=8,BD=6∴S_{菱形ABCO}=\\frac{1}{2}AC\\cdotBD=\\frac{1}{2}x^{3}×8×6=24又∵OA=OC∴S_{△ABD}=S_{△ACD}=\\frac{1}{2}S_{菱形ABCD}=\\frac{1}{2}x²+24=12",
+  "notes": "最后的面积表示有点问题"
+}

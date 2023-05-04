@@ -166,26 +166,12 @@
 **Notes**:  
 1.垂直的判定：角为90°  
 
-### perpendicular_property_collinear_extend(AO,CO,B)
-<div>
-    <img src="gdl-pic/T014.png" width="30%"
-</div>
-
-    # branch 1
-    premise: PerpendicularBetweenLine(AO,CO)&Collinear(AOB)
-    conclusion: PerpendicularBetweenLine(CO,BO)
-    # branch 2
-    premise: PerpendicularBetweenLine(AO,CO)&Collinear(COB)
-    conclusion: PerpendicularBetweenLine(BO,AO)
-**Notes**:  
-1.垂直关系的共线扩展，B是与任意一条垂线共线的一点  
-
 ### perpendicular_bisector_judgment_per_and_mid(CO,AB)
 <div>
     <img src="gdl-pic/T015.png" width="15%"
 </div>
 
-    premise: PerpendicularBetweenLine(AO,CO)&IsMidpointOfLine(O,AB)
+    premise: Collinear(AOB)&Angle(AOC)&Equal(MeasureOfAngle(AOC),90)&Equal(LengthOfLine(AO),LengthOfLine(BO))
     conclusion: IsPerpendicularBisectorOfLine(CO,AB)
 **Notes**:  
 1.垂直平分线判定：垂直且平分  
@@ -195,7 +181,7 @@
     <img src="gdl-pic/T016.png" width="15%"
 </div>
 
-    premise: PerpendicularBetweenLine(AO,CO)&Collinear(AOB)&Equal(LengthOfLine(CA),LengthOfLine(CB))
+    premise: Collinear(AOB)&Angle(AOC)&Equal(MeasureOfAngle(AOC),90)&Equal(LengthOfLine(CA),LengthOfLine(CB))
     conclusion: IsPerpendicularBisectorOfLine(CO,AB)
 **Notes**:  
 1.垂直平分线判定：垂直平分线上的点到两个端点的距离相等  
@@ -285,7 +271,7 @@
     <img src="gdl-pic/T025.png" width="15%"
 </div>
 
-    premise: IsBisectorOfAngle(BD,ABC)&PerpendicularBetweenLine(DA,BA)&PerpendicularBetweenLine(BC,DC)
+    premise: IsBisectorOfAngle(BD,ABC)&Equal(MeasureOfAngle(BCD),90)&Equal(MeasureOfAngle(DAB),90)
     conclusion: Equal(LengthOfLine(DA),LengthOfLine(DC))
 **Notes**:  
 1.角平分线的判定：角平分线上的点到两端的距离相等  
@@ -379,7 +365,7 @@
     <img src="gdl-pic/T035.png" width="15%"
 </div>
 
-    premise: Polygon(ABC)&IsMidpointOfLine(D,BC)&Line(AD)
+    premise: Polygon(ABC)&Equal(LengthOfLine(BD),LengthOfLine(CD))&Line(AD)
     conclusion: IsMedianOfTriangle(AD,ABC)
 **Notes**:  
 1.三角形中线的判定：顶点与底边中点的连线  
@@ -390,13 +376,13 @@
 </div>
 
     # branch 1
-    premise: Polygon(ABC)&Line(AD)&Collinear(BDC)&PerpendicularBetweenLine(BD,AD)
+    premise: Polygon(ABC)&Line(AD)&Collinear(BDC)&Equal(MeasureOfAngle(BDA),90)
     conclusion: IsAltitudeOfTriangle(AD,ABC)
     # branch 2
-    premise: Polygon(ABC)&Line(AD)&Collinear(DBC)&PerpendicularBetweenLine(AD,BD)
+    premise: Polygon(ABC)&Line(AD)&Collinear(DBC)&Equal(MeasureOfAngle(ADB),90)
     conclusion: IsAltitudeOfTriangle(AD,ABC)
     # branch 3
-    premise: Polygon(ABC)&Line(AD)&Collinear(BCD)&PerpendicularBetweenLine(CD,AD)
+    premise: Polygon(ABC)&Line(AD)&Collinear(BCD)&Equal(MeasureOfAngle(CDA),90)
     conclusion: IsAltitudeOfTriangle(AD,ABC)
 **Notes**:  
 1.三角形高的判定：垂直于底边  
@@ -406,7 +392,7 @@
     <img src="gdl-pic/T037.png" width="15%"
 </div>
 
-    premise: Polygon(ABC)&Collinear(ADB)&Collinear(AEC)&Line(DE)&IsMidpointOfLine(D,AB)&IsMidpointOfLine(E,AC)
+    premise: Polygon(ABC)&Collinear(ADB)&Collinear(AEC)&Line(DE)&Equal(LengthOfLine(AD),LengthOfLine(BD))&Equal(LengthOfLine(AE),LengthOfLine(CE))
     conclusion: IsMidsegmentOfTriangle(DE,ABC)
 **Notes**:  
 1.中位线判定：两边中点的连线  
@@ -417,10 +403,10 @@
 </div>
 
     # branch 1
-    premise: Polygon(ABC)&Collinear(ADB)&Collinear(AEC)&Line(DE)&ParallelBetweenLine(DE,BC)&IsMidpointOfLine(D,AB)
+    premise: Polygon(ABC)&Collinear(ADB)&Collinear(AEC)&Line(DE)&ParallelBetweenLine(DE,BC)&Equal(LengthOfLine(AD),LengthOfLine(BD))
     conclusion: IsMidsegmentOfTriangle(DE,ABC)
     # branch 2
-    premise: Polygon(ABC)&Collinear(ADB)&Collinear(AEC)&Line(DE)&ParallelBetweenLine(DE,BC)&IsMidpointOfLine(E,AC)
+    premise: Polygon(ABC)&Collinear(ADB)&Collinear(AEC)&Line(DE)&ParallelBetweenLine(DE,BC)&Equal(LengthOfLine(AE),LengthOfLine(CE))
     conclusion: IsMidsegmentOfTriangle(DE,ABC)
     # branch 3
     premise: Polygon(ABC)&Collinear(ADB)&Collinear(AEC)&Line(DE)&ParallelBetweenLine(DE,BC)&Equal(LengthOfLine(BC),Mul(LengthOfLine(DE),2))
@@ -464,10 +450,10 @@
 </div>
 
     # branch 1
-    premise: IsCircumcenterOfTriangle(O,ABC)&Collinear(BDC)&PerpendicularBetweenLine(BD,OD)
+    premise: IsCircumcenterOfTriangle(O,ABC)&Collinear(BDC)&Line(OD)&Equal(MeasureOfAngle(BDO),90)
     conclusion: IsPerpendicularBisectorOfLine(OD,BC)
     # branch 2
-    premise: IsCircumcenterOfTriangle(O,ABC)&IsMidpointOfLine(D,BC)
+    premise: IsCircumcenterOfTriangle(O,ABC)&Collinear(BDC)&Line(OD)&Equal(LengthOfLine(BD),LengthOfLine(CD))
     conclusion: IsPerpendicularBisectorOfLine(OD,BC)
 **Notes**:  
 1.三角形外心性质：垂直平分线交点  
@@ -584,7 +570,7 @@
     <img src="gdl-pic/T053.png" width="60%"
 </div>
 
-    premise: Polygon(ABC)&Polygon(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(DE,FE)&Equal(LengthOfLine(AC),LengthOfLine(DF))&(Equal(LengthOfLine(AB),LengthOfLine(DE))|Equal(LengthOfLine(BC),LengthOfLine(EF)))
+    premise: Polygon(ABC)&Polygon(DEF)&Equal(MeasureOfAngle(ABC),90)&Equal(MeasureOfAngle(DEF),90)&Equal(LengthOfLine(AC),LengthOfLine(DF))&(Equal(LengthOfLine(AB),LengthOfLine(DE))|Equal(LengthOfLine(BC),LengthOfLine(EF)))
     conclusion: CongruentBetweenTriangle(ABC,DEF)
 **Notes**:  
 1.全等三角形判定：HL  
@@ -681,7 +667,7 @@
     <img src="gdl-pic/T062.png" width="60%"
 </div>
 
-    premise: Polygon(ABC)&Polygon(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(EF,DF)&Equal(LengthOfLine(AC),LengthOfLine(DE))&(Equal(LengthOfLine(BC),LengthOfLine(EF))|Equal(LengthOfLine(AB),LengthOfLine(DF)))
+    premise: Polygon(ABC)&Polygon(DEF)&Equal(MeasureOfAngle(ABC),90)&Equal(MeasureOfAngle(EFD),90)&Equal(LengthOfLine(AC),LengthOfLine(DE))&(Equal(LengthOfLine(BC),LengthOfLine(EF))|Equal(LengthOfLine(AB),LengthOfLine(DF)))
     conclusion: MirrorCongruentBetweenTriangle(ABC,DEF)
 **Notes**:  
 1.全等三角形判定：HL  
@@ -772,7 +758,7 @@
 </div>
 
     # branch 1
-    premise: Polygon(ABC)&Polygon(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(DE,FE)&Equal(Mul(LengthOfLine(AB),LengthOfLine(DF)),Mul(LengthOfLine(AC),LengthOfLine(DE)))
+    premise: Polygon(ABC)&Polygon(DEF)&Equal(MeasureOfAngle(ABC),90)&Equal(MeasureOfAngle(DEF),90)&Equal(Mul(LengthOfLine(AB),LengthOfLine(DF)),Mul(LengthOfLine(AC),LengthOfLine(DE)))
     conclusion: SimilarBetweenTriangle(ABC,DEF)
     # branch 2
     premise: Polygon(ABC)&Polygon(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(DE,FE)&Equal(Mul(LengthOfLine(BC),LengthOfLine(DF)),Mul(LengthOfLine(AC),LengthOfLine(EF)))
@@ -868,10 +854,10 @@
 </div>
 
     # branch 1
-    premise: Polygon(BCA)&Polygon(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(EF,DF)&Equal(Mul(LengthOfLine(AB),LengthOfLine(DE)),Mul(LengthOfLine(DF),LengthOfLine(AC)))
+    premise: Polygon(BCA)&Polygon(DEF)&Equal(MeasureOfAngle(ABC),90)&Equal(MeasureOfAngle(DEF),90)&Equal(Mul(LengthOfLine(AB),LengthOfLine(DE)),Mul(LengthOfLine(DF),LengthOfLine(AC)))
     conclusion: MirrorSimilarBetweenTriangle(ABC,DEF)
     # branch 2
-    premise: Polygon(BCA)&Polygon(DEF)&PerpendicularBetweenLine(AB,CB)&PerpendicularBetweenLine(EF,DF)&Equal(Mul(LengthOfLine(BC),LengthOfLine(DE)),Mul(LengthOfLine(AC),LengthOfLine(EF)))
+    premise: Polygon(BCA)&Polygon(DEF)&Equal(MeasureOfAngle(ABC),90)&Equal(MeasureOfAngle(EFD),90)&Equal(Mul(LengthOfLine(BC),LengthOfLine(DE)),Mul(LengthOfLine(AC),LengthOfLine(EF)))
     conclusion: MirrorSimilarBetweenTriangle(ABC,DEF)
 **Notes**:  
 1.镜像相似三角形判定：HL  
@@ -933,7 +919,7 @@
     <img src="gdl-pic/T085.png" width="15%"
 </div>
 
-    premise: Polygon(ABC)&PerpendicularBetweenLine(AB,CB)
+    premise: Polygon(ABC)&Equal(MeasureOfAngle(ABC),90)
     conclusion: RightTriangle(ABC)
 **Notes**:  
 1.直角三角形判定：有一个角是直角  
@@ -1086,13 +1072,13 @@
 </div>
 
     # branch 1
-    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(EF)&Collinear(AED)&Collinear(BFC)&PerpendicularBetweenLine(BF,EF)
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(EF)&Collinear(AED)&Collinear(BFC)&Equal(MeasureOfAngle(BFE),90)
     conclusion: IsAltitudeOfQuadrilateral(EF,ABCD)
     # branch 2
-    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(EF)&Collinear(AED)&Collinear(FBC)&PerpendicularBetweenLine(EF,BF)
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(EF)&Collinear(AED)&Collinear(FBC)&Equal(MeasureOfAngle(EFB),90)
     conclusion: IsAltitudeOfQuadrilateral(EF,ABCD)
     # branch 3
-    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(EF)&Collinear(AED)&Collinear(BCF)&PerpendicularBetweenLine(CF,EF)
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(EF)&Collinear(AED)&Collinear(BCF)&Equal(MeasureOfAngle(CFE),90)
     conclusion: IsAltitudeOfQuadrilateral(EF,ABCD)
 **Notes**:  
 1.平行四边形/梯形高的判定：垂直于底边  
@@ -1103,13 +1089,13 @@
 </div>
 
     # branch 1
-    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(AF)&Collinear(BFC)&PerpendicularBetweenLine(BF,AF)
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(AF)&Collinear(BFC)&Equal(MeasureOfAngle(BFD),90)
     conclusion: IsAltitudeOfQuadrilateral(AF,ABCD)
     # branch 2
-    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(AF)&Collinear(FBC)&PerpendicularBetweenLine(AF,BF)
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(AF)&Collinear(FBC)&Equal(MeasureOfAngle(DFB),90)
     conclusion: IsAltitudeOfQuadrilateral(AF,ABCD)
     # branch 3
-    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(AF)&Collinear(BCF)&PerpendicularBetweenLine(CF,AF)
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(AF)&Collinear(BCF)&Equal(MeasureOfAngle(CFD),90)
     conclusion: IsAltitudeOfQuadrilateral(AF,ABCD)
 **Notes**:  
 1.平行四边形/梯形高的判定：垂直于底边  
@@ -1137,10 +1123,10 @@
 </div>
 
     # branch 1
-    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(AC)&PerpendicularBetweenLine(BC,AC)
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(AC)&Equal(MeasureOfAngle(BCA),90)
     conclusion: IsAltitudeOfQuadrilateral(AC,ABCD)
     # branch 2
-    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(DB)&PerpendicularBetweenLine(DB,CB)
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(DB)&Equal(MeasureOfAngle(DBC),90)
     conclusion: IsAltitudeOfQuadrilateral(DB,ABCD)
 **Notes**:  
 1.平行四边形/梯形高的判定：垂直于底边  
@@ -1150,7 +1136,7 @@
     <img src="gdl-pic/T099.png" width="15%"
 </div>
 
-    premise: Collinear(AEB)&Collinear(DFC)&Line(EF)&IsMidpointOfLine(E,AB)&IsMidpointOfLine(F,DC)
+    premise: Collinear(AEB)&Collinear(DFC)&Line(EF)&Equal(LengthOfLine(AE),LengthOfLine(BE))&Equal(LengthOfLine(DF),LengthOfLine(CF))
     conclusion: IsMidsegmentOfQuadrilateral(EF,ABCD)
 **Notes**:  
 1.四边形中位线判定：两边中点的连线  
@@ -1161,10 +1147,10 @@
 </div>
 
     # branch 1
-    premise: Collinear(AEB)&Collinear(DFC)&Line(EF)&(Trapezoid(ABCD)|Parallelogram(ABCD))&ParallelBetweenLine(EF,BC)&IsMidpointOfLine(E,AB)
+    premise: Collinear(AEB)&Collinear(DFC)&Line(EF)&(Trapezoid(ABCD)|Parallelogram(ABCD))&ParallelBetweenLine(EF,BC)&Equal(LengthOfLine(AE),LengthOfLine(BE))
     conclusion: IsMidsegmentOfQuadrilateral(EF,ABCD)
     # branch 2
-    premise: Collinear(AEB)&Collinear(DFC)&Line(EF)&(Trapezoid(ABCD)|Parallelogram(ABCD))&ParallelBetweenLine(EF,BC)&IsMidpointOfLine(F,CD)
+    premise: Collinear(AEB)&Collinear(DFC)&Line(EF)&(Trapezoid(ABCD)|Parallelogram(ABCD))&ParallelBetweenLine(EF,BC)&Equal(LengthOfLine(DF),LengthOfLine(CF))
     conclusion: IsMidsegmentOfQuadrilateral(EF,ABCD)
     # branch 3
     premise: Collinear(AEB)&Collinear(DFC)&Line(EF)&(Trapezoid(ABCD)|Parallelogram(ABCD))&ParallelBetweenLine(EF,BC)&Equal(Add(LengthOfLine(AD),LengthOfLine(BC)),Mul(LengthOfLine(EF),2))
@@ -1199,10 +1185,10 @@
 </div>
 
     # branch 1
-    premise: IsCircumcenterOfQuadrilateral(O,ABCD)&Collinear(BEC)&PerpendicularBetweenLine(BE,OE)
+    premise: IsCircumcenterOfQuadrilateral(O,ABCD)&Collinear(BEC)&Equal(MeasureOfAngle(DEO),90)
     conclusion: IsPerpendicularBisectorOfLine(OE,BC)
     # branch 2
-    premise: IsCircumcenterOfQuadrilateral(O,ABCD)&IsMidpointOfLine(E,BC)
+    premise: IsCircumcenterOfQuadrilateral(O,ABCD)&Equal(LengthOfLine(BE),LengthOfLine(CE))
     conclusion: IsPerpendicularBisectorOfLine(OE,BC)
 **Notes**:  
 1.四边形外心性质：垂直平分线交点  
@@ -1565,7 +1551,7 @@
     <img src="gdl-pic/T119.png" width="15%"
 </div>
 
-    premise: Parallelogram(ABCD)&PerpendicularBetweenLine(AB,CB)
+    premise: Parallelogram(ABCD)&Equal(MeasureOfAngle(ABC),90)
     conclusion: Rectangle(ABCD)
 **Notes**:  
 1.矩形判定：有一个角是直角的平行四边形  
@@ -1635,7 +1621,7 @@
     <img src="gdl-pic/T126.png" width="15%"
 </div>
 
-    premise: Trapezoid(ABCD)&PerpendicularBetweenLine(AB,CB)
+    premise: Trapezoid(ABCD)&Equal(MeasureOfAngle(ABC),90)
     conclusion: RightTrapezoid(ABCD)
 **Notes**:  
 1.直角梯形的判定：有一侧是直角的梯形  
@@ -1700,16 +1686,6 @@
 **Notes**:  
 1.等腰梯形的性质：对角线相等  
 
-### arc_addition_length(OAB,OBC)
-<div>
-    <img src="gdl-pic/T134.png" width="15%"
-</div>
-
-    premise: Arc(OAB)&Arc(OBC)&Arc(OAC)
-    conclusion: Equal(LengthOfArc(OAC),Add(LengthOfArc(OAB),LengthOfArc(OBC)))
-**Notes**:  
-1.常识：临弧弧长相加  
-
 ### round_arc(OAB,OBA)
 <div>
     <img src="gdl-pic/T027.png" width="15%"
@@ -1719,6 +1695,16 @@
     conclusion: Equal(Add(MeasureOfArc(OAB),MeasureOfArc(OBA)),360)
 **Notes**:  
 1.常识：一整个圆弧为360°  
+
+### arc_addition_length(OAB,OBC)
+<div>
+    <img src="gdl-pic/T134.png" width="15%"
+</div>
+
+    premise: Arc(OAB)&Arc(OBC)&Arc(OAC)
+    conclusion: Equal(LengthOfArc(OAC),Add(LengthOfArc(OAB),LengthOfArc(OBC)))
+**Notes**:  
+1.常识：临弧弧长相加  
 
 ### arc_addition_measure(OAB,OBC)
 <div>
@@ -1954,10 +1940,10 @@
 </div>
 
     # branch 1
-    premise: Cocircular(O,AB)&Collinear(AMB)&IsCentreOfCircle(P,O)&PerpendicularBetweenLine(AM,PM)
+    premise: Cocircular(O,AB)&Collinear(AMB)&IsCentreOfCircle(P,O)&Equal(MeasureOfAngle(AMP),90)
     conclusion: IsPerpendicularBisectorOfLine(PM,AB)
     # branch 2
-    premise: Cocircular(O,AB)&Collinear(AMB)&IsCentreOfCircle(P,O)&IsMidpointOfLine(M,AB)
+    premise: Cocircular(O,AB)&Collinear(AMB)&IsCentreOfCircle(P,O)&Equal(LengthOfLine(AM),LengthOfLine(MB))
     conclusion: IsPerpendicularBisectorOfLine(PM,AB)
 **Notes**:  
 1.弦中点和圆心的连线是弦的垂直平分线  
@@ -1968,10 +1954,10 @@
 </div>
 
     # branch 1
-    premise: Arc(OAB)&Cocircular(O,ADB)&Collinear(AMB)&Collinear(PMD)&IsCentreOfCircle(P,O)&PerpendicularBetweenLine(AM,PM)
+    premise: Arc(OAB)&Cocircular(O,ADB)&Collinear(AMB)&Collinear(PMD)&IsCentreOfCircle(P,O)&Equal(MeasureOfAngle(AMO),90)
     conclusion: Equal(LengthOfArc(OAD),LengthOfArc(ODB))
     # branch 2
-    premise: Arc(OAB)&Cocircular(O,ADB)&Collinear(AMB)&Collinear(PMD)&IsCentreOfCircle(P,O)&IsMidpointOfLine(M,AB)
+    premise: Arc(OAB)&Cocircular(O,ADB)&Collinear(AMB)&Collinear(PMD)&IsCentreOfCircle(P,O)&Equal(LengthOfLine(AM),LengthOfLine(MB))
     conclusion: Equal(LengthOfArc(OAD),LengthOfArc(ODB))
 **Notes**:  
 1.圆心过弦中点与弦所对的弧的交点平分弧  
@@ -2045,7 +2031,7 @@
     <img src="gdl-pic/T135.png" width="15%"
 </div>
 
-    premise: Cocircular(O,BCA)&Angle(BCA)&PerpendicularBetweenLine(BC,AC)
+    premise: Cocircular(O,BCA)&Equal(MeasureOfAngle(BCA),90)
     conclusion: IsDiameterOfCircle(AB,O)
 **Notes**:  
 1.圆的直径的判定：两端在圆上且所对圆周角是直角  
@@ -2076,10 +2062,10 @@
 </div>
 
     # branch 1
-    premise: Cocircular(O,A)&IsCentreOfCircle(Q,O)&PerpendicularBetweenLine(QA,PA)
+    premise: Cocircular(O,A)&IsCentreOfCircle(Q,O)&Angle(QAP)&Equal(MeasureOfAngle(QAP),90)
     conclusion: IsTangentOfCircle(PA,O)
     # branch 2
-    premise: Cocircular(O,A)&IsCentreOfCircle(Q,O)&PerpendicularBetweenLine(PA,QA)
+    premise: Cocircular(O,A)&IsCentreOfCircle(Q,O)&Angle(PAQ)&Equal(MeasureOfAngle(PAQ),90)
     conclusion: IsTangentOfCircle(PA,O)
 **Notes**:  
 1.圆切线的判定：垂直  

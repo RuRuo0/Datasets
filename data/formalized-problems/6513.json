@@ -1,0 +1,37 @@
+{
+  "problem_id": 6513,
+  "annotation": "qcq_2023-05-05",
+  "source": "GeoQA-3235",
+  "problem_level": 1,
+  "problem_text_cn": "如图,已知AB是⊙O的直径,BC是弦,∠ABC=30°,过圆心O作OD⊥BC交弧BC于点D,连接DC,则∠DCB的度数为()度．",
+  "problem_text_en": "As shown in the figure, it is known that AB is the diameter of ⊙O, BC is the chord, ∠ABC = N_0, cross the center O to make OD ⊥ BC intersects BC at point D. Connect DC, then the degree of ∠DCB is () degree.",
+  "problem_img": "6513.png",
+  "construction_cdl": [
+    "Shape(OCD,DC)",
+    "Shape(ODB,BE,ED)",
+    "Shape(EB,BO,OE)",
+    "Shape(DE,EC,CD)",
+    "Shape(EO,OA,AC,CE)",
+    "Shape(OAC,CA)",
+    "Shape(OBA,AO,OB)",
+    "Collinear(DEO)",
+    "Collinear(CEB)",
+    "Collinear(BOA)",
+    "Cocircular(O,ACDB)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)",
+    "PerpendicularBetweenLine(OE,BE)",
+    "Equal(MeasureOfAngle(CBA),30)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(BCD))",
+  "problem_answer": "30",
+  "theorem_seqs": [
+    "triangle_property_angle_sum(OEB)",
+    "arc_property_center_angle(ODB,O)",
+    "arc_property_circumference_angle_external(ODB,C)"
+  ],
+  "raw_answer": "解:∵OD⊥BC,∠ABC=30°,∴在直角三角形OBE中,∠BOE=60°(直角三角形的两个锐角互余)；又∵∠DCB=\\frac{1}{2}∠DOB(同弧所对的圆周角是所对的圆心角的一半),∴∠DCB=30°；故选:A．"
+}

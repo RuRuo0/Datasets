@@ -1302,7 +1302,7 @@
     conclusion: SimilarBetweenQuadrilateral(EFGH,ABCD)
                 Equal(Mul(RatioOfSimilarQuadrilateral(ABCD,EFGH),RatioOfSimilarQuadrilateral(EFGH,ABCD)),1)
 **Notes**:  
-1.相似三角形的比值  
+1.相似四边形的比值  
 
 ### similar_quadrilateral_property_line_ratio(ABCD,EFGH)
 <div>

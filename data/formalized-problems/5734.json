@@ -1,0 +1,32 @@
+{
+  "problem_id": 5734,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-1806",
+  "problem_level": 1,
+  "problem_text_cn": "如图,A、D是⊙O上的两个点,BC是直径,若∠D=32°,则∠AOC=()",
+  "problem_text_en": "As shown in the figure, A and D are two points on ⊙O, BC is the diameter, if ∠D = N_0, then ∠AOC = ()",
+  "problem_img": "5734.png",
+  "construction_cdl": [
+    "Shape(OAB,BA)",
+    "Shape(OBC,CO,OB)",
+    "Shape(ODC,CD)",
+    "Shape(OCA,AC)",
+    "Shape(OA,AB,BO)",
+    "Shape(OC,CA,AO)",
+    "Shape(AD,DC,CA)",
+    "Collinear(BOC)",
+    "Cocircular(O,ABDC)"
+  ],
+  "text_cdl": [],
+  "image_cdl": [
+    "Equal(MeasureOfAngle(ADC),32)",
+    "IsCentreOfCircle(O,O)"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(AOC))",
+  "problem_answer": "64",
+  "theorem_seqs": [
+    "arc_property_center_angle(OCA,O)",
+    "arc_property_circumference_angle_external(OCA,D)"
+  ],
+  "raw_answer": "解:∵∠D=32°,∴∠B=∠D=32°．∴∠AOC=2∠B=64°,故选:A．"
+}

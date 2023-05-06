@@ -1,0 +1,45 @@
+{
+  "problem_id": 6478,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-3180",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在⊙A中,已知弦BC=8,DE=6,∠BAC+∠EAD=180°,则⊙A的半径长为()",
+  "problem_text_en": "As shown in the figure, in ⊙A, the known chord BC = N_0, DE = N_1, ∠BAC + ∠EAD = N_2, then the radius of ⊙A is ()",
+  "problem_img": "6478.png",
+  "construction_cdl": [
+    "Shape(AC,CB,BA)",
+    "Shape(ACB,BC)",
+    "Shape(AB,BF,FA)",
+    "Shape(ABF,FB)",
+    "Shape(AF,AFE,EA)",
+    "Shape(AE,ED,DA)",
+    "Shape(AED,DE)",
+    "Shape(AD,ADC,CA)",
+    "Collinear(CAF)",
+    "Cocircular(A,CBFED)"
+  ],
+  "text_cdl": [
+        "IsDiameterOfCircle(CF,A)",
+    "IsCentreOfCircle(A,A)",
+    "Equal(LengthOfLine(BC),8)",
+    "Equal(LengthOfLine(DE),6)",
+    "Equal(Add(MeasureOfAngle(BAC),MeasureOfAngle(DAE)),180)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AC))",
+  "problem_answer": "5",
+  "theorem_seqs": [
+    "flat_angle",
+    "angle_addition(FAB,BAC)",
+    "arc_property_center_angle",
+    "congruent_arc_judgment_measure_equal(ABF,AED)",
+    "congruent_arc_property_chord_equal",
+    "diameter_of_circle_property_right_angle",
+    "right_triangle_judgment_angle",
+    "right_triangle_property_pythagorean",
+    "diameter_of_circle_property_length_equal",
+    "circle_property_length_of_radius_and_diameter",
+      "radius_of_circle_property_length_equal"
+  ],
+  "raw_answer": "解:作直径CF,连结BF,如图,∵∠BAC+∠EAD=180°,\n而∠BAC+∠BAF=180°,∴∠DAE=∠BAF,∴⁀{DE}=⁀{BF},∴DE=BF=6,∵CF是直径,∴∠CBF=90°,∴CF=√{BC^{2}+BF^{2}}=√{8^{2}+6^{2}}=10．∴⊙A的半径为5．\n故选:C．"
+}

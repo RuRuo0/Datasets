@@ -16,21 +16,21 @@ more types of plane geometric problems.
 | Id  | Worker | WorkLoad |                 PID                 | Submitted |
 |:---:|:------:|:--------:|:-----------------------------------:|:---------:|
 |  1  |  贺艺铭   |    60    | 5852-5911 (data/raw-problems/GeoQA) |     √     |
-|  2  |   邹佳   |    60    | 5912-5971 (data/raw-problems/GeoQA) |     ×     |
+|  2  |   邹佳   |    60    | 5912-5971 (data/raw-problems/GeoQA) |     √     |
 |  3  |   朱娜   |    60    | 5972-6031 (data/raw-problems/GeoQA) |     √     |
 |  4  |  张效凯   |    60    | 6032-6091 (data/raw-problems/GeoQA) |     √     |
 |  5  |  郭彦钧   |    60    | 6092-6151 (data/raw-problems/GeoQA) |     √     |
 |  6  |  黄琦珂   |    60    | 6152-6211 (data/raw-problems/GeoQA) |     √     |
-|  7  |  黄一雯   |    60    |           same as week 8            |     ×     |
-|  8  |  金啸笑   |    60    | 6212-6271 (data/raw-problems/GeoQA) |     ×     |
+|  7  |  黄一雯   |    60    |           same as week 8            |     √     |
+|  8  |  金啸笑   |    60    | 6212-6271 (data/raw-problems/GeoQA) |     √     |
 |  9  |   李阳   |    60    | 6272-6331 (data/raw-problems/GeoQA) |     ×     |
 | 10  |  毛晨扬   |    60    | 6332-6391 (data/raw-problems/GeoQA) |     √     |
 | 11  |  王茹楠   |    60    |           same as week 8            |     ×     |
-| 12  |  王一凡   |    60    |           same as week 8            |     ×     |
+| 12  |  王一凡   |    60    |           same as week 8            |     √     |
 | 13  |  岳登峰   |    60    | 6392-6451 (data/raw-problems/GeoQA) |     ×     |
-| 14  |  朱方震   |    60    |           same as week 8            |     ×     |
-| 15  |   朱哲   |    60    | 6452-6511 (data/raw-problems/GeoQA) |     ×     |
-| 16  |   秦城   |    20    | 6512-6531 (data/raw-problems/GeoQA) |     ×     |
+| 14  |  朱方震   |    60    |           same as week 8            |     √     |
+| 15  |   朱哲   |    60    | 6452-6511 (data/raw-problems/GeoQA) |     √     |
+| 16  |   秦城   |    20    | 6512-6531 (data/raw-problems/GeoQA) |     √     |
 
 
 ## Co-work (After)
@@ -136,7 +136,7 @@ more types of plane geometric problems.
 | Id  | Worker | WorkLoad |                                                                          PID                                                                          | Submitted |
 |:---:|:------:|:--------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------:|:---------:|
 |  1  |  贺艺铭   |    60    |                                                          5066-5125 (data/raw-problems/GeoQA)                                                          |     √     |
-|  2  |   邹佳   |    60    |                                                          5126-5185 (data/raw-problems/GeoQA)                                                          |     ×     |
+|  2  |   邹佳   |    60    |                                                          5126-5185 (data/raw-problems/GeoQA)                                                          |     √     |
 |  3  |   朱娜   |    60    |                                                          5186-5245 (data/raw-problems/GeoQA)                                                          |     √     |
 |  4  |  张效凯   |    60    |                                                          5246-5305 (data/raw-problems/GeoQA)                                                          |     √     |
 |  5  |  郭彦钧   |    60    |                                                          5306-5365 (data/raw-problems/GeoQA)                                                          |     √     |

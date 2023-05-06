@@ -90,7 +90,7 @@ more types of plane geometric problems.
 |  1  |  贺艺铭   |    60    | 8152-8211 (data/raw-problems/GeoQA) |     ×     |
 |  2  |   邹佳   |    60    | 8212-8271 (data/raw-problems/GeoQA) |     ×     |
 |  3  |   朱娜   |    60    | 8272-8331 (data/raw-problems/GeoQA) |     ×     |
-|  4  |  张效凯   |    60    | 8332-8391 (data/raw-problems/GeoQA) |     ×     |
+|  4  |  张效凯   |    60    | 8332-8391 (data/raw-problems/GeoQA) |     √     |
 |  5  |  郭彦钧   |    60    | 8392-8451 (data/raw-problems/GeoQA) |     ×     |
 |  6  |  黄琦珂   |    60    | 8452-8511 (data/raw-problems/GeoQA) |     ×     |
 |  7  |  黄一雯   |    60    | 8512-8571 (data/raw-problems/GeoQA) |     /     |

@@ -1,0 +1,38 @@
+{
+  "problem_id": 8356,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-7581",
+  "problem_level": 1,
+  "problem_text_cn": "如图,边长为4的正方形ABCD中有一个小正方形EFGH,其中E、F、G分别在AB、BC、FD上,若BF=1,则小正方形的边长为()",
+  "problem_text_en": "As shown in the figure, there is a small square EFGH in the square ABCD with edge length N_0, where E, F, and G are on AB, BC, and FD respectively. If BF = N_1, then the edge length of the small square is ()",
+  "problem_img": "8356.png",
+  "construction_cdl": [
+    "Shape(AE,EH,HG,GD,DA)",
+    "Shape(HE,EF,FG,GH)",
+    "Shape(EB,BF,FE)",
+    "Shape(DG,GF,FC,CD)",
+    "Collinear(AEB)",
+    "Collinear(FGD)",
+    "Collinear(BFC)"
+  ],
+  "text_cdl": [
+    "Square(ABCD)",
+    "Equal(LengthOfLine(AB),4)",
+    "Square(HEFG)",
+    "Equal(LengthOfLine(BF),1)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(EF))",
+  "problem_answer": "5/4",
+  "theorem_seqs": [
+    "triangle_property_angle_sum(EBF)",
+    "angle_addition(BFE,EFG)",
+    "adjacent_complementary_angle(BFG,GFC)",
+    "line_addition(BF,FC)",
+    "similar_triangle_judgment_aa(FEB,DFC)",
+    "similar_triangle_property_line_ratio",
+    "right_triangle_judgment_angle(EBF)",
+    "right_triangle_property_pythagorean(EBF)"
+  ],
+  "raw_answer": "解:由题意可得,∠EBF=∠FCD=90°,∠EFG=90°,∴∠EFB+∠FEB=90°,∠EFB+∠DFC=90°,∴∠FEB=∠DFC,∴△EBF∽△FCD,∴\\frac{BE}{CF}=\\frac{BF}{CD},∵BF=1,CD=BC=4,∴FC=3,∴\\frac{BE}{3}=\\frac{1}{4},解得,BE=\\frac{3}{4},∴EF=√{BE²+BF²}=√{(\\frac{3}{4})²+1²}=\\frac{5}{4},故选:C．"
+}

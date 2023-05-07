@@ -1,0 +1,33 @@
+{
+  "problem_id": 7711,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-5376",
+  "problem_level": 1,
+  "problem_text_cn": "如图,BD,CE分别是△ABC的高线和角平分线,且相交与点O,若∠BCA=70°,则∠BOE的度数是()",
+  "problem_text_en": "As shown in the figure, BD and CE are the height and angular bisector of △ABC respectively, and they intersect with point O. If ∠BCA = N_0, then the degree of ∠BOE is ()",
+  "problem_img": "7711.png",
+  "construction_cdl": [
+    "Shape(AE,EO,OD,DA)",
+    "Shape(EB,BO,OE)",
+    "Shape(OB,BC,CO)",
+    "Shape(DO,OC,CD)",
+    "Collinear(AEB)",
+    "Collinear(ADC)",
+    "Collinear(EOC)",
+    "Collinear(BOD)"
+  ],
+  "text_cdl": [
+    "IsAltitudeOfTriangle(BD,BCA)",
+    "IsBisectorOfAngle(CE,BCA)",
+    "Equal(MeasureOfAngle(BCA),70)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(BOE))",
+  "problem_answer": "55",
+  "theorem_seqs": [
+    "angle_addition(BCE,ECA)",
+    "triangle_property_angle_sum(DOC)",
+    "vertical_angle(BOE,DOC)"
+  ],
+  "raw_answer": "【解答】解:∵B⊥AC,∴∠BDC=90°,∵CE平分∠ACB,∠ACB=70°,∴∠DCO=35°,∴∠BOE=∠COD=90°-35°=55°,"
+}

@@ -1,0 +1,31 @@
+{
+  "problem_id": 5420,
+  "annotation": "QikeHuang_2023-04-30",
+  "source": "GeoQA-1312",
+  "problem_level": 1,
+  "problem_text_cn": "如图,点A,B,C在⊙O上,∠AOB=72°,则∠ACB的度数是()",
+  "problem_text_en": "As shown in the figure, vertices A, B, C are on ⊙O, ∠AOB = N_0, then the degree of ∠ACB is ()",
+  "problem_img": "5420.png",
+  "construction_cdl": [
+    "Shape(OCA,AO,OM,MC)",
+    "Shape(OA,AM,MO)",
+    "Shape(MB,BC,CM)",
+    "Shape(MA,OAB,BM)",
+    "Shape(CB,OBC)",
+    "Collinear(AMC)",
+    "Collinear(OMB)",
+    "Cocircular(O,ABC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(BOA),72)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(BCA))",
+  "problem_answer": "36",
+  "theorem_seqs": [
+    "arc_property_center_angle(OAB,O)",
+    "arc_property_circumference_angle_external(OAB,C)"
+  ],
+  "raw_answer": "解:∵\\overset{\\frown}{AB}所对的圆心角为∠AOB,所对的圆周角为∠ACB∴∠ACB=\\frac{1}{2}∠AOB,∵∠AOB=72°∴∠ACB=36°.故选:B."
+}

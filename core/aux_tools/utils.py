@@ -5,8 +5,10 @@ expr_sym = [
     "π"    # pi
 ]
 geo_sym = [
-    "△",  # triangle
-    "∠"  # angle
+    "△",   # triangle
+    "∠",  # angle
+    "⊙",
+    "▱"
 ]
 greek_alp = [
     'Α', 'α',

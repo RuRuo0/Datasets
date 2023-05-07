@@ -1,0 +1,41 @@
+{
+  "problem_id": 5794,
+  "annotation": "ZheZhu_2023-04-30",
+  "source": "GeoQA-1890",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB是⊙O的直径,C,D为⊙O上的点,⁀{AD}=⁀{CD},如果∠CAB=40°,那么∠CAD的度数为()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, C and D are points on ⊙O, ⁀AD = ⁀CD, if ∠CAB = N_0, then the degree of ∠CAD is ()",
+  "problem_img": "5794.png",
+  "construction_cdl": [
+    "Shape(DA,AE,ED)",
+    "Shape(ODA,AD)",
+    "Shape(EA,AO,OB,BE)",
+    "Shape(CE,EB,BC)",
+    "Shape(OBC,CB)",
+    "Shape(OCD,DE,EC)",
+    "Shape(OA,OAB,BO)",
+    "Collinear(AOB)",
+    "Collinear(AEC)",
+    "Collinear(BED)",
+    "Cocircular(O,CDAB)"
+  ],
+  "text_cdl": [],
+  "image_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(LengthOfArc(ODA),LengthOfArc(OCD))",
+    "Equal(MeasureOfAngle(CAB),40)"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(DAC))",
+  "problem_answer": "25",
+  "theorem_seqs": [
+    "circle_property_diameter_to_circumference_angle",
+    "triangle_property_angle_sum",
+    "congruent_arc_judgment_length_equal(ODA,OCD)",
+    "congruent_arc_property_measure_equal(ODA,OCD)",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external",
+    "arc_addition_measure(OCD,ODA)",
+    "arc_property_circumference_angle_external"
+  ],
+  "raw_answer": "解:如图,连接BC,BD,∵AB为⊙O的直径,∴∠ACB=90°,∵∠CAB=40°,∴∠ABC=50°,∵⁀{AD}=⁀{CD},∴∠ABD=∠CBD=\\frac{1}{2}∠ABC=25°,∴∠CAD=∠CBD=25°．故选:A．"
+}

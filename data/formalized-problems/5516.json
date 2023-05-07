@@ -1,0 +1,39 @@
+{
+  "problem_id": 5516,
+  "annotation": "Yangli_2023-04-30",
+  "source": "GeoQA-1487",
+  "problem_level": 1,
+  "problem_text_cn": "如图,平行四边形ABCD中,E是BC边上的一点,且AB=AE,若AE平分∠DAB,∠EAC=20°,则∠AED的度数为()",
+  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, E is a point on the edge of BC, and AB = AE, if AE bisects ∠DAB, ∠EAC = N_0, then the degree of ∠AED is ()",
+  "problem_img": "5516.png",
+  "construction_cdl": [
+    "Shape(AB,BE,EA)",
+    "Shape(FE,EC,CF)",
+    "Shape(DF,FC,CD)",
+    "Shape(AE,EF,FA)",
+    "Shape(AF,FD,DA)",
+    "Collinear(AFC)",
+    "Collinear(EFD)",
+    "Collinear(BEC)"
+  ],
+  "text_cdl": [
+    "Parallelogram(ABCD)",
+    "Equal(MeasureOfAngle(FAE),20)",
+    "Equal(LengthOfLine(AB),LengthOfLine(AE))",
+    "IsBisectorOfAngle(AE,DAB)",
+    "ParallelBetweenLine(AD,BE)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(AEF))",
+  "problem_answer": "80",
+  "theorem_seqs": [
+    "angle_addition(DAF,FAE)",
+    "angle_addition(DAE,EAB)",
+    "parallel_property_alternate_interior_angle(AD,BE)",
+    "isosceles_triangle_judgment_line_equal(ABE)",
+    "isosceles_triangle_property_angle_equal(ABE)",
+    "parallel_property_ipsilateral_internal_angle(AD,BE)"
+  ],
+  "raw_answer": "∵在平行四边形ABCD中1AD||BC,BC=AD,∴∠EAD=∠AEB,又∵AB=AE,∴∠B=∠AEB,∴∠B=∠EAD,在△ABC和△EAD中,\\begin{cases}\nx^2+y^3+z^4=c^5\\\\\nx^3+y^2=a^3\\\\\ny^7+z^2=b^6\\\\\n\\end{cases}∴△ABC≌△EAD(SAS),∴∠AED=∠BAC.∵AE平分∠DAB,∴∠BAE=∠DAE,∴∠BAE=∠AEB=∠B,∴△ABE为等边三角形,∠BAE=60°,∴∠BAC=∠BAE+.∠EAC=80°,∴∠AED=∠BAC=80°;故选C.",
+  "notes": "我解出角度了，但是怎么根据条件求答案我不会做，数学问题"
+}

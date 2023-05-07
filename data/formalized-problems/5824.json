@@ -1,0 +1,37 @@
+{
+  "problem_id": 5824,
+  "annotation": "ZheZhu_2023-04-30",
+  "source": "GeoQA-1937",
+  "problem_level": 1,
+  "problem_text_cn": "如图,当圆形桥孔中的水面宽度AB为8米时,弧ACB恰为半圆．当水面上涨1米时,桥孔中的水面宽度A′B′为()",
+  "problem_text_en": "As shown in the figure, when the width of the water surface AB in the circular bridge hole is N_0, the arc ACB is exactly a semicircle. When the water surface rises N_1, the water surface width A′B′ in the bridge hole is ()",
+  "problem_img": "5824.png",
+  "construction_cdl": [
+    "Shape(DE,EO,OD)",
+    "Shape(OE,OEA,AO)",
+    "Shape(OA,OAB,BO)",
+    "Shape(OB,OBF,FD,DO)",
+    "Shape(DF,OFE,ED)",
+    "Collinear(AOB)",
+    "Collinear(EDF)",
+    "Cocircular(O,BFEA)"
+  ],
+  "text_cdl": [],
+  "image_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(LengthOfLine(DO),1)",
+    "Equal(LengthOfLine(OA),4)",
+    "PerpendicularBetweenLine(OD,ED)"
+  ],
+  "goal_cdl": "Value(LengthOfLine(EF))",
+  "problem_answer": "2*√15",
+  "theorem_seqs": [
+    "circle_property_radius_length_equal",
+    "right_triangle_judgment_angle",
+    "right_triangle_property_pythagorean",
+    "perpendicular_property_collinear_extend",
+    "circle_property_chord_perpendicular_bisect_chord",
+    "line_addition"
+  ],
+  "raw_answer": "解:设圆的圆心是O,作弦A′B′的弦心距OE,连接OA′．根据题意,得在直角三角形OA′E中,OA′=4,OE=1．根据勾股定理得A′E=√{15}m．再根据垂径定理得A′B′=2A′E=2√{15}m．故选:B．"
+}

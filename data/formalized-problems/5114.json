@@ -1,0 +1,28 @@
+{
+  "problem_id": 5114,
+  "annotation": "YimingHe_2023-04-30",
+  "source": "GeoQA-793",
+  "problem_level": 1,
+  "problem_text_cn": "如图,DB⊥AB,DC⊥AC,BD=DC,∠BAC=80°,则∠BAD=()",
+  "problem_text_en": "As shown in the figure, DB ⊥ AB, DC ⊥ AC, BD = DC, ∠BAC = N_0, then ∠BAD = ()",
+  "problem_img": "5114.png",
+  "construction_cdl": [
+    "Shape(AB,BD,DA)",
+    "Shape(AD,DC,CA)"
+  ],
+  "text_cdl": [
+    "PerpendicularBetweenLine(AB,DB)",
+    "PerpendicularBetweenLine(DC,AC)",
+    "Equal(LengthOfLine(BD),LengthOfLine(CD))",
+    "Equal(MeasureOfAngle(CAB),80)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(DAB))",
+  "problem_answer": "40",
+  "theorem_seqs": [
+    "mirror_congruent_triangle_judgment_hl(ABD,ADC)",
+    "mirror_congruent_triangle_property_angle_equal(ABD,ADC)",
+    "angle_addition(CAD,DAB)"
+  ],
+  "raw_answer": "∵DB⊥AB,DC⊥AC,且BD=DC,∴AD是∠BAC的平分线,∴∠BAD=∠CAD=\\frac{1}{2}∠BAC=\\frac{1}{2}*80^{°}=40^{°}.故选B."
+}

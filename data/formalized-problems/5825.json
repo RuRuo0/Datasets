@@ -1,0 +1,37 @@
+{
+  "problem_id": 5825,
+  "annotation": "ZheZhu_2023-04-30",
+  "source": "GeoQA-1939",
+  "problem_level": 1,
+  "problem_text_cn": "某蔬菜基地的圆弧形蔬菜大棚的剖面如图所示,已知AB=16m,半径OA=10m,则中间柱CD的高度为()",
+  "problem_text_en": "The section of the arc-shaped vegetable greenhouse of a vegetable base is shown in the figure. It is known that AB = N_0 and the radius OA = N_1, then the height of the middle column CD is ()",
+  "problem_img": "5825.png",
+  "construction_cdl": [
+    "Shape(AD,DC,OCA)",
+    "Shape(CD,DB,OBC)",
+    "Shape(DA,AO,OD)",
+    "Shape(OA,OAB,BD,DO)",
+    "Collinear(CDO)",
+    "Collinear(ADB)",
+    "Cocircular(O,CAB)"
+  ],
+  "text_cdl": [],
+  "image_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(BD,OD)",
+    "Equal(LengthOfLine(OA),10)",
+    "Equal(LengthOfLine(AB),16)"
+  ],
+  "goal_cdl": "Value(LengthOfLine(CD))",
+  "problem_answer": "4",
+  "theorem_seqs": [
+    "perpendicular_property_collinear_extend",
+    "circle_property_chord_perpendicular_bisect_chord",
+    "line_addition",
+    "circle_property_radius_length_equal",
+    "right_triangle_judgment_angle",
+    "right_triangle_property_pythagorean",
+    "line_addition"
+  ],
+  "raw_answer": "解:∵CD是中间柱,即⁀{AC}=⁀{BC},∴OC⊥AB,∴AD=BD=\\frac{1}{2}AB=\\frac{1}{2}×16=8(m),∵半径OA=10m,在Rt△AOD中,OD=√{0A^{2}-AD^{2}}=6(m),∴CD=OC-OD=10-6=4(m)．故选:B．"
+}

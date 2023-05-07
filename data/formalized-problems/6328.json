@@ -1,0 +1,52 @@
+{
+  "problem_id": 6328,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-2958",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB是⊙O的直径,弦CD⊥AB,垂足为E,连接AC,若∠CAB=22.5°,CD=8cm,则⊙O的半径为()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, chord CD ⊥ AB, vertical foot is E, connected to AC, if ∠CAB = N_0, CD = N_1, then the radius of ⊙O is ()",
+  "problem_img": "6328.png",
+  "construction_cdl": [
+    "Shape(AC,CO,OA)",
+    "Shape(OC,CE,EO)",
+    "Shape(OE,ED,DO)",
+    "Shape(CA,OAC)",
+    "Shape(AO,OD,ODA)",
+    "Shape(BE,EC,OCB)",
+    "Shape(DE,EB,OBD)",
+    "Collinear(AOEB)",
+    "Collinear(CED)",
+    "Cocircular(O,ACBD)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(CD),8)",
+    "Equal(MeasureOfAngle(OAC),22.5)",
+    "IsDiameterOfCircle(AB,O)",
+    "PerpendicularBetweenLine(CE,OE)"
+  ],
+  "image_cdl": [
+    "IsCentreOfCircle(O,O)"
+  ],
+  "goal_cdl": "Value(LengthOfLine(OC))",
+  "problem_answer": "5.66",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal(OA,O)",
+    "radius_of_circle_property_length_equal(OC,O)",
+    "radius_of_circle_property_length_equal(OD,O)",
+     "adjacent_complementary_angle(CEO,OED)",
+    "isosceles_triangle_judgment_line_equal(OCD)",
+    "isosceles_triangle_property_angle_equal(OCD)",
+    "mirror_congruent_triangle_judgment_aas(OCE,OED)",
+    "mirror_congruent_triangle_property_line_equal(OCE,OED)",
+    "line_addition(CE,ED)",
+    "triangle_property_angle_sum(ACE)",
+    "isosceles_triangle_judgment_line_equal(OAC)",
+    "isosceles_triangle_property_angle_equal(OAC)",
+    "angle_addition(ACO,OCE)",
+    "triangle_property_angle_sum(OCE)",
+    "isosceles_triangle_judgment_angle_equal(EOC)",
+    "right_triangle_judgment_angle(CEO)",
+    "right_triangle_property_pythagorean(CEO)"
+  ],
+  "raw_answer": "解:连接OC,如图所示:∵AB是⊙O的直径,弦CD⊥AB,∴CE=DE=\\frac{1}{2}CD=4cm,∵OA=OC,∴∠A=∠OCA=22.5°,∵∠COE为△AOC的外角,∴∠COE=45°,∴△COE为等腰直角三角形,∴OC=√{2}CE=4√{2}cm,故选:C．"
+}

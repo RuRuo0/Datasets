@@ -1,0 +1,36 @@
+{
+  "problem_id": 6433,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-3099",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB是⊙O的直径,CD是⊙O的弦,连结AC、AD、BD,若∠CAB=35°,则∠ADC的度数为()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, CD is the chord of ⊙O, connect AC, AD, BD, if ∠CAB = N_0, then the degree of ∠ADC is ()",
+  "problem_img": "6433.png",
+  "construction_cdl": [
+    "Shape(AC,OCA)",
+    "Shape(AE,EC,CA)",
+    "Shape(CE,EB,OBC)",
+    "Shape(BE,ED,DB)",
+    "Shape(BD,ODB)",
+    "Shape(DE,EA,AD)",
+    "Shape(DA,OAD)",
+    "Collinear(AOEB)",
+    "Collinear(CED)",
+    "Cocircular(O,CADB)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)",
+    "Equal(MeasureOfAngle(CAB),35)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(ADC))",
+  "problem_answer": "55",
+  "theorem_seqs": [
+    "diameter_of_circle_property_right_angle",
+    "arc_property_circumference_angle_external",
+    "arc_property_circumference_angle_external",
+    "angle_addition"
+  ],
+  "raw_answer": "解:∵AB是⊙O的直径,∴∠ADB=90°,又∵∠CDB=∠CAB=35°(圆周角定理),∴∠ADC=90°-35°=55°．故选:B．"
+}

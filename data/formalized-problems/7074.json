@@ -1,0 +1,41 @@
+{
+  "problem_id": 7074,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4169",
+  "problem_level": 1,
+  "problem_text_cn": "如图,PA,PB分别切⊙O于A,B,∠APB=60°,PA=8,则⊙O的半径OA长为()",
+  "problem_text_en": "As shown in the figure, PA and PB respectively tangent ⊙O to A, B, ∠APB = N_0, PA = N_1, then the radius OA of ⊙O is ()",
+  "problem_img": "7074.png",
+  "construction_cdl": [
+    "Shape(AP,PD,DA)",
+    "Shape(OA,AD,DO)",
+    "Shape(OAE,ED,DA)",
+    "Shape(DP,PB,BD)",
+    "Shape(OEB,BD,DE)",
+    "Shape(OD,DB,BO)",
+    "Shape(OBA,AO,OB)",
+    "Collinear(PEDO)",
+    "Cocircular(O,AEB)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(PA,O)",
+    "IsTangentOfCircle(PB,O)",
+    "Equal(LengthOfLine(PA),8)",
+    "Equal(MeasureOfAngle(APB),60)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(OA))",
+  "problem_answer": "8/√3",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular",
+    "tangent_of_circle_property_length_equal",
+    "radius_of_circle_property_length_equal",
+    "mirror_congruent_triangle_judgment_sas",
+    "angle_addition",
+    "mirror_congruent_triangle_property_angle_equal",
+    "sine_theorem"
+  ],
+  "notes": "TypeError: unsupported operand type(s) for -: 'Symbol' and 'NoneType'",
+  "raw_answer": "解:连接OA、OP∵PA、PB是⊙O的切线∴∠OAP=90°,∠APO=\\frac{1}{2}∠APB=30°Rt△OAP中,∵tan∠APO=\\frac{OA}{PA},∴OA=PA•tan30°=8×\\frac{√{3}}{3}=\\frac{8√{3}}{3},故选:D．"
+}

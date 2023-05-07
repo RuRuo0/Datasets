@@ -5,7 +5,7 @@ from core.aux_tools.output import show, simple_show, save_step_msg, save_solutio
 from core.aux_tools.parser import FLParser
 import os
 path_preset = "data/preset/"
-path_formalized = "data/formalized-problems/wrn/"
+path_formalized = "data/formalized-problems/"
 path_test = "data/test-problems/"
 path_solved = "data/solved/"
 path_solved_problems = "data/solved/problems/"

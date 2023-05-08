@@ -1,0 +1,38 @@
+{
+  "problem_id": 6540,
+  "annotation": "yiminghe_2023-05-07",
+  "source": "GeoQA-3284",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB是⊙O的直径,点C,D,E在⊙O上,若∠AED=20°,则∠BCD的度数为()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, points C, D, and E are on ⊙O, if ∠AED = N_0, then the degree of ∠BCD is ()",
+  "problem_img": "6540.png",
+  "construction_cdl": [
+    "Shape(EA,OAE)",
+    "Shape(AE,EF,FA)",
+    "Shape(AF,FG,GA)",
+    "Shape(AG,GD,ODA)",
+    "Shape(DG,GC,CD)",
+    "Shape(DC,OCD)",
+    "Shape(BC,CG,GF,FO,OB)",
+    "Shape(CB,OBC)",
+    "Shape(BO,OF,FE,OEB)",
+    "Collinear(AFOB)",
+    "Collinear(EFGD)",
+    "Collinear(AGC)",
+    "Cocircular(O,EBCDA)"
+  ],
+  "text_cdl": [
+    "IsDiameterOfCircle(AB,O)",
+    "Equal(MeasureOfAngle(AED),20)",
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(BCD))",
+  "problem_answer": "110",
+  "theorem_seqs": [
+    "arc_property_circumference_angle_external",
+    "diameter_of_circle_property_right_angle",
+    "angle_addition(BCA,ACD)"
+  ],
+  "raw_answer": "解:连接AC,∵AB为⊙O的直径,∴∠ACB=90°,∵∠AED=20°,∴∠ACD=20°,∴∠BCD=∠ACB+∠ACD=110°,\n故选:B．"
+}

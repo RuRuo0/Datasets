@@ -1,7 +1,7 @@
 from core.aux_tools.parser import InverseParser
 from core.aux_tools.utils import save_json
 from sympy import Float
-from graphviz import Digraph
+from graphviz import Digraph, Graph
 import os
 
 
@@ -400,3 +400,27 @@ def get_used_theorem(problem):
             selected_theorem.append(problem.goal["theorem"])
 
     return used_id, selected_theorem
+
+
+def save_equations_hyper_graph(problem, path):
+    """Save sym-equation hyper graph"""
+    dot = Graph(name=str(problem.problem_CDL["id"]), engine='circo')  # Tree
+    added_sym = []
+    for eq in problem.conditions["Equation"].get_id_by_item:
+        eq_str = str(eq).replace(" ", "")
+        dot.node(eq_str, eq_str, shape='box')  # eq node
+
+        for sym in eq.free_symbols:
+            sym_str = str(sym)
+            if sym_str not in added_sym:
+                added_sym.append(sym_str)
+                dot.node(sym_str, sym_str)  # sym node
+
+            dot.edge(eq_str, sym_str)
+
+    dot.render(directory=path, view=False, format="png")  # save hyper graph
+    os.remove(path + "{}.gv".format(problem.problem_CDL["id"]))
+    if "{}_eq_hyper.png".format(problem.problem_CDL["id"]) in os.listdir(path):
+        os.remove(path + "{}_eq_hyper.png".format(problem.problem_CDL["id"]))
+    os.rename(path + "{}.gv.png".format(problem.problem_CDL["id"]),
+              path + "{}_eq_hyper.png".format(problem.problem_CDL["id"]))

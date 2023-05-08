@@ -28,7 +28,7 @@ class EquationKiller:
                     sym_to_eqs[sym] = [eq]
 
         mini_eqs = []  # new group
-        mini_syms = target_expr.free_symbols
+        mini_syms = target_expr.free_symbols - (target_expr.free_symbols - set(sym_to_eqs))
 
         new_syms = mini_syms
         while True:

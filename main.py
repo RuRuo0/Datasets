@@ -1,7 +1,7 @@
 import warnings
 from core.solver.solver import Solver
-from core.aux_tools.utils import load_json, save_json
-from core.aux_tools.output import show, simple_show, save_step_msg, save_solution_tree, get_used_theorem
+from core.aux_tools.utils import *
+from core.aux_tools.output import *
 from core.aux_tools.parser import FLParser
 import os
 path_preset = "data/preset/"
@@ -116,7 +116,8 @@ def run(save_GDL=False, save_CDL=False, auto=False):
                 )
                 save_step_msg(solver.problem, path_solved_problems)
                 save_solution_tree(solver.problem, path_solved_problems)
+                save_equations_hyper_graph(solver.problem, path_solved_problems)
 
 
 if __name__ == '__main__':
-    run()
+    run(save_CDL=True)

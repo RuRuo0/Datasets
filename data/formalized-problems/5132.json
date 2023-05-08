@@ -1,0 +1,30 @@
+{
+  "problem_id": 5132,
+  "annotation": "JiaZou_2023-04-30",
+  "source": "GeoQA-846",
+  "problem_level": 1,
+  "problem_text_cn": "如图,△ABC中,∠C=70°,⊙O切CA、CB分别于点A和点B,则弦AB所对的圆周角的度数为()",
+  "problem_text_en": "",
+  "problem_img": "5132.png",
+  "construction_cdl": [
+    "Shape(BA,OAB)",
+    "Shape(AC,CB,OAB)",
+    "Shape(AB,BO,OA)",
+    "Cocircular(O,AB)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(ACB),70)",
+    "IsTangentOfCircle(CA,O)",
+    "IsTangentOfCircle(CB,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(BOA))",
+  "problem_answer": "110",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular(CA,O,O)",
+    "tangent_of_circle_property_perpendicular(CB,O,O)",
+    "quadrilateral_property_angle_sum(ACBO)"
+  ],
+  "raw_answer": "连接OA、OB,∵CA、CB是⊙O的切线,∴OA⊥CA,OB⊥CB,∴∠CAO=∠CBO=90°,∵∠C=70°∴∠AOB=360°∠CAO-∠CBO-∠C=110°,∴当点D在优弧AB上时,∠ADB=\\frac{1}{2}∠AOB=55°,当点E在劣弧AB上时,∠AEB=180°-∠ADB=125°.∴弦AB所对的圆周角的度数是:55°或125°故选D."
+}

@@ -1,0 +1,33 @@
+{
+  "problem_id": 5606,
+  "annotation": "RunanWang_2023-05-07",
+  "source": "GeoQA-1629",
+  "problem_level": 1,
+  "problem_text_cn": "如图,小明设计两个直角,来测量河宽BC,他量得AB=20米,BD=30米,CE=90米,则河宽BC为()",
+  "problem_text_en": "As shown in the figure, Xiaoming designed two right angles to measure the width of the river BC, he measured AB = N_0, BD = N_1, CE = N_2, then the width of the river BC is ()",
+  "problem_img": "5606.png",
+  "construction_cdl": [
+    "Shape(EC,CB,BD,DE)",
+    "Shape(DB,BA,AD)",
+    "Collinear(ADE)",
+    "Collinear(CBA)"
+  ],
+  "text_cdl": [],
+  "image_cdl": [
+    "Equal(LengthOfLine(AB),20)",
+    "Equal(LengthOfLine(BD),30)",
+    "Equal(LengthOfLine(CE),90)",
+    "PerpendicularBetweenLine(EC,AC)",
+    "PerpendicularBetweenLine(DB,AB)"
+  ],
+  "goal_cdl": "Value(LengthOfLine(BC))",
+  "problem_answer": "40",
+  "theorem_seqs": [
+    "parallel_judgment_per_per",
+    "parallel_judgment_corresponding_angle",
+    "similar_triangle_judgment_aa",
+    "similar_triangle_property_line_ratio",
+    "line_addition"
+  ],
+  "raw_answer": "根据题意得∵△ABD~△ACE,\\frac{AB}{AC}=\\frac{BD}{CE},\\frac{20}{AC}=\\frac{30}{90},AC=60米,又∵AB=20米,∴BC=AC-AB=40米,故答案选B"
+}

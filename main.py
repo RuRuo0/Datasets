@@ -78,10 +78,16 @@ def run(save_GDL=False, save_CDL=False, auto=False):
                 if save_CDL:  # save solved msg
                     save_json(
                         solver.problem.problem_CDL,
-                        path_solved_problems + "{}_parsed.json".format(filename.split(".")[0])
+                        path_solved_problems + "{}_parsed.json".format(problem_CDL["problem_id"])
                     )
-                    save_step_msg(solver.problem, path_solved_problems)
-                    save_solution_tree(solver.problem, path_solved_problems)
+                    save_step_msg(
+                        solver.problem,
+                        path_solved_problems
+                    )
+                    save_solution_tree(
+                        solver.problem,
+                        path_solved_problems
+                    )
 
             except Exception as e:    # exception
                 msg = "Raise Exception {} in problem {}.".format(e, filename.split(".")[0])
@@ -114,10 +120,15 @@ def run(save_GDL=False, save_CDL=False, auto=False):
                     solver.problem.problem_CDL,
                     path_solved_problems + "{}_parsed.json".format(pid)
                 )
-                save_step_msg(solver.problem, path_solved_problems)
-                save_solution_tree(solver.problem, path_solved_problems)
-                save_equations_hyper_graph(solver.problem, path_solved_problems)
+                save_step_msg(
+                    solver.problem,
+                    path_solved_problems
+                )
+                save_solution_tree(
+                    solver.problem,
+                    path_solved_problems
+                )
 
 
 if __name__ == '__main__':
-    run(save_CDL=True)
+    run()

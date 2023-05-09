@@ -402,11 +402,17 @@ def get_used_theorem(problem):
     return used_id, selected_theorem
 
 
-def save_equations_hyper_graph(problem, path):
+class HG:
+    id_count = 1
+
+
+def save_equations_hyper_graph(eqs, path):
     """Save sym-equation hyper graph"""
-    dot = Graph(name=str(problem.problem_CDL["id"]), engine='circo')  # Tree
+    id_count = HG.id_count
+    HG.id_count += 1
+    dot = Graph(name=str(id_count), engine='circo')  # Tree
     added_sym = []
-    for eq in problem.conditions["Equation"].get_id_by_item:
+    for eq in eqs:
         eq_str = str(eq).replace(" ", "")
         dot.node(eq_str, eq_str, shape='box')  # eq node
 
@@ -419,8 +425,8 @@ def save_equations_hyper_graph(problem, path):
             dot.edge(eq_str, sym_str)
 
     dot.render(directory=path, view=False, format="png")  # save hyper graph
-    os.remove(path + "{}.gv".format(problem.problem_CDL["id"]))
-    if "{}_eq_hyper.png".format(problem.problem_CDL["id"]) in os.listdir(path):
-        os.remove(path + "{}_eq_hyper.png".format(problem.problem_CDL["id"]))
-    os.rename(path + "{}.gv.png".format(problem.problem_CDL["id"]),
-              path + "{}_eq_hyper.png".format(problem.problem_CDL["id"]))
+    os.remove(path + "{}.gv".format(id_count))
+    if "{}_eq_hyper.png".format(id_count) in os.listdir(path):
+        os.remove(path + "{}_eq_hyper.png".format(id_count))
+    os.rename(path + "{}.gv.png".format(id_count),
+              path + "{}_eq_hyper.png".format(id_count))

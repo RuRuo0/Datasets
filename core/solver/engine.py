@@ -69,8 +69,8 @@ class EquationKiller:
                 mini_eqs_lists.append(copy.copy(mini_eqs))  # add mini equations
                 n_m.append((len(mini_eqs), len(mini_syms)))  # add mini equations
 
-                if len(mini_eqs) >= len(mini_syms):
-                    break
+                # if len(mini_eqs) >= len(mini_syms):
+                #     break
 
                 for sym in added_eq.free_symbols:
                     for r_eq in sym_to_eqs[sym]:
@@ -118,10 +118,10 @@ class EquationKiller:
                     mini_syms |= added_eq.free_symbols
                     added_eqs.add(added_eq)
 
-                    if len(mini_eqs) >= len(mini_syms):
-                        mini_eqs_lists.append(mini_eqs)
-                        n_m.append((len(mini_eqs), len(mini_syms)))  # add mini equations
-                        break
+                    # if len(mini_eqs) >= len(mini_syms):
+                    #     mini_eqs_lists.append(mini_eqs)
+                    #     n_m.append((len(mini_eqs), len(mini_syms)))  # add mini equations
+                    #     break
 
                     for sym in added_eq.free_symbols:
                         for r_eq in sym_to_eqs[sym]:

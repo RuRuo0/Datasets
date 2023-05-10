@@ -420,13 +420,13 @@ class FLParser:
 
 
 class EqParser:
-    operator_predicate = ["Add", "Sub", "Mul", "Div", "Pow", "Sqrt", "Sin", "Cos", "Tan"]
-    operator = ["+", "-", "*", "/", "^", "@", "#", "$", "√", "{", "}", "~"]
-    stack_priority = {"+": 1, "-": 1, "*": 2, "/": 2, "^": 3, "√": 4,
+    operator_predicate = ["Add", "Sub", "Mul", "Div", "Pow", "Mod", "Sqrt", "Sin", "Cos", "Tan"]
+    operator = ["+", "-", "*", "/", "^", "@", "#", "$", "√", "%", "{", "}", "~"]
+    stack_priority = {"+": 1, "-": 1, "*": 2, "/": 2, "^": 3, "%": 3, "√": 4,
                       "@": 4, "#": 4, "$": 4,
                       "{": 0, "}": None, "~": 0,
                       }
-    outside_priority = {"+": 1, "-": 1, "*": 2, "/": 2, "^": 3, "√": 4,
+    outside_priority = {"+": 1, "-": 1, "*": 2, "/": 2, "^": 3, "%": 3, "√": 4,
                         "{": 5, "}": 0,
                         "@": 4, "#": 4, "$": 4, "~": 0}
 
@@ -471,7 +471,7 @@ class EqParser:
                 for expr in expr_list:
                     result *= expr
             return result
-        elif tree[0] in ["Sub", "Div", "Pow"]:
+        elif tree[0] in ["Sub", "Div", "Pow", "Mod"]:
             expr_left = EqParser.get_expr_from_tree(problem, tree[1][0], replaced, letters)
             if expr_left is None:
                 return None
@@ -482,8 +482,10 @@ class EqParser:
                 return expr_left - expr_right
             elif tree[0] == "Div":
                 return expr_left / expr_right
-            else:
+            elif tree[0] == "Pow":
                 return expr_left ** expr_right
+            else:
+                return expr_left % expr_right
         elif tree[0] in ["Sin", "Cos", "Tan", "Sqrt"]:
             expr = EqParser.get_expr_from_tree(problem, tree[1][0], replaced, letters)
             if expr is None:
@@ -564,6 +566,10 @@ class EqParser:
                         expr_2 = expr_stack.pop()
                         expr_1 = expr_stack.pop()
                         expr_stack.append(expr_1 ** expr_2)
+                    elif operator_unit == "%":
+                        expr_2 = expr_stack.pop()
+                        expr_1 = expr_stack.pop()
+                        expr_stack.append(expr_1 % expr_2)
                     elif operator_unit == "√":
                         expr_1 = expr_stack.pop()
                         expr_stack.append(sqrt(expr_1))

@@ -20,7 +20,7 @@ class EquationKiller:
         :param tg_mode: <Bool> Solve target mode or solve equations mode.
         :return mini_eqs_list: minimum equations lists rank by solving difficulty.
         """
-        save_equations_hyper_graph(eqs, "./data/solved/problems/")
+        # save_equations_hyper_graph(eqs, "./data/solved/problems/")
         sym_to_eqs = {}  # dict, sym: [equation]
         for eq in eqs:
             for sym in eq.free_symbols:
@@ -296,9 +296,9 @@ class EquationKiller:
         mini_eqs_lists, n_m = EquationKiller.get_minimum_equations(  # mini equations
             list(equation.simplified_equation), tg_mode=False
         )
-        print("equations:")
+        # print("equations:")
         for i in range(len(mini_eqs_lists)):
-            print("{}, {}".format(n_m[i], mini_eqs_lists[i]))
+            # print("{}, {}".format(n_m[i], mini_eqs_lists[i]))
             if n_m[i][0] < n_m[i][1]:    # number of equations < number of variables, unsolvable
                 continue
 
@@ -347,15 +347,15 @@ class EquationKiller:
             [target_sym - target_expr] + list(problem.conditions["Equation"].simplified_equation),
             tg_mode=True
         )
-        print("targets (all):")
-        for i in range(len(mini_eqs_lists)):
-            print("p={} {}, {}".format(i, n_m[i], mini_eqs_lists[i]))
-        print("- - - -")
+        # print("targets (all):")
+        # for i in range(len(mini_eqs_lists)):
+        #     print("p={} {}, {}".format(i, n_m[i], mini_eqs_lists[i]))
+        # print("- - - -")
 
         head = 0    # can't solve
         tail = len(mini_eqs_lists)    # can solve
         target_value = None
-        target_premise = None
+        target_premise = set()
         while tail - head > 1:
             solved = False
             p = int((head + tail) / 2)
@@ -379,10 +379,10 @@ class EquationKiller:
                     target_premise = solved_premise
 
             if solved:
-                print("head={} tail={} p={} solved".format(head, tail, p))
+                # print("head={} tail={} p={} solved".format(head, tail, p))
                 tail = p
             else:
-                print("head={} tail={} p={} unsolved".format(head, tail, p))
+                # print("head={} tail={} p={} unsolved".format(head, tail, p))
                 head = p
 
         if target_value is not None and target_value == 0:

@@ -1,0 +1,44 @@
+{
+  "problem_id": 6822,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-3725",
+  "problem_level": 1,
+  "problem_text_cn": "如图,△ABC是⊙O的内接三角形,D是AB边的中点,OA=6,∠ACB=30°,则OD=()",
+  "problem_text_en": "As shown in the figure, △ABC is the inscribed triangle of ⊙O, D is the midpoint of the AB side, OA = N_0, ∠ACB = N_1, then OD = ()",
+  "problem_img": "6822.png",
+  "construction_cdl": [
+    "Shape(AO,OE,EC,OCA)",
+    "Shape(BA,OAB)",
+    "Shape(CB,OBC)",
+    "Shape(OA,AF,FO)",
+    "Shape(OF,FE,EO)",
+    "Shape(FA,AD,DF)",
+    "Shape(EF,FD,DB,BE)",
+    "Shape(CE,EB,BC)",
+    "Collinear(OFD)",
+    "Collinear(AFEC)",
+    "Collinear(OEB)",
+    "Collinear(ADB)",
+    "Cocircular(O,ABC)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(OA),6)",
+    "Equal(MeasureOfAngle(BCA),30)",
+    "IsCentreOfCircle(O,O)",
+    "IsMedianOfTriangle(OD,OAB)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(OD))",
+  "problem_answer": "3*√3",
+  "theorem_seqs": [
+    "arc_property_circumference_angle_external",
+    "arc_property_center_angle",
+    "radius_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "triangle_property_angle_sum",
+    "isosceles_triangle_property_angle_equal",
+    "isosceles_triangle_property_line_coincidence",
+    "sine_theorem"
+  ],
+  "raw_answer": "解:连接OD,∵∠ACB=30°,∴∠AOB=60°,∵OA=OB,∴△AOB是等边三角形,∴AB=OA=6,∵D是AB边的中点,∴OD=√{0A^{2}-AD^{2}}=√{6^{2}-3^{2}}=3√{3},\n故选:B．"
+}

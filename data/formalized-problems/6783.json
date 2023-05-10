@@ -1,0 +1,36 @@
+{
+  "problem_id": 6783,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-3652",
+  "problem_level": 1,
+  "problem_text_cn": "⊙O是△ABC的外接圆,∠ABO=20°,∠OAC=40°,则∠OBC的度数为()",
+  "problem_text_en": "⊙O is the circumscribed circle of △ABC, ∠ABO = N_0, ∠OAC = N_1, then the degree of ∠OBC is ()",
+  "problem_img": "6783.png",
+  "construction_cdl": [
+    "Shape(BA,OAB)",
+    "Shape(BO,OA,AB)",
+    "Shape(OB,BC,CO)",
+    "Shape(AO,OC,CA)",
+    "Shape(AC,OCA)",
+    "Shape(CB,OBC)",
+    "Cocircular(O,ABC)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(CAO),40)",
+    "Equal(MeasureOfAngle(ABO),20)",
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(OBC))",
+  "problem_answer": "30",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "triangle_property_angle_sum",
+    "isosceles_triangle_property_angle_equal",
+    "angle_addition",
+    "arc_property_circumference_angle_external",
+    "arc_property_center_angle"
+  ],
+  "raw_answer": "解:∵OA=OB,∴∠OAB=∠ABO=20°,∵OA=OC,∴∠OAC=∠ACO=40°,∴∠BAC=∠OAB+∠OAC=∠ACO+∠ABO=60°,∴∠BOC=2∠BAC=120°,∴∠OBC=\\frac{1}{2}×(180°-120°)=30°,\n故选:A．"
+}

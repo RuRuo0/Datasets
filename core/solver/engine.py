@@ -11,6 +11,7 @@ from core.aux_tools.output import save_equations_hyper_graph
 class EquationKiller:
     solve_eqs = True    # whether to solve the equation in the intermediate process
     sym_simplify = True    # whether to apply symbol substitution simplification
+    show_solving_msg = False
 
     @staticmethod
     def get_minimum_equations(eqs, tg_mode):
@@ -20,7 +21,8 @@ class EquationKiller:
         :param tg_mode: <Bool> Solve target mode or solve equations mode.
         :return mini_eqs_list: minimum equations lists rank by solving difficulty.
         """
-        # save_equations_hyper_graph(eqs, "./data/solved/problems/")
+        if EquationKiller.show_solving_msg:
+            save_equations_hyper_graph(eqs, "./data/solved/problems/")
         sym_to_eqs = {}  # dict, sym: [equation]
         for eq in eqs:
             for sym in eq.free_symbols:
@@ -296,9 +298,11 @@ class EquationKiller:
         mini_eqs_lists, n_m = EquationKiller.get_minimum_equations(  # mini equations
             list(equation.simplified_equation), tg_mode=False
         )
-        # print("equations:")
+        if EquationKiller.show_solving_msg:
+            print("equations:")
+            for i in range(len(mini_eqs_lists)):
+                print("{}, {}".format(n_m[i], mini_eqs_lists[i]))
         for i in range(len(mini_eqs_lists)):
-            # print("{}, {}".format(n_m[i], mini_eqs_lists[i]))
             if n_m[i][0] < n_m[i][1]:    # number of equations < number of variables, unsolvable
                 continue
 
@@ -347,10 +351,11 @@ class EquationKiller:
             [target_sym - target_expr] + list(problem.conditions["Equation"].simplified_equation),
             tg_mode=True
         )
-        # print("targets (all):")
-        # for i in range(len(mini_eqs_lists)):
-        #     print("p={} {}, {}".format(i, n_m[i], mini_eqs_lists[i]))
-        # print("- - - -")
+        if EquationKiller.show_solving_msg:
+            print("targets (all):")
+            for i in range(len(mini_eqs_lists)):
+                print("p={} {}, {}".format(i, n_m[i], mini_eqs_lists[i]))
+            print("- - - -")
 
         head = 0    # can't solve
         tail = len(mini_eqs_lists)    # can solve
@@ -378,11 +383,15 @@ class EquationKiller:
                     target_value = results[target_sym]
                     target_premise = solved_premise
 
+            if EquationKiller.show_solving_msg:
+                if solved:
+                    print("head={} tail={} p={} solved".format(head, tail, p))
+                else:
+                    print("head={} tail={} p={} unsolved".format(head, tail, p))
+
             if solved:
-                # print("head={} tail={} p={} solved".format(head, tail, p))
                 tail = p
             else:
-                # print("head={} tail={} p={} unsolved".format(head, tail, p))
                 head = p
 
         if target_value is not None and target_value == 0:

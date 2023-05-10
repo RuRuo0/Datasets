@@ -1,0 +1,31 @@
+{
+  "problem_id": 5764,
+  "annotation": "FangzhenZhu_2023-05-07",
+  "source": "GeoQA-1849",
+  "problem_level": 1,
+  "problem_text_cn": "如图,点A,B,C在⊙O上,已知∠ABC=130°,则∠AOC=()",
+  "problem_text_en": "As shown in the figure, the points A, B, and C are on ⊙O, and it is known that ∠ABC = N_0, then ∠AOC = ()",
+  "problem_img": "5764.png",
+  "construction_cdl": [
+    "Shape(OAB,BA)",
+    "Shape(OBC,CB)",
+    "Shape(OCD,DC)",
+    "Shape(ODA,AD)",
+    "Shape(OA,AB,BC,CO)",
+    "Shape(DO,OC,CD)",
+    "Shape(DA,AO,OD)",
+    "Cocircular(O,ABCD)"
+  ],
+  "text_cdl": [],
+  "image_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(ABC),130)"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(COA))",
+  "problem_answer": "100",
+  "theorem_seqs": [
+    "arc_property_center_angle(OAC,O)",
+    "arc_property_circumference_angle_internal(OAC,B)"
+  ],
+  "raw_answer": "解:在优弧AC上取点D,连接AD,CD,∵四边形ABCD是圆内接四边形,∠ABC=130°,∴∠D=180°-10°=50°．∵∠D与∠AOC是同弧所对的圆周角与圆心角,∴∠AOC=2∠D=100°．故选:A．"
+}

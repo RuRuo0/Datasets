@@ -1,0 +1,33 @@
+{
+  "problem_id": 6244,
+  "annotation": "XiaoxiaoJin_2023-05-07",
+  "source": "GeoQA-2741",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在Rt△ABC中,∠ACB=90°,CD⊥AB,垂足为D．若AC=2,BC=1,则sin∠ACD=()",
+  "problem_text_en": "As shown in the figure, in Rt△ABC, ∠ACB = N_0, CD ⊥ AB, and the perpendicular foot is D. If AC = N_1, BC = N_2, then sin∠ACD = ()",
+  "problem_img": "6244.png",
+  "construction_cdl": [
+    "Shape(AD,DC,CA)",
+    "Shape(CD,DB,BC)",
+    "Collinear(ADB)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),2)",
+    "Equal(LengthOfLine(BC),1)",
+    "Equal(MeasureOfAngle(BCA),90)",
+    "Equal(MeasureOfAngle(ADC),90)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(Sin(MeasureOfAngle(DCA)))",
+  "problem_answer": "2*√{5}/5",
+  "theorem_seqs": [
+    "right_triangle_judgment_angle(ADC)",
+    "right_triangle_judgment_angle(BCA)",
+    "right_triangle_property_pythagorean(ADC)",
+    "right_triangle_property_pythagorean(BCA)",
+    "cosine_theorem(CAD)",
+    "cosine_theorem(ABC)",
+    "sine_theorem(CAD)"
+  ],
+  "raw_answer": "解:在Rt△ABC中,∠ACB=90°,由勾股定理,得\nAB=√{AC^{2}+BC^{2}}=√{2^{2}+1^{2}}=√{5},\n由余角的性质,得∠ACD=∠B,\n由正弦函数的定义,得\nsin∠ACD=sin∠B=\\frac{AC}{AB}=\\frac{2}{√{5}}=\\frac{2√{5}}{5},\n故选:B．"
+}

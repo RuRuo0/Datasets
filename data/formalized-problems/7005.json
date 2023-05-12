@@ -1,0 +1,49 @@
+{
+  "problem_id": 7005,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4070",
+  "problem_level": 1,
+  "problem_text_cn": "如图,PA、PB、AB都与⊙O相切,∠P=40°,则∠AOB等于()",
+  "problem_text_en": "As shown in the figure, PA, PB, AB are all tangent to ⊙O, ∠P = N_0, then ∠AOB is equal to ()",
+  "problem_img": "7005.png",
+  "construction_cdl": [
+    "Shape(AP,PB,BC,CA)",
+    "Shape(MA,AC,OMC)",
+    "Shape(CB,BN,OCN)",
+    "Shape(CO,OM,OMC)",
+    "Shape(NO,OC,OCN)",
+    "Shape(DA,AM,ODM)",
+    "Shape(MO,OD,ODM)",
+    "Shape(NB,BE,ONE)",
+    "Shape(EO,ON,ONE)",
+    "Shape(DO,OE,OED)",
+    "Collinear(PAD)",
+    "Collinear(PBE)",
+    "Collinear(ACB)",
+    "Collinear(AMO)",
+    "Collinear(BNO)",
+    "Cocircular(O,DMNE)"
+  ],
+  "text_cdl": [
+    "IsTangentOfCircle(PD,O)",
+    "IsTangentOfCircle(PE,O)",
+    "IsTangentOfCircle(AC,O)",
+    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(APB),40)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(BOA))",
+  "problem_answer": "70",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "tangent_of_circle_property_perpendicular",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external",
+    "triangle_property_angle_sum",
+    "quadrilateral_property_angle_sum",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal"
+  ],
+  "notes": "没搞懂怎么做的",
+  "raw_answer": "解:设PA、PB、AB与⊙O相切于E、D、C,连接OE、OD、OC,如图,∴PA、PB、AB都与⊙O相切,∴OE⊥AB,OD⊥PB,OC⊥PA,∴∠COD=180°-∠P=140°,在Rt△AOC和Rt△AOE中\\begin{cases}OA=OA\\\\0C=OE\\end{cases},∴Rt△AOC≌Rt△AOE,同理可得△OBD≌△OBE,∴∠AOC=∠AOE,∠BOD=∠BOE,∴∠AOB=\\frac{1}{2}∠COD=70°．故选:D．"
+}

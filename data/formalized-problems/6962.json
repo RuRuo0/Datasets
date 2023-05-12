@@ -1,0 +1,40 @@
+{
+  "problem_id": 6962,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-3996",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在⊙O中,AB是直径,AC是弦,过点C的切线与AB的延长线交于点D,若∠A=25°,则∠D的大小为()",
+  "problem_text_en": "As shown in the figure, in ⊙O, AB is the diameter, AC is the chord, the tangent line passing point C and the extended line of AB intersect at point D, if ∠A = N_0, then the size of ∠D is ()",
+  "problem_img": "6962.png",
+  "construction_cdl": [
+    "Shape(AO,OB,OBA)",
+    "Shape(CA,OAC)",
+    "Shape(OA,AC,CO),",
+    "Shape(BO,OC,OCB)",
+    "Shape(CD,DB,OCB)",
+    "Collinear(AOBD)",
+    "Cocircular(O,ACB)"
+  ],
+  "text_cdl": [
+    "IsTangentOfCircle(DC,O)",
+    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(BAC),25)",
+    "IsDiameterOfCircle(AB,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(CDB))",
+  "problem_answer": "40",
+  "theorem_seqs": [
+    "line_addition",
+    "arc_property_center_angle",
+    "radius_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "tangent_of_circle_property_perpendicular",
+    "arc_property_circumference_angle_external",
+    "circle_property_angle_of_osculation",
+    "triangle_property_angle_sum",
+    "adjacent_complementary_angle"
+  ],
+  "raw_answer": "解:连接OC,∵CD是切线,∴∠OCD=90°,∵OA=OC,∠A=25°,∴∠DOC=50°,∴∠D=180°-90°-50°=40°,故选:B．"
+}

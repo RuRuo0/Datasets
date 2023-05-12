@@ -1,0 +1,33 @@
+{
+  "problem_id": 6774,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-3629",
+  "problem_level": 1,
+  "problem_text_cn": "如图,四边形ABCD外接圆O,若∠BOD=138°,则他的外角∠DCE等于多少()",
+  "problem_text_en": "As shown in the figure, the circumscribed circle O of the quadrilateral ABCD, if ∠BOD = N_0, then the exterior angle ∠DCE is equal to ()",
+  "problem_img": "6774.png",
+  "construction_cdl": [
+    "Shape(BA,OAB)",
+    "Shape(AB,BO,OD,DA)",
+    "Shape(OB,BC,CD,DO)",
+    "Shape(CB,OBC)",
+    "Shape(DC,OCD)",
+    "Shape(AD,ODA)",
+    "Shape(OCD,CE,ED)",
+    "Collinear(BCE)",
+    "Cocircular(O,ABCD)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(DOB),138)",
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(DCE))",
+  "problem_answer": "69",
+  "theorem_seqs": [
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_internal",
+    "adjacent_complementary_angle"
+  ],
+  "raw_answer": "解:∵∠BOD=138°,∴∠BAD=69°∵四边形ABCD为圆内接四边形,∴∠BAD+∠BCD=180°,∵∠DCE+∠BCD=180°,∴∠DCE=∠BAD=69°．\n故选:A．"
+}

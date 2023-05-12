@@ -1,0 +1,40 @@
+{
+  "problem_id": 6563,
+  "annotation": "yiminghe_2023-05-07",
+  "source": "GeoQA-3318",
+  "problem_level": 1,
+  "problem_text_cn": "如图,点A、B、C都在⊙O上,点B为弧AC的中点,若∠AOB=72°,则∠OAC的度数是()",
+  "problem_text_en": "As shown in the figure, points A, B, and C are on ⊙O, and point B is the midpoint of arc AC. If ∠AOB = N_0, then the degree of ∠OAC is ()",
+  "problem_img": "6563.png",
+  "construction_cdl": [
+    "Shape(AO,OD,DC,OCA)",
+    "Shape(AD,DO,OA)",
+    "Shape(DA,AB,BD)",
+    "Shape(DB,BC,CD)",
+    "Shape(CB,OBC)",
+    "Shape(BA,OAB)",
+    "Collinear(ODB)",
+     "Collinear(ADC)",
+    "Cocircular(O,ABC)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfArc(OAB),LengthOfArc(OBC))",
+    "Equal(MeasureOfAngle(BOA),72)",
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(OAC))",
+  "problem_answer": "18",
+  "theorem_seqs": [
+    "congruent_arc_judgment_length_equal(OAB,OBC)",
+    "congruent_arc_property_measure_equal",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external",
+    "radius_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum",
+    "angle_addition(OAC,CAB)"
+  ],
+  "raw_answer": "解:∵∠AOB=72°,OA=OB,∴∠OAB=\\frac{180^{°}-72^{°}}{2}=54°,∠C=\\frac{1}{2}∠AOB=36°．∵点B为弧AC的中点,∴∠BAC=∠C=36°,∴∠OAC=∠OAB-∠BAC=54°-36°=18°．\n故选:A．"
+}

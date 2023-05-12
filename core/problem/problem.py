@@ -86,15 +86,17 @@ class Problem:
         1.Collinear expand.
         2.Cocircular expand.
         3.Shape expand. Shape(s1,s2,s3), Shape(s3,s2,s4) ==> Shape(s1,s4).
-        4.Angle expand.
-        5.Angle collinear expand.
+        4.Angle expand (combination).
+        5.Angle expand (collinear).
+        6.Angle expand (vertical angle).
         """
         if not self.loaded:  # problem must be loaded
             e_msg = "Problem not loaded. Please run <load_problem> before run other functions."
             raise Exception(e_msg)
 
+        # 1.Collinear expand.
         for predicate, item in self.problem_CDL["parsed_cdl"]["construction_cdl"]:  # Collinear
-            if predicate != "Collinear":  # 1.Collinear expand.
+            if predicate != "Collinear":
                 continue
             if not self.fv_check("Collinear", item):  # FV check
                 w_msg = "FV check not passed: [{}, {}]".format(predicate, item)
@@ -113,8 +115,9 @@ class Problem:
                 self.add("Angle", extended_item, (_id,), "extended")
                 self.add("Angle", extended_item[::-1], (_id,), "extended")
 
+        # 2.Cocircular expand.
         for predicate, item in self.problem_CDL["parsed_cdl"]["construction_cdl"]:  # Cocircular
-            if predicate != "Cocircular":  # 2.Cocircular expand.
+            if predicate != "Cocircular":
                 continue
             if not self.fv_check("Cocircular", item):  # FV check
                 w_msg = "FV check not passed: [{}, {}]".format(predicate, item)
@@ -142,6 +145,7 @@ class Problem:
                         self.conditions["Cocircular"].add(
                             tuple([circle] + [cocircular[(i + bias) % l] for i in range(l)]), (_id,), "extended")
 
+        # 3.Shape expand.
         jigsaw_unit = {}  # shape's jigsaw
         shape_unit = []  # mini shape unit
         for predicate, item in self.problem_CDL["parsed_cdl"]["construction_cdl"]:  # Shape
@@ -170,7 +174,7 @@ class Problem:
                 jigsaw_unit[shape] = all_forms
                 shape_unit.append(shape)
 
-        shape_comb = shape_unit  # 3.Shape expand.
+        shape_comb = shape_unit
         jigsaw_comb = jigsaw_unit
         while len(shape_comb):
             shape_comb_new = []
@@ -242,7 +246,8 @@ class Problem:
             shape_comb = shape_comb_new
             jigsaw_comb = jigsaw_comb_new
 
-        angle_unit = list(self.conditions["Angle"].get_id_by_item)  # 4.Angle expand.
+        # 4.Angle expand (combination).
+        angle_unit = list(self.conditions["Angle"].get_id_by_item)
         jigsaw_unit = {}
         for angle in angle_unit:
             jigsaw_unit[angle] = {angle}
@@ -284,7 +289,8 @@ class Problem:
             angle_comb = angle_comb_new
             jigsaw_comb = jigsaw_comb_new
 
-        for angle in list(self.conditions["Angle"].get_id_by_item):  # 5.Angle collinear expand.
+        # 5.Angle collinear expand.
+        for angle in list(self.conditions["Angle"].get_id_by_item):
             a, v, b = angle
             a_collinear = None
             b_collinear = None
@@ -329,6 +335,11 @@ class Problem:
                 for b_point in b_points:
                     premise = (self.conditions["Angle"].get_id_by_item[angle],)
                     self.add("Angle", (a_point, v, b_point), premise, "extended")
+
+        # 6.Angle expand (vertical angle).
+        for angle in list(self.conditions["Angle"].get_id_by_item):
+            premise = (self.conditions["Angle"].get_id_by_item[angle],)
+            self.add("Angle", (angle[2], angle[1], angle[0]), premise, "extended")
 
     def _add_shape(self, shape, premise, theorem):
         """pass"""

@@ -1,0 +1,34 @@
+{
+  "problem_id": 7006,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4071",
+  "problem_level": 1,
+  "problem_text_cn": "如图,PA、PB分别是⊙O的两条切线,切点是A、B,点C在⊙O上,若∠P=50°,则∠ACB=()",
+  "problem_text_en": "As shown in the figure, PA and PB are the two tangents of ⊙O, the tangent points are A and B, and the point C is on ⊙O. If ∠P = N_0, then ∠ACB = ()",
+  "problem_img": "7006.png",
+  "construction_cdl": [
+    "Shape(CA,OAC)",
+    "Shape(BC,OCB)",
+    "Shape(AO,OB,OBA)",
+    "Shape(BP,PA,OBA)",
+    "Shape(AC,CB,BO,OA)",
+    "Cocircular(O,ACB)"
+  ],
+  "text_cdl": [
+    "IsTangentOfCircle(PA,O)",
+    "IsTangentOfCircle(PB,O)",
+    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(BPA),50)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(ACB))",
+  "problem_answer": "65",
+  "theorem_seqs": [
+
+    "tangent_of_circle_property_perpendicular",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external",
+    "quadrilateral_property_angle_sum"
+  ],
+  "raw_answer": "解:连接OA、OB．在四边形PAOB中,由于PA、PB分别切⊙O于点A、B,则∠OAP=∠OBP=90°；由四边形的内角和定理,知∠APB+∠AOB=180°；又∵∠APB=50°,∴∠AOB=130°；又∵∠ACB=\\frac{1}{2}∠AOB(同弧所对的圆周角是所对的圆心角的一半),∴∠ACB=65°,故选:C．"
+}

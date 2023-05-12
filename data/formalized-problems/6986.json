@@ -1,0 +1,33 @@
+{
+  "problem_id": 6986,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4040",
+  "problem_level": 1,
+  "problem_text_cn": "如图,已知AB是⊙O的切线,B为切点,AO与⊙O交于点C,若∠BAO=40°,则∠OCB的度数为()",
+  "problem_text_en": "As shown in the figure, it is known that AB is the tangent of ⊙O, B is the tangent vertex, and AO and ⊙O intersect at vertex C. If ∠BAO = N_0, then the degree of ∠OCB is ()",
+  "problem_img": "6986.png",
+  "construction_cdl": [
+    "Shape(CO,OB,BC)",
+    "Shape(CB,OBC)",
+    "Shape(BA,AC,OBC)",
+    "Shape(BO,OC,OCB)",
+    "Collinear(OCA)",
+    "Cocircular(O,BC)"
+  ],
+  "text_cdl": [
+    "IsTangentOfCircle(AB,O)",
+    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(BAO),40)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(BCO))",
+  "problem_answer": "65",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "tangent_of_circle_property_perpendicular",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum"
+  ],
+  "raw_answer": "解:∵AB是⊙O的切线,B为切点,∴OB⊥AB,即∠OBA=90°,∵∠BAO=40°,∴∠O=50°,∵OB=OC,∴∠OCB=\\frac{1}{2}(180°-∠O)=65°．故选:D．"
+}

@@ -1,0 +1,39 @@
+{
+  "problem_id": 6980,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4028",
+  "problem_level": 1,
+  "problem_text_cn": "如图,⊙C与∠AOB的两边分别相切,其中OA边与⊙C相切于点P．若∠AOB=90°,OP=6,则OC的长为()",
+  "problem_text_en": "As shown in the figure, the two edges of ∠AOB and are tangent to ⊙C respectively, and the OA edge and ⊙C are tangent to the vertex P. If ∠AOB = N_0, OP = N_1, then the length of OC is ()",
+  "problem_img": "6980.png",
+  "construction_cdl": [
+    "Shape(DC,CP,CPD)",
+    "Shape(PO,OD,CPD)",
+    "Shape(DO,OB,CDB)",
+    "Shape(BC,CD,CDB)",
+    "Shape(PC,CB,CBP)",
+    "Collinear(CDO)",
+    "Cocircular(C,PDB)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(OP),6)",
+    "Equal(MeasureOfAngle(POB),90)",
+    "IsTangentOfCircle(OP,C)",
+    "IsTangentOfCircle(OB,C)",
+    "IsCentreOfCircle(C,C)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(OC))",
+  "problem_answer": "6*√2",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "tangent_of_circle_property_perpendicular",
+    "tangent_of_circle_property_length_equal",
+    "mirror_congruent_triangle_judgment_sss",
+    "mirror_congruent_triangle_property_angle_equal",
+    "angle_addition",
+    "triangle_property_angle_sum",
+    "sine_theorem"
+  ],
+  "raw_answer": "解:连接CP,∵OA边与⊙C相切于点P,∴CP⊥AO,∵⊙C与∠AOB的两边分别相切,∠AOB=90°,∴∠POC=45°,∴OP=CP=6,∴OC=√{CP^{2}+0P^{2}}=6√{2},故选:C．"
+}

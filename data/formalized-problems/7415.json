@@ -1,0 +1,36 @@
+{
+  "problem_id": 7415,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4756",
+  "problem_level": 1,
+  "problem_text_cn": "如图BD=CD,AE:DE=1:2,延长BE交AC于F,且AF=5cm,则AC的长为()",
+  "problem_text_en": "As shown in the figure BD = CD, AE:DE=N_0:N_1, extend BE to AC to F, and AF = N_2, then the length of AC is ()",
+  "problem_img": "7415.png",
+  "construction_cdl": [
+    "Shape(AE,EF,FA)",
+    "Shape(EB,BD,DE)",
+    "Shape(FE,ED,DG,GF)",
+    "Shape(GD,DC,CG)",
+    "Collinear(AED)",
+    "Collinear(AFGC)",
+    "Collinear(BEF)",
+    "Collinear(BDC)"
+  ],
+  "text_cdl": [
+    "ParallelBetweenLine(EF,DG)",
+    "ParallelBetweenLine(FE,GD)",
+        "Equal(Div(LengthOfLine(AE),LengthOfLine(DE)),1/2)",
+    "Equal(LengthOfLine(AF),5)",
+    "Equal(LengthOfLine(BD),LengthOfLine(DC))"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AC))",
+  "problem_answer": "25",
+  "theorem_seqs": [
+         "line_addition",
+    "parallel_property_corresponding_angle",
+    "similar_triangle_judgment_aa",
+    "similar_triangle_property_line_ratio"
+  ],
+  "raw_answer": "解:过D作BF的平行线交AC于G,则△AEF∽△ADG∵D是BC的中点∴CG=GF,AF:FG=AE:ED=1:2∴FG=2AF=10=CG∴AC=5+20=25(cm)．故选:B．"
+}

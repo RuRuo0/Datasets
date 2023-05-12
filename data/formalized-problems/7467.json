@@ -1,0 +1,34 @@
+{
+  "problem_id": 7467,
+  "annotation": "qcq_2023-05-11",
+  "source": "GeoQA-4857",
+  "problem_level": 1,
+  "problem_text_cn": "如图,△ABC中,点D是AB边的中点,且DE∥BC,若△ADE的面积是2,则△ABC的面积是()",
+  "problem_text_en": "As shown in the figure, in △ABC, point D is the midpoint of the AB, and DE ∥ BC, if the area of ​​△ADE is N_0, then the area of ​​△ABC is ()",
+  "problem_img": "7467.png",
+  "construction_cdl": [
+    "Shape(AD,DE,EA)",
+    "Shape(DB,BC,CE,ED)",
+    "Collinear(ADB)",
+    "Collinear(AEC)"
+  ],
+  "text_cdl": [
+    "IsMidpointOfLine(D,AB)",
+    "ParallelBetweenLine(DE,BC)",
+    "Equal(AreaOfTriangle(ADE),2)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(AreaOfTriangle(ABC))",
+  "problem_answer": "8",
+  "theorem_seqs": [
+    "midsegment_of_triangle_judgment_parallel(DE,ABC)",
+    "parallel_property_corresponding_angle(DE,BC,A)",
+    "parallel_property_corresponding_angle(CB,ED,A)",
+    "similar_triangle_judgment_aa(ADE,ABC)",
+    "midsegment_of_triangle_property_length(DE,ABC)",
+    "similar_triangle_property_line_ratio(ADE,ABC)",
+    "similar_triangle_property_area_square_ratio(ADE,ABC)"
+  ],
+  "raw_answer": "解:∵点D是AB边的中点,且DE∥BC,∴AE=EC,∴DE是中位线,DE=\\frac{1}{2}BC．∴DE:BC=1:2；∵DE∥BC,∴△ADE∽△ABC．∴S△ADE:S△ABC=1:4,∴△ABC的面积=8,故选:C．",
+  "notes": "与7464题相似"
+}

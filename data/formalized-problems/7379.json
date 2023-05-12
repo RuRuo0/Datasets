@@ -1,0 +1,42 @@
+{
+  "problem_id": 7379,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4709",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在△ABC中,DE∥BC,DF∥AC,EG∥AB,且AE:EC=3:2,若BC=10,则FG的长为()",
+  "problem_text_en": "As shown in the figure, in △ABC, DE ∥ BC, DF ∥ AC, EG ∥ AB, and AE:EC=N_0:N_1, if BC = N_2, then the length of FG is ()",
+  "problem_img": "7379.png",
+  "construction_cdl": [
+    "Shape(AD,DE,EA)",
+    "Shape(DB,BF,FD)",
+    "Shape(ED,DF,FG,GE)",
+    "Shape(EG,GC,CE)",
+    "Collinear(ADB)",
+    "Collinear(AEC)",
+    "Collinear(BFGC)"
+  ],
+  "text_cdl": [
+    "Parallelogram(DFCE)",
+        "Equal(Div(LengthOfLine(AE),LengthOfLine(EC)),3/2)",
+    "ParallelBetweenLine(DE,BC)",
+    "ParallelBetweenLine(DE,FC)",
+    "ParallelBetweenLine(DF,AC)",
+    "ParallelBetweenLine(DF,EC)",
+    "ParallelBetweenLine(EG,AB)",
+    "Equal(LengthOfLine(BC),10)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(FG))",
+  "problem_answer": "2",
+  "theorem_seqs": [
+             "line_addition",
+    "parallel_property_collinear_extend",
+    "parallelogram_judgment_parallel_and_parallel",
+    "parallelogram_property_opposite_line_equal",
+    "parallel_property_corresponding_angle",
+    "similar_triangle_judgment_aa(ADE,ABC)",
+    "similar_triangle_judgment_aa",
+    "similar_triangle_property_line_ratio"
+  ],
+  "raw_answer": "解:∵DE∥BC,∴\\frac{DE}{BC}=\\frac{AE}{AC},∵AE:EC=3:2,BC=10,∴\\frac{DE}{10}=\\frac{3}{5},解得DE=6,∵DE∥FC,DF∥AC,∴四边形DECF为平行四边形,∴FC=DE=10,∵EG∥AB,∴=,即\\frac{CG}{10}=\\frac{2}{5},解得CG=4,∴FG=FC-CG=6-4=2．故选:B．"
+}

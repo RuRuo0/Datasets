@@ -1,0 +1,44 @@
+{
+  "problem_id": 7429,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4775",
+  "problem_level": 1,
+  "problem_text_cn": "如图△ABC中,AF平分∠BAC,F是BC上的一点,且BF=2CF,AC=1,则AB=()",
+  "problem_text_en": "As shown in △ABC, AF bisects ∠BAC, F is a point on BC, and BF = 2 CF, AC = N_0, then AB = ()",
+  "problem_img": "7429.png",
+  "construction_cdl": [
+    "Shape(AE,EG,GA)",
+    "Shape(GE,EF,FG)",
+    "Shape(EB,BF,FE)",
+    "Shape(DG,GF,FC,CD)",
+    "Shape(AG,GD,DA)",
+    "Collinear(AEB)",
+    "Collinear(AGF)",
+    "Collinear(ADC)",
+    "Collinear(EGD)",
+    "Collinear(BFC)"
+  ],
+  "text_cdl": [
+    "IsBisectorOfAngle(AF,CAB)",
+    "Equal(LengthOfLine(AC),1)",
+            "ParallelBetweenLine(ED,FC)",
+            "ParallelBetweenLine(FE,CD)",
+            "ParallelBetweenLine(EF,AD)",
+            "ParallelBetweenLine(FE,DA)",
+    "Equal(Div(LengthOfLine(BF),LengthOfLine(CF)),2)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AB))",
+  "problem_answer": "2",
+  "theorem_seqs": [
+     "line_addition",
+    "parallel_property_corresponding_angle",
+    "parallel_property_alternate_interior_angle",
+    "isosceles_triangle_judgment_angle_equal",
+    "parallelogram_judgment_parallel_and_parallel",
+    "parallelogram_property_opposite_line_equal",
+    "similar_triangle_judgment_aa",
+    "similar_triangle_property_line_ratio"
+  ],
+  "raw_answer": "解:∵AF平分△ABC的∠BAC交BC于F,∴∠BAF=∠CAF,∵FE∥AC交AB于E,∴∠CAF=∠AFE,∴∠EAF=∠EFA,∴AE=FE,∵FE∥AC交AB于E,ED∥BC交AC于D∴四边形EFCD为平行四边形,∴AE=EF=DC,∵FE∥AC交AB于E,BF=2CF,AC=1,∴\\frac{BE}{AE}=\\frac{BF}{CF}=\\frac{2}{1},\\frac{AE}{AB}=\\frac{AD}{AC},解得AE=\\frac{1}{3},∴AB=1,故选:A．"
+}

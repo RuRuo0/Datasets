@@ -1,0 +1,35 @@
+{
+  "problem_id": 7383,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4713",
+  "problem_level": 1,
+  "problem_text_cn": "如下图,D是△ABC的边BC的中点,且\\frac{AE}{BE}=\\frac{1}{3},求\\frac{AF}{FC}的值()",
+  "problem_text_en": "As shown in the figure below, D is the midpoint of the edge BC of △ABC, and \\frac {AE}{BE} =\\frac{N_0}{N_1}, find the value of \\frac {AF}{FC}()",
+  "problem_img": "7383.png",
+  "construction_cdl": [
+    "Shape(EA,AG,GE)",
+    "Shape(GA,AF,FG)",
+    "Shape(FA,AB,BD,DF)",
+    "Shape(FD,DC,CF)",
+    "Collinear(EAB)",
+    "Collinear(EGFD)",
+    "Collinear(AFC)",
+    "Collinear(BDC)"
+  ],
+  "text_cdl": [
+    "ParallelBetweenLine(AG,BD)",
+    "ParallelBetweenLine(AG,DC)",
+            "Equal(Div(LengthOfLine(AE),LengthOfLine(BE)),1/3)",
+    "Equal(LengthOfLine(DC),LengthOfLine(BD))"],
+  "image_cdl": [],
+  "goal_cdl": "Value(Div(LengthOfLine(AF),LengthOfLine(FC)))",
+  "problem_answer": "1/3",
+  "theorem_seqs": [
+        "line_addition",
+    "parallel_property_corresponding_angle",
+    "parallel_property_alternate_interior_angle",
+    "similar_triangle_judgment_aa",
+    "similar_triangle_property_line_ratio"
+  ],
+  "raw_answer": "解:如图,过点A作AG∥BC交DE于点G；则△EAG∽△EBD,△AGF∽△CDF,∴\\frac{AG}{BD}=\\frac{AE}{BE}=\\frac{1}{3},\\frac{AF}{FC}=\\frac{AG}{DC},∵BD=DC,∴\\frac{AF}{FC}=\\frac{AG}{BD}=\\frac{1}{3},故选:B．"
+}

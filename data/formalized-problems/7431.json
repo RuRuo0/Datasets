@@ -1,0 +1,30 @@
+{
+  "problem_id": 7431,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4781",
+  "problem_level": 1,
+  "problem_text_cn": "如图,D、E是△ABC边AB、AC上的点,且DE∥BC,若DE:BC=3:5,AD=6,则AB=()",
+  "problem_text_en": "As shown in the figure, D and E are points on AB and AC of △ABC, and DE ∥ BC, if DE:BC=N_0:N_1,AD=N_2, then AB = ()",
+  "problem_img": "7431.png",
+  "construction_cdl": [
+    "Shape(EA,AD,DE)",
+    "Shape(CE,ED,DB,BC)",
+    "Collinear(AEC)",
+    "Collinear(ADB)"
+  ],
+  "text_cdl": [
+        "ParallelBetweenLine(DE,BC)",
+    "Equal(Div(LengthOfLine(DE),LengthOfLine(BC)),3/5)",
+    "Equal(LengthOfLine(AD),6)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AB))",
+  "problem_answer": "10",
+  "theorem_seqs": [
+         "line_addition",
+    "parallel_property_corresponding_angle",
+    "similar_triangle_judgment_aa",
+    "similar_triangle_property_line_ratio"
+  ],
+  "raw_answer": "解:∵DE∥BC,∴\\frac{DE}{BC}=\\frac{AD}{AB}=\\frac{3}{5},∴\\frac{6}{AB}=\\frac{3}{5},∴AB=10．故选:B．"
+}

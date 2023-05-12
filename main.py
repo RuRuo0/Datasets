@@ -1,7 +1,7 @@
 import warnings
 from core.solver.solver import Solver
-from core.aux_tools.utils import load_json, save_json
-from core.aux_tools.output import show, simple_show, save_step_msg, save_solution_tree, get_used_theorem
+from core.aux_tools.utils import *
+from core.aux_tools.output import *
 from core.aux_tools.parser import FLParser
 import os
 path_preset = "data/preset/"
@@ -67,21 +67,27 @@ def run(save_GDL=False, save_CDL=False, auto=False):
 
                 solver.check_goal()    # check goal after applied theorem seqs
 
-                if solver.problem.goal["solved"]:   # clean theorem
-                    problem_CDL = load_json(path_formalized + filename)
-                    _id, seqs = get_used_theorem(solver.problem)
-                    problem_CDL["theorem_seqs"] = seqs
-                    save_json(problem_CDL, path_formalized + filename)
+                # if solver.problem.goal["solved"]:   # clean theorem
+                #     problem_CDL = load_json(path_formalized + filename)
+                #     _id, seqs = get_used_theorem(solver.problem)
+                #     problem_CDL["theorem_seqs"] = seqs
+                #     save_json(problem_CDL, path_formalized + filename)
 
                 simple_show(solver.problem)   # show solved msg
 
                 if save_CDL:  # save solved msg
                     save_json(
                         solver.problem.problem_CDL,
-                        path_solved_problems + "{}_parsed.json".format(filename.split(".")[0])
+                        path_solved_problems + "{}_parsed.json".format(problem_CDL["problem_id"])
                     )
-                    save_step_msg(solver.problem, path_solved_problems)
-                    save_solution_tree(solver.problem, path_solved_problems)
+                    save_step_msg(
+                        solver.problem,
+                        path_solved_problems
+                    )
+                    save_solution_tree(
+                        solver.problem,
+                        path_solved_problems
+                    )
 
             except Exception as e:    # exception
                 msg = "Raise Exception {} in problem {}.".format(e, filename.split(".")[0])
@@ -114,8 +120,14 @@ def run(save_GDL=False, save_CDL=False, auto=False):
                     solver.problem.problem_CDL,
                     path_solved_problems + "{}_parsed.json".format(pid)
                 )
-                save_step_msg(solver.problem, path_solved_problems)
-                save_solution_tree(solver.problem, path_solved_problems)
+                save_step_msg(
+                    solver.problem,
+                    path_solved_problems
+                )
+                save_solution_tree(
+                    solver.problem,
+                    path_solved_problems
+                )
 
 
 if __name__ == '__main__':

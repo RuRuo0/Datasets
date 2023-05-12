@@ -1089,13 +1089,13 @@
 </div>
 
     # branch 1
-    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(AF)&Collinear(BFC)&Equal(MeasureOfAngle(BFD),90)
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(AF)&Collinear(BFC)&Equal(MeasureOfAngle(BFA),90)
     conclusion: IsAltitudeOfQuadrilateral(AF,ABCD)
     # branch 2
-    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(AF)&Collinear(FBC)&Equal(MeasureOfAngle(DFB),90)
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(AF)&Collinear(FBC)&Equal(MeasureOfAngle(AFB),90)
     conclusion: IsAltitudeOfQuadrilateral(AF,ABCD)
     # branch 3
-    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(AF)&Collinear(BCF)&Equal(MeasureOfAngle(CFD),90)
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(AF)&Collinear(BCF)&Equal(MeasureOfAngle(CFA),90)
     conclusion: IsAltitudeOfQuadrilateral(AF,ABCD)
 **Notes**:  
 1.平行四边形/梯形高的判定：垂直于底边  
@@ -1106,13 +1106,13 @@
 </div>
 
     # branch 1
-    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(DF)&Collinear(BFC)&PerpendicularBetweenLine(BF,DF)
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(DF)&Collinear(BFC)&Equal(MeasureOfAngle(BFD),90)
     conclusion: IsAltitudeOfQuadrilateral(DF,ABCD)
     # branch 2
-    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(DF)&Collinear(FBC)&PerpendicularBetweenLine(DF,BF)
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(DF)&Collinear(FBC)&Equal(MeasureOfAngle(DFB),90)
     conclusion: IsAltitudeOfQuadrilateral(DF,ABCD)
     # branch 3
-    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(DF)&Collinear(BCF)&PerpendicularBetweenLine(CF,DF)
+    premise: (Parallelogram(ABCD)|Trapezoid(ABCD))&Line(DF)&Collinear(BCF)&Equal(MeasureOfAngle(CFD),90)
     conclusion: IsAltitudeOfQuadrilateral(DF,ABCD)
 **Notes**:  
 1.平行四边形/梯形高的判定：垂直于底边  
@@ -1302,7 +1302,7 @@
     conclusion: SimilarBetweenQuadrilateral(EFGH,ABCD)
                 Equal(Mul(RatioOfSimilarQuadrilateral(ABCD,EFGH),RatioOfSimilarQuadrilateral(EFGH,ABCD)),1)
 **Notes**:  
-1.相似三角形的比值  
+1.相似四边形的比值  
 
 ### similar_quadrilateral_property_line_ratio(ABCD,EFGH)
 <div>

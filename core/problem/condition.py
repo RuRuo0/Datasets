@@ -87,7 +87,7 @@ class Equation(Condition):
         self.sym_of_attr = {}  # Sym of attribute values. Example: {('LengthOfLine', ('A', 'B')): l_ab}
         self.attr_of_sym = {}  # Attr of symbol. Example: {l_ab: ['LengthOfLine', (('A', 'B'))]}
         self.value_of_sym = {}  # Value of symbol. Example: {l_ab: 3.0}
-        self.equations = {}  # Simplified equations. Example: {a + b - c: a -5}
+        self.simplified_equation = {}  # Simplified equations and its premise. Example: {a + b - 2: [1, 2, 3]}
         self.solved = True  # Whether the equation been solved. If not solved, then solve.
 
     def add(self, item, premise, theorem):
@@ -96,7 +96,7 @@ class Equation(Condition):
         if self.can_add(item):
             added, _id = super().add(item, premise, theorem)
             if theorem != "solve_eq":
-                self.equations[item] = item
+                self.simplified_equation[item] = [_id]    # the first id is its raw_equation
                 self.solved = False
 
             return added, _id

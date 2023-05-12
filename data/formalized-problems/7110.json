@@ -1,0 +1,35 @@
+{
+  "problem_id": 7110,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4234",
+  "problem_level": 1,
+  "problem_text_cn": "如图,线段AB是⊙O的直径,点C、D为⊙O上的点,过点C作⊙O的切线交AB的延长线于点E,若∠E=50°,则∠CDB等于()",
+  "problem_text_en": "As shown in the figure, the line segment AB is the diameter of ⊙O, points C and D are points on ⊙O, and the tangent of ⊙O passing through point C intersects the extended line of AB at point E. If ∠E = N_0, then ∠CDB is equal to ( )",
+  "problem_img": "7110.png",
+  "construction_cdl": [
+    "Shape(OBC,CO,OB)",
+    "Shape(OBC,CD,DB)",
+    "Shape(AO,OC,OA)",
+    "Shape(OCA,AC)",
+    "Shape(OAB,BO,OA)",
+    "Shape(BE,EC,OBC)",
+    "Collinear(AOBE)",
+    "Cocircular(O,ADBC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(EC,O)",
+    "IsDiameterOfCircle(AB,O)",
+    "Equal(MeasureOfAngle(BEC),50)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(CDB))",
+  "problem_answer": "20",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular",
+    "triangle_property_angle_sum",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external"
+  ],
+  "raw_answer": "解:连接OC,∵CE是⊙O的切线,∴∠OCE=90°,∵∠E=50°,∴∠COE=90°-50°=40°,∴∠CDB=\\frac{1}{2}∠COE=20°．故选:A．"
+}

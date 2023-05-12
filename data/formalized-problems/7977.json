@@ -1,0 +1,47 @@
+{
+  "problem_id": 7977,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-5885",
+  "problem_level": 1,
+  "problem_text_cn": "如图,△ABC为等边三角形,点D为BC边上的中点,DF⊥AB于点F,点E在BA的延长线上,且ED=EC,若AE=2,则AF的长为()",
+  "problem_text_en": "As shown in the figure, △ABC is an equilateral triangle, point D is the midpoint on BC, DF ⊥ AB at point F, point E is on the extended line of BA, and ED = EC, if AE = N_0, then the length of AF is ()",
+  "problem_img": "7977.png",
+  "construction_cdl": [
+    "Shape(FB,BD,DF)",
+    "Shape(AF,FD,DH,HA)",
+    "Shape(EA,AH,HE)",
+    "Shape(EH,HC,CE)",
+    "Shape(CH,HD,DC)",
+    "Shape(EC,CI,IE)",
+    "Collinear(BFAE)",
+    "Collinear(AHC)",
+    "Collinear(EHD)",
+    "Collinear(BDCI)"
+  ],
+  "text_cdl": [
+    "ParallelBetweenLine(CA,IE)",
+    "EquilateralTriangle(ABC)",
+    "IsMidpointOfLine(D,BC)",
+    "PerpendicularBetweenLine(DF,BF)",
+    "Equal(LengthOfLine(AE),2)",
+    "Equal(LengthOfLine(ED),LengthOfLine(EC))"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AF))",
+  "problem_answer": "3",
+  "theorem_seqs": [
+    "equilateral_triangle_property_angle",
+    "parallel_property_corresponding_angle",
+    "triangle_property_angle_sum",
+    "isosceles_triangle_judgment_angle_equal",
+
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "adjacent_complementary_angle",
+    "mirror_congruent_triangle_judgment_sas(ECI,EBD)",
+    "mirror_congruent_triangle_property_line_equal",
+    "line_addition",
+    "sine_theorem"
+  ],
+  "raw_answer": "解:过点E作EH∥AC交BC的延长线于H,∴∠H=∠ACB=60°,又∠B=60°,∴△EBH是等边三角形,∴EB=EH=BH,∴CH=AE=2,∵ED=EC,∴∠EDC=∠ECD,又∠B=∠H,∴∠BED=∠HEC,在△BED和△HEC中,≥ft\\lbrace\\begin{array}{l}{EB=EH}\\\\{∠BED=∠HEC}\\\\{ED=EC}\\end{array}\\right.,∴△BED≌△HEC,∴BD=CH=2,∴BA=BC=4,BF=\\frac{1}{2}BD=1,∴AF=3．故选:D．f(x):}\\\\{z≠q}\\\\{\\hat{f}\\sim3}{-n}\\\\{\\hat{f}\\sim3}{-x_{n}}\\\\\\end{array}\\right."
+}

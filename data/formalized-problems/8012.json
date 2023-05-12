@@ -1,0 +1,39 @@
+{
+  "problem_id": 8012,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-5937",
+  "problem_level": 1,
+  "problem_text_cn": "如图,已知△ABC中,点M是BC边上的中点,AN平分∠BAC,BN⊥AN于点N,若AB=7,MN=3,则AC的长为()",
+  "problem_text_en": "As shown in the figure, it is known that in △ABC, point M is the midpoint on the edge of BC, AN bisects ∠BAC, BN ⊥ AN at point N, if AB = N_0, MN = N_1, then the length of AC is ()",
+  "problem_img": "8012.png",
+  "construction_cdl": [
+    "Shape(AB,BN,NA)",
+    "Shape(NB,BM,MN)",
+    "Shape(AN,ND,DA)",
+    "Shape(NM,MC,CD,DN)",
+    "Collinear(BMC)",
+    "Collinear(BND)",
+    "Collinear(ADC)"
+  ],
+  "text_cdl": [
+    "IsMidpointOfLine(M,BC)",
+    "IsBisectorOfAngle(AN,CAB)",
+    "PerpendicularBetweenLine(BN,AN)",
+    "Equal(LengthOfLine(AB),7)",
+    "Equal(LengthOfLine(MN),3)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AC))",
+  "problem_answer": "13",
+  "theorem_seqs": [
+    "triangle_property_angle_sum",
+    "adjacent_complementary_angle",
+    "mirror_congruent_triangle_judgment_aas(AND,ABN)",
+    "mirror_congruent_triangle_property_line_equal",
+    "midpoint_of_line_judgment",
+    "midsegment_of_triangle_judgment_midpoint",
+    "midsegment_of_triangle_property_length",
+    "line_addition"
+  ],
+  "raw_answer": "解:延长BN交AC于D,在△ANB和△AND中,≥ft\\lbrace\\begin{array}{l}{∠NAB=∠NAD}\\\\{AN=AN}\\\\{∠ANB=∠AND=90^{°}}\\end{array}\\right.,∴△ANB≌△AND,∴AD=AB=8,BN=ND,∵M是△ABC的边BC的中点,∴DC=2MN=6,∴AC=AD+CD=13,故选:B．"
+}

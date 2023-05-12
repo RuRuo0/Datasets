@@ -1,0 +1,38 @@
+{
+  "problem_id": 7269,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4522",
+  "problem_level": 1,
+  "problem_text_cn": "如图,已知BE∥CF∥DG,AB:BC:CD=2:1:3,若AE=4,则EG的长是()",
+  "problem_text_en": "As shown in the figure, it is known that BE ∥ CF ∥ DG, AB:BC:CD = N_0:N_1:N_2, if AE = N_3, then the length of EG is ()",
+  "problem_img": "7269.png",
+  "construction_cdl": [
+    "Shape(AB,BE,EA)",
+    "Shape(BC,CF,FE,EB)",
+    "Shape(CD,DG,GF,FC)",
+    "Collinear(ABCD)",
+    "Collinear(AEFG)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(AE),4)",
+    "Equal(Div(LengthOfLine(AB),LengthOfLine(BC)),2)",
+    "Equal(Div(LengthOfLine(AB),LengthOfLine(CD)),2/3)",
+    "Equal(Div(LengthOfLine(BC),LengthOfLine(CD)),1/3)",
+    "ParallelBetweenLine(BE,CF)",
+    "ParallelBetweenLine(CF,DG)",
+    "ParallelBetweenLine(BE,DG)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(EG))",
+  "problem_answer": "8",
+  "theorem_seqs": [
+    "parallel_property_corresponding_angle",
+    "parallel_property_corresponding_angle",
+    "similar_triangle_judgment_aa",
+    "line_addition",
+    "similar_triangle_property_line_ratio",
+    "similar_triangle_property_line_ratio",
+    "line_addition"
+  ],
+  "raw_answer": "解:∵BE∥CF∥DG,AB:BC:CD=2:1:3,∴\\frac{AB}{BD}=\\frac{AE}{EG}=\\frac{2}{4}=\\frac{1}{2},∵AE=4,∴EG=8,故选:C．"
+}

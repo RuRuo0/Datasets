@@ -27,7 +27,7 @@ more types of plane geometric problems.
 | 10  |  毛晨扬   |    60    | 7072-7131 (data/raw-problems/GeoQA) |     √     |
 | 11  |  王茹楠   |    60    | 7132-7191 (data/raw-problems/GeoQA) |     /     |
 | 12  |  王一凡   |    60    | 7192-7251 (data/raw-problems/GeoQA) |     /     |
-| 13  |  岳登峰   |    60    | 7252-7311 (data/raw-problems/GeoQA) |     ×     |
+| 13  |  岳登峰   |    60    | 7252-7311 (data/raw-problems/GeoQA) |     √     |
 | 14  |  朱方震   |    60    | 7312-7371 (data/raw-problems/GeoQA) |     /     |
 | 15  |   朱哲   |    60    | 7372-7431 (data/raw-problems/GeoQA) |     √     |
 | 16  |   秦城   |    60    | 7432-7491 (data/raw-problems/GeoQA) |     /     |

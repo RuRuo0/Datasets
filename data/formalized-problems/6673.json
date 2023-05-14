@@ -1,0 +1,37 @@
+{
+  "problem_id": 6673,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-3479",
+  "problem_level": 1,
+  "problem_text_cn": "如图,四边形ABCD内接于⊙O,DA=DC,∠CBE=52°,则∠DAC的大小为()",
+  "problem_text_en": "As shown in the figure, the quadrilateral ABCD is inscribed in ⊙O, DA = DC, ∠CBE = N_0, then the size of ∠DAC is ()",
+  "problem_img": "6673.png",
+  "construction_cdl": [
+    "Shape(OAB,BA)",
+    "Shape(OBC,CB)",
+    "Shape(OCD,DC)",
+    "Shape(ODA,AD)",
+    "Shape(DA,AC,CD)",
+    "Shape(AB,BC,CA)",
+    "Shape(CB,BE)",
+    "Collinear(ABE)",
+    "Cocircular(O,ABCD)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(LengthOfLine(DA),LengthOfLine(DC))",
+    "Equal(MeasureOfAngle(CBE),52)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(DAC))",
+  "problem_answer": "64",
+  "theorem_seqs": [
+    "adjacent_complementary_angle",
+    "arc_property_circumference_angle_external",
+    "arc_property_circumference_angle_internal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum(DAC)"
+  ],
+  "raw_answer": "解:∵四边形ABCD内接于⊙O,∠CBE=52°,∴∠ADC=∠CBE=52°,∵AD=DC,∴∠DAC=∠DCA=\\frac{1}{2}(180°-∠DAC)=64°,\n故选:C．"
+}

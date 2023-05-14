@@ -9,10 +9,10 @@ from core.aux_tools.output import save_equations_hyper_graph
 
 
 class EquationKiller:
-    solve_eqs = True    # whether to solve the equation in the intermediate process
-    sym_simplify = True    # whether to apply symbol substitution simplification
-    show_solving_msg = False   # whether to show solving process information
-    accurate_mode = False    # whether to use accurate mode
+    solve_eqs = True  # whether to solve the equation in the intermediate process
+    sym_simplify = True  # whether to apply symbol substitution simplification
+    show_solving_msg = False  # whether to show solving process information
+    accurate_mode = False  # whether to use accurate mode
 
     @staticmethod
     def get_minimum_target_equations(target_expr, eqs):
@@ -38,8 +38,8 @@ class EquationKiller:
                 else:
                     sym_to_eqs[sym] = [eq]
 
-        mini_eqs_lists = []    # mini equations
-        n_m = []    # number of equations and variable
+        mini_eqs_lists = []  # mini equations
+        n_m = []  # number of equations and variable
 
         mini_eqs = [eqs[0]]  # mini equations
         mini_syms = eqs[0].free_symbols  # sym of mini equations
@@ -98,8 +98,8 @@ class EquationKiller:
                 else:
                     sym_to_eqs[sym] = [eq]
 
-        mini_eqs_lists = []    # mini equations
-        n_m = []    # number of equations and variable
+        mini_eqs_lists = []  # mini equations
+        n_m = []  # number of equations and variable
 
         added_eqs = set()
         for eq in eqs:
@@ -182,7 +182,7 @@ class EquationKiller:
                                                  tuple(equation.simplified_equation[eq]), "solve_eq")
                         remove_lists |= {eq}
 
-            for eq in equation.simplified_equation:    # value replace
+            for eq in equation.simplified_equation:  # value replace
                 if eq in remove_lists:
                     continue
                 raw_eq = eq
@@ -201,7 +201,7 @@ class EquationKiller:
 
                 if len(eq.free_symbols) == 0:  # no need to add new simplified equation when it's all sym known
                     continue
-                else:    # add new simplified equation
+                else:  # add new simplified equation
                     update = True
                     premise = equation.simplified_equation[raw_eq] + added_premise
                     add_lists.append((eq, premise))
@@ -220,9 +220,9 @@ class EquationKiller:
             for i in range(len(equations)):
                 eq = equations[i]
 
-                if target_sym in eq.free_symbols or\
+                if target_sym in eq.free_symbols or \
                         len(eq.free_symbols) != 2 or \
-                        len(eq.atoms()) > 5:   # too many atoms, no need to replace
+                        len(eq.atoms()) > 5:  # too many atoms, no need to replace
                     continue
 
                 try:
@@ -232,7 +232,7 @@ class EquationKiller:
                     warnings.warn(msg)
                     continue
 
-                if len(result) == 0:    # no solved result
+                if len(result) == 0:  # no solved result
                     continue
 
                 sym = list(result.keys())[0]
@@ -244,12 +244,12 @@ class EquationKiller:
                 if has_float:  # float has precision error
                     continue
 
-                for j in range(len(equations)):    # replace sym with solved sym_expr
+                for j in range(len(equations)):  # replace sym with solved sym_expr
                     if sym in equations[j].free_symbols:
                         equations[j] = equations[j].subs(sym, result[sym])
                         update = True
 
-        for i in range(len(equations))[::-1]:    # remove 0
+        for i in range(len(equations))[::-1]:  # remove 0
             if len(equations[i].free_symbols) == 0:
                 equations.pop(i)
 
@@ -264,19 +264,19 @@ class EquationKiller:
 
             if len(solved) == 0:  # no result solved
                 return {}
-        except Exception as e:   # exception
+        except Exception as e:  # exception
             msg = "Exception <{}> occur when solve {}".format(e, equations)
             warnings.warn(msg)
             return {}
-        else:    # has result
-            if keep_sym:    # keep sym result
+        else:  # has result
+            if keep_sym:  # keep sym result
                 if isinstance(solved, list):
                     return solved[0]
                 return solved
 
             if isinstance(solved, list):
                 update = True
-                while update and len(solved) > 1:   # choose min when has multi result
+                while update and len(solved) > 1:  # choose min when has multi result
                     update = False
                     for i in range(1, len(solved)):
                         for sym in solved[0]:
@@ -313,7 +313,7 @@ class EquationKiller:
         EquationKiller.simplification_value_replace(problem)  # simplify equations before solving
 
         mini_eqs_lists, n_m = EquationKiller.get_minimum_group_equations(  # get mini equations
-           list(problem.conditions["Equation"].simplified_equation)
+            list(problem.conditions["Equation"].simplified_equation)
         )
 
         if EquationKiller.show_solving_msg:
@@ -322,7 +322,7 @@ class EquationKiller:
                 print("{}, {}".format(n_m[i], mini_eqs_lists[i]))
 
         for i in range(len(mini_eqs_lists)):
-            if n_m[i][0] < n_m[i][1]:    # number of equations < number of variables, unsolvable
+            if n_m[i][0] < n_m[i][1]:  # number of equations < number of variables, unsolvable
                 continue
 
             solved = False
@@ -375,7 +375,6 @@ class EquationKiller:
                 for sym in solved_results:
                     problem.set_value_of_sym(sym, solved_results[sym], premise, "solve_eq")
 
-
     @staticmethod
     def solve_target(target_expr, problem):
         """
@@ -388,7 +387,7 @@ class EquationKiller:
         if target_expr is None:
             return None, None
 
-        if target_expr in equation.get_id_by_item:    # no need to solve
+        if target_expr in equation.get_id_by_item:  # no need to solve
             return 0, [equation.get_id_by_item[target_expr]]
         if -target_expr in equation.get_id_by_item:
             return 0, [equation.get_id_by_item[-target_expr]]
@@ -403,11 +402,11 @@ class EquationKiller:
         if len(target_expr.free_symbols) == 0:
             return number_round(target_expr), premise
 
-        target_sym, mini_eqs_lists, n_m = EquationKiller.get_minimum_target_equations(   # get mini equations
+        target_sym, mini_eqs_lists, n_m = EquationKiller.get_minimum_target_equations(  # get mini equations
             target_expr,
             list(problem.conditions["Equation"].simplified_equation)
         )
-        if len(mini_eqs_lists) == 0:    # no mini equations, can't solve
+        if len(mini_eqs_lists) == 0:  # no mini equations, can't solve
             return None, []
 
         if EquationKiller.show_solving_msg:
@@ -417,8 +416,8 @@ class EquationKiller:
             print("- - - -")
             print("find boundary:")
 
-        head = 0    # can't solve
-        tail = len(mini_eqs_lists)    # can solve
+        head = 0  # can't solve
+        tail = len(mini_eqs_lists)  # can solve
         mini_eqs = None
         target_value = None
         while tail - head > 1:
@@ -451,7 +450,7 @@ class EquationKiller:
             else:
                 head = p
 
-        if target_value is None:    # no solved result
+        if target_value is None:  # no solved result
             return None, []
 
         if EquationKiller.accurate_mode:
@@ -475,11 +474,19 @@ class EquationKiller:
             premise += equation.simplified_equation[eq]
         premise = set(premise)
 
-        if len(target_expr.free_symbols) == 1:
-            sym = list(target_expr.free_symbols)[0]
-            value_of_sym = EquationKiller.solve(target_expr - target_value)[sym]
-            problem.set_value_of_sym(sym, value_of_sym, tuple(premise), "solve_eq")
-        else:
+        eq = target_expr - target_value
+        value_added = False
+        if len(eq.free_symbols) == 1:
+            try:
+                results = EquationKiller.solve(eq, list(eq.free_symbols)[0])  # solve equations
+            except FunctionTimedOut:
+                msg = "Timeout when solve equations: {}".format(target_expr - target_value)
+                warnings.warn(msg)
+            else:
+                for sym in results:
+                    problem.set_value_of_sym(sym, results[sym], tuple(premise), "solve_eq")
+                    value_added = True
+        if not value_added:
             equation.add(target_expr - target_value, tuple(premise), "solve_eq")
 
         return target_value, list(premise)
@@ -516,7 +523,7 @@ class GeoLogic:
                 r2_gpl[0] = r2_gpl[0].replace("~", "")
                 oppose = True
 
-            if r2_gpl[0] == "Equal":    # algebra constraint
+            if r2_gpl[0] == "Equal":  # algebra constraint
                 r_ids, r_items, r_vars = GeoLogic.constraint_algebra(
                     (r_ids, r_items, r_vars),
                     r2_gpl,
@@ -524,14 +531,14 @@ class GeoLogic:
                     problem
                 )
             else:
-                if len(set(r2_gpl[1]) - set(r_vars)) == 0:    # logic constraint
+                if len(set(r2_gpl[1]) - set(r_vars)) == 0:  # logic constraint
                     r_ids, r_items, r_vars = GeoLogic.constraint_logic(
                         (r_ids, r_items, r_vars),
                         r2_gpl,
                         oppose,
                         problem
                     )
-                else:    # constrained cartesian product
+                else:  # constrained cartesian product
                     r_ids, r_items, r_vars = GeoLogic.product(
                         (r_ids, r_items, r_vars),
                         problem.conditions[r2_gpl[0]].get_items(r2_gpl[1]),
@@ -613,14 +620,14 @@ class GeoLogic:
         index = [r1_vars.index(v) for v in r2_logic[1]]
         r_ids = []
         r_items = []
-        if not oppose:    # &
+        if not oppose:  # &
             for i in range(len(r1_items)):
                 r2_item = tuple(r1_items[i][j] for j in index)
                 if r2_item in problem.conditions[r2_logic[0]].get_id_by_item:
                     r2_id = problem.conditions[r2_logic[0]].get_id_by_item[r2_item]
                     r_ids.append(tuple(set(list(r1_ids[i]) + [r2_id])))
                     r_items.append(r1_items[i])
-        else:    # &~
+        else:  # &~
             for i in range(len(r1_items)):
                 r2_item = tuple(r1_items[i][j] for j in index)
                 if r2_item not in problem.conditions[r2_logic[0]].get_id_by_item:
@@ -655,7 +662,7 @@ class GeoLogic:
         r1_ids, r1_items, r1_vars = r1
         r_ids = []
         r_items = []
-        if not oppose:    # &
+        if not oppose:  # &
             for i in range(len(r1_items)):
                 letters = {}
                 for j in range(len(r1_vars)):
@@ -666,7 +673,7 @@ class GeoLogic:
                     r_id = tuple(set(premise + list(r1_ids[i])))
                     r_ids.append(r_id)
                     r_items.append(r1_items[i])
-        else:    # &~
+        else:  # &~
             for i in range(len(r1_items)):
                 letters = {}
                 for j in range(len(r1_vars)):
@@ -766,14 +773,14 @@ class GoalFinder:
             passed = True
             sub_goal = []
             for predicate, p_vars in premises_GDL:
-                if predicate == "Equal":    # algebra sub goal
+                if predicate == "Equal":  # algebra sub goal
                     eq = EqParser.get_equation_from_tree(problem, p_vars, True, letters)
                     if problem.fv_check("Equation", eq):
                         sub_goal.append(("Equation", eq))
                     else:
                         passed = False
                         break
-                else:    # logic sub goal
+                else:  # logic sub goal
                     item = tuple(letters[i] for i in p_vars)
                     if problem.ee_check(predicate, item) and problem.fv_check(predicate, item):
                         if (predicate in problem.predicate_GDL["BasicEntity"] or
@@ -804,7 +811,7 @@ class GoalFinder:
                 t_vars = theorem_GDL[theorem_name]["vars"]
                 for premises_GDL, conclusions_GDL in theorem_GDL[theorem_name]["body"]:
                     for conclusion in conclusions_GDL:
-                        if conclusion[0] != "Equal":   # not algebra sub goal
+                        if conclusion[0] != "Equal":  # not algebra sub goal
                             continue
                         attr_vars = GoalFinder.find_vars_from_tree(conclusion[1], attr, problem.predicate_GDL)
                         theorem_paras = []
@@ -816,7 +823,7 @@ class GoalFinder:
                             theorem_paras, problem.conditions["Point"].get_id_by_item
                         )
                         current_sub_goals = GoalFinder.gen_sub_goals(
-                            theorem_name,  theorem_paras,  t_vars, premises_GDL, problem
+                            theorem_name, theorem_paras, t_vars, premises_GDL, problem
                         )
                         for theorem_msg in current_sub_goals:
                             if theorem_msg in sub_goals:

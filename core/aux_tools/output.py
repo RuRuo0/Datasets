@@ -149,7 +149,10 @@ def show(problem):
     if problem.goal["solved_answer"] is not None:
         print("solved_answer: {}".format(str(problem.goal["solved_answer"])))
         if not isinstance(problem.goal["solved_answer"], tuple):
-            print("solved_answer(float): {}".format(float(problem.goal["solved_answer"])))
+            try:
+                print("solved_answer(float): {}".format(float(problem.goal["solved_answer"])))
+            except TypeError:
+                print("solved_answer(float): <Cannot convert to float>")
         print("premise: {}".format(str(problem.goal["premise"])))
         print("theorem: {}".format(str(problem.goal["theorem"])))
     print()

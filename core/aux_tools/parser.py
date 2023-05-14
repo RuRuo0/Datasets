@@ -707,7 +707,7 @@ class InverseParser:
 
         if len(item.free_symbols) == 1:
             sym = list(item.free_symbols)[0]
-            if sym - equation.value_of_sym[sym] == item:
+            if equation.value_of_sym[sym] is not None and sym - equation.value_of_sym[sym] == item:
                 attr, items = equation.attr_of_sym[sym]
                 return attr + "(" + "".join(items[0]) + ")"
 

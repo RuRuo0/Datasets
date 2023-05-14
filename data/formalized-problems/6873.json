@@ -1,0 +1,36 @@
+{
+  "problem_id": 6873,
+  "annotation": "qikehuang_2023-05-14",
+  "source": "GeoQA-3837",
+  "problem_level": 1,
+  "problem_text_cn": "如图,已知⊙O的直径AB与弦AC的夹角为30°,过C点的切线PC与AB延长线交于点P,⊙O的半径为2,则PC为()",
+  "problem_text_en": "As shown in the figure, it is known that the angle between the diameter AB of ⊙O and the chord AC is N_0, the tangent PC passing through point C and the extended line of AB intersect at point P, the radius of ⊙O is N_1, then PC is ()",
+  "problem_img": "6873.png",
+  "construction_cdl": [
+    "Shape(OCA,AC)",
+    "Shape(CA,AO,OC)",
+    "Shape(CO,OB,OBC)",
+    "Shape(OBC,BP,PC)",
+    "Shape(BO,OA,OAB)",
+    "Collinear(AOBP)",
+    "Cocircular(O,BCA)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(PC,O)",
+    "Equal(RadiusOfCircle(O),2)",
+    "Equal(MeasureOfAngle(CAB),30)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(PC))",
+  "problem_answer": "2*√3",
+  "theorem_seqs": [
+    "arc_property_circumference_angle_external(OBC,A)",
+    "arc_property_center_angle(OBC,O)",
+    "tangent_of_circle_property_perpendicular",
+    "triangle_property_angle_sum(OPC)",
+    "radius_of_circle_property_length_equal",
+    "sine_theorem(COP)"
+  ],
+  "raw_answer": "解:∵PC为切线,∴OC⊥PC,∵OA=OC,∴∠OCA=∠A=30°,∴∠POC=∠A+∠OCA=60°,∴∠P=30°,在Rt△OCP中,PC=√{3}OC=2√{3}．故选:D．"
+}

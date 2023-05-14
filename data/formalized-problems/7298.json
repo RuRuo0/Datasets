@@ -1,0 +1,37 @@
+{
+  "problem_id": 7298,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4597",
+  "problem_level": 1,
+  "problem_text_cn": "如图,已知△ABC,AB=6,AC=5,D是边AB的中点,E是边AC上一点,∠ADE=∠C,∠BAC的平分线分别交DE、BC于点F、G,那么\\frac{AF}{AG}的值为()",
+  "problem_text_en": "As shown in the figure, it is known that △ABC, AB = N_0, AC = N_1, D is the midpoint of side AB, E is a point on edge AC, ∠ADE = ∠C, the bisector of ∠BAC intersects DE and BC at point F and point G respectively, then the value of \\frac AFAG is ()",
+  "problem_img": "7298.png",
+  "construction_cdl": [
+    "Shape(AD,DF,FA)",
+    "Shape(AF,FE,EA)",
+    "Shape(DB,BG,GF,FD)",
+    "Shape(FG,GC,CE,EF)",
+    "Collinear(ADB)",
+    "Collinear(DFE)",
+    "Collinear(AFG)",
+    "Collinear(AEC)",
+    "Collinear(BGC)"
+  ],
+  "text_cdl": [
+    "IsMidpointOfLine(D,AB)",
+    "Equal(LengthOfLine(AB),6)",
+    "Equal(LengthOfLine(AC),5)",
+    "Equal(MeasureOfAngle(ADE),MeasureOfAngle(GCE))",
+    "IsBisectorOfAngle(AG,CAB)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(Div(LengthOfLine(AF),LengthOfLine(AG)))",
+  "problem_answer": "3/5",
+  "theorem_seqs": [
+    "mirror_similar_triangle_judgment_aa",
+    "mirror_similar_triangle_property_line_ratio",
+    "mirror_similar_triangle_property_line_ratio",
+    "line_addition"
+  ],
+  "raw_answer": "解:∵AG平分∠BAC,∴∠DAF=∠CAG,∵∠ADF=∠C,∴△ADF∽△ACG,∴\\frac{AD}{AC}=\\frac{AF}{AG},∵D是AB的中点,∴AD=\\frac{1}{2}AB=3,∴\\frac{AF}{AG}=\\frac{3}{5},故选:C．"
+}

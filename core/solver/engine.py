@@ -13,6 +13,7 @@ class EquationKiller:
     sym_simplify = True  # whether to apply symbol substitution simplification
     show_solving_msg = False  # whether to show solving process information
     accurate_mode = False  # whether to use accurate mode
+    solve_rank_deficient_eqs = False  # whether to solve rank deficient equations
 
     @staticmethod
     def get_minimum_target_equations(target_expr, eqs):
@@ -322,7 +323,7 @@ class EquationKiller:
                 print("{}, {}".format(n_m[i], mini_eqs_lists[i]))
 
         for i in range(len(mini_eqs_lists)):
-            if n_m[i][0] < n_m[i][1]:  # number of equations < number of variables, unsolvable
+            if not EquationKiller.solve_rank_deficient_eqs and n_m[i][0] < n_m[i][1]:
                 continue
 
             solved = False
@@ -349,9 +350,8 @@ class EquationKiller:
                 for sym in solved_results:
                     if equation.value_of_sym[sym] is not None:
                         continue
-
                     sym_mini_eqs = copy.copy(mini_eqs)
-                    for removed_eq in sym_mini_eqs:
+                    for removed_eq in copy.copy(sym_mini_eqs):
                         try_eqs = copy.copy(sym_mini_eqs)
                         try_eqs.remove(removed_eq)
                         try:
@@ -454,7 +454,7 @@ class EquationKiller:
             return None, []
 
         if EquationKiller.accurate_mode:
-            for removed_eq in mini_eqs[1:]:
+            for removed_eq in copy.copy(mini_eqs[1:]):
                 try_eqs = copy.copy(mini_eqs)
                 try_eqs.remove(removed_eq)
 

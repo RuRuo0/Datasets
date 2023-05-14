@@ -9,31 +9,6 @@ more types of plane geometric problems.
 
 ## Co-work (Current Week)
 
-#### Week 10 (230508): form 2023-05-08 to 2023-05-14.
-
-**Attention:** Annotate problems in directory **GeoQA**.
-
-| Id  | Worker | WorkLoad |                 PID                 | Submitted |
-|:---:|:------:|:--------:|:-----------------------------------:|:---------:|
-|  1  |  贺艺铭   |    60    | 6532-6591 (data/raw-problems/GeoQA) |     √     |
-|  2  |   邹佳   |    60    | 6592-6651 (data/raw-problems/GeoQA) |     √     |
-|  3  |   朱娜   |    60    | 6652-6711 (data/raw-problems/GeoQA) |     ×     |
-|  4  |  张效凯   |    60    | 6712-6771 (data/raw-problems/GeoQA) |     √     |
-|  5  |  郭彦钧   |    60    | 6772-6831 (data/raw-problems/GeoQA) |     √     |
-|  6  |  黄琦珂   |    60    | 6832-6891 (data/raw-problems/GeoQA) |     ×     |
-|  7  |  黄一雯   |    60    | 6892-6951 (data/raw-problems/GeoQA) |     /     |
-|  8  |  金啸笑   |    60    | 6952-7011 (data/raw-problems/GeoQA) |     √     |
-|  9  |   李阳   |    60    | 7012-7071 (data/raw-problems/GeoQA) |     ×     |
-| 10  |  毛晨扬   |    60    | 7072-7131 (data/raw-problems/GeoQA) |     √     |
-| 11  |  王茹楠   |    60    | 7132-7191 (data/raw-problems/GeoQA) |     /     |
-| 12  |  王一凡   |    60    | 7192-7251 (data/raw-problems/GeoQA) |     /     |
-| 13  |  岳登峰   |    60    | 7252-7311 (data/raw-problems/GeoQA) |     √     |
-| 14  |  朱方震   |    60    | 7312-7371 (data/raw-problems/GeoQA) |     /     |
-| 15  |   朱哲   |    60    | 7372-7431 (data/raw-problems/GeoQA) |     √     |
-| 16  |   秦城   |    60    | 7432-7491 (data/raw-problems/GeoQA) |     /     |
-
-## Co-work (After)
-
 #### Week 11 (230515): form 2023-05-15 to 2023-05-21.
 
 **Attention:** Annotate problems in directory **GeoQA**.
@@ -56,6 +31,8 @@ more types of plane geometric problems.
 | 14  |  朱方震   |    60    |           same as week 10           |     ×     |
 | 15  |   朱哲   |    60    | 8092-8151 (data/raw-problems/GeoQA) |     ×     |
 | 16  |   秦城   |    60    |           same as week 10           |     √     |
+
+## Co-work (After)
 
 #### Week 12 (230522): form 2023-05-22 to 2023-05-28.
 
@@ -104,6 +81,29 @@ more types of plane geometric problems.
 | 16  |   秦城   |    60    |                    9772-9831 (data/raw-problems/GeoQAPlus)                     |     ×     |
 
 ## Co-work (Before)
+
+#### Week 10 (230508): form 2023-05-08 to 2023-05-14.
+
+**Attention:** Annotate problems in directory **GeoQA**.
+
+| Id  | Worker | WorkLoad |                 PID                 | Submitted |
+|:---:|:------:|:--------:|:-----------------------------------:|:---------:|
+|  1  |  贺艺铭   |    60    | 6532-6591 (data/raw-problems/GeoQA) |     √     |
+|  2  |   邹佳   |    60    | 6592-6651 (data/raw-problems/GeoQA) |     √     |
+|  3  |   朱娜   |    60    | 6652-6711 (data/raw-problems/GeoQA) |     √     |
+|  4  |  张效凯   |    60    | 6712-6771 (data/raw-problems/GeoQA) |     √     |
+|  5  |  郭彦钧   |    60    | 6772-6831 (data/raw-problems/GeoQA) |     √     |
+|  6  |  黄琦珂   |    60    | 6832-6891 (data/raw-problems/GeoQA) |     √     |
+|  7  |  黄一雯   |    60    | 6892-6951 (data/raw-problems/GeoQA) |     /     |
+|  8  |  金啸笑   |    60    | 6952-7011 (data/raw-problems/GeoQA) |     √     |
+|  9  |   李阳   |    60    | 7012-7071 (data/raw-problems/GeoQA) |     ×     |
+| 10  |  毛晨扬   |    60    | 7072-7131 (data/raw-problems/GeoQA) |     √     |
+| 11  |  王茹楠   |    60    | 7132-7191 (data/raw-problems/GeoQA) |     /     |
+| 12  |  王一凡   |    60    | 7192-7251 (data/raw-problems/GeoQA) |     /     |
+| 13  |  岳登峰   |    60    | 7252-7311 (data/raw-problems/GeoQA) |     √     |
+| 14  |  朱方震   |    60    | 7312-7371 (data/raw-problems/GeoQA) |     /     |
+| 15  |   朱哲   |    60    | 7372-7431 (data/raw-problems/GeoQA) |     √     |
+| 16  |   秦城   |    60    | 7432-7491 (data/raw-problems/GeoQA) |     /     |
 
 #### Week 9 (230501): form 2023-05-01 to 2023-05-07.
 

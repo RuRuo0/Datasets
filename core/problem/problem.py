@@ -3,7 +3,10 @@ from core.problem.condition import *
 from itertools import combinations
 from sympy import symbols
 from core.aux_tools.parser import EqParser
+from core.solver.engine import EquationKiller
+from core.aux_tools.utils import rough_equal
 import copy
+import time
 
 
 class Problem:
@@ -19,13 +22,11 @@ class Problem:
 
         self.goal = None  # goal
 
-        self.loaded = False  # if loaded
-
-    def load_problem_from_cdl(self, problem_CDL):
+    def load_problem_from_cdl(self, problem_CDL, c_id, c_step):
         """Load problem through problem CDL."""
+        Condition.id = c_id
+        Condition.step = c_step
         self.problem_CDL = problem_CDL  # cdl
-        self.loaded = True
-
         self.conditions = {  # preset predicate
             "Shape": VariableLengthCondition("Shape"),
             "Collinear": VariableLengthCondition("Collinear"),
@@ -70,11 +71,11 @@ class Problem:
         self.goal["premise"] = None
         self.goal["theorem"] = None
 
-    def load_problem_by_copy(self, problem):
+    def load_problem_by_copy(self, problem, c_id, c_step):
         """Load problem through copying existing problem."""
+        Condition.id = c_id
+        Condition.step = c_step
         self.problem_CDL = problem.problem_CDL  # cdl
-        self.loaded = True
-
         self.conditions = copy.deepcopy(problem.conditions)  # copy
         self.theorems_applied = copy.deepcopy(problem.theorems_applied)
         self.time_consuming = copy.deepcopy(problem.time_consuming)
@@ -90,10 +91,6 @@ class Problem:
         5.Angle expand (collinear).
         6.Angle expand (vertical angle).
         """
-        if not self.loaded:  # problem must be loaded
-            e_msg = "Problem not loaded. Please run <load_problem> before run other functions."
-            raise Exception(e_msg)
-
         # 1.Collinear expand.
         for predicate, item in self.problem_CDL["parsed_cdl"]["construction_cdl"]:  # Collinear
             if predicate != "Collinear":
@@ -463,9 +460,6 @@ class Problem:
         :param skip_check: <bool>, set to True when you are confident that the format of item must be legal.
         :return: True or False.
         """
-        if not self.loaded:  # problem must be loaded
-            e_msg = "Problem not loaded. Please run <load_problem> before run other functions."
-            raise Exception(e_msg)
         if predicate not in self.conditions:  # predicate must be defined
             e_msg = "Predicate '{}' not defined in current predicate GDL.".format(predicate)
             raise Exception(e_msg)
@@ -533,9 +527,6 @@ class Problem:
         :param theorem: <str>, theorem of item.
         :return: True or False.
         """
-        if not self.loaded:  # problem must be loaded
-            e_msg = "Problem not loaded. Please run <load_problem> before run other functions."
-            raise Exception(e_msg)
         if predicate not in self.conditions:  # predicate must be defined
             e_msg = "Predicate '{}' not defined in current predicate GDL.".format(predicate)
             raise Exception(e_msg)

@@ -1,6 +1,6 @@
 {
   "problem_id": 7407,
-  "annotation": "xiaokaizhang_2023-03-06",
+  "annotation": "ZheZhu_2023-05-14",
   "source": "GeoQA-4743",
   "problem_level": 1,
   "problem_text_cn": "如图,AD是△ABC的中线,E是AD上的一点,且AE=\\frac{1}{3}AD,CE交AB于点F．若AF=1cm,则AB=()cm．",
@@ -23,17 +23,22 @@
     "Equal(LengthOfLine(AF),1)",
     "Equal(LengthOfLine(BG),LengthOfLine(GF))",
     "Equal(LengthOfLine(BD),LengthOfLine(CD))",
-        "Equal(Div(LengthOfLine(AE),LengthOfLine(AD)),1/3)"
+    "Equal(Div(LengthOfLine(AE),LengthOfLine(AD)),1/3)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
   "problem_answer": "5",
   "theorem_seqs": [
-         "line_addition",
-    "parallel_property_collinear_extend",
-    "parallel_property_corresponding_angle",
+    "line_addition(AF,FG)",
+    "line_addition(AF,FB)",
+    "line_addition(AG,GB)",
+    "line_addition(FG,GB)",
+    "parallel_property_collinear_extend(FC,GD,E)",
+    "parallel_property_corresponding_angle(FC,GD,A)",
+    "parallel_property_corresponding_angle(DG,EF,A)",
     "similar_triangle_judgment_aa(AFE,AGD)",
-    "similar_triangle_property_line_ratio"
+    "similar_triangle_property_line_ratio(FEA,GDA)",
+    "similar_triangle_property_line_ratio(EAF,DAG)"
   ],
   "raw_answer": "解:作DG∥CF于G,根据平行线等分线段定理,得BG=FG,根据平行线分线段成比例定理,得:\\frac{AF}{AG}=\\frac{AE}{AD},AG=3AF=3×1=3cm,则FG=AG-AF=3-1=2cm,所以AB=2+3=5cm．故选:C．"
 }

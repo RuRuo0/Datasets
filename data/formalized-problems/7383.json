@@ -1,6 +1,6 @@
 {
   "problem_id": 7383,
-  "annotation": "xiaokaizhang_2023-03-06",
+  "annotation": "ZheZhu_2023-05-14",
   "source": "GeoQA-4713",
   "problem_level": 1,
   "problem_text_cn": "如下图,D是△ABC的边BC的中点,且\\frac{AE}{BE}=\\frac{1}{3},求\\frac{AF}{FC}的值()",
@@ -19,17 +19,30 @@
   "text_cdl": [
     "ParallelBetweenLine(AG,BD)",
     "ParallelBetweenLine(AG,DC)",
-            "Equal(Div(LengthOfLine(AE),LengthOfLine(BE)),1/3)",
-    "Equal(LengthOfLine(DC),LengthOfLine(BD))"],
+    "Equal(Div(LengthOfLine(AE),LengthOfLine(BE)),1/3)",
+    "Equal(LengthOfLine(DC),LengthOfLine(BD))"
+  ],
   "image_cdl": [],
   "goal_cdl": "Value(Div(LengthOfLine(AF),LengthOfLine(FC)))",
   "problem_answer": "1/3",
   "theorem_seqs": [
-        "line_addition",
-    "parallel_property_corresponding_angle",
-    "parallel_property_alternate_interior_angle",
-    "similar_triangle_judgment_aa",
-    "similar_triangle_property_line_ratio"
+    "line_addition(AF,FC)",
+    "line_addition(BD,DC)",
+    "parallel_property_corresponding_angle(AG,BD,E)",
+    "parallel_property_corresponding_angle(DB,GA,E)",
+    "parallel_property_alternate_interior_angle(AG,DC)",
+    "similar_triangle_judgment_aa(EAG,EBD)",
+    "similar_triangle_judgment_aa(FGA,FDC)",
+    "similar_triangle_judgment_aa(FDC,FGA)",
+    "similar_triangle_judgment_aa(EBD,EAG)",
+    "similar_triangle_property_line_ratio(EAG,EBD)",
+    "similar_triangle_property_line_ratio(GEA,DEB)",
+    "similar_triangle_property_line_ratio(FGA,FDC)",
+    "similar_triangle_property_line_ratio(GAF,DCF)",
+    "similar_triangle_property_line_ratio(FDC,FGA)",
+    "similar_triangle_property_line_ratio(DCF,GAF)",
+    "similar_triangle_property_line_ratio(EBD,EAG)",
+    "similar_triangle_property_line_ratio(DEB,GEA)"
   ],
   "raw_answer": "解:如图,过点A作AG∥BC交DE于点G；则△EAG∽△EBD,△AGF∽△CDF,∴\\frac{AG}{BD}=\\frac{AE}{BE}=\\frac{1}{3},\\frac{AF}{FC}=\\frac{AG}{DC},∵BD=DC,∴\\frac{AF}{FC}=\\frac{AG}{BD}=\\frac{1}{3},故选:B．"
 }

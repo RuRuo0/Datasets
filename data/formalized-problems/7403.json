@@ -1,6 +1,6 @@
 {
   "problem_id": 7403,
-  "annotation": "xiaokaizhang_2023-03-06",
+  "annotation": "ZheZhu_2023-05-14",
   "source": "GeoQA-4739",
   "problem_level": 1,
   "problem_text_cn": "如图,平行四边形ABCD中,F是边AB上的点,DF交AC于点E,如果CD=10,\\frac{AE}{EC}=\\frac{2}{5},那么BF的长是()",
@@ -18,18 +18,21 @@
   "text_cdl": [
     "Parallelogram(DABC)",
     "Equal(LengthOfLine(CD),10)",
-        "Equal(Div(LengthOfLine(AE),LengthOfLine(EC)),2/5)"
+    "Equal(Div(LengthOfLine(AE),LengthOfLine(EC)),2/5)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BF))",
   "problem_answer": "6",
   "theorem_seqs": [
     "parallel_property_alternate_interior_angle(DC,AB)",
-    "vertical_angle",
-        "similar_triangle_judgment_aa",
-    "similar_triangle_property_line_ratio",
-    "parallelogram_property_opposite_line_equal",
-    "line_addition"
+    "vertical_angle(DEC,FEA)",
+    "similar_triangle_judgment_aa(FEA,DEC)",
+    "similar_triangle_judgment_aa(DEC,FEA)",
+    "similar_triangle_property_line_ratio(FEA,DEC)",
+    "similar_triangle_property_line_ratio(EAF,ECD)",
+    "similar_triangle_property_line_ratio(DEC,FEA)",
+    "parallelogram_property_opposite_line_equal(ABCD)",
+    "line_addition(AF,FB)"
   ],
   "raw_answer": "解:如右图所示,∵四边形ABCD是▱,∴AB∥CD,∴△AEF∽△CED,∴AE:CE=AF:CD,又∵\\frac{AE}{EC}=\\frac{2}{5},∴AF=4,∴BF=AB-AF=10-4=6．故选:C．"
 }

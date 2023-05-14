@@ -1,0 +1,44 @@
+{
+  "problem_id": 7080,
+  "annotation": "ChenyangMao_2023-05-14",
+  "source": "GeoQA-4177",
+  "problem_level": 1,
+  "problem_text_cn": "如图,过⊙O外一点P引⊙O的两条切线PA、PB,切点分别是A、B,OP交⊙O于点C,点D是⁀{ABC}上不与点A、点C重合的一个动点,连接AD、CD,若∠APB=80°,则∠ADC的度数是()",
+  "problem_text_en": "As shown in the figure, the two tangents PA and PB that lead to ⊙O through a point P outside ⊙O, the tangent points are respectively A and B, OP intersects ⊙O at point C, and point D is a moving point on ⁀ABC and it does not coincide with points A and C , connect AD and CD, if ∠APB = N_0, then the degree of ∠ADC is ()",
+  "problem_img": "7080.png",
+  "construction_cdl": [
+    "Shape(OBC,CO,OB)",
+    "Shape(OCA,AO,OC)",
+    "Shape(BP,PC,OBC)",
+    "Shape(CP,PA,OCA)",
+    "Shape(OAB,BO,OA)",
+    "Shape(OCA,AD,DC)",
+    "Collinear(PCO)",
+    "Cocircular(O,BCAD)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(PB,O)",
+    "IsTangentOfCircle(PA,O)",
+    "Equal(MeasureOfAngle(BPA),80)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(ADC))",
+  "problem_answer": "25",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular",
+    "angle_addition",
+    "tangent_of_circle_property_length_equal",
+    "radius_of_circle_property_length_equal",
+    "quadrilateral_property_angle_sum",
+    "mirror_congruent_triangle_judgment_sas",
+    "mirror_congruent_triangle_property_angle_equal",
+    "arc_property_center_angle",
+    "angle_addition(AOC,COB)",
+    "arc_addition_measure",
+    "arc_property_circumference_angle_external",
+    "angle_addition"
+  ],
+  "notes": "已知 ma_aob-100，-ma_aoc+ma_cob 求不出ma_aoc的角度",
+  "raw_answer": "解；如图,由四边形的内角和定理,得∠BOA=360°-90°-90°-80°=100°,由⁀{AC}=⁀{BC},得∠AOC=∠BOC=50°．由圆周角定理,得∠ADC=\\frac{1}{2}∠AOC=25°,故选:C．"
+}

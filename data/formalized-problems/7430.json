@@ -1,6 +1,6 @@
 {
   "problem_id": 7430,
-  "annotation": "xiaokaizhang_2023-03-06",
+  "annotation": "ZheZhu_2023-05-14",
   "source": "GeoQA-4776",
   "problem_level": 1,
   "problem_text_cn": "如图,AB∥CD∥EF,且AO=OD=DF,OE=6,则BE=()",
@@ -14,10 +14,10 @@
     "Collinear(BOCE)"
   ],
   "text_cdl": [
-            "ParallelBetweenLine(AB,CD)",
-        "ParallelBetweenLine(EF,CD)",
-        "ParallelBetweenLine(EF,AB)",
-        "ParallelBetweenLine(FE,BA)",
+    "ParallelBetweenLine(AB,CD)",
+    "ParallelBetweenLine(EF,CD)",
+    "ParallelBetweenLine(EF,AB)",
+    "ParallelBetweenLine(FE,BA)",
     "Equal(LengthOfLine(OE),6)",
     "Equal(LengthOfLine(AO),LengthOfLine(OD))",
     "Equal(LengthOfLine(DF),LengthOfLine(OD))"
@@ -26,12 +26,15 @@
   "goal_cdl": "Value(LengthOfLine(BE))",
   "problem_answer": "9",
   "theorem_seqs": [
-    "vertical_angle",
-         "line_addition",
-    "parallel_property_alternate_interior_angle",
-    "parallel_property_corresponding_angle",
-    "similar_triangle_judgment_aa",
-    "similar_triangle_property_line_ratio"
+    "vertical_angle(AOB,DOC)",
+    "line_addition(OD,DF)",
+    "line_addition(BO,OE)",
+    "parallel_property_alternate_interior_angle(FE,BA)",
+    "similar_triangle_judgment_aa(BAO,EFO)",
+    "similar_triangle_judgment_aa(OEF,OBA)",
+    "similar_triangle_property_line_ratio(BAO,EFO)",
+    "similar_triangle_property_line_ratio(AOB,FOE)",
+    "similar_triangle_property_line_ratio(EFO,BAO)"
   ],
   "raw_answer": "解:∵CD∥EF,OD=DF,∴OC=CE=\\frac{1}{2}OE=3,∵AB∥CD,AO=OD,∴OB=OD=3,∴BE=9,故选:A．"
 }

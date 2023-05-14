@@ -1,6 +1,6 @@
 {
   "problem_id": 7395,
-  "annotation": "xiaokaizhang_2023-03-06",
+  "annotation": "ZheZhu_2023-05-14",
   "source": "GeoQA-4727",
   "problem_level": 1,
   "problem_text_cn": "如图,在△ABC中,D为AB边上一点,DE∥BC交AC于点E,若\\frac{AD}{DB}=\\frac{3}{5},AE=6,则EC的长为()",
@@ -13,7 +13,7 @@
     "Collinear(ADB)"
   ],
   "text_cdl": [
-        "ParallelBetweenLine(DE,BC)",
+    "ParallelBetweenLine(DE,BC)",
     "Equal(Div(LengthOfLine(AD),LengthOfLine(DB)),3/5)",
     "Equal(LengthOfLine(AE),6)"
   ],
@@ -21,10 +21,18 @@
   "goal_cdl": "Value(LengthOfLine(EC))",
   "problem_answer": "10",
   "theorem_seqs": [
-     "line_addition",
-    "parallel_property_corresponding_angle",
-    "similar_triangle_judgment_aa",
-    "similar_triangle_property_line_ratio"
+    "line_addition(AE,EC)",
+    "line_addition(AD,DB)",
+    "parallel_property_corresponding_angle(DE,BC,A)",
+    "parallel_property_corresponding_angle(CB,ED,A)",
+    "similar_triangle_judgment_aa(EAD,CAB)",
+    "similar_triangle_judgment_aa(ABC,ADE)",
+    "similar_triangle_property_line_ratio(EAD,CAB)",
+    "similar_triangle_property_line_ratio(ADE,ABC)",
+    "similar_triangle_property_line_ratio(DEA,BCA)",
+    "similar_triangle_property_line_ratio(ABC,ADE)",
+    "similar_triangle_property_line_ratio(BCA,DEA)",
+    "similar_triangle_property_line_ratio(CAB,EAD)"
   ],
   "raw_answer": "解:∵DE∥BC,∴\\frac{AE}{EC}=\\frac{AD}{DB}=\\frac{3}{5},∵AE=6,∴EC=AE÷\\frac{3}{5}=6×\\frac{5}{3}=10,故选:B．"
 }

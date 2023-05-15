@@ -152,7 +152,8 @@ class FormalLanguageParser:
         results = []
         for extend in extend_items:
             if extend.startswith("Equal"):
-                results.append(FormalLanguageParser._parse_equal_predicate(extend, True))
+                parsed_equal, _ = FormalLanguageParser._parse_equal_predicate(extend, True)
+                results.append(parsed_equal)
             else:
                 extend_name, extend_para, _ = FormalLanguageParser._parse_one_predicate(extend, True)
                 results.append([extend_name, extend_para])
@@ -164,20 +165,44 @@ class FormalLanguageParser:
         parsed_GDL = {}
 
         for theorem_name in theorem_GDL:
-            body = []
-            for branch in theorem_GDL[theorem_name]:
-                parsed_premise = FormalLanguageParser._parse_premise([theorem_GDL[theorem_name][branch]["premise"]])
-                parsed_conclusion = FormalLanguageParser._parse_conclusion(theorem_GDL[theorem_name][branch]["conclusion"])
-                for p in parsed_premise:
-                    body.append([p, parsed_conclusion])  # premise, conclusion
-
             name, para, para_len = FormalLanguageParser._parse_one_predicate(theorem_name, True)
+            p1 = set(para)
+
+            body = {}
+            branch_count = 1
+            for branch in theorem_GDL[theorem_name]:
+                raw_premise_GDL = [theorem_GDL[theorem_name][branch]["premise"]]
+                parsed_premise, paras_list = FormalLanguageParser._parse_premise(raw_premise_GDL)
+                raw_theorem_GDL = theorem_GDL[theorem_name][branch]["conclusion"]
+                parsed_conclusion, paras = FormalLanguageParser._parse_conclusion(raw_theorem_GDL)
+
+                p2 = set(paras)
+                if len(p2 - p1) > 0:
+                    e_msg = "Theorem GDL definition error in <{}>.".format(theorem_name)
+                    raise Exception(e_msg)
+
+                for i in range(len(parsed_premise)):
+                    p2 = set(paras_list[i])
+                    if len(p2 - p1) > 0 or len(p1 - p2) > 0:
+                        e_msg = "Theorem GDL definition error in <{}>.".format(theorem_name)
+                        raise Exception(e_msg)
+                    body[branch_count] = {
+                        "product": parsed_premise[i],
+                        "logic_constraint": [],
+                        "algebra_constraint": [],
+                        "conclusion": parsed_conclusion
+                    }
+                    branch_count += 1
+
             parsed_GDL[name] = {
                 "vars": para,
                 "para_len": para_len,
                 "body": body
             }
-        for predicate in parsed_predicate_GDL["Entity"]:
+
+        for predicate in parsed_predicate_GDL["Entity"]:    # 这里要不要把extend内容加进来？
+            if len(parsed_predicate_GDL["Entity"][predicate]["extend"]) == 0:
+                continue
             name = predicate[0].lower()
             for i in range(1, len(predicate)):
                 if predicate[i].isupper():
@@ -191,6 +216,24 @@ class FormalLanguageParser:
                 "para_len": parsed_predicate_GDL["Entity"][predicate]["para_len"],
                 "body": [[[[predicate, parsed_predicate_GDL["Entity"][predicate]["vars"]]],
                           parsed_predicate_GDL["Entity"][predicate]["extend"]]]
+            }
+        for predicate in parsed_predicate_GDL["Relation"]:
+            if len(parsed_predicate_GDL["Relation"][predicate]["extend"]) == 0:
+                continue
+
+            name = predicate[0].lower()
+            for i in range(1, len(predicate)):
+                if predicate[i].isupper():
+                    name += "_{}".format(predicate[i].lower())
+                else:
+                    name += predicate[i]
+            name += "_definition"
+
+            parsed_GDL[name] = {
+                "vars": parsed_predicate_GDL["Relation"][predicate]["vars"],
+                "para_len": parsed_predicate_GDL["Relation"][predicate]["para_len"],
+                "body": [[[[predicate, parsed_predicate_GDL["Relation"][predicate]["vars"]]],
+                          parsed_predicate_GDL["Relation"][predicate]["extend"]]]
             }
         return parsed_GDL
 
@@ -253,15 +296,21 @@ class FormalLanguageParser:
                         expanded.append(head + body + tail)
             premise_GDL = expanded
 
+        paras_list = []
         for i in range(len(premise_GDL)):  # listing
             premise_GDL[i] = premise_GDL[i].split("&")
+            paras = []
             for j in range(len(premise_GDL[i])):
                 if "Equal" in premise_GDL[i][j]:
-                    premise_GDL[i][j] = FormalLanguageParser._parse_equal_predicate(premise_GDL[i][j], True)
+                    premise_GDL[i][j], equal_para = FormalLanguageParser._parse_equal_predicate(premise_GDL[i][j], True)
+                    paras += equal_para
                 else:
                     predicate, para, _ = FormalLanguageParser._parse_one_predicate(premise_GDL[i][j], True)
                     premise_GDL[i][j] = [predicate, para]
-        return premise_GDL
+                    paras += para
+            paras_list.append(paras)
+        
+        return premise_GDL, paras_list
 
     @staticmethod
     def _parse_conclusion(conclusion_GDL):
@@ -270,13 +319,16 @@ class FormalLanguageParser:
         >> _parse_conclusion(['Similar(ABC,ADE)'])
         [['Similar', ['a', 'b', 'c', 'a', 'd', 'e']]]
         """
+        paras = []
         for i in range(len(conclusion_GDL)):
             if "Equal" in conclusion_GDL[i]:
-                conclusion_GDL[i] = FormalLanguageParser._parse_equal_predicate(conclusion_GDL[i], True)
+                conclusion_GDL[i], equal_para = FormalLanguageParser._parse_equal_predicate(conclusion_GDL[i], True)
+                paras += equal_para
             else:
                 predicate, para, _ = FormalLanguageParser._parse_one_predicate(conclusion_GDL[i], True)
                 conclusion_GDL[i] = [predicate, para]
-        return conclusion_GDL
+                paras += para
+        return conclusion_GDL, paras
 
     @staticmethod
     def parse_problem(problem_CDL):
@@ -311,18 +363,21 @@ class FormalLanguageParser:
 
         for fl in problem_CDL["text_cdl"] + problem_CDL["image_cdl"]:
             if fl.startswith("Equal"):
-                parsed_CDL["parsed_cdl"]["text_and_image_cdl"].append(FormalLanguageParser._parse_equal_predicate(fl))
+                parsed_equal, _ = FormalLanguageParser._parse_equal_predicate(fl)
+                parsed_CDL["parsed_cdl"]["text_and_image_cdl"].append(parsed_equal)
             else:
                 predicate, para, _ = FormalLanguageParser._parse_one_predicate(fl)
                 parsed_CDL["parsed_cdl"]["text_and_image_cdl"].append([predicate, para])
 
         if problem_CDL["goal_cdl"].startswith("Value"):
             parsed_CDL["parsed_cdl"]["goal"]["type"] = "value"
-            parsed_CDL["parsed_cdl"]["goal"]["item"] = FormalLanguageParser._parse_equal_predicate(problem_CDL["goal_cdl"])
+            parsed_goal, _ = FormalLanguageParser._parse_equal_predicate(problem_CDL["goal_cdl"])
+            parsed_CDL["parsed_cdl"]["goal"]["item"] = parsed_goal
             parsed_CDL["parsed_cdl"]["goal"]["answer"] = problem_CDL["problem_answer"]
         elif problem_CDL["goal_cdl"].startswith("Equal"):
             parsed_CDL["parsed_cdl"]["goal"]["type"] = "equal"
-            parsed_CDL["parsed_cdl"]["goal"]["item"] = FormalLanguageParser._parse_equal_predicate(problem_CDL["goal_cdl"])
+            parsed_goal, _ = FormalLanguageParser._parse_equal_predicate(problem_CDL["goal_cdl"])
+            parsed_CDL["parsed_cdl"]["goal"]["item"] = parsed_goal
         else:
             parsed_CDL["parsed_cdl"]["goal"]["type"] = "logic"
             predicate, para, _ = FormalLanguageParser._parse_one_predicate(problem_CDL["goal_cdl"])
@@ -397,7 +452,7 @@ class FormalLanguageParser:
         ['Add', [['Length', ['A', 'B']], ['Length', ['C', 'D']]]]
         """
         if not isinstance(s_tree, list):
-            return s_tree
+            return s_tree, []
 
         is_para = True  # Judge whether the para list is reached.
         for para in s_tree:
@@ -413,11 +468,18 @@ class FormalLanguageParser:
 
         if is_para:
             if make_vars:
-                return list("".join(s_tree).lower())
+                listed_para = list("".join(s_tree).lower())
             else:
-                return list("".join(s_tree))
+                listed_para = list("".join(s_tree))
+            return listed_para, listed_para
         else:
-            return [FormalLanguageParser._listing(para, make_vars) for para in s_tree]
+            listed_tree = []
+            paras = []
+            for para in s_tree:
+                tree, para = FormalLanguageParser._listing(para, make_vars)
+                listed_tree.append(tree)
+                paras += para
+            return listed_tree, paras
 
 
 class EquationParser:

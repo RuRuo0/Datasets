@@ -149,6 +149,58 @@ class Interactor:
         return update
 
 
+class ForwardSearcher:
+    def __init__(self, predicate_GDL, theorem_GDL, max_depth):
+        self.predicate_GDL = FLParser.parse_predicate(predicate_GDL)
+        self.theorem_GDL = FLParser.parse_theorem(theorem_GDL, self.predicate_GDL)
+        self.max_depth = max_depth
+
+    def get_problem(self, problem_CDL):
+        """Init and return a problem by problem_CDL."""
+        s_start_time = time.time()
+        problem = Problem()
+        problem.load_problem_by_fl(self.predicate_GDL, FLParser.parse_problem(problem_CDL))  # load problem
+        EqKiller.solve_equations(problem)  # Solve the equations after initialization
+        problem.step("init_problem", time.time() - s_start_time)  # save applied theorem and update step
+        return problem
+
+    def get_theorem_selection(self, problem, theorem_skip_list):
+        """
+        1.得到当前可以应用的定理
+        2.去掉skip_list
+        3.CN1,CN2,...,CNN
+        :param problem: <Problem>, generate selections according the last step message of given problem.
+        :param theorem_skip_list: <list> of tuple(theorem_name, theorem_para, theorem_branch), theorem that can skip.
+        :return selections: <dict>, {(theorem_name, theorem_para): (predicate, item, premise, theorem)}.
+        """
+        return [1, 2, 3]
+
+    def search(self, problem, depth, theorem_skip_list, solved_seqs_list):
+        """
+        Forward search use deep-first strategy.
+        :param problem: <Problem>, it will copy a new problem at each node.
+        :param depth: <int>, depth of current search tree, start from 1.
+        :param theorem_skip_list: <list> of tuple(theorem_name, theorem_para, theorem_branch), theorem that can skip.
+        :param solved_seqs_list: <list> of list(theorem_seqs), list of solved theorem sequences.
+        """
+        if depth == self.max_depth:  # max depth
+            return
+
+        selections = self.get_theorem_selection(problem, theorem_skip_list)    # get applicable theorem list
+        # new_theorem_skip_list = theorem_skip_list + selections
+        for selection in selections:
+            child_problem = Problem()
+            child_problem.load_problem_by_copy(problem)
+            # child_problem.add(selection)
+            child_problem.check_goal()  # check goal
+            if child_problem.goal.solved:
+                _, seqs = get_used_theorem(child_problem)
+                if seqs not in solved_seqs_list:
+                    solved_seqs_list.append(seqs)
+                continue
+            self.search(child_problem, depth + 1, new_theorem_skip_list, solved_seqs_list)
+
+
 class Searcher:
     """Automatic geometry problem solver."""
     max_forward_depth = 20

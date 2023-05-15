@@ -132,6 +132,7 @@ class Condition:
 
 class Goal:
     def __init__(self):
+        """Goal of one problem."""
         self.type = None  # <str>, such as: 'algebra', 'logic'.
         self.item = None  # <equation> or predicate, such as: a - b, 'ParallelBetweenLine'
         self.answer = None  # <number> or <tuple> of <str>, such as: 0, ('A', 'B', 'C', 'D')

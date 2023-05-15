@@ -1,41 +1,16 @@
 import warnings
-from core.solver.solver import Interactor, Searcher
+from core.solver.solver import Interactor
 from core.aux_tools.utils import *
 from core.aux_tools.output import *
-from core.aux_tools.parser import FLParser
+from core.aux_tools.parser import FormalLanguageParser as FLParser
 import os
-
 path_preset = "data/preset/"
 path_formalized = "data/formalized-problems/"
 path_solved = "data/solved/"
 path_solved_problems = "data/solved/problems/"
 
 
-# def backward_run():
-#     """Backward run."""
-#     solver = Solver(load_json(path_preset + "predicate_GDL.json"),    # init solver
-#                     load_json(path_preset + "theorem_GDL.json"))
-#
-#     while True:
-#         pid = int(input("pid:"))
-#         problem_CDL = load_json("data/formalized-problems/{}.json".format(pid))
-#         solver.load_problem(problem_CDL)
-#
-#         if solver.problem.goal["type"] in ["equal", "value"]:
-#             print("Goal: (Equation, {})".format(solver.problem.goal["item"]))
-#             sub_goals = solver.find_sub_goals(("Equation", solver.problem.goal["item"]))
-#         else:
-#             print("Goal: ({}, {})".format(solver.problem.goal["item"], solver.problem.goal["answer"]))
-#             sub_goals = solver.find_sub_goals((solver.problem.goal["item"], solver.problem.goal["answer"]))
-#         print()
-#         for t_msg in sub_goals:
-#             print(t_msg)
-#             print(sub_goals[t_msg])
-#             print()
-#         print()
-
-
-def run(save_GDL=False, save_CDL=False, auto=False):
+def run(save_GDL=False, save_CDL=False, auto=False, clean_theorem=False):
     """Run solver and load problem from problem_GDL."""
     solver = Interactor(load_json(path_preset + "predicate_GDL.json"),  # init solver
                         load_json(path_preset + "theorem_GDL.json"))
@@ -65,9 +40,9 @@ def run(save_GDL=False, save_CDL=False, auto=False):
                 for theorem_name, theorem_para in FLParser.parse_theorem_seqs(problem_CDL["theorem_seqs"]):
                     solver.apply_theorem(theorem_name, theorem_para)
 
-                solver.check_goal()  # check goal after applied theorem seqs
+                solver.problem.check_goal()  # check goal after applied theorem seqs
 
-                if solver.problem.goal["solved"]:  # clean theorem
+                if clean_theorem and solver.problem.goal.solved:  # clean theorem
                     problem_CDL = load_json(path_formalized + filename)
                     _id, seqs = get_used_theorem(solver.problem)
                     problem_CDL["theorem_seqs"] = seqs
@@ -111,7 +86,7 @@ def run(save_GDL=False, save_CDL=False, auto=False):
             for theorem_name, theorem_para in FLParser.parse_theorem_seqs(problem_CDL["theorem_seqs"]):
                 solver.apply_theorem(theorem_name, theorem_para)
 
-            solver.check_goal()  # check goal after applied theorem seqs
+            solver.problem.check_goal()  # check goal after applied theorem seqs
 
             show(solver.problem)  # show solving process
 
@@ -135,4 +110,4 @@ def search():
 
 
 if __name__ == '__main__':
-    run()
+    run(auto=False)

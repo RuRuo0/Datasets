@@ -1,13 +1,17 @@
 from core.problem.condition import Condition
 from core.problem.problem import Problem
-from core.aux_tools.parser import *
-from core.solver.engine import *
+from core.aux_tools.parser import EquationParser as EqParser
+from core.aux_tools.parser import FormalLanguageParser as FLParser
+from core.aux_tools.parser import InverseParser as IvParser
+from core.solver.engine import EquationKiller as EqKiller
+from core.solver.engine import GeometryPredicateLogic as GeoLogic
 from core.aux_tools.output import get_used_theorem
+from core.aux_tools.utils import rough_equal
 import warnings
 import time
 
 
-class Solver:
+class Interactor:
 
     def __init__(self, predicate_GDL, theorem_GDL):
         self.predicate_GDL = FLParser.parse_predicate(predicate_GDL)
@@ -18,51 +22,12 @@ class Solver:
     def load_problem(self, problem_CDL):
         """Load problem through problem_CDL."""
         s_start_time = time.time()
-        self.problem = Problem(self.predicate_GDL)
-        self.problem.load_problem_from_cdl(FLParser.parse_problem(problem_CDL), 0, 0)  # load problem
-        EquationKiller.solve_equations(self.problem)  # Solve the equations after initialization
-        self.problem.applied("init_problem", time.time() - s_start_time)  # save applied theorem and update step
+        self.problem = Problem()
+        self.problem.load_problem_by_fl(self.predicate_GDL, FLParser.parse_problem(problem_CDL))  # load problem
+        EqKiller.solve_equations(self.problem)  # Solve the equations after initialization
+        self.problem.step("init_problem", time.time() - s_start_time)  # save applied theorem and update step
         self.loaded = True
-
-    def check_goal(self):
-        """Check whether the solution is completed."""
-        if not self.loaded:
-            e_msg = "Problem not loaded. Please run <load_problem> before run <apply_theorem>."
-            raise Exception(e_msg)
-
-        s_start_time = time.time()  # timing
-        if self.problem.goal["type"] in ["value", "equal"]:  # algebra relation
-            result, premise = EquationKiller.solve_target(self.problem.goal["item"], self.problem)
-            if result is not None:
-                if rough_equal(result, self.problem.goal["answer"]):
-                    self.problem.goal["solved"] = True
-                self.problem.goal["solved_answer"] = result
-
-                eq = self.problem.goal["item"] - result
-                if eq in self.problem.conditions["Equation"].get_id_by_item:
-                    self.problem.goal["premise"] = self.problem.conditions["Equation"].premises[eq]
-                    self.problem.goal["theorem"] = self.problem.conditions["Equation"].theorems[eq]
-                else:
-                    self.problem.goal["premise"] = tuple(set(premise))
-                    self.problem.goal["theorem"] = "solve_eq"
-        else:  # logic relation
-            condition = self.problem.conditions[self.problem.goal["item"]]
-            answer = self.problem.goal["answer"]
-            if answer in condition.get_id_by_item:
-                self.problem.goal["solved"] = True
-                self.problem.goal["solved_answer"] = answer
-                self.problem.goal["premise"] = condition.premises[answer]
-                self.problem.goal["theorem"] = condition.theorems[answer]
-
-        self.problem.applied("check_goal", time.time() - s_start_time)
-
-
-class Interactor(Solver):
-    """Interactive geometry problem solver."""
-
-    def __init__(self, predicate_GDL, theorem_GDL):
-        super().__init__(predicate_GDL, theorem_GDL)
-
+    
     def apply_theorem(self, theorem_name, theorem_para=None):
         """
         Apply a theorem and return whether it is successfully applied.
@@ -88,7 +53,7 @@ class Interactor(Solver):
         s_time = time.time()  # timing
 
         if theorem_para is not None:  # mode 1, accurate mode
-            theorem = InverseParser.inverse_parse_logic(  # theorem + para, add in problem
+            theorem = IvParser.inverse_parse_logic(  # theorem + para, add in problem
                 theorem_name, theorem_para, self.theorem_GDL[theorem_name]["para_len"])
             theorem_vars = self.theorem_GDL[theorem_name]["vars"]
             letters = {}  # used for vars-letters replacement
@@ -107,7 +72,7 @@ class Interactor(Solver):
                     if not negation:    # 'Predicate'
                         if predicate == "Equal":  # algebra premise
                             eq = EqParser.get_equation_from_tree(self.problem, item, True, letters)
-                            result, premise = EquationKiller.solve_target(eq, self.problem)
+                            result, premise = EqKiller.solve_target(eq, self.problem)
                             if result is None or not rough_equal(result, 0):  # not passed
                                 passed = False
                                 break
@@ -115,21 +80,21 @@ class Interactor(Solver):
                                 premises += premise
                         else:  # logic premise
                             item = tuple(letters[i] for i in item)
-                            if not self.problem.conditions[predicate].has(item):  # not passed
+                            if not self.problem.condition.has(predicate, item):  # not passed
                                 passed = False
                                 break
                             else:  # add premise if passed
-                                premises.append(self.problem.conditions[predicate].get_id_by_item[item])
+                                premises.append(self.problem.condition.get_id_by_predicate_and_item(predicate, item))
                     else:    # '~Predicate'
                         if predicate == "Equal":  # algebra premise
                             eq = EqParser.get_equation_from_tree(self.problem, item, True, letters)
-                            result, premise = EquationKiller.solve_target(eq, self.problem)
+                            result, premise = EqKiller.solve_target(eq, self.problem)
                             if result is not None and rough_equal(result, 0):  # not passed
                                 passed = False
                                 break
                         else:  # logic premise
                             item = tuple(letters[i] for i in item)
-                            if self.problem.conditions[predicate].has(item):  # not passed
+                            if self.problem.condition.has(predicate, item):  # not passed
                                 passed = False
                                 break
 
@@ -145,8 +110,8 @@ class Interactor(Solver):
                         item = tuple(letters[i] for i in item)
                         update = self.problem.add(predicate, item, premises, theorem) or update
 
-            EquationKiller.solve_equations(self.problem)
-            self.problem.applied(theorem, time.time() - s_time)
+            EqKiller.solve_equations(self.problem)
+            self.problem.step(theorem, time.time() - s_time)
 
         else:  # mode 2, rough mode
             theorem_list = []
@@ -159,7 +124,7 @@ class Interactor(Solver):
                         letters[r_vars[j]] = r_items[i][j]
 
                     theorem_para = [letters[i] for i in self.theorem_GDL[theorem_name]["vars"]]
-                    theorem = InverseParser.inverse_parse_logic(  # theorem + para, add in problem
+                    theorem = IvParser.inverse_parse_logic(  # theorem + para, add in problem
                         theorem_name, theorem_para, self.theorem_GDL[theorem_name]["para_len"])
                     theorem_list.append(theorem)
 
@@ -171,10 +136,10 @@ class Interactor(Solver):
                             item = tuple(letters[i] for i in item)
                             update = self.problem.add(predicate, item, r_ids[i], theorem) or update
 
-            EquationKiller.solve_equations(self.problem)
-            self.problem.applied(theorem_name, time.time() - s_time)
+            EqKiller.solve_equations(self.problem)
+            self.problem.step(theorem_name, time.time() - s_time)
             for t in theorem_list:
-                self.problem.applied(t, 0)
+                self.problem.step(t, 0)
 
         if not update:
             w_msg = "Theorem <{},{}> not applied. Please check your theorem_para or prerequisite.".format(
@@ -184,7 +149,7 @@ class Interactor(Solver):
         return update
 
 
-class Searcher(Solver):
+class Searcher:
     """Automatic geometry problem solver."""
     max_forward_depth = 20
 
@@ -281,19 +246,19 @@ class Searcher(Solver):
     #         last_theorem_msg = theorem_msg.pop(-1)
     #
     #         for theorem_name, theorem_para in theorem_msg:
-    #             theorem = InverseParser.inverse_parse_logic(  # theorem + para, add in problem
+    #             theorem = IvParser.inverse_parse_logic(  # theorem + para, add in problem
     #                 theorem_name, theorem_para, self.theorem_GDL[theorem_name]["para_len"])
     #             for predicate, item, premise in selection[(theorem_name, theorem_para)]:
     #                 update = self.problem.add(predicate, item, premise, theorem, True) or update
     #             self.problem.applied(theorem, 0)
     #
     #         theorem_name, theorem_para = last_theorem_msg
-    #         theorem = InverseParser.inverse_parse_logic(  # theorem + para, add in problem
+    #         theorem = IvParser.inverse_parse_logic(  # theorem + para, add in problem
     #             theorem_name, theorem_para, self.theorem_GDL[theorem_name]["para_len"])
     #         for predicate, item, premise in selection[(theorem_name, theorem_para)]:
     #             update = self.problem.add(predicate, item, premise, theorem, True) or update
     #
-    #         EquationKiller.solve_equations(self.problem)
+    #         EqKiller.solve_equations(self.problem)
     #         self.problem.applied(theorem, time.time() - s_time)
     #
     # def find_sub_goals(self, goal):
@@ -313,13 +278,13 @@ class Searcher(Solver):
     #
     #     if predicate == "Equation":  # algebra goal
     #         equation = self.problem.conditions["Equation"]
-    #         sym_to_eqs = EquationKiller.get_sym_to_eqs(list(equation.equations.values()))
+    #         sym_to_eqs = EqKiller.get_sym_to_eqs(list(equation.equations.values()))
     #
     #         for sym in item.free_symbols:
     #             if equation.value_of_sym[sym] is not None:
     #                 item = item.subs(sym, equation.value_of_sym[sym])
     #
-    #         mini_eqs, mini_syms = EquationKiller.get_minimum_equations(item, sym_to_eqs)
+    #         mini_eqs, mini_syms = EqKiller.get_minimum_equations(item, sym_to_eqs)
     #         unsolved_syms = []
     #         for sym in mini_syms:
     #             if equation.value_of_sym[sym] is None and equation.attr_of_sym[sym][0] != "Free":
@@ -329,3 +294,27 @@ class Searcher(Solver):
     #         sub_goals = GoalFinder.find_logic_sub_goals(predicate, item, self.problem, self.theorem_GDL)
     #
     #     return sub_goals
+
+
+# def backward_run():
+#     """Backward run."""
+#     solver = Solver(load_json(path_preset + "predicate_GDL.json"),    # init solver
+#                     load_json(path_preset + "theorem_GDL.json"))
+#
+#     while True:
+#         pid = int(input("pid:"))
+#         problem_CDL = load_json("data/formalized-problems/{}.json".format(pid))
+#         solver.load_problem(problem_CDL)
+#
+#         if solver.problem.goal["type"] in ["equal", "value"]:
+#             print("Goal: (Equation, {})".format(solver.problem.goal["item"]))
+#             sub_goals = solver.find_sub_goals(("Equation", solver.problem.goal["item"]))
+#         else:
+#             print("Goal: ({}, {})".format(solver.problem.goal["item"], solver.problem.goal["answer"]))
+#             sub_goals = solver.find_sub_goals((solver.problem.goal["item"], solver.problem.goal["answer"]))
+#         print()
+#         for t_msg in sub_goals:
+#             print(t_msg)
+#             print(sub_goals[t_msg])
+#             print()
+#         print()

@@ -3,7 +3,7 @@
 [![Version](https://img.shields.io/badge/Version-1.4.0-brightgreen)](https://github.com/BitSecret/FormalGeo-SAT)
 [![License](https://img.shields.io/badge/License-MIT-green)](https://opensource.org/licenses/MIT)
 [![Survey](https://img.shields.io/badge/Survey-FormalGeo-blue)](https://github.com/BitSecret/FormalGeo-SAT)  
-Formal representation and solving for SAT-level Euclidean plane geometry problems from SAT-level to IMO-level.  
+Formal representation and solving for Euclidean plane geometry problems from SAT-level to IMO-level.  
 **FormalGeo** is an extended version of **[GeoMechanical](https://github.com/BitSecret/GeoMechanical)**. It supports solving
 more types of plane geometric problems.
 

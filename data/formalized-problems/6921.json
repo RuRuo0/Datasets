@@ -1,0 +1,41 @@
+{
+  "problem_id": 6921,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-3931",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB是⊙O的直径,AC是⊙O的切线,A为切点,连接BC交⊙O于点D,若∠C=50°,则∠AOD的度数()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, AC is the tangent of ⊙O, A is the tangent point, connect BC and intersect ⊙O at point D, if ∠C = N_0, then the degree of ∠AOD ()",
+  "problem_img": "6921.png",
+  "construction_cdl": [
+    "Shape(BO,OD,DB)",
+    "Shape(DO,OA,OAD)",
+    "Shape(ODB,BD)",
+    "Shape(OAD,AC,CD)",
+    "Collinear(BOA)",
+    "Collinear(BDC)",
+    "Cocircular(O,BAD)"
+  ],
+  "text_cdl": [
+     "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)",
+    "Equal(MeasureOfAngle(ACD),50)",
+    "Equal(MeasureOfAngle(OAC),90)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(DOA))",
+  "problem_answer": "80",
+  "theorem_seqs": [
+"arc_property_center_angle",
+    "arc_property_circumference_angle_external",
+     "tangent_of_circle_property_perpendicular",
+    "radius_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum",
+    "flat_angle",
+    "angle_addition",
+    "sine_theorem",
+    "circle_property_length_of_radius_and_diameter"
+  ],
+  "raw_answer": "解:∵AC是⊙O的切线,∴AB⊥AC,且∠C=50°,∴∠ABC=40°,∴∠AOD=2∠ABC=80°,故选:C．"
+}

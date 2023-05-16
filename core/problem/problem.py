@@ -1,47 +1,34 @@
+from core.problem.condition import Condition, Goal
+from core.aux_tools.parser import EquationParser as EqParser
+from core.aux_tools.utils import rough_equal
+from core.solver.engine import EquationKiller as EqKiller
 import warnings
-from core.problem.condition import *
 from itertools import combinations
 from sympy import symbols
-from core.aux_tools.parser import EqParser
+from core.aux_tools.output import show
 import copy
+import time
 
 
 class Problem:
-    def __init__(self, predicate_GDL):
-        """Initialize a problem."""
-        self.predicate_GDL = predicate_GDL  # problem predicate definition
-        self.problem_CDL = None  # parsed problem msg
+    def __init__(self):
+        """Problem conditions, goal, and solving message."""
+        self.predicate_GDL = None
+        self.problem_CDL = None
+        self.condition = None  # <Condition>, all conditions of current problem.
+        self.goal = None  # <Goal>, problem goal.
+        self.timing = {}  # <dict>, {step: (theorem, timing)}, such as {0: ('init_problem', 0.00325)}.
 
-        self.conditions = None  # conditions
-
-        self.theorems_applied = None  # applied theorem list
-        self.time_consuming = None  # applied theorem time-consuming
-
-        self.goal = None  # goal
-
-        self.loaded = False  # if loaded
-
-    def load_problem_from_cdl(self, problem_CDL):
+    def load_problem_by_fl(self, predicate_GDL, problem_CDL):
         """Load problem through problem CDL."""
+        self.predicate_GDL = predicate_GDL  # gdl
         self.problem_CDL = problem_CDL  # cdl
-        self.loaded = True
-
-        self.conditions = {  # preset predicate
-            "Shape": VariableLengthCondition("Shape"),
-            "Collinear": VariableLengthCondition("Collinear"),
-            "Cocircular": VariableLengthCondition("Cocircular"),
-            "Point": FixedLengthCondition("Point"),
-            "Line": FixedLengthCondition("Line"),
-            "Arc": FixedLengthCondition("Arc"),
-            "Angle": FixedLengthCondition("Angle"),
-            "Polygon": VariableLengthCondition("Polygon"),
-            "Circle": FixedLengthCondition("Circle"),
-            "Equation": Equation("Equation")
-        }
-        for predicate in self.predicate_GDL["Entity"]:  # user defined predicate
-            self.conditions[predicate] = FixedLengthCondition(predicate)
-        for predicate in self.predicate_GDL["Relation"]:
-            self.conditions[predicate] = FixedLengthCondition(predicate)
+        fix_length_predicates = copy.copy(self.predicate_GDL["FixLength"])
+        fix_length_predicates += list(self.predicate_GDL["Entity"])
+        fix_length_predicates += list(self.predicate_GDL["Relation"])
+        variable_length_predicates = copy.copy(self.predicate_GDL["VariableLength"])
+        self.condition = Condition()
+        self.condition.init_by_fl(fix_length_predicates, variable_length_predicates)
 
         self._construction_init()  # start construction
 
@@ -51,34 +38,18 @@ class Problem:
             else:
                 self.add(predicate, tuple(item), (-1,), "prerequisite")
 
-        self.theorems_applied = []  # init
-        self.time_consuming = []
-
-        problem_goal_CDL = problem_CDL["parsed_cdl"]["goal"]  # set goal
-        self.goal = {"type": problem_goal_CDL["type"]}
-        if self.goal["type"] == "value":
-            self.goal["item"] = EqParser.get_expr_from_tree(self, problem_goal_CDL["item"][1][0])
-            self.goal["answer"] = EqParser.get_expr_from_tree(self, problem_goal_CDL["answer"])
-        elif self.goal["type"] == "equal":
-            self.goal["item"] = EqParser.get_equation_from_tree(self, problem_goal_CDL["item"][1])
-            self.goal["answer"] = 0
-        else:
-            self.goal["item"] = problem_goal_CDL["item"]
-            self.goal["answer"] = tuple(problem_goal_CDL["answer"])
-        self.goal["solved"] = False
-        self.goal["solved_answer"] = None
-        self.goal["premise"] = None
-        self.goal["theorem"] = None
+        self.goal = Goal()  # set goal
+        self.goal.init_by_fl(self, problem_CDL["parsed_cdl"]["goal"])
 
     def load_problem_by_copy(self, problem):
         """Load problem through copying existing problem."""
+        self.predicate_GDL = problem.predicate_GDL  # gdl
         self.problem_CDL = problem.problem_CDL  # cdl
-        self.loaded = True
-
-        self.conditions = copy.deepcopy(problem.conditions)  # copy
-        self.theorems_applied = copy.deepcopy(problem.theorems_applied)
-        self.time_consuming = copy.deepcopy(problem.time_consuming)
-        self.goal = copy.deepcopy(problem.goal)
+        self.condition = Condition()  # copy all msg of problem
+        self.condition.init_by_copy(problem.condition)
+        self.timing = copy.deepcopy(problem.timing)
+        self.goal = Goal()  # set goal
+        self.goal.init_by_copy(problem.goal)
 
     def _construction_init(self):
         """
@@ -90,10 +61,6 @@ class Problem:
         5.Angle expand (collinear).
         6.Angle expand (vertical angle).
         """
-        if not self.loaded:  # problem must be loaded
-            e_msg = "Problem not loaded. Please run <load_problem> before run other functions."
-            raise Exception(e_msg)
-
         # 1.Collinear expand.
         for predicate, item in self.problem_CDL["parsed_cdl"]["construction_cdl"]:  # Collinear
             if predicate != "Collinear":
@@ -103,15 +70,15 @@ class Problem:
                 warnings.warn(w_msg)
                 continue
 
-            added, _id = self.conditions[predicate].add(tuple(item), (-1,), "prerequisite")
+            added, _id = self.condition.add(predicate, tuple(item), (-1,), "prerequisite")
             if not added:
                 continue
 
-            self.conditions[predicate].add(tuple(item[::-1]), (_id,), "extended")
+            self.condition.add(predicate, tuple(item[::-1]), (_id,), "extended")
             self.add("Line", (item[0], item[-1]), (_id,), "extended")
             for extended_item in combinations(item, 3):  # l=3 is enough
-                self.conditions["Collinear"].add(extended_item, (_id,), "extended")
-                self.conditions["Collinear"].add(extended_item[::-1], (_id,), "extended")
+                self.condition.add("Collinear", extended_item, (_id,), "extended")
+                self.condition.add("Collinear", extended_item[::-1], (_id,), "extended")
                 self.add("Angle", extended_item, (_id,), "extended")
                 self.add("Angle", extended_item[::-1], (_id,), "extended")
 
@@ -124,7 +91,7 @@ class Problem:
                 warnings.warn(w_msg)
                 continue
 
-            added, _id = self.conditions[predicate].add(tuple(item), (-1,), "prerequisite")
+            added, _id = self.condition.add(predicate, tuple(item), (-1,), "prerequisite")
             if not added:
                 continue
 
@@ -137,13 +104,13 @@ class Problem:
             for com in range(1, len(item) + 1):  # extend cocircular
                 for extended_item in combinations(item, com):
                     if com == 2:
-                        self.conditions["Arc"].add((circle, extended_item[0], extended_item[-1]), (_id,), "extended")
-                        self.conditions["Arc"].add((circle, extended_item[-1], extended_item[0]), (_id,), "extended")
+                        self.condition.add("Arc", (circle, extended_item[0], extended_item[-1]), (_id,), "extended")
+                        self.condition.add("Arc", (circle, extended_item[-1], extended_item[0]), (_id,), "extended")
                     cocircular = list(extended_item)
                     l = len(cocircular)
                     for bias in range(l):
-                        self.conditions["Cocircular"].add(
-                            tuple([circle] + [cocircular[(i + bias) % l] for i in range(l)]), (_id,), "extended")
+                        extended_item = tuple([circle] + [cocircular[(i + bias) % l] for i in range(l)])
+                        self.condition.add("Cocircular", extended_item, (_id,), "extended")
 
         # 3.Shape expand.
         jigsaw_unit = {}  # shape's jigsaw
@@ -215,7 +182,7 @@ class Problem:
                         continue
 
                     new_shape = tuple(new_shape)
-                    if not self.conditions["Shape"].can_add(new_shape):  # ensure new shape
+                    if self.condition.has("Shape", new_shape):
                         continue
 
                     all_sides = ""
@@ -231,8 +198,8 @@ class Problem:
                     if not checked:  # ensure no holes
                         continue
 
-                    premise = (self.conditions["Shape"].get_id_by_item[unit],
-                               self.conditions["Shape"].get_id_by_item[comb])
+                    premise = (self.condition.get_id_by_predicate_and_item("Shape", unit),
+                               self.condition.get_id_by_predicate_and_item("Shape", comb))
 
                     added, all_forms = self._add_shape(new_shape, premise, "extended")  # add shape
                     if not added:  # ensure added
@@ -247,7 +214,7 @@ class Problem:
             jigsaw_comb = jigsaw_comb_new
 
         # 4.Angle expand (combination).
-        angle_unit = list(self.conditions["Angle"].get_id_by_item)
+        angle_unit = self.condition.get_items_by_predicate("Angle")
         jigsaw_unit = {}
         for angle in angle_unit:
             jigsaw_unit[angle] = {angle}
@@ -266,9 +233,10 @@ class Problem:
                     if not (unit[1] == comb[1] and unit[2] == comb[0] and unit[0] != comb[2]):  # ensure adjacent
                         continue
 
-                    if (unit[0], unit[1], comb[2]) in self.conditions["Angle"].get_id_by_item or \
-                            (unit[0], comb[2], unit[1]) in self.conditions["Angle"].get_id_by_item or \
-                            (comb[2], unit[0], unit[1]) in self.conditions["Angle"].get_id_by_item:
+                    angles = self.condition.get_items_by_predicate("Angle")
+                    if (unit[0], unit[1], comb[2]) in angles or \
+                            (unit[0], comb[2], unit[1]) in angles or \
+                            (comb[2], unit[0], unit[1]) in angles:
                         continue
 
                     new_angle = (unit[0], unit[1], comb[2])
@@ -276,9 +244,9 @@ class Problem:
                     if not len(new_angle) == len(set(new_angle)):  # ensure same points
                         continue
 
-                    premise = (self.conditions["Angle"].get_id_by_item[unit],
-                               self.conditions["Angle"].get_id_by_item[comb])
-                    added, _ = self.conditions["Angle"].add(new_angle, premise, "extended")  # need to expand line
+                    premise = (self.condition.get_id_by_predicate_and_item("Angle", unit),
+                               self.condition.get_id_by_predicate_and_item("Angle", comb))
+                    added, _ = self.condition.add("Angle", new_angle, premise, "extended")  # need to expand line
                     if not added:
                         continue
 
@@ -290,7 +258,7 @@ class Problem:
             jigsaw_comb = jigsaw_comb_new
 
         # 5.Angle collinear expand.
-        for angle in list(self.conditions["Angle"].get_id_by_item):
+        for angle in self.condition.get_items_by_predicate("Angle"):
             a, v, b = angle
             a_collinear = None
             b_collinear = None
@@ -333,17 +301,17 @@ class Problem:
 
             for a_point in a_points:
                 for b_point in b_points:
-                    premise = (self.conditions["Angle"].get_id_by_item[angle],)
+                    premise = (self.condition.get_id_by_predicate_and_item("Angle", angle),)
                     self.add("Angle", (a_point, v, b_point), premise, "extended")
 
         # 6.Angle expand (vertical angle).
-        for angle in list(self.conditions["Angle"].get_id_by_item):
-            premise = (self.conditions["Angle"].get_id_by_item[angle],)
+        for angle in self.condition.get_items_by_predicate("Angle"):
+            premise = (self.condition.get_id_by_predicate_and_item("Angle", angle),)
             self.add("Angle", (angle[2], angle[1], angle[0]), premise, "extended")
 
     def _add_shape(self, shape, premise, theorem):
         """pass"""
-        added, _id = self.conditions["Shape"].add(shape, premise, theorem)
+        added, _id = self.condition.add("Shape", shape, premise, theorem)
         if not added:
             return False, None
 
@@ -351,18 +319,18 @@ class Problem:
         l = len(shape)
         for bias in range(1, l):  # all forms
             new_item = tuple([shape[(i + bias) % l] for i in range(l)])
-            self.conditions["Shape"].add(new_item, (_id,), "extended")
+            self.condition.add("Shape", new_item, (_id,), "extended")
             all_forms.append(new_item)
 
         shape = list(shape)
-        _, col, _ = self.conditions["Collinear"].get_items(["a", "b", "c"])
+        _, col = self.condition.get_ids_and_items_by_predicate_and_variable("Collinear", ["a", "b", "c"])
         # premise = [_id]
         i = 0
         has_arc = False
         while i < len(shape):
             j = (i + 1) % len(shape)
             if len(shape[i]) == 2 and len(shape[j]) == 2:
-                self.add("Angle", (shape[i][0], shape[i][1], shape[j][1]), (-1,), "prerequisite")   # extend angle
+                self.add("Angle", (shape[i][0], shape[i][1], shape[j][1]), (-1,), "prerequisite")  # extend angle
                 if (shape[i][0], shape[i][1], shape[j][1]) in col:
                     shape[i] = shape[i][0] + shape[j][1]
                     shape.pop(j)
@@ -399,7 +367,7 @@ class Problem:
         Measure(Angle(ABC)), Measure(Angle(ABD))  ==>  m_abc,  if Collinear(BCD)
         """
         sym = symbols("ma_" + "".join(angle).lower(), positive=True)  # init sym
-        self.conditions["Equation"].value_of_sym[sym] = None  # init symbol's value
+        self.condition.value_of_sym[sym] = None  # init symbol's value
 
         a, v, b = angle
         a_collinear = None
@@ -447,8 +415,8 @@ class Problem:
                 same_angles.append((a_point, v, b_point))
 
         for same_angle in same_angles:
-            self.conditions["Equation"].sym_of_attr[("MeasureOfAngle", same_angle)] = sym
-        self.conditions["Equation"].attr_of_sym[sym] = ("MeasureOfAngle", tuple(same_angles))
+            self.condition.sym_of_attr[("MeasureOfAngle", same_angle)] = sym
+        self.condition.attr_of_sym[sym] = ("MeasureOfAngle", tuple(same_angles))
 
         return sym
 
@@ -463,35 +431,22 @@ class Problem:
         :param skip_check: <bool>, set to True when you are confident that the format of item must be legal.
         :return: True or False.
         """
-        if not self.loaded:  # problem must be loaded
-            e_msg = "Problem not loaded. Please run <load_problem> before run other functions."
-            raise Exception(e_msg)
-        if predicate not in self.conditions:  # predicate must be defined
-            e_msg = "Predicate '{}' not defined in current predicate GDL.".format(predicate)
-            raise Exception(e_msg)
+        if not skip_check and not self.can_add(predicate, item, premise, theorem):
+            return False
 
-        if not skip_check:
-            if not self.ee_check(predicate, item):  # ee check
-                w_msg = "EE check not passed: [{}, {}, {}, {}]".format(predicate, item, premise, theorem)
-                warnings.warn(w_msg)
-                return False
-            if not self.fv_check(predicate, item):  # fv check
-                w_msg = "FV check not passed: [{}, {}, {}, {}]".format(predicate, item, premise, theorem)
-                warnings.warn(w_msg)
-                return False
-
-        added, _id = self.conditions[predicate].add(item, tuple(premise), theorem)
+        added, _id = self.condition.add(predicate, item, tuple(premise), theorem)
         if added:
             if predicate == "Equation":  # preset Equation
                 return True
-            elif predicate in self.predicate_GDL["BasicEntity"]:  # preset BasicEntity
+
+            if predicate in self.predicate_GDL["BasicEntity"]:  # preset BasicEntity
                 if predicate == "Line":
-                    self.conditions["Line"].add(item[::-1], (_id,), "extended")
-                    self.conditions["Point"].add((item[0],), (_id,), "extended")
-                    self.conditions["Point"].add((item[1],), (_id,), "extended")
+                    self.condition.add("Line", item[::-1], (_id,), "extended")
+                    self.condition.add("Point", (item[0],), (_id,), "extended")
+                    self.condition.add("Point", (item[1],), (_id,), "extended")
                 elif predicate == "Arc":
-                    self.conditions["Point"].add((item[1],), (_id,), "extended")
-                    self.conditions["Point"].add((item[2],), (_id,), "extended")
+                    self.condition.add("Point", (item[1],), (_id,), "extended")
+                    self.condition.add("Point", (item[2],), (_id,), "extended")
                 elif predicate == "Angle":
                     self.add("Line", (item[0], item[1]), (_id,), "extended", skip_check=True)
                     self.add("Line", (item[1], item[2]), (_id,), "extended", skip_check=True)
@@ -499,9 +454,10 @@ class Problem:
                     l = len(item)
                     for bias in range(1, l):  # all forms
                         new_item = tuple([item[(i + bias) % l] for i in range(l)])
-                        self.conditions["Polygon"].add(new_item, (_id,), "extended")
+                        self.condition.add("Polygon", new_item, (_id,), "extended")
                 return True  # Point and Circle no need to extend
-            elif predicate in self.predicate_GDL["Entity"]:  # user defined Entity
+
+            if predicate in self.predicate_GDL["Entity"]:  # user defined Entity
                 item_GDL = self.predicate_GDL["Entity"][predicate]
             else:  # user defined Relation
                 item_GDL = self.predicate_GDL["Relation"][predicate]
@@ -512,7 +468,7 @@ class Problem:
                 letters[predicate_vars[i]] = item[i]
 
             for para_list in item_GDL["multi"]:  # multi
-                self.conditions[predicate].add(tuple(letters[i] for i in para_list), (_id,), "extended")
+                self.condition.add(predicate, tuple(letters[i] for i in para_list), (_id,), "extended")
 
             for extended_predicate, para in item_GDL["extend"]:  # extended
                 if extended_predicate == "Equal":
@@ -526,17 +482,14 @@ class Problem:
 
     def can_add(self, predicate, item, premise, theorem):
         """
-        Test add item.
+        EE check and FV check.
         :param predicate: Construction, Entity, Relation or Equation.
         :param item: <tuple> or equation.
         :param premise: tuple of <int>, premise of item.
         :param theorem: <str>, theorem of item.
         :return: True or False.
         """
-        if not self.loaded:  # problem must be loaded
-            e_msg = "Problem not loaded. Please run <load_problem> before run other functions."
-            raise Exception(e_msg)
-        if predicate not in self.conditions:  # predicate must be defined
+        if predicate not in self.condition.items_group:  # predicate must be defined
             e_msg = "Predicate '{}' not defined in current predicate GDL.".format(predicate)
             raise Exception(e_msg)
         if not self.ee_check(predicate, item):  # ee check
@@ -548,7 +501,7 @@ class Problem:
             warnings.warn(w_msg)
             return False
 
-        return self.conditions[predicate].can_add(item)
+        return not self.condition.has(predicate, item)
 
     def ee_check(self, predicate, item):
         """Entity Existence check."""
@@ -569,7 +522,7 @@ class Problem:
             letters[item_GDL["vars"][i]] = item[i]
 
         for name, para in item_GDL["ee_check"]:
-            if tuple(letters[i] for i in para) not in self.conditions[name].get_id_by_item:
+            if tuple(letters[i] for i in para) not in self.condition.get_items_by_predicate(name):
                 return False
         return True
 
@@ -693,24 +646,24 @@ class Problem:
             warnings.warn(msg)
             return None
 
-        if (attr, item) in self.conditions["Equation"].sym_of_attr:  # already has sym
-            return self.conditions["Equation"].sym_of_attr[(attr, item)]
+        if (attr, item) in self.condition.sym_of_attr:  # already has sym
+            return self.condition.sym_of_attr[(attr, item)]
 
         if attr == "Free":
             sym = symbols("f_" + "".join(item).lower())
-            self.conditions["Equation"].sym_of_attr[(attr, item)] = sym  # add sym
-            self.conditions["Equation"].value_of_sym[sym] = None  # init symbol's value
-            self.conditions["Equation"].attr_of_sym[sym] = (attr, (item,))  # add attr
+            self.condition.sym_of_attr[(attr, item)] = sym  # add sym
+            self.condition.value_of_sym[sym] = None  # init symbol's value
+            self.condition.attr_of_sym[sym] = (attr, (item,))  # add attr
             return sym
 
         if attr == "MeasureOfAngle":  # align angle's sym
             return self._align_angle_sym(item)
 
         attr_GDL = self.predicate_GDL["Attribution"][attr]
-        if (attr, item) not in self.conditions["Equation"].sym_of_attr:  # No symbolic representation, initialize one.
+        if (attr, item) not in self.condition.sym_of_attr:  # No symbolic representation, initialize one.
             sym = symbols(attr_GDL["sym"] + "_" + "".join(item).lower(), positive=True)
-            self.conditions["Equation"].sym_of_attr[(attr, item)] = sym  # add sym
-            self.conditions["Equation"].value_of_sym[sym] = None  # init symbol's value
+            self.condition.sym_of_attr[(attr, item)] = sym  # add sym
+            self.condition.value_of_sym[sym] = None  # init symbol's value
 
             extend_items = [item]
 
@@ -720,10 +673,10 @@ class Problem:
 
             for multi in attr_GDL["multi"]:
                 extended_item = [letters[i] for i in multi]  # extend item
-                self.conditions["Equation"].sym_of_attr[(attr, tuple(extended_item))] = sym  # multi representation
+                self.condition.sym_of_attr[(attr, tuple(extended_item))] = sym  # multi representation
                 extend_items.append(tuple(extended_item))
 
-            self.conditions["Equation"].attr_of_sym[sym] = (attr, tuple(extend_items))  # add attr
+            self.condition.attr_of_sym[sym] = (attr, tuple(extend_items))  # add attr
             return sym
 
     def set_value_of_sym(self, sym, value, premise, theorem):
@@ -736,22 +689,50 @@ class Problem:
         :param theorem: <str>, theorem of getting value. such as 'solve_eq'.
         """
 
-        if self.conditions["Equation"].value_of_sym[sym] is None:
-            self.conditions["Equation"].value_of_sym[sym] = value
-            added, _id = self.conditions["Equation"].add(sym - value, premise, theorem)
+        if self.condition.value_of_sym[sym] is None:
+            self.condition.value_of_sym[sym] = value
+            added, _id = self.condition.add("Equation", sym - value, premise, theorem)
             return added
         return False
 
-    def applied(self, theorem, time_consuming):
+    def step(self, item, timing):
         """
         Execute when theorem successful applied. Save theorem name and update step.
-        :param theorem: theorem name and para, <str>
-        :param time_consuming: <float>
+        :param item: <str>, theorem_name, 'init_problem' and 'check_goal'.
+        :param timing: <float>.
         """
+        self.timing[self.condition.step_count] = (item, timing)
+        self.condition.step()
 
-        if theorem == "check_goal":
-            self.time_consuming[-1] += time_consuming
-        else:
-            self.theorems_applied.append(theorem)
-            self.time_consuming.append(time_consuming)
-            Condition.step += 1
+    def check_goal(self):
+        """Check whether the solution is completed."""
+        # show(self)
+        s_start_time = time.time()  # timing
+        if self.goal.type == "algebra":  # algebra relation
+            result, premise = EqKiller.solve_target(self.goal.item, self)
+
+            if result is not None:
+                if rough_equal(result, self.goal.answer):
+                    self.goal.solved = True
+                self.goal.solved_answer = result
+
+                eq = self.goal.item - result
+                # key_eq = list(self.condition.id_of_item)[-1][1]
+                # print("eq: {}".format(eq))
+                # print("key_eq: {}".format(key_eq))
+                # print("eq in dict: {}".format(("Equation", eq) in self.condition.id_of_item))
+                # print("eq in list: {}".format(("Equation", eq) in list(self.condition.id_of_item)))
+                if eq in self.condition.get_items_by_predicate("Equation"):
+                    self.goal.premise = self.condition.get_premise_by_predicate_and_item("Equation", eq)
+                    self.goal.theorem = self.condition.get_theorem_by_predicate_and_item("Equation", eq)
+                else:
+                    self.goal.premise = tuple(premise)
+                    self.goal.theorem = "solve_eq"
+        elif self.goal.type == "logic":  # logic relation
+            if self.goal.answer in self.condition.get_items_by_predicate(self.goal.item):
+                self.goal.solved = True
+                self.goal.solved_answer = self.goal.answer
+                self.goal.premise = self.condition.get_premise_by_predicate_and_item(self.goal.item, self.goal.answer)
+                self.goal.theorem = self.condition.get_theorem_by_predicate_and_item(self.goal.item, self.goal.answer)
+
+        self.step("check_goal", time.time() - s_start_time)

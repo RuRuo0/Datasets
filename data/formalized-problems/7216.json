@@ -1,0 +1,52 @@
+{
+  "problem_id": 7216,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4415",
+  "problem_level": 1,
+  "problem_text_cn": "如图,四边形OBCD中,∠BCD=90°,E为CD的中点,以OB为半径的⊙O切CD于E,交BC于M,若BM=CM=2,则OC的长为()",
+  "problem_text_en": "As shown in the figure, in the quadrilateral OBCD, ∠BCD = N_0, E is the midpoint of CD, ⊙O with OB as the radius is tangent to CD at E, and intersects BC at M. If BM = CM = N_1, then the length of OC is ()",
+  "problem_img": "7216.png",
+  "construction_cdl": [
+    "Shape(BO,OA,OAB)",
+    "Shape(AO,OE,OEA)",
+    "Shape(ED,DA,OEA)",
+    "Shape(EO,OF,OFE)",
+    "Shape(FO,OM,OMF)",
+    "Shape(OB,BG,GO)",
+    "Shape(OG,GM,MO)",
+    "Shape(MG,GB,OBM)",
+    "Shape(FC,CE,OFE)",
+    "Shape(MC,CF,OMF)",
+    "Collinear(DAOB)",
+    "Collinear(DEC)",
+    "Collinear(BGMC)",
+    "Collinear(OFC)",
+    "Cocircular(O,BMFEA)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(CE,O)",
+    "IsTangentOfCircle(DE,O)",
+    "IsPerpendicularBisectorOfLine(OG,BM)",
+    "Equal(LengthOfLine(BM),2)",
+    "Equal(LengthOfLine(MC),2)",
+    "Equal(LengthOfLine(OE),3)",
+    "Equal(MeasureOfAngle(BCD),90)",
+    "Rectangle(OGCE)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(OC))",
+  "problem_answer": "√{17}",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular",
+    "radius_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal(OBM)",
+    "isosceles_triangle_property_line_coincidence(OBM,G)",
+    "line_addition",
+    "right_triangle_judgment_angle(BGO)",
+    "right_triangle_judgment_angle(OGC)",
+    "right_triangle_property_pythagorean(BGO)",
+    "right_triangle_property_pythagorean(OGC)"
+  ],
+  "raw_answer": "解:连接OM、OE,过O作OF⊥BC于F,∵OF过O,∴BF=FM=1,∴FC=1+2=3,∵DC切⊙O于E,∠BCD=90°,OF⊥BC,∴∠OEC=∠ECF=∠OFC=90°,∴四边形OFCE是矩形,∴OE=FC=3,CE=OF,∴OB=OE=3,在Rt△OFB中,OB=3,BF=1,由勾股定理得:OF=2√{2}=CE,在Rt△OFC中,OF=2√{2},CF=3,由勾股定理得:OC=√{(2√{2})^{2}+3^{2}}=√{17},故选:C．"
+}

@@ -1,0 +1,39 @@
+{
+  "problem_id": 6670,
+  "annotation": "NaZhu_2023-05-14",
+  "source": "GeoQA-3475",
+  "problem_level": 1,
+  "problem_text_cn": "如图,半径为5的⊙A中,已知DE=6,∠BAC+∠EAD=180°,则弦BC的长为()",
+  "problem_text_en": "As shown in the figure, in ⊙A with a radius of N_0, it is known that DE = N_1, ∠BAC + ∠EAD = N_2, then the length of chord BC is ()",
+  "problem_img": "6670.png",
+  "construction_cdl": [
+    "Shape(ADC,CA,AD)",
+    "Shape(ACB,BC)",
+    "Shape(ABE,EA,AB)",
+    "Shape(AED,DE)",
+    "Shape(AC,CB,BA)",
+    "Shape(AE,ED,DA)",
+    "Cocircular(A,BEDC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(A,A)",
+    "Equal(LengthOfLine(DE),6)",
+    "Equal(RadiusOfCircle(A),5)",
+    "Equal(Add(MeasureOfAngle(BAC),MeasureOfAngle(DAE)),180)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(BC))",
+  "problem_answer": "8",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "cosine_theorem(AED)",
+    "isosceles_triangle_judgment_line_equal(AED)",
+    "isosceles_triangle_property_angle_equal(AED)",
+    "triangle_property_angle_sum(AED)",
+    "isosceles_triangle_judgment_line_equal(ACB)",
+    "isosceles_triangle_property_angle_equal(ACB)",
+    "triangle_property_angle_sum(ACB)",
+    "sine_theorem(CBA)"
+  ],
+  "raw_answer": "解:作AH⊥BC于H,作直径CF,连结BF,如图,∵∠BAC+∠EAD=180°,\n而∠BAC+∠BAF=180°,∴∠DAE=∠BAF,∴⁀{DE}=⁀{BF},∴DE=BF=6,∵AH⊥BC,∴CH=BH,∵CA=AF,∴AH为△CBF的中位线,∴AH=\\frac{1}{2}BF=3．∴BH=√{AB^{2}-AH^{2}}=√{5^{2}-3^{2}}=4,∴BC=2BH=8．\n故选:D．"
+}

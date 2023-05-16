@@ -27,7 +27,7 @@ class Interactor:
         EqKiller.solve_equations(self.problem)  # Solve the equations after initialization
         self.problem.step("init_problem", time.time() - s_start_time)  # save applied theorem and update step
         self.loaded = True
-    
+
     def apply_theorem(self, theorem_name, theorem_para=None):
         """
         Apply a theorem and return whether it is successfully applied.
@@ -49,102 +49,117 @@ class Interactor:
                 theorem_name, len(self.theorem_GDL[theorem_name]["vars"]), theorem_para)
             raise Exception(e_msg)
 
-        update = False
-        s_time = time.time()  # timing
-
-        if theorem_para is not None:  # mode 1, accurate mode
-            theorem = IvParser.inverse_parse_logic(  # theorem + para, add in problem
-                theorem_name, theorem_para, self.theorem_GDL[theorem_name]["para_len"])
-            theorem_vars = self.theorem_GDL[theorem_name]["vars"]
-            letters = {}  # used for vars-letters replacement
-            for i in range(len(theorem_vars)):
-                letters[theorem_vars[i]] = theorem_para[i]
-
-            for premises_GDL, conclusions_GDL in self.theorem_GDL[theorem_name]["body"]:
-                premises = []
-                passed = True
-                for predicate, item in premises_GDL:
-                    negation = False
-                    if "~" in predicate:
-                        negation = True
-                        predicate = predicate.replace("~", "")
-
-                    if not negation:    # 'Predicate'
-                        if predicate == "Equal":  # algebra premise
-                            eq = EqParser.get_equation_from_tree(self.problem, item, True, letters)
-                            result, premise = EqKiller.solve_target(eq, self.problem)
-                            if result is None or not rough_equal(result, 0):  # not passed
-                                passed = False
-                                break
-                            else:  # add premise if passed
-                                premises += premise
-                        else:  # logic premise
-                            item = tuple(letters[i] for i in item)
-                            if not self.problem.condition.has(predicate, item):  # not passed
-                                passed = False
-                                break
-                            else:  # add premise if passed
-                                premises.append(self.problem.condition.get_id_by_predicate_and_item(predicate, item))
-                    else:    # '~Predicate'
-                        if predicate == "Equal":  # algebra premise
-                            eq = EqParser.get_equation_from_tree(self.problem, item, True, letters)
-                            result, premise = EqKiller.solve_target(eq, self.problem)
-                            if result is not None and rough_equal(result, 0):  # not passed
-                                passed = False
-                                break
-                        else:  # logic premise
-                            item = tuple(letters[i] for i in item)
-                            if self.problem.condition.has(predicate, item):  # not passed
-                                passed = False
-                                break
-
-                if not passed:  # If the premise is not met, no conclusion will be generated
-                    continue
-
-                premises = tuple(set(premises))  # fast repeat removal
-                for predicate, item in conclusions_GDL:
-                    if predicate == "Equal":  # algebra conclusion
-                        eq = EqParser.get_equation_from_tree(self.problem, item, True, letters)
-                        update = self.problem.add("Equation", eq, premises, theorem) or update
-                    else:  # logic conclusion
-                        item = tuple(letters[i] for i in item)
-                        update = self.problem.add(predicate, item, premises, theorem) or update
-
-            EqKiller.solve_equations(self.problem)
-            self.problem.step(theorem, time.time() - s_time)
-
-        else:  # mode 2, rough mode
-            theorem_list = []
-            for premises_GDL, conclusions_GDL in self.theorem_GDL[theorem_name]["body"]:
-                r_ids, r_items, r_vars = GeoLogic.run(premises_GDL, self.problem)
-
-                for i in range(len(r_items)):
-                    letters = {}
-                    for j in range(len(r_vars)):
-                        letters[r_vars[j]] = r_items[i][j]
-
-                    theorem_para = [letters[i] for i in self.theorem_GDL[theorem_name]["vars"]]
-                    theorem = IvParser.inverse_parse_logic(  # theorem + para, add in problem
-                        theorem_name, theorem_para, self.theorem_GDL[theorem_name]["para_len"])
-                    theorem_list.append(theorem)
-
-                    for predicate, item in conclusions_GDL:
-                        if predicate == "Equal":  # algebra conclusion
-                            eq = EqParser.get_equation_from_tree(self.problem, item, True, letters)
-                            update = self.problem.add("Equation", eq, r_ids[i], theorem) or update
-                        else:  # logic conclusion
-                            item = tuple(letters[i] for i in item)
-                            update = self.problem.add(predicate, item, r_ids[i], theorem) or update
-
-            EqKiller.solve_equations(self.problem)
-            self.problem.step(theorem_name, time.time() - s_time)
-            for t in theorem_list:
-                self.problem.step(t, 0)
+        if theorem_para is not None:
+            update = self.apply_theorem_accurate(theorem_name, theorem_para)  # mode 1, accurate mode
+        else:
+            update = self.apply_theorem_rough(theorem_name)  # mode 2, rough mode
 
         if not update:
             w_msg = "Theorem <{},{}> not applied. Please check your theorem_para or prerequisite.".format(
                 theorem_name, theorem_para)
             warnings.warn(w_msg)
+
+        return update
+
+    def apply_theorem_accurate(self, theorem_name, theorem_para):
+        """
+        Apply a theorem in accurate mode and return whether it is successfully applied.
+        :param theorem_name: <str>.
+        :param theorem_para: tuple of <str>
+        :return update: True or False.
+        """
+        update = False
+        s_time = time.time()  # timing
+
+        theorem = IvParser.inverse_parse_logic(  # theorem + para, add in problem
+            theorem_name, theorem_para, self.theorem_GDL[theorem_name]["para_len"])
+
+        letters = {}  # used for vars-letters replacement
+        for i in range(len(self.theorem_GDL[theorem_name]["vars"])):
+            letters[self.theorem_GDL[theorem_name]["vars"][i]] = theorem_para[i]
+
+        for branch in self.theorem_GDL[theorem_name]["body"]:
+            gpl = self.theorem_GDL[theorem_name]["body"][branch]
+            premises = []
+            passed = True
+
+            for predicate, item in gpl["products"] + gpl["logic_constraints"]:
+                oppose = False
+                if "~" in predicate:
+                    oppose = True
+                    predicate = predicate.replace("~", "")
+                item = tuple(letters[i] for i in item)
+                has_item = self.problem.condition.has(predicate, item)
+                if has_item:
+                    premises.append(self.problem.condition.get_id_by_predicate_and_item(predicate, item))
+
+                if (not oppose and not has_item) or (oppose and has_item):
+                    passed = False
+                    break
+
+            if not passed:
+                continue
+
+            for equal, item in gpl["algebra_constraints"]:
+                oppose = False
+                if "~" in equal:
+                    oppose = True
+                eq = EqParser.get_equation_from_tree(self.problem, item, True, letters)
+                result, premise = EqKiller.solve_target(eq, self.problem)
+                solved_eq = False
+                if result is not None and rough_equal(result, 0):
+                    solved_eq = True
+
+                if (not oppose and not solved_eq) or (oppose and solved_eq):
+                    passed = False
+                    break
+
+                premises += premise
+
+            if not passed:
+                continue
+
+            for predicate, item in gpl["conclusions"]:
+                if predicate == "Equal":  # algebra conclusion
+                    eq = EqParser.get_equation_from_tree(self.problem, item, True, letters)
+                    update = self.problem.add("Equation", eq, premises, theorem) or update
+                else:  # logic conclusion
+                    item = tuple(letters[i] for i in item)
+                    update = self.problem.add(predicate, item, premises, theorem) or update
+
+        EqKiller.solve_equations(self.problem)
+        self.problem.step(theorem, time.time() - s_time)
+
+        return update
+
+    def apply_theorem_rough(self, theorem_name):
+        """
+        Apply a theorem in rough mode and return whether it is successfully applied.
+        :param theorem_name: <str>.
+        :return update: True or False.
+        """
+        update = False
+        s_time = time.time()  # timing
+
+        theorem_list = []
+        for branch in self.theorem_GDL[theorem_name]["body"]:
+            gpl = self.theorem_GDL[theorem_name]["body"][branch]
+
+            conclusions = GeoLogic.run(gpl, self.problem)  # get gpl reasoned result
+
+            for letters, premise, conclusion in conclusions:
+                theorem_para = [letters[i] for i in self.theorem_GDL[theorem_name]["vars"]]
+                theorem = IvParser.inverse_parse_logic(  # theorem + para, add in problem
+                    theorem_name, theorem_para, self.theorem_GDL[theorem_name]["para_len"])
+                theorem_list.append(theorem)
+
+                for predicate, item in conclusion:  # add conclusion
+                    update = self.problem.add(predicate, item, premise, theorem) or update
+
+        EqKiller.solve_equations(self.problem)
+        self.problem.step(theorem_name, time.time() - s_time)
+        for t in theorem_list:
+            self.problem.step(t, 0)
 
         return update
 
@@ -186,7 +201,7 @@ class ForwardSearcher:
         if depth == self.max_depth:  # max depth
             return
 
-        selections = self.get_theorem_selection(problem, theorem_skip_list)    # get applicable theorem list
+        selections = self.get_theorem_selection(problem, theorem_skip_list)  # get applicable theorem list
         # new_theorem_skip_list = theorem_skip_list + selections
         for selection in selections:
             child_problem = Problem()
@@ -218,19 +233,19 @@ class Searcher:
 
     def forward_search(self, problem, depth, solved_seqs):
         self.problem = problem
-        c_id = Condition.id    # keep Condition.id
-        c_step = Condition.step    # keep Condition.step
+        c_id = Condition.id  # keep Condition.id
+        c_step = Condition.step  # keep Condition.step
 
-        self.check_goal()   # check goal
+        self.check_goal()  # check goal
         if self.problem.goal["solved"]:
             _id, seqs = get_used_theorem(self.problem)
             solved_seqs.append(seqs)
             return
 
-        if depth + 1 > Searcher.max_forward_depth:   # max depth
+        if depth + 1 > Searcher.max_forward_depth:  # max depth
             return
 
-        selections = self.get_theorem_selection(self.problem)   # go to child
+        selections = self.get_theorem_selection(self.problem)  # go to child
         for selection in selections:
             child_problem = Problem(self.predicate_GDL)
             child_problem.load_problem_by_copy(problem, c_id, c_step)
@@ -346,7 +361,6 @@ class Searcher:
     #         sub_goals = GoalFinder.find_logic_sub_goals(predicate, item, self.problem, self.theorem_GDL)
     #
     #     return sub_goals
-
 
 # def backward_run():
 #     """Backward run."""

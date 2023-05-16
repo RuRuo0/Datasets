@@ -103,7 +103,7 @@ class Condition:
         return self.id_of_item[(predicate, item)]
 
     def get_items_by_predicate(self, predicate):
-        return copy.copy(self.items_group[predicate])
+        return [item for item in self.items_group[predicate]]
 
     def get_ids_and_items_by_predicate_and_variable(self, predicate, variable=None):
         ids = []

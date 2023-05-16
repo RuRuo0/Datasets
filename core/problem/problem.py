@@ -5,6 +5,7 @@ from core.solver.engine import EquationKiller as EqKiller
 import warnings
 from itertools import combinations
 from sympy import symbols
+from core.aux_tools.output import show
 import copy
 import time
 
@@ -705,16 +706,22 @@ class Problem:
 
     def check_goal(self):
         """Check whether the solution is completed."""
-
+        # show(self)
         s_start_time = time.time()  # timing
         if self.goal.type == "algebra":  # algebra relation
             result, premise = EqKiller.solve_target(self.goal.item, self)
+
             if result is not None:
                 if rough_equal(result, self.goal.answer):
                     self.goal.solved = True
                 self.goal.solved_answer = result
 
                 eq = self.goal.item - result
+                # key_eq = list(self.condition.id_of_item)[-1][1]
+                # print("eq: {}".format(eq))
+                # print("key_eq: {}".format(key_eq))
+                # print("eq in dict: {}".format(("Equation", eq) in self.condition.id_of_item))
+                # print("eq in list: {}".format(("Equation", eq) in list(self.condition.id_of_item)))
                 if eq in self.condition.get_items_by_predicate("Equation"):
                     self.goal.premise = self.condition.get_premise_by_predicate_and_item("Equation", eq)
                     self.goal.theorem = self.condition.get_theorem_by_predicate_and_item("Equation", eq)

@@ -495,13 +495,17 @@ class GeometryPredicateLogic:
     def run(gpl, problem):
         """
         Run reason step by step.
-        :param gpl: geometric predicate logic.
+        :param gpl: <dict>, (products, logic_constraints, algebra_constraints, conclusions), geometric predicate logic.
         :param problem: instance of class <Problem>.
-        :return r: triplet, (r_ids, r_items, r_vars).
+        :return results: <list> of <tuple>, [(letters, premises, conclusions)].
         """
-        r_ids, r_items = problem.condition.get_ids_and_items_by_predicate_and_variable(gpl[0][0], gpl[0][1])
-        r_vars = gpl[0][1]
+        products = gpl["products"]
+        logic_constraints = gpl["logic_constraints"]
+        algebra_constraints = gpl["algebra_constraints"]
+        conclusions = gpl["conclusions"]
 
+        r_ids, r_items = problem.condition.get_ids_and_items_by_predicate_and_variable(products[0][0], products[0][1])
+        r_vars = products[0][1]
         for i in range(len(r_items)):  # delete duplicated vars and corresponding item
             r_items[i] = list(r_items[i])
         r_vars = list(r_vars)
@@ -514,53 +518,69 @@ class GeometryPredicateLogic:
             for i in range(len(r_items)):
                 r_items[i].pop(index)
 
-        for i in range(1, len(gpl)):
-            r2_gpl = gpl[i]
-            oppose = False
-            if "~" in r2_gpl[0]:
-                r2_gpl[0] = r2_gpl[0].replace("~", "")
-                oppose = True
+        for i in range(1, len(products)):
+            r_ids, r_items, r_vars = GeometryPredicateLogic.product(
+                (r_ids, r_items, r_vars), products[i], problem)
 
-            if r2_gpl[0] == "Equal":  # algebra constraint
-                r_ids, r_items, r_vars = GeometryPredicateLogic.constraint_algebra(
-                    (r_ids, r_items, r_vars),
-                    r2_gpl,
-                    oppose,
-                    problem
-                )
-            else:
-                if len(set(r2_gpl[1]) - set(r_vars)) == 0:  # logic constraint
-                    r_ids, r_items, r_vars = GeometryPredicateLogic.constraint_logic(
-                        (r_ids, r_items, r_vars),
-                        r2_gpl,
-                        oppose,
-                        problem
-                    )
-                else:  # constrained cartesian product
-                    r2_ids, r2_items = problem.condition.get_ids_and_items_by_predicate_and_variable(
-                        r2_gpl[0], r2_gpl[1])
-                    r_ids, r_items, r_vars = GeometryPredicateLogic.product(
-                        (r_ids, r_items, r_vars),
-                        (r2_ids, r2_items, r2_gpl[1]),
-                    )
-            if len(r_items) == 0:
-                break
+        for i in range(len(logic_constraints)):
+            r_ids, r_items, r_vars = GeometryPredicateLogic.constraint_logic(
+                (r_ids, r_items, r_vars), logic_constraints[i], problem)
 
-        return r_ids, r_items, r_vars
+        for i in range(len(algebra_constraints)):
+            r_ids, r_items, r_vars = GeometryPredicateLogic.constraint_algebra(
+                (r_ids, r_items, r_vars), algebra_constraints[i], problem)
+
+        if len(r_ids) == 0:
+            return []
+
+        return GeometryPredicateLogic.make_conclusion((r_ids, r_items, r_vars), conclusions, problem)
 
     @staticmethod
-    def product(r1, r2):
+    def make_conclusion(r, conclusions, problem):
+        """
+        Make conclusion according given reasoned points sets 'r' and GDL 'conclusions'.
+        :param r: triplet, (r_ids, r_items, r_vars).
+        :param conclusions: <list> of conclusion GDL.
+        :param problem: instance of class <Problem>.
+        :return results: <list> of <tuple>, [(letters, premises, conclusions)].
+        """
+        results = []
+        r_ids, r_items, r_vars = r
+        for i in range(len(r_ids)):
+            letters = {}
+            for j in range(len(r_vars)):
+                letters[r_vars[j]] = r_items[i][j]
+            conclusion = []
+
+            for predicate, item in conclusions:
+                if predicate == "Equal":  # algebra conclusion
+                    eq = EqParser.get_equation_from_tree(problem, item, True, letters)
+                    conclusion.append(("Equation", eq))
+                else:  # logic conclusion
+                    item = tuple(letters[i] for i in item)
+                    conclusion.append((predicate, item))
+            results.append((letters, r_ids[i], conclusion))
+
+        return results
+
+    @staticmethod
+    def product(r1, r2_logic, problem):
         """
         Constrained Cartesian product.
         :param r1: triplet, (r1_ids, r1_items, r1_vars).
-        :param r2: triplet, (r2_ids, r2_items, r2_vars).
-        :return r: triplet, (r_ids, r_items, r_vars).
+        :param r2_logic: geo predicate logic, such as ['Collinear', ['a', 'b', 'c']].
+        :param problem: instance of class <Problem>.
+        :return r: triplet, (r_ids, r_items, r_vars), reasoning result.
         >> product(([(1,), (2,)], [('A', 'B'), ('C', 'D')], ['a', 'b']),
-                   ([(3,), (4,)], [('B', 'C'), ('D', 'E')], ['b', 'c']))
+                   ['Line', ['b', 'c']],
+                   problem)
         ([(1, 3), (2, 4)], [('A', 'B', 'C'), ('C', 'D', 'E')], ['a', 'b', 'c'])
         """
         r1_ids, r1_items, r1_vars = r1
-        r2_ids, r2_items, r2_vars = r2
+        if len(r1_ids) == 0:
+            return [], [], []
+        r2_ids, r2_items = problem.condition.get_ids_and_items_by_predicate_and_variable(r2_logic[0], r2_logic[1])
+        r2_vars = r2_logic[1]
 
         inter = list(set(r1_vars) & set(r2_vars))  # intersection
         for i in range(len(inter)):
@@ -595,31 +615,35 @@ class GeometryPredicateLogic:
         return r_ids, r_items, r_vars
 
     @staticmethod
-    def constraint_logic(r1, r2_logic, oppose, problem):
+    def constraint_logic(r1, r2_logic, problem):
         """
         Logic constraint.
         :param r1: triplet, (r1_ids, r1_items, r1_vars).
         :param r2_logic: geo predicate logic, such as ['Collinear', ['a', 'b', 'c']].
-        :param oppose: indicate '&' or '&~'.
         :param problem: instance of class <Problem>.
         :return r: triplet, (r_ids, r_items, r_vars), reasoning result.
         >> problem.conditions['Line'].get_item_by_id  # supposed
         {3: ('B', 'C')}
         >> constraint_logic(([(1,), (2,)], [('A', 'B', 'C'), ('C', 'D', 'E')], ['a', 'b', 'c']),
-                            False
                             ['Line', ['b', 'c']],
                             problem)
         ([(1, 3)], [('A', 'B', 'C')], ['a', 'b', 'c'])
         >> constraint_logic(([(1,), (2,)], [('A', 'B', 'C'), ('C', 'D', 'E')], ['a', 'b', 'c']),
-                            True
-                            ['Line', ['b', 'c']],
+                            ['~Line', ['b', 'c']],
                             problem)
         ([(2,)], [('C', 'D', 'E')], ['a', 'b', 'c'])
         """
         r1_ids, r1_items, r1_vars = r1
+        if len(r1_ids) == 0:
+            return [], [], []
+        oppose = False    # indicate '&' or '&~'
+        if "~" in r2_logic[0]:
+            r2_logic[0] = r2_logic[0].replace("~", "")
+            oppose = True
         index = [r1_vars.index(v) for v in r2_logic[1]]
         r_ids = []
         r_items = []
+
         if not oppose:  # &
             for i in range(len(r1_items)):
                 r2_item = tuple(r1_items[i][j] for j in index)
@@ -636,12 +660,11 @@ class GeometryPredicateLogic:
         return r_ids, r_items, r1_vars
 
     @staticmethod
-    def constraint_algebra(r1, r2_algebra, oppose, problem):
+    def constraint_algebra(r1, r2_algebra, problem):
         """
         Algebra constraint.
         :param r1: triplet, (r1_ids, r1_items, r1_vars).
         :param r2_algebra: geo predicate logic, such as ['Equal', [['Length', ['a', 'b']], 5]].
-        :param oppose: indicate '&' or '&~'.
         :param problem: instance of class <Problem>.
         :return r: triplet, (r_ids, r_items, r_vars), reasoning result.
         >> problem.conditions['Equation'].get_value_of_sym  # supposed
@@ -649,19 +672,24 @@ class GeometryPredicateLogic:
         >> problem.conditions['Equation'].get_item_by_id  # supposed
         {3: ll_ab - 1}
         >> constraint_algebra(([(1,), (2,)], [('A', 'B', 'C'), ('C', 'D', 'E')], ['a', 'b', 'c']),
-                              False
                               ['Equal', [['Length', ['a', 'b']], 1]],
                               problem)
         ([(1, 3)], [('A', 'B', 'C')], ['a', 'b', 'c'])
         >> constraint_algebra(([(1,), (2,)], [('A', 'B', 'C'), ('C', 'D', 'E')], ['a', 'b', 'c']),
-                              True
-                              ['Equal', [['Length', ['a', 'b']], 1]],
+                              ['~Equal', [['Length', ['a', 'b']], 1]],
                               problem)
         ([(2,)], [('C', 'D', 'E')], ['a', 'b', 'c'])
         """
         r1_ids, r1_items, r1_vars = r1
+        if len(r1_ids) == 0:
+            return [], [], []
+        oppose = False    # indicate '&' or '&~'
+        if "~" in r2_algebra[0]:
+            r2_algebra[0] = r2_algebra[0].replace("~", "")
+            oppose = True
         r_ids = []
         r_items = []
+
         if not oppose:  # &
             for i in range(len(r1_items)):
                 letters = {}

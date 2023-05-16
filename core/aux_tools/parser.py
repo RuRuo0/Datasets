@@ -186,12 +186,8 @@ class FormalLanguageParser:
                     if len(p2 - p1) > 0 or len(p1 - p2) > 0:
                         e_msg = "Theorem GDL definition error in <{}>.".format(theorem_name)
                         raise Exception(e_msg)
-                    body[branch_count] = {
-                        "product": parsed_premise[i],
-                        "logic_constraint": [],
-                        "algebra_constraint": [],
-                        "conclusion": parsed_conclusion
-                    }
+                    body[branch_count] = parsed_premise[i]
+                    body[branch_count]["conclusions"] = parsed_conclusion
                     branch_count += 1
 
             parsed_GDL[name] = {
@@ -200,7 +196,7 @@ class FormalLanguageParser:
                 "body": body
             }
 
-        for predicate in parsed_predicate_GDL["Entity"]:    # 这里要不要把extend内容加进来？
+        for predicate in parsed_predicate_GDL["Entity"]:  # 这里要不要把extend内容加进来？
             if len(parsed_predicate_GDL["Entity"][predicate]["extend"]) == 0:
                 continue
             name = predicate[0].lower()
@@ -309,7 +305,26 @@ class FormalLanguageParser:
                     premise_GDL[i][j] = [predicate, para]
                     paras += para
             paras_list.append(paras)
-        
+
+        for i in range(len(premise_GDL)):
+            product = []
+            logic_constraint = []
+            algebra_constraint = []
+            paras = set()
+            for j in range(len(premise_GDL[i])):
+                if premise_GDL[i][j][0] == "Equal":
+                    algebra_constraint.append(premise_GDL[i][j])
+                elif len(set(premise_GDL[i][j][1]) - paras) == 0:
+                    logic_constraint.append(premise_GDL[i][j])
+                else:
+                    paras = paras | set(premise_GDL[i][j][1])
+                    product.append(premise_GDL[i][j])
+            premise_GDL[i] = {
+                "products": product,
+                "logic_constraints": logic_constraint,
+                "algebra_constraints": algebra_constraint
+            }
+
         return premise_GDL, paras_list
 
     @staticmethod

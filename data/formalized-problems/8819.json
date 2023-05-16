@@ -1,0 +1,35 @@
+{
+  "problem_id": 8819,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-8660",
+  "problem_level": 1,
+  "problem_text_cn": "已知,如图,BC为⊙O的直径,过点C的弦CD平行于半径OA,若∠A=20°,则∠C的度数等于()",
+  "problem_text_en": "It is known that, as shown in the figure, BC is the diameter of ⊙O, and the chord CD passing through point C is parallel to the radius OA. If ∠A = N_0, then the degree of ∠C is equal to ()",
+  "problem_img": "8819.png",
+  "construction_cdl": [
+    "Shape(AB,OBA)",
+    "Shape(OB,BA,AO)",
+    "Shape(CO,OA,OAC)",
+    "Shape(BO,OC,CD,ODB)",
+    "Shape(DC,OCD)",
+    "Collinear(BOC)",
+    "Cocircular(O,ACDB)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "ParallelBetweenLine(AO,CD)",
+    "Equal(MeasureOfAngle(BAO),20)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(OCD))",
+  "problem_answer": "40",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "parallel_property_alternate_interior_angle",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external"
+  ],
+  "raw_answer": "解:∵OA=OB,∴∠B=∠A=20°,∴∠AOC=∠B+∠A=40°,∵OA∥CD,∴∠C=∠AOC=40°．故选:C．"
+}

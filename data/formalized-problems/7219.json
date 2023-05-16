@@ -1,0 +1,37 @@
+{
+  "problem_id": 7219,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4420",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB是⊙O的直径,PA切⊙O于点A,PO交⊙O于C,连结BC．若∠P=36°,则∠BCO等于()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, PA is tangent to ⊙O at point A, and PO intersects ⊙O at C. Connect BC. If ∠P = N_0, then ∠BCO is equal to ()",
+  "problem_img": "7219.png",
+  "construction_cdl": [
+    "Shape(AP,PC,OAC)",
+    "Shape(CO,OA,OAC)",
+    "Shape(OC,CB,BO)",
+    "Shape(BC,OCB)",
+    "Shape(AO,OB,OBA)",
+    "Collinear(PCO)",
+    "Collinear(AOB)",
+    "Cocircular(O,ACB)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(PA,O)",
+    "Equal(MeasureOfAngle(APC),36)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(OCB))",
+  "problem_answer": "27",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular",
+    "triangle_property_angle_sum",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external",
+    "radius_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal"
+  ],
+  "raw_answer": "解:∵AB是⊙O的直径,PA切⊙O于点A,∴OA⊥PA,即∠PAO=90°,∵∠P=36°,∴∠POA=90°-∠P=54°,∴∠B=\\frac{1}{2}∠POA=27°,∵OC=OB,∴∠BCO=∠B=27°．故选:C．"
+}

@@ -1,0 +1,35 @@
+{
+  "problem_id": 7193,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4372",
+  "problem_level": 1,
+  "problem_text_cn": "如图,已知⊙O的半径为5cm,一条直线和⊙O相切于点C,若将这条直线沿CO方向平移2cm和⊙O相交于A、B两点,则弦AB的长为()",
+  "problem_text_en": "As shown in the figure, it is known that the radius of ⊙O is N_0, and a straight line is tangent to ⊙O at vertex C. If this straight line is translated along the CO direction and N_1 and ⊙O intersect at vertices A and B, the length of chord AB is ()",
+  "problem_img": "7193.png",
+  "construction_cdl": [
+    "Shape(AO,OB,OBA)",
+    "Shape(OA,AD,DO)",
+    "Shape(OD,DB,BO)",
+    "Shape(CD,DA,OAC)",
+    "Shape(BD,DC,OCB)",
+    "Collinear(ADB)",
+    "Collinear(ODC)",
+    "Cocircular(O,ACB)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsPerpendicularBisectorOfLine(OD,AB)",
+    "Equal(RadiusOfCircle(O),5)",
+    "Equal(LengthOfLine(DC),2)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AB))",
+  "problem_answer": "8",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "right_triangle_judgment_angle",
+    "line_addition",
+    "right_triangle_property_pythagorean"
+  ],
+  "raw_answer": "解:AB交OC于D,连结OA,如图,∵l为⊙O的切线,∴OC⊥l,∵直线l沿CO方向平移2cm和⊙O相交于A、B两点,∴AB∥l,CD=2cm,∴OC⊥AB,∴AD=BD,在Rt△AOD中,OA=5,OD=OC-CD=5-2=3,∴AD=√{OA^{2}-OD^{2}}=4,∴AB=2AD=8(cm)．故选:D．"
+}

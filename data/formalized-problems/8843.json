@@ -1,0 +1,37 @@
+{
+  "problem_id": 8843,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-8693",
+  "problem_level": 1,
+  "problem_text_cn": "如图,⊙O的直径CD过弦EF的中点G,若∠DCF=25°,则∠EOG的大小为()",
+  "problem_text_en": "As shown in the figure, the diameter of ⊙O crosses the midpoint G of chord EF, if ∠DCF = N_0, then the size of ∠EOG is ()",
+  "problem_img": "8843.png",
+  "construction_cdl": [
+    "Shape(EO,OC,OCE)",
+    "Shape(OE,EG,GO)",
+    "Shape(CO,OG,GF,FC)",
+    "Shape(CF,OFC)",
+    "Shape(DG,GE,OED)",
+    "Shape(FG,GD,ODF)",
+    "Collinear(EGF)",
+    "Collinear(COGD)",
+    "Cocircular(O,CEDF)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsMidpointOfLine(G,EF)",
+    "Equal(MeasureOfAngle(FCD),25)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(GOE))",
+  "problem_answer": "50",
+  "theorem_seqs": [
+    "diameter_of_circle_judgment_pass_centre",
+    "circle_property_chord_perpendicular_bisect_arc",
+    "congruent_arc_judgment_length_equal",
+    "congruent_arc_property_measure_equal",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external"
+  ],
+  "raw_answer": "解:∵⊙O的直径CD过弦EF的中点G,∠DCF=25°,∴弧DF=弧DE,且弧的度数是50°,∴∠GOE=50°,故选:A．"
+}

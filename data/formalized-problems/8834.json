@@ -1,0 +1,44 @@
+{
+  "problem_id": 8834,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-8680",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB是⊙O的直径,弦CD⊥AB于点E,∠CDB=30°,⊙O的半径为3cm,则圆心O到弦CD的距离为()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, chord CD ⊥ AB at point E, ∠CDB = N_0, and the radius of ⊙O is N_1, then the distance from center O to chord CD is ()",
+  "problem_img": "8834.png",
+  "construction_cdl": [
+    "Shape(AO,OC,OCA)",
+    "Shape(CO,OE,EC)",
+    "Shape(CE,EB,BC)",
+    "Shape(CB,OBC)",
+    "Shape(BE,ED,DB)",
+    "Shape(BD,ODB)",
+    "Shape(DE,EO,OA,OAD)",
+    "Collinear(AOEB)",
+    "Collinear(CED)",
+    "Cocircular(O,ADBC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(OE,CE)",
+    "Equal(RadiusOfCircle(O),3)",
+    "Equal(MeasureOfAngle(CDB),30)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(OE))",
+  "problem_answer": "3/2",
+  "theorem_seqs": [
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external",
+    "radius_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum(COB)",
+    "isosceles_triangle_judgment_angle_equal",
+    "equilateral_triangle_judgment_isosceles_and_isosceles",
+    "altitude_of_triangle_judgment(CE,COB)",
+    "isosceles_triangle_property_line_coincidence(COB,E)",
+    "line_addition"
+  ],
+  "raw_answer": "解:连接CB．∵AB是⊙O的直径,弦CD⊥AB于点E,∴圆心O到弦CD的距离为OE；∵∠COB=2∠CDB(同弧所对的圆周角是所对的圆心角的一半),∠CDB=30°,∴∠COB=60°；在Rt△OCE中,OC=3cm,OE=OC•cos∠COB,∴OE=\\frac{3}{2}．故选:A．"
+}

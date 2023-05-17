@@ -1,0 +1,38 @@
+{
+  "problem_id": 7138,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4277",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB是⊙O的弦,AO的延长线交过点B的⊙O的切线于点C,如果∠ABO=20°,则∠C的度数是()",
+  "problem_text_en": "As shown in the figure, AB is the chord of ⊙O, and the extended line of AO crosses the tangent of ⊙O to point B at point C. If ∠ABO = N_0, then the degree of ∠C is ()",
+  "problem_img": "7138.png",
+  "construction_cdl": [
+    "Shape(AB,BO,OA)",
+    "Shape(OB,BD,DO)",
+    "Shape(DB,OBD)",
+    "Shape(OBD,BC,CD)",
+    "Shape(OAB,BO)",
+    "Shape(ODA,AO,OD)",
+    "Collinear(AODC)",
+    "Cocircular(O,ABD)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [
+    "IsTangentOfCircle(CB,O)",
+    "Equal(LengthOfLine(OA),LengthOfLine(OB))",
+    "Equal(MeasureOfAngle(ABO),20)"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(BCO))",
+  "problem_answer": "50",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum",
+    "flat_angle",
+    "angle_addition"
+  ],
+  "raw_answer": "解:∵BC是⊙O的切线,OB是⊙O的半径,∴∠OBC=90°,∵OA=OB,∴∠A=∠ABO=20°,∴∠BOC=40°,∴∠C=50°．故选:B．"
+}

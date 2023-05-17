@@ -50,6 +50,8 @@ def run(save_GDL=False, save_CDL=False, auto=False):
         unsolved = []
         print("pid\tannotation\tcorrect_answer\tsolved\tsolved_answer\tspend(s)")
         for filename in os.listdir(path_formalized):
+            if filename.endswith('.png'):
+                continue
             problem_CDL = load_json(path_formalized + filename)
             if int(filename.split(".")[0]) >= 30000:
                 continue
@@ -67,11 +69,11 @@ def run(save_GDL=False, save_CDL=False, auto=False):
 
                 solver.check_goal()    # check goal after applied theorem seqs
 
-                if solver.problem.goal["solved"]:   # clean theorem
-                    problem_CDL = load_json(path_formalized + filename)
-                    _id, seqs = get_used_theorem(solver.problem)
-                    problem_CDL["theorem_seqs"] = seqs
-                    save_json(problem_CDL, path_formalized + filename)
+                # if solver.problem.goal["solved"]:   # clean theorem
+                #     problem_CDL = load_json(path_formalized + filename)
+                #     _id, seqs = get_used_theorem(solver.problem)
+                #     problem_CDL["theorem_seqs"] = seqs
+                #     save_json(problem_CDL, path_formalized + filename)
 
                 simple_show(solver.problem)   # show solved msg
 
@@ -119,4 +121,5 @@ def run(save_GDL=False, save_CDL=False, auto=False):
 
 
 if __name__ == '__main__':
+    # run(auto=True)
     run()

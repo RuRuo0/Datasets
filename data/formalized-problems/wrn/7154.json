@@ -1,0 +1,37 @@
+{
+  "problem_id": 7154,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4307",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在⊙O中,AB为直径,BC为弦,CD为切线,连接OC．若∠BCD=50°,则∠AOC的度数为()",
+  "problem_text_en": "As shown in the figure, in ⊙O, AB is the diameter, BC is the chord, and CD is the tangent, connect OC. If ∠BCD = N_0, then the degree of ∠AOC is ()",
+  "problem_img": "7154.png",
+  "construction_cdl": [
+    "Shape(OBA,AO,OB)",
+    "Shape(OAC,CO,OA)",
+    "Shape(OC,CB,BO)",
+    "Shape(BC,OCB)",
+    "Shape(OCB,CD,DB)",
+    "Collinear(AOB)",
+    "Cocircular(O,ACB)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [
+    "IsTangentOfCircle(DC,O)",
+    "Equal(MeasureOfAngle(BCD),50)",
+    "Equal(LengthOfLine(OC),LengthOfLine(OB))"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(COA))",
+  "problem_answer": "80",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular",
+    "angle_addition",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external"
+  ],
+  "raw_answer": "解:∵在⊙O中,AB为直径,BC为弦,CD为切线,∴∠OCD=90°,∵∠BCD=50°,∴∠OCB=40°,∴∠AOC=80°,故选:C．"
+}

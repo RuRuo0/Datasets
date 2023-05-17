@@ -1,0 +1,37 @@
+{
+  "problem_id": 7140,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4280",
+  "problem_level": 1,
+  "problem_text_cn": "如图,PA和PB是⊙O的切线,点A和点B是切点,AC是⊙O的直径,已知∠P=40°,则∠ACB的大小是()",
+  "problem_text_en": "As shown in the figure, PA and PB are the tangents of ⊙O, point A and point B are the tangent points, AC is the diameter of ⊙O, given that ∠P = N_0, then the size of ∠ACB is ()",
+  "problem_img": "7140.png",
+  "construction_cdl": [
+    "Shape(OAC,CO,OA)",
+    "Shape(OCB,BC)",
+    "Shape(OC,CB,BO)",
+    "Shape(OB,BA,AO)",
+    "Shape(AB,OBA)",
+    "Shape(OBA,BP,PA)",
+    "Collinear(AOC)",
+    "Cocircular(O,ACB)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [
+    "IsTangentOfCircle(PA,O)",
+    "IsTangentOfCircle(PB,O)",
+    "Equal(MeasureOfAngle(BPA),40)"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(ACB))",
+  "problem_answer": "70",
+  "theorem_seqs": [
+    "diameter_of_circle_property_right_angle",
+    "tangent_of_circle_property_perpendicular",
+    "quadrilateral_property_angle_sum",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external"
+  ],
+  "raw_answer": "解:连接OB,∵AC是直径,∴∠ABC=90°,∵PA、PB是⊙O的切线,A、B为切点,∴∠OAP=∠OBP=90°,∴∠AOB=180°-∠P=140°,由圆周角定理知,∠ACB=\\frac{1}{2}∠AOB=70°,故选:C．"
+}

@@ -1,24 +1,24 @@
 from core.aux_tools.parser import InverseParser
 from core.aux_tools.utils import save_json
 from sympy import Float
-from graphviz import Digraph
+from graphviz import Digraph, Graph
 import os
 
 
 def simple_show(problem):
     """Show simple information about problem-solving."""
     time_sum = 0
-    for t in problem.time_consuming:
-        time_sum += t
+    for step in problem.timing:
+        time_sum += problem.timing[step][1]
 
     printed = "{}\t{}\t{}\t".format(
-        problem.problem_CDL["id"], problem.problem_CDL["annotation"], str(problem.goal["answer"]))
-    if problem.goal["solved"]:
+        problem.problem_CDL["id"], problem.problem_CDL["annotation"], str(problem.goal.answer))
+    if problem.goal.solved:
         printed += "\033[32m1\033[0m\t"
     else:
         printed += "\033[31m0\033[0m\t"
-    printed += "{}\t".format(str(problem.goal["solved_answer"]))
-    if time_sum < 2:
+    printed += "{}\t".format(str(problem.goal.solved_answer))
+    if time_sum < 3.5:
         printed += "{:.6f}".format(time_sum)
     else:
         printed += "\033[31m{:.6f}\033[0m".format(time_sum)
@@ -44,10 +44,6 @@ def show(problem):
     print()
 
     """-----------Process of Problem Solving-----------"""
-    print("\033[36mtheorem_applied:\033[0m")
-    for i in range(len(problem.theorems_applied)):
-        print("{0:^3}{1:<20}".format(i, problem.theorems_applied[i]))
-
     print("\033[36mreasoning_cdl:\033[0m")
     anti_parsed_cdl = InverseParser.inverse_parse_logic_to_cdl(problem)
     for step in anti_parsed_cdl:
@@ -62,111 +58,119 @@ def show(problem):
     predicates = list(problem.predicate_GDL["Construction"])
     predicates += list(problem.predicate_GDL["BasicEntity"])
     for predicate in predicates:
-        condition = problem.conditions[predicate]
-        ids = list(condition.get_item_by_id)
-        if len(ids) > 0:
-            print(predicate + ":")
-            if len(ids) > 20:
-                ids = ids[0:10] + ["..."] + ids[len(ids) - 10:]
-            for _id in ids:
-                if isinstance(_id, str):
-                    print(_id)
-                    continue
-                items = ",".join(condition.get_item_by_id[_id])
-                if len(items) > 35:
-                    items = items[0:35] + "..."
-                if len(condition.premises[_id]) <= 3:
-                    premises = "(" + ",".join([str(i) for i in condition.premises[_id]]) + ")"
-                else:
-                    premises = "(" + ",".join([str(i) for i in condition.premises[_id][0:3]]) + ",...)"
-                theorem = condition.theorems[_id]
-                if _id not in used_id:
-                    print("{0:^6}{1:^50}{2:^25}{3:^6}".format(_id, items, premises, theorem))
-                else:
-                    print("\033[35m{0:^6}{1:^50}{2:^25}{3:^6}\033[0m".format(_id, items, premises, theorem))
+        items = problem.condition.get_items_by_predicate(predicate)
+        if len(items) == 0:
+            continue
+        print(predicate + ":")
+
+        if len(items) > 20:
+            items = items[0:10] + ["..."] + items[len(items) - 10:]
+
+        for item in items:
+            if isinstance(item, str):
+                print(item)
+                continue
+            _id = problem.condition.get_id_by_predicate_and_item(predicate, item)
+            if len(problem.condition.items[_id][2]) <= 3:
+                premises = "(" + ",".join([str(i) for i in problem.condition.items[_id][2]]) + ")"
+            else:
+                premises = "(" + ",".join([str(i) for i in problem.condition.items[_id][2]]) + ",...)"
+            theorem = problem.condition.items[_id][3]
+            item = ",".join(item)
+            if len(item) > 35:
+                item = item[0:35] + "..."
+            if _id not in used_id:
+                print("{0:^6}{1:^50}{2:^25}{3:^6}".format(_id, item, premises, theorem))
+            else:
+                print("\033[35m{0:^6}{1:^50}{2:^25}{3:^6}\033[0m".format(_id, item, premises, theorem))
 
     predicates = list(problem.predicate_GDL["Entity"])
     predicates += list(problem.predicate_GDL["Relation"])
     for predicate in predicates:
-        condition = problem.conditions[predicate]
-        if len(condition.get_item_by_id) > 0:
-            print(predicate + ":")
-            for _id in condition.get_item_by_id:
-                items = ",".join(condition.get_item_by_id[_id])
-                if len(items) > 35:
-                    items = items[0:35] + "..."
-                if len(condition.premises[_id]) <= 3:
-                    premises = "(" + ",".join([str(i) for i in condition.premises[_id]]) + ")"
-                else:
-                    premises = "(" + ",".join([str(i) for i in condition.premises[_id][0:3]]) + ",...)"
-                theorem = condition.theorems[_id]
-                if _id not in used_id:
-                    print("{0:^6}{1:^50}{2:^25}{3:^6}".format(_id, items, premises, theorem))
-                else:
-                    print("\033[35m{0:^6}{1:^50}{2:^25}{3:^6}\033[0m".format(_id, items, premises, theorem))
+        items = problem.condition.get_items_by_predicate(predicate)
+        if len(items) == 0:
+            continue
+        print(predicate + ":")
+
+        for item in items:
+            _id = problem.condition.get_id_by_predicate_and_item(predicate, item)
+            if len(problem.condition.items[_id][2]) <= 3:
+                premises = "(" + ",".join([str(i) for i in problem.condition.items[_id][2]]) + ")"
+            else:
+                premises = "(" + ",".join([str(i) for i in problem.condition.items[_id][2]]) + ",...)"
+            theorem = problem.condition.items[_id][3]
+            item = ",".join(item)
+            if len(item) > 35:
+                item = item[0:35] + "..."
+            if _id not in used_id:
+                print("{0:^6}{1:^50}{2:^25}{3:^6}".format(_id, item, premises, theorem))
+            else:
+                print("\033[35m{0:^6}{1:^50}{2:^25}{3:^6}\033[0m".format(_id, item, premises, theorem))
     print()
 
     print("\033[33mSymbols and Value:\033[0m")
-    equation = problem.conditions["Equation"]
-    for attr in equation.sym_of_attr:
-        sym = equation.sym_of_attr[attr]
-        if isinstance(equation.value_of_sym[sym], Float):
+    for attr in problem.condition.sym_of_attr:
+        sym = problem.condition.sym_of_attr[attr]
+        if isinstance(problem.condition.value_of_sym[sym], Float):
             print("{0:^70}{1:^15}{2:^20.3f}".format(
-                str(("".join(attr[0]), attr[1])), str(sym), equation.value_of_sym[sym]))
+                str(("".join(attr[0]), attr[1])), str(sym), problem.condition.value_of_sym[sym]))
         else:
             print("{0:^70}{1:^15}{2:^20}".format(
-                str(("".join(attr[0]), attr[1])), str(sym), str(equation.value_of_sym[sym])))
+                str(("".join(attr[0]), attr[1])), str(sym), str(problem.condition.value_of_sym[sym])))
 
     print("\033[33mEquations:\033[0m")
-    if len(equation.get_item_by_id) > 0:
-        for _id in equation.get_item_by_id:
-            items = str(equation.get_item_by_id[_id]).replace(" ", "")
-            if len(items) > 40:
-                items = items[0:40] + "..."
-            if len(equation.premises[_id]) <= 3:
-                premises = "(" + ",".join([str(i) for i in equation.premises[_id]]) + ")"
-            else:
-                premises = "(" + ",".join([str(i) for i in equation.premises[_id][0:3]]) + ",...)"
-            theorem = equation.theorems[_id]
+    items = problem.condition.get_items_by_predicate("Equation")
+    for item in items:
+        _id = problem.condition.get_id_by_predicate_and_item("Equation", item)
+        if len(problem.condition.items[_id][2]) <= 3:
+            premises = "(" + ",".join([str(i) for i in problem.condition.items[_id][2]]) + ")"
+        else:
+            premises = "(" + ",".join([str(i) for i in problem.condition.items[_id][2]]) + ",...)"
+        theorem = problem.condition.items[_id][3]
+        item = str(item).replace(" ", "")
+        if len(item) > 40:
+            item = item[0:40] + "..."
 
-            if _id not in used_id:
-                print("{0:^6}{1:^60}{2:^25}{3:>6}".format(_id, items, premises, theorem))
-            else:
-                print("\033[35m{0:^6}{1:^60}{2:^25}{3:>6}\033[0m".format(_id, items, premises, theorem))
+        if _id not in used_id:
+            print("{0:^6}{1:^60}{2:^25}{3:>6}".format(_id, item, premises, theorem))
+        else:
+            print("\033[35m{0:^6}{1:^60}{2:^25}{3:>6}\033[0m".format(_id, item, premises, theorem))
     print()
 
     # goal
     print("\033[34mSolving Goal:\033[0m")
-    print("type: {}".format(str(problem.goal["type"])))
-    print("goal: {}".format(str(problem.goal["item"])))
-    print("answer: {}".format(str(problem.goal["answer"])))
-
-    if problem.goal["solved"]:
+    print("type: {}".format(problem.goal.type))
+    print("goal: {}".format(str(problem.goal.item).replace(" ", "")))
+    print("answer: {}".format(str(problem.goal.answer).replace(" ", "")))
+    if problem.goal.solved:
         print("solved: \033[32mTrue\033[0m")
     else:
         print("solved: \033[31mFalse\033[0m")
-
-    if problem.goal["solved_answer"] is not None:
-        print("solved_answer: {}".format(str(problem.goal["solved_answer"])))
-        if not isinstance(problem.goal["solved_answer"], tuple):
-            print("solved_answer(float): {}".format(float(problem.goal["solved_answer"])))
-        print("premise: {}".format(str(problem.goal["premise"])))
-        print("theorem: {}".format(str(problem.goal["theorem"])))
+    if problem.goal.solved_answer is not None:
+        print("solved_answer: {}".format(str(problem.goal.solved_answer)))
+        if not isinstance(problem.goal.solved_answer, tuple):
+            try:
+                print("solved_answer(float): {}".format(float(problem.goal.solved_answer)))
+            except TypeError:
+                print("solved_answer(float): <Cannot convert to float>")
+    if problem.goal.premise is not None:
+        print("premise: {}".format(str(problem.goal.premise)))
+        print("theorem: {}".format(problem.goal.theorem))
     print()
 
-    print("\033[34mTime consumption:\033[0m")
-    for i in range(len(problem.theorems_applied)):
-        if problem.theorems_applied[i] in used_theorem:
-            print("\033[35m{}\033[0m: {:.6f}s".format(problem.theorems_applied[i], problem.time_consuming[i]))
+    print("\033[34mTiming:\033[0m")
+    time_sum = 0
+    for step in problem.timing:
+        if problem.timing[step][0] in used_theorem:
+            print("\033[35m{:^2} {} {:.6f}s\033[0m".format(step, problem.timing[step][0], problem.timing[step][1]))
         else:
-            print("{}: {:.6f}s".format(problem.theorems_applied[i], problem.time_consuming[i]))
-    print()
+            print("{:^2} {} {:.6f}s".format(step, problem.timing[step][0], problem.timing[step][1]))
+        time_sum += problem.timing[step][1]
+    print("total: {:.6f}s\n".format(time_sum))
 
 
 def save_solution_tree(problem, path):
     """Generate and save solution hyper tree and theorem DAG."""
-    get_item_by_id, _ = InverseParser.solution_msg(problem)  # gather conditions msg before generate CDL.
-
     st_dot = Digraph(name=str(problem.problem_CDL["id"]))  # Tree
     nodes = []  # list of node(cdl or theorem).
     t_nodes = []  # theorem nodes, used for DAG generating.
@@ -174,11 +178,9 @@ def save_solution_tree(problem, path):
     group = {}  # (premise, theorem): [_id], used for building hyper graph.
     cdl = {}  # _id: anti_parsed_cdl, user for getting cdl by id.
 
-    for _id in get_item_by_id:  # summary information
-        predicate, item = get_item_by_id[_id]
+    for _id in range(problem.condition.id_count):  # summary information
+        predicate, item, premise, theorem, _ = problem.condition.items[_id]
         cdl[_id] = InverseParser.inverse_parse_one(predicate, item, problem)
-        premise = problem.conditions[predicate].premises[_id]
-        theorem = problem.conditions[predicate].theorems[_id]
         if theorem == "prerequisite":  # prerequisite not show in graph
             continue
         if (premise, theorem) not in group:
@@ -187,17 +189,17 @@ def save_solution_tree(problem, path):
             group[(premise, theorem)].append(_id)
 
     used_id, _ = get_used_theorem(problem)  # just keep useful solution msg
-    if problem.goal["solved"] and problem.goal["type"] in ["value", "equal"]:  # if target solved, add target
-        eq = problem.goal["item"] - problem.goal["answer"]
-        if eq not in problem.conditions["Equation"].get_id_by_item:  # target not in condition set
+    if problem.goal.solved and problem.goal.type == "algebra":  # if target solved, add target
+        eq = problem.goal.item - problem.goal.answer
+        if eq not in problem.condition.get_items_by_predicate("Equation"):  # target not in condition set
             target_equation = InverseParser.inverse_parse_one("Equation", eq, problem)
             _id = len(cdl)
             cdl[_id] = target_equation
-            group[(problem.goal["premise"], problem.goal["theorem"])] = [_id]
+            group[(problem.goal.premise, problem.goal.theorem)] = [_id]
             used_id.append(_id)
         else:
-            used_id.append(problem.conditions["Equation"].get_id_by_item[eq])
-        used_id += list(problem.goal["premise"])
+            used_id.append(problem.condition.get_id_by_predicate_and_item("Equation", eq))
+        used_id += list(problem.goal.premise)
 
     remove_list = []
     for key in group:
@@ -319,7 +321,7 @@ def save_solution_tree(problem, path):
             _add_edge(dag_dot, nodes, head, tail)
             child_nodes.append(tail)
 
-    _add_node(dag_dot, nodes, "START")   # add START node
+    _add_node(dag_dot, nodes, "START")  # add START node
     for root in root_nodes:
         if root in child_nodes:
             continue
@@ -364,8 +366,10 @@ def save_step_msg(problem, path):
         "cdl_inverse_parsed": InverseParser.inverse_parse_logic_to_cdl(problem),
         "theorems_applied": {}
     }
-    for i in range(1, len(problem.theorems_applied)):
-        step_msg["theorems_applied"][str(i)] = problem.theorems_applied[i]
+    for step in problem.timing:
+        if problem.timing[step][0] in ["init_problem", "check_goal"]:
+            continue
+        step_msg["theorems_applied"][str(step)] = problem.timing[step][0]
 
     save_json(
         step_msg,
@@ -374,29 +378,57 @@ def save_step_msg(problem, path):
 
 
 def get_used_theorem(problem):
-    used_id = []
+    if not problem.goal.solved:
+        return [], []
+
+    used_id = list(set(problem.goal.premise))
+    used_theorem = []
+    while True:
+        len_used_id = len(used_id)
+        for _id in used_id:
+            if _id >= 0:
+                used_id += list(problem.condition.items[_id][2])
+                used_theorem.append(problem.condition.items[_id][3])
+        used_id = list(set(used_id))  # 快速去重
+        if len_used_id == len(used_id):
+            break
+
     selected_theorem = []
-    if problem.goal["solved"]:
-        used_theorem = []
-        get_item_by_id, _ = InverseParser.solution_msg(problem)
-        used_id = list(set(problem.goal["premise"]))
-        while True:
-            len_used_id = len(used_id)
-            for _id in used_id:
-                if _id >= 0:
-                    predicate, _ = get_item_by_id[_id]
-                    used_id += list(problem.conditions[predicate].premises[_id])
-                    used_theorem.append(problem.conditions[predicate].theorems[_id])
-            used_id = list(set(used_id))  # 快速去重
-            if len_used_id == len(used_id):
-                break
-
-        for t in problem.theorems_applied:
-            if t in used_theorem and t not in selected_theorem:
-                selected_theorem.append(t)
-
-        if problem.goal["theorem"] not in ["solve_eq", "extended", "prerequisite"] and\
-                problem.goal["theorem"] not in selected_theorem:
-            selected_theorem.append(problem.goal["theorem"])
+    for step in problem.timing:  # ensure ordered theorem seqs list
+        if problem.timing[step][0] in used_theorem and problem.timing[step][0] not in selected_theorem:
+            selected_theorem.append(problem.timing[step][0])
+    if problem.goal.theorem not in ["solve_eq", "extended", "prerequisite"] and \
+            problem.goal.theorem not in selected_theorem:
+        selected_theorem.append(problem.goal.theorem)
 
     return used_id, selected_theorem
+
+
+class HG:
+    id_count = 1
+
+
+def save_equations_hyper_graph(eqs, path):
+    """Save sym-equation hyper graph"""
+    id_count = HG.id_count
+    HG.id_count += 1
+    dot = Graph(name=str(id_count), engine='circo')  # Tree
+    added_sym = []
+    for eq in eqs:
+        eq_str = str(eq).replace(" ", "")
+        dot.node(eq_str, eq_str, shape='box')  # eq node
+
+        for sym in eq.free_symbols:
+            sym_str = str(sym)
+            if sym_str not in added_sym:
+                added_sym.append(sym_str)
+                dot.node(sym_str, sym_str)  # sym node
+
+            dot.edge(eq_str, sym_str)
+
+    dot.render(directory=path, view=False, format="png")  # save hyper graph
+    os.remove(path + "{}.gv".format(id_count))
+    if "{}_eq_hyper.png".format(id_count) in os.listdir(path):
+        os.remove(path + "{}_eq_hyper.png".format(id_count))
+    os.rename(path + "{}.gv.png".format(id_count),
+              path + "{}_eq_hyper.png".format(id_count))

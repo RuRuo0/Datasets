@@ -1,0 +1,37 @@
+{
+  "problem_id": 6692,
+  "annotation": "NaZhu_2023-05-14",
+  "source": "GeoQA-3518",
+  "problem_level": 1,
+  "problem_text_cn": "如图,点A、B、C、D四个点都在⊙O上,∠AOD=80°,AO∥DC,则∠B为()",
+  "problem_text_en": "As shown in the figure, the four points A, B, C, and D are all on ⊙O, ∠AOD = N_0, AO ∥ DC, then ∠B is ()",
+  "problem_img": "6692.png",
+  "construction_cdl": [
+    "Shape(OAD,DA)",
+    "Shape(ODC,CD)",
+    "Shape(OCB,BC)",
+    "Shape(OBA,AB)",
+    "Shape(OA,AD,DO)",
+    "Shape(AO,OD,DC,CB,BA)",
+    "Cocircular(O,ADCB)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(DOA),80)",
+    "ParallelBetweenLine(AO,DC)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(CBA))",
+  "problem_answer": "50",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum",
+    "parallel_property_alternate_interior_angle",
+    "angle_addition(ADO,ODC)",
+    "arc_property_circumference_angle_external",
+    "arc_property_circumference_angle_internal"
+  ],
+  "raw_answer": "解:连接AD,∵∠AOD=80°,OA=OD,∴∠ODA=∠OAD=50°,∵AO∥DC,∴∠ODC=∠AOD=80°,∴∠ADC=130°,∴∠B=180°-∠ADC=50°,\n故选:C．"
+}

@@ -1,0 +1,35 @@
+{
+  "problem_id": 6675,
+  "annotation": "NaZhu_2023-05-14",
+  "source": "GeoQA-3483",
+  "problem_level": 1,
+  "problem_text_cn": "如图,已知四边形ABCD内接于⊙O,AD是直径,∠ABC=120°,CD=3,则弦AC的长是()",
+  "problem_text_en": "As shown in the figure, it is known that the quadrilateral ABCD is inscribed in ⊙O, AD is the diameter, ∠ABC = N_0, CD = N_1, then the length of the chord AC is ()",
+  "problem_img": "6675.png",
+  "construction_cdl": [
+    "Shape(OAB,BA)",
+    "Shape(OBC,CB)",
+    "Shape(OCD,DC)",
+    "Shape(ODA,AO,OD)",
+    "Shape(AC,CD,DO,OA)",
+    "Shape(AB,BC,CA)",
+    "Collinear(AOD)",
+    "Cocircular(O,ABCD)"
+  ],
+  "text_cdl": [
+    "IsDiameterOfCircle(AD,O)",
+    "Equal(LengthOfLine(CD),3)",
+    "Equal(MeasureOfAngle(ABC),120)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AC))",
+  "problem_answer": "5.196",
+  "theorem_seqs": [
+    "arc_property_circumference_angle_external",
+    "arc_property_circumference_angle_internal",
+    "diameter_of_circle_property_right_angle",
+    "triangle_property_angle_sum",
+    "sine_theorem(CDA)"
+  ],
+  "raw_answer": "解:∵四边形ABCD内接于⊙O,∠ABC=120°,∴∠D=60°,∵AD是直径,∴∠ACD=90°,∵CD=3,∴tan60°=\\frac{AC}{DC},∴AC=3√{3},∴弦AC的长是:3√{3}．\n故选:A．"
+}

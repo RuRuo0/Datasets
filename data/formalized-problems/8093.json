@@ -1,0 +1,51 @@
+{
+  "problem_id": 8093,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-6672",
+  "problem_level": 1,
+  "problem_text_cn": "如图,PA、PB与⊙O相切,切点分别为A、B,PA=3,∠P=60°,若AC为⊙O的直径,则图中阴影部分的面积为()",
+  "problem_text_en": "As shown in the figure, PA, PB are tangent to ⊙O, the tangent points are A, B respectively, PA = N_0, ∠P = N_1, if AC is the diameter of ⊙O, the area of ​​the shaded part in the figure is ()",
+  "problem_img": "8093.png",
+  "construction_cdl": [
+    "Shape(AP,PB,OAB)",
+    "Shape(OAB,BA)",
+    "Shape(OA,AB,BO)",
+    "Shape(OB,BC,CO)",
+    "Shape(OBC,CB)",
+    "Shape(OC,OCA,AO)",
+    "Collinear(AOC)",
+    "Cocircular(O,ABC)"
+  ],
+  "text_cdl": [
+        "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AC,O)",
+    "IsTangentOfCircle(PB,O)",
+    "IsTangentOfCircle(PA,O)",
+    "Equal(LengthOfLine(PA),3)",
+    "Equal(MeasureOfAngle(APB),60)",
+    "Equal(MeasureOfAngle(PBO),90)",
+    "EquilateralTriangle(APB)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(Add(AreaOfTriangle(ABC),AreaOfSector(OBC)))",
+  "problem_answer": "4.16887",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular",
+    "quadrilateral_property_angle_sum(APBO)",
+    "flat_angle",
+    "angle_addition(COB,BOA)",
+    "radius_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum",
+    "isosceles_triangle_judgment_angle_equal",
+    "equilateral_triangle_judgment_isosceles_and_isosceles",
+    "diameter_of_circle_property_right_angle",
+    "triangle_property_angle_sum",
+    "sine_theorem",
+    "triangle_area_formula_sine",
+    "arc_property_center_angle",
+    "sector_area_formula"
+  ],
+  "raw_answer": "解:∵PA、PB与⊙O相切,∴PA=PB,∠PAO=∠PBO=90°∵∠P=60°,∴△PAB为等边三角形,∠AOB=120°∴AB=PA=3,∠OBC=60°∵OB=OC∴△OBC为等边三角形∴∠OCB=60°∵AC为⊙O的直径,∴∠ABC=90°．∴OB=√{3}．∵OA=OC,∴S~△AOB~=S~△OBC~∴S_{阴影}=S~扇形OBC~=\\frac{60π√{3}^{2}}{360}=\\frac{π}{2},故选:A．"
+}

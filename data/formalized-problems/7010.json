@@ -1,0 +1,34 @@
+{
+  "problem_id": 7010,
+  "annotation": "XiaoxiaoJin_2023-05-14",
+  "source": "GeoQA-4077",
+  "problem_level": 1,
+  "problem_text_cn": "如图,△BC的边AC与⊙O相交于C、D两点,且经过圆心O,边AB与⊙O相切,切点为B,如果∠C=26°,那么∠A等于()",
+  "problem_text_en": "As shown in the figure, the side AC and ⊙O of △ABC intersect at two points C and D, and pass through the center O. The side AB is tangent to ⊙O, and the tangent point is B. If ∠C = N_0, then ∠A is equal to ()",
+  "problem_img": "7010.png",
+  "construction_cdl": [
+    "Shape(CO,OB,BC)",
+    "Shape(CB,OBC)",
+    "Shape(BO,OD,ODB)",
+    "Shape(DA,AB,ODB)",
+    "Shape(DO,OC,OCD)",
+    "Collinear(ADOC)",
+    "Cocircular(O,DBC)"
+  ],
+  "text_cdl": [
+    "IsTangentOfCircle(AB,O)",
+    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(BCA),26)",
+    "IsDiameterOfCircle(CD,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(DAB))",
+  "problem_answer": "38",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular(AB,O,O)",
+    "arc_property_center_angle(ODB,O)",
+    "arc_property_circumference_angle_external(ODB,C)",
+    "triangle_property_angle_sum(BOA)"
+  ],
+  "raw_answer": "解:如图,连接OB,∵AB与⊙O相切,∴OB⊥AB,∴∠ABO=90°,∵OB=OC,∠C=26°,∴∠OBC=∠C=26°,∴∠COB=180°-26°-26°=128°,∴∠A=128°-90°=38°,故选:B．"
+}

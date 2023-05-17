@@ -1,0 +1,44 @@
+{
+  "problem_id": 6832,
+  "annotation": "QikeHuang_2023-05-14",
+  "source": "GeoQA-3746",
+  "problem_level": 1,
+  "problem_text_cn": "如图,△ABC是⊙O的内接三角形,∠C=30°,⊙O的半径为5,若点P是⊙O上的一点,在△ABP中,PB=AB,则PA的长为()",
+  "problem_text_en": "As shown in the figure, △ABC is the inscribed triangle of ⊙O, ∠C = N_0, the radius of ⊙O is N_1, if point P is a point on ⊙O, in △ABP, PB = AB, then the length of PA is ( )",
+  "problem_img": "6832.png",
+  "construction_cdl": [
+    "Shape(CA,AM,MC)",
+    "Shape(OM,ME,EN,NO)",
+    "Shape(MA,AE,EM)",
+    "Shape(EB,BN,NE)",
+    "Shape(EA,AB,BE)",
+    "Shape(PN,NB,BP)",
+    "Shape(OCA,AC)",
+    "Shape(AB,OBA)",
+    "Shape(BP,OPB)",
+    "Shape(OPC,CM,MO,ON,NP)",
+    "Collinear(CMEB)",
+    "Collinear(OMA)",
+    "Collinear(ONB)",
+    "Collinear(PNEA)",
+    "Cocircular(O,CABP)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(RadiusOfCircle(O),5)",
+    "Equal(MeasureOfAngle(BCA),30)",
+    "Equal(LengthOfLine(AB),LengthOfLine(BP))"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AP))",
+  "problem_answer": "5*√3",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "arc_property_circumference_angle_external(OAB,C)",
+    "arc_property_circumference_angle_external(OAB,P)",
+    "arc_property_center_angle(OAB,O)",
+    "cosine_theorem(OAB)",
+    "cosine_theorem(PAB)"
+  ],
+  "raw_answer": "解:连接OA、OB、OP,∵∠C=30°,∴∠APB=∠C=30°,∵PB=AB,∴∠PAB=∠APB=30°∴∠ABP=120°,∵PB=AB,∴OB⊥AP,AD=PD,∴∠OBP=∠OBA=60°,∵OB=OA,∴△AOB是等边三角形,∴AB=OA=5,\n则Rt△PBD中,PD=\\cos30°•PB=\\frac{√{3}}{2}×5=\\frac{5√{3}}{2},∴AP=2PD=5√{3},\n故选:D．"
+}

@@ -1,0 +1,43 @@
+{
+  "problem_id": 8845,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-8696",
+  "problem_level": 1,
+  "problem_text_cn": "如图,OA是⊙O的半径,弦BC⊥OA,D是⊙O上一点,若∠ADB=28°,则∠AOC的度数为()",
+  "problem_text_en": "As shown in the figure, OA is the radius of ⊙O, chord BC ⊥ OA, D is a point on ⊙O, if ∠ADB = N_0, then the degree of ∠AOC is ()",
+  "problem_img": "8845.png",
+  "construction_cdl": [
+    "Shape(BD,ODB)",
+    "Shape(DE,EG,GO,OC,OCD)",
+    "Shape(CO,OG,GC)",
+    "Shape(DB,BE,ED)",
+    "Shape(EA,AG,GE)",
+    "Shape(CE,EB,OBA)",
+    "Shape(CG,GA,OAC)",
+    "Collinear(BEGC)",
+    "Collinear(OGA)",
+    "Collinear(DEA)",
+    "Cocircular(O,ACDB)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(BG,OG)",
+    "PerpendicularBetweenLine(OG,CG)",
+    "PerpendicularBetweenLine(AG,BG)",
+    "PerpendicularBetweenLine(CG,AG)",
+    "Equal(MeasureOfAngle(ADB),28)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(COA))",
+  "problem_answer": "56",
+  "theorem_seqs": [
+    "diameter_of_circle_judgment_pass_centre",
+    "circle_property_chord_perpendicular_bisect_chord",
+    "circle_property_chord_perpendicular_bisect_arc",
+    "congruent_arc_judgment_length_equal(OBA,OAC)",
+    "congruent_arc_property_measure_equal(OBA,OAC)",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external"
+  ],
+  "raw_answer": "解:∵BC⊥OA,∴⁀{AB}=⁀{AC},∴∠AOC=2∠ADB=2×28°=56°．故选:C．"
+}

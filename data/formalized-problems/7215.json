@@ -1,0 +1,33 @@
+{
+  "problem_id": 7215,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4414",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB是⊙O的直径,点D在AB的延长线上,DC切⊙O于点C,若∠A=26°,则∠D等于()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, point D is on the extended line of AB, and DC is tangent to ⊙O at point C, if ∠A = N_0, then ∠D is equal to ()",
+  "problem_img": "7215.png",
+  "construction_cdl": [
+    "Shape(BO,OA,OAB)",
+    "Shape(BD,DC,OBC)",
+    "Shape(CO,OB,OBC)",
+    "Shape(AO,OC,CA)",
+    "Shape(AC,OCA)",
+    "Collinear(DBOA)",
+    "Cocircular(O,ABC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(DC,O)",
+    "Equal(MeasureOfAngle(CAB),26)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(BDC))",
+  "problem_answer": "38",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external",
+    "triangle_property_angle_sum"
+  ],
+  "raw_answer": "解:如右图所示,连接BC,∵AB是直径,∴∠BCA=90°,又∵∠A=26°,∴∠CBA=90°-26°=64°,∵DC是切线,∴∠BCD=∠A=26°,∴∠D=∠CBA-∠BCD=64°-26°=38°．故选:A．"
+}

@@ -1,10 +1,10 @@
-# FormalGeo-SAT
+# FormalGeo
 
 [![Version](https://img.shields.io/badge/Version-1.4.0-brightgreen)](https://github.com/BitSecret/FormalGeo-SAT)
 [![License](https://img.shields.io/badge/License-MIT-green)](https://opensource.org/licenses/MIT)
 [![Survey](https://img.shields.io/badge/Survey-FormalGeo-blue)](https://github.com/BitSecret/FormalGeo-SAT)  
-Formal representation and solving for SAT-level Euclidean plane geometry problems.  
-**FormalGeo-SAT** is an extended version of **[FormalGeo](https://github.com/BitSecret/FormalGeo)**. It supports solving
+Formal representation and solving for Euclidean plane geometry problems from SAT-level to IMO-level.  
+**FormalGeo** is an extended version of **[GeoMechanical](https://github.com/BitSecret/GeoMechanical)**. It supports solving
 more types of plane geometric problems.
 
 ## Co-work (Current Week)
@@ -21,15 +21,15 @@ more types of plane geometric problems.
 |  4  |  张效凯   |    60    | 7672-7731 (data/raw-problems/GeoQA) |     √     |
 |  5  |  郭彦钧   |    60    | 7732-7791 (data/raw-problems/GeoQA) |     ×     |
 |  6  |  黄琦珂   |    60    | 7792-7851 (data/raw-problems/GeoQA) |     ×     |
-|  7  |  黄一雯   |    60    |           same as week 10           |     ×     |
+|  7  |  黄一雯   |    60    |           same as week 10           |     √     |
 |  8  |  金啸笑   |    60    | 7852-7911 (data/raw-problems/GeoQA) |     ×     |
 |  9  |   李阳   |    60    | 7912-7971 (data/raw-problems/GeoQA) |     ×     |
 | 10  |  毛晨扬   |    60    | 7972-8031 (data/raw-problems/GeoQA) |     √     |
 | 11  |  王茹楠   |    60    |           same as week 10           |     ×     |
-| 12  |  王一凡   |    60    |           same as week 10           |     ×     |
+| 12  |  王一凡   |    60    |           same as week 10           |     √     |
 | 13  |  岳登峰   |    60    | 8032-8091 (data/raw-problems/GeoQA) |     ×     |
 | 14  |  朱方震   |    60    |           same as week 10           |     ×     |
-| 15  |   朱哲   |    60    | 8092-8151 (data/raw-problems/GeoQA) |     ×     |
+| 15  |   朱哲   |    60    | 8092-8151 (data/raw-problems/GeoQA) |     √     |
 | 16  |   秦城   |    60    |           same as week 10           |     √     |
 
 ## Co-work (After)
@@ -74,7 +74,7 @@ more types of plane geometric problems.
 |  9  |   李阳   |    60    |                      9532-9591 (data/raw-problems/GeoQA)                       |     ×     |
 | 10  |  毛晨扬   |    60    | 9592-9595 (data/raw-problems/GeoQA)<br>9596-9651 (data/raw-problems/GeoQAPlus) |     ×     |
 | 11  |  王茹楠   |    60    |                                same as week 12                                 |     ×     |
-| 12  |  王一凡   |    60    |                                same as week 12                                 |     ×     |
+| 12  |  王一凡   |    60    |                                same as week 12                                 |     √     |
 | 13  |  岳登峰   |    60    |                    9652-9711 (data/raw-problems/GeoQAPlus)                     |     ×     |
 | 14  |  朱方震   |    60    |                                same as week 12                                 |     ×     |
 | 15  |   朱哲   |    60    |                    9712-9771 (data/raw-problems/GeoQAPlus)                     |     ×     |

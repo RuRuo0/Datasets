@@ -2,7 +2,7 @@ import copy
 from sympy import symbols, solve, Float
 from func_timeout import func_set_timeout, FunctionTimedOut
 from core.aux_tools.utils import number_round
-from core.aux_tools.parser import EqParser
+from core.aux_tools.parser import EquationParser as EqParser
 from core.aux_tools.utils import rough_equal
 import warnings
 from core.aux_tools.output import save_equations_hyper_graph
@@ -160,14 +160,13 @@ class EquationKiller:
         Simplify equations by replacing sym with known value.
         :param problem: Instance of class <Problem>.
         """
-        equation = problem.conditions["Equation"]
         update = True
         while update:
             update = False
             remove_lists = set()  # equation to be deleted
             add_lists = []  # equation to be added
 
-            for eq in equation.simplified_equation:  # solve eq that only one sym unsolved
+            for eq in problem.condition.simplified_equation:  # solve eq that only one sym unsolved
                 if len(eq.free_symbols) != 1:
                     continue
 
@@ -180,21 +179,22 @@ class EquationKiller:
                 else:
                     if target_sym in result:
                         problem.set_value_of_sym(target_sym, result[target_sym],
-                                                 tuple(equation.simplified_equation[eq]), "solve_eq")
+                                                 tuple(problem.condition.simplified_equation[eq]), "solve_eq")
                         remove_lists |= {eq}
 
-            for eq in equation.simplified_equation:  # value replace
+            for eq in problem.condition.simplified_equation:  # value replace
                 if eq in remove_lists:
                     continue
                 raw_eq = eq
                 simplified = False
                 added_premise = []
                 for sym in eq.free_symbols:
-                    if equation.value_of_sym[sym] is None:
+                    if problem.condition.value_of_sym[sym] is None:
                         continue
                     simplified = True  # replace sym with value when the value known
-                    eq = eq.subs(sym, equation.value_of_sym[sym])
-                    added_premise.append(equation.get_id_by_item[sym - equation.value_of_sym[sym]])
+                    eq = eq.subs(sym, problem.condition.value_of_sym[sym])
+                    added_premise.append(problem.condition.get_id_by_predicate_and_item(
+                        "Equation", sym - problem.condition.value_of_sym[sym]))
                     remove_lists |= {raw_eq}
 
                 if not simplified:
@@ -204,13 +204,13 @@ class EquationKiller:
                     continue
                 else:  # add new simplified equation
                     update = True
-                    premise = equation.simplified_equation[raw_eq] + added_premise
+                    premise = problem.condition.simplified_equation[raw_eq] + added_premise
                     add_lists.append((eq, premise))
 
             for remove_eq in remove_lists:  # remove useless equation
-                equation.simplified_equation.pop(remove_eq)
+                problem.condition.simplified_equation.pop(remove_eq)
             for add_eq, premise in add_lists:  # remove useless equation
-                equation.simplified_equation[add_eq] = premise
+                problem.condition.simplified_equation[add_eq] = premise
 
     @staticmethod
     def simplification_sym_replace(equations, target_sym):
@@ -303,18 +303,16 @@ class EquationKiller:
     @staticmethod
     def solve_equations(problem):
         """
-        Solve equations in problem.conditions["Equation"].equations.
+        Solve equations in problem.condition.equations.
         :param problem: Instance of class <Problem>.
         """
-        equation = problem.conditions["Equation"]  # class <Equation>
-
-        if not EquationKiller.solve_eqs or equation.solved:
+        if not EquationKiller.solve_eqs or problem.condition.eq_solved:
             return
 
         EquationKiller.simplification_value_replace(problem)  # simplify equations before solving
 
         mini_eqs_lists, n_m = EquationKiller.get_minimum_group_equations(  # get mini equations
-            list(problem.conditions["Equation"].simplified_equation)
+            list(problem.condition.simplified_equation)
         )
 
         if EquationKiller.show_solving_msg:
@@ -337,7 +335,7 @@ class EquationKiller:
                 warnings.warn(msg)
             else:
                 for sym in results:
-                    if equation.value_of_sym[sym] is None:
+                    if problem.condition.value_of_sym[sym] is None:
                         solved = True
                         solved_results = results
                         mini_eqs = mini_eqs_lists[i]
@@ -348,7 +346,7 @@ class EquationKiller:
 
             if EquationKiller.accurate_mode:
                 for sym in solved_results:
-                    if equation.value_of_sym[sym] is not None:
+                    if problem.condition.value_of_sym[sym] is not None:
                         continue
                     sym_mini_eqs = copy.copy(mini_eqs)
                     for removed_eq in copy.copy(sym_mini_eqs):
@@ -365,12 +363,12 @@ class EquationKiller:
 
                     premise = []
                     for eq in sym_mini_eqs:
-                        premise += equation.simplified_equation[eq]
+                        premise += problem.condition.simplified_equation[eq]
                     problem.set_value_of_sym(sym, solved_results[sym], tuple(set(premise)), "solve_eq")
             else:
                 premise = []
                 for eq in mini_eqs:
-                    premise += equation.simplified_equation[eq]
+                    premise += problem.condition.simplified_equation[eq]
                 premise = tuple(set(premise))
                 for sym in solved_results:
                     problem.set_value_of_sym(sym, solved_results[sym], premise, "solve_eq")
@@ -378,33 +376,32 @@ class EquationKiller:
     @staticmethod
     def solve_target(target_expr, problem):
         """
-        Solve target_expr in the constraint of problem.conditions["Equation"].
+        Solve target_expr in the constraint of problem's equation.
         :param problem: Instance of class <Problem>.
         :param target_expr: symbol expression.
         """
-        equation = problem.conditions["Equation"]  # class <Equation>
-
         if target_expr is None:
             return None, None
 
-        if target_expr in equation.get_id_by_item:  # no need to solve
-            return 0, [equation.get_id_by_item[target_expr]]
-        if -target_expr in equation.get_id_by_item:
-            return 0, [equation.get_id_by_item[-target_expr]]
+        if target_expr in problem.condition.get_items_by_predicate("Equation"):  # no need to solve
+            return 0, [problem.condition.get_id_by_predicate_and_item("Equation", target_expr)]
+        if -target_expr in problem.condition.get_items_by_predicate("Equation"):
+            return 0, [problem.condition.get_id_by_predicate_and_item("Equation", -target_expr)]
 
         EquationKiller.simplification_value_replace(problem)  # simplify equations before solving
 
         premise = []
         for sym in target_expr.free_symbols:  # solve only using value replacement
-            if equation.value_of_sym[sym] is not None:
-                target_expr = target_expr.subs(sym, equation.value_of_sym[sym])
-                premise.append(equation.get_id_by_item[sym - equation.value_of_sym[sym]])
+            if problem.condition.value_of_sym[sym] is not None:
+                target_expr = target_expr.subs(sym, problem.condition.value_of_sym[sym])
+                premise.append(problem.condition.get_id_by_predicate_and_item(
+                    "Equation", sym - problem.condition.value_of_sym[sym]))
         if len(target_expr.free_symbols) == 0:
             return number_round(target_expr), premise
 
         target_sym, mini_eqs_lists, n_m = EquationKiller.get_minimum_target_equations(  # get mini equations
             target_expr,
-            list(problem.conditions["Equation"].simplified_equation)
+            list(problem.condition.simplified_equation)
         )
         if len(mini_eqs_lists) == 0:  # no mini equations, can't solve
             return None, []
@@ -471,7 +468,7 @@ class EquationKiller:
                         mini_eqs.remove(removed_eq)
 
         for eq in mini_eqs[1:]:
-            premise += equation.simplified_equation[eq]
+            premise += problem.condition.simplified_equation[eq]
         premise = set(premise)
 
         eq = target_expr - target_value
@@ -487,23 +484,28 @@ class EquationKiller:
                     problem.set_value_of_sym(sym, results[sym], tuple(premise), "solve_eq")
                     value_added = True
         if not value_added:
-            equation.add(target_expr - target_value, tuple(premise), "solve_eq")
+            problem.condition.add("Equation", target_expr - target_value, tuple(premise), "solve_eq")
 
         return target_value, list(premise)
 
 
-class GeoLogic:
+class GeometryPredicateLogic:
 
     @staticmethod
     def run(gpl, problem):
         """
         Run reason step by step.
-        :param gpl: geometric predicate logic.
+        :param gpl: <dict>, (products, logic_constraints, algebra_constraints, conclusions), geometric predicate logic.
         :param problem: instance of class <Problem>.
-        :return r: triplet, (r_ids, r_items, r_vars).
+        :return results: <list> of <tuple>, [(letters, premises, conclusions)].
         """
-        r_ids, r_items, r_vars = problem.conditions[gpl[0][0]].get_items(gpl[0][1])
+        products = gpl["products"]
+        logic_constraints = gpl["logic_constraints"]
+        algebra_constraints = gpl["algebra_constraints"]
+        conclusions = gpl["conclusions"]
 
+        r_ids, r_items = problem.condition.get_ids_and_items_by_predicate_and_variable(products[0][0], products[0][1])
+        r_vars = products[0][1]
         for i in range(len(r_items)):  # delete duplicated vars and corresponding item
             r_items[i] = list(r_items[i])
         r_vars = list(r_vars)
@@ -516,51 +518,69 @@ class GeoLogic:
             for i in range(len(r_items)):
                 r_items[i].pop(index)
 
-        for i in range(1, len(gpl)):
-            r2_gpl = gpl[i]
-            oppose = False
-            if "~" in r2_gpl[0]:
-                r2_gpl[0] = r2_gpl[0].replace("~", "")
-                oppose = True
+        for i in range(1, len(products)):
+            r_ids, r_items, r_vars = GeometryPredicateLogic.product(
+                (r_ids, r_items, r_vars), products[i], problem)
 
-            if r2_gpl[0] == "Equal":  # algebra constraint
-                r_ids, r_items, r_vars = GeoLogic.constraint_algebra(
-                    (r_ids, r_items, r_vars),
-                    r2_gpl,
-                    oppose,
-                    problem
-                )
-            else:
-                if len(set(r2_gpl[1]) - set(r_vars)) == 0:  # logic constraint
-                    r_ids, r_items, r_vars = GeoLogic.constraint_logic(
-                        (r_ids, r_items, r_vars),
-                        r2_gpl,
-                        oppose,
-                        problem
-                    )
-                else:  # constrained cartesian product
-                    r_ids, r_items, r_vars = GeoLogic.product(
-                        (r_ids, r_items, r_vars),
-                        problem.conditions[r2_gpl[0]].get_items(r2_gpl[1]),
-                    )
-            if len(r_items) == 0:
-                break
+        for i in range(len(logic_constraints)):
+            r_ids, r_items, r_vars = GeometryPredicateLogic.constraint_logic(
+                (r_ids, r_items, r_vars), logic_constraints[i], problem)
 
-        return r_ids, r_items, r_vars
+        for i in range(len(algebra_constraints)):
+            r_ids, r_items, r_vars = GeometryPredicateLogic.constraint_algebra(
+                (r_ids, r_items, r_vars), algebra_constraints[i], problem)
+
+        if len(r_ids) == 0:
+            return []
+
+        return GeometryPredicateLogic.make_conclusion((r_ids, r_items, r_vars), conclusions, problem)
 
     @staticmethod
-    def product(r1, r2):
+    def make_conclusion(r, conclusions, problem):
+        """
+        Make conclusion according given reasoned points sets 'r' and GDL 'conclusions'.
+        :param r: triplet, (r_ids, r_items, r_vars).
+        :param conclusions: <list> of conclusion GDL.
+        :param problem: instance of class <Problem>.
+        :return results: <list> of <tuple>, [(letters, premises, conclusions)].
+        """
+        results = []
+        r_ids, r_items, r_vars = r
+        for i in range(len(r_ids)):
+            letters = {}
+            for j in range(len(r_vars)):
+                letters[r_vars[j]] = r_items[i][j]
+            conclusion = []
+
+            for predicate, item in conclusions:
+                if predicate == "Equal":  # algebra conclusion
+                    eq = EqParser.get_equation_from_tree(problem, item, True, letters)
+                    conclusion.append(("Equation", eq))
+                else:  # logic conclusion
+                    item = tuple(letters[i] for i in item)
+                    conclusion.append((predicate, item))
+            results.append((letters, r_ids[i], conclusion))
+
+        return results
+
+    @staticmethod
+    def product(r1, r2_logic, problem):
         """
         Constrained Cartesian product.
         :param r1: triplet, (r1_ids, r1_items, r1_vars).
-        :param r2: triplet, (r2_ids, r2_items, r2_vars).
-        :return r: triplet, (r_ids, r_items, r_vars).
+        :param r2_logic: geo predicate logic, such as ['Collinear', ['a', 'b', 'c']].
+        :param problem: instance of class <Problem>.
+        :return r: triplet, (r_ids, r_items, r_vars), reasoning result.
         >> product(([(1,), (2,)], [('A', 'B'), ('C', 'D')], ['a', 'b']),
-                   ([(3,), (4,)], [('B', 'C'), ('D', 'E')], ['b', 'c']))
+                   ['Line', ['b', 'c']],
+                   problem)
         ([(1, 3), (2, 4)], [('A', 'B', 'C'), ('C', 'D', 'E')], ['a', 'b', 'c'])
         """
         r1_ids, r1_items, r1_vars = r1
-        r2_ids, r2_items, r2_vars = r2
+        if len(r1_ids) == 0:
+            return [], [], []
+        r2_ids, r2_items = problem.condition.get_ids_and_items_by_predicate_and_variable(r2_logic[0], r2_logic[1])
+        r2_vars = r2_logic[1]
 
         inter = list(set(r1_vars) & set(r2_vars))  # intersection
         for i in range(len(inter)):
@@ -595,53 +615,56 @@ class GeoLogic:
         return r_ids, r_items, r_vars
 
     @staticmethod
-    def constraint_logic(r1, r2_logic, oppose, problem):
+    def constraint_logic(r1, r2_logic, problem):
         """
         Logic constraint.
         :param r1: triplet, (r1_ids, r1_items, r1_vars).
         :param r2_logic: geo predicate logic, such as ['Collinear', ['a', 'b', 'c']].
-        :param oppose: indicate '&' or '&~'.
         :param problem: instance of class <Problem>.
         :return r: triplet, (r_ids, r_items, r_vars), reasoning result.
         >> problem.conditions['Line'].get_item_by_id  # supposed
         {3: ('B', 'C')}
         >> constraint_logic(([(1,), (2,)], [('A', 'B', 'C'), ('C', 'D', 'E')], ['a', 'b', 'c']),
-                            False
                             ['Line', ['b', 'c']],
                             problem)
         ([(1, 3)], [('A', 'B', 'C')], ['a', 'b', 'c'])
         >> constraint_logic(([(1,), (2,)], [('A', 'B', 'C'), ('C', 'D', 'E')], ['a', 'b', 'c']),
-                            True
-                            ['Line', ['b', 'c']],
+                            ['~Line', ['b', 'c']],
                             problem)
         ([(2,)], [('C', 'D', 'E')], ['a', 'b', 'c'])
         """
         r1_ids, r1_items, r1_vars = r1
+        if len(r1_ids) == 0:
+            return [], [], []
+        oppose = False    # indicate '&' or '&~'
+        if "~" in r2_logic[0]:
+            r2_logic[0] = r2_logic[0].replace("~", "")
+            oppose = True
         index = [r1_vars.index(v) for v in r2_logic[1]]
         r_ids = []
         r_items = []
+
         if not oppose:  # &
             for i in range(len(r1_items)):
                 r2_item = tuple(r1_items[i][j] for j in index)
-                if r2_item in problem.conditions[r2_logic[0]].get_id_by_item:
-                    r2_id = problem.conditions[r2_logic[0]].get_id_by_item[r2_item]
+                if r2_item in problem.condition.get_items_by_predicate(r2_logic[0]):
+                    r2_id = problem.condition.get_id_by_predicate_and_item(r2_logic[0], r2_item)
                     r_ids.append(tuple(set(list(r1_ids[i]) + [r2_id])))
                     r_items.append(r1_items[i])
         else:  # &~
             for i in range(len(r1_items)):
                 r2_item = tuple(r1_items[i][j] for j in index)
-                if r2_item not in problem.conditions[r2_logic[0]].get_id_by_item:
+                if r2_item not in problem.condition.get_items_by_predicate(r2_logic[0]):
                     r_ids.append(r1_ids[i])
                     r_items.append(r1_items[i])
         return r_ids, r_items, r1_vars
 
     @staticmethod
-    def constraint_algebra(r1, r2_algebra, oppose, problem):
+    def constraint_algebra(r1, r2_algebra, problem):
         """
         Algebra constraint.
         :param r1: triplet, (r1_ids, r1_items, r1_vars).
         :param r2_algebra: geo predicate logic, such as ['Equal', [['Length', ['a', 'b']], 5]].
-        :param oppose: indicate '&' or '&~'.
         :param problem: instance of class <Problem>.
         :return r: triplet, (r_ids, r_items, r_vars), reasoning result.
         >> problem.conditions['Equation'].get_value_of_sym  # supposed
@@ -649,19 +672,24 @@ class GeoLogic:
         >> problem.conditions['Equation'].get_item_by_id  # supposed
         {3: ll_ab - 1}
         >> constraint_algebra(([(1,), (2,)], [('A', 'B', 'C'), ('C', 'D', 'E')], ['a', 'b', 'c']),
-                              False
                               ['Equal', [['Length', ['a', 'b']], 1]],
                               problem)
         ([(1, 3)], [('A', 'B', 'C')], ['a', 'b', 'c'])
         >> constraint_algebra(([(1,), (2,)], [('A', 'B', 'C'), ('C', 'D', 'E')], ['a', 'b', 'c']),
-                              True
-                              ['Equal', [['Length', ['a', 'b']], 1]],
+                              ['~Equal', [['Length', ['a', 'b']], 1]],
                               problem)
         ([(2,)], [('C', 'D', 'E')], ['a', 'b', 'c'])
         """
         r1_ids, r1_items, r1_vars = r1
+        if len(r1_ids) == 0:
+            return [], [], []
+        oppose = False    # indicate '&' or '&~'
+        if "~" in r2_algebra[0]:
+            r2_algebra[0] = r2_algebra[0].replace("~", "")
+            oppose = True
         r_ids = []
         r_items = []
+
         if not oppose:  # &
             for i in range(len(r1_items)):
                 letters = {}
@@ -785,7 +813,7 @@ class GoalFinder:
                     if problem.ee_check(predicate, item) and problem.fv_check(predicate, item):
                         if (predicate in problem.predicate_GDL["BasicEntity"] or
                             predicate in problem.predicate_GDL["Construction"]) and \
-                                item not in problem.conditions[predicate].get_id_by_item:
+                                item not in problem.condition.get_items_by_predicate(predicate):
                             passed = False
                             break
                         sub_goal.append((predicate, item))
@@ -804,9 +832,8 @@ class GoalFinder:
         Find sub goals from algebra goal.
         """
         sub_goals = {}
-        equation = problem.conditions["Equation"]
         for sym in unsolved_syms:
-            attr, items = equation.attr_of_sym[sym]
+            attr, items = problem.condition.attr_of_sym[sym]
             for theorem_name in theorem_GDL:
                 t_vars = theorem_GDL[theorem_name]["vars"]
                 for premises_GDL, conclusions_GDL in theorem_GDL[theorem_name]["body"]:
@@ -820,7 +847,7 @@ class GoalFinder:
                                 theorem_para = [item[attr_var.index(t)] if t in attr_var else t for t in t_vars]
                                 theorem_paras.append(theorem_para)
                         theorem_paras = GoalFinder.theorem_para_completion(
-                            theorem_paras, problem.conditions["Point"].get_id_by_item
+                            theorem_paras, problem.condition.get_items_by_predicate("Point")
                         )
                         current_sub_goals = GoalFinder.gen_sub_goals(
                             theorem_name, theorem_paras, t_vars, premises_GDL, problem
@@ -851,7 +878,7 @@ class GoalFinder:
                             [item[conclusion[1].index(t)] if t in conclusion[1] else t for t in t_vars]
                         ]
                         theorem_paras = GoalFinder.theorem_para_completion(
-                            theorem_paras, problem.conditions["Point"].get_id_by_item
+                            theorem_paras, problem.condition.get_items_by_predicate("Point")
                         )
                         current_sub_goals = GoalFinder.gen_sub_goals(
                             theorem_name, theorem_paras, t_vars, premises_GDL, problem

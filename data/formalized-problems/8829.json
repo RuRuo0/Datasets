@@ -1,0 +1,37 @@
+{
+  "problem_id": 8829,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-8672",
+  "problem_level": 1,
+  "problem_text_cn": "如图,点O为优弧⁀{ACB}所在圆的圆心,∠AOC=108°,点D在AB的延长线上,BD=BC,则∠D的度数为()",
+  "problem_text_en": "As shown in the figure, point O is the center of the circle where the major arc ⁀ACB is located, ∠AOC = N_0, point D is on the extended line of AB, BD = BC, then the degree of ∠D is ()",
+  "problem_img": "8829.png",
+  "construction_cdl": [
+    "Shape(AO,OC,OCA)",
+    "Shape(CO,OA,AB,BC)",
+    "Shape(EC,CB,OBE)",
+    "Shape(CE,OEC)",
+    "Shape(BD,DE,OBE)",
+    "Shape(OA,OAB)",
+    "Collinear(CED)",
+    "Collinear(ABD)",
+    "Cocircular(O,ABC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(AOC),108)",
+    "Equal(LengthOfLine(CB),LengthOfLine(BD))"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(BDC))",
+  "problem_answer": "27",
+  "theorem_seqs": [
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external",
+    "adjacent_complementary_angle",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum"
+  ],
+  "raw_answer": "解:∵∠AOC、∠ABC是同弧对的圆心角和圆周角,∴∠ABC=\\frac{1}{2}∠AOC,∵∠AOC=108°,∴∠ABC=54°,∵∠ABC是△ABD的外角,∴∠ABC=∠BCD+∠D,∵BD=BC,∴∠BCD=∠D,∴∠ABC=∠BCD+∠D=2∠D,∴∠D=\\frac{1}{2}∠ABC=27°．故选:B．"
+}

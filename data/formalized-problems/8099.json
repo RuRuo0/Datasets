@@ -1,0 +1,48 @@
+{
+  "problem_id": 8099,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-6695",
+  "problem_level": 1,
+  "problem_text_cn": "如图,矩形ABCD内接于⊙O,且AB=√{3},BC=1,则图中阴影部分所表示的扇形AOD的面积为()",
+  "problem_text_en": "As shown in the figure, the rectangle ABCD is inscribed in ⊙O, and AB = N_0, BC = N_1, then the area of ​​the sector AOD represented by the shaded part in the figure is ()",
+  "problem_img": "8099.png",
+  "construction_cdl": [
+    "Shape(OD,DA,AO)",
+    "Shape(ODA,AD)",
+    "Shape(OAB,BA)",
+    "Shape(OA,AB,BO)",
+    "Shape(OB,BC,CO)",
+    "Shape(OBC,CB)",
+    "Shape(DO,OC,CD)",
+    "Shape(OCD,DC)",
+    "Collinear(AOC)",
+    "Collinear(BOD)",
+    "Cocircular(O,DABC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Rectangle(ABCD)",
+    "Equal(LengthOfLine(AB),√3)",
+    "Equal(LengthOfLine(BC),1)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(AreaOfSector(ODA))",
+  "problem_answer": "π/6",
+  "theorem_seqs": [
+    "cosine_theorem(BCA)",
+    "cosine_theorem(ABC)",
+    "parallelogram_property_diagonal_bisection",
+    "rectangle_property_diagonal_equal",
+    "radius_of_circle_property_length_equal",
+    "angle_addition(DAC,CAB)",
+    "isosceles_triangle_judgment_line_equal",
+        "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum",
+        "isosceles_triangle_judgment_angle_equal",
+    "equilateral_triangle_judgment_isosceles_and_isosceles",
+    "equilateral_triangle_property_angle",
+        "arc_property_center_angle",
+    "sector_area_formula"
+  ],
+  "raw_answer": "解:连接AC．∵Rt△ABC中,∠ABC=90°,AB=√{3},BC=1,∴AC=2,OA=1,∴△AOD为等边三角形,∠AOD=60°,∴S~AOD~=\\frac{60π×1}{360}=\\frac{π}{6},故选:C．"
+}

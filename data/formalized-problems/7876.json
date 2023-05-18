@@ -1,0 +1,36 @@
+{
+  "problem_id": 7876,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-5703",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在△ABC中,AB=AC,AE平分∠BAC,DE垂直平分AB,连接CE,∠B=70°．则∠BCE的度数为()",
+  "problem_text_en": "As shown in the figure, in △ABC, AB = AC, AE bisects ∠BAC, DE bisects AB perpendicularly, connects CE, ∠B = N_0. Then the degree of ∠BCE is ()",
+  "problem_img": "7876.png",
+  "construction_cdl": [
+    "Shape(AD,DE,EA)",
+    "Shape(AE,EC,CA)",
+    "Shape(ED,DB,BE)",
+    "Shape(EB,BC,CE)",
+    "Collinear(ADB)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),LengthOfLine(AC))",
+    "Equal(MeasureOfAngle(ABC),70)",
+    "IsBisectorOfAngle(AE,CAB)",
+    "IsPerpendicularBisectorOfLine(ED,AB)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(BCE))",
+  "problem_answer": "50",
+  "theorem_seqs": [
+    "angle_addition",
+    "perpendicular_bisector_property_distance_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_line_coincidence",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum",
+    "mirror_congruent_triangle_judgment_sas",
+    "mirror_congruent_triangle_property_angle_equal"
+  ],
+  "raw_answer": "解:连接BE,D.\\frac{f}{g}(\\frac{\\lambda}{c})^{2}∥o∵AB=AC,AE平分∠BAC,∴EB=EC,∴∠EBC=∠ECB,∵∠ABC=70°,AC=AB,∴∠ACB=∠ABC=70°,∴∠BAC=180°-∠ABC-∠ACB=40°,∵AE平分∠BAC,∴∠BAE=20°,∵DE垂直平分AB,∴AE=EB,∴∠ABE=∠BAE=20°,∴∠BCE=∠EBC=∠ABC-∠ABE=70°-20°=50°,故选:B．"
+}

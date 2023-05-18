@@ -1,0 +1,36 @@
+{
+  "problem_id": 7892,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-5730",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在▱ABCD中,对角线AC、BD交于点O,E是BC边上的中点,若OE=2,AD=5,则▱ABCD的周长为()",
+  "problem_text_en": "As shown in the figure, in ▱ABCD, the diagonal AC and BD intersect at point O, and E is the midpoint on the edge of BC. If OE = N_0, AD = N_1, then the perimeter of ▱ABCD is ()",
+  "problem_img": "7892.png",
+  "construction_cdl": [
+    "Shape(AB,BO,OA)",
+    "Shape(OB,BE,EO)",
+    "Shape(OE,EC,CO)",
+    "Shape(AO,OD,DA)",
+    "Shape(DO,OC,CD)",
+    "Collinear(AOC)",
+    "Collinear(BEC)",
+    "Collinear(BOD)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(OE),2)",
+    "Equal(LengthOfLine(AD),5)",
+    "IsMidpointOfLine(E,BC)",
+    "Parallelogram(ABCD)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(PerimeterOfQuadrilateral(ABCD))",
+  "problem_answer": "18",
+  "theorem_seqs": [
+    "parallelogram_property_opposite_line_equal",
+    "parallelogram_property_diagonal_bisection",
+    "midsegment_of_triangle_judgment_midpoint",
+    "midsegment_of_triangle_property_length",
+    "quadrilateral_perimeter_formula(ABCD)"
+  ],
+  "raw_answer": "解:∵四边形ABCD是平行四边形,∴OA=OC=\\frac{1}{2}AC,OB=OD=\\frac{1}{2}BD,∵E是BC边上的中点,∴OE是△ABC的中位线,∴AB=2OE=4,∵AD=5,∴▱ABCD的周长=2×(4+5)=18,故选:C．"
+}

@@ -1,0 +1,40 @@
+{
+  "problem_id": 7887,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-5722",
+  "problem_level": 1,
+  "problem_text_cn": "如图,▱ABCD中,AD=10,AB=8,P为BC上的任意一点,E,F,G,H分别为AB,AP,DP,DC的中点,则EF+GH的长是()",
+  "problem_text_en": "As shown in the figure, in ▱ABCD, AD = N_0, AB = N_1, P is any point on BC, E, F, G, and H are the midpoints of AB, AP, DP, DC respectively, then the length of EF + GH is ()",
+  "problem_img": "7887.png",
+  "construction_cdl": [
+    "Shape(AE,EF,FA)",
+    "Shape(EB,BP,PF,FE)",
+    "Shape(AF,FP,PG,GD,DA)",
+    "Shape(DG,GH,HD)",
+    "Shape(GP,PC,CH,HG)",
+    "Collinear(AEB)",
+    "Collinear(AFP)",
+    "Collinear(DGP)",
+    "Collinear(DHC)",
+    "Collinear(BPC)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(AD),10)",
+    "Equal(LengthOfLine(AB),8)",
+    "Parallelogram(ABCD)",
+    "IsMidpointOfLine(E,AB)",
+    "IsMidpointOfLine(F,AP)",
+    "IsMidpointOfLine(G,DP)",
+    "IsMidpointOfLine(H,DC)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(Add(LengthOfLine(EF),LengthOfLine(GH)))",
+  "problem_answer": "5",
+  "theorem_seqs": [
+    "line_addition",
+    "parallelogram_property_opposite_line_equal",
+    "midsegment_of_triangle_judgment_midpoint",
+    "midsegment_of_triangle_property_length"
+  ],
+  "raw_answer": "解:∵四边形ABCD是平行四边形,∴BC=AD=10,∵E,F,G,H分别为AB,AP,DP,DC的中点,∴EF=\\frac{1}{2}BP,GH=\\frac{1}{2}CP,∴EF+GH=\\frac{1}{2}(BP+CP)=\\frac{1}{2}BC=5．故选:C．"
+}

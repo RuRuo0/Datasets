@@ -1,0 +1,38 @@
+{
+  "problem_id": 8744,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-8569",
+  "problem_level": 1,
+  "problem_text_cn": "如图,⊙O直径AB=8,∠CBD=30°,则CD=()",
+  "problem_text_en": "As shown in the figure, ⊙O diameter AB = N_0, ∠CBD = N_1, then CD = ()",
+  "problem_img": "8744.png",
+  "construction_cdl": [
+    "Shape(ODA,AO,OB,BD)",
+    "Shape(CD,DB,BC)",
+    "Shape(DO,OE,EC,CD)",
+    "Shape(OEB,OBC,CE)",
+    "Shape(OBC,CB)",
+    "Shape(OCD,DC)",
+    "Shape(OAE,OEB,BO,OA)",
+    "Collinear(AOB)",
+    "Collinear(EOD)",
+    "Cocircular(O,AEBCD)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)",
+    "IsDiameterOfCircle(DE,O)",
+    "Equal(DiameterOfCircle(O),8)",
+    "Equal(MeasureOfAngle(DBC),30)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(CD))",
+  "problem_answer": "4",
+  "theorem_seqs": [
+    "diameter_of_circle_property_length_equal",
+    "diameter_of_circle_property_right_angle",
+    "arc_property_circumference_angle_external",
+    "sine_theorem"
+  ],
+  "raw_answer": "解:作直径DE,连接CE,则∠DCE=90°,∵∠DBC=30°,∴∠DEC=∠DBC=30°,∵DE=AB=8,∴DC=\\frac{1}{2}DE=4,故选:A．"
+}

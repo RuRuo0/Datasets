@@ -1,0 +1,36 @@
+{
+  "problem_id": 8751,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-8579",
+  "problem_level": 1,
+  "problem_text_cn": "如图,点A,B,C在⊙O上,连接AB,AC,若∠BOC=100°,则∠B+∠C的度数为()",
+  "problem_text_en": "As shown in the figure, points A, B, and C are on ⊙O and connect AB and AC. If ∠BOC = N_0, then the degree of ∠B + ∠C is ()",
+  "problem_img": "8751.png",
+  "construction_cdl": [
+    "Shape(OAB,BA)",
+    "Shape(OCA,AC)",
+    "Shape(AB,BO,OA)",
+    "Shape(AO,OC,CA)",
+    "Shape(OBD,DO,OB)",
+    "Shape(ODC,CO,OD)",
+    "Collinear(AOD)",
+    "Cocircular(O,ABDC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AD,O)",
+    "Equal(MeasureOfAngle(COB),100)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(Add(MeasureOfAngle(ABO),MeasureOfAngle(OCA)))",
+  "problem_answer": "50",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external",
+    "angle_addition(CAD,DAB)",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal"
+  ],
+  "raw_answer": "解:作直径AD,如图所示,∵OA=OB=OC,∴∠B=∠BAO,∠C=∠CAO,∵∠BOD=∠B+∠BAO∴∠BOD=2∠B,∵∠COD=∠C+∠CAO∴∠COD=2∠C,∵∠BOD+∠COD=∠BOC=100°,即2∠B+2∠C=100°,∴∠B+∠C=50°．故选:B．"
+}

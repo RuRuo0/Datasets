@@ -1,0 +1,50 @@
+{
+  "problem_id": 7152,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4302",
+  "problem_level": 1,
+  "problem_text_cn": "在⊙O中,圆的半径为6,∠B=30°,AC是⊙O的切线,则CD的最小值是()",
+  "problem_text_en": "In ⊙O, the radius of the circle is N_0, ∠B = N_1, AC is the tangent of ⊙O, then the minimum value of CD is ()",
+  "problem_img": "7152.png",
+  "construction_cdl": [
+    "Shape(OBA,AB)",
+    "Shape(BA,AF,FB)",
+    "Shape(BF,FO,OE,OEB)",
+    "Shape(FA,AD,DF)",
+    "Shape(OAD,DA)",
+    "Shape(EO,OF,FD,DE)",
+    "Shape(ED,DM,OME)",
+    "Shape(ODM,MD)",
+    "Shape(OAD,AN,ND)",
+    "Shape(DN,NC,CD)",
+    "Collinear(BFDC)",
+    "Collinear(EOFA)",
+    "Collinear(MDN)",
+    "Collinear(ANC)",
+    "Cocircular(O,MEBAD)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [
+    "IsTangentOfCircle(CA,O)",
+    "Equal(MeasureOfAngle(CBA),30)",
+    "Equal(RadiusOfCircle(O),6)"
+  ],
+  "goal_cdl": "Value(LengthOfLine(DN))",
+  "problem_answer": "3",
+  "theorem_seqs": [
+    "diameter_of_circle_property_right_angle",
+    "radius_of_circle_property_length_equal",
+    "circle_property_length_of_radius_and_diameter",
+    "arc_property_circumference_angle_external",
+    "triangle_property_angle_sum",
+    "tangent_of_circle_property_perpendicular",
+    "angle_addition",
+    "right_triangle_judgment_angle",
+    "sine_theorem"
+
+  ],
+  "notes": "此题有些复杂，跑了好久，理论上应该没错",
+  "raw_answer": "解:作直径AE,连结DE,过点D作DC′垂直切线于C′,交⊙O于B′,如图,∵AE为直径,∴∠ADE=90°,∵∠E=∠B=30°,∴∠EAD=60°,在Rt△ADE中,AD=\\frac{1}{2}AE=6,∵AC是⊙O的切线,∴OA⊥AC,∴∠OAC=90°,∴∠CAD=90°-60°=30°,在Rt△DAC′中,∵∠DAC′=30°,∴DC′=\\frac{1}{2}AD=3,∴当点C在C′点时,CD有最小值,最小值为3．故选:B．"
+}

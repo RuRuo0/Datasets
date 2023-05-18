@@ -1,0 +1,36 @@
+{
+  "problem_id": 7181,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4348",
+  "problem_level": 1,
+  "problem_text_cn": "如图,P是⊙O外的一点,PA是⊙O的切线,若PO=13,PA=12,则⊙O的面积和周长分别为()",
+  "problem_text_en": "As shown in the figure, P is a point outside ⊙O, PA is the tangent of ⊙O, if PO = N_0, PA = N_1, then the perimeter of ⊙O is ()",
+  "problem_img": "7181.png",
+  "construction_cdl": [
+    "Shape(OA,OAM,MO)",
+    "Shape(OAM,AP,PM)",
+    "Shape(AO,OM,OMA)",
+    "Collinear(OMP)",
+    "Cocircular(O,AM)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [
+    "IsTangentOfCircle(PA,O)",
+    "Equal(LengthOfLine(PO),13)",
+    "Equal(LengthOfLine(PA),12)"
+  ],
+  "goal_cdl": "Value(AreaOfCircle(O))",
+  "problem_answer": "25*pi",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular",
+    "right_triangle_judgment_angle",
+    "right_triangle_property_pythagorean",
+    "radius_of_circle_property_length_equal",
+    "circle_perimeter_formula",
+    "circle_area_formula"
+  ],
+  "notes": "此题有两个问和答案",
+  "raw_answer": "解:如图,连接OA．∵PA是⊙O的切线,∴OA⊥AP,即∠OAP=90°．又∵PO=13,PA=12,∴根据勾股定理,得OA=√{PO^{2}-PA^{2}}=√{13^{2}-12^{2}}=5,∴⊙O的面积为:π•OA²=π•5²=25π,⊙O的周长为:2π•OA=2π×5=10π．故选:C．"
+}

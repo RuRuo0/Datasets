@@ -1,0 +1,34 @@
+{
+  "problem_id": 7159,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4315",
+  "problem_level": 1,
+  "problem_text_cn": "如图,P为⊙O的直径AB的延长线上一点,PC切⊙O于点C,若∠P=26°,则∠A等于()",
+  "problem_text_en": "As shown in the figure, P is a point on the extended line of the diameter AB of ⊙O, PC cuts ⊙O to point C, if ∠P = N_0, then ∠A is equal to ()",
+  "problem_img": "7159.png",
+  "construction_cdl": [
+    "Shape(OBA,AO,OB)",
+    "Shape(OAC,CA)",
+    "Shape(OA,AC,CO)",
+    "Shape(OC,OCB,BO)",
+    "Shape(OCB,CP,PB)",
+    "Collinear(AOBP)",
+    "Cocircular(O,ACB)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [
+    "IsTangentOfCircle(PC,O)",
+    "Equal(MeasureOfAngle(CPA),26)"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(PAC))",
+  "problem_answer": "32",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular",
+    "triangle_property_angle_sum",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external"
+  ],
+  "raw_answer": "解:连接BC,∵PC切⊙0于C．∴∠PCB=∠A,∵AB是直径,∴∠ACB=90°,∴∠ACP=90°+∠A,∵∠A+∠ACP+∠P=180°,∴∠A+∠A+90°+∠P=180°,∵∠P=26°,∴∠A=32°,故选:A．"
+}

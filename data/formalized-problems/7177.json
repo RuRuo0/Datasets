@@ -1,0 +1,37 @@
+{
+  "problem_id": 7177,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4342",
+  "problem_level": 1,
+  "problem_text_cn": "如图,PA,PB分别与⊙O相切于A,B两点,点C是劣弧AB上一动点(不与A,B重合),∠P=70°,则∠C=()",
+  "problem_text_en": "As shown in the figure, PA and PB are tangent to ⊙O at two points A and B respectively. Point C is a moving point on minor arc AB (not coincident with A and B), ∠P = N_0, then ∠C = ()",
+  "problem_img": "7177.png",
+  "construction_cdl": [
+    "Shape(PA,OCA,OBC,BP)",
+    "Shape(OCA,AC)",
+    "Shape(OBC,CB)",
+    "Shape(AO,OB,BC,CA)",
+    "Shape(AD,DB,BO,OA)",
+    "Shape(OAD,DA)",
+    "Shape(ODN,ND)",
+    "Cocircular(O,ADBC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [
+    "IsTangentOfCircle(PA,O)",
+    "IsTangentOfCircle(PB,O)",
+    "Equal(MeasureOfAngle(BPA),70)"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(BCA))",
+  "problem_answer": "125",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular",
+    "quadrilateral_property_angle_sum",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external",
+    "arc_property_circumference_angle_internal"
+  ],
+  "raw_answer": "解:连结OA、OB,∠ADB为弧AB所对的圆周角,如图,∵PA,PB分别与⊙O相切于A,B两点,∴OA⊥PA,OB⊥PB,∴∠OAP=∠OBP=90°,∴∠AOB+∠P=180°,∴∠AOB=180°-70°=110°,∴∠D=\\frac{1}{2}∠AOB=55°,∴∠ACB=180°-∠D=125°．故选:D．"
+}

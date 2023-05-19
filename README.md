@@ -22,13 +22,13 @@ more types of plane geometric problems.
 |  5  |  郭彦钧   |    60    | 7732-7791 (data/raw-problems/GeoQA) |     ×     |
 |  6  |  黄琦珂   |    60    | 7792-7851 (data/raw-problems/GeoQA) |     ×     |
 |  7  |  黄一雯   |    60    |           same as week 10           |     √     |
-|  8  |  金啸笑   |    60    | 7852-7911 (data/raw-problems/GeoQA) |     ×     |
+|  8  |  金啸笑   |    60    | 7852-7911 (data/raw-problems/GeoQA) |     √     |
 |  9  |   李阳   |    60    | 7912-7971 (data/raw-problems/GeoQA) |     ×     |
 | 10  |  毛晨扬   |    60    | 7972-8031 (data/raw-problems/GeoQA) |     √     |
-| 11  |  王茹楠   |    60    |           same as week 10           |     ×     |
+| 11  |  王茹楠   |    60    |           same as week 10           |     √     |
 | 12  |  王一凡   |    60    |           same as week 10           |     √     |
 | 13  |  岳登峰   |    60    | 8032-8091 (data/raw-problems/GeoQA) |     ×     |
-| 14  |  朱方震   |    60    |           same as week 10           |     ×     |
+| 14  |  朱方震   |    60    |           same as week 10           |     √     |
 | 15  |   朱哲   |    60    | 8092-8151 (data/raw-problems/GeoQA) |     √     |
 | 16  |   秦城   |    60    |           same as week 10           |     √     |
 
@@ -49,7 +49,7 @@ more types of plane geometric problems.
 |  7  |  黄一雯   |    60    | 8512-8571 (data/raw-problems/GeoQA) |     /     |
 |  8  |  金啸笑   |    60    | 8572-8631 (data/raw-problems/GeoQA) |     ×     |
 |  9  |   李阳   |    60    | 8632-8691 (data/raw-problems/GeoQA) |     ×     |
-| 10  |  毛晨扬   |    60    | 8692-8751 (data/raw-problems/GeoQA) |     ×     |
+| 10  |  毛晨扬   |    60    | 8692-8751 (data/raw-problems/GeoQA) |     √     |
 | 11  |  王茹楠   |    60    | 8752-8811 (data/raw-problems/GeoQA) |     /     |
 | 12  |  王一凡   |    60    | 8812-8871 (data/raw-problems/GeoQA) |     /     |
 | 13  |  岳登峰   |    60    | 8872-8931 (data/raw-problems/GeoQA) |     ×     |

@@ -1,0 +1,35 @@
+{
+  "problem_id": 8739,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-8562",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB是圆O的直径,点C、D在圆O上,且点C、D在AB的异侧,连接AD、OD、OC．若AD∥OC,且∠AOC=70°,则∠AOD的大小为()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of circle O, vertices C and D are on circle O, and vertices C and D are on the opposite edge of AB, connecting AD, OD, and OC. If AD ∥ OC, and ∠AOC = N_0, then the size of ∠AOD is ()",
+  "problem_img": "8739.png",
+  "construction_cdl": [
+    "Shape(ODA,AD)",
+    "Shape(OD,DA,AO)",
+    "Shape(OAC,CO,OA)",
+    "Shape(OCB,BO,OC)",
+    "Shape(OBD,DO,OB)",
+    "Collinear(AOB)",
+    "Cocircular(O,ACBD)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)",
+    "ParallelBetweenLine(AD,CO)",
+    "Equal(MeasureOfAngle(COA),70)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(AOD))",
+  "problem_answer": "40",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "parallel_property_alternate_interior_angle",
+    "triangle_property_angle_sum"
+  ],
+  "raw_answer": "解:∵OA=OD,∴∠ADO=∠DAO,∵AD∥OC,∠AOC=70°,∴∠DAO=∠ADO=∠AOC=70°,∴∠AOD=180°-70°-70°=40°,故选:D．"
+}

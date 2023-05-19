@@ -1,0 +1,42 @@
+{
+  "problem_id": 8992,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-8935",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB是半圆O的直径,C、D是半圆上的两点,半圆O的切线PC交AB的延长线于点P,∠PCB=29°,则∠ADC=()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of semicircle O, C and D are two vertices on the semicircle, the tangent PC of semicircle O intersects the extended line line of AB at point P, ∠PCB = N_0, then ∠ADC = ()",
+  "problem_img": "8992.png",
+  "construction_cdl": [
+    "Shape(OC,CD,DA,AO)",
+    "Shape(OCD,DC)",
+    "Shape(ODA,AD)",
+    "Shape(CO,OB,BC)",
+    "Shape(OBC,CB)",
+    "Shape(OBC,BP,PC)",
+    "Shape(OA,OAB,BO)",
+    "Collinear(AOBP)",
+    "Cocircular(O,ABCD)"
+  ],
+  "text_cdl": [
+    "IsDiameterOfCircle(AB,O)",
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(PC,O)",
+    "Equal(MeasureOfAngle(PCB),29)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(CDA))",
+  "problem_answer": "119",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular",
+    "angle_addition",
+    "radius_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum",
+    "flat_angle",
+    "angle_addition",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_internal"
+  ],
+  "raw_answer": "解:连接AC,由弦切角定理知,∠BAC=∠PCB=29°,AB是直径,则∠ACB=90°,∴∠ABC=61°,由圆内接四边形的对角互补知,∠D=180°-∠ABC=119°．故选B．"
+}

@@ -1,0 +1,35 @@
+{
+  "problem_id": 9023,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-9015",
+  "problem_level": 1,
+  "problem_text_cn": "已知正方形ABCD的边长为4,点P是边CD上一点,且CP=3,连接BP,Q为BP的中点,过点Q作QM⊥PB交AC于点M,连接MB,MP,则MQ的长为()",
+  "problem_text_en": "Given that the side length of the square ABCD is N_0, point P is a point on the side CD, and CP = N_1, connecting BP, Q is the midpoint of BP, passing point Q is QM ⊥ PB intersects AC at point M, connecting MB, MP , Then the length of MQ is ()",
+  "problem_img": "9023.png",
+  "construction_cdl": [
+    "Shape(MA,AB,BM)",
+    "Shape(MB,BQ,QM)",
+    "Shape(MQ,QP,PM)",
+    "Shape(QB,BC,CP,PQ)",
+    "Shape(AM,MP,PD,DA)",
+    "Collinear(DPC)",
+    "Collinear(BQP)"
+  ],
+  "text_cdl": [
+    "Square(ABCD)",
+    "Equal(LengthOfLine(AB),4)",
+    "Equal(LengthOfLine(CP),3)",
+    "Equal(LengthOfLine(MQ),Mul(1/2,LengthOfLine(BP)))",
+    "Equal(LengthOfLine(BQ),LengthOfLine(QP))",
+    "Equal(MeasureOfAngle(MQP),90)",
+    "Equal(MeasureOfAngle(BQM),90)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(MQ))",
+  "problem_answer": "5/2",
+  "theorem_seqs": [
+    "right_triangle_judgment_angle",
+    "right_triangle_property_pythagorean"
+  ],
+  "raw_answer": "解:如图作ME⊥CD于E,MF⊥BC于F．∵四边形ABCD是正方形,∴∠MCE=∠MCF,∵ME⊥CD于E,MF⊥BC于F,∴ME=MF,∵∠MEC=∠MFC=∠ECF=90°,∴∠EMF=90°∵MQ是线段PB的垂直平分线,∴MB=MP,∴Rt△MEP≌△MFB(HL),∴∠BMF=∠PME,∴∠BMP=∠FME=90°∴△MBP是等腰直角三角形,∵BC=4,PC=3,∴PB=√{3²+4²}=5,∵BQ=PQ,∠BMP=90°,∴MQ=\\frac{1}{2}BP=\\frac{5}{2}．故选:C"
+}

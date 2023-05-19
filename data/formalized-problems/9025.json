@@ -1,0 +1,49 @@
+{
+  "problem_id": 9025,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-9020",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在正方形ABCD中．O是对角线AC、BD的交点．过点O作OE⊥OF,分别交AB、BC于点E,F．若AE=3,CF=1,则EF=()",
+  "problem_text_en": "As shown in the figure, in the square ABCD. O is the intersection of diagonal AC and BD. Pass point O as OE ⊥ OF, and put AB and BC at points E and F respectively. If AE = N_0, CF = N_1, then EF = ()",
+  "problem_img": "9025.png",
+  "construction_cdl": [
+    "Shape(OA,AE,EO)",
+    "Shape(OE,EG,GO)",
+    "Shape(GE,EB,BG)",
+    "Shape(GB,BF,FG)",
+    "Shape(OG,GF,FO)",
+    "Shape(OF,FC,CO)",
+    "Shape(AO,OD,DA)",
+    "Shape(DO,OC,CD)",
+    "Collinear(AOC)",
+    "Collinear(BGOD)",
+    "Collinear(AEB)",
+    "Collinear(BFC)",
+    "Collinear(EGF)"
+  ],
+  "text_cdl": [
+    "Square(ABCD)",
+    "Equal(LengthOfLine(FC),1)",
+    "Equal(LengthOfLine(AE),3)",
+    "Equal(LengthOfLine(EO),LengthOfLine(OF))",
+    "Equal(LengthOfLine(BO),LengthOfLine(CO))",
+                    "Equal(MeasureOfAngle(FOE),90)",
+                    "Equal(MeasureOfAngle(COB),90)",
+                    "Equal(MeasureOfAngle(BOE),MeasureOfAngle(COF))"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(EF))",
+  "problem_answer": "√10",
+  "theorem_seqs": [
+    "angle_addition(BOE,FOB)",
+    "angle_addition(FOB,COF)",
+        "rectangle_judgment_diagonal_equal",
+    "parallelogram_property_diagonal_bisection",
+    "congruent_triangle_judgment_sas(OEB,OFC)",
+    "congruent_triangle_property_line_equal",
+    "line_addition",
+        "right_triangle_judgment_angle",
+    "right_triangle_property_pythagorean"
+  ],
+  "raw_answer": "解:∵正方形ABCD中,OB=OC,∠BOC=∠EOF=90°,∴∠EOB=∠FOC,在△BOE和△COF中,∠OCB=∠OBE45°,OB=OC,∠EOB=∠FOC,∴△BOE和COF全等(ASA)∴BF=AE=3,同理BE=CF=1在Rt△BEF中,BF=3,BE=1,∴EF=√{10}．故选:B．"
+}

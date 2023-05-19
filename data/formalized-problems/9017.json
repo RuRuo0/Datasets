@@ -1,0 +1,37 @@
+{
+  "problem_id": 9017,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-8986",
+  "problem_level": 1,
+  "problem_text_cn": "如图,直线l过正方形ABCD的顶点B,点A,C到直线l的距离分别为1和2,则正方形的边长是()",
+  "problem_text_en": "As shown in the figure, the distance between the line l passing the vertex B, point A, and C of the square ABCD to the line l is N_0 and N_1, then the edge length of the square is ()",
+  "problem_img": "9017.png",
+  "construction_cdl": [
+    "Shape(AE,EB,BA)",
+    "Shape(CB,BF,FC)",
+    "Shape(AB,BC,CD,DA)",
+    "Collinear(EBF)"
+  ],
+  "text_cdl": [
+    "Square(ABCD)",
+    "Equal(LengthOfLine(AE),1)",
+    "Equal(LengthOfLine(CF),2)",
+            "Equal(MeasureOfAngle(AEB),90)",
+            "Equal(MeasureOfAngle(EBA),MeasureOfAngle(FCB))",
+            "Equal(MeasureOfAngle(BFC),90)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AB))",
+  "problem_answer": "√5",
+  "theorem_seqs": [
+    "flat_angle",
+    "angle_addition(EBA,ABC)",
+    "angle_addition(ABC,CBF)",
+    "triangle_property_angle_sum",
+    "congruent_triangle_judgment_aas",
+    "congruent_triangle_property_line_equal",
+    "right_triangle_judgment_angle",
+    "right_triangle_property_pythagorean"
+  ],
+  "raw_answer": "解:∵∠CBF+∠FCB=90°,∠CBF+∠ABE=90°,∴∠ABE=∠FCB,同理∠BAE=∠FBC,∵AB=BC,∴△ABE≌△BCF(ASA)∴BE=CF,在直角△ABE中,AE=1,BE=2,∴AB=√{5}．故选:B．"
+}

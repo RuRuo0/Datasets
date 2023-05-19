@@ -1,0 +1,39 @@
+{
+  "problem_id": 9047,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-9105",
+  "problem_level": 1,
+  "problem_text_cn": "如图,矩形ABCD中,AB=8cm,AD=6cm,EF是对角线BD的垂直平分线,则EF的长为()",
+  "problem_text_en": "As shown in the figure, in the rectangle ABCD, AB = N_0, AD = N_1, EF is the perpendicular bisector of the diagonal BD, then the length of EF is ()",
+  "problem_img": "9047.png",
+  "construction_cdl": [
+    "Shape(ED,DO,OE)",
+    "Shape(OF,FB,BO)",
+    "Shape(OD,DA,AF,FO)",
+    "Shape(EO,OB,BC,CE)",
+    "Collinear(DEC)",
+    "Collinear(AFB)",
+    "Collinear(DOB)",
+    "Collinear(EOF)"
+  ],
+  "text_cdl": [
+        "Rectangle(DABC)",
+    "Equal(LengthOfLine(AB),8)",
+    "Equal(LengthOfLine(AD),6)",
+    "Equal(LengthOfLine(EO),LengthOfLine(OF))",
+    "IsPerpendicularBisectorOfLine(EO,DB)",
+    "IsPerpendicularBisectorOfLine(FO,BD)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(EF))",
+  "problem_answer": "15/2",
+  "theorem_seqs": [
+        "right_triangle_judgment_angle",
+    "right_triangle_property_pythagorean",
+    "parallelogram_property_diagonal_bisection",
+    "line_addition",
+    "mirror_similar_triangle_judgment_aa",
+    "mirror_similar_triangle_property_line_ratio"
+  ],
+  "raw_answer": "解:∵EF是BD的垂直平分线,∴OB=OD,∵∠OBF=∠ODE,∠BOF=∠DOE,∴△BOF≌△DOE,则OE=OF,∵∠OBF=∠ABD,∴△BOF∽△BAD∴\\frac{FO}{BO}=\\frac{AD}{AB},∵BD=√{AD²+AB²}=10cm,∴BO=5cm,∴FO=5×\\frac{6}{8}cm=\\frac{15}{4}cm,∴EF=2FO=\\frac{15}{2}cm．故选:C．"
+}

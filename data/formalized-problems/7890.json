@@ -1,0 +1,36 @@
+{
+  "problem_id": 7890,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-5728",
+  "problem_level": 1,
+  "problem_text_cn": "如图,▱ABCD的对角线AC,BD相交于O,EF经过点O,分别交AD,BC于E,F,已知▱ABCD的面积是20cm^2^,则图中阴影部分的面积是()",
+  "problem_text_en": "As shown in the figure, ▱ABCD's diagonal AC, BD intersect at O, EF passes through point O, and intersects AD, BC at E, F respectively. It is known that the area of ​​▱ABCD is N_0 ^N_1, then the area of ​​the shaded part in the figure is ()",
+  "problem_img": "7890.png",
+  "construction_cdl": [
+    "Shape(DE,EO,OD)",
+    "Shape(EA,AO,OE)",
+    "Shape(OA,AB,BO)",
+    "Shape(DO,OC,CD)",
+    "Shape(CO,OF,FC)",
+    "Shape(OB,BF,FO)",
+    "Collinear(EOF)",
+    "Collinear(AOC)",
+    "Collinear(BOD)"
+  ],
+  "text_cdl": [
+    "Equal(AreaOfQuadrilateral(ABCD),20)",
+    "Equal(AreaOfQuadrilateral(ABCD),Mul(1/4,Add(AreaOfTriangle(COF),AreaOfTriangle(FOB))))",
+    "Parallelogram(ABCD)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(Add(AreaOfTriangle(AOE),AreaOfTriangle(FOB)))",
+  "problem_answer": "5",
+  "theorem_seqs": [
+    "parallelogram_judgment_diagonal_bisection",
+    "parallelogram_judgment_equal_and_equal",
+    "congruent_triangle_judgment_sas",
+    "congruent_triangle_property_area_equal"
+  ],
+  "notes": "纯面积加减法",
+  "raw_answer": "解:∵四边形ABCD是平行四边形,∴AD∥BC,OA=OC,∴∠OAE=∠OCF,∵∠AOE=∠COF,∴△AOE≌△COF,∴S~阴~=S~△BOC~=\\frac{1}{4}S~平行四边形ABCD~=5(cm^2^),故选:D．"
+}

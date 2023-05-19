@@ -1,0 +1,41 @@
+{
+  "problem_id": 7852,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-5673",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在△ABC中,AD⊥BC于点D,BD=CD,若BC=5,AD=4,则图中阴影部分的面积为()",
+  "problem_text_en": "As shown in the figure, in △ABC, AD ⊥ BC is at point D, BD = CD, if BC = N_0, AD = N_1, then the area of ​​the shaded part in the figure is ()",
+  "problem_img": "7852.png",
+  "construction_cdl": [
+    "Shape(AB,BE,EA)",
+    "Shape(EB,BF,FE)",
+    "Shape(FB,BF,DF)",
+    "Shape(AE,EC,CA)",
+    "Shape(EF,FC,CE)",
+    "Shape(FD,DC,CF)",
+    "Collinear(AEFD)",
+    "Collinear(BDC)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(BC),5)",
+    "Equal(LengthOfLine(AD),4)",
+    "Equal(LengthOfLine(BD),LengthOfLine(DC))",
+    "Equal(Add(AreaOfTriangle(AEC),AreaOfTriangle(EFC),AreaOfTriangle(FDC)),AreaOfTriangle(ADC))",
+    "PerpendicularBetweenLine(BD,AD)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(Add(AreaOfTriangle(AEC),AreaOfTriangle(BFE),AreaOfTriangle(FDC)))",
+  "problem_answer": "5",
+  "theorem_seqs": [
+    "perpendicular_bisector_judgment_per_and_mid",
+    "perpendicular_bisector_property_distance_equal",
+    "mirror_congruent_triangle_judgment_sas",
+    "mirror_congruent_triangle_property_line_equal",
+    "mirror_congruent_triangle_judgment_sas",
+    "mirror_congruent_triangle_property_area_equal",
+    "altitude_of_triangle_judgment",
+    "triangle_area_formula_common"
+  ],
+  "notes": "做不了面积相加",
+  "raw_answer": "解:根据题意,阴影部分的面积为三角形面积的一半,∵S~△ABC~=\\frac{1}{2}×BC•AD=\\frac{1}{2}×4×5=10,∴阴影部分面积=\\frac{1}{2}×10=5．故选:A．"
+}

@@ -1,0 +1,41 @@
+{
+  "problem_id": 7872,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-5698",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在△ABC中,AB=AC,∠BAC=50°,∠BAC的角平分线AF与AB的垂直平分线DF交于点F,连接CF,BF,则∠BCF的度数为()",
+  "problem_text_en": "As shown in the figure, in △ABC, AB = AC, ∠BAC = N_0, ∠BAC's angular bisector AF and AB's perpendicular bisector DF intersect at point F. Connect CF and BF, then the degree of ∠BCF is ()",
+  "problem_img": "7872.png",
+  "construction_cdl": [
+    "Shape(AD,DF,FA)",
+    "Shape(FD,DB,BF)",
+    "Shape(AF,FC,CA)",
+    "Shape(FB,BE,EF)",
+    "Shape(FE,EC,CF)",
+    "Collinear(ADB)",
+    "Collinear(AFE)",
+    "Collinear(BEC)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),LengthOfLine(AC))",
+    "Equal(MeasureOfAngle(CAB),50)",
+    "IsBisectorOfAngle(AE,CAB)",
+    "IsPerpendicularBisectorOfLine(FD,AB)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(BCF))",
+  "problem_answer": "40",
+  "theorem_seqs": [
+    "angle_addition",
+    "perpendicular_bisector_property_distance_equal",
+    "triangle_property_angle_sum",
+	"isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_line_coincidence",
+	"isosceles_triangle_property_angle_equal",
+    "perpendicular_bisector_judgment_per_and_mid(FE,BC)",
+    "perpendicular_bisector_property_distance_equal",
+    "isosceles_triangle_judgment_line_equal",
+	"isosceles_triangle_property_angle_equal"
+  ],
+  "raw_answer": "解:延长∠BAC的角平分线AF交BC于点E,∵AF与AB的垂直平分线DF交于点F,∴FA=FB,∵AB=AC,∠BAC=50°,∴∠ABC=∠ACB=65°∴∠BAF=25°,∠FBE=40°,∴AE⊥BC,∴∠CFE=∠BFE=50°,∴∠BCF=∠FBE=40°．故选:B．"
+}

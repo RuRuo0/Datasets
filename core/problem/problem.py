@@ -716,11 +716,6 @@ class Problem:
                 self.goal.solved_answer = result
 
                 eq = self.goal.item - result
-                # key_eq = list(self.condition.id_of_item)[-1][1]
-                # print("eq: {}".format(eq))
-                # print("key_eq: {}".format(key_eq))
-                # print("eq in dict: {}".format(("Equation", eq) in self.condition.id_of_item))
-                # print("eq in list: {}".format(("Equation", eq) in list(self.condition.id_of_item)))
                 if eq in self.condition.get_items_by_predicate("Equation"):
                     self.goal.premise = self.condition.get_premise_by_predicate_and_item("Equation", eq)
                     self.goal.theorem = self.condition.get_theorem_by_predicate_and_item("Equation", eq)

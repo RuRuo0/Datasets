@@ -152,7 +152,7 @@ class Goal:
         elif goal_CDL["type"] == "logic":
             self.type = "logic"
             self.item = goal_CDL["item"]
-            self.answer = goal_CDL["answer"]
+            self.answer = tuple(goal_CDL["answer"])
 
     def init_by_copy(self, goal):
         """Initial goal by copy."""

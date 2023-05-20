@@ -131,5 +131,5 @@ def search(direction="fw", strategy="df"):
 
 
 if __name__ == '__main__':
-    # run(auto=True, clean_theorem=False, save_GDL=False)
-    search(direction="fw", strategy="df")
+    run(auto=False, clean_theorem=False, save_GDL=False)
+    # search(direction="fw", strategy="df")

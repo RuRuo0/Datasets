@@ -1,0 +1,36 @@
+{
+  "problem_id": 7639,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-5201",
+  "problem_level": 1,
+  "problem_text_cn": "如图,直线l与⊙O相交于A,B两点,且与半径OC垂直,垂足为H,已知AB=16厘米,OB=10厘米．CH=()",
+  "problem_text_en": "As shown in the figure, the straight line l and ⊙O intersect at two points A and B and are perpendicular to the radius OC. The vertical foot is H. It is known that AB = N_0 cm, OB = N_1 cm. CH = ()",
+  "problem_img": "7639.png",
+  "construction_cdl": [
+    "Shape(OAC,CH,HA)",
+    "Shape(OCB,BH,HC)",
+    "Shape(OH,HB,BO)",
+    "Shape(OBA,AH,HO,OB)",
+    "Collinear(AHB)",
+    "Collinear(OHC)",
+    "Cocircular(O,ACB)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(AH,OH)",
+    "Equal(LengthOfLine(AB),16)",
+    "Equal(LengthOfLine(OB),10)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(CH))",
+  "problem_answer": "4",
+  "theorem_seqs": [
+    "circle_property_chord_perpendicular_bisect_chord",
+    "line_addition(AH,HB)",
+    "right_triangle_judgment_angle",
+    "right_triangle_property_pythagorean",
+    "radius_of_circle_property_length_equal",
+    "line_addition(OH,HC)"
+  ],
+  "raw_answer": "【解答】解:∵OC⊥AB,AB=16cm,∴BH=8cm,∴OH=√{OB²-BH²}=√{10²-8²}=6cm,∴CH=OC-OH=10-6=4cm．"
+}

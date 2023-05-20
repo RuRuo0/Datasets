@@ -1,0 +1,37 @@
+{
+  "problem_id": 7616,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-5161",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在⊙O中,AB为弦,OC⊥AB于点E,若⊙O的半径为5,CE=2,则AB的长是()",
+  "problem_text_en": "As shown in the figure, in ⊙O, AB is the chord, OC ⊥ AB is at point E, if the radius of ⊙O is N_0, CE = N_1, then the length of AB is ()",
+  "problem_img": "7616.png",
+  "construction_cdl": [
+    "Shape(OAB,BE,EO,OA)",
+    "Shape(OBC,CE,EB)",
+    "Shape(OCA,AE,EC)",
+    "Shape(OE,EA,AO)",
+    "Collinear(AEB)",
+    "Collinear(CEO)",
+    "Cocircular(O,ABC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(OE,AE)",
+    "Equal(RadiusOfCircle(O),5)",
+    "Equal(LengthOfLine(CE),2)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AB))",
+  "problem_answer": "8",
+  "theorem_seqs": [
+    "adjacent_complementary_angle",
+    "circle_property_chord_perpendicular_bisect_chord",
+    "radius_of_circle_property_length_equal",
+    "line_addition(CE,EO)",
+    "right_triangle_judgment_angle",
+    "right_triangle_property_pythagorean",
+    "line_addition(AE,EB)"
+  ],
+  "raw_answer": "【解答】解:连接OA,∵OC⊥AB,∴AE=\\frac{1}{2}AB,∵⊙O的半径为5,CE=2,∴OA=5,OE=5-2=3,在Rt△AOE中,AE=√{OA²-OC²}=4,∴AB=2AE=8．"
+}

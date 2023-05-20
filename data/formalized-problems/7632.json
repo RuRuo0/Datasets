@@ -1,0 +1,45 @@
+{
+  "problem_id": 7632,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-5193",
+  "problem_level": 1,
+  "problem_text_cn": "如图,矩形与⊙O相交,若AB=4,BC=5,DE=3,则EF的长为()",
+  "problem_text_en": "As shown in the figure, the rectangle intersects with ⊙O, if AB = N_0, BC = N_1, DE = N_2, then the length of EF is ()",
+  "problem_img": "7632.png",
+  "construction_cdl": [
+    "Shape(OCB,BM,MC)",
+    "Shape(OBE,EN,NM,MB)",
+    "Shape(OEF,FN,NO,ON,NE)",
+    "Shape(OFC,CM,MN,NF)",
+    "Shape(OBE,BA,AD,DE)",
+    "Shape(OFC,FQ,QP,PC)",
+    "Collinear(ABMCP)",
+    "Collinear(DENFQ)",
+    "Collinear(MNO)",
+    "Cocircular(O,BEFC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Rectangle(ADQP)",
+    "PerpendicularBetweenLine(NM,BM)",
+    "PerpendicularBetweenLine(ON,EN)",
+    "Equal(LengthOfLine(AB),4)",
+    "Equal(LengthOfLine(BC),5)",
+    "Equal(LengthOfLine(DE),3)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(EF))",
+  "problem_answer": "7",
+  "theorem_seqs": [
+    "adjacent_complementary_angle",
+    "circle_property_chord_perpendicular_bisect_chord",
+    "line_addition(BM,MC)",
+    "parallel_judgment_ipsilateral_internal_angle",
+    "parallelogram_judgment_parallel_and_parallel",
+    "parallelogram_property_opposite_line_equal",
+    "line_addition(AB,BM)",
+    "line_addition(DE,EN)",
+    "line_addition(EN,NF)"
+  ],
+  "raw_answer": "【解答】解:作OM⊥BC于M,交EF于N点,则OM⊥EF．∵OM⊥BC,∴BM=CM=\\frac{1}{2}BC=2.5,∴AM=AB+BM=6.5,由题意得:四边形ADNM是矩形,∴DN=AM=6.5,∴EN=3.5,∵ON⊥EF,∴EF=2EN=7,"
+}

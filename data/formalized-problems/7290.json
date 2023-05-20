@@ -17,11 +17,23 @@
     "EquilateralTriangle(ABC)",
     "Equal(LengthOfLine(BD),1)",
     "Equal(LengthOfLine(CE),2/3)",
-    "Equal(MeasureOfAngle(ADE),60)"
+    "Equal(MeasureOfAngle(ADE),60)",
+    "Equal(MeasureOfAngle(ABC),60)",
+    "Equal(MeasureOfAngle(BCA),60)",
+    "Equal(MeasureOfAngle(CAB),60)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
   "problem_answer": "3",
-  "theorem_seqs": [],
-  "raw_answer": "解:∵△ABC是等边三角形,∴AB=BC,∠ABC=60°=∠C,∵∠ADC=∠ABC+∠BAD=∠ADE+∠CDE,∴∠BAD=∠CDE,且∠ABC=∠C,∴△ABD∽△DCE,∴\\frac{AB}{CD}=\\frac{BD}{CE},∴\\frac{AB}{BC-1}=\\frac{1}{\\frac{2}{3}},∴AB=3,故选:A．"
+  "theorem_seqs": [
+    "adjacent_complementary_angle(BDA,ADC)",
+    "triangle_property_angle_sum(ABD)",
+    "angle_addition(ADE,EDC)",
+    "similar_triangle_judgment_aa",
+    "similar_triangle_property_line_ratio",
+    "similar_triangle_property_line_ratio",
+    "line_addition"
+  ],
+  "raw_answer": "解:∵△ABC是等边三角形,∴AB=BC,∠ABC=60°=∠C,∵∠ADC=∠ABC+∠BAD=∠ADE+∠CDE,∴∠BAD=∠CDE,且∠ABC=∠C,∴△ABD∽△DCE,∴\\frac{AB}{CD}=\\frac{BD}{CE},∴\\frac{AB}{BC-1}=\\frac{1}{\\frac{2}{3}},∴AB=3,故选:A．",
+    "notes": "不会做"
 }

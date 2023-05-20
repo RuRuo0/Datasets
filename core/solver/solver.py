@@ -1,3 +1,5 @@
+import copy
+
 from core.problem.condition import Condition
 from core.problem.problem import Problem
 from core.aux_tools.parser import EquationParser as EqParser
@@ -7,6 +9,7 @@ from core.solver.engine import EquationKiller as EqKiller
 from core.solver.engine import GeometryPredicateLogic as GeoLogic
 from core.aux_tools.output import get_used_theorem
 from core.aux_tools.utils import rough_equal
+from collections import deque
 import warnings
 import time
 
@@ -14,19 +17,22 @@ import time
 class Interactor:
 
     def __init__(self, predicate_GDL, theorem_GDL):
+        """
+        Initialize Interactor.
+        :param predicate_GDL: predicate GDL.
+        :param theorem_GDL: theorem GDL.
+        """
         self.predicate_GDL = FLParser.parse_predicate(predicate_GDL)
         self.theorem_GDL = FLParser.parse_theorem(theorem_GDL, self.predicate_GDL)
         self.problem = None
-        self.loaded = False
 
     def load_problem(self, problem_CDL):
         """Load problem through problem_CDL."""
-        s_start_time = time.time()
+        start_time = time.time()
         self.problem = Problem()
         self.problem.load_problem_by_fl(self.predicate_GDL, FLParser.parse_problem(problem_CDL))  # load problem
         EqKiller.solve_equations(self.problem)  # Solve the equations after initialization
-        self.problem.step("init_problem", time.time() - s_start_time)  # save applied theorem and update step
-        self.loaded = True
+        self.problem.step("init_problem", time.time() - start_time)  # save applied theorem and update step
 
     def apply_theorem(self, theorem_name, theorem_para=None):
         """
@@ -35,7 +41,7 @@ class Interactor:
         :param theorem_para: tuple of <str>, set None when rough apply theorem.
         :return update: True or False.
         """
-        if not self.loaded:
+        if self.problem is None:
             e_msg = "Problem not loaded. Please run <load_problem> before run <apply_theorem>."
             raise Exception(e_msg)
         if theorem_name not in self.theorem_GDL:
@@ -69,9 +75,9 @@ class Interactor:
         :return update: True or False.
         """
         update = False
-        s_time = time.time()  # timing
+        start_time = time.time()  # timing
 
-        theorem = IvParser.inverse_parse_logic(  # theorem + para, add in problem
+        theorem = IvParser.inverse_parse_logic(  # theorem + para
             theorem_name, theorem_para, self.theorem_GDL[theorem_name]["para_len"])
 
         letters = {}  # used for vars-letters replacement
@@ -128,7 +134,7 @@ class Interactor:
                     update = self.problem.add(predicate, item, premises, theorem) or update
 
         EqKiller.solve_equations(self.problem)
-        self.problem.step(theorem, time.time() - s_time)
+        self.problem.step(theorem, time.time() - start_time)
 
         return update
 
@@ -139,7 +145,7 @@ class Interactor:
         :return update: True or False.
         """
         update = False
-        s_time = time.time()  # timing
+        start_time = time.time()  # timing
 
         theorem_list = []
         for branch in self.theorem_GDL[theorem_name]["body"]:
@@ -157,18 +163,24 @@ class Interactor:
                     update = self.problem.add(predicate, item, premise, theorem) or update
 
         EqKiller.solve_equations(self.problem)
-        self.problem.step(theorem_name, time.time() - s_time)
+        timing = (time.time() - start_time) / len(theorem_list)
         for t in theorem_list:
-            self.problem.step(t, 0)
+            self.problem.step(t, timing)
 
         return update
 
 
 class ForwardSearcher:
-    def __init__(self, predicate_GDL, theorem_GDL, max_depth):
+    def __init__(self, predicate_GDL, theorem_GDL):
+        """
+        Initialize Searcher.
+        :param predicate_GDL: predicate GDL.
+        :param theorem_GDL: theorem GDL.
+        """
         self.predicate_GDL = FLParser.parse_predicate(predicate_GDL)
         self.theorem_GDL = FLParser.parse_theorem(theorem_GDL, self.predicate_GDL)
-        self.max_depth = max_depth
+        self.max_depth = None
+        self.p2t_map = None  # dict, {predicate/attr: [(theorem_name, branch)]}, map predicate to theorem
 
     def get_problem(self, problem_CDL):
         """Init and return a problem by problem_CDL."""
@@ -179,44 +191,228 @@ class ForwardSearcher:
         problem.step("init_problem", time.time() - s_start_time)  # save applied theorem and update step
         return problem
 
-    def get_theorem_selection(self, problem, theorem_skip_list):
+    def init_search(self, max_depth):
         """
-        1.得到当前可以应用的定理
-        2.去掉skip_list
-        3.CN1,CN2,...,CNN
-        :param problem: <Problem>, generate selections according the last step message of given problem.
-        :param theorem_skip_list: <list> of tuple(theorem_name, theorem_para, theorem_branch), theorem that can skip.
-        :return selections: <dict>, {(theorem_name, theorem_para): (predicate, item, premise, theorem)}.
+        Initialize p2t_map and max_depth.
+        :param max_depth: max search depth.
         """
-        return [1, 2, 3]
+        self.max_depth = max_depth
+        self.p2t_map = {}
+        for theorem_name in self.theorem_GDL:
+            if theorem_name.endswith("_definition"):
+                break
+            for branch in self.theorem_GDL[theorem_name]["body"]:
+                theorem_unit = self.theorem_GDL[theorem_name]["body"][branch]
+                premises = copy.copy(theorem_unit["products"])
+                premises += theorem_unit["logic_constraints"]
+                premises += theorem_unit["attr_in_algebra_constraints"]
+                for predicate, _ in premises:
+                    if predicate[0] == "~":  # skip oppose
+                        continue
 
-    def search(self, problem, depth, theorem_skip_list, solved_seqs_list):
-        """
-        Forward search use deep-first strategy.
-        :param problem: <Problem>, it will copy a new problem at each node.
-        :param depth: <int>, depth of current search tree, start from 1.
-        :param theorem_skip_list: <list> of tuple(theorem_name, theorem_para, theorem_branch), theorem that can skip.
-        :param solved_seqs_list: <list> of list(theorem_seqs), list of solved theorem sequences.
-        """
-        if depth == self.max_depth:  # max depth
-            return
+                    if predicate not in self.p2t_map:
+                        self.p2t_map[predicate] = [(theorem_name, branch)]
+                    elif (theorem_name, branch) not in self.p2t_map[predicate]:
+                        self.p2t_map[predicate].append((theorem_name, branch))
 
-        selections = self.get_theorem_selection(problem, theorem_skip_list)  # get applicable theorem list
-        # new_theorem_skip_list = theorem_skip_list + selections
-        for selection in selections:
-            child_problem = Problem()
-            child_problem.load_problem_by_copy(problem)
-            # child_problem.add(selection)
-            child_problem.check_goal()  # check goal
-            if child_problem.goal.solved:
-                _, seqs = get_used_theorem(child_problem)
-                if seqs not in solved_seqs_list:
-                    solved_seqs_list.append(seqs)
+    def search(self, problem, strategy):
+        """
+        :param problem: Instance of class <Problem>, it will copy a new problem at each search node.
+        :param strategy: <str>, 'df' or 'bf', use deep-first or breadth-first.
+        :return seqs: <list> of theorem, solved theorem sequences.
+        """
+        if self.p2t_map is None:
+            e_msg = "Searcher not initialization. Please run <init_search> before run <search>."
+            raise Exception(e_msg)
+
+        search_stack = deque()
+        all_selections = self.get_theorem_selections(problem)
+        group_selections = self.prune_selections(problem, all_selections)
+        if len(group_selections) == 0:
+            return []
+        for selections in group_selections:
+            search_stack.append((problem, selections, 1))
+
+        while len(search_stack) > 0:
+            if strategy == "df":
+                father_problem, selections, depth = search_stack.pop()
+            else:
+                father_problem, selections, depth = search_stack.popleft()
+            problem = Problem()
+            problem.load_problem_by_copy(father_problem)
+
+            update = False
+            for t_msg, conclusions in selections:  # apply theorem
+                t_name, t_branch, t_para = t_msg
+                theorem = IvParser.inverse_parse_logic(t_name, t_para, self.theorem_GDL[t_name]["para_len"])
+                for predicate, item, premise in conclusions:
+                    update = problem.add(predicate, item, premise, theorem, skip_check=True) or update
+                problem.step(theorem, 0)
+
+            if not update:
                 continue
-            self.search(child_problem, depth + 1, new_theorem_skip_list, solved_seqs_list)
+
+            problem.check_goal()  # check goal
+            if problem.goal.solved:
+                _, seqs = get_used_theorem(problem)
+                return seqs
+
+            if depth + 1 > self.max_depth:
+                continue
+
+            all_selections = self.get_theorem_selections(problem)
+            group_selections = self.prune_selections(problem, all_selections)
+            for selections in group_selections:  # add new branch to search stack
+                search_stack.append((problem, selections, depth + 1))
+
+        return []
+
+    def get_theorem_selections(self, problem):
+        """
+        :param problem: <Problem>, generate selections according the last step message of given problem.
+        :return selections: <list> of ((t_name, t_branch, t_para), ((predicate, item, premise))).
+        :return theorem_skip: <list> of tuple(theorem_name, theorem_branch, theorem_para), theorem that can skip.
+        """
+        step_count = problem.condition.step_count
+        while len(problem.condition.ids_of_step[step_count]) == 0:
+            step_count -= 1
+
+        theorem_logic = []    # [(theorem_name, theorem_branch)]
+        related_eqs = []
+
+        for _id in problem.condition.ids_of_step[step_count]:
+            predicate = problem.condition.items[_id][0]
+            if predicate in self.p2t_map:
+                for theorem in self.p2t_map[predicate]:
+                    if theorem not in theorem_logic:
+                        theorem_logic.append(theorem)
+
+            if predicate == "Equation":
+                item = problem.condition.items[_id][1]
+                theorem = problem.condition.items[_id][3]
+                if theorem == "solve_eq" and len(item.free_symbols) == 1:
+                    for s_eq in problem.condition.simplified_equation:
+                        if _id in problem.condition.simplified_equation[s_eq] and s_eq not in related_eqs:
+                            related_eqs.add(s_eq)
+                if theorem != "solve_eq":
+                    for s_eq in problem.condition.simplified_equation:
+                        if _id == problem.condition.simplified_equation[s_eq][0] and s_eq not in related_eqs:
+                            related_eqs.append(s_eq)
+        selections = self.try_theorem_logic(problem, theorem_logic)
+
+        syms = EqKiller.get_minimum_syms(list(related_eqs), list(problem.condition.simplified_equation))
+        attrs = {}
+        for sym in syms:
+            attr, paras = problem.condition.attr_of_sym[sym]
+            if attr == "Free":
+                continue
+            if attr not in attrs:
+                attrs[attr] = []
+
+            for para in paras:
+                attrs[attr].append(para)
+        selections.extend(self.try_theorem_algebra(problem, attrs))
+
+        return selections
+
+    def try_theorem_logic(self, problem, theorem_logic):
+        """
+        Try a theorem and return can-added conclusions.
+        :param problem: Instance of <Problem>.
+        :param theorem_logic: <list>, [(theorem_name, theorem_branch)].
+        :return selections: <list> of ((t_name, t_branch, t_para, t_timing), ((predicate, item, premise))).
+        """
+        selections = []
+        for theorem_name, theorem_branch in theorem_logic:
+            gpl = self.theorem_GDL[theorem_name]["body"][theorem_branch]
+            results = GeoLogic.run(gpl, problem)  # get gpl reasoned result
+            for letters, premise, conclusion in results:
+                theorem_para = tuple([letters[i] for i in self.theorem_GDL[theorem_name]["vars"]])
+                premise = tuple(premise)
+                conclusions = []
+                for predicate, item in conclusion:  # add conclusion
+                    if problem.can_add(predicate, item, premise, theorem_name):
+                        if predicate != "Equation":
+                            item = tuple(item)
+                        conclusions.append((predicate, item, premise))
+
+                if len(conclusions) > 0:
+                    selections.append(((theorem_name, theorem_branch, theorem_para), tuple(conclusions)))
+
+        return selections
+
+    def try_theorem_algebra(self, problem, attrs):
+        """
+        Try a theorem and return can-added conclusions.
+        :param problem: Instance of <Problem>.
+        :param attrs: <dict>, {'attr_name': [para]}.
+        :return selections: <list> of ((t_name, t_branch, t_para, t_timing), ((predicate, item, premise))).
+        """
+        selections = []
+
+        for related_attr in attrs:
+            if related_attr not in self.p2t_map:
+                continue
+
+            related_paras = set(self.p2t_map[related_attr])
+            for t_name, t_branch in self.p2t_map[related_attr]:
+                gpl = self.theorem_GDL[t_name]["body"][t_branch]
+                r_ids, r_items, r_vars = GeoLogic.run_logic(gpl, problem)
+                if len(r_ids) == 0:
+                    continue
+
+                new_ids = []
+                new_items = []
+                for i in range(len(r_ids)):
+                    letters = {}
+                    for j in range(len(r_vars)):
+                        letters[r_vars[j]] = r_items[i][j]
+                    t_paras = set()
+                    for t_attr, t_para in gpl["attr_in_algebra_constraints"]:
+                        if t_para != related_attr:
+                            continue
+                        t_paras.add(tuple([letters[p] for p in t_para]))
+                    if len(related_paras & t_paras) > 0:
+                        new_ids.append(r_ids[i])
+                        new_items.append(r_items[i])
+
+                r = GeoLogic.run_algebra((new_ids, new_items, r_vars), gpl, problem)
+                results = GeoLogic.make_conclusion(r, gpl, problem)
+                for letters, premise, conclusion in results:
+                    theorem_para = tuple([letters[i] for i in self.theorem_GDL[t_name]["vars"]])
+                    premise = tuple(premise)
+                    conclusions = []
+                    for predicate, item in conclusion:  # add conclusion
+                        if problem.can_add(predicate, item, premise, t_name):
+                            if predicate != "Equation":
+                                item = tuple(item)
+                            conclusions.append((predicate, item, premise))
+
+                    if len(conclusions) > 0:
+                        selections.append(((t_name, t_branch, theorem_para), tuple(conclusions)))
+
+        return selections
+
+    def prune_selections(self, problem, selections):
+        """
+        Prune and group selections use rule-based method or AI.
+        :param problem: Instance of class <Problem>.
+        :param selections: generate using function <get_theorem_selections>.
+        1.所有简单定理(结论是logic/线性方程)都应用
+        2.面积公式/周长公式，CDL中有才用
+        """
+
+        # for selection in selections:
+        #     t_name = selection[0][0]
+        #     print(t_name)
+        #     print(selection)
+        #     print()
+        #
+        # exit(0)
+        return [selections]
 
 
-class Searcher:
+class BackwardSearcher:
     """Automatic geometry problem solver."""
     max_forward_depth = 20
 
@@ -261,50 +457,6 @@ class Searcher:
     def bidirectional_search(self):
         pass
 
-    # def try_theorem(self, theorem_name):
-    #     """
-    #     Try a theorem and return can-added conclusions.
-    #     :param theorem_name: <str>.
-    #     :return selection: {(theorem_name, theorem_para): [(predicate, item, premise)]}.
-    #     """
-    #     if theorem_name not in self.theorem_GDL:
-    #         e_msg = "Theorem {} not defined in current GDL.".format(theorem_name)
-    #         raise Exception(e_msg)
-    #     elif theorem_name.endswith("definition"):
-    #         w_msg = "Theorem {} only used for backward reason.".format(theorem_name)
-    #         warnings.warn(w_msg)
-    #         return False
-    #
-    #     selection = {}
-    #     for premises_GDL, conclusions_GDL in self.theorem_GDL[theorem_name]["body"]:
-    #         r_ids, r_items, r_vars = GeoLogic.run(premises_GDL, self.problem)
-    #
-    #         for i in range(len(r_items)):
-    #             added = []
-    #
-    #             letters = {}
-    #             for j in range(len(r_vars)):
-    #                 letters[r_vars[j]] = r_items[i][j]
-    #
-    #             for predicate, item in conclusions_GDL:
-    #                 if predicate == "Equal":  # algebra conclusion
-    #                     eq = EqParser.get_equation_from_tree(self.problem, item, True, letters)
-    #                     if self.problem.can_add("Equation", eq, r_ids[i], theorem_name):
-    #                         added.append(("Equation", eq, r_ids[i]))
-    #                 else:  # logic conclusion
-    #                     item = tuple(letters[i] for i in item)
-    #                     if self.problem.can_add(predicate, item, r_ids[i], theorem_name):
-    #                         added.append((predicate, item, r_ids[i]))
-    #
-    #             if len(added) > 0:  # add to selection
-    #                 t_vars = self.theorem_GDL[theorem_name]["vars"]
-    #                 theorem_para = tuple(r_items[i][r_vars.index(t)] for t in t_vars)
-    #                 if (theorem_name, theorem_para) not in selection:
-    #                     selection[(theorem_name, theorem_para)] = added
-    #                 else:
-    #                     selection[(theorem_name, theorem_para)] += added
-    #
-    #     return selection
     #
     # def add_selection(self, selection):
     #     """:param selection: {(theorem_name, theorem_para): [(predicate, item, premise)]}."""

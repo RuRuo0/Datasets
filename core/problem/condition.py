@@ -103,7 +103,7 @@ class Condition:
         return self.id_of_item[(predicate, item)]
 
     def get_items_by_predicate(self, predicate):
-        return [item for item in self.items_group[predicate]]
+        return copy.copy(self.items_group[predicate])
 
     def get_ids_and_items_by_predicate_and_variable(self, predicate, variable=None):
         ids = []
@@ -122,12 +122,10 @@ class Condition:
         return ids, items
 
     def get_premise_by_predicate_and_item(self, predicate, item):
-        _id = self.id_of_item[(predicate, item)]
-        return self.items[_id][2]
+        return self.items[self.id_of_item[(predicate, item)]][2]
 
     def get_theorem_by_predicate_and_item(self, predicate, item):
-        _id = self.id_of_item[(predicate, item)]
-        return self.items[_id][3]
+        return self.items[self.id_of_item[(predicate, item)]][3]
 
 
 class Goal:

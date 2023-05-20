@@ -5,7 +5,6 @@ from core.solver.engine import EquationKiller as EqKiller
 import warnings
 from itertools import combinations
 from sympy import symbols
-from core.aux_tools.output import show
 import copy
 import time
 
@@ -480,7 +479,7 @@ class Problem:
 
         return False
 
-    def can_add(self, predicate, item, premise, theorem):
+    def can_add(self, predicate, item, premise=None, theorem=None):
         """
         EE check and FV check.
         :param predicate: Construction, Entity, Relation or Equation.

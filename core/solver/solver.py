@@ -1,5 +1,3 @@
-import copy
-
 from core.problem.condition import Condition
 from core.problem.problem import Problem
 from core.aux_tools.parser import EquationParser as EqParser
@@ -10,8 +8,10 @@ from core.solver.engine import GeometryPredicateLogic as GeoLogic
 from core.aux_tools.output import get_used_theorem
 from core.aux_tools.utils import rough_equal
 from collections import deque
+from itertools import combinations
 import warnings
 import time
+import copy
 
 
 class Interactor:
@@ -163,14 +163,215 @@ class Interactor:
                     update = self.problem.add(predicate, item, premise, theorem) or update
 
         EqKiller.solve_equations(self.problem)
-        timing = (time.time() - start_time) / len(theorem_list)
-        for t in theorem_list:
-            self.problem.step(t, timing)
+
+        self.problem.step(theorem_name, 0)
+        if len(theorem_list) > 0:
+            timing = (time.time() - start_time) / len(theorem_list)
+            for t in theorem_list:
+                self.problem.step(t, timing)
 
         return update
 
 
 class ForwardSearcher:
+    t2s_map = {
+        "triangle_property_angle_sum": 1,
+        "line_addition": 1,
+        "similar_triangle_property_line_ratio": 2,
+        "arc_property_circumference_angle_external": 1,
+        "adjacent_complementary_angle": 1,
+        "radius_of_circle_property_length_equal": 1,
+        "angle_addition": 1,
+        "arc_property_center_angle": 1,
+        "right_triangle_judgment_angle": 1,
+        "right_triangle_property_pythagorean": 2,
+        "parallel_property_corresponding_angle": 1,
+        "isosceles_triangle_judgment_line_equal": 1,
+        "isosceles_triangle_property_angle_equal": 1,
+        "parallel_property_collinear_extend": 1,
+        "similar_triangle_judgment_aa": 1,
+        "sine_theorem": 3,
+        "tangent_of_circle_property_perpendicular": 1,
+        "parallel_property_alternate_interior_angle": 1,
+        "parallelogram_property_opposite_line_equal": 1,
+        "vertical_angle": 1,
+        "diameter_of_circle_property_right_angle": 1,
+        "parallel_property_ipsilateral_internal_angle": 1,
+        "cosine_theorem": 3,
+        "flat_angle": 1,
+        "quadrilateral_property_angle_sum": 1,
+        "arc_property_circumference_angle_internal": 1,
+        "triangle_perimeter_formula": 4,
+        "parallelogram_property_diagonal_bisection": 1,
+        "mirror_similar_triangle_property_line_ratio": 2,
+        "circle_property_length_of_radius_and_diameter": 1,
+        "tangent_of_circle_property_length_equal": 1,
+        "mirror_congruent_triangle_property_line_equal": 1,
+        "congruent_arc_property_measure_equal": 1,
+        "isosceles_triangle_judgment_angle_equal": 1,
+        "quadrilateral_perimeter_formula": 4,
+        "parallelogram_area_formula_sine": 4,
+        "midsegment_of_triangle_property_length": 1,
+        "circle_property_chord_perpendicular_bisect_chord": 1,
+        "midsegment_of_triangle_judgment_midpoint": 1,
+        "mirror_congruent_triangle_property_angle_equal": 1,
+        "parallelogram_property_opposite_angle_equal": 1,
+        "diameter_of_circle_property_length_equal": 1,
+        "perpendicular_judgment_angle": 1,
+        "perpendicular_bisector_property_distance_equal": 1,
+        "congruent_arc_judgment_length_equal": 1,
+        "sector_area_formula": 4,
+        "round_angle": 1,
+        "similar_quadrilateral_property_line_ratio": 2,
+        "parallelogram_judgment_parallel_and_parallel": 1,
+        "altitude_of_triangle_judgment": 1,
+        "congruent_triangle_property_line_equal": 1,
+        "triangle_area_formula_sine": 4,
+        "median_of_triangle_judgment": 1,
+        "parallel_judgment_ipsilateral_internal_angle": 1,
+        "triangle_area_formula_common": 4,
+        "mirror_similar_triangle_judgment_aa": 1,
+        "diameter_of_circle_judgment_pass_centre": 1,
+        "kite_property_diagonal_perpendicular_bisection": 1,
+        "parallel_judgment_per_per": 1,
+        "parallelogram_area_formula_common": 4,
+        "congruent_triangle_property_angle_equal": 1,
+        "circle_area_formula": 4,
+        "mirror_congruent_triangle_judgment_aas": 1,
+        "mirror_congruent_triangle_judgment_hl": 1,
+        "equilateral_triangle_property_angle": 1,
+        "circle_property_chord_perpendicular_bisect_arc": 1,
+        "isosceles_triangle_property_line_coincidence": 1,
+        "kite_area_formula_diagonal": 4,
+        "rectangle_property_diagonal_equal": 1,
+        "arc_addition_measure": 1,
+        "circle_property_circular_power_chord_and_chord": 2,
+        "centroid_of_triangle_property_line_ratio": 1,
+        "mirror_congruent_triangle_judgment_sas": 1,
+        "circle_property_circular_power_tangent_and_segment_line": 2,
+        "circle_perimeter_formula": 4,
+        "bisector_of_angle_judgment_angle_equal": 1,
+        "similar_triangle_property_angle_equal": 1,
+        "similar_triangle_property_area_square_ratio": 4,
+        "midsegment_of_quadrilateral_property_length": 1,
+        "altitude_of_quadrilateral_judgment_left_vertex": 1,
+        "midsegment_of_triangle_property_parallel": 1,
+        "bisector_of_angle_property_line_ratio": 2,
+        "arc_length_formula": 4,
+        "trapezoid_area_formula": 4,
+        "trapezoid_judgment_parallel": 1,
+        "parallel_judgment_corresponding_angle": 1,
+        "circle_property_circular_power_segment_and_segment_line": 2,
+        "perpendicular_bisector_judgment_per_and_mid": 1,
+        "centroid_of_triangle_judgment_intersection": 1,
+        "altitude_of_quadrilateral_judgment_right_vertex": 1,
+        "circle_property_circular_power_segment_and_segment_angle": 1,
+        "similar_quadrilateral_property_area_square_ratio": 4,
+        "round_arc": 1,
+        "congruent_arc_property_chord_equal": 1,
+        "right_triangle_property_length_of_median": 1,
+        "circle_property_circular_power_tangent_and_segment_angle": 1,
+        "perpendicular_bisector_property_bisector": 1,
+        "mirror_similar_triangle_property_angle_equal": 1,
+        "congruent_arc_judgment_chord_equal": 1,
+        "similar_triangle_judgment_sas": 1,
+        "kite_judgment_equal_and_equal": 1,
+        "mirror_congruent_triangle_judgment_sss": 1,
+        "midsegment_of_quadrilateral_judgment_midpoint": 1,
+        "congruent_triangle_judgment_aas": 1,
+        "right_trapezoid_area_formular": 4,
+        "bisector_of_angle_property_distance_equal": 1,
+        "right_trapezoid_judgment_right_angle": 1,
+        "congruent_arc_judgment_measure_equal": 1,
+        "circle_property_angle_of_osculation": 1,
+        "tangent_of_circle_judgment_perpendicular": 1,
+        "midpoint_of_line_judgment": 1,
+        "perpendicular_bisector_judgment_distance_equal": 1,
+        "similar_triangle_property_perimeter_ratio": 4,
+        "parallelogram_judgment_angle_and_angle": 1,
+        "kite_property_opposite_angle_equal": 1,
+        "arc_addition_length": 1,
+        "parallel_judgment_alternate_interior_angle": 1,
+        "parallel_judgment_par_par": 1,
+        "congruent_triangle_judgment_hl": 1,
+        "equilateral_triangle_judgment_isosceles_and_isosceles": 1,
+        "mirror_congruent_quadrilateral_property_angle_equal": 1,
+        "parallelogram_judgment_equal_and_equal": 1,
+        "midsegment_of_triangle_judgment_parallel": 1,
+        "isosceles_trapezoid_property_angle_equal": 1,
+        "midsegment_of_quadrilateral_judgment_parallel": 1,
+        "parallelogram_judgment_parallel_and_equal": 1,
+        "rectangle_judgment_right_angle": 1,
+        "isosceles_trapezoid_judgment_line_equal": 1,
+        "congruent_triangle_judgment_sas": 1,
+        "mirror_similar_triangle_judgment_sas": 1,
+        "right_triangle_judgment_pythagorean_inverse": 1,
+        "rhombus_judgment_parallelogram_and_kite": 1,
+        "isosceles_trapezoid_property_diagonal_equal": 1,
+        "altitude_of_quadrilateral_judgment": 1,
+        "similar_quadrilateral_property_angle_equal": 1,
+        "centroid_of_triangle_property_intersection": 1,
+        "congruent_triangle_judgment_sss": 1,
+        "altitude_of_quadrilateral_judgment_diagonal": 1,
+        "congruent_arc_property_length_equal": 1,
+        "similar_arc_judgment_cocircular": 1,
+        "similar_arc_property_measure_ratio": 2,
+        "congruent_quadrilateral_property_line_equal": 1,
+        "similar_arc_property_length_ratio": 2,
+        "diameter_of_circle_judgment_right_angle": 1,
+        "bisector_of_angle_property_length_formula": 2,
+        "incenter_of_triangle_judgment_intersection": 1,
+        "orthocenter_of_triangle_judgment_intersection": 1,
+        "orthocenter_of_triangle_property_intersection": 1,
+        "similar_triangle_judgment_sss": 1,
+        "mirror_similar_triangle_judgment_sss": 1,
+        "mirror_similar_triangle_judgment_hl": 1,
+        "mirror_similar_triangle_property_perimeter_ratio": 4,
+        "isosceles_right_triangle_judgment_isosceles_and_right": 1,
+        "mirror_congruent_quadrilateral_property_line_equal": 1,
+        "similar_quadrilateral_property_perimeter_ratio": 4,
+        "parallelogram_judgment_diagonal_bisection": 1,
+        "kite_area_formula_sine": 4,
+        "parallel_property_par_per": 0,
+        "circumcenter_of_triangle_judgment_intersection": 0,
+        "circumcenter_of_triangle_property_intersection": 0,
+        "orthocenter_of_triangle_property_angle": 0,
+        "congruent_triangle_property_perimeter_equal": 0,
+        "congruent_triangle_property_area_equal": 0,
+        "congruent_triangle_property_exchange": 0,
+        "mirror_congruent_triangle_property_perimeter_equal": 0,
+        "mirror_congruent_triangle_property_area_equal": 0,
+        "mirror_congruent_triangle_property_exchange": 0,
+        "similar_triangle_judgment_hl": 0,
+        "similar_triangle_property_ratio": 0,
+        "mirror_similar_triangle_property_ratio": 0,
+        "mirror_similar_triangle_property_area_square_ratio": 0,
+        "isosceles_right_triangle_property_angle": 0,
+        "midsegment_of_quadrilateral_property_parallel": 0,
+        "circumcenter_of_quadrilateral_property_intersection": 0,
+        "congruent_quadrilateral_property_angle_equal": 0,
+        "congruent_quadrilateral_property_perimeter_equal": 0,
+        "congruent_quadrilateral_property_area_equal": 0,
+        "congruent_quadrilateral_property_exchange": 0,
+        "mirror_congruent_quadrilateral_property_perimeter_equal": 0,
+        "mirror_congruent_quadrilateral_property_area_equal": 0,
+        "mirror_congruent_quadrilateral_property_exchange": 0,
+        "similar_quadrilateral_property_ratio": 0,
+        "mirror_similar_quadrilateral_property_ratio": 0,
+        "mirror_similar_quadrilateral_property_line_ratio": 0,
+        "mirror_similar_quadrilateral_property_angle_equal": 0,
+        "mirror_similar_quadrilateral_property_perimeter_ratio": 0,
+        "mirror_similar_quadrilateral_property_area_square_ratio": 0,
+        "rectangle_judgment_diagonal_equal": 0,
+        "square_judgment_rhombus_and_rectangle": 0,
+        "isosceles_trapezoid_judgment_angle_equal": 0,
+        "isosceles_trapezoid_judgment_diagonal_equal": 0,
+        "similar_arc_property_ratio": 0,
+        "similar_arc_property_chord_ratio": 0,
+        "diameter_of_circle_judgment_length_equal": 0,
+        "sector_perimeter_formula": 0
+    }
+
     def __init__(self, predicate_GDL, theorem_GDL):
         """
         Initialize Searcher.
@@ -224,47 +425,66 @@ class ForwardSearcher:
         if self.p2t_map is None:
             e_msg = "Searcher not initialization. Please run <init_search> before run <search>."
             raise Exception(e_msg)
+        print("Start Searching <\033[35m{}\033[0m>".format(problem.problem_CDL["id"]))
+        print()
 
         search_stack = deque()
+        timing = time.time()
         all_selections = self.get_theorem_selections(problem)
         group_selections = self.prune_selections(problem, all_selections)
         if len(group_selections) == 0:
+            print("End Searching <\033[31m{}\033[0m>\n".format(problem.problem_CDL["id"]))
             return []
-        for selections in group_selections:
-            search_stack.append((problem, selections, 1))
+        for branch in range(len(group_selections)):
+            search_stack.append((problem, group_selections[branch], (1, branch + 1, len(group_selections))))
+        print("Pos: \033[34mdepth={} branch={}/{}\033[0m".format(0, 1, 1))
+        print("Timing <Get Selections ({})>: {:.6f}s\n".format(len(group_selections), time.time() - timing))
 
         while len(search_stack) > 0:
             if strategy == "df":
-                father_problem, selections, depth = search_stack.pop()
+                father_problem, selections, pos = search_stack.pop()
             else:
-                father_problem, selections, depth = search_stack.popleft()
+                father_problem, selections, pos = search_stack.popleft()
+            print("Pos: \033[34mdepth={} branch={}/{}\033[0m".format(pos[0], pos[1], pos[2]))
+            timing = time.time()
             problem = Problem()
             problem.load_problem_by_copy(father_problem)
+            print("Timing <Init Node>: {:.6f}s".format(time.time() - timing))
 
             update = False
-            for t_msg, conclusions in selections:  # apply theorem
+            for i in range(len(selections)):    # apply theorem
+                timing = time.time()
+                t_msg, conclusions = selections[i]
                 t_name, t_branch, t_para = t_msg
                 theorem = IvParser.inverse_parse_logic(t_name, t_para, self.theorem_GDL[t_name]["para_len"])
                 for predicate, item, premise in conclusions:
                     update = problem.add(predicate, item, premise, theorem, skip_check=True) or update
+                EqKiller.solve_equations(problem)
                 problem.step(theorem, 0)
+                print("Timing <Apply Theorem {}/{}>: {:.6f}s".format(i + 1, len(selections), time.time() - timing))
 
             if not update:
                 continue
 
+            timing = time.time()
             problem.check_goal()  # check goal
+            print("Timing <Check Goal>: {:.6f}s".format(time.time() - timing))
             if problem.goal.solved:
                 _, seqs = get_used_theorem(problem)
+                print("End Searching <\033[32m{}\033[0m>\n".format(problem.problem_CDL["id"]))
                 return seqs
 
-            if depth + 1 > self.max_depth:
+            if pos[0] + 1 > self.max_depth:
                 continue
 
+            timing = time.time()
             all_selections = self.get_theorem_selections(problem)
             group_selections = self.prune_selections(problem, all_selections)
-            for selections in group_selections:  # add new branch to search stack
-                search_stack.append((problem, selections, depth + 1))
+            for branch in range(len(group_selections)):
+                search_stack.append((problem, group_selections[branch], (pos[0] + 1, branch + 1, len(group_selections))))
+            print("Timing <Get Selections ({})>: {:.6f}s".format(len(group_selections), time.time() - timing))
 
+        print("End Searching <\033[31m{}\033[0m>\n".format(problem.problem_CDL["id"]))
         return []
 
     def get_theorem_selections(self, problem):
@@ -277,7 +497,7 @@ class ForwardSearcher:
         while len(problem.condition.ids_of_step[step_count]) == 0:
             step_count -= 1
 
-        theorem_logic = []    # [(theorem_name, theorem_branch)]
+        theorem_logic = []  # [(theorem_name, theorem_branch)]
         related_eqs = []
 
         for _id in problem.condition.ids_of_step[step_count]:
@@ -398,18 +618,42 @@ class ForwardSearcher:
         Prune and group selections use rule-based method or AI.
         :param problem: Instance of class <Problem>.
         :param selections: generate using function <get_theorem_selections>.
-        1.所有简单定理(结论是logic/线性方程)都应用
-        2.面积公式/周长公式，CDL中有才用
         """
+        t_simple = []
+        t_complex = []
+        t_super_complex = []
+        t_special = []
+        for selection in selections:
+            t_name = selection[0][0]
+            if ForwardSearcher.t2s_map[t_name] == 0:
+                pass
+            elif ForwardSearcher.t2s_map[t_name] == 1:
+                t_simple.append(selection)
+            elif ForwardSearcher.t2s_map[t_name] == 2:
+                t_complex.append(selection)
+            elif ForwardSearcher.t2s_map[t_name] == 3:
+                t_super_complex.append(selection)
+            else:
+                t_special.append(selection)
 
-        # for selection in selections:
-        #     t_name = selection[0][0]
-        #     print(t_name)
-        #     print(selection)
-        #     print()
-        #
-        # exit(0)
-        return [selections]
+        selections = [t_simple]
+        # if len(t_complex) <= 4:
+        #     selection = copy.copy(t_simple)
+        #     for s in t_complex:
+        #         selection.append(s)
+        #     selections_complex = [selection]
+        # else:
+        #     selections_complex = []
+        #     for c in combinations(t_complex, 4):
+        #         selections_complex.append(list(c))
+        # if len(t_super_complex) <= 4:
+        #     selections_super_complex = [t_super_complex]
+        # else:
+        #     selections_super_complex = []
+        #     for c in combinations(t_super_complex, 4):
+        #         selections_super_complex.append(list(c))
+
+        return selections
 
 
 class BackwardSearcher:
@@ -513,26 +757,3 @@ class BackwardSearcher:
     #         sub_goals = GoalFinder.find_logic_sub_goals(predicate, item, self.problem, self.theorem_GDL)
     #
     #     return sub_goals
-
-# def backward_run():
-#     """Backward run."""
-#     solver = Solver(load_json(path_preset + "predicate_GDL.json"),    # init solver
-#                     load_json(path_preset + "theorem_GDL.json"))
-#
-#     while True:
-#         pid = int(input("pid:"))
-#         problem_CDL = load_json("data/formalized-problems/{}.json".format(pid))
-#         solver.load_problem(problem_CDL)
-#
-#         if solver.problem.goal["type"] in ["equal", "value"]:
-#             print("Goal: (Equation, {})".format(solver.problem.goal["item"]))
-#             sub_goals = solver.find_sub_goals(("Equation", solver.problem.goal["item"]))
-#         else:
-#             print("Goal: ({}, {})".format(solver.problem.goal["item"], solver.problem.goal["answer"]))
-#             sub_goals = solver.find_sub_goals((solver.problem.goal["item"], solver.problem.goal["answer"]))
-#         print()
-#         for t_msg in sub_goals:
-#             print(t_msg)
-#             print(sub_goals[t_msg])
-#             print()
-#         print()

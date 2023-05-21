@@ -1,0 +1,52 @@
+{
+  "problem_id": 7655,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-5239",
+  "problem_level": 1,
+  "problem_text_cn": "如图,四边形ABCD的两个外角∠CBE,∠CDF的平分线交于点G,若∠A=52°,∠DGB=28°,则∠DCB的度数是()",
+  "problem_text_en": "As shown in the figure, the bisector of the two exterior angles of the quadrilateral ABCD ∠CBE and ∠CDF intersect at point G, if ∠A = N_0, ∠DGB = N_1, then the degree of ∠DCB is ()",
+  "problem_img": "7655.png",
+  "construction_cdl": [
+    "Shape(AB,BH,HA)",
+    "Shape(HB,BC,CH)",
+    "Shape(DA,AH,HD)",
+    "Shape(DH,HC,CD)",
+    "Shape(DC,CB,BG,GD)",
+    "Shape(FD,DG)",
+    "Shape(FD,DC)",
+    "Shape(FD,DH)",
+    "Shape(HB,BE)",
+    "Shape(CB,BE)",
+    "Shape(GB,BE)",
+    "Collinear(ADF)",
+    "Collinear(ABE)",
+    "Collinear(AHC)",
+    "Collinear(DHB)"
+
+  ],
+  "text_cdl": [
+    "IsBisectorOfAngle(DG,FDC)",
+    "IsBisectorOfAngle(BG,CBE)",
+    "Equal(MeasureOfAngle(DAB),52)",
+    "Equal(MeasureOfAngle(BGD),28)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(BCD))",
+  "problem_answer": "108",
+  "theorem_seqs": [
+    "triangle_property_angle_sum(DAC)",
+    "adjacent_complementary_angle(FDC,CDA)",
+    "triangle_property_angle_sum(CAB)",
+    "adjacent_complementary_angle(ABC,CBE)",
+    "angle_addition(DAH,HAB)",
+    "angle_addition(BCH,HCD)",
+    "angle_addition(FDG,GDC)",
+    "angle_addition(CBG,GBE)",
+    "triangle_property_angle_sum(BGD)",
+    "angle_addition(GDC,CDH)",
+    "angle_addition(HBC,CBE)",
+    "triangle_property_angle_sum(CDB)"
+  ],
+  "raw_answer": "【解答】解:连接AC,BD,∴∠FDC=∠DAC+∠DCA,∠CBE=∠BAC+∠BCA,∵DG平分∠FDC,BG平分∠CBE,∴∠CBG+∠CDG=\\frac{1}{2}(∠DAB+∠DCB),在△BDG中,∠G+∠CDG+∠CBE+∠CDB+∠DBC=180°,∴∠G+\\frac{1}{2}(∠DAB+∠DCB)+∠CDB+∠DBC=180°,∴∠G+\\frac{1}{2}(∠DAB+∠DCB)+(180°-∠DCB)=180°,∵∠A=52°,∠DGB=28°,∴28°+\\frac{1}{2}×52°+\\frac{1}{2}times∠DCB+180°-∠DCB=180°,∴∠DCB=108°；",
+  "notes": "定理条件还有参数都标上去了，但就是解不出来"
+}

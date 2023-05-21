@@ -1,0 +1,38 @@
+{
+  "problem_id": 9651,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-angle-10055",
+  "problem_level": 1,
+  "problem_text_cn": "如图，在▱ABCD中，对角线AC与BD交于点O，∠BAO＝80°，点F为AD中点，连接FO，若OD平分∠FOC，则∠ABD的度数是（）",
+  "problem_text_en": "",
+  "problem_img": "9651.png",
+  "construction_cdl": [
+    "Shape(AB,BO,OA)",
+    "Shape(FA,AO,OF)",
+    "Shape(FO,OD,DF)",
+    "Shape(DO,OC,CD)",
+    "Shape(OB,BC,CO)",
+    "Collinear(AOC)",
+    "Collinear(BOD)",
+    "Collinear(AFD)"
+  ],
+  "text_cdl": [
+    "Parallelogram(ABCD)",
+    "IsMidpointOfLine(F,AD)",
+    "IsBisectorOfAngle(OD,FOC)",
+    "Equal(MeasureOfAngle(OAB),80)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(ABD))",
+  "problem_answer": "50",
+  "theorem_seqs": [
+    "parallelogram_property_diagonal_bisection",
+    "parallel_property_alternate_interior_angle",
+    "midsegment_of_triangle_judgment_midpoint",
+    "midsegment_of_triangle_property_parallel",
+    "parallel_property_corresponding_angle",
+    "adjacent_complementary_angle",
+    "angle_addition(FOD,DOC)"
+  ],
+  "raw_answer": "∵四边形ABCD是平行四边形，∴OB＝OD，AB∥CD，∴∠OCD＝∠BAO＝80°，∠ABD＝∠CDO，∵点F为AD中点，∴OF为△ABD的中位线，∴OF∥AB，∴∠AOF＝∠BAO＝80°，∴∠FOC＝180°﹣80°＝100°，∵OD平分∠FOC，∴∠COD＝0.5∠FOC＝50°，∴∠CDO＝180°﹣∠OCD﹣∠COD＝180°﹣80°﹣50°＝50°，∴∠ABD＝50°．故选：B．"
+}

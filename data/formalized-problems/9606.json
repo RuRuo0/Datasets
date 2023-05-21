@@ -1,0 +1,40 @@
+{
+  "problem_id": 9606,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-angle-10010",
+  "problem_level": 1,
+  "problem_text_cn": "如图，将一副学生用三角板（一个锐角为30°的直角三角形，一个锐角为45°的直角三角形）的直角顶点重合并如图叠放，当∠DEB＝m°，则∠AOC＝（）",
+  "problem_text_en": "",
+  "problem_img": "9606.png",
+  "construction_cdl": [
+    "Shape(FB,BO,OF)",
+    "Shape(DF,FE,ED)",
+    "Shape(FO,OH,HE,EF)",
+    "Shape(AE,EH,HA)",
+    "Shape(CH,HO,OC)",
+    "Collinear(BFEA)",
+    "Collinear(DFO)",
+    "Collinear(DEHC)",
+    "Collinear(AHO)"
+  ],
+  "text_cdl": [
+    "RightTriangle(DOC)",
+    "RightTriangle(BOA)",
+    "Equal(MeasureOfAngle(ABO),60)",
+    "Equal(MeasureOfAngle(CDO),45)",
+    "Equal(MeasureOfAngle(OCD),45)",
+    "Equal(MeasureOfAngle(OAB),30)",
+    "Equal(MeasureOfAngle(FED),m)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(AOC))",
+  "problem_answer": "m-15",
+  "theorem_seqs": [
+    "vertical_angle(FED,AEH)",
+    "vertical_angle(CHO,EHA)",
+    "triangle_property_angle_sum(AEH)",
+    "triangle_property_angle_sum(CHO)"
+  ],
+  "notes": "未知数",
+  "raw_answer": "∵∠DEB＝m°，∴∠AEC＝∠DEB＝m°，∵∠A+∠AEC＝∠C+∠AOC，∠C＝45°，∠A＝30°，∴30°+m°＝45°+∠AOC，∴∠AOC＝（m﹣15）°．故选：B．"
+}

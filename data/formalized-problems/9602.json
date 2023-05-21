@@ -1,0 +1,40 @@
+{
+  "problem_id": 9602,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-angle-10006",
+  "problem_level": 1,
+  "problem_text_cn": "如图，△ABC中，AB＝AC，∠BAC＝100°，AD是BC边上的中线，CE平分∠BCA交AB于点E，AD、CE相交于点F，则∠CFA的度数是（）",
+  "problem_text_en": "",
+  "problem_img": "9602.png",
+  "construction_cdl": [
+    "Shape(AE,EF,FA)",
+    "Shape(EB,BD,DF,FE)",
+    "Shape(AF,FC,CA)",
+    "Shape(FD,DC,CF)",
+    "Collinear(AEB)",
+    "Collinear(AFD)",
+    "Collinear(EFC)",
+    "Collinear(BDC)"
+  ],
+  "text_cdl": [
+    "IsMedianOfTriangle(AD,ABC)",
+    "IsBisectorOfAngle(CE,BCA))",
+    "Equal(LengthOfLine(AB),LengthOfLine(AC))",
+    "Equal(MeasureOfAngle(CAB),100)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(AFC))",
+  "problem_answer": "110",
+  "theorem_seqs": [
+    "isosceles_triangle_judgment_line_equal",
+
+    "triangle_property_angle_sum",
+    "isosceles_triangle_property_angle_equal(ABC)",
+    "mirror_congruent_triangle_judgment_sas(BDA,CAD)",
+    "mirror_congruent_triangle_property_angle_equal",
+    "adjacent_complementary_angle(BDA,FDC)",
+    "angle_addition(BDA,ADC)",
+    "adjacent_complementary_angle(AFC,CFD)"
+  ],
+  "raw_answer": "在△ABC中，AB＝AC，∠BAC＝100°，∴∠ACB＝（180°﹣100°）÷2＝40°，∵CE平分∠BCA，∴∠BCE＝20°，∵AD是BC边上的中线，∴∠ADC＝90°，∴∠CFA＝90°+20°＝110°．故选：C．"
+}

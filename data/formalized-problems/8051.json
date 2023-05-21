@@ -1,0 +1,32 @@
+{
+  "problem_id": 8051,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-5987",
+  "problem_level": 1,
+  "problem_text_cn": "如图,已知AB∥CD,AD=CD,∠1=40°,则∠2的度数为()",
+  "problem_text_en": "As shown in the figure, given that AB ∥ CD, AD = CD, ∠1 = N_0, then the degree of ∠2 is ()",
+  "problem_img": "8051.png",
+  "construction_cdl": [
+    "Shape(EC,CA,AE)",
+    "Shape(BA,AD,DB)",
+    "Shape(DA,AC,CD)",
+    "Collinear(EAB)"
+  ],
+  "text_cdl": [
+    "ParallelBetweenLine(AB,CD)",
+    "Equal(LengthOfLine(AD),LengthOfLine(CD))",
+    "Equal(MeasureOfAngle(CDA),40)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(CAE))",
+  "problem_answer": "70",
+  "theorem_seqs": [
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum",
+    "parallel_property_alternate_interior_angle",
+    "angle_addition",
+    "adjacent_complementary_angle"
+  ],
+  "raw_answer": "解:∵AD=CD,∠1=40°,∴∠ACD=70°,∵AB∥CD,∴∠2=∠ACD=70°,故选:C．"
+}

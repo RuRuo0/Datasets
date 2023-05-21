@@ -7,18 +7,27 @@
   "problem_text_en": "As shown in the figure, given that the point M is the midpoint of edge AB of the parallelogram ABCD, the line segment CM intersects BD at the point E, S△BEM = N_0, then the area of ​​the shaded part in the figure is ()",
   "problem_img": "7295.png",
   "construction_cdl": [
-    "Shape()",
-    "Collinear()",
-    "Cocircular()"
+    "Shape(DA,AM,MD)",
+    "Shape(DM,ME,ED)",
+    "Shape(DE,EC,CD)",
+    "Shape(CE,EB,BC)",
+    "Shape(EM,MB,BE)",
+    "Collinear(DEB)",
+    "Collinear(CEM)",
+    "Collinear(AMB)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(),1)",
-    "Equal(MeasureOfAngle(),1)"
+    "Parallelogram(ABCD)",
+    "Equal(AreaOfTriangle(BEM),2 )",
+    "IsMidpointOfLine(M,AB)"
   ],
   "image_cdl": [],
-  "goal_cdl": "Value()",
+  "goal_cdl": "Value(Add(AreaOfTriangle(DME),AreaOfTriangle(CEB)))",
   "problem_answer": "8",
-  "theorem_seqs": [],
+  "theorem_seqs": [
+    "parallelogram_property_opposite_line_equal",
+    ""
+  ],
   "raw_answer": "解:∵四边形ABCD是平行四边形,∴AB=CD,AB∥CD,∴S△DMB=S△CBM,∴S△DEM=S△CEB,∵AM=BM=\\frac{1}{2}AB=\\frac{1}{2}CD,∴\\frac{CE}{EM}=\\frac{CD}{BM}=2,∴S△CEB=2S△BME=4,∴S阴=4+4=8,故选:C．",
-  "notes": "Not annotated and without notes added."
+  "notes": "不会做"
 }

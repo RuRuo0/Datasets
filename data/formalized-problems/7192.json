@@ -1,0 +1,34 @@
+{
+  "problem_id": 7192,
+  "annotation": "YifanWang_2023-05-21",
+  "source": "GeoQA-4369",
+  "problem_level": 1,
+  "problem_text_cn": "如图,P是⊙O的直径AB延长线上一点,PC切⊙O于C,∠P=50°,∠A为()",
+  "problem_text_en": "As shown in the figure, P is a point on the AB extended line of the diameter of ⊙O, PC is tangent to ⊙O at C, ∠P = N_0, ∠A is ()",
+  "problem_img": "7192.png",
+  "construction_cdl": [
+    "Shape(AC,OCA)",
+    "Shape(CA,AO,OC)",
+    "Shape(CO,OB,OBC)",
+    "Shape(BP,PC,OBC)",
+    "Shape(BO,OA,OAB)",
+    "Collinear(PBOA)",
+    "Cocircular(O,ABC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(PC,O))",
+    "Equal(MeasureOfAngle(BPC),50)",
+    "IsDiameterOfCircle(AB,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(CAB))",
+  "problem_answer": "20",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular(PC,O,O)",
+    "triangle_property_angle_sum(COP)",
+    "arc_property_center_angle(OBC,O)",
+    "arc_property_circumference_angle_external(OBC,A)"
+  ],
+  "raw_answer": "解:连接OP,∵CP为圆O的切线,∴OC⊥CP,在Rt△OPC中,∠P=50°,∴∠POC=40°,∵OA=OC,∴∠A=∠OCA,∵∠POC为△AOC的外角,∴∠A=\\frac{1}{2}∠POC=20°．故选:D．"
+}

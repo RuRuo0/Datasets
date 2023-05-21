@@ -1,0 +1,49 @@
+{
+  "problem_id": 8065,
+  "annotation": "DengfengYue_2023-05-21",
+  "source": "GeoQA-6526",
+  "problem_level": 1,
+  "problem_text_cn": "如图,半圆O的直径AE=4,点B,C,D均在半圆上,若AB=BC,CD=DE,连接OB,OD,则图中阴影部分的面积是()",
+  "problem_text_en": "As shown in the figure, the diameter of the semicircle O is AE = N_0, and the points B, C, and D are all on the semicircle. If AB = BC, CD = DE, connect OB and OD, then the area of ​​the shaded part in the figure is ()",
+  "problem_img": "8065.png",
+  "construction_cdl": [
+    "Shape(AO,OB,BA)",
+    "Shape(AB,OBA)",
+    "Shape(BO,OC,CB)",
+    "Shape(BC,OCB)",
+    "Shape(CO,OD,DC)",
+    "Shape(CD,ODC)",
+    "Shape(DO,OE,ED)",
+    "Shape(DE,OED)",
+    "Shape(EO,AO,OAE)",
+    "Collinear(AOE)",
+    "Cocircular(O,EDCBA)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AE,O)",
+    "Equal(DiameterOfCircle(O),4)",
+    "Equal(LengthOfLine(AB),LengthOfLine(BC))",
+    "Equal(LengthOfLine(CD),LengthOfLine(DE))"
+  ],
+  "image_cdl": [
+    "Equal(AreaOfSector(OEA),Add(AreaOfSector(OBA),Add(AreaOfSector(OCB),Add(AreaOfSector(ODC),AreaOfSector(OED)))))"
+  ],
+  "goal_cdl": "Value(AreaOfSector(ODB))",
+  "problem_answer": "π",
+  "theorem_seqs": [
+    "circle_property_length_of_radius_and_diameter",
+    "congruent_arc_judgment_chord_equal(OBA,OCB)",
+    "congruent_arc_judgment_chord_equal(OED,ODC)",
+    "congruent_arc_property_measure_equal",
+    "congruent_arc_property_measure_equal",
+    "flat_angle(AOE)",
+    "arc_property_center_angle(OEA,O)",
+    "arc_addition_measure(OED,ODC)",
+    "arc_addition_measure(OCB,OBA)",
+    "arc_addition_measure(ODC,OCB)",
+    "sector_area_formula(ODB)"
+  ],
+  "raw_answer": "解:∵AB=BC,CD=DE,∴⁀{AB}=⁀{BC},⁀{CD}=⁀{DE},∴⁀{AB}+⁀{DE}=⁀{BC}+⁀{CD},∴∠BOD=90°,∴S_{阴影}=S~扇形OBD~=\\frac{90π(4÷2)^{2}}{360}=π．故选:A．",
+  "notes": "做不出来"
+}

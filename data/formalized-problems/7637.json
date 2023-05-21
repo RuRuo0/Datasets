@@ -1,0 +1,38 @@
+{
+  "problem_id": 7637,
+  "annotation": "NaZhu_2023-05-21",
+  "source": "GeoQA-5199",
+  "problem_level": 1,
+  "problem_text_cn": "如图,CD是⊙E的弦,直径AB过CD的中点M,若∠BEC=40°,则∠ABD=()",
+  "problem_text_en": "As shown in the figure, CD is the chord of ⊙E, and the diameter AB passes the midpoint M of CD. If ∠BEC = N_0, then ∠ABD = ()",
+  "problem_img": "7637.png",
+  "construction_cdl": [
+    "Shape(EAC,CE,EA)",
+    "Shape(CM,ME,EC)",
+    "Shape(ECB,BM,MC)",
+    "Shape(EBD,DB)",
+    "Shape(MB,BD,DM)",
+    "Shape(EM,MD,DE)",
+    "Shape(EDA,AE,ED)",
+    "Collinear(CMD)",
+    "Collinear(AEMB)",
+    "Cocircular(E,ACBD)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(E,E)",
+    "IsMidpointOfLine(M,CD)",
+    "Equal(MeasureOfAngle(MEC),40)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(MBD))",
+  "problem_answer": "70",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "mirror_congruent_triangle_judgment_sss",
+    "mirror_congruent_triangle_property_angle_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum(EBD)"
+  ],
+  "raw_answer": "【解答】解:∵∠BOC与∠BDC为所对的圆心角与圆周角,∴∠BDC=\\frac{1}{2}∠BEC=20°,∵CD是⊙E的弦,直径AB过CD的中点M,∴AB⊥CD,∴在Rt△BDM中,∠ABD=90°-∠BDC=70°．"
+}

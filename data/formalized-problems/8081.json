@@ -1,0 +1,43 @@
+{
+  "problem_id": 8081,
+  "annotation": "DengfengYue_2023-05-21",
+  "source": "GeoQA-6607",
+  "problem_level": 1,
+  "problem_text_cn": "如图所示,以三角形的三个顶点为圆心1为半径画三个扇形(图中阴影部分),则这三个扇形面积之和为()",
+  "problem_text_en": "As shown in the figure, draw three sectors with the three vertices of the triangle as the center N_0 as the radius (the shaded part in the figure), then the sum of the area of ​​the three sectors is ()",
+  "problem_img": "8081.png",
+  "construction_cdl": [
+    "Shape(CA,AB,ABC)",
+    "Shape(BA,AC,ACB)",
+    "Shape(GC,ABC,BD,EFD,FH,IGH)",
+    "Shape(DE,EF,EFD)",
+    "Shape(FE,ED,EDF)",
+    "Shape(HI,IG,IGH)",
+    "Shape(GI,IH,IHG)",
+    "Collinear(ACGI)",
+    "Collinear(ABDE)",
+    "Collinear(EFHI)",
+    "Cocircular(A,BC)",
+    "Cocircular(E,FD)",
+    "Cocircular(I,GH)"
+  ],
+  "text_cdl": [
+    "Equal(RadiusOfCircle(A),1)",
+    "Equal(RadiusOfCircle(I),1)",
+    "Equal(RadiusOfCircle(E),1)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(Add(AreaOfSector(ABC),Add(AreaOfSector(EFD),AreaOfSector(IGH))))",
+  "problem_answer": "1/2*π",
+  "theorem_seqs": [
+    "triangle_property_angle_sum(AEI)",
+    "arc_property_center_angle",
+    "arc_property_center_angle",
+    "arc_property_center_angle",
+    "sector_area_formula",
+    "sector_area_formula",
+    "sector_area_formula"
+  ],
+  "raw_answer": "解:∵三个扇形(图中阴影部分)的圆心角的和为180°,∴三个扇形面积之和=\\frac{180\\cdotπ\\cdot1^{2}}{360}=\\frac{1}{2}π．故选:C．",
+  "notes": "求不出来阴影面积"
+}

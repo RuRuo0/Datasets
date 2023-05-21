@@ -1,0 +1,31 @@
+{
+  "problem_id": 7136,
+  "annotation": "RunanWang_2023-05-21",
+  "source": "GeoQA-4274",
+  "problem_level": 1,
+  "problem_text_cn": "如图,P为⊙O外一点,PA切⊙O于点A,⊙O的半径为6,且PA=8,则cos∠APO等于()",
+  "problem_text_en": "As shown in the figure, P is a point outside ⊙O, PA is tangent to ⊙O at point A, the radius of ⊙O is N_0, and PA = N_1, then cos∠APO is equal to ()",
+  "problem_img": "7136.png",
+  "construction_cdl": [
+    "Shape(AP,PO,OA)",
+    "Shape(O)",
+    "Cocircular(O,A)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [
+    "IsTangentOfCircle(PA,O)",
+    "Equal(LengthOfLine(OA),6)",
+    "Equal(LengthOfLine(PA),8)"
+  ],
+  "goal_cdl": "Value(Cos(MeasureOfAngle(APO)))",
+  "problem_answer": "4/5",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular(PA,O,O)",
+    "right_triangle_judgment_angle(OAP)",
+    "right_triangle_property_pythagorean(OAP)",
+    "cosine_theorem(POA)"
+  ],
+  "raw_answer": "解:连接OA,如图所示:∵AP为圆O的切线,∴OA⊥AP,∴∠OAP=90°,在直角三角形OPA中,OA=6,PA=8,根据勾股定理得:OP²=OA²+AP²=6²+8²=100,∴OP=10,∴cos∠APO=\\frac{AP}{OP}=\\frac{4}{5}．A．"
+}

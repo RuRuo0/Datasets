@@ -1,0 +1,40 @@
+{
+  "problem_id": 7898,
+  "annotation": "XiaoxiaoJin_2023-05-21",
+  "source": "GeoQA-5738",
+  "problem_level": 1,
+  "problem_text_cn": "如图,过平行四边形ABCD对角线交点O的线段EF,分别交AD,BC于点E,F,当AE=ED时,△AOE的面积为4,则四边形EFCD的面积是()",
+  "problem_text_en": "As shown in the figure, the line segment EF passing through the intersection point O of the diagonal of the parallelogram ABCD intersects AD, BC at the points E, F respectively. When AE = ED, the area of ​​△AOE is N_0, then the area of ​​the quadrilateral EFCD is ()",
+  "problem_img": "7898.png",
+  "construction_cdl": [
+    "Shape(AB,BO,OA)",
+    "Shape(AO,OE,EA)",
+    "Shape(DE,EO,OD)",
+    "Shape(DO,OC,CD)",
+    "Shape(OB,BF,FO)",
+    "Shape(OF,FC,CO)",
+    "Collinear(AOC)",
+    "Collinear(BOD)",
+    "Collinear(EOF)",
+    "Collinear(AED)",
+    "Collinear(BFC)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(AE),LengthOfLine(ED))",
+    "Parallelogram(ABCD)",
+    "Equal(AreaOfTriangle(AOE),4)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(AreaOfQuadrilateral(EFCD))",
+  "problem_answer": "16",
+  "theorem_seqs": [
+    "line_addition",
+    "vertical_angle",
+    "parallelogram_property_diagonal_bisection",
+    "congruent_triangle_judgment_sas(OEA,OFC)",
+    "congruent_triangle_property_line_equal",
+    "congruent_triangle_property_area_equal"
+  ],
+  "notes": "等底同高面积变换",
+  "raw_answer": "解:∵ABCD是平行四边形,∴AD∥BC,AD=BC,AO=CO,OB=OD∴∠DAC=∠ACB,∵∠AOE=∠COF∴△COF≌△AOE(ASA)∵S~△AOE~=4,AE=ED∴S~△COF~=S~△DOE~=S~△AOE~=4,∴S~△AOD~=8∵AO=CO∴S~△COD~=S~△AOD~=8∴S~四边形EFCD~=S~△DOE~+S~△COD~+S~△COF~=4+8+4=16；故选:C．"
+}

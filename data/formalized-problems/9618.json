@@ -1,0 +1,37 @@
+{
+  "problem_id": 9618,
+  "annotation": "ChenyangMao_2023-06-04",
+  "source": "GeoQA-angle-10022",
+  "problem_level": 1,
+  "problem_text_cn": "如图，在平行四边形ABCD中，∠B＝60°，AE平分∠BAD交BC于点E，若∠AED＝80°，则∠EAC的度数是（）",
+  "problem_text_en": "",
+  "problem_img": "9618.png",
+  "construction_cdl": [
+    "Shape(AB,BE,EA)",
+    "Shape(AE,EC,CA)",
+    "Shape(DA,AC,CD)",
+    "Shape(DA,AE,ED)",
+    "Collinear(BEC)"
+  ],
+  "text_cdl": [
+    "Parallelogram(ABCD)",
+    "IsBisectorOfAngle(AE,DAB)",
+    "Equal(MeasureOfAngle(ABE),60)",
+    "Equal(MeasureOfAngle(AED),80)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(CAE))",
+  "problem_answer": "20",
+  "theorem_seqs": [
+    "parallelogram_property_opposite_angle_equal",
+    "parallel_property_ipsilateral_internal_angle",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_judgment_angle_equal",
+    "isosceles_triangle_judgment_angle_equal(EAB)",
+    "angle_addition(DAE,EAB)",
+    "triangle_property_angle_sum",
+    "congruent_triangle_judgment_sas(AED,BCA)"
+  ],
+  "notes": "已知三角形三个角60度，但Theorem <isosceles_triangle_judgment_angle_equal,None> not applied",
+  "raw_answer": "∵四边形ABCD是平行四边形，∴AB＝CD，∠B＝∠ADC＝60°，AD∥BC，∴∠BAD＝180°﹣∠B＝180°﹣60°＝120°，∵AE平分∠BAD，∴∠BAE＝∠DAE＝0.5∠BAD＝60°，∴∠B＝∠DAE，△ABE是等边三角形，∴AB＝AE，在△BAC和△AED中，AB=EA∠B=∠DAEBC=AD，∴△BAC≌△AED（SAS），∴∠BAC＝∠AED＝80°，∴∠EAC＝∠BAC﹣∠BAE＝80°﹣60°＝20°．故选：C．"
+}

@@ -5,13 +5,14 @@ from core.aux_tools.parser import FormalLanguageParser as FLParser
 from core.aux_tools.parser import InverseParser as IvParser
 from core.solver.engine import EquationKiller as EqKiller
 from core.solver.engine import GeometryPredicateLogic as GeoLogic
-from core.aux_tools.output import get_used_theorem, show
+from core.aux_tools.output import get_used_theorem
 from core.aux_tools.utils import rough_equal
 from collections import deque
 from itertools import combinations
 import warnings
 import time
 import copy
+from func_timeout import FunctionTimedOut
 import random
 
 
@@ -32,7 +33,11 @@ class Interactor:
         start_time = time.time()
         self.problem = Problem()
         self.problem.load_problem_by_fl(self.predicate_GDL, FLParser.parse_problem(problem_CDL))  # load problem
-        EqKiller.solve_equations(self.problem)  # Solve the equations after initialization
+        try:
+            EqKiller.solve_equations(self.problem)  # Solve the equations after initialization
+        except FunctionTimedOut:
+            msg = "Timeout when solve equations."
+            warnings.warn(msg)
         self.problem.step("init_problem", time.time() - start_time)  # save applied theorem and update step
 
     def apply_theorem(self, theorem_name, theorem_para=None):
@@ -112,16 +117,20 @@ class Interactor:
                 if "~" in equal:
                     oppose = True
                 eq = EqParser.get_equation_from_tree(self.problem, item, True, letters)
-                result, premise = EqKiller.solve_target(eq, self.problem)
                 solved_eq = False
-                if result is not None and rough_equal(result, 0):
-                    solved_eq = True
+                try:
+                    result, premise = EqKiller.solve_target(eq, self.problem)
+                except FunctionTimedOut:
+                    msg = "Timeout when solve equations."
+                    warnings.warn(msg)
+                else:
+                    if result is not None and rough_equal(result, 0):
+                        solved_eq = True
+                    premises += premise
 
                 if (not oppose and not solved_eq) or (oppose and solved_eq):
                     passed = False
                     break
-
-                premises += premise
 
             if not passed:
                 continue
@@ -134,7 +143,12 @@ class Interactor:
                     item = tuple(letters[i] for i in item)
                     update = self.problem.add(predicate, item, premises, theorem) or update
 
-        EqKiller.solve_equations(self.problem)
+        try:
+            EqKiller.solve_equations(self.problem)
+        except FunctionTimedOut:
+            msg = "Timeout when solve equations."
+            warnings.warn(msg)
+
         self.problem.step(theorem, time.time() - start_time)
 
         return update
@@ -163,8 +177,11 @@ class Interactor:
                 for predicate, item in conclusion:  # add conclusion
                     update = self.problem.add(predicate, item, premise, theorem) or update
 
-        EqKiller.solve_equations(self.problem)
-
+        try:
+            EqKiller.solve_equations(self.problem)
+        except FunctionTimedOut:
+            msg = "Timeout when solve equations."
+            warnings.warn(msg)
         self.problem.step(theorem_name, 0)
         if len(theorem_list) > 0:
             timing = (time.time() - start_time) / len(theorem_list)
@@ -391,7 +408,12 @@ class ForwardSearcher:
         s_start_time = time.time()
         problem = Problem()
         problem.load_problem_by_fl(self.predicate_GDL, FLParser.parse_problem(problem_CDL))  # load problem
-        EqKiller.solve_equations(problem)  # Solve the equations after initialization
+        try:
+            EqKiller.solve_equations(problem)
+        except FunctionTimedOut:
+            msg = "Timeout when solve equations."
+            warnings.warn(msg)
+
         problem.step("init_problem", time.time() - s_start_time)  # save applied theorem and update step
         return problem
 
@@ -405,6 +427,9 @@ class ForwardSearcher:
         for theorem_name in self.theorem_GDL:
             if theorem_name.endswith("_definition"):
                 break
+            if ForwardSearcher.t2s_map[theorem_name] == 0:
+                continue
+
             for branch in self.theorem_GDL[theorem_name]["body"]:
                 theorem_unit = self.theorem_GDL[theorem_name]["body"][branch]
                 premises = copy.copy(theorem_unit["products"])
@@ -466,7 +491,11 @@ class ForwardSearcher:
             print("\033[35m(pid={},depth={},branch={}/{})\033[0m Current Node".format(pid, pos[0], pos[1], pos[2]))
 
             timing = time.time()
-            EqKiller.solve_equations(problem)    # solve eq & check_goal
+            try:
+                EqKiller.solve_equations(problem)    # solve eq & check_goal
+            except FunctionTimedOut:
+                msg = "Timeout when solve equations."
+                warnings.warn(msg)
             problem.check_goal()
             print("\033[34m(pid={},timing={:.4f}s)\033[0m Check Goal".format(pid, time.time() - timing))
 
@@ -482,8 +511,6 @@ class ForwardSearcher:
             selections = self.get_theorem_selections(last_step_count, problem)
             print("\033[34m(pid={},timing={:.4f}s,s_count={})\033[0m Get Selections".format(
                 pid, time.time() - timing, len(selections)))
-            if pos[0] == 2:
-                exit(0)
             timing = time.time()
             last_step_count = problem.condition.step_count
             problems = self.apply_selections(problem, selections)
@@ -544,18 +571,19 @@ class ForwardSearcher:
                 selections.append(selection)
 
         syms = EqKiller.get_minimum_syms(list(related_eqs), list(problem.condition.simplified_equation))
-        attrs = {}
+
+        paras_of_attrs = {}
         for sym in syms:
             attr, paras = problem.condition.attr_of_sym[sym]
-            if attr == "Free":
+            if attr not in self.p2t_map:
                 continue
-            if attr not in attrs:
-                attrs[attr] = []
 
+            if attr not in paras_of_attrs:
+                paras_of_attrs[attr] = []
             for para in paras:
-                attrs[attr].append(para)
+                paras_of_attrs[attr].append(para)
 
-        for selection in self.try_theorem_algebra(problem, attrs):
+        for selection in self.try_theorem_algebra(problem, paras_of_attrs):
             _, conclusions = selection
             s = []
             for conclusion in conclusions:
@@ -606,30 +634,25 @@ class ForwardSearcher:
 
         return selections
 
-    def try_theorem_algebra(self, problem, attrs):
+    def try_theorem_algebra(self, problem, paras_of_attrs):
         """
         Try a theorem and return can-added conclusions.
         :param problem: Instance of <Problem>.
-        :param attrs: <dict>, {'attr_name': [para]}.
+        :param paras_of_attrs: <dict>, {'attr_name': [para]}.
         :return selections: <list> of ((t_name, t_branch, t_para, t_timing), ((predicate, item, premise))).
         """
         pid = problem.problem_CDL["id"]
         l = 0
         count = 1
-        for related_attr in attrs:
-            if related_attr not in self.p2t_map:
-                continue
+        for related_attr in paras_of_attrs:
             l += len(self.p2t_map[related_attr])
         timing = time.time()
 
         selections = []
-        for related_attr in attrs:
-            if related_attr not in self.p2t_map:
-                continue
+        for related_attr in paras_of_attrs:
+            related_paras = set(paras_of_attrs[related_attr])
 
-            related_paras = set(attrs[related_attr])
-
-            for t_name, t_branch in [("right_triangle_judgment_angle", 1)] + self.p2t_map[related_attr]:
+            for t_name, t_branch in self.p2t_map[related_attr]:
                 print("\r\033[34m(pid={},timing={:.4f}s,prog={}/{})\033[0m Try (Algebra-Related) Theorem <{}>".format(
                     pid, time.time() - timing, count, l, t_name), end="")
                 count += 1
@@ -717,19 +740,6 @@ class ForwardSearcher:
                         t_special.append(selection)
                     elif "perimeter" in t_name and t_para in self.problem_p_paras:
                         t_special.append(selection)
-        # print("t_simple:")
-        # for i in t_simple:
-        #     print(i)
-        # print("t_complex:")
-        # for i in t_complex:
-        #     print(i)
-        # print("t_super_complex:")
-        # for i in t_super_complex:
-        #     print(i)
-        # print("t_special:")
-        # for i in t_special:
-        #     print(i)
-        # exit(0)
 
         simple_problem = problem  # apply simple theorems
         l = len(t_simple)

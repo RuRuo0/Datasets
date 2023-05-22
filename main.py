@@ -169,4 +169,4 @@ def search(direction="fw", strategy="df", auto=False, start_pid=1584):
 
 if __name__ == '__main__':
     run(auto=False, clean_theorem=False, save_GDL=False)
-    # search(direction="fw", strategy="df", auto=False, start_pid=1584)
+    # search(direction="fw", strategy="df", auto=True, start_pid=1584)

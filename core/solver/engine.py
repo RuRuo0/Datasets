@@ -335,6 +335,7 @@ class EquationKiller:
             return real_results
 
     @staticmethod
+    @func_set_timeout(5)
     def solve_equations(problem):
         """
         Solve equations in problem.condition.equations.
@@ -408,6 +409,7 @@ class EquationKiller:
                     problem.set_value_of_sym(sym, solved_results[sym], premise, "solve_eq")
 
     @staticmethod
+    @func_set_timeout(3)
     def solve_target(target_expr, problem):
         """
         Solve target_expr in the constraint of problem's equation.

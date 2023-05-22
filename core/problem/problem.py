@@ -7,6 +7,7 @@ from itertools import combinations
 from sympy import symbols
 import copy
 import time
+from func_timeout import FunctionTimedOut
 
 
 class Problem:
@@ -705,23 +706,26 @@ class Problem:
 
     def check_goal(self):
         """Check whether the solution is completed."""
-        # show(self)
         s_start_time = time.time()  # timing
         if self.goal.type == "algebra":  # algebra relation
-            result, premise = EqKiller.solve_target(self.goal.item, self)
+            try:
+                result, premise = EqKiller.solve_target(self.goal.item, self)
+            except FunctionTimedOut:
+                msg = "Timeout when solve equations."
+                warnings.warn(msg)
+            else:
+                if result is not None:
+                    if rough_equal(result, self.goal.answer):
+                        self.goal.solved = True
+                    self.goal.solved_answer = result
 
-            if result is not None:
-                if rough_equal(result, self.goal.answer):
-                    self.goal.solved = True
-                self.goal.solved_answer = result
-
-                eq = self.goal.item - result
-                if eq in self.condition.get_items_by_predicate("Equation"):
-                    self.goal.premise = self.condition.get_premise_by_predicate_and_item("Equation", eq)
-                    self.goal.theorem = self.condition.get_theorem_by_predicate_and_item("Equation", eq)
-                else:
-                    self.goal.premise = tuple(premise)
-                    self.goal.theorem = "solve_eq"
+                    eq = self.goal.item - result
+                    if eq in self.condition.get_items_by_predicate("Equation"):
+                        self.goal.premise = self.condition.get_premise_by_predicate_and_item("Equation", eq)
+                        self.goal.theorem = self.condition.get_theorem_by_predicate_and_item("Equation", eq)
+                    else:
+                        self.goal.premise = tuple(premise)
+                        self.goal.theorem = "solve_eq"
         elif self.goal.type == "logic":  # logic relation
             if self.goal.answer in self.condition.get_items_by_predicate(self.goal.item):
                 self.goal.solved = True

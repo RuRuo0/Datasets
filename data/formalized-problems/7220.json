@@ -1,6 +1,6 @@
 {
   "problem_id": 7220,
-  "annotation": "xiaokaizhang_2023-03-06",
+  "annotation": "YifanWang_2023-05-21",
   "source": "GeoQA-4421",
   "problem_level": 1,
   "problem_text_cn": "为了测量一个圆形铁环的半径,某同学采用了如下办法:将铁环平放在水平桌面上,用一个锐角为30°的三角板和一个刻度尺,按如图所示的方法得到相关数据,进而可求得铁环的半径,若测得PA=5cm,则铁环的半径是()cm．",
@@ -26,18 +26,24 @@
   "goal_cdl": "Value(RadiusOfCircle(O))",
   "problem_answer": "5*√{3}",
   "theorem_seqs": [
-    "radius_of_circle_property_length_equal",
-    "tangent_of_circle_property_perpendicular",
-
-    "right_triangle_judgment_angle",
+    "radius_of_circle_property_length_equal(OP,O)",
+    "radius_of_circle_property_length_equal(OD,O)",
+    "radius_of_circle_property_length_equal(OQ,O)",
+    "tangent_of_circle_property_perpendicular(AP,O,O)",
+    "tangent_of_circle_property_perpendicular(AQ,O,O)",
     "tangent_of_circle_property_length_equal(AP,AQ,O)",
-    "quadrilateral_property_angle_sum",
+    "quadrilateral_property_angle_sum(OPAQ)",
     "angle_addition(PAO,OAQ)",
     "angle_addition(QOA,AOP)",
     "mirror_congruent_triangle_judgment_hl(OPA,OAQ)",
     "mirror_congruent_triangle_property_angle_equal(AOP,AQO)",
     "mirror_congruent_triangle_property_angle_equal(OPA,OAQ)",
-    "cosine_theorem"
+    "cosine_theorem(OPA)",
+    "cosine_theorem(PAO)",
+    "cosine_theorem(AOP)",
+    "cosine_theorem(QOA)",
+    "cosine_theorem(OAQ)",
+    "cosine_theorem(AQO)"
   ],
   "raw_answer": "解:过O作OQ⊥AB于Q设铁环的圆心为O,连接OP、OA,∵AP为⊙O的切线,AQ也为⊙O的切线,∴AO为∠PAQ的平分线,即∠PAO=∠QAO,又∠BAC=60°,∠PAO+∠QAO+∠BAC=180°,∴∠PAO=∠QAO=60°,在Rt△OPA中,PA=5,∠POA=30°,∴OP=5√{3},故选:C．"
 }

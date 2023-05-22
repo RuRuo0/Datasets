@@ -1,0 +1,33 @@
+{
+  "problem_id": 7344,
+  "annotation": "FangzhenZhu_2023-05-21",
+  "source": "GeoQA-4664",
+  "problem_level": 1,
+  "problem_text_cn": "已知△ABC中,DE∥BC,AD=4,DB=6,AE=3,则AC的值是()",
+  "problem_text_en": "Knowing that in △ABC, DE ∥ BC, AD = N_0, DB = N_1, AE = N_2, then the value of AC is ()",
+  "problem_img": "7344.png",
+  "construction_cdl": [
+    "Shape(AD,DE,EA)",
+    "Shape(DB,BC,CE,ED)",
+    "Collinear(ADB)",
+    "Collinear(AEC)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(AD),4)",
+    "Equal(LengthOfLine(DB),6)",
+    "Equal(LengthOfLine(AE),3)",
+    "ParallelBetweenLine(DE,BC)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AC))",
+  "problem_answer": "15/2",
+  "theorem_seqs": [
+    "parallel_property_corresponding_angle(DE,BC,A)",
+    "parallel_property_corresponding_angle(CB,ED,A)",
+    "similar_triangle_judgment_aa(ADE,ABC)",
+    "similar_triangle_property_line_ratio(DEA,BCA)",
+    "similar_triangle_property_line_ratio(EAD,CAB)",
+    "line_addition(AD,DB)"
+  ],
+  "raw_answer": "解:∵DE∥BC,∴\\frac{AD}{DB}=\\frac{AE}{EC},∴\\frac{4}{6}=\\frac{3}{EC},解得:EC=4.5,故AC=AE+EC=4.5+3=7.5．故选:D．"
+}

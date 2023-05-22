@@ -18,9 +18,9 @@ class EquationKiller:
     @staticmethod
     def get_minimum_target_equations(target_expr, eqs):
         """
-        Return minimum target equations.
+        Return minimum target equations. Called by function <EquationKiller.solve_target>.
         :param target_expr: Target Expression.
-        :param eqs: Equations.
+        :param eqs: Existing Equations.
         :return target_sym: Target symbols.
         :return mini_eqs_list: minimum equations lists rank by solving difficulty.
         :return n_m: number of equations and syms.
@@ -83,7 +83,7 @@ class EquationKiller:
     @staticmethod
     def get_minimum_group_equations(eqs):
         """
-        Return minimum group equations.
+        Return minimum group equations. Called by function <EquationKiller.solve_equations>.
         :param eqs: Equations.
         :return mini_eqs_list: minimum equations lists rank by solving difficulty.
         :return n_m: number of equations and syms.
@@ -153,6 +153,40 @@ class EquationKiller:
                     break
 
         return mini_eqs_lists, n_m
+
+    @staticmethod
+    def get_minimum_syms(target_eqs, eqs):
+        """
+        Return minimum equation's syms. Called by function <Searcher.get_theorem_selection>.
+        :param target_eqs: <list>, target Equations.
+        :param eqs: <list>, existing Equations.
+        :return syms: <set>, set of minimum equation's syms.
+        """
+        sym_to_eqs = {}  # dict, sym: [equation]
+        for eq in eqs:
+            for sym in eq.free_symbols:
+                if sym in sym_to_eqs:
+                    sym_to_eqs[sym].append(eq)
+                else:
+                    sym_to_eqs[sym] = [eq]
+
+        mini_eqs = set()
+        mini_syms = set()
+
+        for eq in target_eqs:
+            mini_eqs.add(eq)
+            mini_syms |= eq.free_symbols
+
+        while True:
+            eq_count = len(mini_eqs)
+            for sym in mini_syms:
+                for eq in sym_to_eqs[sym]:
+                    mini_eqs.add(eq)
+                    mini_syms |= eq.free_symbols
+            if eq_count == len(mini_eqs):
+                break
+
+        return mini_syms
 
     @staticmethod
     def simplification_value_replace(problem):
@@ -255,7 +289,7 @@ class EquationKiller:
                 equations.pop(i)
 
     @staticmethod
-    @func_set_timeout(2)
+    @func_set_timeout(5)
     def solve(equations, target_sym=None, keep_sym=False):
         try:
             if target_sym is not None:
@@ -499,10 +533,22 @@ class GeometryPredicateLogic:
         :param problem: instance of class <Problem>.
         :return results: <list> of <tuple>, [(letters, premises, conclusions)].
         """
+        r = GeometryPredicateLogic.run_logic(gpl, problem)
+        r = GeometryPredicateLogic.run_algebra(r, gpl, problem)
+        if len(r[0]) == 0:
+            return []
+        return GeometryPredicateLogic.make_conclusion(r, gpl, problem)
+
+    @staticmethod
+    def run_logic(gpl, problem):
+        """
+        Run 'products', 'logic_constraints' of GPL.
+        :param gpl: <dict>, (products, logic_constraints, algebra_constraints, conclusions), geometric predicate logic.
+        :param problem: instance of class <Problem>.
+        :return r: triplet, (r_ids, r_items, r_vars).
+        """
         products = gpl["products"]
         logic_constraints = gpl["logic_constraints"]
-        algebra_constraints = gpl["algebra_constraints"]
-        conclusions = gpl["conclusions"]
 
         r_ids, r_items = problem.condition.get_ids_and_items_by_predicate_and_variable(products[0][0], products[0][1])
         r_vars = products[0][1]
@@ -526,24 +572,36 @@ class GeometryPredicateLogic:
             r_ids, r_items, r_vars = GeometryPredicateLogic.constraint_logic(
                 (r_ids, r_items, r_vars), logic_constraints[i], problem)
 
+        return r_ids, r_items, r_vars
+
+    @staticmethod
+    def run_algebra(r, gpl, problem):
+        """
+        Run 'algebra_constraints' of GPL.
+        :param r: triplet, (r_ids, r_items, r_vars).
+        :param gpl: <dict>, (products, logic_constraints, algebra_constraints, conclusions), geometric predicate logic.
+        :param problem: instance of class <Problem>.
+        :return results: <list> of <tuple>, [(letters, premises, conclusions)].
+        """
+        algebra_constraints = gpl["algebra_constraints"]
+        r_ids, r_items, r_vars = r
+
         for i in range(len(algebra_constraints)):
             r_ids, r_items, r_vars = GeometryPredicateLogic.constraint_algebra(
                 (r_ids, r_items, r_vars), algebra_constraints[i], problem)
 
-        if len(r_ids) == 0:
-            return []
-
-        return GeometryPredicateLogic.make_conclusion((r_ids, r_items, r_vars), conclusions, problem)
+        return r_ids, r_items, r_vars
 
     @staticmethod
-    def make_conclusion(r, conclusions, problem):
+    def make_conclusion(r, gpl, problem):
         """
         Make conclusion according given reasoned points sets 'r' and GDL 'conclusions'.
         :param r: triplet, (r_ids, r_items, r_vars).
-        :param conclusions: <list> of conclusion GDL.
+        :param gpl: <dict>, (products, logic_constraints, algebra_constraints, conclusions), geometric predicate logic.
         :param problem: instance of class <Problem>.
         :return results: <list> of <tuple>, [(letters, premises, conclusions)].
         """
+        conclusions = gpl["conclusions"]
         results = []
         r_ids, r_items, r_vars = r
         for i in range(len(r_ids)):
@@ -636,7 +694,7 @@ class GeometryPredicateLogic:
         r1_ids, r1_items, r1_vars = r1
         if len(r1_ids) == 0:
             return [], [], []
-        oppose = False    # indicate '&' or '&~'
+        oppose = False  # indicate '&' or '&~'
         if "~" in r2_logic[0]:
             r2_logic[0] = r2_logic[0].replace("~", "")
             oppose = True
@@ -683,7 +741,7 @@ class GeometryPredicateLogic:
         r1_ids, r1_items, r1_vars = r1
         if len(r1_ids) == 0:
             return [], [], []
-        oppose = False    # indicate '&' or '&~'
+        oppose = False  # indicate '&' or '&~'
         if "~" in r2_algebra[0]:
             r2_algebra[0] = r2_algebra[0].replace("~", "")
             oppose = True

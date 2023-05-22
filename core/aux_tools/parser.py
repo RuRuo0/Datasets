@@ -1,4 +1,3 @@
-import string
 from sympy import sin, cos, tan, sqrt, pi, Float, Integer
 from core.aux_tools.utils import number_round
 
@@ -15,9 +14,9 @@ class FormalLanguageParser:
         """
         predicate_name, para = s.split("(")
         if make_vars:
-            para = para.split(")")[0].lower()
+            para = para.replace(")", "").lower()
         else:
-            para = para.split(")")[0]
+            para = para.replace(")", "")
 
         if "," not in para:
             return predicate_name, list(para), [len(para)]
@@ -187,7 +186,7 @@ class FormalLanguageParser:
                         e_msg = "Theorem GDL definition error in <{}>.".format(theorem_name)
                         raise Exception(e_msg)
                     body[branch_count] = parsed_premise[i]
-                    body[branch_count]["conclusions"] = parsed_conclusion
+                    body[branch_count].update(parsed_conclusion)
                     branch_count += 1
 
             parsed_GDL[name] = {
@@ -295,35 +294,38 @@ class FormalLanguageParser:
         paras_list = []
         for i in range(len(premise_GDL)):  # listing
             premise_GDL[i] = premise_GDL[i].split("&")
+            attrs = []
             paras = []
             for j in range(len(premise_GDL[i])):
                 if "Equal" in premise_GDL[i][j]:
-                    premise_GDL[i][j], equal_para = FormalLanguageParser._parse_equal_predicate(premise_GDL[i][j], True)
-                    paras += equal_para
+                    premise_GDL[i][j], eq_attrs = FormalLanguageParser._parse_equal_predicate(premise_GDL[i][j], True)
+                    attrs += eq_attrs
+                    for attr, para in eq_attrs:
+                        paras += list(para)
                 else:
                     predicate, para, _ = FormalLanguageParser._parse_one_predicate(premise_GDL[i][j], True)
                     premise_GDL[i][j] = [predicate, para]
                     paras += para
-            paras_list.append(paras)
 
-        for i in range(len(premise_GDL)):
             product = []
             logic_constraint = []
             algebra_constraint = []
-            paras = set()
+            existing_paras = set()
             for j in range(len(premise_GDL[i])):
                 if premise_GDL[i][j][0] == "Equal":
                     algebra_constraint.append(premise_GDL[i][j])
-                elif len(set(premise_GDL[i][j][1]) - paras) == 0:
+                elif len(set(premise_GDL[i][j][1]) - existing_paras) == 0:
                     logic_constraint.append(premise_GDL[i][j])
                 else:
-                    paras = paras | set(premise_GDL[i][j][1])
+                    existing_paras = existing_paras | set(premise_GDL[i][j][1])
                     product.append(premise_GDL[i][j])
             premise_GDL[i] = {
                 "products": product,
                 "logic_constraints": logic_constraint,
-                "algebra_constraints": algebra_constraint
+                "algebra_constraints": algebra_constraint,
+                "attr_in_algebra_constraints": [[attr, list(para)] for attr, para in set(attrs)]
             }
+            paras_list.append(paras)
 
         return premise_GDL, paras_list
 
@@ -335,15 +337,23 @@ class FormalLanguageParser:
         [['Similar', ['a', 'b', 'c', 'a', 'd', 'e']]]
         """
         paras = []
+        attrs = []
         for i in range(len(conclusion_GDL)):
             if "Equal" in conclusion_GDL[i]:
-                conclusion_GDL[i], equal_para = FormalLanguageParser._parse_equal_predicate(conclusion_GDL[i], True)
-                paras += equal_para
+                conclusion_GDL[i], eq_attrs = FormalLanguageParser._parse_equal_predicate(conclusion_GDL[i], True)
+                attrs += eq_attrs
+                for attr, para in eq_attrs:
+                    paras += list(para)
             else:
                 predicate, para, _ = FormalLanguageParser._parse_one_predicate(conclusion_GDL[i], True)
                 conclusion_GDL[i] = [predicate, para]
                 paras += para
-        return conclusion_GDL, paras
+
+        parsed_conclusion_GDL = {
+            "conclusions": conclusion_GDL,
+            "attr_in_conclusions": [[attr, list(para)] for attr, para in set(attrs)]
+        }
+        return parsed_conclusion_GDL, paras
 
     @staticmethod
     def parse_problem(problem_CDL):
@@ -393,9 +403,10 @@ class FormalLanguageParser:
             parsed_CDL["parsed_cdl"]["goal"]["type"] = "equal"
             parsed_goal, _ = FormalLanguageParser._parse_equal_predicate(problem_CDL["goal_cdl"])
             parsed_CDL["parsed_cdl"]["goal"]["item"] = parsed_goal
-        else:
+        elif problem_CDL["goal_cdl"].startswith("Relation"):
             parsed_CDL["parsed_cdl"]["goal"]["type"] = "logic"
-            predicate, para, _ = FormalLanguageParser._parse_one_predicate(problem_CDL["goal_cdl"])
+            predicate, para, _ = FormalLanguageParser._parse_one_predicate(
+                problem_CDL["goal_cdl"].split("(", 1)[1])
             parsed_CDL["parsed_cdl"]["goal"]["item"] = predicate
             parsed_CDL["parsed_cdl"]["goal"]["answer"] = para
 
@@ -424,6 +435,7 @@ class FormalLanguageParser:
         >> _parse_equal_predicate('Equal(Length(AB),Length(CD))')
         ['Equal', [[Length, ['A', 'B']], [Length, ['C', 'D']]]]
         """
+        attrs = []
         i = 0
         j = 0
         stack = []
@@ -432,69 +444,40 @@ class FormalLanguageParser:
                 stack.append(s[i:j])
                 stack.append(s[j])
                 i = j + 1
+
             elif s[j] == ",":
                 if i < j:
                     stack.append(s[i: j])
                     i = j + 1
                 else:
                     i = i + 1
+
             elif s[j] == ")":
                 if i < j:
                     stack.append(s[i: j])
                     i = j + 1
                 else:
                     i = i + 1
-                item = []
+
+                paras = []
                 while stack[-1] != "(":
-                    item.append(stack.pop())
+                    paras.append(stack.pop())
                 stack.pop()  # pop '('
-                stack.append([stack.pop(), item[::-1]])
+                predicate = stack.pop()
+                if predicate in EquationParser.operator_predicate or \
+                        predicate in ["Value", "Equal", "Relation"]:  # not attribution
+                    stack.append([predicate, paras[::-1]])
+                else:  # attribution
+                    paras = list("".join(paras[::-1]).lower() if make_vars else "".join(paras[::-1]))
+                    stack.append([predicate, paras])
+                    attrs.append((predicate, tuple(paras)))
+
             j = j + 1
 
         if len(stack) > 1:
             e_msg = "Sym stack not empty. Miss ')' in {}?.".format(s)
             raise Exception(e_msg)
-
-        return FormalLanguageParser._listing(stack.pop(), make_vars)
-
-    @staticmethod
-    def _listing(s_tree, make_vars):
-        """
-        Recursive trans s_tree's para to para list.
-        >> listing(['Equal', [['LengthOfLine', ['OA']], ['LengthOfLine', ['OB']]]], True)
-        ['Equal', [['LengthOfLine', ['o', 'a']], ['LengthOfLine', ['o', 'b']]]]
-        >> listing(['Add', [['Length', ['AB']], ['Length', ['CD']]]], False)
-        ['Add', [['Length', ['A', 'B']], ['Length', ['C', 'D']]]]
-        """
-        if not isinstance(s_tree, list):
-            return s_tree, []
-
-        is_para = True  # Judge whether the para list is reached.
-        for para in s_tree:
-            if isinstance(para, list):
-                is_para = False
-                break
-            for p in list(para):
-                if p not in string.ascii_uppercase:
-                    is_para = False
-                    break
-            if not is_para:
-                break
-
-        if is_para:
-            if make_vars:
-                listed_para = list("".join(s_tree).lower())
-            else:
-                listed_para = list("".join(s_tree))
-            return listed_para, listed_para
-        else:
-            listed_tree = []
-            paras = []
-            for para in s_tree:
-                tree, para = FormalLanguageParser._listing(para, make_vars)
-                listed_tree.append(tree)
-                paras += para
-            return listed_tree, paras
+        return stack.pop(), attrs
 
 
 class EquationParser:
@@ -507,6 +490,23 @@ class EquationParser:
     outside_priority = {"+": 1, "-": 1, "*": 2, "/": 2, "^": 3, "%": 3, "√": 4,
                         "{": 5, "}": 0,
                         "@": 4, "#": 4, "$": 4, "~": 0}
+
+    @staticmethod
+    def get_equation_from_tree(problem, tree, replaced=False, letters=None):
+        """
+        Trans expr_tree to symbolic algebraic expression.
+        >> get_expr_from_tree(problem, [['LengthOfLine', ['a', 'b']], '2*x-14'], True, {'a': 'Z', 'b': 'X'})
+        - 2.0*f_x + l_zx + 14.0
+        >> get_expr_from_tree(problem, [['LengthOfLine', ['Z', 'X']], '2*x-14'])
+        - 2.0*f_x + l_zx + 14.0
+        """
+        left_expr = EquationParser.get_expr_from_tree(problem, tree[0], replaced, letters)
+        if left_expr is None:
+            return None
+        right_expr = EquationParser.get_expr_from_tree(problem, tree[1], replaced, letters)
+        if right_expr is None:
+            return None
+        return left_expr - right_expr
 
     @staticmethod
     def get_expr_from_tree(problem, tree, replaced=False, letters=None):
@@ -579,23 +579,6 @@ class EquationParser:
         else:
             e_msg = "Operator {} not defined, please check your expression.".format(tree[0])
             raise Exception(e_msg)
-
-    @staticmethod
-    def get_equation_from_tree(problem, tree, replaced=False, letters=None):
-        """
-        Trans expr_tree to symbolic algebraic expression.
-        >> get_expr_from_tree(problem, [['LengthOfLine', ['a', 'b']], '2*x-14'], True, {'a': 'Z', 'b': 'X'})
-        - 2.0*f_x + l_zx + 14.0
-        >> get_expr_from_tree(problem, [['LengthOfLine', ['Z', 'X']], '2*x-14'])
-        - 2.0*f_x + l_zx + 14.0
-        """
-        left_expr = EquationParser.get_expr_from_tree(problem, tree[0], replaced, letters)
-        if left_expr is None:
-            return None
-        right_expr = EquationParser.get_expr_from_tree(problem, tree[1], replaced, letters)
-        if right_expr is None:
-            return None
-        return left_expr - right_expr
 
     @staticmethod
     def _parse_expr(problem, expr):

@@ -1,0 +1,39 @@
+{
+  "problem_id": 7182,
+  "annotation": "RunanWang_2023-05-21",
+  "source": "GeoQA-4349",
+  "problem_level": 1,
+  "problem_text_cn": "如图,P是圆O外的一点,PA、PB与圆O分别相切于点A、B,C是劣弧⁀{AB}上任一点,过点C的切线分别交PA、PB于点D、E．若∠P=38°,则∠DOE=()",
+  "problem_text_en": "As shown in the figure, P is a point outside circle O, PA and PB are tangent to circle O at points A and B respectively, C is any point on the minor arc ⁀AB, and the tangent passing through point C intersects PA and PB at points D and E respectively . If ∠P = N_0, then ∠DOE = ()",
+  "problem_img": "7182.png",
+  "construction_cdl": [
+    "Shape()",
+    "Collinear()",
+    "Cocircular()"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [
+    "IsTangentOfCircle(PA,O)",
+    "IsTangentOfCircle(PB,O)",
+    "IsTangentOfCircle(EC,O)",
+    "IsTangentOfCircle(EB,O)",
+    "IsTangentOfCircle(DC,O)",
+    "IsTangentOfCircle(DA,O)",
+    "Equal(MeasureOfAngle(APB),38)"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(EOD))",
+  "problem_answer": "71",
+  "theorem_seqs": [
+    "triangle_property_angle_sum",
+    "flat_angle",
+    "adjacent_complementary_angle",
+    "angle_addition",
+    "tangent_of_circle_property_length_equal",
+    "similar_triangle_judgment_sss",
+    "similar_triangle_property_angle_equal"
+  ],
+  "notes": "与7191重复",
+  "raw_answer": "解:∵∠P=38°,∴∠PDE+∠PED=142°,∴∠ADC+∠BEC=(180-∠PDE)+(180-∠PED)=360°-142°=218°,∵DA,DC是圆O的切线,∴∠ODC=∠ODA=\\frac{1}{2}∠ADC；同理:∠OEC=\\frac{1}{2}∠BEC,∴∠ODC+∠OEC=\\frac{1}{2}(∠ADC+∠BEC)=109°,∴∠DOE=180-(∠ODC+∠OEC)=71°．故选:D．"
+}

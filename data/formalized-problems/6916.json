@@ -1,6 +1,6 @@
 {
   "problem_id": 6916,
-  "annotation": "xiaokaizhang_2023-03-06",
+  "annotation": "YiwenHuang_2023-05-21",
   "source": "GeoQA-3925",
   "problem_level": 1,
   "problem_text_cn": "如图,AB是⊙O的直径,C为⊙O外一点,过点C作⊙O切线,切点为B,连结AC交⊙O于D,∠C=42°．点E在AB右侧的半圆上运动(不与A、B重合),则∠AED的大小是()",
@@ -16,7 +16,7 @@
     "Cocircular(O,ADB)"
   ],
   "text_cdl": [
-      "IsCentreOfCircle(O,O)",
+    "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)",
     "IsTangentOfCircle(CB,O)",
     "Equal(MeasureOfAngle(ACB),42)"
@@ -25,18 +25,12 @@
   "goal_cdl": "Value(MeasureOfAngle(DBA))",
   "problem_answer": "42",
   "theorem_seqs": [
-
-        "arc_property_center_angle",
-    "arc_property_circumference_angle_external",
-     "tangent_of_circle_property_perpendicular",
-    "radius_of_circle_property_length_equal",
-    "isosceles_triangle_judgment_line_equal",
-    "isosceles_triangle_property_angle_equal",
-    "triangle_property_angle_sum",
-    "flat_angle",
-    "angle_addition",
-    "sine_theorem",
-    "circle_property_length_of_radius_and_diameter"
+    "arc_property_center_angle(OBA,O)",
+    "arc_property_circumference_angle_external(OBA,D)",
+    "tangent_of_circle_property_perpendicular(CB,O,O)",
+    "triangle_property_angle_sum(ADB)",
+    "triangle_property_angle_sum(BAC)",
+    "flat_angle(AOB)"
   ],
   "raw_answer": "解:连接BD,∵AB为⊙O的直径,BC是⊙O的切线,∴∠ADB=90°,AB⊥BC,∴∠C+∠BAC=∠BAC+∠ABD=90°,∴∠ABD=∠C,∵∠AED=∠ABD,∴∠AED=∠C=42°．故选:C．"
 }

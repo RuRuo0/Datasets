@@ -1,0 +1,37 @@
+{
+  "problem_id": 9594,
+  "annotation": "ChenyangMao_2023-06-04",
+  "source": "GeoQA-9918",
+  "problem_level": 1,
+  "problem_text_cn": "如图,Rt△ABC中,∠ACB=90°,AC=4,BC=3,以AC为直径的圆交AB于D,则AD的长为()",
+  "problem_text_en": "As shown in the figure, in Rt△ABC, ∠ACB = N_0, AC = N_1, BC = N_2, the circle with AC as the diameter intersects AB at D, then the length of AD is ()",
+  "problem_img": "9594.png",
+  "construction_cdl": [
+    "Shape(ODA,AD)",
+    "Shape(OAC,CO,OA)",
+    "Shape(AO,OC,CD,DA)",
+    "Shape(OCD,DC)",
+    "Shape(CB,BD,OCD)",
+    "Collinear(AOC)",
+    "Collinear(ADB)",
+    "Cocircular(O,ACD)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AC,O)",
+    "RightTriangle(ACB)",
+    "Equal(LengthOfLine(AC),4)",
+    "Equal(LengthOfLine(BC),3)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AD))",
+  "problem_answer": "16/5",
+  "theorem_seqs": [
+    "diameter_of_circle_property_right_angle",
+    "right_triangle_judgment_angle",
+    "cosine_theorem(ACB)",
+    "cosine_theorem(ACD)",
+    "right_triangle_property_pythagorean"
+  ],
+  "raw_answer": "解:连接CD,∵Rt△ABC中,∠ACB=90°,AC=4,BC=3,∴根据勾股定理得:AB=√{AC²+BC²}=5,∵AC为直径,∴CD⊥AB,∴CD=\\frac{AC\\cdotBC}{AB}=\\frac{12}{5},∴AD=√{AC²-CD²}=\\frac{16}{5}．故选:C．"
+}

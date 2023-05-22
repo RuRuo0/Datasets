@@ -1,6 +1,6 @@
 {
   "problem_id": 8102,
-  "annotation": "xiaokaizhang_2023-03-06",
+  "annotation": "ZheZhu_2023-05-21",
   "source": "GeoQA-6711",
   "problem_level": 1,
   "problem_text_cn": "如图,圆心角都是90°的扇形OAB与扇形OCD叠放在一起,OA=3,OC=1,分别连接AC、BD,则图中阴影部分的面积为()",
@@ -15,8 +15,8 @@
     "Cocircular(Q,DC)"
   ],
   "text_cdl": [
-            "IsCentreOfCircle(O,O)",
-            "IsCentreOfCircle(Q,Q)",
+    "IsCentreOfCircle(O,O)",
+    "IsCentreOfCircle(Q,Q)",
     "Equal(LengthOfLine(OA),3)",
     "Equal(LengthOfLine(QC),1)",
     "Equal(MeasureOfAngle(AOB),90)",
@@ -26,9 +26,12 @@
   "goal_cdl": "Value(Sub(AreaOfSector(OBA),AreaOfSector(QDC)))",
   "problem_answer": "2*π",
   "theorem_seqs": [
-"radius_of_circle_property_length_equal",
-        "arc_property_center_angle",
-    "sector_area_formula"
+    "radius_of_circle_property_length_equal(OA,O)",
+    "radius_of_circle_property_length_equal(QC,Q)",
+    "arc_property_center_angle(OBA,O)",
+    "arc_property_center_angle(QDC,Q)",
+    "sector_area_formula(OBA)",
+    "sector_area_formula(QDC)"
   ],
   "raw_answer": "解:由图可知,将△OAC顺时针旋转90°后可与△ODB重合,∴S~△OAC~=S~△OBD~；因此S_{阴影}=S~扇形OAB~+S~△OBD~-S~△OAC~-S~扇形OCD~=S~扇形OAB~-S~扇形OCD~=\\frac{1}{4}π×(9-1)=2π．故选:C．"
 }

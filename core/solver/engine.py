@@ -163,28 +163,28 @@ class EquationKiller:
         :return syms: <set>, set of minimum equation's syms.
         """
         sym_to_eqs = {}  # dict, sym: [equation]
-        for eq in eqs:
+        for eq in target_eqs + eqs:
             for sym in eq.free_symbols:
                 if sym in sym_to_eqs:
                     sym_to_eqs[sym].append(eq)
                 else:
                     sym_to_eqs[sym] = [eq]
 
-        mini_eqs = set()
+        mini_eqs = set(target_eqs)
         mini_syms = set()
-
-        for eq in target_eqs:
-            mini_eqs.add(eq)
+        for eq in mini_eqs:
             mini_syms |= eq.free_symbols
 
         while True:
-            eq_count = len(mini_eqs)
+            new_sym = set()
             for sym in mini_syms:
                 for eq in sym_to_eqs[sym]:
                     mini_eqs.add(eq)
-                    mini_syms |= eq.free_symbols
-            if eq_count == len(mini_eqs):
+                    new_sym |= eq.free_symbols
+            new_sym = new_sym - mini_syms
+            if len(new_sym) == 0:
                 break
+            mini_syms |= new_sym
 
         return mini_syms
 
@@ -289,7 +289,7 @@ class EquationKiller:
                 equations.pop(i)
 
     @staticmethod
-    @func_set_timeout(5)
+    @func_set_timeout(2)
     def solve(equations, target_sym=None, keep_sym=False):
         try:
             if target_sym is not None:

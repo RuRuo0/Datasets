@@ -1,0 +1,29 @@
+{
+  "problem_id": 9075,
+  "annotation": "qcq_2023-05-19",
+  "source": "GeoQA-9163",
+  "problem_level": 1,
+  "problem_text_cn": "如图:菱形的边长为6,一个内角为60°,则它的较短的一条对角线长是()",
+  "problem_text_en": "As shown in the figure: the side length of the rhombus is N_0, and an internal angle is N_1, then its shorter diagonal length is ()",
+  "problem_img": "9075.png",
+  "construction_cdl": [
+    "Shape(AB,BD,DA)",
+    "Shape(DB,BC,CD)"
+  ],
+  "text_cdl": [
+    "Rhombus(ABCD)",
+    "Equal(LengthOfLine(AB),6)",
+    "Equal(MeasureOfAngle(DAB),60)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(BD))",
+  "problem_answer": "6",
+  "theorem_seqs": [
+    "parallel_property_alternate_interior_angle(AD,BC)",
+    "isosceles_triangle_judgment_line_equal(ABD)",
+    "isosceles_triangle_property_angle_equal(ABD)",
+    "triangle_property_angle_sum(ABD)",
+    "isosceles_triangle_judgment_angle_equal(BDA)"
+  ],
+  "raw_answer": "解:∵菱形的一个内角是60°,根据菱形的性质得,60°角所对的对角线与菱形的两边构成的三角形是一等边三角形,即BD=AD=AB=6．故选:A．"
+}

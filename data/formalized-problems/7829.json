@@ -1,0 +1,53 @@
+{
+  "problem_id": 7829,
+  "annotation": "qikehuang_2023-05-21",
+  "source": "GeoQA-5643",
+  "problem_level": 1,
+  "problem_text_cn": "如图,点C、D在线段AB的同侧,CA=4,AB=12,BD=9,M是AB的中点,∠CMD=120°,则CD长的最大值是()",
+  "problem_text_en": "As shown in the figure, points C and D are on the same side of line AB, CA = N_0, AB = N_1, BD = N_2, M is the midpoint of AB, ∠CMD = N_3, then the maximum length of CD is ()",
+  "problem_img": "7829.png",
+  "construction_cdl": [
+    "Shape(HC,CP,PH)",
+    "Shape(PC,CA,AP)",
+    "Shape(HP,PM,MH)",
+    "Shape(PA,AM,MP)",
+    "Shape(HM,MN,NH)",
+    "Shape(NM,MQ,QN)",
+    "Shape(QM,MB,BQ)",
+    "Shape(NQ,QD,DN)",
+    "Shape(QB,BD,DQ)",
+    "Collinear(CHND)",
+    "Collinear(CPM)",
+    "Collinear(HPA)",
+    "Collinear(NQB)",
+    "Collinear(DQM)",
+    "Collinear(AMB)"
+  ],
+  "text_cdl": [
+    "IsMidpointOfLine(M,AB)",
+    "Equal(LengthOfLine(CA),4)",
+    "Equal(LengthOfLine(AB),12)",
+    "Equal(LengthOfLine(BD),9)",
+    "Kite(CAMH)",
+    "Kite(MBDN)",
+    "Equal(MeasureOfAngle(CMD),120)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(CD))",
+  "problem_answer": "19",
+  "theorem_seqs": [
+    "angle_addition(AMC,CMD)",
+    "adjacent_complementary_angle(AMD,DMB)",
+    "kite_property_diagonal_perpendicular_bisection",
+    "perpendicular_bisector_property_bisector",
+    "angle_addition(AMC,CMH)",
+    "angle_addition(NMD,DMB)",
+    "angle_addition(AMH,HMN)",
+    "adjacent_complementary_angle(AMN,NMB)",
+    "cosine_theorem(MNH)",
+    "line_addition(CH,HN)",
+    "line_addition(CN,ND)",
+    "line_addition(AM,MB)"
+  ],
+  "raw_answer": "解:如图,作点A关于CM的对称点A′,点B关于DM的对称点B′．∵∠CMD=120°,∴∠AMC+∠DMB=60°,∴∠CMA′+∠DMB′=60°,∴∠A′MB′=60°,∵MA′=MB′,∴△A′MB′为等边三角形∵CD≤CA′+A′B′+B′D=CA+AM+BD=4+6+9=19,∴CD的最大值为19,故选:B．"
+}

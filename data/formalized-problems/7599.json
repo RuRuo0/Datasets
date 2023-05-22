@@ -1,0 +1,45 @@
+{
+  "problem_id": 7599,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-5120",
+  "problem_level": 1,
+  "problem_text_cn": "已知⊙O的半径为2,AB是它的一条弦,以OA,OB为邻边作平行四边形OAPB,若点P在⊙O上,则弦长AB为()",
+  "problem_text_en": "Given that the radius of ⊙O is N_0, AB is one of its chords, take OA and OB as the adjacent sides to make a parallelogram OAPB, if the point P is on ⊙O, then the length of the chord AB is ()",
+  "problem_img": "7599.png",
+  "construction_cdl": [
+    "Shape(OA,AC,CO)",
+    "Shape(OC,CB,BO)",
+    "Shape(AP,PC,CA)",
+    "Shape(CP,PB,BC)",
+    "Shape(AO,OB,OBA)",
+    "Shape(PA,OAP)",
+    "Shape(BP,OPB)",
+    "Collinear(ACB)",
+    "Collinear(OCP)",
+    "Cocircular(O,APB)"
+  ],
+  "text_cdl": [
+    "Parallelogram(OAPB)",
+    "IsCentreOfCircle(O,O)",
+    "Equal(RadiusOfCircle(O),2)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AB))",
+  "problem_answer": "2*√3",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal(OA,O)",
+    "radius_of_circle_property_length_equal(OB,O)",
+    "radius_of_circle_property_length_equal(OP,O)",
+    "parallelogram_property_opposite_line_equal(OAPB)",
+    "parallelogram_property_opposite_line_equal(APBO)",
+    "kite_judgment_equal_and_equal(OAPB)",
+    "parallelogram_property_diagonal_bisection(OAPB,C)",
+    "line_addition(OC,CP)",
+    "kite_property_diagonal_perpendicular_bisection(OAPB,C)",
+    "right_triangle_judgment_angle(ACO)",
+    "right_triangle_property_pythagorean(ACO)",
+    "line_addition(AC,CB)"
+
+  ],
+  "raw_answer": "【解答】解:如图；平行四边形OAPB中,OA=OB,则四边形OAPB是菱形；若P在⊙O上,那么由AP=PB,可知P是弧AB的中点；连接OP,则OP⊥AB,且AB=2AC=2BC；△OAP中,OA=AP=OP,故△OAP是等边三角形,即∠AOP=60°；Rt△OAC中,∠AOC=60°,OA=2,则AC=√{3},AB=2AC=2√{3}；"
+}

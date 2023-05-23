@@ -69,7 +69,7 @@ def run(save_GDL=False, save_CDL=False, auto=False, clean_theorem=False):
                 msg = "Raise Exception <{}> in problem {}.".format(e, filename.split(".")[0])
                 unsolved.append("{}\t{}\t{}".format(problem_CDL["problem_id"], problem_CDL["annotation"], msg))
 
-        print("pid\tannotation\tnotes")
+        print("\npid\tannotation\tnotes")
         for n in unsolved:  # show unsolved
             print(n)
 
@@ -130,9 +130,9 @@ def search(direction="fw", strategy="df", auto=False, start_pid=1584):
                         continue
 
                     problem = searcher.get_problem(load_json(path_formalized + filename))
-                    seqs = searcher.search(problem, strategy)
+                    solved, seqs = searcher.search(problem, strategy)
 
-                    if len(seqs) > 0:  # clean theorem
+                    if solved:
                         problem_CDL = load_json(path_formalized + filename)
                         if "theorem_seqs_search" not in problem_CDL:
                             problem_CDL["theorem_seqs_search"] = [seqs]
@@ -153,16 +153,15 @@ def search(direction="fw", strategy="df", auto=False, start_pid=1584):
                     continue
 
                 problem = searcher.get_problem(load_json(path_formalized + filename))
-                seqs = searcher.search(problem, strategy)
-                if len(seqs) > 0:  # clean theorem
+                solved, seqs = searcher.search(problem, strategy)
+                if solved:  # clean theorem
                     problem_CDL = load_json(path_formalized + filename)
                     if "theorem_seqs_search" not in problem_CDL:
                         problem_CDL["theorem_seqs_search"] = [seqs]
                     elif seqs not in problem_CDL["theorem_seqs_search"]:
                         problem_CDL["theorem_seqs_search"].append(seqs)
                     save_json(problem_CDL, path_formalized + filename)
-                print("solved problem {}: {}".format(pid, seqs))
-
+                    print("solved problem {}: {}".format(pid, seqs))
                 print()
     else:
         searcher = BackwardSearcher(load_json(path_preset + "predicate_GDL.json"),  # init searcher

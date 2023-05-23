@@ -290,20 +290,29 @@ class ForwardSearcher:
         print("\033[35m(pid={},depth={},branch={}/{})\033[0m Current Node".format(pid, 1, 1, 1))
 
         timing = time.time()
+        try:
+            EqKiller.solve_equations(problem)  # solve eq & check_goal
+        except FunctionTimedOut:
+            msg = "Timeout when solve equations."
+            warnings.warn(msg)
+        problem.check_goal()
+        print("\033[34m(pid={},timing={:.4f}s)\033[0m Check Goal".format(pid, time.time() - timing))
+        if problem.goal.solved:
+            print("\033[32m(pid={})\033[0m End Searching".format(pid))
+            return True, []
+
+        timing = time.time()
         selections = self.get_theorem_selections(0, problem)
-        l = len(selections)
-        print("\033[34m(pid={},timing={:.4f}s,s_count={})\033[0m Get Selections".format(pid, time.time() - timing, l))
+        print("\033[34m(pid={},timing={:.4f}s,s_count={})\033[0m Get Selections".format(
+            pid, time.time() - timing, len(selections)))
 
         timing = time.time()
         last_step_count = problem.condition.step_count
         problems = self.apply_selections(problem, selections)
-        if len(problems) == 0:
-            print("\033[32m(pid={})\033[0m End Searching".format(pid))
-            return []
-        l = len(problems)
-        for i in range(l):
-            search_stack.append((problems[i], last_step_count, (2, l - i, l)))
-        print("\033[34m(pid={},timing={:.4f}s,p_count={})\033[0m Apply Selections".format(pid, time.time() - timing, l))
+        for i in range(len(problems)):
+            search_stack.append((problems[i], last_step_count, (2, len(problems) - i, len(problems))))
+        print("\033[34m(pid={},timing={:.4f}s,p_count={})\033[0m Apply Selections".format(
+            pid, time.time() - timing, len(problems)))
 
         while len(search_stack) > 0:
             if strategy == "df":
@@ -320,11 +329,10 @@ class ForwardSearcher:
                 warnings.warn(msg)
             problem.check_goal()
             print("\033[34m(pid={},timing={:.4f}s)\033[0m Check Goal".format(pid, time.time() - timing))
-
             if problem.goal.solved:
                 _, seqs = get_used_theorem(problem)
                 print("\033[32m(pid={})\033[0m End Searching".format(pid))
-                return seqs
+                return True, seqs
 
             if pos[0] + 1 > self.max_depth:
                 continue
@@ -336,14 +344,13 @@ class ForwardSearcher:
             timing = time.time()
             last_step_count = problem.condition.step_count
             problems = self.apply_selections(problem, selections)
-            l = len(problems)
-            for i in range(l):
-                search_stack.append((problems[i], last_step_count, (pos[0] + 1, l - i, l)))
+            for i in range(len(problems)):
+                search_stack.append((problems[i], last_step_count, (pos[0] + 1, len(problems) - i, len(problems))))
             print("\033[34m(pid={},timing={:.4f}s,p_count={})\033[0m Apply Selections".format(
                 pid, time.time() - timing, len(problems)))
 
         print("\033[31m(pid={})\033[0m End Searching".format(pid))
-        return []
+        return False, None
 
     def get_theorem_selections(self, last_step_count, problem):
         """
@@ -354,58 +361,29 @@ class ForwardSearcher:
         """
         selections = []
         added_selections = set()
-        step_count = problem.condition.step_count
-        while len(problem.condition.ids_of_step[step_count]) == 0:
-            step_count -= 1
+        related_pres = []  # new added predicates
+        related_eqs = []    # new added/updated equations
 
-        theorem_logic = []  # [(theorem_name, theorem_branch)]
-        related_eqs = []
-
-        for step in range(last_step_count, problem.condition.step_count + 1):
+        for step in range(last_step_count, problem.condition.step_count + 1):    # get related conditions
             for _id in problem.condition.ids_of_step[step]:
-                predicate = problem.condition.items[_id][0]
-                if predicate in self.p2t_map:
-                    for theorem in self.p2t_map[predicate]:
-                        if theorem not in theorem_logic:
-                            theorem_logic.append(theorem)
+                if problem.condition.items[_id][0] == "Equation":
+                    if problem.condition.items[_id][1] in related_eqs:
+                        continue
+                    related_eqs.append(problem.condition.items[_id][1])
+                    for simp_eq in problem.condition.simplified_equation:
+                        if simp_eq in related_eqs:
+                            continue
+                        if _id not in problem.condition.simplified_equation[simp_eq]:
+                            continue
+                        related_eqs.append(simp_eq)
+                else:
+                    if problem.condition.items[_id][0] not in self.p2t_map:
+                        continue
+                    if problem.condition.items[_id][0] in related_pres:
+                        continue
+                    related_pres.append(problem.condition.items[_id][0])
 
-                if predicate == "Equation":
-                    item = problem.condition.items[_id][1]
-                    if len(item.free_symbols) == 1:
-                        related_eqs.append(item)
-                        for s_eq in problem.condition.simplified_equation:
-                            if _id in problem.condition.simplified_equation[s_eq] and s_eq not in related_eqs:
-                                related_eqs.append(s_eq)
-                    else:
-                        for s_eq in problem.condition.simplified_equation:
-                            if _id == problem.condition.simplified_equation[s_eq][0] and s_eq not in related_eqs:
-                                related_eqs.append(s_eq)
-
-        for selection in self.try_theorem_logic(problem, theorem_logic):
-            _, conclusions = selection
-            s = []
-            for conclusion in conclusions:
-                predicate, item, _ = conclusion
-                s.append((predicate, item))
-            s = tuple(s)
-            if s not in added_selections:
-                added_selections.add(s)
-                selections.append(selection)
-
-        syms = EqKiller.get_minimum_syms(list(related_eqs), list(problem.condition.simplified_equation))
-
-        paras_of_attrs = {}
-        for sym in syms:
-            attr, paras = problem.condition.attr_of_sym[sym]
-            if attr not in self.p2t_map:
-                continue
-
-            if attr not in paras_of_attrs:
-                paras_of_attrs[attr] = []
-            for para in paras:
-                paras_of_attrs[attr].append(para)
-
-        for selection in self.try_theorem_algebra(problem, paras_of_attrs):
+        for selection in self.try_theorem_logic(problem, related_pres) + self.try_theorem_algebra(problem, related_eqs):
             _, conclusions = selection
             s = []
             for conclusion in conclusions:
@@ -418,18 +396,24 @@ class ForwardSearcher:
 
         return selections
 
-    def try_theorem_logic(self, problem, theorem_logic):
+    def try_theorem_logic(self, problem, related_pres):
         """
         Try a theorem and return can-added conclusions.
         :param problem: Instance of <Problem>.
-        :param theorem_logic: <list>, [(theorem_name, theorem_branch)].
+        :param related_pres: <list>, list of related predicates.
         :return selections: <list> of ((t_name, t_branch, t_para, t_timing), ((predicate, item, premise))).
         """
         pid = problem.problem_CDL["id"]
+        theorem_logic = []    # [(theorem_name, theorem_branch)]
+        for predicate in related_pres:
+            for theorem in self.p2t_map[predicate]:
+                if theorem in theorem_logic:
+                    continue
+                theorem_logic.add(theorem)
+
         l = len(theorem_logic)
         count = 1
         timing = time.time()
-
         selections = []
         for t_name, t_branch in theorem_logic:
             print("\r\033[34m(pid={},timing={:.4f}s,prog={}/{})\033[0m Try (Logic-Related) Theorem <{}>".format(
@@ -456,21 +440,34 @@ class ForwardSearcher:
 
         return selections
 
-    def try_theorem_algebra(self, problem, paras_of_attrs):
+    def try_theorem_algebra(self, problem, related_eqs):
         """
         Try a theorem and return can-added conclusions.
         :param problem: Instance of <Problem>.
-        :param paras_of_attrs: <dict>, {'attr_name': [para]}.
+        :param related_eqs: <list>, related equations.
         :return selections: <list> of ((t_name, t_branch, t_para, t_timing), ((predicate, item, premise))).
         """
         pid = problem.problem_CDL["id"]
+        syms = EqKiller.get_minimum_syms(related_eqs, list(problem.condition.simplified_equation))
+        paras_of_attrs = {}
         l = 0
-        count = 1
-        for related_attr in paras_of_attrs:
-            l += len(self.p2t_map[related_attr])
-        timing = time.time()
+        for sym in syms:
+            attr, paras = problem.condition.attr_of_sym[sym]
+            if attr not in self.p2t_map:
+                continue
 
+            if attr not in paras_of_attrs:
+                paras_of_attrs[attr] = []
+
+            for para in paras:
+                if para in paras_of_attrs[attr]:
+                    continue
+                paras_of_attrs[attr].append(para)
+                l += 1
+
+        count = 1
         selections = []
+        timing = time.time()
         for related_attr in paras_of_attrs:
             related_paras = set(paras_of_attrs[related_attr])
 
@@ -478,14 +475,15 @@ class ForwardSearcher:
                 print("\r\033[34m(pid={},timing={:.4f}s,prog={}/{})\033[0m Try (Algebra-Related) Theorem <{}>".format(
                     pid, time.time() - timing, count, l, t_name), end="")
                 count += 1
-                gpl = self.theorem_GDL[t_name]["body"][t_branch]
+
+                gpl = self.theorem_GDL[t_name]["body"][t_branch]    # run gdl
                 r_ids, r_items, r_vars = GeoLogic.run_logic(gpl, problem)
                 if len(r_ids) == 0:
                     continue
 
                 new_ids = []
                 new_items = []
-                for i in range(len(r_ids)):
+                for i in range(len(r_ids)):    # filter related syms
                     letters = {}
                     for j in range(len(r_vars)):
                         letters[r_vars[j]] = r_items[i][j]
@@ -498,7 +496,7 @@ class ForwardSearcher:
                         new_ids.append(r_ids[i])
                         new_items.append(r_items[i])
 
-                r = GeoLogic.run_algebra((new_ids, new_items, r_vars), gpl, problem)
+                r = GeoLogic.run_algebra((new_ids, new_items, r_vars), gpl, problem)    # check algebra constraints
                 results = GeoLogic.make_conclusion(r, gpl, problem)
                 for letters, premise, conclusion in results:
                     theorem_para = tuple([letters[i] for i in self.theorem_GDL[t_name]["vars"]])

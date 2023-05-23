@@ -335,7 +335,7 @@ class EquationKiller:
             return real_results
 
     @staticmethod
-    @func_set_timeout(5)
+    @func_set_timeout(6)
     def solve_equations(problem):
         """
         Solve equations in problem.condition.equations.
@@ -409,7 +409,7 @@ class EquationKiller:
                     problem.set_value_of_sym(sym, solved_results[sym], premise, "solve_eq")
 
     @staticmethod
-    @func_set_timeout(3)
+    @func_set_timeout(4)
     def solve_target(target_expr, problem):
         """
         Solve target_expr in the constraint of problem's equation.
@@ -756,22 +756,33 @@ class GeometryPredicateLogic:
                 for j in range(len(r1_vars)):
                     letters[r1_vars[j]] = r1_items[i][j]
                 eq = EqParser.get_equation_from_tree(problem, r2_algebra[1], True, letters)
-                result, premise = EquationKiller.solve_target(eq, problem)
-                if result is not None and rough_equal(result, 0):  # meet constraints
-                    r_id = tuple(set(premise + list(r1_ids[i])))
-                    r_ids.append(r_id)
-                    r_items.append(r1_items[i])
+                try:
+                    result, premise = EquationKiller.solve_target(eq, problem)
+                except FunctionTimedOut:
+                    msg = "Timeout when solve target: {}".format(str(eq))
+                    warnings.warn(msg)
+                else:
+                    if result is not None and rough_equal(result, 0):  # meet constraints
+                        r_id = tuple(set(premise + list(r1_ids[i])))
+                        r_ids.append(r_id)
+                        r_items.append(r1_items[i])
+
         else:  # &~
             for i in range(len(r1_items)):
                 letters = {}
                 for j in range(len(r1_vars)):
                     letters[r1_vars[j]] = r1_items[i][j]
                 eq = EqParser.get_equation_from_tree(problem, r2_algebra[1], True, letters)
-                result, premise = EquationKiller.solve_target(eq, problem)
-                if result is None or not rough_equal(result, 0):  # meet constraints
-                    r_id = tuple(set(premise + list(r1_ids[i])))
-                    r_ids.append(r_id)
-                    r_items.append(r1_items[i])
+                try:
+                    result, premise = EquationKiller.solve_target(eq, problem)
+                except FunctionTimedOut:
+                    msg = "Timeout when solve target: {}".format(str(eq))
+                    warnings.warn(msg)
+                else:
+                    if result is None or not rough_equal(result, 0):  # meet constraints
+                        r_id = tuple(set(premise + list(r1_ids[i])))
+                        r_ids.append(r_id)
+                        r_items.append(r1_items[i])
 
         return r_ids, r_items, r1_vars
 

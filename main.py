@@ -1,7 +1,9 @@
-from core.solver.solver import *
+from core.solver.solver import Interactor
+from core.solver.searcher import ForwardSearcher, BackwardSearcher
 from core.aux_tools.utils import *
 from core.aux_tools.output import *
 from core.aux_tools.parser import FormalLanguageParser as FLParser
+import warnings
 import os
 path_preset = "data/preset/"
 path_formalized = "data/formalized-problems/"
@@ -168,5 +170,5 @@ def search(direction="fw", strategy="df", auto=False, start_pid=1584):
 
 
 if __name__ == '__main__':
-    run(auto=False, clean_theorem=False, save_GDL=False)
+    run(auto=False, clean_theorem=False)
     # search(direction="fw", strategy="df", auto=True, start_pid=1584)

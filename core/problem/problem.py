@@ -711,7 +711,7 @@ class Problem:
             try:
                 result, premise = EqKiller.solve_target(self.goal.item, self)
             except FunctionTimedOut:
-                msg = "Timeout when solve equations."
+                msg = "Timeout when solve target: {}".format(str(self.goal.item))
                 warnings.warn(msg)
             else:
                 if result is not None:

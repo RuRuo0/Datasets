@@ -409,7 +409,7 @@ class ForwardSearcher:
             for theorem in self.p2t_map[predicate]:
                 if theorem in theorem_logic:
                     continue
-                theorem_logic.add(theorem)
+                theorem_logic.append(theorem)
 
         l = len(theorem_logic)
         count = 1
@@ -458,12 +458,12 @@ class ForwardSearcher:
 
             if attr not in paras_of_attrs:
                 paras_of_attrs[attr] = []
+                l += len(self.p2t_map[attr])
 
             for para in paras:
                 if para in paras_of_attrs[attr]:
                     continue
                 paras_of_attrs[attr].append(para)
-                l += 1
 
         count = 1
         selections = []

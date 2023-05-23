@@ -365,7 +365,7 @@
     <img src="gdl-pic/T035.png" width="15%"
 </div>
 
-    premise: Polygon(ABC)&Equal(LengthOfLine(BD),LengthOfLine(CD))&Line(AD)
+    premise: Polygon(ABC)&Line(AD)&Collinear(BDC)&Equal(LengthOfLine(BD),LengthOfLine(CD))
     conclusion: IsMedianOfTriangle(AD,ABC)
 **Notes**:  
 1.三角形中线的判定：顶点与底边中点的连线  
@@ -1269,7 +1269,7 @@
 </div>
 
     premise: MirrorCongruentBetweenQuadrilateral(ABCD,EFGH)
-    conclusion: Equal(PerimeterOfQuadrilateral(ABC),PerimeterOfQuadrilateral(DEF))
+    conclusion: Equal(PerimeterOfQuadrilateral(ABCD),PerimeterOfQuadrilateral(EFGH))
 **Notes**:  
 1.全等四边形性质：周长相等  
 
@@ -1279,7 +1279,7 @@
 </div>
 
     premise: MirrorCongruentBetweenQuadrilateral(ABCD,EFGH)
-    conclusion: Equal(AreaOfQuadrilateral(ABC),AreaOfQuadrilateral(DEF))
+    conclusion: Equal(AreaOfQuadrilateral(ABCD),AreaOfQuadrilateral(EFGH))
 **Notes**:  
 1.全等四边形性质：面积相等  
 

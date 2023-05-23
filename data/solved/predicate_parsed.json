@@ -1,4 +1,18 @@
 {
+  "FixLength": [
+    "Point",
+    "Line",
+    "Arc",
+    "Angle",
+    "Circle",
+    "Equation"
+  ],
+  "VariableLength": [
+    "Shape",
+    "Collinear",
+    "Cocircular",
+    "Polygon"
+  ],
   "Construction": [
     "Shape",
     "Collinear",
@@ -750,6 +764,70 @@
             [
               "LengthOfLine",
               [
+                "m",
+                "b"
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    "IsMidpointOfArc": {
+      "vars": [
+        "m",
+        "o",
+        "a",
+        "b"
+      ],
+      "para_len": [
+        1,
+        3
+      ],
+      "ee_check": [
+        [
+          "Point",
+          [
+            "m"
+          ]
+        ],
+        [
+          "Arc",
+          [
+            "o",
+            "a",
+            "b"
+          ]
+        ],
+        [
+          "Cocircular",
+          [
+            "o",
+            "a",
+            "m",
+            "b"
+          ]
+        ]
+      ],
+      "fv_check": [
+        "0123"
+      ],
+      "multi": [],
+      "extend": [
+        [
+          "Equal",
+          [
+            [
+              "LengthOfArc",
+              [
+                "o",
+                "a",
+                "m"
+              ]
+            ],
+            [
+              "LengthOfArc",
+              [
+                "o",
                 "m",
                 "b"
               ]
@@ -2262,6 +2340,45 @@
         ]
       ],
       "multi": [],
+      "extend": []
+    },
+    "IsDiameterOfCircle": {
+      "vars": [
+        "a",
+        "b",
+        "o"
+      ],
+      "para_len": [
+        2,
+        1
+      ],
+      "ee_check": [
+        [
+          "Line",
+          [
+            "a",
+            "b"
+          ]
+        ],
+        [
+          "Cocircular",
+          [
+            "o",
+            "a",
+            "b"
+          ]
+        ]
+      ],
+      "fv_check": [
+        "012"
+      ],
+      "multi": [
+        [
+          "b",
+          "a",
+          "o"
+        ]
+      ],
       "extend": []
     },
     "IsTangentOfCircle": {

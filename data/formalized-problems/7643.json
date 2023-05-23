@@ -1,0 +1,36 @@
+{
+  "problem_id": 7643,
+  "annotation": "NaZhu_2023-05-21",
+  "source": "GeoQA-5208",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB是⊙O的弦,OC⊥AB于点D,交⊙O于点C,若⊙O的半径为5,CD=2,那么AB的长为()",
+  "problem_text_en": "As shown in the figure, AB is the chord of ⊙O, OC ⊥ AB at point D and intersects ⊙O at point C. If the radius of ⊙O is N_0 and CD = N_1, then the length of AB is ()",
+  "problem_img": "7643.png",
+  "construction_cdl": [
+    "Shape(OAC,CD,DA)",
+    "Shape(OCB,BD,DC)",
+    "Shape(OBA,AO,OD,DB)",
+    "Shape(OA,AD,DO)",
+    "Collinear(ADB)",
+    "Collinear(ODC)",
+    "Cocircular(O,ACB)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(AD,OD)",
+    "Equal(LengthOfLine(CD),2)",
+    "Equal(RadiusOfCircle(O),5)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AB))",
+  "problem_answer": "8",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "line_addition(OD,DC)",
+    "right_triangle_judgment_angle",
+    "right_triangle_property_pythagorean",
+    "circle_property_chord_perpendicular_bisect_chord",
+    "line_addition(AD,DB)"
+  ],
+  "raw_answer": "【解答】解:连接OA,∵OD⊥AB,∴D为AB的中点,∴AD=BD=\\frac{1}{2}AB,∵OA=OC=5,CD=2,∴OD=OC-CD=5-2=3,在Rt△AOD中,OA=5,OD=3,根据勾股定理得:AD=√{OA²-OD²}=4,则AB=2AD=8．"
+}

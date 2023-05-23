@@ -1,0 +1,39 @@
+{
+  "problem_id": 6950,
+  "annotation": "YiwenHuang_2023-05-21",
+  "source": "GeoQA-3973",
+  "problem_level": 1,
+  "problem_text_cn": "如图,PA、PB分别与半径为3的⊙O相切于点A,B,直线CD分别交PA、PB于点C,D,并切⊙O于点E,当PO=5时,△PCD的周长为()",
+  "problem_text_en": "As shown in the figure, PA and PB are tangent to ⊙O with radius N_0 at points A and B. The straight line CD intersects PA and PB at points C and D respectively, and it is tangent to ⊙O at point E. When PO = N_1, the perimeter of the △PCD is ()",
+  "problem_img": "6950.png",
+  "construction_cdl": [
+    "Shape(PC,CQ,QD,DP)",
+    "Shape(QC,CA,OQA)",
+    "Shape(BD,DQ,OBQ)",
+    "Shape(OQA,OAB,OBQ)",
+    "Collinear(ACP)",
+    "Collinear(BDP)",
+    "Collinear(CQD)",
+    "Cocircular(O,ABQ)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(PA,O)",
+    "IsTangentOfCircle(PB,O)",
+    "IsTangentOfCircle(DQ,O)",
+    "IsTangentOfCircle(CA,O)",
+    "IsTangentOfCircle(DB,O)",
+    "IsTangentOfCircle(CQ,O)",
+    "Equal(LengthOfLine(PA),4)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(PerimeterOfTriangle(PCD))",
+  "problem_answer": "8",
+  "theorem_seqs": [
+    "tangent_of_circle_property_length_equal",
+    "line_addition",
+    "triangle_perimeter_formula"
+  ],
+  "notes": "repeat",
+  "raw_answer": "解:连接OB,∵PB是⊙O的切线,∴∠PBO=90°,∴PB=√{PO^{2}-0B^{2}}=4,∵PA、PB分别与⊙O相切,∴PA=PB=4,∵CD分别交PA、PB于点C,D,并切⊙O于点E,∴DE=DB,CE=CA,∴△PCD的周长=PC+CD+PD=PC+CA+DB+PD=PA+PB=8,故选:C．"
+}

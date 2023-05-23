@@ -1,0 +1,40 @@
+{
+  "problem_id": 6948,
+  "annotation": "YiwenHuang_2023-05-21",
+  "source": "GeoQA-3970",
+  "problem_level": 1,
+  "problem_text_cn": "如图,半径为4的⊙O与含有30°角的真角三角板ABC的边AC切于点A,将直角三角板沿CA边所在的直线向左平移,当平移到AB与⊙O相切时,该直角三角板平移的距离为()",
+  "problem_text_en": "As shown in the figure, the ⊙O with a radius of N_0 is tangent to the edge AC of the equilateral triangle ABC with N_1 angles at the point A, and the right triangle is translated to the left along the line where the CA side is located. When the translation is tangent to AB and ⊙O, The translation distance of the right triangle plate is ()",
+  "problem_img": "6948.png",
+  "construction_cdl": [
+    "Shape(AD,OED,EA)",
+    "Shape(OED,DO,OE)",
+    "Shape(OD,ODC,CO)",
+    "Shape(DB,BC,ODC)",
+    "Collinear(AEOC)",
+    "Collinear(ADB)",
+    "Cocircular(O,EDC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(EC,O)",
+    "IsTangentOfCircle(AD,O)",
+    "IsTangentOfCircle(BD,O)",
+    "IsTangentOfCircle(BC,O)",
+    "Equal(LengthOfLine(DO),4)",
+    "Equal(LengthOfLine(OC),4)",
+    "Equal(MeasureOfAngle(OAD),30)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(BC))",
+  "problem_answer": "4*√3",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular(AD,O,O)",
+    "tangent_of_circle_property_perpendicular(BC,O,O)",
+    "triangle_property_angle_sum(ABC)",
+    "line_addition(AO,OC)",
+    "sine_theorem(OAD)",
+    "sine_theorem(CAB)"
+  ],
+  "raw_answer": "解:根据题意画出平移后的图形,如图所示:设平移后的△A′B′C′与圆O相切于点D,连接OD,OA,AD,过O作OE⊥AD,可得E为AD的中点,∵平移前圆O与AC相切于A点,∴OA⊥A′C,即∠OAA′=90°,∵平移前圆O与AC相切于A点,平移后圆O与A′B′相切于D点,即A′D与A′A为圆O的两条切线,∴A′D=A′A,又∠B′A′C′=60°,∴△A′AD为等边三角形,∴∠DAA′=60°,AD=AA′=A′D,∴∠OAE=∠OAA′-∠DAA′=30°,在Rt△AOE中,∠OAE=30°,AO=4,∴AE=AO•cos30°=2√{3},∴AD=2AE=4√{3},∴AA′=4√{3},则该直角三角板平移的距离为4√{3}．故选:D．"
+}

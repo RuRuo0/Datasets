@@ -1,0 +1,29 @@
+{
+  "problem_id": 6854,
+  "annotation": "QikeHuang_2023-05-14",
+  "source": "GeoQA-3783",
+  "problem_level": 1,
+  "problem_text_cn": "如图,点O是△ABC的外心,∠A=50°,则∠BOC的度数是()",
+  "problem_text_en": "As shown in the figure, point O is the circumcenter of △ABC, ∠A = N_0, then the degree of ∠BOC is ()",
+  "problem_img": "6854.png",
+  "construction_cdl": [
+    "Shape(AB,BO,OC,CA)",
+    "Shape(OB,BC,CO)",
+    "Shape(OAB,BA)",
+    "Shape(OBC,CB)",
+    "Shape(AC,OCA)",
+    "Cocircular(O,ABC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(CAB),50)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(COB))",
+  "problem_answer": "100",
+  "theorem_seqs": [
+    "arc_property_center_angle(OBC,O)",
+    "arc_property_circumference_angle_external(OBC,A)"
+  ],
+  "raw_answer": "解:由于点O是△ABC的外心,所以在△ABC的外接圆⊙O中,∠BAC、∠BOC同对着弧BC；由圆周角定理得:∠BOC=2∠BAC=100°,故选:C．"
+}

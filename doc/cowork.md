@@ -160,7 +160,7 @@ Git是一种分布式版本控制系统，用于多人协作项目开发时的�
 	$ git init
 
 	# 添加远程协作仓库
-	$ git remote add origin https://github.com/BitSecret/FormalGeo-SAT.git
+	$ git remote add origin https://github.com/BitSecret/FormalGeo.git
 
 	# 拉取远程主分支到本地新分支，<your_name>换成你自己的名字，如 xiaokaizhang
 	$ git fetch origin main:<your_name>

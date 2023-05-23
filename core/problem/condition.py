@@ -1,107 +1,165 @@
+import copy
+from core.aux_tools.parser import EquationParser as EqParser
+
+
 class Condition:
-    id = 0
-    step = 0
+    def __init__(self):
+        """All conditions of one problem."""
+        self.id_count = 0  # <int>
+        self.step_count = 0  # <int>
+        self.fix_length_predicates = None  # <list> of <str>
+        self.variable_length_predicates = None  # <list> of <str>
 
-    def __init__(self, name):
-        """A set of conditions."""
-        self.name = name  # <str>, one-to-one correspondence with predicate.
-        self.get_item_by_id = {}  # <dict>, key:id, value:item
-        self.get_id_by_item = {}  # <dict>, key:item, value: id
-        self.premises = {}  # <dict>, key:item or id, value: premise
-        self.theorems = {}  # <dict>, key:item or id, value: theorem
-        self.step_msg = {}  # {0:[1, 2], 1:[3, 4]}
+        self.items = []  # <list> of <tuple>, [(predicate, item, premise, theorem, step)]
+        self.items_group = {}  # <dict>, [predicate: [item]], such as {'Angle':[('A', 'B', 'C')]}
 
-    def add(self, item, premise, theorem):
+        self.id_of_item = {}  # <dict>, {(predicate, item): id}, such as {('Angle', ('A', 'B', 'C')): 0}
+        self.ids_of_predicate = {}  # <dict>, {predicate: [id]}, such as {'Angle': [0, 1, 2]}
+        self.ids_of_step = {}  # <dict>, {step: [id]}, such as {0: [0, 1, 2]}
+
+        self.sym_of_attr = {}  # <dict>, {(predicate, item): sym}, such as {('LengthOfLine', ('A', 'B')): l_ab}
+        self.attr_of_sym = {}  # <dict>, {sym: (predicate, item)}, such as {l_ab: ['LengthOfLine', ('A', 'B')]}
+        self.value_of_sym = {}  # <dict>, {sym: value}, such as {l_ab: 3}
+        self.simplified_equation = {}  # <dict>, {simplified_equation: premises}, such as {a + b - 2: [1, 2, 3]}
+        self.eq_solved = True  # <bool>, record whether the equation is solved
+
+    def init_by_fl(self, fix_length_predicates, variable_length_predicates):
         """
-        Add item and guarantee no redundancy.
-        :param item: relation (tuple of points) or equation (symbols)
-        :param premise: tuple of <int>
-        :param theorem: <str>
-        :return: tuple(<bool>, <int>). ddd successfully or not, item id
+        Initial condition by formal language.
+        :param fix_length_predicates: List of predicates that has fix parameter length.
+        :param variable_length_predicates: List of predicates that has variable parameter length.
         """
-        if not self.has(item):
-            _id = Condition.id
-            self.get_item_by_id[_id] = item  # item
-            Condition.id += 1
-            self.get_id_by_item[item] = _id  # id
-            self.premises[item] = premise  # premise
-            self.premises[_id] = premise
-            self.theorems[item] = theorem  # theorem
-            self.theorems[_id] = theorem  # theorem
-            if Condition.step not in self.step_msg:  # step_msg
-                self.step_msg[Condition.step] = [_id]
-            else:
-                self.step_msg[Condition.step].append(_id)
-            return True, _id
+        self.fix_length_predicates = fix_length_predicates
+        self.variable_length_predicates = variable_length_predicates
+        self.ids_of_step[self.step_count] = []
+        for predicate in self.fix_length_predicates + self.variable_length_predicates:
+            self.items_group[predicate] = []
+            self.ids_of_predicate[predicate] = []
+
+    def init_by_copy(self, condition):
+        """
+        Initial condition by copy other condition.
+        :param condition: <Condition>.
+        """
+        self.id_count = condition.id_count
+        self.step_count = condition.step_count
+        self.fix_length_predicates = copy.deepcopy(condition.fix_length_predicates)
+        self.variable_length_predicates = copy.deepcopy(condition.variable_length_predicates)
+        self.items = copy.deepcopy(condition.items)
+        self.items_group = copy.deepcopy(condition.items_group)
+        self.id_of_item = copy.deepcopy(condition.id_of_item)
+        self.ids_of_predicate = copy.deepcopy(condition.ids_of_predicate)
+        self.ids_of_step = copy.deepcopy(condition.ids_of_step)
+        self.sym_of_attr = copy.deepcopy(condition.sym_of_attr)
+        self.attr_of_sym = copy.deepcopy(condition.attr_of_sym)
+        self.value_of_sym = copy.deepcopy(condition.value_of_sym)
+        self.simplified_equation = copy.deepcopy(condition.simplified_equation)
+        self.eq_solved = condition.eq_solved
+
+    def add(self, predicate, item, premise, theorem):
+        """
+        Add one condition and guarantee no redundancy.
+        :param predicate: <str>, predicate of condition.
+        :param item: <tuple> of <str> or <equation>, body of condition, logic relation or equation.
+        :param premise: <tuple> of <int>, premise of condition, no redundancy.
+        :param theorem: <str>, theorem of condition.
+        :return added: <bool>, indicate whether the addition was successful.
+        :return _id: <int>, id of condition, if not added, return None.
+        """
+        if not self.has(predicate, item):
+            self.items.append((predicate, item, tuple(set(premise)), theorem, self.step_count))
+            self.items_group[predicate].append(item)
+
+            self.id_of_item[(predicate, item)] = self.id_count
+            self.ids_of_predicate[predicate].append(self.id_count)
+            self.ids_of_step[self.step_count].append(self.id_count)
+
+            if predicate == "Equation" and theorem != "solve_eq":
+                self.simplified_equation[item] = [self.id_count]
+                self.eq_solved = False
+
+            self.id_count += 1
+            return True, self.id_count - 1
+
         return False, None
 
-    def has(self, item):
-        """Determine whether there are item."""
-        return item in self.get_id_by_item
+    def has(self, predicate, item):
+        """
+        Check if this condition exists.
+        :param predicate: <str>, predicate of condition.
+        :param item: <tuple> of <str> or symbols, body of condition, logic relation or equation.
+        :return exist: <bool>, indicate whether the addition was successful.
+        """
+        if predicate == "Equation":
+            return item in self.items_group[predicate] or -item in self.items_group[predicate]
+        else:
+            return item in self.items_group[predicate]
 
-    def __str__(self):
-        msg = "Condition <{}> with {} items:\n{}".format(self.name, len(self.get_item_by_id), str(self.get_item_by_id))
-        return msg
+    def step(self):
+        self.step_count += 1
+        self.ids_of_step[self.step_count] = []
 
+    def get_id_by_predicate_and_item(self, predicate, item):
+        return self.id_of_item[(predicate, item)]
 
-class VariableLengthCondition(Condition):
-    def __init__(self, name):
-        super().__init__(name)
+    def get_items_by_predicate(self, predicate):
+        return copy.copy(self.items_group[predicate])
 
-    def get_items(self, variables):
-        """Return items, premise and variables of specific length."""
+    def get_ids_and_items_by_predicate_and_variable(self, predicate, variable=None):
+        ids = []
         items = []
-        ids = []
-        expected_len = len(variables)
-        for item in self.get_item_by_id.values():
-            if len(item) == expected_len:
+        if variable is not None and predicate in self.variable_length_predicates:
+            l = len(variable)
+            for item in self.items_group[predicate]:
+                if len(item) != l:
+                    continue
                 items.append(item)
-                ids.append((self.get_id_by_item[item],))
-        return ids, items, variables
+                ids.append([self.id_of_item[(predicate, item)]])
+        else:
+            for item in self.items_group[predicate]:
+                items.append(item)
+                ids.append([self.id_of_item[(predicate, item)]])
+        return ids, items
 
-    def can_add(self, item):
-        """Return to whether item can be added."""
-        return not self.has(item)
+    def get_premise_by_predicate_and_item(self, predicate, item):
+        return self.items[self.id_of_item[(predicate, item)]][2]
 
-
-class FixedLengthCondition(Condition):
-    def __init__(self, name):
-        super().__init__(name)
-
-    def get_items(self, variables):
-        """Return items, premise and variables."""
-        ids = []
-        for item in self.get_item_by_id.values():
-            ids.append((self.get_id_by_item[item],))
-        return ids, list(self.get_item_by_id.values()), variables
-
-    def can_add(self, item):
-        """Return to whether item can be added."""
-        return not self.has(item)
+    def get_theorem_by_predicate_and_item(self, predicate, item):
+        return self.items[self.id_of_item[(predicate, item)]][3]
 
 
-class Equation(Condition):
+class Goal:
+    def __init__(self):
+        """Goal of one problem."""
+        self.type = None  # <str>, such as: 'algebra', 'logic'.
+        self.item = None  # <equation> or predicate, such as: a - b, 'ParallelBetweenLine'
+        self.answer = None  # <number> or <tuple> of <str>, such as: 0, ('A', 'B', 'C', 'D')
+        self.solved = False  # <bool>
+        self.solved_answer = None  # <number>, only used in 'algebra' and 'equal'
+        self.premise = None  # <tuple> of <int>
+        self.theorem = None  # <str>
 
-    def __init__(self, name):
-        super().__init__(name)
-        self.sym_of_attr = {}  # Sym of attribute values. Example: {('LengthOfLine', ('A', 'B')): l_ab}
-        self.attr_of_sym = {}  # Attr of symbol. Example: {l_ab: ['LengthOfLine', (('A', 'B'))]}
-        self.value_of_sym = {}  # Value of symbol. Example: {l_ab: 3.0}
-        self.equations = {}  # Simplified equations. Example: {a + b - c: a -5}
-        self.solved = True  # Whether the equation been solved. If not solved, then solve.
+    def init_by_fl(self, problem, goal_CDL):
+        """Initial goal by formal language."""
+        if goal_CDL["type"] == "value":
+            self.type = "algebra"
+            self.item = EqParser.get_expr_from_tree(problem, goal_CDL["item"][1][0])
+            self.answer = EqParser.get_expr_from_tree(problem, goal_CDL["answer"])
+        elif goal_CDL["type"] == "equal":
+            self.type = "algebra"
+            self.item = EqParser.get_equation_from_tree(problem, goal_CDL["item"][1])
+            self.answer = 0
+        elif goal_CDL["type"] == "logic":
+            self.type = "logic"
+            self.item = goal_CDL["item"]
+            self.answer = tuple(goal_CDL["answer"])
 
-    def add(self, item, premise, theorem):
-        """Reload super().add() to adapt equation's operation."""
-
-        if self.can_add(item):
-            added, _id = super().add(item, premise, theorem)
-            if theorem != "solve_eq":
-                self.equations[item] = item
-                self.solved = False
-
-            return added, _id
-        return False, None
-
-    def can_add(self, item):
-        """Return to whether item can be added."""
-        return not self.has(item) and not self.has(-item)
+    def init_by_copy(self, goal):
+        """Initial goal by copy."""
+        self.type = goal.type
+        self.item = goal.item
+        self.answer = goal.answer
+        self.solved = goal.solved
+        self.solved_answer = goal.solved_answer
+        self.premise = copy.copy(goal.premise)
+        self.theorem = goal.theorem

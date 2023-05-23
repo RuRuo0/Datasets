@@ -1,0 +1,40 @@
+{
+  "problem_id": 7860,
+  "annotation": "XiaoxiaoJin_2023-05-21",
+  "source": "GeoQA-5683",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB=AC,AF∥BC,∠FAC=75°,E为BC延长线上一点,∠ABC与∠ACE的平分线相交于点D,则∠D的度数为()",
+  "problem_text_en": "As shown in the figure, AB = AC, AF ∥ BC, ∠FAC = N_0, E is a point on the BC extended line, and the bisector of ∠ABC and ∠ACE intersects at point D, then the degree of ∠D is ()",
+  "problem_img": "7860.png",
+  "construction_cdl": [
+    "Shape(FA,AG)",
+    "Shape(AB,BG,GA)",
+    "Shape(GB,BC,CG)",
+    "Shape(DG,GC,CD)",
+    "Shape(DC,CE)",
+    "Shape(AG,GD)",
+    "Collinear(BCE)",
+    "Collinear(AGC)",
+    "Collinear(BGD)"
+  ],
+  "text_cdl": [
+    "IsBisectorOfAngle(BD,ABC)",
+    "IsBisectorOfAngle(CD,GCE)",
+    "Equal(MeasureOfAngle(FAC),75)",
+    "ParallelBetweenLine(AF,BC)",
+    "Equal(LengthOfLine(AB),LengthOfLine(AC))"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(CDB))",
+  "problem_answer": "15",
+  "theorem_seqs": [
+    "angle_addition",
+    "parallel_property_alternate_interior_angle",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "adjacent_complementary_angle",
+    "triangle_property_angle_sum"
+  ],
+  "notes": "角平分线相关绝对有问题，都扩展出两个角相等，一组角可以算出值，另一组算不出",
+  "raw_answer": "解:∵AF∥BC,∠FAC=75°,∴∠ACE=105°,∵AB=AC,∴∠ACB=∠ABC=75°,∴∠A=30°,∴∠D=\\frac{1}{2}∠A=15°,故选:A．"
+}

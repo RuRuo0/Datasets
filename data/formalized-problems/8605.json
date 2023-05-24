@@ -1,0 +1,45 @@
+{
+  "problem_id": 8605,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-8376",
+  "problem_level": 1,
+  "problem_text_cn": "如图是一张简易活动餐桌,现测得OA=OB=40cm,OC=OD=60cm,现要求桌面离地面的高度为50cm,那么两条桌腿的张角∠COD的大小应为()",
+  "problem_text_en": "The picture shows a simple movable dining table. It is measured that OA = OB = N_0, OC = OD = N_1, and it is required that the height of the table top from the ground is N_2, then the opening angle of the two table legs ∠COD should be ()",
+  "problem_img": "8605.png",
+  "construction_cdl": [
+    "Shape(AO,OE,EA)",
+    "Shape(OB,BE,EO)",
+    "Shape(OC,CF,FO)",
+    "Shape(OF,FD,DO)",
+    "Shape(CO,OA)",
+    "Shape(BO,OD)",
+    "Collinear(AEB)",
+    "Collinear(CFD)",
+    "Collinear(AOD)",
+    "Collinear(COB)",
+    "Collinear(EOF)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(OA),40)",
+    "Equal(LengthOfLine(OB),40)",
+    "Equal(LengthOfLine(OC),60)",
+    "Equal(LengthOfLine(OD),60)",
+    "Equal(LengthOfLine(EF),50)",
+    "Equal(MeasureOfAngle(OEA),90)",
+    "Equal(MeasureOfAngle(CFO),90)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(DOC))",
+  "problem_answer": "120",
+  "theorem_seqs": [
+    "line_addition",
+    "angle_addition(DOF,FOC)",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum",
+    "sine_theorem",
+    "cosine_theorem"
+  ],
+  "notes": "没解出来",
+  "raw_answer": "解:如图,过O点作AB、CD的垂线EF,交AB于E,交CD于F．因为OA=OB,OC=OD,∠AOB=∠COD,所以可设∠AOE=∠BOE=∠COF=∠DOF=α．在△AOE中cosα$=\\frac{EO}{AO}=\\frac{OE}{40}$,∴OE=40cosα,同理OF=60cosα,∴EF=OE+OF=100cosα=50,∴cosα$=\\frac{1}{2}$,∴∠AOE=60°,∠COD=120°．故选:C．"
+}

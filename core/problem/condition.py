@@ -17,8 +17,8 @@ class Condition:
         self.ids_of_predicate = {}  # <dict>, {predicate: [id]}, such as {'Angle': [0, 1, 2]}
         self.ids_of_step = {}  # <dict>, {step: [id]}, such as {0: [0, 1, 2]}
 
-        self.sym_of_attr = {}  # <dict>, {(predicate, item): sym}, such as {('LengthOfLine', ('A', 'B')): l_ab}
-        self.attr_of_sym = {}  # <dict>, {sym: (predicate, item)}, such as {l_ab: ['LengthOfLine', ('A', 'B')]}
+        self.sym_of_attr = {}  # <dict>, {(attr, paras): sym}, such as {('LengthOfLine', ('A', 'B')): l_ab}
+        self.attr_of_sym = {}  # <dict>, {sym: (attr, (paras))}, such as {l_ab: ('LengthOfLine', (('A', 'B'),))}
         self.value_of_sym = {}  # <dict>, {sym: value}, such as {l_ab: 3}
         self.simplified_equation = {}  # <dict>, {simplified_equation: premises}, such as {a + b - 2: [1, 2, 3]}
         self.eq_solved = True  # <bool>, record whether the equation is solved

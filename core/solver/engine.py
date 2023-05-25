@@ -163,28 +163,28 @@ class EquationKiller:
         :return syms: <set>, set of minimum equation's syms.
         """
         sym_to_eqs = {}  # dict, sym: [equation]
-        for eq in eqs:
+        for eq in target_eqs + eqs:
             for sym in eq.free_symbols:
                 if sym in sym_to_eqs:
                     sym_to_eqs[sym].append(eq)
                 else:
                     sym_to_eqs[sym] = [eq]
 
-        mini_eqs = set()
+        mini_eqs = set(target_eqs)
         mini_syms = set()
-
-        for eq in target_eqs:
-            mini_eqs.add(eq)
+        for eq in mini_eqs:
             mini_syms |= eq.free_symbols
 
         while True:
-            eq_count = len(mini_eqs)
+            new_sym = set()
             for sym in mini_syms:
                 for eq in sym_to_eqs[sym]:
                     mini_eqs.add(eq)
-                    mini_syms |= eq.free_symbols
-            if eq_count == len(mini_eqs):
+                    new_sym |= eq.free_symbols
+            new_sym = new_sym - mini_syms
+            if len(new_sym) == 0:
                 break
+            mini_syms |= new_sym
 
         return mini_syms
 
@@ -289,7 +289,7 @@ class EquationKiller:
                 equations.pop(i)
 
     @staticmethod
-    @func_set_timeout(5)
+    @func_set_timeout(2)
     def solve(equations, target_sym=None, keep_sym=False):
         try:
             if target_sym is not None:
@@ -335,6 +335,7 @@ class EquationKiller:
             return real_results
 
     @staticmethod
+    @func_set_timeout(6)
     def solve_equations(problem):
         """
         Solve equations in problem.condition.equations.
@@ -408,6 +409,7 @@ class EquationKiller:
                     problem.set_value_of_sym(sym, solved_results[sym], premise, "solve_eq")
 
     @staticmethod
+    @func_set_timeout(4)
     def solve_target(target_expr, problem):
         """
         Solve target_expr in the constraint of problem's equation.
@@ -754,22 +756,33 @@ class GeometryPredicateLogic:
                 for j in range(len(r1_vars)):
                     letters[r1_vars[j]] = r1_items[i][j]
                 eq = EqParser.get_equation_from_tree(problem, r2_algebra[1], True, letters)
-                result, premise = EquationKiller.solve_target(eq, problem)
-                if result is not None and rough_equal(result, 0):  # meet constraints
-                    r_id = tuple(set(premise + list(r1_ids[i])))
-                    r_ids.append(r_id)
-                    r_items.append(r1_items[i])
+                try:
+                    result, premise = EquationKiller.solve_target(eq, problem)
+                except FunctionTimedOut:
+                    msg = "Timeout when solve target: {}".format(str(eq))
+                    warnings.warn(msg)
+                else:
+                    if result is not None and rough_equal(result, 0):  # meet constraints
+                        r_id = tuple(set(premise + list(r1_ids[i])))
+                        r_ids.append(r_id)
+                        r_items.append(r1_items[i])
+
         else:  # &~
             for i in range(len(r1_items)):
                 letters = {}
                 for j in range(len(r1_vars)):
                     letters[r1_vars[j]] = r1_items[i][j]
                 eq = EqParser.get_equation_from_tree(problem, r2_algebra[1], True, letters)
-                result, premise = EquationKiller.solve_target(eq, problem)
-                if result is None or not rough_equal(result, 0):  # meet constraints
-                    r_id = tuple(set(premise + list(r1_ids[i])))
-                    r_ids.append(r_id)
-                    r_items.append(r1_items[i])
+                try:
+                    result, premise = EquationKiller.solve_target(eq, problem)
+                except FunctionTimedOut:
+                    msg = "Timeout when solve target: {}".format(str(eq))
+                    warnings.warn(msg)
+                else:
+                    if result is None or not rough_equal(result, 0):  # meet constraints
+                        r_id = tuple(set(premise + list(r1_ids[i])))
+                        r_ids.append(r_id)
+                        r_items.append(r1_items[i])
 
         return r_ids, r_items, r1_vars
 

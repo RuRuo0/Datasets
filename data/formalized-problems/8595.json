@@ -1,0 +1,34 @@
+{
+  "problem_id": 8595,
+  "annotation": "XiaoxiaoJin_2023-05-28",
+  "source": "GeoQA-8339",
+  "problem_level": 1,
+  "problem_text_cn": "如图,利用标杆BC测量旗杆EF的高度,标杆BC长为1.2米,tanA=\\frac{3}{4},BF=8.4米,则楼高EF是()米．",
+  "problem_text_en": "As shown in the figure, use the benchmark BC to measure the height of the flagpole EF, the length of the benchmark BC is N_0, tanA=\\frac{N_1}{N_2}, BF = N_3, then the height of building EF is ().",
+  "problem_img": "8595.png",
+  "construction_cdl": [
+    "Shape(AB,BC,CA)",
+    "Shape(CB,BF,FE,EC)",
+    "Collinear(ACE)",
+    "Collinear(ABF)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(BC),1.2)",
+    "Equal(LengthOfLine(BF),8.4)",
+    "Equal(Tan(a),3/4)",
+    "Equal(MeasureOfAngle(ABC),90)",
+    "Equal(MeasureOfAngle(CAB),a)",
+    "Equal(MeasureOfAngle(AFE),90)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(EF))",
+  "problem_answer": "7.5",
+  "theorem_seqs": [
+    "line_addition(AB,BF)",
+    "triangle_property_angle_sum(ABC)",
+    "triangle_property_angle_sum(AFE)",
+    "sine_theorem(BCA)",
+    "sine_theorem(FEA)"
+  ],
+  "raw_answer": "解:如图,∵在△ACB中,∠ABC=90°,BC=1.2米,tanA$=\\frac{3}{4}$,∴AB$=\\frac{CB}{tanA}=\\frac{\\frac{1.2}{3}}{4}=$1.6(米)．又∵BF=8.4米,∴AF=AB+BF=10米．又∵在直角△AFE中,∠F=90°,tanA$=\\frac{3}{4}$,∴EF=AF•tanA=10$×\\frac{3}{4}=$7.5(米)故选:B．"
+}

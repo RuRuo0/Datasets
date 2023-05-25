@@ -1,0 +1,37 @@
+{
+  "problem_id": 9503,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-9774",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB是⊙O的直径,点D,C在⊙O上,AD∥OC,∠DAB=60°,连接AC,则∠DAC等于()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, points D and C are on ⊙O, AD ∥ OC, ∠DAB = N_0, connect AC, then ∠DAC is equal to ()",
+  "problem_img": "9503.png",
+  "construction_cdl": [
+    "Shape(AD,ODA)",
+    "Shape(DA,AC,OCD)",
+    "Shape(CO,OB,OBC)",
+    "Shape(AO,OC,CA)",
+    "Shape(BO,OA,OAB)",
+    "Collinear(AOB)",
+    "Cocircular(O,ABCD)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(DAB),60)",
+    "IsDiameterOfCircle(AB,O)",
+    "ParallelBetweenLine(AD,OC)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(DAC))",
+  "problem_answer": "30",
+  "theorem_seqs": [
+    "parallel_property_corresponding_angle",
+    "radius_of_circle_property_length_equal",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "parallel_property_alternate_interior_angle"
+  ],
+  "raw_answer": "解:∵OA=OC,∴∠CAO=∠ACO,∵AD∥OC,∴∠DAC=∠ACO,∴∠DAC=∠CAB,∵∠DAB=60°,∴∠DAC=\\frac{1}{2}∠DAB=30°．故选:B．"
+}

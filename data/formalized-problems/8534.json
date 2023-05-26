@@ -1,0 +1,35 @@
+{
+  "problem_id": 8534,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-8013",
+  "problem_level": 1,
+  "problem_text_cn": "如图所示,△ABC中,∠BAC=90°,AD⊥BC于D,若AB=3,BC=5,则DC的长度是()",
+  "problem_text_en": "As shown in the figure, in △ABC, ∠BAC = N_0, AD ⊥ BC at D, if AB = N_1, BC = N_2, then the length of DC is ()",
+  "problem_img": "8534.png",
+  "construction_cdl": [
+    "Shape(AC,CD,DA)",
+    "Shape(AD,DB,BA)",
+    "Collinear(CDB)"
+  ],
+  "text_cdl": [
+
+    "Equal(LengthOfLine(AB),3)",
+    "Equal(LengthOfLine(BC),5)",
+    "Equal(MeasureOfAngle(BAC),90)",
+    "Equal(MeasureOfAngle(ADB),90)",
+    "Equal(MeasureOfAngle(CDA),90)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(CD))",
+  "problem_answer": "16/5",
+  "theorem_seqs": [
+
+    "line_addition",
+    "isosceles_triangle_judgment_angle_equal",
+        "similar_triangle_judgment_aa",
+    "similar_triangle_property_line_ratio",
+    "right_triangle_judgment_angle",
+    "right_triangle_property_pythagorean"
+  ],
+  "raw_answer": "解:∵△ABC中,∠BAC=90°,AB=3,BC=5,∴AC=√{BC²-AB²}=√{5²-3²}=4,∵AD⊥BC,∴∠ADC=90°,而∠C公共,∴Rt△CAD∽Rt△CBA,∴CD:AC=AC:BC,即CD:4=4:5,∴CD=\\frac{16}{5}．故选:C．"
+}

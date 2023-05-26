@@ -1,0 +1,42 @@
+{
+  "problem_id": 8530,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-8005",
+  "problem_level": 1,
+  "problem_text_cn": "如图,△ABC中,AB=AC,AB、AC中点D、E,点G、F在BC上,DEFG为正方形,DE=2cm,则AC的长为()",
+  "problem_text_en": "As shown in the figure, in △ABC, AB = AC, AB, AC midpoint D, E, point G, F on BC, DEFG is a square, DE = N_0, then the length of AC is ()",
+  "problem_img": "8530.png",
+  "construction_cdl": [
+    "Shape(AD,DE,EA)",
+    "Shape(DB,BG,GD)",
+    "Shape(ED,DG,GF,FE)",
+    "Shape(EF,FC,CE)",
+    "Collinear(ADB)",
+    "Collinear(AEC)",
+    "Collinear(BGFC)"
+  ],
+  "text_cdl": [
+    "Square(DGFE)",
+    "Equal(LengthOfLine(AB),LengthOfLine(AC))",
+    "Equal(LengthOfLine(AD),LengthOfLine(DB))",
+    "Equal(LengthOfLine(DE),2)",
+    "Equal(Tan(BCA),2)",
+    "Equal(LengthOfLine(AE),LengthOfLine(EC))"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AC))",
+  "problem_answer": "2*√5",
+  "theorem_seqs": [
+    "midsegment_of_triangle_judgment_midpoint",
+    "midsegment_of_triangle_property_parallel",
+    "midsegment_of_triangle_property_length",
+    "line_addition",
+    "parallel_property_corresponding_angle",
+    "similar_triangle_judgment_aa",
+    "similar_triangle_property_ratio",
+    "similar_triangle_property_line_ratio",
+    "cosine_theorem",
+    "sine_theorem"
+  ],
+  "raw_answer": "解:过点A作AH⊥BC于点H,∵AB、AC中点D、E,∴BC=2DE=2×2=4(cm),∵AB=AC,∴CH=\\frac{1}{2}BC=2cm,∵四边形DEFG为正方形,∴DE∥BC,EF=DE=2cm,∴AK⊥DE,△ADE∽△ABC,∴\\frac{AK}{AH}=\\frac{DE}{BC}=\\frac{1}{2},∴AK=KH=2cm,∴AH=4cm,在Rt△ACH中,AC=√{AH²+CH²}=2√{5}(cm)．故选:D．"
+}

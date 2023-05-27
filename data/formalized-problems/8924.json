@@ -1,0 +1,38 @@
+{
+  "problem_id": 8924,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-8801",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB是半⊙O的直径,C是⊙O上一点,OD⊥BC于D,若AC:BC=4:3,AB=10cm,则OD的长为()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of half ⊙O, C is a point on ⊙O, OD ⊥ BC is in D, if AC:BC = N_0:N_1, AB = N_2, then the length of OD is ()",
+  "problem_img": "8924.png",
+  "construction_cdl": [
+    "Shape(AC,OCA)",
+    "Shape(CA,AO,OD,DC)",
+    "Shape(DO,OB,BD)",
+    "Shape(CB,OBC)",
+    "Collinear(CDB)",
+    "Collinear(AOB)",
+    "Cocircular(O,ABC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)",
+    "Equal(LengthOfLine(AB),10)",
+    "Equal(Div(LengthOfLine(AC),LengthOfLine(BC)),4/3)",
+    "PerpendicularBetweenLine(BD,OD)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(OD))",
+  "problem_answer": "4",
+  "theorem_seqs": [
+    "diameter_of_circle_property_right_angle",
+    "right_triangle_judgment_angle",
+    "right_triangle_property_pythagorean",
+    "parallel_judgment_corresponding_angle",
+    "circle_property_chord_perpendicular_bisect_chord",
+    "midsegment_of_triangle_judgment_parallel",
+    "midsegment_of_triangle_property_length"
+  ],
+  "raw_answer": "解:∵AB是半⊙O的直径,∴∠C=90°,设AC=4x,则BC=3x,∴AB=√{AC²+BC²}=5x,∴5x=10,∴x=2,∴AC=4x=8,∵OD⊥BC,∴OD∥AC,而O点为AB的中点,∴OD=\\frac{1}{2}AC=4．故选:B．"
+}

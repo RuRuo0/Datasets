@@ -1,0 +1,37 @@
+{
+  "problem_id": 7762,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-5503",
+  "problem_level": 1,
+  "problem_text_cn": "如图,PA,PB分别与⊙O相切于A、B两点．直线EF切⊙O于C点,分别交PA、PB于E、F,且PA=10．则△PEF的周长为()",
+  "problem_text_en": "As shown in the figure, PA and PB are tangent to ⊙O at A and B respectively. The straight line EF is tangent to ⊙O at point C, and intersects PA and PB at E and F respectively, and PA = N_0. Then the perimeter of △PEF is ()",
+  "problem_img": "7762.png",
+  "construction_cdl": [
+    "Shape(EP,PF,FE)",
+    "Shape(AE,EC,OAC)",
+    "Shape(CF,FB,OCB)",
+    "Shape(O)",
+    "Collinear(AEP)",
+    "Collinear(BFP)",
+    "Collinear(ECF)",
+    "Cocircular(O,ACB)"
+  ],
+  "text_cdl": [
+    "IsTangentOfCircle(EA,O)",
+    "IsTangentOfCircle(EC,O)",
+    "IsTangentOfCircle(FC,O)",
+    "IsTangentOfCircle(FB,O)",
+    "IsTangentOfCircle(PA,O)",
+    "IsTangentOfCircle(PB,O)",
+    "Equal(LengthOfLine(PA),10)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(PerimeterOfTriangle(PFE))",
+  "problem_answer": "20",
+  "theorem_seqs": [
+    "tangent_of_circle_property_length_equal",
+    "line_addition",
+    "triangle_perimeter_formula"
+  ],
+  "raw_answer": "解:∵PA、PB分别与⊙O相切于点A、B,⊙O的切线EF分别交PA、PB于点E、F,切点C在弧AB上,∴AE=CE,FB=CF,PA=PB=4,∴△PEF的周长=PE+EF+PF=PA+PB=20．故选:C．"
+}

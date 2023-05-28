@@ -1,0 +1,39 @@
+{
+  "problem_id": 8955,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-8840",
+  "problem_level": 1,
+  "problem_text_cn": "如图,⊙O的半径OA=3,以点A为圆心,OA的长为半径画弧交⊙O于B、C,则BC=()",
+  "problem_text_en": "As shown in the figure, the radius of ⊙O OA = N_0, with point A as the center of the circle, and the length of OA as the radius, draw an arc to intersect ⊙O at B and C, then BC = ()",
+  "problem_img": "8955.png",
+  "construction_cdl": [
+    "Shape(OBA,AD,DB)",
+    "Shape(OAC,CD,DA)",
+    "Shape(ACO,OD,DC)",
+    "Shape(AOB,BD,DO)",
+    "Shape(OCB,AOB,ACO)",
+    "Shape(AD,DO,OB,BA)",
+    "Collinear(ADO)",
+    "Collinear(BDC)",
+    "Cocircular(O,BAC)",
+    "Cocircular(A,COB)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsCentreOfCircle(A,A)",
+    "Equal(LengthOfLine(OA),3)",
+    "Equal(LengthOfLine(BD),LengthOfLine(CD))"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(BC))",
+  "problem_answer": "3*√{3}",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum",
+    "line_addition"
+  ],
+  "raw_answer": "解:如图所示,AB=BO=AO,则△ABO为等边三角形,∴∠OBA=60°,根据相交两圆的连心线垂直平分公共弦,则BP=PC=\\frac{1}{2}BC,∵△ABC为等边三角形,∴BC是∠OBA的平分线,∠OBC=30°．∴AP=\\frac{1}{2}AB=\\frac{1}{2}×3=\\frac{3}{2}；在Rt△ABP中,AB=3,AP=\\frac{3}{2},PB=√{AB²-AP²}=√{3²-(\\frac{3}{2})²}=\\frac{3√{3}}{2},∴BC=2PB=2×\\frac{3√{3}}{2}=3√{3}；故选:B．",
+  "notes": "相交两圆的连心线垂直平分公共弦"
+}

@@ -1,0 +1,42 @@
+{
+  "problem_id": 8981,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-8901",
+  "problem_level": 1,
+  "problem_text_cn": "如图,已知AB为⊙O的直径,且AB=15cm,弦CD⊥AB于M,若OM:OA=3:5,则CD长为()",
+  "problem_text_en": "As shown in the figure, it is known that AB is the diameter of O, and AB = N_0, chord CD ⊥ AB is in M, if OM:OA = N_1:N_2, then CD length is ()",
+  "problem_img": "8981.png",
+  "construction_cdl": [
+    "Shape(OD,DM,MO)",
+    "Shape(OCA,AO,OM,MC)",
+    "Shape(OAD,DO,OA)",
+    "Shape(ODB,BM,MD)",
+    "Shape(OBC,CM,MB)",
+    "Collinear(AOMB)",
+    "Collinear(CMD)",
+    "Cocircular(O,ADBC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(LengthOfLine(AB),15)",
+    "Equal(Div(LengthOfLine(OM),LengthOfLine(OA)),3/5)",
+    "PerpendicularBetweenLine(DM,OM)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(CD))",
+  "problem_answer": "12",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal(OA,O)",
+    "radius_of_circle_property_length_equal(OD,O)",
+    "radius_of_circle_property_length_equal(OB,O)",
+    "line_addition(AO,OM)",
+    "line_addition(AO,OB)",
+    "line_addition(AM,MB)",
+    "line_addition(OM,MB)",
+    "line_addition(CM,MD)",
+    "circle_property_chord_perpendicular_bisect_chord(O,OM,DC)",
+    "right_triangle_judgment_angle(DMO)",
+    "right_triangle_property_pythagorean(DMO)"
+  ],
+  "raw_answer": "解:连接OC,∵AB⊥CD,AB过O,∴CD=2CM,∵AB=15cm,∴OA=OB=OC=7.5cm,∵OM:OA=3:5,∴OM=4.5cm,在Rt△COM中,由勾股定理得:CM=√{OC²-OM²}=6cm,∴CD=2CM=12cm,故选:C．"
+}

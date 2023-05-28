@@ -1,0 +1,53 @@
+{
+  "problem_id": 8940,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-8822",
+  "problem_level": 1,
+  "problem_text_cn": "如图,顺次连接圆内接矩形各边的中点,得到菱形ABCD,若BD=4,DF=3,则菱形ABCD的边长为()",
+  "problem_text_en": "As shown in the figure, the midvertices of the edges of the rectangle inscribed in the circle are connected in sequence, and the diamond ABCD is obtained. If BD = N_0 and DF = N_1, the edge length of the diamond ABCD is ()",
+  "problem_img": "8940.png",
+  "construction_cdl": [
+    "Shape(GB,BA,AG)",
+    "Shape(ID,DC,CI)",
+    "Shape(HC,CB,BH)",
+    "Shape(JA,AD,DJ)",
+    "Shape(AB,BO,OA)",
+    "Shape(AO,OD,DA)",
+    "Shape(BC,CO,OB)",
+    "Shape(DO,OC,CD)",
+    "Shape(OGE,EB,BG)",
+    "Shape(OEH,HB,BE)",
+    "Shape(OIF,FD,DI)",
+    "Shape(OFJ,JD,DF)",
+    "Shape(OHI,IC,CH)",
+    "Shape(OJG,GA,AJ)",
+    "Shape(OG,GB,BO)",
+    "Collinear(EBODF)",
+    "Collinear(AOC)",
+    "Collinear(GBH)",
+    "Collinear(HCI)",
+    "Collinear(IDJ)",
+    "Collinear(JAG)",
+    "Cocircular(O,GEHIFJ)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(BD),4)",
+    "Equal(LengthOfLine(DF),3)",
+    "Rhombus(ABCD)",
+    "Rectangle(GHIJ)",
+    "IsMidpointOfLine(A,GJ)",
+    "IsMidpointOfLine(B,GH)",
+    "IsMidpointOfLine(C,HI)",
+    "IsMidpointOfLine(D,IJ)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AB))",
+  "problem_answer": "5",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "line_addition",
+    "right_triangle_property_pythagorean"
+  ],
+  "raw_answer": "解:连接OG,∵BD=4,DF=3,∴OD=2,OF=OG=3+2=5,由勾股定理得:OA=GD=√{OG²-OD²}=√{5²-2²}=√{21},∵菱形ABCD,∴AC⊥BD,由勾股定理得:AD=√{OA²{+OD²}=√{(√{21})²+2²}=5；∴菱形ABCD的边长为5；故选:C．",
+  "notes": "过于复杂，不明确题解中的G点是哪个点"
+}

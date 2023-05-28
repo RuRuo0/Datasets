@@ -1,0 +1,37 @@
+{
+  "problem_id": 9528,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-9809",
+  "problem_level": 1,
+  "problem_text_cn": "如图,点P在线段AB上,PA=PB=PC=PD,当∠BPC=60°时,∠BDC=()",
+  "problem_text_en": "As shown in the figure, point P is on line AB, PA = PB = PC = PD, when ∠BPC = N_0, ∠BDC = ()",
+  "problem_img": "9528.png",
+  "construction_cdl": [
+    "Shape(DB,BE,ED)",
+    "Shape(DE,EP,PD)",
+    "Shape(DP,PA,AD)",
+    "Shape(AP,PC,CA)",
+    "Shape(PE,EC,CP)",
+    "Shape(CE,EB,BC)",
+    "Shape(BD,PDB)",
+    "Shape(CB,PBC)",
+    "Shape(AC,PCA)",
+    "Shape(DA,PAD)",
+    "Collinear(BEPA)",
+    "Collinear(DEC)",
+    "Cocircular(P,ADBC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(P,P)",
+    "Equal(MeasureOfAngle(CPB),60)",
+    "IsDiameterOfCircle(AB,P)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(CDB))",
+  "problem_answer": "30",
+  "theorem_seqs": [
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external"
+  ],
+  "raw_answer": "解:∵PA=PB=PC=PD,∴点A、B、C、D在以点P为圆心,PB为半径的圆上,∴∠BDC=\\frac{1}{2}∠BPC=\\frac{1}{2}×60°=30°．故选:B．"
+}

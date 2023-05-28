@@ -1,0 +1,44 @@
+{
+  "problem_id": 9480,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-9741",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在⊙O中,OC⊥直径AB,P为BA延长线上一点,PC交⊙O于点Q,若∠P=28°,则∠B=()",
+  "problem_text_en": "As shown in the figure, in ⊙O, OC ⊥ diameter AB, P is a point on the extended line line of BA, PC intersects ⊙O at point Q, if ∠P = N_0, then ∠B = ()",
+  "problem_img": "9480.png",
+  "construction_cdl": [
+    "Shape(QC,OCQ)",
+    "Shape(CQ,QD,DC)",
+    "Shape(CD,DB,OBC)",
+    "Shape(DO,OB,BD)",
+    "Shape(OD,DQ,QO)",
+    "Shape(AO,OQ,OQA)",
+    "Shape(QP,PA,OQA)",
+    "Shape(BO,OA,OAB)",
+    "Collinear(PAOB)",
+    "Collinear(PQC)",
+    "Collinear(QDB)",
+    "Collinear(CDO)",
+    "Cocircular(O,ABCQ)"
+  ],
+  "text_cdl": [
+    "PerpendicularBetweenLine(AO,CO)",
+    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(CPA),28)",
+    "IsDiameterOfCircle(AB,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(ABQ))",
+  "problem_answer": "17",
+  "theorem_seqs": [
+    "angle_addition",
+    "radius_of_circle_property_length_equal",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external",
+    "circle_property_circular_power_segment_and_segment_angle",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum"
+  ],
+  "raw_answer": "解:连接OQ,∵OC⊥直径AB,∴∠POC=90°,∵∠P=28°,∴∠C=62°,∵OC=OQ,∴∠CQO=62°,∴∠QOP=34°,∵OQ=OB,∴∠B=∠OQB=17°．故选:C．"
+}

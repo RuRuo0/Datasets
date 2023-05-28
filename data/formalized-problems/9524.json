@@ -1,0 +1,35 @@
+{
+  "problem_id": 9524,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-9803",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB为⊙O的直径,CD为⊙O的弦,∠ACD=42°,则∠BAD=()°．",
+  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, CD is the chord of ⊙O, ∠ACD = N_0, then ∠BAD = ().",
+  "problem_img": "9524.png",
+  "construction_cdl": [
+    "Shape(AD,ODA)",
+    "Shape(DA,AE,ED)",
+    "Shape(AC,CE,EA)",
+    "Shape(DE,EO,OB,BD)",
+    "Shape(DB,OBD)",
+    "Shape(CA,OAC)",
+    "Shape(BO,OE,EC,OCB)",
+    "Collinear(AEOB)",
+    "Collinear(DEC)",
+    "Cocircular(O,ACBD)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(ACD),42)",
+    "IsDiameterOfCircle(AB,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(DAB))",
+  "problem_answer": "48",
+  "theorem_seqs": [
+    "arc_property_circumference_angle_external",
+    "diameter_of_circle_property_right_angle",
+    "triangle_property_angle_sum(DAB)"
+  ],
+  "raw_answer": "解:连接BD,∵∠ACD=42°,∴∠ABD=42°,∵AB为直径,∴∠ADB=90°,∴∠BAD=890°-∠ABD=48°．故选:B．"
+}

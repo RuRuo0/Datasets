@@ -1,0 +1,38 @@
+{
+  "problem_id": 9475,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-9734",
+  "problem_level": 1,
+  "problem_text_cn": "如图,线段AB是⊙O的直径,弦CD⊥AB,∠CAB=20°,则∠AOD等于()",
+  "problem_text_en": "As shown in the figure, the line segment AB is the diameter of ⊙O, chord CD ⊥ AB, ∠CAB = N_0, then ∠AOD is equal to ()",
+  "problem_img": "9475.png",
+  "construction_cdl": [
+    "Shape(CA,AO,OE,EC)",
+    "Shape(AC,OCA)",
+    "Shape(DO,OA,OAD)",
+    "Shape(CE,EB,OBC)",
+    "Shape(BE,ED,ODB)",
+    "Shape(DO,DE,EO)",
+    "Collinear(AOEB)",
+    "Collinear(CED)",
+    "Cocircular(O,ADBC)"
+  ],
+  "text_cdl": [
+    "PerpendicularBetweenLine(DE,AE)",
+    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(CAB),20)",
+    "IsDiameterOfCircle(AB,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(DOA))",
+  "problem_answer": "140",
+  "theorem_seqs": [
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external",
+    "circle_property_chord_perpendicular_bisect_arc",
+    "congruent_arc_judgment_length_equal",
+    "congruent_arc_property_measure_equal",
+    "adjacent_complementary_angle"
+  ],
+  "raw_answer": "解:∵线段AB是⊙O的直径,弦CD⊥AB,∴⁀{CB}=⁀{BD},∵∠CAB=20°,∴∠BOD=40°,∴∠AOD=140°．故选:B．"
+}

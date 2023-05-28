@@ -1,0 +1,36 @@
+{
+  "problem_id": 9484,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-9750",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB是⊙O的直径,CD是⊙O的弦,∠ABD=57°,则∠C等于()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, CD is the chord of ⊙O, ∠ABD = N_0, then ∠C is equal to ()",
+  "problem_img": "9484.png",
+  "construction_cdl": [
+    "Shape(AO,OE,ED,DA)",
+    "Shape(AD,ODA)",
+    "Shape(DE,EB,BD)",
+    "Shape(DB,OBD)",
+    "Shape(BE,EC,OCB)",
+    "Shape(BC,OCB)",
+    "Shape(CE,EO,OA,OAC)",
+    "Collinear(AOEB)",
+    "Collinear(CED)",
+    "Cocircular(O,ACBD)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(ABD),57)",
+    "IsDiameterOfCircle(AB,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(DCB))",
+  "problem_answer": "33",
+  "theorem_seqs": [
+    "diameter_of_circle_property_right_angle",
+    "arc_property_center_angle",
+    "triangle_property_angle_sum(ABD)",
+    "arc_property_circumference_angle_external"
+  ],
+  "raw_answer": "解:∵AB是⊙O的直径,∴∠ADB=90°,又∠ABD=57°,∴∠A=33°,由圆周角定理得,∠C=∠A=33°,故选:D．"
+}

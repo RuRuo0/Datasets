@@ -8,6 +8,7 @@ import warnings
 import os
 import argparse
 from colorama import init
+
 init(autoreset=True)
 path_preset = "data/preset/"
 path_formalized = "data/formalized-problems/"
@@ -111,12 +112,13 @@ def check(save_GDL=False, save_CDL=False, auto=False, clean_theorem=False, acc_m
                 )
 
 
-def search(direction="fw", strategy="df", auto=False, start_pid=1584, end_pid=9651):
+def search(direction="fw", strategy="df", auto=False, save_seqs=False, start_pid=1584, end_pid=9651):
     """
     Solve problem by searching.
     :param direction: 'fw' or 'bw', forward search or backward search.
     :param strategy: 'df' or 'bf', deep-first search or breadth-first search.
     :param auto: run all problems or run one problem.
+    :param save_seqs: save solved theorem seqs or not.
     :param start_pid: start problem id.
     :param end_pid: end problem id.
     """
@@ -137,8 +139,9 @@ def search(direction="fw", strategy="df", auto=False, start_pid=1584, end_pid=96
 
                     problem = searcher.get_problem(load_json(path_formalized + filename))
                     solved, seqs = searcher.search(problem, strategy)
+                    print("pid: {}  solved: {}  seqs:{}\n".format(pid, solved, seqs))
 
-                    if solved:
+                    if solved and save_seqs:  # clean theorem
                         problem_CDL = load_json(path_formalized + filename)
                         if "theorem_seqs_search" not in problem_CDL:
                             problem_CDL["theorem_seqs_search"] = [seqs]
@@ -146,9 +149,7 @@ def search(direction="fw", strategy="df", auto=False, start_pid=1584, end_pid=96
                             problem_CDL["theorem_seqs_search"].append(seqs)
                         save_json(problem_CDL, path_formalized + filename)
                 except Exception as e:
-                    print("Raise Exception <{}> when search problem {}.".format(e, pid))
-
-                print()
+                    print("Raise Exception <{}> when search problem {}.\n".format(e, pid))
 
         else:
             while True:
@@ -160,16 +161,14 @@ def search(direction="fw", strategy="df", auto=False, start_pid=1584, end_pid=96
 
                 problem = searcher.get_problem(load_json(path_formalized + filename))
                 solved, seqs = searcher.search(problem, strategy)
-                if solved:  # clean theorem
+                print("pid: {}  solved: {}  seqs:{}\n".format(pid, solved, seqs))
+                if solved and save_seqs:  # clean theorem
                     problem_CDL = load_json(path_formalized + filename)
                     if "theorem_seqs_search" not in problem_CDL:
                         problem_CDL["theorem_seqs_search"] = [seqs]
                     elif seqs not in problem_CDL["theorem_seqs_search"]:
                         problem_CDL["theorem_seqs_search"].append(seqs)
                     save_json(problem_CDL, path_formalized + filename)
-                    print("solved problem {}: {}".format(pid, seqs))
-
-                print()
     else:
         searcher = BackwardSearcher(load_json(path_preset + "predicate_GDL.json"),  # init searcher
                                     load_json(path_preset + "theorem_GDL.json"))
@@ -189,3 +188,4 @@ if __name__ == '__main__':
 
     # args = get_args()
     # search(auto=True, start_pid=args.start_pid, end_pid=args.end_pid)
+    search(auto=False, save_seqs=False)

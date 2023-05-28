@@ -1,0 +1,36 @@
+{
+  "problem_id": 8522,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-7985",
+  "problem_level": 1,
+  "problem_text_cn": "如图所示,在▱ABCD中,CE是∠DCB的平分线,且交AB于E,DB与CE相交于O,已知AB=6,BC=4,则\\frac{OB}{DB}等于()",
+  "problem_text_en": "As shown in the figure, in ▱ABCD, CE is the bisector of ∠DCB, and it intersects AB at E, and DB and CE intersect at O. Given that AB = N_0, BC = N_1, then \\frac OBDB is equal to ()",
+  "problem_img": "8522.png",
+  "construction_cdl": [
+    "Shape(DA,AE,EO,OD)",
+    "Shape(CD,DO,OC)",
+    "Shape(OE,EB,BO)",
+    "Shape(CO,OB,BC)",
+    "Collinear(DOB)",
+    "Collinear(EOC)",
+    "Collinear(AEB)"
+  ],
+  "text_cdl": [
+        "Parallelogram(DABC)",
+"IsBisectorOfAngle(CE,BCD)",
+    "Equal(LengthOfLine(AB),6)",
+    "Equal(LengthOfLine(BC),4)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(Div(LengthOfLine(OB),LengthOfLine(DB)))",
+  "problem_answer": "2/5",
+  "theorem_seqs": [
+    "line_addition",
+    "parallel_property_collinear_extend",
+    "parallel_property_alternate_interior_angle",
+    "isosceles_triangle_judgment_angle_equal",
+        "similar_triangle_judgment_aa",
+    "similar_triangle_property_line_ratio"
+  ],
+  "raw_answer": "解:∵四边形ABCD为平行四边形,∴CD∥AB=6,∵∠1=∠2,∵CE是∠DCB的平分线,即∠1=∠3,∴∠2=∠3,∴BE=BC=4,∵BE∥CD,∴△BEO∽△DCO,∴\\frac{OB}{OD}=\\frac{BE}{CD}=\\frac{4}{6}=\\frac{2}{3},∴\\frac{BO}{BO+DO}=\\frac{2}{3+2}=\\frac{2}{5},即\\frac{BO}{DB}=\\frac{2}{5}．故选:B．"
+}

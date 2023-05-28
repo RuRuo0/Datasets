@@ -1,0 +1,44 @@
+{
+  "problem_id": 8571,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-8208",
+  "problem_level": 1,
+  "problem_text_cn": "如图,学校环保社成员想测量斜坡CD旁一棵树AB的高度,他们先在点C处测得树顶B的仰角为60°,然后在坡顶D测得树顶B的仰角为30°,已知斜坡CD的长度为20m,DE的长为10m,则树AB的高度是()m．",
+  "problem_text_en": "As shown in the picture, the members of the school environmental protection agency want to measure the height of a tree AB next to the slope CD. They firstly measured the elevation angle of tree top B at point C as N_0, and then at the top of the slope D, the elevation angle of the tree top B is measured as N_1. Given that the length of the slope CD is N_2 and the length of DE is N_3, the height of the tree AB is ().",
+  "problem_img": "8571.png",
+  "construction_cdl": [
+    "Shape(CD,DE,EC)",
+    "Shape(GD,DC,CG)",
+    "Shape(FG,GC,CA,AF)",
+    "Shape(BD,DG,GB)",
+    "Shape(BG,GF,FB)",
+    "Collinear(DGF)",
+    "Collinear(ECA)",
+    "Collinear(BGC)",
+    "Collinear(BFA)"],
+  "text_cdl": [
+    "Equal(LengthOfLine(CD),20)",
+    "Equal(LengthOfLine(DE),10)",
+    "Equal(MeasureOfAngle(BCA),60)",
+    "Equal(MeasureOfAngle(BDF),30)",
+    "Equal(MeasureOfAngle(DEC),90)",
+    "Equal(MeasureOfAngle(DFB),90)",
+    "Equal(MeasureOfAngle(CAB),90)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AB))",
+  "problem_answer": "30",
+  "theorem_seqs": [
+
+    "right_triangle_judgment_angle",
+    "right_triangle_property_pythagorean",
+    "triangle_property_angle_sum",
+        "sine_theorem",
+    "cosine_theorem",
+    "flat_angle",
+    "angle_addition(ECB,BCA)",
+    "angle_addition(ECD,DCB)",
+    "triangle_property_angle_sum"
+  ],
+  "raw_answer": "解:在Rt△CDE中,∵CD=20m,DE=10m,∴sin∠DCE=\\frac{10}{20}=\\frac{1}{2},∴∠DCE=30°．∵∠ACB=60°,DF∥AE,∴∠BGF=60°∴∠ABC=30°,∠DCB=90°．∵∠BDF=30°,∴∠DBF=60°,∴∠DBC=30°,∴BC=\\frac{CD}{tan30{^°}}=\\frac{20}{\\frac{√{3}}{3}}=20√{3}m,∴AB=BC•sin60°=20√{3}×\\frac{√{3}}{2}=30m．故选:B．方法二:可以证明△DGC≌△BGF,所以BF=DC=20,所以AB=20+10=30,故选:B．"
+}

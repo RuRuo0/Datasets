@@ -185,7 +185,7 @@ def get_args():
 
 
 if __name__ == '__main__':
-    # check(auto=False, clean_theorem=False, acc_mode=False)
+    check(auto=True, clean_theorem=True, acc_mode=True)
 
-    args = get_args()
-    search(auto=True, start_pid=args.start_pid, end_pid=args.end_pid)
+    # args = get_args()
+    # search(auto=True, start_pid=args.start_pid, end_pid=args.end_pid)

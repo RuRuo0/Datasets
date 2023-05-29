@@ -1,0 +1,35 @@
+{
+  "problem_id": 9035,
+  "annotation": "ZheZhu_2023-05-28",
+  "source": "GeoQA-9079",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在矩形ABCD中,对角线AC,BD相交于O,∠AOB=60°,AC=6cm,则AB的长是()",
+  "problem_text_en": "As shown in the figure, in the rectangle ABCD, the diagonal AC and BD intersect at O, ∠AOB = N_0, AC = N_1, then the length of AB is ()",
+  "problem_img": "9035.png",
+  "construction_cdl": [
+    "Shape(AB,BO,OA)",
+    "Shape(OB,BC,CO)",
+    "Shape(OC,CD,DO)",
+    "Shape(AO,OD,DA)",
+    "Collinear(AOC)",
+    "Collinear(BOD)"
+  ],
+  "text_cdl": [
+    "Rectangle(ABCD)",
+    "Equal(LengthOfLine(AC),6)",
+    "Equal(MeasureOfAngle(BOA),60)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AB))",
+  "problem_answer": "3",
+  "theorem_seqs": [
+    "parallelogram_property_diagonal_bisection",
+    "rectangle_property_diagonal_equal",
+    "kite_property_diagonal_perpendicular_bisection",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum",
+    "sine_theorem"
+  ],
+  "raw_answer": "解:∵四边形ABCD是矩形,AC=6cm,∴OA=OC=OB=OD=3cm,∵∠AOB=60°,∴△AOB是等边三角形,∴AB=OA=3cm,故选:C．"
+}

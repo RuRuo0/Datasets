@@ -1,0 +1,36 @@
+{
+  "problem_id": 9041,
+  "annotation": "ZheZhu_2023-05-28",
+  "source": "GeoQA-9092",
+  "problem_level": 1,
+  "problem_text_cn": "如图,矩形ABCD中,AB=3,AD=4,BE⊥AC,则BE长为()",
+  "problem_text_en": "As shown in the figure, in the rectangle ABCD, AB = N_0, AD = N_1, BE ⊥ AC, then the length of BE is ()",
+  "problem_img": "9041.png",
+  "construction_cdl": [
+    "Shape(EA,AB,BE)",
+    "Shape(EB,BC,CE)",
+    "Shape(DA,AE,EC,CD)",
+    "Collinear(AEC)"
+  ],
+  "text_cdl": [
+    "Rectangle(ABCD)",
+    "Equal(LengthOfLine(AB),3)",
+    "Equal(LengthOfLine(AD),4)",
+    "IsAltitudeOfTriangle(BE,BCA)",
+    "IsAltitudeOfTriangle(AB,ABC)",
+    "Equal(MeasureOfAngle(CEB),90)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(BE))",
+  "problem_answer": "12/5",
+  "theorem_seqs": [
+    "altitude_of_triangle_judgment",
+    "parallelogram_property_opposite_line_equal",
+    "right_triangle_judgment_angle",
+    "right_triangle_property_pythagorean",
+    "triangle_area_formula_common",
+    "mirror_similar_triangle_judgment_aa",
+    "mirror_similar_triangle_property_line_ratio"
+  ],
+  "raw_answer": "解:∵四边形ABCD是矩形,∴∠ABC=90°,BC=AD=4,∴AC=√{AB²+BC²}=√{3²+4²}=5,∵BE⊥AC,∴△ABC的面积=\\frac{1}{2}AC•BE=\\frac{1}{2}AB•BC,∴BE=\\frac{AB×BC}{AC}=\\frac{3×4}{5}=\\frac{12}{5}；故选:B．"
+}

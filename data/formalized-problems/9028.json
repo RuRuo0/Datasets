@@ -1,0 +1,37 @@
+{
+  "problem_id": 9028,
+  "annotation": "ZheZhu_2023-05-28",
+  "source": "GeoQA-9039",
+  "problem_level": 1,
+  "problem_text_cn": "如图,边长12的正方形ABCD中,有一个小正方形EFGH,其中E、F、G分别在AB、BC、FD上．若BF=3,则小正方形的边长为多长？()",
+  "problem_text_en": "As shown in the figure, in the square ABCD with side length N_0, there is a small square EFGH, where E, F, and G are on AB, BC, and FD respectively. If BF = N_1, how long is the side of the small square? ()",
+  "problem_img": "9028.png",
+  "construction_cdl": [
+    "Shape(AE,EH,HG,GD,DA)",
+    "Shape(EF,FG,GH,HE)",
+    "Shape(FE,EB,BF)",
+    "Shape(DG,GF,FC,CD)",
+    "Collinear(BFC)",
+    "Collinear(AEB)",
+    "Collinear(DGF)"
+  ],
+  "text_cdl": [
+    "Square(ABCD)",
+    "Square(EFGH)",
+    "Equal(LengthOfLine(AB),12)",
+    "Equal(MeasureOfAngle(FEB),MeasureOfAngle(DFC))",
+    "Equal(LengthOfLine(BF),3)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(EF))",
+  "problem_answer": "3.75",
+  "theorem_seqs": [
+    "line_addition",
+    "angle_addition",
+    "similar_triangle_judgment_aa",
+    "similar_triangle_property_line_ratio",
+    "right_triangle_judgment_angle",
+    "right_triangle_property_pythagorean"
+  ],
+  "raw_answer": "解:∵正方形ABCD的边长为12,∴BC=CD=12,∵BF=3,∴CF=BC-BF=12-3=9,∵小正方形EFGH,∴∠EFG=90°,∴∠BFE+∠CFD=90°,∵在Rt△BEF中,∠BEF+∠BFE=90°,∴∠BEF=∠CFD,又∵∠B=∠C=90°,∴△BFE∽△CDF,∴\\frac{BE}{CF}=\\frac{BF}{CD},即\\frac{BE}{9}=\\frac{3}{12},解得BE=\\frac{9}{4},在Rt△BEF中,根据勾股定理得,EF=√{BE²+BF²}=√{(\\frac{9}{4})²+3²}=\\frac{15}{4}=3.75．故选:B．"
+}

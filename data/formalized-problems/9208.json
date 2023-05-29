@@ -1,0 +1,33 @@
+{
+  "problem_id": 9208,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-9347",
+  "problem_level": 1,
+  "problem_text_cn": "如图,平行四边形ABCD中,AB=18cm,PC=6cm,AP是∠DAB的平分线,则平行四边形ABCD的周长为()",
+  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, AB = N_0, PC = N_1, AP is the bisector of ∠DAB, then the perimeter of the parallelogram ABCD is ()",
+  "problem_img": "9208.png",
+  "construction_cdl": [
+    "Shape(DA,AP,PD)",
+    "Shape(AB,BC,CP,PA)",
+    "Collinear(DPC)"
+  ],
+  "text_cdl": [
+    "Parallelogram(ABCD)",
+    "Equal(LengthOfLine(AB),18)",
+    "Equal(LengthOfLine(PC),6)",
+    "IsBisectorOfAngle(AP,DAB)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(PerimeterOfQuadrilateral(ABCD))",
+  "problem_answer": "60",
+  "theorem_seqs": [
+    "parallelogram_property_opposite_line_equal(ABCD)",
+    "parallelogram_property_opposite_line_equal(DABC)",
+    "parallel_property_collinear_extend(DC,AB,P)",
+    "line_addition(DP,PC)",
+    "parallel_property_alternate_interior_angle(DP,AB)",
+    "isosceles_triangle_judgment_angle_equal(DAP)",
+    "quadrilateral_perimeter_formula(ABCD)"
+  ],
+  "raw_answer": "解:∵四边形ABCD是平行四边形,∴CD=AB=18cm,BC=AD,AB∥CD,∴∠DPA=∠BAP,∵AP是∠DAB的平分线,∴∠DAP=∠BAP,∴∠DPA=∠DAP,∴AD=PD=CD-PC=12cm,∴平行四边形ABCD的周长=2(AB+AD)=2(18+12)=60(cm)；故选:A．"
+}

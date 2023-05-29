@@ -1,0 +1,35 @@
+{
+  "problem_id": 9209,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-9349",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在▱ABCD中,∠A=70°,将▱ABCD折叠,使点D、C分别落在点F、E处(点F、E都在AB所在的直线上),折痕为MN,则∠AMF等于()",
+  "problem_text_en": "As shown in the figure, in ▱ABCD, ∠A = N_0, fold ▱ABCD so that points D and C fall on points F and E respectively (points F and E are on the line where AB is located), and the crease is MN, Then ∠AMF is equal to ()",
+  "problem_img": "9209.png",
+  "construction_cdl": [
+    "Shape(DM,MN,NC)",
+    "Shape(MF,FB,BN,NM)",
+    "Shape(MA,AF,FM)",
+    "Shape(NB,BE,EN)",
+    "Collinear(DMA)",
+    "Collinear(CNB)",
+    "Collinear(AFBE)"
+  ],
+  "text_cdl": [
+    "Parallelogram(ABCD)",
+    "Parallelogram(MFEN)",
+    "Parallelogram(MABN)",
+    "Equal(MeasureOfAngle(MAF),70)",
+    "Equal(LengthOfLine(AM),LengthOfLine(MD))",
+    "Equal(LengthOfLine(AM),LengthOfLine(MF))"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(FMA))",
+  "problem_answer": "40",
+  "theorem_seqs": [
+    "isosceles_triangle_judgment_line_equal(MAF)",
+    "isosceles_triangle_property_angle_equal(MAF)",
+    "triangle_property_angle_sum(MAF)"
+  ],
+  "raw_answer": "解:根据题意得:AM=MD=MF,∴∠MFA=∠A=70°,∴∠AMF=180°-70°-70°=40°；故选:B．"
+}

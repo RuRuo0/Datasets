@@ -1,0 +1,37 @@
+{
+  "problem_id": 8315,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-7468",
+  "problem_level": 1,
+  "problem_text_cn": "如图,已知AB、CD、EF都与BD垂直,垂足分别是B、D、F,且AB=4,CD=12,那么EF的长是()",
+  "problem_text_en": "As shown in the figure, it is known that AB, CD, and EF are all perpendicular to BD, and the feet of perpendicular are B, D, and F respectively, and AB = N_0, CD = N_1, then the length of EF is ()",
+  "problem_img": "8315.png",
+  "construction_cdl": [
+    "Shape(AB,BE,EA)",
+    "Shape(EB,BF,FE)",
+    "Shape(EF,FD,DE)",
+    "Shape(CE,ED,DC)",
+    "Collinear(AED)",
+    "Collinear(BEC)",
+    "Collinear(BFD)"
+  ],
+  "text_cdl": [
+    "PerpendicularBetweenLine(AB,FB)",
+    "PerpendicularBetweenLine(BF,EF)",
+    "PerpendicularBetweenLine(FD,CD)",
+    "Equal(LengthOfLine(AB),4)",
+    "Equal(LengthOfLine(CD),12)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(EF))",
+  "problem_answer": "3",
+  "theorem_seqs": [
+    "parallel_judgment_corresponding_angle",
+    "parallel_judgment_ipsilateral_internal_angle",
+    "parallel_property_corresponding_angle",
+    "similar_triangle_judgment_aa",
+    "similar_triangle_property_line_ratio",
+    "line_addition"
+  ],
+  "raw_answer": "解:∵AB、CD、EF都与BD垂直,∴AB∥EF∥CD,∴△DEF∽△DAB,△BFE∽△BDC,∴\\frac{EF}{AB}=\\frac{DF}{BD},\\frac{EF}{CD}=\\frac{BF}{BD},∴\\frac{EF}{AB}+\\frac{EF}{DC}=1,∵AB=4,CD=12,∴EF=3,故选:C．"
+}

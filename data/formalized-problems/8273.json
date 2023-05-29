@@ -1,0 +1,47 @@
+{
+  "problem_id": 8273,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-7375",
+  "problem_level": 1,
+  "problem_text_cn": "在△ABC中,边BC=6,高AD=4,正方形EFGH的顶点E、F在边BC上,顶点H、G分别在边AB和AC上,那么这个正方形的边长等于()",
+  "problem_text_en": "In △ABC, the edge BC = N_0, the height AD = N_1, the vertices E and F of the square EFGH are on the edge BC, and the vertices H and G are respectively on the edges AB and AC, then the edge length of this square is equal to ()",
+  "problem_img": "8273.png",
+  "construction_cdl": [
+    "Shape(AH,HI,IA)",
+    "Shape(AI,IG,GA)",
+    "Shape(HB,BE,EH)",
+    "Shape(HE,ED,DI,IH)",
+    "Shape(GI,ID,DF,FG)",
+    "Shape(GF,FC,CG)",
+    "Collinear(AHB)",
+    "Collinear(AGC)",
+    "Collinear(AID)",
+    "Collinear(HIG)",
+    "Collinear(BEDFC)"
+  ],
+  "text_cdl": [
+    "IsAltitudeOfTriangle(AD,ABC)",
+    "Equal(LengthOfLine(BC),6)",
+    "Equal(LengthOfLine(AD),4)",
+    "Square(HEFG)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(HG))",
+  "problem_answer": "2.4",
+  "theorem_seqs": [
+    "parallel_judgment_corresponding_angle",
+    "parallel_property_collinear_extend",
+    "parallel_property_collinear_extend",
+    "parallelogram_judgment_parallel_and_parallel",
+    "parallelogram_property_opposite_line_equal",
+    "parallel_property_corresponding_angle",
+    "similar_triangle_judgment_aa(AHG,ABC)",
+    "altitude_of_triangle_judgment(AI,AHG)",
+    "triangle_area_formula_common(AHG)",
+    "triangle_area_formula_common(ABC)",
+    "similar_triangle_property_area_square_ratio",
+    "similar_triangle_property_line_ratio",
+    "line_addition(AI,ID)"
+  ],
+  "raw_answer": "解:设AD交GH于M．∵四边形EFMN是正方形,∴HG∥BC,∴△AGH∽△ABC,又∵AD⊥BC,∴AD⊥BC,EH=HG=MD,∴\\frac{AM}{AD}=\\frac{HG}{BC},设EH=x,则AM=4-x,∴\\frac{4-x}{4}=\\frac{x}{6},解得:x=2.4,∴EH=2.4．答:这个正方形的边长为2.4．故选:C．"
+}

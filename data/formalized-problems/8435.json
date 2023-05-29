@@ -1,0 +1,35 @@
+{
+  "problem_id": 8435,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-7777",
+  "problem_level": 1,
+  "problem_text_cn": "已知如图,AB⊥BD,ED⊥BD,C是线段BD的中点,且AC⊥CE,ED=1,BD=4,那么AB的值为()",
+  "problem_text_en": "As shown in the figure, AB ⊥ BD, ED ⊥ BD, C is the midpoint of the line segment BD, and AC ⊥ CE, ED = N_0, BD = N_1, then the value of AB is ()",
+  "problem_img": "8435.png",
+  "construction_cdl": [
+    "Shape(AB,BC,CA)",
+    "Shape(EC,CD,DE)",
+    "Collinear(BCD)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(ED),1)",
+    "Equal(LengthOfLine(BD),4)",
+    "Equal(LengthOfLine(BC),LengthOfLine(CD))",
+    "Equal(MeasureOfAngle(ABC),90)",
+    "Equal(MeasureOfAngle(ACE),90)",
+    "Equal(MeasureOfAngle(CDE),90)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AB))",
+  "problem_answer": "4",
+  "theorem_seqs": [
+    "line_addition",
+    "angle_addition(BCA,ACE)",
+    "angle_addition(BCE,ECD)",
+    "adjacent_complementary_angle",
+    "triangle_property_angle_sum(CDE)",
+    "similar_triangle_judgment_aa(ABC,CDE)",
+    "similar_triangle_property_line_ratio"
+  ],
+  "raw_answer": "解:∵C是线段BD的中点,BD=4,∴BC=CD=2,∵AB⊥BD,ED⊥BD,∴∠B=∠D=90°,∠A+∠ACB=90°,∵AC⊥CE,即∠ECD+∠ACB=90°,∴∠A=∠ECD,∴△ABC∽△CDE,∴\\frac{AB}{CD}=\\frac{BC}{DE},∴\\frac{AB}{2}=\\frac{2}{1},∴AB=4,故选:C．"
+}

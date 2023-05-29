@@ -1,0 +1,33 @@
+{
+  "problem_id": 8392,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-7672",
+  "problem_level": 1,
+  "problem_text_cn": "如图,四边形ABCD是平行四边形,AB=6,EC=2,则DF:AF=()",
+  "problem_text_en": "As shown in the figure, the quadrilateral ABCD is a parallelogram, AB = N_0, EC = N_1, then DF:AF = ()",
+  "problem_img": "8392.png",
+  "construction_cdl": [
+    "Shape(FD,DE,EF)",
+    "Shape(DA,AB,BE,ED)",
+    "Shape(EB,BC,CE)",
+    "Collinear(FEB)",
+    "Collinear(FDA)",
+    "Collinear(DEC)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),6)",
+    "Equal(LengthOfLine(EC),2)",
+    "Parallelogram(ABCD)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(Div(LengthOfLine(DF),LengthOfLine(AF)))",
+  "problem_answer": "2/3",
+  "theorem_seqs": [
+    "parallelogram_property_opposite_line_equal",
+    "line_addition",
+    "parallel_property_corresponding_angle",
+    "similar_triangle_judgment_aa",
+    "similar_triangle_property_line_ratio"
+  ],
+  "raw_answer": "解:∵四边形ABCD是平行四边形,∴DC=AB=6,AD=BC,∴DE=DC-EC=AB-EC=6-2=4,∵四边形ABCD是平行四边形,∴AD∥BC,∴△DEF∽△CEB,∴\\frac{DF}{BC}=\\frac{DE}{EC}=\\frac{4}{2}=2,即DF=2BC,∴AF=AD+DF=BC+DF=3BC,∴DF:AF=2:3,故选:A．"
+}

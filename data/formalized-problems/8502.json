@@ -1,0 +1,31 @@
+{
+  "problem_id": 8502,
+  "annotation": "QikeHuang_2023-05-28",
+  "source": "GeoQA-7932",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在△ABC中,∠C=90°,点D在CB上,DE⊥AB,若DE=2,CA=4,则\\frac{DB}{AB}=()",
+  "problem_text_en": "As shown in the figure, in △ABC, ∠C = N_0, point D is on CB, DE ⊥ AB, if DE = N_1, CA = N_2, then \\frac DBAB = ()",
+  "problem_img": "8502.png",
+  "construction_cdl": [
+    "Shape(CA,AE,ED,DC)",
+    "Shape(DE,EB,BD)",
+    "Collinear(CDB)",
+    "Collinear(AEB)"
+  ],
+  "text_cdl": [
+    "PerpendicularBetweenLine(DE,BE)",
+    "Equal(LengthOfLine(DE),2)",
+    "Equal(LengthOfLine(CA),4)",
+    "Equal(LengthOfLine(DB),1)",
+    "Equal(MeasureOfAngle(BCA),90)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(Div(LengthOfLine(DB),LengthOfLine(AB)))",
+  "problem_answer": "1/2",
+  "theorem_seqs": [
+    "mirror_similar_triangle_judgment_aa(DEB,ABC)",
+    "mirror_similar_triangle_property_line_ratio"
+  ],
+  "notes": "有bug，只有加了DB长度才能算出比值",
+  "raw_answer": "解:由题意得,∠B=∠B,∠DEB=∠ACB=90°,故可得△BAC∽△BDE,从而有:\\frac{DB}{AB}=\\frac{DE}{AC}=\\frac{1}{2}．故选:C．"
+}

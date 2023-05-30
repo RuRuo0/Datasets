@@ -3,23 +3,36 @@
   "annotation": "ZheZhu_2023-05-21",
   "source": "GeoQA-6718",
   "problem_level": 1,
-  "problem_text_cn": "北京市一居民小区为了迎接2008年奥运会,计划将小区内的一块平行四边形ABCD场地进行绿化,如图阴影部分为绿化地,以A,B,C,D为圆心且半径均为3m的四个扇形的半径等于图中⊙O的直径,已测得AB=6m,则绿化地的面积为()m²．",
+  "problem_text_cn": "求非阴影部分面积",
   "problem_text_en": "In order to welcome the Olympic Games in N_0, a residential community in Beijing plans to green a parallelogram ABCD site in the community. As shown in the figure, the shaded part is the green land, with A, B, C, and D as the center and four radii of N_1. The radii of the four sectors with A, B, C, D as the center and radii of N_1 are equal to the diameter of ⊙O in the figure , and AB = N_2 has been measured, then the area of ​​the green land is ()^2.",
   "problem_img": "8106.png",
   "construction_cdl": [
-    "Shape(OA,OAB,BO)",
-    "Shape(OB,OBA,AO)",
-    "Cocircular(O,AB)"
+    "Shape(HA,AE,OHE)",
+    "Shape(EB,BF,OEF)",
+    "Shape(FC,CG,OFG)",
+    "Shape(GD,DH,OGH)",
+    "Shape(OHE,OEF,FH)",
+    "Shape(HF,OFG,OGH)",
+    "Collinear(AEB)",
+    "Collinear(BFC)",
+    "Collinear(CGD)",
+    "Collinear(DHA)",
+    "Cocircular(O,HEFG)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "Equal(RadiusOfCircle(O),3)"
+    "IsDiameterOfCircle(HF,O)",
+    "Equal(LengthOfLine(HF),6)",
+    "Equal(LengthOfLine(AB),6)",
+    "Square(ABCD)"
   ],
   "image_cdl": [],
-  "goal_cdl": "Value(Mul(2,AreaOfCircle(O)))",
-  "problem_answer": "45/4*π",
+  "goal_cdl": "Value(Sub(AreaOfQuadrilateral(ABCD),AreaOfCircle(O)))",
+  "problem_answer": "36-9*π",
   "theorem_seqs": [
-    "circle_area_formula"
+    "diameter_of_circle_property_length_equal(HF,O)",
+    "circle_property_length_of_radius_and_diameter(O)",
+    "circle_area_formula(O)",
+    "parallelogram_area_formula_sine(ABCD)"
   ],
   "raw_answer": "解:由题意可知,以A,B,C,D为圆心的四个扇形的和为一半径为3m的圆,可得圆的面积=9πm²；⊙O的直径为3m,则⊙O的面积=\\frac{9}{4}πm²．则绿化地的面积=9π+\\frac{9}{4}π=\\frac{45}{4}πm²．故选C．"
 }

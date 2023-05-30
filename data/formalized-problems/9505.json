@@ -1,0 +1,38 @@
+{
+  "problem_id": 9505,
+  "annotation": "XiaoxiaoJin_2023-06-04",
+  "source": "GeoQA-9776",
+  "problem_level": 1,
+  "problem_text_cn": "如图,点A、B、C都在⊙O上,若∠BAO=40°,则∠C的度数为()",
+  "problem_text_en": "As shown in the figure, points A, B, and C are all on ⊙O, if ∠BAO = N_0, then the degree of ∠C is ()",
+  "problem_img": "9505.png",
+  "construction_cdl": [
+    "Shape(BA,OAB)",
+    "Shape(BC,CD,DB)",
+    "Shape(BD,DA,AB)",
+    "Shape(AD,DO,OA)",
+    "Shape(CB,OBC)",
+    "Shape(BA,OAB)",
+    "Shape(AO,OD,DC,OCA)",
+    "Collinear(CDA)",
+    "Collinear(ODB)",
+    "Cocircular(O,ABC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(OAB),40)",
+    "IsDiameterOfCircle(AB,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(BCA))",
+  "problem_answer": "50",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum"
+  ],
+  "raw_answer": "解:∵OA=OB,∠BAO=40°,∴∠ABO=∠BAO=40°,∴∠AOB=180°-∠BAO-∠ABO=100°,∴∠C=\\frac{1}{2}∠AOB=50°．故选:B．"
+}

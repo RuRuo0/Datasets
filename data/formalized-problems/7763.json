@@ -1,0 +1,45 @@
+{
+  "problem_id": 7763,
+  "annotation": "YanjunGuo_2023-05-21",
+  "source": "GeoQA-5504",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB为⊙O直径,AD,BC,CD分别切⊙O于点A,B,E．若AD=1,BC=4,则AB的值为()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, AD, BC, and CD are tangent to⊙O at points A, B, E respectively. If AD = N_0, BC = N_1, then the value of AB is ()",
+  "problem_img": "7763.png",
+  "construction_cdl": [
+    "Shape(BA,OAB)",
+    "Shape(AB,OBG,GF,OFA)",
+    "Shape(FD,DA,OFA)",
+    "Shape(ED,DF,OEF)",
+    "Shape(FG,OGF)",
+    "Shape(BH,HG,OBG)",
+    "Shape(GH,HC,CE,OGE)",
+    "Collinear(DFGH)",
+    "Collinear(BHC)",
+    "Collinear(DEC)",
+    "Collinear(AOB)",
+    "Cocircular(O,ABGEF)"
+  ],
+  "text_cdl": [
+    "IsTangentOfCircle(DA,O)",
+    "IsTangentOfCircle(DE,O)",
+    "IsTangentOfCircle(CE,O)",
+    "IsTangentOfCircle(CB,O)",
+    "Equal(LengthOfLine(AD),1)",
+    "Equal(LengthOfLine(BC),4)",
+    "RightTriangle(DHC)",
+    "Rectangle(ABHD)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AB))",
+  "problem_answer": "4",
+  "theorem_seqs": [
+    "tangent_of_circle_property_length_equal",
+    "parallelogram_property_opposite_line_equal",
+    "line_addition",
+    "adjacent_complementary_angle",
+    "right_triangle_property_pythagorean"
+  ],
+  "notes": "三角形DHC无法推出来",
+  "raw_answer": "解:∵AB为⊙O直径,AD,BC,CD分别切⊙O于点A,B,E,∴∠DAB=∠ABC=90°,AD=DE,CE=BC,∴CD=AD+BC=5,过D作DH⊥BC于H,则四边形ABHD是矩形,∴BH=AD=1,DH=AB,∴CH=3,∴DH=√{CD^{2}-CH^{2}}=√{5^{2}-3^{2}}=4,故选:C．"
+}

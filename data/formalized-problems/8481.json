@@ -1,0 +1,39 @@
+{
+  "problem_id": 8481,
+  "annotation": "QikeHuang_2023-05-28",
+  "source": "GeoQA-7886",
+  "problem_level": 1,
+  "problem_text_cn": "某铁路路基的横断面是一个等腰梯形(如图),若腰的坡比为2:3,路基顶宽3米,高4米,则路基的下底宽为()",
+  "problem_text_en": "The cross section of a railway subgrade is an isosceles trapezoid (as shown in the figure). If the slope ratio of the waist is N_0:N_1, the top width of the subgrade is N_2, and the height is N_3, then the width of the bottom of the subgrade is ()",
+  "problem_img": "8481.png",
+  "construction_cdl": [
+    "Shape(AB,BE,EA)",
+    "Shape(AE,EF,FD,DA)",
+    "Shape(DF,FC,CD)",
+    "Collinear(BEFC)"
+  ],
+  "text_cdl": [
+    "IsoscelesTrapezoid(ABCD)",
+    "PerpendicularBetweenLine(BE,AE)",
+    "PerpendicularBetweenLine(DF,CF)",
+    "Equal(LengthOfLine(AD),3)",
+    "Equal(LengthOfLine(AE),4)",
+    "Equal(Tan(MeasureOfAngle(ABE)),2/3)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(BC))",
+  "problem_answer": "15",
+  "theorem_seqs": [
+    "isosceles_trapezoid_property_angle_equal",
+    "adjacent_complementary_angle",
+    "parallel_judgment_ipsilateral_internal_angle(EA,FD)",
+    "parallel_property_collinear_extend(CB,DA,F)",
+    "parallel_property_collinear_extend(FB,DA,E)",
+    "parallelogram_judgment_parallel_and_parallel(AEFD)",
+    "parallelogram_property_opposite_line_equal",
+    "triangle_property_angle_sum",
+    "sine_theorem",
+    "line_addition"
+  ],
+  "raw_answer": "解:∵腰的坡度为i=2:3,路基高是4米,∴BE=6米,又∵EF=AD=3米,∴BC=6+3+6=15米．故选:D．"
+}

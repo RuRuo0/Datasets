@@ -1,0 +1,43 @@
+{
+  "problem_id": 9746,
+  "annotation": "ZheZhu_2023-06-04",
+  "source": "GeoQA-angle-10150",
+  "problem_level": 1,
+  "problem_text_cn": "在Rt△ABO中，∠OAB＝90°，以O为圆心，OA为半径构造⊙O，OB的中点C恰好在⊙O上，点D是AB上一点，CD＝AD，若∠DCB的角平分线所在的直线与⊙O的另一交点为E，连接OE，则∠EOC＝（）",
+  "problem_text_en": "",
+  "problem_img": "9746.png",
+  "construction_cdl": [
+    "Shape(OC,CE,EO)",
+    "Shape(OA,AC,CO)",
+    "Shape(OAC,CA)",
+    "Shape(OAC,AD,DC)",
+    "Shape(CD,DF,FC)",
+    "Shape(CF,FB,BC)",
+    "Collinear(ECF)",
+    "Collinear(OCB)",
+    "Collinear(ADFB)",
+    "Cocircular(O,ACE)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsBisectorOfAngle(CF,BCD)",
+    "Equal(LengthOfLine(CD),LengthOfLine(AD))",
+    "Equal(LengthOfLine(DA),LengthOfLine(DC))",
+    "Equal(MeasureOfAngle(OAB),90)",
+    "IsMedianOfTriangle(AC,ABO)",
+    "Equal(MeasureOfAngle(DCO),90)",
+    "Equal(MeasureOfAngle(BCD),90)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(EOC))",
+  "problem_answer": "90",
+  "theorem_seqs": [
+    "angle_addition(BCF,FCD)",
+    "vertical_angle",
+    "radius_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum"
+  ],
+  "raw_answer": "如图，设∠DCB的角平分线交BD于F，连接AC，∵∠OAB＝90°，C是OB的中点，∴AC＝0.5OB＝OC，∵OA＝OC，∴OA＝OC＝AC，∴△OAC是等边三角形，∴∠OAC＝∠OCA＝60°，∴∠DAC＝30°，∵AD＝CD，∴∠ACD＝∠DAC，∴∠OCD＝60°+30°＝90°＝∠DCB，∵CF平分∠DCB，∴∠DCF＝∠BCF＝∠OCE＝45°，∵OC＝OE，∴∠E＝∠OCE＝45°，∴∠COE＝90°．故选：C．"
+}

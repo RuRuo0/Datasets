@@ -1,0 +1,32 @@
+{
+  "problem_id": 8511,
+  "annotation": "QikeHuang_2023-05-28",
+  "source": "GeoQA-7954",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在△ABC,DE∥BC,若AD=2,BD=3,则\\frac{DE}{BC}的值为()",
+  "problem_text_en": "As shown in the figure, in △ABC, DE ∥ BC, if AD = N_0, BD = N_1, then the value of \\frac DEBC is ()",
+  "problem_img": "8511.png",
+  "construction_cdl": [
+    "Shape(AD,DE,EA)",
+    "Shape(DB,BC,CE,ED)",
+    "Collinear(ADB)",
+    "Collinear(AEC)"
+  ],
+  "text_cdl": [
+    "ParallelBetweenLine(DE,BC)",
+    "Equal(LengthOfLine(AD),2)",
+    "Equal(LengthOfLine(BD),3)",
+    "Equal(LengthOfLine(DE),5)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(Div(LengthOfLine(DE),LengthOfLine(BC)))",
+  "problem_answer": "2/5",
+  "theorem_seqs": [
+    "parallel_property_corresponding_angle",
+    "similar_triangle_judgment_aa(ADE,ABC)",
+    "line_addition",
+    "similar_triangle_property_line_ratio"
+  ],
+  "notes": "BUG",
+  "raw_answer": "解:∵AD=2,DB=3,∴AB=AD+BD=3+2=5,∵DE∥BC,∴△ADE∽△ABC,∴DE:BC=AD:AB=2:5．故选:C．"
+}

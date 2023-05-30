@@ -1,0 +1,31 @@
+{
+  "problem_id": 8503,
+  "annotation": "QikeHuang_2023-05-28",
+  "source": "GeoQA-7935",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在△ABC中,DE∥BC,D、E分别在AB,AC上；若AD=2,AB=6,则\\frac{DE}{BC}的值为()",
+  "problem_text_en": "As shown in the figure, in △ABC, DE ∥ BC, D and E are on AB and AC respectively; if AD = N_0, AB = N_1, the value of \\frac DEBC is ()",
+  "problem_img": "8503.png",
+  "construction_cdl": [
+    "Shape(AD,DE,EA)",
+    "Shape(DB,BC,CE,ED)",
+    "Collinear(ADB)",
+    "Collinear(AEC)"
+  ],
+  "text_cdl": [
+    "ParallelBetweenLine(DE,BC)",
+    "Equal(LengthOfLine(AD),2)",
+    "Equal(LengthOfLine(AB),6)",
+    "Equal(LengthOfLine(DE),2)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(Div(LengthOfLine(DE),LengthOfLine(BC)))",
+  "problem_answer": "1/3",
+  "theorem_seqs": [
+    "parallel_property_corresponding_angle",
+    "similar_triangle_judgment_aa(ADE,ABC)",
+    "similar_triangle_property_line_ratio"
+  ],
+  "notes": "有bug，只有加了DE长度才能算出比值",
+  "raw_answer": "解:∵DE∥BC,∴△ADE∽△ABC,∴\\frac{DE}{BC}=\\frac{AD}{AB}=\\frac{2}{6}=\\frac{1}{3}．故选:B．"
+}

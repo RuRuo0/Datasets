@@ -1,0 +1,38 @@
+{
+  "problem_id": 9425,
+  "annotation": "qikehuang_2023-05-28",
+  "source": "GeoQA-9672",
+  "problem_level": 1,
+  "problem_text_cn": "如图,CD是⊙O的直径,CD⊥AB,已知∠1=30°,则∠2=()",
+  "problem_text_en": "As shown in the figure, CD is the diameter of O, CD ⊥ AB, it is known that ∠1 = N_0, then ∠2 = ()",
+  "problem_img": "9425.png",
+  "construction_cdl": [
+    "Shape(OCA,AC)",
+    "Shape(CA,AM,MC)",
+    "Shape(CM,MB,BC)",
+    "Shape(CB,OBC)",
+    "Shape(MA,OAD,DO,OM)",
+    "Shape(MO,OB,BM)",
+    "Shape(BO,OD,ODB)",
+    "Collinear(AMB)",
+    "Collinear(CMOD)",
+    "Cocircular(O,ADBC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(CD,O)",
+    "PerpendicularBetweenLine(AM,CM)",
+    "Equal(MeasureOfAngle(CAB),30)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(BCD))",
+  "problem_answer": "60",
+  "theorem_seqs": [
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external",
+    "radius_of_circle_property_length_equal",
+    "triangle_property_angle_sum(BCO)",
+    "sine_theorem(OBC)"
+  ],
+  "raw_answer": "解:如图,连接AD．∵CD是⊙O的直径,∴∠CAD=90°(直径所对的圆周角是90°)；在Rt△ACD中,∠CAD=90°,∠1=30°,∴∠DAB=60°；又∵∠DAB=∠2(同弧所对的圆周角相等),∴∠2=60°,故选:C．"
+}

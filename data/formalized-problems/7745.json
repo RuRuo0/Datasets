@@ -1,0 +1,33 @@
+{
+  "problem_id": 7745,
+  "annotation": "YanjunGuo_2023-05-21",
+  "source": "GeoQA-5473",
+  "problem_level": 1,
+  "problem_text_cn": "如图,点A、B、C、D、E都是⊙O上的点,⌒{AC}=⌒{AE},∠D=128°,则∠B的度数为()",
+  "problem_text_en": "As shown in the figure, points A, B, C, D, and E are all points on ⊙O, ⌒AC = ⌒AE, ∠D = N_0, then the degree of ∠B is ()",
+  "problem_img": "7745.png",
+  "construction_cdl": [
+    "Shape(BA,OAB)",
+    "Shape(CB,OBC)",
+    "Shape(DC,OCD)",
+    "Shape(ED,ODE)",
+    "Shape(AE,OEA)",
+    "Shape(AB,BC,CA)",
+    "Shape(AC,CE,EA)",
+    "Shape(EC,CD,DE)",
+    "Cocircular(O,CDEAB)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfArc(OEA),MeasureOfArc(OAC))",
+    "Equal(MeasureOfAngle(CDE),128)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(ABC))",
+  "problem_answer": "116",
+  "theorem_seqs": [
+    "arc_property_circumference_angle_external",
+    "arc_property_circumference_angle_internal",
+    "triangle_property_angle_sum"
+  ],
+  "raw_answer": "解:连接AC、CE,∵点A、C、D、E都是⊙O上的点,∴∠CAE+∠D=180°,∴∠CAE=180°-128°=52°,∵⌒{AC}=⌒{AE},∴∠ACE=∠AEC=\\frac{1}{2}×(180°-52°)=64°,∵点A、B、C、E都是⊙O上的点,∴∠AEC+∠B=180°,∴∠B=180°-64°=116°,故选:D．"
+}

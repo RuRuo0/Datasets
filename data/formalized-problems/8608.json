@@ -1,0 +1,36 @@
+{
+  "problem_id": 8608,
+  "annotation": "XiaoxiaoJin_2023-05-28",
+  "source": "GeoQA-8385",
+  "problem_level": 1,
+  "problem_text_cn": "如图,正三角形的边长为6,点P为BC边上一点,且PC=4,D为AC上一点,∠APD=60°,则CD的长为()",
+  "problem_text_en": "As shown in the figure, the edge length of an equilateral triangle is N_0, point P is a point on BC, and PC = N_1, D is a point on AC, ∠APD = N_2, then the length of CD is ()",
+  "problem_img": "8608.png",
+  "construction_cdl": [
+    "Shape(CD,DP,PC)",
+    "Shape(DA,AP,PD)",
+    "Shape(PA,AB,BP)",
+    "Collinear(ADC)",
+    "Collinear(CPB)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(PC),4)",
+    "Equal(LengthOfLine(AB),6)",
+    "Equal(MeasureOfAngle(APD),60)",
+    "EquilateralTriangle(ABC)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(CD))",
+  "problem_answer": "4/3",
+  "theorem_seqs": [
+    "line_addition",
+    "angle_addition(APD,DPC)",
+    "equilateral_triangle_property_angle",
+    "triangle_property_angle_sum",
+    "adjacent_complementary_angle(BPA,APC)",
+    "similar_triangle_judgment_aa(PAB,DPC)",
+    "similar_triangle_property_line_ratio"
+  ],
+  "notes": "解不出来啊",
+  "raw_answer": "解:∵△ABC是等边三角形,∴BC=AC=BC=6,∠C=∠B=60°,∴∠CDP+∠CPD=180°-60°=120°,∵∠APD=60°,∴∠CPD+∠APB=120°,∴∠CDP=∠APB,∵∠C=∠B,∴△CPD∽△BAP,∴\\frac{CD}{BP}=\\frac{CP}{AB},∴\\frac{CD}{6-4}=\\frac{4}{6},∴DC=\\frac{4}{3},故选:C．"
+}

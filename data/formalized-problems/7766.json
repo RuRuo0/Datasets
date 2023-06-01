@@ -1,0 +1,33 @@
+{
+  "problem_id": 7766,
+  "annotation": "YanjunGuo_2023-05-21",
+  "source": "GeoQA-5508",
+  "problem_level": 1,
+  "problem_text_cn": "如图,PA,PB分别与⊙O相切于A,B两点,∠C=55°,则∠P等于()",
+  "problem_text_en": "As shown in the figure, PA and PB are tangent to ⊙O at A and B respectively, ∠C = N_0, then ∠P is equal to ()",
+  "problem_img": "7766.png",
+  "construction_cdl": [
+    "Shape(AP,PB,OAB)",
+    "Shape(BO,OA,OAB)",
+    "Shape(AO,OB,BC,CA)",
+    "Shape(CB,OBC)",
+    "Shape(AC,OCA)",
+    "Cocircular(O,ABC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(PA,O)",
+    "IsTangentOfCircle(PB,O)",
+    "Equal(MeasureOfAngle(BCA),55)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(APB))",
+  "problem_answer": "70",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular",
+    "quadrilateral_property_angle_sum",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external"
+  ],
+  "raw_answer": "解:连接OB、OA,如图,∵PA、PB分别与圆O相切于A、B两点,∴OA⊥PA,OB⊥PB,∴∠OAP=∠OBP=90°,∴∠AOB=180°-∠P,∵∠C=55°,∴∠AOB=2∠C=110°,∴∠P=180°-110°=70°,故选:B．"
+}

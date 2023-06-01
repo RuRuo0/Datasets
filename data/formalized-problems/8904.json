@@ -1,0 +1,37 @@
+{
+  "problem_id": 8904,
+  "annotation": "DengfengYue_2023-05-28",
+  "source": "GeoQA-8773",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB是⊙O的直径,点C、D在⊙O上,∠AOC=40°,AC∥OD,则的∠BOD度数()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, points C and D are on ⊙O, ∠AOC = N_0, AC ∥ OD, then ∠BOD degree()",
+  "problem_img": "8904.png",
+  "construction_cdl": [
+    "Shape(CO,OB,OBC)",
+    "Shape(AO,OC,CA)",
+    "Shape(AC,OCA)",
+    "Shape(DO,OA,OAD)",
+    "Shape(BO,OD,ODB)",
+    "Collinear(AOB)",
+    "Cocircular(O,CADB)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)",
+    "ParallelBetweenLine(AC,DO)",
+    "Equal(MeasureOfAngle(AOC),40)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(BOD))",
+  "problem_answer": "110",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "radius_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum",
+    "parallel_property_alternate_interior_angle",
+    "adjacent_complementary_angle"
+  ],
+  "raw_answer": "解:∵OA=OC,∴∠OAC=∠AOC=40°,∵AC∥OD,∴∠AOD=∠OAC=40°,∴∠BOD=180°-∠AOD=140°,故选:A．"
+}

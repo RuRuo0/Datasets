@@ -1,0 +1,42 @@
+{
+  "problem_id": 8897,
+  "annotation": "DengfengYue_2023-05-28",
+  "source": "GeoQA-8763",
+  "problem_level": 1,
+  "problem_text_cn": "如图,△ABC内接于⊙O,AB=BC,∠ABC=120°,AD为⊙O的直径,AD=6,那么AB的值为()",
+  "problem_text_en": "As shown in the figure, △ABC is inscribed in ⊙O, AB = BC, ∠ABC = N_0, AD is the diameter of ⊙O, AD = N_1, then the value of AB is ()",
+  "problem_img": "8897.png",
+  "construction_cdl": [
+    "Shape(AD,ODA)",
+    "Shape(DA,AE,ED)",
+    "Shape(DE,EC,OCD)",
+    "Shape(CE,EB,BC)",
+    "Shape(EA,AB,BE)",
+    "Shape(BA,OAB)",
+    "Shape(CB,OBC)",
+    "Collinear(AOD)",
+    "Collinear(AEC)",
+    "Collinear(DEB)",
+    "Cocircular(O,ABCD)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AD,O)",
+    "Equal(LengthOfLine(AB),LengthOfLine(BC))",
+    "Equal(LengthOfLine(AD),6)",
+    "Equal(MeasureOfAngle(ABC),120)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AB))",
+  "problem_answer": "3",
+  "theorem_seqs": [
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum",
+    "arc_property_circumference_angle_external",
+    "arc_property_circumference_angle_external",
+    "diameter_of_circle_property_right_angle",
+    "sine_theorem"
+  ],
+  "raw_answer": "解:∵AB=BC,∴∠BAC=∠C,∵∠ABC=120°,∴∠BAC=∠C=30°,∵AD为直径,AD=6,∴∠ABD=90°,∵∠D=30°,∴AB=\\frac{1}{2}AD=3．故选:A．"
+}

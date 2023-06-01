@@ -1,0 +1,34 @@
+{
+  "problem_id": 8619,
+  "annotation": "XiaoxiaoJin_2023-05-28",
+  "source": "GeoQA-8406",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在Rt△ABC中,AD⊥BC于D,DE⊥AB于E,若AD=3,DE=2,则AC=()",
+  "problem_text_en": "As shown in the figure, in Rt△ABC, AD ⊥ BC at D, DE ⊥ AB at E, if AD = N_0, DE = N_1, then AC = ()",
+  "problem_img": "8619.png",
+  "construction_cdl": [
+    "Shape(AE,ED,DA)",
+    "Shape(EB,BD,DE)",
+    "Shape(AD,DC,CA)",
+    "Collinear(AEB)",
+    "Collinear(BDC)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(AD),3)",
+    "Equal(LengthOfLine(DE),2)",
+    "Equal(MeasureOfAngle(ADC),90)",
+    "Equal(MeasureOfAngle(DEB),90)",
+    "Equal(MeasureOfAngle(CAB),90)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AC))",
+  "problem_answer": "9/2",
+  "theorem_seqs": [
+    "angle_addition",
+    "triangle_property_angle_sum",
+    "mirror_similar_triangle_judgment_aa(EDA,DCA)",
+    "mirror_similar_triangle_property_line_ratio(EDA,DCA)"
+  ],
+  "notes": "导角的问题好像不太行",
+  "raw_answer": "解:∵在Rt△ABC中,AD⊥BC于D,DE⊥AB于E,∴∠ADC=∠AED=∠BAC=90°,∴∠EAD+∠DAC=90°,∠C+∠CAD=90°,∴∠C=∠EAD,∴sin∠EAD=sin∠C=\\frac{DE}{AD}=\\frac{AD}{AC}∵AD=3,DE=2,∴\\frac{2}{3}=\\frac{3}{AC},解得:AC=\\frac{9}{2}．故选:D．"
+}

@@ -1,0 +1,39 @@
+{
+  "problem_id": 9745,
+  "annotation": "ZheZhu_2023-06-04",
+  "source": "GeoQA-angle-10149",
+  "problem_level": 1,
+  "problem_text_cn": "如图，在⊙O中，Q是⊙O外一点，QA、QB与⊙O相切于A、B两点，C、D是⊙O上两点，若∠Q＝110°，则∠B+∠D＝（）",
+  "problem_text_en": "",
+  "problem_img": "9745.png",
+  "construction_cdl": [
+    "Shape(AD,DC,CB,BA)",
+    "Shape(OAD,DA)",
+    "Shape(ODC,CD)",
+    "Shape(OCB,BC)",
+    "Shape(OBA,AB)",
+    "Shape(QA,OBA,BQ)",
+    "Cocircular(O,DCBA)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(QA,O)",
+    "IsTangentOfCircle(QB,O)",
+    "Equal(MeasureOfAngle(BQA),110)",
+    "Equal(Add(MeasureOfAngle(ADC),MeasureOfAngle(CBA)),180)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(Add(MeasureOfAngle(ADC),MeasureOfAngle(CBQ)))",
+  "problem_answer": "215",
+  "theorem_seqs": [
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external",
+    "arc_property_circumference_angle_internal",
+    "tangent_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum",
+    "angle_addition(CBA,ABQ)"
+  ],
+  "raw_answer": "连接AB，∵QA、QB与⊙O相切于A、B两点，∴QA＝QB，∵∠Q＝110，∴∠ABQ＝∠QAB＝35°，∵C、D是⊙O上两点，∴∠ABC+∠D＝180°，∴∠QBC+∠D＝180°+35°＝215°．故选：B．"
+}

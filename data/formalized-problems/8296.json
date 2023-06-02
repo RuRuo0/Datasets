@@ -1,0 +1,30 @@
+{
+  "problem_id": 8296,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-7428",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在△ABC中,D,E分别是AB和AC上的点,且DE∥BC,\\frac{AD}{BD}=\\frac{3}{2},DE=6,则BC的长为()",
+  "problem_text_en": "As shown in the figure, in △ABC, D and E are vertices on AB and AC respectively, and DE ∥ BC, \\frac{AD}{BD}=\\frac{N_0}{N_1},DE=N_2, then the length of BC is ()",
+  "problem_img": "8296.png",
+  "construction_cdl": [
+    "Shape(AD,DE,EA)",
+    "Shape(DB,BC,CE,ED)",
+    "Collinear(ADB)",
+    "Collinear(AEC)"
+  ],
+  "text_cdl": [
+    "ParallelBetweenLine(DE,BC)",
+    "Equal(Div(LengthOfLine(AD),LengthOfLine(BD)),3/2)",
+    "Equal(LengthOfLine(DE),6)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(BC))",
+  "problem_answer": "10",
+  "theorem_seqs": [
+    "parallel_property_corresponding_angle",
+    "similar_triangle_judgment_aa(ADE,ABC)",
+    "line_addition",
+    "similar_triangle_property_line_ratio"
+  ],
+  "raw_answer": "解:∵DE∥BC,∴△ADE∽△ABC,∴\\frac{DE}{BC}=\\frac{AD}{AB},又∵\\frac{AD}{BD}=\\frac{3}{2},DE=6,∴\\frac{6}{BC}=\\frac{3}{5},∴BC=10,故选:C．"
+}

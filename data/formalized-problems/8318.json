@@ -1,0 +1,30 @@
+{
+  "problem_id": 8318,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-7477",
+  "problem_level": 1,
+  "problem_text_cn": "如图,△ABC中,点D,E分别在边AB,AC上,∠AED=∠B,若AD=2,AE=3,CE=1,则BD的长为()",
+  "problem_text_en": "As shown in the figure, in △ABC, the vertices D and E are on the edges AB and AC respectively, ∠AED = ∠B, if AD = N_0, AE = N_1, CE = N_2, then the length of BD is ()",
+  "problem_img": "8318.png",
+  "construction_cdl": [
+    "Shape(AD,DE,EA)",
+    "Shape(DB,BC,CE,ED)",
+    "Collinear(ADB)",
+    "Collinear(AEC)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(DEA),MeasureOfAngle(DBC))",
+    "Equal(LengthOfLine(AD),2)",
+    "Equal(LengthOfLine(AE),3)",
+    "Equal(LengthOfLine(CE),1)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(BD))",
+  "problem_answer": "4",
+  "theorem_seqs": [
+    "line_addition",
+    "mirror_similar_triangle_judgment_aa",
+    "mirror_similar_triangle_property_line_ratio"
+  ],
+  "raw_answer": "解:AC=AE+CE=3+1=4,∵∠A=∠A,∠AED=∠B,∴△AED∽△ABC,∴\\frac{AD}{AC}=\\frac{AE}{AB},∴\\frac{2}{4}=\\frac{3}{AB},∴AB=6,∴BD=6-2=4,故选:B．"
+}

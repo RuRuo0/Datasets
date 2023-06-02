@@ -1,0 +1,35 @@
+{
+  "problem_id": 9467,
+  "annotation": "qikehuang_2023-05-28",
+  "source": "GeoQA-9724",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB是⊙O的弦,点C在圆上,已知∠OBA=40°,则∠C=()",
+  "problem_text_en": "As shown in the figure, AB is the chord of O, and point C is on the circle. It is known that ∠OBA = N_0, then ∠C = ()",
+  "problem_img": "9467.png",
+  "construction_cdl": [
+    "Shape(OM,MC,OCA,AO)",
+    "Shape(OA,AM,MO)",
+    "Shape(CM,MB,BC)",
+    "Shape(MA,AB,BM)",
+    "Shape(BA,OAB)",
+    "Shape(CB,OBC)",
+    "Collinear(AMC)",
+    "Collinear(OMB)",
+    "Cocircular(O,ABC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(ABO),40)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(BCA))",
+  "problem_answer": "50",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "sine_theorem(OAB)",
+    "triangle_property_angle_sum",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external"
+  ],
+  "raw_answer": "解:∵OA=OB,∴∠OAB=∠OBA=40°,∴∠AOB=180°-40°-40°=100°．∴∠C=\\frac{1}{2}∠AOB=\\frac{1}{2}×100°=50°．故选:B．"
+}

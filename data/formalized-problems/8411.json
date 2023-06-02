@@ -1,0 +1,33 @@
+{
+  "problem_id": 8411,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-7723",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在△ABC中,∠B+∠CDE=∠C+∠BED,AE=2,AD=3,CD=1,则BE等于()",
+  "problem_text_en": "As shown in the figure, in △ABC, ∠B + ∠CDE = ∠C + ∠BED, AE = N_0, AD = N_1, CD = N_2, then BE is equal to ()",
+  "problem_img": "8411.png",
+  "construction_cdl": [
+    "Shape(AE,ED,DA)",
+    "Shape(EB,BC,CD,DE)",
+    "Collinear(AEB)",
+    "Collinear(ADC)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(AE),2)",
+    "Equal(LengthOfLine(AD),3)",
+    "Equal(LengthOfLine(CD),1)",
+    "Equal(Add(MeasureOfAngle(ABC),MeasureOfAngle(CDE)),Add(MeasureOfAngle(BCA),MeasureOfAngle(DEB)))"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(BE))",
+  "problem_answer": "4",
+  "theorem_seqs": [
+    "quadrilateral_property_angle_sum",
+    "triangle_property_angle_sum",
+    "adjacent_complementary_angle",
+    "mirror_similar_triangle_judgment_aa",
+    "mirror_similar_triangle_property_line_ratio",
+    "line_addition"
+  ],
+  "raw_answer": "解:∵∠B+∠CDE=∠C+∠BED,∴∠B+∠CDE=∠C+∠BED=180°,又∵∠ADE+∠CDE=∠AED+∠BED=180°,∴∠ADE=∠B,∠AED=∠C,∴△AED∽△ACB,∴\\frac{AE}{AC}=\\frac{AG}{AB},∴\\frac{2}{4}=\\frac{3}{AB},∴AB=6,∴BE=AB-AE=6-2=4．故选:D．"
+}

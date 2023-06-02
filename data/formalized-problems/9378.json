@@ -1,0 +1,45 @@
+{
+  "problem_id": 9378,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-9600",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB是⊙O的直径,点C在⊙O上,连接AC、BC,点D是BA延长线上一点,且AC=AD,若∠B=30°,AB=2,则CD的长是()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, point C is on ⊙O, connect AC and BC, point D is a point on the extended line line of BA, and AC = AD, if ∠B = N_0, AB = N_1, then the length of CD is()",
+  "problem_img": "9378.png",
+  "construction_cdl": [
+    "Shape(BC,OCB)",
+    "Shape(AB,OBA)",
+    "Shape(CA,OAC)",
+    "Shape(BO,OC,CB)",
+    "Shape(CO,OA,AC)",
+    "Shape(AD,DC,OAC)",
+    "Collinear(BOAD)",
+    "Cocircular(O,ACB)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),2)",
+    "Equal(LengthOfLine(AC),LengthOfLine(AD))",
+    "Equal(MeasureOfAngle(CBA),30)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(CD))",
+  "problem_answer": "√3",
+  "theorem_seqs": [
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external",
+    "diameter_of_circle_property_right_angle",
+    "triangle_property_angle_sum(CBA)",
+    "adjacent_complementary_angle",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum(CAD)",
+    "triangle_property_angle_sum(COD)",
+    "radius_of_circle_property_length_equal",
+    "circle_property_length_of_radius_and_diameter",
+    "diameter_of_circle_property_length_equal",
+    "sine_theorem"
+  ],
+  "raw_answer": "解:连接OC,∵AB是⊙O的直径,∴∠ACB=90°．∵∠B=30°,∴∠BAC=60°．∵AC=AD,∴∠D=∠ACD=30°．∵OC=OB,∠B=30°,∴∠DOC=60°,∴∠OCD=90°．∵AB=2,∴OC=1,∴CD=\\frac{OC}{tan30{^°}}=\\frac{1}{\\frac{√{3}}{3}}=√{3}．故选:D．"
+}

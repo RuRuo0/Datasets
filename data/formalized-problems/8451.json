@@ -1,0 +1,33 @@
+{
+  "problem_id": 8451,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-7821",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在△ABC中,D、E分别是AB、AC的中点,若△ABC的面积为S_{\\bigtriangleupABC}=36cm²,则△ADE的面积S~△ADE~为()",
+  "problem_text_en": "As shown in the figure, in △ABC, D and E are the midpoints of AB and AC respectively. If the area  S~△ABC~ of △ABC = N_0 ^ 2, then the area S~△ADE~ of △ADE is ()",
+  "problem_img": "8451.png",
+  "construction_cdl": [
+    "Shape(AD,DE,EA)",
+    "Shape(DB,BC,CE,ED)",
+    "Collinear(ADB)",
+    "Collinear(AEC)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(AD),LengthOfLine(BD))",
+    "Equal(LengthOfLine(AE),LengthOfLine(EC))",
+    "Equal(AreaOfTriangle(ABC),36)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(AreaOfTriangle(ADE))",
+  "problem_answer": "9",
+  "theorem_seqs": [
+    "midsegment_of_triangle_judgment_midpoint",
+    "midsegment_of_triangle_property_parallel",
+    "line_addition",
+    "parallel_property_corresponding_angle",
+    "similar_triangle_judgment_aa",
+    "similar_triangle_property_line_ratio",
+    "similar_triangle_property_area_square_ratio"
+  ],
+  "raw_answer": "解:∵D、E分别是AB、AC的中点,∴DE\\overset{\\parallel}{=}\\frac{1}{2}BC,∴△ADE∽△ABC,∴\\frac{AD}{AB}=\\frac{DE}{BC}=\\frac{1}{2},∴\\frac{S_{\\bigtriangleupADE}}{S_{\\bigtriangleupABC}}=\\frac{1}{4},∵△ABC的面积为S_{\\bigtriangleupABC}=36cm²,∴△ADE的面积S~△ADE~=9cm²．故选:B．"
+}

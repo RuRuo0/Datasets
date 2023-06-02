@@ -1,0 +1,40 @@
+{
+  "problem_id": 8417,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-7739",
+  "problem_level": 1,
+  "problem_text_cn": "如图,△AOB中,∠AOB=120°,BD,AC是两条高,连接CD,若AB=4,则DC的长为()",
+  "problem_text_en": "As shown in the figure, in △AOB, ∠AOB = N_0, BD, AC are two heights. Connect CD, if AB = N_1, then the length of DC is ()",
+  "problem_img": "8417.png",
+  "construction_cdl": [
+    "Shape(DA,AO,OD)",
+    "Shape(DO,OC,CD)",
+    "Shape(OA,AB,BO)",
+    "Shape(CO,OB,BC)",
+    "Shape(MD,DC,CM)",
+    "Collinear(DOB)",
+    "Collinear(AOC)",
+    "Collinear(ADM)",
+    "Collinear(MCB)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),4)",
+    "Equal(MeasureOfAngle(BOA),120)",
+    "PerpendicularBetweenLine(BD,AD)",
+    "PerpendicularBetweenLine(BC,AC)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(DC))",
+  "problem_answer": "2",
+  "theorem_seqs": [
+    "round_angle",
+    "vertical_angle",
+    "triangle_property_angle_sum",
+    "mirror_similar_triangle_judgment_aa",
+    "mirror_similar_triangle_property_line_ratio",
+    "right_triangle_judgment_angle(MDB)",
+    "right_triangle_property_length_of_median"
+  ],
+  "notes": "太难了，标不出来",
+  "raw_answer": "解:如图延长AD、BC交于点M．∵∠AOB=120°,∴∠DOA=∠COB=60°,∵AD⊥BD,AC⊥BC,∴∠ADM=∠MDB=∠ACB=∠ACM=90°,∴∠MAC=∠MBD=30°,∴△MAC∽△MBD,∴\\frac{MA}{MB}=\\frac{MC}{MD},∴\\frac{MA}{MC}=\\frac{MB}{MD},∠M=∠M,∴△MDC∽△MBA,∴\\frac{DC}{AB}=\\frac{MD}{MB},在RT△MBD中,∵∠MBD=30°,∴MB=2MD,∵AB=4,∴\\frac{DC}{4}=\\frac{1}{2},∴DC=2．故选:B．"
+}

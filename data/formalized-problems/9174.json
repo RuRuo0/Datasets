@@ -1,0 +1,36 @@
+{
+  "problem_id": 9174,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-9304",
+  "problem_level": 1,
+  "problem_text_cn": "如图,▱ABCD中,对角线AC、BD交于点O,点E是BC的中点．若OE=4cm,则AB的长为()",
+  "problem_text_en": "As shown in the figure, in ▱ABCD, the diagonals AC and BD intersect at point O, and point E is the midpoint of BC. If OE = N_0, then the length of AB is ()",
+  "problem_img": "9174.png",
+  "construction_cdl": [
+    "Shape(AB,BO,OA)",
+    "Shape(AO,OD,DA)",
+    "Shape(DO,OC,CD)",
+    "Shape(OB,BE,EO)",
+    "Shape(OE,EC,CO)",
+    "Collinear(AOC)",
+    "Collinear(BOD)",
+    "Collinear(BEC)"
+  ],
+  "text_cdl": [
+    "IsMidpointOfLine(E,BC)",
+    "Parallelogram(ABCD)",
+    "Equal(LengthOfLine(OE),4)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AB))",
+  "problem_answer": "8",
+  "theorem_seqs": [
+    "parallelogram_property_diagonal_bisection(ABCD,O)",
+    "line_addition(AO,OC)",
+    "line_addition(BE,EC)",
+    "similar_triangle_judgment_sas(CAB,COE)",
+    "similar_triangle_property_line_ratio(BCA,ECO)",
+    "similar_triangle_property_line_ratio(CAB,COE)"
+  ],
+  "raw_answer": "解:∵四边形ABCD是平行四边形,∴OA=OC；又∵点E是BC的中点,∴OE是△ABC的中位线,则根据三角形的中位线定理可得:AB=2OE=2×4=8(cm)．故选:B．"
+}

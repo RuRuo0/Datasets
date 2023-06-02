@@ -1,0 +1,30 @@
+{
+  "problem_id": 9354,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-9562",
+  "problem_level": 1,
+  "problem_text_cn": "如图,等腰三角形ABC中,AB=AC,BD平分∠ABC,∠A=36°,则∠BDC的度数为()",
+  "problem_text_en": "As shown in the figure, in the isosceles triangle ABC, AB = AC, BD bisects ∠ABC, ∠A = N_0, then the degree of ∠BDC is ()",
+  "problem_img": "9354.png",
+  "construction_cdl": [
+    "Shape(AB,BD,DA)",
+    "Shape(DB,BC,CD)",
+    "Collinear(ADC)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),LengthOfLine(AC))",
+    "Equal(MeasureOfAngle(CAB),36)",
+    "Equal(MeasureOfAngle(ABD),MeasureOfAngle(DBC))"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(CDB))",
+  "problem_answer": "72",
+  "theorem_seqs": [
+    "angle_addition(ABD,DBC)",
+    "triangle_property_angle_sum(ABC)",
+    "isosceles_triangle_judgment_line_equal(ABC)",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum(DBC)"
+  ],
+  "raw_answer": "解:∵AB=AC,CD平分∠ACB,∠A=36°,∴∠B=(180°-36°)÷2=72°,∠DCB=36°．∴∠BDC=72°．故选:D．"
+}

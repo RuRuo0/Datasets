@@ -1,0 +1,32 @@
+{
+  "problem_id": 9358,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-9569",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在▱ABCD中,∠ABC的平分线交AD于E,若AE=2,AE:ED=2:1,则▱ABCD的周长是()",
+  "problem_text_en": "As shown in the figure, in ▱ABCD, the bisector of ∠ABC crosses AD at E, if AE = N_0, AE:ED = N_1:N_2, then the perimeter of ▱ABCD is ()",
+  "problem_img": "9358.png",
+  "construction_cdl": [
+    "Shape(AB,BE,EA)",
+    "Shape(EB,BC,CD,DE)",
+    "Collinear(AED)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(AE),2)",
+    "Equal(Div(LengthOfLine(AE),LengthOfLine(ED)),2)",
+    "IsBisectorOfAngle(BE,ABC)",
+    "Parallelogram(ABCD)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(PerimeterOfQuadrilateral(ABCD))",
+  "problem_answer": "10",
+  "theorem_seqs": [
+    "parallel_property_collinear_extend",
+    "parallel_property_alternate_interior_angle",
+    "isosceles_triangle_judgment_angle_equal(ABE)",
+    "line_addition",
+    "parallelogram_property_opposite_line_equal",
+    "quadrilateral_perimeter_formula"
+  ],
+  "raw_answer": "解:∵四边形ABCD是平行四边形,∴AD∥BC,AD=BC,AB=CD,∴∠AEB=∠CBE,∵BE是∠ABC的平分线,∴∠ABE=∠CBE,∴∠ABE=∠AEB,∴AE=AB=2,∵AE:ED=2:1,∴ED=1,∴AD=AE+ED=3,∴▱ABCD的周长是10．故选:A．"
+}

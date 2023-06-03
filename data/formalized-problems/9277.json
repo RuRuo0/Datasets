@@ -1,0 +1,43 @@
+{
+  "problem_id": 9277,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-9439",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在▱ABCD中,EF过对角线的交点O,AB=4,AD=5,OF=2,则四边形BAEF的周长为()",
+  "problem_text_en": "As shown in the figure, in ▱ABCD, EF crosses the diagonal intersection O, AB = N_0, AD = N_1, OF = N_2, then the perimeter of the quadrilateral BAEF is ()",
+  "problem_img": "9277.png",
+  "construction_cdl": [
+    "Shape(AO,OE,EA)",
+    "Shape(AB,BO,OA)",
+    "Shape(EO,OD,DE)",
+    "Shape(OB,BF,FO)",
+    "Shape(OF,FC,CO)",
+    "Shape(OC,CD,DO)",
+    "Collinear(AOC)",
+    "Collinear(EOF)",
+    "Collinear(BOD)",
+    "Collinear(AED)",
+    "Collinear(BFC)"
+  ],
+  "text_cdl": [
+    "Parallelogram(ABCD)",
+    "Equal(LengthOfLine(AB),4)",
+    "Equal(LengthOfLine(AD),5)",
+    "Equal(LengthOfLine(OF),2)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(PerimeterOfQuadrilateral(ABFE))",
+  "problem_answer": "13",
+  "theorem_seqs": [
+    "parallel_property_collinear_extend",
+    "parallel_property_alternate_interior_angle",
+    "vertical_angle(AOE,COF)",
+    "parallelogram_property_diagonal_bisection",
+    "congruent_triangle_judgment_aas(EAO,FCO)",
+    "congruent_triangle_property_line_equal",
+    "parallelogram_property_opposite_line_equal",
+    "line_addition",
+    "quadrilateral_perimeter_formula(ABFE)"
+  ],
+  "raw_answer": "解:在▱ABCD中,AD∥BC,OB=OD,∴∠EDO=∠FBO,在△BOF和△DOE中,≥ft\\{\\begin{matrix}∠EDO=∠FBO\\\\OB=OD\\\\∠EOD=∠FOB(对顶角相等)\\\\\\end{matrix}\\right.\\,∴△BOF≌△DOE(ASA),∴OE=OF,BF=DE,四边形BAEF的周长=AB+BF+EF+AE=AB+DE+2OF+AE=AB+AD+2OF,∵AB=4,AD=5,OF=2,∴四边形BAEF的周长=4+5+2×2=13．故选:C．"
+}

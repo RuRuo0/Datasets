@@ -1,0 +1,35 @@
+{
+  "problem_id": 9256,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-9412",
+  "problem_level": 1,
+  "problem_text_cn": "如图,等腰△ABC中,AB=AC,▱AFDE的顶点D、E、F分别在边BC、AC、AB上,如果▱AFDE的周长为30,那么等腰△ABC的腰长为()",
+  "problem_text_en": "As shown in the figure, in the isosceles △ABC, AB = AC, the vertices D, E, and F of ▱AFDE are on the sides BC, AC, and AB, respectively. If the perimeter of ▱AFDE is N_0, then the waist length of isosceles △ABC is ()",
+  "problem_img": "9256.png",
+  "construction_cdl": [
+    "Shape(AF,FD,DE,EA)",
+    "Shape(FB,BD,DF)",
+    "Shape(ED,DC,CE)",
+    "Collinear(AFB)",
+    "Collinear(AEC)",
+    "Collinear(BDC)"
+  ],
+  "text_cdl": [
+    "IsoscelesTriangle(ABC)",
+    "Parallelogram(AFDE)",
+    "Equal(PerimeterOfQuadrilateral(AFDE),30)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AB))",
+  "problem_answer": "15",
+  "theorem_seqs": [
+    "isosceles_triangle_property_angle_equal",
+    "parallel_property_collinear_extend",
+    "parallel_property_corresponding_angle",
+    "isosceles_triangle_judgment_angle_equal(EDC)",
+    "parallelogram_property_opposite_line_equal",
+    "quadrilateral_perimeter_formula",
+    "line_addition"
+  ],
+  "raw_answer": "解:∵AB=AC,∴∠B=∠C,∵DE∥AB,∴∠B=∠EDC,∴DE=EC,∵四边形AEDF是平行四边形,∴DE=AF,∴AF=CE,∴▱AEDF的周长=2(AF+AE)=2AC=30,∴AB=AC=15,故选:D．"
+}

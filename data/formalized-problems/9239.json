@@ -1,0 +1,33 @@
+{
+  "problem_id": 9239,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-9389",
+  "problem_level": 1,
+  "problem_text_cn": "如图,平行四边形ABCD中,AE、DF分别是∠BAD、∠ADC的角平分线,相交于点G,交BC边于E、F点,已知AD=8,EF=2,则平行四边形AB长为()",
+  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, AE and DF are the angular bisectors of ∠BAD and ∠ADC respectively, which intersect at point G and BC at points E and F. Given that AD = N_0 and EF = N_1, then the parallelogram AB is long as ()",
+  "problem_img": "9239.png",
+  "construction_cdl": [
+    "Shape(AB,BF,FG,GA)",
+    "Shape(GF,FE,EG)",
+    "Shape(AG,GD,DA)",
+    "Shape(DG,GE,EC,CD)",
+    "Collinear(AGE)",
+    "Collinear(FGD)",
+    "Collinear(DFEC)"
+  ],
+  "text_cdl": [
+    "Parallelogram(ABCD)",
+    "IsBisectorOfAngle(AG,DAB)",
+    "IsBisectorOfAngle(DG,CDA)",
+    "Equal(LengthOfLine(AD),8)",
+    "Equal(LengthOfLine(FE),2)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AB))",
+  "problem_answer": "5",
+  "theorem_seqs": [
+    "parallel_property_collinear_extend",
+    "parallel_property_alternate_interior_angle"
+  ],
+  "raw_answer": "解:∵AE、DF分别是∠BAD、∠ADC的角平分线,∴∠BAE=∠DAE,∠CDF=∠ADF,∵四边形ABCD是平行四边形,∴AD∥BC,AB=CD,∴∠DAE=∠BEA,∠ADF=∠CFD,∴∠BAE=∠BEA,∠CFD=∠CDF,∴BE=BA=CF=CD,又∵AD=8,EF=2,∴BF=\\frac{1}{2}(BC-EF)=3,∴BE=BF+EF=5,∴AB=5．故选:C．"
+}

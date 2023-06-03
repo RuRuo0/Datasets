@@ -1,0 +1,45 @@
+{
+  "problem_id": 8768,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-8601",
+  "problem_level": 1,
+  "problem_text_cn": "如图,半径为5的⊙A中,弦BC,ED所对的圆心角分别是∠BAC,∠EAD．已知DE=6,∠BAC+∠EAD=180°,则弦BC的弦心距等于()",
+  "problem_text_en": "As shown in the figure, in ⊙A with radius N_0, the central angles of chord BC and ED are ∠BAC and ∠EAD respectively. Knowing that DE = N_1, ∠BAC + ∠EAD = N_2, then distance from the chord BC to the centre is equal to ()",
+  "problem_img": "8768.png",
+  "construction_cdl": [
+    "Shape(ACB,BH,HC)",
+    "Shape(AC,CH,HA)",
+    "Shape(AH,HB,BA)",
+    "Shape(ADC,CA,AD)",
+    "Shape(AED,DE)",
+    "Shape(DA,AE,ED)",
+    "Shape(AFE,EA,AF)",
+    "Shape(FA,AB,BF)",
+    "Shape(ABF,FB)",
+    "Cocircular(A,CBFED)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(A,A)"
+  ],
+  "image_cdl": [
+    "Equal(180,Add(MeasureOfAngle(BAC),MeasureOfAngle(DAE)))",
+    "Equal(LengthOfLine(DE),6)",
+    "PerpendicularBetweenLine(AH,BH)"
+  ],
+  "goal_cdl": "Value(LengthOfLine(AH))",
+  "problem_answer": "3",
+  "theorem_seqs": [
+    "adjacent_complementary_angle",
+    "angle_addition",
+    "arc_property_center_angle",
+    "congruent_arc_judgment_measure_equal",
+    "congruent_arc_property_chord_equal",
+    "diameter_of_circle_property_right_angle",
+    "circle_property_chord_perpendicular_bisect_chord",
+    "radius_of_circle_property_length_equal",
+    "midsegment_of_triangle_judgment_midpoint",
+    "midsegment_of_triangle_property_length"
+  ],
+  "notes": "此题复杂，且没有【弦心距】的相关定义",
+  "raw_answer": "解:作AH⊥BC于H,作直径CF,连结BF,如图,∵∠BAC+∠EAD=180°,而∠BAC+∠BAF=180°,∴∠DAE=∠BAF,∴⁀{DE}=⁀{BF},∴DE=BF=6,∵AH⊥BC,∴CH=BH,而CA=AF,∴AH为△CBF的中位线,∴AH=\\frac{1}{2}BF=3．故选:D．"
+}

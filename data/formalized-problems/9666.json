@@ -1,0 +1,40 @@
+{
+  "problem_id": 9666,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-angle-10070",
+  "problem_level": 1,
+  "problem_text_cn": "如图，已知P是三角形ABC内一点，∠BPC＝120°，∠A＝50°，BD是∠ABP的平分线，CE是∠ACP的平分线，BD与CE交于点F，则∠BFC等于（）",
+  "problem_text_en": "",
+  "problem_img": "9666.png",
+  "construction_cdl": [
+    "Shape(AE,EF,FD,DA)",
+    "Shape(EB,BF,FE)",
+    "Shape(DF,FC,CD)",
+    "Shape(CF,FB,BP,PC)",
+    "Shape(BC,CP,PB)",
+    "Collinear(AEB)",
+    "Collinear(ADC)",
+    "Collinear(EFC)",
+    "Collinear(DFB)"
+  ],
+  "text_cdl": [
+    "IsBisectorOfAngle(BD,ABP)",
+    "IsBisectorOfAngle(CE,PCA)",
+    "Equal(MeasureOfAngle(CPB),120)",
+    "Equal(MeasureOfAngle(CAB),50)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(CFB))",
+  "problem_answer": "85",
+  "theorem_seqs": [
+    "triangle_property_angle_sum",
+    "triangle_property_angle_sum",
+    "angle_addition(ABP,PBC)",
+    "angle_addition(BCP,PCA)",
+    "angle_addition(EBF,FBP)",
+    "angle_addition(PCF,FCD)",
+    "angle_addition(FBP,PBC)",
+    "angle_addition(BCP,PCF)"
+  ],
+  "raw_answer": "∵∠A＝50°，∴∠ABC+∠ACB＝130°，∵∠BPC＝120°，∴∠PBC+∠PCB＝180°﹣∠BPC＝60°，∴∠ABP+∠ACP＝130°﹣60°＝70°，∵BD是∠ABP的平分线，CE是∠ACP的平分线，∴∠FBP+∠FCP＝35°，∴∠FBC+∠FCB＝∠PBC+∠PCB+∠FBP+∠FCP＝60°+35°＝95°，∴∠BFC＝180°﹣（∠FBC+∠FCB）＝180°﹣95°＝85°．故选：C．"
+}

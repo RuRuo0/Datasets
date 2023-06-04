@@ -1,0 +1,33 @@
+{
+  "problem_id": 8239,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-7282",
+  "problem_level": 1,
+  "problem_text_cn": "如图,△ABC中,AB=15,AC=12,D为BC上的一点,若四边形AEDF是菱形,则菱形的边长为()",
+  "problem_text_en": "As shown in the figure, in △ABC, AB = N_0, AC = N_1, D is a point on BC, if the quadrilateral AEDF is a rhombus, the edge length of the rhombus is ()",
+  "problem_img": "8239.png",
+  "construction_cdl": [
+    "Shape(BD,DE,EB)",
+    "Shape(ED,DF,FA,AE)",
+    "Shape(FD,DC,CF)",
+    "Collinear(BEA)",
+    "Collinear(BDC)",
+    "Collinear(AFC)"
+  ],
+  "text_cdl": [
+    "Rhombus(AEDF)",
+    "Equal(LengthOfLine(AB),15)",
+    "Equal(LengthOfLine(AC),12)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AE))",
+  "problem_answer": "20/3",
+  "theorem_seqs": [
+    "parallel_property_collinear_extend",
+    "parallel_property_corresponding_angle",
+    "line_addition",
+    "similar_triangle_judgment_aa",
+    "similar_triangle_property_line_ratio"
+  ],
+  "raw_answer": "解:∵四边形AEDF为菱形,∴DF∥AB,∴△CFD∽△CAB,∴\\frac{DF}{AB}=\\frac{CF}{AC},设菱形的边长为x,则\\frac{x}{15}=\\frac{12-x}{12},解得:x=\\frac{20}{3}．故选:C．"
+}

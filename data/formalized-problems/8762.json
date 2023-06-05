@@ -1,0 +1,44 @@
+{
+  "problem_id": 8762,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-8592",
+  "problem_level": 1,
+  "problem_text_cn": "如图,已知AB是⊙O的直径,C、D是⊙O上的两点,∠BAC=20°,⁀{AD}=⁀{DC},则∠DAC的度数是()",
+  "problem_text_en": "As shown in the figure, it is known that AB is the diameter of ⊙O, C and D are two vertices on ⊙O, ∠BAC = N_0, ⁀AD = ⁀DC, then the degree of ∠DAC is ()",
+  "problem_img": "8762.png",
+  "construction_cdl": [
+    "Shape(ODA,AD)",
+    "Shape(ED,DA,AE)",
+    "Shape(EA,AO,OE)",
+    "Shape(CE,EO,OC)",
+    "Shape(CD,DE,EC)",
+    "Shape(OCD,DC)",
+    "Shape(OBC,CO,OB)",
+    "Shape(BO,OA,OAB)",
+    "Collinear(DEO)",
+    "Collinear(CEA)",
+    "Collinear(AOB)",
+    "Cocircular(O,BCDA)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [
+    "Equal(MeasureOfAngle(CAB),20)",
+    "IsDiameterOfCircle(AB,O)",
+    "Equal(LengthOfArc(ODA),LengthOfArc(OCD))",
+    "Equal(MeasureOfAngle(AOD),70)"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(DAC))",
+  "problem_answer": "35",
+  "theorem_seqs": [
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external",
+    "adjacent_complementary_angle",
+    "congruent_arc_judgment_length_equal",
+    "congruent_arc_property_measure_equal",
+    "arc_property_center_angle",
+    "angle_addition"
+  ],
+  "raw_answer": "解:连接OC,OD,如图所示:∵∠BAC与∠BOC所对的弧都为⁀{BC},∠BAC=20°,∴∠BOC=2∠BAC=40°,∴∠AOC=140°,又∵⁀{AD}=⁀{DC},∴∠COD=∠AOD=\\frac{1}{2}∠AOC=70°,∵∠DAC与∠DOC所对的弧都为⁀{DC},∴∠DAC=\\frac{1}{2}∠COD=35°．故选:B．"
+}

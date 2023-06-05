@@ -1,0 +1,41 @@
+{
+  "problem_id": 9240,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-9391",
+  "problem_level": 1,
+  "problem_text_cn": "如图,平行四边形ABCD的对角线交于点O,且AB≠AD,过O作OE⊥BD交BD于点E．若△CDE的周长为10,则平行四边形ABCD的周长为()",
+  "problem_text_en": "As shown in the figure, the diagonals of the parallelogram ABCD intersect at point O, and AB≠AD, pass O to make OE ⊥ BD intersect BD at point E. If the perimeter of △CDE is N_0, then the perimeter of parallelogram ABCD is ()",
+  "problem_img": "9240.png",
+  "construction_cdl": [
+    "Shape(AB,BO,OA)",
+    "Shape(AO,OD,DA)",
+    "Shape(OB,BE,EO)",
+    "Shape(OE,EF,FO)",
+    "Shape(OF,FD,DO)",
+    "Shape(FE,EC,CF)",
+    "Shape(DF,FC,CD)",
+    "Collinear(AOFC)",
+    "Collinear(BEC)",
+    "Collinear(BOD)",
+    "Collinear(EFD)"
+  ],
+  "text_cdl": [
+    "Parallelogram(ABCD)",
+    "PerpendicularBetweenLine(EO,BO)",
+    "Equal(PerimeterOfTriangle(CDE),10)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(PerimeterOfQuadrilateral(ABCD))",
+  "problem_answer": "20",
+  "theorem_seqs": [
+    "parallelogram_property_diagonal_bisection",
+    "adjacent_complementary_angle(DOE,EOB)",
+    "mirror_congruent_triangle_judgment_sas",
+    "mirror_congruent_triangle_property_line_equal",
+    "line_addition(BE,EC)",
+    "triangle_perimeter_formula",
+    "parallelogram_property_opposite_line_equal",
+    "quadrilateral_perimeter_formula"
+  ],
+  "raw_answer": "解:∵四边形ABCD是平行四边形,∴OB=OD,AB=CD,AD=BC,∵OE⊥BD,∴BE=DE,∵△CDE的周长为10,即CD+DE+EC=10,∴平行四边形ABCD的周长为:AB+BC+CD+AD=2(BC+CD)=2(BE+EC+CD)=2(DE+EC+CD)=2×10=20．故选:D．"
+}

@@ -1,0 +1,34 @@
+{
+  "problem_id": 9289,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-9453",
+  "problem_level": 1,
+  "problem_text_cn": "如图,▱ABCD的面积是8,对角线AC、DB交于点O,EF过点O分别交AD、BC于E、F,则阴影部分的面积是()",
+  "problem_text_en": "As shown in the figure, the area of ​​▱ABCD is N_0, the diagonal AC and DB intersect at point O, and EF crosses AD, BC at E, and F respectively, then the area of ​​the shaded part is ()",
+  "problem_img": "9289.png",
+  "construction_cdl": [
+    "Shape(AO,OE,EA)",
+    "Shape(EO,OD,DE)",
+    "Shape(DO,OC,CD)",
+    "Shape(OF,FC,CO)",
+    "Shape(OB,BF,FO)",
+    "Shape(OA,AB,BO)",
+    "Collinear(AOC)",
+    "Collinear(BOD)",
+    "Collinear(EOF)",
+    "Collinear(AED)",
+    "Collinear(BFC)"
+  ],
+  "text_cdl": [
+    "Parallelogram(ABCD)",
+    "Equal(AreaOfQuadrilateral(ABCD),8)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(Add(AreaOfTriangle(EOD),AreaOfTriangle(OFC)))",
+  "problem_answer": "2",
+  "theorem_seqs": [
+
+  ],
+  "raw_answer": "解:∵四边形ABCD是平行四边形,∴OB=OD,∠FBO=∠EDO．在△OFB与△OED中≥ft\\{\\begin{matrix}∠FBO=∠EDO\\\\OB=OD\\\\∠FOB=∠EOD\\\\\\end{matrix}\\right.\\,∴△FBO≌△EDO,∴S~阴影部分~=S~△BOC~=\\frac{1}{4}S~▱ABCD~=\\frac{1}{4}×8=2．故选:B．",
+  "notes": "缺面积加减定理，过"
+}

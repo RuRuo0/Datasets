@@ -1,0 +1,32 @@
+{
+  "problem_id": 8240,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-7290",
+  "problem_level": 1,
+  "problem_text_cn": "如图,菱形ABCD的边长为1,直线l过点C,交AB的延长线于M,交AD的延长线于N,则\\frac{1}{AM}+\\frac{1}{AN}的值为()",
+  "problem_text_en": "As shown in the figure, the edge length of the diamond ABCD is N_0, the straight line l passes through the point C, the extended line line of crossing AB is at M, and the extended line line of crossing AD is at N, then the value of \\frac{N_1}{AM}+\\frac{N_2}{AN} is ()",
+  "problem_img": "8240.png",
+  "construction_cdl": [
+    "Shape(ND,DC,CN)",
+    "Shape(DA,AB,BC,CD)",
+    "Shape(CB,BM,MC)",
+    "Collinear(ADN)",
+    "Collinear(MCN)",
+    "Collinear(ABM)"
+  ],
+  "text_cdl": [
+    "Rhombus(ABCD)",
+    "Equal(LengthOfLine(AB),1)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(Add(Div(1,LengthOfLine(AM)),Div(1,LengthOfLine(AN))))",
+  "problem_answer": "1",
+  "theorem_seqs": [
+    "parallel_property_collinear_extend",
+    "parallel_property_corresponding_angle",
+    "line_addition",
+    "similar_triangle_judgment_aa",
+    "similar_triangle_property_line_ratio"
+  ],
+  "raw_answer": "解:∵四边形ABCD是菱形,∴AD=DC=AB=B=1,DC∥AB,BC∥AD,∴\\frac{AD}{AN}=\\frac{CM}{MN},\\frac{AB}{AM}=\\frac{CN}{MN},∴\\frac{AD}{AN}+\\frac{AB}{AM}=\\frac{CM}{MN}+\\frac{CN}{MN}=\\frac{CM+CN}{MN}=1,∴\\frac{1}{AN}+\\frac{1}{AM}=1,即\\frac{1}{AM}+\\frac{1}{AN}=1,故选:B．"
+}

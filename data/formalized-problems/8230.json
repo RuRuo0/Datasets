@@ -1,0 +1,35 @@
+{
+  "problem_id": 8230,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-7256",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在▱ABCD中,E在AB上,CE、BD交于F,若AE:BE=2:1,且BF=2．则DF的长为()",
+  "problem_text_en": "As shown in the figure, in ▱ABCD, E is on AB, CE and BD cross F, if AE:BE=N_0:N_1, and BF = N_2. Then the length of DF is ()",
+  "problem_img": "8230.png",
+  "construction_cdl": [
+    "Shape(BF,FE,EB)",
+    "Shape(FB,BC,CF)",
+    "Shape(FC,CD,DF)",
+    "Shape(EF,FD,DA,AE)",
+    "Collinear(AEB)",
+    "Collinear(BFD)",
+    "Collinear(EFC)"
+  ],
+  "text_cdl": [
+    "Parallelogram(ABCD)",
+    "Equal(Div(LengthOfLine(AE),LengthOfLine(BE)),2)",
+    "Equal(LengthOfLine(BF),2)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(DF))",
+  "problem_answer": "6",
+  "theorem_seqs": [
+    "line_addition",
+    "parallelogram_property_opposite_line_equal",
+    "parallel_property_collinear_extend",
+    "parallel_property_alternate_interior_angle",
+    "similar_triangle_judgment_aa",
+    "similar_triangle_property_line_ratio"
+  ],
+  "raw_answer": "解:∵AE:BE=2:1,∴设AE=2a,BE=a,则AB=3a,∵四边形ABCD是平行四边形,∴AB=CD=3a,AB∥CD,∴△BEF∽△DCF,∴\\frac{BF}{DF}=\\frac{BE}{DC},∵BE=a,CD=3a,BF=2,∴\\frac{2}{DF}=\\frac{a}{3a},解得:DF=6,故选:D．"
+}

@@ -1,0 +1,36 @@
+{
+  "problem_id": 8231,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "notes": "解不出来",
+  "source": "GeoQA-7257",
+  "problem_level": 1,
+  "problem_text_cn": "如图,等边△ABC的边长为6,P为BC上一点,BP=2,D为AC上一点,若∠APD=60°,则CD的长为()",
+  "problem_text_en": "As shown in the figure, the edge length of equilateral △ABC is N_0, P is a point on BC, BP = N_1, D is a point on AC, if ∠APD = N_2, the length of CD is ()",
+  "problem_img": "8231.png",
+  "construction_cdl": [
+    "Shape(AB,BP,PA)",
+    "Shape(AP,PD,DA)",
+    "Shape(PC,CD,DP)",
+    "Collinear(ADC)",
+    "Collinear(BPC)"
+  ],
+  "text_cdl": [
+    "EquilateralTriangle(ABC)",
+    "Equal(LengthOfLine(BP),2)",
+    "Equal(LengthOfLine(AB),6)",
+    "Equal(MeasureOfAngle(APD),60)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(CD))",
+  "problem_answer": "4/3",
+  "theorem_seqs": [
+    "angle_addition(APD,DPC)",
+    "adjacent_complementary_angle(BPA,APC)",
+    "triangle_property_angle_sum(ABP)",
+    "triangle_property_angle_sum(PCD)",
+    "equilateral_triangle_property_angle(ABC)",
+    "equilateral_triangle_property_angle(BCA)",
+    "similar_triangle_judgment_aa(PCD,ABP)"
+  ],
+  "raw_answer": "解:∵∠B=∠APD=∠C=60°,∠APC=∠B+∠BAP,∴∠B+∠BAP=∠APD+∠CPD,即∠BAP=∠CPD,∴△ABP∽△PCD,∴\\frac{AB}{CP}=\\frac{BP}{CD},∵AB=6,BP=2,∴\\frac{6}{4}=\\frac{2}{CD},∴CD=\\frac{4}{3},故选:B．"
+}

@@ -1,0 +1,48 @@
+{
+  "problem_id": 9831,
+  "annotation": "qcq_2023-06-06",
+  "source": "GeoQA-angle-10235",
+  "problem_level": 1,
+  "problem_text_cn": "如图，△ABC中，AB＝AC，⊙O是△ABC的外接圆，BO的延长线交边AC于点D，∠ACB＝70°，则∠ABD度数为（）",
+  "problem_text_en": "",
+  "problem_img": "9831.png",
+  "construction_cdl": [
+    "Shape(OAB,BA)",
+    "Shape(AB,BO,OA)",
+    "Shape(AO,OD,DA)",
+    "Shape(OB,BE,EO)",
+    "Shape(DO,OC,CD)",
+    "Shape(OE,EC,CO)",
+    "Shape(OBC,CB)",
+    "Shape(OCA,AD,DC)",
+    "Collinear(ADC)",
+    "Collinear(BOD)",
+    "Collinear(AOE)",
+    "Collinear(BEC)",
+    "Cocircular(O,ABC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "Equal(LengthOfLine(AB),LengthOfLine(AC))",
+    "IsCircumcenterOfTriangle(O,ABC)",
+    "Equal(MeasureOfAngle(BCA),70)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(ABD))",
+  "problem_answer": "20",
+  "theorem_seqs": [
+    "isosceles_triangle_judgment_line_equal(ABC)",
+    "isosceles_triangle_property_angle_equal(ABC)",
+    "triangle_property_angle_sum(ABC)",
+    "radius_of_circle_property_length_equal(OA,O)",
+    "radius_of_circle_property_length_equal(OC,O)",
+    "radius_of_circle_property_length_equal(OB,O)",
+    "mirror_congruent_triangle_judgment_sss(OAB,OCA)",
+    "mirror_congruent_triangle_property_angle_equal(ABO,AOC)",
+    "angle_addition(CAO,OAB)",
+    "isosceles_triangle_judgment_line_equal(OAB)",
+    "isosceles_triangle_property_angle_equal(OAB)"
+  ],
+  "raw_answer": "∵AB＝AC，∠ACB＝70°，∴∠ABC＝∠ACB＝70°，∴∠BAC＝180°﹣70°﹣70°＝40°，连接OA．∵AB＝AC，∴AB=AC，∴AO⊥BC，∴∠BAO＝∠CAO，∵OA＝OB，∴∠ABD＝∠BAO，∴∠BAC＝2∠ABD，∴∠ABD＝0.5∠BAC＝20°．解法二：如图，延长BD 交⊙O于E，连接AE，则∠E＝∠C＝70°，∵BE是⊙O的直径，∴∠BAE＝90°，∴∠ABD＝20°．故选：B．",
+  "notes": "外接圆题目直接标注了外心"
+}

@@ -1,0 +1,36 @@
+{
+  "problem_id": 9819,
+  "annotation": "qcq_2023-06-06",
+  "source": "GeoQA-angle-10223",
+  "problem_level": 1,
+  "problem_text_cn": "如图，△ABC内接于⊙O，CD是⊙O的直径，∠ABC＝20°，则∠ACD的度数是（）",
+  "problem_text_en": "",
+  "problem_img": "9819.png",
+  "construction_cdl": [
+    "Shape(OAD,DA)",
+    "Shape(ODB,BE,EO,OD)",
+    "Shape(AD,DO,OE,EA)",
+    "Shape(AE,EC,CA)",
+    "Shape(OCA,AC)",
+    "Shape(EB,BC,CE)",
+    "Shape(OBC,CB)",
+    "Collinear(DOEC)",
+    "Collinear(BEA)",
+    "Cocircular(O,ADBC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(CD,O)",
+    "Equal(MeasureOfAngle(ABC),20)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(DCA))",
+  "problem_answer": "70",
+  "theorem_seqs": [
+    "diameter_of_circle_property_right_angle(CAD,O)",
+    "arc_property_circumference_angle_external(OCA,B)",
+    "arc_property_circumference_angle_external(OCA,D)",
+    "triangle_property_angle_sum(CAD)"
+  ],
+  "raw_answer": "∵CD是⊙O的直径，∴∠CAD＝90°，∴∠ACD+∠D＝90°．∵∠ADC＝∠ABC＝20°，∴∠ACD＝90°﹣∠ADC＝70°．故选：D．"
+}

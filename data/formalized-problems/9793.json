@@ -1,0 +1,35 @@
+{
+  "problem_id": 9793,
+  "annotation": "qcq_2023-05-29",
+  "source": "GeoQA-angle-10197",
+  "problem_level": 1,
+  "problem_text_cn": "如图，直线AB与⊙O相切于点C，AO交⊙O于点D，连接CD，OC．若∠AOC＝50°，则∠ACD的度数为（）",
+  "problem_text_en": "",
+  "problem_img": "9793.png",
+  "construction_cdl": [
+    "Shape(OC,OCD,DO)",
+    "Shape(OD,DC,CO)",
+    "Shape(ODC,CD)",
+    "Shape(DA,AC,ODC)",
+    "Collinear(ADO)",
+    "Cocircular(O,DC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(AC,O)",
+    "Equal(MeasureOfAngle(COA),50)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(ACD))",
+  "problem_answer": "25",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular(AC,O,O)",
+    "radius_of_circle_property_length_equal(OD,O)",
+    "radius_of_circle_property_length_equal(OC,O)",
+    "isosceles_triangle_judgment_line_equal(ODC)",
+    "isosceles_triangle_property_angle_equal(ODC)",
+    "triangle_property_angle_sum(ODC)",
+    "angle_addition(ACD,DCO)"
+  ],
+  "raw_answer": "∵直线AB与⊙O相切于点C，∴OC⊥AB，∴∠OCA＝90°，∵OC＝OD，∴∠OCD＝∠ODC＝0.5（180°﹣∠COD）＝0.5×（180°﹣50°）＝65°，∴∠ACD＝∠OCA﹣∠OCD＝90°﹣65°＝25°．故选：B．"
+}

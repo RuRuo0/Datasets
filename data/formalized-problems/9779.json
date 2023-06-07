@@ -1,0 +1,37 @@
+{
+  "problem_id": 9779,
+  "annotation": "qcq_2023-05-25",
+  "source": "GeoQA-angle-10183",
+  "problem_level": 1,
+  "problem_text_cn": "如图，⊙O中，点C为弦AB中点，连接OC，OB，∠COB＝56°，点D是AB上任意一点，则∠ADB度数为（）",
+  "problem_text_en": "",
+  "problem_img": "9779.png",
+  "construction_cdl": [
+    "Shape(OPA,AP)",
+    "Shape(OBP,PB)",
+    "Shape(PA,AO,OB,BP)",
+    "Shape(OA,AC,CO)",
+    "Shape(OC,CB,BO)",
+    "Shape(CA,AD,DB,BC)",
+    "Shape(OAD,DA)",
+    "Shape(ODB,BD)",
+    "Collinear(ACB)",
+    "Cocircular(O,ADBP)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsMidpointOfLine(C,AB)",
+    "Equal(MeasureOfAngle(BOC),56)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(ADB))",
+  "problem_answer": "124",
+  "theorem_seqs": [
+    "circle_property_chord_perpendicular_bisect_chord(O,OC,AB)",
+    "perpendicular_bisector_property_bisector(OC,AB)",
+    "angle_addition(BOC,COA)",
+    "arc_property_center_angle(OAB,O)",
+    "arc_property_circumference_angle_internal(OAB,D)"
+  ],
+  "raw_answer": "作AB所对的圆周角∠APB，如图，∵C为AB的中点，OA＝OB，∴OC⊥AB，OC平分∠AOB，∴∠AOC＝∠BOC＝56°，∴∠APB＝0.5∠AOB＝56°，∵∠APB+∠ADB＝180°，∴∠ADB＝180°﹣56°＝124°．故选：B．"
+}

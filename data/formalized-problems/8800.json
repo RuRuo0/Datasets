@@ -1,0 +1,33 @@
+{
+  "problem_id": 8800,
+  "annotation": "RunanWang_2023-06-04",
+  "source": "GeoQA-8640",
+  "problem_level": 1,
+  "problem_text_cn": "AB为⊙O的直径,点C在⊙O上,若∠C=15°,则∠BOC=()",
+  "problem_text_en": "AB is the diameter of ⊙O, point C is on ⊙O, if ∠C = N_0, then ∠BOC = ()",
+  "problem_img": "8800.png",
+  "construction_cdl": [
+    "Shape(OCA,AC)",
+    "Shape(OC,CA,AO)",
+    "Shape(OBC,CO,OB)",
+    "Shape(OAB,BO,OA)",
+    "Collinear(AOB)",
+    "Cocircular(O,ABC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [
+    "Equal(MeasureOfAngle(OCA),15)"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(COB))",
+  "problem_answer": "30",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external"
+  ],
+  "raw_answer": "解:∵OA=OC,∴∠A=∠C=15°；∴∠BOC=2∠A=30°．故选:C．"
+}

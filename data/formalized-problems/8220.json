@@ -1,0 +1,29 @@
+{
+  "problem_id": 8220,
+  "annotation": "JiaZou_2023-05-28",
+  "notes": "高相同的三角形表示同高有问题",
+  "source": "GeoQA-7220",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在平行四边形ABCD中,E为BC的中点,AE、BD相交于点F．若△BFE的面积为3,则△ABF的面积是()",
+  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, E is the midpoint of BC, and AE and BD intersect at point F. If the area of ​​△BFE is N_0, then the area of ​​△ABF is ()",
+  "problem_img": "8220.png",
+  "construction_cdl": [
+    "Shape(AB,BF,FA)",
+    "Shape(AF,FD,DA)",
+    "Shape(BE,EF,FB)",
+    "Shape(EC,CD,DF,FE)",
+    "Collinear(BFD)",
+    "Collinear(AFE)",
+    "Collinear(BEC)"
+  ],
+  "text_cdl": [
+    "Parallelogram(ABCD)",
+    "IsMidpointOfLine(E,BC)",
+    "Equal(AreaOfTriangle(BEF),3)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(AreaOfTriangle(ABF))",
+  "problem_answer": "6",
+  "theorem_seqs": [],
+  "raw_answer": "解:∵四边形ABCD为平行四边形,∴AD∥BC,AD=BC,∴△AFD∽△EFB,∴\\frac{AF}{EF}=\\frac{AD}{BE},而E为BC的中点,∴BE=\\frac{1}{2}BC=\\frac{1}{2}AD,∴\\frac{AF}{EF}=2,∴\\frac{S_{\\bigtriangleupBAF}}{S_{\\bigtriangleupBEF}}=\\frac{AF}{EF}=2,∴S~△ABF~=2S~△BFE~=6．故选:B．"
+}

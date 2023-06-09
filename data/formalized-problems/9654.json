@@ -1,0 +1,47 @@
+{
+  "problem_id": 9654,
+  "annotation": "DengfengYue_2023-06-04",
+  "source": "GeoQA-angle-10058",
+  "problem_level": 1,
+  "problem_text_cn": "如图，在四边形ABCD中，G是对角线BD的中点，点E、F分别是BC、AD的中点，AB＝DC，∠ABD＝100°，∠BDC＝44°．则∠GEF的度数是（）",
+  "problem_text_en": "",
+  "problem_img": "9654.png",
+  "construction_cdl": [
+    "Shape(BA,AF,FH,HB)",
+    "Shape(BH,HE,EB)",
+    "Shape(EH,HG,GE)",
+    "Shape(CE,EG,GD,DC)",
+    "Shape(GH,HF,FG)",
+    "Shape(GF,FD,DG)",
+    "Collinear(BEC)",
+    "Collinear(BHGD)",
+    "Collinear(EHF)",
+    "Collinear(AFD)"
+  ],
+  "text_cdl": [
+    "IsMidpointOfLine(G,BD)",
+    "IsMidpointOfLine(E,BC)",
+    "IsMidpointOfLine(F,AD)",
+    "Equal(LengthOfLine(AB),LengthOfLine(CD))",
+    "Equal(MeasureOfAngle(DBA),100)",
+    "Equal(MeasureOfAngle(BDC),44)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(GEF))",
+  "problem_answer": "28",
+  "theorem_seqs": [
+    "midsegment_of_triangle_judgment_midpoint",
+    "midsegment_of_triangle_property_parallel",
+    "midsegment_of_triangle_property_length",
+    "parallel_property_corresponding_angle",
+    "midsegment_of_triangle_judgment_midpoint",
+    "midsegment_of_triangle_property_parallel",
+    "midsegment_of_triangle_property_length",
+    "parallel_property_ipsilateral_internal_angle",
+    "angle_addition(FGH,HGE)",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum(EFG)"
+  ],
+  "raw_answer": "∵点E、G分别是BC、BD的中点，∴EG∥DC，EG＝0.5DC，∴∠BGE＝∠BDC＝44°，∵点F、G分别是AD、BD的中点，∴FG∥AB，FG＝0.5AB，∴∠BGF＝180°﹣∠ABD＝80°，∴∠EGF＝80°+44°＝124°，∵AB＝DC，∴GE＝GF，∴∠GEF＝∠GFE＝0.5（180°﹣124°）＝28°．故选：C．"
+}

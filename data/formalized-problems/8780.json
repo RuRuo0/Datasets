@@ -1,0 +1,42 @@
+{
+  "problem_id": 8780,
+  "annotation": "RunanWang_2023-06-04",
+  "source": "GeoQA-8614",
+  "problem_level": 1,
+  "problem_text_cn": "如图,△ABC内接于⊙O,BA=BC,∠ACB=25°,AD为⊙O的直径,则∠DAC的度数是()",
+  "problem_text_en": "As shown in the figure, △ABC is internally connected to ⊙O, BA = BC, ∠ACB = N_0, AD is the diameter of ⊙O, then the degree of ∠DAC is ()",
+  "problem_img": "8780.png",
+  "construction_cdl": [
+    "Shape(ODA,AO,OD)",
+    "Shape(OAB,BA)",
+    "Shape(EA,AB,BE)",
+    "Shape(DO,OA,AE,ED)",
+    "Shape(EB,BC,CE)",
+    "Shape(OBC,CB)",
+    "Shape(OCD,DE,EC)",
+    "Collinear(AOD)",
+    "Collinear(AEC)",
+    "Collinear(DEB)",
+    "Cocircular(O,ABCD)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [
+    "Equal(LengthOfLine(BC),LengthOfLine(BA))",
+    "Equal(MeasureOfAngle(BCA),25)",
+    "IsDiameterOfCircle(AD,O)"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(DAC))",
+  "problem_answer": "40",
+  "theorem_seqs": [
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "diameter_of_circle_property_right_angle",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external",
+    "triangle_property_angle_sum",
+    "angle_addition"
+  ],
+  "raw_answer": "解:∵BA=BC,∴∠BAC=∠ACB=25°,∵AD为⊙O的直径,∴∠ABD=90°,而∠D=∠ACB=25°,∴∠BAD=90°-∠D=65°,∴∠DAC=∠BAD-∠BAC=65°-25°=40°．故选:C．"
+}

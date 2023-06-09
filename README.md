@@ -7,7 +7,30 @@ Formal representation and solving for Euclidean plane geometry problems from SAT
 **FormalGeo** is an extended version of **[GeoMechanical](https://github.com/BitSecret/GeoMechanical)**. It supports solving
 more types of plane geometric problems.
 
-## Co-work (Current Week)
+## Co-work
+
+#### Week 13 (230501): form 2023-05-29 to 2023-06-04.
+
+**Attention:** Annotate problems in directory **GeoQA** and **GeoQAPlus**.
+
+| Id  | Worker | WorkLoad |                                      PID                                       | Submitted |
+|:---:|:------:|:--------:|:------------------------------------------------------------------------------:|:---------:|
+|  1  |  贺艺铭   |    60    |                      9112-9171 (data/raw-problems/GeoQA)                       |     ×     |
+|  2  |   邹佳   |    60    |                      9172-9231 (data/raw-problems/GeoQA)                       |     √     |
+|  3  |   朱娜   |    60    |                      9232-9291 (data/raw-problems/GeoQA)                       |     √     |
+|  4  |  张效凯   |    60    |                      9292-9351 (data/raw-problems/GeoQA)                       |     √     |
+|  5  |  郭彦钧   |    60    |                      9352-9411 (data/raw-problems/GeoQA)                       |     √     |
+|  6  |  黄琦珂   |    60    |                      9412-9471 (data/raw-problems/GeoQA)                       |     √     |
+|  7  |  黄一雯   |    60    |                                same as week 12                                 |     √     |
+|  8  |  金啸笑   |    60    |                      9472-9531 (data/raw-problems/GeoQA)                       |     √     |
+|  9  |   李阳   |    60    |                      9532-9591 (data/raw-problems/GeoQA)                       |     ×     |
+| 10  |  毛晨扬   |    60    | 9592-9595 (data/raw-problems/GeoQA)<br>9596-9651 (data/raw-problems/GeoQAPlus) |     √     |
+| 11  |  王茹楠   |    60    |                                same as week 12                                 |     √     |
+| 12  |  王一凡   |    60    |                                same as week 12                                 |     √     |
+| 13  |  岳登峰   |    60    |                    9652-9711 (data/raw-problems/GeoQAPlus)                     |     √     |
+| 14  |  朱方震   |    60    |                                same as week 12                                 |     √     |
+| 15  |   朱哲   |    60    |                    9712-9771 (data/raw-problems/GeoQAPlus)                     |     √     |
+| 16  |   秦城   |    60    |                    9772-9831 (data/raw-problems/GeoQAPlus)                     |     ×     |
 
 #### Week 12 (230522): form 2023-05-22 to 2023-05-28.
 
@@ -16,10 +39,10 @@ more types of plane geometric problems.
 | Id  | Worker | WorkLoad |                 PID                 | Submitted |
 |:---:|:------:|:--------:|:-----------------------------------:|:---------:|
 |  1  |  贺艺铭   |    60    | 8152-8211 (data/raw-problems/GeoQA) |     ×     |
-|  2  |   邹佳   |    60    | 8212-8271 (data/raw-problems/GeoQA) |     ×     |
-|  3  |   朱娜   |    60    | 8272-8331 (data/raw-problems/GeoQA) |     ×     |
+|  2  |   邹佳   |    60    | 8212-8271 (data/raw-problems/GeoQA) |     √     |
+|  3  |   朱娜   |    60    | 8272-8331 (data/raw-problems/GeoQA) |     √     |
 |  4  |  张效凯   |    60    | 8332-8391 (data/raw-problems/GeoQA) |     √     |
-|  5  |  郭彦钧   |    60    | 8392-8451 (data/raw-problems/GeoQA) |     ×     |
+|  5  |  郭彦钧   |    60    | 8392-8451 (data/raw-problems/GeoQA) |     √     |
 |  6  |  黄琦珂   |    60    | 8452-8511 (data/raw-problems/GeoQA) |     √     |
 |  7  |  黄一雯   |    60    | 8512-8571 (data/raw-problems/GeoQA) |     /     |
 |  8  |  金啸笑   |    60    | 8572-8631 (data/raw-problems/GeoQA) |     √     |
@@ -31,33 +54,6 @@ more types of plane geometric problems.
 | 14  |  朱方震   |    60    | 8932-8991 (data/raw-problems/GeoQA) |     /     |
 | 15  |   朱哲   |    60    | 8992-9051 (data/raw-problems/GeoQA) |     √     |
 | 16  |   秦城   |    60    | 9052-9111 (data/raw-problems/GeoQA) |     √     |
-
-## Co-work (After)
-
-#### Week 13 (230501): form 2023-05-29 to 2023-06-04.
-
-**Attention:** Annotate problems in directory **GeoQA** and **GeoQAPlus**.
-
-| Id  | Worker | WorkLoad |                                      PID                                       | Submitted |
-|:---:|:------:|:--------:|:------------------------------------------------------------------------------:|:---------:|
-|  1  |  贺艺铭   |    60    |                      9112-9171 (data/raw-problems/GeoQA)                       |     ×     |
-|  2  |   邹佳   |    60    |                      9172-9231 (data/raw-problems/GeoQA)                       |     ×     |
-|  3  |   朱娜   |    60    |                      9232-9291 (data/raw-problems/GeoQA)                       |     ×     |
-|  4  |  张效凯   |    60    |                      9292-9351 (data/raw-problems/GeoQA)                       |     √     |
-|  5  |  郭彦钧   |    60    |                      9352-9411 (data/raw-problems/GeoQA)                       |     ×     |
-|  6  |  黄琦珂   |    60    |                      9412-9471 (data/raw-problems/GeoQA)                       |     ×     |
-|  7  |  黄一雯   |    60    |                                same as week 12                                 |     √     |
-|  8  |  金啸笑   |    60    |                      9472-9531 (data/raw-problems/GeoQA)                       |     √     |
-|  9  |   李阳   |    60    |                      9532-9591 (data/raw-problems/GeoQA)                       |     ×     |
-| 10  |  毛晨扬   |    60    | 9592-9595 (data/raw-problems/GeoQA)<br>9596-9651 (data/raw-problems/GeoQAPlus) |     √     |
-| 11  |  王茹楠   |    60    |                                same as week 12                                 |     ×     |
-| 12  |  王一凡   |    60    |                                same as week 12                                 |     √     |
-| 13  |  岳登峰   |    60    |                    9652-9711 (data/raw-problems/GeoQAPlus)                     |     ×     |
-| 14  |  朱方震   |    60    |                                same as week 12                                 |     ×     |
-| 15  |   朱哲   |    60    |                    9712-9771 (data/raw-problems/GeoQAPlus)                     |     √     |
-| 16  |   秦城   |    60    |                    9772-9831 (data/raw-problems/GeoQAPlus)                     |     ×     |
-
-## Co-work (Before)
 
 #### Week 11 (230515): form 2023-05-15 to 2023-05-21.
 

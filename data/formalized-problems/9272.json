@@ -1,0 +1,31 @@
+{
+  "problem_id": 9272,
+  "annotation": "NaZhu_2023-06-04",
+  "source": "GeoQA-9434",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在▱ABCD中,AD=2AB,CE平分∠BCD交AD边于点E,且AE=3,则AB的长为()",
+  "problem_text_en": "As shown in the figure, in ▱ABCD, AD = 2AB, CE bisects ∠BCD and AD edge at point E, and AE = N_0, then the length of AB is ()",
+  "problem_img": "9272.png",
+  "construction_cdl": [
+    "Shape(AB,BC,CE,EA)",
+    "Shape(EC,CD,DE)",
+    "Collinear(AED)"
+  ],
+  "text_cdl": [
+    "Parallelogram(ABCD)",
+    "Equal(LengthOfLine(AD),Mul(2,LengthOfLine(AB)))",
+    "IsBisectorOfAngle(CE,BCD)",
+    "Equal(LengthOfLine(AE),3)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AB))",
+  "problem_answer": "3",
+  "theorem_seqs": [
+    "parallel_property_collinear_extend",
+    "parallel_property_alternate_interior_angle",
+    "isosceles_triangle_judgment_angle_equal",
+    "parallelogram_property_opposite_line_equal",
+    "line_addition"
+  ],
+  "raw_answer": "解:∵四边形ABCD是平行四边形,∴AB=DC,AD∥BC,∴∠DEC=∠BCE,∵CE平分∠DCB,∴∠DCE=∠BCE,∴∠DEC=∠DCE,∴DE=DC=AB,∵AD=2AB=2CD,CD=DE,∴AD=2DE,∴AE=DE=3,∴DC=AB=DE=3,故选:B．"
+}

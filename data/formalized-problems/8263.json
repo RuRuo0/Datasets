@@ -1,0 +1,30 @@
+{
+  "problem_id": 8263,
+  "annotation": "JiaZou_2023-05-28",
+  "source": "GeoQA-7348",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在△ABC中,点D、E分别是AB、AC的中点,若△ADE的面积为4,则△ABC的面积为()",
+  "problem_text_en": "As shown in the figure, in △ABC, points D and E are the midpoints of AB and AC respectively. If the area of ​​△ADE is N_0, then the area of ​​△ABC is ()",
+  "problem_img": "8263.png",
+  "construction_cdl": [
+    "Shape(AD,DE,EA)",
+    "Shape(DB,BC,CE,ED)",
+    "Collinear(ADB)",
+    "Collinear(AEC)"
+  ],
+  "text_cdl": [
+    "IsMidpointOfLine(D,AB)",
+    "IsMidpointOfLine(E,AC)",
+    "Equal(AreaOfTriangle(ADE),4)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(AreaOfTriangle(ABC))",
+  "problem_answer": "16",
+  "theorem_seqs": [
+    "line_addition",
+    "similar_triangle_judgment_sas",
+    "similar_triangle_property_line_ratio",
+    "similar_triangle_property_area_square_ratio"
+  ],
+  "raw_answer": "解:∵在△ABC中,点D、E分别是AB、AC的中点,∴DE∥BC,DE=\\frac{1}{2}BC,∴△ADE∽△ABC,∵\\frac{DE}{BC}=\\frac{1}{2},∴\\frac{S_{\\bigtriangleupADE}}{S_{\\bigtriangleupABC}}=\\frac{1}{4},∵△ADE的面积为4,∴△ABC的面积为:16,故选:D．"
+}

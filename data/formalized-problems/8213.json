@@ -1,0 +1,33 @@
+{
+  "problem_id": 8213,
+  "annotation": "JiaZou_2023-05-28",
+  "source": "GeoQA-7203",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB∥CD,AD与BC相交于点O,\\frac{BO}{OC}=\\frac{2}{3},AD=10,则OA的长为()",
+  "problem_text_en": "As shown in the figure, AB ∥ CD, AD and BC intersect at point O, \\frac{BO}{OC}=\\frac{N_0}{N_1},AD=N_2, then the length of OA is ()",
+  "problem_img": "8213.png",
+  "construction_cdl": [
+    "Shape(AO,OB,BA)",
+    "Shape(CD,DO,OC)",
+    "Collinear(AOD)",
+    "Collinear(COB)"
+  ],
+  "text_cdl": [
+    "ParallelBetweenLine(AB,CD)",
+    "Equal(Div(LengthOfLine(BO),LengthOfLine(CO)),2/3)",
+    "Equal(LengthOfLine(AD),10)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(OA))",
+  "problem_answer": "4",
+  "theorem_seqs": [
+    "parallel_property_alternate_interior_angle",
+    "vertical_angle(AOB,DOC)",
+    "line_addition(AO,OD)",
+    "line_addition(BO,OC)",
+    "similar_triangle_judgment_aa",
+    "similar_triangle_property_line_ratio",
+    "similar_triangle_property_line_ratio"
+  ],
+  "raw_answer": "解:∵AB∥CD,∴\\frac{OA}{OD}=\\frac{OB}{OC}=\\frac{2}{3},即\\frac{OA}{10-OA}=\\frac{2}{3},解得,AO=4,故选:B．"
+}

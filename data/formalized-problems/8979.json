@@ -1,0 +1,35 @@
+{
+  "problem_id": 8979,
+  "annotation": "FangzhenZhu_2023-06-04",
+  "source": "GeoQA-8893",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在正方形ABCD中,E是DC上一点,F为BC延长线上一点,∠BEC=70°,且△BCE≌△DCF．连接EF,则∠EFD的度数是()",
+  "problem_text_en": "As shown in the figure, in the square ABCD, E is a point on DC, F is a point on the extended line of BC, ∠BEC = N_0, and △BCE ≌ △DCF. Connect EF, then the degree of ∠EFD is ()",
+  "problem_img": "8979.png",
+  "construction_cdl": [
+    "Shape(AB,BE,ED,DA)",
+    "Shape(BC,CE,EB)",
+    "Shape(EC,CF,FE)",
+    "Shape(DE,EF,FD)",
+    "Collinear(BCF)",
+    "Collinear(DEC)"
+  ],
+  "text_cdl": [
+    "CongruentBetweenTriangle(BCE,DCF)",
+    "Equal(MeasureOfAngle(CEB),70)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(EFD))",
+  "problem_answer": "25",
+  "theorem_seqs": [
+    "congruent_triangle_property_line_equal(BCE,DCF)",
+    "congruent_triangle_property_angle_equal(CEB,CFD)",
+    "congruent_triangle_property_angle_equal(EBC,FDC)",
+    "adjacent_complementary_angle(BCE,ECF)",
+    "angle_addition(CFE,EFD)",
+    "isosceles_triangle_judgment_line_equal(CFE)",
+    "isosceles_triangle_property_angle_equal(CFE)",
+    "triangle_property_angle_sum(CFE)"
+  ],
+  "raw_answer": "解:∵四边形ABCD是正方形,∴∠BCE=∠DCF=90°；由旋转的性质知:CE=CF,∠BEC=∠DFC=70°；则△ECF是等腰直角三角形,得∠EFC=45°,∴∠EFD=∠DFC-∠EFC=25°．故选:D．"
+}

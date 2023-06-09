@@ -1,0 +1,48 @@
+{
+  "problem_id": 9682,
+  "annotation": "DengfengYue_2023-06-04",
+  "source": "GeoQA-angle-10086",
+  "problem_level": 1,
+  "problem_text_cn": "如图，AB为⊙O的直径，点C、D、E在⊙O上，且AD＝CD，∠E＝70°，则∠ABC的度数为（）",
+  "problem_text_en": "",
+  "problem_img": "9682.png",
+  "construction_cdl": [
+    "Shape(AD,ODA)",
+    "Shape(DA,AF,FD)",
+    "Shape(DC,OCD)",
+    "Shape(DF,FO,OD)",
+    "Shape(DO,OB,BD)",
+    "Shape(CD,DB,BC)",
+    "Shape(CB,OBC)",
+    "Shape(BE,OEB)",
+    "Shape(BF,FE,EB)",
+    "Shape(EF,FA,OAE)",
+    "Collinear(AFOB)",
+    "Collinear(DFE)",
+    "Cocircular(O,DAEBC)"
+  ],
+  "text_cdl": [
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)",
+    "Equal(LengthOfLine(AD),LengthOfLine(CD))",
+    "Equal(MeasureOfAngle(FEB),70)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(ABC))",
+  "problem_answer": "40",
+  "theorem_seqs": [
+    "congruent_arc_judgment_chord_equal",
+    "congruent_arc_property_measure_equal",
+    "arc_property_circumference_angle_external",
+    "arc_property_circumference_angle_external",
+    "arc_property_circumference_angle_external",
+    "arc_property_center_angle",
+    "radius_of_circle_property_length_equal",
+    "radius_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum",
+    "angle_addition(OBD,DBC)"
+  ],
+  "raw_answer": "如图，连接OD，BD．∵AD＝CD，∴∠ABD＝∠CBD，∵∠DOB＝2∠DEB＝140°，∴∠OBD＝∠ODB＝20°，∴∠ABC＝2∠OBD＝40°．故选：B．"
+}

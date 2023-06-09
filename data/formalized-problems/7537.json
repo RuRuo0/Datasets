@@ -1,0 +1,53 @@
+{
+  "problem_id": 7537,
+  "annotation": "yiminghe_2023-05-23",
+  "source": "GeoQA-4975",
+  "problem_level": 1,
+  "problem_text_cn": "在Rt△ABC中,∠ACB=90°,AB=13,AC=5,点D是AB上一动点,作DE∥AC,且DE=2,连结BE、CD,P、Q分别是BE、DC的中点,连结PQ,则PQ长为()",
+  "problem_text_en": "In Rt△ABC, ∠ACB = N_0, AB = N_1, AC = N_2, point D is a moving point of AB, as DE ∥ AC, and DE = N_3, connect BE and CD, P and Q are BE and DC respectively The midpoint of, connect PQ, then PQ length is ()",
+  "problem_img": "7537.png",
+  "construction_cdl": [
+    "Shape(BP,PF,FB)",
+    "Shape(PO,OF,FP)",
+    "Shape(PE,ED,DO,OP)",
+    "Shape(BF,FQ,QC,CB)",
+    "Shape(FO,OQ,QF)",
+    "Shape(OD,DQ,QO)",
+    "Shape(DA,AC,CQ,QD)",
+    "Collinear(BPE)",
+    "Collinear(BFODA)",
+    "Collinear(POQ)",
+    "Collinear(DQC)"
+  ],
+  "text_cdl": [
+    "RightTriangle(ACB)",
+    "Equal(LengthOfLine(AB),13)",
+    "Equal(LengthOfLine(AC),5)",
+        "Equal(LengthOfLine(DE),2)",
+    "IsMidpointOfLine(P,BE)",
+    "IsMidpointOfLine(Q,CD)",
+    "IsMidpointOfLine(F,BD)",
+    "Equal(MeasureOfAngle(ACB),90)",
+    "ParallelBetweenLine(ED,AC)",
+    "PerpendicularBetweenLine(QF,PF)"
+
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(PQ))",
+  "problem_answer": "√{37}",
+  "theorem_seqs": [
+      "right_triangle_judgment_angle",
+    "right_triangle_property_pythagorean",
+    "midsegment_of_triangle_judgment_midpoint",
+    "midsegment_of_triangle_property_parallel",
+    "midsegment_of_triangle_property_length",
+    "parallel_judgment_par_par",
+    "parallel_property_par_per",
+        "parallel_property_par_per",
+
+    "right_triangle_judgment_angle",
+    "right_triangle_property_pythagorean"
+  ],
+  "notes": "平行垂直隔空关系传递有点问题",
+  "raw_answer": "【解答】解:∵∠ACB=90°,AB=13,AC=5,∴BC=√{AB²-AC²}=12,取BD中点F,连接PF、QF,如图所示:∵P、Q分别是BE、DC的中点,∴PF是△BDE的中位线,FQ是△BCD的中位线,∴PF∥ED,PF=\\frac{1}{2}DE=1,FQ∥BC,FQ=\\frac{1}{2}BC=6,∵DE∥AC,AC⊥BC,∴PF⊥FQ,∴PQ=√{PF²-FQ²}=√{1²-6²}=√{37}；"
+}

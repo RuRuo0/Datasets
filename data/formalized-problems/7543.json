@@ -1,0 +1,36 @@
+{
+  "problem_id": 7543,
+  "annotation": "yiminghe_2023-05-23",
+  "source": "GeoQA-4984",
+  "problem_level": 1,
+  "problem_text_cn": "如图,△ABC中,D、E分别是AB、AC边的中点,延长DE至F,使EF=\\frac{1}{3}DF,若BC=8,则DF的长为()",
+  "problem_text_en": "As shown in the figure, in △ABC, D and E are the midpoints of AB and AC respectively. Extend DE to F so that EF=\\frac{N_0}{N_1}DF. If BC=N_2, then the length of DF is ()",
+  "problem_img": "7543.png",
+  "construction_cdl": [
+    "Shape(AD,DE,EA)",
+     "Shape(AE,EF,FA)",
+     "Shape(DB,BO,OE,ED)",
+     "Shape(EO,OF,FE)",
+     "Shape(OB,BC,CO)",
+    "Collinear(ADB)",
+    "Collinear(AEOC)",
+    "Collinear(DEF)",
+        "Collinear(BOF)"
+  ],
+  "text_cdl": [
+    "IsMidpointOfLine(D,AB)",
+    "IsMidpointOfLine(E,AC)",
+    "Equal(Div(LengthOfLine(DF),LengthOfLine(EF)),3)",
+    "Equal(LengthOfLine(BC),8)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(DF))",
+  "problem_answer": "6",
+  "theorem_seqs": [
+     "midsegment_of_triangle_judgment_midpoint",
+    "midsegment_of_triangle_property_length",
+    "line_addition(DE,EF)"
+
+  ],
+  "raw_answer": "【解答】解:∵D、E分别是AB、AC边的中点,∴DE=\\frac{1}{2}BC=4,∵EF=\\frac{1}{3}DF,∴EF=2,∴DF=6,"
+}

@@ -1,0 +1,33 @@
+{
+  "problem_id": 9141,
+  "annotation": "yiminghe_2023-06-02",
+  "source": "GeoQA-9266",
+  "problem_level": 1,
+  "problem_text_cn": "如图,平行四边形ABCD中,AB=6,BC=8,AC的垂直平分线交AD于E,则三角形CDE的周长是()",
+  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, AB = N_0, BC = N_1, the perpendicular bisector of AC intersects AD at E, then the perimeter of the triangle CDE is ()",
+  "problem_img": "9141.png",
+  "construction_cdl": [
+    "Shape(BC,CO,OA,AB)",
+    "Shape(AO,OE,EA)",
+    "Shape(EO,OC,CE)",
+    "Shape(EC,CD,DE)",
+    "Collinear(AOC)",
+    "Collinear(AED)"
+  ],
+  "text_cdl": [
+    "Parallelogram(ABCD)",
+    "Equal(LengthOfLine(AB),6)",
+    "Equal(LengthOfLine(BC),8)",
+    "IsPerpendicularBisectorOfLine(EO,AC)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(PerimeterOfTriangle(CDE))",
+  "problem_answer": "14",
+  "theorem_seqs": [
+     "line_addition",
+    "parallelogram_property_opposite_line_equal",
+    "perpendicular_bisector_property_distance_equal",
+    "triangle_perimeter_formula"
+  ],
+  "raw_answer": "解:∵AC的垂直平分线交AD于E,∴AE=CE,∵四边形ABCD是平行四边形,∴CD=AB=6,AD=BC=8,∴△CDE的周长是:DE+DE+CE=DC+DE+AE=CD+AD=6+8=14．故选:C．"
+}

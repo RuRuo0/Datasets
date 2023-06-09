@@ -1,0 +1,41 @@
+{
+  "problem_id": 9167,
+  "annotation": "yiminghe_2023-06-02",
+  "source": "GeoQA-9297",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在周长为18cm的▱ABCD中,AB≠AD,AC、BD相交于点O,OE⊥BD于E,则△ABE的周长为()",
+  "problem_text_en": "As shown in the figure, in ▱ABCD with a perimeter of N_0, AB≠AD, AC and BD intersect at point O, and OE ⊥ BD at E, then the perimeter of △ABE is ()",
+  "problem_img": "9167.png",
+  "construction_cdl": [
+    "Shape(AB,BF,FA)",
+    "Shape(AF,FE,EA)",
+    "Shape(FB,BO,OF)",
+    "Shape(EF,FO,OE)",
+    "Shape(EO,OD,DE)",
+    "Shape(DO,OC,CD)",
+    "Shape(OB,BC,CO)",
+    "Collinear(AFOC)",
+    "Collinear(AED)",
+    "Collinear(BOD)",
+    "Collinear(BFE)"
+  ],
+  "text_cdl": [
+     "Parallelogram(ABCD)",
+       "PerpendicularBetweenLine(EO,DO)",
+    "Equal(PerimeterOfQuadrilateral(ABCD),18)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(PerimeterOfTriangle(ABE))",
+  "problem_answer": "9",
+  "theorem_seqs": [
+    "line_addition",
+     "quadrilateral_perimeter_formula",
+    "parallelogram_property_diagonal_bisection",
+    "adjacent_complementary_angle(BOE,EOD)",
+    "mirror_congruent_triangle_judgment_sas(OEB,ODE)",
+    "mirror_congruent_triangle_property_line_equal",
+    "parallelogram_property_opposite_line_equal",
+  "triangle_perimeter_formula"
+  ],
+  "raw_answer": "解:∵平行四边形ABCD,∴AD=BC,AB=CD,OB=OD,∵OE⊥BD,∴BE=DE,∵平行四边形ABCD的周长是18cm,∴2AB+2AD=18cm,∴AB+AD=9cm,∴△ABE的周长是AB+AE+BE=AB+AE+DE=AB+AD=9cm,故选:B．"
+}

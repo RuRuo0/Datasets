@@ -1,0 +1,32 @@
+{
+  "problem_id": 9145,
+  "annotation": "yiminghe_2023-06-02",
+  "source": "GeoQA-9270",
+  "problem_level": 1,
+  "problem_text_cn": "如图,▱ABCD中,AE平分∠BAD,若CE=3cm,AB=4cm,则▱ABCD的周长是()",
+  "problem_text_en": "As shown in the figure, in ▱ABCD, AE bisects ∠BAD, if CE = N_0, AB = N_1, then the perimeter of ▱ABCD is ()",
+  "problem_img": "9145.png",
+  "construction_cdl": [
+    "Shape(AB,BE,EA)",
+      "Shape(AE,EC,CD,DA)",
+    "Collinear(BEC)"
+  ],
+  "text_cdl": [
+     "Parallelogram(ABCD)",
+      "IsBisectorOfAngle(AE,DAB)",
+    "Equal(LengthOfLine(CE),3)",
+    "Equal(LengthOfLine(AB),4)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(PerimeterOfQuadrilateral(ABCD))",
+  "problem_answer": "22",
+  "theorem_seqs": [
+    "line_addition",
+    "parallel_property_collinear_extend",
+    "parallelogram_property_opposite_line_equal",
+    "parallel_property_alternate_interior_angle",
+    "isosceles_triangle_judgment_angle_equal",
+    "quadrilateral_perimeter_formula"
+  ],
+  "raw_answer": "解:∵四边形ABCD是平行四边形,∴AD=BC=10,AB=DC,AD∥BC,∴∠DAE=∠BEA,∵AE平分∠BCD,∴∠BAE=∠DAE,∴∠BEA=∠BAE,∴BE=AB=4cm,∴BC=BE+CE=7cm,∴▱ABCD的周长=2(DC+BC)=2(4+7)=22cm；故选:C．"
+}

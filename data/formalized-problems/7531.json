@@ -1,0 +1,42 @@
+{
+  "problem_id": 7531,
+  "annotation": "yiminghe_2023-05-23",
+  "source": "GeoQA-4969",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在梯形ABCD中,AD∥BC,E、F分别是对角线BD、AC的中点,若AD=6cm,BC=18cm,则EF的长为()",
+  "problem_text_en": "As shown in the figure, in the trapezoid ABCD, AD ∥ BC, E, F are the midpoints of the diagonals BD and AC, respectively. If AD = N_0, BC = N_1, then the length of EF is ()",
+  "problem_img": "7531.png",
+  "construction_cdl": [
+    "Shape(AO,OD,DA)",
+    "Shape(AB,BO,OA)",
+    "Shape(OE,EF,FO)",
+    "Shape(OF,FD,DO)",
+    "Shape(FC,CD,DF)",
+    "Shape(EB,BH,HF,FE)",
+    "Shape(FH,HC,CF)",
+    "Collinear(AOFC)",
+    "Collinear(BEOD)",
+    "Collinear(DFH)",
+    "Collinear(BHC)"
+  ],
+  "text_cdl": [
+    "ParallelBetweenLine(AD,BC)",
+    "IsMidpointOfLine(E,BD)",
+    "IsMidpointOfLine(F,AC)",
+    "Equal(LengthOfLine(AD),6)",
+    "Equal(LengthOfLine(BC),18)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(EF))",
+  "problem_answer": "6",
+  "theorem_seqs": [
+    "parallel_property_collinear_extend",
+    "parallel_property_alternate_interior_angle",
+    "congruent_triangle_judgment_aas",
+    "congruent_triangle_property_line_equal",
+    "midsegment_of_triangle_judgment_midpoint",
+    "midsegment_of_triangle_property_length",
+    "line_addition(BH,HC)"
+  ],
+  "raw_answer": "【解答】解:连接DF并延长,交BC于点K,∵AD∥BC,∴∠DAF=∠KCF,∠ADF=∠CKF,∵E、F分别是对角线BD、AC的中点,∴AF=CF,在△ADF与△CKF中,∵≥ft\\{\\begin{array}{l}{∠{DAF}=∠{KCF}}\\\\{∠{ADF}=∠{CKF}}{{AF}={CF}}\\\\\\end{array}\\right.,∴△ADF≌△CKF(AAS),∴DF=KF,CK=AD,∴EF=\\frac{1}{2}BK=\\frac{1}{2}(BC-AD)=\\frac{1}{2}×(18-6)=6(cm)．"
+}

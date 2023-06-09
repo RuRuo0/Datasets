@@ -1,0 +1,35 @@
+{
+  "problem_id": 9170,
+  "annotation": "yiminghe_2023-06-02",
+  "source": "GeoQA-9300",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在▱ABCD中,AB=6,BC=10,E为AD上一点,且BE=BC,CE=CD,则DE等于()",
+  "problem_text_en": "As shown in the figure, in ▱ABCD, AB = N_0, BC = N_1, E is the previous point of AD, and BE = BC, CE = CD, then DE is equal to ()",
+  "problem_img": "9170.png",
+  "construction_cdl": [
+   "Shape(AB,BE,EA)",
+    "Shape(EB,BC,CE)",
+    "Shape(EC,CD,DE)",
+    "Collinear(AED)"
+  ],
+  "text_cdl": [
+      "Parallelogram(ABCD)",
+    "Equal(LengthOfLine(AB),6)",
+    "Equal(LengthOfLine(BC),10)",
+   "Equal(LengthOfLine(BE),LengthOfLine(BC))",
+    "Equal(LengthOfLine(CE),LengthOfLine(CD))"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(DE))",
+  "problem_answer": "3.6",
+  "theorem_seqs": [
+    "parallelogram_property_opposite_line_equal",
+    "parallel_property_collinear_extend",
+    "parallel_property_alternate_interior_angle(ED,BC)",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "similar_triangle_judgment_aa",
+    "similar_triangle_property_line_ratio"
+  ],
+  "raw_answer": "解:如图所示:∵四边形ABCD是平行四边形,∴BC=AD=10,AD∥BC,CD=AB=6,∴∠2=∠3,∵BE=BC,CE=CD,∴BE=BC=10,CE=CD=6,∠1=∠2,∠3=∠D,∴∠1=∠2=∠3=∠D,∴△BCE∽△CDE,∴\\frac{BC}{CD}=\\frac{CE}{DE},即\\frac{10}{6}=\\frac{6}{DE},解得:DE=3.6．故选:C．"
+}

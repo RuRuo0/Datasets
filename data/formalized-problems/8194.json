@@ -1,0 +1,30 @@
+{
+  "problem_id": 8194,
+  "annotation": "yiminghe_2023-06-02",
+  "source": "GeoQA-7154",
+  "problem_level": 1,
+  "problem_text_cn": "如图,线段BD,CE相交于点A,DE∥BC．若BC=3,DE=1.5,AD=2,则AB的长为()",
+  "problem_text_en": "As shown in the figure, the line segments BD and CE intersect at point A, DE ∥ BC. If BC = N_0, DE = N_1, AD = N_2, then the length of AB is ()",
+  "problem_img": "8194.png",
+  "construction_cdl": [
+    "Shape(BC,CA,AB)",
+      "Shape(AD,DE,EA)",
+    "Collinear(BAD)",
+    "Collinear(CAE)"
+  ],
+  "text_cdl": [
+    "ParallelBetweenLine(CB,DE)",
+    "Equal(LengthOfLine(BC),3)",
+      "Equal(LengthOfLine(DE),1.5)",
+      "Equal(LengthOfLine(AD),2)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AB))",
+  "problem_answer": "4",
+  "theorem_seqs": [
+    "parallel_property_alternate_interior_angle",
+     "similar_triangle_judgment_aa",
+    "similar_triangle_property_line_ratio"
+  ],
+  "raw_answer": "解:∵DE∥BC,∴∠B=∠D,∠C=∠E,∴△ABC∽△ADE,∴\\frac{AB}{AD}=\\frac{BC}{DE},即\\frac{AB}{2}=\\frac{3}{1.5},∴AB=4．故选:C．"
+}

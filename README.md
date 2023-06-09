@@ -15,7 +15,7 @@ more types of plane geometric problems.
 
 | Id  | Worker | WorkLoad |                                      PID                                       | Submitted |
 |:---:|:------:|:--------:|:------------------------------------------------------------------------------:|:---------:|
-|  1  |  贺艺铭   |    60    |                      9112-9171 (data/raw-problems/GeoQA)                       |     ×     |
+|  1  |  贺艺铭   |    60    |                      9112-9171 (data/raw-problems/GeoQA)                       |     √     |
 |  2  |   邹佳   |    60    |                      9172-9231 (data/raw-problems/GeoQA)                       |     √     |
 |  3  |   朱娜   |    60    |                      9232-9291 (data/raw-problems/GeoQA)                       |     √     |
 |  4  |  张效凯   |    60    |                      9292-9351 (data/raw-problems/GeoQA)                       |     √     |
@@ -30,7 +30,7 @@ more types of plane geometric problems.
 | 13  |  岳登峰   |    60    |                    9652-9711 (data/raw-problems/GeoQAPlus)                     |     √     |
 | 14  |  朱方震   |    60    |                                same as week 12                                 |     √     |
 | 15  |   朱哲   |    60    |                    9712-9771 (data/raw-problems/GeoQAPlus)                     |     √     |
-| 16  |   秦城   |    60    |                    9772-9831 (data/raw-problems/GeoQAPlus)                     |     ×     |
+| 16  |   秦城   |    60    |                    9772-9831 (data/raw-problems/GeoQAPlus)                     |     √     |
 
 #### Week 12 (230522): form 2023-05-22 to 2023-05-28.
 
@@ -38,7 +38,7 @@ more types of plane geometric problems.
 
 | Id  | Worker | WorkLoad |                 PID                 | Submitted |
 |:---:|:------:|:--------:|:-----------------------------------:|:---------:|
-|  1  |  贺艺铭   |    60    | 8152-8211 (data/raw-problems/GeoQA) |     ×     |
+|  1  |  贺艺铭   |    60    | 8152-8211 (data/raw-problems/GeoQA) |     √     |
 |  2  |   邹佳   |    60    | 8212-8271 (data/raw-problems/GeoQA) |     √     |
 |  3  |   朱娜   |    60    | 8272-8331 (data/raw-problems/GeoQA) |     √     |
 |  4  |  张效凯   |    60    | 8332-8391 (data/raw-problems/GeoQA) |     √     |
@@ -61,7 +61,7 @@ more types of plane geometric problems.
 
 | Id  | Worker | WorkLoad |                 PID                 | Submitted |
 |:---:|:------:|:--------:|:-----------------------------------:|:---------:|
-|  1  |  贺艺铭   |    60    | 7492-7551 (data/raw-problems/GeoQA) |     ×     |
+|  1  |  贺艺铭   |    60    | 7492-7551 (data/raw-problems/GeoQA) |     √     |
 |  2  |   邹佳   |    60    | 7552-7611 (data/raw-problems/GeoQA) |     √     |
 |  3  |   朱娜   |    60    | 7612-7671 (data/raw-problems/GeoQA) |     √     |
 |  4  |  张效凯   |    60    | 7672-7731 (data/raw-problems/GeoQA) |     √     |

@@ -633,7 +633,7 @@
     premise: Polygon(ABC)&Polygon(DEF)&Equal(LengthOfLine(AB),LengthOfLine(FD))&Equal(LengthOfLine(BC),LengthOfLine(EF))&Equal(LengthOfLine(CA),LengthOfLine(DE))
     conclusion: MirrorCongruentBetweenTriangle(ABC,DEF)
 **Notes**:  
-1.全等三角形判定：SSS  
+1.镜像全等三角形判定：SSS  
 
 ### mirror_congruent_triangle_judgment_sas(ABC,DEF)
 <div>
@@ -643,7 +643,7 @@
     premise: Polygon(ABC)&Polygon(DEF)&Equal(LengthOfLine(AB),LengthOfLine(DF))&Equal(MeasureOfAngle(CAB),MeasureOfAngle(FDE))&Equal(LengthOfLine(AC),LengthOfLine(DE))
     conclusion: MirrorCongruentBetweenTriangle(ABC,DEF)
 **Notes**:  
-1.全等三角形判定：SAS  
+1.镜像全等三角形判定：SAS  
 
 ### mirror_congruent_triangle_judgment_aas(ABC,DEF)
 <div>
@@ -660,7 +660,7 @@
     premise: Polygon(ABC)&Polygon(DEF)&Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))&Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEF))&Equal(LengthOfLine(CA),LengthOfLine(DE))
     conclusion: MirrorCongruentBetweenTriangle(ABC,DEF)
 **Notes**:  
-1.全等三角形判定：AAS  
+1.镜像全等三角形判定：AAS  
 
 ### mirror_congruent_triangle_judgment_hl(ABC,DEF)
 <div>
@@ -670,7 +670,7 @@
     premise: Polygon(ABC)&Polygon(DEF)&Equal(MeasureOfAngle(ABC),90)&Equal(MeasureOfAngle(EFD),90)&Equal(LengthOfLine(AC),LengthOfLine(DE))&(Equal(LengthOfLine(BC),LengthOfLine(EF))|Equal(LengthOfLine(AB),LengthOfLine(DF)))
     conclusion: MirrorCongruentBetweenTriangle(ABC,DEF)
 **Notes**:  
-1.全等三角形判定：HL  
+1.镜像全等三角形判定：HL  
 
 ### mirror_congruent_triangle_property_line_equal(ABC,DEF)
 <div>
@@ -680,7 +680,7 @@
     premise: MirrorCongruentBetweenTriangle(ABC,DEF)
     conclusion: Equal(LengthOfLine(BC),LengthOfLine(EF))
 **Notes**:  
-1.全等三角形性质：边相等  
+1.镜像全等三角形性质：边相等  
 
 ### mirror_congruent_triangle_property_angle_equal(ABC,DEF)
 <div>
@@ -690,7 +690,7 @@
     premise: MirrorCongruentBetweenTriangle(ABC,DEF)
     conclusion: Equal(MeasureOfAngle(CAB),MeasureOfAngle(FDE))
 **Notes**:  
-1.全等三角形性质：角相等  
+1.镜像全等三角形性质：角相等  
 
 ### mirror_congruent_triangle_property_perimeter_equal(ABC,DEF)
 <div>
@@ -700,7 +700,7 @@
     premise: MirrorCongruentBetweenTriangle(ABC,DEF)
     conclusion: Equal(PerimeterOfTriangle(ABC),PerimeterOfTriangle(DEF))
 **Notes**:  
-1.全等三角形性质：周长相等  
+1.镜像全等三角形性质：周长相等  
 
 ### mirror_congruent_triangle_property_area_equal(ABC,DEF)
 <div>
@@ -710,7 +710,7 @@
     premise: MirrorCongruentBetweenTriangle(ABC,DEF)
     conclusion: Equal(AreaOfTriangle(ABC),AreaOfTriangle(DEF))
 **Notes**:  
-1.全等三角形性质：面积相等  
+1.镜像全等三角形性质：面积相等  
 
 ### mirror_congruent_triangle_property_exchange(ABC,DEF)
 <div>
@@ -1946,7 +1946,7 @@
     premise: Cocircular(O,AB)&Collinear(AMB)&IsCentreOfCircle(P,O)&Equal(LengthOfLine(AM),LengthOfLine(MB))
     conclusion: IsPerpendicularBisectorOfLine(PM,AB)
 **Notes**:  
-1.弦中点和圆心的连线是弦的垂直平分线  
+1.弦中点和圆心的连线是弦的垂直平分线（垂径定理）  
 
 ### circle_property_chord_perpendicular_bisect_arc(OAB,PMD)
 <div>

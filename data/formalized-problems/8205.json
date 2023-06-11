@@ -3,7 +3,7 @@
   "annotation": "YimingHe_2023-05-28",
   "source": "GeoQA-7185",
   "problem_level": 1,
-  "problem_text_cn": "如图,AB为⊙O的直径,C为⊙O上一点,弦BC平分∠ABD,交BC于点E,AB=6,AD=5,则DE的长为()",
+  "problem_text_cn": "如图,AB为⊙O的直径,C为⊙O上一点,弦AD平分∠CAB,交BC于点E,AB=6,AD=5,则DE的长为()",
   "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, C is the point on ⊙O, chord AD bisects ∠BAC, intersects BC at point E, AB = N_0, AD = N_1, then the length of DE is ()",
   "problem_img": "8205.png",
   "construction_cdl": [
@@ -24,22 +24,23 @@
     "ParallelBetweenLine(CD,AB)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)",
-    "IsBisectorOfAngle(BC,ABD)",
+    "IsBisectorOfAngle(AD,CAB)",
     "Equal(LengthOfLine(AB),6)",
     "Equal(LengthOfLine(AD),5)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(DE))",
-  "problem_answer": "1.779",
+  "problem_answer": "7/5",
   "theorem_seqs": [
+    "arc_property_circumference_angle_external",
     "line_addition(AE,ED)",
     "diameter_of_circle_property_right_angle",
     "right_triangle_judgment_angle",
     "right_triangle_property_pythagorean",
     "parallel_property_alternate_interior_angle",
     "isosceles_triangle_judgment_angle_equal",
-    "similar_triangle_judgment_aa",
-    "similar_triangle_property_line_ratio"
+    "mirror_similar_triangle_judgment_aa(ABD,BDE)",
+    "mirror_similar_triangle_property_line_ratio"
   ],
   "raw_answer": "解:如图1,连接BD、CD,∵AB为⊙O的直径,∴∠ADB=90°,∴BD=√{AB²-AD²}=√{6²-5²}=√{11},∵弦AD平分∠BAC,∴CD=BD=√{11},∴∠CBD=∠DAB,在△ABD和△BED中,≥ft\\{\\begin{matrix}∠BAD=∠EBD\\\\∠ADB=∠BDE\\\\\\end{matrix}\\right.\\∴△ABD∽△BED,∴\\frac{DE}{DB}=\\frac{DB}{AD},即\\frac{DE}{√{11}}=\\frac{√{11}}{5},解得DE=\\frac{11}{5}．故选:A．"
 }

@@ -74,7 +74,7 @@ def show(problem):
             if len(problem.condition.items[_id][2]) <= 3:
                 premises = "(" + ",".join([str(i) for i in problem.condition.items[_id][2]]) + ")"
             else:
-                premises = "(" + ",".join([str(i) for i in problem.condition.items[_id][2]]) + ",...)"
+                premises = "(" + ",".join([str(i) for i in problem.condition.items[_id][2][0:3]]) + ",...)"
             theorem = problem.condition.items[_id][3]
             item = ",".join(item)
             if len(item) > 35:
@@ -97,7 +97,7 @@ def show(problem):
             if len(problem.condition.items[_id][2]) <= 3:
                 premises = "(" + ",".join([str(i) for i in problem.condition.items[_id][2]]) + ")"
             else:
-                premises = "(" + ",".join([str(i) for i in problem.condition.items[_id][2]]) + ",...)"
+                premises = "(" + ",".join([str(i) for i in problem.condition.items[_id][2][0:3]]) + ",...)"
             theorem = problem.condition.items[_id][3]
             item = ",".join(item)
             if len(item) > 35:
@@ -125,7 +125,7 @@ def show(problem):
         if len(problem.condition.items[_id][2]) <= 3:
             premises = "(" + ",".join([str(i) for i in problem.condition.items[_id][2]]) + ")"
         else:
-            premises = "(" + ",".join([str(i) for i in problem.condition.items[_id][2]]) + ",...)"
+            premises = "(" + ",".join([str(i) for i in problem.condition.items[_id][2][0:3]]) + ",...)"
         theorem = problem.condition.items[_id][3]
         item = str(item).replace(" ", "")
         if len(item) > 40:

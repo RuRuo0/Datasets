@@ -39,7 +39,7 @@ class EquationKiller:
                 else:
                     sym_to_eqs[sym] = [eq]
 
-        mini_eqs_lists = []  # mini equations
+        mini_eqs_lists = [eqs[0]]  # mini equations
         n_m = []  # number of equations and variable
 
         mini_eqs = [eqs[0]]  # mini equations
@@ -335,7 +335,7 @@ class EquationKiller:
             return real_results
 
     @staticmethod
-    @func_set_timeout(6)
+    # @func_set_timeout(6)
     def solve_equations(problem):
         """
         Solve equations in problem.condition.equations.
@@ -409,7 +409,7 @@ class EquationKiller:
                     problem.set_value_of_sym(sym, solved_results[sym], premise, "solve_eq")
 
     @staticmethod
-    @func_set_timeout(4)
+    # @func_set_timeout(4)
     def solve_target(target_expr, problem):
         """
         Solve target_expr in the constraint of problem's equation.

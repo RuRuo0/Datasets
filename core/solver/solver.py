@@ -7,7 +7,6 @@ from core.solver.engine import GeometryPredicateLogic as GeoLogic
 from core.aux_tools.utils import rough_equal
 import warnings
 import time
-from func_timeout import FunctionTimedOut
 
 
 class Interactor:
@@ -27,11 +26,7 @@ class Interactor:
         start_time = time.time()
         self.problem = Problem()
         self.problem.load_problem_by_fl(self.predicate_GDL, FLParser.parse_problem(problem_CDL))  # load problem
-        try:
-            EqKiller.solve_equations(self.problem)  # Solve the equations after initialization
-        except FunctionTimedOut:
-            msg = "Timeout when solve equations."
-            warnings.warn(msg)
+        EqKiller.solve_equations(self.problem)  # Solve the equations after initialization
         self.problem.step("init_problem", time.time() - start_time)  # save applied theorem and update step
 
     def apply_theorem(self, theorem_name, theorem_para=None):
@@ -112,15 +107,11 @@ class Interactor:
                     oppose = True
                 eq = EqParser.get_equation_from_tree(self.problem, item, True, letters)
                 solved_eq = False
-                try:
-                    result, premise = EqKiller.solve_target(eq, self.problem)
-                except FunctionTimedOut:
-                    msg = "Timeout when solve equations."
-                    warnings.warn(msg)
-                else:
-                    if result is not None and rough_equal(result, 0):
-                        solved_eq = True
-                    premises += premise
+
+                result, premise = EqKiller.solve_target(eq, self.problem)
+                if result is not None and rough_equal(result, 0):
+                    solved_eq = True
+                premises += premise
 
                 if (not oppose and not solved_eq) or (oppose and solved_eq):
                     passed = False
@@ -137,11 +128,7 @@ class Interactor:
                     item = tuple(letters[i] for i in item)
                     update = self.problem.add(predicate, item, premises, theorem) or update
 
-        try:
-            EqKiller.solve_equations(self.problem)
-        except FunctionTimedOut:
-            msg = "Timeout when solve equations."
-            warnings.warn(msg)
+        EqKiller.solve_equations(self.problem)
 
         self.problem.step(theorem, time.time() - start_time)
 
@@ -171,11 +158,8 @@ class Interactor:
                 for predicate, item in conclusion:  # add conclusion
                     update = self.problem.add(predicate, item, premise, theorem) or update
 
-        try:
-            EqKiller.solve_equations(self.problem)
-        except FunctionTimedOut:
-            msg = "Timeout when solve equations."
-            warnings.warn(msg)
+        EqKiller.solve_equations(self.problem)
+
         self.problem.step(theorem_name, 0)
         if len(theorem_list) > 0:
             timing = (time.time() - start_time) / len(theorem_list)

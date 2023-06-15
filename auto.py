@@ -4,6 +4,7 @@ from core.aux_tools.utils import *
 from core.aux_tools.output import *
 from core.aux_tools.parser import FormalLanguageParser as FLParser
 from core.solver.engine import EquationKiller as EqKiller
+from func_timeout import FunctionTimedOut
 import warnings
 import os
 import argparse
@@ -130,26 +131,25 @@ def search(direction="fw", strategy="df", auto=False, save_seqs=False, start_pid
         if auto:
             for filename in os.listdir(path_formalized):
                 pid = int(filename.split(".")[0])
+                if pid < start_pid or pid > end_pid:
+                    continue
+
+                problem_CDL = load_json(path_formalized + filename)
+                if "notes" in problem_CDL or "theorem_seqs_search" in problem_CDL:
+                    continue
+
+                problem = searcher.get_problem(load_json(path_formalized + filename))
+
                 try:
-                    if pid < start_pid or pid > end_pid:
-                        continue
-                    problem_CDL = load_json(path_formalized + filename)
-                    if "notes" in problem_CDL:
-                        continue
-
-                    problem = searcher.get_problem(load_json(path_formalized + filename))
                     solved, seqs = searcher.search(problem, strategy)
+                except FunctionTimedOut:
+                    print("\nFunctionTimedOut when search problem {}.\n".format(pid))
+                else:
                     print("pid: {}  solved: {}  seqs:{}\n".format(pid, solved, seqs))
-
-                    if solved and save_seqs:  # clean theorem
+                    if solved and save_seqs:
                         problem_CDL = load_json(path_formalized + filename)
-                        if "theorem_seqs_search" not in problem_CDL:
-                            problem_CDL["theorem_seqs_search"] = [seqs]
-                        elif seqs not in problem_CDL["theorem_seqs_search"]:
-                            problem_CDL["theorem_seqs_search"].append(seqs)
+                        problem_CDL["theorem_seqs_search"] = [seqs]
                         save_json(problem_CDL, path_formalized + filename)
-                except Exception as e:
-                    print("Raise Exception <{}> when search problem {}.\n".format(e, pid))
 
         else:
             while True:
@@ -184,8 +184,9 @@ def get_args():
 
 
 if __name__ == '__main__':
-    # check(auto=True, clean_theorem=True, acc_mode=True)
+    # check(auto=True, clean_theorem=False, acc_mode=True)
 
-    # args = get_args()
-    # search(auto=True, start_pid=args.start_pid, end_pid=args.end_pid)
-    search(auto=False, save_seqs=False)
+    # search(auto=False, save_seqs=False)
+
+    args = get_args()
+    search(auto=True, save_seqs=True, start_pid=args.start_pid, end_pid=args.end_pid)

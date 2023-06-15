@@ -462,7 +462,7 @@ class ForwardSearcher:
                     elif (theorem_name, branch) not in self.p2t_map[predicate]:
                         self.p2t_map[predicate].append((theorem_name, branch))
 
-    @func_set_timeout(300)
+    @func_set_timeout(150)
     def search(self, problem, strategy):
         """
         :param problem: Instance of class <Problem>, it will copy a new problem at each search node.

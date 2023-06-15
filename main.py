@@ -27,4 +27,4 @@ if __name__ == '__main__':
 
             show(solver.problem)  # show solving process
         except Exception as e:
-            print("Raise Exception <{}> when search problem {}.".format(e, pid))
+            print("Raise Exception <{}> when solve problem {}.".format(e, pid))

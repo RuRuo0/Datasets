@@ -144,6 +144,8 @@ def search(direction="fw", strategy="df", auto=False, save_seqs=False, start_pid
                     solved, seqs = searcher.search(problem, strategy)
                 except FunctionTimedOut:
                     print("\nFunctionTimedOut when search problem {}.\n".format(pid))
+                except Exception as e:
+                    print("Exception {} when search problem {}.".format(e, pid))
                 else:
                     print("pid: {}  solved: {}  seqs:{}\n".format(pid, solved, seqs))
                     if solved and save_seqs:

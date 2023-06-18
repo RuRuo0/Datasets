@@ -1,5 +1,4 @@
 import os
-
 from core.aux_tools.utils import load_json, save_json, load_text, save_text
 
 gdl_pic_path = "../../doc/gdl-pic/"

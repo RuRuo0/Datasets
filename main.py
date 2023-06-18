@@ -233,9 +233,9 @@ def search(direction="fw", strategy="df", auto=False, save_seqs=True, start_pid=
 
 
 if __name__ == '__main__':
-    check(auto=True, clean_theorem=True, acc_mode=True, check_search="fw")
+    # check(auto=True, clean_theorem=True, acc_mode=True, check_search="fw")
 
-    # search(auto=False, save_seqs=False)
+    search(auto=False, save_seqs=False)
 
     # args = get_args()
     # search(auto=True, start_pid=args.start_pid, end_pid=args.end_pid)

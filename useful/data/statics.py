@@ -34,7 +34,7 @@ def theorem_num(sort_t=False):
 
     for filename in os.listdir(formalized_path):
         data = load_json(formalized_path + filename)
-        if "notes" in data:
+        if "notes" in data or int(filename.split(".")[0]) > 10000:
             continue
 
         for theorem in data["theorem_seqs"]:

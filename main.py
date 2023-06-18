@@ -45,13 +45,14 @@ def check(auto=False, save_CDL=False, clean_theorem=False, acc_mode=False, check
         print("pid\tannotation\tcorrect_answer\tsolved\tsolved_answer\tspend(s)")
         for filename in os.listdir(path_formalized):
             if int(filename.split(".")[0]) > 10000:
-                break
+                continue
 
             problem_CDL = load_json(path_formalized + filename)
-            
+
             if "notes" in problem_CDL:  # problems can't solve
-                unsolved.append("{}\t{}\t{}".format(
-                    problem_CDL["problem_id"], problem_CDL["annotation"], problem_CDL["notes"]))
+                if check_search is None:
+                    unsolved.append("{}\t{}\t{}".format(
+                        problem_CDL["problem_id"], problem_CDL["annotation"], problem_CDL["notes"]))
                 continue
 
             try:  # try solve
@@ -60,12 +61,18 @@ def check(auto=False, save_CDL=False, clean_theorem=False, acc_mode=False, check
                 theorem_seqs = []
                 if check_search is None:
                     theorem_seqs = problem_CDL["theorem_seqs"]
-                elif check_search == "fw" and "forward_search" in problem_CDL:
-                    theorem_seqs = problem_CDL["forward_search"]
-                elif check_search == "bw" and "backward_search" in problem_CDL:
-                    theorem_seqs = problem_CDL["backward_search"]
+                elif check_search == "fw":
+                    if "forward_search" in problem_CDL:
+                        theorem_seqs = problem_CDL["forward_search"]
+                    else:
+                        continue
+                elif check_search == "bw":
+                    if "backward_search" in problem_CDL:
+                        theorem_seqs = problem_CDL["backward_search"]
+                    else:
+                        continue
 
-                for theorem_name, theorem_para in theorem_seqs:
+                for theorem_name, theorem_para in FLParser.parse_theorem_seqs(theorem_seqs):
                     solver.apply_theorem(theorem_name, theorem_para)
 
                 solver.problem.check_goal()  # check goal after applied theorem seqs
@@ -119,12 +126,20 @@ def check(auto=False, save_CDL=False, clean_theorem=False, acc_mode=False, check
             theorem_seqs = []
             if check_search is None:
                 theorem_seqs = problem_CDL["theorem_seqs"]
-            elif check_search == "fw" and "forward_search" in problem_CDL:
-                theorem_seqs = problem_CDL["forward_search"]
-            elif check_search == "bw" and "backward_search" in problem_CDL:
-                theorem_seqs = problem_CDL["backward_search"]
+            elif check_search == "fw":
+                if "forward_search" in problem_CDL:
+                    theorem_seqs = problem_CDL["forward_search"]
+                else:
+                    print("No forward search seqs.")
+                    continue
+            elif check_search == "bw":
+                if "backward_search" in problem_CDL:
+                    theorem_seqs = problem_CDL["backward_search"]
+                else:
+                    print("No backward search seqs.")
+                    continue
 
-            for theorem_name, theorem_para in theorem_seqs:
+            for theorem_name, theorem_para in FLParser.parse_theorem_seqs(theorem_seqs):
                 solver.apply_theorem(theorem_name, theorem_para)
 
             solver.problem.check_goal()  # check goal after applied theorem seqs
@@ -218,7 +233,7 @@ def search(direction="fw", strategy="df", auto=False, save_seqs=True, start_pid=
 
 
 if __name__ == '__main__':
-    check(auto=False, clean_theorem=True, acc_mode=True)
+    check(auto=True, clean_theorem=True, acc_mode=True, check_search="fw")
 
     # search(auto=False, save_seqs=False)
 

@@ -208,7 +208,9 @@ class Theorem:
         "tangent_of_circle_property_perpendicular": 481,
         "tangent_of_circle_property_length_equal": 128,
         "sector_perimeter_formula": 0,
-        "sector_area_formula": 84
+        "sector_area_formula": 84,
+        "perpendicular_bisector_judgment_per_and_bisect": 0,
+        "leva": 0
     }
 
     t2d_map = {  # map theorem to difficulty
@@ -406,7 +408,9 @@ class Theorem:
         "similar_arc_property_ratio": 1,
         "similar_arc_property_chord_ratio": 2,
         "diameter_of_circle_judgment_length_equal": 1,
-        "sector_perimeter_formula": 4
+        "sector_perimeter_formula": 4,
+        "perpendicular_bisector_judgment_per_and_bisect": 1,
+        "leva": 2
     }
 
 
@@ -445,7 +449,7 @@ class ForwardSearcher:
         for theorem_name in self.theorem_GDL:
             if theorem_name.endswith("_definition"):
                 break
-            if Theorem.t2u_map[theorem_name] == 0 or Theorem.t2d_map[theorem_name] == 3:   # skip no used and diff t
+            if Theorem.t2u_map[theorem_name] == 0 or Theorem.t2d_map[theorem_name] == 3:  # skip no used and diff t
                 continue
 
             for branch in self.theorem_GDL[theorem_name]["body"]:

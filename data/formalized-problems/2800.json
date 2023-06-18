@@ -7,22 +7,34 @@
   "problem_text_en": "Find the area of the shaded region. Round to the nearest tenth.",
   "problem_img": "2800.png",
   "construction_cdl": [
-    "Shape(DAE,EF,BCF,CA)",
-    "Shape(BC,BCF,FB)",
-    "Shape(FE,DEA,AC,BFC)",
-    "Shape(BF,BFC,CB)",
+    "Shape(XAE,EF,YCF,CA)",
+    "Shape(BC,YCF,FB)",
+    "Shape(FE,XEA,AC,YFC)",
+    "Shape(BF,YFC,CB)",
     "Collinear(EFB)",
     "Collinear(BCA)",
-    "Cocircular(B,FC)",
-    "Cocircular(D,EA)"
+    "Cocircular(Y,FC)",
+    "Cocircular(X,EA)"
   ],
   "text_cdl": [],
   "image_cdl": [
-    "Equal(LengthOfLine(EF),10.5)",
-    "Equal(DiameterOfCircle(D),35)"
+    "IsCentreOfCircle(B,X)",
+    "IsCentreOfCircle(B,Y)",
+    "Equal(MeasureOfArc(XAE),160)",
+    "Equal(LengthOfLine(EF),2)",
+    "Equal(DiameterOfCircle(X),7)"
   ],
-  "goal_cdl": "Value(Sub(AreaOfSector(DEA),AreaOfSector(BFC)))",
-  "problem_answer": "449.0",
-  "theorem_seqs": [],
-  "notes": "同心圆的表示问题"
+  "goal_cdl": "Value(Sub(AreaOfSector(XEA),AreaOfSector(YFC)))",
+  "problem_answer": "50*π/9",
+  "theorem_seqs": [
+    "round_arc(XAE,XEA)",
+    "arc_property_center_angle(XEA,B)",
+    "arc_property_center_angle(YFC,B)",
+    "radius_of_circle_property_length_equal(BE,X)",
+    "circle_property_length_of_radius_and_diameter(X)",
+    "line_addition(EF,FB)",
+    "radius_of_circle_property_length_equal(BF,Y)",
+    "sector_area_formula(XEA)",
+    "sector_area_formula(YFC)"
+  ]
 }

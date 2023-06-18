@@ -1,6 +1,6 @@
 {
   "problem_id": 7054,
-  "annotation": "xiaokaizhang_2023-03-06",
+  "annotation": "Yangli_2023-05-14",
   "source": "GeoQA-4142",
   "problem_level": 1,
   "problem_text_cn": "如图,AB、BC、CD、DA都是⊙O的切线,已知AD=3,BC=6,则AB+CD的值是()",
@@ -19,7 +19,7 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(BC),6)",
-   "Equal(LengthOfLine(AD),3)",
+    "Equal(LengthOfLine(AD),3)",
     "IsTangentOfCircle(AE,O)",
     "IsTangentOfCircle(AH,O)",
     "IsTangentOfCircle(BF,O)",
@@ -34,10 +34,13 @@
   "goal_cdl": "Value(Add(LengthOfLine(AB),LengthOfLine(CD)))",
   "problem_answer": "9",
   "theorem_seqs": [
-    "tangent_of_circle_property_perpendicular",
-    "tangent_of_circle_property_length_equal",
-    "line_addition"
-  ],
-  "raw_answer": "解:∵AB、BC、CD、DA都是⊙O的切线,∴可以假设切点分别为E、H、G、F,∴AF=AE,BE=BH,CH=CG,DG=DF,∴AD+BC=AF+DF+BH+CH=AE+BE+DG+CG=AB+CD,∵AD=3,BC=6,∴AB+CD=AD+BC=9,故选:C．",
-  "notes": "报错：Raise Exception <sequence item 0: expected str instance, list found> when search problem 7054."
+    "tangent_of_circle_property_length_equal(AE,AH,O)",
+    "tangent_of_circle_property_length_equal(BF,BE,O)",
+    "tangent_of_circle_property_length_equal(CG,CF,O)",
+    "tangent_of_circle_property_length_equal(DH,DG,O)",
+    "line_addition(AE,EB)",
+    "line_addition(BF,FC)",
+    "line_addition(CG,GD)",
+    "line_addition(AH,HD)"
+  ]
 }

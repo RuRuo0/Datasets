@@ -1,36 +1,34 @@
 {
   "problem_id": 7049,
-  "annotation": "xiaokaizhang_2023-03-06",
+  "annotation": "Yangli_2023-05-14",
   "source": "GeoQA-4137",
   "problem_level": 1,
   "problem_text_cn": "如图,PA、PB分别切⊙O于A、B两点,点C在优弧⁀{ACB}上,∠P=80°,则∠C的度数为()",
   "problem_text_en": "As shown in the figure, PA and PB are tangent to ⊙O at two points A and B respectively, point C is on the major arc ⁀ACB, ∠P = N_0, then the degree of ∠C is ()",
   "problem_img": "7049.png",
   "construction_cdl": [
-      "Shape(BP,PA,OBA)",
-     "Shape(CA,OAC)",
-     "Shape(BC,OCB)",
-     "Shape(AC,CB,BO,OA)",
-     "Shape(AO,OB,OBA)",
+    "Shape(BP,PA,OBA)",
+    "Shape(CA,OAC)",
+    "Shape(BC,OCB)",
+    "Shape(AC,CB,BO,OA)",
+    "Shape(AO,OB,OBA)",
     "Cocircular(O,CBA)"
   ],
   "text_cdl": [
-     "Equal(MeasureOfAngle(BPA),80)",
+    "Equal(MeasureOfAngle(BPA),80)",
     "IsTangentOfCircle(PA,O)",
     "IsTangentOfCircle(PB,O)",
     "IsCentreOfCircle(O,O)"
   ],
-  "image_cdl": [
-
-  ],
+  "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ACB))",
   "problem_answer": "50",
   "theorem_seqs": [
-    "radius_of_circle_property_length_equal",
-    "tangent_of_circle_property_perpendicular",
+    "tangent_of_circle_property_perpendicular(PA,O,O)",
+    "tangent_of_circle_property_perpendicular(PB,O,O)",
     "quadrilateral_property_angle_sum(PAOB)",
-    "arc_property_center_angle",
-    "arc_property_circumference_angle_external"
+    "arc_property_center_angle(OBA,O)",
+    "arc_property_circumference_angle_external(OBA,C)"
   ],
   "raw_answer": "解:∵PA是圆的切线．∴∠OAP=90°,同理∠OBP=90°,根据四边形内角和定理可得:∠AOB=360°-∠OAP-∠OBP-∠P=360°-90°-90°-80°=100°,∴∠C=\\frac{1}{2}∠AOB=50°．故选:A．"
 }

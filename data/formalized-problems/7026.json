@@ -1,0 +1,34 @@
+{
+  "problem_id": 7026,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4102",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB是⊙O的直径,直线DA与⊙O相切于点A,DO交⊙O于点C,连接BC,若∠ABC=21°,则∠ADC的度数为()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, straight line DA is tangent to ⊙O at point A, DO intersects ⊙O at point C, and connect BC. If ∠ABC = N_0, then the degree of ∠ADC is ()",
+  "problem_img": "7026.png",
+  "construction_cdl": [
+    "Shape(BC,OCB)",
+    "Shape(BO,OC,CB)",
+    "Shape(CO,OA,OAC)",
+    "Shape(AD,DC,OAC)",
+    "Shape(AO,OB,OBA)",
+    "Collinear(BOA)",
+    "Collinear(OCD)",
+    "Cocircular(O,ACB)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(CBO),21)",
+    "IsTangentOfCircle(DA,O)",
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(ADC))",
+  "problem_answer": "48",
+  "theorem_seqs": [
+    "arc_property_circumference_angle_external",
+    "tangent_of_circle_property_perpendicular",
+    "arc_property_center_angle",
+    "triangle_property_angle_sum(DOA)"
+  ],
+  "raw_answer": "解:∵OB=OC,∴∠B=∠BCO=21°,∴∠AOD=∠B+∠BCO=21°+21°=42°,∵AB是⊙O的直径,直线DA与⊙O相切与点A,∴∠OAD=90°,∴∠ADC=90°-∠AOD=90°-42°=48°．故选:C．"
+}

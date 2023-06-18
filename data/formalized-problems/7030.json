@@ -1,0 +1,43 @@
+{
+  "problem_id": 7030,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4107",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB是圆O的直径,DB,DC分别切圆O于点B,C,若∠ACE=25°,则∠D的度数是()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of circle O, DB and DC are respectively tangent to circle O at points B and C. If ∠ACE = N_0, then the degree of ∠D is ()",
+  "problem_img": "7030.png",
+  "construction_cdl": [
+    "Shape(AO,OB,OBA)",
+    "Shape(AC,CO,OA)",
+    "Shape(BO,OC,OCB)",
+    "Shape(CA,OAC)",
+    "Shape(EC,OAC)",
+    "Shape(CD,DB,OCB)",
+    "Collinear(AOB)",
+    "Collinear(ECD)",
+    "Cocircular(O,ACB)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(ECA),25)",
+    "IsTangentOfCircle(DC,O)",
+    "IsTangentOfCircle(DB,O)",
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(CDB))",
+  "problem_answer": "50",
+  "theorem_seqs": [
+    "flat_angle(ECD)",
+    "angle_addition(ECA,ACD)",
+    "tangent_of_circle_property_perpendicular",
+    "angle_addition(ACO,OCD)",
+    "radius_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external",
+    "quadrilateral_property_angle_sum(BOCD)"
+  ],
+  "raw_answer": "解:连接BC,∵DB、DE分别切⊙O于点B、C,∴∠ACE=∠ABC,BD=DC,∵∠ACE=25°,∴∠ABC=25°,∵AB是⊙O的直径,∴∠ACB=90°,∴∠DBC=∠DCB=90°-25°=65°,∴∠D=50°．故选:A．"
+}

@@ -1,0 +1,35 @@
+{
+  "problem_id": 7035,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4114",
+  "problem_level": 1,
+  "problem_text_cn": "如图,⊙O与AB相切于点A,BO与⊙O交于点C,∠BAC=30°,则∠B等于()",
+  "problem_text_en": "As shown in the figure, ⊙O is tangent to AB at point A, BO and ⊙O intersect at point C, ∠BAC = N_0, then ∠B is equal to ()",
+  "problem_img": "7035.png",
+  "construction_cdl": [
+    "Shape(AO,OC,OCA)",
+     "Shape(OA,AC,CO)",
+     "Shape(CA,OAC)",
+     "Shape(AB,BC,OAC)",
+    "Collinear(OCB)",
+    "Cocircular(O,AC)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(CAB),30)",
+    "IsTangentOfCircle(BA,O)",
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(ABC))",
+  "problem_answer": "30",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "tangent_of_circle_property_perpendicular",
+    "angle_addition",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum(OAC)",
+    "triangle_property_angle_sum(OAB)"
+  ],
+  "raw_answer": "解:∵AB为圆O的切线,∴OA⊥AB,∴∠OAB=90°,又∠BAC=30°,∴∠OAC=90°-30°=60°又∵OA=OC,∴△OAC为等边三角形,∴∠AOB=60°,则∠B=90°-60°=30°．故选:B．"
+}

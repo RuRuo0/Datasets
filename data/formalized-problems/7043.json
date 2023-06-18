@@ -1,0 +1,39 @@
+{
+  "problem_id": 7043,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4128",
+  "problem_level": 1,
+  "problem_text_cn": "如图,PA、PB是⊙O的切线,点A和B是切点,AC是⊙O的直径,已知∠P=50°,则∠ACB的大小是()",
+  "problem_text_en": "As shown in the figure, PA and PB are the tangents of ⊙O, points A and B are the tangent points, and AC is the diameter of ⊙O. Given that ∠P = N_0, the size of ∠ACB is ()",
+  "problem_img": "7043.png",
+  "construction_cdl": [
+    "Shape(CO,OA,OAC)",
+     "Shape(AB,OBA)",
+     "Shape(AO,OB,BA)",
+     "Shape(CB,BO,OC)",
+     "Shape(BC,OCB)",
+     "Shape(BP,PA,OBA)",
+    "Collinear(AOC)",
+    "Cocircular(O,CBA)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(BPA),50)",
+     "IsTangentOfCircle(PA,O)",
+    "IsTangentOfCircle(PB,O)",
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(OCB))",
+  "problem_answer": "65",
+  "theorem_seqs": [
+     "radius_of_circle_property_length_equal",
+    "tangent_of_circle_property_perpendicular",
+    "quadrilateral_property_angle_sum(AOBP)",
+    "flat_angle(AOC)",
+    "angle_addition(AOB,BOC)",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+    "triangle_property_angle_sum(OCB)"
+  ],
+  "raw_answer": "解:连接OB,如图,∵PA、PB是⊙O的切线,∴OA⊥PA,OB⊥PB,∴∠OAP=∠OBP=90°,∴∠AOB=360°-90°-90°-50°=130°,∵OB=OC,∴∠OCB=∠OBC,而∠AOB=∠OCB+∠OBC,∴∠OCB=\\frac{1}{2}×130°=65°,即∠ACB=65°．故选:B．"
+}

@@ -1,0 +1,45 @@
+{
+  "problem_id": 7041,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4126",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB是⊙O的直径,CD是⊙O上的点,∠DCB=30°,过点D作⊙O的切线交AB的延长线于E,若AB=4,则DE的长为()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, CD is the point on ⊙O, ∠DCB = N_0, passing point D is the tangent of ⊙O and intersects the extended line of AB at E, if AB = N_1, then the length of DE is ( )",
+  "problem_img": "7041.png",
+  "construction_cdl": [
+    "Shape(AO,OD,ODA)",
+    "Shape(DO,OF,FD)",
+    "Shape(DF,FB,OBD)",
+    "Shape(BE,ED,OBD)",
+    "Shape(BF,FC,CB)",
+    "Shape(BC,OCB)",
+    "Shape(CF,FO,OA,OAC)",
+    "Collinear(AOFBE)",
+    "Collinear(DFC)",
+    "Cocircular(O,ACBD)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),4)",
+    "Equal(MeasureOfAngle(FCB),30)",
+    "IsDiameterOfCircle(AB,O)",
+    "Equal(LengthOfLine(OD),2)",
+    "IsTangentOfCircle(ED,O)",
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(DE))",
+  "problem_answer": "3.4641016151377544",
+  "theorem_seqs": [
+    "circle_property_length_of_radius_and_diameter(O)",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external",
+     "radius_of_circle_property_length_equal",
+    "tangent_of_circle_property_perpendicular",
+    "triangle_property_angle_sum(DOE)",
+    "line_addition(AO,OF)",
+    "line_addition(AF,FB)",
+    "sine_theorem"
+  ],
+
+  "raw_answer": "解:如图,连接OD．∵∠DCB=30°,∴∠BOD=60°．∵DE是⊙O的切线,∴∠ODE=90°．∴∠DEO=30°．∴OE=2OD=AB=4,在Rt△ODE中,DE=√{0E^{2}-0D^{2}}=√{4^{2}-2^{2}}=2√{3}．"
+}

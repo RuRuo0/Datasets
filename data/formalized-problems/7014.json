@@ -1,0 +1,35 @@
+{
+  "problem_id": 7014,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4082",
+  "problem_level": 1,
+  "problem_text_cn": "如图,点A,B,C在⊙O上,∠ABC=29°,过点C作⊙O的切线交OA的延长线于点D,则∠D的大小为()",
+  "problem_text_en": "As shown in the figure, vertices A, B, and C are on ⊙O, ∠ABC = N_0, passing vertex C as the tangent of ⊙O and crossing the extended line of OA at vertex D, then the size of ∠D is ()",
+  "problem_img": "7014.png",
+  "construction_cdl": [
+    "Shape(CD,DA,OCA)",
+    "Shape(BA,OAB)",
+    "Shape(AO,OC,OCA)",
+    "Shape(CE,EB,OBC)",
+    "Shape(OE,EC,CO)",
+    "Shape(AB,BE,EO,OA)",
+    "Collinear(DAOE)",
+    "Collinear(BEC)",
+    "Cocircular(O,CAB)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(ABE),29)",
+    "IsTangentOfCircle(DC,O)",
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(CDA))",
+  "problem_answer": "32",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular",
+    "arc_property_circumference_angle_external",
+    "arc_property_center_angle",
+    "triangle_property_angle_sum(OCD)"
+  ],
+  "raw_answer": "解:作直径B′C,交⊙O于B′,连接AB′,则∠AB′C=∠ABC=29°,∵OA=OB′,∴∠AB′C=∠OAB′=29°．∴∠DOC=∠AB′C+∠OAB′=58°．∵CD是⊙的切线,∴∠OCD=90°．∴∠D=90°-58°=32°．故选:B．"
+}

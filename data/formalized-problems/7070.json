@@ -1,0 +1,36 @@
+{
+  "problem_id": 7070,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4163",
+  "problem_level": 1,
+  "problem_text_cn": "如图,四边形ABCD为圆内接四边形,AB是直径,MN切⊙O于C点,∠BCM=38°,那么∠ABC的度数是()",
+  "problem_text_en": "As shown in the figure, the quadrilateral ABCD is the circle inscribed quadrilateral, AB is the diameter, MN is tangent to ⊙O at point C, ∠BCM = N_0, then the degree of ∠ABC is ()",
+  "problem_img": "7070.png",
+  "construction_cdl": [
+    "Shape(MC,OBC)",
+    "Shape(BO,OA,OAB)",
+    "Shape(AD,ODA)",
+    "Shape(OB,BC,CO)",
+    "Shape(OC,CD,DA,AO)",
+    "Shape(DC,OCD)",
+    "Shape(CB,OBC)",
+    "Collinear(BOA)",
+    "Cocircular(O,BCDA)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(MCB),38)",
+    "IsTangentOfCircle(MC,O)",
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(OBC))",
+  "problem_answer": "52",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "tangent_of_circle_property_perpendicular",
+    "angle_addition(MCB,BCO)",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal"
+  ],
+  "raw_answer": "解:连接OC,如图,∵MN切⊙O于C点,∴OC⊥MN,∴∠OCM=90°,∴∠OCB=90°-∠BCM=90°-38°=52°,而OB=OC,∴∠ABC=∠OCB=52°．故选:B．"
+}

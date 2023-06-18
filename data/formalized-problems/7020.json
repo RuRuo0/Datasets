@@ -1,0 +1,41 @@
+{
+  "problem_id": 7020,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-4093",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AP为⊙O的切线,P为切点,若∠A=30°,C、D为圆周上两点,且∠PDC=70°,则∠OBC等于()",
+  "problem_text_en": "As shown in the figure, AP is the tangent of ⊙O and P is the tangent point. If ∠A = N_0, C and D are two points on the circle, and ∠PDC = N_1, then ∠OBC is equal to ()",
+  "problem_img": "7020.png",
+  "construction_cdl": [
+    "Shape(PD,ODP)",
+    "Shape(DC,OCD)",
+    "Shape(CB,OBC)",
+    "Shape(PO,OC,CD,DP)",
+    "Shape(OB,BC,CO)",
+    "Shape(BO,OP,OPB)",
+    "Shape(PA,AB,OPB)",
+    "Collinear(ABO)",
+    "Cocircular(O,CDPB)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(CDP),70)",
+    "Equal(MeasureOfAngle(PAB),30)",
+    "IsTangentOfCircle(AP,O)",
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(OBC))",
+  "problem_answer": "50",
+  "theorem_seqs": [
+    "tangent_of_circle_property_perpendicular",
+    "triangle_property_angle_sum(PAO)",
+    "arc_property_circumference_angle_external",
+    "arc_property_center_angle",
+    "angle_addition(COB,BOP)",
+    "radius_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal(OBC)",
+    "isosceles_triangle_property_angle_equal(OBC)",
+    "triangle_property_angle_sum(OBC)"
+  ],
+  "raw_answer": "解:连接OP和OC,∵AP切⊙O于P,∴∠APO=90°,∵∠A=30°,∴∠POB=60°,∵∠PDC=70°,∴∠POC=2∠PDC=140°,∴∠BOC=140°-60°=80°,∵OB=OC,∴∠OBC=∠OCB=\\frac{1}{2}×(180°-80°)=50°,故选:C．"
+}

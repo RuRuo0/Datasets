@@ -189,16 +189,19 @@ def save_solution_tree(problem, path):
             group[(premise, theorem)].append(_id)
 
     used_id, _ = get_used_theorem(problem)  # just keep useful solution msg
-    if problem.goal.solved and problem.goal.type == "algebra":  # if target solved, add target
-        eq = problem.goal.item - problem.goal.answer
-        if eq not in problem.condition.get_items_by_predicate("Equation"):  # target not in condition set
-            target_equation = InverseParser.inverse_parse_one("Equation", eq, problem)
-            _id = len(cdl)
-            cdl[_id] = target_equation
-            group[(problem.goal.premise, problem.goal.theorem)] = [_id]
-            used_id.append(_id)
+    if problem.goal.solved:  # if target solved, add target
+        if problem.goal.type == "algebra":
+            eq = problem.goal.item - problem.goal.answer
+            if eq not in problem.condition.get_items_by_predicate("Equation"):  # target not in condition set
+                target_equation = InverseParser.inverse_parse_one("Equation", eq, problem)
+                _id = len(cdl)
+                cdl[_id] = target_equation
+                group[(problem.goal.premise, problem.goal.theorem)] = [_id]
+                used_id.append(_id)
+            else:
+                used_id.append(problem.condition.get_id_by_predicate_and_item("Equation", eq))
         else:
-            used_id.append(problem.condition.get_id_by_predicate_and_item("Equation", eq))
+            used_id.append(problem.condition.get_id_by_predicate_and_item(problem.goal.item, problem.goal.answer))
         used_id += list(problem.goal.premise)
 
     remove_list = []

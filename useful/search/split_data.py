@@ -3,14 +3,22 @@ from core.aux_tools.utils import load_json, save_json
 formalized_path = "../../data/formalized-problems/"
 
 
-def forward_search(split_count=6):
+def forward_search(split_count=6, direction="fw"):
     problem_count = 0
+    if direction == "fw":
+        search = "forward_search"
+    else:
+        search = "backward_search"
 
     for filename in os.listdir(formalized_path):
         problem_CDL = load_json(formalized_path + filename)
-        if "notes" in problem_CDL or "forward_search" in problem_CDL or int(filename.split(".")[0]) > 10000:
+        if "notes" in problem_CDL or search in problem_CDL or int(filename.split(".")[0]) > 10000:
             continue
         problem_count += 1
+
+    print("direction: {}".format(search))
+    print("unsolved problem: {}".format(problem_count))
+    print()
 
     split_problem_count = int(problem_count / split_count)
     results = []
@@ -18,7 +26,7 @@ def forward_search(split_count=6):
     pid = 0
     for filename in os.listdir(formalized_path):
         problem_CDL = load_json(formalized_path + filename)
-        if "notes" in problem_CDL or "forward_search" in problem_CDL or int(filename.split(".")[0]) > 10000:
+        if "notes" in problem_CDL or search in problem_CDL or int(filename.split(".")[0]) > 10000:
             continue
         pid = int(filename.split(".")[0])
         if count == 0:
@@ -38,7 +46,7 @@ def forward_search(split_count=6):
     print()
 
     for start_pid, end_pid in results:
-        print("python main.py --start_pid {} --end_pid {}".format(start_pid, end_pid))
+        print("python main.py --start_pid {} --end_pid {} --direction {}".format(start_pid, end_pid, direction))
     print()
 
     print("conda activate FormalGeo")
@@ -48,5 +56,5 @@ def forward_search(split_count=6):
 
 
 if __name__ == '__main__':
-    forward_search(split_count=8)
+    forward_search(split_count=8, direction="fw")
 

@@ -1,0 +1,39 @@
+{
+  "problem_id": 8647,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-8445",
+  "problem_level": 1,
+  "problem_text_cn": "如图,△ABC内接于⊙O,OD⊥BC于D,∠A=50°,则∠COD的度数是()",
+  "problem_text_en": "As shown in the figure, △ABC is inscribed in ⊙O, OD ⊥ BC at D, ∠A = N_0, then the degree of ∠COD is ()",
+  "problem_img": "8647.png",
+  "construction_cdl": [
+    "Shape(AC,OCA)",
+    "Shape(AB,BO,OC,CA)",
+    "Shape(BA,OAB)",
+    "Shape(OB,BD,DO)",
+    "Shape(OD,DC,CO)",
+    "Shape(CD,DB,OBC)",
+    "Collinear(BDC)",
+    "Cocircular(O,BCA)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(CAB),50)",
+     "IsCentreOfCircle(O,O)",
+   "PerpendicularBetweenLine(OD,BC)",
+    "IsMidpointOfLine(D,BC)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(COD))",
+  "problem_answer": "50",
+  "theorem_seqs": [
+     "radius_of_circle_property_length_equal",
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external",
+    "perpendicular_bisector_judgment_per_and_mid(OD,BC)",
+    "line_addition(BD,DC)",
+    "mirror_congruent_triangle_judgment_sss(OBD,ODC)",
+    "mirror_congruent_triangle_property_angle_equal(OBD,ODC)",
+    "angle_addition(COD,DOB)"
+  ],
+  "raw_answer": "解:如图,连接OB；∵OB=OC,OD⊥BC,∴∠COD=∠BOD=\\frac{1}{2}∠BOC；∵∠A=50°,且∠A=\\frac{1}{2}∠BOC,∴∠COD=50°,故选:B．"
+}

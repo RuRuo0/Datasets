@@ -1,0 +1,36 @@
+{
+  "problem_id": 8691,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-8497",
+  "problem_level": 1,
+  "problem_text_cn": "如图,⊙O外接于△ABC,AD为⊙O的直径,∠ABC=30°,则∠CAD的度数()",
+  "problem_text_en": "As shown in the figure, ⊙O is circumscribed to △ABC, AD is the diameter of ⊙O, ∠ABC = N_0, then the degree of ∠CAD ()",
+  "problem_img": "8691.png",
+  "construction_cdl": [
+    "Shape(DC,OCD)",
+    "Shape(CD,DO,OE,EC)",
+    "Shape(CE,EA,AC)",
+    "Shape(CA,OAC)",
+    "Shape(BE,EO,OD,ODB)",
+    "Shape(EB,BA,AE)",
+    "Shape(AB,OBA)",
+    "Collinear(DOEA)",
+    "Collinear(BEC)",
+    "Cocircular(O,BACD)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(EBA),30)",
+     "IsDiameterOfCircle(AD,O)",
+    "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(EAC))",
+  "problem_answer": "60",
+  "theorem_seqs": [
+    "arc_property_center_angle",
+    "arc_property_circumference_angle_external",
+    "diameter_of_circle_property_right_angle",
+    "triangle_property_angle_sum(CDA)"
+  ],
+  "raw_answer": "解:∵∠ABC=30°,∴∠ADC=30°,∵AD为⊙O的直径,∴∠DCA=90°,∴∠CAD=90°-∠ADC=60°．故选:D．"
+}

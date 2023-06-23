@@ -1,0 +1,34 @@
+{
+  "problem_id": 9556,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-9857",
+  "problem_level": 1,
+  "problem_text_cn": "如图,已知A、B、C在⊙O上,∠A=∠B=19°,则∠AOB的度数是()",
+  "problem_text_en": "As shown in the figure, given that A, B, and C are on ⊙O, ∠A = ∠B = N_0, then the degree of ∠AOB is ()",
+  "problem_img": "9556.png",
+  "construction_cdl": [
+    "Shape(CA,OAC)",
+     "Shape(BC,OCB)",
+     "Shape(AO,OB,OBA)",
+     "Shape(AC,CO,OA)",
+    "Shape(OC,CB,BO)",
+    "Cocircular(O,CBA)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(OAC),19)",
+    "Equal(MeasureOfAngle(CBO),19)",
+     "IsCentreOfCircle(O,O)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(MeasureOfAngle(AOB))",
+  "problem_answer": "76",
+  "theorem_seqs": [
+    "radius_of_circle_property_length_equal",
+    "isosceles_triangle_judgment_line_equal",
+    "isosceles_triangle_property_angle_equal",
+     "triangle_property_angle_sum",
+    "angle_addition(BOC,COA)",
+    "round_angle"
+  ],
+  "raw_answer": "解:连接AB,如图,∵∠OAB+∠OBA+∠AOB=180°,∠OAB+∠OBA+∠OAC+∠OBC+∠C=180°∴∠AOB=∠OAC+∠OBC+∠C,∴∠C=\\frac{1}{2}∠AOB,∴\\frac{1}{2}∠AOB=∠OAC+∠OBC=2×19=38°,∴∠AOB=76°．故选:D．"
+}

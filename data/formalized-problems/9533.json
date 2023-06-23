@@ -1,0 +1,45 @@
+{
+  "problem_id": 9533,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-9819",
+  "problem_level": 1,
+  "problem_text_cn": "如图,AB是⊙O的直径,弧BC=弧BD,∠A=32°,则∠BOD的值为()",
+  "problem_text_en": "As shown in the figure, AB is the diameter of O, arc BC = arc BD, ∠A = N_0, then the value of ∠BOD is ()",
+  "problem_img": "9533.png",
+  "construction_cdl": [
+    "Shape(AC,OCA)",
+    "Shape(CA,AO,OC)",
+    "Shape(CO,OB,OBC)",
+    "Shape(BO,OD,ODB)",
+    "Shape(DO,OA,OAD)",
+    "Collinear(AOB)",
+    "Cocircular(O,DBCA)"
+  ],
+  "text_cdl": [
+
+    "IsDiameterOfCircle(AB,O)",
+    "Equal(DiameterOfCircle(O),10)",
+    "Equal(MeasureOfAngle(CAO),32)",
+    "CongruentBetweenArc(OBC,ODB)"
+  ],
+  "image_cdl": [
+    "IsCentreOfCircle(O,O)"
+  ],
+  "goal_cdl": "Value(MeasureOfAngle(BOD))",
+  "problem_answer": "64",
+  "theorem_seqs": [
+    "line_addition(AO,OB)",
+    "radius_of_circle_property_length_equal(OA,O)",
+    "radius_of_circle_property_length_equal(OC,O)",
+    "radius_of_circle_property_length_equal(OB,O)",
+    "radius_of_circle_property_length_equal(OD,O)",
+    "isosceles_triangle_judgment_line_equal(OCA)",
+    "isosceles_triangle_property_angle_equal(OCA)",
+    "triangle_property_angle_sum(OCA)",
+    "flat_angle(AOB)",
+    "angle_addition(AOC,COB)",
+    "arc_property_center_angle",
+    "congruent_arc_property_measure_equal(OBC,ODB)"
+  ],
+  "raw_answer": "解:连接OC,∵∠A=32°,∴∠BOC=2∠A=64°；∵⁀{BD}=⁀{BC},∴∠BOD=∠BOC=64°．故选:D．"
+}

@@ -1,0 +1,41 @@
+{
+  "problem_id": 7961,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-5861",
+  "problem_level": 1,
+  "problem_text_cn": "如图是\"人字形\"钢架,其中斜梁AB=AC,顶角∠BAC=120°,跨度BC=10m,AD为支柱(即底边BC的中线),两根支撑架DE⊥AB,DF⊥AC,则DE+DF等于()",
+  "problem_text_en": "As shown in the figure, there is the \"herringbone\" steel frame, where the inclined beam AB = AC, the top angle ∠BAC = N_0, the span BC = N_1, AD is the pillar (ie the center line of the bottom BC), two support frames DE ⊥ AB, DF ⊥ AC, then DE + DF is equal to ()",
+  "problem_img": "7961.png",
+  "construction_cdl": [
+    "Shape(AE,ED,DA)",
+     "Shape(AD,DF,FA)",
+     "Shape(EB,BD,DE)",
+     "Shape(FD,DC,CF)",
+
+    "Collinear(AFC)",
+    "Collinear(AEB)",
+    "Collinear(BDC)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),LengthOfLine(AC))",
+    "Equal(LengthOfLine(BC),10)",
+    "Equal(MeasureOfAngle(CAB),120)",
+    "IsMidpointOfLine(D,BC)",
+    "PerpendicularBetweenLine(DE,BE)",
+    "PerpendicularBetweenLine(CF,DF)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(Add(LengthOfLine(DE),LengthOfLine(DF)))",
+  "problem_answer": "5",
+  "theorem_seqs": [
+    "isosceles_triangle_judgment_line_equal(ABC)",
+    "triangle_property_angle_sum(ABC)",
+    "isosceles_triangle_property_angle_equal(ABC)",
+    "isosceles_triangle_property_line_coincidence(ABC,D)",
+    "line_addition(BD,DC)",
+    "triangle_property_angle_sum(EBD)",
+    "triangle_property_angle_sum(FDC)",
+    "sine_theorem"
+  ],
+  "raw_answer": "解:∵AB=AC,∠BAC=120°,∴∠B=∠C=30°,∵DE⊥AB,DF⊥AC,垂足为E,F,∴DE=\\frac{1}{2}BD,DF=\\frac{1}{2}DC,∴DE+DF=\\frac{1}{2}BD+\\frac{1}{2}DC=\\frac{1}{2}(BD+DC)\\frac{1}{2}BC．∴DE+DF=\\frac{1}{2}BC=\\frac{1}{2}×10=5m．故选:B．"
+}

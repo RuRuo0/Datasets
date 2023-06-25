@@ -1,0 +1,33 @@
+{
+  "problem_id": 7941,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-5804",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在等腰直角三角形ABC中,∠BAC=90°,在BC上截取BD=BA,作∠ABC的平分线与AD相交于点P,连结PC,若△ABC的面积为4cm^2^,则△BPC的面积为()",
+  "problem_text_en": "As shown in the figure, in the isosceles right triangle ABC, ∠BAC = N_0, intercept BD = BA on BC, make the bisector of ∠ABC and intersects AD at point P, connect PC, if the area of ​​△ABC is N_1^N_2, then the area of ​​△BPC is ()",
+  "problem_img": "7941.png",
+  "construction_cdl": [
+    "Shape(AB,BP,PA)",
+    "Shape(CA,AP,PC)",
+    "Shape(PB,BD,DP)",
+    "Shape(CP,PD,DC)",
+    "Collinear(APD)",
+    "Collinear(BDC)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(BD),LengthOfLine(BA))",
+    "Equal(MeasureOfAngle(CAB),90)",
+    "IsoscelesTriangle(CAB)",
+    "IsBisectorOfAngle(BP,ABC)",
+    "Equal(AreaOfTriangle(ABC),4)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(AreaOfTriangle(PBC))",
+  "problem_answer": "2",
+  "theorem_seqs": [
+    "line_addition(AP,PD)",
+    "isosceles_triangle_property_line_coincidence(ABD,P)"
+  ],
+  "raw_answer": "解:∵BD=BA,BP是∠ABC的平分线,∴AP=PD,∴S~△BPD~=\\frac{1}{2}S~△ABD~,S~△CPD~=\\frac{1}{2}S~△ACD~,∴S~△BPC~=S~△BPD~+S~△CPD~=\\frac{1}{2}S~△ABD~+\\frac{1}{2}S~△ACD~=\\frac{1}{2}S~△ABC~,∵△ABC的面积为4cm^2^,∴S~△BPC~=\\frac{1}{2}×4=2cm^2^．故选:C．",
+  "notes": "有点难度"
+}

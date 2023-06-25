@@ -1,6 +1,6 @@
 import time
 from core.solver.solver import Interactor
-from core.solver.searcher import Theorem
+from core.solver.fw_search import Theorem
 from core.aux_tools.utils import *
 from core.aux_tools.output import *
 from core.aux_tools.parser import FormalLanguageParser as FLParser

@@ -1,5 +1,6 @@
 from core.solver.solver import Interactor
-from core.solver.searcher import ForwardSearcher, BackwardSearcher
+from core.solver.fw_search import ForwardSearcher
+from core.solver.bw_search import BackwardSearcher
 from core.aux_tools.utils import *
 from core.aux_tools.output import *
 from core.aux_tools.parser import FormalLanguageParser as FLParser
@@ -22,6 +23,7 @@ def get_args():
 
     parser.add_argument("--start_pid", type=int, required=True, help="start problem id")
     parser.add_argument("--end_pid", type=int, required=True, help="end problem id")
+    parser.add_argument("--direction", type=str, required=True, help="search direction")
 
     return parser.parse_args()
 
@@ -33,7 +35,8 @@ def save_gdl():
     save_json(solver.theorem_GDL, path_solved + "theorem_parsed.json")
 
 
-def check(auto=False, save_CDL=False, clean_theorem=False, acc_mode=False, check_search=None):
+def check(auto=False, save_CDL=False, clean_theorem=False, acc_mode=False, check_search=None,
+          start_pid=1584, end_pid=9831):
     """Run solver and load problem from problem_GDL."""
     solver = Interactor(load_json(path_preset + "predicate_GDL.json"),  # init solver
                         load_json(path_preset + "theorem_GDL.json"))
@@ -44,7 +47,8 @@ def check(auto=False, save_CDL=False, clean_theorem=False, acc_mode=False, check
         unsolved = []
         print("pid\tannotation\tcorrect_answer\tsolved\tsolved_answer\tspend(s)")
         for filename in os.listdir(path_formalized):
-            if int(filename.split(".")[0]) > 10000:
+            pid = int(filename.split(".")[0])
+            if pid < start_pid or pid > end_pid:
                 continue
 
             problem_CDL = load_json(path_formalized + filename)
@@ -172,7 +176,8 @@ def check(auto=False, save_CDL=False, clean_theorem=False, acc_mode=False, check
                 )
 
 
-def search(direction="fw", strategy="df", auto=False, save_seqs=True, start_pid=1584, end_pid=9651):
+def search(direction="fw", strategy="df", auto=False, save_seqs=True,
+           start_pid=1584, end_pid=9831):
     """
     Solve problem by searching.
     :param direction: 'fw' or 'bw', forward search or backward search.
@@ -184,8 +189,9 @@ def search(direction="fw", strategy="df", auto=False, save_seqs=True, start_pid=
     """
     if direction == "fw":
         searcher = ForwardSearcher(load_json(path_preset + "predicate_GDL.json"),  # init searcher
-                                   load_json(path_preset + "theorem_GDL.json"))
-        searcher.init_search(max_depth=5)
+                                   load_json(path_preset + "theorem_GDL.json"),
+                                   max_depth=5,
+                                   strategy=strategy)
         warnings.filterwarnings("ignore")
         if auto:
             for filename in os.listdir(path_formalized):
@@ -200,7 +206,7 @@ def search(direction="fw", strategy="df", auto=False, save_seqs=True, start_pid=
                 problem = searcher.get_problem(load_json(path_formalized + filename))
 
                 try:
-                    solved, seqs = searcher.search(problem, strategy)
+                    solved, seqs = searcher.search(problem)
                 except FunctionTimedOut:
                     print("\nFunctionTimedOut when search problem {}.\n".format(pid))
                 except Exception as e:
@@ -229,13 +235,16 @@ def search(direction="fw", strategy="df", auto=False, save_seqs=True, start_pid=
                         problem_CDL["forward_search"] = seqs
     else:
         searcher = BackwardSearcher(load_json(path_preset + "predicate_GDL.json"),  # init searcher
-                                    load_json(path_preset + "theorem_GDL.json"))
+                                    load_json(path_preset + "theorem_GDL.json"),
+                                    max_depth=8,
+                                    strategy=strategy)
 
 
 if __name__ == '__main__':
-    # check(auto=True, clean_theorem=True, acc_mode=True, check_search="fw")
+    # check(auto=False, clean_theorem=True, acc_mode=True, check_search=None, save_CDL=True)
+    # save_gdl()
 
-    search(auto=False, save_seqs=False)
+    search(auto=False, save_seqs=False, direction="bw")
 
     # args = get_args()
-    # search(auto=True, start_pid=args.start_pid, end_pid=args.end_pid)
+    # search(auto=True, start_pid=args.start_pid, end_pid=args.end_pid, direction=args.direction)

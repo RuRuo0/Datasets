@@ -32,10 +32,13 @@ t = symbols("t")
 # solution = solve(t_eq, t, dict=True)
 # print(solution)
 
-eq1 = h / g - 1
-t_eq = t + g - h
-solution = solve([eq1, t_eq], t, dict=True)
-print(eq1)
-print(t_eq)
-print()
-print(solution)
+# eq1 = h / g - 1
+# t_eq = t + g - h
+# solution = solve([eq1, t_eq], t, dict=True)
+# print(eq1)
+# print(t_eq)
+# print()
+# print(solution)
+
+l = [1, 2, 3, 4, 5, 6, 7]
+print(l[0:2])

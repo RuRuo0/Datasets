@@ -6,6 +6,7 @@ from core.solver.engine import GeometryPredicateLogic as GeoLogic
 from core.aux_tools.output import get_used_theorem
 from collections import deque
 from itertools import combinations
+from core.aux_tools.utils import rough_equal
 from enum import Enum
 import time
 import copy
@@ -351,7 +352,7 @@ class ForwardSearcher:
         related_pres = []  # new added predicates
         related_eqs = []  # new added/updated equations
 
-        for step in range(last_step_count, problem.condition.step_count + 1):  # get related conditions
+        for step in range(last_step_count, problem.condition.step_count):  # get related conditions
             for _id in problem.condition.ids_of_step[step]:
                 if problem.condition.items[_id][0] == "Equation":
                     if problem.condition.items[_id][1] in related_eqs:
@@ -620,167 +621,3 @@ class ForwardSearcher:
             complex_problems.append(special_problem)
 
         return problems[::-1]
-
-
-class NodeState(Enum):
-    to_be_expanded = 1
-    expanded = 2
-    success = 3
-    fail = 4
-
-
-class Node:
-    def __init__(self, super_node, predicate, item, problem):
-        self.state = NodeState.to_be_expanded
-        self.super_node = super_node  # class <SuperNode>
-        self.children = []    # list of class <SuperNode>
-        self.predicate = predicate
-        self.item = item
-        self.problem = problem
-
-    def expand(self):
-        pass
-
-    def check_state(self):
-        if self.state in [NodeState.success, NodeState.fail]:
-            return
-
-        if self.predicate == "Equation":
-            pass
-        else:
-            pass
-
-
-class SuperNode:
-    def __init__(self, father, theorem, problem, pos):
-        self.state = NodeState.to_be_expanded
-        self.nodes = []  # list of class <Node>
-        self.father = father  # class <Node>
-        self.theorem = theorem
-        self.problem = problem
-        self.pos = pos
-
-    def add_node(self, predicate, item, problem):
-        node = Node(self, predicate, item, problem)
-        self.nodes.append(node)
-
-    def check_state(self):    # process 2
-        if self.state in [NodeState.success, NodeState.fail]:
-            return False
-
-        for node in self.nodes:
-            if node.state == NodeState.fail:
-                self.state = NodeState.fail
-                return True
-
-        success = True
-        for node in self.nodes:
-            if node.state != NodeState.success:
-                success = False
-                break
-
-        if success:
-            self.state = NodeState.success
-            return True
-
-        self.state = NodeState.expanded
-        return False
-
-    def apply_theorem(self):
-        pass
-
-
-class BackwardSearcher:
-
-    def __init__(self, predicate_GDL, theorem_GDL, max_depth, strategy):
-        """
-        Initialize Backward Searcher.
-        :param predicate_GDL: predicate GDL.
-        :param theorem_GDL: theorem GDL.
-        :param max_depth: max search depth.
-        :param strategy: <str>, 'df' or 'bf', use deep-first or breadth-first.
-        """
-        self.predicate_GDL = FLParser.parse_predicate(predicate_GDL)
-        self.theorem_GDL = FLParser.parse_theorem(theorem_GDL, self.predicate_GDL)
-        self.max_depth = max_depth
-        self.strategy = strategy
-
-        self.p2t_map = {}  # dict, {predicate/attr: [(theorem_name, branch)]}, map predicate to theorem
-        for t_name in Theorem.t_msg:
-            if Theorem.t_msg[t_name][1] == 0 or Theorem.t_msg[t_name][0] == 3:  # skip no used and diff t
-                continue
-
-            for branch in self.theorem_GDL[t_name]["body"]:
-                theorem_unit = self.theorem_GDL[t_name]["body"][branch]
-                premises = copy.copy(theorem_unit["conclusions"])
-                premises += theorem_unit["attr_in_conclusions"]
-                for predicate, _ in premises:
-                    if predicate == "Equal":
-                        continue
-                    if predicate not in self.p2t_map:
-                        self.p2t_map[predicate] = [(t_name, branch)]
-                    elif (t_name, branch) not in self.p2t_map[predicate]:
-                        self.p2t_map[predicate].append((t_name, branch))
-
-        self.problem = None
-        self.problem_p_paras = None  # Perimeter
-        self.problem_a_paras = None  # Area
-        self.root = None
-
-    def get_problem(self, problem_CDL):
-        """Init and return a problem by problem_CDL."""
-        s_start_time = time.time()
-        self.problem = Problem()
-        self.problem.load_problem_by_fl(self.predicate_GDL, FLParser.parse_problem(problem_CDL))  # load problem
-        EqKiller.solve_equations(self.problem)
-        self.problem.step("init_problem", time.time() - s_start_time)  # save applied theorem and update step
-
-        self.problem_p_paras = set()  # Perimeter
-        self.problem_a_paras = set()  # Area
-        for sym in self.problem.condition.attr_of_sym:
-            predicate, paras = self.problem.condition.attr_of_sym[sym]
-            if predicate.startswith("Perimeter"):
-                for para in paras:
-                    self.problem_p_paras.add(para)
-            elif predicate.startswith("Area"):
-                for para in paras:
-                    self.problem_a_paras.add(para)
-
-    @func_set_timeout(150)
-    def search(self):
-        """return seqs, <list> of theorem, solved theorem sequences."""
-        self.root = SuperNode(None, None, self.problem)
-        if self.problem.goal.type == "algebra":
-            eq = self.problem.goal.item - self.problem.goal.answer
-            self.root.add_node("Equation", eq, self.problem)
-        else:
-            self.root.add_node(self.problem.goal.item, self.problem.goal.answer, self.problem)
-        search_stack = deque()
-        search_stack.append((self.root, (1, 1, 1)))
-        pid = self.problem.problem_CDL["id"]
-        print("\033[36m(pid={})\033[0m Start Searching".format(pid))
-
-        while len(search_stack) > 0 and self.root.state not in [NodeState.success, NodeState.fail]:
-            if self.strategy == "df":
-                super_node, pos = search_stack.pop()
-            else:
-                super_node, pos = search_stack.popleft()
-            print("\033[35m(pid={},depth={},branch={}/{},node_count={})\033[0m Current Node".format(
-                pid, pos[0], pos[1], pos[2], len(super_node.nodes)))
-
-            for node in super_node.nodes:
-                node.check_state()
-                node.expand()
-
-            if super_node.check_state():
-                self.update_tree_state(super_node)
-
-        timing = time.time()
-        print("\033[31m(pid={})\033[0m End Searching".format(pid))
-        return False, None
-
-    def update_tree_state(self, start_super_node):
-        pass
-
-    def get_node(self):
-        pass

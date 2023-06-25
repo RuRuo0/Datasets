@@ -1,0 +1,41 @@
+{
+  "problem_id": 7931,
+  "annotation": "xiaokaizhang_2023-03-06",
+  "source": "GeoQA-5792",
+  "problem_level": 1,
+  "problem_text_cn": "如图,在△ABC中,AB=AC,D是BC上一点,且DE∥AC,交AB于E,DF∥AB,交AC于F,若四边形AEDF的周长为12cm,则等腰三角形ABC的腰长为()",
+  "problem_text_en": "As shown in the figure, in △ABC, AB = AC, D is a point on BC, and DE ∥ AC, intersects AB at E, DF ∥ AB, intersects AC at F. If the perimeter of quadrilateral AEDF is N_0, then the length of the waist of the isosceles triangle ABC is ()  ()",
+  "problem_img": "7931.png",
+  "construction_cdl": [
+    "Shape(AE,ED,DF,FA)",
+    "Shape(EB,BD,DE)",
+    "Shape(FD,DC,CF)",
+    "Collinear(AEB)",
+    "Collinear(BDC)",
+    "Collinear(AFC)"
+  ],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),LengthOfLine(AC))",
+    "Equal(LengthOfLine(AE),4)",
+    "Equal(LengthOfLine(ED),2)",
+    "Equal(PerimeterOfQuadrilateral(AEDF),12)",
+    "ParallelBetweenLine(EA,DF)",
+    "ParallelBetweenLine(DE,CA)",
+    "ParallelBetweenLine(DE,FA)"
+  ],
+  "image_cdl": [],
+  "goal_cdl": "Value(LengthOfLine(AB))",
+  "problem_answer": "6",
+  "theorem_seqs": [
+    "parallelogram_judgment_parallel_and_parallel",
+    "line_addition(AE,EB)",
+    "parallelogram_property_opposite_line_equal",
+    "isosceles_triangle_judgment_line_equal(ABC)",
+    "isosceles_triangle_property_angle_equal(ABC)",
+    "parallel_property_corresponding_angle(DE,CA,B)",
+    "isosceles_triangle_judgment_angle_equal(EBD)",
+    "line_addition(AE,EB)"
+  ],
+  "raw_answer": "解:∵DE∥AC,DF∥AB,∴四边形AEDF为平行四边形,∴DE=AF,AE=DF,∴C~四边形AEDF~=AE+ED+DF+FA=2(AE+ED)=12cm,∴AE+ED=6cm．∵AB=AC,∴∠B=∠C．∵DE∥AC,∴∠EDB=∠C=∠B,∴EB=ED,∴AB=AE+EB=AE+ED=6cm．故选:A．",
+  "notes": ""
+}

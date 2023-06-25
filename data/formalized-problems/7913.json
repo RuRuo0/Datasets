@@ -1,15 +1,15 @@
 {
   "problem_id": 7913,
-  "annotation": "xiaokaizhang_2023-03-06",
+  "annotation": "Yangli_2023-05-21",
   "source": "GeoQA-5763",
-  "problem_level": 1,
+  "problem_level": 8,
   "problem_text_cn": "如图,在平行四边形ABCD中,点E是AB边上一点,连接DE、CE．若DE、CE分别是∠ADC、∠BCD的角平分线,且AB=4,则平行四边形ABCD的周长为()",
   "problem_text_en": "As shown in the figure, in the parallelogram ABCD, point E is a point on AB. Connect DE and CE. If DE and CE are the angular bisectors of ∠ADC and ∠BCD, and AB = N_0, then the perimeter of the parallelogram ABCD is ()",
   "problem_img": "7913.png",
   "construction_cdl": [
     "Shape(BE,EC,CB)",
-     "Shape(ED,DC,CE)",
-     "Shape(EA,AD,DE)",
+    "Shape(ED,DC,CE)",
+    "Shape(EA,AD,DE)",
     "Collinear(AEB)"
   ],
   "text_cdl": [
@@ -17,8 +17,8 @@
     "IsBisectorOfAngle(DE,ADC)",
     "IsBisectorOfAngle(CE,DCB)",
     "Parallelogram(ADCB)",
-     "ParallelBetweenLine(AE,DC)",
-     "ParallelBetweenLine(EB,DC)"
+    "ParallelBetweenLine(AE,DC)",
+    "ParallelBetweenLine(EB,DC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfQuadrilateral(ADCB))",
@@ -27,9 +27,10 @@
     "line_addition(AE,EB)",
     "parallelogram_property_opposite_line_equal(ADCB)",
     "parallelogram_property_opposite_line_equal(DCBA)",
-    "parallel_property_alternate_interior_angle",
-    "isosceles_triangle_judgment_angle_equal",
+    "parallel_property_alternate_interior_angle(EB,DC)",
+    "parallel_property_alternate_interior_angle(AE,DC)",
+    "isosceles_triangle_judgment_angle_equal(BEC)",
+    "isosceles_triangle_judgment_angle_equal(ADE)",
     "quadrilateral_perimeter_formula(ADCB)"
-  ],
-  "raw_answer": "解:∵DE、CE分别是∠ADC、∠BCD的平分线,∴∠ADE=∠CDE,∠DCE=∠BCE,∵四边形ABCD是平行四边形,∴AB∥DC,AD=BC,CD=AB=4,∴∠CDE=∠DEA,∠DCE=∠CEB,∴∠ADE=∠AED,∠BCE=∠CEB,∴AD=AE,BE=BC,∴AD+BC=AE+BE=AB=4,∴平行四边形ABCD的周长=2(AB+AD)=3AB=12；故选:D．"
+  ]
 }

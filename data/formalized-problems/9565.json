@@ -2,7 +2,7 @@
   "problem_id": 9565,
   "annotation": "Yangli_2023-06-04",
   "source": "GeoQA-9874",
-  "problem_level": 1,
+  "problem_level": 16,
   "problem_text_cn": "如图,⊙O中,弦AB的长为2,OC⊥AB于C,OC=1,若从⊙O外一点P作⊙O的两条切线,切点分别为A、B,则∠APB的度数为()",
   "problem_text_en": "As shown in the figure, in ⊙O, the length of chord AB is N_0, OC ⊥ AB at C, OC = N_1, if two tangents of ⊙O are drawn from a point P outside ⊙O, the tangent points are A and B respectively, then ∠APB The degree is ()",
   "problem_img": "9565.png",
@@ -28,16 +28,21 @@
   "goal_cdl": "Value(MeasureOfAngle(APB))",
   "problem_answer": "90",
   "theorem_seqs": [
-    "tangent_of_circle_property_perpendicular",
-    "radius_of_circle_property_length_equal",
+    "tangent_of_circle_property_perpendicular(PA,O,O)",
+    "tangent_of_circle_property_perpendicular(PB,O,O)",
+    "radius_of_circle_property_length_equal(OA,O)",
+    "radius_of_circle_property_length_equal(OB,O)",
     "line_addition(AC,CB)",
-    "flat_angle",
-    "adjacent_complementary_angle",
-    "isosceles_triangle_judgment_line_equal",
-    "isosceles_triangle_property_angle_equal",
-    "triangle_property_angle_sum",
-    "angle_addition(BOC,COA)",
-    "quadrilateral_property_angle_sum"
-  ],
-  "raw_answer": "解:连OA,OB．PA,PB是切线,则∠OAP=∠OBP=90°．OC⊥AB⇒AC=BC=1=OC⇒△ACO,△BCO是等腰直角三角形⇒∠AOB=90°⇒四边形AOBP是正方形⇒∠APB=90°．故选:B．"
+    "adjacent_complementary_angle(ACO,OCB)",
+    "isosceles_triangle_judgment_line_equal(COA)",
+    "isosceles_triangle_judgment_line_equal(CBO)",
+    "isosceles_triangle_judgment_line_equal(OAB)",
+    "isosceles_triangle_property_angle_equal(COA)",
+    "isosceles_triangle_property_angle_equal(CBO)",
+    "isosceles_triangle_property_angle_equal(OAB)",
+    "triangle_property_angle_sum(OAC)",
+    "triangle_property_angle_sum(OCB)",
+    "triangle_property_angle_sum(OAB)",
+    "quadrilateral_property_angle_sum(OAPB)"
+  ]
 }

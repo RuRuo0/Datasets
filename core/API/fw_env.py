@@ -1,28 +1,17 @@
 from core.problem.problem import Problem
-from core.aux_tools.parser import EquationParser as EqParser
-from core.aux_tools.parser import FormalLanguageParser as FLParser
 from core.aux_tools.parser import InverseParser as IvParser
-from core.solver.engine import EquationKiller as EqKiller
 from core.solver.engine import GeometryPredicateLogic as GeoLogic
-from core.aux_tools.utils import rough_equal
-import warnings
-import time
-from core.solver.solver import Interactor
 from core.aux_tools.utils import *
 from core.aux_tools.output import *
 from core.aux_tools.parser import FormalLanguageParser as FLParser
 from core.solver.engine import EquationKiller as EqKiller
 from core.solver.fw_search import Theorem
-from func_timeout import FunctionTimedOut
 import warnings
-import os
-import argparse
-from colorama import init
 
 
 class Node:
     def __init__(self, father, problem, state2node, theorem_GDL):
-        self.problem = problem    # instance of class <Problem>
+        self.problem = problem  # instance of class <Problem>
         self.state = None  # tuple of <str>
         self.legal_moves = None  # [(t_name, t_para, t_branch)]
         self.conclusions = None  # {(t_name, t_para, t_branch): conclusions}

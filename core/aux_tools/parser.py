@@ -1,3 +1,5 @@
+import copy
+
 from sympy import sin, cos, tan, sqrt, pi, Float, Integer
 from core.aux_tools.utils import number_round
 
@@ -195,25 +197,41 @@ class FormalLanguageParser:
                 "body": body
             }
 
-        for predicate in parsed_predicate_GDL["Entity"]:  # 这里要不要把extend内容加进来？
-            if len(parsed_predicate_GDL["Entity"][predicate]["extend"]) == 0:
+        for predicate in parsed_predicate_GDL["Entity"]:
+            conclusions = copy.copy(parsed_predicate_GDL["Entity"][predicate]["extend"])
+            for multi in parsed_predicate_GDL["Entity"][predicate]["multi"]:
+                conclusions.append([predicate, multi])
+            if len(conclusions) == 0:
                 continue
+
             name = predicate[0].lower()
             for i in range(1, len(predicate)):
                 if predicate[i].isupper():
                     name += "_{}".format(predicate[i].lower())
                 else:
                     name += predicate[i]
-            name += "_definition"
+            name += "_definition"  # multi 是不是也要加进来？
 
             parsed_GDL[name] = {
                 "vars": parsed_predicate_GDL["Entity"][predicate]["vars"],
                 "para_len": parsed_predicate_GDL["Entity"][predicate]["para_len"],
-                "body": [[[[predicate, parsed_predicate_GDL["Entity"][predicate]["vars"]]],
-                          parsed_predicate_GDL["Entity"][predicate]["extend"]]]
+                "body": {
+                    "1": {
+                        "products": [[predicate, parsed_predicate_GDL["Entity"][predicate]["vars"]]],
+                        "logic_constraints": [],
+                        "algebra_constraints": [],
+                        "attr_in_algebra_constraints": [],
+                        "conclusions": conclusions,
+                        "attr_in_conclusions": []
+                    }
+                }
             }
+
         for predicate in parsed_predicate_GDL["Relation"]:
-            if len(parsed_predicate_GDL["Relation"][predicate]["extend"]) == 0:
+            conclusions = copy.copy(parsed_predicate_GDL["Relation"][predicate]["extend"])
+            for multi in parsed_predicate_GDL["Relation"][predicate]["multi"]:
+                conclusions.append([predicate, multi])
+            if len(conclusions) == 0:
                 continue
 
             name = predicate[0].lower()
@@ -227,8 +245,16 @@ class FormalLanguageParser:
             parsed_GDL[name] = {
                 "vars": parsed_predicate_GDL["Relation"][predicate]["vars"],
                 "para_len": parsed_predicate_GDL["Relation"][predicate]["para_len"],
-                "body": [[[[predicate, parsed_predicate_GDL["Relation"][predicate]["vars"]]],
-                          parsed_predicate_GDL["Relation"][predicate]["extend"]]]
+                "body": {
+                    "1": {
+                        "products": [[predicate, parsed_predicate_GDL["Relation"][predicate]["vars"]]],
+                        "logic_constraints": [],
+                        "algebra_constraints": [],
+                        "attr_in_algebra_constraints": [],
+                        "conclusions": conclusions,
+                        "attr_in_conclusions": []
+                    }
+                }
             }
         return parsed_GDL
 

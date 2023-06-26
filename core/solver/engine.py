@@ -780,47 +780,87 @@ class GeometryPredicateLogic:
 
 
 class GoalFinder:
-    @staticmethod
-    def find_vars_from_tree(tree, attr, predicate_GDL):
-        """
-        Find all vars of attr from equal tree's para.
-        >> find_vars_from_tree([['LengthOfLine', ['a', 'c']], ['LengthOfLine', ['a', 'b']]], 'LengthOfLine')
-        [['a', 'c'], ['a', 'b']]
-        """
-        results = []
-        GoalFinder.find_vars_by_attr(tree[0], attr, predicate_GDL, results)
-        GoalFinder.find_vars_by_attr(tree[1], attr, predicate_GDL, results)
-        return results
+
+    def __init__(self, theorem_GDL, t_msg):
+        self.theorem_GDL = theorem_GDL
+        self.p2t_map = {}
+
+        for t_name in theorem_GDL:
+            if t_name in t_msg and (t_msg[t_name][1] == 0 or t_msg[t_name][0] == 3):  # skip no used and diff t
+                continue
+
+            for branch in theorem_GDL[t_name]["body"]:
+                theorem_unit = theorem_GDL[t_name]["body"][branch]
+                for predicate, _ in theorem_unit["conclusions"] + theorem_unit["attr_in_conclusions"]:
+                    if predicate == "Equal":
+                        continue
+                    if predicate not in self.p2t_map:
+                        self.p2t_map[predicate] = [(t_name, branch)]
+                    elif (t_name, branch) not in self.p2t_map[predicate]:
+                        self.p2t_map[predicate].append((t_name, branch))
+
+    def find_all_sub_goals(self, predicate, item, problem):
+        """return [(sub_goals, (t_name, t_para, t_branch))]"""
+        theorem_and_para = {}  # {(t_name, t_branch): t_paras}
+
+        if predicate == "Equation":  # algebra goal
+            attr_to_paras = {}
+            for sym in EquationKiller.get_minimum_syms([item], list(problem.condition.simplified_equation)):
+                attr, paras = problem.condition.attr_of_sym[sym]
+                if attr not in attr_to_paras:
+                    attr_to_paras[attr] = []
+                for para in paras:
+                    if para not in attr_to_paras[attr]:
+                        attr_to_paras[attr].append(para)
+
+            for attr in attr_to_paras:
+                for t_name, t_branch in self.p2t_map[attr]:
+                    if (t_name, t_branch) not in theorem_and_para:
+                        theorem_and_para[(t_name, t_branch)] = []
+                    t_paras = []
+                    for t_attr, attr_vars in self.theorem_GDL[t_name]["body"][t_branch]["attr_in_conclusions"]:
+                        if attr != t_attr:
+                            continue
+                        t_vars = copy.copy(self.theorem_GDL[t_name]["vars"])
+                        for para in attr_to_paras[attr]:
+                            t_para = [v if v not in attr_vars else para[attr_vars.index(v)] for v in t_vars]
+                            t_paras.append(t_para)
+                    t_paras = GoalFinder.theorem_para_completion(
+                        t_paras, problem.condition.get_items_by_predicate("Point"))
+                    for t_para in t_paras:
+                        if t_para not in theorem_and_para[(t_name, t_branch)]:
+                            theorem_and_para[(t_name, t_branch)].append(t_para)
+        else:  # logic goal
+            for t_name, t_branch in self.p2t_map[predicate]:
+                if (t_name, t_branch) not in theorem_and_para:
+                    theorem_and_para[(t_name, t_branch)] = []
+                t_paras = []
+
+                for t_predicate, item_vars in self.theorem_GDL[t_name]["body"][t_branch]["conclusions"]:
+                    if t_predicate != predicate:
+                        continue
+                    t_vars = copy.copy(self.theorem_GDL[t_name]["vars"])
+                    t_para = [v if v not in item_vars else item[item_vars.index(v)] for v in t_vars]
+                    t_paras.append(t_para)
+
+                t_paras = GoalFinder.theorem_para_completion(
+                    t_paras, problem.condition.get_items_by_predicate("Point"))
+
+                for t_para in t_paras:
+                    if t_para not in theorem_and_para[(t_name, t_branch)]:
+                        theorem_and_para[(t_name, t_branch)].append(t_para)
+
+        return GoalFinder.gen_sub_goals(self.theorem_GDL, theorem_and_para, problem)
 
     @staticmethod
-    def find_vars_by_attr(tree, attr, predicate_GDL, results):
-        """
-        Find all vars of attr from one equal tree para.
-        >> find_vars_by_attr(['LengthOfLine', ['a', 'c']], 'LengthOfLine')
-        [['a', 'c']]
-        """
-        if not isinstance(tree, list):  # expr
-            return []
-
-        if tree[0] in predicate_GDL["Attribution"]:  # attr
-            if tree[0] == attr:
-                results.append(tuple(tree[1]))
-        elif tree[0] in ["Add", "Mul", "Sub", "Div", "Pow", "Sin", "Cos", "Tan"]:  # operate
-            for item in tree[1]:
-                GoalFinder.find_vars_by_attr(item, attr, predicate_GDL, results)
-        else:
-            e_msg = "<OperatorNotDefined> No operation {}, please check your expression.".format(tree[0])
-            raise Exception(e_msg)
-
-    @staticmethod
-    def theorem_para_completion(theorem_paras, points):
+    def theorem_para_completion(t_paras, points):
         """
         Replace free vars with points.
         >> theorem_para_completion([['a', 'R', 'S']], ['A', 'R', 'S'])
         >> [['A', 'R', 'S'], ['R', 'R', 'S'], ['S', 'R', 'S']]
         """
         results = []
-        for para in theorem_paras:
+        for para in t_paras:
             GoalFinder.completion_one(para, points, results)
 
         return results
@@ -842,117 +882,57 @@ class GoalFinder:
                 passed = False
                 break
         if passed:
-            results.append(para)
+            results.append(tuple(para))
 
     @staticmethod
-    def gen_sub_goals(theorem_name, theorem_paras, theorem_vars, premises_GDL, problem):
+    def gen_sub_goals(theorem_GDL, theorem_and_para, problem):
         """
-        Select vars by theorem's premise. Construct and return legitimate sub goal.
-        :param theorem_name:
-        :param theorem_paras:
-        :param theorem_vars:
-        :param premises_GDL:
-        :param problem:
-        :return sub_goals: {(theorem_name, theorem_para): [(sub_goal_1, sub_goal_2,...)]}.
+        Construct and return legitimate sub goal.
+        :param theorem_GDL: parsed theorem_GDL.
+        :param theorem_and_para: {(t_name, t_branch): t_paras}.
+        :param problem: Class <Problem>.
+        :return results: [(t_name, t_branch, t_para, sub_goals)].
         """
-        sub_goals = {}
-        for para in theorem_paras:
-            letters = {}
-            for j in range(len(theorem_vars)):
-                letters[theorem_vars[j]] = para[j]
+        results = []
+        for t in theorem_and_para:
+            t_name, t_branch = t
+            t_vars = theorem_GDL[t_name]["vars"]
+            for t_para in theorem_and_para[t]:
+                letters = {}
+                for j in range(len(t_vars)):
+                    letters[t_vars[j]] = t_para[j]
 
-            passed = True
-            sub_goal = []
-            for predicate, p_vars in premises_GDL:
-                if predicate == "Equal":  # algebra sub goal
-                    eq = EqParser.get_equation_from_tree(problem, p_vars, True, letters)
-                    if problem.fv_check("Equation", eq):
-                        sub_goal.append(("Equation", eq))
-                    else:
+                sub_goals = []
+                passed = True
+                for predicate, item_vars in theorem_GDL[t_name]["body"][t_branch]["products"]:
+                    item = tuple(letters[i] for i in item_vars)
+                    if not (problem.ee_check(predicate, item) and problem.fv_check(predicate, item)):
                         passed = False
                         break
-                else:  # logic sub goal
-                    item = tuple(letters[i] for i in p_vars)
-                    if problem.ee_check(predicate, item) and problem.fv_check(predicate, item):
-                        if (predicate in problem.predicate_GDL["BasicEntity"] or
-                            predicate in problem.predicate_GDL["Construction"]) and \
-                                item not in problem.condition.get_items_by_predicate(predicate):
-                            passed = False
-                            break
-                        sub_goal.append((predicate, item))
-                    else:
+                    sub_goals.append((predicate, item))
+                if not passed:
+                    continue
+
+                for predicate, item_vars in theorem_GDL[t_name]["body"][t_branch]["logic_constraints"]:
+                    item = tuple(letters[i] for i in item_vars)
+                    if not (problem.ee_check(predicate, item) and problem.fv_check(predicate, item)):
                         passed = False
                         break
+                    sub_goals.append((predicate, item))
+                if not passed:
+                    continue
 
-            if passed:
-                sub_goals[(theorem_name, tuple(para))] = [tuple(sub_goal)]
+                for _, tree in theorem_GDL[t_name]["body"][t_branch]["algebra_constraints"]:
+                    eq = EqParser.get_equation_from_tree(problem, tree, True, letters)
+                    if eq is None:
+                        passed = False
+                        break
+                    sub_goals.append(("Equation", eq))
+                if not passed:
+                    continue
 
-        return sub_goals
+                result = (t_name, t_branch, t_para, tuple(sub_goals))
+                if result not in results:
+                    results.append(result)
 
-    @staticmethod
-    def find_algebra_sub_goals(unsolved_syms, problem, theorem_GDL):
-        """
-        Find sub goals from algebra goal.
-        """
-        sub_goals = {}
-        for sym in unsolved_syms:
-            attr, items = problem.condition.attr_of_sym[sym]
-            for theorem_name in theorem_GDL:
-                t_vars = theorem_GDL[theorem_name]["vars"]
-                for premises_GDL, conclusions_GDL in theorem_GDL[theorem_name]["body"]:
-                    for conclusion in conclusions_GDL:
-                        if conclusion[0] != "Equal":  # not algebra sub goal
-                            continue
-                        attr_vars = GoalFinder.find_vars_from_tree(conclusion[1], attr, problem.predicate_GDL)
-                        theorem_paras = []
-                        for item in items:
-                            for attr_var in attr_vars:
-                                theorem_para = [item[attr_var.index(t)] if t in attr_var else t for t in t_vars]
-                                theorem_paras.append(theorem_para)
-                        theorem_paras = GoalFinder.theorem_para_completion(
-                            theorem_paras, problem.condition.get_items_by_predicate("Point")
-                        )
-                        current_sub_goals = GoalFinder.gen_sub_goals(
-                            theorem_name, theorem_paras, t_vars, premises_GDL, problem
-                        )
-                        for theorem_msg in current_sub_goals:
-                            if theorem_msg in sub_goals:
-                                sub_goals[theorem_msg] += current_sub_goals[theorem_msg]
-                            else:
-                                sub_goals[theorem_msg] = current_sub_goals[theorem_msg]
-
-        for theorem_msg in sub_goals:
-            sub_goals[theorem_msg] = tuple(set(sub_goals[theorem_msg]))
-
-        return sub_goals
-
-    @staticmethod
-    def find_logic_sub_goals(predicate, item, problem, theorem_GDL):
-        """
-        Find sub goals from logic goal.
-        """
-        sub_goals = {}
-        for theorem_name in theorem_GDL:
-            t_vars = theorem_GDL[theorem_name]["vars"]
-            for premises_GDL, conclusions_GDL in theorem_GDL[theorem_name]["body"]:
-                for conclusion in conclusions_GDL:
-                    if conclusion[0] == predicate:
-                        theorem_paras = [
-                            [item[conclusion[1].index(t)] if t in conclusion[1] else t for t in t_vars]
-                        ]
-                        theorem_paras = GoalFinder.theorem_para_completion(
-                            theorem_paras, problem.condition.get_items_by_predicate("Point")
-                        )
-                        current_sub_goals = GoalFinder.gen_sub_goals(
-                            theorem_name, theorem_paras, t_vars, premises_GDL, problem
-                        )
-                        for theorem_msg in current_sub_goals:
-                            if theorem_msg in sub_goals:
-                                sub_goals[theorem_msg] += current_sub_goals[theorem_msg]
-                            else:
-                                sub_goals[theorem_msg] = current_sub_goals[theorem_msg]
-
-        for theorem_msg in sub_goals:
-            sub_goals[theorem_msg] = tuple(set(sub_goals[theorem_msg]))
-
-        return sub_goals
+        return results

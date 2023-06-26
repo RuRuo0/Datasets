@@ -33,6 +33,7 @@ def save_gdl():
                         load_json(path_preset + "theorem_GDL.json"))
     save_json(solver.predicate_GDL, path_solved + "predicate_parsed.json")
     save_json(solver.theorem_GDL, path_solved + "theorem_parsed.json")
+    exit(0)
 
 
 def check(auto=False, save_CDL=False, clean_theorem=False, acc_mode=False, check_search=None,
@@ -241,7 +242,7 @@ def search(direction="fw", strategy="df", auto=False, save_seqs=True,
 
 
 if __name__ == '__main__':
-    # check(auto=False, clean_theorem=True, acc_mode=True, check_search=None, save_CDL=True)
+    # check(auto=True, clean_theorem=True, acc_mode=True)
     # save_gdl()
 
     search(auto=False, save_seqs=False, direction="bw")

@@ -1,17 +1,16 @@
-from core.problem.problem import Problem
-from core.aux_tools.parser import FormalLanguageParser as FLParser
-from core.aux_tools.parser import InverseParser as IvParser
-from core.solver.engine import EquationKiller as EqKiller
-from core.solver.engine import GeometryPredicateLogic as GeoLogic
+from core.solver.engine import GoalFinder
 from core.aux_tools.output import get_used_theorem
-from core.aux_tools.utils import rough_equal
 from core.solver.fw_search import Theorem
 from collections import deque
 from enum import Enum
-import time
-import copy
 from func_timeout import func_set_timeout
-import random
+from core.problem.problem import Problem
+from core.aux_tools.parser import EquationParser as EqParser
+from core.aux_tools.parser import FormalLanguageParser as FLParser
+from core.aux_tools.parser import InverseParser as IvParser
+from core.solver.engine import EquationKiller as EqKiller
+from core.aux_tools.utils import rough_equal
+import time
 
 
 class NodeState(Enum):
@@ -22,55 +21,41 @@ class NodeState(Enum):
 
 
 class Node:
-    def __init__(self, super_node, problem, predicate, item, node_map):
+    def __init__(self, super_node, problem, predicate, item, node_map, finder):
         """Init node and set node state."""
         self.state = NodeState.to_be_expanded
         self.super_node = super_node  # class <SuperNode>
-        self.children = None  # list of class <SuperNode>
+        self.children = []  # list of class <SuperNode>
 
         self.problem = problem
         self.predicate = predicate
         self.item = item
         self.premise = []
 
+        self.finder = finder
+        self.node_map = node_map
+
         if predicate == "Equation":  # process 1
-            if item is None:
-                self.state = NodeState.fail
-            elif item == 0:
-                self.state = NodeState.success
-            else:
-                result, premise = EqKiller.solve_target(item, self.problem)
-                if result is None:
-                    return
-                if rough_equal(result, 0):
-                    self.state = NodeState.success
-                    self.premise = premise
+            for sym in self.item.free_symbols:
+                if sym not in node_map:
+                    node_map[sym] = [self]
                 else:
-                    self.state = NodeState.fail
-                for sym in self.item.free_symbols:
-                    if sym not in node_map:
-                        node_map[sym] = [self]
-                    else:
-                        node_map[sym].append(self)
-        else:
-            if not self.problem.ee_check(predicate, item) or not self.problem.fv_check(predicate, item):
-                self.state = NodeState.fail
-                return
-
-            if item in self.problem.condition.get_items_by_predicate(predicate):
+                    node_map[sym].append(self)
+            if item == 0:
                 self.state = NodeState.success
-                self.premise = [self.problem.condition.get_id_by_predicate_and_item(predicate, item)]
-                return
-
-            if predicate in ["Point", "Line", "Arc", "Angle", "Polygon", "Circle", "Collinear", "Cocircular"] and \
-                    item not in self.problem.condition.get_items_by_predicate(predicate):
-                self.state = NodeState.fail
-                return
-
+                self.super_node.check_state()
+        else:
             if (predicate, item) not in node_map:
                 node_map[(predicate, item)] = [self]
             else:
                 node_map[(predicate, item)].append(self)
+
+            if predicate in ["Point", "Line", "Arc", "Angle", "Polygon", "Circle", "Collinear", "Cocircular"] and \
+                    item not in self.problem.condition.get_items_by_predicate(predicate):
+                self.state = NodeState.fail
+                self.super_node.check_state()
+
+        self.check_goal()
 
     def check_state(self):  # process 3
         if self.state in [NodeState.success, NodeState.fail]:
@@ -95,44 +80,63 @@ class Node:
             self.super_node.check_state()
 
     def check_goal(self):  # process 1
-        update = False
+        if self.state in [NodeState.success, NodeState.fail]:
+            return
+
         if self.predicate == "Equation":
             result, premise = EqKiller.solve_target(self.item, self.problem)
             if result is None:
                 return
+
             if rough_equal(result, 0):
                 self.state = NodeState.success
                 self.premise = premise
             else:
                 self.state = NodeState.fail
-            update = True
+            self.super_node.check_state()
         else:
             if self.item in self.problem.condition.get_items_by_predicate(self.predicate):
                 self.state = NodeState.success
                 self.premise = [self.problem.condition.get_id_by_predicate_and_item(self.predicate, self.item)]
-                update = True
-
-        if update:
-            self.super_node.check_state()
+                self.super_node.check_state()
 
     def expand(self):  # process 1
-        pass
+        if self.state != NodeState.to_be_expanded:
+            return
+
+        depth = self.super_node.pos[0] + 1
+        if depth not in SuperNode.super_node_count:
+            SuperNode.super_node_count[depth] = 0
+
+        results = self.finder.find_all_sub_goals(self, self.predicate, self.item, self.problem)
+        for t_name, t_branch, t_para, sub_goals in results:
+            pos = (depth, SuperNode.super_node_count[depth] + 1)
+            SuperNode.super_node_count[depth] += 1
+            super_node = SuperNode(self, self.problem, (t_name, t_branch, t_para), pos, self.node_map, self.finder)
+            super_node.add_nodes(sub_goals)
+            self.children.append(super_node)
+
+        self.state = NodeState.expanded
+        if len(self.children) == 0:
+            self.state = NodeState.fail
+            self.super_node.check_state()
 
 
 class SuperNode:
     super_node_count = {}  # {depth: super_node_count}
 
-    def __init__(self, father_node, problem, theorem, pos, node_map):
+    def __init__(self, father_node, problem, theorem, pos, node_map, finder):
         self.state = NodeState.to_be_expanded
         self.nodes = []  # list of class <Node>
         self.father_node = father_node  # class <Node>
         self.problem = problem
-        self.theorem = theorem    # theorem_name
+        self.theorem = theorem  # (t_name, t_para)
         self.pos = pos  # (depth, node_number)
         self.node_map = node_map
+        self.finder = finder
 
     def add_nodes(self, sub_goals):
-        father_super_nodes = []    # ensure no ring
+        father_super_nodes = []  # ensure no ring
         if self.father_node is not None:
             father_super_nodes.append(self.father_node.super_node)
         while len(father_super_nodes) > 0:
@@ -144,17 +148,12 @@ class SuperNode:
             if super_node.father_node is not None:
                 father_super_nodes.append(super_node.father_node.super_node)
 
-        update = False    # add nodes
         self.state = NodeState.expanded
         for predicate, item in sub_goals:
-            node = Node(self, self.problem, predicate, item, self.node_map)
+            node = Node(self, self.problem, predicate, item, self.node_map, self.finder)
             self.nodes.append(node)
-            if node.state in [NodeState.fail, NodeState.success]:
-                update = True
-                if node.state == NodeState.fail:
-                    break
-        if update:
-            self.check_state()
+            if node.state == NodeState.fail:
+                break
 
     def check_state(self):  # process 2
         if self.state in [NodeState.success, NodeState.fail]:
@@ -184,12 +183,69 @@ class SuperNode:
             node.expand()
 
     def apply_theorem(self):
-        premise = []
-        for node in self.nodes:
-            premise += node.premise
+        if self.theorem.endswith("definition"):
+            return
 
-        self.problem.add(self.father_node.predicate, self.father_node.item, premise, self.theorem)
-        self.problem.step(self.theorem, 0)
+        t_name, t_branch, t_para = self.theorem
+        theorem = IvParser.inverse_parse_logic(  # theorem + para
+            t_name, t_para, self.finder.theorem_GDL[t_name]["para_len"])
+
+        letters = {}  # used for vars-letters replacement
+        for i in range(len(self.finder.theorem_GDL[t_name]["vars"])):
+            letters[self.finder.theorem_GDL[t_name]["vars"][i]] = self.theorem[1][i]
+
+        gpl = self.finder.theorem_GDL[t_name]["body"][t_branch]
+        premises = []
+        passed = True
+
+        for predicate, item in gpl["products"] + gpl["logic_constraints"]:
+            oppose = False
+            if "~" in predicate:
+                oppose = True
+                predicate = predicate.replace("~", "")
+            item = tuple(letters[i] for i in item)
+            has_item = self.problem.condition.has(predicate, item)
+            if has_item:
+                premises.append(self.problem.condition.get_id_by_predicate_and_item(predicate, item))
+
+            if (not oppose and not has_item) or (oppose and has_item):
+                passed = False
+                break
+
+        if not passed:
+            self.problem.step(theorem, 0)
+            return
+
+        for equal, item in gpl["algebra_constraints"]:
+            oppose = False
+            if "~" in equal:
+                oppose = True
+            eq = EqParser.get_equation_from_tree(self.problem, item, True, letters)
+            solved_eq = False
+
+            result, premise = EqKiller.solve_target(eq, self.problem)
+            if result is not None and rough_equal(result, 0):
+                solved_eq = True
+            premises += premise
+
+            if (not oppose and not solved_eq) or (oppose and solved_eq):
+                passed = False
+                break
+
+        if not passed:
+            self.problem.step(theorem, 0)
+            return
+
+        for predicate, item in gpl["conclusions"]:
+            if predicate == "Equal":  # algebra conclusion
+                eq = EqParser.get_equation_from_tree(self.problem, item, True, letters)
+                self.problem.add("Equation", eq, premises, theorem)
+            else:  # logic conclusion
+                item = tuple(letters[i] for i in item)
+                self.problem.add(predicate, item, premises, theorem)
+
+        EqKiller.solve_equations(self.problem)
+        self.problem.step(theorem, 0)
 
 
 class BackwardSearcher:
@@ -207,27 +263,8 @@ class BackwardSearcher:
         self.max_depth = max_depth
         self.strategy = strategy
         self.node_map = []
-
-        self.p2t_map = {}  # dict, {predicate/attr: [(theorem_name, branch)]}, map predicate to theorem
-        for t_name in Theorem.t_msg:
-            if Theorem.t_msg[t_name][1] == 0 or Theorem.t_msg[t_name][0] == 3:  # skip no used and diff t
-                continue
-
-            for branch in self.theorem_GDL[t_name]["body"]:
-                theorem_unit = self.theorem_GDL[t_name]["body"][branch]
-                premises = copy.copy(theorem_unit["conclusions"])
-                premises += theorem_unit["attr_in_conclusions"]
-                for predicate, _ in premises:
-                    if predicate == "Equal":
-                        continue
-                    if predicate not in self.p2t_map:
-                        self.p2t_map[predicate] = [(t_name, branch)]
-                    elif (t_name, branch) not in self.p2t_map[predicate]:
-                        self.p2t_map[predicate].append((t_name, branch))
-
+        self.finder = GoalFinder(self.theorem_GDL, Theorem.t_msg)
         self.problem = None
-        self.problem_p_paras = None  # Perimeter
-        self.problem_a_paras = None  # Area
         self.root = None
 
     def get_problem(self, problem_CDL):
@@ -237,22 +274,12 @@ class BackwardSearcher:
         self.problem.load_problem_by_fl(self.predicate_GDL, FLParser.parse_problem(problem_CDL))  # load problem
         EqKiller.solve_equations(self.problem)
         self.problem.step("init_problem", time.time() - s_start_time)  # save applied theorem and update step
-
-        self.problem_p_paras = set()  # Perimeter
-        self.problem_a_paras = set()  # Area
-        for sym in self.problem.condition.attr_of_sym:
-            predicate, paras = self.problem.condition.attr_of_sym[sym]
-            if predicate.startswith("Perimeter"):
-                for para in paras:
-                    self.problem_p_paras.add(para)
-            elif predicate.startswith("Area"):
-                for para in paras:
-                    self.problem_a_paras.add(para)
+        SuperNode.super_node_count = {}
 
     @func_set_timeout(150)
     def search(self):
         """return seqs, <list> of theorem, solved theorem sequences."""
-        self.root = SuperNode(None, self.problem, None, (1, 1, 1), self.node_map)
+        self.root = SuperNode(None, self.problem, None, (1, 1, 1), self.node_map, self.finder)
         if self.problem.goal.type == "algebra":
             eq = self.problem.goal.item - self.problem.goal.answer
             self.root.add_nodes([("Equation", eq)])

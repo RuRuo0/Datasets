@@ -84,7 +84,7 @@ class ForwardEnvironment:
     def reset(self):
         self.node = self.root
 
-    def step(self, t_msg):  # 返回是否更新
+    def step(self, t_msg):
         stepped, child = self.node.step(t_msg)
         if stepped:
             self.node = child

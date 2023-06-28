@@ -73,7 +73,7 @@ class Node:
         if success:
             update = self.check_goal() or update
 
-        if fail:
+        if fail and len(self.children) > 0 and self.predicate != "Equation":
             self.state = NodeState.fail
             update = True
 

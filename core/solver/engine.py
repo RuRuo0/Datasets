@@ -529,8 +529,6 @@ class GeometryPredicateLogic:
         """
         r = GeometryPredicateLogic.run_logic(gpl, problem)
         r = GeometryPredicateLogic.run_algebra(r, gpl, problem)
-        if len(r[0]) == 0:
-            return []
         return GeometryPredicateLogic.make_conclusion(r, gpl, problem)
 
     @staticmethod
@@ -595,6 +593,8 @@ class GeometryPredicateLogic:
         :param problem: instance of class <Problem>.
         :return results: <list> of <tuple>, [(letters, premises, conclusions)].
         """
+        if len(r[0]) == 0:
+            return []
         conclusions = gpl["conclusions"]
         results = []
         r_ids, r_items, r_vars = r

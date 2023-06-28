@@ -7,6 +7,7 @@ from core.aux_tools.parser import FormalLanguageParser as FLParser
 from core.solver.engine import EquationKiller as EqKiller
 from core.solver.fw_search import Theorem
 import warnings
+from core.aux_tools.parser import EquationParser as EqParser
 
 
 class Node:
@@ -29,10 +30,35 @@ class Node:
     def step(self, t_msg):
         if t_msg not in self.get_legal_moves():
             return False, None
+        if self.probs[t_msg] == 0:
+            return False, None
         if t_msg in self.children:
             return True, self.children[t_msg]
 
-        theorem = IvParser.inverse_parse_logic(t_msg[0], t_msg[1], self.theorem_GDL[t_msg[0]]["para_len"])
+        t_name, t_para, t_branch = t_msg  # check algebra constraint
+        letters = {}  # used for vars-letters replacement
+        for i in range(len(self.theorem_GDL[t_name]["vars"])):
+            letters[self.theorem_GDL[t_name]["vars"][i]] = t_para[i]
+        gpl = self.theorem_GDL[t_name]["body"][t_branch]
+        for equal, item in gpl["algebra_constraints"]:
+            oppose = False
+            if "~" in equal:
+                oppose = True
+            eq = EqParser.get_equation_from_tree(self.problem, item, True, letters)
+            solved_eq = False
+
+            result, premise = EqKiller.solve_target(eq, self.problem)
+            if result is not None and rough_equal(result, 0):
+                solved_eq = True
+            self.conclusions[t_msg] = (self.conclusions[t_msg][0],
+                                       self.conclusions[t_msg][0][1],
+                                       list(self.conclusions[t_msg][2]) + premise)
+
+            if (not oppose and not solved_eq) or (oppose and solved_eq):
+                self.probs[t_msg] = 0
+                return False, None
+
+        theorem = IvParser.inverse_parse_logic(t_name, t_para, self.theorem_GDL[t_name]["para_len"])
         child_problem = Problem()
         child_problem.load_problem_by_copy(self.problem)
         for predicate, item, premise in self.conclusions[t_msg]:
@@ -76,7 +102,8 @@ class Node:
 
             for t_branch in self.theorem_GDL[t_name]["body"]:
                 gpl = self.theorem_GDL[t_name]["body"][t_branch]
-                results = GeoLogic.run(gpl, self.problem)  # get gpl reasoned result
+                r = GeoLogic.run_logic(gpl, self.problem)
+                results = GeoLogic.make_conclusion(r, gpl, self.problem)  # get gpl reasoned result
                 for letters, premise, conclusion in results:
                     t_para = tuple([letters[i] for i in self.theorem_GDL[t_name]["vars"]])
                     premise = tuple(premise)
@@ -90,6 +117,11 @@ class Node:
                     if len(conclusions) > 0:
                         self.legal_moves.append((t_name, t_para, t_branch))
                         self.conclusions[(t_name, t_para, t_branch)] = tuple(conclusions)
+
+        init_probs = 1 / len(self.legal_moves)
+        self.probs = {}
+        for move in self.legal_moves:
+            self.probs[move] = init_probs
 
         return self.legal_moves
 
@@ -149,6 +181,9 @@ class ForwardEnvironment:
     def set_probs(self, probs):
         self.node.probs = probs
 
+    def get_visits(self):
+        return self.node.visits
+
 
 def main():
     path_preset = "../../data/preset/"
@@ -157,25 +192,37 @@ def main():
 
     env = ForwardEnvironment(load_json(path_preset + "predicate_GDL.json"),  # init solver
                              load_json(path_preset + "theorem_GDL.json"))
-    env.init_root(load_json(path_formalized + "1584.json"))
 
-    state = env.get_state()
-    print("state: {}".format(state))
-    solved = env.get_solved()
-    print("solved: {}".format(solved))
-    moves = env.get_legal_moves()
-    print("moves: {}".format(moves))
-    print("moves[-3]: {}".format(moves[-3]))
-    stepped = env.step(moves[-3])
-    print("stepped: {}".format(stepped))
-    if stepped:
+    while True:
+        pid = input("pid:")
+        filename = "{}.json".format(pid)
+        if filename not in os.listdir(path_formalized):
+            print("No file \'{}\' in \'{}\'.\n".format(filename, path_formalized))
+            continue
+        env.init_root(load_json(path_formalized + filename))
+
         state = env.get_state()
         print("state: {}".format(state))
+        print("goal: {}".format(env.goal))
         solved = env.get_solved()
         print("solved: {}".format(solved))
-    env.reset()
-    state = env.get_state()
-    print("reset state: {}".format(state))
+        moves = env.get_legal_moves()
+        probs = env.get_probs()
+        print("moves (count={}): {}...".format(len(moves), moves[0:10]))
+        print("probs: {}...".format(list(probs.items())[0:10]))
+        selected_move = ('congruent_triangle_property_angle_equal', ('R', 'S', 'T', 'X', 'Y', 'Z'), 1)
+        print("selected move: {}".format(selected_move))
+        stepped = env.step(selected_move)
+        print("stepped: {}".format(stepped))
+        if stepped:
+            state = env.get_state()
+            print("state: {}".format(state))
+            solved = env.get_solved()
+            print("solved: {}".format(solved))
+        env.reset()
+        state = env.get_state()
+        print("reset state: {}".format(state))
+        print()
 
 
 if __name__ == '__main__':

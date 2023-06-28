@@ -183,7 +183,7 @@ class SuperNode:
             node.expand()
 
     def apply_theorem(self):
-        if self.theorem.endswith("definition"):
+        if self.theorem is None or self.theorem.endswith("definition"):
             return
 
         t_name, t_branch, t_para = self.theorem
@@ -262,12 +262,12 @@ class BackwardSearcher:
         self.theorem_GDL = FLParser.parse_theorem(theorem_GDL, self.predicate_GDL)
         self.max_depth = max_depth
         self.strategy = strategy
-        self.node_map = []
+        self.node_map = {}
         self.finder = GoalFinder(self.theorem_GDL, Theorem.t_msg)
         self.problem = None
         self.root = None
 
-    def get_problem(self, problem_CDL):
+    def init_problem(self, problem_CDL):
         """Init and return a problem by problem_CDL."""
         s_start_time = time.time()
         self.problem = Problem()

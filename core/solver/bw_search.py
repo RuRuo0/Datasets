@@ -11,6 +11,7 @@ from core.aux_tools.parser import InverseParser as IvParser
 from core.solver.engine import EquationKiller as EqKiller
 from core.aux_tools.utils import rough_equal
 import time
+from graphviz import Digraph, Graph
 
 
 class NodeState(Enum):
@@ -26,6 +27,7 @@ class Node:
         self.state = NodeState.to_be_expanded
         self.super_node = super_node  # class <SuperNode>
         self.children = []  # list of class <SuperNode>
+        self.children_t_msg = set()  # set of (t_name, t_branch, t_para)
 
         self.problem = problem
         self.predicate = predicate
@@ -43,7 +45,6 @@ class Node:
                     node_map[sym].append(self)
             if item == 0:
                 self.state = NodeState.success
-                self.super_node.check_state()
         else:
             if (predicate, item) not in node_map:
                 node_map[(predicate, item)] = [self]
@@ -53,7 +54,6 @@ class Node:
             if predicate in ["Point", "Line", "Arc", "Angle", "Polygon", "Circle", "Collinear", "Cocircular"] and \
                     item not in self.problem.condition.get_items_by_predicate(predicate):
                 self.state = NodeState.fail
-                self.super_node.check_state()
 
         self.check_goal()
 
@@ -61,77 +61,78 @@ class Node:
         if self.state in [NodeState.success, NodeState.fail]:
             return
 
+        update = False
         fail = True
         success = False
         for child in self.children:
             if child.state != NodeState.fail:
                 fail = False
-                break
             if child.state == NodeState.success:
                 success = True
-                break
 
         if success:
-            self.state = NodeState.success
-            self.super_node.check_state()
+            update = self.check_goal() or update
 
         if fail:
             self.state = NodeState.fail
+            update = True
+
+        if update:
             self.super_node.check_state()
 
     def check_goal(self):  # process 1
+        """Return update or not"""
         if self.state in [NodeState.success, NodeState.fail]:
-            return
+            return False
 
         if self.predicate == "Equation":
             result, premise = EqKiller.solve_target(self.item, self.problem)
             if result is None:
-                return
+                return False
 
             if rough_equal(result, 0):
                 self.state = NodeState.success
                 self.premise = premise
             else:
                 self.state = NodeState.fail
-            self.super_node.check_state()
         else:
-            if self.item in self.problem.condition.get_items_by_predicate(self.predicate):
-                self.state = NodeState.success
-                self.premise = [self.problem.condition.get_id_by_predicate_and_item(self.predicate, self.item)]
-                self.super_node.check_state()
+            if self.item not in self.problem.condition.get_items_by_predicate(self.predicate):
+                return False
+            self.state = NodeState.success
+            self.premise = [self.problem.condition.get_id_by_predicate_and_item(self.predicate, self.item)]
+
+        return True
 
     def expand(self):  # process 1
-        if self.state != NodeState.to_be_expanded:
-            return
+        if self.state in [NodeState.success, NodeState.fail]:
+            return False
+        self.state = NodeState.expanded
 
         depth = self.super_node.pos[0] + 1
-        if depth not in SuperNode.super_node_count:
-            SuperNode.super_node_count[depth] = 0
-
-        results = self.finder.find_all_sub_goals(self, self.predicate, self.item, self.problem)
+        results = self.finder.find_all_sub_goals(self.predicate, self.item, self.problem)
         for t_name, t_branch, t_para, sub_goals in results:
-            pos = (depth, SuperNode.super_node_count[depth] + 1)
-            SuperNode.super_node_count[depth] += 1
-            super_node = SuperNode(self, self.problem, (t_name, t_branch, t_para), pos, self.node_map, self.finder)
-            super_node.add_nodes(sub_goals)
-            self.children.append(super_node)
+            if (t_name, t_branch, t_para) in self.children_t_msg:
+                continue
+            self.children_t_msg.add((t_name, t_branch, t_para))
 
-        self.state = NodeState.expanded
-        if len(self.children) == 0:
-            self.state = NodeState.fail
-            self.super_node.check_state()
+            super_node = SuperNode(self, self.problem, (t_name, t_branch, t_para), depth, self.node_map, self.finder)
+            self.children.append(super_node)
+            super_node.add_nodes(sub_goals)
 
 
 class SuperNode:
-    super_node_count = {}  # {depth: super_node_count}
+    snc = {}  # {depth: super_node_count}
 
-    def __init__(self, father_node, problem, theorem, pos, node_map, finder):
+    def __init__(self, father_node, problem, theorem, depth, node_map, finder):
         self.state = NodeState.to_be_expanded
         self.nodes = []  # list of class <Node>
         self.father_node = father_node  # class <Node>
         self.problem = problem
-        self.theorem = theorem  # (t_name, t_para)
-        self.pos = pos  # (depth, node_number)
+        self.theorem = theorem  # (t_name, t_branch, t_para)
+        if depth not in SuperNode.snc:
+            SuperNode.snc[depth] = 0
+        self.pos = (depth, SuperNode.snc[depth] + 1)  # (depth, node_number)
+        SuperNode.snc[depth] += 1
         self.node_map = node_map
         self.finder = finder
 
@@ -148,12 +149,13 @@ class SuperNode:
             if super_node.father_node is not None:
                 father_super_nodes.append(super_node.father_node.super_node)
 
-        self.state = NodeState.expanded
         for predicate, item in sub_goals:
             node = Node(self, self.problem, predicate, item, self.node_map, self.finder)
             self.nodes.append(node)
             if node.state == NodeState.fail:
                 break
+
+        self.check_state()
 
     def check_state(self):  # process 2
         if self.state in [NodeState.success, NodeState.fail]:
@@ -179,11 +181,18 @@ class SuperNode:
                 self.father_node.check_state()
 
     def expand(self):
-        for node in self.nodes:
-            node.expand()
+        self.state = NodeState.expanded
+
+        for i in range(len(self.nodes)):
+            if self.state == NodeState.success:
+                break
+            print("\033[34m(pid={},depth={},branch={}/{},nodes={}/{})\033[0m Expanding Node ({}, {})".format(
+                self.problem.problem_CDL["id"], self.pos[0], self.pos[1], SuperNode.snc[self.pos[0]],
+                i + 1, len(self.nodes), self.nodes[i].predicate, self.nodes[i].item))
+            self.nodes[i].expand()
 
     def apply_theorem(self):
-        if self.theorem is None or self.theorem.endswith("definition"):
+        if self.theorem is None or self.theorem[0].endswith("definition"):
             return
 
         t_name, t_branch, t_para = self.theorem
@@ -192,7 +201,7 @@ class SuperNode:
 
         letters = {}  # used for vars-letters replacement
         for i in range(len(self.finder.theorem_GDL[t_name]["vars"])):
-            letters[self.finder.theorem_GDL[t_name]["vars"][i]] = self.theorem[1][i]
+            letters[self.finder.theorem_GDL[t_name]["vars"][i]] = t_para[i]
 
         gpl = self.finder.theorem_GDL[t_name]["body"][t_branch]
         premises = []
@@ -264,8 +273,11 @@ class BackwardSearcher:
         self.strategy = strategy
         self.node_map = {}
         self.finder = GoalFinder(self.theorem_GDL, Theorem.t_msg)
+
         self.problem = None
         self.root = None
+
+        self.id = 0
 
     def init_problem(self, problem_CDL):
         """Init and return a problem by problem_CDL."""
@@ -274,44 +286,52 @@ class BackwardSearcher:
         self.problem.load_problem_by_fl(self.predicate_GDL, FLParser.parse_problem(problem_CDL))  # load problem
         EqKiller.solve_equations(self.problem)
         self.problem.step("init_problem", time.time() - s_start_time)  # save applied theorem and update step
-        SuperNode.super_node_count = {}
+        SuperNode.snc = {}
 
-    @func_set_timeout(150)
+    @func_set_timeout(300)
     def search(self):
         """return seqs, <list> of theorem, solved theorem sequences."""
-        self.root = SuperNode(None, self.problem, None, (1, 1, 1), self.node_map, self.finder)
+        pid = self.problem.problem_CDL["id"]
+        print("\033[36m(pid={})\033[0m Start Searching".format(pid))
+
+        self.root = SuperNode(None, self.problem, None, 1, self.node_map, self.finder)
         if self.problem.goal.type == "algebra":
             eq = self.problem.goal.item - self.problem.goal.answer
             self.root.add_nodes([("Equation", eq)])
         else:
             self.root.add_nodes([(self.problem.goal.item, self.problem.goal.answer)])
 
-        pid = self.problem.problem_CDL["id"]
-        print("\033[36m(pid={})\033[0m Start Searching".format(pid))
-
         while self.root.state not in [NodeState.success, NodeState.fail]:
-            timing = time.time()
             super_node = self.get_super_node()
             if super_node is None:
                 break
-            print("\033[35m(pid={},depth={},branch={}/{})\033[0m Current Node".format(
-                pid, super_node.pos[0], super_node.pos[1], SuperNode.super_node_count[super_node.pos[0]]))
             start_step_count = self.problem.condition.step_count
+
+            timing = time.time()
+            print("\033[35m(pid={},depth={},branch={}/{})\033[0m Expanding SuperNode Start".format(
+                pid, super_node.pos[0], super_node.pos[1], SuperNode.snc[super_node.pos[0]]))
             super_node.expand()
-            self.check_goal(start_step_count)
-            print("\033[35m(pid={},depth={},branch={}/{}, timing={:.4f})\033[0m Current Node".format(
-                pid, super_node.pos[0], super_node.pos[1], SuperNode.super_node_count[super_node.pos[0]],
+
+            print("\033[35m(pid={},depth={},branch={}/{})\033[0m Expanding SuperNode Done (timing={:.4f})".format(
+                pid, super_node.pos[0], super_node.pos[1], SuperNode.snc[super_node.pos[0]], time.time() - timing))
+
+            timing = time.time()
+            print("\033[35m(pid={},depth={},branch={}/{})\033[0m Checking Node Start".format(
+                pid, super_node.pos[0], super_node.pos[1], SuperNode.snc[super_node.pos[0]]))
+            self.check_node(start_step_count)
+            print("\033[35m(pid={},depth={},branch={}/{})\033[0m Checking Node End (timing={:.4f})".format(
+                pid, super_node.pos[0], super_node.pos[1], SuperNode.snc[super_node.pos[0]],
                 time.time() - timing))
 
-        if self.root.state == NodeState.success:
-            print("\033[32m(pid={})\033[0m End Searching".format(pid))
-        else:
-            print("\033[31m(pid={})\033[0m End Searching".format(pid))
-
         self.problem.check_goal()
+        # self.save_backward_tree()
+
         if self.problem.goal.solved:
+            print("\033[32m(pid={})\033[0m End Searching".format(self.problem.problem_CDL["id"]))
             _, seqs = get_used_theorem(self.problem)
             return True, seqs
+
+        print("\033[31m(pid={})\033[0m End Searching".format(self.problem.problem_CDL["id"]))
         return False, None
 
     def get_super_node(self):
@@ -324,18 +344,21 @@ class BackwardSearcher:
             else:
                 super_node = search_stack.popleft()
 
+            if super_node.pos[0] > self.max_depth:
+                continue
+
             if super_node.state == NodeState.to_be_expanded:
                 return super_node
             elif super_node.state == NodeState.expanded:
                 for node in super_node.nodes:
                     if node.state != NodeState.expanded:
                         continue
-                    for child_super_node in node.children:
+                    for child_super_node in node.children[::-1]:
                         search_stack.append(child_super_node)
 
         return None
 
-    def check_goal(self, start_step_count):
+    def check_node(self, start_step_count):
         end_step_count = self.problem.condition.step_count
         if start_step_count == end_step_count:
             return
@@ -368,6 +391,67 @@ class BackwardSearcher:
             for node in self.node_map[related]:
                 if node.state in [NodeState.fail, NodeState.success]:
                     continue
-                node.check_goal()
+                node.expand()
 
-        self.check_goal(end_step_count)
+        self.check_node(end_step_count)
+
+    def save_backward_tree(self):
+        search_stack = deque()
+        search_stack.append((self.root, None))
+        dot = Digraph(name=str(self.problem.problem_CDL["id"]))
+
+        while len(search_stack) > 0:
+            super_node, father_node_id = search_stack.popleft()
+            supernode_id, nodes_id = self.add_supernode(dot, super_node)
+            if father_node_id is not None:
+                dot.edge(str(father_node_id), str(supernode_id))
+
+            for i in range(len(super_node.nodes)):
+                node = super_node.nodes[i]
+                node_id = nodes_id[i]
+                for child_super_node in node.children:
+                    search_stack.append((child_super_node, node_id))
+
+        dot.render(directory="data/solved/bw_tree/", view=False, format="png")
+
+    def add_supernode(self, dot, supernode):
+        supernode_id = self.id
+        self.id += 1
+        nodes_id = []
+
+        if supernode.state == NodeState.to_be_expanded:
+            node_text = "state = to_be_expanded"
+            fillcolor = "grey"
+        elif supernode.state == NodeState.expanded:
+            node_text = "state = expanded"
+            fillcolor = "blue"
+        elif supernode.state == NodeState.success:
+            node_text = "state = success"
+            fillcolor = "green"
+        else:
+            node_text = "state = fail"
+            fillcolor = "red"
+        if supernode.theorem is not None:
+            node_text += "\nt_name = {}\nt_branch = {}\nt_para = {}".format(
+                supernode.theorem[0], supernode.theorem[1], supernode.theorem[2])
+        else:
+            node_text += "\nRoot SuperNode"
+
+        dot.node(name=str(supernode_id), label=node_text, shape='box', style='filled', fillcolor=fillcolor)
+
+        for node in supernode.nodes:
+            node_text = "predicate = {}\nitem = {}".format(node.predicate, str(node.item))
+            if node.state == NodeState.to_be_expanded:
+                fillcolor = "grey"
+            elif node.state == NodeState.expanded:
+                fillcolor = "blue"
+            elif node.state == NodeState.success:
+                fillcolor = "green"
+            else:
+                fillcolor = "red"
+            dot.node(str(self.id), label=node_text, style='filled', fillcolor=fillcolor)
+            dot.edge(str(supernode_id), str(self.id))
+            nodes_id.append(self.id)
+            self.id += 1
+
+        return supernode_id, nodes_id

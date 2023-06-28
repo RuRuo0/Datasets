@@ -501,7 +501,8 @@ class Problem:
     def ee_check(self, predicate, item):
         """Entity Existence check."""
 
-        if predicate == "Equation" or predicate in self.predicate_GDL["BasicEntity"]:
+        if predicate == "Equation" or predicate in self.predicate_GDL["BasicEntity"] \
+                or predicate in self.predicate_GDL["Construction"]:
             return True
         elif predicate in self.predicate_GDL["Entity"]:
             item_GDL = self.predicate_GDL["Entity"][predicate]

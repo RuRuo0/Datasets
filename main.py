@@ -188,12 +188,12 @@ def search(direction="fw", strategy="df", auto=False, save_seqs=True,
     :param start_pid: start problem id.
     :param end_pid: end problem id.
     """
-    if direction == "fw":
+    # warnings.filterwarnings("ignore")
+    if direction == "fw":    # forward search
         searcher = ForwardSearcher(load_json(path_preset + "predicate_GDL.json"),  # init searcher
                                    load_json(path_preset + "theorem_GDL.json"),
                                    max_depth=5,
                                    strategy=strategy)
-        warnings.filterwarnings("ignore")
         if auto:
             for filename in os.listdir(path_formalized):
                 pid = int(filename.split(".")[0])
@@ -234,18 +234,60 @@ def search(direction="fw", strategy="df", auto=False, save_seqs=True,
                     problem_CDL = load_json(path_formalized + filename)
                     if "forward_search" not in problem_CDL:
                         problem_CDL["forward_search"] = seqs
-    else:
+                        save_json(problem_CDL, path_formalized + filename)
+    else:    # backward search
         searcher = BackwardSearcher(load_json(path_preset + "predicate_GDL.json"),  # init searcher
                                     load_json(path_preset + "theorem_GDL.json"),
-                                    max_depth=8,
+                                    max_depth=15,
                                     strategy=strategy)
+        if auto:
+            for filename in os.listdir(path_formalized):
+                pid = int(filename.split(".")[0])
+                if pid < start_pid or pid > end_pid:
+                    continue
+
+                problem_CDL = load_json(path_formalized + filename)
+                if "notes" in problem_CDL or "backward_search" in problem_CDL:
+                    continue
+
+                searcher.init_problem(load_json(path_formalized + filename))
+
+                try:
+                    solved, seqs = searcher.search()
+                except FunctionTimedOut:
+                    print("\nFunctionTimedOut when search problem {}.\n".format(pid))
+                except Exception as e:
+                    print("Exception {} when search problem {}.".format(e, pid))
+                else:
+                    print("pid: {}  solved: {}  seqs:{}\n".format(pid, solved, seqs))
+                    if solved and save_seqs:
+                        problem_CDL = load_json(path_formalized + filename)
+                        problem_CDL["backward_search"] = seqs
+                        save_json(problem_CDL, path_formalized + filename)
+        else:
+            while True:
+                pid = input("pid:")
+                filename = "{}.json".format(pid)
+                if filename not in os.listdir(path_formalized):
+                    print("No file \'{}\' in \'{}\'.\n".format(filename, path_formalized))
+                    continue
+                searcher.init_problem(load_json(path_formalized + filename))
+                solved, seqs = searcher.search()
+
+                print("pid: {}  solved: {}  seqs:{}\n".format(pid, solved, seqs))
+
+                if solved and save_seqs:  # clean theorem
+                    problem_CDL = load_json(path_formalized + filename)
+                    if "backward_search" not in problem_CDL:
+                        problem_CDL["backward_search"] = seqs
+                        save_json(problem_CDL, path_formalized + filename)
 
 
 if __name__ == '__main__':
     # check(auto=True, clean_theorem=True, acc_mode=True)
     # save_gdl()
 
-    search(auto=False, save_seqs=False, direction="bw")
+    search(auto=False, save_seqs=True, direction="bw")
 
     # args = get_args()
     # search(auto=True, start_pid=args.start_pid, end_pid=args.end_pid, direction=args.direction)

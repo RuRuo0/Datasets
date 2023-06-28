@@ -5,6 +5,7 @@ from core.aux_tools.utils import number_round
 from core.aux_tools.parser import EquationParser as EqParser
 from core.aux_tools.utils import rough_equal
 import warnings
+from itertools import permutations
 from core.aux_tools.output import save_equations_hyper_graph
 
 
@@ -784,8 +785,11 @@ class GoalFinder:
     def __init__(self, theorem_GDL, t_msg):
         self.theorem_GDL = theorem_GDL
         self.p2t_map = {}
+        self.selected = ["midsegment_of_quadrilateral_property_length", "midsegment_of_quadrilateral_judgment_midpoint"]
 
         for t_name in theorem_GDL:
+            # if t_name not in self.selected:
+            #     continue
             if t_name in t_msg and (t_msg[t_name][1] == 0 or t_msg[t_name][0] == 3):  # skip no used and diff t
                 continue
 
@@ -801,12 +805,14 @@ class GoalFinder:
 
     def find_all_sub_goals(self, predicate, item, problem):
         """return [(sub_goals, (t_name, t_para, t_branch))]"""
-        theorem_and_para = {}  # {(t_name, t_branch): t_paras}
+        theorem_and_para = {}  # {(t_name, t_branch): set(t_paras)}
 
         if predicate == "Equation":  # algebra goal
             attr_to_paras = {}
             for sym in EquationKiller.get_minimum_syms([item], list(problem.condition.simplified_equation)):
                 attr, paras = problem.condition.attr_of_sym[sym]
+                if attr == "Free":
+                    continue
                 if attr not in attr_to_paras:
                     attr_to_paras[attr] = []
                 for para in paras:
@@ -816,7 +822,7 @@ class GoalFinder:
             for attr in attr_to_paras:
                 for t_name, t_branch in self.p2t_map[attr]:
                     if (t_name, t_branch) not in theorem_and_para:
-                        theorem_and_para[(t_name, t_branch)] = []
+                        theorem_and_para[(t_name, t_branch)] = set()
                     t_paras = []
                     for t_attr, attr_vars in self.theorem_GDL[t_name]["body"][t_branch]["attr_in_conclusions"]:
                         if attr != t_attr:
@@ -827,28 +833,24 @@ class GoalFinder:
                             t_paras.append(t_para)
                     t_paras = GoalFinder.theorem_para_completion(
                         t_paras, problem.condition.get_items_by_predicate("Point"))
-                    for t_para in t_paras:
-                        if t_para not in theorem_and_para[(t_name, t_branch)]:
-                            theorem_and_para[(t_name, t_branch)].append(t_para)
+                    theorem_and_para[(t_name, t_branch)] |= t_paras
         else:  # logic goal
             for t_name, t_branch in self.p2t_map[predicate]:
                 if (t_name, t_branch) not in theorem_and_para:
-                    theorem_and_para[(t_name, t_branch)] = []
-                t_paras = []
+                    theorem_and_para[(t_name, t_branch)] = set()
+                t_paras = set()
 
                 for t_predicate, item_vars in self.theorem_GDL[t_name]["body"][t_branch]["conclusions"]:
                     if t_predicate != predicate:
                         continue
                     t_vars = copy.copy(self.theorem_GDL[t_name]["vars"])
                     t_para = [v if v not in item_vars else item[item_vars.index(v)] for v in t_vars]
-                    t_paras.append(t_para)
+                    t_paras.add(tuple(t_para))
 
                 t_paras = GoalFinder.theorem_para_completion(
                     t_paras, problem.condition.get_items_by_predicate("Point"))
 
-                for t_para in t_paras:
-                    if t_para not in theorem_and_para[(t_name, t_branch)]:
-                        theorem_and_para[(t_name, t_branch)].append(t_para)
+                theorem_and_para[(t_name, t_branch)] |= t_paras
 
         return GoalFinder.gen_sub_goals(self.theorem_GDL, theorem_and_para, problem)
 
@@ -859,30 +861,18 @@ class GoalFinder:
         >> theorem_para_completion([['a', 'R', 'S']], ['A', 'R', 'S'])
         >> [['A', 'R', 'S'], ['R', 'R', 'S'], ['S', 'R', 'S']]
         """
-        results = []
-        for para in t_paras:
-            GoalFinder.completion_one(para, points, results)
-
+        points = [points[i][0] for i in range(len(points))]
+        results = set()
+        for t_para in t_paras:
+            vacant_index = []
+            for i in range(len(t_para)):
+                if t_para[i].islower():
+                    vacant_index.append(i)
+            for per_para in permutations(points, len(vacant_index)):
+                result = [t_para[i] if i not in vacant_index else per_para[vacant_index.index(i)]
+                          for i in range(len(t_para))]
+                results.add(tuple(result))
         return results
-
-    @staticmethod
-    def completion_one(para, points, results):
-        """
-        Recursive replace var with point.
-        >> completion_one(['a', 'R', 'S'], ['S', 'R', 'S'])
-        >> [['A', 'R', 'S'], ['R', 'R', 'S'], ['S', 'R', 'S']]
-        """
-        passed = True
-        for i in range(len(para)):
-            if para[i].islower():
-                for point in points:
-                    new_para = copy.copy(para)
-                    new_para[i] = point[0]
-                    GoalFinder.completion_one(new_para, points, results)
-                passed = False
-                break
-        if passed:
-            results.append(tuple(para))
 
     @staticmethod
     def gen_sub_goals(theorem_GDL, theorem_and_para, problem):

@@ -50,9 +50,9 @@ class Node:
             result, premise = EqKiller.solve_target(eq, self.problem)
             if result is not None and rough_equal(result, 0):
                 solved_eq = True
-            self.conclusions[t_msg] = (self.conclusions[t_msg][0],
-                                       self.conclusions[t_msg][0][1],
-                                       list(self.conclusions[t_msg][2]) + premise)
+
+            for i in range(len(self.conclusions[t_msg])):
+                self.conclusions[t_msg][i][2] = list(self.conclusions[t_msg][i][2]) + premise
 
             if (not oppose and not solved_eq) or (oppose and solved_eq):
                 self.probs[t_msg] = 0
@@ -112,11 +112,11 @@ class Node:
                         if self.problem.can_add(predicate, item, premise, t_name):
                             if predicate != "Equation":
                                 item = tuple(item)
-                            conclusions.append((predicate, item, premise))
+                            conclusions.append([predicate, item, premise])
 
                     if len(conclusions) > 0:
                         self.legal_moves.append((t_name, t_para, t_branch))
-                        self.conclusions[(t_name, t_para, t_branch)] = tuple(conclusions)
+                        self.conclusions[(t_name, t_para, t_branch)] = conclusions
 
         init_probs = 1 / len(self.legal_moves)
         self.probs = {}

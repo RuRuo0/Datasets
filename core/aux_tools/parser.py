@@ -1,5 +1,4 @@
 import copy
-
 from sympy import sin, cos, tan, sqrt, pi, Float, Integer
 from core.aux_tools.utils import number_round
 

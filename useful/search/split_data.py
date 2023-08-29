@@ -56,5 +56,5 @@ def forward_search(split_count=6, direction="fw"):
 
 
 if __name__ == '__main__':
-    forward_search(split_count=8, direction="fw")
+    forward_search(split_count=6, direction="bw")
 

@@ -22,4 +22,4 @@ def main(forward=True):
 
 
 if __name__ == '__main__':
-    main()
+    main(forward=False)

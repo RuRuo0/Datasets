@@ -1,3 +1,4 @@
+import copy
 from core.problem.problem import Problem
 from core.aux_tools.parser import InverseParser as IvParser
 from core.solver.engine import GeometryPredicateLogic as GeoLogic
@@ -39,7 +40,7 @@ class Node:
         letters = {}  # used for vars-letters replacement
         for i in range(len(self.theorem_GDL[t_name]["vars"])):
             letters[self.theorem_GDL[t_name]["vars"][i]] = t_para[i]
-        gpl = self.theorem_GDL[t_name]["body"][t_branch]
+        gpl = copy.deepcopy(self.theorem_GDL[t_name]["body"][t_branch])
         for equal, item in gpl["algebra_constraints"]:
             oppose = False
             if "~" in equal:
@@ -101,11 +102,11 @@ class Node:
                 continue
 
             for t_branch in self.theorem_GDL[t_name]["body"]:
-                gpl = self.theorem_GDL[t_name]["body"][t_branch]
+                gpl = copy.deepcopy(self.theorem_GDL[t_name]["body"][t_branch])
                 r = GeoLogic.run_logic(gpl, self.problem)
                 results = GeoLogic.make_conclusion(r, gpl, self.problem)  # get gpl reasoned result
                 for letters, premise, conclusion in results:
-                    t_para = tuple([letters[i] for i in self.theorem_GDL[t_name]["vars"]])
+                    t_para = tuple([letters[v] for v in self.theorem_GDL[t_name]["vars"]])
                     premise = tuple(premise)
                     conclusions = []
                     for predicate, item in conclusion:  # add conclusion

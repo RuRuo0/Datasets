@@ -188,7 +188,7 @@ def search(direction="fw", strategy="df", auto=False, save_seqs=True,
     :param start_pid: start problem id.
     :param end_pid: end problem id.
     """
-    # warnings.filterwarnings("ignore")
+    warnings.filterwarnings("ignore")
     if direction == "fw":    # forward search
         searcher = ForwardSearcher(load_json(path_preset + "predicate_GDL.json"),  # init searcher
                                    load_json(path_preset + "theorem_GDL.json"),
@@ -284,10 +284,10 @@ def search(direction="fw", strategy="df", auto=False, save_seqs=True,
 
 
 if __name__ == '__main__':
-    # check(auto=True, clean_theorem=True, acc_mode=True)
+    check(auto=True, clean_theorem=True, acc_mode=True)
     # save_gdl()
 
-    search(auto=False, save_seqs=True, direction="bw")
+    # search(auto=False, save_seqs=True, direction="bw")
 
     # args = get_args()
     # search(auto=True, start_pid=args.start_pid, end_pid=args.end_pid, direction=args.direction)

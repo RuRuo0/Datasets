@@ -89,4 +89,5 @@ if __name__ == '__main__':
     #                            "triangle_area_formula_sine",
     #                            "kite_area_formula_sine"]
     #               )
-    theorem_num(True)
+    # theorem_num(True)
+    worker_anno()

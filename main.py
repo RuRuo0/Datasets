@@ -13,7 +13,7 @@ from colorama import init
 
 init(autoreset=True)
 path_preset = "data/preset/"
-path_formalized = "data/formalized-problems/"
+path_formalized = "data/formalized-problems-ag/"
 path_solved = "data/solved/"
 path_solved_problems = "data/solved/problems/"
 
@@ -37,7 +37,7 @@ def save_gdl():
 
 
 def check(auto=False, save_CDL=False, clean_theorem=False, acc_mode=False, check_search=None,
-          start_pid=1584, end_pid=9831):
+          start_pid=1, end_pid=6981):
     """Run solver and load problem from problem_GDL."""
     solver = Interactor(load_json(path_preset + "predicate_GDL.json"),  # init solver
                         load_json(path_preset + "theorem_GDL.json"))
@@ -47,18 +47,8 @@ def check(auto=False, save_CDL=False, clean_theorem=False, acc_mode=False, check
         warnings.filterwarnings("ignore")
         unsolved = []
         print("pid\tannotation\tcorrect_answer\tsolved\tsolved_answer\tspend(s)")
-        for filename in os.listdir(path_formalized):
-            pid = int(filename.split(".")[0])
-            if pid < start_pid or pid > end_pid:
-                continue
-
-            problem_CDL = load_json(path_formalized + filename)
-
-            if "notes" in problem_CDL:  # problems can't solve
-                if check_search is None:
-                    unsolved.append("{}\t{}\t{}".format(
-                        problem_CDL["problem_id"], problem_CDL["annotation"], problem_CDL["notes"]))
-                continue
+        for pid in range(start_pid, end_pid + 1):
+            problem_CDL = load_json(path_formalized + "{}.json".format(pid))
 
             try:  # try solve
                 solver.load_problem(problem_CDL)
@@ -83,7 +73,7 @@ def check(auto=False, save_CDL=False, clean_theorem=False, acc_mode=False, check
                 solver.problem.check_goal()  # check goal after applied theorem seqs
 
                 if clean_theorem and solver.problem.goal.solved:  # clean theorem
-                    problem_CDL = load_json(path_formalized + filename)
+                    problem_CDL = load_json(path_formalized + "{}.json".format(pid))
                     _id, seqs = get_used_theorem(solver.problem)
                     if check_search is None:
                         problem_CDL["theorem_seqs"] = seqs
@@ -91,9 +81,10 @@ def check(auto=False, save_CDL=False, clean_theorem=False, acc_mode=False, check
                         problem_CDL["forward_search"] = seqs
                     elif check_search == "bw":
                         problem_CDL["backward_search"] = seqs
-                    save_json(problem_CDL, path_formalized + filename)
+                    save_json(problem_CDL, path_formalized + "{}.json".format(pid))
 
-                simple_show(solver.problem)  # show solved msg
+                if not solver.problem.goal.solved:
+                    simple_show(solver.problem)  # show solved msg
 
                 if save_CDL:  # save solved msg
                     save_json(
@@ -110,7 +101,7 @@ def check(auto=False, save_CDL=False, clean_theorem=False, acc_mode=False, check
                     )
 
             except Exception as e:  # exception
-                msg = "Raise Exception <{}> in problem {}.".format(e, filename.split(".")[0])
+                msg = "Raise Exception <{}> in problem {}.".format(e, pid)
                 unsolved.append("{}\t{}\t{}".format(problem_CDL["problem_id"], problem_CDL["annotation"], msg))
 
         print("\npid\tannotation\tnotes")
@@ -178,7 +169,7 @@ def check(auto=False, save_CDL=False, clean_theorem=False, acc_mode=False, check
 
 
 def search(direction="fw", strategy="df", auto=False, save_seqs=True,
-           start_pid=1584, end_pid=9831):
+           start_pid=1, end_pid=6981):
     """
     Solve problem by searching.
     :param direction: 'fw' or 'bw', forward search or backward search.
@@ -284,7 +275,7 @@ def search(direction="fw", strategy="df", auto=False, save_seqs=True,
 
 
 if __name__ == '__main__':
-    check(auto=True, clean_theorem=True, acc_mode=True)
+    check(auto=True, start_pid=6982, end_pid=15000)
     # save_gdl()
 
     # search(auto=False, save_seqs=True, direction="bw")

@@ -772,12 +772,30 @@ class InverseParser:
         >> _inverse_parse_one(ll_ac - 1, equation)
         'LengthOfLine(AC)'
         """
-
-        if len(item.free_symbols) == 1:
-            sym = list(item.free_symbols)[0]
-            if problem.condition.value_of_sym[sym] is not None and sym - problem.condition.value_of_sym[sym] == item:
-                attr, items = problem.condition.attr_of_sym[sym]
-                return attr + "(" + "".join(items[0]) + ")"
+        syms = list(item.free_symbols)
+        if len(syms) == 1:
+            if problem.condition.value_of_sym[syms[0]] is not None and\
+                    syms[0] - problem.condition.value_of_sym[syms[0]] == item:
+                attr, items = problem.condition.attr_of_sym[syms[0]]
+                if attr == "Free":
+                    attr = items[0][0]
+                else:
+                    attr = attr + "(" + "".join(items[0]) + ")"
+                value = InverseParser.inverse_parse_value(problem.condition.value_of_sym[syms[0]])
+                return "Equal({},{})".format(attr, value)
+        elif len(syms) == 2:
+            if item == (syms[0] - syms[1]) or item == (syms[1] - syms[0]):
+                attr1, items1 = problem.condition.attr_of_sym[syms[0]]
+                if attr1 == "Free":
+                    attr1 = items1[0][0]
+                else:
+                    attr1 = attr1 + "(" + "".join(items1[0]) + ")"
+                attr2, items2 = problem.condition.attr_of_sym[syms[1]]
+                if attr2 == "Free":
+                    attr2 = items2[0][0]
+                else:
+                    attr2 = attr2 + "(" + "".join(items2[0]) + ")"
+                return "Equal({},{})".format(attr1, attr2)
 
         return "Equation" + "(" + str(item).replace(" ", "") + ")"
 
@@ -798,3 +816,29 @@ class InverseParser:
             return "Shape({})".format(",".join(item))
         else:
             return "{}({})".format(predicate, "".join(item))
+
+    @staticmethod
+    def inverse_parse_value(value):
+        value_str = str(value)
+        if isinstance(value, Integer) or isinstance(value, Float):
+            return value_str
+
+        if "sin" in value_str or "cos" in value_str or "tan" in value_str:
+            print(value_str)
+            value_str = str(float(value))
+            value_str = value_str[0:value_str.index(".") + 4]
+            print(value_str)
+            print()
+            return value_str
+
+        print(value_str)
+        while "sqrt" in value_str:
+            left, right = value_str.split("sqrt(", 1)[0:2]
+            right = right.replace(")", "", 1)
+            value_str = left + "√" + right
+        value_str = value_str.replace("pi", "π")
+        value_str = value_str.replace(" ", "")
+
+        print(value_str)
+        print()
+        return value_str

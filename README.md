@@ -5,7 +5,8 @@
 [![Survey](https://img.shields.io/badge/Survey-FormalGeo-blue)](https://github.com/BitSecret/FormalGeo-SAT)  
 Formal representation and solving for Euclidean plane geometry problems from SAT-level to IMO-level.  
 **FormalGeo** is an extended version of **[GeoMechanical](https://github.com/BitSecret/GeoMechanical)**. It supports solving
-more types of plane geometric problems.
+more types of plane geometric problems.  
+As a collaborative project for dataset annotation, this project is no longer updated and will always remain private (sep 4, 2023).
 
 ## Co-work
 

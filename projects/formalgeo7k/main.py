@@ -9,11 +9,10 @@ from func_timeout import FunctionTimedOut
 import warnings
 import os
 import argparse
-from colorama import init
 
 init(autoreset=True)
 path_preset = "data/preset/"
-path_formalized = "data/formalized-problems-ag/"
+path_formalized = "data/formalized-problems/"
 path_solved = "data/solved/"
 path_solved_problems = "data/solved/problems/"
 
@@ -275,7 +274,7 @@ def search(direction="fw", strategy="df", auto=False, save_seqs=True,
 
 
 if __name__ == '__main__':
-    check(auto=True, start_pid=6982, end_pid=15000)
+    check(auto=False, save_CDL=True)
     # save_gdl()
 
     # search(auto=False, save_seqs=True, direction="bw")

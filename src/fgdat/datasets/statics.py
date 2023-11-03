@@ -1,4 +1,4 @@
-from core.aux_tools.utils import load_json, save_json
+from formalgeo.tools import load_json
 import os
 formalized_path = "../../data/formalized-problems/"
 

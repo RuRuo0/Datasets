@@ -239,16 +239,13 @@ class Expander:
 
 
 def renumber(path_dataset):
-    def extract_number(s):
-        return int(s.split(".")[0])
-
     pid_count = len(os.listdir(os.path.join(path_dataset, "expanded"))) + 1
     for filename in sorted(os.listdir(os.path.join(path_dataset, "expanded")), key=lambda x: int(x.split(".")[0])):
         data = load_json(os.path.join(path_dataset, "expanded", filename))
         new_data = {}
         for old_pid in data:
             data[old_pid]["problem_id"] = pid_count
-            new_data[pid_count] = data[old_pid]["problem_id"]
+            new_data[pid_count] = data[old_pid]
             pid_count += 1
         save_json(new_data, os.path.join(path_dataset, "expanded", filename))
         print("{} ok".format(filename))
@@ -258,22 +255,19 @@ def renumber(path_dataset):
 
 def get_pid_mapping(path_dataset):
     pid_mapping = {}
-
-    def extract_number(s):
-        return int(s.split(".")[0])
-
     for filename in sorted(os.listdir(os.path.join(path_dataset, "expanded")), key=lambda x: int(x.split(".")[0])):
         pid = int(filename.split(".")[0])
         data = load_json(os.path.join(path_dataset, "expanded", filename))
         for expanded_pid in data:
             pid_mapping[expanded_pid] = pid
+        print("{} ok".format(filename))
 
     return pid_mapping
 
 
 if __name__ == '__main__':
-    # expander = Expander(path_datasets="../../../projects/formalgeo7k/", problem_count=6982,
-    #                     random_search=False)
-    # expander.expand()
+    expander = Expander(path_datasets="../../../projects/formalgeo7k/", problem_count=6982,
+                        random_search=False)
+    expander.expand()
     renumber("../../../projects/formalgeo7k/")
-    # get_pid_mapping("../../../projects/formalgeo7k/")
+    save_json(get_pid_mapping("../../../projects/formalgeo7k/"), "log_files/pid_mapping.json")

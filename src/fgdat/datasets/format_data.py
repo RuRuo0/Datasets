@@ -37,11 +37,8 @@ def format_data(path_problems):
 
 
 def renumber(path_dataset):
-    def extract_number(s):
-        return int(s.split(".")[0])
-
     pid_count = 1
-    for filename in sorted(os.listdir(os.path.join(path_dataset, "problems")), key=extract_number):
+    for filename in sorted(os.listdir(os.path.join(path_dataset, "problems")), key=lambda x: int(x.split(".")[0])):
         data = load_json(os.path.join(path_dataset, "problems", filename))
         data["problem_id"] = pid_count
         save_json(data, os.path.join(path_dataset, "problems", "{}.json".format(pid_count)))

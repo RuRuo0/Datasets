@@ -32,8 +32,8 @@ project development and testing.
 
 ## Documentation
 
-Everything is at [doc](./doc/doc.md). Usage of the annotation tool and sample projects can be found in
-the [tests](./tests) and [example-project](./project).
+Everything is at [doc](./doc/doc.md). Usage of the annotation tool can be found in the [tests](./tests)
+and [projects](./projects).
 
 ## Contributing
 

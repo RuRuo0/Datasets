@@ -235,7 +235,7 @@ class Expander:
             self.debug,
             "\033[34m(pid={},count={})\033[0m Save Expanded.\n".format(self.log["break_pid"], len(self.data)))
         self.log["break_pid"] += 1
-        safe_save_json(self.log, "log_files/", "aug_log.json")
+        safe_save_json(self.log, os.path.join("log_files/", "aug_log.json"))
 
 
 def renumber(path_dataset):

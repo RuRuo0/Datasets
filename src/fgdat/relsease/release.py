@@ -1,7 +1,7 @@
 import json
 import os
 import shutil
-from formalgeo.tools import load_json
+from formalgeo.tools import load_json, safe_save_json
 from tqdm import tqdm
 import time
 import tarfile
@@ -9,12 +9,14 @@ import tarfile
 
 def check_dataset(path_dataset):
     legal_files = {'diagrams', 'expanded', 'files', 'gdl', 'info.json', 'LICENSE', 'problems', 'REAMDE.md'}
+    selected = {'diagrams', 'expanded', 'files'}
+
     dataset_files = set(os.listdir(path_dataset))
     legal = True
     if len(dataset_files - legal_files) > 0:
         print("Redundant files: {}".format(dataset_files - legal_files))
         legal = False
-    if len(legal_files - dataset_files - {'diagrams', 'expanded', 'files'}) > 0:
+    if len(legal_files - dataset_files - selected) > 0:
         print("Missing files: {}".format(legal_files - dataset_files - {'diagrams', 'expanded', 'files'}))
         legal = False
 
@@ -66,7 +68,18 @@ def release(path_dataset, path_released):
     print("Removing cache... (It may take a few minutes)")
     shutil.rmtree(path_cache)
 
+    released = load_json(os.path.join(path_released, "released.json"))
+    released[filename] = {
+        "name": info["name"],
+        "version": info["version"],
+        "formalgeo": info["formalgeo"],
+        "gdl": info["gdl"],
+        "gdl_version": info["gdl_version"],
+        "release_datetime": info["release_datetime"],
+        "short_desc": info["short_desc"],
+    }
+    safe_save_json(released, os.path.join(path_released, "released.json"))
+
 
 if __name__ == '__main__':
-    check_dataset("../../../projects/formalgeo7k")
     release("../../../projects/formalgeo7k", "../../../released")

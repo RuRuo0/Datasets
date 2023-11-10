@@ -47,4 +47,4 @@ def main(clean_theorem=False, interactive=True):
 
 
 if __name__ == '__main__':
-    main(clean_theorem=True, interactive=True)
+    main(clean_theorem=True, interactive=False)

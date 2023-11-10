@@ -5,7 +5,7 @@
 [![Survey](https://img.shields.io/badge/Survey-FormalGeo-blue)](https://github.com/BitSecret/FormalGeo-Datasets)
 
 Dataset Annotation Tools and Dataset Release for formal Euclidean plane geometry problems.  
-This project is based on the [geometry formalization theory](https://arxiv.org/abs/2310.18021) and
+This project is based on the [Geometry Formalization Theory](https://arxiv.org/abs/2310.18021) and
 utilizes [FormalGeo](https://github.com/BitSecret/FormalGeo) as its problem solver.
 
 ## Installation

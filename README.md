@@ -1,12 +1,12 @@
-# FormalGeo-Datasets
+# Datasets
 
-[![Version](https://img.shields.io/badge/Version-0.0.1-brightgreen)](https://github.com/BitSecret/FormalGeo-Datasets)
+[![Version](https://img.shields.io/badge/Version-0.0.1-brightgreen)](https://github.com/FormalGeo/Datasets)
 [![License](https://img.shields.io/badge/License-MIT-green)](https://opensource.org/licenses/MIT)
-[![Survey](https://img.shields.io/badge/Survey-FormalGeo-blue)](https://github.com/BitSecret/FormalGeo-Datasets)
+[![Survey](https://img.shields.io/badge/Survey-FormalGeo-blue)](https://github.com/FormalGeo/FormalGeo)
 
 Dataset Annotation Tools and Dataset Release for formal Euclidean plane geometry problems.  
 This project is based on the [Geometry Formalization Theory](https://arxiv.org/abs/2310.18021) and
-utilizes [FormalGeo](https://github.com/BitSecret/FormalGeo) as its problem solver.
+utilizes [FormalGeo](https://github.com/FormalGeo/FormalGeo) as its problem solver.
 
 ## Installation
 
@@ -24,7 +24,7 @@ store project metadata. The command `pip install -e .` reads file `pyproject.tom
 dependencies, and installs the current project in an editable mode into the environment's library for convenient
 project development and testing.
 
-    $ git clone --depth 1 https://github.com/BitSecret/FormalGeo-Datasets.git
+    $ git clone --depth 1 https://github.com/FormalGeo/Datasets.git
     $ cd FormalGeo-Datasets
     $ conda create -n <your_env_name> python=3.10
     $ conda activate <your_env_name>
@@ -39,12 +39,11 @@ and [projects](./projects).
 
 You can contribute additional automation scripts that facilitate dataset annotation, or use the scripts from this
 project to build your own dataset.  
-We welcome contributions from anyone, even if you are new to open source. Please read our [Introduction to Contributing
-](./doc/contributing.md)page.
+We welcome contributions from anyone, even if you are new to open source. Please read our [Introduction to Contributing](./doc/contributing.md)page.
 
 ## Bugs
 
-Our bug reporting platform is available at [here](https://github.com/BitSecret/FormalGeo-Datasets/issues). We encourage
+Our bug reporting platform is available at [here](https://github.com/FormalGeo/Datasets/issues). We encourage
 you to report any issues you encounter. Or even better, fork our repository on GitHub and submit a pull request.
 
 ## Citation

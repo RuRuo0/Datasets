@@ -2,7 +2,11 @@ geo_sym = [
     "△",  # triangle
     "∠",  # angle
     "⊙",  # circle
-    "▱"  # parallelogram
+    "▱",  # parallelogram
+    "°",  # degree
+    "∥",  # parallel
+    "⊥",  # perpendicular
+    "⌒",  # arc
 ]
 
 greek_alp = [

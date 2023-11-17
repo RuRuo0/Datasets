@@ -2,9 +2,9 @@
   "problem_id": 5455,
   "annotation": "Yangli_2023-05-21",
   "source": "GeoQA-5861",
-  "problem_level": 1,
-  "problem_text_cn": "如图是\"人字形\"钢架,其中斜梁AB=AC,顶角∠BAC=120°,跨度BC=10m,AD为支柱(即底边BC的中线),两根支撑架DE⊥AB,DF⊥AC,则DE+DF等于()",
-  "problem_text_en": "As shown in the figure, there is the \"herringbone\" steel frame, where the inclined beam AB = AC, the top angle ∠BAC = N_0, the span BC = N_1, AD is the pillar (ie the center line of the bottom BC), two support frames DE ⊥ AB, DF ⊥ AC, then DE + DF is equal to ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AB=AC，BC=10，∠CAB=120°，D平分线段BC，CF垂直于DF，DE垂直于BE。求直线DE的长度与直线DF的长度之和。",
+  "problem_text_en": "As shown in the diagram, AB=AC, BC=10, ∠CAB=120°, D is the midpoint of segment BC, CF⊥DF, DE⊥BE. Find the sum of the length of line DE and the length of line DF.",
   "problem_img": "5455.png",
   "construction_cdl": [
     "Shape(AE,ED,DA)",
@@ -20,8 +20,8 @@
     "Equal(LengthOfLine(BC),10)",
     "Equal(MeasureOfAngle(CAB),120)",
     "IsMidpointOfLine(D,BC)",
-    "PerpendicularBetweenLine(DE,BE)",
-    "PerpendicularBetweenLine(CF,DF)"
+    "PerpendicularBetweenLine(CF,DF)",
+    "PerpendicularBetweenLine(DE,BE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Add(LengthOfLine(DE),LengthOfLine(DF)))",
@@ -34,16 +34,16 @@
     "sine_theorem(1,DEB)",
     "sine_theorem(1,DCF)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,ABC)": [
-      "isosceles_triangle_property_angle_equal(1,ABC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,ABC)",
       "triangle_property_angle_sum(1,ABC)",
       "line_addition(1,BD,DC)",
       "sine_theorem(1,DEB)",
       "sine_theorem(1,DCF)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,ABC)": [
+      "isosceles_triangle_property_angle_equal(1,ABC)"
     ]
   }
 }

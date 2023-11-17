@@ -2,9 +2,9 @@
   "problem_id": 6917,
   "annotation": "ZheZhu_2023-06-04",
   "source": "GeoQA-angle-10169",
-  "problem_level": 1,
-  "problem_text_cn": "如图，△BCD内接于⊙O，∠D＝70°，OA⊥BC交⨀O于点A，连接AC，则∠OAC的度数为（）",
-  "problem_text_en": "",
+  "problem_level": 17,
+  "problem_text_cn": "如图所示，∠BEO=90°，∠CDB=70°，O是⊙O的圆心。求∠OAC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BEO=90°, ∠CDB=70°, O is the center of circle O. Find the measure of ∠OAC.",
   "problem_img": "6917.png",
   "construction_cdl": [
     "Shape(DB,BO,OC,CD)",
@@ -16,9 +16,9 @@
     "Cocircular(O,DBAC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(BEO),90)",
     "Equal(MeasureOfAngle(CDB),70)",
-    "Equal(MeasureOfAngle(BEO),90)"
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(OAC))",
@@ -42,7 +42,20 @@
     "triangle_property_angle_sum(1,OBC)",
     "triangle_property_angle_sum(1,COA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_center_angle(1,OBA,O)",
+      "arc_property_center_angle(1,OBC,O)",
+      "arc_property_center_angle(1,OAC,O)",
+      "arc_property_circumference_angle_external(1,OBC,D)",
+      "circle_property_chord_perpendicular_bisect_arc(1,OBC,OEA)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "triangle_property_angle_sum(1,OBE)",
+      "triangle_property_angle_sum(1,OBC)",
+      "triangle_property_angle_sum(1,COA)"
+    ],
     "circle_property_chord_perpendicular_bisect_arc(1,OBC,OEA)": [
       "congruent_arc_judgment_length_equal(1,OBA,OAC)"
     ],
@@ -64,19 +77,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OAC)": [
       "isosceles_triangle_property_angle_equal(1,OAC)"
-    ],
-    "START": [
-      "arc_property_center_angle(1,OBA,O)",
-      "arc_property_center_angle(1,OBC,O)",
-      "arc_property_center_angle(1,OAC,O)",
-      "arc_property_circumference_angle_external(1,OBC,D)",
-      "circle_property_chord_perpendicular_bisect_arc(1,OBC,OEA)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "triangle_property_angle_sum(1,OBE)",
-      "triangle_property_angle_sum(1,OBC)",
-      "triangle_property_angle_sum(1,COA)"
     ]
   }
 }

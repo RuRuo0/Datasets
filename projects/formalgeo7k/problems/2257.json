@@ -2,9 +2,9 @@
   "problem_id": 2257,
   "annotation": "Yangli_2023-04-09",
   "source": "Geometry3k-2359",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find R T.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，QS=TS，RQ=2*x+3，RT=4*x-7，RS⊥TS。求直线RT的长度。",
+  "problem_text_en": "As shown in the diagram, QS=TS, RQ=2*x+3, RT=4*x-7, RS is perpendicular to TS. Find the length of line RT.",
   "problem_img": "2257.png",
   "construction_cdl": [
     "Shape(QS,SR,RQ)",
@@ -12,7 +12,12 @@
     "Collinear(ACSRB)",
     "Collinear(QST)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(QS),LengthOfLine(TS))",
+    "Equal(LengthOfLine(RQ),2*x+3)",
+    "Equal(LengthOfLine(RT),4*x-7)",
+    "PerpendicularBetweenLine(RS,TS)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(RQ),2*x+3)",
     "Equal(LengthOfLine(RT),4*x-7)",
@@ -26,15 +31,15 @@
     "mirror_congruent_triangle_judgment_sas(1,SRQ,STR)",
     "mirror_congruent_triangle_property_line_equal(1,SRQ,STR)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,QSR,RST)"
+    ],
     "adjacent_complementary_angle(1,QSR,RST)": [
       "mirror_congruent_triangle_judgment_sas(1,SRQ,STR)"
     ],
     "mirror_congruent_triangle_judgment_sas(1,SRQ,STR)": [
       "mirror_congruent_triangle_property_line_equal(1,SRQ,STR)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,QSR,RST)"
     ]
   }
 }

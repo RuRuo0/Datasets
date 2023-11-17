@@ -2,9 +2,9 @@
   "problem_id": 3265,
   "annotation": "XiaokaiZhang_2023-04-23",
   "source": "GeoQA-571",
-  "problem_level": 1,
-  "problem_text_cn": "如图．己知AB∥CD,∠1=70°,则∠2的度数是()",
-  "problem_text_en": "As shown in the figure. Knowing that AB ∥ CD, ∠1 = N_0, then the degree of ∠2 is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠GEB=70°，AB∥CD。求∠CFE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠GEB=70°, AB is parallel to CD. Find the measure of ∠CFE.",
   "problem_img": "3265.png",
   "construction_cdl": [
     "Shape(AE,EG)",
@@ -20,8 +20,8 @@
     "Collinear(GEFH)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AB,CD)",
-    "Equal(MeasureOfAngle(GEB),70)"
+    "Equal(MeasureOfAngle(GEB),70)",
+    "ParallelBetweenLine(AB,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CFE))",
@@ -32,16 +32,16 @@
     "parallel_property_collinear_extend(3,DC,EA,F)",
     "parallel_property_ipsilateral_internal_angle(1,FC,EA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "vertical_angle(1,GEB,FEA)",
+      "parallel_property_collinear_extend(3,AB,CD,E)"
+    ],
     "parallel_property_collinear_extend(3,AB,CD,E)": [
       "parallel_property_collinear_extend(3,DC,EA,F)"
     ],
     "parallel_property_collinear_extend(3,DC,EA,F)": [
       "parallel_property_ipsilateral_internal_angle(1,FC,EA)"
-    ],
-    "START": [
-      "vertical_angle(1,GEB,FEA)",
-      "parallel_property_collinear_extend(3,AB,CD,E)"
     ]
   }
 }

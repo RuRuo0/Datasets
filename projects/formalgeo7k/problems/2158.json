@@ -2,9 +2,9 @@
   "problem_id": 2158,
   "annotation": "YiwenHuang_2023-04-23",
   "source": "Geometry3k-2252",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find E G if \\triangle A C B \\sim \\triangle E G F, A D is an altitude of \\triangle A C B, E H is an altitude of \\triangle E G F, A C = 17, A D = 15, and E H = 7.5.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AC=17，AD=15，AD=EH，EH=15/2，AD是△ABC的高，EH是△EGF的高，△ABC与△EGF是镜像相似三角形，CD垂直于AD，EH⊥GH。求直线EG的长度。",
+  "problem_text_en": "As shown in the diagram, AC=17, AD=15, AD=EH, EH=15/2, AD is the altitude of triangle ABC, EH is the altitude of triangle EGF, △ABC is mirror similar to △EGF., CD⊥AD, EH⊥GH. Find the length of line EG.",
   "problem_img": "2158.png",
   "construction_cdl": [
     "Shape(AB,BC,CA)",
@@ -14,7 +14,17 @@
     "Collinear(BCD)",
     "Collinear(HGF)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),17)",
+    "Equal(LengthOfLine(AD),15)",
+    "Equal(LengthOfLine(AD),LengthOfLine(EH))",
+    "Equal(LengthOfLine(EH),15/2)",
+    "IsAltitudeOfTriangle(AD,ABC)",
+    "IsAltitudeOfTriangle(EH,EGF)",
+    "MirrorSimilarBetweenTriangle(ABC,EGF)",
+    "PerpendicularBetweenLine(CD,AD)",
+    "PerpendicularBetweenLine(EH,GH)"
+  ],
   "image_cdl": [
     "MirrorSimilarBetweenTriangle(ABC,EGF)",
     "IsAltitudeOfTriangle(AD,ABC)",
@@ -38,7 +48,14 @@
     "mirror_similar_triangle_property_line_ratio(1,CDA,GEH)",
     "mirror_similar_triangle_property_line_ratio(1,DAC,HGE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "mirror_similar_triangle_property_angle_equal(1,CAB,GFE)",
+      "flat_angle(1,BCD)",
+      "flat_angle(1,HGF)",
+      "angle_addition(1,BCA,ACD)",
+      "angle_addition(1,HGE,EGF)"
+    ],
     "mirror_similar_triangle_property_angle_equal(1,CAB,GFE)": [
       "mirror_similar_triangle_judgment_aa(1,ACD,EHG)"
     ],
@@ -57,13 +74,6 @@
     "mirror_similar_triangle_judgment_aa(1,ACD,EHG)": [
       "mirror_similar_triangle_property_line_ratio(1,CDA,GEH)",
       "mirror_similar_triangle_property_line_ratio(1,DAC,HGE)"
-    ],
-    "START": [
-      "mirror_similar_triangle_property_angle_equal(1,CAB,GFE)",
-      "flat_angle(1,BCD)",
-      "flat_angle(1,HGF)",
-      "angle_addition(1,BCA,ACD)",
-      "angle_addition(1,HGE,EGF)"
     ]
   }
 }

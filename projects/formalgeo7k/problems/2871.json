@@ -2,9 +2,9 @@
   "problem_id": 2871,
   "annotation": "YimingHe_2023-04-16",
   "source": "GeoQA-37",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC中,AB=AC,∠A=36°,BD是AC边上的高,则∠DBC的度数是()",
-  "problem_text_en": "As shown in the figure, in △ABC, AB = AC, ∠A = N_0, BD is the height on the edge of AC, then the degree of ∠DBC is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=AC，∠DAB=36°，BD是△BCA的高，BD垂直于AD。求∠DBC的大小。",
+  "problem_text_en": "As shown in the diagram, AB=AC, ∠DAB=36°, BD is the altitude of △ BCA, BD is perpendicular to AD. Find the measure of ∠DBC.",
   "problem_img": "2871.png",
   "construction_cdl": [
     "Shape(AB,BD,DA)",
@@ -14,7 +14,8 @@
   "text_cdl": [
     "Equal(LengthOfLine(AB),LengthOfLine(AC))",
     "Equal(MeasureOfAngle(DAB),36)",
-    "IsAltitudeOfTriangle(BD,BCA)"
+    "IsAltitudeOfTriangle(BD,BCA)",
+    "PerpendicularBetweenLine(BD,AD)"
   ],
   "image_cdl": [
     "PerpendicularBetweenLine(BD,AD)"
@@ -27,14 +28,14 @@
     "triangle_property_angle_sum(1,ABC)",
     "triangle_property_angle_sum(1,DBC)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,ABC)": [
-      "isosceles_triangle_property_angle_equal(1,ABC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,ABC)",
       "triangle_property_angle_sum(1,ABC)",
       "triangle_property_angle_sum(1,DBC)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,ABC)": [
+      "isosceles_triangle_property_angle_equal(1,ABC)"
     ]
   }
 }

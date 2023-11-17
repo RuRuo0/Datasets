@@ -2,16 +2,24 @@
   "problem_id": 2105,
   "annotation": "YimingHe_2023-03-26",
   "source": "Geometry3k-2195",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find z.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AC=16，AD=8，BC=y，BD=x，CD=z，BA垂直于CA，DC垂直于BC。求z的值。",
+  "problem_text_en": "As shown in the diagram, AC=16, AD=8, BC=y, BD=x, CD=z, BA is perpendicular to CA, DC is perpendicular to BC. Find the value of z.",
   "problem_img": "2105.png",
   "construction_cdl": [
     "Shape(DC,CA,AD)",
     "Shape(AC,CB,BA)",
     "Collinear(DAB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),16)",
+    "Equal(LengthOfLine(AD),8)",
+    "Equal(LengthOfLine(BC),y)",
+    "Equal(LengthOfLine(BD),x)",
+    "Equal(LengthOfLine(CD),z)",
+    "PerpendicularBetweenLine(BA,CA)",
+    "PerpendicularBetweenLine(DC,BC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AD),8)",
     "Equal(LengthOfLine(BD),x)",
@@ -28,15 +36,15 @@
     "right_triangle_judgment_angle(1,CAD)",
     "right_triangle_property_pythagorean(1,CAD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,BAC,CAD)"
+    ],
     "adjacent_complementary_angle(1,BAC,CAD)": [
       "right_triangle_judgment_angle(1,CAD)"
     ],
     "right_triangle_judgment_angle(1,CAD)": [
       "right_triangle_property_pythagorean(1,CAD)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,BAC,CAD)"
     ]
   }
 }

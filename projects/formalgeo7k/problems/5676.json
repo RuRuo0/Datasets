@@ -2,9 +2,9 @@
   "problem_id": 5676,
   "annotation": "NaZhu_2023-05-28",
   "source": "GeoQA-7380",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在Rt△ABC中,∠ABC=90°,BD⊥AD于点D,其中\\frac{BC}{AC}=\\frac{5}{13},则\\frac{BD}{AD}=()",
-  "problem_text_en": "As shown in the figure, in Rt△ABC, ∠ABC = N_0, BD ⊥ AD is at point D, where \\frac{BC}{AC}=\\frac{N_1}{N_2}, then \\frac{BD}{AD}= ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，Div(LengthOfLine(BC)=LengthOfLine(AC))，∠ABC=90°，BD⊥AD。求直线BD的长度与直线AD的长度之比。",
+  "problem_text_en": "As shown in the diagram, Div(LengthOfLine(BC)=LengthOfLine(AC)), ∠ABC=90°, BD⊥AD. Find the ratio of the length of line BD to the length of line AD.",
   "problem_img": "5676.png",
   "construction_cdl": [
     "Shape(AB,BD,DA)",
@@ -12,9 +12,9 @@
     "Collinear(ADC)"
   ],
   "text_cdl": [
+    "Equal(Div(LengthOfLine(BC),LengthOfLine(AC)),5/13)",
     "Equal(MeasureOfAngle(ABC),90)",
-    "PerpendicularBetweenLine(BD,AD)",
-    "Equal(Div(LengthOfLine(BC),LengthOfLine(AC)),5/13)"
+    "PerpendicularBetweenLine(BD,AD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Div(LengthOfLine(BD),LengthOfLine(AD)))",
@@ -30,7 +30,12 @@
     "mirror_similar_triangle_property_line_ratio(1,CDB,CAB)",
     "line_addition(1,AD,DC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,CDB,BDA)",
+      "mirror_similar_triangle_judgment_aa(1,BDA,CAB)",
+      "line_addition(1,AD,DC)"
+    ],
     "adjacent_complementary_angle(1,CDB,BDA)": [
       "mirror_similar_triangle_judgment_aa(1,BCD,ABC)"
     ],
@@ -42,11 +47,6 @@
     "mirror_similar_triangle_judgment_aa(1,BCD,ABC)": [
       "mirror_similar_triangle_property_line_ratio(1,BCD,ABC)",
       "mirror_similar_triangle_property_line_ratio(1,CDB,CAB)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,CDB,BDA)",
-      "mirror_similar_triangle_judgment_aa(1,BDA,CAB)",
-      "line_addition(1,AD,DC)"
     ]
   }
 }

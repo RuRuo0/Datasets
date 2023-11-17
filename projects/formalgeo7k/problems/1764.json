@@ -2,9 +2,9 @@
   "problem_id": 1764,
   "annotation": "ChenyangMao_2023-04-16",
   "source": "Geometry3k-1829",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠BXE=5/2*x+15°，∠CAD=3*x-9°，FD平行于EG。求x的值。",
+  "problem_text_en": "As shown in the diagram, ∠BXE=5/2*x+15°, ∠CAD=3*x-9°, FD∥EG. Find the value of x.",
   "problem_img": "1764.png",
   "construction_cdl": [
     "Shape(CA,AD)",
@@ -19,7 +19,11 @@
     "Collinear(DAF)",
     "Collinear(GXE)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(BXE),5/2*x+15)",
+    "Equal(MeasureOfAngle(CAD),3*x-9)",
+    "ParallelBetweenLine(FD,EG)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(CAD),3*x-9)",
     "Equal(MeasureOfAngle(BXE),5/2*x+15)",
@@ -33,16 +37,16 @@
     "parallel_property_corresponding_angle(1,XE,AF,B)",
     "vertical_angle(1,CAD,XAF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,FD,EG,A)",
+      "vertical_angle(1,CAD,XAF)"
+    ],
     "parallel_property_collinear_extend(3,FD,EG,A)": [
       "parallel_property_collinear_extend(3,GE,AF,X)"
     ],
     "parallel_property_collinear_extend(3,GE,AF,X)": [
       "parallel_property_corresponding_angle(1,XE,AF,B)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,FD,EG,A)",
-      "vertical_angle(1,CAD,XAF)"
     ]
   }
 }

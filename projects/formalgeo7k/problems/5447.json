@@ -2,9 +2,9 @@
   "problem_id": 5447,
   "annotation": "Yangli_2023-05-21",
   "source": "GeoQA-5801",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,D、E分别是BC、AC上的中点,且DE∥AB,BF平分∠ABC,交DE于点F,若BC=8,则DF的长是()",
-  "problem_text_en": "As shown in the figure, in △ABC, D and E are the midpoints on BC and AC respectively, and DE ∥ AB and BF bisect ∠ABC and intersect DE at point F. If BC = N_0, then the length of DF is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，BC=8，BF是∠ABC的角平分线，D平分线段BC，E平分线段AC，BA∥DF。求直线DF的长度。",
+  "problem_text_en": "As shown in the diagram, BC=8, BF bisects ∠ABC, D is the midpoint of segment BC, E bisects segment AC, BA∥DF. Find the length of line DF.",
   "problem_img": "5447.png",
   "construction_cdl": [
     "Shape(AB,BF,FE,EA)",
@@ -16,10 +16,10 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(BC),8)",
-    "ParallelBetweenLine(BA,DF)",
     "IsBisectorOfAngle(BF,ABC)",
+    "IsMidpointOfLine(D,BC)",
     "IsMidpointOfLine(E,AC)",
-    "IsMidpointOfLine(D,BC)"
+    "ParallelBetweenLine(BA,DF)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(DF))",
@@ -29,13 +29,13 @@
     "parallel_property_alternate_interior_angle(1,BA,DF)",
     "isosceles_triangle_judgment_angle_equal(1,DFB)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_alternate_interior_angle(1,BA,DF)": [
-      "isosceles_triangle_judgment_angle_equal(1,DFB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,BD,DC)",
       "parallel_property_alternate_interior_angle(1,BA,DF)"
+    ],
+    "parallel_property_alternate_interior_angle(1,BA,DF)": [
+      "isosceles_triangle_judgment_angle_equal(1,DFB)"
     ]
   }
 }

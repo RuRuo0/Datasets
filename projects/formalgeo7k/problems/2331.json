@@ -2,16 +2,23 @@
   "problem_id": 2331,
   "annotation": "ChenyangMao_2023-04-09",
   "source": "Geometry3k-2444",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x. Round to the nearest tenth.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AD=AC，BC=40，BD=22，∠BCA=y°，∠DBA=x°，AD⊥BD。求x的值。",
+  "problem_text_en": "As shown in the diagram, AD=AC, BC=40, BD=22, ∠BCA=y°, ∠DBA=x°, AD is perpendicular to BD. Find the value of x.",
   "problem_img": "2331.png",
   "construction_cdl": [
     "Shape(BC,CA,AB)",
     "Shape(BA,AD,DB)",
     "Collinear(CAD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AD),LengthOfLine(AC))",
+    "Equal(LengthOfLine(BC),40)",
+    "Equal(LengthOfLine(BD),22)",
+    "Equal(MeasureOfAngle(BCA),y)",
+    "Equal(MeasureOfAngle(DBA),x)",
+    "PerpendicularBetweenLine(AD,BD)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BD),22)",
     "Equal(LengthOfLine(BC),40)",
@@ -30,18 +37,18 @@
     "right_triangle_property_pythagorean(1,ADB)",
     "sine_theorem(1,ADB)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,CDB)": [
-      "right_triangle_property_pythagorean(1,CDB)"
-    ],
-    "right_triangle_judgment_angle(1,ADB)": [
-      "right_triangle_property_pythagorean(1,ADB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,CA,AD)",
       "right_triangle_judgment_angle(1,CDB)",
       "right_triangle_judgment_angle(1,ADB)",
       "sine_theorem(1,ADB)"
+    ],
+    "right_triangle_judgment_angle(1,CDB)": [
+      "right_triangle_property_pythagorean(1,CDB)"
+    ],
+    "right_triangle_judgment_angle(1,ADB)": [
+      "right_triangle_property_pythagorean(1,ADB)"
     ]
   }
 }

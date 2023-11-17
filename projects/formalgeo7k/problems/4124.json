@@ -2,9 +2,9 @@
   "problem_id": 4124,
   "annotation": "QikeHuang_2023-05-07",
   "source": "GeoQA-2629",
-  "problem_level": 1,
-  "problem_text_cn": "如图,边长为1的小正方形构成的网格中,⊙O半径为1,圆心O在格点上,则tan∠AED=()",
-  "problem_text_en": "As shown in the figure, in the grid composed of small squares with edge length N_0, the radius of ⊙O is N_1 and the center O is on the grid point, then tan∠AED = ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AC=1，圆O的半径为1，圆O的圆心为O，CA是⊙O的切线。求tan(DE)的值。",
+  "problem_text_en": "As shown in the diagram, AC=1, the radius of circle O is 1, the center of ⊙O is O, CA is the tangent to ⊙O. Find the value of tan(DE).",
   "problem_img": "4124.png",
   "construction_cdl": [
     "Shape(OEA,AE)",
@@ -20,9 +20,9 @@
     "Cocircular(O,EADB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(AC),1)",
     "Equal(RadiusOfCircle(O),1)",
+    "IsCentreOfCircle(O,O)",
     "IsTangentOfCircle(CA,O)"
   ],
   "image_cdl": [],
@@ -39,7 +39,15 @@
     "arc_property_circumference_angle_external(1,OAD,E)",
     "arc_property_circumference_angle_external(1,OAD,B)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
+      "circle_property_length_of_radius_and_diameter(1,O)",
+      "tangent_of_circle_property_perpendicular(1,CA,O,O)",
+      "sine_theorem(1,CBA)",
+      "arc_property_circumference_angle_external(1,OAD,E)",
+      "arc_property_circumference_angle_external(1,OAD,B)"
+    ],
     "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
       "diameter_of_circle_property_length_equal(1,AB,O)"
     ],
@@ -48,14 +56,6 @@
     ],
     "right_triangle_judgment_angle(1,BAC)": [
       "right_triangle_property_pythagorean(1,BAC)"
-    ],
-    "START": [
-      "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
-      "circle_property_length_of_radius_and_diameter(1,O)",
-      "tangent_of_circle_property_perpendicular(1,CA,O,O)",
-      "sine_theorem(1,CBA)",
-      "arc_property_circumference_angle_external(1,OAD,E)",
-      "arc_property_circumference_angle_external(1,OAD,B)"
     ]
   }
 }

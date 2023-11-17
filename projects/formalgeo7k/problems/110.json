@@ -3,15 +3,22 @@
   "annotation": "XiaokaiZhang_2023-04-02",
   "source": "Geometry3k-112",
   "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the figure. Round to the nearest tenth if necessary.",
+  "problem_text_cn": "如图所示，BO=15，BO=CA，CE=7，CO=13，CO=BA，OE垂直于AE。求四边形OCAB的周长。",
+  "problem_text_en": "As shown in the diagram, BO=15, BO=CA, CE=7, CO=13, CO=BA, OE is perpendicular to AE. Find the perimeter of OCAB.",
   "problem_img": "110.png",
   "construction_cdl": [
     "Shape(OC,CE,EO)",
     "Shape(OE,EA,AB,BO)",
     "Collinear(CEA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BO),15)",
+    "Equal(LengthOfLine(BO),LengthOfLine(CA))",
+    "Equal(LengthOfLine(CE),7)",
+    "Equal(LengthOfLine(CO),13)",
+    "Equal(LengthOfLine(CO),LengthOfLine(BA))",
+    "PerpendicularBetweenLine(OE,AE)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BO),15)",
     "Equal(LengthOfLine(CO),13)",
@@ -25,7 +32,7 @@
   "theorem_seqs": [
     "quadrilateral_perimeter_formula(1,OCAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "quadrilateral_perimeter_formula(1,OCAB)"
     ]

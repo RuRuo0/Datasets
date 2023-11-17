@@ -2,9 +2,9 @@
   "problem_id": 3806,
   "annotation": "YifanWang_2023-05-07",
   "source": "GeoQA-1660",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点D、E分别是⊙O的内接正三角形ABC的AB、AC边上的中点,若⊙O的半径为2,则DE的长等于()",
-  "problem_text_en": "As shown in the figure, points D and E are the midpoints on the AB and AC edges of the inscribed regular triangle ABC of ⊙O respectively. If the radius of ⊙O is N_0, then the length of DE is equal to ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，圆O的半径为2，△ABC为等边△，⊙O的圆心为O，D平分线段AB，E是线段CA的中点。求直线DE的长度。",
+  "problem_text_en": "As shown in the diagram, the radius of ⊙O is 2, △ABC is an equilateral △, the center of circle O is O, D is the midpoint of segment AB, E bisects segment CA. Find the length of line DE.",
   "problem_img": "3806.png",
   "construction_cdl": [
     "Shape(AD,DB,OAB)",
@@ -17,7 +17,13 @@
     "Collinear(CEA)",
     "Cocircular(O,ABC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(RadiusOfCircle(O),2)",
+    "EquilateralTriangle(ABC)",
+    "IsCentreOfCircle(O,O)",
+    "IsMidpointOfLine(D,AB)",
+    "IsMidpointOfLine(E,CA)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "EquilateralTriangle(ABC)",
@@ -37,10 +43,7 @@
     "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)",
     "midsegment_of_triangle_property_length(1,DE,ABC)"
   ],
-  "theorem_seq_dag": {
-    "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)": [
-      "midsegment_of_triangle_property_length(1,DE,ABC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,OB,O)",
       "radius_of_circle_property_length_equal(1,OC,O)",
@@ -49,6 +52,9 @@
       "arc_property_center_angle(1,OBC,O)",
       "cosine_theorem(1,OBC)",
       "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)"
+    ],
+    "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)": [
+      "midsegment_of_triangle_property_length(1,DE,ABC)"
     ]
   }
 }

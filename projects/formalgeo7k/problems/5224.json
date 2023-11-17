@@ -2,18 +2,18 @@
   "problem_id": 5224,
   "annotation": "NaZhu_2023-05-21",
   "source": "GeoQA-5270",
-  "problem_level": 1,
-  "problem_text_cn": "如图,C、D是线段AB上的两点,E是AC的中点,F是BD的中点,若EF=8,CD=4,则AB的长为()",
-  "problem_text_en": "As shown in the figure, C and D are two points on the line segment AB, E is the midpoint of AC, F is the midpoint of BD, if EF = N_0, CD = N_1, then the length of AB is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，CD=4，EF=8，E是线段AC的中点，F平分线段BD。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, CD=4, EF=8, E bisects segment AC, F is the midpoint of segment BD. Find the length of line AB.",
   "problem_img": "5224.png",
   "construction_cdl": [
     "Collinear(AECDFB)"
   ],
   "text_cdl": [
-    "IsMidpointOfLine(E,AC)",
-    "IsMidpointOfLine(F,BD)",
+    "Equal(LengthOfLine(CD),4)",
     "Equal(LengthOfLine(EF),8)",
-    "Equal(LengthOfLine(CD),4)"
+    "IsMidpointOfLine(E,AC)",
+    "IsMidpointOfLine(F,BD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -25,7 +25,7 @@
     "line_addition(1,AD,DF)",
     "line_addition(1,AF,FB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AE,EC)",
       "line_addition(1,AE,EF)",

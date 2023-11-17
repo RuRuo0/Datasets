@@ -2,9 +2,9 @@
   "problem_id": 3348,
   "annotation": "YimingHe_2023-04-30",
   "source": "GeoQA-795",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知DB⊥AB于B,DC⊥AF于C,且DB=DC,∠BAC=40°,∠ADG=130°,则∠DGF=()",
-  "problem_text_en": "As shown in the figure, it is known that DB ⊥ AE at B, DC ⊥ AF at C, and DB = DC, ∠BAC = N_0, ∠ADG = N_1, then ∠DGF = ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，BD=CD，∠ADG=130°，∠CAB=40°，AB⊥DB，DC垂直于AC。求∠FGD的大小。",
+  "problem_text_en": "As shown in the diagram, BD=CD, ∠ADG=130°, ∠CAB=40°, AB⊥DB, DC⊥AC. Find the measure of ∠FGD.",
   "problem_img": "3348.png",
   "construction_cdl": [
     "Shape(AD,DC,CA)",
@@ -16,11 +16,11 @@
     "Collinear(ABE)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(AB,DB)",
-    "PerpendicularBetweenLine(DC,AC)",
     "Equal(LengthOfLine(BD),LengthOfLine(CD))",
+    "Equal(MeasureOfAngle(ADG),130)",
     "Equal(MeasureOfAngle(CAB),40)",
-    "Equal(MeasureOfAngle(ADG),130)"
+    "PerpendicularBetweenLine(AB,DB)",
+    "PerpendicularBetweenLine(DC,AC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(FGD))",
@@ -32,15 +32,15 @@
     "triangle_property_angle_sum(1,GAD)",
     "adjacent_complementary_angle(1,FGB,BGA)"
   ],
-  "theorem_seq_dag": {
-    "mirror_congruent_triangle_judgment_hl(1,ABD,ADC)": [
-      "mirror_congruent_triangle_property_angle_equal(1,ABD,ADC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "mirror_congruent_triangle_judgment_hl(1,ABD,ADC)",
       "angle_addition(1,CAD,DAB)",
       "triangle_property_angle_sum(1,GAD)",
       "adjacent_complementary_angle(1,FGB,BGA)"
+    ],
+    "mirror_congruent_triangle_judgment_hl(1,ABD,ADC)": [
+      "mirror_congruent_triangle_property_angle_equal(1,ABD,ADC)"
     ]
   }
 }

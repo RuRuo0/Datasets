@@ -2,9 +2,9 @@
   "problem_id": 1317,
   "annotation": "DengfengYue_2023-04-09",
   "source": "Geometry3k-1365",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Quadrilateral A B C D is a rhombus. If m \\angle B C D = 64, find m \\angle B A C.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠DCB=64°，ADCB是菱形。求∠BAC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DCB=64°, ADCB is a rhombus. Find the measure of ∠BAC.",
   "problem_img": "1317.png",
   "construction_cdl": [
     "Shape(AD,DO,OA)",
@@ -15,6 +15,7 @@
     "Collinear(DOB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(DCB),64)",
     "Rhombus(ADCB)"
   ],
   "image_cdl": [
@@ -28,14 +29,14 @@
     "perpendicular_bisector_property_bisector(1,AO,DB)",
     "angle_addition(1,BAC,CAD)"
   ],
-  "theorem_seq_dag": {
-    "kite_property_diagonal_perpendicular_bisection(1,ADCB,O)": [
-      "perpendicular_bisector_property_bisector(1,AO,DB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_property_opposite_angle_equal(1,ADCB)",
       "kite_property_diagonal_perpendicular_bisection(1,ADCB,O)",
       "angle_addition(1,BAC,CAD)"
+    ],
+    "kite_property_diagonal_perpendicular_bisection(1,ADCB,O)": [
+      "perpendicular_bisector_property_bisector(1,AO,DB)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 4400,
   "annotation": "YimingHe_2023-05-14",
   "source": "GeoQA-3337",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB为⊙O直径,点C,D为⊙O上两点,若∠C+∠AOD=145°,则∠C的大小是()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, C, D are two points on ⊙O, if ∠C + ∠AOD = N_0, then the size of ∠C is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，Add(MeasureOfAngle(DCB)=MeasureOfAngle(AOD))，⊙O的圆心为O，AB是⊙O的直径。求∠DCB的大小。",
+  "problem_text_en": "As shown in the diagram, Add(MeasureOfAngle(DCB)=MeasureOfAngle(AOD)), the center of ⊙O is O, the diameter of circle O is AB. Find the measure of ∠DCB.",
   "problem_img": "4400.png",
   "construction_cdl": [
     "Shape(AO,OE,EC,OCA)",
@@ -19,9 +19,9 @@
     "Cocircular(O,ABDC)"
   ],
   "text_cdl": [
-    "IsDiameterOfCircle(AB,O)",
     "Equal(Add(MeasureOfAngle(DCB),MeasureOfAngle(AOD)),145)",
-    "IsCentreOfCircle(O,O)"
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DCB))",
@@ -31,7 +31,7 @@
     "arc_property_center_angle(1,OBD,O)",
     "arc_property_circumference_angle_external(1,OBD,C)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,AOD,DOB)",
       "arc_property_center_angle(1,OBD,O)",

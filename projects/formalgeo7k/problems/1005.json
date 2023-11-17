@@ -2,15 +2,23 @@
   "problem_id": 1005,
   "annotation": "XiaokaiZhang_2023-04-09",
   "source": "Geometry3k-1037",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Each pair of polygons is similar. Find A B.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=x+1，CD=x-1，FE=8，HG=5，∠ADC=∠EHG，∠BAD=∠FEH，∠CBA=∠GFE，∠DCB=∠HGF，BADC相似于FEHG。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, AB=x+1, CD=x-1, FE=8, HG=5, ∠ADC=∠EHG, ∠BAD=∠FEH, ∠CBA=∠GFE, ∠DCB=∠HGF, BADC is similar to FEHG. Find the length of line AB.",
   "problem_img": "1005.png",
   "construction_cdl": [
     "Shape(BA,AD,DC,CB)",
     "Shape(EH,HG,GF,FE)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AB),x+1)",
+    "Equal(LengthOfLine(CD),x-1)",
+    "Equal(LengthOfLine(FE),8)",
+    "Equal(LengthOfLine(HG),5)",
+    "Equal(MeasureOfAngle(ADC),MeasureOfAngle(EHG))",
+    "Equal(MeasureOfAngle(BAD),MeasureOfAngle(FEH))",
+    "Equal(MeasureOfAngle(CBA),MeasureOfAngle(GFE))",
+    "Equal(MeasureOfAngle(DCB),MeasureOfAngle(HGF))",
     "SimilarBetweenQuadrilateral(BADC,FEHG)"
   ],
   "image_cdl": [
@@ -29,7 +37,7 @@
     "similar_quadrilateral_property_line_ratio(1,BADC,FEHG)",
     "similar_quadrilateral_property_line_ratio(1,DCBA,HGFE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "similar_quadrilateral_property_line_ratio(1,BADC,FEHG)",
       "similar_quadrilateral_property_line_ratio(1,DCBA,HGFE)"

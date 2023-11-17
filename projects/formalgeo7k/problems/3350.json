@@ -2,9 +2,9 @@
   "problem_id": 3350,
   "annotation": "YimingHe_2023-04-30",
   "source": "GeoQA-806",
-  "problem_level": 1,
-  "problem_text_cn": "如图,a∥b,∠1=70°,则∠2等于()",
-  "problem_text_en": "As shown in the figure, a ∥ b, ∠1 = N_0, then ∠2 is equal to ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠EFB=70°，AB∥CD。求∠IHC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠EFB=70°, AB is parallel to CD. Find the measure of ∠IHC.",
   "problem_img": "3350.png",
   "construction_cdl": [
     "Shape(AF,FE)",
@@ -20,8 +20,8 @@
     "Collinear(EFHI)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AB,CD)",
-    "Equal(MeasureOfAngle(EFB),70)"
+    "Equal(MeasureOfAngle(EFB),70)",
+    "ParallelBetweenLine(AB,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(IHC))",
@@ -32,16 +32,16 @@
     "parallel_property_corresponding_angle(1,FB,HD,E)",
     "vertical_angle(1,EHD,IHC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,AB,CD,F)",
+      "vertical_angle(1,EHD,IHC)"
+    ],
     "parallel_property_collinear_extend(3,AB,CD,F)": [
       "parallel_property_collinear_extend(3,DC,BF,H)"
     ],
     "parallel_property_collinear_extend(3,DC,BF,H)": [
       "parallel_property_corresponding_angle(1,FB,HD,E)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,AB,CD,F)",
-      "vertical_angle(1,EHD,IHC)"
     ]
   }
 }

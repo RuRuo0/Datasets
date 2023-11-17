@@ -2,9 +2,9 @@
   "problem_id": 3195,
   "annotation": "NaZhu_2023-04-23",
   "source": "GeoQA-483",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB∥CE,BF交CE于点D,DE=DF,∠B=40°,则∠E的度数为()",
-  "problem_text_en": "As shown in the figure, AB ∥ CE, BF intersect CE at point D, DE = DF, ∠B = N_0, then the degree of ∠E is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，DE=DF，∠ABD=40°，BA平行于EC。求∠DEF的大小。",
+  "problem_text_en": "As shown in the diagram, DE=DF, ∠ABD=40°, BA∥EC. Find the measure of ∠DEF.",
   "problem_img": "3195.png",
   "construction_cdl": [
     "Shape(DE,EF,FD)",
@@ -16,9 +16,9 @@
     "Collinear(CDE)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(BA,EC)",
     "Equal(LengthOfLine(DE),LengthOfLine(DF))",
-    "Equal(MeasureOfAngle(ABD),40)"
+    "Equal(MeasureOfAngle(ABD),40)",
+    "ParallelBetweenLine(BA,EC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DEF))",
@@ -32,19 +32,19 @@
     "isosceles_triangle_property_angle_equal(1,DEF)",
     "triangle_property_angle_sum(1,DEF)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,CE,AB,D)": [
-      "parallel_property_corresponding_angle(2,BA,DC,F)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,DEF)": [
-      "isosceles_triangle_property_angle_equal(1,DEF)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_collinear_extend(3,CE,AB,D)",
       "flat_angle(1,CDE)",
       "angle_addition(1,CDF,FDE)",
       "isosceles_triangle_judgment_line_equal(1,DEF)",
       "triangle_property_angle_sum(1,DEF)"
+    ],
+    "parallel_property_collinear_extend(3,CE,AB,D)": [
+      "parallel_property_corresponding_angle(2,BA,DC,F)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,DEF)": [
+      "isosceles_triangle_property_angle_equal(1,DEF)"
     ]
   }
 }

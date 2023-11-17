@@ -2,9 +2,9 @@
   "problem_id": 4312,
   "annotation": "ZheZhu_2023-05-07",
   "source": "GeoQA-3143",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB为⊙O的弦,AB=6,点C是⊙O上的一个动点,且∠ACB=45°,若点M、N分别是AB、BC的中点,则MN长的最大值是()",
-  "problem_text_en": "As shown in the figure, AB is the chord of ⊙O, AB = N_0, point C is a moving point on ⊙O, and ∠ACB = N_1, if points M and N are the midpoints of AB and BC, then the maximum value of the length of MN is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=6，∠BCA=45°，O是圆O的圆心，AC是圆O的直径，M是线段AB的中点，N平分线段CB。求直线MN的长度。",
+  "problem_text_en": "As shown in the diagram, AB=6, ∠BCA=45°, O is the center of ⊙O, the diameter of circle O is AC, M bisects segment AB, N bisects segment CB. Find the length of line MN.",
   "problem_img": "4312.png",
   "construction_cdl": [
     "Shape(AO,OC,OCA)",
@@ -20,10 +20,10 @@
   "text_cdl": [
     "Equal(LengthOfLine(AB),6)",
     "Equal(MeasureOfAngle(BCA),45)",
-    "IsMidpointOfLine(N,CB)",
-    "IsMidpointOfLine(M,AB)",
     "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(AC,O)"
+    "IsDiameterOfCircle(AC,O)",
+    "IsMidpointOfLine(M,AB)",
+    "IsMidpointOfLine(N,CB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(MN))",
@@ -34,14 +34,14 @@
     "midsegment_of_triangle_judgment_midpoint(1,NM,BCA)",
     "midsegment_of_triangle_property_length(1,NM,BCA)"
   ],
-  "theorem_seq_dag": {
-    "midsegment_of_triangle_judgment_midpoint(1,NM,BCA)": [
-      "midsegment_of_triangle_property_length(1,NM,BCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,ABC,O)",
       "sine_theorem(1,ABC)",
       "midsegment_of_triangle_judgment_midpoint(1,NM,BCA)"
+    ],
+    "midsegment_of_triangle_judgment_midpoint(1,NM,BCA)": [
+      "midsegment_of_triangle_property_length(1,NM,BCA)"
     ]
   }
 }

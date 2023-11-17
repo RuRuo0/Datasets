@@ -2,9 +2,9 @@
   "problem_id": 1328,
   "annotation": "FangzhenZhu_2023-04-09",
   "source": "Geometry3k-1376",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot B, the diameter is 20 units long, and m \\angle A C E = 45. Find x.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，⊙B的直径为20，BD=5*x，∠ACE=45°，⊙B的圆心为B，BD垂直于ED。求x的值。",
+  "problem_text_en": "As shown in the diagram, the diameter of ⊙B is 20, BD=5*x, ∠ACE=45°, B is the center of circle B, BD⊥ED. Find the value of x.",
   "problem_img": "1328.png",
   "construction_cdl": [
     "Shape(BAC,CB,BA)",
@@ -15,7 +15,13 @@
     "Collinear(CDE)",
     "Cocircular(B,ACE)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(DiameterOfCircle(B),20)",
+    "Equal(LengthOfLine(BD),5*x)",
+    "Equal(MeasureOfAngle(ACE),45)",
+    "IsCentreOfCircle(B,B)",
+    "PerpendicularBetweenLine(BD,ED)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(B,B)",
     "Equal(DiameterOfCircle(B),20)",
@@ -34,7 +40,13 @@
     "triangle_property_angle_sum(1,CDB)",
     "isosceles_triangle_judgment_angle_equal(1,DBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "circle_property_length_of_radius_and_diameter(1,B)",
+      "adjacent_complementary_angle(1,CDB,BDE)",
+      "radius_of_circle_property_length_equal(1,BC,B)",
+      "triangle_property_angle_sum(1,CDB)"
+    ],
     "adjacent_complementary_angle(1,CDB,BDE)": [
       "right_triangle_judgment_angle(1,CDB)",
       "isosceles_triangle_judgment_angle_equal(1,DBC)"
@@ -44,12 +56,6 @@
     ],
     "triangle_property_angle_sum(1,CDB)": [
       "isosceles_triangle_judgment_angle_equal(1,DBC)"
-    ],
-    "START": [
-      "circle_property_length_of_radius_and_diameter(1,B)",
-      "adjacent_complementary_angle(1,CDB,BDE)",
-      "radius_of_circle_property_length_equal(1,BC,B)",
-      "triangle_property_angle_sum(1,CDB)"
     ]
   }
 }

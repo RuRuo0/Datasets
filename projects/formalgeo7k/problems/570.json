@@ -2,9 +2,9 @@
   "problem_id": 570,
   "annotation": "YimingHe_2023-04-09",
   "source": "Geometry3k-584",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Quadrilateral A B C D is a rhombus. If m \\angle B C D = 54, find m \\angle B A C.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠DCB=54°，DP垂直于AP，ADCB是菱形。求∠BAC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DCB=54°, DP is perpendicular to AP, quadrilateral ADCB is a rhombus. Find the measure of ∠BAC.",
   "problem_img": "570.png",
   "construction_cdl": [
     "Shape(AD,DP,PA)",
@@ -15,8 +15,9 @@
     "Collinear(DPB)"
   ],
   "text_cdl": [
-    "Rhombus(ADCB)",
-    "Equal(MeasureOfAngle(DCB),54)"
+    "Equal(MeasureOfAngle(DCB),54)",
+    "PerpendicularBetweenLine(DP,AP)",
+    "Rhombus(ADCB)"
   ],
   "image_cdl": [
     "PerpendicularBetweenLine(DP,AP)"
@@ -30,17 +31,17 @@
     "isosceles_triangle_property_angle_equal(1,BAC)",
     "angle_addition(1,DCA,ACB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "mirror_congruent_triangle_judgment_sss(1,DCA,BAC)",
+      "isosceles_triangle_judgment_line_equal(1,BAC)",
+      "angle_addition(1,DCA,ACB)"
+    ],
     "mirror_congruent_triangle_judgment_sss(1,DCA,BAC)": [
       "mirror_congruent_triangle_property_angle_equal(1,CAD,CBA)"
     ],
     "isosceles_triangle_judgment_line_equal(1,BAC)": [
       "isosceles_triangle_property_angle_equal(1,BAC)"
-    ],
-    "START": [
-      "mirror_congruent_triangle_judgment_sss(1,DCA,BAC)",
-      "isosceles_triangle_judgment_line_equal(1,BAC)",
-      "angle_addition(1,DCA,ACB)"
     ]
   }
 }

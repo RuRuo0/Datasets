@@ -2,9 +2,9 @@
   "problem_id": 2699,
   "annotation": "ZheZhu_2023-04-23",
   "source": "Geometry3k-2842",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Use parallelogram A B C D to find m \\angle D A C.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=3*y-8，AD=13，CB=2*x+7，CD=10，∠ADF=59°，∠BFC=49°，∠FBA=20°，DA和CB是平行四边形ADCB的一组对边。求∠CAD的大小。",
+  "problem_text_en": "As shown in the diagram, AB=3*y-8, AD=13, CB=2*x+7, CD=10, ∠ADF=59°, ∠BFC=49°, ∠FBA=20°, DA and CB are opposite sides of the parallelogram ADCB. Find the measure of ∠CAD.",
   "problem_img": "2699.png",
   "construction_cdl": [
     "Shape(AD,DF,FA)",
@@ -14,7 +14,16 @@
     "Collinear(AFC)",
     "Collinear(BFD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),3*y-8)",
+    "Equal(LengthOfLine(AD),13)",
+    "Equal(LengthOfLine(CB),2*x+7)",
+    "Equal(LengthOfLine(CD),10)",
+    "Equal(MeasureOfAngle(ADF),59)",
+    "Equal(MeasureOfAngle(BFC),49)",
+    "Equal(MeasureOfAngle(FBA),20)",
+    "Parallelogram(ADCB)"
+  ],
   "image_cdl": [
     "Parallelogram(ADCB)",
     "Equal(LengthOfLine(AB),3*y-8)",
@@ -31,7 +40,7 @@
     "vertical_angle(1,DFA,BFC)",
     "triangle_property_angle_sum(1,ADF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "vertical_angle(1,DFA,BFC)",
       "triangle_property_angle_sum(1,ADF)"

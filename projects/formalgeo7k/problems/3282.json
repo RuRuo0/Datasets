@@ -2,9 +2,9 @@
   "problem_id": 3282,
   "annotation": "XiaokaiZhang_2023-04-23",
   "source": "GeoQA-594",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知直线a、b被直线c所截,a∥b,∠1=60°,则∠2的度数为()",
-  "problem_text_en": "As shown in the figure, it is known that the straight lines a and b are intercepted by the straight line c, a ∥ b, ∠1 = N_0, then the degree of ∠2 is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠MND=60°，AB∥CD。求∠AME的大小。",
+  "problem_text_en": "As shown in the diagram, ∠MND=60°, AB is parallel to CD. Find the measure of ∠AME.",
   "problem_img": "3282.png",
   "construction_cdl": [
     "Shape(AM,ME)",
@@ -20,8 +20,8 @@
     "Collinear(FNME)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AB,CD)",
-    "Equal(MeasureOfAngle(MND),60)"
+    "Equal(MeasureOfAngle(MND),60)",
+    "ParallelBetweenLine(AB,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(AME))",
@@ -32,16 +32,16 @@
     "parallel_property_alternate_interior_angle(2,AM,ND)",
     "adjacent_complementary_angle(1,NMA,AME)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,AB,CD,M)",
+      "adjacent_complementary_angle(1,NMA,AME)"
+    ],
     "parallel_property_collinear_extend(3,AB,CD,M)": [
       "parallel_property_collinear_extend(3,DC,MA,N)"
     ],
     "parallel_property_collinear_extend(3,DC,MA,N)": [
       "parallel_property_alternate_interior_angle(2,AM,ND)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,AB,CD,M)",
-      "adjacent_complementary_angle(1,NMA,AME)"
     ]
   }
 }

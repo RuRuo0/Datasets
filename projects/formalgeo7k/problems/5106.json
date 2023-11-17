@@ -2,9 +2,9 @@
   "problem_id": 5106,
   "annotation": "YimingHe_2023-05-21",
   "source": "GeoQA-4941",
-  "problem_level": 1,
-  "problem_text_cn": "如图,一艘货轮由A地沿北偏东45°方向航行到C地,在C地改变航向航行到B地,此时观测到C地位于B地北偏西63°方向上,则∠C的度数为()",
-  "problem_text_en": "As shown in the figure, a freighter sails from A to C in the direction N_0 to the east by north, and changes course to B at C. At this time, it is observed that C is located in the direction of N_1 to the west of B, and then ∠C The degree is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠CBE=63°，∠DAC=45°，AD∥BE，AD平行于FC，FC∥BE。求∠BCA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CBE=63°, ∠DAC=45°, AD∥BE, AD is parallel to FC, FC is parallel to BE. Find the measure of ∠BCA.",
   "problem_img": "5106.png",
   "construction_cdl": [
     "Shape(DA,AC)",
@@ -13,11 +13,11 @@
     "Shape(CB,BE)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AD,FC)",
-    "ParallelBetweenLine(FC,BE)",
-    "ParallelBetweenLine(AD,BE)",
+    "Equal(MeasureOfAngle(CBE),63)",
     "Equal(MeasureOfAngle(DAC),45)",
-    "Equal(MeasureOfAngle(CBE),63)"
+    "ParallelBetweenLine(AD,BE)",
+    "ParallelBetweenLine(AD,FC)",
+    "ParallelBetweenLine(FC,BE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BCA))",
@@ -27,7 +27,7 @@
     "parallel_property_alternate_interior_angle(2,FC,BE)",
     "angle_addition(1,BCF,FCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_alternate_interior_angle(1,AD,FC)",
       "parallel_property_alternate_interior_angle(2,FC,BE)",

@@ -2,9 +2,9 @@
   "problem_id": 854,
   "annotation": "NaZhu_2023-04-09",
   "source": "Geometry3k-883",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "P Q is tangent to circles R and S. Find P Q.",
+  "problem_level": 16,
+  "problem_text_cn": "如图所示，RP=6，SQ=4，圆R的圆心为R，S是⊙S的圆心，PQ是⊙O的切线，QP是圆O的切线，MA垂直于RA。求直线PQ的长度。",
+  "problem_text_en": "As shown in the diagram, RP=6, SQ=4, the center of ⊙R is R, S is the center of circle S, the tangent to circle S is PQ, QP is the tangent to ⊙R, MA is perpendicular to RA. Find the length of line PQ.",
   "problem_img": "854.png",
   "construction_cdl": [
     "Shape(RPC,CR,RA,AP)",
@@ -22,8 +22,13 @@
     "Cocircular(S,QNC)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(RP),6)",
+    "Equal(LengthOfLine(SQ),4)",
+    "IsCentreOfCircle(R,R)",
+    "IsCentreOfCircle(S,S)",
+    "IsTangentOfCircle(PQ,S)",
     "IsTangentOfCircle(QP,R)",
-    "IsTangentOfCircle(PQ,S)"
+    "PerpendicularBetweenLine(MA,RA)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(R,R)",
@@ -52,7 +57,18 @@
     "right_triangle_judgment_angle(1,SAR)",
     "right_triangle_property_pythagorean(1,SAR)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,RP,R)",
+      "radius_of_circle_property_length_equal(1,RC,R)",
+      "radius_of_circle_property_length_equal(1,SQ,S)",
+      "radius_of_circle_property_length_equal(1,SC,S)",
+      "line_addition(1,RC,CS)",
+      "tangent_of_circle_property_perpendicular(1,PQ,S,S)",
+      "tangent_of_circle_property_perpendicular(2,QP,R,R)",
+      "line_addition(1,PA,AR)",
+      "right_triangle_judgment_angle(1,SAR)"
+    ],
     "tangent_of_circle_property_perpendicular(1,PQ,S,S)": [
       "parallel_judgment_per_per(1,QS,PR)"
     ],
@@ -75,17 +91,6 @@
     ],
     "right_triangle_judgment_angle(1,SAR)": [
       "right_triangle_property_pythagorean(1,SAR)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,RP,R)",
-      "radius_of_circle_property_length_equal(1,RC,R)",
-      "radius_of_circle_property_length_equal(1,SQ,S)",
-      "radius_of_circle_property_length_equal(1,SC,S)",
-      "line_addition(1,RC,CS)",
-      "tangent_of_circle_property_perpendicular(1,PQ,S,S)",
-      "tangent_of_circle_property_perpendicular(2,QP,R,R)",
-      "line_addition(1,PA,AR)",
-      "right_triangle_judgment_angle(1,SAR)"
     ]
   }
 }

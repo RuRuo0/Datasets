@@ -3,15 +3,21 @@
   "annotation": "FangzhenZhu_2023-04-09",
   "source": "Geometry3k-2901",
   "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "\\triangle W X Y \\cong \\triangle W X Z. Find y.",
+  "problem_text_cn": "如图所示，△WYX与△WXZ是全等三角形，YX=19，ZX=3*y+7，∠YXW=20*y+10°，WX⊥ZX。求y的值。",
+  "problem_text_en": "As shown in the diagram, △WYX is congruent to △WXZ, YX=19, ZX=3*y+7, ∠YXW=20*y+10°, WX⊥ZX. Find the value of y.",
   "problem_img": "2754.png",
   "construction_cdl": [
     "Shape(WY,YX,XW)",
     "Shape(WX,XZ,ZW)",
     "Collinear(YXZ)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "CongruentBetweenTriangle(WYX,WXZ)",
+    "Equal(LengthOfLine(YX),19)",
+    "Equal(LengthOfLine(ZX),3*y+7)",
+    "Equal(MeasureOfAngle(YXW),20*y+10)",
+    "PerpendicularBetweenLine(WX,ZX)"
+  ],
   "image_cdl": [
     "CongruentBetweenTriangle(WYX,WXZ)",
     "Equal(MeasureOfAngle(YXW),20*y+10)",
@@ -24,7 +30,7 @@
   "theorem_seqs": [
     "adjacent_complementary_angle(1,YXW,WXZ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,YXW,WXZ)"
     ]

@@ -2,9 +2,9 @@
   "problem_id": 1647,
   "annotation": "Yangli_2023-04-16",
   "source": "Geometry3k-1709",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot P, P D = 10, P Q = 10, and Q E = 20, find P E.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，PD=10，PQ=10，QE=20，CQ⊥PQ，PD⊥BD。求直线PE的长度。",
+  "problem_text_en": "As shown in the diagram, PD=10, PQ=10, QE=20, CQ⊥PQ, PD is perpendicular to BD. Find the length of line PE.",
   "problem_img": "1647.png",
   "construction_cdl": [
     "Shape(PQ,QE,EP)",
@@ -20,7 +20,13 @@
     "Collinear(CQE)",
     "Cocircular(P,AGBCFE)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(PD),10)",
+    "Equal(LengthOfLine(PQ),10)",
+    "Equal(LengthOfLine(QE),20)",
+    "PerpendicularBetweenLine(CQ,PQ)",
+    "PerpendicularBetweenLine(PD,BD)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(PD),10)",
     "Equal(LengthOfLine(PQ),10)",
@@ -35,15 +41,15 @@
     "right_triangle_judgment_angle(1,PQE)",
     "right_triangle_property_pythagorean(1,PQE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,CQP,PQE)"
+    ],
     "adjacent_complementary_angle(1,CQP,PQE)": [
       "right_triangle_judgment_angle(1,PQE)"
     ],
     "right_triangle_judgment_angle(1,PQE)": [
       "right_triangle_property_pythagorean(1,PQE)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,CQP,PQE)"
     ]
   }
 }

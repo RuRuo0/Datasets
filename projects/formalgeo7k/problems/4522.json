@@ -2,9 +2,9 @@
   "problem_id": 4522,
   "annotation": "XiaokaiZhang_2023-05-14",
   "source": "GeoQA-3555",
-  "problem_level": 1,
-  "problem_text_cn": "如图,ABCD是⊙O的内接四边形,AD是直径,∠CBE=50°,则图中的圆心角∠AOC的度数是()",
-  "problem_text_en": "As shown in the figure, ABCD is the inscribed quadrilateral of ⊙O, AD is the diameter, ∠CBE = N_0, then the degree of the central angle ∠AOC in the figure is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠CBE=50°，圆O的圆心为O，⊙O的直径为AD。求∠COA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CBE=50°, O is the center of circle O, the diameter of ⊙O is AD. Find the measure of ∠COA.",
   "problem_img": "4522.png",
   "construction_cdl": [
     "Shape(ODA,AO,OD)",
@@ -19,9 +19,9 @@
     "Cocircular(O,ABCD)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(CBE),50)",
     "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(AD,O)",
-    "Equal(MeasureOfAngle(CBE),50)"
+    "IsDiameterOfCircle(AD,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(COA))",
@@ -31,7 +31,7 @@
     "arc_property_circumference_angle_internal(1,OAC,B)",
     "arc_property_center_angle(1,OAC,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,ABC,CBE)",
       "arc_property_circumference_angle_internal(1,OAC,B)",

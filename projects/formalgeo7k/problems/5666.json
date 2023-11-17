@@ -2,9 +2,9 @@
   "problem_id": 5666,
   "annotation": "JiaZou_2023-05-28",
   "source": "GeoQA-7356",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示,在正方形ABCD中,G为CD边中点,连接AG并延长交BC边的延长线于E点,对角线BD交AG于F点．已知FG=2,则线段AE的长度为()",
-  "problem_text_en": "As shown in the figure, in the square ABCD, G is the midpoint of edge CD. Connect AG and extend it to intersect the extended line of BC at E point, and the diagonal BD intersects AG at F point. Given that FG = N_0, the length of the line segment AE is ()",
+  "problem_level": 13,
+  "problem_text_cn": "如图所示，FG=2，G是线段DC的中点，ABCD是正方形。求直线AE的长度。",
+  "problem_text_en": "As shown in the diagram, FG=2, G is the midpoint of segment DC, ABCD is a square. Find the length of line AE.",
   "problem_img": "5666.png",
   "construction_cdl": [
     "Shape(AF,FD,DA)",
@@ -18,9 +18,9 @@
     "Collinear(DGC)"
   ],
   "text_cdl": [
-    "Square(ABCD)",
+    "Equal(LengthOfLine(FG),2)",
     "IsMidpointOfLine(G,DC)",
-    "Equal(LengthOfLine(FG),2)"
+    "Square(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AE))",
@@ -40,7 +40,14 @@
     "similar_triangle_property_line_ratio(1,EGC,EAB)",
     "line_addition(1,AG,GE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,DG,GC)",
+      "parallel_property_collinear_extend(3,DC,AB,G)",
+      "vertical_angle(1,BFA,DFG)",
+      "line_addition(1,AF,FG)",
+      "line_addition(1,AG,GE)"
+    ],
     "parallel_property_collinear_extend(3,DC,AB,G)": [
       "parallel_property_corresponding_angle(1,GC,AB,E)",
       "parallel_property_alternate_interior_angle(1,BA,GD)"
@@ -61,13 +68,6 @@
     "similar_triangle_judgment_aa(1,CEG,BEA)": [
       "similar_triangle_property_line_ratio(1,CEG,BEA)",
       "similar_triangle_property_line_ratio(1,EGC,EAB)"
-    ],
-    "START": [
-      "line_addition(1,DG,GC)",
-      "parallel_property_collinear_extend(3,DC,AB,G)",
-      "vertical_angle(1,BFA,DFG)",
-      "line_addition(1,AF,FG)",
-      "line_addition(1,AG,GE)"
     ]
   }
 }

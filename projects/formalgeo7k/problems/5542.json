@@ -2,18 +2,18 @@
   "problem_id": 5542,
   "annotation": "ZheZhu_2023-05-21",
   "source": "GeoQA-6732",
-  "problem_level": 1,
-  "problem_text_cn": "如图,半径为1的圆中,圆心角为120°的扇形面积为()",
-  "problem_text_en": "As shown in the figure, in a circle with a radius of N_0, the area of ​​a sector with a central angle of N_1 is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠AOB=120°，⊙O的半径为1，圆O的圆心为O。求扇形OBA的面积。",
+  "problem_text_en": "As shown in the diagram, ∠AOB=120°, the radius of ⊙O is 1, the center of ⊙O is O. Find the area of the sector OBA.",
   "problem_img": "5542.png",
   "construction_cdl": [
     "Shape(AO,OB,OBA)",
     "Cocircular(O,BA)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(AOB),120)",
     "Equal(RadiusOfCircle(O),1)",
-    "Equal(MeasureOfAngle(AOB),120)"
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(AreaOfSector(OBA))",
@@ -22,7 +22,7 @@
     "arc_property_center_angle(1,OBA,O)",
     "sector_area_formula(1,OBA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,OBA,O)",
       "sector_area_formula(1,OBA)"

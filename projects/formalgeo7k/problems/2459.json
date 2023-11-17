@@ -2,9 +2,9 @@
   "problem_id": 2459,
   "annotation": "Yangli_2023-04-23",
   "source": "Geometry3k-2579",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the parallelogram.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AE=24，DB=23，DE=7，ADBC是平行四边形，AE⊥DE。求ADBC的面积。",
+  "problem_text_en": "As shown in the diagram, AE=24, DB=23, DE=7, quadrilateral ADBC is a ▱, AE⊥DE. Find the area of quadrilateral ADBC.",
   "problem_img": "2459.png",
   "construction_cdl": [
     "Shape(AE,ED,DA)",
@@ -12,7 +12,11 @@
     "Collinear(EDB)"
   ],
   "text_cdl": [
-    "Parallelogram(ADBC)"
+    "Equal(LengthOfLine(AE),24)",
+    "Equal(LengthOfLine(DB),23)",
+    "Equal(LengthOfLine(DE),7)",
+    "Parallelogram(ADBC)",
+    "PerpendicularBetweenLine(AE,DE)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(DB),23)",
@@ -26,7 +30,7 @@
     "altitude_of_quadrilateral_judgment_left_vertex(3,AE,ADBC)",
     "parallelogram_area_formula_common(1,ADBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "altitude_of_quadrilateral_judgment_left_vertex(3,AE,ADBC)",
       "parallelogram_area_formula_common(1,ADBC)"

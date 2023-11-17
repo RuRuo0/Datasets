@@ -2,9 +2,9 @@
   "problem_id": 4834,
   "annotation": "RunanWang_2023-05-21",
   "source": "GeoQA-4285",
-  "problem_level": 1,
-  "problem_text_cn": "如图,PA、PB分别与⊙O相切于A、B两点,若∠C=65°,则∠P的度数为()",
-  "problem_text_en": "As shown in the figure, PA and PB are tangent to A and B respectively with ⊙O. If ∠C = N_0, then the degree of ∠P is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠BCA=65°，O是圆O的圆心，PA是⊙O的切线，圆O的切线为PB。求∠APB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BCA=65°, O is the center of ⊙O, the tangent to ⊙O is PA, PB is the tangent to circle O. Find the measure of ∠APB.",
   "problem_img": "4834.png",
   "construction_cdl": [
     "Shape(OBC,CB)",
@@ -15,7 +15,10 @@
     "Cocircular(O,BCA)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)"
+    "Equal(MeasureOfAngle(BCA),65)",
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(PA,O)",
+    "IsTangentOfCircle(PB,O)"
   ],
   "image_cdl": [
     "IsTangentOfCircle(PB,O)",
@@ -31,7 +34,7 @@
     "tangent_of_circle_property_perpendicular(1,PA,O,O)",
     "quadrilateral_property_angle_sum(1,BOAP)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,OAB,O)",
       "arc_property_circumference_angle_external(1,OAB,C)",

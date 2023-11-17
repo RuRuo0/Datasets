@@ -2,9 +2,9 @@
   "problem_id": 764,
   "annotation": "YimingHe_2023-03-12",
   "source": "Geometry3k-789",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AD=7*y，CA=5*y+16，CE=8*x-18，CE=BE，EB=12-2*x，∠BDA=∠EAC。求y的值。",
+  "problem_text_en": "As shown in the diagram, AD=7*y, CA=5*y+16, CE=8*x-18, CE=BE, EB=12-2*x, ∠BDA=∠EAC. Find the value of y.",
   "problem_img": "764.png",
   "construction_cdl": [
     "Shape(DA,AE,EB,BD)",
@@ -12,7 +12,14 @@
     "Collinear(BEC)",
     "Collinear(DAC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AD),7*y)",
+    "Equal(LengthOfLine(CA),5*y+16)",
+    "Equal(LengthOfLine(CE),8*x-18)",
+    "Equal(LengthOfLine(CE),LengthOfLine(BE))",
+    "Equal(LengthOfLine(EB),12-2*x)",
+    "Equal(MeasureOfAngle(BDA),MeasureOfAngle(EAC))"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(EB),12-2*x)",
     "Equal(LengthOfLine(AD),7*y)",
@@ -30,15 +37,15 @@
     "similar_triangle_property_line_ratio(1,ACE,DCB)",
     "similar_triangle_property_line_ratio(1,EAC,BDC)"
   ],
-  "theorem_seq_dag": {
-    "similar_triangle_judgment_aa(1,EAC,BDC)": [
-      "similar_triangle_property_line_ratio(1,EAC,BDC)",
-      "similar_triangle_property_line_ratio(1,ACE,DCB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "similar_triangle_judgment_aa(1,EAC,BDC)",
       "line_addition(1,BE,EC)",
       "line_addition(1,DA,AC)"
+    ],
+    "similar_triangle_judgment_aa(1,EAC,BDC)": [
+      "similar_triangle_property_line_ratio(1,EAC,BDC)",
+      "similar_triangle_property_line_ratio(1,ACE,DCB)"
     ]
   }
 }

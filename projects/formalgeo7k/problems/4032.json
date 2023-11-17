@@ -2,9 +2,9 @@
   "problem_id": 4032,
   "annotation": "NaZhu_2023-05-07",
   "source": "GeoQA-2257",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC中．∠C=90°,点D是边BC上一个动点(点D不与点C重合)．以CD为直径的圆交AD于点P．若AC=6．线段BP长度的最小值是2．则AB的长为()",
-  "problem_text_en": "As shown in the figure, in △ABC. ∠C = N_0, point D is a moving point on BC (point D does not coincide with point C). The circle with CD as the diameter intersects AD at point P. If AC = N_1. The minimum length of the line segment BP is N_2. Then the length of AB is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AC=6，BP=2，∠MCO=90°，圆M的圆心为M，圆O的圆心为O。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, AC=6, BP=2, ∠MCO=90°, M is the center of ⊙M, O is the center of ⊙O. Find the length of line AB.",
   "problem_img": "4032.png",
   "construction_cdl": [
     "Shape(MDC,CM,MD)",
@@ -28,11 +28,11 @@
     "Cocircular(O,AEPC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsCentreOfCircle(M,M)",
-    "Equal(MeasureOfAngle(MCO),90)",
     "Equal(LengthOfLine(AC),6)",
-    "Equal(LengthOfLine(BP),2)"
+    "Equal(LengthOfLine(BP),2)",
+    "Equal(MeasureOfAngle(MCO),90)",
+    "IsCentreOfCircle(M,M)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -48,13 +48,7 @@
     "right_triangle_judgment_angle(1,BCA)",
     "right_triangle_property_pythagorean(1,BCA)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,BCO)": [
-      "right_triangle_property_pythagorean(1,BCO)"
-    ],
-    "right_triangle_judgment_angle(1,BCA)": [
-      "right_triangle_property_pythagorean(1,BCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,CO,OA)",
       "radius_of_circle_property_length_equal(1,OA,O)",
@@ -63,6 +57,12 @@
       "line_addition(1,BP,PO)",
       "right_triangle_judgment_angle(1,BCO)",
       "right_triangle_judgment_angle(1,BCA)"
+    ],
+    "right_triangle_judgment_angle(1,BCO)": [
+      "right_triangle_property_pythagorean(1,BCO)"
+    ],
+    "right_triangle_judgment_angle(1,BCA)": [
+      "right_triangle_property_pythagorean(1,BCA)"
     ]
   }
 }

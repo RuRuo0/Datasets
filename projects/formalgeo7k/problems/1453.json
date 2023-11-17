@@ -2,9 +2,9 @@
   "problem_id": 1453,
   "annotation": "YanjunGuo_2023-04-16",
   "source": "Geometry3k-1506",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "E D is tangent to \\odot F at point E. Find x.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，DE=4，DF=x，EF=3，⊙F的圆心为F，⊙O的切线为DE。求x的值。",
+  "problem_text_en": "As shown in the diagram, DE=4, DF=x, EF=3, the center of circle F is F, DE is the tangent to ⊙F. Find the value of x.",
   "problem_img": "1453.png",
   "construction_cdl": [
     "Shape(FEC,ED,DC)",
@@ -14,6 +14,10 @@
     "Cocircular(F,CE)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(DE),4)",
+    "Equal(LengthOfLine(DF),x)",
+    "Equal(LengthOfLine(EF),3)",
+    "IsCentreOfCircle(F,F)",
     "IsTangentOfCircle(DE,F)"
   ],
   "image_cdl": [
@@ -29,15 +33,15 @@
     "right_triangle_judgment_angle(1,FED)",
     "right_triangle_property_pythagorean(1,FED)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(1,DE,F,F)"
+    ],
     "tangent_of_circle_property_perpendicular(1,DE,F,F)": [
       "right_triangle_judgment_angle(1,FED)"
     ],
     "right_triangle_judgment_angle(1,FED)": [
       "right_triangle_property_pythagorean(1,FED)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(1,DE,F,F)"
     ]
   }
 }

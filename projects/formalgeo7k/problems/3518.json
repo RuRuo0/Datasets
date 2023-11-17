@@ -2,9 +2,9 @@
   "problem_id": 3518,
   "annotation": "XiaokaiZhang_2023-04-30",
   "source": "GeoQA-1132",
-  "problem_level": 1,
-  "problem_text_cn": "如图,测得BD=120m,DC=60m,EC=50m,则小河宽AB的长是()",
-  "problem_text_en": "As shown in the figure, the measured BD = N_0, DC = N_1, EC = N_2, then the length of the small river width AB is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，BD=120，DC=60，EC=50，AB垂直于DB，EC⊥DC。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, BD=120, DC=60, EC=50, AB is perpendicular to DB, EC⊥DC. Find the length of line AB.",
   "problem_img": "3518.png",
   "construction_cdl": [
     "Shape(AB,BD,DA)",
@@ -15,11 +15,11 @@
     "Collinear(BDC)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(AB,DB)",
-    "PerpendicularBetweenLine(EC,DC)",
     "Equal(LengthOfLine(BD),120)",
     "Equal(LengthOfLine(DC),60)",
-    "Equal(LengthOfLine(EC),50)"
+    "Equal(LengthOfLine(EC),50)",
+    "PerpendicularBetweenLine(AB,DB)",
+    "PerpendicularBetweenLine(EC,DC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -30,16 +30,16 @@
     "similar_triangle_property_line_ratio(1,ABD,ECD)",
     "similar_triangle_property_line_ratio(1,DAB,DEC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "vertical_angle(1,BDA,CDE)"
+    ],
     "vertical_angle(1,BDA,CDE)": [
       "similar_triangle_judgment_aa(1,ABD,ECD)"
     ],
     "similar_triangle_judgment_aa(1,ABD,ECD)": [
       "similar_triangle_property_line_ratio(1,ABD,ECD)",
       "similar_triangle_property_line_ratio(1,DAB,DEC)"
-    ],
-    "START": [
-      "vertical_angle(1,BDA,CDE)"
     ]
   }
 }

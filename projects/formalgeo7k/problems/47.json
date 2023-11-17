@@ -2,9 +2,9 @@
   "problem_id": 47,
   "annotation": "XiaokaiZhang_2023-04-02",
   "source": "Geometry3k-47",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of trapezoid P Q R S.",
+  "problem_level": 15,
+  "problem_text_cn": "如图所示，AZ=y，QZ=z，RQ=12，RS=10，RZ=x，∠SPA=45°，∠ZQR=30°，SR∥AZ，PA垂直于SA，RZ⊥QZ，四边形SPQR是梯形。求SPQR的周长。",
+  "problem_text_en": "As shown in the diagram, AZ=y, QZ=z, RQ=12, RS=10, RZ=x, ∠SPA=45°, ∠ZQR=30°, SR is parallel to AZ, PA⊥SA, RZ is perpendicular to QZ, SPQR is a trapezoid. Find the perimeter of quadrilateral SPQR.",
   "problem_img": "47.png",
   "construction_cdl": [
     "Shape(SP,PA,AS)",
@@ -13,6 +13,16 @@
     "Collinear(PAZQ)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AZ),y)",
+    "Equal(LengthOfLine(QZ),z)",
+    "Equal(LengthOfLine(RQ),12)",
+    "Equal(LengthOfLine(RS),10)",
+    "Equal(LengthOfLine(RZ),x)",
+    "Equal(MeasureOfAngle(SPA),45)",
+    "Equal(MeasureOfAngle(ZQR),30)",
+    "ParallelBetweenLine(SR,AZ)",
+    "PerpendicularBetweenLine(PA,SA)",
+    "PerpendicularBetweenLine(RZ,QZ)",
     "Trapezoid(SPQR)"
   ],
   "image_cdl": [
@@ -46,7 +56,19 @@
     "line_addition(1,PZ,ZQ)",
     "quadrilateral_perimeter_formula(1,SPQR)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "triangle_property_angle_sum(1,RZQ)",
+      "sine_theorem(1,RZQ)",
+      "sine_theorem(1,QRZ)",
+      "altitude_of_quadrilateral_judgment_left_vertex(2,SA,SPQR)",
+      "adjacent_complementary_angle(1,PZR,RZQ)",
+      "triangle_property_angle_sum(1,SPA)",
+      "sine_theorem(1,SPA)",
+      "line_addition(1,PA,AZ)",
+      "line_addition(1,PZ,ZQ)",
+      "quadrilateral_perimeter_formula(1,SPQR)"
+    ],
     "adjacent_complementary_angle(1,PZR,RZQ)": [
       "altitude_of_quadrilateral_judgment_right_vertex(2,RZ,SPQR)",
       "parallel_judgment_corresponding_angle(1,AS,ZR,P)"
@@ -59,18 +81,6 @@
     ],
     "triangle_property_angle_sum(1,SPA)": [
       "isosceles_triangle_judgment_angle_equal(1,ASP)"
-    ],
-    "START": [
-      "triangle_property_angle_sum(1,RZQ)",
-      "sine_theorem(1,RZQ)",
-      "sine_theorem(1,QRZ)",
-      "altitude_of_quadrilateral_judgment_left_vertex(2,SA,SPQR)",
-      "adjacent_complementary_angle(1,PZR,RZQ)",
-      "triangle_property_angle_sum(1,SPA)",
-      "sine_theorem(1,SPA)",
-      "line_addition(1,PA,AZ)",
-      "line_addition(1,PZ,ZQ)",
-      "quadrilateral_perimeter_formula(1,SPQR)"
     ]
   }
 }

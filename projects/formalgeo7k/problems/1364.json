@@ -2,9 +2,9 @@
   "problem_id": 1364,
   "annotation": "ZheZhu_2023-04-09",
   "source": "Geometry3k-1412",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If m \\angle B A D = 38 and m \\angle B C D = 50, find m \\angle A D C.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，BA=AD，CB=DC，∠BAD=38°，∠DCB=50°。求∠ADC的大小。",
+  "problem_text_en": "As shown in the diagram, BA=AD, CB=DC, ∠BAD=38°, ∠DCB=50°. Find the measure of ∠ADC.",
   "problem_img": "1364.png",
   "construction_cdl": [
     "Shape(BA,AT,TB)",
@@ -15,10 +15,10 @@
     "Collinear(ATC)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(BAD),38)",
-    "Equal(MeasureOfAngle(DCB),50)",
     "Equal(LengthOfLine(BA),LengthOfLine(AD))",
-    "Equal(LengthOfLine(CB),LengthOfLine(DC))"
+    "Equal(LengthOfLine(CB),LengthOfLine(DC))",
+    "Equal(MeasureOfAngle(BAD),38)",
+    "Equal(MeasureOfAngle(DCB),50)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ADC))",
@@ -31,16 +31,16 @@
     "angle_addition(1,DCT,TCB)",
     "triangle_property_angle_sum(1,ADC)"
   ],
-  "theorem_seq_dag": {
-    "mirror_congruent_triangle_judgment_sss(1,BAC,DCA)": [
-      "mirror_congruent_triangle_property_angle_equal(1,ACB,ADC)",
-      "mirror_congruent_triangle_property_angle_equal(1,CBA,CAD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "mirror_congruent_triangle_judgment_sss(1,BAC,DCA)",
       "angle_addition(1,BAT,TAD)",
       "angle_addition(1,DCT,TCB)",
       "triangle_property_angle_sum(1,ADC)"
+    ],
+    "mirror_congruent_triangle_judgment_sss(1,BAC,DCA)": [
+      "mirror_congruent_triangle_property_angle_equal(1,ACB,ADC)",
+      "mirror_congruent_triangle_property_angle_equal(1,CBA,CAD)"
     ]
   }
 }

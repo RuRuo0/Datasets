@@ -2,9 +2,9 @@
   "problem_id": 5491,
   "annotation": "ChenyangMao_2023-05-21",
   "source": "GeoQA-5948",
-  "problem_level": 1,
-  "problem_text_cn": "如图,D是△ABC内一点,BD⊥CD,AD=7,BD=4,CD=3,E、F、G、H分别是AB、BD、CD、AC的中点,则四边形EFGH的周长为()",
-  "problem_text_en": "As shown in the figure, D is a point in △ABC, BD ⊥ CD, AD = N_0, BD = N_1, CD = N_2, E, F, G, and H are the midpoints of AB, BD, CD, and AC respectively, then the perimeter of quadrilateral EFGH is ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，AD=7，BD=4，CD=3，E是线段AB的中点，F是线段BD的中点，G是线段CD的中点，H平分线段AC，CD⊥BD。求EFGH的周长。",
+  "problem_text_en": "As shown in the diagram, AD=7, BD=4, CD=3, E is the midpoint of segment AB, F is the midpoint of segment BD, G bisects segment CD, H is the midpoint of segment AC, CD is perpendicular to BD. Find the perimeter of quadrilateral EFGH.",
   "problem_img": "5491.png",
   "construction_cdl": [
     "Shape(AE,EB,BF,FD,DA)",
@@ -21,14 +21,14 @@
     "Collinear(CGD)"
   ],
   "text_cdl": [
-    "IsMidpointOfLine(E,AB)",
-    "IsMidpointOfLine(H,AC)",
-    "IsMidpointOfLine(F,BD)",
-    "IsMidpointOfLine(G,CD)",
-    "PerpendicularBetweenLine(CD,BD)",
     "Equal(LengthOfLine(AD),7)",
     "Equal(LengthOfLine(BD),4)",
-    "Equal(LengthOfLine(CD),3)"
+    "Equal(LengthOfLine(CD),3)",
+    "IsMidpointOfLine(E,AB)",
+    "IsMidpointOfLine(F,BD)",
+    "IsMidpointOfLine(G,CD)",
+    "IsMidpointOfLine(H,AC)",
+    "PerpendicularBetweenLine(CD,BD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfQuadrilateral(EFGH))",
@@ -46,7 +46,15 @@
     "midsegment_of_triangle_property_length(1,EH,ABC)",
     "quadrilateral_perimeter_formula(1,EFGH)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "right_triangle_judgment_angle(1,CDB)",
+      "midsegment_of_triangle_judgment_midpoint(1,FE,BDA)",
+      "midsegment_of_triangle_judgment_midpoint(1,HG,CAD)",
+      "midsegment_of_triangle_judgment_midpoint(1,FG,DBC)",
+      "midsegment_of_triangle_judgment_midpoint(1,EH,ABC)",
+      "quadrilateral_perimeter_formula(1,EFGH)"
+    ],
     "right_triangle_judgment_angle(1,CDB)": [
       "right_triangle_property_pythagorean(1,CDB)"
     ],
@@ -61,14 +69,6 @@
     ],
     "midsegment_of_triangle_judgment_midpoint(1,EH,ABC)": [
       "midsegment_of_triangle_property_length(1,EH,ABC)"
-    ],
-    "START": [
-      "right_triangle_judgment_angle(1,CDB)",
-      "midsegment_of_triangle_judgment_midpoint(1,FE,BDA)",
-      "midsegment_of_triangle_judgment_midpoint(1,HG,CAD)",
-      "midsegment_of_triangle_judgment_midpoint(1,FG,DBC)",
-      "midsegment_of_triangle_judgment_midpoint(1,EH,ABC)",
-      "quadrilateral_perimeter_formula(1,EFGH)"
     ]
   }
 }

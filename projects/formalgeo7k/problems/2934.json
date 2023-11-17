@@ -2,9 +2,9 @@
   "problem_id": 2934,
   "annotation": "JiaZou_2023-04-16",
   "source": "GeoQA-113",
-  "problem_level": 1,
-  "problem_text_cn": "图1为某四边形ABCD纸片,其中∠B=70°,∠C=80°．若将CD迭合在AB上,出现折线MN,再将纸片展开后,M、N两点分别在AD、BC上,如图2所示,则∠MNB的度数为()度.",
-  "problem_text_en": "Figure 1 shows a quadrilateral ABCD paper sheet, where ∠B = N_0, ∠C = N_1. If CD is superimposed on AB, a fold line MN appears, and then after the paper is unfolded, the two points M and N are on AD and BC respectively, as shown in Figure 2, then the degree of ∠MNB is () degree",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠EFN=∠NCD，∠FBN=70°，∠MEF=∠CDM，∠NCD=80°，MN是∠DME的角平分线，NM平分∠FNC。求∠BNM的大小。",
+  "problem_text_en": "As shown in the diagram, ∠EFN=∠NCD, ∠FBN=70°, ∠MEF=∠CDM, ∠NCD=80°, MN is the angle bisector of ∠DME, NM bisects ∠FNC. Find the measure of ∠BNM.",
   "problem_img": "2934.png",
   "construction_cdl": [
     "Shape(AE,EM,MA)",
@@ -16,12 +16,12 @@
     "Collinear(BNC)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(FBN),70)",
-    "Equal(MeasureOfAngle(NCD),80)",
     "Equal(MeasureOfAngle(EFN),MeasureOfAngle(NCD))",
+    "Equal(MeasureOfAngle(FBN),70)",
     "Equal(MeasureOfAngle(MEF),MeasureOfAngle(CDM))",
-    "IsBisectorOfAngle(NM,FNC)",
-    "IsBisectorOfAngle(MN,DME)"
+    "Equal(MeasureOfAngle(NCD),80)",
+    "IsBisectorOfAngle(MN,DME)",
+    "IsBisectorOfAngle(NM,FNC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BNM))",
@@ -33,7 +33,7 @@
     "angle_addition(1,FNM,MNC)",
     "angle_addition(1,BNF,FNM)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,EFN,NFB)",
       "triangle_property_angle_sum(1,NFB)",

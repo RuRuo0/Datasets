@@ -2,9 +2,9 @@
   "problem_id": 3731,
   "annotation": "Yangli_2023-04-30",
   "source": "GeoQA-1516",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC中,∠A=70°,点O是AB、AC垂直平分线的交点,则∠BCO的度数是()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠A = N_0, point O is the intersection of the perpendicular bisectors of AB and AC, then the degree of ∠BCO is ()",
+  "problem_level": 12,
+  "problem_text_cn": "如图所示，∠EAD=70°，OD垂直平分AB，OE是AC的垂直平分线。求∠BCO的大小。",
+  "problem_text_en": "As shown in the diagram, ∠EAD=70°, OD is the perpendicular bisector of AB, OE is the perpendicular bisector of AC. Find the measure of ∠BCO.",
   "problem_img": "3731.png",
   "construction_cdl": [
     "Shape(AD,DO,OA)",
@@ -17,8 +17,8 @@
   ],
   "text_cdl": [
     "Equal(MeasureOfAngle(EAD),70)",
-    "IsPerpendicularBisectorOfLine(OE,AC)",
-    "IsPerpendicularBisectorOfLine(OD,AB)"
+    "IsPerpendicularBisectorOfLine(OD,AB)",
+    "IsPerpendicularBisectorOfLine(OE,AC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BCO))",
@@ -37,7 +37,15 @@
     "round_angle(1,COB,BOC)",
     "triangle_property_angle_sum(1,OBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "perpendicular_bisector_property_distance_equal(1,OE,AC)",
+      "perpendicular_bisector_property_distance_equal(1,OD,AB)",
+      "angle_addition(1,CAO,OAD)",
+      "quadrilateral_property_angle_sum(1,ABOC)",
+      "round_angle(1,COB,BOC)",
+      "triangle_property_angle_sum(1,OBC)"
+    ],
     "perpendicular_bisector_property_distance_equal(1,OE,AC)": [
       "isosceles_triangle_judgment_line_equal(1,OBC)",
       "isosceles_triangle_judgment_line_equal(1,OCA)"
@@ -54,14 +62,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OCA)": [
       "isosceles_triangle_property_angle_equal(1,OCA)"
-    ],
-    "START": [
-      "perpendicular_bisector_property_distance_equal(1,OE,AC)",
-      "perpendicular_bisector_property_distance_equal(1,OD,AB)",
-      "angle_addition(1,CAO,OAD)",
-      "quadrilateral_property_angle_sum(1,ABOC)",
-      "round_angle(1,COB,BOC)",
-      "triangle_property_angle_sum(1,OBC)"
     ]
   }
 }

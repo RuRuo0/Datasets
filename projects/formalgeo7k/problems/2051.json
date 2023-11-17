@@ -2,9 +2,9 @@
   "problem_id": 2051,
   "annotation": "QikeHuang_2023-04-23",
   "source": "Geometry3k-2138",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the measure of \\angle 4 if m \\angle D G F = 53 and m \\angle A G C = 40.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠BGC=40°，∠DGF=53°，CB⊥GB，FG垂直于CG，GF⊥DF。求∠BAF的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BGC=40°, ∠DGF=53°, CB⊥GB, FG⊥CG, GF is perpendicular to DF. Find the measure of ∠BAF.",
   "problem_img": "2051.png",
   "construction_cdl": [
     "Shape(DG,GF,FD)",
@@ -15,8 +15,11 @@
     "Collinear(GBA)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(BGC),40)",
     "Equal(MeasureOfAngle(DGF),53)",
-    "Equal(MeasureOfAngle(BGC),40)"
+    "PerpendicularBetweenLine(CB,GB)",
+    "PerpendicularBetweenLine(FG,CG)",
+    "PerpendicularBetweenLine(GF,DF)"
   ],
   "image_cdl": [
     "PerpendicularBetweenLine(GF,DF)",
@@ -30,7 +33,7 @@
     "adjacent_complementary_angle(1,AFG,GFD)",
     "triangle_property_angle_sum(1,FGA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,FGB,BGC)",
       "adjacent_complementary_angle(1,AFG,GFD)",

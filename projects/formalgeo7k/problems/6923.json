@@ -2,9 +2,9 @@
   "problem_id": 6923,
   "annotation": "ZheZhu_2023-06-04",
   "source": "GeoQA-angle-10175",
-  "problem_level": 1,
-  "problem_text_cn": "如图，△ABC内接于⊙O，∠A＝74°，则∠OBC等于（）",
-  "problem_text_en": "",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠CAB=74°，O是⊙O的圆心。求∠OBC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAB=74°, O is the center of circle O. Find the measure of ∠OBC.",
   "problem_img": "6923.png",
   "construction_cdl": [
     "Shape(AB,BO,OC,CA)",
@@ -12,8 +12,8 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "Equal(MeasureOfAngle(CAB),74)"
+    "Equal(MeasureOfAngle(CAB),74)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(OBC))",
@@ -27,7 +27,14 @@
     "isosceles_triangle_property_angle_equal(1,OBC)",
     "triangle_property_angle_sum(1,OBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_center_angle(1,OBC,O)",
+      "arc_property_circumference_angle_external(1,OBC,A)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "triangle_property_angle_sum(1,OBC)"
+    ],
     "radius_of_circle_property_length_equal(1,OB,O)": [
       "isosceles_triangle_judgment_line_equal(1,OBC)"
     ],
@@ -36,13 +43,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OBC)": [
       "isosceles_triangle_property_angle_equal(1,OBC)"
-    ],
-    "START": [
-      "arc_property_center_angle(1,OBC,O)",
-      "arc_property_circumference_angle_external(1,OBC,A)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "triangle_property_angle_sum(1,OBC)"
     ]
   }
 }

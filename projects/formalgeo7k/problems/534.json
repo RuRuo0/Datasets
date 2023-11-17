@@ -2,9 +2,9 @@
   "problem_id": 534,
   "annotation": "YimingHe_2023-04-02",
   "source": "Geometry3k-547",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Use rectangle L M N P, parallelogram L K M J to solve the problem. If m \\angle L M P = m \\angle P M N, find m \\angle P J L.",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，∠PML=∠NMP，四边形LJMK是平行四边形，LPNM是矩形。求∠PJL的大小。",
+  "problem_text_en": "As shown in the diagram, ∠PML=∠NMP, quadrilateral LJMK is a parallelogram, quadrilateral LPNM is a rectangle. Find the measure of ∠PJL.",
   "problem_img": "534.png",
   "construction_cdl": [
     "Shape(PN,NJ,JP)",
@@ -15,7 +15,11 @@
     "Collinear(PJM)",
     "Collinear(NJL)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(PML),MeasureOfAngle(NMP))",
+    "Parallelogram(LJMK)",
+    "Rectangle(LPNM)"
+  ],
   "image_cdl": [
     "Rectangle(LPNM)",
     "Parallelogram(LJMK)",
@@ -35,7 +39,17 @@
     "triangle_property_angle_sum(1,JML)",
     "adjacent_complementary_angle(1,PJL,LJM)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "angle_addition(1,NMJ,JML)",
+      "rectangle_property_diagonal_equal(1,LPNM)",
+      "parallelogram_property_diagonal_bisection(1,LPNM,J)",
+      "parallelogram_property_diagonal_bisection(1,PNML,J)",
+      "line_addition(1,PJ,JM)",
+      "line_addition(1,LJ,JN)",
+      "triangle_property_angle_sum(1,JML)",
+      "adjacent_complementary_angle(1,PJL,LJM)"
+    ],
     "rectangle_property_diagonal_equal(1,LPNM)": [
       "isosceles_triangle_judgment_line_equal(1,JML)"
     ],
@@ -53,16 +67,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,JML)": [
       "isosceles_triangle_property_angle_equal(1,JML)"
-    ],
-    "START": [
-      "angle_addition(1,NMJ,JML)",
-      "rectangle_property_diagonal_equal(1,LPNM)",
-      "parallelogram_property_diagonal_bisection(1,LPNM,J)",
-      "parallelogram_property_diagonal_bisection(1,PNML,J)",
-      "line_addition(1,PJ,JM)",
-      "line_addition(1,LJ,JN)",
-      "triangle_property_angle_sum(1,JML)",
-      "adjacent_complementary_angle(1,PJL,LJM)"
     ]
   }
 }

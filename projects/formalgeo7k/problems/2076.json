@@ -2,9 +2,9 @@
   "problem_id": 2076,
   "annotation": "QikeHuang_2023-04-23",
   "source": "Geometry3k-2163",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the shaded region. Assume that all polygons that appear to be regular are regular. Round to the nearest tenth.",
+  "problem_level": 14,
+  "problem_text_cn": "如图所示，AE=4，△BCD为等边△，圆A的圆心为A，BE是⊙O的切线，BF是⊙O的切线。求三角形BCD的面积减去圆A的面积。",
+  "problem_text_en": "As shown in the diagram, AE=4, △BCD is an equilateral △, A is the center of circle A, the tangent to circle A is BE, BF is the tangent to ⊙A. Find the area of △BCD minus the area of the circle A.",
   "problem_img": "2076.png",
   "construction_cdl": [
     "Shape(BE,ANE,NB)",
@@ -24,7 +24,11 @@
     "Cocircular(A,NEGMF)"
   ],
   "text_cdl": [
-    "EquilateralTriangle(BCD)"
+    "Equal(LengthOfLine(AE),4)",
+    "EquilateralTriangle(BCD)",
+    "IsCentreOfCircle(A,A)",
+    "IsTangentOfCircle(BE,A)",
+    "IsTangentOfCircle(BF,A)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(A,A)",
@@ -50,19 +54,7 @@
     "triangle_area_formula_sine(1,BCD)",
     "circle_area_formula(1,A)"
   ],
-  "theorem_seq_dag": {
-    "tangent_of_circle_property_length_equal(1,BE,BF,A)": [
-      "mirror_congruent_triangle_judgment_sss(1,BEA,BAF)"
-    ],
-    "radius_of_circle_property_length_equal(1,AE,A)": [
-      "mirror_congruent_triangle_judgment_sss(1,BEA,BAF)"
-    ],
-    "radius_of_circle_property_length_equal(1,AF,A)": [
-      "mirror_congruent_triangle_judgment_sss(1,BEA,BAF)"
-    ],
-    "mirror_congruent_triangle_judgment_sss(1,BEA,BAF)": [
-      "mirror_congruent_triangle_property_angle_equal(1,BEA,BAF)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "equilateral_triangle_property_angle(1,BCD)",
       "tangent_of_circle_property_length_equal(1,BE,BF,A)",
@@ -76,6 +68,18 @@
       "sine_theorem(1,BED)",
       "triangle_area_formula_sine(1,BCD)",
       "circle_area_formula(1,A)"
+    ],
+    "tangent_of_circle_property_length_equal(1,BE,BF,A)": [
+      "mirror_congruent_triangle_judgment_sss(1,BEA,BAF)"
+    ],
+    "radius_of_circle_property_length_equal(1,AE,A)": [
+      "mirror_congruent_triangle_judgment_sss(1,BEA,BAF)"
+    ],
+    "radius_of_circle_property_length_equal(1,AF,A)": [
+      "mirror_congruent_triangle_judgment_sss(1,BEA,BAF)"
+    ],
+    "mirror_congruent_triangle_judgment_sss(1,BEA,BAF)": [
+      "mirror_congruent_triangle_property_angle_equal(1,BEA,BAF)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 4729,
   "annotation": "XiaoxiaoJin_2023-05-14",
   "source": "GeoQA-4065",
-  "problem_level": 1,
-  "problem_text_cn": "如图,以AB为直径的⊙O,与BC切于点B,AC与⊙O交于点D,E是⊙O上的一点,若∠E=40°,则∠C等于()",
-  "problem_text_en": "As shown in the figure, ⊙O with AB as the diameter is tangent to BC at point B, AC and ⊙O intersect at point D, E is a point on ⊙O, if ∠E = N_0, then ∠C is equal to ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠AED=40°，圆O的圆心为O，AB是圆O的直径，圆O的切线为CB。求∠BCA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AED=40°, O is the center of ⊙O, the diameter of circle O is AB, the tangent to circle O is CB. Find the measure of ∠BCA.",
   "problem_img": "4729.png",
   "construction_cdl": [
     "Shape(AE,EF,FO,OA)",
@@ -21,10 +21,10 @@
     "Cocircular(O,AEBD)"
   ],
   "text_cdl": [
-    "IsTangentOfCircle(CB,O)",
-    "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfAngle(AED),40)",
-    "IsDiameterOfCircle(AB,O)"
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)",
+    "IsTangentOfCircle(CB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BCA))",
@@ -37,7 +37,7 @@
     "triangle_property_angle_sum(1,DAB)",
     "triangle_property_angle_sum(1,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(1,CB,O,O)",
       "diameter_of_circle_property_right_angle(1,BDA,O)",

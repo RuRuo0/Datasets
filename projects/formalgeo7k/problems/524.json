@@ -3,8 +3,8 @@
   "annotation": "YimingHe_2023-04-02",
   "source": "Geometry3k-537",
   "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Refer to trapezoid C D F G with median H E. Let W X be the median of C D E H. Find W X.",
+  "problem_text_cn": "如图所示，DC=46，EH=38，四边形CGFD的中位线为HE，CHED的中位线为WX，CG和FD是梯形CGFD的腰。求直线WX的长度。",
+  "problem_text_en": "As shown in the diagram, DC=46, EH=38, the midsegment of quadrilateral CGFD is HE, the midsegment of quadrilateral CHED is WX, CG and FD are the non-parallel sides (legs) of trapezoid CGFD. Find the length of line WX.",
   "problem_img": "524.png",
   "construction_cdl": [
     "Shape(CW,WX,XD,DC)",
@@ -14,9 +14,11 @@
     "Collinear(DXEF)"
   ],
   "text_cdl": [
-    "Trapezoid(CGFD)",
+    "Equal(LengthOfLine(DC),46)",
+    "Equal(LengthOfLine(EH),38)",
     "IsMidsegmentOfQuadrilateral(HE,CGFD)",
-    "IsMidsegmentOfQuadrilateral(WX,CHED)"
+    "IsMidsegmentOfQuadrilateral(WX,CHED)",
+    "Trapezoid(CGFD)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(DC),46)",
@@ -27,7 +29,7 @@
   "theorem_seqs": [
     "midsegment_of_quadrilateral_property_length(1,WX,CHED)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "midsegment_of_quadrilateral_property_length(1,WX,CHED)"
     ]

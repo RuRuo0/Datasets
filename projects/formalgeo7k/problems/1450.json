@@ -2,9 +2,9 @@
   "problem_id": 1450,
   "annotation": "YanjunGuo_2023-04-16",
   "source": "Geometry3k-1503",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x. Assume that segments that appear to be tangent are tangent.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，UV=7，UW=12，WV=x，V是⊙V的圆心，WU是圆O的切线。求x的值。",
+  "problem_text_en": "As shown in the diagram, UV=7, UW=12, WV=x, the center of ⊙V is V, the tangent to ⊙V is WU. Find the value of x.",
   "problem_img": "1450.png",
   "construction_cdl": [
     "Shape(AV,VU,VUA)",
@@ -14,6 +14,10 @@
     "Cocircular(V,AU)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(UV),7)",
+    "Equal(LengthOfLine(UW),12)",
+    "Equal(LengthOfLine(WV),x)",
+    "IsCentreOfCircle(V,V)",
     "IsTangentOfCircle(WU,V)"
   ],
   "image_cdl": [
@@ -29,15 +33,15 @@
     "right_triangle_judgment_angle(1,VUW)",
     "right_triangle_property_pythagorean(1,VUW)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(1,WU,V,V)"
+    ],
     "tangent_of_circle_property_perpendicular(1,WU,V,V)": [
       "right_triangle_judgment_angle(1,VUW)"
     ],
     "right_triangle_judgment_angle(1,VUW)": [
       "right_triangle_property_pythagorean(1,VUW)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(1,WU,V,V)"
     ]
   }
 }

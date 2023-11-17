@@ -2,9 +2,9 @@
   "problem_id": 4235,
   "annotation": "ChenyangMao_2023-05-07",
   "source": "GeoQA-3003",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O的半径为2,点A为⊙O上一点,半径OD⊥弦BC于D,如果∠BAC=60°,那么BC的长是()",
-  "problem_text_en": "As shown in the figure, the radius of ⊙O is N_0, point A is a point on ⊙O, radius OD ⊥ chord BC to D, if ∠BAC = N_1, then the length of BC is ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，∠CAB=60°，圆O的半径为2，O是⊙O的圆心，BD垂直于OD。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, ∠CAB=60°, the radius of circle O is 2, the center of circle O is O, BD is perpendicular to OD. Find the length of line BC.",
   "problem_img": "4235.png",
   "construction_cdl": [
     "Shape(OAB,BA)",
@@ -17,10 +17,10 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(CAB),60)",
     "Equal(RadiusOfCircle(O),2)",
-    "PerpendicularBetweenLine(BD,OD)",
-    "Equal(MeasureOfAngle(CAB),60)"
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(BD,OD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BC))",
@@ -38,13 +38,7 @@
     "sine_theorem(1,BCO)",
     "right_triangle_property_pythagorean(1,BDO)"
   ],
-  "theorem_seq_dag": {
-    "circle_property_chord_perpendicular_bisect_chord(1,O,OD,BC)": [
-      "perpendicular_bisector_property_bisector(1,OD,BC)"
-    ],
-    "right_triangle_judgment_angle(1,BDO)": [
-      "right_triangle_property_pythagorean(1,BDO)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,OC,O)",
       "arc_property_circumference_angle_external(1,OBC,A)",
@@ -55,6 +49,12 @@
       "sine_theorem(1,BDO)",
       "sine_theorem(1,ODC)",
       "sine_theorem(1,BCO)"
+    ],
+    "circle_property_chord_perpendicular_bisect_chord(1,O,OD,BC)": [
+      "perpendicular_bisector_property_bisector(1,OD,BC)"
+    ],
+    "right_triangle_judgment_angle(1,BDO)": [
+      "right_triangle_property_pythagorean(1,BDO)"
     ]
   }
 }

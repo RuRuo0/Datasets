@@ -2,9 +2,9 @@
   "problem_id": 1995,
   "annotation": "ZheZhu_2023-04-16",
   "source": "Geometry3k-2079",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot R, S U = 20, Y W = 20, and m \\widehat Y X = 45. Find m \\widehat S U.",
+  "problem_level": 15,
+  "problem_text_cn": "如图所示，SU=20，YW=20，弧RYX的角度为45，⊙R的圆心为R，RV垂直于SV，YZ垂直于RZ。求⌒RUS的角度。",
+  "problem_text_en": "As shown in the diagram, SU=20, YW=20, the measure of arc RYX is 45, the center of circle R is R, RV is perpendicular to SV, YZ⊥RZ. Find the measure of ⌒RUS.",
   "problem_img": "1995.png",
   "construction_cdl": [
     "Shape(RTS,SV,VT)",
@@ -22,7 +22,14 @@
     "Collinear(RVT)",
     "Cocircular(R,TSYXWU)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(SU),20)",
+    "Equal(LengthOfLine(YW),20)",
+    "Equal(MeasureOfArc(RYX),45)",
+    "IsCentreOfCircle(R,R)",
+    "PerpendicularBetweenLine(RV,SV)",
+    "PerpendicularBetweenLine(YZ,RZ)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(R,R)",
     "Equal(LengthOfLine(SU),20)",
@@ -50,7 +57,19 @@
     "angle_addition(1,SRV,VRU)",
     "arc_property_center_angle(1,RUS,R)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,RS,R)",
+      "radius_of_circle_property_length_equal(1,RY,R)",
+      "radius_of_circle_property_length_equal(1,RU,R)",
+      "arc_property_center_angle(1,RYX,R)",
+      "adjacent_complementary_angle(1,UVR,RVS)",
+      "circle_property_chord_perpendicular_bisect_chord(1,R,RZ,YW)",
+      "line_addition(1,SV,VU)",
+      "line_addition(1,YZ,ZW)",
+      "angle_addition(1,SRV,VRU)",
+      "arc_property_center_angle(1,RUS,R)"
+    ],
     "radius_of_circle_property_length_equal(1,RS,R)": [
       "mirror_congruent_triangle_judgment_hl(2,YZR,SRV)"
     ],
@@ -86,18 +105,6 @@
     ],
     "congruent_triangle_judgment_hl(1,YZR,UVR)": [
       "congruent_triangle_property_angle_equal(1,RYZ,RUV)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,RS,R)",
-      "radius_of_circle_property_length_equal(1,RY,R)",
-      "radius_of_circle_property_length_equal(1,RU,R)",
-      "arc_property_center_angle(1,RYX,R)",
-      "adjacent_complementary_angle(1,UVR,RVS)",
-      "circle_property_chord_perpendicular_bisect_chord(1,R,RZ,YW)",
-      "line_addition(1,SV,VU)",
-      "line_addition(1,YZ,ZW)",
-      "angle_addition(1,SRV,VRU)",
-      "arc_property_center_angle(1,RUS,R)"
     ]
   }
 }

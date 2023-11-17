@@ -2,9 +2,9 @@
   "problem_id": 317,
   "annotation": "NaZhu_2023-04-02",
   "source": "Geometry3k-321",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Chords A C and D F are equidistant from the center. If the radius of \\odot G is 26, find D E.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，BG=10，EG=10，圆G的半径为26，G是⊙G的圆心，CB⊥GB，FE⊥GE。求直线DE的长度。",
+  "problem_text_en": "As shown in the diagram, BG=10, EG=10, the radius of ⊙G is 26, G is the center of circle G, CB⊥GB, FE is perpendicular to GE. Find the length of line DE.",
   "problem_img": "317.png",
   "construction_cdl": [
     "Shape(GAF,FG,GA)",
@@ -18,8 +18,12 @@
     "Cocircular(G,AFDC)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(FE,GE)",
-    "PerpendicularBetweenLine(CB,GB)"
+    "Equal(LengthOfLine(BG),10)",
+    "Equal(LengthOfLine(EG),10)",
+    "Equal(RadiusOfCircle(G),26)",
+    "IsCentreOfCircle(G,G)",
+    "PerpendicularBetweenLine(CB,GB)",
+    "PerpendicularBetweenLine(FE,GE)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(G,G)",
@@ -35,14 +39,14 @@
     "right_triangle_property_pythagorean(1,FEG)",
     "circle_property_chord_perpendicular_bisect_chord(1,G,GE,FD)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,FEG)": [
-      "right_triangle_property_pythagorean(1,FEG)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,GF,G)",
       "right_triangle_judgment_angle(1,FEG)",
       "circle_property_chord_perpendicular_bisect_chord(1,G,GE,FD)"
+    ],
+    "right_triangle_judgment_angle(1,FEG)": [
+      "right_triangle_property_pythagorean(1,FEG)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 3658,
   "annotation": "XiaoxiaoJin_2023-04-30",
   "source": "GeoQA-1366",
-  "problem_level": 1,
-  "problem_text_cn": "直线a,b,c,d的位置如图所示,若∠1=∠2=90°,∠3=42°,那么∠4等于()",
-  "problem_text_en": "The positions of the straight lines a, b, c, d are shown in the figure, if ∠1 = ∠2 = N_0, ∠3 = N_1, then ∠4 is equal to ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠GFB=42°，BD⊥ED，GF垂直于DF。求∠CBD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠GFB=42°, BD⊥ED, GF is perpendicular to DF. Find the measure of ∠CBD.",
   "problem_img": "3658.png",
   "construction_cdl": [
     "Shape(AB,BC)",
@@ -17,9 +17,9 @@
     "Collinear(CBF)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(GFB),42)",
     "PerpendicularBetweenLine(BD,ED)",
-    "PerpendicularBetweenLine(GF,DF)",
-    "Equal(MeasureOfAngle(GFB),42)"
+    "PerpendicularBetweenLine(GF,DF)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CBD))",
@@ -31,7 +31,11 @@
     "parallel_judgment_per_per(1,FG,DB)",
     "parallel_property_alternate_interior_angle(1,FG,DB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,FDB,BDE)",
+      "adjacent_complementary_angle(1,CBD,DBF)"
+    ],
     "adjacent_complementary_angle(1,FDB,BDE)": [
       "perpendicular_judgment_angle(1,FD,BD)"
     ],
@@ -40,10 +44,6 @@
     ],
     "parallel_judgment_per_per(1,FG,DB)": [
       "parallel_property_alternate_interior_angle(1,FG,DB)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,FDB,BDE)",
-      "adjacent_complementary_angle(1,CBD,DBF)"
     ]
   }
 }

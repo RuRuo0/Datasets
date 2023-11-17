@@ -2,15 +2,25 @@
   "problem_id": 2392,
   "annotation": "RunanWang_2023-04-23",
   "source": "Geometry3k-2507",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x if \\triangle J L M \\sim \\triangle Q S T.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，JL=3*y-2，LM=6*x-3，MJ=4，QS=5，ST=3，TQ=2，∠LMJ=∠STQ，∠MJL=∠TQS，△JLM相似于△QST。求x的值。",
+  "problem_text_en": "As shown in the diagram, JL=3*y-2, LM=6*x-3, MJ=4, QS=5, ST=3, TQ=2, ∠LMJ=∠STQ, ∠MJL=∠TQS, △JLM is similar to △QST.. Find the value of x.",
   "problem_img": "2392.png",
   "construction_cdl": [
     "Shape(JL,LM,MJ)",
     "Shape(ST,TQ,QS)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(JL),3*y-2)",
+    "Equal(LengthOfLine(LM),6*x-3)",
+    "Equal(LengthOfLine(MJ),4)",
+    "Equal(LengthOfLine(QS),5)",
+    "Equal(LengthOfLine(ST),3)",
+    "Equal(LengthOfLine(TQ),2)",
+    "Equal(MeasureOfAngle(LMJ),MeasureOfAngle(STQ))",
+    "Equal(MeasureOfAngle(MJL),MeasureOfAngle(TQS))",
+    "SimilarBetweenTriangle(JLM,QST)"
+  ],
   "image_cdl": [
     "SimilarBetweenTriangle(JLM,QST)",
     "Equal(MeasureOfAngle(MJL),MeasureOfAngle(TQS))",
@@ -28,7 +38,7 @@
     "similar_triangle_property_line_ratio(1,JLM,QST)",
     "similar_triangle_property_line_ratio(1,LMJ,STQ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "similar_triangle_property_line_ratio(1,JLM,QST)",
       "similar_triangle_property_line_ratio(1,LMJ,STQ)"

@@ -2,9 +2,9 @@
   "problem_id": 6132,
   "annotation": "YifanWang_2023-06-04",
   "source": "GeoQA-8688",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB为⊙O的直径,弦CD⊥AB,E为⁀{BC}上一点,若∠CEA=28°,则∠ABD的度数为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, chord CD ⊥ AB, E is a point of ⁀BC, if ∠CEA = N_0, then the degree of ∠ABD is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠AEC=28°，O是圆O的圆心，AG⊥CG，BG⊥DG，CG⊥BG，DG垂直于AG。求∠DBA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AEC=28°, the center of circle O is O, AG is perpendicular to CG, BG is perpendicular to DG, CG is perpendicular to BG, DG⊥AG. Find the measure of ∠DBA.",
   "problem_img": "6132.png",
   "construction_cdl": [
     "Shape(CE,OEC)",
@@ -21,12 +21,12 @@
     "Cocircular(O,ADBEC)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(AEC),28)",
     "IsCentreOfCircle(O,O)",
     "PerpendicularBetweenLine(AG,CG)",
-    "PerpendicularBetweenLine(CG,BG)",
-    "PerpendicularBetweenLine(DG,AG)",
     "PerpendicularBetweenLine(BG,DG)",
-    "Equal(MeasureOfAngle(AEC),28)"
+    "PerpendicularBetweenLine(CG,BG)",
+    "PerpendicularBetweenLine(DG,AG)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DBA))",
@@ -38,17 +38,17 @@
     "arc_property_circumference_angle_external(1,OAD,B)",
     "arc_property_circumference_angle_external(1,OCA,E)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "circle_property_chord_perpendicular_bisect_arc(1,OCD,OGA)",
+      "arc_property_circumference_angle_external(1,OAD,B)",
+      "arc_property_circumference_angle_external(1,OCA,E)"
+    ],
     "circle_property_chord_perpendicular_bisect_arc(1,OCD,OGA)": [
       "congruent_arc_judgment_length_equal(1,OCA,OAD)"
     ],
     "congruent_arc_judgment_length_equal(1,OCA,OAD)": [
       "congruent_arc_property_measure_equal(1,OCA,OAD)"
-    ],
-    "START": [
-      "circle_property_chord_perpendicular_bisect_arc(1,OCD,OGA)",
-      "arc_property_circumference_angle_external(1,OAD,B)",
-      "arc_property_circumference_angle_external(1,OCA,E)"
     ]
   }
 }

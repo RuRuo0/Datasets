@@ -2,9 +2,9 @@
   "problem_id": 6889,
   "annotation": "ZheZhu_2023-06-04",
   "source": "GeoQA-angle-10120",
-  "problem_level": 1,
-  "problem_text_cn": "如图，AB是⊙O的直径，C，D是⊙O上的两点，且点C为优弧BAD的中点，连接CD，CB，OD，CD与AB交于点F．若∠ABC＝20°，则∠AOD的度数为（）",
-  "problem_text_en": "",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，∠ABC=20°，O是圆O的圆心，AB是⊙O的直径，C平分⌒OBD。求∠DOA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABC=20°, O is the center of circle O, the diameter of ⊙O is AB, C bisects arc OBD. Find the measure of ∠DOA.",
   "problem_img": "6889.png",
   "construction_cdl": [
     "Shape(OCA,AF,FC)",
@@ -19,9 +19,9 @@
     "Cocircular(O,CADB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(ABC),20)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)",
-    "Equal(MeasureOfAngle(ABC),20)",
     "IsMidpointOfArc(C,OBD)"
   ],
   "image_cdl": [],
@@ -38,10 +38,7 @@
     "congruent_arc_judgment_length_equal(1,OCD,OBC)",
     "congruent_arc_property_measure_equal(1,OCD,OBC)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_length_equal(1,OCD,OBC)": [
-      "congruent_arc_property_measure_equal(1,OCD,OBC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,OCA,O)",
       "arc_property_center_angle(1,OCD,O)",
@@ -51,6 +48,9 @@
       "flat_angle(1,AOB)",
       "angle_addition(1,DOF,FOC)",
       "congruent_arc_judgment_length_equal(1,OCD,OBC)"
+    ],
+    "congruent_arc_judgment_length_equal(1,OCD,OBC)": [
+      "congruent_arc_property_measure_equal(1,OCD,OBC)"
     ]
   }
 }

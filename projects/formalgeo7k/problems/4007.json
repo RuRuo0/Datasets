@@ -2,9 +2,9 @@
   "problem_id": 4007,
   "annotation": "ZheZhu_2023-04-30",
   "source": "GeoQA-1980",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB∥CD,∠1=110°,∠ECD=70°,∠E的大小是()",
-  "problem_text_en": "As shown in the figure, AB ∥ CD, ∠1 = N_0, ∠ECD = N_1, the size of ∠E is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠DBF=110°，∠ECD=70°，CD∥AF。求∠DEC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DBF=110°, ∠ECD=70°, CD∥AF. Find the measure of ∠DEC.",
   "problem_img": "4007.png",
   "construction_cdl": [
     "Shape(EC,CD,DE)",
@@ -13,7 +13,11 @@
     "Collinear(ABF)",
     "Collinear(EDB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(DBF),110)",
+    "Equal(MeasureOfAngle(ECD),70)",
+    "ParallelBetweenLine(CD,AF)"
+  ],
   "image_cdl": [
     "ParallelBetweenLine(CD,AF)",
     "Equal(MeasureOfAngle(ECD),70)",
@@ -28,15 +32,15 @@
     "parallel_property_corresponding_angle(2,BA,DC,E)",
     "triangle_property_angle_sum(1,ECD)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,FA,DC,B)": [
-      "parallel_property_corresponding_angle(2,BA,DC,E)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "flat_angle(1,ABF)",
       "angle_addition(1,ABD,DBF)",
       "parallel_property_collinear_extend(3,FA,DC,B)",
       "triangle_property_angle_sum(1,ECD)"
+    ],
+    "parallel_property_collinear_extend(3,FA,DC,B)": [
+      "parallel_property_corresponding_angle(2,BA,DC,E)"
     ]
   }
 }

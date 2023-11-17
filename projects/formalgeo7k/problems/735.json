@@ -2,9 +2,9 @@
   "problem_id": 735,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-760",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the parallelogram. Round to the nearest tenth if necessary.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AD=12，DC=10，∠DCB=60°，DCBA是▱，AE垂直于BE。求DCBA的面积。",
+  "problem_text_en": "As shown in the diagram, AD=12, DC=10, ∠DCB=60°, CD and BA are opposite sides of the ▱ DCBA, AE is perpendicular to BE. Find the area of quadrilateral DCBA.",
   "problem_img": "735.png",
   "construction_cdl": [
     "Shape(DC,CB,BE,ED)",
@@ -12,7 +12,11 @@
     "Collinear(DEA)"
   ],
   "text_cdl": [
-    "Parallelogram(DCBA)"
+    "Equal(LengthOfLine(AD),12)",
+    "Equal(LengthOfLine(DC),10)",
+    "Equal(MeasureOfAngle(DCB),60)",
+    "Parallelogram(DCBA)",
+    "PerpendicularBetweenLine(AE,BE)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(AD),12)",
@@ -29,7 +33,7 @@
     "sine_theorem(1,BAE)",
     "parallelogram_area_formula_common(1,BADC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "altitude_of_quadrilateral_judgment_left_vertex(1,BE,BADC)",
       "parallelogram_property_opposite_angle_equal(1,CBAD)",

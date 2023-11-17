@@ -2,9 +2,9 @@
   "problem_id": 3833,
   "annotation": "YifanWang_2023-05-07",
   "source": "GeoQA-1706",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示的扇形的圆心角度数分别为30°,40°,50°,则剩下扇形是圆的()",
-  "problem_text_en": "The central angles of the sectors as shown in the figure are N_0, N_1, N_2, and the remaining sector is () of the circle",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠AOD=30°，∠COB=50°，∠DOC=40°，O是圆O的圆心。求⌒OAB的角度。",
+  "problem_text_en": "As shown in the diagram, ∠AOD=30°, ∠COB=50°, ∠DOC=40°, O is the center of ⊙O. Find the measure of arc OAB.",
   "problem_img": "3833.png",
   "construction_cdl": [
     "Shape(BO,OA,OAB)",
@@ -13,22 +13,27 @@
     "Shape(CO,OB,OBC)",
     "Cocircular(O,ABCD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(AOD),30)",
+    "Equal(MeasureOfAngle(COB),50)",
+    "Equal(MeasureOfAngle(DOC),40)",
+    "IsCentreOfCircle(O,O)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfAngle(AOD),30)",
     "Equal(MeasureOfAngle(DOC),40)",
     "Equal(MeasureOfAngle(COB),50)"
   ],
-  "goal_cdl": "Value(Div(MeasureOfArc(OAB),360))",
-  "problem_answer": "2/3",
+  "goal_cdl": "Value(MeasureOfArc(OAB))",
+  "problem_answer": "240",
   "theorem_seqs": [
     "angle_addition(1,AOD,DOC)",
     "angle_addition(1,AOC,COB)",
     "arc_property_center_angle(1,OBA,O)",
     "round_arc(1,OAB,OBA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,AOD,DOC)",
       "angle_addition(1,AOC,COB)",

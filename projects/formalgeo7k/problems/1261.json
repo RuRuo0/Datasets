@@ -2,9 +2,9 @@
   "problem_id": 1261,
   "annotation": "YifanWang_2023-04-23",
   "source": "Geometry3k-1304",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "The segment is tangent to the circle. Find x.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AE=x，BA=x，CB=12，EC=6，A是⊙A的圆心，圆O的切线为CB。求x的值。",
+  "problem_text_en": "As shown in the diagram, AE=x, BA=x, CB=12, EC=6, A is the center of ⊙A, CB is the tangent to circle A. Find the value of x.",
   "problem_img": "1261.png",
   "construction_cdl": [
     "Shape(BA,AE,ABE)",
@@ -13,7 +13,14 @@
     "Collinear(AEC)",
     "Cocircular(A,EB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AE),x)",
+    "Equal(LengthOfLine(BA),x)",
+    "Equal(LengthOfLine(CB),12)",
+    "Equal(LengthOfLine(EC),6)",
+    "IsCentreOfCircle(A,A)",
+    "IsTangentOfCircle(CB,A)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(A,A)",
     "IsTangentOfCircle(CB,A)",
@@ -30,16 +37,16 @@
     "right_triangle_property_pythagorean(1,CBA)",
     "line_addition(1,AE,EC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(2,CB,A,A)",
+      "line_addition(1,AE,EC)"
+    ],
     "tangent_of_circle_property_perpendicular(2,CB,A,A)": [
       "right_triangle_judgment_angle(1,CBA)"
     ],
     "right_triangle_judgment_angle(1,CBA)": [
       "right_triangle_property_pythagorean(1,CBA)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(2,CB,A,A)",
-      "line_addition(1,AE,EC)"
     ]
   }
 }

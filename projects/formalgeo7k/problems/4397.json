@@ -2,9 +2,9 @@
   "problem_id": 4397,
   "annotation": "YimingHe_2023-05-14",
   "source": "GeoQA-3333",
-  "problem_level": 1,
-  "problem_text_cn": "如图,A、B、C三点在圆上,在△ABC中,∠ABC=70°,∠ACB=30°,D是弧BAC的中点,连结DB,DC,则∠DBC的度数为()",
-  "problem_text_en": "As shown in the figure, the three points A, B, and C are on the circle. In △ABC, ∠ABC = N_0, ∠ACB = N_1, D is the midpoint of the arc BAC. Connect DB and DC, then the degree of ∠DBC is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，弧OCD的长度与⌒ODB的长度相等，∠ABC=70°，∠BCA=30°，圆O的圆心为O。求∠DBC的大小。",
+  "problem_text_en": "As shown in the diagram, the length of ⌒OCD is equal to the length of ⌒ODB, ∠ABC=70°, ∠BCA=30°, the center of circle O is O. Find the measure of ∠DBC.",
   "problem_img": "4397.png",
   "construction_cdl": [
     "Shape(BA,OAB)",
@@ -37,10 +37,7 @@
     "arc_property_circumference_angle_external(1,OCD,B)",
     "arc_property_circumference_angle_external(1,ODB,C)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_length_equal(1,ODB,OCD)": [
-      "congruent_arc_property_measure_equal(1,ODB,OCD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,ABC)",
       "triangle_property_angle_sum(1,BCD)",
@@ -49,6 +46,9 @@
       "arc_property_circumference_angle_external(1,OBC,D)",
       "arc_property_circumference_angle_external(1,OCD,B)",
       "arc_property_circumference_angle_external(1,ODB,C)"
+    ],
+    "congruent_arc_judgment_length_equal(1,ODB,OCD)": [
+      "congruent_arc_property_measure_equal(1,ODB,OCD)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 3624,
   "annotation": "QikeHuang_2023-04-30",
   "source": "GeoQA-1302",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知△AOC≌△BOD,∠A=30°,∠C=20°,则∠COD=()",
-  "problem_text_en": "As shown in the figure, it is known that △AOC ≌ △BOD, ∠A = N_0, ∠C = N_1, then ∠COD = ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠CAO=30°，∠OCA=20°，三角形CAO与三角形DOB是镜像全等三角形。求∠DOC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAO=30°, ∠OCA=20°, triangle CAO is mirror congruent to triangle DOB. Find the measure of ∠DOC.",
   "problem_img": "3624.png",
   "construction_cdl": [
     "Shape(AO,OE,EA)",
@@ -19,9 +19,9 @@
     "Collinear(AEGC)"
   ],
   "text_cdl": [
-    "MirrorCongruentBetweenTriangle(CAO,DOB)",
+    "Equal(MeasureOfAngle(CAO),30)",
     "Equal(MeasureOfAngle(OCA),20)",
-    "Equal(MeasureOfAngle(CAO),30)"
+    "MirrorCongruentBetweenTriangle(CAO,DOB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DOC))",
@@ -32,7 +32,7 @@
     "adjacent_complementary_angle(1,AOD,DOB)",
     "angle_addition(1,AOD,DOC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "mirror_congruent_triangle_property_angle_equal(1,OCA,OBD)",
       "triangle_property_angle_sum(1,AOC)",

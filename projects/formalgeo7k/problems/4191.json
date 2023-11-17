@@ -2,9 +2,9 @@
   "problem_id": 4191,
   "annotation": "Yangli_2023-05-07",
   "source": "GeoQA-2866",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在Rt△ABC中,CD是斜边AB上的中线,已知CD=2,AC=3,则sinB的值是()",
-  "problem_text_en": "As shown in the figure, in Rt△ABC, CD is the midline on the hypotenuse AB, and it is known that CD = N_0, AC = N_1, then the value of sinB is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AC=3，CD=2，∠BCA=90°，CD是三角形CAB的中线。求sin(DB)的值。",
+  "problem_text_en": "As shown in the diagram, AC=3, CD=2, ∠BCA=90°, CD is the median of triangle CAB. Find the value of sin(DB).",
   "problem_img": "4191.png",
   "construction_cdl": [
     "Shape(AD,DC,CA)",
@@ -12,8 +12,8 @@
     "Collinear(ADB)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(CD),2)",
     "Equal(LengthOfLine(AC),3)",
+    "Equal(LengthOfLine(CD),2)",
     "Equal(MeasureOfAngle(BCA),90)",
     "IsMedianOfTriangle(CD,CAB)"
   ],
@@ -26,14 +26,14 @@
     "right_triangle_property_length_of_median(1,BCA,D)",
     "cosine_theorem(1,BCA)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,BCA)": [
-      "right_triangle_property_pythagorean(1,BCA)",
-      "right_triangle_property_length_of_median(1,BCA,D)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,BCA)",
       "cosine_theorem(1,BCA)"
+    ],
+    "right_triangle_judgment_angle(1,BCA)": [
+      "right_triangle_property_pythagorean(1,BCA)",
+      "right_triangle_property_length_of_median(1,BCA,D)"
     ]
   }
 }

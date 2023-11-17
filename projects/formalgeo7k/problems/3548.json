@@ -2,9 +2,9 @@
   "problem_id": 3548,
   "annotation": "YanjunGuo_2023-04-30",
   "source": "GeoQA-1177",
-  "problem_level": 1,
-  "problem_text_cn": "如图,为了估计河的宽度,在河的对岸选定一个目标点A,在近岸取点B,C,D,E,使点A,B,D在一条直线上,且AD⊥DE,点A,C,E也在一条直线上且DE∥BC.如果BC=24m,BD=12m,DE=40m,则河的宽度AB约为()",
-  "problem_text_en": "As shown in the figure, in order to estimate the width of the river, a target point A is selected on the opposite bank of the river, and points B, C, D, and E are taken near the bank, so that the points A, B, and D are in a straight line, and AD ⊥ DE, Points A, C, E are also on a straight line and DE ∥ BC. If BC = N_0, BD = N_1, DE = N_2, then the width of the river AB is approximately ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，BC=24，BD=12，DE=40，BC平行于DE，AD⊥ED。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, BC=24, BD=12, DE=40, BC is parallel to DE, AD⊥ED. Find the length of line AB.",
   "problem_img": "3548.png",
   "construction_cdl": [
     "Shape(AB,BC,CA)",
@@ -30,7 +30,12 @@
     "similar_triangle_property_line_ratio(1,CAB,EAD)",
     "line_addition(1,AB,BD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,BC,DE,A)",
+      "parallel_property_corresponding_angle(2,ED,CB,A)",
+      "line_addition(1,AB,BD)"
+    ],
     "parallel_property_corresponding_angle(1,BC,DE,A)": [
       "similar_triangle_judgment_aa(1,ABC,ADE)"
     ],
@@ -40,11 +45,6 @@
     "similar_triangle_judgment_aa(1,ABC,ADE)": [
       "similar_triangle_property_line_ratio(1,ABC,ADE)",
       "similar_triangle_property_line_ratio(1,CAB,EAD)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,BC,DE,A)",
-      "parallel_property_corresponding_angle(2,ED,CB,A)",
-      "line_addition(1,AB,BD)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 3103,
   "annotation": "YimingHe_2023-04-23",
   "source": "GeoQA-344",
-  "problem_level": 1,
-  "problem_text_cn": "如图,矩形ABCD的顶点A、C分别在直线a、b上,且a∥b,∠1=60°,则∠2的度数为()",
-  "problem_text_en": "As shown in the figure, the vertices A and C of the rectangle ABCD are on the straight lines a and b respectively, and a ∥ b, ∠1 = N_0, then the degree of ∠2 is () ",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠BAE=60°，EA∥ID，EF∥GH，ID平行于CH，ABCD是矩形。求∠DCH的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BAE=60°, EA is parallel to ID, EF∥GH, ID∥CH, quadrilateral ABCD is a rectangle. Find the measure of ∠DCH.",
   "problem_img": "3103.png",
   "construction_cdl": [
     "Shape(BA,AE)",
@@ -18,11 +18,11 @@
     "Collinear(GCH)"
   ],
   "text_cdl": [
-    "Rectangle(ABCD)",
-    "ParallelBetweenLine(EF,GH)",
+    "Equal(MeasureOfAngle(BAE),60)",
     "ParallelBetweenLine(EA,ID)",
+    "ParallelBetweenLine(EF,GH)",
     "ParallelBetweenLine(ID,CH)",
-    "Equal(MeasureOfAngle(BAE),60)"
+    "Rectangle(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DCH))",
@@ -33,7 +33,7 @@
     "parallel_property_ipsilateral_internal_angle(1,DI,AE)",
     "parallel_property_alternate_interior_angle(2,ID,CH)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,DAB,BAE)",
       "angle_addition(1,CDI,IDA)",

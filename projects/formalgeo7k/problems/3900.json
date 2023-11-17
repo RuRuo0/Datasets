@@ -2,9 +2,9 @@
   "problem_id": 3900,
   "annotation": "FangzhenZhu_2023-05-07",
   "source": "GeoQA-1804",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在⊙O中,OC⊥AB,∠ADC=35°,则∠OBA的度数是()",
-  "problem_text_en": "As shown in the figure, in ⊙O, OC ⊥ AB, ∠ADC = N_0, then the degree of ∠OBA is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠CDA=35°，O是圆O的圆心，OE⊥BE。求∠ABO的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CDA=35°, the center of ⊙O is O, OE⊥BE. Find the measure of ∠ABO.",
   "problem_img": "3900.png",
   "construction_cdl": [
     "Shape(ODA,AD)",
@@ -18,7 +18,11 @@
     "Collinear(OEC)",
     "Cocircular(O,DACB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(CDA),35)",
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(OE,BE)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(CDA),35)",
     "PerpendicularBetweenLine(OE,BE)",
@@ -36,7 +40,15 @@
     "arc_property_center_angle(1,OAC,O)",
     "triangle_property_angle_sum(1,OEB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_circumference_angle_external(1,OAC,D)",
+      "adjacent_complementary_angle(1,AEO,OEB)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "arc_property_center_angle(1,OAC,O)",
+      "triangle_property_angle_sum(1,OEB)"
+    ],
     "adjacent_complementary_angle(1,AEO,OEB)": [
       "mirror_congruent_triangle_judgment_hl(1,AEO,BOE)"
     ],
@@ -48,14 +60,6 @@
     ],
     "mirror_congruent_triangle_judgment_hl(1,AEO,BOE)": [
       "mirror_congruent_triangle_property_angle_equal(1,OAE,OEB)"
-    ],
-    "START": [
-      "arc_property_circumference_angle_external(1,OAC,D)",
-      "adjacent_complementary_angle(1,AEO,OEB)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "arc_property_center_angle(1,OAC,O)",
-      "triangle_property_angle_sum(1,OEB)"
     ]
   }
 }

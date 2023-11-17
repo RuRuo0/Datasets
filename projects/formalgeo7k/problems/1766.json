@@ -2,9 +2,9 @@
   "problem_id": 1766,
   "annotation": "ChenyangMao_2023-04-16",
   "source": "Geometry3k-1831",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find m \\angle 2.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，⌒DEA的角度为100，D是⊙D的圆心，⊙O的切线为CA。求∠EAC的大小。",
+  "problem_text_en": "As shown in the diagram, the measure of ⌒DEA is 100, the center of circle D is D, the tangent to circle D is CA. Find the measure of ∠EAC.",
   "problem_img": "1766.png",
   "construction_cdl": [
     "Shape(BE)",
@@ -17,7 +17,11 @@
     "Collinear(BEA)",
     "Cocircular(D,EA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfArc(DEA),100)",
+    "IsCentreOfCircle(D,D)",
+    "IsTangentOfCircle(CA,D)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(D,D)",
     "IsTangentOfCircle(CA,D)",
@@ -35,7 +39,15 @@
     "tangent_of_circle_property_perpendicular(1,CA,D,D)",
     "angle_addition(1,EAD,DAC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_center_angle(1,DEA,D)",
+      "triangle_property_angle_sum(1,DEA)",
+      "radius_of_circle_property_length_equal(1,DA,D)",
+      "radius_of_circle_property_length_equal(1,DE,D)",
+      "tangent_of_circle_property_perpendicular(1,CA,D,D)",
+      "angle_addition(1,EAD,DAC)"
+    ],
     "radius_of_circle_property_length_equal(1,DA,D)": [
       "isosceles_triangle_judgment_line_equal(1,DEA)"
     ],
@@ -44,14 +56,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,DEA)": [
       "isosceles_triangle_property_angle_equal(1,DEA)"
-    ],
-    "START": [
-      "arc_property_center_angle(1,DEA,D)",
-      "triangle_property_angle_sum(1,DEA)",
-      "radius_of_circle_property_length_equal(1,DA,D)",
-      "radius_of_circle_property_length_equal(1,DE,D)",
-      "tangent_of_circle_property_perpendicular(1,CA,D,D)",
-      "angle_addition(1,EAD,DAC)"
     ]
   }
 }

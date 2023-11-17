@@ -2,9 +2,9 @@
   "problem_id": 3286,
   "annotation": "XiaokaiZhang_2023-04-23",
   "source": "GeoQA-601",
-  "problem_level": 1,
-  "problem_text_cn": "如图,把一块直角三角板的直角顶点放在直尺的一边上,若∠1=48°,则∠2的度数为()",
-  "problem_text_en": "As shown in the figure, put the right-angled vertex of a right triangle plate on one side of the ruler, if ∠1 = N_0, then the degree of ∠2 is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠BME=48°，DEFG是长方形，∠CAB是直角△CAB的直角。求∠GAN的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BME=48°, DEFG is a rectangle, CA and AB are the legs of the right △ CAB. Find the measure of ∠GAN.",
   "problem_img": "3286.png",
   "construction_cdl": [
     "Shape(DE,EM,MA,AD)",
@@ -19,9 +19,9 @@
     "Collinear(ANC)"
   ],
   "text_cdl": [
-    "RightTriangle(CAB)",
+    "Equal(MeasureOfAngle(BME),48)",
     "Rectangle(DEFG)",
-    "Equal(MeasureOfAngle(BME),48)"
+    "RightTriangle(CAB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(GAN))",
@@ -33,17 +33,17 @@
     "adjacent_complementary_angle(1,GAM,MAD)",
     "angle_addition(1,GAN,NAM)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,DG,EF,A)",
+      "adjacent_complementary_angle(1,GAM,MAD)",
+      "angle_addition(1,GAN,NAM)"
+    ],
     "parallel_property_collinear_extend(3,DG,EF,A)": [
       "parallel_property_collinear_extend(3,FE,AD,M)"
     ],
     "parallel_property_collinear_extend(3,FE,AD,M)": [
       "parallel_property_corresponding_angle(1,ME,AD,B)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,DG,EF,A)",
-      "adjacent_complementary_angle(1,GAM,MAD)",
-      "angle_addition(1,GAN,NAM)"
     ]
   }
 }

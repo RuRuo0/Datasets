@@ -2,9 +2,9 @@
   "problem_id": 4023,
   "annotation": "JiaZou_2023-05-07",
   "source": "GeoQA-2124",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在Rt△ABC中,∠ACB=90°,∠B=34°,以BC为直径的⊙O交AB于点D,E是⊙O上一点,且=,连接OE,过点E作EF⊥OE,交AC的延长线于点F,则∠F的度数为()",
-  "problem_text_en": "As shown in the figure, in Rt△ABC, ∠ACB = N_0, ∠B = N_1, ⊙O with BC as the diameter intersects AB at point D, E is a point on ⊙O, and =, connects OE, and crosses point E to draw EF ⊥ OE, intersect the extended line of AC at point F, then the degree of ∠F is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，弧ODC全等于弧OCE，∠ACB=90°，∠CBA=34°，∠FEO=90°，⊙O的圆心为O。求∠CFE的大小。",
+  "problem_text_en": "As shown in the diagram, ⌒ODC is congruent to ⌒OCE, ∠ACB=90°, ∠CBA=34°, ∠FEO=90°, the center of circle O is O. Find the measure of ∠CFE.",
   "problem_img": "4023.png",
   "construction_cdl": [
     "Shape(DB,OBD)",
@@ -20,11 +20,11 @@
     "Cocircular(O,DCEB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "CongruentBetweenArc(ODC,OCE)",
     "Equal(MeasureOfAngle(ACB),90)",
+    "Equal(MeasureOfAngle(CBA),34)",
     "Equal(MeasureOfAngle(FEO),90)",
-    "Equal(MeasureOfAngle(CBA),34)"
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CFE))",
@@ -36,7 +36,7 @@
     "adjacent_complementary_angle(1,ACO,OCF)",
     "quadrilateral_property_angle_sum(1,OCFE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_circumference_angle_external(1,ODC,B)",
       "congruent_arc_property_measure_equal(1,ODC,OCE)",

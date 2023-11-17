@@ -2,9 +2,9 @@
   "problem_id": 3845,
   "annotation": "YifanWang_2023-05-07",
   "source": "GeoQA-1721",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,AC、CD是⊙O的两条弦,CD⊥AB,连接OD,若∠CAB=20°,则∠AOD的度数是()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, AC and CD are the two chords of ⊙O, CD ⊥ AB, and connect OD, if ∠CAB = N_0, then the degree of ∠AOD is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠CAB=20°，⊙O的圆心为O，AE⊥CE。求∠DOA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAB=20°, O is the center of circle O, AE⊥CE. Find the measure of ∠DOA.",
   "problem_img": "3845.png",
   "construction_cdl": [
     "Shape(AC,OCA)",
@@ -17,7 +17,11 @@
     "Collinear(CED)",
     "Cocircular(O,ADBC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(CAB),20)",
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(AE,CE)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfAngle(CAB),20)",
@@ -30,7 +34,7 @@
     "arc_property_circumference_angle_external(1,OAD,C)",
     "arc_property_center_angle(1,OAD,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,CAE)",
       "arc_property_circumference_angle_external(1,OAD,C)",

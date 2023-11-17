@@ -2,9 +2,9 @@
   "problem_id": 4633,
   "annotation": "QikeHuang_2023-05-14",
   "source": "GeoQA-3840",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,BC与⊙O相切于点B,点D是⊙O上一点,连接AD交BC于点C,连接OD．若∠C=50°,则∠BOD等于()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, BC and ⊙O are tangent to point B, point D is a point on ⊙O. Connect AD to BC at point C and connect OD. If ∠C = N_0, then ∠BOD is equal to ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠BCA=50°，圆O的圆心为O，CB是圆O的切线。求∠DOB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BCA=50°, the center of ⊙O is O, CB is the tangent to ⊙O. Find the measure of ∠DOB.",
   "problem_img": "4633.png",
   "construction_cdl": [
     "Shape(ODA,AD)",
@@ -17,9 +17,9 @@
     "Cocircular(O,ABD)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(BCA),50)",
     "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(CB,O)",
-    "Equal(MeasureOfAngle(BCA),50)"
+    "IsTangentOfCircle(CB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DOB))",
@@ -33,7 +33,7 @@
     "triangle_property_angle_sum(1,AOD)",
     "adjacent_complementary_angle(1,AOD,DOB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(1,CB,O,O)",
       "triangle_property_angle_sum(1,ABC)",

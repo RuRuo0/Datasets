@@ -2,9 +2,9 @@
   "problem_id": 5407,
   "annotation": "XiaoxiaoJin_2023-05-21",
   "source": "GeoQA-5702",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,AB=AC,∠BAC=58°,∠BAC的平分线与AB的中垂线交于点O,连接OC,则∠AOC的度数为()",
-  "problem_text_en": "As shown in the figure, in △ABC, AB = AC, ∠BAC = N_0, ∠BAC's bisector and AB's perpendicular bisector intersect at point O. Connect OC, then the degree of ∠AOC is ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，AB=AC，∠CAB=58°，AE是∠CAB的角平分线，OD垂直平分AB。求∠AOC的大小。",
+  "problem_text_en": "As shown in the diagram, AB=AC, ∠CAB=58°, AE bisects ∠CAB, OD perpendicular bisects AB. Find the measure of ∠AOC.",
   "problem_img": "5407.png",
   "construction_cdl": [
     "Shape(AD,DO,OA)",
@@ -38,7 +38,15 @@
     "mirror_congruent_triangle_judgment_sas(1,AOC,ABO)",
     "mirror_congruent_triangle_property_angle_equal(1,OCA,OAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "perpendicular_bisector_property_distance_equal(1,OD,AB)",
+      "isosceles_triangle_judgment_line_equal(1,ABC)",
+      "triangle_property_angle_sum(1,OAB)",
+      "triangle_property_angle_sum(1,CAE)",
+      "triangle_property_angle_sum(1,ABC)",
+      "mirror_congruent_triangle_judgment_sas(1,AOC,ABO)"
+    ],
     "perpendicular_bisector_property_distance_equal(1,OD,AB)": [
       "isosceles_triangle_judgment_line_equal(1,OAB)"
     ],
@@ -51,14 +59,6 @@
     ],
     "mirror_congruent_triangle_judgment_sas(1,AOC,ABO)": [
       "mirror_congruent_triangle_property_angle_equal(1,OCA,OAB)"
-    ],
-    "START": [
-      "perpendicular_bisector_property_distance_equal(1,OD,AB)",
-      "isosceles_triangle_judgment_line_equal(1,ABC)",
-      "triangle_property_angle_sum(1,OAB)",
-      "triangle_property_angle_sum(1,CAE)",
-      "triangle_property_angle_sum(1,ABC)",
-      "mirror_congruent_triangle_judgment_sas(1,AOC,ABO)"
     ]
   }
 }

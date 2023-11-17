@@ -2,9 +2,9 @@
   "problem_id": 6090,
   "annotation": "RunanWang_2023-06-04",
   "source": "GeoQA-8614",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC内接于⊙O,BA=BC,∠ACB=25°,AD为⊙O的直径,则∠DAC的度数是()",
-  "problem_text_en": "As shown in the figure, △ABC is internally connected to ⊙O, BA = BC, ∠ACB = N_0, AD is the diameter of ⊙O, then the degree of ∠DAC is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，BC=BA，∠BCA=25°，圆O的圆心为O，⊙O的直径为AD。求∠DAC的大小。",
+  "problem_text_en": "As shown in the diagram, BC=BA, ∠BCA=25°, the center of ⊙O is O, AD is the diameter of ⊙O. Find the measure of ∠DAC.",
   "problem_img": "6090.png",
   "construction_cdl": [
     "Shape(ODA,AO,OD)",
@@ -20,7 +20,10 @@
     "Cocircular(O,ABCD)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)"
+    "Equal(LengthOfLine(BC),LengthOfLine(BA))",
+    "Equal(MeasureOfAngle(BCA),25)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AD,O)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(BC),LengthOfLine(BA))",
@@ -38,10 +41,7 @@
     "triangle_property_angle_sum(1,ABD)",
     "angle_addition(1,DAE,EAB)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,BCA)": [
-      "isosceles_triangle_property_angle_equal(1,BCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,BCA)",
       "diameter_of_circle_property_right_angle(1,ABD,O)",
@@ -49,6 +49,9 @@
       "arc_property_circumference_angle_external(1,OAB,D)",
       "triangle_property_angle_sum(1,ABD)",
       "angle_addition(1,DAE,EAB)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,BCA)": [
+      "isosceles_triangle_property_angle_equal(1,BCA)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 5417,
   "annotation": "XiaoxiaoJin_2023-05-21",
   "source": "GeoQA-5729",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在▱ABCD中,∠BCD的平分线交AD于点E,交BA的延长线于点F,BF=4AF,BC=12,则AF的长度是()",
-  "problem_text_en": "As shown in the figure, in ▱ABCD, the bisector of ∠BCD intersects AD at point E, and it intersects the extended line of BA at point F, BF = 4 AF, BC = N_0, then the length of AF is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，BC=12，BF=Mul(4,LengthOfLine(AF))，CF是∠BCD的角平分线，BA和CD是平行四边形ABCD的一组对边。求直线AF的长度。",
+  "problem_text_en": "As shown in the diagram, BC=12, BF=Mul(4,LengthOfLine(AF)), CF is the angle bisector of ∠BCD, quadrilateral ABCD is a parallelogram. Find the length of line AF.",
   "problem_img": "5417.png",
   "construction_cdl": [
     "Shape(CD,DE,EC)",
@@ -17,8 +17,8 @@
   "text_cdl": [
     "Equal(LengthOfLine(BC),12)",
     "Equal(LengthOfLine(BF),Mul(4,LengthOfLine(AF)))",
-    "Parallelogram(ABCD)",
-    "IsBisectorOfAngle(CF,BCD)"
+    "IsBisectorOfAngle(CF,BCD)",
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AF))",
@@ -28,15 +28,15 @@
     "parallel_property_alternate_interior_angle(2,BF,CD)",
     "isosceles_triangle_judgment_angle_equal(1,BCF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(2,BA,CD,F)"
+    ],
     "parallel_property_collinear_extend(2,BA,CD,F)": [
       "parallel_property_alternate_interior_angle(2,BF,CD)"
     ],
     "parallel_property_alternate_interior_angle(2,BF,CD)": [
       "isosceles_triangle_judgment_angle_equal(1,BCF)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(2,BA,CD,F)"
     ]
   }
 }

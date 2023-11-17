@@ -2,9 +2,9 @@
   "problem_id": 3572,
   "annotation": "YanjunGuo_2023-04-30",
   "source": "GeoQA-1210",
-  "problem_level": 1,
-  "problem_text_cn": "如图,OE是∠AOB的平分线,CD∥OB交OA于点C,交OE于点D,∠ACD=40°,则∠CDO的度数是()",
-  "problem_text_en": "As shown in the figure, OE is the bisector of ∠AOB, CD ∥ OB crosses OA at point C, crosses OE at point D, ∠ACD = N_0, then the degree of ∠CDO is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠ACD=40°，OD平分∠COB，CD∥OB。求∠ODC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ACD=40°, OD is the angle bisector of ∠COB, CD∥OB. Find the measure of ∠ODC.",
   "problem_img": "3572.png",
   "construction_cdl": [
     "Shape(AC,CD,DA)",
@@ -14,9 +14,9 @@
     "Collinear(ADB)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(CD,OB)",
+    "Equal(MeasureOfAngle(ACD),40)",
     "IsBisectorOfAngle(OD,COB)",
-    "Equal(MeasureOfAngle(ACD),40)"
+    "ParallelBetweenLine(CD,OB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ODC))",
@@ -26,7 +26,7 @@
     "angle_addition(1,COD,DOB)",
     "parallel_property_alternate_interior_angle(2,CD,OB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_corresponding_angle(1,CD,OB,A)",
       "angle_addition(1,COD,DOB)",

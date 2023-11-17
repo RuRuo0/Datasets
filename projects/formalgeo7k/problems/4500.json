@@ -2,9 +2,9 @@
   "problem_id": 4500,
   "annotation": "NaZhu_2023-05-14",
   "source": "GeoQA-3518",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点A、B、C、D四个点都在⊙O上,∠AOD=80°,AO∥DC,则∠B为()",
-  "problem_text_en": "As shown in the figure, the four points A, B, C, and D are all on ⊙O, ∠AOD = N_0, AO ∥ DC, then ∠B is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，∠DOA=80°，圆O的圆心为O，AO∥DC。求∠CBA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DOA=80°, O is the center of circle O, AO is parallel to DC. Find the measure of ∠CBA.",
   "problem_img": "4500.png",
   "construction_cdl": [
     "Shape(OAD,DA)",
@@ -16,8 +16,8 @@
     "Cocircular(O,ADCB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfAngle(DOA),80)",
+    "IsCentreOfCircle(O,O)",
     "ParallelBetweenLine(AO,DC)"
   ],
   "image_cdl": [],
@@ -34,16 +34,7 @@
     "arc_property_circumference_angle_external(1,OCA,D)",
     "arc_property_circumference_angle_internal(1,OCA,B)"
   ],
-  "theorem_seq_dag": {
-    "radius_of_circle_property_length_equal(1,OA,O)": [
-      "isosceles_triangle_judgment_line_equal(1,OAD)"
-    ],
-    "radius_of_circle_property_length_equal(1,OD,O)": [
-      "isosceles_triangle_judgment_line_equal(1,OAD)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,OAD)": [
-      "isosceles_triangle_property_angle_equal(1,OAD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,OA,O)",
       "radius_of_circle_property_length_equal(1,OD,O)",
@@ -52,6 +43,15 @@
       "angle_addition(1,ADO,ODC)",
       "arc_property_circumference_angle_external(1,OCA,D)",
       "arc_property_circumference_angle_internal(1,OCA,B)"
+    ],
+    "radius_of_circle_property_length_equal(1,OA,O)": [
+      "isosceles_triangle_judgment_line_equal(1,OAD)"
+    ],
+    "radius_of_circle_property_length_equal(1,OD,O)": [
+      "isosceles_triangle_judgment_line_equal(1,OAD)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,OAD)": [
+      "isosceles_triangle_property_angle_equal(1,OAD)"
     ]
   }
 }

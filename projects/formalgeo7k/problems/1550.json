@@ -2,9 +2,9 @@
   "problem_id": 1550,
   "annotation": "QikeHuang_2023-04-16",
   "source": "Geometry3k-1609",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the shaded region. Assume that all polygons that appear to be regular are regular. Round to the nearest tenth.",
+  "problem_level": 13,
+  "problem_text_cn": "如图所示，BD=2，△CBA为等边△，圆D的圆心为D，E是线段CA的中点。求⊙D的面积减去三角形CBA的面积。",
+  "problem_text_en": "As shown in the diagram, BD=2, triangle CBA is an equilateral triangle, D is the center of circle D, E bisects segment CA. Find the area of the circle D minus the area of triangle CBA.",
   "problem_img": "1550.png",
   "construction_cdl": [
     "Shape(DBA,AB)",
@@ -18,7 +18,12 @@
     "Collinear(AEC)",
     "Cocircular(D,CBA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BD),2)",
+    "EquilateralTriangle(CBA)",
+    "IsCentreOfCircle(D,D)",
+    "IsMidpointOfLine(E,CA)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(D,D)",
     "IsMidpointOfLine(E,CA)",
@@ -42,7 +47,17 @@
     "triangle_area_formula_sine(1,CBA)",
     "circle_area_formula(1,D)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,BD,DE)",
+      "line_addition(1,AE,EC)",
+      "radius_of_circle_property_length_equal(1,DB,D)",
+      "radius_of_circle_property_length_equal(1,DA,D)",
+      "equilateral_triangle_property_angle(1,CBA)",
+      "median_of_triangle_judgment(1,BE,BAC)",
+      "triangle_area_formula_sine(1,CBA)",
+      "circle_area_formula(1,D)"
+    ],
     "median_of_triangle_judgment(1,BE,BAC)": [
       "isosceles_triangle_property_line_coincidence(2,BAC,E)"
     ],
@@ -55,16 +70,6 @@
     ],
     "right_triangle_judgment_angle(1,AED)": [
       "right_triangle_property_pythagorean(1,AED)"
-    ],
-    "START": [
-      "line_addition(1,BD,DE)",
-      "line_addition(1,AE,EC)",
-      "radius_of_circle_property_length_equal(1,DB,D)",
-      "radius_of_circle_property_length_equal(1,DA,D)",
-      "equilateral_triangle_property_angle(1,CBA)",
-      "median_of_triangle_judgment(1,BE,BAC)",
-      "triangle_area_formula_sine(1,CBA)",
-      "circle_area_formula(1,D)"
     ]
   }
 }

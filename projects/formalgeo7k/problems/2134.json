@@ -2,16 +2,23 @@
   "problem_id": 2134,
   "annotation": "YiwenHuang_2023-04-23",
   "source": "Geometry3k-2227",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AB=y，AC=x，AD=4，CD=10，BA垂直于CA，DC⊥BC。求y的值。",
+  "problem_text_en": "As shown in the diagram, AB=y, AC=x, AD=4, CD=10, BA is perpendicular to CA, DC⊥BC. Find the value of y.",
   "problem_img": "2134.png",
   "construction_cdl": [
     "Shape(CB,BA,AC)",
     "Shape(CA,AD,DC)",
     "Collinear(BAD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),y)",
+    "Equal(LengthOfLine(AC),x)",
+    "Equal(LengthOfLine(AD),4)",
+    "Equal(LengthOfLine(CD),10)",
+    "PerpendicularBetweenLine(BA,CA)",
+    "PerpendicularBetweenLine(DC,BC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(CD),10)",
     "Equal(LengthOfLine(AC),x)",
@@ -32,7 +39,13 @@
     "right_triangle_property_pythagorean(1,CAD)",
     "right_triangle_property_pythagorean(1,DCB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,BAC,CAD)",
+      "line_addition(1,BA,AD)",
+      "right_triangle_judgment_angle(1,BAC)",
+      "right_triangle_judgment_angle(1,DCB)"
+    ],
     "adjacent_complementary_angle(1,BAC,CAD)": [
       "right_triangle_judgment_angle(1,CAD)"
     ],
@@ -44,12 +57,6 @@
     ],
     "right_triangle_judgment_angle(1,DCB)": [
       "right_triangle_property_pythagorean(1,DCB)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,BAC,CAD)",
-      "line_addition(1,BA,AD)",
-      "right_triangle_judgment_angle(1,BAC)",
-      "right_triangle_judgment_angle(1,DCB)"
     ]
   }
 }

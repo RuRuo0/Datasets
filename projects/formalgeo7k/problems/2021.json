@@ -2,9 +2,9 @@
   "problem_id": 2021,
   "annotation": "YimingHe_2023-03-26",
   "source": "Geometry3k-2107",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If N Q and V X are medians, \\triangle P N R \\sim \\triangle W V Y, N Q = 8, P R = 12, W Y = 7 x - 1, and V X = 4 x + 2, find x.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，NQ=8，PR=12，VX=4*x+2，WY=7*x-1，NQ是△NPR的中线，VX是三角形VWY的中线，三角形PRN相似于三角形WYV。求x的值。",
+  "problem_text_en": "As shown in the diagram, NQ=8, PR=12, VX=4*x+2, WY=7*x-1, NQ is the median of triangle NPR, VX is the median of △ VWY, △PRN is similar to △WYV.. Find the value of x.",
   "problem_img": "2021.png",
   "construction_cdl": [
     "Shape(NP,PQ,QN)",
@@ -14,7 +14,15 @@
     "Collinear(PQR)",
     "Collinear(WXY)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(NQ),8)",
+    "Equal(LengthOfLine(PR),12)",
+    "Equal(LengthOfLine(VX),4*x+2)",
+    "Equal(LengthOfLine(WY),7*x-1)",
+    "IsMedianOfTriangle(NQ,NPR)",
+    "IsMedianOfTriangle(VX,VWY)",
+    "SimilarBetweenTriangle(PRN,WYV)"
+  ],
   "image_cdl": [
     "IsMedianOfTriangle(NQ,NPR)",
     "IsMedianOfTriangle(VX,VWY)",
@@ -36,7 +44,14 @@
     "similar_triangle_property_line_ratio(1,PQN,WXV)",
     "similar_triangle_property_line_ratio(1,NPQ,VWX)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,PQ,QR)",
+      "line_addition(1,WX,XY)",
+      "similar_triangle_property_line_ratio(1,NPR,VWY)",
+      "similar_triangle_property_line_ratio(1,RNP,YVW)",
+      "similar_triangle_property_angle_equal(1,PRN,WYV)"
+    ],
     "line_addition(1,PQ,QR)": [
       "similar_triangle_judgment_sas(1,PQN,WXV)"
     ],
@@ -55,13 +70,6 @@
     "similar_triangle_judgment_sas(1,PQN,WXV)": [
       "similar_triangle_property_line_ratio(1,PQN,WXV)",
       "similar_triangle_property_line_ratio(1,NPQ,VWX)"
-    ],
-    "START": [
-      "line_addition(1,PQ,QR)",
-      "line_addition(1,WX,XY)",
-      "similar_triangle_property_line_ratio(1,NPR,VWY)",
-      "similar_triangle_property_line_ratio(1,RNP,YVW)",
-      "similar_triangle_property_angle_equal(1,PRN,WYV)"
     ]
   }
 }

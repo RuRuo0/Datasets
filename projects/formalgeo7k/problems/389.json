@@ -2,9 +2,9 @@
   "problem_id": 389,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-396",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x in parallelogram A B C D.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AB=15，DA=9，DB=12，DE=x，ADCB是平行四边形，BE⊥DE，CB垂直于DB。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=15, DA=9, DB=12, DE=x, quadrilateral ADCB is a ▱, BE is perpendicular to DE, CB⊥DB. Find the value of x.",
   "problem_img": "389.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -12,7 +12,15 @@
     "Shape(BD,DC,CB)",
     "Collinear(AEB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),15)",
+    "Equal(LengthOfLine(DA),9)",
+    "Equal(LengthOfLine(DB),12)",
+    "Equal(LengthOfLine(DE),x)",
+    "Parallelogram(ADCB)",
+    "PerpendicularBetweenLine(BE,DE)",
+    "PerpendicularBetweenLine(CB,DB)"
+  ],
   "image_cdl": [
     "Parallelogram(ADCB)",
     "Equal(LengthOfLine(DE),x)",
@@ -32,7 +40,12 @@
     "right_triangle_property_pythagorean(1,BED)",
     "right_triangle_property_pythagorean(1,DEA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AE,EB)",
+      "adjacent_complementary_angle(1,BED,DEA)",
+      "right_triangle_judgment_angle(1,BED)"
+    ],
     "adjacent_complementary_angle(1,BED,DEA)": [
       "right_triangle_judgment_angle(1,DEA)"
     ],
@@ -41,11 +54,6 @@
     ],
     "right_triangle_judgment_angle(1,DEA)": [
       "right_triangle_property_pythagorean(1,DEA)"
-    ],
-    "START": [
-      "line_addition(1,AE,EB)",
-      "adjacent_complementary_angle(1,BED,DEA)",
-      "right_triangle_judgment_angle(1,BED)"
     ]
   }
 }

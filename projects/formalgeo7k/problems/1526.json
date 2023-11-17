@@ -2,9 +2,9 @@
   "problem_id": 1526,
   "annotation": "QikeHuang_2023-04-16",
   "source": "Geometry3k-1584",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y in the figure.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠BMN=56°，∠GLC=3*y-11°，∠HND=4*x°，AD平行于BE，BE∥CF。求y的值。",
+  "problem_text_en": "As shown in the diagram, ∠BMN=56°, ∠GLC=3*y-11°, ∠HND=4*x°, AD∥BE, BE is parallel to CF. Find the value of y.",
   "problem_img": "1526.png",
   "construction_cdl": [
     "Shape(HN,ND)",
@@ -24,7 +24,13 @@
     "Collinear(BME)",
     "Collinear(CLF)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(BMN),56)",
+    "Equal(MeasureOfAngle(GLC),3*y-11)",
+    "Equal(MeasureOfAngle(HND),4*x)",
+    "ParallelBetweenLine(AD,BE)",
+    "ParallelBetweenLine(BE,CF)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(HND),4*x)",
     "Equal(MeasureOfAngle(BMN),56)",
@@ -40,16 +46,16 @@
     "parallel_property_corresponding_angle(2,LC,MB,N)",
     "adjacent_complementary_angle(1,GLC,CLM)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,FC,EB,L)",
+      "adjacent_complementary_angle(1,GLC,CLM)"
+    ],
     "parallel_property_collinear_extend(3,FC,EB,L)": [
       "parallel_property_collinear_extend(3,BE,CL,M)"
     ],
     "parallel_property_collinear_extend(3,BE,CL,M)": [
       "parallel_property_corresponding_angle(2,LC,MB,N)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,FC,EB,L)",
-      "adjacent_complementary_angle(1,GLC,CLM)"
     ]
   }
 }

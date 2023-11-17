@@ -2,9 +2,9 @@
   "problem_id": 1891,
   "annotation": "YanjunGuo_2023-04-23",
   "source": "Geometry3k-1966",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the \\triangle C B H, if \\triangle C B H \\sim \\triangle F E H, A D E G is a parallelogram, C H = 7, F H = 10, F E = 11, and E H = 6. Rounded to the nearest tenth.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，CH=7，EF=11，EH=6，FE=11，FH=10，DA和EG是平行四边形ADEG的一组对边，三角形HBC与三角形HEF是相似三角形。求三角形HBC的周长。",
+  "problem_text_en": "As shown in the diagram, CH=7, EF=11, EH=6, FE=11, FH=10, quadrilateral ADEG is a parallelogram, triangle HBC is similar to triangle HEF.. Find the perimeter of triangle HBC.",
   "problem_img": "1891.png",
   "construction_cdl": [
     "Shape(CD,DE,EH,HC)",
@@ -14,7 +14,15 @@
     "Collinear(BHE)",
     "Collinear(CHF)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(CH),7)",
+    "Equal(LengthOfLine(EF),11)",
+    "Equal(LengthOfLine(EH),6)",
+    "Equal(LengthOfLine(FE),11)",
+    "Equal(LengthOfLine(FH),10)",
+    "Parallelogram(ADEG)",
+    "SimilarBetweenTriangle(HBC,HEF)"
+  ],
   "image_cdl": [
     "SimilarBetweenTriangle(HBC,HEF)",
     "Parallelogram(ADEG)",
@@ -32,7 +40,7 @@
     "similar_triangle_property_line_ratio(1,CHB,FHE)",
     "triangle_perimeter_formula(1,CHB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "similar_triangle_property_line_ratio(1,HBC,HEF)",
       "similar_triangle_property_line_ratio(1,BCH,EFH)",

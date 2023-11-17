@@ -2,9 +2,9 @@
   "problem_id": 2481,
   "annotation": "Yangli_2023-04-23",
   "source": "Geometry3k-2603",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If L K = 4, M P = 3, P Q = 6, K J = 2, R S = 6, and L P = 2, find J H.",
+  "problem_level": 12,
+  "problem_text_cn": "如图所示，KJ=2，LK=4，LM=2，LP=2，MP=3，PQ=6，RQ=3，RS=6，HS平行于KQ，JR平行于HS，LP∥KQ。求直线JH的长度。",
+  "problem_text_en": "As shown in the diagram, KJ=2, LK=4, LM=2, LP=2, MP=3, PQ=6, RQ=3, RS=6, HS∥KQ, JR∥HS, LP is parallel to KQ. Find the length of line JH.",
   "problem_img": "2481.png",
   "construction_cdl": [
     "Shape(LP,PM,ML)",
@@ -15,14 +15,17 @@
     "Collinear(SRQPM)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(KJ),2)",
     "Equal(LengthOfLine(LK),4)",
+    "Equal(LengthOfLine(LM),2)",
+    "Equal(LengthOfLine(LP),2)",
     "Equal(LengthOfLine(MP),3)",
     "Equal(LengthOfLine(PQ),6)",
-    "Equal(LengthOfLine(KJ),2)",
+    "Equal(LengthOfLine(RQ),3)",
     "Equal(LengthOfLine(RS),6)",
-    "Equal(LengthOfLine(LP),2)",
-    "Equal(LengthOfLine(LM),2)",
-    "Equal(LengthOfLine(RQ),3)"
+    "ParallelBetweenLine(HS,KQ)",
+    "ParallelBetweenLine(JR,HS)",
+    "ParallelBetweenLine(LP,KQ)"
   ],
   "image_cdl": [
     "ParallelBetweenLine(JR,HS)",
@@ -45,14 +48,7 @@
     "similar_triangle_property_line_ratio(1,RMJ,SMH)",
     "similar_triangle_property_line_ratio(1,JRM,HSM)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_corresponding_angle(1,JR,HS,M)": [
-      "similar_triangle_judgment_aa(1,RMJ,SMH)"
-    ],
-    "similar_triangle_judgment_aa(1,RMJ,SMH)": [
-      "similar_triangle_property_line_ratio(1,RMJ,SMH)",
-      "similar_triangle_property_line_ratio(1,JRM,HSM)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,HJ,JM)",
       "line_addition(1,JK,KL)",
@@ -63,6 +59,13 @@
       "line_addition(1,RQ,QP)",
       "line_addition(1,RP,PM)",
       "parallel_property_corresponding_angle(1,JR,HS,M)"
+    ],
+    "parallel_property_corresponding_angle(1,JR,HS,M)": [
+      "similar_triangle_judgment_aa(1,RMJ,SMH)"
+    ],
+    "similar_triangle_judgment_aa(1,RMJ,SMH)": [
+      "similar_triangle_property_line_ratio(1,RMJ,SMH)",
+      "similar_triangle_property_line_ratio(1,JRM,HSM)"
     ]
   }
 }

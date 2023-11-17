@@ -2,16 +2,22 @@
   "problem_id": 1297,
   "annotation": "YimingHe_2023-03-19",
   "source": "Geometry3k-1344",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the value of the variable w.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AD=6，BD=w+4，CD=24，AB垂直于CB，CD垂直于BD。求w的值。",
+  "problem_text_en": "As shown in the diagram, AD=6, BD=w+4, CD=24, AB is perpendicular to CB, CD is perpendicular to BD. Find the value of w.",
   "problem_img": "1297.png",
   "construction_cdl": [
     "Shape(BC,CD,DB)",
     "Shape(BD,DA,AB)",
     "Collinear(CDA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AD),6)",
+    "Equal(LengthOfLine(BD),w+4)",
+    "Equal(LengthOfLine(CD),24)",
+    "PerpendicularBetweenLine(AB,CB)",
+    "PerpendicularBetweenLine(CD,BD)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BD),w+4)",
     "Equal(LengthOfLine(AD),6)",
@@ -29,7 +35,12 @@
     "similar_triangle_property_line_ratio(1,BDA,CDB)",
     "similar_triangle_property_line_ratio(1,ABD,BCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,CDB,BDA)",
+      "triangle_property_angle_sum(1,ABC)",
+      "triangle_property_angle_sum(1,CDB)"
+    ],
     "adjacent_complementary_angle(1,CDB,BDA)": [
       "similar_triangle_judgment_aa(1,BDA,CDB)"
     ],
@@ -42,11 +53,6 @@
     "similar_triangle_judgment_aa(1,BDA,CDB)": [
       "similar_triangle_property_line_ratio(1,BDA,CDB)",
       "similar_triangle_property_line_ratio(1,ABD,BCD)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,CDB,BDA)",
-      "triangle_property_angle_sum(1,ABC)",
-      "triangle_property_angle_sum(1,CDB)"
     ]
   }
 }

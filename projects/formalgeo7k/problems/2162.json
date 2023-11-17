@@ -2,9 +2,9 @@
   "problem_id": 2162,
   "annotation": "XiaoxiaoJin_2023-04-23",
   "source": "Geometry3k-2257",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the value of x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，⌒AEC的长度与⌒ADB的长度相等，BD=5*x+13，EC=12*x-8，圆A的圆心为A。求x的值。",
+  "problem_text_en": "As shown in the diagram, the length of arc AEC is equal to the length of arc ADB, BD=5*x+13, EC=12*x-8, the center of circle A is A. Find the value of x.",
   "problem_img": "2162.png",
   "construction_cdl": [
     "Shape(CE,AEC)",
@@ -12,7 +12,12 @@
     "Shape(ABE,EC,ACD,DB)",
     "Cocircular(A,DBEC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfArc(AEC),LengthOfArc(ADB))",
+    "Equal(LengthOfLine(BD),5*x+13)",
+    "Equal(LengthOfLine(EC),12*x-8)",
+    "IsCentreOfCircle(A,A)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(A,A)",
     "Equal(LengthOfLine(BD),5*x+13)",
@@ -25,12 +30,12 @@
     "congruent_arc_judgment_length_equal(1,ADB,AEC)",
     "congruent_arc_property_chord_equal(1,ADB,AEC)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_length_equal(1,ADB,AEC)": [
-      "congruent_arc_property_chord_equal(1,ADB,AEC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "congruent_arc_judgment_length_equal(1,ADB,AEC)"
+    ],
+    "congruent_arc_judgment_length_equal(1,ADB,AEC)": [
+      "congruent_arc_property_chord_equal(1,ADB,AEC)"
     ]
   }
 }

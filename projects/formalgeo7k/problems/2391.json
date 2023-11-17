@@ -3,8 +3,8 @@
   "annotation": "FangzhenZhu_2023-04-23",
   "source": "Geometry3k-2506",
   "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Use parallelogram J K L M to find m \\angle K J L if J K = 2 b + 3 and J M = 3 a.",
+  "problem_text_cn": "如图所示，JK=2*b+3，JM=3*a，LK=21，LM=45，∠MLR=30°，∠RLK=70°，四边形JMLK是平行四边形。求∠KJR的大小。",
+  "problem_text_en": "As shown in the diagram, JK=2*b+3, JM=3*a, LK=21, LM=45, ∠MLR=30°, ∠RLK=70°, JMLK is a parallelogram. Find the measure of ∠KJR.",
   "problem_img": "2391.png",
   "construction_cdl": [
     "Shape(JM,MR,RJ)",
@@ -14,7 +14,15 @@
     "Collinear(JRL)",
     "Collinear(MRK)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(JK),2*b+3)",
+    "Equal(LengthOfLine(JM),3*a)",
+    "Equal(LengthOfLine(LK),21)",
+    "Equal(LengthOfLine(LM),45)",
+    "Equal(MeasureOfAngle(MLR),30)",
+    "Equal(MeasureOfAngle(RLK),70)",
+    "Parallelogram(JMLK)"
+  ],
   "image_cdl": [
     "Parallelogram(JMLK)",
     "Equal(LengthOfLine(JK),2*b+3)",
@@ -29,7 +37,7 @@
   "theorem_seqs": [
     "parallel_property_alternate_interior_angle(1,JK,ML)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_alternate_interior_angle(1,JK,ML)"
     ]

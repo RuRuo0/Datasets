@@ -2,9 +2,9 @@
   "problem_id": 6185,
   "annotation": "DengfengYue_2023-05-28",
   "source": "GeoQA-8758",
-  "problem_level": 1,
-  "problem_text_cn": "已知AB是⊙O的直径,过点A的弦AD平行于半径OC,若∠A=70°,则∠B等于()",
-  "problem_text_en": "Knowing that AB is the diameter of O, the chord AD passing point A is parallel to the radius OC, if ∠A = N_0, then ∠B is equal to ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠DAO=70°，O是⊙O的圆心，圆O的直径为AB，AD平行于CO。求∠CBO的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DAO=70°, the center of circle O is O, the diameter of ⊙O is AB, AD∥CO. Find the measure of ∠CBO.",
   "problem_img": "6185.png",
   "construction_cdl": [
     "Shape(DA,AB,OBD)",
@@ -16,10 +16,10 @@
     "Cocircular(O,DACB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(DAO),70)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)",
-    "ParallelBetweenLine(AD,CO)",
-    "Equal(MeasureOfAngle(DAO),70)"
+    "ParallelBetweenLine(AD,CO)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CBO))",
@@ -29,7 +29,7 @@
     "arc_property_center_angle(1,OAC,O)",
     "arc_property_circumference_angle_external(1,OAC,B)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_alternate_interior_angle(1,AD,CO)",
       "arc_property_center_angle(1,OAC,O)",

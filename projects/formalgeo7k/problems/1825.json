@@ -2,9 +2,9 @@
   "problem_id": 1825,
   "annotation": "JiaZou_2023-03-26",
   "source": "Geometry3k-1893",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "H is the incenter of \\triangle A B C. Find m \\angle D H G.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AF=24，AH=25，BH=11，∠ABH=30°，∠GCH=28°，△ABC的内切圆圆心为H，BG垂直于HG，HD⊥BD，HF⊥AF。求∠GHD的大小。",
+  "problem_text_en": "As shown in the diagram, AF=24, AH=25, BH=11, ∠ABH=30°, ∠GCH=28°, H is the center of the inscribed circle of triangle ABC, BG⊥HG, HD⊥BD, HF is perpendicular to AF. Find the measure of ∠GHD.",
   "problem_img": "1825.png",
   "construction_cdl": [
     "Shape(AD,DH,HA)",
@@ -18,7 +18,15 @@
     "Collinear(CFA)"
   ],
   "text_cdl": [
-    "IsIncenterOfTriangle(H,ABC)"
+    "Equal(LengthOfLine(AF),24)",
+    "Equal(LengthOfLine(AH),25)",
+    "Equal(LengthOfLine(BH),11)",
+    "Equal(MeasureOfAngle(ABH),30)",
+    "Equal(MeasureOfAngle(GCH),28)",
+    "IsIncenterOfTriangle(H,ABC)",
+    "PerpendicularBetweenLine(BG,HG)",
+    "PerpendicularBetweenLine(HD,BD)",
+    "PerpendicularBetweenLine(HF,AF)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(AF),24)",
@@ -37,7 +45,7 @@
     "triangle_property_angle_sum(1,HBG)",
     "angle_addition(1,GHB,BHD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,DBH)",
       "triangle_property_angle_sum(1,HBG)",

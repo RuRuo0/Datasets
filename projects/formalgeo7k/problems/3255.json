@@ -2,9 +2,9 @@
   "problem_id": 3255,
   "annotation": "XiaokaiZhang_2023-04-23",
   "source": "GeoQA-559",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,CD是⊙O的弦,∠ACD=30°,则∠BAD为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, CD is the chord of ⊙O, ∠ACD = N_0, then ∠BAD is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠ACD=30°，圆O的圆心为O，BA是圆O的直径。求∠DAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ACD=30°, the center of ⊙O is O, BA is the diameter of ⊙O. Find the measure of ∠DAB.",
   "problem_img": "3255.png",
   "construction_cdl": [
     "Shape(ODA,AD)",
@@ -19,8 +19,9 @@
     "Cocircular(ODACB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(ACD),30)",
     "IsCentreOfCircle(O,O)",
-    "Equal(MeasureOfAngle(ACD),30)"
+    "IsDiameterOfCircle(BA,O)"
   ],
   "image_cdl": [
     "IsDiameterOfCircle(BA,O)"
@@ -33,7 +34,7 @@
     "arc_property_circumference_angle_external(1,ODA,B)",
     "triangle_property_angle_sum(1,DAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,BDA,O)",
       "arc_property_circumference_angle_external(1,ODA,C)",

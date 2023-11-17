@@ -2,9 +2,9 @@
   "problem_id": 6532,
   "annotation": "NaZhu_2023-06-04",
   "source": "GeoQA-9455",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在▱ABCD中,AB=3cm,AD=5cm,BD的垂直平分线分别交AD、BC于F、E,则△CDE的周长为()",
-  "problem_text_en": "As shown in the figure, in ▱ABCD, AB = N_0, AD = N_1, the vertical bisector of BD intersects AD, BC at F, and E respectively, then the perimeter of △CDE is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=3，AD=5，EO垂直平分AB，AB和DC是▱ADCB的一组对边。求△CED的周长。",
+  "problem_text_en": "As shown in the diagram, AB=3, AD=5, EO perpendicular bisects BD, AB and DC are opposite sides of the parallelogram ADCB. Find the perimeter of △CED.",
   "problem_img": "6532.png",
   "construction_cdl": [
     "Shape(BA,AF,FO,OB)",
@@ -18,10 +18,10 @@
     "Collinear(EOF)"
   ],
   "text_cdl": [
-    "Parallelogram(ADCB)",
     "Equal(LengthOfLine(AB),3)",
     "Equal(LengthOfLine(AD),5)",
-    "IsPerpendicularBisectorOfLine(EO,BD)"
+    "IsPerpendicularBisectorOfLine(EO,BD)",
+    "Parallelogram(ADCB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfTriangle(CED))",
@@ -33,7 +33,7 @@
     "parallelogram_property_opposite_line_equal(1,DCBA)",
     "triangle_perimeter_formula(1,CED)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "perpendicular_bisector_property_distance_equal(1,EO,BD)",
       "line_addition(1,BE,EC)",

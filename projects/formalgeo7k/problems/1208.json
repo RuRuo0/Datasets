@@ -2,16 +2,20 @@
   "problem_id": 1208,
   "annotation": "JiaZou_2023-03-19",
   "source": "Geometry3k-1248",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Triangle W X Y has an area of 248 square inches. Find the length of the base.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，△WYX的面积为248，AX=16，XA垂直于YA。求直线WY的长度。",
+  "problem_text_en": "As shown in the diagram, the area of △WYX is 248, AX=16, XA is perpendicular to YA. Find the length of line WY.",
   "problem_img": "1208.png",
   "construction_cdl": [
     "Shape(XW,WA,AX)",
     "Shape(XA,AY,YX)",
     "Collinear(WAY)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(AreaOfTriangle(WYX),248)",
+    "Equal(LengthOfLine(AX),16)",
+    "PerpendicularBetweenLine(XA,YA)"
+  ],
   "image_cdl": [
     "Equal(AreaOfTriangle(WYX),248)",
     "PerpendicularBetweenLine(XA,YA)",
@@ -24,13 +28,13 @@
     "altitude_of_triangle_judgment(1,XA,XWY)",
     "triangle_area_formula_common(1,XWY)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,WAX,XAY)": [
-      "altitude_of_triangle_judgment(1,XA,XWY)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,WAX,XAY)",
       "triangle_area_formula_common(1,XWY)"
+    ],
+    "adjacent_complementary_angle(1,WAX,XAY)": [
+      "altitude_of_triangle_judgment(1,XA,XWY)"
     ]
   }
 }

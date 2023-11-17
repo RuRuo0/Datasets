@@ -2,15 +2,21 @@
   "problem_id": 41,
   "annotation": "XiaokaiZhang_2023-03-12",
   "source": "Geometry3k-41",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the measure of Angle MNP.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，NM=4，∠NLM=∠PLN，∠PLN=25°，LM⊥NM，NP⊥LP。求∠MNP的大小。",
+  "problem_text_en": "As shown in the diagram, NM=4, ∠NLM=∠PLN, ∠PLN=25°, LM⊥NM, NP⊥LP. Find the measure of ∠MNP.",
   "problem_img": "41.png",
   "construction_cdl": [
     "Shape(LM,MN,NL)",
     "Shape(LN,NP,PL)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(NM),4)",
+    "Equal(MeasureOfAngle(NLM),MeasureOfAngle(PLN))",
+    "Equal(MeasureOfAngle(PLN),25)",
+    "PerpendicularBetweenLine(LM,NM)",
+    "PerpendicularBetweenLine(NP,LP)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(PLN),25)",
     "Equal(LengthOfLine(NM),4)",
@@ -25,7 +31,7 @@
     "triangle_property_angle_sum(1,LNP)",
     "angle_addition(1,MNL,LNP)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,LMN)",
       "triangle_property_angle_sum(1,LNP)",

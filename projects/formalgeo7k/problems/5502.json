@@ -2,9 +2,9 @@
   "problem_id": 5502,
   "annotation": "DengfengYue_2023-05-21",
   "source": "GeoQA-5960",
-  "problem_level": 1,
-  "problem_text_cn": "在△ABC内取一点O,连接AO、BO、CO,它们的中点是D、E、F．若DE=2,则AB的长为()",
-  "problem_text_en": "Take a point O in △ABC, connect AO, BO, CO, their midpoints are D, E, F. If DE = N_0, then the length of AB is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，DE=2，D平分线段AO，E是线段BO的中点，F平分线段CO。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, DE=2, D bisects segment AO, E is the midpoint of segment BO, F is the midpoint of segment CO. Find the length of line AB.",
   "problem_img": "5502.png",
   "construction_cdl": [
     "Shape(AB,BE,ED,DA)",
@@ -18,10 +18,10 @@
     "Collinear(ODA)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(DE),2)",
     "IsMidpointOfLine(D,AO)",
     "IsMidpointOfLine(E,BO)",
-    "IsMidpointOfLine(F,CO)",
-    "Equal(LengthOfLine(DE),2)"
+    "IsMidpointOfLine(F,CO)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -30,12 +30,12 @@
     "midsegment_of_triangle_judgment_midpoint(1,DE,OAB)",
     "midsegment_of_triangle_property_length(1,DE,OAB)"
   ],
-  "theorem_seq_dag": {
-    "midsegment_of_triangle_judgment_midpoint(1,DE,OAB)": [
-      "midsegment_of_triangle_property_length(1,DE,OAB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "midsegment_of_triangle_judgment_midpoint(1,DE,OAB)"
+    ],
+    "midsegment_of_triangle_judgment_midpoint(1,DE,OAB)": [
+      "midsegment_of_triangle_property_length(1,DE,OAB)"
     ]
   }
 }

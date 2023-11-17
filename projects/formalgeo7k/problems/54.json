@@ -2,9 +2,9 @@
   "problem_id": 54,
   "annotation": "XiaokaiZhang_2023-04-02",
   "source": "Geometry3k-54",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，BC=8，BH=12，圆O的圆心为O，四边形DCBH是矩形。求四边形DCBH的面积减去扇形ODH的面积。",
+  "problem_text_en": "As shown in the diagram, BC=8, BH=12, the center of circle O is O, quadrilateral DCBH is a rectangle. Find the area of quadrilateral DCBH minus the area of the sector ODH.",
   "problem_img": "54.png",
   "construction_cdl": [
     "Shape(DC,CB,BH,ODH)",
@@ -13,6 +13,9 @@
     "Cocircular(ODH)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(BC),8)",
+    "Equal(LengthOfLine(BH),12)",
+    "IsCentreOfCircle(O,O)",
     "Rectangle(DCBH)"
   ],
   "image_cdl": [
@@ -32,10 +35,7 @@
     "arc_property_center_angle(1,ODH,O)",
     "sector_area_formula(1,ODH)"
   ],
-  "theorem_seq_dag": {
-    "diameter_of_circle_judgment_pass_centre(1,DOH,O)": [
-      "diameter_of_circle_property_length_equal(1,DH,O)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_area_formula_sine(1,CBHD)",
       "diameter_of_circle_judgment_pass_centre(1,DOH,O)",
@@ -44,6 +44,9 @@
       "flat_angle(1,HOD)",
       "arc_property_center_angle(1,ODH,O)",
       "sector_area_formula(1,ODH)"
+    ],
+    "diameter_of_circle_judgment_pass_centre(1,DOH,O)": [
+      "diameter_of_circle_property_length_equal(1,DH,O)"
     ]
   }
 }

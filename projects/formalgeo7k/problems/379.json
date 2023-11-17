@@ -2,9 +2,9 @@
   "problem_id": 379,
   "annotation": "NaZhu_2023-03-12",
   "source": "Geometry3k-386",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If x = 7 \\sqrt { 3 }, find y.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，BA=c，BC=a，BE=x，CA=b，EA=y，∠CAE=30°，∠EBC=60°，x=7*sqrt(3)，AE垂直于CE，BC垂直于AC。求y的值。",
+  "problem_text_en": "As shown in the diagram, BA=c, BC=a, BE=x, CA=b, EA=y, ∠CAE=30°, ∠EBC=60°, x=7*sqrt(3), AE is perpendicular to CE, BC is perpendicular to AC. Find the value of y.",
   "problem_img": "379.png",
   "construction_cdl": [
     "Shape(BC,CE,EB)",
@@ -12,7 +12,16 @@
     "Collinear(BEA)"
   ],
   "text_cdl": [
-    "Equal(x,7*sqrt(3))"
+    "Equal(LengthOfLine(BA),c)",
+    "Equal(LengthOfLine(BC),a)",
+    "Equal(LengthOfLine(BE),x)",
+    "Equal(LengthOfLine(CA),b)",
+    "Equal(LengthOfLine(EA),y)",
+    "Equal(MeasureOfAngle(CAE),30)",
+    "Equal(MeasureOfAngle(EBC),60)",
+    "Equal(x,7*sqrt(3))",
+    "PerpendicularBetweenLine(AE,CE)",
+    "PerpendicularBetweenLine(BC,AC)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(BC),a)",
@@ -36,7 +45,7 @@
     "sine_theorem(1,CEB)",
     "sine_theorem(1,BCE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,AEC,CEB)",
       "triangle_property_angle_sum(1,AEC)",

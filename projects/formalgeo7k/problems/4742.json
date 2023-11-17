@@ -2,9 +2,9 @@
   "problem_id": 4742,
   "annotation": "Yangli_2023-05-14",
   "source": "GeoQA-4084",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB、AC是⊙O的弦,过点B作⊙O的切线交AC的延长线于点D,点E是弧AC的中点,连接AE,若∠EAB=65°,则∠D的度数是()",
-  "problem_text_en": "As shown in the figure, AB and AC are the chords of ⊙O, passing point B to draw the tangent of ⊙O which intersects the extended line of AC at point D, point E is the midpoint of arc AC. Connect AE, if ∠EAB = N_0, then the degree of ∠D is ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，∠EAB=65°，⊙O的圆心为O，G平分线段AC，DB是⊙O的切线。求∠BDC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠EAB=65°, the center of circle O is O, G bisects segment AC, DB is the tangent to circle O. Find the measure of ∠BDC.",
   "problem_img": "4742.png",
   "construction_cdl": [
     "Shape(AE,OEA)",
@@ -22,10 +22,10 @@
     "Cocircular(O,BCEA)"
   ],
   "text_cdl": [
-    "IsMidpointOfLine(G,AC)",
     "Equal(MeasureOfAngle(EAB),65)",
-    "IsTangentOfCircle(DB,O)",
-    "IsCentreOfCircle(O,O)"
+    "IsCentreOfCircle(O,O)",
+    "IsMidpointOfLine(G,AC)",
+    "IsTangentOfCircle(DB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BDC))",
@@ -42,7 +42,7 @@
     "angle_addition(1,OBF,FBD)",
     "triangle_property_angle_sum(1,FBD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,OBE,O)",
       "arc_property_circumference_angle_external(1,OBE,A)",

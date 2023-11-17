@@ -2,9 +2,9 @@
   "problem_id": 2708,
   "annotation": "ZheZhu_2023-04-23",
   "source": "Geometry3k-2852",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find A B.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AD=4，CD=CB，AC⊥DC。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, AD=4, CD=CB, AC is perpendicular to DC. Find the length of line AB.",
   "problem_img": "2708.png",
   "construction_cdl": [
     "Shape(BC,CA,AB)",
@@ -12,7 +12,11 @@
     "Collinear(FCAE)",
     "Collinear(BCD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AD),4)",
+    "Equal(LengthOfLine(CD),LengthOfLine(CB))",
+    "PerpendicularBetweenLine(AC,DC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AD),4)",
     "Equal(LengthOfLine(CD),LengthOfLine(CB))",
@@ -25,15 +29,15 @@
     "mirror_congruent_triangle_judgment_sas(1,CAB,CDA)",
     "mirror_congruent_triangle_property_line_equal(1,CAB,CDA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,BCA,ACD)"
+    ],
     "adjacent_complementary_angle(1,BCA,ACD)": [
       "mirror_congruent_triangle_judgment_sas(1,CAB,CDA)"
     ],
     "mirror_congruent_triangle_judgment_sas(1,CAB,CDA)": [
       "mirror_congruent_triangle_property_line_equal(1,CAB,CDA)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,BCA,ACD)"
     ]
   }
 }

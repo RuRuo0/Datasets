@@ -2,9 +2,9 @@
   "problem_id": 5778,
   "annotation": "YanjunGuo_2023-05-28",
   "source": "GeoQA-7672",
-  "problem_level": 1,
-  "problem_text_cn": "如图,四边形ABCD是平行四边形,AB=6,EC=2,则DF:AF=()",
-  "problem_text_en": "As shown in the figure, the quadrilateral ABCD is a parallelogram, AB = N_0, EC = N_1, then DF:AF = ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AB=6，EC=2，四边形ABCD是▱。求直线DF的长度与直线AF的长度之比。",
+  "problem_text_en": "As shown in the diagram, AB=6, EC=2, quadrilateral ABCD is a ▱. Find the ratio of the length of line DF to the length of line AF.",
   "problem_img": "5778.png",
   "construction_cdl": [
     "Shape(FD,DE,EF)",
@@ -30,18 +30,18 @@
     "similar_triangle_property_line_ratio(1,BFA,EFD)",
     "similar_triangle_property_line_ratio(1,FAB,FDE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallelogram_property_opposite_line_equal(1,ABCD)",
+      "line_addition(1,DE,EC)",
+      "parallel_property_corresponding_angle(1,DC,AB,F)"
+    ],
     "parallel_property_corresponding_angle(1,DC,AB,F)": [
       "similar_triangle_judgment_aa(1,BFA,EFD)"
     ],
     "similar_triangle_judgment_aa(1,BFA,EFD)": [
       "similar_triangle_property_line_ratio(1,BFA,EFD)",
       "similar_triangle_property_line_ratio(1,FAB,FDE)"
-    ],
-    "START": [
-      "parallelogram_property_opposite_line_equal(1,ABCD)",
-      "line_addition(1,DE,EC)",
-      "parallel_property_corresponding_angle(1,DC,AB,F)"
     ]
   }
 }

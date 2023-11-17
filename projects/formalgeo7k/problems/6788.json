@@ -2,9 +2,9 @@
   "problem_id": 6788,
   "annotation": "Yangli_2023-06-04",
   "source": "GeoQA-9910",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC内接于⊙O,EC切⊙O于点C,若∠BOC=76°,则∠BCE的度数是()",
-  "problem_text_en": "As shown in the figure, △ABC is inscribed to ⊙O, EC tangents ⊙O to point C, if ∠BOC = N_0, then the degree of ∠BCE is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠BOC=76°，O是⊙O的圆心，EC是圆O的切线。求∠BCE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BOC=76°, the center of ⊙O is O, EC is the tangent to ⊙O. Find the measure of ∠BCE.",
   "problem_img": "6788.png",
   "construction_cdl": [
     "Shape(AC,CO,OB,BA)",
@@ -17,8 +17,8 @@
   ],
   "text_cdl": [
     "Equal(MeasureOfAngle(BOC),76)",
-    "IsTangentOfCircle(EC,O)",
-    "IsCentreOfCircle(O,O)"
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(EC,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BCE))",
@@ -32,7 +32,14 @@
     "isosceles_triangle_property_angle_equal(1,OCB)",
     "triangle_property_angle_sum(1,OCB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(1,EC,O,O)",
+      "angle_addition(1,OCB,BCE)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "triangle_property_angle_sum(1,OCB)"
+    ],
     "radius_of_circle_property_length_equal(1,OC,O)": [
       "isosceles_triangle_judgment_line_equal(1,OCB)"
     ],
@@ -41,13 +48,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OCB)": [
       "isosceles_triangle_property_angle_equal(1,OCB)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(1,EC,O,O)",
-      "angle_addition(1,OCB,BCE)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "triangle_property_angle_sum(1,OCB)"
     ]
   }
 }

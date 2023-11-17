@@ -2,9 +2,9 @@
   "problem_id": 1352,
   "annotation": "FangzhenZhu_2023-04-09",
   "source": "Geometry3k-1400",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the exact circumference of the circle.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AC=10，AC=AI，AC=CE，AC=EI，圆N的圆心为N，圆N的直径为IC，IA垂直于CA。求⊙N的周长。",
+  "problem_text_en": "As shown in the diagram, AC=10, AC=AI, AC=CE, AC=EI, the center of circle N is N, IC is the diameter of circle N, IA⊥CA. Find the circumference of the circle N.",
   "problem_img": "1352.png",
   "construction_cdl": [
     "Shape(NIA,AI)",
@@ -16,7 +16,15 @@
     "Collinear(INC)",
     "Cocircular(N,IACE)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),10)",
+    "Equal(LengthOfLine(AC),LengthOfLine(AI))",
+    "Equal(LengthOfLine(AC),LengthOfLine(CE))",
+    "Equal(LengthOfLine(AC),LengthOfLine(EI))",
+    "IsCentreOfCircle(N,N)",
+    "IsDiameterOfCircle(IC,N)",
+    "PerpendicularBetweenLine(IA,CA)"
+  ],
   "image_cdl": [
     "IsDiameterOfCircle(IC,N)",
     "IsCentreOfCircle(N,N)",
@@ -35,15 +43,15 @@
     "circle_property_length_of_radius_and_diameter(1,N)",
     "circle_perimeter_formula(1,N)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,IAC)": [
-      "right_triangle_property_pythagorean(1,IAC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,IAC)",
       "diameter_of_circle_property_length_equal(1,IC,N)",
       "circle_property_length_of_radius_and_diameter(1,N)",
       "circle_perimeter_formula(1,N)"
+    ],
+    "right_triangle_judgment_angle(1,IAC)": [
+      "right_triangle_property_pythagorean(1,IAC)"
     ]
   }
 }

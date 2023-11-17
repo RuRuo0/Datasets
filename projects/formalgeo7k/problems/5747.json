@@ -2,9 +2,9 @@
   "problem_id": 5747,
   "annotation": "XiaokaiZhang_2023-05-28",
   "source": "GeoQA-7578",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在Rt△ABC中,AD⊥BC于D,DE⊥AB于E,AD=3,DE=2,则CD的长是()",
-  "problem_text_en": "As shown in the figure, in Rt△ABC, ∠BAC = N_0, AD ⊥ BC at D, DE ⊥ AB at E, AD = N_1, DE = N_2, then the length of CD is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AD=3，DE=2，AD⊥CD，AE⊥DE，三角形CAB为直角三角形。求直线CD的长度。",
+  "problem_text_en": "As shown in the diagram, AD=3, DE=2, AD is perpendicular to CD, AE⊥DE, △CAB is a right △. Find the length of line CD.",
   "problem_img": "5747.png",
   "construction_cdl": [
     "Shape(AE,ED,DA)",
@@ -14,11 +14,11 @@
     "Collinear(BDC)"
   ],
   "text_cdl": [
-    "RightTriangle(CAB)",
-    "PerpendicularBetweenLine(AE,DE)",
-    "PerpendicularBetweenLine(AD,CD)",
     "Equal(LengthOfLine(AD),3)",
-    "Equal(LengthOfLine(DE),2)"
+    "Equal(LengthOfLine(DE),2)",
+    "PerpendicularBetweenLine(AD,CD)",
+    "PerpendicularBetweenLine(AE,DE)",
+    "RightTriangle(CAB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(CD))",
@@ -32,7 +32,12 @@
     "mirror_similar_triangle_property_line_ratio(1,AED,CAD)",
     "mirror_similar_triangle_property_line_ratio(1,DAE,ADC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "right_triangle_judgment_angle(1,AED)",
+      "angle_addition(1,CAD,DAB)",
+      "triangle_property_angle_sum(1,AED)"
+    ],
     "right_triangle_judgment_angle(1,AED)": [
       "right_triangle_property_pythagorean(1,AED)"
     ],
@@ -45,11 +50,6 @@
     "mirror_similar_triangle_judgment_aa(1,AED,CAD)": [
       "mirror_similar_triangle_property_line_ratio(1,AED,CAD)",
       "mirror_similar_triangle_property_line_ratio(1,DAE,ADC)"
-    ],
-    "START": [
-      "right_triangle_judgment_angle(1,AED)",
-      "angle_addition(1,CAD,DAB)",
-      "triangle_property_angle_sum(1,AED)"
     ]
   }
 }

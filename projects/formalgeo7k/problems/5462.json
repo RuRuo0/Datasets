@@ -2,9 +2,9 @@
   "problem_id": 5462,
   "annotation": "Yangli_2023-05-21",
   "source": "GeoQA-5874",
-  "problem_level": 1,
-  "problem_text_cn": "如图是屋架设计图的一部分,点D是斜梁AB的中点,立柱BC,DE垂直于横梁AC,AB=6m,∠A=30°,则DE等于()",
-  "problem_text_en": "The figure is a part of the roof truss design drawing, point D is the midpoint of the diagonal beam AB, the column BC, DE is perpendicular to the cross beam AC, AB = N_0, ∠A = N_1, then DE is equal to ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=6，∠BAC=30°，D是线段AB的中点，AC垂直于BC，AE⊥DE。求直线DE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=6, ∠BAC=30°, D is the midpoint of segment AB, AC is perpendicular to BC, AE is perpendicular to DE. Find the length of line DE.",
   "problem_img": "5462.png",
   "construction_cdl": [
     "Shape(DA,AE,ED)",
@@ -15,9 +15,9 @@
   "text_cdl": [
     "Equal(LengthOfLine(AB),6)",
     "Equal(MeasureOfAngle(BAC),30)",
-    "PerpendicularBetweenLine(AE,DE)",
+    "IsMidpointOfLine(D,AB)",
     "PerpendicularBetweenLine(AC,BC)",
-    "IsMidpointOfLine(D,AB)"
+    "PerpendicularBetweenLine(AE,DE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(DE))",
@@ -26,7 +26,7 @@
     "line_addition(1,AD,DB)",
     "sine_theorem(1,DAE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AD,DB)",
       "sine_theorem(1,DAE)"

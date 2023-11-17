@@ -2,9 +2,9 @@
   "problem_id": 981,
   "annotation": "NaZhu_2023-03-19",
   "source": "Geometry3k-1010",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find D B.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AC=20，DB=2*x+1，FB=2*x-1，FC=12，∠ACF=22°，∠FBD=22°，CF⊥DF。求直线DB的长度。",
+  "problem_text_en": "As shown in the diagram, AC=20, DB=2*x+1, FB=2*x-1, FC=12, ∠ACF=22°, ∠FBD=22°, CF⊥DF. Find the length of line DB.",
   "problem_img": "981.png",
   "construction_cdl": [
     "Shape(AC,CF,FA)",
@@ -12,7 +12,15 @@
     "Collinear(ADF)",
     "Collinear(CFB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),20)",
+    "Equal(LengthOfLine(DB),2*x+1)",
+    "Equal(LengthOfLine(FB),2*x-1)",
+    "Equal(LengthOfLine(FC),12)",
+    "Equal(MeasureOfAngle(ACF),22)",
+    "Equal(MeasureOfAngle(FBD),22)",
+    "PerpendicularBetweenLine(CF,DF)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AC),20)",
     "Equal(LengthOfLine(DB),2*x+1)",
@@ -30,16 +38,16 @@
     "mirror_similar_triangle_property_line_ratio(1,ACF,DFB)",
     "mirror_similar_triangle_property_line_ratio(1,FAC,FBD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,CFA,AFB)"
+    ],
     "adjacent_complementary_angle(1,CFA,AFB)": [
       "mirror_similar_triangle_judgment_aa(1,ACF,DFB)"
     ],
     "mirror_similar_triangle_judgment_aa(1,ACF,DFB)": [
       "mirror_similar_triangle_property_line_ratio(1,ACF,DFB)",
       "mirror_similar_triangle_property_line_ratio(1,FAC,FBD)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,CFA,AFB)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 3419,
   "annotation": "NaZhu_2023-04-30",
   "source": "GeoQA-968",
-  "problem_level": 1,
-  "problem_text_cn": "如图,圆外切等腰梯形ABCD的中位线EF=15cm,那么等腰梯形ABCD的周长等于()",
-  "problem_text_en": "As shown in the figure, the perpendicular bisector of the isosceles trapezoid ABCD circumscribed by the circle EF = N_0, then the perimeter of the isosceles trapezoid ABCD is equal to ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，EF=15，O是圆O的圆心，EF是ABCD的中位线，⊙O的切线为AG，⊙O的切线为AM，BG是⊙O的切线，圆O的切线为BN，圆O的切线为CH，CN是圆O的切线，⊙O的切线为DH，⊙O的切线为DM，AD和BC是等腰梯形ABCD的平行边。求ABCD的周长。",
+  "problem_text_en": "As shown in the diagram, EF=15, the center of circle O is O, EF is the midsegment of quadrilateral ABCD, the tangent to circle O is AG, AM is the tangent to circle O, the tangent to circle O is BG, BN is the tangent to ⊙O, CH is the tangent to circle O, CN is the tangent to ⊙O, DH is the tangent to ⊙O, the tangent to circle O is DM, AD and BC are the parallel sides of isosceles trapezoid ABCD. Find the perimeter of ABCD.",
   "problem_img": "3419.png",
   "construction_cdl": [
     "Shape(OQH,OHM,OMG,OGP,PO,OQ)",
@@ -23,10 +23,18 @@
     "Cocircular(O,MGPNQH)"
   ],
   "text_cdl": [
-    "IsoscelesTrapezoid(ABCD)",
+    "Equal(LengthOfLine(EF),15)",
     "IsCentreOfCircle(O,O)",
     "IsMidsegmentOfQuadrilateral(EF,ABCD)",
-    "Equal(LengthOfLine(EF),15)"
+    "IsTangentOfCircle(AG,O)",
+    "IsTangentOfCircle(AM,O)",
+    "IsTangentOfCircle(BG,O)",
+    "IsTangentOfCircle(BN,O)",
+    "IsTangentOfCircle(CH,O)",
+    "IsTangentOfCircle(CN,O)",
+    "IsTangentOfCircle(DH,O)",
+    "IsTangentOfCircle(DM,O)",
+    "IsoscelesTrapezoid(ABCD)"
   ],
   "image_cdl": [
     "IsTangentOfCircle(AM,O)",
@@ -52,7 +60,7 @@
     "line_addition(1,DH,HC)",
     "quadrilateral_perimeter_formula(1,ABCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "midsegment_of_quadrilateral_property_length(1,EF,ABCD)",
       "tangent_of_circle_property_length_equal(1,AM,AG,O)",

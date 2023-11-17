@@ -2,9 +2,9 @@
   "problem_id": 4247,
   "annotation": "ChenyangMao_2023-05-07",
   "source": "GeoQA-3025",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知AB是⊙O直径,BC是弦,∠ABC=40°,过圆心O作OD⊥BC交弧BC于点D,连接DC,则∠DCB为()",
-  "problem_text_en": "As shown in the figure, it is known that AB is the diameter of ⊙O, BC is the chord, ∠ABC = N_0, passing the center O to make OD ⊥ BC intersects BC at point D. Connect DC, then ∠DCB is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠CBA=40°，圆O的圆心为O，⊙O的直径为AB，OE垂直于BE。求∠ECD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CBA=40°, the center of ⊙O is O, AB is the diameter of ⊙O, OE is perpendicular to BE. Find the measure of ∠ECD.",
   "problem_img": "4247.png",
   "construction_cdl": [
     "Shape(OE,EB,BO)",
@@ -19,10 +19,10 @@
     "Cocircular(O,BACD)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(CBA),40)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)",
-    "PerpendicularBetweenLine(OE,BE)",
-    "Equal(MeasureOfAngle(CBA),40)"
+    "PerpendicularBetweenLine(OE,BE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ECD))",
@@ -32,7 +32,7 @@
     "arc_property_center_angle(1,ODB,O)",
     "arc_property_circumference_angle_external(1,ODB,C)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,OEB)",
       "arc_property_center_angle(1,ODB,O)",

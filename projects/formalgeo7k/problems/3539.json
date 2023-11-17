@@ -2,9 +2,9 @@
   "problem_id": 3539,
   "annotation": "YanjunGuo_2023-04-30",
   "source": "GeoQA-1166",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知DC∥FP,∠1=∠2,∠FED=32°,∠AGF=76°,FH平分∠EFG,则∠PFH的度数是()",
-  "problem_text_en": "As shown in the figure, it is known that DC ∥ FP, ∠1 = ∠2, ∠FED = N_0, ∠AGF = N_1, FH bisects ∠EFG, then the degree of ∠PFH is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠AGF=76°，∠FED=32°，∠MBG=∠HPF，FH是∠EFG的角平分线，DE∥FP。求∠PFH的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AGF=76°, ∠FED=32°, ∠MBG=∠HPF, FH bisects ∠EFG, DE∥FP. Find the measure of ∠PFH.",
   "problem_img": "3539.png",
   "construction_cdl": [
     "Shape(EF,FP,PC,CE)",
@@ -18,11 +18,11 @@
     "Collinear(CPHBM)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(MBG),MeasureOfAngle(HPF))",
     "Equal(MeasureOfAngle(AGF),76)",
     "Equal(MeasureOfAngle(FED),32)",
-    "ParallelBetweenLine(DE,FP)",
-    "IsBisectorOfAngle(FH,EFG)"
+    "Equal(MeasureOfAngle(MBG),MeasureOfAngle(HPF))",
+    "IsBisectorOfAngle(FH,EFG)",
+    "ParallelBetweenLine(DE,FP)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(PFH))",
@@ -35,18 +35,18 @@
     "angle_addition(1,PFH,HFG)",
     "angle_addition(1,EFP,PFH)"
   ],
-  "theorem_seq_dag": {
-    "parallel_judgment_corresponding_angle(1,BG,PF,M)": [
-      "parallel_property_collinear_extend(2,BG,PF,A)"
-    ],
-    "parallel_property_collinear_extend(2,BG,PF,A)": [
-      "parallel_property_alternate_interior_angle(1,GA,PF)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_judgment_corresponding_angle(1,BG,PF,M)",
       "parallel_property_alternate_interior_angle(2,DE,FP)",
       "angle_addition(1,PFH,HFG)",
       "angle_addition(1,EFP,PFH)"
+    ],
+    "parallel_judgment_corresponding_angle(1,BG,PF,M)": [
+      "parallel_property_collinear_extend(2,BG,PF,A)"
+    ],
+    "parallel_property_collinear_extend(2,BG,PF,A)": [
+      "parallel_property_alternate_interior_angle(1,GA,PF)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 5880,
   "annotation": "QikeHuang_2023-05-28",
   "source": "GeoQA-7936",
-  "problem_level": 1,
-  "problem_text_cn": "如图,四边形ABCD是矩形,点E和点F是矩形ABCD外两点,AE⊥CF于点H,AD=3,DC=4,DE=\\frac{5}{2},∠EDF=90°,则DF长是()",
-  "problem_text_en": "As shown in the figure, the quadrilateral ABCD is a rectangle, points E and F are two points outside the rectangle ABCD, AE ⊥ CF at the point H, AD = N_0, DC = N_1, DE = \\frac{N_2}{N_3}, ∠EDF = N_4, then the length of DF is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AD=3，DC=4，DE=5/2，∠FDE=90°，FH垂直于EH，四边形ABCD是长方形。求直线DF的长度。",
+  "problem_text_en": "As shown in the diagram, AD=3, DC=4, DE=5/2, ∠FDE=90°, FH⊥EH, quadrilateral ABCD is a rectangle. Find the length of line DF.",
   "problem_img": "5880.png",
   "construction_cdl": [
     "Shape(FH,HM,MF)",
@@ -19,12 +19,12 @@
     "Collinear(AND)"
   ],
   "text_cdl": [
-    "Rectangle(ABCD)",
     "Equal(LengthOfLine(AD),3)",
     "Equal(LengthOfLine(DC),4)",
     "Equal(LengthOfLine(DE),5/2)",
+    "Equal(MeasureOfAngle(FDE),90)",
     "PerpendicularBetweenLine(FH,EH)",
-    "Equal(MeasureOfAngle(FDE),90)"
+    "Rectangle(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(DF))",
@@ -39,7 +39,14 @@
     "similar_triangle_property_line_ratio(1,CDF,ADE)",
     "similar_triangle_property_line_ratio(1,FCD,EAD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "vertical_angle(1,HMF,EMD)",
+      "triangle_property_angle_sum(1,MFH)",
+      "triangle_property_angle_sum(1,EMD)",
+      "angle_addition(1,CDA,ADF)",
+      "angle_addition(1,ADF,FDE)"
+    ],
     "vertical_angle(1,HMF,EMD)": [
       "similar_triangle_judgment_aa(1,CDF,ADE)"
     ],
@@ -58,13 +65,6 @@
     "similar_triangle_judgment_aa(1,CDF,ADE)": [
       "similar_triangle_property_line_ratio(1,CDF,ADE)",
       "similar_triangle_property_line_ratio(1,FCD,EAD)"
-    ],
-    "START": [
-      "vertical_angle(1,HMF,EMD)",
-      "triangle_property_angle_sum(1,MFH)",
-      "triangle_property_angle_sum(1,EMD)",
-      "angle_addition(1,CDA,ADF)",
-      "angle_addition(1,ADF,FDE)"
     ]
   }
 }

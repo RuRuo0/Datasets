@@ -2,9 +2,9 @@
   "problem_id": 401,
   "annotation": "NaZhu_2023-03-12",
   "source": "Geometry3k-409",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If P R \\parallel W X, W X = 10, X Y = 6, W Y = 8, R Y = 5, and P S = 3, find P Q.",
+  "problem_level": 16,
+  "problem_text_cn": "如图所示，PS=3，RY=5，WX=10，WY=8，XY=6，RP∥XW，RQ⊥PQ，WY垂直于XY，YS⊥PS。求直线PQ的长度。",
+  "problem_text_en": "As shown in the diagram, PS=3, RY=5, WX=10, WY=8, XY=6, RP∥XW, RQ⊥PQ, WY⊥XY, YS⊥PS. Find the length of line PQ.",
   "problem_img": "401.png",
   "construction_cdl": [
     "Shape(YR,RA,AY)",
@@ -20,12 +20,15 @@
     "Collinear(XQW)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(RP,XW)",
-    "Equal(LengthOfLine(WX),10)",
-    "Equal(LengthOfLine(XY),6)",
-    "Equal(LengthOfLine(WY),8)",
+    "Equal(LengthOfLine(PS),3)",
     "Equal(LengthOfLine(RY),5)",
-    "Equal(LengthOfLine(PS),3)"
+    "Equal(LengthOfLine(WX),10)",
+    "Equal(LengthOfLine(WY),8)",
+    "Equal(LengthOfLine(XY),6)",
+    "ParallelBetweenLine(RP,XW)",
+    "PerpendicularBetweenLine(RQ,PQ)",
+    "PerpendicularBetweenLine(WY,XY)",
+    "PerpendicularBetweenLine(YS,PS)"
   ],
   "image_cdl": [
     "PerpendicularBetweenLine(RQ,PQ)",
@@ -52,7 +55,13 @@
     "parallelogram_property_opposite_line_equal(1,YAQS)",
     "line_addition(1,PS,SQ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,RP,XW,Y)",
+      "adjacent_complementary_angle(1,QSY,YSP)",
+      "adjacent_complementary_angle(1,RAY,YAQ)",
+      "line_addition(1,PS,SQ)"
+    ],
     "parallel_property_collinear_extend(3,RP,XW,Y)": [
       "parallel_property_collinear_extend(3,WX,PY,Q)"
     ],
@@ -92,12 +101,6 @@
     ],
     "parallelogram_judgment_parallel_and_parallel(1,YAQS)": [
       "parallelogram_property_opposite_line_equal(1,YAQS)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,RP,XW,Y)",
-      "adjacent_complementary_angle(1,QSY,YSP)",
-      "adjacent_complementary_angle(1,RAY,YAQ)",
-      "line_addition(1,PS,SQ)"
     ]
   }
 }

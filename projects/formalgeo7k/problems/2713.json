@@ -2,9 +2,9 @@
   "problem_id": 2713,
   "annotation": "ZheZhu_2023-04-23",
   "source": "Geometry3k-2857",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find G H in the kite.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AG=12，HA=15，四边形FGHJ是风筝形。求直线GH的长度。",
+  "problem_text_en": "As shown in the diagram, AG=12, HA=15, HG and HJ are one pair of adjacent sides of the kite FGHJ. Find the length of line GH.",
   "problem_img": "2713.png",
   "construction_cdl": [
     "Shape(FG,GA,AF)",
@@ -14,7 +14,11 @@
     "Collinear(GAJ)",
     "Collinear(FAH)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AG),12)",
+    "Equal(LengthOfLine(HA),15)",
+    "Kite(FGHJ)"
+  ],
   "image_cdl": [
     "Kite(FGHJ)",
     "Equal(LengthOfLine(HA),15)",
@@ -27,15 +31,15 @@
     "right_triangle_judgment_angle(1,HAG)",
     "right_triangle_property_pythagorean(1,HAG)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "kite_property_diagonal_perpendicular_bisection(1,HJFG,A)"
+    ],
     "kite_property_diagonal_perpendicular_bisection(1,HJFG,A)": [
       "right_triangle_judgment_angle(1,HAG)"
     ],
     "right_triangle_judgment_angle(1,HAG)": [
       "right_triangle_property_pythagorean(1,HAG)"
-    ],
-    "START": [
-      "kite_property_diagonal_perpendicular_bisection(1,HJFG,A)"
     ]
   }
 }

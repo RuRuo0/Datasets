@@ -2,9 +2,9 @@
   "problem_id": 4040,
   "annotation": "NaZhu_2023-05-07",
   "source": "GeoQA-2308",
-  "problem_level": 1,
-  "problem_text_cn": "如图,CD是平面镜,光线从A点出发经过CD上点E反射后照到B点,若入射角为α(入射角等于反射角),AC⊥CD,BD⊥CD,垂足分别为C,D,且AC=3,BD=4,CD=11,则tanα的值为()",
-  "problem_text_en": "As shown in the figure, CD is a flat mirror. The light starts from point A and reflects from point E on CD to point B. If the incident angle is α (incident angle is equal to reflection angle), AC ⊥ CD, BD ⊥ CD, and the vertical feet are respectively C , D, and AC = N_0, BD = N_1, CD = N_2, then the value of tanα is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AC=3，BD=4，CD=11，∠CEA=∠BED，AC垂直于EC，CE垂直于FE，ED⊥BD。求tan(AE)的值。",
+  "problem_text_en": "As shown in the diagram, AC=3, BD=4, CD=11, ∠CEA=∠BED, AC⊥EC, CE is perpendicular to FE, ED is perpendicular to BD. Find the value of tan(AE).",
   "problem_img": "4040.png",
   "construction_cdl": [
     "Shape(AC,CE,EA)",
@@ -14,13 +14,13 @@
     "Collinear(CED)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(AC,EC)",
-    "PerpendicularBetweenLine(ED,BD)",
-    "PerpendicularBetweenLine(CE,FE)",
     "Equal(LengthOfLine(AC),3)",
     "Equal(LengthOfLine(BD),4)",
     "Equal(LengthOfLine(CD),11)",
-    "Equal(MeasureOfAngle(CEA),MeasureOfAngle(BED))"
+    "Equal(MeasureOfAngle(CEA),MeasureOfAngle(BED))",
+    "PerpendicularBetweenLine(AC,EC)",
+    "PerpendicularBetweenLine(CE,FE)",
+    "PerpendicularBetweenLine(ED,BD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Tan(MeasureOfAngle(AEF)))",
@@ -34,17 +34,17 @@
     "sine_theorem(1,CEA)",
     "angle_addition(1,CEA,AEF)"
   ],
-  "theorem_seq_dag": {
-    "mirror_similar_triangle_judgment_aa(1,ACE,BED)": [
-      "mirror_similar_triangle_property_line_ratio(1,ACE,BED)",
-      "mirror_similar_triangle_property_line_ratio(1,EAC,EDB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,CE,ED)",
       "mirror_similar_triangle_judgment_aa(1,ACE,BED)",
       "triangle_property_angle_sum(1,ACE)",
       "sine_theorem(1,CEA)",
       "angle_addition(1,CEA,AEF)"
+    ],
+    "mirror_similar_triangle_judgment_aa(1,ACE,BED)": [
+      "mirror_similar_triangle_property_line_ratio(1,ACE,BED)",
+      "mirror_similar_triangle_property_line_ratio(1,EAC,EDB)"
     ]
   }
 }

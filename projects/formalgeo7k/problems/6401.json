@@ -2,9 +2,9 @@
   "problem_id": 6401,
   "annotation": "YimingHe_2023-06-04",
   "source": "GeoQA-9262",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在▱ABCD中,∠A=65°,DE⊥AB,垂足为点E,点F为边AD上的中点,连接FE,则∠AFE的度数为()",
-  "problem_text_en": "As shown in the figure, in ▱ABCD, ∠A = N_0, DE ⊥ AB, the foot of perpendicular is the point E, and the point F is the midpoint on the side AD, connecting FE, then the degree of ∠AFE is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠DAB=65°，F平分线段AD，四边形ABCD是▱，DE垂直于BE。求∠EFA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DAB=65°, F bisects segment AD, BA and CD are opposite sides of the ▱ ABCD, DE is perpendicular to BE. Find the measure of ∠EFA.",
   "problem_img": "6401.png",
   "construction_cdl": [
     "Shape(AE,EF,FA)",
@@ -14,10 +14,10 @@
     "Collinear(AEB)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
-    "PerpendicularBetweenLine(DE,BE)",
+    "Equal(MeasureOfAngle(DAB),65)",
     "IsMidpointOfLine(F,AD)",
-    "Equal(MeasureOfAngle(DAB),65)"
+    "Parallelogram(ABCD)",
+    "PerpendicularBetweenLine(DE,BE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(EFA))",
@@ -32,7 +32,13 @@
     "isosceles_triangle_property_angle_equal(1,FAE)",
     "triangle_property_angle_sum(1,FAE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,AED,DEB)",
+      "line_addition(1,AF,FD)",
+      "median_of_triangle_judgment(1,EF,EDA)",
+      "triangle_property_angle_sum(1,FAE)"
+    ],
     "adjacent_complementary_angle(1,AED,DEB)": [
       "right_triangle_judgment_angle(1,AED)"
     ],
@@ -50,12 +56,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,FAE)": [
       "isosceles_triangle_property_angle_equal(1,FAE)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,AED,DEB)",
-      "line_addition(1,AF,FD)",
-      "median_of_triangle_judgment(1,EF,EDA)",
-      "triangle_property_angle_sum(1,FAE)"
     ]
   }
 }

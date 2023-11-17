@@ -2,9 +2,9 @@
   "problem_id": 4481,
   "annotation": "NaZhu_2023-05-14",
   "source": "GeoQA-3475",
-  "problem_level": 1,
-  "problem_text_cn": "如图,半径为5的⊙A中,已知DE=6,∠BAC+∠EAD=180°,则弦BC的长为()",
-  "problem_text_en": "As shown in the figure, in ⊙A with a radius of N_0, it is known that DE = N_1, ∠BAC + ∠EAD = N_2, then the length of chord BC is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，Add(MeasureOfAngle(BAC)=MeasureOfAngle(DAE))，DE=6，⊙A的半径为5，⊙A的圆心为A。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, Add(MeasureOfAngle(BAC)=MeasureOfAngle(DAE)), DE=6, the radius of ⊙A is 5, the center of ⊙A is A. Find the length of line BC.",
   "problem_img": "4481.png",
   "construction_cdl": [
     "Shape(ADC,CA,AD)",
@@ -16,10 +16,10 @@
     "Cocircular(A,BEDC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(A,A)",
+    "Equal(Add(MeasureOfAngle(BAC),MeasureOfAngle(DAE)),180)",
     "Equal(LengthOfLine(DE),6)",
     "Equal(RadiusOfCircle(A),5)",
-    "Equal(Add(MeasureOfAngle(BAC),MeasureOfAngle(DAE)),180)"
+    "IsCentreOfCircle(A,A)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BC))",
@@ -35,16 +35,7 @@
     "triangle_property_angle_sum(1,ACB)",
     "sine_theorem(1,CBA)"
   ],
-  "theorem_seq_dag": {
-    "radius_of_circle_property_length_equal(1,AB,A)": [
-      "isosceles_triangle_judgment_line_equal(1,ACB)"
-    ],
-    "radius_of_circle_property_length_equal(1,AC,A)": [
-      "isosceles_triangle_judgment_line_equal(1,ACB)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,ACB)": [
-      "isosceles_triangle_property_angle_equal(1,ACB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,AB,A)",
       "radius_of_circle_property_length_equal(1,AE,A)",
@@ -53,6 +44,15 @@
       "cosine_theorem(1,AED)",
       "triangle_property_angle_sum(1,ACB)",
       "sine_theorem(1,CBA)"
+    ],
+    "radius_of_circle_property_length_equal(1,AB,A)": [
+      "isosceles_triangle_judgment_line_equal(1,ACB)"
+    ],
+    "radius_of_circle_property_length_equal(1,AC,A)": [
+      "isosceles_triangle_judgment_line_equal(1,ACB)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,ACB)": [
+      "isosceles_triangle_property_angle_equal(1,ACB)"
     ]
   }
 }

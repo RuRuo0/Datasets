@@ -2,9 +2,9 @@
   "problem_id": 4992,
   "annotation": "FangzhenZhu_2023-05-21",
   "source": "GeoQA-4683",
-  "problem_level": 1,
-  "problem_text_cn": "如图,l_{1}∥l_{2}∥l_{3},如果AB=2,BC=3,DF=4,那么DE=()",
-  "problem_text_en": "As shown in the figure, l_{N_0}∥l_{N_1}∥l_{N_2}, if AB = N_3, BC = N_4, DF = N_5, then DE = ()",
+  "problem_level": 14,
+  "problem_text_cn": "如图所示，AB=2，BC=3，DF=4，AD平行于BE，AD平行于CF，BE平行于CF。求直线DE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=2, BC=3, DF=4, AD∥BE, AD is parallel to CF, BE∥CF. Find the length of line DE.",
   "problem_img": "4992.png",
   "construction_cdl": [
     "Shape(MA,AD,DM)",
@@ -40,7 +40,17 @@
     "line_addition(1,MD,DE)",
     "line_addition(1,MD,DF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,AD,BE,M)",
+      "parallel_property_corresponding_angle(1,AD,CF,M)",
+      "parallel_property_corresponding_angle(2,EB,DA,M)",
+      "parallel_property_corresponding_angle(2,FC,DA,M)",
+      "line_addition(1,MA,AB)",
+      "line_addition(1,MB,BC)",
+      "line_addition(1,MD,DE)",
+      "line_addition(1,MD,DF)"
+    ],
     "parallel_property_corresponding_angle(1,AD,BE,M)": [
       "similar_triangle_judgment_aa(1,MAD,MBE)"
     ],
@@ -60,16 +70,6 @@
     "similar_triangle_judgment_aa(1,MAD,MCF)": [
       "similar_triangle_property_line_ratio(1,ADM,CFM)",
       "similar_triangle_property_line_ratio(1,DMA,FMC)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,AD,BE,M)",
-      "parallel_property_corresponding_angle(1,AD,CF,M)",
-      "parallel_property_corresponding_angle(2,EB,DA,M)",
-      "parallel_property_corresponding_angle(2,FC,DA,M)",
-      "line_addition(1,MA,AB)",
-      "line_addition(1,MB,BC)",
-      "line_addition(1,MD,DE)",
-      "line_addition(1,MD,DF)"
     ]
   }
 }

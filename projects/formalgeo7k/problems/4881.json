@@ -2,9 +2,9 @@
   "problem_id": 4881,
   "annotation": "YifanWang_2023-05-21",
   "source": "GeoQA-4404",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示,某宾馆大厅要铺圆环形的地毯,工人师傅只测量了与小圆相切的大圆的弦AB的长,就计算出了圆环的面积．若测量得AB的长为8米,则圆环的面积为()",
-  "problem_text_en": "As shown in the figure, a torus carpet is to be laid in the lobby of a hotel. The worker only measures the length of the chord AB of the great circle that is tangent to the small circle, and then calculates the area of ​​the torus. If the measured length of AB is N_0, the area of ​​the torus is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，⊙C的半径为5，圆D的半径为3，O是⊙C的圆心，⊙D的圆心为O。求⊙C的面积减去圆D的面积。",
+  "problem_text_en": "As shown in the diagram, the radius of ⊙C is 5, the radius of ⊙D is 3, O is the center of circle C, O is the center of ⊙D. Find the area of the circle C minus the area of the ⊙D.",
   "problem_img": "4881.png",
   "construction_cdl": [
     "Shape(C)",
@@ -14,10 +14,10 @@
     "Cocircular(D,EF)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,C)",
-    "IsCentreOfCircle(O,D)",
     "Equal(RadiusOfCircle(C),5)",
-    "Equal(RadiusOfCircle(D),3)"
+    "Equal(RadiusOfCircle(D),3)",
+    "IsCentreOfCircle(O,C)",
+    "IsCentreOfCircle(O,D)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Sub(AreaOfCircle(C),AreaOfCircle(D)))",
@@ -26,7 +26,7 @@
     "circle_area_formula(1,C)",
     "circle_area_formula(1,D)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "circle_area_formula(1,C)",
       "circle_area_formula(1,D)"

@@ -2,14 +2,22 @@
   "problem_id": 1306,
   "annotation": "DengfengYue_2023-04-09",
   "source": "Geometry3k-1353",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the figure.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，DE=8，EH=8，KH和DE是▱KDEH的一组对边，DE⊥HE，EH⊥KH，HK⊥DK，KD⊥ED。求KDEH的周长。",
+  "problem_text_en": "As shown in the diagram, DE=8, EH=8, quadrilateral KDEH is a ▱, DE is perpendicular to HE, EH is perpendicular to KH, HK⊥DK, KD⊥ED. Find the perimeter of quadrilateral KDEH.",
   "problem_img": "1306.png",
   "construction_cdl": [
     "Shape(KD,DE,EH,HK)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(DE),8)",
+    "Equal(LengthOfLine(EH),8)",
+    "Parallelogram(KDEH)",
+    "PerpendicularBetweenLine(DE,HE)",
+    "PerpendicularBetweenLine(EH,KH)",
+    "PerpendicularBetweenLine(HK,DK)",
+    "PerpendicularBetweenLine(KD,ED)"
+  ],
   "image_cdl": [
     "Parallelogram(KDEH)",
     "Equal(LengthOfLine(EH),8)",
@@ -26,7 +34,7 @@
     "parallelogram_property_opposite_line_equal(1,DEHK)",
     "quadrilateral_perimeter_formula(1,KDEH)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_property_opposite_line_equal(1,KDEH)",
       "parallelogram_property_opposite_line_equal(1,DEHK)",

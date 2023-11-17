@@ -2,9 +2,9 @@
   "problem_id": 3435,
   "annotation": "NaZhu_2023-04-30",
   "source": "GeoQA-998",
-  "problem_level": 1,
-  "problem_text_cn": "在平面内,将一个直角三角板按如图所示摆放在一组平行线上；若∠1=55°,则∠2的度数是()",
-  "problem_text_en": "In the plane, place a right triangle board on a set of parallel lines as shown in the figure; if ∠1 = N_0, then the degree of ∠2 is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠BMD=55°，DE平行于FG，FG平行于HI，∠ABC是直角三角形ABC的直角。求∠HPB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BMD=55°, DE∥FG, FG is parallel to HI, AB and BC are the legs of the right triangle ABC. Find the measure of ∠HPB.",
   "problem_img": "3435.png",
   "construction_cdl": [
     "Shape(AM,MN,NA)",
@@ -31,11 +31,10 @@
     "Collinear(BPC)"
   ],
   "text_cdl": [
-    "RightTriangle(ABC)",
+    "Equal(MeasureOfAngle(BMD),55)",
     "ParallelBetweenLine(DE,FG)",
     "ParallelBetweenLine(FG,HI)",
-    "ParallelBetweenLine(FG,HI)",
-    "Equal(MeasureOfAngle(BMD),55)"
+    "RightTriangle(ABC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(HPB))",
@@ -49,7 +48,12 @@
     "parallel_property_alternate_interior_angle(2,GB,MD)",
     "angle_addition(1,MBK,KBP)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,DE,FG,M)",
+      "parallel_property_collinear_extend(3,FG,HI,B)",
+      "angle_addition(1,MBK,KBP)"
+    ],
     "parallel_property_collinear_extend(3,DE,FG,M)": [
       "parallel_property_collinear_extend(3,GF,MD,B)"
     ],
@@ -61,11 +65,6 @@
     ],
     "parallel_property_collinear_extend(3,IH,GB,P)": [
       "parallel_property_alternate_interior_angle(1,PH,GB)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,DE,FG,M)",
-      "parallel_property_collinear_extend(3,FG,HI,B)",
-      "angle_addition(1,MBK,KBP)"
     ]
   }
 }

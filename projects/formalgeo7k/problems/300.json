@@ -2,9 +2,9 @@
   "problem_id": 300,
   "annotation": "NaZhu_2023-03-12",
   "source": "Geometry3k-304",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "J H, J P, and P H are midsegments of \\triangle K L M. Find x.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，ML=3，PJ=x，HP是三角形MLK的中位线，JH是三角形LKM的中位线，PJ是三角形KML的中位线。求x的值。",
+  "problem_text_en": "As shown in the diagram, ML=3, PJ=x, HP is the midsegment of △ MLK, JH is the midsegment of triangle LKM, PJ is the midsegment of △ KML. Find the value of x.",
   "problem_img": "300.png",
   "construction_cdl": [
     "Shape(KP,PJ,JK)",
@@ -16,9 +16,11 @@
     "Collinear(KJL)"
   ],
   "text_cdl": [
-    "IsMidsegmentOfTriangle(PJ,KML)",
+    "Equal(LengthOfLine(ML),3)",
+    "Equal(LengthOfLine(PJ),x)",
     "IsMidsegmentOfTriangle(HP,MLK)",
-    "IsMidsegmentOfTriangle(JH,LKM)"
+    "IsMidsegmentOfTriangle(JH,LKM)",
+    "IsMidsegmentOfTriangle(PJ,KML)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(PJ),x)",
@@ -34,7 +36,11 @@
     "similar_triangle_property_line_ratio(1,KPJ,KML)",
     "similar_triangle_property_line_ratio(1,JKP,LKM)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "midsegment_of_triangle_property_parallel(1,PJ,KML)",
+      "line_addition(1,KP,PM)"
+    ],
     "midsegment_of_triangle_property_parallel(1,PJ,KML)": [
       "parallel_property_corresponding_angle(1,PJ,ML,K)"
     ],
@@ -44,10 +50,6 @@
     "similar_triangle_judgment_aa(1,JKP,LKM)": [
       "similar_triangle_property_line_ratio(1,JKP,LKM)",
       "similar_triangle_property_line_ratio(1,KPJ,KML)"
-    ],
-    "START": [
-      "midsegment_of_triangle_property_parallel(1,PJ,KML)",
-      "line_addition(1,KP,PM)"
     ]
   }
 }

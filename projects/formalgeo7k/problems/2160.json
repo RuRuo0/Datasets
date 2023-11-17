@@ -2,9 +2,9 @@
   "problem_id": 2160,
   "annotation": "XiaoxiaoJin_2023-04-23",
   "source": "Geometry3k-2254",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x so that m \\parallel n.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠BFA=x+84°，∠TAF=21+2*x°，AT平行于BN。求x的值。",
+  "problem_text_en": "As shown in the diagram, ∠BFA=x+84°, ∠TAF=21+2*x°, AT∥BN. Find the value of x.",
   "problem_img": "2160.png",
   "construction_cdl": [
     "Shape(EA,AT)",
@@ -19,7 +19,11 @@
     "Collinear(TAC)",
     "Collinear(NFB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(BFA),x+84)",
+    "Equal(MeasureOfAngle(TAF),21+2*x)",
+    "ParallelBetweenLine(AT,BN)"
+  ],
   "image_cdl": [
     "ParallelBetweenLine(AT,BN)",
     "Equal(MeasureOfAngle(TAF),21+2*x)",
@@ -31,12 +35,12 @@
     "parallel_property_collinear_extend(3,NB,TA,F)",
     "parallel_property_alternate_interior_angle(1,FB,TA)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,NB,TA,F)": [
-      "parallel_property_alternate_interior_angle(1,FB,TA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_collinear_extend(3,NB,TA,F)"
+    ],
+    "parallel_property_collinear_extend(3,NB,TA,F)": [
+      "parallel_property_alternate_interior_angle(1,FB,TA)"
     ]
   }
 }

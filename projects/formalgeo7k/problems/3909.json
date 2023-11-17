@@ -2,9 +2,9 @@
   "problem_id": 3909,
   "annotation": "FangzhenZhu_2023-05-07",
   "source": "GeoQA-1814",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O的直径AB长为10,弦BC长为6,OD⊥AC,垂足为点D,则OD长为()",
-  "problem_text_en": "As shown in the figure, the diameter AB of ⊙O is N_0, the chord BC is N_1, OD ⊥ AC, the perpendicular foot is point D, then the length of OD is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=10，BC=6，圆O的圆心为O，AD垂直于OD。求直线OD的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, BC=6, the center of ⊙O is O, AD is perpendicular to OD. Find the length of line OD.",
   "problem_img": "3909.png",
   "construction_cdl": [
     "Shape(OBA,AO,OB)",
@@ -16,7 +16,12 @@
     "Collinear(ADC)",
     "Cocircular(O,ACB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),10)",
+    "Equal(LengthOfLine(BC),6)",
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(AD,OD)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(AB),10)",
@@ -32,7 +37,12 @@
     "midsegment_of_triangle_judgment_midpoint(1,DO,ACB)",
     "midsegment_of_triangle_property_length(1,DO,ACB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "circle_property_chord_perpendicular_bisect_chord(1,O,OD,AC)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)"
+    ],
     "circle_property_chord_perpendicular_bisect_chord(1,O,OD,AC)": [
       "midsegment_of_triangle_judgment_midpoint(1,DO,ACB)"
     ],
@@ -44,11 +54,6 @@
     ],
     "midsegment_of_triangle_judgment_midpoint(1,DO,ACB)": [
       "midsegment_of_triangle_property_length(1,DO,ACB)"
-    ],
-    "START": [
-      "circle_property_chord_perpendicular_bisect_chord(1,O,OD,AC)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)"
     ]
   }
 }

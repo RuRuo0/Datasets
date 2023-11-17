@@ -2,9 +2,9 @@
   "problem_id": 596,
   "annotation": "YimingHe_2023-04-09",
   "source": "Geometry3k-611",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure, A B \\parallel C E. If D A = 6, what is D B?",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，DA=6，∠BDC=x°，∠EDA=x°，AB平行于EC。求直线DB的长度。",
+  "problem_text_en": "As shown in the diagram, DA=6, ∠BDC=x°, ∠EDA=x°, AB is parallel to EC. Find the length of line DB.",
   "problem_img": "596.png",
   "construction_cdl": [
     "Shape(ED,DA,AE)",
@@ -13,8 +13,10 @@
     "Collinear(EDC)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AB,EC)",
-    "Equal(LengthOfLine(DA),6)"
+    "Equal(LengthOfLine(DA),6)",
+    "Equal(MeasureOfAngle(BDC),x)",
+    "Equal(MeasureOfAngle(EDA),x)",
+    "ParallelBetweenLine(AB,EC)"
   ],
   "image_cdl": [
     "Equal(MeasureOfAngle(EDA),x)",
@@ -28,7 +30,10 @@
     "parallel_property_alternate_interior_angle(2,AB,DC)",
     "isosceles_triangle_judgment_angle_equal(1,DBA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,CE,BA,D)"
+    ],
     "parallel_property_collinear_extend(3,CE,BA,D)": [
       "parallel_property_alternate_interior_angle(2,AB,DC)",
       "parallel_property_alternate_interior_angle(1,AB,ED)"
@@ -38,9 +43,6 @@
     ],
     "parallel_property_alternate_interior_angle(2,AB,DC)": [
       "isosceles_triangle_judgment_angle_equal(1,DBA)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,CE,BA,D)"
     ]
   }
 }

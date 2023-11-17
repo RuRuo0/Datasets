@@ -2,9 +2,9 @@
   "problem_id": 5536,
   "annotation": "ZheZhu_2023-05-21",
   "source": "GeoQA-6711",
-  "problem_level": 1,
-  "problem_text_cn": "如图,圆心角都是90°的扇形OAB与扇形OCD叠放在一起,OA=3,OC=1,分别连接AC、BD,则图中阴影部分的面积为()",
-  "problem_text_en": "As shown in the figure, the sector OAB and the sector OCD whose central angles are all N_0 are stacked together, OA = N_1, OC = N_2, respectively connect AC and BD, then the area of ​​the shaded part in the figure is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，OA=3，QC=1，∠AOB=90°，∠CQD=90°，O是⊙O的圆心，⊙Q的圆心为Q。求扇形OBA的面积减去扇形QDC的面积。",
+  "problem_text_en": "As shown in the diagram, OA=3, QC=1, ∠AOB=90°, ∠CQD=90°, the center of circle O is O, Q is the center of ⊙Q. Find the area of the sector OBA minus the area of the sector QDC.",
   "problem_img": "5536.png",
   "construction_cdl": [
     "Shape(OB,OBA,AO)",
@@ -15,12 +15,12 @@
     "Cocircular(Q,DC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsCentreOfCircle(Q,Q)",
     "Equal(LengthOfLine(OA),3)",
     "Equal(LengthOfLine(QC),1)",
     "Equal(MeasureOfAngle(AOB),90)",
-    "Equal(MeasureOfAngle(CQD),90)"
+    "Equal(MeasureOfAngle(CQD),90)",
+    "IsCentreOfCircle(O,O)",
+    "IsCentreOfCircle(Q,Q)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Sub(AreaOfSector(OBA),AreaOfSector(QDC)))",
@@ -33,7 +33,7 @@
     "sector_area_formula(1,OBA)",
     "sector_area_formula(1,QDC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,OA,O)",
       "radius_of_circle_property_length_equal(1,QC,Q)",

@@ -2,14 +2,19 @@
   "problem_id": 642,
   "annotation": "YimingHe_2023-03-12",
   "source": "Geometry3k-659",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=x，AC=x-4，BC=8，BC⊥AC。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=x, AC=x-4, BC=8, BC⊥AC. Find the value of x.",
   "problem_img": "642.png",
   "construction_cdl": [
     "Shape(AB,BC,CA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),x)",
+    "Equal(LengthOfLine(AC),x-4)",
+    "Equal(LengthOfLine(BC),8)",
+    "PerpendicularBetweenLine(BC,AC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AC),x-4)",
     "Equal(LengthOfLine(AB),x)",
@@ -22,12 +27,12 @@
     "right_triangle_judgment_angle(1,BCA)",
     "right_triangle_property_pythagorean(1,BCA)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,BCA)": [
-      "right_triangle_property_pythagorean(1,BCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,BCA)"
+    ],
+    "right_triangle_judgment_angle(1,BCA)": [
+      "right_triangle_property_pythagorean(1,BCA)"
     ]
   }
 }

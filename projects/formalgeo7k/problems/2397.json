@@ -2,16 +2,24 @@
   "problem_id": 2397,
   "annotation": "RunanWang_2023-04-23",
   "source": "Geometry3k-2512",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=12，BC=y，BD=x，CD=z，DA=10，AB⊥CB，BD⊥AD。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=12, BC=y, BD=x, CD=z, DA=10, AB is perpendicular to CB, BD is perpendicular to AD. Find the value of x.",
   "problem_img": "2397.png",
   "construction_cdl": [
     "Shape(BC,CD,DB)",
     "Shape(BD,DA,AB)",
     "Collinear(CDA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),12)",
+    "Equal(LengthOfLine(BC),y)",
+    "Equal(LengthOfLine(BD),x)",
+    "Equal(LengthOfLine(CD),z)",
+    "Equal(LengthOfLine(DA),10)",
+    "PerpendicularBetweenLine(AB,CB)",
+    "PerpendicularBetweenLine(BD,AD)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BC),y)",
     "Equal(LengthOfLine(BD),x)",
@@ -27,12 +35,12 @@
     "right_triangle_judgment_angle(1,BDA)",
     "right_triangle_property_pythagorean(1,BDA)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,BDA)": [
-      "right_triangle_property_pythagorean(1,BDA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,BDA)"
+    ],
+    "right_triangle_judgment_angle(1,BDA)": [
+      "right_triangle_property_pythagorean(1,BDA)"
     ]
   }
 }

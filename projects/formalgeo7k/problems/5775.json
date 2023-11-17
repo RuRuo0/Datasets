@@ -2,9 +2,9 @@
   "problem_id": 5775,
   "annotation": "XiaokaiZhang_2023-05-28",
   "source": "GeoQA-7664",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC中,点D在边AB上,且满足∠ACD=∠ABC,若AC=2,AD=1,则DB的长为()",
-  "problem_text_en": "As shown in the figure, in △ABC, the point D is on AB, and satisfies ∠ACD = ∠ABC, if AC = N_0, AD = N_1, then the length of DB is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AC=2，AD=1，∠DCA=∠ABC。求直线DB的长度。",
+  "problem_text_en": "As shown in the diagram, AC=2, AD=1, ∠DCA=∠ABC. Find the length of line DB.",
   "problem_img": "5775.png",
   "construction_cdl": [
     "Shape(AD,DC,CA)",
@@ -12,9 +12,9 @@
     "Collinear(ADB)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(DCA),MeasureOfAngle(ABC))",
     "Equal(LengthOfLine(AC),2)",
-    "Equal(LengthOfLine(AD),1)"
+    "Equal(LengthOfLine(AD),1)",
+    "Equal(MeasureOfAngle(DCA),MeasureOfAngle(ABC))"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(DB))",
@@ -25,14 +25,14 @@
     "mirror_similar_triangle_property_line_ratio(1,DCA,CAB)",
     "mirror_similar_triangle_property_line_ratio(1,CAD,BCA)"
   ],
-  "theorem_seq_dag": {
-    "mirror_similar_triangle_judgment_aa(1,DCA,CAB)": [
-      "mirror_similar_triangle_property_line_ratio(1,DCA,CAB)",
-      "mirror_similar_triangle_property_line_ratio(1,CAD,BCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "mirror_similar_triangle_judgment_aa(1,DCA,CAB)",
       "line_addition(1,AD,DB)"
+    ],
+    "mirror_similar_triangle_judgment_aa(1,DCA,CAB)": [
+      "mirror_similar_triangle_property_line_ratio(1,DCA,CAB)",
+      "mirror_similar_triangle_property_line_ratio(1,CAD,BCA)"
     ]
   }
 }

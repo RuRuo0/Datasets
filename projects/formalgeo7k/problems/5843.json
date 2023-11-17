@@ -3,16 +3,16 @@
   "annotation": "QikeHuang_2023-05-28",
   "source": "GeoQA-7857",
   "problem_level": 1,
-  "problem_text_cn": "如图,一个山坡的垂直高度为300m,坡长为500m．问,这个山坡的坡度是多少()",
-  "problem_text_en": "As shown in the figure, the perpendicular height of a mountain slope is N_0, and the slope length is N_1. so what is the slope of this hillside ()",
+  "problem_text_cn": "如图所示，AB=300，AC=500，AB⊥CB。求tan(BC)的值。",
+  "problem_text_en": "As shown in the diagram, AB=300, AC=500, AB⊥CB. Find the value of tan(BC).",
   "problem_img": "5843.png",
   "construction_cdl": [
     "Shape(AB,BC,CA)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(AB,CB)",
     "Equal(LengthOfLine(AB),300)",
-    "Equal(LengthOfLine(AC),500)"
+    "Equal(LengthOfLine(AC),500)",
+    "PerpendicularBetweenLine(AB,CB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Tan(MeasureOfAngle(BCA)))",
@@ -20,7 +20,7 @@
   "theorem_seqs": [
     "sine_theorem(1,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "sine_theorem(1,ABC)"
     ]

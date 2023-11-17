@@ -2,9 +2,9 @@
   "problem_id": 2661,
   "annotation": "ZheZhu_2023-04-23",
   "source": "Geometry3k-2799",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Chords A C and D F are equidistant from the center. If the radius of \\odot G is 26, find A C.",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AG=26，BG=10，⊙G的圆心为G，GB⊥AB。求直线AC的长度。",
+  "problem_text_en": "As shown in the diagram, AG=26, BG=10, G is the center of circle G, GB⊥AB. Find the length of line AC.",
   "problem_img": "2661.png",
   "construction_cdl": [
     "Shape(AG,GB,BA)",
@@ -14,7 +14,12 @@
     "Collinear(ABC)",
     "Cocircular(G,AC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AG),26)",
+    "Equal(LengthOfLine(BG),10)",
+    "IsCentreOfCircle(G,G)",
+    "PerpendicularBetweenLine(GB,AB)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(G,G)",
     "PerpendicularBetweenLine(GB,AB)",
@@ -34,7 +39,15 @@
     "mirror_congruent_triangle_property_line_equal(1,GBA,GCB)",
     "line_addition(1,AB,BC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,GA,G)",
+      "radius_of_circle_property_length_equal(1,GC,G)",
+      "flat_angle(1,CBA)",
+      "angle_addition(1,CBG,GBA)",
+      "right_triangle_judgment_angle(1,GBA)",
+      "line_addition(1,AB,BC)"
+    ],
     "radius_of_circle_property_length_equal(1,GA,G)": [
       "mirror_congruent_triangle_judgment_hl(2,GBA,GCB)"
     ],
@@ -52,14 +65,6 @@
     ],
     "mirror_congruent_triangle_judgment_hl(2,GBA,GCB)": [
       "mirror_congruent_triangle_property_line_equal(1,GBA,GCB)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,GA,G)",
-      "radius_of_circle_property_length_equal(1,GC,G)",
-      "flat_angle(1,CBA)",
-      "angle_addition(1,CBG,GBA)",
-      "right_triangle_judgment_angle(1,GBA)",
-      "line_addition(1,AB,BC)"
     ]
   }
 }

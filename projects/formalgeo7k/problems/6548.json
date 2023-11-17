@@ -2,9 +2,9 @@
   "problem_id": 6548,
   "annotation": "XiaokaiZhang_2023-06-04",
   "source": "GeoQA-9477",
-  "problem_level": 1,
-  "problem_text_cn": "如图,经过⊙O上点A的切线和弦BC的延长线相交于点P,若∠CAP=40°,∠ACP=100°,则∠BAC的度数为()",
-  "problem_text_en": "As shown in the figure, the extended line line of the tangent and chord BC passing through point A on ⊙O intersects at point P, if ∠CAP = N_0, ∠ACP = N_1, then the degree of ∠BAC is ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，∠CAP=40°，∠PCA=100°，圆O的圆心为O，⊙O的直径为AD，PA是⊙O的切线。求∠BAC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAP=40°, ∠PCA=100°, the center of circle O is O, the diameter of ⊙O is AD, PA is the tangent to ⊙O. Find the measure of ∠BAC.",
   "problem_img": "6548.png",
   "construction_cdl": [
     "Shape(ODB,BE,ED)",
@@ -20,11 +20,11 @@
     "Cocircular(O,ACDB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(PA,O)",
-    "IsDiameterOfCircle(AD,O)",
     "Equal(MeasureOfAngle(CAP),40)",
-    "Equal(MeasureOfAngle(PCA),100)"
+    "Equal(MeasureOfAngle(PCA),100)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AD,O)",
+    "IsTangentOfCircle(PA,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BAC))",
@@ -41,7 +41,7 @@
     "triangle_property_angle_sum(1,BAP)",
     "triangle_property_angle_sum(1,BAC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,ACD,O)",
       "adjacent_complementary_angle(1,PCA,ACE)",

@@ -2,9 +2,9 @@
   "problem_id": 82,
   "annotation": "XiaokaiZhang_2023-04-02",
   "source": "Geometry3k-83",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure. Round to the nearest tenth if necessary.",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AE=12，BE=12，CE=17，DE=17，DE垂直于AE。求四边形ADBC的面积。",
+  "problem_text_en": "As shown in the diagram, AE=12, BE=12, CE=17, DE=17, DE⊥AE. Find the area of ADBC.",
   "problem_img": "82.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -14,7 +14,13 @@
     "Collinear(DEC)",
     "Collinear(AEB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AE),12)",
+    "Equal(LengthOfLine(BE),12)",
+    "Equal(LengthOfLine(CE),17)",
+    "Equal(LengthOfLine(DE),17)",
+    "PerpendicularBetweenLine(DE,AE)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AE),12)",
     "Equal(LengthOfLine(CE),17)",
@@ -35,7 +41,13 @@
     "line_addition(1,AE,EB)",
     "kite_area_formula_diagonal(1,ADBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "perpendicular_bisector_judgment_per_and_mid(1,AE,DC)",
+      "vertical_angle(1,DEA,CEB)",
+      "line_addition(1,DE,EC)",
+      "line_addition(1,AE,EB)"
+    ],
     "perpendicular_bisector_judgment_per_and_mid(1,AE,DC)": [
       "perpendicular_bisector_property_distance_equal(1,AE,DC)",
       "perpendicular_bisector_judgment_per_and_mid(1,BE,CD)"
@@ -54,12 +66,6 @@
     ],
     "kite_judgment_equal_and_equal(1,ADBC)": [
       "kite_area_formula_diagonal(1,ADBC)"
-    ],
-    "START": [
-      "perpendicular_bisector_judgment_per_and_mid(1,AE,DC)",
-      "vertical_angle(1,DEA,CEB)",
-      "line_addition(1,DE,EC)",
-      "line_addition(1,AE,EB)"
     ]
   }
 }

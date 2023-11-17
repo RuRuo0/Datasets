@@ -2,9 +2,9 @@
   "problem_id": 2272,
   "annotation": "DengfengYue_2023-04-16",
   "source": "Geometry3k-2376",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find m \\widehat E S.",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，FM=BM，∠MHN=40°，M是圆M的圆心，EF⊥MF，HB⊥MB。求⌒MES的角度。",
+  "problem_text_en": "As shown in the diagram, FM=BM, ∠MHN=40°, the center of ⊙M is M, EF is perpendicular to MF, HB is perpendicular to MB. Find the measure of ⌒MES.",
   "problem_img": "2272.png",
   "construction_cdl": [
     "Shape(ME,EF,FM)",
@@ -18,7 +18,13 @@
     "Collinear(HBN)",
     "Cocircular(M,EASHN)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(FM),LengthOfLine(BM))",
+    "Equal(MeasureOfAngle(MHN),40)",
+    "IsCentreOfCircle(M,M)",
+    "PerpendicularBetweenLine(EF,MF)",
+    "PerpendicularBetweenLine(HB,MB)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(M,M)",
     "Equal(MeasureOfAngle(MHN),40)",
@@ -39,7 +45,14 @@
     "triangle_property_angle_sum(1,MES)",
     "arc_property_center_angle(1,MES,M)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,ME,M)",
+      "radius_of_circle_property_length_equal(1,MS,M)",
+      "radius_of_circle_property_length_equal(1,MH,M)",
+      "triangle_property_angle_sum(1,MES)",
+      "arc_property_center_angle(1,MES,M)"
+    ],
     "radius_of_circle_property_length_equal(1,ME,M)": [
       "congruent_triangle_judgment_hl(2,HBM,EFM)",
       "isosceles_triangle_judgment_line_equal(1,MES)"
@@ -55,13 +68,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,MES)": [
       "isosceles_triangle_property_angle_equal(1,MES)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,ME,M)",
-      "radius_of_circle_property_length_equal(1,MS,M)",
-      "radius_of_circle_property_length_equal(1,MH,M)",
-      "triangle_property_angle_sum(1,MES)",
-      "arc_property_center_angle(1,MES,M)"
     ]
   }
 }

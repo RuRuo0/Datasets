@@ -2,9 +2,9 @@
   "problem_id": 3683,
   "annotation": "XiaoxiaoJin_2023-04-30",
   "source": "GeoQA-1424",
-  "problem_level": 1,
-  "problem_text_cn": "如图,A、B两点被一座山隔开,M、N分别是AC、BC中点,测量MN的长度为40m,那么AB的长度为()",
-  "problem_text_en": "As shown in the figure, two vertices A and B are separated by a mountain. M and N are the midvertices of AC and BC respectively. The length of MN is measured as N_0, then the length of AB is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，MN=40，M是线段AC的中点，N平分线段CB。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, MN=40, M is the midpoint of segment AC, N is the midpoint of segment CB. Find the length of line AB.",
   "problem_img": "3683.png",
   "construction_cdl": [
     "Shape(CN,NM,MC)",
@@ -24,12 +24,12 @@
     "midsegment_of_triangle_judgment_midpoint(1,NM,CBA)",
     "midsegment_of_triangle_property_length(1,NM,CBA)"
   ],
-  "theorem_seq_dag": {
-    "midsegment_of_triangle_judgment_midpoint(1,NM,CBA)": [
-      "midsegment_of_triangle_property_length(1,NM,CBA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "midsegment_of_triangle_judgment_midpoint(1,NM,CBA)"
+    ],
+    "midsegment_of_triangle_judgment_midpoint(1,NM,CBA)": [
+      "midsegment_of_triangle_property_length(1,NM,CBA)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 5363,
   "annotation": "QikeHuang_2023-05-21",
   "source": "GeoQA-5640",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC∽△ACP,若∠A=75°,∠APC=65°,则∠B的大小为()",
-  "problem_text_en": "As shown in the figure, △ABC ∽ △ACP, if ∠A = N_0, ∠APC = N_1, then the size of ∠B is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠APC=65°，∠CAB=75°，三角形ABC与三角形APC是镜像相似三角形。求∠ABC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠APC=65°, ∠CAB=75°, △ABC is mirror similar to △APC.. Find the measure of ∠ABC.",
   "problem_img": "5363.png",
   "construction_cdl": [
     "Shape(AP,PC,CA)",
@@ -12,9 +12,9 @@
     "Collinear(APB)"
   ],
   "text_cdl": [
-    "MirrorSimilarBetweenTriangle(ABC,APC)",
+    "Equal(MeasureOfAngle(APC),65)",
     "Equal(MeasureOfAngle(CAB),75)",
-    "Equal(MeasureOfAngle(APC),65)"
+    "MirrorSimilarBetweenTriangle(ABC,APC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ABC))",
@@ -23,7 +23,7 @@
     "triangle_property_angle_sum(1,APC)",
     "mirror_similar_triangle_property_angle_equal(1,BCA,CAP)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,APC)",
       "mirror_similar_triangle_property_angle_equal(1,BCA,CAP)"

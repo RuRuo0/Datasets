@@ -2,9 +2,9 @@
   "problem_id": 1415,
   "annotation": "YanjunGuo_2023-04-16",
   "source": "Geometry3k-1466",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If A B = 60 and D E = 48, find C F.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=60，DE=48，圆C的圆心为C，AB是圆C的直径，DF垂直于CF。求直线CF的长度。",
+  "problem_text_en": "As shown in the diagram, AB=60, DE=48, C is the center of circle C, the diameter of ⊙C is AB, DF is perpendicular to CF. Find the length of line CF.",
   "problem_img": "1415.png",
   "construction_cdl": [
     "Shape(EF,FA,CAE)",
@@ -16,7 +16,13 @@
     "Collinear(EFD)",
     "Cocircular(C,AEBD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),60)",
+    "Equal(LengthOfLine(DE),48)",
+    "IsCentreOfCircle(C,C)",
+    "IsDiameterOfCircle(AB,C)",
+    "PerpendicularBetweenLine(DF,CF)"
+  ],
   "image_cdl": [
     "IsDiameterOfCircle(AB,C)",
     "IsCentreOfCircle(C,C)",
@@ -35,10 +41,7 @@
     "right_triangle_judgment_angle(1,DFC)",
     "right_triangle_property_pythagorean(1,DFC)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,DFC)": [
-      "right_triangle_property_pythagorean(1,DFC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_length_equal(1,AB,C)",
       "circle_property_length_of_radius_and_diameter(1,C)",
@@ -46,6 +49,9 @@
       "circle_property_chord_perpendicular_bisect_chord(1,C,CF,DE)",
       "line_addition(1,EF,FD)",
       "right_triangle_judgment_angle(1,DFC)"
+    ],
+    "right_triangle_judgment_angle(1,DFC)": [
+      "right_triangle_property_pythagorean(1,DFC)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 2682,
   "annotation": "ZheZhu_2023-04-23",
   "source": "Geometry3k-2823",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "The segment is tangent to the circle. Find x. Round to the nearest tenth.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，TU=x，VT=11，VU=7，⊙T的圆心为T，VU是⊙O的切线。求x的值。",
+  "problem_text_en": "As shown in the diagram, TU=x, VT=11, VU=7, T is the center of circle T, the tangent to circle T is VU. Find the value of x.",
   "problem_img": "2682.png",
   "construction_cdl": [
     "Shape(BV,VU,TBU)",
@@ -13,7 +13,13 @@
     "Collinear(VBT)",
     "Cocircular(TBU)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(TU),x)",
+    "Equal(LengthOfLine(VT),11)",
+    "Equal(LengthOfLine(VU),7)",
+    "IsCentreOfCircle(T,T)",
+    "IsTangentOfCircle(VU,T)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(T,T)",
     "IsTangentOfCircle(VU,T)",
@@ -28,15 +34,15 @@
     "right_triangle_judgment_angle(1,VUT)",
     "right_triangle_property_pythagorean(1,VUT)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(2,VU,T,T)"
+    ],
     "tangent_of_circle_property_perpendicular(2,VU,T,T)": [
       "right_triangle_judgment_angle(1,VUT)"
     ],
     "right_triangle_judgment_angle(1,VUT)": [
       "right_triangle_property_pythagorean(1,VUT)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(2,VU,T,T)"
     ]
   }
 }

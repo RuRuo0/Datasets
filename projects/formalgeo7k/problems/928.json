@@ -2,9 +2,9 @@
   "problem_id": 928,
   "annotation": "XiaokaiZhang_2023-03-19",
   "source": "Geometry3k-957",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find A E.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，BC=15，BE=6，DA=10，DE=3*x-2，EC=12，∠ADE=∠CBE。求直线AE的长度。",
+  "problem_text_en": "As shown in the diagram, BC=15, BE=6, DA=10, DE=3*x-2, EC=12, ∠ADE=∠CBE. Find the length of line AE.",
   "problem_img": "928.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -12,7 +12,14 @@
     "Collinear(AEC)",
     "Collinear(BED)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BC),15)",
+    "Equal(LengthOfLine(BE),6)",
+    "Equal(LengthOfLine(DA),10)",
+    "Equal(LengthOfLine(DE),3*x-2)",
+    "Equal(LengthOfLine(EC),12)",
+    "Equal(MeasureOfAngle(ADE),MeasureOfAngle(CBE))"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BE),6)",
     "Equal(LengthOfLine(BC),15)",
@@ -29,16 +36,16 @@
     "similar_triangle_property_line_ratio(1,EAD,ECB)",
     "similar_triangle_property_line_ratio(1,DEA,BEC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "vertical_angle(1,DEA,BEC)"
+    ],
     "vertical_angle(1,DEA,BEC)": [
       "similar_triangle_judgment_aa(1,ADE,CBE)"
     ],
     "similar_triangle_judgment_aa(1,ADE,CBE)": [
       "similar_triangle_property_line_ratio(1,DEA,BEC)",
       "similar_triangle_property_line_ratio(1,EAD,ECB)"
-    ],
-    "START": [
-      "vertical_angle(1,DEA,BEC)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 5089,
   "annotation": "YimingHe_2023-05-21",
   "source": "GeoQA-4900",
-  "problem_level": 1,
-  "problem_text_cn": "如图,l_{1}∥l_{2}∥l_{3},BC=1,\\frac{DE}{EF}=\\frac{3}{2},则AB长为()",
-  "problem_text_en": "As shown in the figure, l_{N_0}∥l_{N_1}∥l_{N_2},BC=N_3, BC = N_0, \\frac{DE}{EF}=\\frac{N_4}{N_5}, then the length of AB is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，BC=1，DE=3/2，EF=1，AD∥BE，AD∥CF，BE∥CF，ABED与BCFE相似。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, BC=1, DE=3/2, EF=1, AD is parallel to BE, AD is parallel to CF, BE is parallel to CF, quadrilateral ABED is similar to quadrilateral BCFE. Find the length of line AB.",
   "problem_img": "5089.png",
   "construction_cdl": [
     "Shape(AB,BE,ED,DA)",
@@ -13,13 +13,13 @@
     "Collinear(DEF)"
   ],
   "text_cdl": [
-    "SimilarBetweenQuadrilateral(ABED,BCFE)",
+    "Equal(LengthOfLine(BC),1)",
+    "Equal(LengthOfLine(DE),3/2)",
+    "Equal(LengthOfLine(EF),1)",
     "ParallelBetweenLine(AD,BE)",
     "ParallelBetweenLine(AD,CF)",
     "ParallelBetweenLine(BE,CF)",
-    "Equal(LengthOfLine(DE),3/2)",
-    "Equal(LengthOfLine(BC),1)",
-    "Equal(LengthOfLine(EF),1)"
+    "SimilarBetweenQuadrilateral(ABED,BCFE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -28,7 +28,7 @@
     "similar_quadrilateral_property_line_ratio(1,ABED,BCFE)",
     "similar_quadrilateral_property_line_ratio(1,EDAB,FEBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "similar_quadrilateral_property_line_ratio(1,ABED,BCFE)",
       "similar_quadrilateral_property_line_ratio(1,EDAB,FEBC)"

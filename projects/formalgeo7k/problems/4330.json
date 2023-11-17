@@ -2,9 +2,9 @@
   "problem_id": 4330,
   "annotation": "ZheZhu_2023-05-07",
   "source": "GeoQA-3189",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O的直径BD=2,∠A=60°,则BC的长度为()",
-  "problem_text_en": "As shown in the figure, the diameter of ⊙O BD = N_0, ∠A = N_1, then the length of BC is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，BD=2，∠BAC=60°，O是圆O的圆心，BD是圆O的直径。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, BD=2, ∠BAC=60°, the center of ⊙O is O, the diameter of ⊙O is BD. Find the length of line BC.",
   "problem_img": "4330.png",
   "construction_cdl": [
     "Shape(OCB,BC)",
@@ -19,10 +19,10 @@
     "Cocircular(O,BADC)"
   ],
   "text_cdl": [
-    "IsDiameterOfCircle(BD,O)",
-    "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(BD),2)",
-    "Equal(MeasureOfAngle(BAC),60)"
+    "Equal(MeasureOfAngle(BAC),60)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(BD,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BC))",
@@ -33,7 +33,7 @@
     "diameter_of_circle_property_right_angle(1,DCB,O)",
     "sine_theorem(1,BDC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_circumference_angle_external(1,OCB,A)",
       "arc_property_circumference_angle_external(1,OCB,D)",

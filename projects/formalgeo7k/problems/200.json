@@ -2,14 +2,19 @@
   "problem_id": 200,
   "annotation": "XiaokaiZhang_2023-03-12",
   "source": "Geometry3k-202",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，CB=8，CF=x，FB=15，BC垂直于FC。求x的值。",
+  "problem_text_en": "As shown in the diagram, CB=8, CF=x, FB=15, BC⊥FC. Find the value of x.",
   "problem_img": "200.png",
   "construction_cdl": [
     "Shape(BC,CF,FB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(CB),8)",
+    "Equal(LengthOfLine(CF),x)",
+    "Equal(LengthOfLine(FB),15)",
+    "PerpendicularBetweenLine(BC,FC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(FB),15)",
     "Equal(LengthOfLine(CB),8)",
@@ -22,12 +27,12 @@
     "right_triangle_judgment_angle(1,BCF)",
     "right_triangle_property_pythagorean(1,BCF)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,BCF)": [
-      "right_triangle_property_pythagorean(1,BCF)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,BCF)"
+    ],
+    "right_triangle_judgment_angle(1,BCF)": [
+      "right_triangle_property_pythagorean(1,BCF)"
     ]
   }
 }

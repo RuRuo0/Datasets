@@ -2,14 +2,21 @@
   "problem_id": 44,
   "annotation": "XiaokaiZhang_2023-03-12",
   "source": "Geometry3k-44",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，BA=6，CA=x，CB=x，∠BAC=45°，∠CBA=45°，AC⊥BC。求x的值。",
+  "problem_text_en": "As shown in the diagram, BA=6, CA=x, CB=x, ∠BAC=45°, ∠CBA=45°, AC is perpendicular to BC. Find the value of x.",
   "problem_img": "44.png",
   "construction_cdl": [
     "Shape(CB,BA,AC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BA),6)",
+    "Equal(LengthOfLine(CA),x)",
+    "Equal(LengthOfLine(CB),x)",
+    "Equal(MeasureOfAngle(BAC),45)",
+    "Equal(MeasureOfAngle(CBA),45)",
+    "PerpendicularBetweenLine(AC,BC)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(CBA),45)",
     "Equal(MeasureOfAngle(BAC),45)",
@@ -24,12 +31,12 @@
     "right_triangle_judgment_angle(1,ACB)",
     "right_triangle_property_pythagorean(1,ACB)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,ACB)": [
-      "right_triangle_property_pythagorean(1,ACB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,ACB)"
+    ],
+    "right_triangle_judgment_angle(1,ACB)": [
+      "right_triangle_property_pythagorean(1,ACB)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 418,
   "annotation": "NaZhu_2023-03-12",
   "source": "Geometry3k-426",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure. Round to the nearest tenth if necessary.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AN=21，BL=6，BN=18，SC=4，BL垂直于NL，SC⊥NC。求△SBN的面积与△NBA的面积之和。",
+  "problem_text_en": "As shown in the diagram, AN=21, BL=6, BN=18, SC=4, BL is perpendicular to NL, SC⊥NC. Find the sum of the area of triangle SBN and the area of triangle NBA.",
   "problem_img": "418.png",
   "construction_cdl": [
     "Shape(BA,AL,LB)",
@@ -14,7 +14,14 @@
     "Collinear(ALN)",
     "Collinear(BCN)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AN),21)",
+    "Equal(LengthOfLine(BL),6)",
+    "Equal(LengthOfLine(BN),18)",
+    "Equal(LengthOfLine(SC),4)",
+    "PerpendicularBetweenLine(BL,NL)",
+    "PerpendicularBetweenLine(SC,NC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BL),6)",
     "Equal(LengthOfLine(AN),21)",
@@ -33,18 +40,18 @@
     "triangle_area_formula_common(1,BAN)",
     "triangle_area_formula_common(1,SBN)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,ALB,BLN)": [
-      "altitude_of_triangle_judgment(1,BL,BAN)"
-    ],
-    "adjacent_complementary_angle(1,BCS,SCN)": [
-      "altitude_of_triangle_judgment(1,SC,SBN)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,ALB,BLN)",
       "adjacent_complementary_angle(1,BCS,SCN)",
       "triangle_area_formula_common(1,BAN)",
       "triangle_area_formula_common(1,SBN)"
+    ],
+    "adjacent_complementary_angle(1,ALB,BLN)": [
+      "altitude_of_triangle_judgment(1,BL,BAN)"
+    ],
+    "adjacent_complementary_angle(1,BCS,SCN)": [
+      "altitude_of_triangle_judgment(1,SC,SBN)"
     ]
   }
 }

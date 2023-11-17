@@ -2,9 +2,9 @@
   "problem_id": 2166,
   "annotation": "YiwenHuang_2023-04-23",
   "source": "Geometry3k-2261",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Point S is the incenter of \\triangle J P L. Find S Q.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，JK=8，JS=10，∠KPL=28°，∠SLK=24.5°，△JPL的内切圆圆心为S，PM垂直于SM，SK垂直于JK，SQ垂直于PQ。求直线SQ的长度。",
+  "problem_text_en": "As shown in the diagram, JK=8, JS=10, ∠KPL=28°, ∠SLK=24.5°, S is the center of the inscribed circle of triangle JPL, PM⊥SM, SK⊥JK, SQ⊥PQ. Find the length of line SQ.",
   "problem_img": "2166.png",
   "construction_cdl": [
     "Shape(JQ,QS,SJ)",
@@ -20,7 +20,16 @@
     "Collinear(PML)",
     "Collinear(JSM)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(JK),8)",
+    "Equal(LengthOfLine(JS),10)",
+    "Equal(MeasureOfAngle(KPL),28)",
+    "Equal(MeasureOfAngle(SLK),24.5)",
+    "IsIncenterOfTriangle(S,JPL)",
+    "PerpendicularBetweenLine(PM,SM)",
+    "PerpendicularBetweenLine(SK,JK)",
+    "PerpendicularBetweenLine(SQ,PQ)"
+  ],
   "image_cdl": [
     "IsIncenterOfTriangle(S,JPL)",
     "Equal(LengthOfLine(JK),8)",
@@ -40,7 +49,10 @@
     "right_triangle_judgment_angle(1,JQS)",
     "right_triangle_property_pythagorean(1,JQS)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,JQS,SQP)"
+    ],
     "adjacent_complementary_angle(1,JQS,SQP)": [
       "mirror_congruent_triangle_judgment_aas(1,SJQ,SKJ)",
       "right_triangle_judgment_angle(1,JQS)"
@@ -50,9 +62,6 @@
     ],
     "right_triangle_judgment_angle(1,JQS)": [
       "right_triangle_property_pythagorean(1,JQS)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,JQS,SQP)"
     ]
   }
 }

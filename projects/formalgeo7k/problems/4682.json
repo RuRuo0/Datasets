@@ -2,9 +2,9 @@
   "problem_id": 4682,
   "annotation": "YiwenHuang_2023-05-21",
   "source": "GeoQA-3967",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示,AB是⊙O的直径,PA切⊙O于点A,线段PO交⊙O于点C,连结BC,若∠P=36°,则∠B等于()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, PA is tangent to ⊙O at point A, line segment PO intersects ⊙O at point C, and connect BC, if ∠P = N_0, then ∠B is equal to ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠CPA=36°，O是圆O的圆心，AB是⊙O的直径，PA是⊙O的切线。求∠OBC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CPA=36°, O is the center of ⊙O, the diameter of ⊙O is AB, the tangent to ⊙O is PA. Find the measure of ∠OBC.",
   "problem_img": "4682.png",
   "construction_cdl": [
     "Shape(PA,OCA,CP)",
@@ -17,10 +17,10 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(CPA),36)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)",
-    "IsTangentOfCircle(PA,O)",
-    "Equal(MeasureOfAngle(CPA),36)"
+    "IsTangentOfCircle(PA,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(OBC))",
@@ -31,7 +31,7 @@
     "tangent_of_circle_property_perpendicular(2,PA,O,O)",
     "triangle_property_angle_sum(1,PAO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,OCA,O)",
       "arc_property_circumference_angle_external(1,OCA,B)",

@@ -2,16 +2,32 @@
   "problem_id": 1910,
   "annotation": "YanjunGuo_2023-04-23",
   "source": "Geometry3k-1985",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the shaded region. Round to the nearest tenth if necessary.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AC=HeightOfTriangle(ACE)，BF=5，BF=HeightOfTriangle(BFD)，BF=DF，DB=5*sqrt(2)，EA=HeightOfQuadrilateral(EADB)，EB=10，EC=5，EC=AC，AC垂直于EC，AD垂直于BD，BE垂直于AE，BF⊥DF，DB垂直于EB，EA⊥DA。求四边形EADB面积减去三角形BFD面积和三角形EAC面积。",
+  "problem_text_en": "As shown in the diagram, AC=HeightOfTriangle(ACE), BF=5, BF=HeightOfTriangle(BFD), BF=DF, DB=5*sqrt(2), EA=HeightOfQuadrilateral(EADB), EB=10, EC=5, EC=AC, AC is perpendicular to EC, AD is perpendicular to BD, BE is perpendicular to AE, BF⊥DF, DB⊥EB, EA⊥DA. Find the area of quadrilateral EADB minus the areas of triangle BFD and triangle EAC.",
   "problem_img": "1910.png",
   "construction_cdl": [
     "Shape(AC,CE,EA)",
     "Shape(BF,FD,DB)",
     "Shape(EC,CA,AD,DF,FB,BE)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),HeightOfTriangle(ACE))",
+    "Equal(LengthOfLine(BF),5)",
+    "Equal(LengthOfLine(BF),HeightOfTriangle(BFD))",
+    "Equal(LengthOfLine(BF),LengthOfLine(DF))",
+    "Equal(LengthOfLine(DB),5*sqrt(2))",
+    "Equal(LengthOfLine(EA),HeightOfQuadrilateral(EADB))",
+    "Equal(LengthOfLine(EB),10)",
+    "Equal(LengthOfLine(EC),5)",
+    "Equal(LengthOfLine(EC),LengthOfLine(AC))",
+    "PerpendicularBetweenLine(AC,EC)",
+    "PerpendicularBetweenLine(AD,BD)",
+    "PerpendicularBetweenLine(BE,AE)",
+    "PerpendicularBetweenLine(BF,DF)",
+    "PerpendicularBetweenLine(DB,EB)",
+    "PerpendicularBetweenLine(EA,DA)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(EB),10)",
     "Equal(LengthOfLine(DB),5*sqrt(2))",
@@ -29,7 +45,7 @@
     "Equal(LengthOfLine(BF),HeightOfTriangle(BFD))",
     "Equal(LengthOfLine(EA),HeightOfQuadrilateral(EADB))"
   ],
-  "goal_cdl": "Value(Sub(Sub(AreaOfQuadrilateral(EADB),AreaOfTriangle(BFD)),AreaOfTriangle(EAC)))",
+  "goal_cdl": "Value(Sub(AreaOfQuadrilateral(EADB),Add(AreaOfTriangle(BFD),AreaOfTriangle(EAC))))",
   "problem_answer": "-25+50*sqrt(2)",
   "theorem_seqs": [
     "parallel_judgment_per_per(1,EB,AD)",
@@ -41,7 +57,13 @@
     "triangle_area_formula_common(1,BFD)",
     "parallelogram_area_formula_sine(1,EADB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_judgment_per_per(1,EB,AD)",
+      "parallel_judgment_per_per(1,AE,DB)",
+      "triangle_area_formula_common(1,ACE)",
+      "triangle_area_formula_common(1,BFD)"
+    ],
     "parallel_judgment_per_per(1,EB,AD)": [
       "parallelogram_judgment_parallel_and_parallel(1,EADB)"
     ],
@@ -52,12 +74,6 @@
       "parallelogram_property_opposite_line_equal(1,EADB)",
       "parallelogram_area_formula_sine(1,EADB)",
       "parallelogram_property_opposite_line_equal(1,ADBE)"
-    ],
-    "START": [
-      "parallel_judgment_per_per(1,EB,AD)",
-      "parallel_judgment_per_per(1,AE,DB)",
-      "triangle_area_formula_common(1,ACE)",
-      "triangle_area_formula_common(1,BFD)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 1781,
   "annotation": "ChenyangMao_2023-04-16",
   "source": "Geometry3k-1847",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot F, F H \\cong F L and F K = 17. Find K M.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，FH=FL，FK=17，FL=8，圆F的圆心为F，FL垂直于KL，JH⊥FH。求直线KM的长度。",
+  "problem_text_en": "As shown in the diagram, FH=FL, FK=17, FL=8, the center of ⊙F is F, FL⊥KL, JH is perpendicular to FH. Find the length of line KM.",
   "problem_img": "1781.png",
   "construction_cdl": [
     "Shape(FJG,GJ)",
@@ -19,8 +19,12 @@
     "Cocircular(F,JGMK)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(FH),LengthOfLine(FL))",
     "Equal(LengthOfLine(FK),17)",
-    "Equal(LengthOfLine(FH),LengthOfLine(FL))"
+    "Equal(LengthOfLine(FL),8)",
+    "IsCentreOfCircle(F,F)",
+    "PerpendicularBetweenLine(FL,KL)",
+    "PerpendicularBetweenLine(JH,FH)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(F,F)",
@@ -37,17 +41,17 @@
     "circle_property_chord_perpendicular_bisect_chord(1,F,FL,MK)",
     "line_addition(1,KL,LM)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,MLF,FLK)",
+      "right_triangle_judgment_angle(1,FLK)",
+      "line_addition(1,KL,LM)"
+    ],
     "adjacent_complementary_angle(1,MLF,FLK)": [
       "circle_property_chord_perpendicular_bisect_chord(1,F,FL,MK)"
     ],
     "right_triangle_judgment_angle(1,FLK)": [
       "right_triangle_property_pythagorean(1,FLK)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,MLF,FLK)",
-      "right_triangle_judgment_angle(1,FLK)",
-      "line_addition(1,KL,LM)"
     ]
   }
 }

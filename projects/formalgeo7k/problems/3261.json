@@ -2,9 +2,9 @@
   "problem_id": 3261,
   "annotation": "XiaokaiZhang_2023-04-23",
   "source": "GeoQA-565",
-  "problem_level": 1,
-  "problem_text_cn": "已知直线a∥b,一块含30°角的直角三角尺如图放置．若∠1=25°,则∠2等于()",
-  "problem_text_en": "Given a straight line a ∥ b, a right triangle with N_0 angle is placed as shown in the figure. If ∠1 = N_1, then ∠2 is equal to ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠BCA=30°，∠CGF=25°，DE∥FG，∠ABC是直角三角形ABC的直角。求∠BDE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BCA=30°, ∠CGF=25°, DE∥FG, AB and BC are the legs of the right △ ABC. Find the measure of ∠BDE.",
   "problem_img": "3261.png",
   "construction_cdl": [
     "Shape(BD,DE,EA,AB)",
@@ -14,10 +14,10 @@
     "Collinear(AEGC)"
   ],
   "text_cdl": [
-    "RightTriangle(ABC)",
     "Equal(MeasureOfAngle(BCA),30)",
+    "Equal(MeasureOfAngle(CGF),25)",
     "ParallelBetweenLine(DE,FG)",
-    "Equal(MeasureOfAngle(CGF),25)"
+    "RightTriangle(ABC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BDE))",
@@ -27,7 +27,7 @@
     "adjacent_complementary_angle(1,DFG,GFC)",
     "parallel_property_corresponding_angle(1,DE,FG,B)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,FCG)",
       "adjacent_complementary_angle(1,DFG,GFC)",

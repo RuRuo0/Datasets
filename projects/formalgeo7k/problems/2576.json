@@ -2,16 +2,21 @@
   "problem_id": 2576,
   "annotation": "ChenyangMao_2023-04-23",
   "source": "Geometry3k-2704",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x. A = 357 in^2.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，△ACB的面积为357，AD=x，BC=34，CD垂直于AD。求x的值。",
+  "problem_text_en": "As shown in the diagram, the area of triangle ACB is 357, AD=x, BC=34, CD is perpendicular to AD. Find the value of x.",
   "problem_img": "2576.png",
   "construction_cdl": [
     "Shape(AC,CD,DA)",
     "Shape(AD,DB,BA)",
     "Collinear(CDB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(AreaOfTriangle(ACB),357)",
+    "Equal(LengthOfLine(AD),x)",
+    "Equal(LengthOfLine(BC),34)",
+    "PerpendicularBetweenLine(CD,AD)"
+  ],
   "image_cdl": [
     "Equal(AreaOfTriangle(ACB),357)",
     "Equal(LengthOfLine(BC),34)",
@@ -24,7 +29,7 @@
     "altitude_of_triangle_judgment(1,AD,ACB)",
     "triangle_area_formula_common(1,ACB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "altitude_of_triangle_judgment(1,AD,ACB)",
       "triangle_area_formula_common(1,ACB)"

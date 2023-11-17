@@ -2,9 +2,9 @@
   "problem_id": 1044,
   "annotation": "QikeHuang_2023-04-09",
   "source": "Geometry3k-1077",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the exact circumference of the circle.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=30，CA=16，⊙D的圆心为D，圆D的直径为BC，BA⊥CA。求⊙D的周长。",
+  "problem_text_en": "As shown in the diagram, AB=30, CA=16, the center of circle D is D, the diameter of circle D is BC, BA is perpendicular to CA. Find the circumference of the circle D.",
   "problem_img": "1044.png",
   "construction_cdl": [
     "Shape(AB,DBA)",
@@ -14,7 +14,13 @@
     "Collinear(BDC)",
     "Cocircular(D,BAC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),30)",
+    "Equal(LengthOfLine(CA),16)",
+    "IsCentreOfCircle(D,D)",
+    "IsDiameterOfCircle(BC,D)",
+    "PerpendicularBetweenLine(BA,CA)"
+  ],
   "image_cdl": [
     "IsDiameterOfCircle(BC,D)",
     "IsCentreOfCircle(D,D)",
@@ -31,15 +37,15 @@
     "circle_property_length_of_radius_and_diameter(1,D)",
     "circle_perimeter_formula(1,D)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,BAC)": [
-      "right_triangle_property_pythagorean(1,BAC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,BAC)",
       "diameter_of_circle_property_length_equal(1,BC,D)",
       "circle_property_length_of_radius_and_diameter(1,D)",
       "circle_perimeter_formula(1,D)"
+    ],
+    "right_triangle_judgment_angle(1,BAC)": [
+      "right_triangle_property_pythagorean(1,BAC)"
     ]
   }
 }

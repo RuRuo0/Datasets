@@ -2,9 +2,9 @@
   "problem_id": 5444,
   "annotation": "Yangli_2023-05-21",
   "source": "GeoQA-5793",
-  "problem_level": 1,
-  "problem_text_cn": "如图,O是△ABC的∠ABC,∠ACB的角平分线的交点,OD∥AB交BC于D,OE∥AC交BC于E,若BC=16,则△ODE的周长是()",
-  "problem_text_en": "As shown in the figure, O is the intersection of the ∠ABC of △ABC and the angular bisector of ∠ACB, OD ∥ AB crosses BC to D, OE ∥ AC crosses BC to E, if BC = N_0, then the perimeter of △ODE is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，BC=16，BO平分∠ABC，CO平分∠BCA，AC∥OE，BA平行于DO。求△ODE的周长。",
+  "problem_text_en": "As shown in the diagram, BC=16, BO is the angle bisector of ∠ABC, CO bisects ∠BCA, AC is parallel to OE, BA is parallel to DO. Find the perimeter of triangle ODE.",
   "problem_img": "5444.png",
   "construction_cdl": [
     "Shape(AB,BO,OC,CA)",
@@ -17,8 +17,8 @@
     "Equal(LengthOfLine(BC),16)",
     "IsBisectorOfAngle(BO,ABC)",
     "IsBisectorOfAngle(CO,BCA)",
-    "ParallelBetweenLine(BA,DO)",
-    "ParallelBetweenLine(AC,OE)"
+    "ParallelBetweenLine(AC,OE)",
+    "ParallelBetweenLine(BA,DO)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfTriangle(ODE))",
@@ -32,19 +32,19 @@
     "isosceles_triangle_judgment_angle_equal(1,ECO)",
     "triangle_perimeter_formula(1,ODE)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_alternate_interior_angle(1,BA,DO)": [
-      "isosceles_triangle_judgment_angle_equal(1,DOB)"
-    ],
-    "parallel_property_alternate_interior_angle(2,AC,OE)": [
-      "isosceles_triangle_judgment_angle_equal(1,ECO)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,BD,DE)",
       "line_addition(1,BE,EC)",
       "parallel_property_alternate_interior_angle(1,BA,DO)",
       "parallel_property_alternate_interior_angle(2,AC,OE)",
       "triangle_perimeter_formula(1,ODE)"
+    ],
+    "parallel_property_alternate_interior_angle(1,BA,DO)": [
+      "isosceles_triangle_judgment_angle_equal(1,DOB)"
+    ],
+    "parallel_property_alternate_interior_angle(2,AC,OE)": [
+      "isosceles_triangle_judgment_angle_equal(1,ECO)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 1158,
   "annotation": "ChenyangMao_2023-04-09",
   "source": "Geometry3k-1197",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the quadrilateral.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AC=20，AD=AB，AD=BC，AD=CD，BD=24，BE⊥CE。求四边形BADC的面积。",
+  "problem_text_en": "As shown in the diagram, AC=20, AD=AB, AD=BC, AD=CD, BD=24, BE is perpendicular to CE. Find the area of quadrilateral BADC.",
   "problem_img": "1158.png",
   "construction_cdl": [
     "Shape(BA,AE,EB)",
@@ -14,7 +14,14 @@
     "Collinear(AEC)",
     "Collinear(BED)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),20)",
+    "Equal(LengthOfLine(AD),LengthOfLine(AB))",
+    "Equal(LengthOfLine(AD),LengthOfLine(BC))",
+    "Equal(LengthOfLine(AD),LengthOfLine(CD))",
+    "Equal(LengthOfLine(BD),24)",
+    "PerpendicularBetweenLine(BE,CE)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AC),20)",
     "Equal(LengthOfLine(BD),24)",
@@ -29,12 +36,12 @@
     "kite_judgment_equal_and_equal(1,BADC)",
     "kite_area_formula_diagonal(1,BADC)"
   ],
-  "theorem_seq_dag": {
-    "kite_judgment_equal_and_equal(1,BADC)": [
-      "kite_area_formula_diagonal(1,BADC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "kite_judgment_equal_and_equal(1,BADC)"
+    ],
+    "kite_judgment_equal_and_equal(1,BADC)": [
+      "kite_area_formula_diagonal(1,BADC)"
     ]
   }
 }

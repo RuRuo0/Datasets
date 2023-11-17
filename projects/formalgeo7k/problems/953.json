@@ -2,9 +2,9 @@
   "problem_id": 953,
   "annotation": "XiaokaiZhang_2023-03-19",
   "source": "Geometry3k-982",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Segments A D and C E are medians of \\triangle A C B, A D \\perp C E, A B = 10, and C E = 9. Find C A.",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AB=10，CE=9，AD是三角形ACB的中线，CE是三角形CBA的中线，AF⊥EF。求直线CA的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, CE=9, AD is the median of △ ACB, CE is the median of triangle CBA, AF⊥EF. Find the length of line CA.",
   "problem_img": "953.png",
   "construction_cdl": [
     "Shape(AC,CF,FA)",
@@ -17,11 +17,11 @@
     "Collinear(CFE)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AB),10)",
+    "Equal(LengthOfLine(CE),9)",
     "IsMedianOfTriangle(AD,ACB)",
     "IsMedianOfTriangle(CE,CBA)",
-    "PerpendicularBetweenLine(AF,EF)",
-    "Equal(LengthOfLine(AB),10)",
-    "Equal(LengthOfLine(CE),9)"
+    "PerpendicularBetweenLine(AF,EF)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(CA))",
@@ -37,7 +37,14 @@
     "right_triangle_judgment_angle(1,CFA)",
     "right_triangle_property_pythagorean(1,CFA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AE,EB)",
+      "centroid_of_triangle_judgment_intersection(1,F,BAC,E,D)",
+      "line_addition(1,CF,FE)",
+      "right_triangle_judgment_angle(1,AFE)",
+      "adjacent_complementary_angle(1,CFA,AFE)"
+    ],
     "centroid_of_triangle_judgment_intersection(1,F,BAC,E,D)": [
       "centroid_of_triangle_property_line_ratio(1,F,CBA,E)"
     ],
@@ -49,13 +56,6 @@
     ],
     "right_triangle_judgment_angle(1,CFA)": [
       "right_triangle_property_pythagorean(1,CFA)"
-    ],
-    "START": [
-      "line_addition(1,AE,EB)",
-      "centroid_of_triangle_judgment_intersection(1,F,BAC,E,D)",
-      "line_addition(1,CF,FE)",
-      "right_triangle_judgment_angle(1,AFE)",
-      "adjacent_complementary_angle(1,CFA,AFE)"
     ]
   }
 }

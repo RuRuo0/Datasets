@@ -2,9 +2,9 @@
   "problem_id": 2869,
   "annotation": "YimingHe_2023-04-16",
   "source": "GeoQA-32",
-  "problem_level": 1,
-  "problem_text_cn": "如图,D是AB边上的中点,将△ABC沿过D的直线折叠,使点A落在BC上F处,若∠B=50°,则∠EDF的度数为()",
-  "problem_text_en": "As shown in the figure, D is the midpoint on the side of AB. Fold △ABC along the line passing D so that point A falls on F on BC. If ∠B = N_0, then the degree of ∠EDF is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠DBF=50°，D平分线段AB，△ADE与△FED是镜像全等三角形。求∠EDF的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DBF=50°, D bisects segment AB, triangle ADE is mirror congruent to triangle FED. Find the measure of ∠EDF.",
   "problem_img": "2869.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -16,9 +16,9 @@
     "Collinear(AEC)"
   ],
   "text_cdl": [
-    "MirrorCongruentBetweenTriangle(ADE,FED)",
     "Equal(MeasureOfAngle(DBF),50)",
-    "IsMidpointOfLine(D,AB)"
+    "IsMidpointOfLine(D,AB)",
+    "MirrorCongruentBetweenTriangle(ADE,FED)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(EDF))",
@@ -32,19 +32,19 @@
     "angle_addition(1,ADE,EDF)",
     "mirror_congruent_triangle_property_angle_equal(1,DEA,DFE)"
   ],
-  "theorem_seq_dag": {
-    "mirror_congruent_triangle_property_line_equal(1,EAD,EDF)": [
-      "isosceles_triangle_judgment_line_equal(1,DBF)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,DBF)": [
-      "isosceles_triangle_property_angle_equal(1,DBF)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "mirror_congruent_triangle_property_line_equal(1,EAD,EDF)",
       "triangle_property_angle_sum(1,DBF)",
       "adjacent_complementary_angle(1,ADF,FDB)",
       "angle_addition(1,ADE,EDF)",
       "mirror_congruent_triangle_property_angle_equal(1,DEA,DFE)"
+    ],
+    "mirror_congruent_triangle_property_line_equal(1,EAD,EDF)": [
+      "isosceles_triangle_judgment_line_equal(1,DBF)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,DBF)": [
+      "isosceles_triangle_property_angle_equal(1,DBF)"
     ]
   }
 }

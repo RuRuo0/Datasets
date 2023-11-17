@@ -2,9 +2,9 @@
   "problem_id": 3959,
   "annotation": "ZheZhu_2023-04-30",
   "source": "GeoQA-1890",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,C,D为⊙O上的点,⁀{AD}=⁀{CD},如果∠CAB=40°,那么∠CAD的度数为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, C and D are points on ⊙O, ⁀AD = ⁀CD, if ∠CAB = N_0, then the degree of ∠CAD is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，弧ODA的长度与⌒OCD的长度相等，∠CAB=40°，⊙O的圆心为O，圆O的直径为AB。求∠DAC的大小。",
+  "problem_text_en": "As shown in the diagram, the length of arc ODA is equal to the length of ⌒OCD, ∠CAB=40°, O is the center of circle O, the diameter of circle O is AB. Find the measure of ∠DAC.",
   "problem_img": "3959.png",
   "construction_cdl": [
     "Shape(DA,AE,ED)",
@@ -19,7 +19,12 @@
     "Collinear(BED)",
     "Cocircular(O,CDAB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfArc(ODA),LengthOfArc(OCD))",
+    "Equal(MeasureOfAngle(CAB),40)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)"
+  ],
   "image_cdl": [
     "IsDiameterOfCircle(AB,O)",
     "IsCentreOfCircle(O,O)",
@@ -37,10 +42,7 @@
     "arc_property_circumference_angle_external(1,OCA,B)",
     "arc_addition_measure(1,OCD,ODA)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_length_equal(1,ODA,OCD)": [
-      "congruent_arc_property_measure_equal(1,ODA,OCD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,BCA,O)",
       "triangle_property_angle_sum(1,ABC)",
@@ -48,6 +50,9 @@
       "arc_property_circumference_angle_external(1,OCD,A)",
       "arc_property_circumference_angle_external(1,OCA,B)",
       "arc_addition_measure(1,OCD,ODA)"
+    ],
+    "congruent_arc_judgment_length_equal(1,ODA,OCD)": [
+      "congruent_arc_property_measure_equal(1,ODA,OCD)"
     ]
   }
 }

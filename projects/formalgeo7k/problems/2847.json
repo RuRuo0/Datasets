@@ -2,9 +2,9 @@
   "problem_id": 2847,
   "annotation": "RunanWang_2023-05-07",
   "source": "Geometry3k-3000",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "A B C D is a rhombus. If P B = 12, A B = 15, and m \\angle A B D = 24. Find m \\angle B D A.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，BB=15，PA=12，∠DBA=24°，四边形ADCB是菱形。求∠ADB的大小。",
+  "problem_text_en": "As shown in the diagram, BB=15, PA=12, ∠DBA=24°, ADCB is a rhombus. Find the measure of ∠ADB.",
   "problem_img": "2847.png",
   "construction_cdl": [
     "Shape(AD,DP,PA)",
@@ -14,7 +14,12 @@
     "Collinear(APC)",
     "Collinear(DPB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BB),15)",
+    "Equal(LengthOfLine(PA),12)",
+    "Equal(MeasureOfAngle(DBA),24)",
+    "Rhombus(ADCB)"
+  ],
   "image_cdl": [
     "Rhombus(ADCB)",
     "Equal(LengthOfLine(PA),12)",
@@ -28,15 +33,15 @@
     "mirror_similar_triangle_judgment_sss(1,ADP,APB)",
     "mirror_similar_triangle_property_angle_equal(1,DPA,BAP)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallelogram_property_diagonal_bisection(1,DCBA,P)"
+    ],
     "parallelogram_property_diagonal_bisection(1,DCBA,P)": [
       "mirror_similar_triangle_judgment_sss(1,ADP,APB)"
     ],
     "mirror_similar_triangle_judgment_sss(1,ADP,APB)": [
       "mirror_similar_triangle_property_angle_equal(1,DPA,BAP)"
-    ],
-    "START": [
-      "parallelogram_property_diagonal_bisection(1,DCBA,P)"
     ]
   }
 }

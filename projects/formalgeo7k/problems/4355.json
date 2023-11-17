@@ -2,9 +2,9 @@
   "problem_id": 4355,
   "annotation": "ChengQin_2023-05-21",
   "source": "GeoQA-3252",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⁀{AB}是半圆,O为AB中点,C、D两点在⁀{AB}上,且AD∥OC,连接BC、BD．若⁀{CD}=62°,则弧AD的度数为何？()",
-  "problem_text_en": "As shown in the figure, ⁀AB is a semicircle, O is the midpoint of AB, the two points C and D are on ⁀AB, and AD ∥ OC, connecting BC and BD. If ⁀CD = N_0, what is the degree? ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，弧OCD的角度为62，圆O的圆心为O，AB是⊙O的直径，AD∥OC。求弧ODA的角度。",
+  "problem_text_en": "As shown in the diagram, the measure of ⌒OCD is 62, the center of ⊙O is O, the diameter of ⊙O is AB, AD is parallel to OC. Find the measure of ⌒ODA.",
   "problem_img": "4355.png",
   "construction_cdl": [
     "Shape(ODA,AD)",
@@ -20,10 +20,10 @@
     "Cocircular(O,ABCD)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfArc(OCD),62)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)",
-    "ParallelBetweenLine(AD,OC)",
-    "Equal(MeasureOfArc(OCD),62)"
+    "ParallelBetweenLine(AD,OC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfArc(ODA))",
@@ -38,7 +38,15 @@
     "triangle_property_angle_sum(1,ODA)",
     "arc_property_center_angle(1,ODA,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_center_angle(1,OCD,O)",
+      "parallel_property_alternate_interior_angle(2,AD,OC)",
+      "radius_of_circle_property_length_equal(1,OD,O)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "triangle_property_angle_sum(1,ODA)",
+      "arc_property_center_angle(1,ODA,O)"
+    ],
     "radius_of_circle_property_length_equal(1,OD,O)": [
       "isosceles_triangle_judgment_line_equal(1,ODA)"
     ],
@@ -47,14 +55,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,ODA)": [
       "isosceles_triangle_property_angle_equal(1,ODA)"
-    ],
-    "START": [
-      "arc_property_center_angle(1,OCD,O)",
-      "parallel_property_alternate_interior_angle(2,AD,OC)",
-      "radius_of_circle_property_length_equal(1,OD,O)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "triangle_property_angle_sum(1,ODA)",
-      "arc_property_center_angle(1,ODA,O)"
     ]
   }
 }

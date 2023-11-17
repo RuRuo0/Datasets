@@ -2,9 +2,9 @@
   "problem_id": 6907,
   "annotation": "ZheZhu_2023-06-04",
   "source": "GeoQA-angle-10155",
-  "problem_level": 1,
-  "problem_text_cn": "如图，在⊙O中，半径AO⊥OB，点P是优弧APB上的一点，点C是AB的中点，连接AP，CP，则∠APC的度数为（）",
-  "problem_text_en": "",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，⌒OAC的长度与弧OCB的长度相等，∠BOA=90°，⌒OAC的角度与⌒OCB的角度相等，O是圆O的圆心。求∠CPA的大小。",
+  "problem_text_en": "As shown in the diagram, the length of ⌒OAC is equal to the length of arc OCB, ∠BOA=90°, the measure of arc OAC is equal to the measure of ⌒OCB, O is the center of ⊙O. Find the measure of ∠CPA.",
   "problem_img": "6907.png",
   "construction_cdl": [
     "Shape(OA,AD,DO)",
@@ -18,10 +18,10 @@
     "Cocircular(O,ACBP)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(LengthOfArc(OAC),LengthOfArc(OCB))",
+    "Equal(MeasureOfAngle(BOA),90)",
     "Equal(MeasureOfArc(OAC),MeasureOfArc(OCB))",
-    "Equal(MeasureOfAngle(BOA),90)"
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CPA))",
@@ -31,7 +31,7 @@
     "arc_property_center_angle(1,OAB,O)",
     "arc_property_circumference_angle_external(1,OAC,P)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_addition_measure(1,OAC,OCB)",
       "arc_property_center_angle(1,OAB,O)",

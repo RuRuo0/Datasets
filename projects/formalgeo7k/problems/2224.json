@@ -2,9 +2,9 @@
   "problem_id": 2224,
   "annotation": "DengfengYue_2023-04-16",
   "source": "Geometry3k-2322",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot S, L M = 16 and P N = 4 x. What is x?",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，LM=16，MS=SN，PN=4*x，QS=7，RS=7，圆S的半径与直线MS的长度相等，圆S的半径与直线SN的长度相等，圆S的圆心为S，MQ⊥SQ，PR垂直于SR。求x的值。",
+  "problem_text_en": "As shown in the diagram, LM=16, MS=SN, PN=4*x, QS=7, RS=7, the radius of circle S is equal to the length of line MS, the radius of ⊙S is equal to the length of line SN, S is the center of circle S, MQ is perpendicular to SQ, PR⊥SR. Find the value of x.",
   "problem_img": "2224.png",
   "construction_cdl": [
     "Shape(MQ,QS,SM)",
@@ -13,7 +13,18 @@
     "Collinear(NRP)",
     "Cocircular(S,MLPN)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(LM),16)",
+    "Equal(LengthOfLine(MS),LengthOfLine(SN))",
+    "Equal(LengthOfLine(PN),4*x)",
+    "Equal(LengthOfLine(QS),7)",
+    "Equal(LengthOfLine(RS),7)",
+    "Equal(RadiusOfCircle(S),LengthOfLine(MS))",
+    "Equal(RadiusOfCircle(S),LengthOfLine(SN))",
+    "IsCentreOfCircle(S,S)",
+    "PerpendicularBetweenLine(MQ,SQ)",
+    "PerpendicularBetweenLine(PR,SR)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(S,S)",
     "Equal(LengthOfLine(LM),16)",
@@ -38,7 +49,14 @@
     "right_triangle_judgment_angle(1,SRN)",
     "right_triangle_property_pythagorean(1,SRN)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "circle_property_chord_perpendicular_bisect_chord(1,S,SQ,ML)",
+      "line_addition(1,MQ,QL)",
+      "right_triangle_judgment_angle(1,MQS)",
+      "circle_property_chord_perpendicular_bisect_chord(1,S,SR,PN)",
+      "line_addition(1,PR,RN)"
+    ],
     "right_triangle_judgment_angle(1,MQS)": [
       "right_triangle_property_pythagorean(1,MQS)"
     ],
@@ -47,13 +65,6 @@
     ],
     "right_triangle_judgment_angle(1,SRN)": [
       "right_triangle_property_pythagorean(1,SRN)"
-    ],
-    "START": [
-      "circle_property_chord_perpendicular_bisect_chord(1,S,SQ,ML)",
-      "line_addition(1,MQ,QL)",
-      "right_triangle_judgment_angle(1,MQS)",
-      "circle_property_chord_perpendicular_bisect_chord(1,S,SR,PN)",
-      "line_addition(1,PR,RN)"
     ]
   }
 }

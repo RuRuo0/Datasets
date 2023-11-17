@@ -2,9 +2,9 @@
   "problem_id": 675,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-692",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the parallelogram. Round to the nearest tenth if necessary.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，BC=33，DE=10，∠CDE=45°，四边形CDAB是▱，CE⊥AE。求四边形CDAB的面积。",
+  "problem_text_en": "As shown in the diagram, BC=33, DE=10, ∠CDE=45°, quadrilateral CDAB is a parallelogram, CE is perpendicular to AE. Find the area of quadrilateral CDAB.",
   "problem_img": "675.png",
   "construction_cdl": [
     "Shape(CD,DE,EC)",
@@ -12,7 +12,11 @@
     "Collinear(DEA)"
   ],
   "text_cdl": [
-    "Parallelogram(CDAB)"
+    "Equal(LengthOfLine(BC),33)",
+    "Equal(LengthOfLine(DE),10)",
+    "Equal(MeasureOfAngle(CDE),45)",
+    "Parallelogram(CDAB)",
+    "PerpendicularBetweenLine(CE,AE)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(BC),33)",
@@ -30,19 +34,19 @@
     "parallelogram_property_opposite_line_equal(1,BCDA)",
     "parallelogram_area_formula_common(1,CDAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,DEC,CEA)",
+      "triangle_property_angle_sum(1,DEC)",
+      "parallelogram_property_opposite_line_equal(1,BCDA)",
+      "parallelogram_area_formula_common(1,CDAB)"
+    ],
     "adjacent_complementary_angle(1,DEC,CEA)": [
       "altitude_of_quadrilateral_judgment_left_vertex(1,CE,CDAB)",
       "isosceles_triangle_judgment_angle_equal(1,ECD)"
     ],
     "triangle_property_angle_sum(1,DEC)": [
       "isosceles_triangle_judgment_angle_equal(1,ECD)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,DEC,CEA)",
-      "triangle_property_angle_sum(1,DEC)",
-      "parallelogram_property_opposite_line_equal(1,BCDA)",
-      "parallelogram_area_formula_common(1,CDAB)"
     ]
   }
 }

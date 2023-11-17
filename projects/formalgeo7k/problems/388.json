@@ -2,16 +2,21 @@
   "problem_id": 388,
   "annotation": "NaZhu_2023-03-12",
   "source": "Geometry3k-395",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the triangle.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AC=13，CD=6，DB=29，CD垂直于AD。求三角形ADB的面积。",
+  "problem_text_en": "As shown in the diagram, AC=13, CD=6, DB=29, CD⊥AD. Find the area of triangle ADB.",
   "problem_img": "388.png",
   "construction_cdl": [
     "Shape(AC,CD,DA)",
     "Shape(AD,DB,BA)",
     "Collinear(CDB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),13)",
+    "Equal(LengthOfLine(CD),6)",
+    "Equal(LengthOfLine(DB),29)",
+    "PerpendicularBetweenLine(CD,AD)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AC),13)",
     "Equal(LengthOfLine(CD),6)",
@@ -26,14 +31,14 @@
     "right_triangle_property_pythagorean(1,CDA)",
     "triangle_area_formula_sine(1,DBA)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,CDA)": [
-      "right_triangle_property_pythagorean(1,CDA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,CDA,ADB)",
       "right_triangle_judgment_angle(1,CDA)",
       "triangle_area_formula_sine(1,DBA)"
+    ],
+    "right_triangle_judgment_angle(1,CDA)": [
+      "right_triangle_property_pythagorean(1,CDA)"
     ]
   }
 }

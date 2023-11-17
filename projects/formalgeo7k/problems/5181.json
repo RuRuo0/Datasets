@@ -2,9 +2,9 @@
   "problem_id": 5181,
   "annotation": "NaZhu_2023-05-21",
   "source": "GeoQA-5162",
-  "problem_level": 1,
-  "problem_text_cn": "如图:AB是⊙O的直径,弦CD⊥AB于E,若AB=20,CD=16,则线段BE的长为()",
-  "problem_text_en": "As shown in the figure: AB is the diameter of O, the chord CD ⊥ AB is in E, if AB = N_0, CD = N_1, then the length of the line segment BE is ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，AB=20，CD=16，O是圆O的圆心，CE垂直于OE。求直线BE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=20, CD=16, O is the center of circle O, CE is perpendicular to OE. Find the length of line BE.",
   "problem_img": "5181.png",
   "construction_cdl": [
     "Shape(OAC,CO,OA)",
@@ -17,10 +17,10 @@
     "Cocircular(O,ACBD)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "PerpendicularBetweenLine(CE,OE)",
     "Equal(LengthOfLine(AB),20)",
-    "Equal(LengthOfLine(CD),16)"
+    "Equal(LengthOfLine(CD),16)",
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(CE,OE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BE))",
@@ -37,13 +37,7 @@
     "right_triangle_judgment_angle(1,CEO)",
     "right_triangle_property_pythagorean(1,CEO)"
   ],
-  "theorem_seq_dag": {
-    "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
-      "diameter_of_circle_property_length_equal(1,AB,O)"
-    ],
-    "right_triangle_judgment_angle(1,CEO)": [
-      "right_triangle_property_pythagorean(1,CEO)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "circle_property_length_of_radius_and_diameter(1,O)",
@@ -53,6 +47,12 @@
       "line_addition(1,CE,ED)",
       "line_addition(1,OE,EB)",
       "right_triangle_judgment_angle(1,CEO)"
+    ],
+    "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+      "diameter_of_circle_property_length_equal(1,AB,O)"
+    ],
+    "right_triangle_judgment_angle(1,CEO)": [
+      "right_triangle_property_pythagorean(1,CEO)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 4674,
   "annotation": "YiwenHuang_2023-05-21",
   "source": "GeoQA-3948",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示,P为⊙O外一点,PA、PB分别切⊙O于A、B两点,连接AB、OP,OP与⊙O交于点D,连接BD,若∠APB=56°,则∠ABD为()",
-  "problem_text_en": "As shown in the figure, P is a point outside ⊙O, PA and PB is tangent to ⊙O at A and B respectively, connect AB and OP, OP and ⊙O intersect at point D, connect to BD, if ∠APB = N_0, then ∠ABD is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠BPO=28°，圆O的圆心为O，PB是⊙O的切线，BE⊥OE。求∠OBE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BPO=28°, the center of ⊙O is O, PB is the tangent to circle O, BE is perpendicular to OE. Find the measure of ∠OBE.",
   "problem_img": "4674.png",
   "construction_cdl": [
     "Shape(EO,OB,BE)",
@@ -15,10 +15,10 @@
     "Cocircular(O,BD)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(BE,OE)",
+    "Equal(MeasureOfAngle(BPO),28)",
     "IsCentreOfCircle(O,O)",
     "IsTangentOfCircle(PB,O)",
-    "Equal(MeasureOfAngle(BPO),28)"
+    "PerpendicularBetweenLine(BE,OE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(OBE))",
@@ -28,7 +28,7 @@
     "triangle_property_angle_sum(1,EOB)",
     "triangle_property_angle_sum(1,OBP)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(1,PB,O,O)",
       "triangle_property_angle_sum(1,EOB)",

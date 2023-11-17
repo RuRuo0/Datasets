@@ -2,9 +2,9 @@
   "problem_id": 3821,
   "annotation": "YifanWang_2023-05-07",
   "source": "GeoQA-1684",
-  "problem_level": 1,
-  "problem_text_cn": "如图1,在⊙O中,若点C是⁀{AB}中点,∠OAB=50°,则∠BOC的度数为()",
-  "problem_text_en": "As shown in Figure 1, in ⊙O, if point C is the midpoint of ⁀AB, ∠OAB = N_0, then the degree of ∠BOC is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠OAB=50°，O是⊙O的圆心，C是线段AB的中点。求∠BOC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠OAB=50°, the center of circle O is O, C bisects segment AB. Find the measure of ∠BOC.",
   "problem_img": "3821.png",
   "construction_cdl": [
     "Shape(AO,OB,OBA)",
@@ -14,7 +14,11 @@
     "Collinear(ACB)",
     "Cocircular(O,AB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(OAB),50)",
+    "IsCentreOfCircle(O,O)",
+    "IsMidpointOfLine(C,AB)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfAngle(OAB),50)",
@@ -31,7 +35,13 @@
     "median_of_triangle_judgment(1,OC,OAB)",
     "isosceles_triangle_property_line_coincidence(2,OAB,C)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "triangle_property_angle_sum(1,OCB)",
+      "median_of_triangle_judgment(1,OC,OAB)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OAB)"
     ],
@@ -44,12 +54,6 @@
     ],
     "median_of_triangle_judgment(1,OC,OAB)": [
       "isosceles_triangle_property_line_coincidence(2,OAB,C)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "triangle_property_angle_sum(1,OCB)",
-      "median_of_triangle_judgment(1,OC,OAB)"
     ]
   }
 }

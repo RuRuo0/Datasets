@@ -2,9 +2,9 @@
   "problem_id": 5128,
   "annotation": "YimingHe_2023-05-21",
   "source": "GeoQA-4987",
-  "problem_level": 1,
-  "problem_text_cn": "如图,直线a∥b,点A、B分别在直线a、b上,∠1=45°,若点C在直线b上,∠BAC=105°,且直线a和b的距离为3,则线段AC的长度为()",
-  "problem_text_en": "As shown in the figure, the line a ∥ b, the points A and B are on the lines a and b respectively, ∠1 = N_0, if the point C is on the line b, ∠BAC = N_1, and the distance between the lines a and b is N_2, then the length of the line segment AC is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AD=3，∠BAC=105°，∠CDA=90°，∠EAB=45°，AE∥CB。求直线AC的长度。",
+  "problem_text_en": "As shown in the diagram, AD=3, ∠BAC=105°, ∠CDA=90°, ∠EAB=45°, AE∥CB. Find the length of line AC.",
   "problem_img": "5128.png",
   "construction_cdl": [
     "Shape(CD,DA,AC)",
@@ -13,11 +13,11 @@
     "Collinear(CDB)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AE,CB)",
-    "Equal(MeasureOfAngle(CDA),90)",
     "Equal(LengthOfLine(AD),3)",
+    "Equal(MeasureOfAngle(BAC),105)",
+    "Equal(MeasureOfAngle(CDA),90)",
     "Equal(MeasureOfAngle(EAB),45)",
-    "Equal(MeasureOfAngle(BAC),105)"
+    "ParallelBetweenLine(AE,CB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AC))",
@@ -30,7 +30,7 @@
     "triangle_property_angle_sum(1,ACD)",
     "sine_theorem(1,ACD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,CDA,ADB)",
       "parallel_property_alternate_interior_angle(1,AE,CB)",

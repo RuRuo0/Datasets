@@ -2,16 +2,22 @@
   "problem_id": 1645,
   "annotation": "NaZhu_2023-03-26",
   "source": "Geometry3k-1707",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，BC=14，BD=x，FB=20，FC=11，∠DCF=∠BCD。求x的值。",
+  "problem_text_en": "As shown in the diagram, BC=14, BD=x, FB=20, FC=11, ∠DCF=∠BCD. Find the value of x.",
   "problem_img": "1645.png",
   "construction_cdl": [
     "Shape(CF,FD,DC)",
     "Shape(CD,DB,BC)",
     "Collinear(FDB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BC),14)",
+    "Equal(LengthOfLine(BD),x)",
+    "Equal(LengthOfLine(FB),20)",
+    "Equal(LengthOfLine(FC),11)",
+    "Equal(MeasureOfAngle(DCF),MeasureOfAngle(BCD))"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BC),14)",
     "Equal(LengthOfLine(FC),11)",
@@ -26,13 +32,13 @@
     "bisector_of_angle_judgment_angle_equal(1,CD,BCF)",
     "bisector_of_angle_property_line_ratio(1,CD,BCF)"
   ],
-  "theorem_seq_dag": {
-    "bisector_of_angle_judgment_angle_equal(1,CD,BCF)": [
-      "bisector_of_angle_property_line_ratio(1,CD,BCF)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,FD,DB)",
       "bisector_of_angle_judgment_angle_equal(1,CD,BCF)"
+    ],
+    "bisector_of_angle_judgment_angle_equal(1,CD,BCF)": [
+      "bisector_of_angle_property_line_ratio(1,CD,BCF)"
     ]
   }
 }

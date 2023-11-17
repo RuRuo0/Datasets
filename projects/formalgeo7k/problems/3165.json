@@ -2,9 +2,9 @@
   "problem_id": 3165,
   "annotation": "JiaZou_2023-04-23",
   "source": "GeoQA-435",
-  "problem_level": 1,
-  "problem_text_cn": "如图,若AB∥CD,∠A=70°,则∠1的度数是()",
-  "problem_text_en": "As shown in the figure, if AB ∥ CD, ∠A = N_0, then the degree of ∠1 is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠FAB=70°，CD∥AB。求∠CFE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠FAB=70°, CD∥AB. Find the measure of ∠CFE.",
   "problem_img": "3165.png",
   "construction_cdl": [
     "Shape(CF,FE)",
@@ -16,8 +16,8 @@
     "Collinear(EFA)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(CD,AB)",
-    "Equal(MeasureOfAngle(FAB),70)"
+    "Equal(MeasureOfAngle(FAB),70)",
+    "ParallelBetweenLine(CD,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CFE))",
@@ -27,13 +27,13 @@
     "parallel_property_corresponding_angle(1,FD,AB,E)",
     "adjacent_complementary_angle(1,CFE,EFD)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,CD,AB,F)": [
-      "parallel_property_corresponding_angle(1,FD,AB,E)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_collinear_extend(3,CD,AB,F)",
       "adjacent_complementary_angle(1,CFE,EFD)"
+    ],
+    "parallel_property_collinear_extend(3,CD,AB,F)": [
+      "parallel_property_corresponding_angle(1,FD,AB,E)"
     ]
   }
 }

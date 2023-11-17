@@ -2,9 +2,9 @@
   "problem_id": 6808,
   "annotation": "ChenyangMao_2023-06-04",
   "source": "GeoQA-angle-10020",
-  "problem_level": 1,
-  "problem_text_cn": "如图，四边形ABCD中，AD＝BC，点P是对角线BD的中点，E、F分别是AB、CD的中点，若∠EPF＝130°，则∠PEF的度数为（）",
-  "problem_text_en": "",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AD=BC，∠EPF=130°，E平分线段AB，F平分线段CD，P是线段DB的中点。求∠FEP的大小。",
+  "problem_text_en": "As shown in the diagram, AD=BC, ∠EPF=130°, E is the midpoint of segment AB, F is the midpoint of segment CD, P bisects segment DB. Find the measure of ∠FEP.",
   "problem_img": "6808.png",
   "construction_cdl": [
     "Shape(DA,AE,EP,PD)",
@@ -17,11 +17,11 @@
     "Collinear(AEB)"
   ],
   "text_cdl": [
-    "IsMidpointOfLine(P,DB)",
-    "IsMidpointOfLine(F,CD)",
-    "IsMidpointOfLine(E,AB)",
     "Equal(LengthOfLine(AD),LengthOfLine(BC))",
-    "Equal(MeasureOfAngle(EPF),130)"
+    "Equal(MeasureOfAngle(EPF),130)",
+    "IsMidpointOfLine(E,AB)",
+    "IsMidpointOfLine(F,CD)",
+    "IsMidpointOfLine(P,DB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(FEP))",
@@ -35,7 +35,12 @@
     "triangle_property_angle_sum(1,FEP)",
     "isosceles_triangle_property_angle_equal(1,PFE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "midsegment_of_triangle_judgment_midpoint(1,PE,BDA)",
+      "midsegment_of_triangle_judgment_midpoint(1,PF,DBC)",
+      "triangle_property_angle_sum(1,FEP)"
+    ],
     "midsegment_of_triangle_judgment_midpoint(1,PE,BDA)": [
       "midsegment_of_triangle_property_length(1,PE,BDA)"
     ],
@@ -50,11 +55,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,PFE)": [
       "isosceles_triangle_property_angle_equal(1,PFE)"
-    ],
-    "START": [
-      "midsegment_of_triangle_judgment_midpoint(1,PE,BDA)",
-      "midsegment_of_triangle_judgment_midpoint(1,PF,DBC)",
-      "triangle_property_angle_sum(1,FEP)"
     ]
   }
 }

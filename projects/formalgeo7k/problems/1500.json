@@ -2,9 +2,9 @@
   "problem_id": 1500,
   "annotation": "QikeHuang_2023-04-16",
   "source": "Geometry3k-1556",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，BA=7，ED=7，⌒OBA的角度为105，⌒OED的角度为5*x。求x的值。",
+  "problem_text_en": "As shown in the diagram, BA=7, ED=7, the measure of arc OBA is 105, the measure of arc OED is 5*x. Find the value of x.",
   "problem_img": "1500.png",
   "construction_cdl": [
     "Shape(OBA,AB)",
@@ -12,7 +12,12 @@
     "Shape(DE,OED)",
     "Cocircular(O,AEDB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BA),7)",
+    "Equal(LengthOfLine(ED),7)",
+    "Equal(MeasureOfArc(OBA),105)",
+    "Equal(MeasureOfArc(OED),5*x)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BA),7)",
     "Equal(LengthOfLine(ED),7)",
@@ -25,12 +30,12 @@
     "congruent_arc_judgment_chord_equal(1,OBA,OED)",
     "congruent_arc_property_measure_equal(1,OBA,OED)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_chord_equal(1,OBA,OED)": [
-      "congruent_arc_property_measure_equal(1,OBA,OED)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "congruent_arc_judgment_chord_equal(1,OBA,OED)"
+    ],
+    "congruent_arc_judgment_chord_equal(1,OBA,OED)": [
+      "congruent_arc_property_measure_equal(1,OBA,OED)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 2852,
   "annotation": "YimingHe_2023-04-16",
   "source": "GeoQA-4",
-  "problem_level": 1,
-  "problem_text_cn": "如图,直线a⊥直线c,直线b⊥直线c,若∠1=70°,则∠2=()",
-  "problem_text_en": "As shown in the figure, the straight line a ⊥ the straight line c, the straight line b ⊥ the straight line c, if ∠1 = N_0, then ∠2 = ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠GDA=70°，CM⊥DM，MN垂直于EN。求∠FEN的大小。",
+  "problem_text_en": "As shown in the diagram, ∠GDA=70°, CM is perpendicular to DM, MN⊥EN. Find the measure of ∠FEN.",
   "problem_img": "2852.png",
   "construction_cdl": [
     "Shape(CM,MD)",
@@ -21,9 +21,9 @@
     "Collinear(NEB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(GDA),70)",
     "PerpendicularBetweenLine(CM,DM)",
-    "PerpendicularBetweenLine(MN,EN)",
-    "Equal(MeasureOfAngle(GDA),70)"
+    "PerpendicularBetweenLine(MN,EN)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(FEN))",
@@ -36,7 +36,12 @@
     "parallel_judgment_per_per(1,MD,NE)",
     "parallel_property_corresponding_angle(1,EN,DM,F)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,CMD,DMN)",
+      "adjacent_complementary_angle(1,GDA,ADE)",
+      "adjacent_complementary_angle(1,ADE,EDM)"
+    ],
     "adjacent_complementary_angle(1,CMD,DMN)": [
       "perpendicular_judgment_angle(1,DM,NM)"
     ],
@@ -45,11 +50,6 @@
     ],
     "parallel_judgment_per_per(1,MD,NE)": [
       "parallel_property_corresponding_angle(1,EN,DM,F)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,CMD,DMN)",
-      "adjacent_complementary_angle(1,GDA,ADE)",
-      "adjacent_complementary_angle(1,ADE,EDM)"
     ]
   }
 }

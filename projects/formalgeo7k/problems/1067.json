@@ -2,9 +2,9 @@
   "problem_id": 1067,
   "annotation": "NaZhu_2023-03-19",
   "source": "Geometry3k-1102",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If M N \\parallel P Q, use a proportion to find the value of x.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，QN=4，QT=8，TM=15，TP=x，PQ平行于MN。求x的值。",
+  "problem_text_en": "As shown in the diagram, QN=4, QT=8, TM=15, TP=x, PQ is parallel to MN. Find the value of x.",
   "problem_img": "1067.png",
   "construction_cdl": [
     "Shape(MN,NQ,QP,PM)",
@@ -13,6 +13,10 @@
     "Collinear(NQT)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(QN),4)",
+    "Equal(LengthOfLine(QT),8)",
+    "Equal(LengthOfLine(TM),15)",
+    "Equal(LengthOfLine(TP),x)",
     "ParallelBetweenLine(PQ,MN)"
   ],
   "image_cdl": [
@@ -30,17 +34,17 @@
     "similar_triangle_property_line_ratio(1,QTP,NTM)",
     "similar_triangle_property_line_ratio(1,PQT,MNT)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,PQ,MN,T)",
+      "line_addition(1,NQ,QT)"
+    ],
     "parallel_property_corresponding_angle(1,PQ,MN,T)": [
       "similar_triangle_judgment_aa(1,QTP,NTM)"
     ],
     "similar_triangle_judgment_aa(1,QTP,NTM)": [
       "similar_triangle_property_line_ratio(1,QTP,NTM)",
       "similar_triangle_property_line_ratio(1,PQT,MNT)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,PQ,MN,T)",
-      "line_addition(1,NQ,QT)"
     ]
   }
 }

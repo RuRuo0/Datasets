@@ -2,14 +2,19 @@
   "problem_id": 2367,
   "annotation": "ChenyangMao_2023-04-09",
   "source": "Geometry3k-2482",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=x，BC=4，∠CAB=45°，BC垂直于AC。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=x, BC=4, ∠CAB=45°, BC⊥AC. Find the value of x.",
   "problem_img": "2367.png",
   "construction_cdl": [
     "Shape(CA,AB,BC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),x)",
+    "Equal(LengthOfLine(BC),4)",
+    "Equal(MeasureOfAngle(CAB),45)",
+    "PerpendicularBetweenLine(BC,AC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BC),4)",
     "Equal(LengthOfLine(AB),x)",
@@ -24,16 +29,16 @@
     "isosceles_triangle_judgment_angle_equal(1,CAB)",
     "right_triangle_property_pythagorean(1,BCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "triangle_property_angle_sum(1,ABC)",
+      "right_triangle_judgment_angle(1,BCA)"
+    ],
     "triangle_property_angle_sum(1,ABC)": [
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
     ],
     "right_triangle_judgment_angle(1,BCA)": [
       "right_triangle_property_pythagorean(1,BCA)"
-    ],
-    "START": [
-      "triangle_property_angle_sum(1,ABC)",
-      "right_triangle_judgment_angle(1,BCA)"
     ]
   }
 }

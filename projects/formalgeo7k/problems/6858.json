@@ -2,9 +2,9 @@
   "problem_id": 6858,
   "annotation": "DengfengYue_2023-06-04",
   "source": "GeoQA-angle-10082",
-  "problem_level": 1,
-  "problem_text_cn": "如图，已知BD是⊙O的直径，BD⊥AC于点E，∠AOC＝100°，则∠OCD的度数是（）",
-  "problem_text_en": "",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，∠AEO=90°，∠COA=100°，圆O的圆心为O，⊙O的直径为DB。求∠OCD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AEO=90°, ∠COA=100°, O is the center of circle O, DB is the diameter of circle O. Find the measure of ∠OCD.",
   "problem_img": "6858.png",
   "construction_cdl": [
     "Shape(AO,OD,ODA)",
@@ -19,10 +19,10 @@
     "Cocircular(O,DABC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(DB,O)",
     "Equal(MeasureOfAngle(AEO),90)",
-    "Equal(MeasureOfAngle(COA),100)"
+    "Equal(MeasureOfAngle(COA),100)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(DB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(OCD))",
@@ -39,7 +39,15 @@
     "isosceles_triangle_judgment_line_equal(1,OCD)",
     "isosceles_triangle_property_angle_equal(1,OCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_center_angle(1,OAC,O)",
+      "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)",
+      "arc_addition_measure(1,OAB,OBC)",
+      "arc_property_circumference_angle_external(1,OBC,D)",
+      "radius_of_circle_property_length_equal(1,OD,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)"
+    ],
     "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)": [
       "congruent_arc_judgment_length_equal(1,OAB,OBC)"
     ],
@@ -54,14 +62,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OCD)": [
       "isosceles_triangle_property_angle_equal(1,OCD)"
-    ],
-    "START": [
-      "arc_property_center_angle(1,OAC,O)",
-      "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)",
-      "arc_addition_measure(1,OAB,OBC)",
-      "arc_property_circumference_angle_external(1,OBC,D)",
-      "radius_of_circle_property_length_equal(1,OD,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)"
     ]
   }
 }

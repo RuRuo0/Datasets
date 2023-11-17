@@ -2,9 +2,9 @@
   "problem_id": 3686,
   "annotation": "XiaoxiaoJin_2023-04-30",
   "source": "GeoQA-1435",
-  "problem_level": 1,
-  "problem_text_cn": "如图Rt△ABC中,∠ACB=90°,∠A=50°,将其折叠,使点A落在边CB上A′处,折痕为CD,则∠A′DB的度数为()",
-  "problem_text_en": "As shown in Rt△ABC, ∠ACB = N_0, ∠A = N_1, fold it so that point A falls on the edge CB at A′, and the crease is CD, then the degree of ∠A′DB is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠CAB=50°，∠ECA=90°，三角形ECD镜像全等于三角形ADC。求∠EDB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAB=50°, ∠ECA=90°, △ECD is mirror congruent to △ADC. Find the measure of ∠EDB.",
   "problem_img": "3686.png",
   "construction_cdl": [
     "Shape(BE,ED,DB)",
@@ -14,9 +14,9 @@
     "Collinear(BEC)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(CAB),50)",
     "Equal(MeasureOfAngle(ECA),90)",
-    "MirrorCongruentBetweenTriangle(ECD,ADC)",
-    "Equal(MeasureOfAngle(CAB),50)"
+    "MirrorCongruentBetweenTriangle(ECD,ADC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(EDB))",
@@ -29,7 +29,7 @@
     "triangle_property_angle_sum(1,ECD)",
     "triangle_property_angle_sum(1,DCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "mirror_congruent_triangle_property_angle_equal(1,ECD,ADC)",
       "angle_addition(1,ECD,DCA)",

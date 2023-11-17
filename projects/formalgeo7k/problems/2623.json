@@ -3,14 +3,20 @@
   "annotation": "DengfengYue_2023-04-09",
   "source": "Geometry3k-2756",
   "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of \\triangle W Z X, if \\triangle W Z X \\sim \\triangle S R T, S T = 6, W X = 5, and the perimeter of \\triangle S R T = 15.",
+  "problem_text_cn": "如图所示，ST=6，WX=5，△SRT的周长为15，三角形WZX的周长为Mul(PerimeterOfTriangle(SRT),RatioOfSimilarTriangle(WZX,SRT))，三角形WZX相似于三角形SRT。求△WZX的周长。",
+  "problem_text_en": "As shown in the diagram, ST=6, WX=5, the perimeter of triangle SRT is 15, the perimeter of triangle WZX is Mul(PerimeterOfTriangle(SRT),RatioOfSimilarTriangle(WZX,SRT)), triangle WZX is similar to triangle SRT.. Find the perimeter of triangle WZX.",
   "problem_img": "2623.png",
   "construction_cdl": [
     "Shape(WZ,ZX,XW)",
     "Shape(SR,RT,TS)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(ST),6)",
+    "Equal(LengthOfLine(WX),5)",
+    "Equal(PerimeterOfTriangle(SRT),15)",
+    "Equal(PerimeterOfTriangle(WZX),Mul(PerimeterOfTriangle(SRT),RatioOfSimilarTriangle(WZX,SRT)))",
+    "SimilarBetweenTriangle(WZX,SRT)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(ST),6)",
     "Equal(LengthOfLine(WX),5)",
@@ -23,7 +29,7 @@
   "theorem_seqs": [
     "similar_triangle_property_line_ratio(1,ZXW,RTS)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "similar_triangle_property_line_ratio(1,ZXW,RTS)"
     ]

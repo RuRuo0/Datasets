@@ -2,9 +2,9 @@
   "problem_id": 5876,
   "annotation": "QikeHuang_2023-05-28",
   "source": "GeoQA-7924",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在Rt△ABC中,∠BAC=90°,AB=2,AC=3,D为BC的中点,动点E,F分别在AB,AC上,分别过点EG∥AD∥FH,交BC于点G、H,若EF∥BC,则EF+EG+FH的值为()",
-  "problem_text_en": "As shown in the figure, in Rt△ABC, ∠BAC = N_0, AB = N_1, AC = N_2, D is the midpoint of BC, and moving points E and F are on AB and AC respectively, passing points to draw EG ∥ AD ∥ FH, and they intersect BC at points G and H, if EF ∥ BC, then the value of EF + EG + FH is ()",
+  "problem_level": 18,
+  "problem_text_cn": "如图所示，AB=2，AC=3，∠BAC=90°，D平分线段BC，AD平行于FH，EG∥AD，FE平行于CB。求直线EG的长度、直线FH的长度与直线EF的长度之和。",
+  "problem_text_en": "As shown in the diagram, AB=2, AC=3, ∠BAC=90°, D is the midpoint of segment BC, AD∥FH, EG∥AD, FE∥CB. Find the sum of the length of line EG, the length of line FH and the length of line EF.",
   "problem_img": "5876.png",
   "construction_cdl": [
     "Shape(BE,EG,GB)",
@@ -20,13 +20,13 @@
     "Collinear(AMD)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(EG,AD)",
-    "ParallelBetweenLine(AD,FH)",
-    "ParallelBetweenLine(FE,CB)",
-    "IsMidpointOfLine(D,BC)",
     "Equal(LengthOfLine(AB),2)",
     "Equal(LengthOfLine(AC),3)",
-    "Equal(MeasureOfAngle(BAC),90)"
+    "Equal(MeasureOfAngle(BAC),90)",
+    "IsMidpointOfLine(D,BC)",
+    "ParallelBetweenLine(AD,FH)",
+    "ParallelBetweenLine(EG,AD)",
+    "ParallelBetweenLine(FE,CB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Add(LengthOfLine(EG),LengthOfLine(FH),LengthOfLine(EF)))",
@@ -51,7 +51,20 @@
     "isosceles_triangle_judgment_angle_equal(1,GBE)",
     "isosceles_triangle_judgment_angle_equal(1,HFC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "right_triangle_judgment_angle(1,BAC)",
+      "line_addition(1,BG,GH)",
+      "line_addition(1,BH,HC)",
+      "line_addition(1,BD,DC)",
+      "median_of_triangle_judgment(1,AD,ACB)",
+      "parallel_judgment_par_par(1,EG,AD,FH)",
+      "parallel_property_collinear_extend(3,BC,EF,G)",
+      "parallel_property_corresponding_angle(1,EG,AD,B)",
+      "parallel_property_corresponding_angle(2,AD,FH,C)",
+      "sine_theorem(1,DBA)",
+      "sine_theorem(1,DAC)"
+    ],
     "right_triangle_judgment_angle(1,BAC)": [
       "right_triangle_property_pythagorean(1,BAC)",
       "right_triangle_property_length_of_median(1,BAC,D)"
@@ -96,19 +109,6 @@
     ],
     "sine_theorem(1,DAC)": [
       "isosceles_triangle_judgment_angle_equal(1,HFC)"
-    ],
-    "START": [
-      "right_triangle_judgment_angle(1,BAC)",
-      "line_addition(1,BG,GH)",
-      "line_addition(1,BH,HC)",
-      "line_addition(1,BD,DC)",
-      "median_of_triangle_judgment(1,AD,ACB)",
-      "parallel_judgment_par_par(1,EG,AD,FH)",
-      "parallel_property_collinear_extend(3,BC,EF,G)",
-      "parallel_property_corresponding_angle(1,EG,AD,B)",
-      "parallel_property_corresponding_angle(2,AD,FH,C)",
-      "sine_theorem(1,DBA)",
-      "sine_theorem(1,DAC)"
     ]
   }
 }

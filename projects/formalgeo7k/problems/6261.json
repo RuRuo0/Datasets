@@ -2,9 +2,9 @@
   "problem_id": 6261,
   "annotation": "FangzhenZhu_2023-06-04",
   "source": "GeoQA-8883",
-  "problem_level": 1,
-  "problem_text_cn": "如图,正方形ABCD的边长为3,以CD为一边向CD两侧作等边三角形PCD和等边三角形QCD,那么PQ的长是()",
-  "problem_text_en": "As shown in the figure, the edge length of the square ABCD is N_0, and the equilateral triangle PCD and equilateral triangle QCD are made on both sides of CD with CD as one edge, then the length of PQ is ()",
+  "problem_level": 24,
+  "problem_text_cn": "如图所示，AB=3，三角形DCQ为等边三角形，△PCD为等边△，ABCD是正方形。求直线PQ的长度。",
+  "problem_text_en": "As shown in the diagram, AB=3, △DCQ is an equilateral △, △PCD is an equilateral △, quadrilateral ABCD is a square. Find the length of line PQ.",
   "problem_img": "6261.png",
   "construction_cdl": [
     "Shape(AB,BC,CE,EP,PD,DA)",
@@ -16,10 +16,10 @@
     "Collinear(DEC)"
   ],
   "text_cdl": [
-    "Square(ABCD)",
-    "EquilateralTriangle(PCD)",
+    "Equal(LengthOfLine(AB),3)",
     "EquilateralTriangle(DCQ)",
-    "Equal(LengthOfLine(AB),3)"
+    "EquilateralTriangle(PCD)",
+    "Square(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(PQ))",
@@ -50,7 +50,25 @@
     "line_addition(1,PE,EQ)",
     "line_addition(1,DE,EC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "isosceles_triangle_judgment_line_equal(1,DPQ)",
+      "isosceles_triangle_judgment_line_equal(1,CQP)",
+      "isosceles_triangle_property_angle_equal(1,PCD)",
+      "isosceles_triangle_property_angle_equal(1,CDP)",
+      "isosceles_triangle_property_angle_equal(1,DCQ)",
+      "isosceles_triangle_property_angle_equal(1,CQD)",
+      "triangle_property_angle_sum(1,DPE)",
+      "triangle_property_angle_sum(1,PCE)",
+      "triangle_property_angle_sum(1,ECQ)",
+      "triangle_property_angle_sum(1,DEQ)",
+      "triangle_property_angle_sum(1,DPC)",
+      "triangle_property_angle_sum(1,CQD)",
+      "adjacent_complementary_angle(1,PED,DEQ)",
+      "adjacent_complementary_angle(1,QEC,CEP)",
+      "line_addition(1,PE,EQ)",
+      "line_addition(1,DE,EC)"
+    ],
     "isosceles_triangle_judgment_line_equal(1,DPQ)": [
       "isosceles_triangle_property_angle_equal(1,DPQ)",
       "mirror_congruent_triangle_judgment_sas(1,DPE,DEQ)"
@@ -128,24 +146,6 @@
     ],
     "right_triangle_judgment_angle(1,CEP)": [
       "right_triangle_property_pythagorean(1,CEP)"
-    ],
-    "START": [
-      "isosceles_triangle_judgment_line_equal(1,DPQ)",
-      "isosceles_triangle_judgment_line_equal(1,CQP)",
-      "isosceles_triangle_property_angle_equal(1,PCD)",
-      "isosceles_triangle_property_angle_equal(1,CDP)",
-      "isosceles_triangle_property_angle_equal(1,DCQ)",
-      "isosceles_triangle_property_angle_equal(1,CQD)",
-      "triangle_property_angle_sum(1,DPE)",
-      "triangle_property_angle_sum(1,PCE)",
-      "triangle_property_angle_sum(1,ECQ)",
-      "triangle_property_angle_sum(1,DEQ)",
-      "triangle_property_angle_sum(1,DPC)",
-      "triangle_property_angle_sum(1,CQD)",
-      "adjacent_complementary_angle(1,PED,DEQ)",
-      "adjacent_complementary_angle(1,QEC,CEP)",
-      "line_addition(1,PE,EQ)",
-      "line_addition(1,DE,EC)"
     ]
   }
 }

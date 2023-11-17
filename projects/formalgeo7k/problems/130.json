@@ -2,9 +2,9 @@
   "problem_id": 130,
   "annotation": "XiaokaiZhang_2023-04-02",
   "source": "Geometry3k-132",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot A, W X = X Y = 22. Find A B.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=5*x，CA=3*x+4，WX=22，XY=22，⊙A的圆心为A，AB垂直于XB，XC垂直于AC。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, AB=5*x, CA=3*x+4, WX=22, XY=22, the center of circle A is A, AB⊥XB, XC is perpendicular to AC. Find the length of line AB.",
   "problem_img": "130.png",
   "construction_cdl": [
     "Shape(AYW,WB,BA,AC,CY)",
@@ -17,8 +17,13 @@
     "Cocircular(A,WXY)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AB),5*x)",
+    "Equal(LengthOfLine(CA),3*x+4)",
     "Equal(LengthOfLine(WX),22)",
-    "Equal(LengthOfLine(XY),22)"
+    "Equal(LengthOfLine(XY),22)",
+    "IsCentreOfCircle(A,A)",
+    "PerpendicularBetweenLine(AB,XB)",
+    "PerpendicularBetweenLine(XC,AC)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(A,A)",
@@ -38,7 +43,13 @@
     "mirror_congruent_triangle_judgment_hl(1,ABX,AXC)",
     "mirror_congruent_triangle_property_line_equal(1,XAB,XCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,WBA,ABX)",
+      "circle_property_chord_perpendicular_bisect_chord(1,A,AC,XY)",
+      "line_addition(1,WB,BX)",
+      "line_addition(1,XC,CY)"
+    ],
     "adjacent_complementary_angle(1,WBA,ABX)": [
       "circle_property_chord_perpendicular_bisect_chord(1,A,AB,WX)"
     ],
@@ -56,12 +67,6 @@
     ],
     "mirror_congruent_triangle_judgment_hl(1,ABX,AXC)": [
       "mirror_congruent_triangle_property_line_equal(1,XAB,XCA)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,WBA,ABX)",
-      "circle_property_chord_perpendicular_bisect_chord(1,A,AC,XY)",
-      "line_addition(1,WB,BX)",
-      "line_addition(1,XC,CY)"
     ]
   }
 }

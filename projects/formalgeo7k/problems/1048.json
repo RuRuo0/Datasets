@@ -2,16 +2,22 @@
   "problem_id": 1048,
   "annotation": "NaZhu_2023-03-19",
   "source": "Geometry3k-1081",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AC=x，AD=4，BC=13，BD=6，∠DCA=∠BCD。求x的值。",
+  "problem_text_en": "As shown in the diagram, AC=x, AD=4, BC=13, BD=6, ∠DCA=∠BCD. Find the value of x.",
   "problem_img": "1048.png",
   "construction_cdl": [
     "Shape(CA,AD,DC)",
     "Shape(CD,DB,BC)",
     "Collinear(ADB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),x)",
+    "Equal(LengthOfLine(AD),4)",
+    "Equal(LengthOfLine(BC),13)",
+    "Equal(LengthOfLine(BD),6)",
+    "Equal(MeasureOfAngle(DCA),MeasureOfAngle(BCD))"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AC),x)",
     "Equal(LengthOfLine(AD),4)",
@@ -25,12 +31,12 @@
     "bisector_of_angle_judgment_angle_equal(1,CD,BCA)",
     "bisector_of_angle_property_line_ratio(1,CD,BCA)"
   ],
-  "theorem_seq_dag": {
-    "bisector_of_angle_judgment_angle_equal(1,CD,BCA)": [
-      "bisector_of_angle_property_line_ratio(1,CD,BCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "bisector_of_angle_judgment_angle_equal(1,CD,BCA)"
+    ],
+    "bisector_of_angle_judgment_angle_equal(1,CD,BCA)": [
+      "bisector_of_angle_property_line_ratio(1,CD,BCA)"
     ]
   }
 }

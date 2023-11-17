@@ -2,9 +2,9 @@
   "problem_id": 816,
   "annotation": "NaZhu_2023-04-09",
   "source": "Geometry3k-843",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Triangle J K L is circumscribed about \\odot R. Find the perimeter of \\triangle J K L.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，JO=12，KM=7，NL=x+3，OL=4*x-9，△KJL的内心为R，圆O的切线为JM，JO是⊙O的切线，KM是⊙O的切线，KN是⊙O的切线，⊙O的切线为LN，LO是⊙O的切线。求三角形JLK的周长。",
+  "problem_text_en": "As shown in the diagram, JO=12, KM=7, NL=x+3, OL=4*x-9, R is the center of the inscribed circle of △KJL, the tangent to ⊙R is JM, JO is the tangent to circle R, the tangent to circle R is KM, KN is the tangent to ⊙R, the tangent to ⊙R is LN, the tangent to circle R is LO. Find the perimeter of triangle JLK.",
   "problem_img": "816.png",
   "construction_cdl": [
     "Shape(RNM,RMO,RON)",
@@ -17,7 +17,17 @@
     "Cocircular(R,MON)"
   ],
   "text_cdl": [
-    "IsIncenterOfTriangle(R,KJL)"
+    "Equal(LengthOfLine(JO),12)",
+    "Equal(LengthOfLine(KM),7)",
+    "Equal(LengthOfLine(NL),x+3)",
+    "Equal(LengthOfLine(OL),4*x-9)",
+    "IsIncenterOfTriangle(R,KJL)",
+    "IsTangentOfCircle(JM,R)",
+    "IsTangentOfCircle(JO,R)",
+    "IsTangentOfCircle(KM,R)",
+    "IsTangentOfCircle(KN,R)",
+    "IsTangentOfCircle(LN,R)",
+    "IsTangentOfCircle(LO,R)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(KM),7)",
@@ -42,7 +52,7 @@
     "line_addition(1,JO,OL)",
     "line_addition(1,LN,NK)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_length_equal(1,JM,JO,R)",
       "tangent_of_circle_property_length_equal(1,KM,KN,R)",

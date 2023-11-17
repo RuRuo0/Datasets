@@ -2,9 +2,9 @@
   "problem_id": 3131,
   "annotation": "YimingHe_2023-04-23",
   "source": "GeoQA-385",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,AB=AC,过点A作AD∥BC.若∠1=70°,则∠BAC的大小为()",
-  "problem_text_en": "As shown in the figure, in △ABC, AB = AC, passing point A to draw AD ∥ BC. If ∠1 = N_0, then the size of ∠BAC is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=AC，∠DAC=70°，AD平行于BC。求∠CAB的大小。",
+  "problem_text_en": "As shown in the diagram, AB=AC, ∠DAC=70°, AD∥BC. Find the measure of ∠CAB.",
   "problem_img": "3131.png",
   "construction_cdl": [
     "Shape(AB,BC,CA)",
@@ -12,8 +12,8 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(AB),LengthOfLine(AC))",
-    "ParallelBetweenLine(AD,BC)",
-    "Equal(MeasureOfAngle(DAC),70)"
+    "Equal(MeasureOfAngle(DAC),70)",
+    "ParallelBetweenLine(AD,BC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CAB))",
@@ -24,14 +24,14 @@
     "isosceles_triangle_property_angle_equal(1,ABC)",
     "triangle_property_angle_sum(1,ABC)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,ABC)": [
-      "isosceles_triangle_property_angle_equal(1,ABC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_alternate_interior_angle(1,AD,BC)",
       "isosceles_triangle_judgment_line_equal(1,ABC)",
       "triangle_property_angle_sum(1,ABC)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,ABC)": [
+      "isosceles_triangle_property_angle_equal(1,ABC)"
     ]
   }
 }

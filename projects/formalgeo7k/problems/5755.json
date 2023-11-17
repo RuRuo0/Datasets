@@ -2,9 +2,9 @@
   "problem_id": 5755,
   "annotation": "XiaokaiZhang_2023-05-28",
   "source": "GeoQA-7603",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知⊙O的半径为6,OM=12,AC⊥OM,则OP的长为()",
-  "problem_text_en": "As shown in the figure, it is known that the radius of ⊙O is N_0, M is a point outside ⊙O, and OM = N_1, the line passing M and ⊙O intersect at A and B, the symmetrical points of points A and B with respect to OM are C, D, AD and BC intersect at point P, then the length of OP is ()",
+  "problem_level": 17,
+  "problem_text_cn": "如图所示，OM=12，⊙O的半径为6，⊙O的圆心为O，AN垂直于ON。求直线OP的长度。",
+  "problem_text_en": "As shown in the diagram, OM=12, the radius of circle O is 6, the center of ⊙O is O, AN⊥ON. Find the length of line OP.",
   "problem_img": "5755.png",
   "construction_cdl": [
     "Shape(OBA,AB)",
@@ -26,9 +26,9 @@
     "Cocircular(O,BAEC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "Equal(RadiusOfCircle(O),6)",
     "Equal(LengthOfLine(OM),12)",
+    "Equal(RadiusOfCircle(O),6)",
+    "IsCentreOfCircle(O,O)",
     "PerpendicularBetweenLine(AN,ON)"
   ],
   "image_cdl": [],
@@ -53,7 +53,19 @@
     "mirror_similar_triangle_property_line_ratio(1,MOA,APO)",
     "mirror_similar_triangle_property_line_ratio(1,AMO,POA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "circle_property_chord_perpendicular_bisect_chord(1,O,ON,AC)",
+      "angle_addition(1,CON,NOA)",
+      "arc_property_center_angle(1,OAC,O)",
+      "arc_property_circumference_angle_external(1,OAC,B)",
+      "triangle_property_angle_sum(1,AMO)",
+      "triangle_property_angle_sum(1,MPB)",
+      "vertical_angle(1,CPN,DPO)",
+      "angle_addition(1,NPA,APD)",
+      "angle_addition(1,APD,DPO)",
+      "radius_of_circle_property_length_equal(1,OA,O)"
+    ],
     "circle_property_chord_perpendicular_bisect_chord(1,O,ON,AC)": [
       "mirror_congruent_triangle_judgment_sas(1,NOA,NCO)",
       "mirror_congruent_triangle_judgment_sas(1,NPA,NCP)",
@@ -99,18 +111,6 @@
     "mirror_similar_triangle_judgment_aa(1,MOA,APO)": [
       "mirror_similar_triangle_property_line_ratio(1,MOA,APO)",
       "mirror_similar_triangle_property_line_ratio(1,AMO,POA)"
-    ],
-    "START": [
-      "circle_property_chord_perpendicular_bisect_chord(1,O,ON,AC)",
-      "angle_addition(1,CON,NOA)",
-      "arc_property_center_angle(1,OAC,O)",
-      "arc_property_circumference_angle_external(1,OAC,B)",
-      "triangle_property_angle_sum(1,AMO)",
-      "triangle_property_angle_sum(1,MPB)",
-      "vertical_angle(1,CPN,DPO)",
-      "angle_addition(1,NPA,APD)",
-      "angle_addition(1,APD,DPO)",
-      "radius_of_circle_property_length_equal(1,OA,O)"
     ]
   }
 }

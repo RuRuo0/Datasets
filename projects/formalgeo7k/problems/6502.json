@@ -2,9 +2,9 @@
   "problem_id": 6502,
   "annotation": "NaZhu_2023-06-04",
   "source": "GeoQA-9412",
-  "problem_level": 1,
-  "problem_text_cn": "如图,等腰△ABC中,AB=AC,▱AFDE的顶点D、E、F分别在边BC、AC、AB上,如果▱AFDE的周长为30,那么等腰△ABC的腰长为()",
-  "problem_text_en": "As shown in the figure, in the isosceles △ABC, AB = AC, the vertices D, E, and F of ▱AFDE are on the sides BC, AC, and AB, respectively. If the perimeter of ▱AFDE is N_0, then the waist length of isosceles △ABC is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，四边形AFDE的周长为30，△ABC为等腰△，AE和FD是平行四边形AFDE的一组对边。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, the perimeter of quadrilateral AFDE is 30, triangleABC is an isosceles triangle, FA and DE are opposite sides of the ▱ AFDE. Find the length of line AB.",
   "problem_img": "6502.png",
   "construction_cdl": [
     "Shape(AF,FD,DE,EA)",
@@ -15,9 +15,9 @@
     "Collinear(BDC)"
   ],
   "text_cdl": [
+    "Equal(PerimeterOfQuadrilateral(AFDE),30)",
     "IsoscelesTriangle(ABC)",
-    "Parallelogram(AFDE)",
-    "Equal(PerimeterOfQuadrilateral(AFDE),30)"
+    "Parallelogram(AFDE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -32,7 +32,15 @@
     "quadrilateral_perimeter_formula(1,AFDE)",
     "line_addition(1,AE,EC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "isosceles_triangle_property_angle_equal(1,ABC)",
+      "parallel_property_collinear_extend(1,FA,DE,B)",
+      "parallelogram_property_opposite_line_equal(1,AFDE)",
+      "parallelogram_property_opposite_line_equal(1,FDEA)",
+      "quadrilateral_perimeter_formula(1,AFDE)",
+      "line_addition(1,AE,EC)"
+    ],
     "isosceles_triangle_property_angle_equal(1,ABC)": [
       "isosceles_triangle_judgment_angle_equal(1,EDC)"
     ],
@@ -41,14 +49,6 @@
     ],
     "parallel_property_corresponding_angle(2,BF,DE,C)": [
       "isosceles_triangle_judgment_angle_equal(1,EDC)"
-    ],
-    "START": [
-      "isosceles_triangle_property_angle_equal(1,ABC)",
-      "parallel_property_collinear_extend(1,FA,DE,B)",
-      "parallelogram_property_opposite_line_equal(1,AFDE)",
-      "parallelogram_property_opposite_line_equal(1,FDEA)",
-      "quadrilateral_perimeter_formula(1,AFDE)",
-      "line_addition(1,AE,EC)"
     ]
   }
 }

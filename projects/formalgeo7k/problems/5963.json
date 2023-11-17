@@ -2,9 +2,9 @@
   "problem_id": 5963,
   "annotation": "XiaoxiaoJin_2023-05-28",
   "source": "GeoQA-8402",
-  "problem_level": 1,
-  "problem_text_cn": "如图,以点O为圆心的两个同心圆中,大圆的弦AB是小圆的切线,C为切点,若两圆的半径分别是10cm、6cm,则弦AB的长为()",
-  "problem_text_en": "As shown in the figure, among the two concentric circles with point O as the center, the chord AB of the great circle is the tangent of the small circle, and C is the tangent point. If the radii of the two circles are N_0 and N_1 respectively, the length of the chord AB is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，OA=10，OC=6，⊙N的圆心为O，OC是AB的垂直平分线，AC是圆O的切线。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, OA=10, OC=6, the center of circle N is O, OC is the perpendicular bisector of AB, AC is the tangent to ⊙O. Find the length of line AB.",
   "problem_img": "5963.png",
   "construction_cdl": [
     "Shape(BC,CA,OAB)",
@@ -19,8 +19,8 @@
     "Equal(LengthOfLine(OA),10)",
     "Equal(LengthOfLine(OC),6)",
     "IsCentreOfCircle(O,N)",
-    "IsTangentOfCircle(AC,O)",
-    "IsPerpendicularBisectorOfLine(OC,AB)"
+    "IsPerpendicularBisectorOfLine(OC,AB)",
+    "IsTangentOfCircle(AC,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -30,13 +30,13 @@
     "right_triangle_property_pythagorean(1,ACO)",
     "line_addition(1,AC,CB)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,ACO)": [
-      "right_triangle_property_pythagorean(1,ACO)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,ACO)",
       "line_addition(1,AC,CB)"
+    ],
+    "right_triangle_judgment_angle(1,ACO)": [
+      "right_triangle_property_pythagorean(1,ACO)"
     ]
   }
 }

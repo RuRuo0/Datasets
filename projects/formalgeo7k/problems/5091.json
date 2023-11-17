@@ -2,9 +2,9 @@
   "problem_id": 5091,
   "annotation": "YimingHe_2023-05-21",
   "source": "GeoQA-4902",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB与CD相交于点E,AD∥BC,\\frac{BE}{AE}=\\frac{3}{5},CD=16,则DE的长为()",
-  "problem_text_en": "As shown in the figure, AB and CD intersect at point E, AD ∥ BC, \\frac{BE}{AE}=\\frac{N_0}{N_1},CD=N_2, then the length of DE is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，Div(LengthOfLine(BE)=LengthOfLine(AE))，CD=16，CB平行于AD。求直线DE的长度。",
+  "problem_text_en": "As shown in the diagram, Div(LengthOfLine(BE)=LengthOfLine(AE)), CD=16, CB is parallel to AD. Find the length of line DE.",
   "problem_img": "5091.png",
   "construction_cdl": [
     "Shape(CE,EB,BC)",
@@ -13,9 +13,9 @@
     "Collinear(AEB)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(CB,AD)",
     "Equal(Div(LengthOfLine(BE),LengthOfLine(AE)),3/5)",
-    "Equal(LengthOfLine(CD),16)"
+    "Equal(LengthOfLine(CD),16)",
+    "ParallelBetweenLine(CB,AD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(DE))",
@@ -28,7 +28,12 @@
     "similar_triangle_property_line_ratio(1,ADE,BCE)",
     "similar_triangle_property_line_ratio(1,DEA,CEB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_alternate_interior_angle(1,CB,AD)",
+      "parallel_property_alternate_interior_angle(2,CB,AD)",
+      "line_addition(1,CE,ED)"
+    ],
     "parallel_property_alternate_interior_angle(1,CB,AD)": [
       "similar_triangle_judgment_aa(1,EAD,EBC)"
     ],
@@ -38,11 +43,6 @@
     "similar_triangle_judgment_aa(1,EAD,EBC)": [
       "similar_triangle_property_line_ratio(1,ADE,BCE)",
       "similar_triangle_property_line_ratio(1,DEA,CEB)"
-    ],
-    "START": [
-      "parallel_property_alternate_interior_angle(1,CB,AD)",
-      "parallel_property_alternate_interior_angle(2,CB,AD)",
-      "line_addition(1,CE,ED)"
     ]
   }
 }

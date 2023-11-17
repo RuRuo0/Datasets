@@ -2,16 +2,20 @@
   "problem_id": 1504,
   "annotation": "QikeHuang_2023-04-16",
   "source": "Geometry3k-1561",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the shaded sector. Round to the nearest tenth.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，BC=12/5，∠CBA=161°，B是⊙B的圆心。求扇形BCA的面积。",
+  "problem_text_en": "As shown in the diagram, BC=12/5, ∠CBA=161°, the center of ⊙B is B. Find the area of the sector BCA.",
   "problem_img": "1504.png",
   "construction_cdl": [
     "Shape(BCA,AB,BC)",
     "Shape(BA,BAC,CB)",
     "Cocircular(B,AC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BC),12/5)",
+    "Equal(MeasureOfAngle(CBA),161)",
+    "IsCentreOfCircle(B,B)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(B,B)",
     "Equal(LengthOfLine(BC),12/5)",
@@ -25,7 +29,7 @@
     "arc_property_center_angle(1,BCA,B)",
     "sector_area_formula(1,BCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "round_angle(1,ABC,CBA)",
       "radius_of_circle_property_length_equal(1,BC,B)",

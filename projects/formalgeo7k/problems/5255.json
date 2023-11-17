@@ -2,17 +2,17 @@
   "problem_id": 5255,
   "annotation": "XiaokaiZhang_2023-05-21",
   "source": "GeoQA-5359",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点C在线段AB上,点D是AC的中点,如果CD=3,AB=10,那么BC长度为()",
-  "problem_text_en": "As shown in the figure, point C is on line AB, point D is the midpoint of AC, if CD = N_0, AB = N_1, then the length of BC is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=10，CD=3，D平分线段AC。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, CD=3, D bisects segment AC. Find the length of line BC.",
   "problem_img": "5255.png",
   "construction_cdl": [
     "Collinear(ADCB)"
   ],
   "text_cdl": [
-    "IsMidpointOfLine(D,AC)",
+    "Equal(LengthOfLine(AB),10)",
     "Equal(LengthOfLine(CD),3)",
-    "Equal(LengthOfLine(AB),10)"
+    "IsMidpointOfLine(D,AC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BC))",
@@ -21,7 +21,7 @@
     "line_addition(1,AD,DC)",
     "line_addition(1,AC,CB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AD,DC)",
       "line_addition(1,AC,CB)"

@@ -2,16 +2,22 @@
   "problem_id": 827,
   "annotation": "XiaokaiZhang_2023-03-19",
   "source": "Geometry3k-856",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "What is the value of x in the figure below?",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，BD=2*x，CD=3*x-7，ED=14，BD垂直于ED，CE垂直于BE。求x的值。",
+  "problem_text_en": "As shown in the diagram, BD=2*x, CD=3*x-7, ED=14, BD⊥ED, CE is perpendicular to BE. Find the value of x.",
   "problem_img": "827.png",
   "construction_cdl": [
     "Shape(CE,ED,DC)",
     "Shape(DE,EB,BD)",
     "Collinear(CDB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BD),2*x)",
+    "Equal(LengthOfLine(CD),3*x-7)",
+    "Equal(LengthOfLine(ED),14)",
+    "PerpendicularBetweenLine(BD,ED)",
+    "PerpendicularBetweenLine(CE,BE)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(CD),3*x-7)",
     "Equal(LengthOfLine(BD),2*x)",
@@ -29,18 +35,18 @@
     "mirror_similar_triangle_property_line_ratio(1,EBD,CEB)",
     "mirror_similar_triangle_property_line_ratio(1,DEB,EBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "mirror_similar_triangle_judgment_aa(1,EBD,CEB)",
+      "line_addition(1,CD,DB)",
+      "right_triangle_judgment_angle(1,BDE)"
+    ],
     "mirror_similar_triangle_judgment_aa(1,EBD,CEB)": [
       "mirror_similar_triangle_property_line_ratio(1,EBD,CEB)",
       "mirror_similar_triangle_property_line_ratio(1,DEB,EBC)"
     ],
     "right_triangle_judgment_angle(1,BDE)": [
       "right_triangle_property_pythagorean(1,BDE)"
-    ],
-    "START": [
-      "mirror_similar_triangle_judgment_aa(1,EBD,CEB)",
-      "line_addition(1,CD,DB)",
-      "right_triangle_judgment_angle(1,BDE)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 3109,
   "annotation": "YimingHe_2023-04-23",
   "source": "GeoQA-359",
-  "problem_level": 1,
-  "problem_text_cn": "如图:AB∥DE,∠B=30°,∠C=110°,∠D的度数为()",
-  "problem_text_en": "As shown in the figure: AB ∥ DE, ∠B = N_0, ∠C = N_1, the degree of ∠D is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠BCD=110°，∠CBA=30°，AB平行于CF，AB平行于DE，CF∥DE。求∠CDE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BCD=110°, ∠CBA=30°, AB∥CF, AB is parallel to DE, CF∥DE. Find the measure of ∠CDE.",
   "problem_img": "3109.png",
   "construction_cdl": [
     "Shape(CB,BA)",
@@ -13,11 +13,11 @@
     "Shape(CD,DE)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AB,DE)",
-    "ParallelBetweenLine(CF,DE)",
-    "ParallelBetweenLine(AB,CF)",
+    "Equal(MeasureOfAngle(BCD),110)",
     "Equal(MeasureOfAngle(CBA),30)",
-    "Equal(MeasureOfAngle(BCD),110)"
+    "ParallelBetweenLine(AB,CF)",
+    "ParallelBetweenLine(AB,DE)",
+    "ParallelBetweenLine(CF,DE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CDE))",
@@ -27,7 +27,7 @@
     "angle_addition(1,BCF,FCD)",
     "parallel_property_ipsilateral_internal_angle(1,CF,DE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_alternate_interior_angle(2,AB,CF)",
       "angle_addition(1,BCF,FCD)",

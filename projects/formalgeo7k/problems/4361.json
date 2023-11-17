@@ -2,9 +2,9 @@
   "problem_id": 4361,
   "annotation": "ChengQin_2023-05-21",
   "source": "GeoQA-3268",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点A、B、C在⊙O上,AC∥OB,∠BAO=25°,则∠BOC的度数为()",
-  "problem_text_en": "As shown in the figure, points A, B, and C are on ⊙O, AC ∥ OB, ∠BAO = N_0, then the degree of ∠BOC is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠BAO=25°，⊙O的圆心为O，AC平行于OB。求∠COB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BAO=25°, O is the center of ⊙O, AC is parallel to OB. Find the measure of ∠COB.",
   "problem_img": "4361.png",
   "construction_cdl": [
     "Shape(OCA,AC)",
@@ -18,9 +18,9 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(BAO),25)",
     "IsCentreOfCircle(O,O)",
-    "ParallelBetweenLine(AC,OB)",
-    "Equal(MeasureOfAngle(BAO),25)"
+    "ParallelBetweenLine(AC,OB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(COB))",
@@ -34,7 +34,14 @@
     "arc_property_circumference_angle_external(1,OBC,A)",
     "arc_property_center_angle(1,OBC,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "parallel_property_alternate_interior_angle(1,AC,OB)",
+      "arc_property_circumference_angle_external(1,OBC,A)",
+      "arc_property_center_angle(1,OBC,O)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OBA)"
     ],
@@ -43,13 +50,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OBA)": [
       "isosceles_triangle_property_angle_equal(1,OBA)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "parallel_property_alternate_interior_angle(1,AC,OB)",
-      "arc_property_circumference_angle_external(1,OBC,A)",
-      "arc_property_center_angle(1,OBC,O)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 1708,
   "annotation": "Yangli_2023-04-16",
   "source": "Geometry3k-1772",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，GF=4，GH=4，∠FOG=x°，⌒OFH的角度为220，⊙O的圆心为O。求x的值。",
+  "problem_text_en": "As shown in the diagram, GF=4, GH=4, ∠FOG=x°, the measure of ⌒OFH is 220, the center of circle O is O. Find the value of x.",
   "problem_img": "1708.png",
   "construction_cdl": [
     "Shape(FO,OG,GF)",
@@ -14,7 +14,13 @@
     "Shape(GH,OHG)",
     "Cocircular(O,FHG)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(GF),4)",
+    "Equal(LengthOfLine(GH),4)",
+    "Equal(MeasureOfAngle(FOG),x)",
+    "Equal(MeasureOfArc(OFH),220)",
+    "IsCentreOfCircle(O,O)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(GF),4)",
@@ -34,7 +40,15 @@
     "angle_addition(1,FOG,GOH)",
     "round_angle(1,FOH,HOF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_center_angle(1,OFH,O)",
+      "radius_of_circle_property_length_equal(1,OF,O)",
+      "radius_of_circle_property_length_equal(1,OG,O)",
+      "radius_of_circle_property_length_equal(1,OH,O)",
+      "angle_addition(1,FOG,GOH)",
+      "round_angle(1,FOH,HOF)"
+    ],
     "radius_of_circle_property_length_equal(1,OF,O)": [
       "congruent_triangle_judgment_sss(1,OGF,OHG)"
     ],
@@ -46,14 +60,6 @@
     ],
     "congruent_triangle_judgment_sss(1,OGF,OHG)": [
       "congruent_triangle_property_angle_equal(1,OGF,OHG)"
-    ],
-    "START": [
-      "arc_property_center_angle(1,OFH,O)",
-      "radius_of_circle_property_length_equal(1,OF,O)",
-      "radius_of_circle_property_length_equal(1,OG,O)",
-      "radius_of_circle_property_length_equal(1,OH,O)",
-      "angle_addition(1,FOG,GOH)",
-      "round_angle(1,FOH,HOF)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 5349,
   "annotation": "QikeHuang_2023-05-21",
   "source": "GeoQA-5593",
-  "problem_level": 1,
-  "problem_text_cn": "如图,PA、PB切⊙O于点A、B,PA=10,CD切⊙O于点E,交PA、PB于C、D两点,则△PCD的周长是()",
-  "problem_text_en": "As shown in the figure, PA and PB are tangent to ⊙O at points A and B, PA = N_0, CD is tangent to ⊙O at point E, and intersects PA and PB at C and D, then the perimeter of △PCD is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，PA=10，圆O的切线为CA，圆O的切线为CE，DB是圆O的切线，⊙O的切线为DE，⊙O的切线为PA，PB是⊙O的切线。求三角形PCD的周长。",
+  "problem_text_en": "As shown in the diagram, PA=10, the tangent to circle O is CA, CE is the tangent to circle O, the tangent to ⊙O is DB, the tangent to circle O is DE, the tangent to circle O is PA, PB is the tangent to circle O. Find the perimeter of △PCD.",
   "problem_img": "5349.png",
   "construction_cdl": [
     "Shape(PC,CE,ED,DP)",
@@ -18,13 +18,13 @@
     "Cocircular(O,ABE)"
   ],
   "text_cdl": [
-    "IsTangentOfCircle(PA,O)",
-    "IsTangentOfCircle(PB,O)",
-    "IsTangentOfCircle(CE,O)",
-    "IsTangentOfCircle(DE,O)",
+    "Equal(LengthOfLine(PA),10)",
     "IsTangentOfCircle(CA,O)",
+    "IsTangentOfCircle(CE,O)",
     "IsTangentOfCircle(DB,O)",
-    "Equal(LengthOfLine(PA),10)"
+    "IsTangentOfCircle(DE,O)",
+    "IsTangentOfCircle(PA,O)",
+    "IsTangentOfCircle(PB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfTriangle(PCD))",
@@ -38,7 +38,7 @@
     "line_addition(1,CE,ED)",
     "triangle_perimeter_formula(1,PCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_length_equal(1,PA,PB,O)",
       "tangent_of_circle_property_length_equal(1,CE,CA,O)",

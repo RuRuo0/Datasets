@@ -2,16 +2,25 @@
   "problem_id": 1565,
   "annotation": "XiaoxiaoJin_2023-04-16",
   "source": "Geometry3k-1624",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure. Round to the nearest tenth if necessary.",
+  "problem_level": 13,
+  "problem_text_cn": "如图所示，AN=5，BC=12，BD=8，CN=15，BC垂直于EC，DB垂直于CB，DE垂直于NE，EN⊥AN。求BCED的面积与DENA的面积之和。",
+  "problem_text_en": "As shown in the diagram, AN=5, BC=12, BD=8, CN=15, BC is perpendicular to EC, DB⊥CB, DE is perpendicular to NE, EN is perpendicular to AN. Find the sum of the area of BCED and the area of DENA.",
   "problem_img": "1565.png",
   "construction_cdl": [
     "Shape(DB,BC,CE,ED)",
     "Shape(DE,EN,NA,AD)",
     "Collinear(CEN)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AN),5)",
+    "Equal(LengthOfLine(BC),12)",
+    "Equal(LengthOfLine(BD),8)",
+    "Equal(LengthOfLine(CN),15)",
+    "PerpendicularBetweenLine(BC,EC)",
+    "PerpendicularBetweenLine(DB,CB)",
+    "PerpendicularBetweenLine(DE,NE)",
+    "PerpendicularBetweenLine(EN,AN)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AN),5)",
     "Equal(LengthOfLine(BD),8)",
@@ -39,7 +48,13 @@
     "right_trapezoid_area_formular(1,ENAD)",
     "parallelogram_area_formula_sine(1,BCED)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,CE,EN)",
+      "adjacent_complementary_angle(1,CED,DEN)",
+      "parallel_judgment_per_per(1,ED,NA)",
+      "parallel_judgment_per_per(1,BD,CE)"
+    ],
     "adjacent_complementary_angle(1,CED,DEN)": [
       "perpendicular_judgment_angle(1,CE,DE)"
     ],
@@ -65,12 +80,6 @@
     ],
     "right_trapezoid_judgment_right_angle(1,ENAD)": [
       "right_trapezoid_area_formular(1,ENAD)"
-    ],
-    "START": [
-      "line_addition(1,CE,EN)",
-      "adjacent_complementary_angle(1,CED,DEN)",
-      "parallel_judgment_per_per(1,ED,NA)",
-      "parallel_judgment_per_per(1,BD,CE)"
     ]
   }
 }

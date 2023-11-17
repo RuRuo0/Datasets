@@ -2,9 +2,9 @@
   "problem_id": 1393,
   "annotation": "YanjunGuo_2023-04-16",
   "source": "Geometry3k-1443",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Assume that the segment is tangent, find the value of x.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AC=x，BA=17，BC=14，A是圆A的圆心，圆O的切线为BC。求x的值。",
+  "problem_text_en": "As shown in the diagram, AC=x, BA=17, BC=14, the center of ⊙A is A, BC is the tangent to circle A. Find the value of x.",
   "problem_img": "1393.png",
   "construction_cdl": [
     "Shape(FB,BC,AFC)",
@@ -14,6 +14,10 @@
     "Cocircular(A,FC)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AC),x)",
+    "Equal(LengthOfLine(BA),17)",
+    "Equal(LengthOfLine(BC),14)",
+    "IsCentreOfCircle(A,A)",
     "IsTangentOfCircle(BC,A)"
   ],
   "image_cdl": [
@@ -29,15 +33,15 @@
     "right_triangle_judgment_angle(1,BCA)",
     "right_triangle_property_pythagorean(1,BCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(2,BC,A,A)"
+    ],
     "tangent_of_circle_property_perpendicular(2,BC,A,A)": [
       "right_triangle_judgment_angle(1,BCA)"
     ],
     "right_triangle_judgment_angle(1,BCA)": [
       "right_triangle_property_pythagorean(1,BCA)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(2,BC,A,A)"
     ]
   }
 }

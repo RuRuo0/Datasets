@@ -2,9 +2,9 @@
   "problem_id": 477,
   "annotation": "YimingHe_2023-04-02",
   "source": "Geometry3k-488",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "The radius of \\odot P is 5 and P R = 3. Find Q S.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，PR=3，⊙P的半径为5，P是⊙P的圆心，PR⊥QR。求直线QS的长度。",
+  "problem_text_en": "As shown in the diagram, PR=3, the radius of ⊙P is 5, P is the center of circle P, PR is perpendicular to QR. Find the length of line QS.",
   "problem_img": "477.png",
   "construction_cdl": [
     "Shape(PQ,PQS,SP)",
@@ -15,8 +15,10 @@
     "Cocircular(P,SQ)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(PR),3)",
     "Equal(RadiusOfCircle(P),5)",
-    "Equal(LengthOfLine(PR),3)"
+    "IsCentreOfCircle(P,P)",
+    "PerpendicularBetweenLine(PR,QR)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(P,P)",
@@ -34,7 +36,14 @@
     "right_triangle_property_pythagorean(1,SRP)",
     "line_addition(1,QR,RS)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,PQ,P)",
+      "radius_of_circle_property_length_equal(1,PS,P)",
+      "adjacent_complementary_angle(1,SRP,PRQ)",
+      "right_triangle_judgment_angle(1,PRQ)",
+      "line_addition(1,QR,RS)"
+    ],
     "adjacent_complementary_angle(1,SRP,PRQ)": [
       "right_triangle_judgment_angle(1,SRP)"
     ],
@@ -43,13 +52,6 @@
     ],
     "right_triangle_judgment_angle(1,SRP)": [
       "right_triangle_property_pythagorean(1,SRP)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,PQ,P)",
-      "radius_of_circle_property_length_equal(1,PS,P)",
-      "adjacent_complementary_angle(1,SRP,PRQ)",
-      "right_triangle_judgment_angle(1,PRQ)",
-      "line_addition(1,QR,RS)"
     ]
   }
 }

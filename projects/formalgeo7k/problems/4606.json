@@ -2,9 +2,9 @@
   "problem_id": 4606,
   "annotation": "QikeHuang_2023-05-14",
   "source": "GeoQA-3771",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知⊙O为△ABC的外接圆,且AB为⊙O的直径,若OC=5,AC=6,则BC长为()",
-  "problem_text_en": "As shown in the figure, it is known that ⊙O is the circumscribed circle of △ABC, and AB is the diameter of ⊙O, if OC = N_0, AC = N_1, then the length of BC is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AC=6，OC=5，圆O的圆心为O，AB是圆O的直径。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, AC=6, OC=5, the center of ⊙O is O, the diameter of circle O is AB. Find the length of line BC.",
   "problem_img": "4606.png",
   "construction_cdl": [
     "Shape(OBA,AO,OB)",
@@ -16,10 +16,10 @@
     "Cocircular(O,ACB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(AB,O)",
+    "Equal(LengthOfLine(AC),6)",
     "Equal(LengthOfLine(OC),5)",
-    "Equal(LengthOfLine(AC),6)"
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BC))",
@@ -33,19 +33,19 @@
     "right_triangle_judgment_angle(1,ACB)",
     "right_triangle_property_pythagorean(1,ACB)"
   ],
-  "theorem_seq_dag": {
-    "diameter_of_circle_property_right_angle(1,ACB,O)": [
-      "right_triangle_judgment_angle(1,ACB)"
-    ],
-    "right_triangle_judgment_angle(1,ACB)": [
-      "right_triangle_property_pythagorean(1,ACB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,OA,O)",
       "radius_of_circle_property_length_equal(1,OC,O)",
       "radius_of_circle_property_length_equal(1,OB,O)",
       "line_addition(1,BO,OA)",
       "diameter_of_circle_property_right_angle(1,ACB,O)"
+    ],
+    "diameter_of_circle_property_right_angle(1,ACB,O)": [
+      "right_triangle_judgment_angle(1,ACB)"
+    ],
+    "right_triangle_judgment_angle(1,ACB)": [
+      "right_triangle_property_pythagorean(1,ACB)"
     ]
   }
 }

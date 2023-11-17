@@ -2,9 +2,9 @@
   "problem_id": 1713,
   "annotation": "Yangli_2023-04-16",
   "source": "Geometry3k-1777",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure. Round to the nearest tenth.",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，AC=6，AF=5，BE=GE，BG=6，FD=12，FH=6，GA=6，GC=CA，GE=GC，GH⊥FH，HF⊥AF，BDFA是矩形。求△EBG的面积、△CGA的面积与四边形BDFA的面积之和。",
+  "problem_text_en": "As shown in the diagram, AC=6, AF=5, BE=GE, BG=6, FD=12, FH=6, GA=6, GC=CA, GE=GC, GH⊥FH, HF is perpendicular to AF, quadrilateral BDFA is a rectangle. Find the sum of the area of triangle EBG, the area of triangle CGA and the area of quadrilateral BDFA.",
   "problem_img": "1713.png",
   "construction_cdl": [
     "Shape(EB,BG,GE)",
@@ -15,8 +15,18 @@
     "Collinear(DHF)"
   ],
   "text_cdl": [
-    "Rectangle(BDFA)",
-    "PerpendicularBetweenLine(HF,AF)"
+    "Equal(LengthOfLine(AC),6)",
+    "Equal(LengthOfLine(AF),5)",
+    "Equal(LengthOfLine(BE),LengthOfLine(GE))",
+    "Equal(LengthOfLine(BG),6)",
+    "Equal(LengthOfLine(FD),12)",
+    "Equal(LengthOfLine(FH),6)",
+    "Equal(LengthOfLine(GA),6)",
+    "Equal(LengthOfLine(GC),LengthOfLine(CA))",
+    "Equal(LengthOfLine(GE),LengthOfLine(GC))",
+    "PerpendicularBetweenLine(GH,FH)",
+    "PerpendicularBetweenLine(HF,AF)",
+    "Rectangle(BDFA)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(AC),6)",
@@ -45,7 +55,16 @@
     "equilateral_triangle_property_angle(1,CGA)",
     "triangle_area_formula_sine(1,CGA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallelogram_area_formula_sine(1,DFAB)",
+      "isosceles_triangle_judgment_line_equal(1,EBG)",
+      "isosceles_triangle_judgment_line_equal(1,BGE)",
+      "triangle_area_formula_sine(1,EBG)",
+      "isosceles_triangle_judgment_line_equal(1,CGA)",
+      "isosceles_triangle_judgment_line_equal(1,GAC)",
+      "triangle_area_formula_sine(1,CGA)"
+    ],
     "isosceles_triangle_judgment_line_equal(1,EBG)": [
       "equilateral_triangle_judgment_isosceles_and_isosceles(1,EBG)"
     ],
@@ -63,15 +82,6 @@
     ],
     "equilateral_triangle_judgment_isosceles_and_isosceles(1,CGA)": [
       "equilateral_triangle_property_angle(1,CGA)"
-    ],
-    "START": [
-      "parallelogram_area_formula_sine(1,DFAB)",
-      "isosceles_triangle_judgment_line_equal(1,EBG)",
-      "isosceles_triangle_judgment_line_equal(1,BGE)",
-      "triangle_area_formula_sine(1,EBG)",
-      "isosceles_triangle_judgment_line_equal(1,CGA)",
-      "isosceles_triangle_judgment_line_equal(1,GAC)",
-      "triangle_area_formula_sine(1,CGA)"
     ]
   }
 }

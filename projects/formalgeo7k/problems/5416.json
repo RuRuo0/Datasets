@@ -2,9 +2,9 @@
   "problem_id": 5416,
   "annotation": "XiaoxiaoJin_2023-05-21",
   "source": "GeoQA-5725",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在▱ABCD中,对角线AC,BD相交于点O,点E,F分别是AB,AO的中点,连接EF,若EF=3,则BD的长为()",
-  "problem_text_en": "As shown in the figure, in ▱ABCD, the diagonal AC and BD intersect at point O, and points E and F are the midpoints of AB and AO respectively. Connect EF. If EF = N_0, the length of BD is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，EF=3，E是线段AB的中点，F是线段AO的中点，ABCD是▱。求直线BD的长度。",
+  "problem_text_en": "As shown in the diagram, EF=3, E is the midpoint of segment AB, F bisects segment AO, BA and CD are opposite sides of the ▱ ABCD. Find the length of line BD.",
   "problem_img": "5416.png",
   "construction_cdl": [
     "Shape(AE,EF,FA)",
@@ -18,9 +18,9 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(EF),3)",
-    "Parallelogram(ABCD)",
     "IsMidpointOfLine(E,AB)",
-    "IsMidpointOfLine(F,AO)"
+    "IsMidpointOfLine(F,AO)",
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BD))",
@@ -31,14 +31,14 @@
     "midsegment_of_triangle_judgment_midpoint(1,EF,ABO)",
     "midsegment_of_triangle_property_length(1,EF,ABO)"
   ],
-  "theorem_seq_dag": {
-    "midsegment_of_triangle_judgment_midpoint(1,EF,ABO)": [
-      "midsegment_of_triangle_property_length(1,EF,ABO)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,BO,OD)",
       "parallelogram_property_diagonal_bisection(1,BCDA,O)",
       "midsegment_of_triangle_judgment_midpoint(1,EF,ABO)"
+    ],
+    "midsegment_of_triangle_judgment_midpoint(1,EF,ABO)": [
+      "midsegment_of_triangle_property_length(1,EF,ABO)"
     ]
   }
 }

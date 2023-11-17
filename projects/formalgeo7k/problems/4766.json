@@ -2,9 +2,9 @@
   "problem_id": 4766,
   "annotation": "Yangli_2023-05-14",
   "source": "GeoQA-4138",
-  "problem_level": 1,
-  "problem_text_cn": "如图,PA、PB是⊙O的切线,切点分别是A,B,如果∠P=60°,那么∠AOB等于()",
-  "problem_text_en": "As shown in the figure, PA and PB are the tangents of ⊙O, and the tangent points are A and B respectively. If ∠P = N_0, then ∠AOB is equal to ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠BPA=60°，圆O的圆心为O，PA是⊙O的切线，PB是圆O的切线。求∠AOB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BPA=60°, O is the center of ⊙O, the tangent to circle O is PA, the tangent to ⊙O is PB. Find the measure of ∠AOB.",
   "problem_img": "4766.png",
   "construction_cdl": [
     "Shape(BP,PA,OBA)",
@@ -14,9 +14,9 @@
   ],
   "text_cdl": [
     "Equal(MeasureOfAngle(BPA),60)",
+    "IsCentreOfCircle(O,O)",
     "IsTangentOfCircle(PA,O)",
-    "IsTangentOfCircle(PB,O)",
-    "IsCentreOfCircle(O,O)"
+    "IsTangentOfCircle(PB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(AOB))",
@@ -26,7 +26,7 @@
     "tangent_of_circle_property_perpendicular(1,PB,O,O)",
     "quadrilateral_property_angle_sum(1,PAOB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(2,PA,O,O)",
       "tangent_of_circle_property_perpendicular(1,PB,O,O)",

@@ -2,16 +2,21 @@
   "problem_id": 1085,
   "annotation": "NaZhu_2023-03-19",
   "source": "Geometry3k-1122",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the measure of the altitude drawn to the hypotenuse.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，JM=8，KM=16，JL⊥KL，KM⊥LM。求直线LM的长度。",
+  "problem_text_en": "As shown in the diagram, JM=8, KM=16, JL⊥KL, KM⊥LM. Find the length of line LM.",
   "problem_img": "1085.png",
   "construction_cdl": [
     "Shape(JL,LM,MJ)",
     "Shape(ML,LK,KM)",
     "Collinear(JMK)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(JM),8)",
+    "Equal(LengthOfLine(KM),16)",
+    "PerpendicularBetweenLine(JL,KL)",
+    "PerpendicularBetweenLine(KM,LM)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(JM),8)",
     "Equal(LengthOfLine(KM),16)",
@@ -28,7 +33,11 @@
     "similar_triangle_property_line_ratio(1,LMJ,KML)",
     "similar_triangle_property_line_ratio(1,JLM,LKM)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,KML,LMJ)",
+      "mirror_similar_triangle_judgment_aa(1,LKM,JLK)"
+    ],
     "adjacent_complementary_angle(1,KML,LMJ)": [
       "similar_triangle_judgment_aa(1,LMJ,KML)"
     ],
@@ -41,10 +50,6 @@
     "similar_triangle_judgment_aa(1,LMJ,KML)": [
       "similar_triangle_property_line_ratio(1,LMJ,KML)",
       "similar_triangle_property_line_ratio(1,JLM,LKM)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,KML,LMJ)",
-      "mirror_similar_triangle_judgment_aa(1,LKM,JLK)"
     ]
   }
 }

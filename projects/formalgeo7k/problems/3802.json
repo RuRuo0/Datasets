@@ -2,9 +2,9 @@
   "problem_id": 3802,
   "annotation": "YifanWang_2023-05-07",
   "source": "GeoQA-1651",
-  "problem_level": 1,
-  "problem_text_cn": "我们将能完全覆盖某平面图形的最小圆称为该平面图形的最小覆盖圆,如图线段AB的最小覆盖圆就是以线段AB为直径的圆,△ABC的最小覆盖圆是其外接圆,那么长为8cm、宽为6cm的矩形的最小覆盖圆半径是()",
-  "problem_text_en": "We call the smallest circle that can completely cover a certain plane figure as the smallest circle of the plane figure. As shown in the figure, the smallest circle of line segment AB is the circle with the line segment AB as the diameter, and the smallest circle of △ABC is its circumscribed circle, then radius of the minimum covering circle of a rectangle with length N_0 and width N_1 is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，圆O的直径与直线AB的长度相等，BC=6，CA=8，O是⊙O的圆心，△BCA为直角△。求圆O的半径。",
+  "problem_text_en": "As shown in the diagram, the diameter of circle O is equal to the length of line AB, BC=6, CA=8, O is the center of ⊙O, triangle BCA is a right triangle. Find the radius of ⊙O.",
   "problem_img": "3802.png",
   "construction_cdl": [
     "Shape(BO,OA,OAB)",
@@ -14,7 +14,13 @@
     "Collinear(AOB)",
     "Cocircular(O,ABC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(DiameterOfCircle(O),LengthOfLine(AB))",
+    "Equal(LengthOfLine(BC),6)",
+    "Equal(LengthOfLine(CA),8)",
+    "IsCentreOfCircle(O,O)",
+    "RightTriangle(BCA)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "Equal(DiameterOfCircle(O),LengthOfLine(AB))",
@@ -28,7 +34,7 @@
     "right_triangle_property_pythagorean(1,BCA)",
     "circle_property_length_of_radius_and_diameter(1,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_property_pythagorean(1,BCA)",
       "circle_property_length_of_radius_and_diameter(1,O)"

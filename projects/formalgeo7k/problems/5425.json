@@ -2,9 +2,9 @@
   "problem_id": 5425,
   "annotation": "XiaoxiaoJin_2023-05-21",
   "source": "GeoQA-5741",
-  "problem_level": 1,
-  "problem_text_cn": "如图3,在▱ABCD中,连接AC,分别以点A,C为圆心,以大于AC长为半径作,两弧相交于点P,Q,作直线PQ交AD于点E,交BC于点F,连接CE,若△CED的周长为5,则▱ABCD的周长为()",
-  "problem_text_en": "As shown in Figure 3, in ▱ABCD, connect AC and draw to arcs with points A and C as the center and a radius greater than the length of AC as the radius. The two arcs intersect at points P and Q. A straight line PQ intersects AD at point E and intersects BC at point F. Connect CE, if the perimeter of △CED is N_0, then the perimeter of ▱ABCD is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，三角形CDE的周长为5，EO是AC的垂直平分线，四边形ABCD是▱。求四边形ABCD的周长。",
+  "problem_text_en": "As shown in the diagram, the perimeter of △CDE is 5, EO perpendicular bisects AC, ABCD is a parallelogram. Find the perimeter of quadrilateral ABCD.",
   "problem_img": "5425.png",
   "construction_cdl": [
     "Shape(AO,OE,EA)",
@@ -18,9 +18,9 @@
     "Collinear(EOF)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
     "Equal(PerimeterOfTriangle(CDE),5)",
-    "IsPerpendicularBisectorOfLine(EO,AC)"
+    "IsPerpendicularBisectorOfLine(EO,AC)",
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfQuadrilateral(ABCD))",
@@ -33,7 +33,7 @@
     "line_addition(1,AE,ED)",
     "quadrilateral_perimeter_formula(1,ABCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_perimeter_formula(1,CDE)",
       "perpendicular_bisector_property_distance_equal(1,EO,AC)",

@@ -2,9 +2,9 @@
   "problem_id": 4461,
   "annotation": "JiaZou_2023-05-14",
   "source": "GeoQA-3436",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知AB,CD是⊙O的弦,且AB=CD,∠AOB=70°,则∠CED的度数为()",
-  "problem_text_en": "As shown in the figure, it is known that AB and CD are the chords of O, and AB = CD, ∠AOB = N_0, then the degree of ∠CED is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=CD，∠AOB=70°，O是圆O的圆心，⊙O的直径为ED。求∠DEC的大小。",
+  "problem_text_en": "As shown in the diagram, AB=CD, ∠AOB=70°, O is the center of ⊙O, the diameter of circle O is ED. Find the measure of ∠DEC.",
   "problem_img": "4461.png",
   "construction_cdl": [
     "Shape(AO,OB,BA)",
@@ -18,10 +18,10 @@
     "Cocircular(O,ECDBA)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(ED,O)",
     "Equal(LengthOfLine(AB),LengthOfLine(CD))",
-    "Equal(MeasureOfAngle(AOB),70)"
+    "Equal(MeasureOfAngle(AOB),70)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(ED,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DEC))",
@@ -32,14 +32,14 @@
     "arc_property_center_angle(1,OBA,O)",
     "arc_property_circumference_angle_external(1,OCD,E)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_chord_equal(1,OBA,OCD)": [
-      "congruent_arc_property_measure_equal(1,OBA,OCD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "congruent_arc_judgment_chord_equal(1,OBA,OCD)",
       "arc_property_center_angle(1,OBA,O)",
       "arc_property_circumference_angle_external(1,OCD,E)"
+    ],
+    "congruent_arc_judgment_chord_equal(1,OBA,OCD)": [
+      "congruent_arc_property_measure_equal(1,OBA,OCD)"
     ]
   }
 }

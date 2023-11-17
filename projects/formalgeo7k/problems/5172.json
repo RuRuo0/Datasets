@@ -2,9 +2,9 @@
   "problem_id": 5172,
   "annotation": "JiaZou_2023-05-21",
   "source": "GeoQA-5132",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC为⊙O的内接三角形,O为圆心．OD⊥AB,垂足为D,OE⊥AC,垂足为E,若DE=3,则BC长为()",
-  "problem_text_en": "As shown in the figure, △ABC is the inscribed triangle of ⊙O, and O is the center of the circle. OD ⊥ AB, the foot of perpendicular is D, OE ⊥ AC, the foot of perpendicular is E, if DE = N_0, then the BC length is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，DE=3，O是⊙O的圆心，AD垂直于OD，CE⊥OE。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, DE=3, the center of circle O is O, AD⊥OD, CE is perpendicular to OE. Find the length of line BC.",
   "problem_img": "5172.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -18,10 +18,10 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(DE),3)",
     "IsCentreOfCircle(O,O)",
     "PerpendicularBetweenLine(AD,OD)",
-    "PerpendicularBetweenLine(CE,OE)",
-    "Equal(LengthOfLine(DE),3)"
+    "PerpendicularBetweenLine(CE,OE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BC))",
@@ -35,7 +35,13 @@
     "similar_triangle_property_line_ratio(1,DEA,BCA)",
     "similar_triangle_property_line_ratio(1,ADE,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "circle_property_chord_perpendicular_bisect_chord(1,O,OD,AB)",
+      "circle_property_chord_perpendicular_bisect_chord(1,O,OE,CA)",
+      "line_addition(1,AD,DB)",
+      "line_addition(1,AE,EC)"
+    ],
     "circle_property_chord_perpendicular_bisect_chord(1,O,OD,AB)": [
       "similar_triangle_judgment_sas(1,ADE,ABC)"
     ],
@@ -51,12 +57,6 @@
     "similar_triangle_judgment_sas(1,ADE,ABC)": [
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
       "similar_triangle_property_line_ratio(1,DEA,BCA)"
-    ],
-    "START": [
-      "circle_property_chord_perpendicular_bisect_chord(1,O,OD,AB)",
-      "circle_property_chord_perpendicular_bisect_chord(1,O,OE,CA)",
-      "line_addition(1,AD,DB)",
-      "line_addition(1,AE,EC)"
     ]
   }
 }

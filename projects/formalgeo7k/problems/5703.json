@@ -2,9 +2,9 @@
   "problem_id": 5703,
   "annotation": "NaZhu_2023-05-28",
   "source": "GeoQA-7452",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,∠A=90°,点D是AB边上的一点,若∠ACD=∠B,AD=1,AC=2,则BC的长为()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠A = N_0, point D is a point on the edge of AB, if ∠ACD = ∠B, AD = N_1, AC = N_2, then the length of BC is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AC=2，AD=1，∠CAD=90°，∠DCA=∠DBC。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, AC=2, AD=1, ∠CAD=90°, ∠DCA=∠DBC. Find the length of line BC.",
   "problem_img": "5703.png",
   "construction_cdl": [
     "Shape(AD,DC,CA)",
@@ -12,10 +12,10 @@
     "Collinear(ADB)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(CAD),90)",
-    "Equal(MeasureOfAngle(DCA),MeasureOfAngle(DBC))",
+    "Equal(LengthOfLine(AC),2)",
     "Equal(LengthOfLine(AD),1)",
-    "Equal(LengthOfLine(AC),2)"
+    "Equal(MeasureOfAngle(CAD),90)",
+    "Equal(MeasureOfAngle(DCA),MeasureOfAngle(DBC))"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BC))",
@@ -27,17 +27,17 @@
     "mirror_similar_triangle_property_line_ratio(1,CAD,BCA)",
     "mirror_similar_triangle_property_line_ratio(1,ADC,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "right_triangle_judgment_angle(1,CAD)",
+      "mirror_similar_triangle_judgment_aa(1,DCA,CAB)"
+    ],
     "right_triangle_judgment_angle(1,CAD)": [
       "right_triangle_property_pythagorean(1,CAD)"
     ],
     "mirror_similar_triangle_judgment_aa(1,DCA,CAB)": [
       "mirror_similar_triangle_property_line_ratio(1,CAD,BCA)",
       "mirror_similar_triangle_property_line_ratio(1,ADC,ABC)"
-    ],
-    "START": [
-      "right_triangle_judgment_angle(1,CAD)",
-      "mirror_similar_triangle_judgment_aa(1,DCA,CAB)"
     ]
   }
 }

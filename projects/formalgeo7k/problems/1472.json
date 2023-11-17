@@ -2,9 +2,9 @@
   "problem_id": 1472,
   "annotation": "QikeHuang_2023-04-16",
   "source": "Geometry3k-1526",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If Q R = 2, X W = 12, Q W = 15, and S T = 5, find R S.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，QR=2，QW=15，ST=5，XW=12，WS平行于VT，XR平行于WS。求直线RS的长度。",
+  "problem_text_en": "As shown in the diagram, QR=2, QW=15, ST=5, XW=12, WS∥VT, XR is parallel to WS. Find the length of line RS.",
   "problem_img": "1472.png",
   "construction_cdl": [
     "Shape(QX,XR,RQ)",
@@ -15,9 +15,11 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(QR),2)",
-    "Equal(LengthOfLine(XW),12)",
     "Equal(LengthOfLine(QW),15)",
-    "Equal(LengthOfLine(ST),5)"
+    "Equal(LengthOfLine(ST),5)",
+    "Equal(LengthOfLine(XW),12)",
+    "ParallelBetweenLine(WS,VT)",
+    "ParallelBetweenLine(XR,WS)"
   ],
   "image_cdl": [
     "ParallelBetweenLine(XR,WS)",
@@ -34,7 +36,13 @@
     "similar_triangle_property_line_ratio(1,XRQ,WSQ)",
     "similar_triangle_property_line_ratio(1,RQX,SQW)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,XR,WS,Q)",
+      "parallel_property_corresponding_angle(2,SW,RX,Q)",
+      "line_addition(1,QX,XW)",
+      "line_addition(1,QR,RS)"
+    ],
     "parallel_property_corresponding_angle(1,XR,WS,Q)": [
       "similar_triangle_judgment_aa(1,QXR,QWS)"
     ],
@@ -44,12 +52,6 @@
     "similar_triangle_judgment_aa(1,QXR,QWS)": [
       "similar_triangle_property_line_ratio(1,XRQ,WSQ)",
       "similar_triangle_property_line_ratio(1,RQX,SQW)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,XR,WS,Q)",
-      "parallel_property_corresponding_angle(2,SW,RX,Q)",
-      "line_addition(1,QX,XW)",
-      "line_addition(1,QR,RS)"
     ]
   }
 }

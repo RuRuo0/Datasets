@@ -2,9 +2,9 @@
   "problem_id": 3822,
   "annotation": "YifanWang_2023-05-07",
   "source": "GeoQA-1686",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,若∠AOC=70°,且AD∥OC,则∠AOD的度数为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of O, if ∠AOC = N_0, and AD ∥ OC, then the degree of ∠AOD is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠COA=70°，O是⊙O的圆心，AD平行于CO。求∠AOD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠COA=70°, O is the center of circle O, AD∥CO. Find the measure of ∠AOD.",
   "problem_img": "3822.png",
   "construction_cdl": [
     "Shape(ODA,AD)",
@@ -15,7 +15,11 @@
     "Collinear(AOB)",
     "Cocircular(O,ACBD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(COA),70)",
+    "IsCentreOfCircle(O,O)",
+    "ParallelBetweenLine(AD,CO)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "ParallelBetweenLine(AD,CO)",
@@ -31,7 +35,13 @@
     "isosceles_triangle_property_angle_equal(1,ODA)",
     "triangle_property_angle_sum(1,DAO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_alternate_interior_angle(1,AD,CO)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OD,O)",
+      "triangle_property_angle_sum(1,DAO)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,ODA)"
     ],
@@ -40,12 +50,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,ODA)": [
       "isosceles_triangle_property_angle_equal(1,ODA)"
-    ],
-    "START": [
-      "parallel_property_alternate_interior_angle(1,AD,CO)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OD,O)",
-      "triangle_property_angle_sum(1,DAO)"
     ]
   }
 }

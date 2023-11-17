@@ -2,9 +2,9 @@
   "problem_id": 4319,
   "annotation": "ZheZhu_2023-05-07",
   "source": "GeoQA-3157",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示,在⊙O上,B是⁀{AC}的中点,D是圆上一点,∠AOB=50°,则∠BDC的度数是()",
-  "problem_text_en": "As shown in the figure, on ⊙O, B is the midpoint of ⁀AC, D is a point on the circle, ∠AOB = N_0, then the degree of ∠BDC is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠AOB=50°，圆O的圆心为O，B是⌒OCA的中点。求∠BDC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AOB=50°, O is the center of ⊙O, B bisects ⌒OCA. Find the measure of ∠BDC.",
   "problem_img": "4319.png",
   "construction_cdl": [
     "Shape(AO,OB,OBA)",
@@ -14,9 +14,9 @@
     "Cocircular(O,BADC)"
   ],
   "text_cdl": [
-    "IsMidpointOfArc(B,OCA)",
+    "Equal(MeasureOfAngle(AOB),50)",
     "IsCentreOfCircle(O,O)",
-    "Equal(MeasureOfAngle(AOB),50)"
+    "IsMidpointOfArc(B,OCA)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BDC))",
@@ -27,14 +27,14 @@
     "congruent_arc_property_measure_equal(1,OBA,OCB)",
     "arc_property_circumference_angle_external(1,OCB,D)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_length_equal(1,OBA,OCB)": [
-      "congruent_arc_property_measure_equal(1,OBA,OCB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,OBA,O)",
       "congruent_arc_judgment_length_equal(1,OBA,OCB)",
       "arc_property_circumference_angle_external(1,OCB,D)"
+    ],
+    "congruent_arc_judgment_length_equal(1,OBA,OCB)": [
+      "congruent_arc_property_measure_equal(1,OBA,OCB)"
     ]
   }
 }

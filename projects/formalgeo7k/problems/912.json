@@ -2,9 +2,9 @@
   "problem_id": 912,
   "annotation": "XiaokaiZhang_2023-04-09",
   "source": "Geometry3k-941",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the shaded region.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AC=12，∠DBC=45°，D是⊙D的圆心，AB是⊙D的直径，⊙D的直径为BA。求⊙D的面积减去三角形CAB的面积。",
+  "problem_text_en": "As shown in the diagram, AC=12, ∠DBC=45°, the center of ⊙D is D, AB is the diameter of circle D, the diameter of circle D is BA. Find the area of the circle D minus the area of triangle CAB.",
   "problem_img": "912.png",
   "construction_cdl": [
     "Shape(DCA,AC)",
@@ -14,7 +14,13 @@
     "Collinear(ADB)",
     "Cocircular(D,ABC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),12)",
+    "Equal(MeasureOfAngle(DBC),45)",
+    "IsCentreOfCircle(D,D)",
+    "IsDiameterOfCircle(AB,D)",
+    "IsDiameterOfCircle(BA,D)"
+  ],
   "image_cdl": [
     "IsDiameterOfCircle(BA,D)",
     "IsDiameterOfCircle(AB,D)",
@@ -34,7 +40,7 @@
     "triangle_area_formula_sine(1,CAB)",
     "circle_area_formula(1,D)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,BCA,D)",
       "triangle_property_angle_sum(1,CAB)",

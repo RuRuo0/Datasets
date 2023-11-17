@@ -2,9 +2,9 @@
   "problem_id": 3615,
   "annotation": "QikeHuang_2023-04-30",
   "source": "GeoQA-1287",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC中,DE垂直平分AC交AB于E,∠A=30°,∠ACB=80°,则∠BCE等于()",
-  "problem_text_en": "As shown in the figure, in △ABC, DE perpendicular bisects AC and AB to E, ∠A = N_0, ∠ACB = N_1, then ∠BCE is equal to ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠BCA=80°，∠DAE=30°，ED垂直平分AB。求∠BCE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BCA=80°, ∠DAE=30°, ED perpendicular bisects CA. Find the measure of ∠BCE.",
   "problem_img": "3615.png",
   "construction_cdl": [
     "Shape(DA,AE,ED)",
@@ -14,9 +14,9 @@
     "Collinear(AEB)"
   ],
   "text_cdl": [
-    "IsPerpendicularBisectorOfLine(ED,CA)",
+    "Equal(MeasureOfAngle(BCA),80)",
     "Equal(MeasureOfAngle(DAE),30)",
-    "Equal(MeasureOfAngle(BCA),80)"
+    "IsPerpendicularBisectorOfLine(ED,CA)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BCE))",
@@ -27,16 +27,16 @@
     "isosceles_triangle_property_angle_equal(1,ECA)",
     "angle_addition(1,BCE,ECA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "perpendicular_bisector_property_distance_equal(1,ED,CA)",
+      "angle_addition(1,BCE,ECA)"
+    ],
     "perpendicular_bisector_property_distance_equal(1,ED,CA)": [
       "isosceles_triangle_judgment_line_equal(1,ECA)"
     ],
     "isosceles_triangle_judgment_line_equal(1,ECA)": [
       "isosceles_triangle_property_angle_equal(1,ECA)"
-    ],
-    "START": [
-      "perpendicular_bisector_property_distance_equal(1,ED,CA)",
-      "angle_addition(1,BCE,ECA)"
     ]
   }
 }

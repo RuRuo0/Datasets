@@ -3,8 +3,8 @@
   "annotation": "QikeHuang_2023-05-21",
   "source": "GeoQA-5637",
   "problem_level": 1,
-  "problem_text_cn": "如图,已知△ADE∽△ABC,若AD:AB=1:3,△ABC的面积为9,则△ADE的面积为()",
-  "problem_text_en": "As shown in the figure, it is known that △ADE ∽ △ABC, if AD:AB = N_0:N_1, the area of ​​△ABC is N_2, then the area of ​​△ADE is ()",
+  "problem_text_cn": "如图所示，三角形ABC的面积为9，△ADE和△ABC的相似比为1/3，△ADE相似于△ABC。求△ADE的面积。",
+  "problem_text_en": "As shown in the diagram, the area of △ABC is 9, the ratio of similar triangles ADE and ABC is 1/3, △ADE is similar to △ABC.. Find the area of triangle ADE.",
   "problem_img": "5360.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -13,9 +13,9 @@
     "Collinear(AEC)"
   ],
   "text_cdl": [
-    "SimilarBetweenTriangle(ADE,ABC)",
+    "Equal(AreaOfTriangle(ABC),9)",
     "Equal(RatioOfSimilarTriangle(ADE,ABC),1/3)",
-    "Equal(AreaOfTriangle(ABC),9)"
+    "SimilarBetweenTriangle(ADE,ABC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(AreaOfTriangle(ADE))",
@@ -23,7 +23,7 @@
   "theorem_seqs": [
     "similar_triangle_property_area_square_ratio(1,ADE,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "similar_triangle_property_area_square_ratio(1,ADE,ABC)"
     ]

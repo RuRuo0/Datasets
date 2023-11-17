@@ -2,9 +2,9 @@
   "problem_id": 6149,
   "annotation": "YifanWang_2023-06-04",
   "source": "GeoQA-8708",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,弧BD=弧BC,∠A=25°．则∠BOD的度数为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of O, arc BD = arc BC, ∠A = N_0. Then the degree of ∠BOD is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠CAB=25°，弧OBC的角度与弧ODB的角度相等，圆O的圆心为O。求∠BOD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAB=25°, the measure of arc OBC is equal to the measure of ⌒ODB, the center of circle O is O. Find the measure of ∠BOD.",
   "problem_img": "6149.png",
   "construction_cdl": [
     "Shape(AC,OCA)",
@@ -16,9 +16,9 @@
     "Cocircular(O,ADBC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(CAB),25)",
     "Equal(MeasureOfArc(OBC),MeasureOfArc(ODB))",
-    "Equal(MeasureOfAngle(CAB),25)"
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BOD))",
@@ -27,7 +27,7 @@
     "arc_property_center_angle(1,ODB,O)",
     "arc_property_circumference_angle_external(1,OBC,A)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,ODB,O)",
       "arc_property_circumference_angle_external(1,OBC,A)"

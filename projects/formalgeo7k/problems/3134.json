@@ -2,9 +2,9 @@
   "problem_id": 3134,
   "annotation": "YimingHe_2023-04-23",
   "source": "GeoQA-390",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O的直径CD垂直于弦AB,∠AOC=40°,则∠CDB的度数为()",
-  "problem_text_en": "As shown in the figure, the diameter CD of ⊙O is perpendicular to chord AB, ∠AOC = N_0, then the degree of ∠CDB is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠EOA=40°，O是圆O的圆心，AE垂直于OE。求∠BDE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠EOA=40°, the center of ⊙O is O, AE is perpendicular to OE. Find the measure of ∠BDE.",
   "problem_img": "3134.png",
   "construction_cdl": [
     "Shape(CE,EA,OAC)",
@@ -19,9 +19,9 @@
     "Cocircular(O,ACBD)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(EOA),40)",
     "IsCentreOfCircle(O,O)",
-    "PerpendicularBetweenLine(AE,OE)",
-    "Equal(MeasureOfAngle(EOA),40)"
+    "PerpendicularBetweenLine(AE,OE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BDE))",
@@ -35,7 +35,14 @@
     "arc_property_center_angle(1,OCB,O)",
     "arc_property_circumference_angle_external(1,OCB,D)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,AEO,OEB)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "arc_property_center_angle(1,OCB,O)",
+      "arc_property_circumference_angle_external(1,OCB,D)"
+    ],
     "adjacent_complementary_angle(1,AEO,OEB)": [
       "mirror_congruent_triangle_judgment_hl(1,AEO,BOE)"
     ],
@@ -47,13 +54,6 @@
     ],
     "mirror_congruent_triangle_judgment_hl(1,AEO,BOE)": [
       "mirror_congruent_triangle_property_angle_equal(1,OAE,OEB)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,AEO,OEB)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "arc_property_center_angle(1,OCB,O)",
-      "arc_property_circumference_angle_external(1,OCB,D)"
     ]
   }
 }

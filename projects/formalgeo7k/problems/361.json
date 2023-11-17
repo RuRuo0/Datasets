@@ -2,9 +2,9 @@
   "problem_id": 361,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-368",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the parallelogram. Round to the nearest tenth if necessary.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，CB=23，DE=5，∠EDB=45°，AC和DB是▱CADB的一组对边，AE⊥BE。求CADB的周长。",
+  "problem_text_en": "As shown in the diagram, CB=23, DE=5, ∠EDB=45°, CADB is a ▱, AE is perpendicular to BE. Find the perimeter of quadrilateral CADB.",
   "problem_img": "361.png",
   "construction_cdl": [
     "Shape(CA,AE,EB,BC)",
@@ -12,7 +12,11 @@
     "Collinear(AED)"
   ],
   "text_cdl": [
-    "Parallelogram(CADB)"
+    "Equal(LengthOfLine(CB),23)",
+    "Equal(LengthOfLine(DE),5)",
+    "Equal(MeasureOfAngle(EDB),45)",
+    "Parallelogram(CADB)",
+    "PerpendicularBetweenLine(AE,BE)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(CB),23)",
@@ -32,7 +36,14 @@
     "parallelogram_property_opposite_line_equal(1,CADB)",
     "quadrilateral_perimeter_formula(1,CADB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "altitude_of_quadrilateral_judgment_right_vertex(1,BE,CADB)",
+      "triangle_property_angle_sum(1,EDB)",
+      "parallelogram_property_opposite_line_equal(1,ADBC)",
+      "parallelogram_property_opposite_line_equal(1,CADB)",
+      "quadrilateral_perimeter_formula(1,CADB)"
+    ],
     "altitude_of_quadrilateral_judgment_right_vertex(1,BE,CADB)": [
       "right_triangle_judgment_angle(1,BED)",
       "isosceles_triangle_judgment_angle_equal(1,EDB)"
@@ -42,13 +53,6 @@
     ],
     "right_triangle_judgment_angle(1,BED)": [
       "right_triangle_property_pythagorean(1,BED)"
-    ],
-    "START": [
-      "altitude_of_quadrilateral_judgment_right_vertex(1,BE,CADB)",
-      "triangle_property_angle_sum(1,EDB)",
-      "parallelogram_property_opposite_line_equal(1,ADBC)",
-      "parallelogram_property_opposite_line_equal(1,CADB)",
-      "quadrilateral_perimeter_formula(1,CADB)"
     ]
   }
 }

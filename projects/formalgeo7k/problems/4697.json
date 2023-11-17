@@ -2,9 +2,9 @@
   "problem_id": 4697,
   "annotation": "XiaoxiaoJin_2023-05-14",
   "source": "GeoQA-3999",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在▱APBC中,∠C=40°,若⊙O与PA、PB相切于点A、B,则∠CAB=()",
-  "problem_text_en": "As shown in the figure, in ▱APBC, ∠C = N_0, if ⊙O is tangent to PA and PB at points A and B, then ∠CAB = ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠BCA=40°，PA是圆O的切线，PB是⊙O的切线，APBC是▱。求∠CAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BCA=40°, PA is the tangent to circle O, PB is the tangent to ⊙O, APBC is a parallelogram. Find the measure of ∠CAB.",
   "problem_img": "4697.png",
   "construction_cdl": [
     "Shape(AP,PB,OAB)",
@@ -18,9 +18,9 @@
     "Cocircular(O,ABED)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(BCA),40)",
     "IsTangentOfCircle(PA,O)",
     "IsTangentOfCircle(PB,O)",
-    "Equal(MeasureOfAngle(BCA),40)",
     "Parallelogram(APBC)"
   ],
   "image_cdl": [],
@@ -34,7 +34,13 @@
     "isosceles_triangle_property_angle_equal(1,CAB)",
     "triangle_property_angle_sum(1,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_length_equal(1,PA,PB,O)",
+      "parallelogram_property_opposite_line_equal(1,APBC)",
+      "parallelogram_property_opposite_line_equal(1,PBCA)",
+      "triangle_property_angle_sum(1,CAB)"
+    ],
     "tangent_of_circle_property_length_equal(1,PA,PB,O)": [
       "isosceles_triangle_judgment_line_equal(1,CAB)"
     ],
@@ -46,12 +52,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,CAB)": [
       "isosceles_triangle_property_angle_equal(1,CAB)"
-    ],
-    "START": [
-      "tangent_of_circle_property_length_equal(1,PA,PB,O)",
-      "parallelogram_property_opposite_line_equal(1,APBC)",
-      "parallelogram_property_opposite_line_equal(1,PBCA)",
-      "triangle_property_angle_sum(1,CAB)"
     ]
   }
 }

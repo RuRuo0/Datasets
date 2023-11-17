@@ -2,9 +2,9 @@
   "problem_id": 2259,
   "annotation": "DengfengYue_2023-04-16",
   "source": "Geometry3k-2362",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the base of the parallelogram given its area with 2000 square units.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，四边形BADC的面积为2000，BC=x+10，BE=x，AB和DC是▱BADC的一组对边，AE垂直于BE。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, the area of BADC is 2000, BC=x+10, BE=x, BADC is a ▱, AE⊥BE. Find the length of line BC.",
   "problem_img": "2259.png",
   "construction_cdl": [
     "Shape(BA,AE,EB)",
@@ -12,8 +12,11 @@
     "Collinear(AED)"
   ],
   "text_cdl": [
+    "Equal(AreaOfQuadrilateral(BADC),2000)",
+    "Equal(LengthOfLine(BC),x+10)",
+    "Equal(LengthOfLine(BE),x)",
     "Parallelogram(BADC)",
-    "Equal(AreaOfQuadrilateral(BADC),2000)"
+    "PerpendicularBetweenLine(AE,BE)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(BC),x+10)",
@@ -27,7 +30,7 @@
     "parallelogram_property_opposite_line_equal(1,CBAD)",
     "parallelogram_area_formula_common(1,BADC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "altitude_of_quadrilateral_judgment_left_vertex(1,BE,BADC)",
       "parallelogram_property_opposite_line_equal(1,CBAD)",

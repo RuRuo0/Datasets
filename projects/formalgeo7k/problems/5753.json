@@ -2,9 +2,9 @@
   "problem_id": 5753,
   "annotation": "XiaokaiZhang_2023-05-28",
   "source": "GeoQA-7596",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在平行四边形ABCD中,AB=4,∠BAD的平分线与BC的延长线交于点E,与DC交于点F,且DF:CF=3:1,DG⊥AE,垂足为G,若DG=1,则AE的长为()",
-  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, AB = N_0, the bisector of ∠BAD and the extended line of BC intersect at point E, and DC at point F, and DF: CF = N_1, DG ⊥ AE, and the vertical foot is G , If DG = N_2, then the length of AE is ()",
+  "problem_level": 12,
+  "problem_text_cn": "如图所示，AB=4，DF=3，DG=1，FC=1，DG是三角形DAF的高，AE是∠DAB的角平分线，AD和BC是▱DABC的一组对边。求直线AE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=4, DF=3, DG=1, FC=1, DG is the altitude of △ DAF, AE is the angle bisector of ∠DAB, AD and BC are opposite sides of the ▱ DABC. Find the length of line AE.",
   "problem_img": "5753.png",
   "construction_cdl": [
     "Shape(DA,AG,GD)",
@@ -16,13 +16,13 @@
     "Collinear(ECB)"
   ],
   "text_cdl": [
-    "Parallelogram(DABC)",
     "Equal(LengthOfLine(AB),4)",
-    "IsBisectorOfAngle(AE,DAB)",
     "Equal(LengthOfLine(DF),3)",
+    "Equal(LengthOfLine(DG),1)",
     "Equal(LengthOfLine(FC),1)",
     "IsAltitudeOfTriangle(DG,DAF)",
-    "Equal(LengthOfLine(DG),1)"
+    "IsBisectorOfAngle(AE,DAB)",
+    "Parallelogram(DABC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AE))",
@@ -41,7 +41,13 @@
     "similar_triangle_property_line_ratio(1,DAF,BEA)",
     "similar_triangle_property_line_ratio(1,AFD,EAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "right_triangle_judgment_angle(1,DGF)",
+      "parallel_property_collinear_extend(3,DC,AB,F)",
+      "line_addition(1,AG,GF)",
+      "parallel_property_collinear_extend(1,CB,DA,E)"
+    ],
     "right_triangle_judgment_angle(1,DGF)": [
       "right_triangle_property_pythagorean(1,DGF)"
     ],
@@ -64,12 +70,6 @@
     "similar_triangle_judgment_aa(1,DAF,BEA)": [
       "similar_triangle_property_line_ratio(1,DAF,BEA)",
       "similar_triangle_property_line_ratio(1,AFD,EAB)"
-    ],
-    "START": [
-      "right_triangle_judgment_angle(1,DGF)",
-      "parallel_property_collinear_extend(3,DC,AB,F)",
-      "line_addition(1,AG,GF)",
-      "parallel_property_collinear_extend(1,CB,DA,E)"
     ]
   }
 }

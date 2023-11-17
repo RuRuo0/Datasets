@@ -2,9 +2,9 @@
   "problem_id": 281,
   "annotation": "NaZhu_2023-03-12",
   "source": "Geometry3k-285",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find R T.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，RT=2*x+6，VT=10，WR=x+6，WS=8，∠SWR=∠VTR。求直线RT的长度。",
+  "problem_text_en": "As shown in the diagram, RT=2*x+6, VT=10, WR=x+6, WS=8, ∠SWR=∠VTR. Find the length of line RT.",
   "problem_img": "281.png",
   "construction_cdl": [
     "Shape(SW,WR,RS)",
@@ -12,7 +12,13 @@
     "Collinear(SRV)",
     "Collinear(WRT)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(RT),2*x+6)",
+    "Equal(LengthOfLine(VT),10)",
+    "Equal(LengthOfLine(WR),x+6)",
+    "Equal(LengthOfLine(WS),8)",
+    "Equal(MeasureOfAngle(SWR),MeasureOfAngle(VTR))"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(WS),8)",
     "Equal(LengthOfLine(WR),x+6)",
@@ -28,16 +34,16 @@
     "similar_triangle_property_line_ratio(1,SWR,VTR)",
     "similar_triangle_property_line_ratio(1,RSW,RVT)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "vertical_angle(1,WRS,TRV)"
+    ],
     "vertical_angle(1,WRS,TRV)": [
       "similar_triangle_judgment_aa(1,SWR,VTR)"
     ],
     "similar_triangle_judgment_aa(1,SWR,VTR)": [
       "similar_triangle_property_line_ratio(1,SWR,VTR)",
       "similar_triangle_property_line_ratio(1,RSW,RVT)"
-    ],
-    "START": [
-      "vertical_angle(1,WRS,TRV)"
     ]
   }
 }

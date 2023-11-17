@@ -2,14 +2,21 @@
   "problem_id": 1744,
   "annotation": "Yangli_2023-04-16",
   "source": "Geometry3k-1809",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the figure.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AP=12，KA=10，AK垂直于LK，KL⊥PL，LP垂直于AP，PA垂直于KA。求四边形LPAK的周长。",
+  "problem_text_en": "As shown in the diagram, AP=12, KA=10, AK is perpendicular to LK, KL⊥PL, LP is perpendicular to AP, PA is perpendicular to KA. Find the perimeter of LPAK.",
   "problem_img": "1744.png",
   "construction_cdl": [
     "Shape(LP,PA,AK,KL)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AP),12)",
+    "Equal(LengthOfLine(KA),10)",
+    "PerpendicularBetweenLine(AK,LK)",
+    "PerpendicularBetweenLine(KL,PL)",
+    "PerpendicularBetweenLine(LP,AP)",
+    "PerpendicularBetweenLine(PA,KA)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(KA),10)",
     "Equal(LengthOfLine(AP),12)",
@@ -28,7 +35,12 @@
     "parallelogram_property_opposite_line_equal(1,PAKL)",
     "quadrilateral_perimeter_formula(1,LPAK)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_judgment_ipsilateral_internal_angle(1,LK,PA)",
+      "parallel_judgment_ipsilateral_internal_angle(1,PL,AK)",
+      "quadrilateral_perimeter_formula(1,LPAK)"
+    ],
     "parallel_judgment_ipsilateral_internal_angle(1,LK,PA)": [
       "parallelogram_judgment_parallel_and_parallel(1,LPAK)"
     ],
@@ -38,11 +50,6 @@
     "parallelogram_judgment_parallel_and_parallel(1,LPAK)": [
       "parallelogram_property_opposite_line_equal(1,LPAK)",
       "parallelogram_property_opposite_line_equal(1,PAKL)"
-    ],
-    "START": [
-      "parallel_judgment_ipsilateral_internal_angle(1,LK,PA)",
-      "parallel_judgment_ipsilateral_internal_angle(1,PL,AK)",
-      "quadrilateral_perimeter_formula(1,LPAK)"
     ]
   }
 }

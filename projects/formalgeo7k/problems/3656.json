@@ -2,18 +2,18 @@
   "problem_id": 3656,
   "annotation": "XiaoxiaoJin_2023-04-30",
   "source": "GeoQA-1360",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC≌△ADC,∠ABC=118°,∠DAC=40°,则∠BCD的度数为()",
-  "problem_text_en": "As shown in the figure, △ABC ≌ △ADC, ∠ABC = N_0, ∠DAC = N_1, then the degree of ∠BCD is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠ABC=118°，∠DAC=40°，三角形ABC镜像全等于三角形ACD。求∠BCD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABC=118°, ∠DAC=40°, △ABC is mirror congruent to △ACD. Find the measure of ∠BCD.",
   "problem_img": "3656.png",
   "construction_cdl": [
     "Shape(AB,BC,CA)",
     "Shape(AC,CD,DA)"
   ],
   "text_cdl": [
-    "MirrorCongruentBetweenTriangle(ABC,ACD)",
     "Equal(MeasureOfAngle(ABC),118)",
-    "Equal(MeasureOfAngle(DAC),40)"
+    "Equal(MeasureOfAngle(DAC),40)",
+    "MirrorCongruentBetweenTriangle(ABC,ACD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BCD))",
@@ -25,7 +25,7 @@
     "triangle_property_angle_sum(1,ACD)",
     "angle_addition(1,BCA,ACD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "mirror_congruent_triangle_property_angle_equal(1,ABC,ACD)",
       "mirror_congruent_triangle_property_angle_equal(1,BCA,DAC)",

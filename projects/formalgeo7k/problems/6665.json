@@ -2,9 +2,9 @@
   "problem_id": 6665,
   "annotation": "QikeHuang_2023-06-04",
   "source": "GeoQA-9688",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点A,B,C是⊙O上的三点,且AB=4,BC=3,∠ABC=90°,则⊙O的直径为()",
-  "problem_text_en": "As shown in the figure, points A, B, and C are three points on ⊙O, and AB = N_0, BC = N_1, ∠ABC = N_2, then the diameter of ⊙O is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=4，BC=3，O是圆O的圆心。求圆O的直径。",
+  "problem_text_en": "As shown in the diagram, AB=4, BC=3, O is the center of circle O. Find the diameter of ⊙O.",
   "problem_img": "6665.png",
   "construction_cdl": [
     "Shape(OBA,AB)",
@@ -15,9 +15,9 @@
     "Cocircular(O,ACB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(AB),4)",
-    "Equal(LengthOfLine(BC),3)"
+    "Equal(LengthOfLine(BC),3)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(DiameterOfCircle(O))",
@@ -29,7 +29,10 @@
     "right_triangle_property_pythagorean(1,CBA)",
     "diameter_of_circle_property_length_equal(1,AC,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "diameter_of_circle_judgment_pass_centre(1,AOC,O)"
+    ],
     "diameter_of_circle_judgment_pass_centre(1,AOC,O)": [
       "diameter_of_circle_property_right_angle(1,CBA,O)",
       "diameter_of_circle_property_length_equal(1,AC,O)"
@@ -39,9 +42,6 @@
     ],
     "right_triangle_judgment_angle(1,CBA)": [
       "right_triangle_property_pythagorean(1,CBA)"
-    ],
-    "START": [
-      "diameter_of_circle_judgment_pass_centre(1,AOC,O)"
     ]
   }
 }

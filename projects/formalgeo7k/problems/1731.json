@@ -2,9 +2,9 @@
   "problem_id": 1731,
   "annotation": "Yangli_2023-04-16",
   "source": "Geometry3k-1796",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the parallelogram. Round to the nearest tenth if necessary.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AE=19，CB=44，∠ACE=30°，四边形BDAC是▱，DE⊥CE。求BDAC的周长。",
+  "problem_text_en": "As shown in the diagram, AE=19, CB=44, ∠ACE=30°, DB and AC are opposite sides of the parallelogram BDAC, DE⊥CE. Find the perimeter of quadrilateral BDAC.",
   "problem_img": "1731.png",
   "construction_cdl": [
     "Shape(BD,DE,EC,CB)",
@@ -12,7 +12,11 @@
     "Collinear(DEA)"
   ],
   "text_cdl": [
-    "Parallelogram(BDAC)"
+    "Equal(LengthOfLine(AE),19)",
+    "Equal(LengthOfLine(CB),44)",
+    "Equal(MeasureOfAngle(ACE),30)",
+    "Parallelogram(BDAC)",
+    "PerpendicularBetweenLine(DE,CE)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(CB),44)",
@@ -29,7 +33,7 @@
     "parallelogram_property_opposite_line_equal(1,DACB)",
     "quadrilateral_perimeter_formula(1,BDAC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,DEC,CEA)",
       "sine_theorem(1,ACE)",

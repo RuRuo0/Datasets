@@ -2,9 +2,9 @@
   "problem_id": 2923,
   "annotation": "JiaZou_2023-04-16",
   "source": "GeoQA-102",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知AB∥CD,AD平分∠BAE,∠D=38°,则∠AEC的度数是()",
-  "problem_text_en": "As shown in the figure, it is known that AB ∥ CD, AD bisects ∠BAE, ∠D = N_0, then the degree of ∠AEC is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠ADE=38°，AD平分∠EAB，CD∥AB。求∠AEC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ADE=38°, AD bisects ∠EAB, CD is parallel to AB. Find the measure of ∠AEC.",
   "problem_img": "2923.png",
   "construction_cdl": [
     "Shape(AE,EC)",
@@ -13,9 +13,9 @@
     "Collinear(CED)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(ADE),38)",
     "IsBisectorOfAngle(AD,EAB)",
-    "ParallelBetweenLine(CD,AB)",
-    "Equal(MeasureOfAngle(ADE),38)"
+    "ParallelBetweenLine(CD,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(AEC))",
@@ -25,7 +25,7 @@
     "triangle_property_angle_sum(1,ADE)",
     "adjacent_complementary_angle(1,DEA,AEC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_alternate_interior_angle(2,CD,AB)",
       "triangle_property_angle_sum(1,ADE)",

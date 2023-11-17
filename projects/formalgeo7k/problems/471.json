@@ -2,9 +2,9 @@
   "problem_id": 471,
   "annotation": "YimingHe_2023-04-02",
   "source": "Geometry3k-482",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Quadrilateral W X Y Z is a rectangle. If X W = 3, W Z = 4, and X Z = b, find Y W.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，WZ=4，XW=3，XZ=b，XW⊥ZW，XWZY是矩形。求直线YW的长度。",
+  "problem_text_en": "As shown in the diagram, WZ=4, XW=3, XZ=b, XW is perpendicular to ZW, quadrilateral XWZY is a rectangle. Find the length of line YW.",
   "problem_img": "471.png",
   "construction_cdl": [
     "Shape(AY,YX,XA)",
@@ -15,10 +15,11 @@
     "Collinear(WAY)"
   ],
   "text_cdl": [
-    "Rectangle(XWZY)",
-    "Equal(LengthOfLine(XW),3)",
     "Equal(LengthOfLine(WZ),4)",
-    "Equal(LengthOfLine(XZ),b)"
+    "Equal(LengthOfLine(XW),3)",
+    "Equal(LengthOfLine(XZ),b)",
+    "PerpendicularBetweenLine(XW,ZW)",
+    "Rectangle(XWZY)"
   ],
   "image_cdl": [
     "PerpendicularBetweenLine(XW,ZW)"
@@ -30,13 +31,13 @@
     "right_triangle_property_pythagorean(1,XWZ)",
     "rectangle_property_diagonal_equal(1,XWZY)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,XWZ)": [
-      "right_triangle_property_pythagorean(1,XWZ)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,XWZ)",
       "rectangle_property_diagonal_equal(1,XWZY)"
+    ],
+    "right_triangle_judgment_angle(1,XWZ)": [
+      "right_triangle_property_pythagorean(1,XWZ)"
     ]
   }
 }

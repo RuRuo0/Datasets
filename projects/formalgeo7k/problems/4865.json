@@ -2,9 +2,9 @@
   "problem_id": 4865,
   "annotation": "YifanWang_2023-05-21",
   "source": "GeoQA-4373",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在半径为1的⊙O中,AP是⊙O的切线,A为切点,OP与弦AB交于点C,点C为AB中点,∠P=30°,则CP的长度为()",
-  "problem_text_en": "As shown in the figure, in the ⊙O with radius N_0, AP is the tangent of ⊙O, A is the tangent point, OP and chord AB intersect at point C, point C is the midpoint of AB, ∠P = N_1, then the length of CP is ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，∠APD=30°，圆O的半径为1，圆O的圆心为O，C平分线段BA，圆O的切线为PA。求直线CP的长度。",
+  "problem_text_en": "As shown in the diagram, ∠APD=30°, the radius of ⊙O is 1, O is the center of ⊙O, C is the midpoint of segment BA, the tangent to ⊙O is PA. Find the length of line CP.",
   "problem_img": "4865.png",
   "construction_cdl": [
     "Shape(AO,OB,OBA)",
@@ -18,11 +18,11 @@
     "Cocircular(O,ADB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "Equal(RadiusOfCircle(O),1)",
-    "IsTangentOfCircle(PA,O)",
     "Equal(MeasureOfAngle(APD),30)",
-    "IsMidpointOfLine(C,BA)"
+    "Equal(RadiusOfCircle(O),1)",
+    "IsCentreOfCircle(O,O)",
+    "IsMidpointOfLine(C,BA)",
+    "IsTangentOfCircle(PA,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(CP))",
@@ -40,7 +40,18 @@
     "isosceles_triangle_property_line_coincidence(2,OAB,C)",
     "sine_theorem(1,OCB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "tangent_of_circle_property_perpendicular(1,PA,O,O)",
+      "triangle_property_angle_sum(1,BOC)",
+      "triangle_property_angle_sum(1,OAP)",
+      "sine_theorem(1,OAP)",
+      "line_addition(1,OC,CP)",
+      "median_of_triangle_judgment(1,OC,OAB)",
+      "sine_theorem(1,OCB)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OAB)"
     ],
@@ -52,17 +63,6 @@
     ],
     "median_of_triangle_judgment(1,OC,OAB)": [
       "isosceles_triangle_property_line_coincidence(2,OAB,C)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "tangent_of_circle_property_perpendicular(1,PA,O,O)",
-      "triangle_property_angle_sum(1,BOC)",
-      "triangle_property_angle_sum(1,OAP)",
-      "sine_theorem(1,OAP)",
-      "line_addition(1,OC,CP)",
-      "median_of_triangle_judgment(1,OC,OAB)",
-      "sine_theorem(1,OCB)"
     ]
   }
 }

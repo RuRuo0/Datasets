@@ -2,9 +2,9 @@
   "problem_id": 5406,
   "annotation": "XiaoxiaoJin_2023-05-21",
   "source": "GeoQA-5701",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC中,AB=AC=13,BC=10,AD平分∠BAC交BC于点D,AD的垂直平分线交AC于点E,连接DE,则△CDE的周长为()",
-  "problem_text_en": "As shown in the figure, in △ABC, AB = AC = N_0, BC = N_1, AD bisects ∠BAC and intersects BC at point D, the perpendicular bisector of AD intersects AC at point E,. Connect DE, then the perimeter of △CDE is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=13，AB=AC，AE=ED，BC=10，AD平分∠BAC。求△DEC的周长。",
+  "problem_text_en": "As shown in the diagram, AB=13, AB=AC, AE=ED, BC=10, AD bisects ∠BAC. Find the perimeter of triangle DEC.",
   "problem_img": "5406.png",
   "construction_cdl": [
     "Shape(AD,DB,BA)",
@@ -15,9 +15,9 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(AB),13)",
-    "Equal(LengthOfLine(BC),10)",
     "Equal(LengthOfLine(AB),LengthOfLine(AC))",
     "Equal(LengthOfLine(AE),LengthOfLine(ED))",
+    "Equal(LengthOfLine(BC),10)",
     "IsBisectorOfAngle(AD,BAC)"
   ],
   "image_cdl": [],
@@ -30,15 +30,15 @@
     "isosceles_triangle_property_line_coincidence(3,ACB,D)",
     "triangle_perimeter_formula(1,DEC)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,ACB)": [
-      "isosceles_triangle_property_line_coincidence(3,ACB,D)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AE,EC)",
       "line_addition(1,CD,DB)",
       "isosceles_triangle_judgment_line_equal(1,ACB)",
       "triangle_perimeter_formula(1,DEC)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,ACB)": [
+      "isosceles_triangle_property_line_coincidence(3,ACB,D)"
     ]
   }
 }

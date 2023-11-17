@@ -2,15 +2,24 @@
   "problem_id": 1943,
   "annotation": "ZheZhu_2023-04-16",
   "source": "Geometry3k-2022",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AF=CA，EA=13，EC=CA，EC=FE，EC=x，FE=AF，∠EAF=y°，EC⊥AC。求x的值。",
+  "problem_text_en": "As shown in the diagram, AF=CA, EA=13, EC=CA, EC=FE, EC=x, FE=AF, ∠EAF=y°, EC⊥AC. Find the value of x.",
   "problem_img": "1943.png",
   "construction_cdl": [
     "Shape(CA,AE,EC)",
     "Shape(EA,AF,FE)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AF),LengthOfLine(CA))",
+    "Equal(LengthOfLine(EA),13)",
+    "Equal(LengthOfLine(EC),LengthOfLine(CA))",
+    "Equal(LengthOfLine(EC),LengthOfLine(FE))",
+    "Equal(LengthOfLine(EC),x)",
+    "Equal(LengthOfLine(FE),LengthOfLine(AF))",
+    "Equal(MeasureOfAngle(EAF),y)",
+    "PerpendicularBetweenLine(EC,AC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(EA),13)",
     "Equal(LengthOfLine(EC),x)",
@@ -29,14 +38,14 @@
     "triangle_property_angle_sum(1,CAE)",
     "sine_theorem(1,ECA)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,CAE)": [
-      "isosceles_triangle_property_angle_equal(1,CAE)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,CAE)",
       "triangle_property_angle_sum(1,CAE)",
       "sine_theorem(1,ECA)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,CAE)": [
+      "isosceles_triangle_property_angle_equal(1,CAE)"
     ]
   }
 }

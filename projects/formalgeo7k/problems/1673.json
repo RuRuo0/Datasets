@@ -2,9 +2,9 @@
   "problem_id": 1673,
   "annotation": "Yangli_2023-04-16",
   "source": "Geometry3k-1737",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "What is the value of x if m \\widehat N R = 62 and m \\widehat N P = 108?",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，∠NMR=x°，⌒CNR的角度为62，⌒CPN的角度为108，C是⊙C的圆心，MR是圆O的切线。求x的值。",
+  "problem_text_en": "As shown in the diagram, ∠NMR=x°, the measure of ⌒CNR is 62, the measure of ⌒CPN is 108, C is the center of ⊙C, the tangent to circle C is MR. Find the value of x.",
   "problem_img": "1673.png",
   "construction_cdl": [
     "Shape(NP,CPN)",
@@ -16,7 +16,13 @@
     "Collinear(MNP)",
     "Cocircular(C,NRP)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(NMR),x)",
+    "Equal(MeasureOfArc(CNR),62)",
+    "Equal(MeasureOfArc(CPN),108)",
+    "IsCentreOfCircle(C,C)",
+    "IsTangentOfCircle(MR,C)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(C,C)",
     "Equal(MeasureOfArc(CNR),62)",
@@ -38,16 +44,7 @@
     "arc_property_center_angle(1,CNR,C)",
     "quadrilateral_property_angle_sum(1,NMRC)"
   ],
-  "theorem_seq_dag": {
-    "radius_of_circle_property_length_equal(1,CN,C)": [
-      "isosceles_triangle_judgment_line_equal(1,CPN)"
-    ],
-    "radius_of_circle_property_length_equal(1,CP,C)": [
-      "isosceles_triangle_judgment_line_equal(1,CPN)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,CPN)": [
-      "isosceles_triangle_property_angle_equal(1,CPN)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(2,MR,C,C)",
       "radius_of_circle_property_length_equal(1,CN,C)",
@@ -57,6 +54,15 @@
       "adjacent_complementary_angle(1,PNC,CNM)",
       "arc_property_center_angle(1,CNR,C)",
       "quadrilateral_property_angle_sum(1,NMRC)"
+    ],
+    "radius_of_circle_property_length_equal(1,CN,C)": [
+      "isosceles_triangle_judgment_line_equal(1,CPN)"
+    ],
+    "radius_of_circle_property_length_equal(1,CP,C)": [
+      "isosceles_triangle_judgment_line_equal(1,CPN)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,CPN)": [
+      "isosceles_triangle_property_angle_equal(1,CPN)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 3714,
   "annotation": "Yangli_2023-04-30",
   "source": "GeoQA-1483",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,C,D两点在⊙O上,若∠BCD=40°,则∠ABD的度数为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, and the two vertices C and D are on ⊙O. If ∠BCD = N_0, then the degree of ∠ABD is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠ECB=40°，圆O的圆心为O，AB是⊙O的直径。求∠ABD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ECB=40°, the center of ⊙O is O, AB is the diameter of circle O. Find the measure of ∠ABD.",
   "problem_img": "3714.png",
   "construction_cdl": [
     "Shape(AC,CO,OA)",
@@ -21,9 +21,9 @@
     "Cocircular(O,ACBD)"
   ],
   "text_cdl": [
-    "IsDiameterOfCircle(AB,O)",
+    "Equal(MeasureOfAngle(ECB),40)",
     "IsCentreOfCircle(O,O)",
-    "Equal(MeasureOfAngle(ECB),40)"
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ABD))",
@@ -34,7 +34,7 @@
     "arc_property_circumference_angle_external(1,OBD,A)",
     "triangle_property_angle_sum(1,DAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,BDA,O)",
       "arc_property_circumference_angle_external(1,OBD,C)",

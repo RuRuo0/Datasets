@@ -2,9 +2,9 @@
   "problem_id": 2910,
   "annotation": "JiaZou_2023-04-16",
   "source": "GeoQA-87",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB∥CD,AF交CD于点O,且OF平分∠EOD,如果∠A=34°,那么∠EOD的度数是()",
-  "problem_text_en": "As shown in the figure, AB ∥ CD, AF intersects CD at point O, and OF bisects ∠EOD, if ∠A = N_0, then the degree of ∠EOD is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠OAB=34°，OF平分∠EOD，OD平行于AB。求∠EOD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠OAB=34°, OF is the angle bisector of ∠EOD, OD∥AB. Find the measure of ∠EOD.",
   "problem_img": "2910.png",
   "construction_cdl": [
     "Shape(AO,OC)",
@@ -16,9 +16,9 @@
     "Collinear(AOF)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(OAB),34)",
     "IsBisectorOfAngle(OF,EOD)",
-    "ParallelBetweenLine(OD,AB)",
-    "Equal(MeasureOfAngle(OAB),34)"
+    "ParallelBetweenLine(OD,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(EOD))",
@@ -27,7 +27,7 @@
     "parallel_property_corresponding_angle(1,OD,AB,F)",
     "angle_addition(1,EOF,FOD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_corresponding_angle(1,OD,AB,F)",
       "angle_addition(1,EOF,FOD)"

@@ -2,9 +2,9 @@
   "problem_id": 4192,
   "annotation": "Yangli_2023-05-07",
   "source": "GeoQA-2867",
-  "problem_level": 1,
-  "problem_text_cn": "在Rt△ABC中,∠ACB=90°,CD⊥AB于点D,若AC=3,BC=4,则tanα等于()",
-  "problem_text_en": "In Rt△ABC, ∠ACB = N_0, CD ⊥ AB at point D, if AC = N_1, BC = N_2, then tanα is equal to ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AC=3，BC=4，∠BCA=90°，AD⊥CD。求tan(DC)的值。",
+  "problem_text_en": "As shown in the diagram, AC=3, BC=4, ∠BCA=90°, AD⊥CD. Find the value of tan(DC).",
   "problem_img": "4192.png",
   "construction_cdl": [
     "Shape(CA,AD,DC)",
@@ -12,8 +12,8 @@
     "Collinear(ADB)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(BC),4)",
     "Equal(LengthOfLine(AC),3)",
+    "Equal(LengthOfLine(BC),4)",
     "Equal(MeasureOfAngle(BCA),90)",
     "PerpendicularBetweenLine(AD,CD)"
   ],
@@ -29,10 +29,7 @@
     "angle_addition(1,BCD,DCA)",
     "cosine_theorem(1,ABC)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,BCA)": [
-      "right_triangle_property_pythagorean(1,BCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,BCA)",
       "triangle_property_angle_sum(1,CAB)",
@@ -40,6 +37,9 @@
       "triangle_property_angle_sum(1,CDB)",
       "angle_addition(1,BCD,DCA)",
       "cosine_theorem(1,ABC)"
+    ],
+    "right_triangle_judgment_angle(1,BCA)": [
+      "right_triangle_property_pythagorean(1,BCA)"
     ]
   }
 }

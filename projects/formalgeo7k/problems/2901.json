@@ -2,9 +2,9 @@
   "problem_id": 2901,
   "annotation": "YimingHe_2023-04-16",
   "source": "GeoQA-75",
-  "problem_level": 1,
-  "problem_text_cn": "如图,BO、CO分别平分∠ABC与∠ACB,MN∥BC,若AB=36,AC=24,则△AMN的周长是()",
-  "problem_text_en": "As shown in the figure, BO and CO bisect ∠ABC and ∠ACB respectively, MN ∥ BC, if AB = N_0, AC = N_1, then the perimeter of △AMN is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AB=36，AC=24，BO是∠MBC的角平分线，CO是∠BCN的角平分线，MN平行于BC。求三角形AMN的周长。",
+  "problem_text_en": "As shown in the diagram, AB=36, AC=24, BO is the angle bisector of ∠MBC, CO bisects ∠BCN, MN is parallel to BC. Find the perimeter of triangle AMN.",
   "problem_img": "2901.png",
   "construction_cdl": [
     "Shape(AM,MO,ON,NA)",
@@ -16,10 +16,10 @@
     "Collinear(ANC)"
   ],
   "text_cdl": [
-    "IsBisectorOfAngle(BO,MBC)",
-    "IsBisectorOfAngle(CO,BCN)",
     "Equal(LengthOfLine(AB),36)",
     "Equal(LengthOfLine(AC),24)",
+    "IsBisectorOfAngle(BO,MBC)",
+    "IsBisectorOfAngle(CO,BCN)",
     "ParallelBetweenLine(MN,BC)"
   ],
   "image_cdl": [],
@@ -36,7 +36,14 @@
     "line_addition(1,MO,ON)",
     "triangle_perimeter_formula(1,AMN)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,MN,BC,O)",
+      "line_addition(1,AM,MB)",
+      "line_addition(1,AN,NC)",
+      "line_addition(1,MO,ON)",
+      "triangle_perimeter_formula(1,AMN)"
+    ],
     "parallel_property_collinear_extend(3,MN,BC,O)": [
       "parallel_property_alternate_interior_angle(2,MO,BC)",
       "parallel_property_alternate_interior_angle(1,ON,BC)"
@@ -46,13 +53,6 @@
     ],
     "parallel_property_alternate_interior_angle(1,ON,BC)": [
       "isosceles_triangle_judgment_angle_equal(1,NOC)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,MN,BC,O)",
-      "line_addition(1,AM,MB)",
-      "line_addition(1,AN,NC)",
-      "line_addition(1,MO,ON)",
-      "triangle_perimeter_formula(1,AMN)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 1437,
   "annotation": "YanjunGuo_2023-04-16",
   "source": "Geometry3k-1490",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，JL=y+4/5，LC=2*y-11/5，MI=12-3*x，TM=10-2*x，TM=MI，JT∥LM，LM∥CI，四边形JLMT相似于四边形JCIT。求y的值。",
+  "problem_text_en": "As shown in the diagram, JL=y+4/5, LC=2*y-11/5, MI=12-3*x, TM=10-2*x, TM=MI, JT is parallel to LM, LM is parallel to CI, quadrilateral JLMT is similar to quadrilateral JCIT. Find the value of y.",
   "problem_img": "1437.png",
   "construction_cdl": [
     "Shape(NJ,JR)",
@@ -31,7 +31,16 @@
     "Collinear(VLMS)",
     "Collinear(ZCIO)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(JL),y+4/5)",
+    "Equal(LengthOfLine(LC),2*y-11/5)",
+    "Equal(LengthOfLine(MI),12-3*x)",
+    "Equal(LengthOfLine(TM),10-2*x)",
+    "Equal(LengthOfLine(TM),LengthOfLine(MI))",
+    "ParallelBetweenLine(JT,LM)",
+    "ParallelBetweenLine(LM,CI)",
+    "SimilarBetweenQuadrilateral(JLMT,JCIT)"
+  ],
   "image_cdl": [
     "SimilarBetweenQuadrilateral(JLMT,JCIT)",
     "Equal(LengthOfLine(TM),LengthOfLine(MI))",
@@ -50,7 +59,7 @@
     "similar_quadrilateral_property_line_ratio(1,JLMT,JCIT)",
     "similar_quadrilateral_property_line_ratio(1,MTJL,ITJC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,JL,LC)",
       "line_addition(1,TM,MI)",

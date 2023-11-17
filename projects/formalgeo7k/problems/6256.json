@@ -2,9 +2,9 @@
   "problem_id": 6256,
   "annotation": "FangzhenZhu_2023-06-04",
   "source": "GeoQA-8876",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是圆O的直径,∠C=20°,则∠BOC的度数是()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of circle O, ∠C = N_0, then the degree of ∠BOC is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠OCA=20°，O是圆O的圆心。求∠COB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠OCA=20°, the center of circle O is O. Find the measure of ∠COB.",
   "problem_img": "6256.png",
   "construction_cdl": [
     "Shape(OCA,AC)",
@@ -15,8 +15,8 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "Equal(MeasureOfAngle(OCA),20)"
+    "Equal(MeasureOfAngle(OCA),20)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(COB))",
@@ -29,7 +29,13 @@
     "arc_property_center_angle(1,OBC,O)",
     "arc_property_circumference_angle_external(1,OBC,A)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "arc_property_center_angle(1,OBC,O)",
+      "arc_property_circumference_angle_external(1,OBC,A)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OCA)"
     ],
@@ -38,12 +44,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OCA)": [
       "isosceles_triangle_property_angle_equal(1,OCA)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "arc_property_center_angle(1,OBC,O)",
-      "arc_property_circumference_angle_external(1,OBC,A)"
     ]
   }
 }

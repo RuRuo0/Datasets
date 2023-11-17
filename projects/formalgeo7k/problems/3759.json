@@ -2,9 +2,9 @@
   "problem_id": 3759,
   "annotation": "ChenyangMao_2023-04-30",
   "source": "GeoQA-1566",
-  "problem_level": 1,
-  "problem_text_cn": "如图,a∥b,点B在直线b上,且AB⊥BC,∠1=36°,那么∠2=()",
-  "problem_text_en": "As shown in the figure, a ∥ b, point B is on the straight line b, and AB ⊥ BC, ∠1 = N_0, then ∠2 = ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠FBC=36°，CE∥FH，CB垂直于DB。求∠ADE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠FBC=36°, CE is parallel to FH, CB is perpendicular to DB. Find the measure of ∠ADE.",
   "problem_img": "3759.png",
   "construction_cdl": [
     "Shape(CB,BD,DC)",
@@ -15,7 +15,11 @@
     "Collinear(FBH)",
     "Collinear(ADB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(FBC),36)",
+    "ParallelBetweenLine(CE,FH)",
+    "PerpendicularBetweenLine(CB,DB)"
+  ],
   "image_cdl": [
     "PerpendicularBetweenLine(CB,DB)",
     "ParallelBetweenLine(CE,FH)",
@@ -30,17 +34,17 @@
     "adjacent_complementary_angle(1,FBD,DBH)",
     "parallel_property_corresponding_angle(1,DE,BH,A)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,CE,FH,D)",
+      "angle_addition(1,FBC,CBD)",
+      "adjacent_complementary_angle(1,FBD,DBH)"
+    ],
     "parallel_property_collinear_extend(3,CE,FH,D)": [
       "parallel_property_collinear_extend(3,HF,ED,B)"
     ],
     "parallel_property_collinear_extend(3,HF,ED,B)": [
       "parallel_property_corresponding_angle(1,DE,BH,A)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,CE,FH,D)",
-      "angle_addition(1,FBC,CBD)",
-      "adjacent_complementary_angle(1,FBD,DBH)"
     ]
   }
 }

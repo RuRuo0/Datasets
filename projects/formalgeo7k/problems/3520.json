@@ -2,9 +2,9 @@
   "problem_id": 3520,
   "annotation": "XiaokaiZhang_2023-04-30",
   "source": "GeoQA-1134",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,∠C=90°,∠BAC=70°,将△ABC绕点A顺时针旋转70°,B,C旋转后的对应点分别是B′和C′,连接BB′,则∠ABB′的度数是()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠C = N_0, ∠BAC = N_1, rotate △ABC clockwise around point A by N_2, B and C after the corresponding vertices are B′ and C′ respectively, connect BB′, then ∠The degree of ABB′ is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，△CAB全等于△EAD，∠BAD=70°，∠BCA=90°，∠CAB=70°，∠DEA=90°。求∠DBA的大小。",
+  "problem_text_en": "As shown in the diagram, △CAB is congruent to △EAD, ∠BAD=70°, ∠BCA=90°, ∠CAB=70°, ∠DEA=90°. Find the measure of ∠DBA.",
   "problem_img": "3520.png",
   "construction_cdl": [
     "Shape(BC,CA,AE,EB)",
@@ -13,11 +13,11 @@
     "Collinear(BEA)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(BCA),90)",
-    "Equal(MeasureOfAngle(DEA),90)",
-    "Equal(MeasureOfAngle(CAB),70)",
+    "CongruentBetweenTriangle(CAB,EAD)",
     "Equal(MeasureOfAngle(BAD),70)",
-    "CongruentBetweenTriangle(CAB,EAD)"
+    "Equal(MeasureOfAngle(BCA),90)",
+    "Equal(MeasureOfAngle(CAB),70)",
+    "Equal(MeasureOfAngle(DEA),90)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DBA))",
@@ -28,16 +28,16 @@
     "isosceles_triangle_property_angle_equal(1,ADB)",
     "triangle_property_angle_sum(1,ADB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "congruent_triangle_property_line_equal(1,CAB,EAD)",
+      "triangle_property_angle_sum(1,ADB)"
+    ],
     "congruent_triangle_property_line_equal(1,CAB,EAD)": [
       "isosceles_triangle_judgment_line_equal(1,ADB)"
     ],
     "isosceles_triangle_judgment_line_equal(1,ADB)": [
       "isosceles_triangle_property_angle_equal(1,ADB)"
-    ],
-    "START": [
-      "congruent_triangle_property_line_equal(1,CAB,EAD)",
-      "triangle_property_angle_sum(1,ADB)"
     ]
   }
 }

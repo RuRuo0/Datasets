@@ -2,9 +2,9 @@
   "problem_id": 1755,
   "annotation": "NaZhu_2023-03-26",
   "source": "Geometry3k-1820",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find S T.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，PQ=25，RS=10，RT=x，SQ=5，PQ平行于TS，TR垂直于SR。求直线ST的长度。",
+  "problem_text_en": "As shown in the diagram, PQ=25, RS=10, RT=x, SQ=5, PQ∥TS, TR⊥SR. Find the length of line ST.",
   "problem_img": "1755.png",
   "construction_cdl": [
     "Shape(TR,RS,ST)",
@@ -12,7 +12,14 @@
     "Collinear(PTR)",
     "Collinear(RSQ)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(PQ),25)",
+    "Equal(LengthOfLine(RS),10)",
+    "Equal(LengthOfLine(RT),x)",
+    "Equal(LengthOfLine(SQ),5)",
+    "ParallelBetweenLine(PQ,TS)",
+    "PerpendicularBetweenLine(TR,SR)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(PQ),25)",
     "Equal(LengthOfLine(RT),x)",
@@ -30,17 +37,17 @@
     "similar_triangle_property_line_ratio(1,TRS,PRQ)",
     "similar_triangle_property_line_ratio(1,RST,RQP)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,RS,SQ)",
+      "parallel_property_corresponding_angle(1,ST,QP,R)"
+    ],
     "parallel_property_corresponding_angle(1,ST,QP,R)": [
       "similar_triangle_judgment_aa(1,TRS,PRQ)"
     ],
     "similar_triangle_judgment_aa(1,TRS,PRQ)": [
       "similar_triangle_property_line_ratio(1,TRS,PRQ)",
       "similar_triangle_property_line_ratio(1,RST,RQP)"
-    ],
-    "START": [
-      "line_addition(1,RS,SQ)",
-      "parallel_property_corresponding_angle(1,ST,QP,R)"
     ]
   }
 }

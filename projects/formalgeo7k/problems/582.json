@@ -3,8 +3,8 @@
   "annotation": "YimingHe_2023-04-09",
   "source": "Geometry3k-596",
   "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "For trapezoid Q R S T, A and B are midpoints of the legs. Find m \\angle Q.",
+  "problem_text_cn": "如图所示，QR=20，TC=12，∠CTQ=120°，∠QRB=45°，A平分线段TQ，B平分线段CR，TQ和RC是梯形TQRC的腰。求∠AQR的大小。",
+  "problem_text_en": "As shown in the diagram, QR=20, TC=12, ∠CTQ=120°, ∠QRB=45°, A is the midpoint of segment TQ, B is the midpoint of segment CR, TQ and RC are the non-parallel sides (legs) of trapezoid TQRC. Find the measure of ∠AQR.",
   "problem_img": "582.png",
   "construction_cdl": [
     "Shape(TA,AB,BC,CT)",
@@ -12,7 +12,15 @@
     "Collinear(TAQ)",
     "Collinear(CBR)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(QR),20)",
+    "Equal(LengthOfLine(TC),12)",
+    "Equal(MeasureOfAngle(CTQ),120)",
+    "Equal(MeasureOfAngle(QRB),45)",
+    "IsMidpointOfLine(A,TQ)",
+    "IsMidpointOfLine(B,CR)",
+    "Trapezoid(TQRC)"
+  ],
   "image_cdl": [
     "Trapezoid(TQRC)",
     "IsMidpointOfLine(A,TQ)",
@@ -27,7 +35,7 @@
   "theorem_seqs": [
     "parallel_property_ipsilateral_internal_angle(1,TC,QR)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_ipsilateral_internal_angle(1,TC,QR)"
     ]

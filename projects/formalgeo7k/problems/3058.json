@@ -2,9 +2,9 @@
   "problem_id": 3058,
   "annotation": "XiaokaiZhang_2023-04-16",
   "source": "GeoQA-279",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,AB=AC,∠A=40°．如果P为三角形内一点,且∠PBC=∠PCA,那么∠BPC等于()",
-  "problem_text_en": "As shown in the figure, in △ABC, AB = AC, ∠A = N_0. If P is a point in the triangle, and ∠PBC = ∠PCA, then ∠BPC is equal to ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=AC，∠CAB=40°，∠PBC=∠PCA。求∠CPB的大小。",
+  "problem_text_en": "As shown in the diagram, AB=AC, ∠CAB=40°, ∠PBC=∠PCA. Find the measure of ∠CPB.",
   "problem_img": "3058.png",
   "construction_cdl": [
     "Shape(CA,AB,BP,PC)",
@@ -25,15 +25,15 @@
     "triangle_property_angle_sum(1,PBC)",
     "angle_addition(1,BCP,PCA)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,ABC)": [
-      "isosceles_triangle_property_angle_equal(1,ABC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,ABC)",
       "triangle_property_angle_sum(1,ABC)",
       "triangle_property_angle_sum(1,PBC)",
       "angle_addition(1,BCP,PCA)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,ABC)": [
+      "isosceles_triangle_property_angle_equal(1,ABC)"
     ]
   }
 }

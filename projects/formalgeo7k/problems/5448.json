@@ -2,9 +2,9 @@
   "problem_id": 5448,
   "annotation": "Yangli_2023-05-21",
   "source": "GeoQA-5810",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,∠ABC的平分线交AC于点D,AD=6,过点D作DE∥BC交AB于点E,若△AED的周长为16,则边AB的长为()",
-  "problem_text_en": "As shown in the figure, in △ABC, the bisector of ∠ABC intersects AC at point D, AD = N_0, and passes through point D as DE ∥ BC intersects AB at point E. If the perimeter of △AED is N_1, then the length of edge AB for()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AD=6，△AED的周长为16，BD平分∠ABC，ED∥BC。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, AD=6, the perimeter of triangle AED is 16, BD bisects ∠ABC, ED∥BC. Find the length of line AB.",
   "problem_img": "5448.png",
   "construction_cdl": [
     "Shape(AE,ED,DA)",
@@ -28,14 +28,14 @@
     "isosceles_triangle_judgment_angle_equal(1,EBD)",
     "line_addition(1,AE,EB)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_alternate_interior_angle(2,ED,BC)": [
-      "isosceles_triangle_judgment_angle_equal(1,EBD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "triangle_perimeter_formula(1,AED)",
       "parallel_property_alternate_interior_angle(2,ED,BC)",
       "line_addition(1,AE,EB)"
+    ],
+    "parallel_property_alternate_interior_angle(2,ED,BC)": [
+      "isosceles_triangle_judgment_angle_equal(1,EBD)"
     ]
   }
 }

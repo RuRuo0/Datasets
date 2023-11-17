@@ -2,16 +2,21 @@
   "problem_id": 788,
   "annotation": "XiaokaiZhang_2023-03-19",
   "source": "Geometry3k-813",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find L P.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，LM=7*x+1，LP=10*x-5，PN=NM，LN⊥MN。求直线LP的长度。",
+  "problem_text_en": "As shown in the diagram, LM=7*x+1, LP=10*x-5, PN=NM, LN is perpendicular to MN. Find the length of line LP.",
   "problem_img": "788.png",
   "construction_cdl": [
     "Shape(LP,PN,NL)",
     "Shape(LN,NM,ML)",
     "Collinear(PNM)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(LM),7*x+1)",
+    "Equal(LengthOfLine(LP),10*x-5)",
+    "Equal(LengthOfLine(PN),LengthOfLine(NM))",
+    "PerpendicularBetweenLine(LN,MN)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(LM),7*x+1)",
     "Equal(LengthOfLine(LP),10*x-5)",
@@ -25,15 +30,15 @@
     "perpendicular_bisector_judgment_per_and_mid(1,LN,PM)",
     "perpendicular_bisector_property_distance_equal(1,LN,PM)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,PNL,LNM)"
+    ],
     "adjacent_complementary_angle(1,PNL,LNM)": [
       "perpendicular_bisector_judgment_per_and_mid(1,LN,PM)"
     ],
     "perpendicular_bisector_judgment_per_and_mid(1,LN,PM)": [
       "perpendicular_bisector_property_distance_equal(1,LN,PM)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,PNL,LNM)"
     ]
   }
 }

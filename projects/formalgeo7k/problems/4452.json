@@ -2,9 +2,9 @@
   "problem_id": 4452,
   "annotation": "JiaZou_2023-05-14",
   "source": "GeoQA-3422",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB为⊙O直径,CD为弦,AB⊥CD,如果∠BOC=70°,那么∠A的度数为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, CD is the chord, AB ⊥ CD, if ∠BOC = N_0, then the degree of ∠A is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠AED=90°，∠BOC=70°，O是圆O的圆心，AB是圆O的直径。求∠OAC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AED=90°, ∠BOC=70°, the center of circle O is O, the diameter of circle O is AB. Find the measure of ∠OAC.",
   "problem_img": "4452.png",
   "construction_cdl": [
     "Shape(AC,CO,OA)",
@@ -18,10 +18,10 @@
     "Cocircular(O,ACBD)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(AB,O)",
     "Equal(MeasureOfAngle(AED),90)",
-    "Equal(MeasureOfAngle(BOC),70)"
+    "Equal(MeasureOfAngle(BOC),70)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(OAC))",
@@ -30,7 +30,7 @@
     "arc_property_center_angle(1,OCB,O)",
     "arc_property_circumference_angle_external(1,OCB,A)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,OCB,O)",
       "arc_property_circumference_angle_external(1,OCB,A)"

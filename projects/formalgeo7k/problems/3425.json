@@ -2,9 +2,9 @@
   "problem_id": 3425,
   "annotation": "NaZhu_2023-04-30",
   "source": "GeoQA-979",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,∠ABC=120°,若DE、FG分别垂直平分AB、BC,那么∠EBF的度数为()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠ABC = N_0, if DE and FG bisect AB and BC perpendicularly, then the degree of ∠EBF is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，∠GBD=120°，ED是BA的垂直平分线，FG垂直平分AB。求∠FBE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠GBD=120°, ED perpendicular bisects BA, FG is the perpendicular bisector of CB. Find the measure of ∠FBE.",
   "problem_img": "3425.png",
   "construction_cdl": [
     "Shape(BD,DE,EB)",
@@ -17,9 +17,9 @@
     "Collinear(AEFC)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(GBD),120)",
     "IsPerpendicularBisectorOfLine(ED,BA)",
-    "IsPerpendicularBisectorOfLine(FG,CB)",
-    "Equal(MeasureOfAngle(GBD),120)"
+    "IsPerpendicularBisectorOfLine(FG,CB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(FBE))",
@@ -35,7 +35,14 @@
     "angle_addition(1,FBE,EBD)",
     "angle_addition(1,GBF,FBD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "perpendicular_bisector_property_distance_equal(1,ED,BA)",
+      "perpendicular_bisector_property_distance_equal(1,FG,CB)",
+      "triangle_property_angle_sum(1,BAC)",
+      "angle_addition(1,FBE,EBD)",
+      "angle_addition(1,GBF,FBD)"
+    ],
     "perpendicular_bisector_property_distance_equal(1,ED,BA)": [
       "isosceles_triangle_judgment_line_equal(1,EBA)"
     ],
@@ -47,13 +54,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,FCB)": [
       "isosceles_triangle_property_angle_equal(1,FCB)"
-    ],
-    "START": [
-      "perpendicular_bisector_property_distance_equal(1,ED,BA)",
-      "perpendicular_bisector_property_distance_equal(1,FG,CB)",
-      "triangle_property_angle_sum(1,BAC)",
-      "angle_addition(1,FBE,EBD)",
-      "angle_addition(1,GBF,FBD)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 4757,
   "annotation": "Yangli_2023-05-14",
   "source": "GeoQA-4117",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在⊙O的内接四边形ABCD中,AB是直径,∠BCD=115°,过D点的切线PD与射线BA交于点P,则∠ADP的度数为()",
-  "problem_text_en": "As shown in the figure, in the inscribed quadrilateral ABCD of ⊙O, AB is the diameter, ∠BCD = N_0, the tangent PD passing through the point D and the radial BA intersect at the point P, then the degree of ∠ADP is ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，∠BCD=115°，O是圆O的圆心，圆O的切线为PD。求∠ADP的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BCD=115°, the center of ⊙O is O, the tangent to circle O is PD. Find the measure of ∠ADP.",
   "problem_img": "4757.png",
   "construction_cdl": [
     "Shape(DP,PA,OAD)",
@@ -19,8 +19,8 @@
   ],
   "text_cdl": [
     "Equal(MeasureOfAngle(BCD),115)",
-    "IsTangentOfCircle(PD,O)",
-    "IsCentreOfCircle(O,O)"
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(PD,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ADP))",
@@ -38,16 +38,7 @@
     "isosceles_triangle_property_angle_equal(1,ODA)",
     "angle_addition(1,ODA,ADP)"
   ],
-  "theorem_seq_dag": {
-    "radius_of_circle_property_length_equal(1,OA,O)": [
-      "isosceles_triangle_judgment_line_equal(1,ODA)"
-    ],
-    "radius_of_circle_property_length_equal(1,OD,O)": [
-      "isosceles_triangle_judgment_line_equal(1,ODA)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,ODA)": [
-      "isosceles_triangle_property_angle_equal(1,ODA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,OA,O)",
       "radius_of_circle_property_length_equal(1,OD,O)",
@@ -58,6 +49,15 @@
       "arc_property_circumference_angle_external(1,ODB,C)",
       "round_angle(1,DOB,BOD)",
       "angle_addition(1,ODA,ADP)"
+    ],
+    "radius_of_circle_property_length_equal(1,OA,O)": [
+      "isosceles_triangle_judgment_line_equal(1,ODA)"
+    ],
+    "radius_of_circle_property_length_equal(1,OD,O)": [
+      "isosceles_triangle_judgment_line_equal(1,ODA)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,ODA)": [
+      "isosceles_triangle_property_angle_equal(1,ODA)"
     ]
   }
 }

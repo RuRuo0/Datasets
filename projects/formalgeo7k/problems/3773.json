@@ -2,9 +2,9 @@
   "problem_id": 3773,
   "annotation": "ChenyangMao_2023-04-30",
   "source": "GeoQA-1595",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在平行四边形ABCD中,∠BAD的平分线交BC于点E,∠ABC的平分线交AD于点F,连接EF,若BF=12,AB=10,则AE的长为()",
-  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, the bisector of ∠BAD crosses BC at point E, and the bisector of ∠ABC crosses AD at point F, connecting EF, if BF = N_0, AB = N_1, then the length of AE is ()",
+  "problem_level": 17,
+  "problem_text_cn": "如图所示，AB=10，BF=12，AO是∠FAB的角平分线，BO平分∠ABE，AD和BC是平行四边形ABCD的一组对边。求直线AE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, BF=12, AO bisects ∠FAB, BO bisects ∠ABE, quadrilateral ABCD is a parallelogram. Find the length of line AE.",
   "problem_img": "3773.png",
   "construction_cdl": [
     "Shape(FA,AO,OF)",
@@ -17,7 +17,13 @@
     "Collinear(AOE)",
     "Collinear(BOF)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),10)",
+    "Equal(LengthOfLine(BF),12)",
+    "IsBisectorOfAngle(AO,FAB)",
+    "IsBisectorOfAngle(BO,ABE)",
+    "Parallelogram(ABCD)"
+  ],
   "image_cdl": [
     "Parallelogram(ABCD)",
     "Equal(LengthOfLine(BF),12)",
@@ -46,7 +52,13 @@
     "right_triangle_property_pythagorean(1,AOF)",
     "line_addition(1,AO,OE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,AD,BC,F)",
+      "parallel_property_collinear_extend(3,CB,DA,E)",
+      "line_addition(1,BO,OF)",
+      "line_addition(1,AO,OE)"
+    ],
     "parallel_property_collinear_extend(3,AD,BC,F)": [
       "parallel_property_alternate_interior_angle(2,AF,BC)",
       "parallel_property_collinear_extend(3,CB,FA,E)"
@@ -91,12 +103,6 @@
     ],
     "right_triangle_judgment_angle(1,AOF)": [
       "right_triangle_property_pythagorean(1,AOF)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,AD,BC,F)",
-      "parallel_property_collinear_extend(3,CB,DA,E)",
-      "line_addition(1,BO,OF)",
-      "line_addition(1,AO,OE)"
     ]
   }
 }

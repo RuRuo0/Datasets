@@ -2,16 +2,22 @@
   "problem_id": 1479,
   "annotation": "YanjunGuo_2023-04-09",
   "source": "Geometry3k-1533",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，BC=7，BD=x，CX=2*x+1，DX=15，∠BXC=∠DXB。求x的值。",
+  "problem_text_en": "As shown in the diagram, BC=7, BD=x, CX=2*x+1, DX=15, ∠BXC=∠DXB. Find the value of x.",
   "problem_img": "1479.png",
   "construction_cdl": [
     "Shape(CB,BX,XC)",
     "Shape(XB,BD,DX)",
     "Collinear(CBD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BC),7)",
+    "Equal(LengthOfLine(BD),x)",
+    "Equal(LengthOfLine(CX),2*x+1)",
+    "Equal(LengthOfLine(DX),15)",
+    "Equal(MeasureOfAngle(BXC),MeasureOfAngle(DXB))"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(CX),2*x+1)",
     "Equal(LengthOfLine(BC),7)",
@@ -25,12 +31,12 @@
     "bisector_of_angle_judgment_angle_equal(1,XB,DXC)",
     "bisector_of_angle_property_line_ratio(1,XB,DXC)"
   ],
-  "theorem_seq_dag": {
-    "bisector_of_angle_judgment_angle_equal(1,XB,DXC)": [
-      "bisector_of_angle_property_line_ratio(1,XB,DXC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "bisector_of_angle_judgment_angle_equal(1,XB,DXC)"
+    ],
+    "bisector_of_angle_judgment_angle_equal(1,XB,DXC)": [
+      "bisector_of_angle_property_line_ratio(1,XB,DXC)"
     ]
   }
 }

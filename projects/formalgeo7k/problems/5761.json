@@ -2,9 +2,9 @@
   "problem_id": 5761,
   "annotation": "XiaokaiZhang_2023-05-28",
   "source": "GeoQA-7627",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,BF平分∠ABC,AF⊥BF于点F,D为AB的中点,连接DF延长交AC于点E．若AB=10,BC=16,则线段EF的长为()",
-  "problem_text_en": "As shown in the figure, in △ABC, BF bisects ∠ABC, AF ⊥ BF at point F, D is the midpoint of AB, and connects DF to extend AC at point E. If AB = N_0, BC = N_1, then the length of the line segment EF is ()",
+  "problem_level": 12,
+  "problem_text_cn": "如图所示，AB=10，BC=16，BF平分∠ABC，D平分线段AB，BF⊥AF。求直线EF的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, BC=16, BF is the angle bisector of ∠ABC, D is the midpoint of segment AB, BF⊥AF. Find the length of line EF.",
   "problem_img": "5761.png",
   "construction_cdl": [
     "Shape(AD,DF,FA)",
@@ -16,11 +16,11 @@
     "Collinear(DFE)"
   ],
   "text_cdl": [
-    "IsBisectorOfAngle(BF,ABC)",
-    "PerpendicularBetweenLine(BF,AF)",
-    "IsMidpointOfLine(D,AB)",
     "Equal(LengthOfLine(AB),10)",
-    "Equal(LengthOfLine(BC),16)"
+    "Equal(LengthOfLine(BC),16)",
+    "IsBisectorOfAngle(BF,ABC)",
+    "IsMidpointOfLine(D,AB)",
+    "PerpendicularBetweenLine(BF,AF)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(EF))",
@@ -39,7 +39,13 @@
     "similar_triangle_property_line_ratio(1,ADE,ABC)",
     "line_addition(1,DF,FE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AD,DB)",
+      "right_triangle_judgment_angle(1,BFA)",
+      "median_of_triangle_judgment(1,FD,FAB)",
+      "line_addition(1,DF,FE)"
+    ],
     "line_addition(1,AD,DB)": [
       "isosceles_triangle_judgment_line_equal(1,DBF)"
     ],
@@ -67,12 +73,6 @@
     "similar_triangle_judgment_aa(1,EAD,CAB)": [
       "similar_triangle_property_line_ratio(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,ADE,ABC)"
-    ],
-    "START": [
-      "line_addition(1,AD,DB)",
-      "right_triangle_judgment_angle(1,BFA)",
-      "median_of_triangle_judgment(1,FD,FAB)",
-      "line_addition(1,DF,FE)"
     ]
   }
 }

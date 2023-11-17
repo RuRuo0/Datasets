@@ -2,9 +2,9 @@
   "problem_id": 3728,
   "annotation": "Yangli_2023-04-30",
   "source": "GeoQA-1509",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在一次实践活动课上,小明为了测量池塘B、C两点间的距离,他先在池塘的一侧选定一点A,然后测量出AB、AC的中点D、E,且DE=10m,于是可以计算出池塘B、C两点间的距离是()",
-  "problem_text_en": "As shown in the figure, in a practical activity class, in order to measure the distance between the two points of pond B and C, Xiaoming first selected a point A on one side of the pond, and then measured the midpoints D, E, and DE of AB and AC. = N_0, so the distance between the two points of pond B and C can be calculated as ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，DE=10，D平分线段AB，E是线段AC的中点，△AED相似于△ABC。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, DE=10, D bisects segment AB, E is the midpoint of segment AC, triangle AED is similar to triangle ABC.. Find the length of line BC.",
   "problem_img": "3728.png",
   "construction_cdl": [
     "Shape(DA,AE,ED)",
@@ -13,10 +13,10 @@
     "Collinear(AEC)"
   ],
   "text_cdl": [
-    "SimilarBetweenTriangle(AED,ABC)",
     "Equal(LengthOfLine(DE),10)",
     "IsMidpointOfLine(D,AB)",
-    "IsMidpointOfLine(E,AC)"
+    "IsMidpointOfLine(E,AC)",
+    "SimilarBetweenTriangle(AED,ABC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BC))",
@@ -25,12 +25,12 @@
     "midsegment_of_triangle_judgment_midpoint(1,ED,ACB)",
     "midsegment_of_triangle_property_length(1,ED,ACB)"
   ],
-  "theorem_seq_dag": {
-    "midsegment_of_triangle_judgment_midpoint(1,ED,ACB)": [
-      "midsegment_of_triangle_property_length(1,ED,ACB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "midsegment_of_triangle_judgment_midpoint(1,ED,ACB)"
+    ],
+    "midsegment_of_triangle_judgment_midpoint(1,ED,ACB)": [
+      "midsegment_of_triangle_property_length(1,ED,ACB)"
     ]
   }
 }

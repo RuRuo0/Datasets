@@ -2,9 +2,9 @@
   "problem_id": 3590,
   "annotation": "QikeHuang_2023-04-30",
   "source": "GeoQA-1239",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在四边形ABCD中,已知AB=CD,M、N、P分别是AD、BC、BD的中点∠ABD=20°,∠BDC=70°,则∠NMP的度数为()",
-  "problem_text_en": "As shown in the figure, in the quadrilateral ABCD, it is known that AB = CD, M, N, and P are the midvertices of AD, BC, and BD respectively ∠ABD = N_0, ∠BDC = N_1, then the degree of ∠NMP is ()",
+  "problem_level": 12,
+  "problem_text_cn": "如图所示，AB=CD，∠ABP=20°，∠CDQ=70°，M是线段DA的中点，N是线段BC的中点，P是线段DB的中点。求∠QMP的大小。",
+  "problem_text_en": "As shown in the diagram, AB=CD, ∠ABP=20°, ∠CDQ=70°, M is the midpoint of segment DA, N is the midpoint of segment BC, P is the midpoint of segment DB. Find the measure of ∠QMP.",
   "problem_img": "3590.png",
   "construction_cdl": [
     "Shape(AB,BP,PM,MA)",
@@ -20,11 +20,11 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(AB),LengthOfLine(CD))",
-    "IsMidpointOfLine(P,DB)",
+    "Equal(MeasureOfAngle(ABP),20)",
+    "Equal(MeasureOfAngle(CDQ),70)",
     "IsMidpointOfLine(M,DA)",
     "IsMidpointOfLine(N,BC)",
-    "Equal(MeasureOfAngle(ABP),20)",
-    "Equal(MeasureOfAngle(CDQ),70)"
+    "IsMidpointOfLine(P,DB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(QMP))",
@@ -43,7 +43,13 @@
     "angle_addition(1,MPQ,QPN)",
     "triangle_property_angle_sum(1,PNM)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "midsegment_of_triangle_judgment_midpoint(1,MP,DAB)",
+      "midsegment_of_triangle_judgment_midpoint(1,NP,BCD)",
+      "angle_addition(1,MPQ,QPN)",
+      "triangle_property_angle_sum(1,PNM)"
+    ],
     "midsegment_of_triangle_judgment_midpoint(1,MP,DAB)": [
       "midsegment_of_triangle_property_parallel(1,MP,DAB)",
       "midsegment_of_triangle_property_length(1,MP,DAB)"
@@ -66,12 +72,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,PNM)": [
       "isosceles_triangle_property_angle_equal(1,PNM)"
-    ],
-    "START": [
-      "midsegment_of_triangle_judgment_midpoint(1,MP,DAB)",
-      "midsegment_of_triangle_judgment_midpoint(1,NP,BCD)",
-      "angle_addition(1,MPQ,QPN)",
-      "triangle_property_angle_sum(1,PNM)"
     ]
   }
 }

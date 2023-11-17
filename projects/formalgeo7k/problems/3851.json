@@ -2,9 +2,9 @@
   "problem_id": 3851,
   "annotation": "YifanWang_2023-05-07",
   "source": "GeoQA-1729",
-  "problem_level": 1,
-  "problem_text_cn": "如图AB是⊙O的直径,∠BAC=42°,点D是弦AC的中点,则∠DOC的度数是()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, ∠BAC = N_0, point D is the midpoint of chord AC, then the degree of ∠DOC is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠CAB=42°，⊙O的圆心为O，圆O的直径为AB，D是线段CA的中点。求∠DOC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAB=42°, O is the center of ⊙O, AB is the diameter of ⊙O, D bisects segment CA. Find the measure of ∠DOC.",
   "problem_img": "3851.png",
   "construction_cdl": [
     "Shape(AD,DC,OCA)",
@@ -17,7 +17,12 @@
     "Collinear(AOB)",
     "Cocircular(O,ABC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(CAB),42)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)",
+    "IsMidpointOfLine(D,CA)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)",
@@ -35,7 +40,13 @@
     "isosceles_triangle_property_line_coincidence(2,OCA,D)",
     "triangle_property_angle_sum(1,CDO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "median_of_triangle_judgment(1,OD,OCA)",
+      "triangle_property_angle_sum(1,CDO)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OCA)"
     ],
@@ -48,12 +59,6 @@
     ],
     "median_of_triangle_judgment(1,OD,OCA)": [
       "isosceles_triangle_property_line_coincidence(2,OCA,D)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "median_of_triangle_judgment(1,OD,OCA)",
-      "triangle_property_angle_sum(1,CDO)"
     ]
   }
 }

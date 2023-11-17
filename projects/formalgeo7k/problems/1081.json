@@ -2,15 +2,26 @@
   "problem_id": 1081,
   "annotation": "NaZhu_2023-03-19",
   "source": "Geometry3k-1118",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=9，AC=x，BC=12，EF=4，GE=3，GF=4，∠ABC=44°，∠BCA=51°，∠EGF=51°，∠FEG=85°。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=9, AC=x, BC=12, EF=4, GE=3, GF=4, ∠ABC=44°, ∠BCA=51°, ∠EGF=51°, ∠FEG=85°. Find the value of x.",
   "problem_img": "1081.png",
   "construction_cdl": [
     "Shape(GF,FE,EG)",
     "Shape(AB,BC,CA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),9)",
+    "Equal(LengthOfLine(AC),x)",
+    "Equal(LengthOfLine(BC),12)",
+    "Equal(LengthOfLine(EF),4)",
+    "Equal(LengthOfLine(GE),3)",
+    "Equal(LengthOfLine(GF),4)",
+    "Equal(MeasureOfAngle(ABC),44)",
+    "Equal(MeasureOfAngle(BCA),51)",
+    "Equal(MeasureOfAngle(EGF),51)",
+    "Equal(MeasureOfAngle(FEG),85)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(GE),3)",
     "Equal(LengthOfLine(EF),4)",
@@ -31,16 +42,16 @@
     "mirror_similar_triangle_property_line_ratio(1,EGF,ABC)",
     "mirror_similar_triangle_property_line_ratio(1,FEG,BCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "triangle_property_angle_sum(1,GFE)"
+    ],
     "triangle_property_angle_sum(1,GFE)": [
       "mirror_similar_triangle_judgment_aa(1,EGF,ABC)"
     ],
     "mirror_similar_triangle_judgment_aa(1,EGF,ABC)": [
       "mirror_similar_triangle_property_line_ratio(1,EGF,ABC)",
       "mirror_similar_triangle_property_line_ratio(1,FEG,BCA)"
-    ],
-    "START": [
-      "triangle_property_angle_sum(1,GFE)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 1730,
   "annotation": "Yangli_2023-04-16",
   "source": "Geometry3k-1795",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure. Round to the nearest tenth if necessary.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AE=23，BD=23，IC=8，IF=10，IG=10，AE平行于IC，IC∥DB，DG垂直于IG，EF⊥IF。求四边形CEAI的面积与四边形IDBC的面积之和。",
+  "problem_text_en": "As shown in the diagram, AE=23, BD=23, IC=8, IF=10, IG=10, AE∥IC, IC∥DB, DG is perpendicular to IG, EF is perpendicular to IF. Find the sum of the area of quadrilateral CEAI and the area of quadrilateral IDBC.",
   "problem_img": "1730.png",
   "construction_cdl": [
     "Shape(AI,IF,FA)",
@@ -15,7 +15,17 @@
     "Collinear(DGB)",
     "Collinear(FIG)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AE),23)",
+    "Equal(LengthOfLine(BD),23)",
+    "Equal(LengthOfLine(IC),8)",
+    "Equal(LengthOfLine(IF),10)",
+    "Equal(LengthOfLine(IG),10)",
+    "ParallelBetweenLine(AE,IC)",
+    "ParallelBetweenLine(IC,DB)",
+    "PerpendicularBetweenLine(DG,IG)",
+    "PerpendicularBetweenLine(EF,IF)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AE),23)",
     "Equal(LengthOfLine(IF),10)",
@@ -37,7 +47,11 @@
     "trapezoid_area_formula(1,CEAI)",
     "trapezoid_area_formula(1,IDBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "trapezoid_judgment_parallel(1,CEAI)",
+      "trapezoid_judgment_parallel(1,IDBC)"
+    ],
     "trapezoid_judgment_parallel(1,CEAI)": [
       "altitude_of_quadrilateral_judgment_right_vertex(2,IF,CEAI)",
       "trapezoid_area_formula(1,CEAI)"
@@ -45,10 +59,6 @@
     "trapezoid_judgment_parallel(1,IDBC)": [
       "altitude_of_quadrilateral_judgment_left_vertex(2,IG,IDBC)",
       "trapezoid_area_formula(1,IDBC)"
-    ],
-    "START": [
-      "trapezoid_judgment_parallel(1,CEAI)",
-      "trapezoid_judgment_parallel(1,IDBC)"
     ]
   }
 }

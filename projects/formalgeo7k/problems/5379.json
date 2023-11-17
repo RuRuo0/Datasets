@@ -2,9 +2,9 @@
   "problem_id": 5379,
   "annotation": "QikeHuang_2023-05-21",
   "source": "GeoQA-5663",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,AD垂直平分BC,BC=6,AD=4,点E,F是线段AD上的两点,则图中阴影部分的面积是()",
-  "problem_text_en": "As shown in the figure, in △ABC, AD perpendicularly bisects BC, BC = N_0, AD = N_1, points E, F are two points on the line segment AD, then the area of ​​the shaded part in the figure is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AD=4，BC=6，AD垂直平分AB。求△ABE的面积、三角形FBD的面积与△CEF的面积之和。",
+  "problem_text_en": "As shown in the diagram, AD=4, BC=6, AD perpendicular bisects BC. Find the sum of the area of triangle ABE, the area of △FBD and the area of △CEF.",
   "problem_img": "5379.png",
   "construction_cdl": [
     "Shape(AB,BE,EA)",
@@ -17,9 +17,9 @@
     "Collinear(BDC)"
   ],
   "text_cdl": [
-    "IsPerpendicularBisectorOfLine(AD,BC)",
     "Equal(LengthOfLine(AD),4)",
-    "Equal(LengthOfLine(BC),6)"
+    "Equal(LengthOfLine(BC),6)",
+    "IsPerpendicularBisectorOfLine(AD,BC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Add(AreaOfTriangle(ABE),AreaOfTriangle(FBD),AreaOfTriangle(CEF)))",
@@ -34,7 +34,7 @@
     "triangle_area_formula_sine(1,DFB)",
     "triangle_area_formula_common(1,CEF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,BD,DC)",
       "altitude_of_triangle_judgment(2,BD,BEA)",

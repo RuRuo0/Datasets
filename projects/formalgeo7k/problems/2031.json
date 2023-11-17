@@ -2,9 +2,9 @@
   "problem_id": 2031,
   "annotation": "QikeHuang_2023-04-23",
   "source": "Geometry3k-2117",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "The common chord A B between \\odot P and \\odot Q is perpendicular to the segment connecting the centers of the circles. If A B = 10 what is the length of P Q?",
+  "problem_level": 13,
+  "problem_text_cn": "如图所示，AB=10，PA=11，QA=9，⊙P的圆心为P，Q是圆Q的圆心，AH⊥QH，BH垂直于PH，PH⊥AH，QH垂直于BH。求直线PQ的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, PA=11, QA=9, P is the center of ⊙P, the center of ⊙Q is Q, AH is perpendicular to QH, BH⊥PH, PH⊥AH, QH is perpendicular to BH. Find the length of line PQ.",
   "problem_img": "2031.png",
   "construction_cdl": [
     "Shape(PA,PAB,BP)",
@@ -23,11 +23,15 @@
     "Cocircular(Q,ACB)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(PH,AH)",
+    "Equal(LengthOfLine(AB),10)",
+    "Equal(LengthOfLine(PA),11)",
+    "Equal(LengthOfLine(QA),9)",
+    "IsCentreOfCircle(P,P)",
+    "IsCentreOfCircle(Q,Q)",
     "PerpendicularBetweenLine(AH,QH)",
     "PerpendicularBetweenLine(BH,PH)",
-    "PerpendicularBetweenLine(QH,BH)",
-    "Equal(LengthOfLine(AB),10)"
+    "PerpendicularBetweenLine(PH,AH)",
+    "PerpendicularBetweenLine(QH,BH)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(P,P)",
@@ -52,7 +56,7 @@
     "triangle_area_formula_sine(1,QAB)",
     "line_addition(1,PH,HQ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,PB,P)",
       "radius_of_circle_property_length_equal(1,PA,P)",

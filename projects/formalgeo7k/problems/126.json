@@ -2,16 +2,20 @@
   "problem_id": 126,
   "annotation": "XiaokaiZhang_2023-03-12",
   "source": "Geometry3k-128",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the length of line AB.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，DA=3，DC=CB，DC⊥AC。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, DA=3, DC=CB, DC⊥AC. Find the length of line AB.",
   "problem_img": "126.png",
   "construction_cdl": [
     "Shape(AD,DC,CA)",
     "Shape(AC,CB,BA)",
     "Collinear(DCB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(DA),3)",
+    "Equal(LengthOfLine(DC),LengthOfLine(CB))",
+    "PerpendicularBetweenLine(DC,AC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(DA),3)",
     "PerpendicularBetweenLine(DC,AC)",
@@ -24,15 +28,15 @@
     "mirror_congruent_triangle_judgment_sas(1,CAD,CBA)",
     "mirror_congruent_triangle_property_line_equal(1,CAD,CBA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,DCA,ACB)"
+    ],
     "adjacent_complementary_angle(1,DCA,ACB)": [
       "mirror_congruent_triangle_judgment_sas(1,CAD,CBA)"
     ],
     "mirror_congruent_triangle_judgment_sas(1,CAD,CBA)": [
       "mirror_congruent_triangle_property_line_equal(1,CAD,CBA)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,DCA,ACB)"
     ]
   }
 }

@@ -2,14 +2,19 @@
   "problem_id": 1506,
   "annotation": "YanjunGuo_2023-04-09",
   "source": "Geometry3k-1563",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x. Round to the nearest tenth.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，GF=x，HF=32，∠FHG=29°，GF⊥HF。求x的值。",
+  "problem_text_en": "As shown in the diagram, GF=x, HF=32, ∠FHG=29°, GF is perpendicular to HF. Find the value of x.",
   "problem_img": "1506.png",
   "construction_cdl": [
     "Shape(HG,GF,FH)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(GF),x)",
+    "Equal(LengthOfLine(HF),32)",
+    "Equal(MeasureOfAngle(FHG),29)",
+    "PerpendicularBetweenLine(GF,HF)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(FHG),29)",
     "Equal(LengthOfLine(HF),32)",
@@ -23,13 +28,13 @@
     "right_triangle_property_pythagorean(1,GFH)",
     "cosine_theorem(1,HGF)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,GFH)": [
-      "right_triangle_property_pythagorean(1,GFH)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,GFH)",
       "cosine_theorem(1,HGF)"
+    ],
+    "right_triangle_judgment_angle(1,GFH)": [
+      "right_triangle_property_pythagorean(1,GFH)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 415,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-423",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the parallelogram. Round to the nearest tenth if necessary.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AC=21，AD=17，DE=8，四边形BCAD是平行四边形，CA垂直于EA，DE⊥AE。求BCAD的面积。",
+  "problem_text_en": "As shown in the diagram, AC=21, AD=17, DE=8, quadrilateral BCAD is a parallelogram, CA is perpendicular to EA, DE⊥AE. Find the area of quadrilateral BCAD.",
   "problem_img": "415.png",
   "construction_cdl": [
     "Shape(BC,CA,AE,EB)",
@@ -12,7 +12,12 @@
     "Collinear(BED)"
   ],
   "text_cdl": [
-    "Parallelogram(BCAD)"
+    "Equal(LengthOfLine(AC),21)",
+    "Equal(LengthOfLine(AD),17)",
+    "Equal(LengthOfLine(DE),8)",
+    "Parallelogram(BCAD)",
+    "PerpendicularBetweenLine(CA,EA)",
+    "PerpendicularBetweenLine(DE,AE)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(AD),17)",
@@ -30,15 +35,15 @@
     "parallelogram_property_opposite_line_equal(1,DBCA)",
     "parallelogram_area_formula_common(1,ADBC)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,DEA)": [
-      "right_triangle_property_pythagorean(1,DEA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,DEA)",
       "altitude_of_quadrilateral_judgment_left_vertex(1,AE,ADBC)",
       "parallelogram_property_opposite_line_equal(1,DBCA)",
       "parallelogram_area_formula_common(1,ADBC)"
+    ],
+    "right_triangle_judgment_angle(1,DEA)": [
+      "right_triangle_property_pythagorean(1,DEA)"
     ]
   }
 }

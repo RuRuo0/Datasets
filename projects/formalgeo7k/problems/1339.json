@@ -2,9 +2,9 @@
   "problem_id": 1339,
   "annotation": "FangzhenZhu_2023-04-09",
   "source": "Geometry3k-1387",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the composite figure. Round to the nearest tenth.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AC=14，CD=20，圆B的圆心为B，圆B的直径为ED，四边形ACDE是矩形。求扇形BDE的面积与ACDE的面积之和。",
+  "problem_text_en": "As shown in the diagram, AC=14, CD=20, the center of ⊙B is B, ED is the diameter of circle B, quadrilateral ACDE is a rectangle. Find the sum of the area of the sector BDE and the area of ACDE.",
   "problem_img": "1339.png",
   "construction_cdl": [
     "Shape(AC,CD,DE,EA)",
@@ -12,7 +12,13 @@
     "Collinear(EBD)",
     "Cocircular(B,DE)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),14)",
+    "Equal(LengthOfLine(CD),20)",
+    "IsCentreOfCircle(B,B)",
+    "IsDiameterOfCircle(ED,B)",
+    "Rectangle(ACDE)"
+  ],
   "image_cdl": [
     "IsDiameterOfCircle(ED,B)",
     "IsCentreOfCircle(B,B)",
@@ -31,7 +37,7 @@
     "arc_property_center_angle(1,BDE,B)",
     "parallelogram_area_formula_sine(1,ACDE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_property_opposite_line_equal(1,ACDE)",
       "diameter_of_circle_property_length_equal(1,ED,B)",

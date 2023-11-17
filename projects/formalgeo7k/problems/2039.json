@@ -2,9 +2,9 @@
   "problem_id": 2039,
   "annotation": "QikeHuang_2023-04-23",
   "source": "Geometry3k-2125",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure. Round to the nearest tenth if necessary.",
+  "problem_level": 21,
+  "problem_text_cn": "如图所示，AF=2，BC=5/2，BG=1，CE=7/2，EI=3，FG=3/2，JE=1，AD∥EI，BG平行于FA，CB∥FG，DI∥FA，FA∥CE，FG平行于EI，BC垂直于KC，KE⊥JE。求CKGB的面积、KEJF的面积与四边形AJID的面积之和。",
+  "problem_text_en": "As shown in the diagram, AF=2, BC=5/2, BG=1, CE=7/2, EI=3, FG=3/2, JE=1, AD is parallel to EI, BG is parallel to FA, CB∥FG, DI is parallel to FA, FA∥CE, FG∥EI, BC is perpendicular to KC, KE is perpendicular to JE. Find the sum of the area of quadrilateral CKGB, the area of KEJF and the area of quadrilateral AJID.",
   "problem_img": "2039.png",
   "construction_cdl": [
     "Shape(BC,CK,KF,FG,GB)",
@@ -15,7 +15,23 @@
     "Collinear(FAJ)",
     "Collinear(EJI)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AF),2)",
+    "Equal(LengthOfLine(BC),5/2)",
+    "Equal(LengthOfLine(BG),1)",
+    "Equal(LengthOfLine(CE),7/2)",
+    "Equal(LengthOfLine(EI),3)",
+    "Equal(LengthOfLine(FG),3/2)",
+    "Equal(LengthOfLine(JE),1)",
+    "ParallelBetweenLine(AD,EI)",
+    "ParallelBetweenLine(BG,FA)",
+    "ParallelBetweenLine(CB,FG)",
+    "ParallelBetweenLine(DI,FA)",
+    "ParallelBetweenLine(FA,CE)",
+    "ParallelBetweenLine(FG,EI)",
+    "PerpendicularBetweenLine(BC,KC)",
+    "PerpendicularBetweenLine(KE,JE)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BC),5/2)",
     "Equal(LengthOfLine(BG),1)",
@@ -58,7 +74,18 @@
     "parallelogram_area_formula_sine(1,BCKG)",
     "parallelogram_area_formula_sine(1,AJID)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,CK,KE)",
+      "line_addition(1,FA,AJ)",
+      "line_addition(1,EJ,JI)",
+      "parallel_property_collinear_extend(2,GF,BC,K)",
+      "parallel_property_collinear_extend(3,IE,DA,J)",
+      "parallel_property_collinear_extend(1,AF,ID,J)",
+      "parallel_property_collinear_extend(2,FA,CE,J)",
+      "parallel_judgment_par_par(1,BG,FA,CE)",
+      "parallel_property_collinear_extend(1,FG,EI,K)"
+    ],
     "parallel_property_collinear_extend(2,GF,BC,K)": [
       "parallelogram_judgment_parallel_and_parallel(1,BCKG)"
     ],
@@ -97,17 +124,6 @@
     "parallelogram_judgment_parallel_and_parallel(1,KEJF)": [
       "parallelogram_property_opposite_line_equal(1,KEJF)",
       "parallelogram_area_formula_sine(1,KEJF)"
-    ],
-    "START": [
-      "line_addition(1,CK,KE)",
-      "line_addition(1,FA,AJ)",
-      "line_addition(1,EJ,JI)",
-      "parallel_property_collinear_extend(2,GF,BC,K)",
-      "parallel_property_collinear_extend(3,IE,DA,J)",
-      "parallel_property_collinear_extend(1,AF,ID,J)",
-      "parallel_property_collinear_extend(2,FA,CE,J)",
-      "parallel_judgment_par_par(1,BG,FA,CE)",
-      "parallel_property_collinear_extend(1,FG,EI,K)"
     ]
   }
 }

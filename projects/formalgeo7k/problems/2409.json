@@ -3,8 +3,8 @@
   "annotation": "Yangli_2023-04-23",
   "source": "Geometry3k-2525",
   "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Given that the perimeter of \\triangle A B C = 25, find x. Assume that segments that appear tangent to circles are tangent.",
+  "problem_text_cn": "如图所示，AB=3*x，BA=BC，CA=7，三角形ACB的周长为25，⊙E的圆心为E，BA是⊙O的切线，BC是⊙O的切线。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=3*x, BA=BC, CA=7, the perimeter of △ACB is 25, the center of circle E is E, the tangent to ⊙E is BA, the tangent to circle E is BC. Find the value of x.",
   "problem_img": "2409.png",
   "construction_cdl": [
     "Shape(CA,EAC)",
@@ -12,7 +12,15 @@
     "Shape(CB,BA,ECA)",
     "Cocircular(E,AC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),3*x)",
+    "Equal(LengthOfLine(BA),LengthOfLine(BC))",
+    "Equal(LengthOfLine(CA),7)",
+    "Equal(PerimeterOfTriangle(ACB),25)",
+    "IsCentreOfCircle(E,E)",
+    "IsTangentOfCircle(BA,E)",
+    "IsTangentOfCircle(BC,E)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(E,E)",
     "Equal(PerimeterOfTriangle(ACB),25)",
@@ -27,7 +35,7 @@
   "theorem_seqs": [
     "triangle_perimeter_formula(1,ACB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_perimeter_formula(1,ACB)"
     ]

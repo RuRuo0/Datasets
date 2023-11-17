@@ -2,9 +2,9 @@
   "problem_id": 5432,
   "annotation": "Yangli_2023-05-21",
   "source": "GeoQA-5761",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在平行四边形ABCD中,对角线AC、BD相交于点O,点E是边CD的中点,连接OE．若平行四边形ABCD的周长为24,BD=8,则△DOE的周长为()",
-  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, the diagonals AC and BD intersect at the point O, and the point E is the midpoint of CD. Connect OE. If the perimeter of the parallelogram ABCD is N_0 and BD = N_1, then the perimeter of △DOE is ()",
+  "problem_level": 12,
+  "problem_text_cn": "如图所示，BD=8，四边形ABCD的周长为24，E是线段DC的中点，O是线段BD的中点，BA和CD是平行四边形ABCD的一组对边。求三角形DOE的周长。",
+  "problem_text_en": "As shown in the diagram, BD=8, the perimeter of ABCD is 24, E bisects segment DC, O is the midpoint of segment BD, ABCD is a ▱. Find the perimeter of △DOE.",
   "problem_img": "5432.png",
   "construction_cdl": [
     "Shape(AB,BO,OA)",
@@ -17,11 +17,11 @@
     "Collinear(CED)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(BD),8)",
+    "Equal(PerimeterOfQuadrilateral(ABCD),24)",
     "IsMidpointOfLine(E,DC)",
     "IsMidpointOfLine(O,BD)",
-    "Equal(LengthOfLine(BD),8)",
-    "Parallelogram(ABCD)",
-    "Equal(PerimeterOfQuadrilateral(ABCD),24)"
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfTriangle(DOE))",
@@ -40,7 +40,16 @@
     "similar_triangle_property_line_ratio(1,DOE,DBC)",
     "triangle_perimeter_formula(1,DOE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "quadrilateral_perimeter_formula(1,ABCD)",
+      "parallelogram_property_opposite_line_equal(1,ABCD)",
+      "parallelogram_property_opposite_line_equal(1,BCDA)",
+      "line_addition(1,BO,OD)",
+      "line_addition(1,CE,ED)",
+      "midsegment_of_triangle_judgment_midpoint(1,OE,DBC)",
+      "triangle_perimeter_formula(1,DOE)"
+    ],
     "midsegment_of_triangle_judgment_midpoint(1,OE,DBC)": [
       "midsegment_of_triangle_property_parallel(1,OE,DBC)"
     ],
@@ -53,15 +62,6 @@
     "similar_triangle_judgment_aa(1,EDO,CDB)": [
       "similar_triangle_property_line_ratio(1,EDO,CDB)",
       "similar_triangle_property_line_ratio(1,DOE,DBC)"
-    ],
-    "START": [
-      "quadrilateral_perimeter_formula(1,ABCD)",
-      "parallelogram_property_opposite_line_equal(1,ABCD)",
-      "parallelogram_property_opposite_line_equal(1,BCDA)",
-      "line_addition(1,BO,OD)",
-      "line_addition(1,CE,ED)",
-      "midsegment_of_triangle_judgment_midpoint(1,OE,DBC)",
-      "triangle_perimeter_formula(1,DOE)"
     ]
   }
 }

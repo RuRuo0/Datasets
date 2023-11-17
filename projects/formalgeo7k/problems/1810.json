@@ -2,9 +2,9 @@
   "problem_id": 1810,
   "annotation": "ChenyangMao_2023-04-16",
   "source": "Geometry3k-1877",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "What is the measure of \\angle G H I?",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠CFH=70°，∠HEA=40°，AB∥XY，XY平行于CD。求∠EHF的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CFH=70°, ∠HEA=40°, AB is parallel to XY, XY∥CD. Find the measure of ∠EHF.",
   "problem_img": "1810.png",
   "construction_cdl": [
     "Shape(AE,ED)",
@@ -25,7 +25,12 @@
     "Collinear(HED)",
     "Collinear(HFI)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(CFH),70)",
+    "Equal(MeasureOfAngle(HEA),40)",
+    "ParallelBetweenLine(AB,XY)",
+    "ParallelBetweenLine(XY,CD)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(HEA),40)",
     "Equal(MeasureOfAngle(CFH),70)",
@@ -43,7 +48,12 @@
     "parallel_property_alternate_interior_angle(2,AE,HY)",
     "angle_addition(1,EHY,YHF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,YX,BA,H)",
+      "parallel_property_collinear_extend(3,DC,YX,F)",
+      "angle_addition(1,EHY,YHF)"
+    ],
     "parallel_property_collinear_extend(3,YX,BA,H)": [
       "parallel_property_collinear_extend(3,AB,HY,E)"
     ],
@@ -55,11 +65,6 @@
     ],
     "parallel_property_collinear_extend(3,XY,CF,H)": [
       "parallel_property_alternate_interior_angle(1,HY,CF)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,YX,BA,H)",
-      "parallel_property_collinear_extend(3,DC,YX,F)",
-      "angle_addition(1,EHY,YHF)"
     ]
   }
 }

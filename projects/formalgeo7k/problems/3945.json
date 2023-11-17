@@ -2,9 +2,9 @@
   "problem_id": 3945,
   "annotation": "FangzhenZhu_2023-05-07",
   "source": "GeoQA-1867",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是半圆O的直径,点C为半圆O上一点,D是⁀{AC}的中点,∠DAC=40°,则∠CAB的度数为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of semicircle O, point C is a point on semicircle O, D is the midpoint of ⁀AC, ∠DAC = N_0, then the degree of ∠CAB is ()",
+  "problem_level": 12,
+  "problem_text_cn": "如图所示，∠DAC=40°，圆O的圆心为O，D平分弧OCA。求∠CAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DAC=40°, O is the center of ⊙O, D is the midpoint of ⌒OCA. Find the measure of ∠CAB.",
   "problem_img": "3945.png",
   "construction_cdl": [
     "Shape(OBC,CB)",
@@ -17,7 +17,11 @@
     "Collinear(AOB)",
     "Cocircular(O,BCDA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(DAC),40)",
+    "IsCentreOfCircle(O,O)",
+    "IsMidpointOfArc(D,OCA)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "IsMidpointOfArc(D,OCA)",
@@ -39,7 +43,16 @@
     "triangle_property_angle_sum(1,AOD)",
     "angle_addition(1,DAC,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "congruent_arc_judgment_length_equal(1,OCD,ODA)",
+      "arc_property_circumference_angle_external(1,ODA,C)",
+      "arc_property_center_angle(1,ODA,O)",
+      "radius_of_circle_property_length_equal(1,OD,O)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "triangle_property_angle_sum(1,AOD)",
+      "angle_addition(1,DAC,CAB)"
+    ],
     "congruent_arc_judgment_length_equal(1,OCD,ODA)": [
       "congruent_arc_property_chord_equal(1,OCD,ODA)"
     ],
@@ -57,15 +70,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,ODA)": [
       "isosceles_triangle_property_angle_equal(1,ODA)"
-    ],
-    "START": [
-      "congruent_arc_judgment_length_equal(1,OCD,ODA)",
-      "arc_property_circumference_angle_external(1,ODA,C)",
-      "arc_property_center_angle(1,ODA,O)",
-      "radius_of_circle_property_length_equal(1,OD,O)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "triangle_property_angle_sum(1,AOD)",
-      "angle_addition(1,DAC,CAB)"
     ]
   }
 }

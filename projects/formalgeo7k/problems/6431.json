@@ -2,9 +2,9 @@
   "problem_id": 6431,
   "annotation": "JiaZou_2023-06-04",
   "source": "GeoQA-9304",
-  "problem_level": 1,
-  "problem_text_cn": "如图,▱ABCD中,对角线AC、BD交于点O,点E是BC的中点．若OE=4cm,则AB的长为()",
-  "problem_text_en": "As shown in the figure, in ▱ABCD, the diagonals AC and BD intersect at point O, and point E is the midpoint of BC. If OE = N_0, then the length of AB is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，OE=4，E是线段BC的中点，四边形ABCD是平行四边形。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, OE=4, E is the midpoint of segment BC, quadrilateral ABCD is a parallelogram. Find the length of line AB.",
   "problem_img": "6431.png",
   "construction_cdl": [
     "Shape(AB,BO,OA)",
@@ -17,9 +17,9 @@
     "Collinear(BEC)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(OE),4)",
     "IsMidpointOfLine(E,BC)",
-    "Parallelogram(ABCD)",
-    "Equal(LengthOfLine(OE),4)"
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -32,7 +32,12 @@
     "similar_triangle_property_line_ratio(1,BCA,ECO)",
     "similar_triangle_property_line_ratio(1,CAB,COE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallelogram_property_diagonal_bisection(1,ABCD,O)",
+      "line_addition(1,AO,OC)",
+      "line_addition(1,BE,EC)"
+    ],
     "parallelogram_property_diagonal_bisection(1,ABCD,O)": [
       "similar_triangle_judgment_sas(1,CAB,COE)"
     ],
@@ -45,11 +50,6 @@
     "similar_triangle_judgment_sas(1,CAB,COE)": [
       "similar_triangle_property_line_ratio(1,CAB,COE)",
       "similar_triangle_property_line_ratio(1,BCA,ECO)"
-    ],
-    "START": [
-      "parallelogram_property_diagonal_bisection(1,ABCD,O)",
-      "line_addition(1,AO,OC)",
-      "line_addition(1,BE,EC)"
     ]
   }
 }

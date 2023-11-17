@@ -2,9 +2,9 @@
   "problem_id": 2156,
   "annotation": "YiwenHuang_2023-04-23",
   "source": "Geometry3k-2250",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，EI=JI，HI=FI，∠HFI=x+5°，∠IHF=2*x-25°，EJ∥HF。求x的值。",
+  "problem_text_en": "As shown in the diagram, EI=JI, HI=FI, ∠HFI=x+5°, ∠IHF=2*x-25°, EJ∥HF. Find the value of x.",
   "problem_img": "2156.png",
   "construction_cdl": [
     "Shape(EI,IJ,JE)",
@@ -12,7 +12,13 @@
     "Collinear(EIF)",
     "Collinear(JIH)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(EI),LengthOfLine(JI))",
+    "Equal(LengthOfLine(HI),LengthOfLine(FI))",
+    "Equal(MeasureOfAngle(HFI),x+5)",
+    "Equal(MeasureOfAngle(IHF),2*x-25)",
+    "ParallelBetweenLine(EJ,HF)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(IHF),2*x-25)",
     "Equal(MeasureOfAngle(HFI),x+5)",
@@ -26,12 +32,12 @@
     "isosceles_triangle_judgment_line_equal(1,IHF)",
     "isosceles_triangle_property_angle_equal(1,IHF)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,IHF)": [
-      "isosceles_triangle_property_angle_equal(1,IHF)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,IHF)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,IHF)": [
+      "isosceles_triangle_property_angle_equal(1,IHF)"
     ]
   }
 }

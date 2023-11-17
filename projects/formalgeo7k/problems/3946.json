@@ -2,9 +2,9 @@
   "problem_id": 3946,
   "annotation": "FangzhenZhu_2023-05-07",
   "source": "GeoQA-1870",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AD是∠CAE的平分线,∠B=45°,∠DAE=75°,则∠ACD为()",
-  "problem_text_en": "As shown in the figure, AD is the bisector of ∠CAE, ∠B = N_0, ∠DAE = N_1, then ∠ACD is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠ABC=45°，∠EAD=75°，AD平分∠EAC。求∠ACD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABC=45°, ∠EAD=75°, AD bisects ∠EAC. Find the measure of ∠ACD.",
   "problem_img": "3946.png",
   "construction_cdl": [
     "Shape(AB,BC,CA)",
@@ -13,7 +13,11 @@
     "Collinear(BAE)",
     "Collinear(BCD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(ABC),45)",
+    "Equal(MeasureOfAngle(EAD),75)",
+    "IsBisectorOfAngle(AD,EAC)"
+  ],
   "image_cdl": [
     "IsBisectorOfAngle(AD,EAC)",
     "Equal(MeasureOfAngle(ABC),45)",
@@ -27,7 +31,7 @@
     "angle_addition(1,EAD,DAC)",
     "adjacent_complementary_angle(1,EAC,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,ABC)",
       "adjacent_complementary_angle(1,BCA,ACD)",

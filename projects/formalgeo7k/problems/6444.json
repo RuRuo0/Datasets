@@ -2,9 +2,9 @@
   "problem_id": 6444,
   "annotation": "JiaZou_2023-06-04",
   "source": "GeoQA-9320",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在▱ABCD中,用直尺和圆规作∠BAD的平分线AG交BC于点E,若BF=12,AB=10,则AE的长为()",
-  "problem_text_en": "As shown in the figure, in ▱ABCD, use a ruler and compasses to make the bisector of ∠BAD intersect BC at point E. If BF = N_0, AB = N_1, then the length of AE is ()",
+  "problem_level": 13,
+  "problem_text_cn": "如图所示，AB=10，AB=AF，BF=12，AO是∠FAB的角平分线，ABCD是▱。求直线AE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, AB=AF, BF=12, AO bisects ∠FAB, AD and BC are opposite sides of the ▱ ABCD. Find the length of line AE.",
   "problem_img": "6444.png",
   "construction_cdl": [
     "Shape(AB,BO,OA)",
@@ -18,11 +18,11 @@
     "Collinear(BOF)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
-    "IsBisectorOfAngle(AO,FAB)",
-    "Equal(LengthOfLine(BF),12)",
     "Equal(LengthOfLine(AB),10)",
-    "Equal(LengthOfLine(AB),LengthOfLine(AF))"
+    "Equal(LengthOfLine(AB),LengthOfLine(AF))",
+    "Equal(LengthOfLine(BF),12)",
+    "IsBisectorOfAngle(AO,FAB)",
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AE))",
@@ -42,7 +42,14 @@
     "right_triangle_property_pythagorean(1,BOA)",
     "line_addition(1,AO,OE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "isosceles_triangle_judgment_line_equal(1,ABF)",
+      "line_addition(1,BO,OF)",
+      "parallel_property_collinear_extend(3,AD,BC,F)",
+      "adjacent_complementary_angle(1,EOB,BOA)",
+      "line_addition(1,AO,OE)"
+    ],
     "isosceles_triangle_judgment_line_equal(1,ABF)": [
       "isosceles_triangle_property_line_coincidence(3,ABF,O)"
     ],
@@ -70,13 +77,6 @@
     ],
     "right_triangle_judgment_angle(1,BOA)": [
       "right_triangle_property_pythagorean(1,BOA)"
-    ],
-    "START": [
-      "isosceles_triangle_judgment_line_equal(1,ABF)",
-      "line_addition(1,BO,OF)",
-      "parallel_property_collinear_extend(3,AD,BC,F)",
-      "adjacent_complementary_angle(1,EOB,BOA)",
-      "line_addition(1,AO,OE)"
     ]
   }
 }

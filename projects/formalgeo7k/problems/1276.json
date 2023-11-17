@@ -2,16 +2,25 @@
   "problem_id": 1276,
   "annotation": "YimingHe_2023-03-19",
   "source": "Geometry3k-1322",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AB=x，AD=3*sqrt(3)，BD=9，CD=y，∠ABC=30°，∠BCA=60°，AD垂直于CD，CA⊥BA。求y的值。",
+  "problem_text_en": "As shown in the diagram, AB=x, AD=3*sqrt(3), BD=9, CD=y, ∠ABC=30°, ∠BCA=60°, AD is perpendicular to CD, CA⊥BA. Find the value of y.",
   "problem_img": "1276.png",
   "construction_cdl": [
     "Shape(CA,AD,DC)",
     "Shape(DA,AB,BD)",
     "Collinear(CDB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),x)",
+    "Equal(LengthOfLine(AD),3*sqrt(3))",
+    "Equal(LengthOfLine(BD),9)",
+    "Equal(LengthOfLine(CD),y)",
+    "Equal(MeasureOfAngle(ABC),30)",
+    "Equal(MeasureOfAngle(BCA),60)",
+    "PerpendicularBetweenLine(AD,CD)",
+    "PerpendicularBetweenLine(CA,BA)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(CD),y)",
     "Equal(LengthOfLine(AB),x)",
@@ -29,7 +38,7 @@
     "sine_theorem(1,ADC)",
     "sine_theorem(1,CAD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,ADC)",
       "sine_theorem(1,ADC)",

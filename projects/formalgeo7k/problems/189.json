@@ -2,9 +2,9 @@
   "problem_id": 189,
   "annotation": "XiaokaiZhang_2023-03-12",
   "source": "Geometry3k-191",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "J is the incenter of triangle CBA. Find the measure of angle JAC.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AE=12，AJ=15，∠JBE=34°，∠JCD=32°，△CBA的内心为J，AF垂直于JF，CD垂直于JD，JE垂直于AE。求∠JAC的大小。",
+  "problem_text_en": "As shown in the diagram, AE=12, AJ=15, ∠JBE=34°, ∠JCD=32°, the incenter of △CBA is J, AF⊥JF, CD⊥JD, JE⊥AE. Find the measure of ∠JAC.",
   "problem_img": "189.png",
   "construction_cdl": [
     "Shape(CD,DJ,JC)",
@@ -18,7 +18,14 @@
     "Collinear(AFC)"
   ],
   "text_cdl": [
-    "IsIncenterOfTriangle(J,CBA)"
+    "Equal(LengthOfLine(AE),12)",
+    "Equal(LengthOfLine(AJ),15)",
+    "Equal(MeasureOfAngle(JBE),34)",
+    "Equal(MeasureOfAngle(JCD),32)",
+    "IsIncenterOfTriangle(J,CBA)",
+    "PerpendicularBetweenLine(AF,JF)",
+    "PerpendicularBetweenLine(CD,JD)",
+    "PerpendicularBetweenLine(JE,AE)"
   ],
   "image_cdl": [
     "Equal(MeasureOfAngle(JCD),32)",
@@ -37,7 +44,7 @@
     "angle_addition(1,EAJ,JAF)",
     "triangle_property_angle_sum(1,CBA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,FCJ,JCD)",
       "angle_addition(1,DBJ,JBE)",

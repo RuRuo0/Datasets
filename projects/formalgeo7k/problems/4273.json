@@ -2,9 +2,9 @@
   "problem_id": 4273,
   "annotation": "DengfengYue_2023-05-07",
   "source": "GeoQA-3065",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,∠ACB=90°,过点C作CD∥AB交∠ABC的平分线于点D,若∠ABD=20°,则∠ACD的度数为()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠ACB = N_0, passing point C to draw CD ∥ AB and to intersect the bisector of ∠ABC at point D, if ∠ABD = N_1, then the degree of ∠ACD is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠ABD=20°，∠BCA=90°，BE是∠ABC的角平分线，DC平行于AB。求∠ACD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABD=20°, ∠BCA=90°, BE bisects ∠ABC, DC is parallel to AB. Find the measure of ∠ACD.",
   "problem_img": "4273.png",
   "construction_cdl": [
     "Shape(DE,EC,CD)",
@@ -14,10 +14,10 @@
     "Collinear(AEC)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(DC,AB)",
-    "Equal(MeasureOfAngle(BCA),90)",
     "Equal(MeasureOfAngle(ABD),20)",
-    "IsBisectorOfAngle(BE,ABC)"
+    "Equal(MeasureOfAngle(BCA),90)",
+    "IsBisectorOfAngle(BE,ABC)",
+    "ParallelBetweenLine(DC,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ACD))",
@@ -28,7 +28,7 @@
     "adjacent_complementary_angle(1,CEB,BEA)",
     "parallel_property_alternate_interior_angle(2,DC,AB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,CEB)",
       "triangle_property_angle_sum(1,ABE)",

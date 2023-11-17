@@ -2,9 +2,9 @@
   "problem_id": 3598,
   "annotation": "QikeHuang_2023-04-30",
   "source": "GeoQA-1249",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC的内切圆⊙O与AB,BC,CA分别相切于点D,E,F,且AD=2,BC=5,则△ABC的周长为()",
-  "problem_text_en": "As shown in the figure, the inscribed circle ⊙O of △ABC and AB, BC, CA are tangent to vertices D, E, F respectively, and AD = N_0, BC = N_1, then the perimeter of △ABC is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AD=2，BC=5，O是⊙O的圆心，圆O的切线为AD，AF是⊙O的切线，圆O的切线为BD，⊙O的切线为BE，CE是⊙O的切线，圆O的切线为CF。求三角形ABC的周长。",
+  "problem_text_en": "As shown in the diagram, AD=2, BC=5, the center of ⊙O is O, AD is the tangent to ⊙O, AF is the tangent to circle O, BD is the tangent to circle O, BE is the tangent to ⊙O, the tangent to ⊙O is CE, CF is the tangent to circle O. Find the perimeter of △ABC.",
   "problem_img": "3598.png",
   "construction_cdl": [
     "Shape(AD,OFD,FA)",
@@ -18,15 +18,15 @@
     "Cocircular(O,DEF)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AD),2)",
+    "Equal(LengthOfLine(BC),5)",
     "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(AD,O)",
+    "IsTangentOfCircle(AF,O)",
     "IsTangentOfCircle(BD,O)",
     "IsTangentOfCircle(BE,O)",
     "IsTangentOfCircle(CE,O)",
-    "IsTangentOfCircle(CF,O)",
-    "IsTangentOfCircle(AD,O)",
-    "IsTangentOfCircle(AF,O)",
-    "Equal(LengthOfLine(AD),2)",
-    "Equal(LengthOfLine(BC),5)"
+    "IsTangentOfCircle(CF,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfTriangle(ABC))",
@@ -40,7 +40,7 @@
     "tangent_of_circle_property_length_equal(1,AD,AF,O)",
     "triangle_perimeter_formula(1,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,BE,EC)",
       "line_addition(1,AD,DB)",

@@ -2,9 +2,9 @@
   "problem_id": 2407,
   "annotation": "RunanWang_2023-04-23",
   "source": "Geometry3k-2522",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x if A E = 3, A B = 2, B C = 6, and E D = 2 x - 3.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AE=3，BA=2，CB=6，ED=2*x-3，EB∥DC。求x的值。",
+  "problem_text_en": "As shown in the diagram, AE=3, BA=2, CB=6, ED=2*x-3, EB∥DC. Find the value of x.",
   "problem_img": "2407.png",
   "construction_cdl": [
     "Shape(DC,CB,BE,ED)",
@@ -12,7 +12,13 @@
     "Collinear(CBA)",
     "Collinear(AED)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AE),3)",
+    "Equal(LengthOfLine(BA),2)",
+    "Equal(LengthOfLine(CB),6)",
+    "Equal(LengthOfLine(ED),2*x-3)",
+    "ParallelBetweenLine(EB,DC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AE),3)",
     "Equal(LengthOfLine(BA),2)",
@@ -30,18 +36,18 @@
     "similar_triangle_property_line_ratio(1,EBA,DCA)",
     "similar_triangle_property_line_ratio(1,BAE,CAD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(2,CD,BE,A)",
+      "line_addition(1,CB,BA)",
+      "line_addition(1,AE,ED)"
+    ],
     "parallel_property_corresponding_angle(2,CD,BE,A)": [
       "similar_triangle_judgment_aa(1,EBA,DCA)"
     ],
     "similar_triangle_judgment_aa(1,EBA,DCA)": [
       "similar_triangle_property_line_ratio(1,EBA,DCA)",
       "similar_triangle_property_line_ratio(1,BAE,CAD)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(2,CD,BE,A)",
-      "line_addition(1,CB,BA)",
-      "line_addition(1,AE,ED)"
     ]
   }
 }

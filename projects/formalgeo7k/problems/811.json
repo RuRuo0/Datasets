@@ -2,9 +2,9 @@
   "problem_id": 811,
   "annotation": "NaZhu_2023-04-09",
   "source": "Geometry3k-837",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Given a \\parallel b, find m \\angle 1.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠ALJ=133°，∠EKI=126°，BL平行于KJ。求∠KEJ的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ALJ=133°, ∠EKI=126°, BL is parallel to KJ. Find the measure of ∠KEJ.",
   "problem_img": "811.png",
   "construction_cdl": [
     "Shape(JK,KE,EJ)",
@@ -27,6 +27,8 @@
     "Collinear(HKEG)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(ALJ),133)",
+    "Equal(MeasureOfAngle(EKI),126)",
     "ParallelBetweenLine(BL,KJ)"
   ],
   "image_cdl": [
@@ -45,13 +47,7 @@
     "angle_addition(1,JKE,EKI)",
     "triangle_property_angle_sum(1,JKE)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(1,JK,LB,F)": [
-      "parallel_property_collinear_extend(2,BL,JF,A)"
-    ],
-    "parallel_property_collinear_extend(2,BL,JF,A)": [
-      "parallel_property_corresponding_angle(2,LA,JF,E)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_collinear_extend(1,JK,LB,F)",
       "flat_angle(1,FJK)",
@@ -59,6 +55,12 @@
       "flat_angle(1,JKI)",
       "angle_addition(1,JKE,EKI)",
       "triangle_property_angle_sum(1,JKE)"
+    ],
+    "parallel_property_collinear_extend(1,JK,LB,F)": [
+      "parallel_property_collinear_extend(2,BL,JF,A)"
+    ],
+    "parallel_property_collinear_extend(2,BL,JF,A)": [
+      "parallel_property_corresponding_angle(2,LA,JF,E)"
     ]
   }
 }

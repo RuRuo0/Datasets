@@ -2,9 +2,9 @@
   "problem_id": 4321,
   "annotation": "ZheZhu_2023-05-07",
   "source": "GeoQA-3164",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在⊙O中,OA⊥BC,∠AOB=48°,D为⊙O上一点,则∠ADC的度数是()",
-  "problem_text_en": "As shown in the figure, in ⊙O, OA ⊥ BC, ∠AOB = N_0, D is a point on ⊙O, then the degree of ∠ADC is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠AOB=48°，圆O的圆心为O，AE垂直于BE，BE⊥OE，CE垂直于AE。求∠CDA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AOB=48°, O is the center of ⊙O, AE⊥BE, BE is perpendicular to OE, CE is perpendicular to AE. Find the measure of ∠CDA.",
   "problem_img": "4321.png",
   "construction_cdl": [
     "Shape(AE,EB,OBA)",
@@ -17,11 +17,11 @@
     "Cocircular(O,ACDB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(AOB),48)",
     "IsCentreOfCircle(O,O)",
     "PerpendicularBetweenLine(AE,BE)",
-    "PerpendicularBetweenLine(CE,AE)",
     "PerpendicularBetweenLine(BE,OE)",
-    "Equal(MeasureOfAngle(AOB),48)"
+    "PerpendicularBetweenLine(CE,AE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CDA))",
@@ -33,17 +33,17 @@
     "arc_property_center_angle(1,OBA,O)",
     "arc_property_circumference_angle_external(1,OAC,D)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "circle_property_chord_perpendicular_bisect_arc(1,OBC,OEA)",
+      "arc_property_center_angle(1,OBA,O)",
+      "arc_property_circumference_angle_external(1,OAC,D)"
+    ],
     "circle_property_chord_perpendicular_bisect_arc(1,OBC,OEA)": [
       "congruent_arc_judgment_length_equal(1,OAC,OBA)"
     ],
     "congruent_arc_judgment_length_equal(1,OAC,OBA)": [
       "congruent_arc_property_measure_equal(1,OAC,OBA)"
-    ],
-    "START": [
-      "circle_property_chord_perpendicular_bisect_arc(1,OBC,OEA)",
-      "arc_property_center_angle(1,OBA,O)",
-      "arc_property_circumference_angle_external(1,OAC,D)"
     ]
   }
 }

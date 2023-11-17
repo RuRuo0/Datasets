@@ -2,9 +2,9 @@
   "problem_id": 269,
   "annotation": "NaZhu_2023-04-02",
   "source": "Geometry3k-272",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "\\odot C \\cong \\odot D. Find x.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，KL=AJ，弧CKL的角度为5*x，弧DJA的角度为3*x+54，⊙C的半径与⊙D的半径相等，C是圆C的圆心，⊙D的圆心为D。求x的值。",
+  "problem_text_en": "As shown in the diagram, KL=AJ, the measure of arc CKL is 5*x, the measure of arc DJA is 3*x+54, the radius of ⊙C is equal to the radius of circle D, C is the center of circle C, D is the center of circle D. Find the value of x.",
   "problem_img": "269.png",
   "construction_cdl": [
     "Shape(CKL,LK)",
@@ -17,7 +17,12 @@
     "Cocircular(D,JA)"
   ],
   "text_cdl": [
-    "Equal(RadiusOfCircle(C),RadiusOfCircle(D))"
+    "Equal(LengthOfLine(KL),LengthOfLine(AJ))",
+    "Equal(MeasureOfArc(CKL),5*x)",
+    "Equal(MeasureOfArc(DJA),3*x+54)",
+    "Equal(RadiusOfCircle(C),RadiusOfCircle(D))",
+    "IsCentreOfCircle(C,C)",
+    "IsCentreOfCircle(D,D)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(C,C)",
@@ -38,7 +43,15 @@
     "congruent_triangle_judgment_sss(1,KLC,JAD)",
     "congruent_triangle_property_angle_equal(1,CKL,DJA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_center_angle(1,CKL,C)",
+      "arc_property_center_angle(1,DJA,D)",
+      "radius_of_circle_property_length_equal(1,CK,C)",
+      "radius_of_circle_property_length_equal(1,CL,C)",
+      "radius_of_circle_property_length_equal(1,DJ,D)",
+      "radius_of_circle_property_length_equal(1,DA,D)"
+    ],
     "radius_of_circle_property_length_equal(1,CK,C)": [
       "congruent_triangle_judgment_sss(1,KLC,JAD)"
     ],
@@ -53,14 +66,6 @@
     ],
     "congruent_triangle_judgment_sss(1,KLC,JAD)": [
       "congruent_triangle_property_angle_equal(1,CKL,DJA)"
-    ],
-    "START": [
-      "arc_property_center_angle(1,CKL,C)",
-      "arc_property_center_angle(1,DJA,D)",
-      "radius_of_circle_property_length_equal(1,CK,C)",
-      "radius_of_circle_property_length_equal(1,CL,C)",
-      "radius_of_circle_property_length_equal(1,DJ,D)",
-      "radius_of_circle_property_length_equal(1,DA,D)"
     ]
   }
 }

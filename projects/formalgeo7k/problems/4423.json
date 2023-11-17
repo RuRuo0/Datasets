@@ -2,9 +2,9 @@
   "problem_id": 4423,
   "annotation": "JiaZou_2023-05-14",
   "source": "GeoQA-3375",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,点C在⊙O上,若∠B=50°,则∠A的度数为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, vertex C is on ⊙O, if ∠B = N_0, then the degree of ∠A is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠ABC=50°，圆O的圆心为O，⊙O的直径为AB。求∠CAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABC=50°, O is the center of ⊙O, AB is the diameter of circle O. Find the measure of ∠CAB.",
   "problem_img": "4423.png",
   "construction_cdl": [
     "Shape(AO,OB,BC,CA)",
@@ -15,9 +15,9 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(ABC),50)",
     "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(AB,O)",
-    "Equal(MeasureOfAngle(ABC),50)"
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CAB))",
@@ -26,7 +26,7 @@
     "diameter_of_circle_property_right_angle(1,BCA,O)",
     "triangle_property_angle_sum(1,BCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,BCA,O)",
       "triangle_property_angle_sum(1,BCA)"

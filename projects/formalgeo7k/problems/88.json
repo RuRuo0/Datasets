@@ -2,9 +2,9 @@
   "problem_id": 88,
   "annotation": "XiaokaiZhang_2023-04-02",
   "source": "Geometry3k-89",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，SR=TS，∠TAS=93°，弧ARS的角度为x，⊙A的圆心为A。求x的值。",
+  "problem_text_en": "As shown in the diagram, SR=TS, ∠TAS=93°, the measure of arc ARS is x, the center of ⊙A is A. Find the value of x.",
   "problem_img": "88.png",
   "construction_cdl": [
     "Shape(ATR,RS,SA,AT)",
@@ -13,7 +13,12 @@
     "Shape(AST,TS)",
     "Cocircular(A,RST)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(SR),LengthOfLine(TS))",
+    "Equal(MeasureOfAngle(TAS),93)",
+    "Equal(MeasureOfArc(ARS),x)",
+    "IsCentreOfCircle(A,A)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(A,A)",
     "Equal(MeasureOfAngle(TAS),93)",
@@ -27,13 +32,13 @@
     "congruent_arc_property_measure_equal(1,ARS,AST)",
     "arc_property_center_angle(1,AST,A)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_chord_equal(1,ARS,AST)": [
-      "congruent_arc_property_measure_equal(1,ARS,AST)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "congruent_arc_judgment_chord_equal(1,ARS,AST)",
       "arc_property_center_angle(1,AST,A)"
+    ],
+    "congruent_arc_judgment_chord_equal(1,ARS,AST)": [
+      "congruent_arc_property_measure_equal(1,ARS,AST)"
     ]
   }
 }

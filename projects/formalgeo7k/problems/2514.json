@@ -2,16 +2,25 @@
   "problem_id": 2514,
   "annotation": "YifanWang_2023-04-23",
   "source": "Geometry3k-2638",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "\\triangle K L N and \\triangle L M N are isosceles and m \\angle J K N = 130. Find the measure of \\angle J.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，KL=NL，NM=ML，∠JLK=25°，∠KLN=18°，∠NKJ=130°，∠NLM=20°，∠LNK和∠NKL是等腰三角形LNK的底角，MN和ML是等腰三角形MNL的腰。求∠KJL的大小。",
+  "problem_text_en": "As shown in the diagram, KL=NL, NM=ML, ∠JLK=25°, ∠KLN=18°, ∠NKJ=130°, ∠NLM=20°, LN and LK are the legs of the isosceles triangle LNK, MN and ML are the legs of the isosceles △ MNL. Find the measure of ∠KJL.",
   "problem_img": "2514.png",
   "construction_cdl": [
     "Shape(JL,LK,KJ)",
     "Shape(KL,LN,NK)",
     "Shape(NL,LM,MN)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(KL),LengthOfLine(NL))",
+    "Equal(LengthOfLine(NM),LengthOfLine(ML))",
+    "Equal(MeasureOfAngle(JLK),25)",
+    "Equal(MeasureOfAngle(KLN),18)",
+    "Equal(MeasureOfAngle(NKJ),130)",
+    "Equal(MeasureOfAngle(NLM),20)",
+    "IsoscelesTriangle(LNK)",
+    "IsoscelesTriangle(MNL)"
+  ],
   "image_cdl": [
     "IsoscelesTriangle(LNK)",
     "IsoscelesTriangle(MNL)",
@@ -30,7 +39,7 @@
     "triangle_property_angle_sum(1,KLN)",
     "angle_addition(1,NKL,LKJ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_property_angle_equal(1,LNK)",
       "triangle_property_angle_sum(1,JLK)",

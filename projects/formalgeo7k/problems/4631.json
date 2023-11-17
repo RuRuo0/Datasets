@@ -2,9 +2,9 @@
   "problem_id": 4631,
   "annotation": "QikeHuang_2023-05-14",
   "source": "GeoQA-3838",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O与BC相切于点B,弦AB∥OC,若∠C=40°,则∠AOB的度数是()",
-  "problem_text_en": "As shown in the figure, ⊙O and BC are tangent to vertex B, chord AB ∥ OC, if ∠C = N_0, then the degree of ∠AOB is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠BCO=40°，O是⊙O的圆心，圆O的切线为CB，OC∥AB。求∠BOA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BCO=40°, the center of circle O is O, the tangent to circle O is CB, OC is parallel to AB. Find the measure of ∠BOA.",
   "problem_img": "4631.png",
   "construction_cdl": [
     "Shape(OM,OMA,AO)",
@@ -16,10 +16,10 @@
     "Cocircular(O,ABM)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(OC,AB)",
+    "Equal(MeasureOfAngle(BCO),40)",
     "IsCentreOfCircle(O,O)",
     "IsTangentOfCircle(CB,O)",
-    "Equal(MeasureOfAngle(BCO),40)"
+    "ParallelBetweenLine(OC,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BOA))",
@@ -33,7 +33,7 @@
     "sine_theorem(1,OAB)",
     "triangle_property_angle_sum(1,OAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,OA,O)",
       "radius_of_circle_property_length_equal(1,OB,O)",

@@ -2,9 +2,9 @@
   "problem_id": 5568,
   "annotation": "ZheZhu_2023-05-21",
   "source": "GeoQA-6839",
-  "problem_level": 1,
-  "problem_text_cn": "为了测量两岸平行的河宽AB,测得∠ACB=30°,∠ADB=60°,CD=60m,则河宽AB为()",
-  "problem_text_en": "In order to measure the width of parallel river AB, ∠ACB = N_0, ∠ADB = N_1, CD = N_2, then the width of the river AB is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，CD=60，∠ACB=30°，∠ADB=60°，∠CBA=90°。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, CD=60, ∠ACB=30°, ∠ADB=60°, ∠CBA=90°. Find the length of line AB.",
   "problem_img": "5568.png",
   "construction_cdl": [
     "Shape(AC,CD,DA)",
@@ -27,7 +27,13 @@
     "isosceles_triangle_judgment_angle_equal(1,DAC)",
     "sine_theorem(1,ADB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "flat_angle(1,CDB)",
+      "angle_addition(1,CDA,ADB)",
+      "triangle_property_angle_sum(1,ACD)",
+      "sine_theorem(1,ADB)"
+    ],
     "flat_angle(1,CDB)": [
       "isosceles_triangle_judgment_angle_equal(1,DAC)"
     ],
@@ -36,12 +42,6 @@
     ],
     "triangle_property_angle_sum(1,ACD)": [
       "isosceles_triangle_judgment_angle_equal(1,DAC)"
-    ],
-    "START": [
-      "flat_angle(1,CDB)",
-      "angle_addition(1,CDA,ADB)",
-      "triangle_property_angle_sum(1,ACD)",
-      "sine_theorem(1,ADB)"
     ]
   }
 }

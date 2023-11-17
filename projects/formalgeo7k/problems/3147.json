@@ -2,9 +2,9 @@
   "problem_id": 3147,
   "annotation": "JiaZou_2023-04-23",
   "source": "GeoQA-407",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O的弦CD与直径AB相交,若∠ACD=35°,则∠BAD=()",
-  "problem_text_en": "As shown in the figure, the chord CD of ⊙O intersects the diameter AB, if ∠ACD = N_0, then ∠BAD = ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=DiameterOfCircle(O)，∠ACD=35°，O是圆O的圆心，AB是⊙O的直径。求∠DAB的大小。",
+  "problem_text_en": "As shown in the diagram, AB=DiameterOfCircle(O), ∠ACD=35°, the center of circle O is O, the diameter of ⊙O is AB. Find the measure of ∠DAB.",
   "problem_img": "3147.png",
   "construction_cdl": [
     "Shape(AD,ODA)",
@@ -18,7 +18,12 @@
     "Collinear(DEC)",
     "Cocircular(O,ACBD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),DiameterOfCircle(O))",
+    "Equal(MeasureOfAngle(ACD),35)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)"
+  ],
   "image_cdl": [
     "IsDiameterOfCircle(AB,O)",
     "IsCentreOfCircle(O,O)",
@@ -33,7 +38,7 @@
     "diameter_of_circle_property_right_angle(1,BDA,O)",
     "triangle_property_angle_sum(1,BDA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_circumference_angle_external(1,ODA,C)",
       "arc_property_circumference_angle_external(1,ODA,B)",

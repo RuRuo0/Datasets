@@ -2,9 +2,9 @@
   "problem_id": 4245,
   "annotation": "ChenyangMao_2023-05-07",
   "source": "GeoQA-3020",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,C是⊙O上的一点,OD⊥BC于点D,AC=8,则OD的长为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, C is a vertex on ⊙O, OD ⊥ BC is at vertex D, AC = N_0, then the length of OD is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AC=8，O是⊙O的圆心，圆O的直径为AB，BD⊥OD。求直线OD的长度。",
+  "problem_text_en": "As shown in the diagram, AC=8, O is the center of ⊙O, AB is the diameter of circle O, BD⊥OD. Find the length of line OD.",
   "problem_img": "4245.png",
   "construction_cdl": [
     "Shape(OCA,AC)",
@@ -17,10 +17,10 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AC),8)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)",
-    "PerpendicularBetweenLine(BD,OD)",
-    "Equal(LengthOfLine(AC),8)"
+    "PerpendicularBetweenLine(BD,OD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(OD))",
@@ -36,7 +36,13 @@
     "similar_triangle_property_line_ratio(1,BDO,BCA)",
     "similar_triangle_property_line_ratio(1,DOB,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AO,OB)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "diameter_of_circle_property_right_angle(1,BCA,O)"
+    ],
     "diameter_of_circle_property_right_angle(1,BCA,O)": [
       "parallel_judgment_corresponding_angle(1,DO,CA,B)",
       "similar_triangle_judgment_aa(1,BDO,BCA)"
@@ -50,12 +56,6 @@
     "similar_triangle_judgment_aa(1,BDO,BCA)": [
       "similar_triangle_property_line_ratio(1,BDO,BCA)",
       "similar_triangle_property_line_ratio(1,DOB,CAB)"
-    ],
-    "START": [
-      "line_addition(1,AO,OB)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "diameter_of_circle_property_right_angle(1,BCA,O)"
     ]
   }
 }

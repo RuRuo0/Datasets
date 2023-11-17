@@ -2,9 +2,9 @@
   "problem_id": 5903,
   "annotation": "YiwenHuang_2023-06-04",
   "source": "GeoQA-8019",
-  "problem_level": 1,
-  "problem_text_cn": "如图,梯形ABCD中,AD∥BC,对角线AC、BD相交于O点,若S~△AOD~:S~△OCD~=1:2,则S~△AOD~:S~△BOC~=()",
-  "problem_text_en": "As shown in the figure, in the trapezoidal ABCD, AD ∥ BC, diagonal AC, BD intersect at point O, if S~△AOD~:S~△OCD~ = N_0:N_1, then S~△AOD~:S~△BOC~ = ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，△OBC和△ODA的相似比为2，AD∥BC。求三角形AOD的面积与三角形OBC的面积之比。",
+  "problem_text_en": "As shown in the diagram, the ratio of similar triangles OBC and ODA is 2, AD∥BC. Find the ratio of the area of triangle AOD to the area of triangle OBC.",
   "problem_img": "5903.png",
   "construction_cdl": [
     "Shape(DA,AO,OD)",
@@ -15,8 +15,8 @@
     "Collinear(DOB)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AD,BC)",
-    "Equal(RatioOfSimilarTriangle(OBC,ODA),2)"
+    "Equal(RatioOfSimilarTriangle(OBC,ODA),2)",
+    "ParallelBetweenLine(AD,BC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Div(AreaOfTriangle(AOD),AreaOfTriangle(OBC)))",
@@ -27,7 +27,11 @@
     "similar_triangle_judgment_aa(1,OBC,ODA)",
     "similar_triangle_property_area_square_ratio(1,OBC,ODA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_alternate_interior_angle(1,AD,BC)",
+      "parallel_property_alternate_interior_angle(2,AD,BC)"
+    ],
     "parallel_property_alternate_interior_angle(1,AD,BC)": [
       "similar_triangle_judgment_aa(1,OBC,ODA)"
     ],
@@ -36,10 +40,6 @@
     ],
     "similar_triangle_judgment_aa(1,OBC,ODA)": [
       "similar_triangle_property_area_square_ratio(1,OBC,ODA)"
-    ],
-    "START": [
-      "parallel_property_alternate_interior_angle(1,AD,BC)",
-      "parallel_property_alternate_interior_angle(2,AD,BC)"
     ]
   }
 }

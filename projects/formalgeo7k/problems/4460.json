@@ -2,9 +2,9 @@
   "problem_id": 4460,
   "annotation": "JiaZou_2023-05-14",
   "source": "GeoQA-3435",
-  "problem_level": 1,
-  "problem_text_cn": "如图,BC是⊙O的直径,若⁀{AC}度数是50°,则∠ACB的度数是()",
-  "problem_text_en": "As shown in the figure, BC is the diameter of ⊙O, if the degree of ⁀AC is N_0, then the degree of ∠ACB is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，弧OAC的角度为50，O是⊙O的圆心，⊙O的直径为CB。求∠ACB的大小。",
+  "problem_text_en": "As shown in the diagram, the measure of ⌒OAC is 50, O is the center of circle O, the diameter of ⊙O is CB. Find the measure of ∠ACB.",
   "problem_img": "4460.png",
   "construction_cdl": [
     "Shape(AC,CO,OA)",
@@ -15,9 +15,9 @@
     "Cocircular(O,ACB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfArc(OAC),50)",
     "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(CB,O)",
-    "Equal(MeasureOfArc(OAC),50)"
+    "IsDiameterOfCircle(CB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ACB))",
@@ -30,7 +30,13 @@
     "isosceles_triangle_property_angle_equal(1,OAC)",
     "triangle_property_angle_sum(1,OAC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_center_angle(1,OAC,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "triangle_property_angle_sum(1,OAC)"
+    ],
     "radius_of_circle_property_length_equal(1,OC,O)": [
       "isosceles_triangle_judgment_line_equal(1,OAC)"
     ],
@@ -39,12 +45,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OAC)": [
       "isosceles_triangle_property_angle_equal(1,OAC)"
-    ],
-    "START": [
-      "arc_property_center_angle(1,OAC,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "triangle_property_angle_sum(1,OAC)"
     ]
   }
 }

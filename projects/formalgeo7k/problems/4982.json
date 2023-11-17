@@ -2,9 +2,9 @@
   "problem_id": 4982,
   "annotation": "FangzhenZhu_2023-05-21",
   "source": "GeoQA-4669",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,DE∥BC,\\frac{AD}{BD}=\\frac{1}{2},AE=4cm,则AC的长为()",
-  "problem_text_en": "As shown in the figure, in △ABC, DE ∥ BC, \\frac{AD}{BD} = \\frac{N_0}{N_1}, AE = N_2, then the length of AC is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，Div(LengthOfLine(AD)=LengthOfLine(BD))，AE=4，DE∥BC。求直线AC的长度。",
+  "problem_text_en": "As shown in the diagram, Div(LengthOfLine(AD)=LengthOfLine(BD)), AE=4, DE is parallel to BC. Find the length of line AC.",
   "problem_img": "4982.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -13,8 +13,8 @@
     "Collinear(AEC)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(AE),4)",
     "Equal(Div(LengthOfLine(AD),LengthOfLine(BD)),1/2)",
+    "Equal(LengthOfLine(AE),4)",
     "ParallelBetweenLine(DE,BC)"
   ],
   "image_cdl": [],
@@ -28,7 +28,12 @@
     "similar_triangle_property_line_ratio(1,EAD,CAB)",
     "line_addition(1,AD,DB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,DE,BC,A)",
+      "parallel_property_corresponding_angle(2,CB,ED,A)",
+      "line_addition(1,AD,DB)"
+    ],
     "parallel_property_corresponding_angle(1,DE,BC,A)": [
       "similar_triangle_judgment_aa(1,ADE,ABC)"
     ],
@@ -38,11 +43,6 @@
     "similar_triangle_judgment_aa(1,ADE,ABC)": [
       "similar_triangle_property_line_ratio(1,DEA,BCA)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,DE,BC,A)",
-      "parallel_property_corresponding_angle(2,CB,ED,A)",
-      "line_addition(1,AD,DB)"
     ]
   }
 }

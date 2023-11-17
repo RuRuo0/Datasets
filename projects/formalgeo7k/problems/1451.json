@@ -2,9 +2,9 @@
   "problem_id": 1451,
   "annotation": "YanjunGuo_2023-04-16",
   "source": "Geometry3k-1504",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，BF=2*y+4，DG=3/2*x+8，EB=3*y-6，FG=1/2*X+12，FG=GD，GB∥DE。求y的值。",
+  "problem_text_en": "As shown in the diagram, BF=2*y+4, DG=3/2*x+8, EB=3*y-6, FG=1/2*X+12, FG=GD, GB is parallel to DE. Find the value of y.",
   "problem_img": "1451.png",
   "construction_cdl": [
     "Shape(FG,GB,BF)",
@@ -12,7 +12,14 @@
     "Collinear(FBE)",
     "Collinear(FGD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BF),2*y+4)",
+    "Equal(LengthOfLine(DG),3/2*x+8)",
+    "Equal(LengthOfLine(EB),3*y-6)",
+    "Equal(LengthOfLine(FG),1/2*X+12)",
+    "Equal(LengthOfLine(FG),LengthOfLine(GD))",
+    "ParallelBetweenLine(GB,DE)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(EB),3*y-6)",
     "Equal(LengthOfLine(BF),2*y+4)",
@@ -32,7 +39,13 @@
     "line_addition(1,FB,BE)",
     "line_addition(1,FG,GD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,GB,DE,F)",
+      "parallel_property_corresponding_angle(2,ED,BG,F)",
+      "line_addition(1,FB,BE)",
+      "line_addition(1,FG,GD)"
+    ],
     "parallel_property_corresponding_angle(1,GB,DE,F)": [
       "similar_triangle_judgment_aa(1,FGB,FDE)"
     ],
@@ -42,12 +55,6 @@
     "similar_triangle_judgment_aa(1,FGB,FDE)": [
       "similar_triangle_property_line_ratio(1,GBF,DEF)",
       "similar_triangle_property_line_ratio(1,BFG,EFD)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,GB,DE,F)",
-      "parallel_property_corresponding_angle(2,ED,BG,F)",
-      "line_addition(1,FB,BE)",
-      "line_addition(1,FG,GD)"
     ]
   }
 }

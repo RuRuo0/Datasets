@@ -2,9 +2,9 @@
   "problem_id": 2918,
   "annotation": "JiaZou_2023-04-16",
   "source": "GeoQA-96",
-  "problem_level": 1,
-  "problem_text_cn": "如图,把一块等腰直角三角板的直角顶点放在直尺的一边上,如果∠1=40°,那么∠2=()",
-  "problem_text_en": "As shown in the figure, put the right-angle vertex of an isosceles right-angled triangle plate on one edge of the ruler, if ∠1 = N_0, then ∠2 = ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠ABF=40°，∠ABC是等腰直角三角形BCA的直角，DE平行于FB。求∠DEC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABF=40°, ∠CAB is the right angle of the isosceles right △ BCA, DE is parallel to FB. Find the measure of ∠DEC.",
   "problem_img": "2918.png",
   "construction_cdl": [
     "Shape(CD,DE,EC)",
@@ -14,9 +14,9 @@
     "Collinear(CEB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(ABF),40)",
     "IsoscelesRightTriangle(BCA)",
-    "ParallelBetweenLine(DE,FB)",
-    "Equal(MeasureOfAngle(ABF),40)"
+    "ParallelBetweenLine(DE,FB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DEC))",
@@ -25,7 +25,7 @@
     "angle_addition(1,ABF,FBE)",
     "parallel_property_corresponding_angle(2,BF,ED,C)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,ABF,FBE)",
       "parallel_property_corresponding_angle(2,BF,ED,C)"

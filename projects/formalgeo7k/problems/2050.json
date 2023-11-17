@@ -2,16 +2,22 @@
   "problem_id": 2050,
   "annotation": "YimingHe_2023-03-26",
   "source": "Geometry3k-2137",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=20，AC=16，BD=17，CD=x，∠DAC=∠BAD。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=20, AC=16, BD=17, CD=x, ∠DAC=∠BAD. Find the value of x.",
   "problem_img": "2050.png",
   "construction_cdl": [
     "Shape(CD,DA,AC)",
     "Shape(AD,DB,BA)",
     "Collinear(CDB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),20)",
+    "Equal(LengthOfLine(AC),16)",
+    "Equal(LengthOfLine(BD),17)",
+    "Equal(LengthOfLine(CD),x)",
+    "Equal(MeasureOfAngle(DAC),MeasureOfAngle(BAD))"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AC),16)",
     "Equal(LengthOfLine(AB),20)",
@@ -25,12 +31,12 @@
     "bisector_of_angle_judgment_angle_equal(1,AD,BAC)",
     "bisector_of_angle_property_line_ratio(1,AD,BAC)"
   ],
-  "theorem_seq_dag": {
-    "bisector_of_angle_judgment_angle_equal(1,AD,BAC)": [
-      "bisector_of_angle_property_line_ratio(1,AD,BAC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "bisector_of_angle_judgment_angle_equal(1,AD,BAC)"
+    ],
+    "bisector_of_angle_judgment_angle_equal(1,AD,BAC)": [
+      "bisector_of_angle_property_line_ratio(1,AD,BAC)"
     ]
   }
 }

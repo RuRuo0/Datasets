@@ -2,9 +2,9 @@
   "problem_id": 5480,
   "annotation": "ChenyangMao_2023-05-21",
   "source": "GeoQA-5935",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,BC=6,E,F分别是AB,AC的中点,动点P在射线EF上,BP交CE于点D,∠CBP的平分线交CE于点Q,当CQ=\\frac{1}{3}CE时,EP+BP的值为()",
-  "problem_text_en": "As shown in the figure, in △ABC, BC = N_0, E, F are the midpoints of AB and AC respectively, the moving point P is on the radial EF, BP intersects CE at point D, and the bisector of ∠CBP intersects CE at point Q, When CQ = \\frac{N_1}{N_2} CE, the value of EP + BP is ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，BC=6，Mul(LengthOfLine(CQ)=3)，BQ平分∠PBC，EF是三角形ABC的中位线。求直线EP的长度与直线BP的长度之和。",
+  "problem_text_en": "As shown in the diagram, BC=6, Mul(LengthOfLine(CQ)=3), BQ is the angle bisector of ∠PBC, EF is the midsegment of △ ABC. Find the sum of the length of line EP and the length of line BP.",
   "problem_img": "5480.png",
   "construction_cdl": [
     "Shape(AE,EP,PF,FA)",
@@ -23,9 +23,9 @@
     "Collinear(BQNM)"
   ],
   "text_cdl": [
-    "IsBisectorOfAngle(BQ,PBC)",
     "Equal(LengthOfLine(BC),6)",
     "Equal(Mul(LengthOfLine(CQ),3),LengthOfLine(CE))",
+    "IsBisectorOfAngle(BQ,PBC)",
     "IsMidsegmentOfTriangle(EF,ABC)"
   ],
   "image_cdl": [],
@@ -43,7 +43,12 @@
     "similar_triangle_property_line_ratio(1,QBC,QME)",
     "similar_triangle_property_line_ratio(1,BCQ,MEQ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "midsegment_of_triangle_property_parallel(1,EF,ABC)",
+      "line_addition(1,EP,PM)",
+      "line_addition(1,EQ,QC)"
+    ],
     "midsegment_of_triangle_property_parallel(1,EF,ABC)": [
       "parallel_property_collinear_extend(2,EF,BC,M)",
       "parallel_property_alternate_interior_angle(1,EF,BC)"
@@ -61,11 +66,6 @@
     "similar_triangle_judgment_aa(1,QBC,QME)": [
       "similar_triangle_property_line_ratio(1,QBC,QME)",
       "similar_triangle_property_line_ratio(1,BCQ,MEQ)"
-    ],
-    "START": [
-      "midsegment_of_triangle_property_parallel(1,EF,ABC)",
-      "line_addition(1,EP,PM)",
-      "line_addition(1,EQ,QC)"
     ]
   }
 }

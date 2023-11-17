@@ -3,16 +3,16 @@
   "annotation": "ZheZhu_2023-05-21",
   "source": "GeoQA-6768",
   "problem_level": 1,
-  "problem_text_cn": "如图,一个斜坡长130m,坡顶离水平地面的距离为50m,那么这个斜坡的坡度为()",
-  "problem_text_en": "As shown in the figure, a slope is N_0 long, and the distance between the top of the slope and the horizontal ground is N_1, then the slope of this slope is ()",
+  "problem_text_cn": "如图所示，AB=130，CA=50，三角形BCA为直角三角形。求直线AC的长度与直线BC的长度之比。",
+  "problem_text_en": "As shown in the diagram, AB=130, CA=50, BC and CA are the legs of the right triangle BCA. Find the ratio of the length of line AC to the length of line BC.",
   "problem_img": "5547.png",
   "construction_cdl": [
     "Shape(AB,BC,CA)"
   ],
   "text_cdl": [
-    "RightTriangle(BCA)",
     "Equal(LengthOfLine(AB),130)",
-    "Equal(LengthOfLine(CA),50)"
+    "Equal(LengthOfLine(CA),50)",
+    "RightTriangle(BCA)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Div(LengthOfLine(AC),LengthOfLine(BC)))",
@@ -20,7 +20,7 @@
   "theorem_seqs": [
     "right_triangle_property_pythagorean(1,BCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_property_pythagorean(1,BCA)"
     ]

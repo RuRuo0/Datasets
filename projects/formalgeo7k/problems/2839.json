@@ -2,9 +2,9 @@
   "problem_id": 2839,
   "annotation": "ZheZhu_2023-04-09",
   "source": "Geometry3k-2991",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "m \\angle B A C = 38, B C = 5, and D C = 5, find m \\angle D A C.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，BC=5，CD=5，∠BAC=38°，AD⊥CD，CB垂直于AB。求∠CAD的大小。",
+  "problem_text_en": "As shown in the diagram, BC=5, CD=5, ∠BAC=38°, AD⊥CD, CB is perpendicular to AB. Find the measure of ∠CAD.",
   "problem_img": "2839.png",
   "construction_cdl": [
     "Shape(AD,DC,CA)",
@@ -14,9 +14,11 @@
     "Collinear(ABF)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(BAC),38)",
     "Equal(LengthOfLine(BC),5)",
-    "Equal(LengthOfLine(CD),5)"
+    "Equal(LengthOfLine(CD),5)",
+    "Equal(MeasureOfAngle(BAC),38)",
+    "PerpendicularBetweenLine(AD,CD)",
+    "PerpendicularBetweenLine(CB,AB)"
   ],
   "image_cdl": [
     "PerpendicularBetweenLine(AD,CD)",
@@ -28,12 +30,12 @@
     "mirror_congruent_triangle_judgment_hl(1,ADC,ACB)",
     "mirror_congruent_triangle_property_angle_equal(1,ADC,ACB)"
   ],
-  "theorem_seq_dag": {
-    "mirror_congruent_triangle_judgment_hl(1,ADC,ACB)": [
-      "mirror_congruent_triangle_property_angle_equal(1,ADC,ACB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "mirror_congruent_triangle_judgment_hl(1,ADC,ACB)"
+    ],
+    "mirror_congruent_triangle_judgment_hl(1,ADC,ACB)": [
+      "mirror_congruent_triangle_property_angle_equal(1,ADC,ACB)"
     ]
   }
 }

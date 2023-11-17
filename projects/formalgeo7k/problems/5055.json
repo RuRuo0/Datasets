@@ -2,9 +2,9 @@
   "problem_id": 5055,
   "annotation": "ChengQin_2023-05-21",
   "source": "GeoQA-4807",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC∽△CBD,CD=2,AC=3,BC=4,那么AB的值等于()",
-  "problem_text_en": "As shown in the figure, △ABC ∽ △CBD, CD = N_0, AC = N_1, BC = N_2, then the value of AB is equal to ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AC=3，BC=4，CD=2，三角形ABC与三角形CDB是镜像相似三角形。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, AC=3, BC=4, CD=2, △ABC is mirror similar to △CDB.. Find the length of line AB.",
   "problem_img": "5055.png",
   "construction_cdl": [
     "Shape(CA,AD,DC)",
@@ -12,10 +12,10 @@
     "Collinear(ADB)"
   ],
   "text_cdl": [
-    "MirrorSimilarBetweenTriangle(ABC,CDB)",
-    "Equal(LengthOfLine(CD),2)",
     "Equal(LengthOfLine(AC),3)",
-    "Equal(LengthOfLine(BC),4)"
+    "Equal(LengthOfLine(BC),4)",
+    "Equal(LengthOfLine(CD),2)",
+    "MirrorSimilarBetweenTriangle(ABC,CDB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -24,7 +24,7 @@
     "mirror_similar_triangle_property_line_ratio(1,BCA,BCD)",
     "mirror_similar_triangle_property_line_ratio(1,CAB,DBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "mirror_similar_triangle_property_line_ratio(1,BCA,BCD)",
       "mirror_similar_triangle_property_line_ratio(1,CAB,DBC)"

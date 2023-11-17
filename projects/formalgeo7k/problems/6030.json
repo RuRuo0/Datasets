@@ -2,9 +2,9 @@
   "problem_id": 6030,
   "annotation": "ChenyangMao_2023-05-28",
   "source": "GeoQA-8516",
-  "problem_level": 1,
-  "problem_text_cn": "如图,A、B、C、D四点都在⊙O上,若∠COD=80°,则∠ABD+∠OCA等于()",
-  "problem_text_en": "As shown in the figure, the four vertices A, B, C, and D are all on ⊙O, if ∠COD = N_0, then ∠ABD + ∠OCA is equal to ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠DOC=80°，圆O的圆心为O。求∠ABD的大小与∠OCA的大小之和。",
+  "problem_text_en": "As shown in the diagram, ∠DOC=80°, O is the center of ⊙O. Find the sum of the measure of ∠ABD and the measure of ∠OCA.",
   "problem_img": "6030.png",
   "construction_cdl": [
     "Shape(OC,CD,DO)",
@@ -17,8 +17,8 @@
     "Cocircular(O,ABCD)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "Equal(MeasureOfAngle(DOC),80)"
+    "Equal(MeasureOfAngle(DOC),80)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Add(MeasureOfAngle(ABD),MeasureOfAngle(OCA)))",
@@ -33,7 +33,15 @@
     "isosceles_triangle_property_angle_equal(1,OCD)",
     "angle_addition(1,OCA,ACD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "triangle_property_angle_sum(1,OCD)",
+      "arc_property_circumference_angle_external(1,ODA,B)",
+      "arc_property_circumference_angle_external(1,ODA,C)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "radius_of_circle_property_length_equal(1,OD,O)",
+      "angle_addition(1,OCA,ACD)"
+    ],
     "radius_of_circle_property_length_equal(1,OC,O)": [
       "isosceles_triangle_judgment_line_equal(1,OCD)"
     ],
@@ -42,14 +50,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OCD)": [
       "isosceles_triangle_property_angle_equal(1,OCD)"
-    ],
-    "START": [
-      "triangle_property_angle_sum(1,OCD)",
-      "arc_property_circumference_angle_external(1,ODA,B)",
-      "arc_property_circumference_angle_external(1,ODA,C)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "radius_of_circle_property_length_equal(1,OD,O)",
-      "angle_addition(1,OCA,ACD)"
     ]
   }
 }

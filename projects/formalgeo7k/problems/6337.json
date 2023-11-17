@@ -2,9 +2,9 @@
   "problem_id": 6337,
   "annotation": "ChengQin_2023-06-04",
   "source": "GeoQA-9152",
-  "problem_level": 1,
-  "problem_text_cn": "如图,四边形ABCD是菱形,∠ABC=120°,AD=2,则对角线AC的长是()",
-  "problem_text_en": "As shown in the figure, the quadrilateral ABCD is a rhombus, ∠ABC = N_0, AD = N_1, then the length of the diagonal AC is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AD=2，∠ABC=120°，四边形ABCD是菱形。求直线AC的长度。",
+  "problem_text_en": "As shown in the diagram, AD=2, ∠ABC=120°, ABCD is a rhombus. Find the length of line AC.",
   "problem_img": "6337.png",
   "construction_cdl": [
     "Shape(DA,AO,OD)",
@@ -15,9 +15,9 @@
     "Collinear(DOB)"
   ],
   "text_cdl": [
-    "Rhombus(ABCD)",
+    "Equal(LengthOfLine(AD),2)",
     "Equal(MeasureOfAngle(ABC),120)",
-    "Equal(LengthOfLine(AD),2)"
+    "Rhombus(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AC))",
@@ -31,10 +31,7 @@
     "kite_property_diagonal_perpendicular_bisection(1,BCDA,O)",
     "line_addition(1,AO,OC)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,ABD)": [
-      "isosceles_triangle_property_angle_equal(1,ABD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_alternate_interior_angle(2,AD,BC)",
       "isosceles_triangle_judgment_line_equal(1,ABD)",
@@ -42,6 +39,9 @@
       "sine_theorem(1,ABO)",
       "kite_property_diagonal_perpendicular_bisection(1,BCDA,O)",
       "line_addition(1,AO,OC)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,ABD)": [
+      "isosceles_triangle_property_angle_equal(1,ABD)"
     ]
   }
 }

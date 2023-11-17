@@ -2,9 +2,9 @@
   "problem_id": 4792,
   "annotation": "ChenyangMao_2023-05-14",
   "source": "GeoQA-4190",
-  "problem_level": 1,
-  "problem_text_cn": "如图,PA,PB分别是⊙O的切线,A,B分别为切点,点E是⊙O上一点,且∠AEB=50°,则∠P为()",
-  "problem_text_en": "As shown in the figure, PA and PB are respectively the tangent of ⊙O, A and B are respectively the tangent point, point E is a point on ⊙O, and ∠AEB = N_0, then ∠P is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠AEB=50°，O是圆O的圆心，PA是圆O的切线，PB是⊙O的切线。求∠BPA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AEB=50°, O is the center of ⊙O, PA is the tangent to circle O, PB is the tangent to circle O. Find the measure of ∠BPA.",
   "problem_img": "4792.png",
   "construction_cdl": [
     "Shape(OBA,AO,OB)",
@@ -15,10 +15,10 @@
     "Cocircular(O,AEB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(AEB),50)",
     "IsCentreOfCircle(O,O)",
     "IsTangentOfCircle(PA,O)",
-    "IsTangentOfCircle(PB,O)",
-    "Equal(MeasureOfAngle(AEB),50)"
+    "IsTangentOfCircle(PB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BPA))",
@@ -30,7 +30,7 @@
     "arc_property_circumference_angle_external(1,OBA,E)",
     "arc_property_center_angle(1,OBA,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(2,PA,O,O)",
       "tangent_of_circle_property_perpendicular(1,PB,O,O)",

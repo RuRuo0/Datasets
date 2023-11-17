@@ -2,9 +2,9 @@
   "problem_id": 1911,
   "annotation": "YanjunGuo_2023-04-23",
   "source": "Geometry3k-1986",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Quadrilateral A B D C is a rectangle. Find m \\angle 5 if m \\angle 1 = 38.",
+  "problem_level": 16,
+  "problem_text_cn": "如图所示，∠CAG=38°，ABDC是矩形。求∠DGB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAG=38°, ABDC is a rectangle. Find the measure of ∠DGB.",
   "problem_img": "1911.png",
   "construction_cdl": [
     "Shape(BG,GA,AB)",
@@ -15,6 +15,7 @@
     "Collinear(BGC)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(CAG),38)",
     "Rectangle(ABDC)"
   ],
   "image_cdl": [
@@ -40,7 +41,19 @@
     "triangle_property_angle_sum(1,BDC)",
     "triangle_property_angle_sum(1,DCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "rectangle_property_diagonal_equal(1,ABDC)",
+      "parallelogram_property_diagonal_bisection(1,ABDC,G)",
+      "parallelogram_property_diagonal_bisection(1,BDCA,G)",
+      "line_addition(1,AG,GD)",
+      "line_addition(1,BG,GC)",
+      "triangle_property_angle_sum(1,GBD)",
+      "triangle_property_angle_sum(1,ABC)",
+      "triangle_property_angle_sum(1,ABD)",
+      "triangle_property_angle_sum(1,BDC)",
+      "triangle_property_angle_sum(1,DCA)"
+    ],
     "rectangle_property_diagonal_equal(1,ABDC)": [
       "isosceles_triangle_judgment_line_equal(1,GAB)",
       "isosceles_triangle_judgment_line_equal(1,GDC)",
@@ -74,18 +87,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,GCA)": [
       "isosceles_triangle_property_angle_equal(1,GCA)"
-    ],
-    "START": [
-      "rectangle_property_diagonal_equal(1,ABDC)",
-      "parallelogram_property_diagonal_bisection(1,ABDC,G)",
-      "parallelogram_property_diagonal_bisection(1,BDCA,G)",
-      "line_addition(1,AG,GD)",
-      "line_addition(1,BG,GC)",
-      "triangle_property_angle_sum(1,GBD)",
-      "triangle_property_angle_sum(1,ABC)",
-      "triangle_property_angle_sum(1,ABD)",
-      "triangle_property_angle_sum(1,BDC)",
-      "triangle_property_angle_sum(1,DCA)"
     ]
   }
 }

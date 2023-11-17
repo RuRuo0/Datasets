@@ -2,9 +2,9 @@
   "problem_id": 400,
   "annotation": "NaZhu_2023-03-12",
   "source": "Geometry3k-408",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If P Q \\cong U Q and m \\angle P = 32, find m \\angle P U Q.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，PQ=UQ，∠QPU=32°。求∠PUQ的大小。",
+  "problem_text_en": "As shown in the diagram, PQ=UQ, ∠QPU=32°. Find the measure of ∠PUQ.",
   "problem_img": "400.png",
   "construction_cdl": [
     "Shape(RQ,QS,SR)",
@@ -15,7 +15,10 @@
     "Collinear(RST)",
     "Collinear(PUT)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(PQ),LengthOfLine(UQ))",
+    "Equal(MeasureOfAngle(QPU),32)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(PQ),LengthOfLine(UQ))",
     "Equal(MeasureOfAngle(QPU),32)"
@@ -26,12 +29,12 @@
     "isosceles_triangle_judgment_line_equal(1,QPU)",
     "isosceles_triangle_property_angle_equal(1,QPU)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,QPU)": [
-      "isosceles_triangle_property_angle_equal(1,QPU)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,QPU)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,QPU)": [
+      "isosceles_triangle_property_angle_equal(1,QPU)"
     ]
   }
 }

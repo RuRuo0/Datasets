@@ -2,9 +2,9 @@
   "problem_id": 4137,
   "annotation": "XiaoxiaoJin_2023-05-07",
   "source": "GeoQA-2705",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在Rt△ABC中,∠ACB=90°,AC=12,BC=5,CD⊥AB于点D,那么sin∠BCD的值是()",
-  "problem_text_en": "As shown in the figure, in Rt△ABC, ∠ACB = N_0, AC = N_1, BC = N_2, CD ⊥ AB at point D, then the value of sin∠BCD is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AC=12，BC=5，∠BCA=90°，∠CDB=90°。求sin(BC)的值。",
+  "problem_text_en": "As shown in the diagram, AC=12, BC=5, ∠BCA=90°, ∠CDB=90°. Find the value of sin(BC).",
   "problem_img": "4137.png",
   "construction_cdl": [
     "Shape(AD,DC,CA)",
@@ -29,19 +29,19 @@
     "cosine_theorem(1,BCA)",
     "sine_theorem(1,CDB)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,CDB)": [
-      "right_triangle_property_pythagorean(1,CDB)"
-    ],
-    "right_triangle_judgment_angle(1,BCA)": [
-      "right_triangle_property_pythagorean(1,BCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,CDB)",
       "right_triangle_judgment_angle(1,BCA)",
       "cosine_theorem(1,CDB)",
       "cosine_theorem(1,BCA)",
       "sine_theorem(1,CDB)"
+    ],
+    "right_triangle_judgment_angle(1,CDB)": [
+      "right_triangle_property_pythagorean(1,CDB)"
+    ],
+    "right_triangle_judgment_angle(1,BCA)": [
+      "right_triangle_property_pythagorean(1,BCA)"
     ]
   }
 }

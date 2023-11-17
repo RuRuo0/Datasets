@@ -2,16 +2,24 @@
   "problem_id": 365,
   "annotation": "NaZhu_2023-03-12",
   "source": "Geometry3k-372",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find z.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=y，AD=z，BD=4，CB=x，CD=10，AB⊥CB，DC垂直于AC。求z的值。",
+  "problem_text_en": "As shown in the diagram, AB=y, AD=z, BD=4, CB=x, CD=10, AB⊥CB, DC is perpendicular to AC. Find the value of z.",
   "problem_img": "365.png",
   "construction_cdl": [
     "Shape(CA,AB,BC)",
     "Shape(CB,BD,DC)",
     "Collinear(ABD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),y)",
+    "Equal(LengthOfLine(AD),z)",
+    "Equal(LengthOfLine(BD),4)",
+    "Equal(LengthOfLine(CB),x)",
+    "Equal(LengthOfLine(CD),10)",
+    "PerpendicularBetweenLine(AB,CB)",
+    "PerpendicularBetweenLine(DC,AC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AB),y)",
     "Equal(LengthOfLine(BD),4)",
@@ -29,16 +37,16 @@
     "mirror_similar_triangle_property_line_ratio(1,CBD,ADC)",
     "mirror_similar_triangle_property_line_ratio(1,BDC,CAD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,ABC,CBD)"
+    ],
     "adjacent_complementary_angle(1,ABC,CBD)": [
       "mirror_similar_triangle_judgment_aa(1,CBD,ADC)"
     ],
     "mirror_similar_triangle_judgment_aa(1,CBD,ADC)": [
       "mirror_similar_triangle_property_line_ratio(1,CBD,ADC)",
       "mirror_similar_triangle_property_line_ratio(1,BDC,CAD)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,ABC,CBD)"
     ]
   }
 }

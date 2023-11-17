@@ -2,9 +2,9 @@
   "problem_id": 416,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-424",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Use rectangle L M N P, parallelogram L K M J to solve the problem. If M K = 6 x, K L = 3 x + 2 y, and J N = 14 - x, find y.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，JN=14-x，KL=3*x+2*y，MK=6*x，LJMK是平行四边形，四边形PNML是长方形。求y的值。",
+  "problem_text_en": "As shown in the diagram, JN=14-x, KL=3*x+2*y, MK=6*x, quadrilateral LJMK is a parallelogram, quadrilateral PNML is a rectangle. Find the value of y.",
   "problem_img": "416.png",
   "construction_cdl": [
     "Shape(PN,NJ,JP)",
@@ -16,8 +16,11 @@
     "Collinear(NJL)"
   ],
   "text_cdl": [
-    "Rectangle(PNML)",
-    "Parallelogram(LJMK)"
+    "Equal(LengthOfLine(JN),14-x)",
+    "Equal(LengthOfLine(KL),3*x+2*y)",
+    "Equal(LengthOfLine(MK),6*x)",
+    "Parallelogram(LJMK)",
+    "Rectangle(PNML)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(MK),6*x)",
@@ -35,7 +38,7 @@
     "parallelogram_property_opposite_line_equal(1,LJMK)",
     "parallelogram_property_opposite_line_equal(1,JMKL)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,PJ,JM)",
       "line_addition(1,NJ,JL)",

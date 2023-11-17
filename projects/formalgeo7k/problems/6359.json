@@ -2,9 +2,9 @@
   "problem_id": 6359,
   "annotation": "ChengQin_2023-06-04",
   "source": "GeoQA-9199",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示,在菱形ABCD中,∠BAD=110°,AB的垂直平分线交对角线AC于点F,E为垂足,连结DF,则∠CDF等于()",
-  "problem_text_en": "As shown in the figure, in the diamond ABCD, ∠BAD = N_0, the perpendicular bisector of AB intersects the diagonal AC at point F, E is the foot of perpendicular, connects DF, then ∠CDF is equal to ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，∠DAB=110°，FE是AB的垂直平分线，四边形ABCD是菱形。求∠CDF的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DAB=110°, FE is the perpendicular bisector of AB, quadrilateral ABCD is a rhombus. Find the measure of ∠CDF.",
   "problem_img": "6359.png",
   "construction_cdl": [
     "Shape(AE,EF,FA)",
@@ -16,9 +16,9 @@
     "Collinear(AFC)"
   ],
   "text_cdl": [
-    "Rhombus(ABCD)",
     "Equal(MeasureOfAngle(DAB),110)",
-    "IsPerpendicularBisectorOfLine(FE,AB)"
+    "IsPerpendicularBisectorOfLine(FE,AB)",
+    "Rhombus(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CDF))",
@@ -36,20 +36,25 @@
     "parallel_property_ipsilateral_internal_angle(1,DC,AB)",
     "angle_addition(1,CDF,FDA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_alternate_interior_angle(1,AD,BC)",
+      "isosceles_triangle_judgment_line_equal(1,BCA)",
+      "angle_addition(1,DAF,FAB)",
+      "perpendicular_bisector_property_distance_equal(1,FE,AB)",
+      "parallel_property_ipsilateral_internal_angle(1,DC,AB)",
+      "angle_addition(1,CDF,FDA)"
+    ],
     "parallel_property_alternate_interior_angle(1,AD,BC)": [
-      "mirror_congruent_triangle_judgment_sas(1,ABF,AFD)",
       "mirror_congruent_triangle_judgment_sas(1,ABF,AFD)"
     ],
     "isosceles_triangle_judgment_line_equal(1,BCA)": [
       "isosceles_triangle_property_angle_equal(1,BCA)"
     ],
     "isosceles_triangle_property_angle_equal(1,BCA)": [
-      "mirror_congruent_triangle_judgment_sas(1,ABF,AFD)",
       "mirror_congruent_triangle_judgment_sas(1,ABF,AFD)"
     ],
     "angle_addition(1,DAF,FAB)": [
-      "mirror_congruent_triangle_judgment_sas(1,ABF,AFD)",
       "mirror_congruent_triangle_judgment_sas(1,ABF,AFD)"
     ],
     "perpendicular_bisector_property_distance_equal(1,FE,AB)": [
@@ -60,14 +65,6 @@
     ],
     "mirror_congruent_triangle_judgment_sas(1,ABF,AFD)": [
       "mirror_congruent_triangle_property_angle_equal(1,BFA,DAF)"
-    ],
-    "START": [
-      "parallel_property_alternate_interior_angle(1,AD,BC)",
-      "isosceles_triangle_judgment_line_equal(1,BCA)",
-      "angle_addition(1,DAF,FAB)",
-      "perpendicular_bisector_property_distance_equal(1,FE,AB)",
-      "parallel_property_ipsilateral_internal_angle(1,DC,AB)",
-      "angle_addition(1,CDF,FDA)"
     ]
   }
 }

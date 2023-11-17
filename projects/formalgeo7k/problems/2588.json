@@ -2,14 +2,19 @@
   "problem_id": 2588,
   "annotation": "YiwenHuang_2023-05-07",
   "source": "Geometry3k-2716",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=33，AC=x，BC=66，BA垂直于CA。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=33, AC=x, BC=66, BA is perpendicular to CA. Find the value of x.",
   "problem_img": "2588.png",
   "construction_cdl": [
     "Shape(CB,BA,AC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),33)",
+    "Equal(LengthOfLine(AC),x)",
+    "Equal(LengthOfLine(BC),66)",
+    "PerpendicularBetweenLine(BA,CA)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AB),33)",
     "Equal(LengthOfLine(AC),x)",
@@ -22,12 +27,12 @@
     "right_triangle_judgment_angle(1,BAC)",
     "right_triangle_property_pythagorean(1,BAC)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,BAC)": [
-      "right_triangle_property_pythagorean(1,BAC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,BAC)"
+    ],
+    "right_triangle_judgment_angle(1,BAC)": [
+      "right_triangle_property_pythagorean(1,BAC)"
     ]
   }
 }

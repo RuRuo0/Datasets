@@ -2,9 +2,9 @@
   "problem_id": 6242,
   "annotation": "FangzhenZhu_2023-06-04",
   "source": "GeoQA-8846",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O的直径为12cm,弦AB垂直平分半径OC,那么弦AB的长为()",
-  "problem_text_en": "As shown in the figure, the diameter of ⊙O is N_0, and the chord AB bisects the radius OC perpendicularly, then the length of the chord AB is ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，圆O的直径为12，O是圆O的圆心，AM是OC的垂直平分线。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, the diameter of ⊙O is 12, the center of ⊙O is O, AM perpendicular bisects OC. Find the length of line AB.",
   "problem_img": "6242.png",
   "construction_cdl": [
     "Shape(AO,OM,MA)",
@@ -17,8 +17,8 @@
     "Cocircular(O,BCA)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(DiameterOfCircle(O),12)",
+    "IsCentreOfCircle(O,O)",
     "IsPerpendicularBisectorOfLine(AM,OC)"
   ],
   "image_cdl": [],
@@ -37,16 +37,7 @@
     "right_triangle_property_pythagorean(1,OMA)",
     "right_triangle_property_pythagorean(1,BMO)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,BMO,OMA)": [
-      "right_triangle_judgment_angle(1,BMO)"
-    ],
-    "right_triangle_judgment_angle(1,OMA)": [
-      "right_triangle_property_pythagorean(1,OMA)"
-    ],
-    "right_triangle_judgment_angle(1,BMO)": [
-      "right_triangle_property_pythagorean(1,BMO)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "circle_property_length_of_radius_and_diameter(1,O)",
       "radius_of_circle_property_length_equal(1,OB,O)",
@@ -56,6 +47,15 @@
       "line_addition(1,AM,MB)",
       "adjacent_complementary_angle(1,BMO,OMA)",
       "right_triangle_judgment_angle(1,OMA)"
+    ],
+    "adjacent_complementary_angle(1,BMO,OMA)": [
+      "right_triangle_judgment_angle(1,BMO)"
+    ],
+    "right_triangle_judgment_angle(1,OMA)": [
+      "right_triangle_property_pythagorean(1,OMA)"
+    ],
+    "right_triangle_judgment_angle(1,BMO)": [
+      "right_triangle_property_pythagorean(1,BMO)"
     ]
   }
 }

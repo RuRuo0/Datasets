@@ -2,14 +2,20 @@
   "problem_id": 2472,
   "annotation": "YifanWang_2023-04-23",
   "source": "Geometry3k-2593",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the side length in isosceles triangle D E F.",
+  "problem_level": 0,
+  "problem_text_cn": "如图所示，DE=10*x，DF=17/2*x+3，EF=7/2*x+4，FD=DE，∠DEF和∠EFD是等腰△DEF的底角。求直线EF的长度。",
+  "problem_text_en": "As shown in the diagram, DE=10*x, DF=17/2*x+3, EF=7/2*x+4, FD=DE, △DEF is an isosceles △. Find the length of line EF.",
   "problem_img": "2472.png",
   "construction_cdl": [
     "Shape(DE,EF,FD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(DE),10*x)",
+    "Equal(LengthOfLine(DF),17/2*x+3)",
+    "Equal(LengthOfLine(EF),7/2*x+4)",
+    "Equal(LengthOfLine(FD),LengthOfLine(DE))",
+    "IsoscelesTriangle(DEF)"
+  ],
   "image_cdl": [
     "IsoscelesTriangle(DEF)",
     "Equal(LengthOfLine(DF),17/2*x+3)",
@@ -20,5 +26,7 @@
   "goal_cdl": "Value(LengthOfLine(EF))",
   "problem_answer": "11",
   "theorem_seqs": [],
-  "theorem_seq_dag": {}
+  "theorem_seqs_dag": {
+    "START": []
+  }
 }

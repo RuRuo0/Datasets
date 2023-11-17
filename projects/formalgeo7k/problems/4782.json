@@ -2,9 +2,9 @@
   "problem_id": 4782,
   "annotation": "ChenyangMao_2023-05-14",
   "source": "GeoQA-4169",
-  "problem_level": 1,
-  "problem_text_cn": "如图,PA,PB分别切⊙O于A,B,∠APB=60°,PA=8,则⊙O的半径OA长为()",
-  "problem_text_en": "As shown in the figure, PA and PB respectively tangent ⊙O to A, B, ∠APB = N_0, PA = N_1, then the radius OA of ⊙O is ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，PA=8，∠APB=60°，O是圆O的圆心，圆O的切线为PA，圆O的切线为PB。求直线OA的长度。",
+  "problem_text_en": "As shown in the diagram, PA=8, ∠APB=60°, the center of ⊙O is O, the tangent to ⊙O is PA, PB is the tangent to ⊙O. Find the length of line OA.",
   "problem_img": "4782.png",
   "construction_cdl": [
     "Shape(AP,PD,DA)",
@@ -18,11 +18,11 @@
     "Cocircular(O,AEB)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(PA),8)",
+    "Equal(MeasureOfAngle(APB),60)",
     "IsCentreOfCircle(O,O)",
     "IsTangentOfCircle(PA,O)",
-    "IsTangentOfCircle(PB,O)",
-    "Equal(LengthOfLine(PA),8)",
-    "Equal(MeasureOfAngle(APB),60)"
+    "IsTangentOfCircle(PB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(OA))",
@@ -39,7 +39,17 @@
     "triangle_property_angle_sum(1,APO)",
     "sine_theorem(1,APO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(1,PA,O,O)",
+      "tangent_of_circle_property_perpendicular(2,PB,O,O)",
+      "tangent_of_circle_property_length_equal(1,PA,PB,O)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "angle_addition(1,APO,OPB)",
+      "triangle_property_angle_sum(1,APO)",
+      "sine_theorem(1,APO)"
+    ],
     "tangent_of_circle_property_perpendicular(1,PA,O,O)": [
       "mirror_congruent_triangle_judgment_sas(1,APO,BOP)"
     ],
@@ -57,16 +67,6 @@
     ],
     "mirror_congruent_triangle_judgment_sas(1,APO,BOP)": [
       "mirror_congruent_triangle_property_angle_equal(1,POA,PBO)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(1,PA,O,O)",
-      "tangent_of_circle_property_perpendicular(2,PB,O,O)",
-      "tangent_of_circle_property_length_equal(1,PA,PB,O)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "angle_addition(1,APO,OPB)",
-      "triangle_property_angle_sum(1,APO)",
-      "sine_theorem(1,APO)"
     ]
   }
 }

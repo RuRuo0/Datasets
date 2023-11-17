@@ -2,9 +2,9 @@
   "problem_id": 2450,
   "annotation": "Yangli_2023-04-23",
   "source": "Geometry3k-2570",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure, K L is tangent to \\odot M at K. Find the value of x.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，KL=17，KM=x，LA=10，MA=x，LK是⊙O的切线，LK垂直于MK。求x的值。",
+  "problem_text_en": "As shown in the diagram, KL=17, KM=x, LA=10, MA=x, the tangent to ⊙M is LK, LK⊥MK. Find the value of x.",
   "problem_img": "2450.png",
   "construction_cdl": [
     "Shape(KM,MA,MAK)",
@@ -14,7 +14,12 @@
     "Cocircular(M,AK)"
   ],
   "text_cdl": [
-    "IsTangentOfCircle(LK,M)"
+    "Equal(LengthOfLine(KL),17)",
+    "Equal(LengthOfLine(KM),x)",
+    "Equal(LengthOfLine(LA),10)",
+    "Equal(LengthOfLine(MA),x)",
+    "IsTangentOfCircle(LK,M)",
+    "PerpendicularBetweenLine(LK,MK)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(KL),17)",
@@ -30,13 +35,13 @@
     "right_triangle_judgment_angle(1,LKM)",
     "right_triangle_property_pythagorean(1,LKM)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,LKM)": [
-      "right_triangle_property_pythagorean(1,LKM)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,MA,AL)",
       "right_triangle_judgment_angle(1,LKM)"
+    ],
+    "right_triangle_judgment_angle(1,LKM)": [
+      "right_triangle_property_pythagorean(1,LKM)"
     ]
   }
 }

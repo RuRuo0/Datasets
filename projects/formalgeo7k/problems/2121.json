@@ -2,9 +2,9 @@
   "problem_id": 2121,
   "annotation": "XiaoxiaoJin_2023-04-23",
   "source": "Geometry3k-2212",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the shaded region. Assume the inscribed polygon is regular.",
+  "problem_level": 12,
+  "problem_text_cn": "如图所示，圆B的直径为16，Sub(AreaOfSector(BHI)=AreaOfTriangle(IBH))，三角形AHI为等边三角形，B是圆B的圆心，△IAH的外接圆圆心为B，BC垂直于HC。求x的值。",
+  "problem_text_en": "As shown in the diagram, the diameter of circle B is 16, Sub(AreaOfSector(BHI)=AreaOfTriangle(IBH)), △AHI is an equilateral △, the center of circle B is B, B is the circumcenter of △IAH, BC⊥HC. Find the value of x.",
   "problem_img": "2121.png",
   "construction_cdl": [
     "Shape(AB,BI,IA)",
@@ -18,7 +18,14 @@
     "Collinear(ACH)",
     "Cocircular(B,AHI)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(DiameterOfCircle(B),16)",
+    "Equal(Sub(AreaOfSector(BHI),AreaOfTriangle(IBH)),x)",
+    "EquilateralTriangle(AHI)",
+    "IsCentreOfCircle(B,B)",
+    "IsCircumcenterOfTriangle(B,IAH)",
+    "PerpendicularBetweenLine(BC,HC)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(B,B)",
     "EquilateralTriangle(AHI)",
@@ -43,7 +50,19 @@
     "arc_property_center_angle(1,BHI,B)",
     "sector_area_formula(1,BHI)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "circle_property_length_of_radius_and_diameter(1,B)",
+      "radius_of_circle_property_length_equal(1,BH,B)",
+      "radius_of_circle_property_length_equal(1,BI,B)",
+      "equilateral_triangle_property_angle(1,HIA)",
+      "triangle_property_angle_sum(1,IBH)",
+      "triangle_property_angle_sum(1,CHI)",
+      "sine_theorem(1,IBH)",
+      "triangle_area_formula_sine(1,IBH)",
+      "arc_property_center_angle(1,BHI,B)",
+      "sector_area_formula(1,BHI)"
+    ],
     "circle_property_length_of_radius_and_diameter(1,B)": [
       "isosceles_triangle_judgment_line_equal(1,BHI)",
       "isosceles_triangle_judgment_line_equal(1,BHI)"
@@ -56,18 +75,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,BHI)": [
       "isosceles_triangle_property_angle_equal(1,BHI)"
-    ],
-    "START": [
-      "circle_property_length_of_radius_and_diameter(1,B)",
-      "radius_of_circle_property_length_equal(1,BH,B)",
-      "radius_of_circle_property_length_equal(1,BI,B)",
-      "equilateral_triangle_property_angle(1,HIA)",
-      "triangle_property_angle_sum(1,IBH)",
-      "triangle_property_angle_sum(1,CHI)",
-      "sine_theorem(1,IBH)",
-      "triangle_area_formula_sine(1,IBH)",
-      "arc_property_center_angle(1,BHI,B)",
-      "sector_area_formula(1,BHI)"
     ]
   }
 }

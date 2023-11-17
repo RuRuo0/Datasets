@@ -2,9 +2,9 @@
   "problem_id": 5358,
   "annotation": "QikeHuang_2023-05-21",
   "source": "GeoQA-5634",
-  "problem_level": 1,
-  "problem_text_cn": "如图,P是△ABC的边AC上一点,若△ABP∽△ACB,∠A=45°,∠ABC=110°,则∠ABP的度数为()",
-  "problem_text_en": "As shown in the figure, P is a point on the edge AC of △ABC, if △ABP ∽ △ACB, ∠A = N_0, ∠ABC = N_1, then the degree of ∠ABP is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠ABC=110°，∠CAB=45°，△CAB与△BPA是镜像相似三角形。求∠ABP的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABC=110°, ∠CAB=45°, △CAB is mirror similar to △BPA.. Find the measure of ∠ABP.",
   "problem_img": "5358.png",
   "construction_cdl": [
     "Shape(BC,CP,PB)",
@@ -12,9 +12,9 @@
     "Collinear(APC)"
   ],
   "text_cdl": [
-    "MirrorSimilarBetweenTriangle(CAB,BPA)",
+    "Equal(MeasureOfAngle(ABC),110)",
     "Equal(MeasureOfAngle(CAB),45)",
-    "Equal(MeasureOfAngle(ABC),110)"
+    "MirrorSimilarBetweenTriangle(CAB,BPA)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ABP))",
@@ -23,7 +23,7 @@
     "triangle_property_angle_sum(1,BCA)",
     "mirror_similar_triangle_property_angle_equal(1,CAB,BPA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,BCA)",
       "mirror_similar_triangle_property_angle_equal(1,CAB,BPA)"

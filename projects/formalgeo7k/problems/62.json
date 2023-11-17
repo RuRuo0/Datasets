@@ -2,9 +2,9 @@
   "problem_id": 62,
   "annotation": "XiaokaiZhang_2023-04-02",
   "source": "Geometry3k-62",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot F, A B \\cong B C, D F = 3 x - 7, and F E = x + 9. What is x?",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=BC，DF=3*x-7，FE=x+9，圆F的圆心为F，CE垂直于FE，FD垂直于AD。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=BC, DF=3*x-7, FE=x+9, the center of ⊙F is F, CE is perpendicular to FE, FD⊥AD. Find the value of x.",
   "problem_img": "62.png",
   "construction_cdl": [
     "Shape(DB,FBA,AD)",
@@ -19,7 +19,10 @@
   "text_cdl": [
     "Equal(LengthOfLine(AB),LengthOfLine(BC))",
     "Equal(LengthOfLine(DF),3*x-7)",
-    "Equal(LengthOfLine(FE),x+9)"
+    "Equal(LengthOfLine(FE),x+9)",
+    "IsCentreOfCircle(F,F)",
+    "PerpendicularBetweenLine(CE,FE)",
+    "PerpendicularBetweenLine(FD,AD)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(F,F)",
@@ -37,7 +40,13 @@
     "mirror_congruent_triangle_judgment_hl(2,BDF,BFE)",
     "mirror_congruent_triangle_property_line_equal(1,BDF,BFE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,BDF,FDA)",
+      "circle_property_chord_perpendicular_bisect_chord(1,F,FE,CB)",
+      "line_addition(1,BD,DA)",
+      "line_addition(1,BE,EC)"
+    ],
     "adjacent_complementary_angle(1,BDF,FDA)": [
       "circle_property_chord_perpendicular_bisect_chord(1,F,FD,BA)",
       "mirror_congruent_triangle_judgment_hl(2,BDF,BFE)"
@@ -57,12 +66,6 @@
     ],
     "mirror_congruent_triangle_judgment_hl(2,BDF,BFE)": [
       "mirror_congruent_triangle_property_line_equal(1,BDF,BFE)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,BDF,FDA)",
-      "circle_property_chord_perpendicular_bisect_chord(1,F,FE,CB)",
-      "line_addition(1,BD,DA)",
-      "line_addition(1,BE,EC)"
     ]
   }
 }

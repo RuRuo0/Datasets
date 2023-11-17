@@ -2,16 +2,22 @@
   "problem_id": 1254,
   "annotation": "YifanWang_2023-04-23",
   "source": "Geometry3k-1296",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the parallelogram. Round to the nearest tenth if necessary.",
+  "problem_level": 12,
+  "problem_text_cn": "如图所示，CA=32，ES=12，∠SCE=30°，ABSC是▱，BE垂直于CE。求ABSC的面积。",
+  "problem_text_en": "As shown in the diagram, CA=32, ES=12, ∠SCE=30°, AC and BS are opposite sides of the ▱ ABSC, BE is perpendicular to CE. Find the area of ABSC.",
   "problem_img": "1254.png",
   "construction_cdl": [
     "Shape(AB,BE,EC,CA)",
     "Shape(CE,ES,SC)",
     "Collinear(BES)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(CA),32)",
+    "Equal(LengthOfLine(ES),12)",
+    "Equal(MeasureOfAngle(SCE),30)",
+    "Parallelogram(ABSC)",
+    "PerpendicularBetweenLine(BE,CE)"
+  ],
   "image_cdl": [
     "Parallelogram(ABSC)",
     "Equal(LengthOfLine(CA),32)",
@@ -35,13 +41,7 @@
     "parallelogram_area_formula_sine(1,CABS)",
     "parallelogram_area_formula_common(1,ABSC)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,BEC,CES)": [
-      "right_triangle_judgment_angle(1,CES)"
-    ],
-    "right_triangle_judgment_angle(1,CES)": [
-      "right_triangle_property_pythagorean(1,CES)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,BEC,CES)",
       "parallelogram_property_opposite_angle_equal(1,ABSC)",
@@ -53,6 +53,12 @@
       "parallelogram_area_formula_sine(1,SCAB)",
       "parallelogram_area_formula_sine(1,CABS)",
       "parallelogram_area_formula_common(1,ABSC)"
+    ],
+    "adjacent_complementary_angle(1,BEC,CES)": [
+      "right_triangle_judgment_angle(1,CES)"
+    ],
+    "right_triangle_judgment_angle(1,CES)": [
+      "right_triangle_property_pythagorean(1,CES)"
     ]
   }
 }

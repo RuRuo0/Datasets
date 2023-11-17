@@ -2,9 +2,9 @@
   "problem_id": 6842,
   "annotation": "DengfengYue_2023-06-04",
   "source": "GeoQA-angle-10058",
-  "problem_level": 1,
-  "problem_text_cn": "如图，在四边形ABCD中，G是对角线BD的中点，点E、F分别是BC、AD的中点，AB＝DC，∠ABD＝100°，∠BDC＝44°．则∠GEF的度数是（）",
-  "problem_text_en": "",
+  "problem_level": 12,
+  "problem_text_cn": "如图所示，AB=CD，∠BDC=44°，∠DBA=100°，E是线段BC的中点，F是线段AD的中点，G平分线段BD。求∠GEF的大小。",
+  "problem_text_en": "As shown in the diagram, AB=CD, ∠BDC=44°, ∠DBA=100°, E is the midpoint of segment BC, F bisects segment AD, G is the midpoint of segment BD. Find the measure of ∠GEF.",
   "problem_img": "6842.png",
   "construction_cdl": [
     "Shape(BA,AF,FH,HB)",
@@ -19,12 +19,12 @@
     "Collinear(AFD)"
   ],
   "text_cdl": [
-    "IsMidpointOfLine(G,BD)",
+    "Equal(LengthOfLine(AB),LengthOfLine(CD))",
+    "Equal(MeasureOfAngle(BDC),44)",
+    "Equal(MeasureOfAngle(DBA),100)",
     "IsMidpointOfLine(E,BC)",
     "IsMidpointOfLine(F,AD)",
-    "Equal(LengthOfLine(AB),LengthOfLine(CD))",
-    "Equal(MeasureOfAngle(DBA),100)",
-    "Equal(MeasureOfAngle(BDC),44)"
+    "IsMidpointOfLine(G,BD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(GEF))",
@@ -43,7 +43,13 @@
     "isosceles_triangle_property_angle_equal(1,GEF)",
     "triangle_property_angle_sum(1,EFG)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "midsegment_of_triangle_judgment_midpoint(1,GF,DBA)",
+      "midsegment_of_triangle_judgment_midpoint(1,GE,BDC)",
+      "angle_addition(1,FGH,HGE)",
+      "triangle_property_angle_sum(1,EFG)"
+    ],
     "midsegment_of_triangle_judgment_midpoint(1,GF,DBA)": [
       "midsegment_of_triangle_property_parallel(1,GF,DBA)",
       "midsegment_of_triangle_property_length(1,GF,DBA)"
@@ -66,12 +72,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,GEF)": [
       "isosceles_triangle_property_angle_equal(1,GEF)"
-    ],
-    "START": [
-      "midsegment_of_triangle_judgment_midpoint(1,GF,DBA)",
-      "midsegment_of_triangle_judgment_midpoint(1,GE,BDC)",
-      "angle_addition(1,FGH,HGE)",
-      "triangle_property_angle_sum(1,EFG)"
     ]
   }
 }

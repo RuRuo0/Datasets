@@ -2,9 +2,9 @@
   "problem_id": 5788,
   "annotation": "YanjunGuo_2023-05-28",
   "source": "GeoQA-7705",
-  "problem_level": 1,
-  "problem_text_cn": "如图,Rt△ABC中,∠C=90°,AB=10,AC=8,E是AC上一点,AE=5,ED⊥AB,垂足为点D,则AD的长为()",
-  "problem_text_en": "As shown in the figure, in Rt△ABC, ∠C = N_0, AB = N_1, AC = N_2, E is a point on AC, AE = N_3, ED ⊥ AB, the foot of perpendicular is point D, then the length of AD is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AB=10，AC=8，AE=5，∠ADE=90°，∠BCA=90°。求直线AD的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, AC=8, AE=5, ∠ADE=90°, ∠BCA=90°. Find the length of line AD.",
   "problem_img": "5788.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -13,11 +13,11 @@
     "Collinear(ADB)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(AE),5)",
     "Equal(LengthOfLine(AB),10)",
     "Equal(LengthOfLine(AC),8)",
-    "Equal(MeasureOfAngle(BCA),90)",
-    "Equal(MeasureOfAngle(ADE),90)"
+    "Equal(LengthOfLine(AE),5)",
+    "Equal(MeasureOfAngle(ADE),90)",
+    "Equal(MeasureOfAngle(BCA),90)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AD))",
@@ -27,13 +27,13 @@
     "mirror_similar_triangle_property_line_ratio(1,EAD,BCA)",
     "mirror_similar_triangle_property_line_ratio(1,DEA,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "mirror_similar_triangle_judgment_aa(1,EAD,BCA)"
+    ],
     "mirror_similar_triangle_judgment_aa(1,EAD,BCA)": [
       "mirror_similar_triangle_property_line_ratio(1,EAD,BCA)",
       "mirror_similar_triangle_property_line_ratio(1,DEA,CAB)"
-    ],
-    "START": [
-      "mirror_similar_triangle_judgment_aa(1,EAD,BCA)"
     ]
   }
 }

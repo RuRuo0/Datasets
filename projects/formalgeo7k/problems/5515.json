@@ -2,9 +2,9 @@
   "problem_id": 5515,
   "annotation": "DengfengYue_2023-05-21",
   "source": "GeoQA-5988",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC中,∠ACB=90°,AC=AN,BC=BM,则∠MCN=()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠ACB = N_0, AC = AN, BC = BM, then ∠MCN = ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AC=AN，BC=BM，∠ACB=90°。求∠MCN的大小。",
+  "problem_text_en": "As shown in the diagram, AC=AN, BC=BM, ∠ACB=90°. Find the measure of ∠MCN.",
   "problem_img": "5515.png",
   "construction_cdl": [
     "Shape(AC,CM,MA)",
@@ -13,9 +13,9 @@
     "Collinear(AMNB)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(ACB),90)",
     "Equal(LengthOfLine(AC),LengthOfLine(AN))",
-    "Equal(LengthOfLine(BC),LengthOfLine(BM))"
+    "Equal(LengthOfLine(BC),LengthOfLine(BM))",
+    "Equal(MeasureOfAngle(ACB),90)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(MCN))",
@@ -30,13 +30,7 @@
     "triangle_property_angle_sum(1,ACB)",
     "triangle_property_angle_sum(1,MCN)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,ACN)": [
-      "isosceles_triangle_property_angle_equal(1,ACN)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,BMC)": [
-      "isosceles_triangle_property_angle_equal(1,BMC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,ACN)",
       "isosceles_triangle_judgment_line_equal(1,BMC)",
@@ -44,6 +38,12 @@
       "triangle_property_angle_sum(1,BMC)",
       "triangle_property_angle_sum(1,ACB)",
       "triangle_property_angle_sum(1,MCN)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,ACN)": [
+      "isosceles_triangle_property_angle_equal(1,ACN)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,BMC)": [
+      "isosceles_triangle_property_angle_equal(1,BMC)"
     ]
   }
 }

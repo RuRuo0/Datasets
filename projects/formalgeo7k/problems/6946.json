@@ -2,9 +2,9 @@
   "problem_id": 6946,
   "annotation": "ChengQin_2023-06-04",
   "source": "GeoQA-angle-10200",
-  "problem_level": 1,
-  "problem_text_cn": "如图，在矩形ABCD中，AB＝3，BC＝4，点O在AC上，⊙O与AB、BC相切，与AD相交于点E、F，则EF的长为（）",
-  "problem_text_en": "",
+  "problem_level": 28,
+  "problem_text_cn": "如图所示，AB=3，BC=4，⊙O的圆心为O，AG是圆O的切线，⊙O的切线为BH，FK垂直于OK，四边形ABCD是长方形。求直线EF的长度。",
+  "problem_text_en": "As shown in the diagram, AB=3, BC=4, O is the center of ⊙O, AG is the tangent to ⊙O, the tangent to ⊙O is BH, FK is perpendicular to OK, ABCD is a rectangle. Find the length of line EF.",
   "problem_img": "6946.png",
   "construction_cdl": [
     "Shape(AI,OEI,EA)",
@@ -27,13 +27,13 @@
     "Cocircular(O,GHJFEI)"
   ],
   "text_cdl": [
-    "Rectangle(ABCD)",
-    "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(AB),3)",
     "Equal(LengthOfLine(BC),4)",
+    "IsCentreOfCircle(O,O)",
     "IsTangentOfCircle(AG,O)",
     "IsTangentOfCircle(BH,O)",
-    "PerpendicularBetweenLine(FK,OK)"
+    "PerpendicularBetweenLine(FK,OK)",
+    "Rectangle(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(EF))",
@@ -68,7 +68,20 @@
     "circle_property_chord_perpendicular_bisect_chord(1,O,OK,FE)",
     "line_addition(1,EK,KF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OG,O)",
+      "radius_of_circle_property_length_equal(1,OH,O)",
+      "tangent_of_circle_property_perpendicular(2,AG,O,O)",
+      "tangent_of_circle_property_perpendicular(2,BH,O,O)",
+      "flat_angle(1,AGB)",
+      "angle_addition(1,AGO,OGB)",
+      "line_addition(1,AG,GB)",
+      "radius_of_circle_property_length_equal(1,OF,O)",
+      "right_triangle_judgment_angle(1,FKO)",
+      "circle_property_chord_perpendicular_bisect_chord(1,O,OK,FE)",
+      "line_addition(1,EK,KF)"
+    ],
     "tangent_of_circle_property_perpendicular(2,AG,O,O)": [
       "similar_triangle_judgment_aa(1,AGO,ABC)",
       "parallel_judgment_ipsilateral_internal_angle(1,AK,GO)",
@@ -124,19 +137,6 @@
     ],
     "right_triangle_judgment_angle(1,FKO)": [
       "right_triangle_property_pythagorean(1,FKO)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OG,O)",
-      "radius_of_circle_property_length_equal(1,OH,O)",
-      "tangent_of_circle_property_perpendicular(2,AG,O,O)",
-      "tangent_of_circle_property_perpendicular(2,BH,O,O)",
-      "flat_angle(1,AGB)",
-      "angle_addition(1,AGO,OGB)",
-      "line_addition(1,AG,GB)",
-      "radius_of_circle_property_length_equal(1,OF,O)",
-      "right_triangle_judgment_angle(1,FKO)",
-      "circle_property_chord_perpendicular_bisect_chord(1,O,OK,FE)",
-      "line_addition(1,EK,KF)"
     ]
   }
 }

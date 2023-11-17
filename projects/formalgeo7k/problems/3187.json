@@ -2,9 +2,9 @@
   "problem_id": 3187,
   "annotation": "JiaZou_2023-04-23",
   "source": "GeoQA-470",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知直线a,b被直线c所截,若a∥b,∠1=110°,∠2=40°,则∠3=()",
-  "problem_text_en": "As shown in the figure, it is known that the straight lines a and b are intercepted by the straight line c. If a ∥ b, ∠1 = N_0, ∠2 = N_1, then ∠3 = ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠ACD=110°，∠FCE=40°，BD∥EG。求∠CEF的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ACD=110°, ∠FCE=40°, BD∥EG. Find the measure of ∠CEF.",
   "problem_img": "3187.png",
   "construction_cdl": [
     "Shape(BC,CA)",
@@ -33,18 +33,18 @@
     "adjacent_complementary_angle(1,EFC,CFG)",
     "triangle_property_angle_sum(1,CEF)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,BD,EG,C)": [
-      "parallel_property_collinear_extend(3,GE,DC,F)"
-    ],
-    "parallel_property_collinear_extend(3,GE,DC,F)": [
-      "parallel_property_ipsilateral_internal_angle(1,CD,FG)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,ACD,DCF)",
       "parallel_property_collinear_extend(3,BD,EG,C)",
       "adjacent_complementary_angle(1,EFC,CFG)",
       "triangle_property_angle_sum(1,CEF)"
+    ],
+    "parallel_property_collinear_extend(3,BD,EG,C)": [
+      "parallel_property_collinear_extend(3,GE,DC,F)"
+    ],
+    "parallel_property_collinear_extend(3,GE,DC,F)": [
+      "parallel_property_ipsilateral_internal_angle(1,CD,FG)"
     ]
   }
 }

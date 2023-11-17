@@ -2,9 +2,9 @@
   "problem_id": 3101,
   "annotation": "YimingHe_2023-04-23",
   "source": "GeoQA-342",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知直线AB∥CD,∠GEB的平分线EF交CD于点F,∠1=42°,则∠2等于()",
-  "problem_text_en": "As shown in the figure, given the straight line AB ∥ CD, the bisector EF of ∠GEB intersects CD at point F, ∠1 = N_0, then ∠2 is equal to ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠HGF=42°，EF平分∠GEB，CD∥AB。求∠DFE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠HGF=42°, EF is the angle bisector of ∠GEB, CD∥AB. Find the measure of ∠DFE.",
   "problem_img": "3101.png",
   "construction_cdl": [
     "Shape(CG,GH)",
@@ -22,9 +22,9 @@
     "Collinear(IFE)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(CD,AB)",
     "Equal(MeasureOfAngle(HGF),42)",
-    "IsBisectorOfAngle(EF,GEB)"
+    "IsBisectorOfAngle(EF,GEB)",
+    "ParallelBetweenLine(CD,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DFE))",
@@ -39,7 +39,13 @@
     "parallel_property_corresponding_angle(1,FD,EB,I)",
     "adjacent_complementary_angle(1,IFD,DFE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,CD,AB,G)",
+      "parallel_property_collinear_extend(3,CD,AB,F)",
+      "angle_addition(1,GEF,FEB)",
+      "adjacent_complementary_angle(1,IFD,DFE)"
+    ],
     "parallel_property_collinear_extend(3,CD,AB,G)": [
       "parallel_property_collinear_extend(3,BA,DG,E)"
     ],
@@ -51,12 +57,6 @@
     ],
     "parallel_property_collinear_extend(3,BA,DF,E)": [
       "parallel_property_corresponding_angle(1,FD,EB,I)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,CD,AB,G)",
-      "parallel_property_collinear_extend(3,CD,AB,F)",
-      "angle_addition(1,GEF,FEB)",
-      "adjacent_complementary_angle(1,IFD,DFE)"
     ]
   }
 }

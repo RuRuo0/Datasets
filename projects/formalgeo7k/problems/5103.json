@@ -2,9 +2,9 @@
   "problem_id": 5103,
   "annotation": "YimingHe_2023-05-21",
   "source": "GeoQA-4929",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知AD是△ABC的中线,且△ABD的周长比△ACD的周长大3cm,则AB与AC的差为()",
-  "problem_text_en": "As shown in the figure, it is known that AD is the midline of △ABC, and the perimeter of △ABD is N_0 larger than the perimeter of △ACD, then the difference between AB and AC is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，Sub(PerimeterOfTriangle(ABD)=PerimeterOfTriangle(ADC))，AD是△ABC的中线。求直线AB的长度减去直线AC的长度。",
+  "problem_text_en": "As shown in the diagram, Sub(PerimeterOfTriangle(ABD)=PerimeterOfTriangle(ADC)), AD is the median of triangle ABC. Find the length of line AB minus the length of line AC.",
   "problem_img": "5103.png",
   "construction_cdl": [
     "Shape(AB,BD,DA)",
@@ -12,8 +12,8 @@
     "Collinear(BDC)"
   ],
   "text_cdl": [
-    "IsMedianOfTriangle(AD,ABC)",
-    "Equal(Sub(PerimeterOfTriangle(ABD),PerimeterOfTriangle(ADC)),3)"
+    "Equal(Sub(PerimeterOfTriangle(ABD),PerimeterOfTriangle(ADC)),3)",
+    "IsMedianOfTriangle(AD,ABC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Sub(LengthOfLine(AB),LengthOfLine(AC)))",
@@ -22,7 +22,7 @@
     "triangle_perimeter_formula(1,ABD)",
     "triangle_perimeter_formula(1,ADC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_perimeter_formula(1,ABD)",
       "triangle_perimeter_formula(1,ADC)"

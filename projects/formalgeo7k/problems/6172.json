@@ -2,9 +2,9 @@
   "problem_id": 6172,
   "annotation": "DengfengYue_2023-05-28",
   "source": "GeoQA-8740",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知AB是⊙O的直径,CD是⊙O的弦,连接AD、BD、BC,∠ABD=58°,则∠BCD=()",
-  "problem_text_en": "As shown in the figure, it is known that AB is the diameter of ⊙O, CD is the chord of ⊙O, connect AD, BD, BC, ∠ABD = N_0, then ∠BCD = ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠ABD=58°，圆O的圆心为O，⊙O的直径为AB。求∠DCB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABD=58°, the center of circle O is O, the diameter of circle O is AB. Find the measure of ∠DCB.",
   "problem_img": "6172.png",
   "construction_cdl": [
     "Shape(CD,ODC)",
@@ -20,9 +20,9 @@
     "Cocircular(O,CABD)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(ABD),58)",
     "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(AB,O)",
-    "Equal(MeasureOfAngle(ABD),58)"
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DCB))",
@@ -33,7 +33,7 @@
     "arc_property_circumference_angle_external(1,OBD,C)",
     "arc_property_circumference_angle_external(1,OBD,A)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,BDA,O)",
       "triangle_property_angle_sum(1,BDA)",

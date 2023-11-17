@@ -2,9 +2,9 @@
   "problem_id": 6421,
   "annotation": "YimingHe_2023-06-04",
   "source": "GeoQA-9290",
-  "problem_level": 1,
-  "problem_text_cn": "如图,平行四边形ABCD的对角线AC,BD交于点O,且AC+BD=26,△ODC的周长为20,则AB的长为()",
-  "problem_text_en": "As shown in the figure, the diagonal AC and BD of the parallelogram ABCD intersect at the point O, and AC + BD = N_0, the perimeter of △ODC is N_1, then the length of AB is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，Add(LengthOfLine(AC)=LengthOfLine(BD))，三角形OCD的周长为20，BA和CD是▱ABCD的一组对边。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, Add(LengthOfLine(AC)=LengthOfLine(BD)), the perimeter of △OCD is 20, quadrilateral ABCD is a parallelogram. Find the length of line AB.",
   "problem_img": "6421.png",
   "construction_cdl": [
     "Shape(AB,BO,OA)",
@@ -15,9 +15,9 @@
     "Collinear(BOD)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
     "Equal(Add(LengthOfLine(AC),LengthOfLine(BD)),26)",
-    "Equal(PerimeterOfTriangle(OCD),20)"
+    "Equal(PerimeterOfTriangle(OCD),20)",
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -30,7 +30,7 @@
     "parallelogram_property_diagonal_bisection(1,BCDA,O)",
     "parallelogram_property_opposite_line_equal(1,ABCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AO,OC)",
       "line_addition(1,BO,OD)",

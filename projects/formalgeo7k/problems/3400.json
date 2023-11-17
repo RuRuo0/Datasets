@@ -2,9 +2,9 @@
   "problem_id": 3400,
   "annotation": "JiaZou_2023-04-30",
   "source": "GeoQA-927",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,AB=AD=DC,若∠BAD=36°,则∠C的大小为()",
-  "problem_text_en": "As shown in the figure, in △ABC, AB = AD = DC, if ∠BAD = N_0, then the size of ∠C is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=AD，AD=DC，∠DAB=36°。求∠DCA的大小。",
+  "problem_text_en": "As shown in the diagram, AB=AD, AD=DC, ∠DAB=36°. Find the measure of ∠DCA.",
   "problem_img": "3400.png",
   "construction_cdl": [
     "Shape(AB,BD,DA)",
@@ -28,19 +28,19 @@
     "isosceles_triangle_property_angle_equal(1,DCA)",
     "triangle_property_angle_sum(1,DCA)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,ABD)": [
-      "isosceles_triangle_property_angle_equal(1,ABD)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,DCA)": [
-      "isosceles_triangle_property_angle_equal(1,DCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,ABD)",
       "triangle_property_angle_sum(1,ABD)",
       "adjacent_complementary_angle(1,BDA,ADC)",
       "isosceles_triangle_judgment_line_equal(1,DCA)",
       "triangle_property_angle_sum(1,DCA)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,ABD)": [
+      "isosceles_triangle_property_angle_equal(1,ABD)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,DCA)": [
+      "isosceles_triangle_property_angle_equal(1,DCA)"
     ]
   }
 }

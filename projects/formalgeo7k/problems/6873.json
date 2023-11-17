@@ -2,9 +2,9 @@
   "problem_id": 6873,
   "annotation": "DengfengYue_2023-06-04",
   "source": "GeoQA-angle-10099",
-  "problem_level": 1,
-  "problem_text_cn": "如图，AB是⊙O的直径，点D在⊙O上，连接OD、BD，过点D作⊙O的切线交BA延长线于点C，若∠C＝40°，则∠B的度数为（）",
-  "problem_text_en": "",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠DCA=40°，O是圆O的圆心，AB是圆O的直径，⊙O的切线为CD。求∠OBD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DCA=40°, O is the center of circle O, AB is the diameter of circle O, the tangent to circle O is CD. Find the measure of ∠OBD.",
   "problem_img": "6873.png",
   "construction_cdl": [
     "Shape(DC,CA,ODA)",
@@ -16,10 +16,10 @@
     "Cocircular(O,DAB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(DCA),40)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)",
-    "IsTangentOfCircle(CD,O)",
-    "Equal(MeasureOfAngle(DCA),40)"
+    "IsTangentOfCircle(CD,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(OBD))",
@@ -34,7 +34,15 @@
     "isosceles_triangle_judgment_line_equal(1,OBD)",
     "isosceles_triangle_property_angle_equal(1,OBD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(1,CD,O,O)",
+      "triangle_property_angle_sum(1,DOB)",
+      "triangle_property_angle_sum(1,DCO)",
+      "adjacent_complementary_angle(1,COD,DOB)",
+      "radius_of_circle_property_length_equal(1,OD,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)"
+    ],
     "radius_of_circle_property_length_equal(1,OD,O)": [
       "isosceles_triangle_judgment_line_equal(1,OBD)"
     ],
@@ -43,14 +51,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OBD)": [
       "isosceles_triangle_property_angle_equal(1,OBD)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(1,CD,O,O)",
-      "triangle_property_angle_sum(1,DOB)",
-      "triangle_property_angle_sum(1,DCO)",
-      "adjacent_complementary_angle(1,COD,DOB)",
-      "radius_of_circle_property_length_equal(1,OD,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)"
     ]
   }
 }

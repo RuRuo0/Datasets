@@ -2,9 +2,9 @@
   "problem_id": 1860,
   "annotation": "YanjunGuo_2023-04-23",
   "source": "Geometry3k-1930",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure, a \\parallel b, c \\parallel d, and m \\angle 4 = 57. Find the measure of \\angle 10.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠BEC=57°，DF∥GE，FE平行于DG。求∠FDG的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BEC=57°, DF is parallel to GE, FE∥DG. Find the measure of ∠FDG.",
   "problem_img": "1860.png",
   "construction_cdl": [
     "Shape(IF,FA)",
@@ -26,9 +26,9 @@
     "Collinear(HDGJ)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(FE,DG)",
+    "Equal(MeasureOfAngle(BEC),57)",
     "ParallelBetweenLine(DF,GE)",
-    "Equal(MeasureOfAngle(BEC),57)"
+    "ParallelBetweenLine(FE,DG)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(FDG))",
@@ -38,13 +38,13 @@
     "parallelogram_judgment_parallel_and_parallel(1,FDGE)",
     "parallelogram_property_opposite_angle_equal(1,DGEF)"
   ],
-  "theorem_seq_dag": {
-    "parallelogram_judgment_parallel_and_parallel(1,FDGE)": [
-      "parallelogram_property_opposite_angle_equal(1,DGEF)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "vertical_angle(1,BEC,GEI)",
       "parallelogram_judgment_parallel_and_parallel(1,FDGE)"
+    ],
+    "parallelogram_judgment_parallel_and_parallel(1,FDGE)": [
+      "parallelogram_property_opposite_angle_equal(1,DGEF)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 1763,
   "annotation": "ChenyangMao_2023-04-16",
   "source": "Geometry3k-1828",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the shaded region. Round to the nearest tenth.",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，DB=15，EB=6，Sub(AreaOfQuadrilateral(ADBE)=AreaOfCircle(C))，C是圆C的圆心，圆C的直径为FG，圆O的切线为AF，圆O的切线为DG，四边形ADBE是长方形。求x的值。",
+  "problem_text_en": "As shown in the diagram, DB=15, EB=6, Sub(AreaOfQuadrilateral(ADBE)=AreaOfCircle(C)), C is the center of circle C, FG is the diameter of circle C, the tangent to circle C is AF, DG is the tangent to circle C, quadrilateral ADBE is a rectangle. Find the value of x.",
   "problem_img": "1763.png",
   "construction_cdl": [
     "Shape(AD,DG,GC,CF,FA)",
@@ -15,7 +15,16 @@
     "Collinear(FCG)",
     "Cocircular(C,FG)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(DB),15)",
+    "Equal(LengthOfLine(EB),6)",
+    "Equal(Sub(AreaOfQuadrilateral(ADBE),AreaOfCircle(C)),x)",
+    "IsCentreOfCircle(C,C)",
+    "IsDiameterOfCircle(FG,C)",
+    "IsTangentOfCircle(AF,C)",
+    "IsTangentOfCircle(DG,C)",
+    "Rectangle(ADBE)"
+  ],
   "image_cdl": [
     "IsDiameterOfCircle(FG,C)",
     "IsCentreOfCircle(C,C)",
@@ -41,7 +50,16 @@
     "circle_area_formula(1,C)",
     "parallelogram_area_formula_sine(1,ADBE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(1,AF,C,C)",
+      "parallel_property_collinear_extend(3,AE,DB,F)",
+      "parallelogram_property_opposite_line_equal(1,ADBE)",
+      "diameter_of_circle_property_length_equal(1,FG,C)",
+      "circle_property_length_of_radius_and_diameter(1,C)",
+      "circle_area_formula(1,C)",
+      "parallelogram_area_formula_sine(1,ADBE)"
+    ],
     "tangent_of_circle_property_perpendicular(1,AF,C,C)": [
       "parallel_judgment_ipsilateral_internal_angle(1,FG,AD)"
     ],
@@ -56,15 +74,6 @@
     ],
     "parallelogram_judgment_parallel_and_parallel(1,ADGF)": [
       "parallelogram_property_opposite_line_equal(1,ADGF)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(1,AF,C,C)",
-      "parallel_property_collinear_extend(3,AE,DB,F)",
-      "parallelogram_property_opposite_line_equal(1,ADBE)",
-      "diameter_of_circle_property_length_equal(1,FG,C)",
-      "circle_property_length_of_radius_and_diameter(1,C)",
-      "circle_area_formula(1,C)",
-      "parallelogram_area_formula_sine(1,ADBE)"
     ]
   }
 }

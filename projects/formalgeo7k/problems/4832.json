@@ -2,9 +2,9 @@
   "problem_id": 4832,
   "annotation": "RunanWang_2023-05-21",
   "source": "GeoQA-4283",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AC是⊙O的切线,切点为C,BC是⊙O的直径,AB交⊙O于点D,连接OD．若∠BAC=55°,则∠COD的大小为()",
-  "problem_text_en": "As shown in the figure, AC is the tangent of ⊙O, the tangent point is C, BC is the diameter of ⊙O, AB intersects ⊙O at point D, and connect OD. If ∠BAC = N_0, then the size of ∠COD is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，OD=OB，∠BAC=55°，O是⊙O的圆心，AC是⊙O的切线。求∠COD的大小。",
+  "problem_text_en": "As shown in the diagram, OD=OB, ∠BAC=55°, O is the center of circle O, the tangent to circle O is AC. Find the measure of ∠COD.",
   "problem_img": "4832.png",
   "construction_cdl": [
     "Shape(OCB,BO,OC)",
@@ -17,7 +17,10 @@
     "Cocircular(O,BDC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)"
+    "Equal(LengthOfLine(OD),LengthOfLine(OB))",
+    "Equal(MeasureOfAngle(BAC),55)",
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(AC,O)"
   ],
   "image_cdl": [
     "IsTangentOfCircle(AC,O)",
@@ -35,10 +38,7 @@
     "flat_angle(1,COB)",
     "angle_addition(1,COD,DOB)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,OBD)": [
-      "isosceles_triangle_property_angle_equal(1,OBD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(2,AC,O,O)",
       "triangle_property_angle_sum(1,OBD)",
@@ -46,6 +46,9 @@
       "isosceles_triangle_judgment_line_equal(1,OBD)",
       "flat_angle(1,COB)",
       "angle_addition(1,COD,DOB)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,OBD)": [
+      "isosceles_triangle_property_angle_equal(1,OBD)"
     ]
   }
 }

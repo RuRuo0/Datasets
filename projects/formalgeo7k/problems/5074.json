@@ -2,9 +2,9 @@
   "problem_id": 5074,
   "annotation": "ChengQin_2023-05-21",
   "source": "GeoQA-4862",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在平行四边形ABCD中,AB=10,AD=6,E是AD的中点,在AB上取一点F,使△CBF∽△CDE,则BF的长是()",
-  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, AB = N_0, AD = N_1, E is the midpoint of AD, take a point F on AB to make △CBF ∽ △CDE, then the length of BF is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=10，AD=6，E平分线段AD，△FBC与△ECD是镜像相似三角形，四边形ABCD是平行四边形。求直线BF的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, AD=6, E is the midpoint of segment AD, Triangle FBC is mirror similar to triangle ECD., BA and CD are opposite sides of the parallelogram ABCD. Find the length of line BF.",
   "problem_img": "5074.png",
   "construction_cdl": [
     "Shape(AF,FC,CE,EA)",
@@ -14,11 +14,11 @@
     "Collinear(AFB)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
     "Equal(LengthOfLine(AB),10)",
     "Equal(LengthOfLine(AD),6)",
     "IsMidpointOfLine(E,AD)",
-    "MirrorSimilarBetweenTriangle(FBC,ECD)"
+    "MirrorSimilarBetweenTriangle(FBC,ECD)",
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BF))",
@@ -30,7 +30,7 @@
     "mirror_similar_triangle_property_line_ratio(1,FBC,ECD)",
     "mirror_similar_triangle_property_line_ratio(1,CFB,CDE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_property_opposite_line_equal(1,ABCD)",
       "parallelogram_property_opposite_line_equal(1,DABC)",

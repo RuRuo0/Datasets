@@ -2,9 +2,9 @@
   "problem_id": 942,
   "annotation": "XiaokaiZhang_2023-04-09",
   "source": "Geometry3k-971",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the exact circumference of the circle below.",
+  "problem_level": 19,
+  "problem_text_cn": "如图所示，AC=32，O是⊙O的圆心，AE是⊙O的切线，AG是圆O的切线，圆O的切线为BF，圆O的切线为BH，圆O的切线为CE，圆O的切线为CF，DG是圆O的切线，圆O的切线为DH，EC垂直于FC，FB⊥HB，GA垂直于EA，HD⊥GD。求⊙O的周长。",
+  "problem_text_en": "As shown in the diagram, AC=32, the center of ⊙O is O, the tangent to circle O is AE, AG is the tangent to ⊙O, BF is the tangent to ⊙O, BH is the tangent to circle O, the tangent to circle O is CE, CF is the tangent to ⊙O, the tangent to ⊙O is DG, DH is the tangent to circle O, EC is perpendicular to FC, FB⊥HB, GA is perpendicular to EA, HD is perpendicular to GD. Find the circumference of the ⊙O.",
   "problem_img": "942.png",
   "construction_cdl": [
     "Shape(OHF,FB,BH)",
@@ -21,7 +21,22 @@
     "Collinear(DGA)",
     "Cocircular(O,FHGE)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),32)",
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(AE,O)",
+    "IsTangentOfCircle(AG,O)",
+    "IsTangentOfCircle(BF,O)",
+    "IsTangentOfCircle(BH,O)",
+    "IsTangentOfCircle(CE,O)",
+    "IsTangentOfCircle(CF,O)",
+    "IsTangentOfCircle(DG,O)",
+    "IsTangentOfCircle(DH,O)",
+    "PerpendicularBetweenLine(EC,FC)",
+    "PerpendicularBetweenLine(FB,HB)",
+    "PerpendicularBetweenLine(GA,EA)",
+    "PerpendicularBetweenLine(HD,GD)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(AC),32)",
@@ -61,7 +76,22 @@
     "line_addition(1,CE,EA)",
     "circle_perimeter_formula(1,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(2,AE,O,O)",
+      "tangent_of_circle_property_perpendicular(1,AG,O,O)",
+      "tangent_of_circle_property_length_equal(1,AE,AG,O)",
+      "radius_of_circle_property_length_equal(1,OE,O)",
+      "radius_of_circle_property_length_equal(1,OG,O)",
+      "quadrilateral_property_angle_sum(1,OGAE)",
+      "tangent_of_circle_property_perpendicular(2,CF,O,O)",
+      "tangent_of_circle_property_perpendicular(1,CE,O,O)",
+      "tangent_of_circle_property_length_equal(1,CF,CE,O)",
+      "radius_of_circle_property_length_equal(1,OF,O)",
+      "quadrilateral_property_angle_sum(1,OECF)",
+      "line_addition(1,CE,EA)",
+      "circle_perimeter_formula(1,O)"
+    ],
     "tangent_of_circle_property_perpendicular(2,AE,O,O)": [
       "parallelogram_judgment_angle_and_angle(1,OGAE)",
       "parallelogram_judgment_angle_and_angle(1,OGAE)"
@@ -89,6 +119,9 @@
     "kite_judgment_equal_and_equal(1,OGAE)": [
       "rhombus_judgment_parallelogram_and_kite(1,OGAE)"
     ],
+    "rhombus_judgment_parallelogram_and_kite(1,OGAE)": [
+      "kite_judgment_equal_and_equal(1,OECF)"
+    ],
     "tangent_of_circle_property_perpendicular(2,CF,O,O)": [
       "parallelogram_judgment_angle_and_angle(1,OECF)",
       "parallelogram_judgment_angle_and_angle(1,OECF)"
@@ -111,21 +144,6 @@
     ],
     "kite_judgment_equal_and_equal(1,OECF)": [
       "rhombus_judgment_parallelogram_and_kite(1,OECF)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(2,AE,O,O)",
-      "tangent_of_circle_property_perpendicular(1,AG,O,O)",
-      "tangent_of_circle_property_length_equal(1,AE,AG,O)",
-      "radius_of_circle_property_length_equal(1,OE,O)",
-      "radius_of_circle_property_length_equal(1,OG,O)",
-      "quadrilateral_property_angle_sum(1,OGAE)",
-      "tangent_of_circle_property_perpendicular(2,CF,O,O)",
-      "tangent_of_circle_property_perpendicular(1,CE,O,O)",
-      "tangent_of_circle_property_length_equal(1,CF,CE,O)",
-      "radius_of_circle_property_length_equal(1,OF,O)",
-      "quadrilateral_property_angle_sum(1,OECF)",
-      "line_addition(1,CE,EA)",
-      "circle_perimeter_formula(1,O)"
     ]
   }
 }

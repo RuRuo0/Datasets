@@ -2,9 +2,9 @@
   "problem_id": 4805,
   "annotation": "ChenyangMao_2023-05-14",
   "source": "GeoQA-4226",
-  "problem_level": 1,
-  "problem_text_cn": "如图,如果直线AB与半径为2的⊙O相切于点C,D是⊙O上一点,且∠EDC=30°,弦EF∥AB,则EF的长是()",
-  "problem_text_en": "As shown in the figure, if the line AB is tangent to the ⊙O with a radius of N_0 at the point C, D is a point on the ⊙O, and ∠EDC = N_1, the chord EF ∥ AB, then the length of EF is ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，∠CDE=30°，⊙O的半径为2，O是⊙O的圆心，⊙O的切线为AC，BC是圆O的切线，EF∥AB。求直线EF的长度。",
+  "problem_text_en": "As shown in the diagram, ∠CDE=30°, the radius of circle O is 2, O is the center of ⊙O, AC is the tangent to ⊙O, the tangent to circle O is BC, EF∥AB. Find the length of line EF.",
   "problem_img": "4805.png",
   "construction_cdl": [
     "Shape(OEC,CM,MO,OE)",
@@ -20,12 +20,12 @@
     "Cocircular(O,ECFD)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(CDE),30)",
+    "Equal(RadiusOfCircle(O),2)",
     "IsCentreOfCircle(O,O)",
     "IsTangentOfCircle(AC,O)",
     "IsTangentOfCircle(BC,O)",
-    "Equal(RadiusOfCircle(O),2)",
-    "ParallelBetweenLine(EF,AB)",
-    "Equal(MeasureOfAngle(CDE),30)"
+    "ParallelBetweenLine(EF,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(EF))",
@@ -42,7 +42,16 @@
     "circle_property_chord_perpendicular_bisect_chord(1,O,OM,EF)",
     "line_addition(1,EM,MF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OE,O)",
+      "arc_property_circumference_angle_external(1,OEC,D)",
+      "arc_property_center_angle(1,OEC,O)",
+      "tangent_of_circle_property_perpendicular(2,AC,O,O)",
+      "parallel_property_collinear_extend(3,EF,AB,M)",
+      "sine_theorem(1,EMO)",
+      "line_addition(1,EM,MF)"
+    ],
     "tangent_of_circle_property_perpendicular(2,AC,O,O)": [
       "circle_property_chord_perpendicular_bisect_chord(1,O,OM,EF)"
     ],
@@ -54,15 +63,6 @@
     ],
     "parallel_property_corresponding_angle(2,CA,ME,O)": [
       "circle_property_chord_perpendicular_bisect_chord(1,O,OM,EF)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OE,O)",
-      "arc_property_circumference_angle_external(1,OEC,D)",
-      "arc_property_center_angle(1,OEC,O)",
-      "tangent_of_circle_property_perpendicular(2,AC,O,O)",
-      "parallel_property_collinear_extend(3,EF,AB,M)",
-      "sine_theorem(1,EMO)",
-      "line_addition(1,EM,MF)"
     ]
   }
 }

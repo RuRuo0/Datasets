@@ -2,9 +2,9 @@
   "problem_id": 6024,
   "annotation": "ChenyangMao_2023-05-28",
   "source": "GeoQA-8506",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC内接于⊙O,∠C=45°,AB=2,则⊙O的半径为()",
-  "problem_text_en": "As shown in the figure, △ABC is inscribed in ⊙O, ∠C = N_0, AB = N_1, then the radius of ⊙O is ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，AB=2，∠BCA=45°，O是⊙O的圆心，⊙O的直径为AD。求⊙O的半径。",
+  "problem_text_en": "As shown in the diagram, AB=2, ∠BCA=45°, the center of ⊙O is O, the diameter of ⊙O is AD. Find the radius of ⊙O.",
   "problem_img": "6024.png",
   "construction_cdl": [
     "Shape(ODC,CE,EO,OD)",
@@ -19,10 +19,10 @@
     "Cocircular(O,ABDC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(AB),2)",
-    "IsDiameterOfCircle(AD,O)",
-    "Equal(MeasureOfAngle(BCA),45)"
+    "Equal(MeasureOfAngle(BCA),45)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AD,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(RadiusOfCircle(O))",
@@ -39,7 +39,16 @@
     "radius_of_circle_property_length_equal(1,OD,O)",
     "line_addition(1,AO,OD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_circumference_angle_external(1,OAB,D)",
+      "arc_property_circumference_angle_external(1,OAB,C)",
+      "diameter_of_circle_property_right_angle(1,ABD,O)",
+      "triangle_property_angle_sum(1,ABD)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OD,O)",
+      "line_addition(1,AO,OD)"
+    ],
     "arc_property_circumference_angle_external(1,OAB,D)": [
       "isosceles_triangle_judgment_angle_equal(1,BDA)",
       "isosceles_triangle_judgment_angle_equal(1,BDA)"
@@ -57,15 +66,6 @@
     ],
     "right_triangle_judgment_angle(1,ABD)": [
       "right_triangle_property_pythagorean(1,ABD)"
-    ],
-    "START": [
-      "arc_property_circumference_angle_external(1,OAB,D)",
-      "arc_property_circumference_angle_external(1,OAB,C)",
-      "diameter_of_circle_property_right_angle(1,ABD,O)",
-      "triangle_property_angle_sum(1,ABD)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OD,O)",
-      "line_addition(1,AO,OD)"
     ]
   }
 }

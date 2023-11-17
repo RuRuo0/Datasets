@@ -2,9 +2,9 @@
   "problem_id": 1889,
   "annotation": "YanjunGuo_2023-04-23",
   "source": "Geometry3k-1964",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the trapezoid.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AC=19，BN=10，EF=2，NC=20，AF是四边形AEBC的高，AF垂直于NF，FN⊥CN，AE和BC是梯形AEBC的腰。求AEBC的面积。",
+  "problem_text_en": "As shown in the diagram, AC=19, BN=10, EF=2, NC=20, AF is the height of quadrilateral AEBC, AF⊥NF, FN is perpendicular to CN, AE and BC are the non-parallel sides (legs) of trapezoid AEBC. Find the area of AEBC.",
   "problem_img": "1889.png",
   "construction_cdl": [
     "Shape(EF,FA,AE)",
@@ -12,7 +12,16 @@
     "Shape(CN,NB,BC)",
     "Collinear(EFNB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),19)",
+    "Equal(LengthOfLine(BN),10)",
+    "Equal(LengthOfLine(EF),2)",
+    "Equal(LengthOfLine(NC),20)",
+    "IsAltitudeOfQuadrilateral(AF,AEBC)",
+    "PerpendicularBetweenLine(AF,NF)",
+    "PerpendicularBetweenLine(FN,CN)",
+    "Trapezoid(AEBC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(EF),2)",
     "Equal(LengthOfLine(BN),10)",
@@ -35,7 +44,14 @@
     "line_addition(1,EN,NB)",
     "trapezoid_area_formula(1,AEBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_judgment_per_per(1,FA,NC)",
+      "parallel_judgment_per_per(1,AC,FN)",
+      "line_addition(1,EF,FN)",
+      "line_addition(1,EN,NB)",
+      "trapezoid_area_formula(1,AEBC)"
+    ],
     "parallel_judgment_per_per(1,FA,NC)": [
       "parallelogram_judgment_parallel_and_parallel(1,AFNC)"
     ],
@@ -45,13 +61,6 @@
     "parallelogram_judgment_parallel_and_parallel(1,AFNC)": [
       "parallelogram_property_opposite_line_equal(1,AFNC)",
       "parallelogram_property_opposite_line_equal(1,FNCA)"
-    ],
-    "START": [
-      "parallel_judgment_per_per(1,FA,NC)",
-      "parallel_judgment_per_per(1,AC,FN)",
-      "line_addition(1,EF,FN)",
-      "line_addition(1,EN,NB)",
-      "trapezoid_area_formula(1,AEBC)"
     ]
   }
 }

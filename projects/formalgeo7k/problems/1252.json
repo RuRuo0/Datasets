@@ -2,9 +2,9 @@
   "problem_id": 1252,
   "annotation": "JiaZou_2023-03-19",
   "source": "Geometry3k-1293",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure, \\triangle A B C is isosceles, \\triangle D C E is equilateral, and \\triangle F C G is isosceles. Find the measure of the \\angle 4 at vertex C.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠CAE=42°，∠CFE=77°，三角形CDE为等边三角形，三角形ABC为等腰三角形，∠CFG和∠FGC是等腰△CFG的底角。求∠ECG的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAE=42°, ∠CFE=77°, △CDE is an equilateral △, AB and AC are the legs of the isosceles triangle ABC, △CFG is an isosceles △. Find the measure of ∠ECG.",
   "problem_img": "1252.png",
   "construction_cdl": [
     "Shape(CA,AD,DC)",
@@ -15,9 +15,11 @@
     "Collinear(ADFGEB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(CAE),42)",
+    "Equal(MeasureOfAngle(CFE),77)",
+    "EquilateralTriangle(CDE)",
     "IsoscelesTriangle(ABC)",
-    "IsoscelesTriangle(CFG)",
-    "EquilateralTriangle(CDE)"
+    "IsoscelesTriangle(CFG)"
   ],
   "image_cdl": [
     "Equal(MeasureOfAngle(CAE),42)",
@@ -31,7 +33,7 @@
     "equilateral_triangle_property_angle(1,ECD)",
     "triangle_property_angle_sum(1,CGE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_property_angle_equal(1,CFG)",
       "adjacent_complementary_angle(1,FGC,CGE)",

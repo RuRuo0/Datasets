@@ -2,9 +2,9 @@
   "problem_id": 2861,
   "annotation": "YimingHe_2023-04-16",
   "source": "GeoQA-21",
-  "problem_level": 1,
-  "problem_text_cn": "如图,任意四边形ABCD各边中点分别是E、F、G、H,若对角线AC、BD的长都为20cm,则四边形EFGH的周长是()",
-  "problem_text_en": "As shown in the figure, the midpoints of each side of any quadrilateral ABCD are E, F, G, and H respectively. If the lengths of the diagonals AC and BD are all N_0, then the perimeter of the quadrilateral EFGH is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AC=20，BD=20，E是线段AB的中点，F是线段BC的中点，G是线段DC的中点，H平分线段AD。求四边形EFGH的周长。",
+  "problem_text_en": "As shown in the diagram, AC=20, BD=20, E bisects segment AB, F is the midpoint of segment BC, G bisects segment DC, H bisects segment AD. Find the perimeter of EFGH.",
   "problem_img": "2861.png",
   "construction_cdl": [
     "Shape(AE,EI,IA)",
@@ -30,7 +30,14 @@
     "Collinear(AIOLC)",
     "Collinear(EKF)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),20)",
+    "Equal(LengthOfLine(BD),20)",
+    "IsMidpointOfLine(E,AB)",
+    "IsMidpointOfLine(F,BC)",
+    "IsMidpointOfLine(G,DC)",
+    "IsMidpointOfLine(H,AD)"
+  ],
   "image_cdl": [
     "IsMidpointOfLine(E,AB)",
     "IsMidpointOfLine(F,BC)",
@@ -52,7 +59,14 @@
     "midsegment_of_triangle_property_length(1,FE,BCA)",
     "midsegment_of_triangle_property_length(1,GF,CDB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "quadrilateral_perimeter_formula(1,EFGH)",
+      "midsegment_of_triangle_judgment_midpoint(1,EH,ABD)",
+      "midsegment_of_triangle_judgment_midpoint(1,HG,DAC)",
+      "midsegment_of_triangle_judgment_midpoint(1,FE,BCA)",
+      "midsegment_of_triangle_judgment_midpoint(1,GF,CDB)"
+    ],
     "midsegment_of_triangle_judgment_midpoint(1,EH,ABD)": [
       "midsegment_of_triangle_property_length(1,EH,ABD)"
     ],
@@ -64,13 +78,6 @@
     ],
     "midsegment_of_triangle_judgment_midpoint(1,GF,CDB)": [
       "midsegment_of_triangle_property_length(1,GF,CDB)"
-    ],
-    "START": [
-      "quadrilateral_perimeter_formula(1,EFGH)",
-      "midsegment_of_triangle_judgment_midpoint(1,EH,ABD)",
-      "midsegment_of_triangle_judgment_midpoint(1,HG,DAC)",
-      "midsegment_of_triangle_judgment_midpoint(1,FE,BCA)",
-      "midsegment_of_triangle_judgment_midpoint(1,GF,CDB)"
     ]
   }
 }

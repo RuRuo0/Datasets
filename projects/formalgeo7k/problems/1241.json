@@ -2,16 +2,24 @@
   "problem_id": 1241,
   "annotation": "JiaZou_2023-03-19",
   "source": "Geometry3k-1281",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AC=z，AD=4，BC=x，BD=12，CD=y，AC⊥BC，CD垂直于AD。求y的值。",
+  "problem_text_en": "As shown in the diagram, AC=z, AD=4, BC=x, BD=12, CD=y, AC⊥BC, CD⊥AD. Find the value of y.",
   "problem_img": "1241.png",
   "construction_cdl": [
     "Shape(BD,DC,CB)",
     "Shape(CD,DA,AC)",
     "Collinear(BDA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),z)",
+    "Equal(LengthOfLine(AD),4)",
+    "Equal(LengthOfLine(BC),x)",
+    "Equal(LengthOfLine(BD),12)",
+    "Equal(LengthOfLine(CD),y)",
+    "PerpendicularBetweenLine(AC,BC)",
+    "PerpendicularBetweenLine(CD,AD)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BC),x)",
     "Equal(LengthOfLine(CD),y)",
@@ -33,7 +41,13 @@
     "right_triangle_property_pythagorean(1,CDA)",
     "right_triangle_property_pythagorean(1,ACB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,BD,DA)",
+      "adjacent_complementary_angle(1,BDC,CDA)",
+      "right_triangle_judgment_angle(1,CDA)",
+      "right_triangle_judgment_angle(1,ACB)"
+    ],
     "adjacent_complementary_angle(1,BDC,CDA)": [
       "right_triangle_judgment_angle(1,BDC)"
     ],
@@ -45,12 +59,6 @@
     ],
     "right_triangle_judgment_angle(1,ACB)": [
       "right_triangle_property_pythagorean(1,ACB)"
-    ],
-    "START": [
-      "line_addition(1,BD,DA)",
-      "adjacent_complementary_angle(1,BDC,CDA)",
-      "right_triangle_judgment_angle(1,CDA)",
-      "right_triangle_judgment_angle(1,ACB)"
     ]
   }
 }

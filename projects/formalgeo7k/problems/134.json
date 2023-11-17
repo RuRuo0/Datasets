@@ -2,9 +2,9 @@
   "problem_id": 134,
   "annotation": "XiaokaiZhang_2023-04-02",
   "source": "Geometry3k-136",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the parallelogram.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，CB=44，EA=19，∠ACE=30°，BDAC是平行四边形，DE垂直于CE。求BDAC的面积。",
+  "problem_text_en": "As shown in the diagram, CB=44, EA=19, ∠ACE=30°, BC and DA are opposite sides of the ▱ BDAC, DE⊥CE. Find the area of quadrilateral BDAC.",
   "problem_img": "134.png",
   "construction_cdl": [
     "Shape(BD,DE,EC,CB)",
@@ -12,7 +12,11 @@
     "Collinear(DEA)"
   ],
   "text_cdl": [
-    "Parallelogram(BDAC)"
+    "Equal(LengthOfLine(CB),44)",
+    "Equal(LengthOfLine(EA),19)",
+    "Equal(MeasureOfAngle(ACE),30)",
+    "Parallelogram(BDAC)",
+    "PerpendicularBetweenLine(DE,CE)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(CB),44)",
@@ -29,7 +33,7 @@
     "parallelogram_property_opposite_line_equal(1,DACB)",
     "parallelogram_area_formula_common(1,BDAC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,CEA)",
       "sine_theorem(1,EAC)",

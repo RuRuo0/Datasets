@@ -2,9 +2,9 @@
   "problem_id": 5781,
   "annotation": "YanjunGuo_2023-05-28",
   "source": "GeoQA-7676",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,点D,E分别是AC,AB上的两点,且\\frac{AD}{AB}=\\frac{AE}{AC}=\\frac{1}{2},若△ADE的面积为1cm²,则四边形EBCD的面积为()cm²．",
-  "problem_text_en": "As shown in the figure, in △ABC, points D and E are two points on AC and AB respectively, and \\frac{AD}{AB}=\\frac{AE}{AC}=\\frac{N_0}{N_1}. If the area of ​​△ADE is N_2 ^ 2, then the area of ​​quadrilateral EBCD is ( )^ 2.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，三角形AED的面积为1，Div(LengthOfLine(AD)=LengthOfLine(AB))，Div(LengthOfLine(AD)=LengthOfLine(AB))。求△ABC的面积减去三角形AED的面积。",
+  "problem_text_en": "As shown in the diagram, the area of triangle AED is 1, Div(LengthOfLine(AD)=LengthOfLine(AB)), Div(LengthOfLine(AD)=LengthOfLine(AB)). Find the area of triangle ABC minus the area of triangle AED.",
   "problem_img": "5781.png",
   "construction_cdl": [
     "Shape(AE,ED,DA)",
@@ -13,9 +13,9 @@
     "Collinear(ADC)"
   ],
   "text_cdl": [
-    "Equal(Div(LengthOfLine(AD),LengthOfLine(AB)),Div(LengthOfLine(AE),LengthOfLine(AC)))",
+    "Equal(AreaOfTriangle(AED),1)",
     "Equal(Div(LengthOfLine(AD),LengthOfLine(AB)),1/2)",
-    "Equal(AreaOfTriangle(AED),1)"
+    "Equal(Div(LengthOfLine(AD),LengthOfLine(AB)),Div(LengthOfLine(AE),LengthOfLine(AC)))"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Sub(AreaOfTriangle(ABC),AreaOfTriangle(AED)))",
@@ -25,13 +25,13 @@
     "mirror_similar_triangle_property_line_ratio(1,EDA,CAB)",
     "mirror_similar_triangle_property_area_square_ratio(1,AED,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "mirror_similar_triangle_judgment_sas(1,AED,ABC)"
+    ],
     "mirror_similar_triangle_judgment_sas(1,AED,ABC)": [
       "mirror_similar_triangle_property_area_square_ratio(1,AED,ABC)",
       "mirror_similar_triangle_property_line_ratio(1,EDA,CAB)"
-    ],
-    "START": [
-      "mirror_similar_triangle_judgment_sas(1,AED,ABC)"
     ]
   }
 }

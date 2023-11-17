@@ -2,9 +2,9 @@
   "problem_id": 6779,
   "annotation": "Yangli_2023-06-04",
   "source": "GeoQA-9892",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在以O为圆心的两个同心圆中,大圆的弦AB是小圆的切线,点P为切点,已知AB=8,大圆半径为5,则小圆半径为()",
-  "problem_text_en": "As shown in the figure, in the two concentric circles with O as the center, the chord AB of the great circle is the tangent of the small circle, and the point P is the tangent point. It is known that AB = N_0, the radius of the great circle is N_1, and the radius of the small circle is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AB=4，OA=5，圆O的圆心为O，⊙O的切线为AB。求直线OB的长度。",
+  "problem_text_en": "As shown in the diagram, AB=4, OA=5, the center of ⊙O is O, AB is the tangent to circle O. Find the length of line OB.",
   "problem_img": "6779.png",
   "construction_cdl": [
     "Shape(BO,OC,OCB)",
@@ -14,8 +14,8 @@
     "Cocircular(O,CB)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(OA),5)",
     "Equal(LengthOfLine(AB),4)",
+    "Equal(LengthOfLine(OA),5)",
     "IsCentreOfCircle(O,O)",
     "IsTangentOfCircle(AB,O)"
   ],
@@ -27,15 +27,15 @@
     "right_triangle_judgment_angle(1,ABO)",
     "right_triangle_property_pythagorean(1,ABO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(2,AB,O,O)"
+    ],
     "tangent_of_circle_property_perpendicular(2,AB,O,O)": [
       "right_triangle_judgment_angle(1,ABO)"
     ],
     "right_triangle_judgment_angle(1,ABO)": [
       "right_triangle_property_pythagorean(1,ABO)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(2,AB,O,O)"
     ]
   }
 }

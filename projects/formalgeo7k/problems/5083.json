@@ -2,9 +2,9 @@
   "problem_id": 5083,
   "annotation": "ChengQin_2023-05-21",
   "source": "GeoQA-4890",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知AD为△ABC的角平分线,DE∥AB交AC于E,如果\\frac{AE}{EC}=\\frac{3}{5},那么\\frac{AC}{AB}等于()",
-  "problem_text_en": "As shown in the figure, it is known that AD is the angular bisector of △ABC, DE ∥ AB and it intersects AC at E, if \\frac{AE}{EC}=\\frac{3}{5}, then \\frac{AC}{AB}is equal to ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AE=3，EC=5，AD平分∠EAB，BA∥DE。求直线AC的长度与直线AB的长度之比。",
+  "problem_text_en": "As shown in the diagram, AE=3, EC=5, AD is the angle bisector of ∠EAB, BA∥DE. Find the ratio of the length of line AC to the length of line AB.",
   "problem_img": "5083.png",
   "construction_cdl": [
     "Shape(AB,BD,DA)",
@@ -14,10 +14,10 @@
     "Collinear(BDC)"
   ],
   "text_cdl": [
-    "IsBisectorOfAngle(AD,EAB)",
-    "ParallelBetweenLine(BA,DE)",
     "Equal(LengthOfLine(AE),3)",
-    "Equal(LengthOfLine(EC),5)"
+    "Equal(LengthOfLine(EC),5)",
+    "IsBisectorOfAngle(AD,EAB)",
+    "ParallelBetweenLine(BA,DE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Div(LengthOfLine(AC),LengthOfLine(AB)))",
@@ -32,7 +32,13 @@
     "bisector_of_angle_judgment_angle_equal(1,AD,CAB)",
     "bisector_of_angle_property_line_ratio(1,AD,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(2,BA,DE,C)",
+      "line_addition(1,AE,EC)",
+      "line_addition(1,BD,DC)",
+      "bisector_of_angle_judgment_angle_equal(1,AD,CAB)"
+    ],
     "parallel_property_corresponding_angle(2,BA,DE,C)": [
       "similar_triangle_judgment_aa(1,EDC,ABC)"
     ],
@@ -42,12 +48,6 @@
     ],
     "bisector_of_angle_judgment_angle_equal(1,AD,CAB)": [
       "bisector_of_angle_property_line_ratio(1,AD,CAB)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(2,BA,DE,C)",
-      "line_addition(1,AE,EC)",
-      "line_addition(1,BD,DC)",
-      "bisector_of_angle_judgment_angle_equal(1,AD,CAB)"
     ]
   }
 }

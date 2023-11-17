@@ -2,9 +2,9 @@
   "problem_id": 6260,
   "annotation": "FangzhenZhu_2023-06-04",
   "source": "GeoQA-8882",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示,矩形ABCD与⊙O相交于M、N、F、E,若AM=2,DE=1,EF=8,则MN的长为()",
-  "problem_text_en": "As shown in the figure, the rectangle ABCD and ⊙O intersect at M, N, F, E, if AM = N_0, DE = N_1, EF = N_2, then the length of MN is ()",
+  "problem_level": 12,
+  "problem_text_cn": "如图所示，AM=2，DE=1，EF=8，圆O的圆心为O，FH垂直于OH，NP⊥OP，ADCB是长方形。求直线MN的长度。",
+  "problem_text_en": "As shown in the diagram, AM=2, DE=1, EF=8, O is the center of ⊙O, FH is perpendicular to OH, NP is perpendicular to OP, quadrilateral ADCB is a rectangle. Find the length of line MN.",
   "problem_img": "6260.png",
   "construction_cdl": [
     "Shape(ONM,MN)",
@@ -24,9 +24,9 @@
     "Equal(LengthOfLine(DE),1)",
     "Equal(LengthOfLine(EF),8)",
     "IsCentreOfCircle(O,O)",
-    "Rectangle(ADCB)",
     "PerpendicularBetweenLine(FH,OH)",
-    "PerpendicularBetweenLine(NP,OP)"
+    "PerpendicularBetweenLine(NP,OP)",
+    "Rectangle(ADCB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(MN))",
@@ -45,7 +45,18 @@
     "parallelogram_judgment_parallel_and_parallel(1,HPAD)",
     "parallelogram_property_opposite_line_equal(1,PADH)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,NPH,HPA)",
+      "parallel_judgment_ipsilateral_internal_angle(1,AP,DH)",
+      "line_addition(1,AM,MP)",
+      "line_addition(1,MP,PN)",
+      "line_addition(1,DE,EH)",
+      "line_addition(1,DE,EF)",
+      "line_addition(1,DH,HF)",
+      "circle_property_chord_perpendicular_bisect_chord(1,O,OP,NM)",
+      "circle_property_chord_perpendicular_bisect_chord(1,O,OH,FE)"
+    ],
     "adjacent_complementary_angle(1,NPH,HPA)": [
       "parallel_judgment_ipsilateral_internal_angle(1,PH,AD)"
     ],
@@ -57,17 +68,6 @@
     ],
     "parallelogram_judgment_parallel_and_parallel(1,HPAD)": [
       "parallelogram_property_opposite_line_equal(1,PADH)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,NPH,HPA)",
-      "parallel_judgment_ipsilateral_internal_angle(1,AP,DH)",
-      "line_addition(1,AM,MP)",
-      "line_addition(1,MP,PN)",
-      "line_addition(1,DE,EH)",
-      "line_addition(1,DE,EF)",
-      "line_addition(1,DH,HF)",
-      "circle_property_chord_perpendicular_bisect_chord(1,O,OP,NM)",
-      "circle_property_chord_perpendicular_bisect_chord(1,O,OH,FE)"
     ]
   }
 }

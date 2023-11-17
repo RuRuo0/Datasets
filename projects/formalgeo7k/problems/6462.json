@@ -2,9 +2,9 @@
   "problem_id": 6462,
   "annotation": "JiaZou_2023-06-04",
   "source": "GeoQA-9349",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在▱ABCD中,∠A=70°,将▱ABCD折叠,使点D、C分别落在点F、E处(点F、E都在AB所在的直线上),折痕为MN,则∠AMF等于()",
-  "problem_text_en": "As shown in the figure, in ▱ABCD, ∠A = N_0, fold ▱ABCD so that points D and C fall on points F and E respectively (points F and E are on the line where AB is located), and the crease is MN, Then ∠AMF is equal to ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AM=MD，AM=MF，∠MAF=70°，ABCD是平行四边形，MN和AB是▱MABN的一组对边，MFEN是▱。求∠FMA的大小。",
+  "problem_text_en": "As shown in the diagram, AM=MD, AM=MF, ∠MAF=70°, BA and CD are opposite sides of the parallelogram ABCD, quadrilateral MABN is a ▱, quadrilateral MFEN is a ▱. Find the measure of ∠FMA.",
   "problem_img": "6462.png",
   "construction_cdl": [
     "Shape(DM,MN,NC)",
@@ -16,12 +16,12 @@
     "Collinear(AFBE)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
-    "Parallelogram(MFEN)",
-    "Parallelogram(MABN)",
-    "Equal(MeasureOfAngle(MAF),70)",
     "Equal(LengthOfLine(AM),LengthOfLine(MD))",
-    "Equal(LengthOfLine(AM),LengthOfLine(MF))"
+    "Equal(LengthOfLine(AM),LengthOfLine(MF))",
+    "Equal(MeasureOfAngle(MAF),70)",
+    "Parallelogram(ABCD)",
+    "Parallelogram(MABN)",
+    "Parallelogram(MFEN)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(FMA))",
@@ -31,13 +31,13 @@
     "isosceles_triangle_property_angle_equal(1,MAF)",
     "triangle_property_angle_sum(1,MAF)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,MAF)": [
-      "isosceles_triangle_property_angle_equal(1,MAF)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,MAF)",
       "triangle_property_angle_sum(1,MAF)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,MAF)": [
+      "isosceles_triangle_property_angle_equal(1,MAF)"
     ]
   }
 }

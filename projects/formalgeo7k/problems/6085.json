@@ -2,9 +2,9 @@
   "problem_id": 6085,
   "annotation": "RunanWang_2023-06-04",
   "source": "GeoQA-8605",
-  "problem_level": 1,
-  "problem_text_cn": "如图,BD是⊙O的直径,圆周角∠CBD=20°,则圆周角∠A等于()",
-  "problem_text_en": "As shown in the figure, BD is the diameter of ⊙O, and the angel of circumference ∠CBD = N_0, then the angel of circumference ∠A is equal to ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠CBD=20°，⊙O的圆心为O，圆O的直径为BD。求∠BAC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CBD=20°, O is the center of circle O, BD is the diameter of circle O. Find the measure of ∠BAC.",
   "problem_img": "6085.png",
   "construction_cdl": [
     "Shape(OBA,AB)",
@@ -19,7 +19,9 @@
     "Cocircular(O,BADC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)"
+    "Equal(MeasureOfAngle(CBD),20)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(BD,O)"
   ],
   "image_cdl": [
     "Equal(MeasureOfAngle(CBD),20)",
@@ -33,7 +35,7 @@
     "arc_property_circumference_angle_external(1,ODC,A)",
     "angle_addition(1,BAE,EAD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,BAD,O)",
       "arc_property_circumference_angle_external(1,ODC,B)",

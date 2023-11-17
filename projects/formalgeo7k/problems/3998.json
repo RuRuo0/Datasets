@@ -2,16 +2,20 @@
   "problem_id": 3998,
   "annotation": "ZheZhu_2023-04-30",
   "source": "GeoQA-1955",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,∠C=30°,AD为BC边上的高,且∠DAB=20°,则∠BAC的度数为()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠C = N_0, AD is the height on the edge of BC, and ∠DAB = N_1, then the degree of ∠BAC is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠BCA=30°，∠DAB=20°，BD垂直于AD。求∠CAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BCA=30°, ∠DAB=20°, BD⊥AD. Find the measure of ∠CAB.",
   "problem_img": "3998.png",
   "construction_cdl": [
     "Shape(AB,BD,DA)",
     "Shape(AD,DC,CA)",
     "Collinear(BDC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(BCA),30)",
+    "Equal(MeasureOfAngle(DAB),20)",
+    "PerpendicularBetweenLine(BD,AD)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(BCA),30)",
     "Equal(MeasureOfAngle(DAB),20)",
@@ -23,7 +27,7 @@
     "triangle_property_angle_sum(1,ABD)",
     "triangle_property_angle_sum(1,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,ABD)",
       "triangle_property_angle_sum(1,ABC)"

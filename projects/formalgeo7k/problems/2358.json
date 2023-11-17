@@ -2,9 +2,9 @@
   "problem_id": 2358,
   "annotation": "ChenyangMao_2023-04-09",
   "source": "Geometry3k-2472",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Triangle L M N is equilateral, and M P bisects L N. Find the measure of the side of \\triangle L M N.",
+  "problem_level": 0,
+  "problem_text_cn": "如图所示，ML=3*x+1，MN=4*x-2，∠LPM=5*y°，三角形MLN为等边三角形，MP是三角形MLN的中线。求直线LM的长度。",
+  "problem_text_en": "As shown in the diagram, ML=3*x+1, MN=4*x-2, ∠LPM=5*y°, △MLN is an equilateral △, MP is the median of triangle MLN. Find the length of line LM.",
   "problem_img": "2358.png",
   "construction_cdl": [
     "Shape(ML,LN,NM)",
@@ -12,7 +12,11 @@
     "Collinear(LPN)"
   ],
   "text_cdl": [
-    "EquilateralTriangle(MLN)"
+    "Equal(LengthOfLine(ML),3*x+1)",
+    "Equal(LengthOfLine(MN),4*x-2)",
+    "Equal(MeasureOfAngle(LPM),5*y)",
+    "EquilateralTriangle(MLN)",
+    "IsMedianOfTriangle(MP,MLN)"
   ],
   "image_cdl": [
     "IsMedianOfTriangle(MP,MLN)",
@@ -23,5 +27,7 @@
   "goal_cdl": "Value(LengthOfLine(LM))",
   "problem_answer": "10",
   "theorem_seqs": [],
-  "theorem_seq_dag": {}
+  "theorem_seqs_dag": {
+    "START": []
+  }
 }

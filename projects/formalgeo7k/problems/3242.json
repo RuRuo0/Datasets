@@ -2,9 +2,9 @@
   "problem_id": 3242,
   "annotation": "NaZhu_2023-04-23",
   "source": "GeoQA-545",
-  "problem_level": 1,
-  "problem_text_cn": "如图,将矩形纸片ABCD沿其对角线AC折叠,使点B落到点B′的位置,AB′与CD交于点E,若AB=8,AD=3,则图中阴影部分的周长为()",
-  "problem_text_en": "As shown in the figure, the rectangular paper ABCD is folded along its diagonal AC, so that point B falls to the position of point B′, AB′ and CD intersect at point E, if AB = N_0, AD = N_1, then the perimeter of the shaded part in the figure is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AB=8，AD=3，三角形CFA与三角形CAB是镜像全等三角形，ABCD是矩形。求三角形DAE的周长与三角形FEC的周长之和。",
+  "problem_text_en": "As shown in the diagram, AB=8, AD=3, △CFA is mirror congruent to △CAB, quadrilateral ABCD is a rectangle. Find the sum of the perimeter of △DAE and the perimeter of triangle FEC.",
   "problem_img": "3242.png",
   "construction_cdl": [
     "Shape(FE,EC,CF)",
@@ -15,10 +15,10 @@
     "Collinear(AEF)"
   ],
   "text_cdl": [
-    "Rectangle(ABCD)",
-    "MirrorCongruentBetweenTriangle(CFA,CAB)",
     "Equal(LengthOfLine(AB),8)",
-    "Equal(LengthOfLine(AD),3)"
+    "Equal(LengthOfLine(AD),3)",
+    "MirrorCongruentBetweenTriangle(CFA,CAB)",
+    "Rectangle(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Add(PerimeterOfTriangle(DAE),PerimeterOfTriangle(FEC)))",
@@ -33,7 +33,7 @@
     "triangle_perimeter_formula(1,FEC)",
     "triangle_perimeter_formula(1,EDA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "mirror_congruent_triangle_property_line_equal(1,CFA,CAB)",
       "mirror_congruent_triangle_property_line_equal(1,ACF,ABC)",

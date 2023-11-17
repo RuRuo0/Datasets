@@ -2,9 +2,9 @@
   "problem_id": 6239,
   "annotation": "FangzhenZhu_2023-06-04",
   "source": "GeoQA-8838",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在⊙O中,AB、AC是互相垂直的两条弦,OD⊥AB于D,OE⊥AC于E,且AB=8cm,AC=6cm,那么⊙O的半径OA长为()",
-  "problem_text_en": "As shown in the figure, in ⊙O, AB and AC are two chords perpendicular to each other, OD ⊥ AB to D, OE ⊥ AC to E, and AB = N_0, AC = N_1, then the radius OA of ⊙O is ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，AB=8，AC=6，O是圆O的圆心，AD⊥OD，CA⊥BA，CE⊥OE。求直线OA的长度。",
+  "problem_text_en": "As shown in the diagram, AB=8, AC=6, the center of ⊙O is O, AD⊥OD, CA is perpendicular to BA, CE⊥OE. Find the length of line OA.",
   "problem_img": "6239.png",
   "construction_cdl": [
     "Shape(OE,EA,AO)",
@@ -17,12 +17,12 @@
     "Cocircular(O,CAB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(AB),8)",
     "Equal(LengthOfLine(AC),6)",
-    "PerpendicularBetweenLine(CE,OE)",
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(AD,OD)",
     "PerpendicularBetweenLine(CA,BA)",
-    "PerpendicularBetweenLine(AD,OD)"
+    "PerpendicularBetweenLine(CE,OE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(OA))",
@@ -39,7 +39,14 @@
     "right_triangle_judgment_angle(1,OEA)",
     "right_triangle_property_pythagorean(1,OEA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,CE,EA)",
+      "line_addition(1,AD,DB)",
+      "circle_property_chord_perpendicular_bisect_chord(1,O,OE,CA)",
+      "circle_property_chord_perpendicular_bisect_chord(1,O,OD,AB)",
+      "parallel_judgment_ipsilateral_internal_angle(1,AE,DO)"
+    ],
     "circle_property_chord_perpendicular_bisect_chord(1,O,OE,CA)": [
       "parallel_judgment_ipsilateral_internal_angle(1,EO,AD)",
       "right_triangle_judgment_angle(1,OEA)"
@@ -55,13 +62,6 @@
     ],
     "right_triangle_judgment_angle(1,OEA)": [
       "right_triangle_property_pythagorean(1,OEA)"
-    ],
-    "START": [
-      "line_addition(1,CE,EA)",
-      "line_addition(1,AD,DB)",
-      "circle_property_chord_perpendicular_bisect_chord(1,O,OE,CA)",
-      "circle_property_chord_perpendicular_bisect_chord(1,O,OD,AB)",
-      "parallel_judgment_ipsilateral_internal_angle(1,AE,DO)"
     ]
   }
 }

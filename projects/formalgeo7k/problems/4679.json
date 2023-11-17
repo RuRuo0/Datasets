@@ -2,9 +2,9 @@
   "problem_id": 4679,
   "annotation": "YiwenHuang_2023-05-21",
   "source": "GeoQA-3958",
-  "problem_level": 1,
-  "problem_text_cn": "如图,等边△ABC的边长为2,⊙A的半径为1,D是BC上的动点,DE与⊙A相切于E,DE的最小值是()",
-  "problem_text_en": "As shown in the figure, the edge length of equilateral △ABC is N_0, the radius of ⊙A is N_1, D is the moving point on BC, DE is tangent to  ⊙A at E, and the minimum value of DE is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AE=1，AH=sqrt(3)，A是圆A的圆心，HE是圆O的切线。求直线EH的长度。",
+  "problem_text_en": "As shown in the diagram, AE=1, AH=sqrt(3), A is the center of circle A, HE is the tangent to circle A. Find the length of line EH.",
   "problem_img": "4679.png",
   "construction_cdl": [
     "Shape(AE,AED,DA)",
@@ -13,10 +13,10 @@
     "Cocircular(A,ED)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(A,A)",
-    "IsTangentOfCircle(HE,A)",
     "Equal(LengthOfLine(AE),1)",
-    "Equal(LengthOfLine(AH),sqrt(3))"
+    "Equal(LengthOfLine(AH),sqrt(3))",
+    "IsCentreOfCircle(A,A)",
+    "IsTangentOfCircle(HE,A)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(EH))",
@@ -26,15 +26,15 @@
     "right_triangle_judgment_angle(1,AEH)",
     "right_triangle_property_pythagorean(1,AEH)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(1,HE,A,A)"
+    ],
     "tangent_of_circle_property_perpendicular(1,HE,A,A)": [
       "right_triangle_judgment_angle(1,AEH)"
     ],
     "right_triangle_judgment_angle(1,AEH)": [
       "right_triangle_property_pythagorean(1,AEH)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(1,HE,A,A)"
     ]
   }
 }

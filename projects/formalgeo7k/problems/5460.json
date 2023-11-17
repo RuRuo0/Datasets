@@ -2,9 +2,9 @@
   "problem_id": 5460,
   "annotation": "Yangli_2023-05-21",
   "source": "GeoQA-5870",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,点D、E分别是边AB、AC上的点,DE垂直平分AB,∠C=90°,∠BAC=15°．若BC=3cm,则AE的长度为()",
-  "problem_text_en": "As shown in the figure, in △ABC, points D and E are points on sides AB and AC respectively, DE bisects AB perpendicularly, ∠C = N_0, ∠BAC = N_1. If BC = N_2, then the length of AE is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，BC=3，∠DAE=15°，∠ECB=90°，ED是BA的垂直平分线。求直线AE的长度。",
+  "problem_text_en": "As shown in the diagram, BC=3, ∠DAE=15°, ∠ECB=90°, ED is the perpendicular bisector of BA. Find the length of line AE.",
   "problem_img": "5460.png",
   "construction_cdl": [
     "Shape(DA,AE,ED)",
@@ -15,8 +15,8 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(BC),3)",
-    "Equal(MeasureOfAngle(ECB),90)",
     "Equal(MeasureOfAngle(DAE),15)",
+    "Equal(MeasureOfAngle(ECB),90)",
     "IsPerpendicularBisectorOfLine(ED,BA)"
   ],
   "image_cdl": [],
@@ -31,19 +31,19 @@
     "triangle_property_angle_sum(1,BEC)",
     "sine_theorem(1,BEC)"
   ],
-  "theorem_seq_dag": {
-    "perpendicular_bisector_property_distance_equal(1,ED,BA)": [
-      "isosceles_triangle_judgment_line_equal(1,EBA)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,EBA)": [
-      "isosceles_triangle_property_angle_equal(1,EBA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,ACB)",
       "perpendicular_bisector_property_distance_equal(1,ED,BA)",
       "angle_addition(1,CBE,EBD)",
       "triangle_property_angle_sum(1,BEC)",
       "sine_theorem(1,BEC)"
+    ],
+    "perpendicular_bisector_property_distance_equal(1,ED,BA)": [
+      "isosceles_triangle_judgment_line_equal(1,EBA)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,EBA)": [
+      "isosceles_triangle_property_angle_equal(1,EBA)"
     ]
   }
 }

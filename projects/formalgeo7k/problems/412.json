@@ -2,9 +2,9 @@
   "problem_id": 412,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-420",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure, m \\angle 3 = 43. Find the measure of \\angle 2.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠POM=43°，FB平行于QM，KC∥GJ。求∠BPO的大小。",
+  "problem_text_en": "As shown in the diagram, ∠POM=43°, FB∥QM, KC∥GJ. Find the measure of ∠BPO.",
   "problem_img": "412.png",
   "construction_cdl": [
     "Shape(KP,PB)",
@@ -25,7 +25,11 @@
     "Collinear(BPHF)",
     "Collinear(MONQ)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(POM),43)",
+    "ParallelBetweenLine(FB,QM)",
+    "ParallelBetweenLine(KC,GJ)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(POM),43)",
     "ParallelBetweenLine(FB,QM)",
@@ -38,15 +42,15 @@
     "parallel_property_collinear_extend(3,MQ,BP,O)",
     "parallel_property_ipsilateral_internal_angle(1,PB,OM)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,FB,QM,P)"
+    ],
     "parallel_property_collinear_extend(3,FB,QM,P)": [
       "parallel_property_collinear_extend(3,MQ,BP,O)"
     ],
     "parallel_property_collinear_extend(3,MQ,BP,O)": [
       "parallel_property_ipsilateral_internal_angle(1,PB,OM)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,FB,QM,P)"
     ]
   }
 }

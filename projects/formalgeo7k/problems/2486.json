@@ -2,16 +2,23 @@
   "problem_id": 2486,
   "annotation": "YifanWang_2023-04-23",
   "source": "Geometry3k-2608",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Triangle L M N is equilateral, and M P bisects L N. Find y.",
+  "problem_level": 0,
+  "problem_text_cn": "如图所示，ML=3*x+1，NM=4*x-2，∠LPM=5*y°，三角形MLN为等边三角形，MP是△MLN的高，ML和MN是等腰△MLN的腰。求y的值。",
+  "problem_text_en": "As shown in the diagram, ML=3*x+1, NM=4*x-2, ∠LPM=5*y°, triangle MLN is an equilateral triangle, MP is the altitude of triangle MLN, ML and MN are the legs of the isosceles triangle MLN. Find the value of y.",
   "problem_img": "2486.png",
   "construction_cdl": [
     "Shape(ML,LP,PM)",
     "Shape(MP,PN,NM)",
     "Collinear(LPN)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(ML),3*x+1)",
+    "Equal(LengthOfLine(NM),4*x-2)",
+    "Equal(MeasureOfAngle(LPM),5*y)",
+    "EquilateralTriangle(MLN)",
+    "IsAltitudeOfTriangle(MP,MLN)",
+    "IsoscelesTriangle(MLN)"
+  ],
   "image_cdl": [
     "EquilateralTriangle(MLN)",
     "IsoscelesTriangle(MLN)",
@@ -23,5 +30,7 @@
   "goal_cdl": "Value(y)",
   "problem_answer": "18",
   "theorem_seqs": [],
-  "theorem_seq_dag": {}
+  "theorem_seqs_dag": {
+    "START": []
+  }
 }

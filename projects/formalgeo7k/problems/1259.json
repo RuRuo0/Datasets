@@ -2,16 +2,23 @@
   "problem_id": 1259,
   "annotation": "JiaZou_2023-03-19",
   "source": "Geometry3k-1301",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find W Z.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，UY=32，UZ=x+6，WY=40，WZ=3*x-6，∠UWZ=∠UYW，ZU垂直于WU。求直线WZ的长度。",
+  "problem_text_en": "As shown in the diagram, UY=32, UZ=x+6, WY=40, WZ=3*x-6, ∠UWZ=∠UYW, ZU is perpendicular to WU. Find the length of line WZ.",
   "problem_img": "1259.png",
   "construction_cdl": [
     "Shape(WZ,ZU,UW)",
     "Shape(WU,UY,YW)",
     "Collinear(ZUY)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(UY),32)",
+    "Equal(LengthOfLine(UZ),x+6)",
+    "Equal(LengthOfLine(WY),40)",
+    "Equal(LengthOfLine(WZ),3*x-6)",
+    "Equal(MeasureOfAngle(UWZ),MeasureOfAngle(UYW))",
+    "PerpendicularBetweenLine(ZU,WU)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(WY),40)",
     "Equal(LengthOfLine(WZ),3*x-6)",
@@ -29,7 +36,11 @@
     "right_triangle_property_pythagorean(1,ZUW)",
     "right_triangle_property_pythagorean(1,WUY)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,ZUW,WUY)",
+      "right_triangle_judgment_angle(1,ZUW)"
+    ],
     "adjacent_complementary_angle(1,ZUW,WUY)": [
       "right_triangle_judgment_angle(1,WUY)"
     ],
@@ -38,10 +49,6 @@
     ],
     "right_triangle_judgment_angle(1,WUY)": [
       "right_triangle_property_pythagorean(1,WUY)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,ZUW,WUY)",
-      "right_triangle_judgment_angle(1,ZUW)"
     ]
   }
 }

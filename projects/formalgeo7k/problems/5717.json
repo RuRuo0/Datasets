@@ -2,9 +2,9 @@
   "problem_id": 5717,
   "annotation": "NaZhu_2023-05-28",
   "source": "GeoQA-7491",
-  "problem_level": 1,
-  "problem_text_cn": "如图,▱ABCD,E在CD延长线上,AB=6,DE=4,EF=6,则BF的长为()",
-  "problem_text_en": "As shown in the figure, ▱ABCD, E are on the extended line of CD, AB = N_0, DE = N_1, EF = N_2, then the length of BF is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AB=6，DE=4，EF=6，AD和BC是▱ABCD的一组对边。求直线BF的长度。",
+  "problem_text_en": "As shown in the diagram, AB=6, DE=4, EF=6, ABCD is a ▱. Find the length of line BF.",
   "problem_img": "5717.png",
   "construction_cdl": [
     "Shape(AB,BF,FA)",
@@ -15,10 +15,10 @@
     "Collinear(EDC)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
     "Equal(LengthOfLine(AB),6)",
     "Equal(LengthOfLine(DE),4)",
-    "Equal(LengthOfLine(EF),6)"
+    "Equal(LengthOfLine(EF),6)",
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BF))",
@@ -31,7 +31,10 @@
     "similar_triangle_property_line_ratio(1,FAB,FDE)",
     "similar_triangle_property_line_ratio(1,ABF,DEF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(1,DC,AB,E)"
+    ],
     "parallel_property_collinear_extend(1,DC,AB,E)": [
       "parallel_property_alternate_interior_angle(1,ED,AB)",
       "parallel_property_alternate_interior_angle(2,ED,AB)"
@@ -45,9 +48,6 @@
     "similar_triangle_judgment_aa(1,FAB,FDE)": [
       "similar_triangle_property_line_ratio(1,FAB,FDE)",
       "similar_triangle_property_line_ratio(1,ABF,DEF)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(1,DC,AB,E)"
     ]
   }
 }

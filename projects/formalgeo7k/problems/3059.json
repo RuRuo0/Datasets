@@ -2,9 +2,9 @@
   "problem_id": 3059,
   "annotation": "XiaokaiZhang_2023-04-16",
   "source": "GeoQA-281",
-  "problem_level": 1,
-  "problem_text_cn": "如图,分别以直角三角形各边为一边向三角形外部作正方形,其中两个小正方形的面积分别为9和25,则正方形A的面积是()",
-  "problem_text_en": "As shown in the figure, take each side of the right triangle as one side and make a square toward the outside of the triangle. The areas of the two small squares are N_0 and N_1 respectively, then the area of ​​square A is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，ABCD的面积为25，CFGE的面积为9，△DCE为直角△，四边形ABCD是正方形，四边形CFGE是正方形，DEHI是正方形。求DEHI的面积。",
+  "problem_text_en": "As shown in the diagram, the area of quadrilateral ABCD is 25, the area of CFGE is 9, triangle DCE is a right triangle, quadrilateral ABCD is a square, quadrilateral CFGE is a square, quadrilateral DEHI is a square. Find the area of quadrilateral DEHI.",
   "problem_img": "3059.png",
   "construction_cdl": [
     "Shape(AB,BC,CD,DA)",
@@ -15,12 +15,12 @@
     "Collinear(BCE)"
   ],
   "text_cdl": [
+    "Equal(AreaOfQuadrilateral(ABCD),25)",
+    "Equal(AreaOfQuadrilateral(CFGE),9)",
     "RightTriangle(DCE)",
     "Square(ABCD)",
     "Square(CFGE)",
-    "Square(DEHI)",
-    "Equal(AreaOfQuadrilateral(ABCD),25)",
-    "Equal(AreaOfQuadrilateral(CFGE),9)"
+    "Square(DEHI)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(AreaOfQuadrilateral(DEHI))",
@@ -31,7 +31,7 @@
     "parallelogram_area_formula_sine(1,CFGE)",
     "parallelogram_area_formula_sine(1,DEHI)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_property_pythagorean(1,DCE)",
       "parallelogram_area_formula_sine(1,ABCD)",

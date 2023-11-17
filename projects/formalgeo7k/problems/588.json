@@ -3,14 +3,19 @@
   "annotation": "YimingHe_2023-04-09",
   "source": "Geometry3k-603",
   "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the parallelogram. Round to the nearest tenth if necessary.",
+  "problem_text_cn": "如图所示，BD=5，DF=4，EB=DF，EF=DB，四边形EBDF是平行四边形，EB垂直于DB。求EBDF的周长。",
+  "problem_text_en": "As shown in the diagram, BD=5, DF=4, EB=DF, EF=DB, EF and BD are opposite sides of the parallelogram EBDF, EB⊥DB. Find the perimeter of quadrilateral EBDF.",
   "problem_img": "588.png",
   "construction_cdl": [
     "Shape(EB,BD,DF,FE)"
   ],
   "text_cdl": [
-    "Parallelogram(EBDF)"
+    "Equal(LengthOfLine(BD),5)",
+    "Equal(LengthOfLine(DF),4)",
+    "Equal(LengthOfLine(EB),LengthOfLine(DF))",
+    "Equal(LengthOfLine(EF),LengthOfLine(DB))",
+    "Parallelogram(EBDF)",
+    "PerpendicularBetweenLine(EB,DB)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(DF),4)",
@@ -24,7 +29,7 @@
   "theorem_seqs": [
     "quadrilateral_perimeter_formula(1,EBDF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "quadrilateral_perimeter_formula(1,EBDF)"
     ]

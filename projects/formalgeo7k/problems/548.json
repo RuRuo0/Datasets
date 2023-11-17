@@ -2,16 +2,22 @@
   "problem_id": 548,
   "annotation": "JiaZou_2023-03-12",
   "source": "Geometry3k-561",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If x = 7 \\sqrt { 3 }, find b.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，BE=7*sqrt(3)，∠CAB=30°，∠EBC=60°，AE⊥CE，BC⊥AC。求直线CA的长度。",
+  "problem_text_en": "As shown in the diagram, BE=7*sqrt(3), ∠CAB=30°, ∠EBC=60°, AE is perpendicular to CE, BC⊥AC. Find the length of line CA.",
   "problem_img": "548.png",
   "construction_cdl": [
     "Shape(BC,CE,EB)",
     "Shape(EC,CA,AE)",
     "Collinear(BEA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BE),7*sqrt(3))",
+    "Equal(MeasureOfAngle(CAB),30)",
+    "Equal(MeasureOfAngle(EBC),60)",
+    "PerpendicularBetweenLine(AE,CE)",
+    "PerpendicularBetweenLine(BC,AC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BE),7*sqrt(3))",
     "Equal(MeasureOfAngle(EBC),60)",
@@ -27,7 +33,7 @@
     "sine_theorem(1,AEC)",
     "sine_theorem(1,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,BE,EA)",
       "triangle_property_angle_sum(1,AEC)",

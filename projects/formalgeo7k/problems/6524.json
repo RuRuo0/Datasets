@@ -2,9 +2,9 @@
   "problem_id": 6524,
   "annotation": "NaZhu_2023-06-04",
   "source": "GeoQA-9444",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在平行四边形ABCD中,AB=3,BC=4,BE平分∠ABC交AD于E,则ED为()",
-  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, AB = N_0, BC = N_1, BE bisects ∠ABC crosses AD to E, then AE and ED are respectively ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=3，BC=4，BE平分∠ABC，AD和BC是平行四边形ABCD的一组对边。求直线ED的长度。",
+  "problem_text_en": "As shown in the diagram, AB=3, BC=4, BE is the angle bisector of ∠ABC, ABCD is a ▱. Find the length of line ED.",
   "problem_img": "6524.png",
   "construction_cdl": [
     "Shape(AB,BE,EA)",
@@ -12,10 +12,10 @@
     "Collinear(AED)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
     "Equal(LengthOfLine(AB),3)",
     "Equal(LengthOfLine(BC),4)",
-    "IsBisectorOfAngle(BE,ABC)"
+    "IsBisectorOfAngle(BE,ABC)",
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(ED))",
@@ -27,17 +27,17 @@
     "line_addition(1,AE,ED)",
     "parallelogram_property_opposite_line_equal(1,BCDA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,AD,BC,E)",
+      "line_addition(1,AE,ED)",
+      "parallelogram_property_opposite_line_equal(1,BCDA)"
+    ],
     "parallel_property_collinear_extend(3,AD,BC,E)": [
       "parallel_property_alternate_interior_angle(2,AE,BC)"
     ],
     "parallel_property_alternate_interior_angle(2,AE,BC)": [
       "isosceles_triangle_judgment_angle_equal(1,ABE)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,AD,BC,E)",
-      "line_addition(1,AE,ED)",
-      "parallelogram_property_opposite_line_equal(1,BCDA)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 1501,
   "annotation": "YanjunGuo_2023-04-09",
   "source": "Geometry3k-1557",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find P Q.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，PQ=2*x+1，PT=10，RQ=6，ST=4，QT平行于RS，SR平行于TQ。求直线PQ的长度。",
+  "problem_text_en": "As shown in the diagram, PQ=2*x+1, PT=10, RQ=6, ST=4, QT is parallel to RS, SR is parallel to TQ. Find the length of line PQ.",
   "problem_img": "1501.png",
   "construction_cdl": [
     "Shape(RS,ST,TQ,QR)",
@@ -12,7 +12,14 @@
     "Collinear(PTS)",
     "Collinear(PQR)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(PQ),2*x+1)",
+    "Equal(LengthOfLine(PT),10)",
+    "Equal(LengthOfLine(RQ),6)",
+    "Equal(LengthOfLine(ST),4)",
+    "ParallelBetweenLine(QT,RS)",
+    "ParallelBetweenLine(SR,TQ)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(RQ),6)",
     "Equal(LengthOfLine(PQ),2*x+1)",
@@ -32,7 +39,13 @@
     "similar_triangle_property_line_ratio(1,SPR,TPQ)",
     "similar_triangle_property_line_ratio(1,RSP,QTP)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,QT,RS,P)",
+      "parallel_property_corresponding_angle(2,SR,TQ,P)",
+      "line_addition(1,RQ,QP)",
+      "line_addition(1,ST,TP)"
+    ],
     "parallel_property_corresponding_angle(1,QT,RS,P)": [
       "similar_triangle_judgment_aa(1,PRS,PQT)"
     ],
@@ -42,12 +55,6 @@
     "similar_triangle_judgment_aa(1,PRS,PQT)": [
       "similar_triangle_property_line_ratio(1,RSP,QTP)",
       "similar_triangle_property_line_ratio(1,SPR,TPQ)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,QT,RS,P)",
-      "parallel_property_corresponding_angle(2,SR,TQ,P)",
-      "line_addition(1,RQ,QP)",
-      "line_addition(1,ST,TP)"
     ]
   }
 }

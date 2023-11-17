@@ -2,9 +2,9 @@
   "problem_id": 3796,
   "annotation": "YifanWang_2023-05-07",
   "source": "GeoQA-1641",
-  "problem_level": 1,
-  "problem_text_cn": "如图,一副三角板(直角顶点重合)摆放在桌面上,若∠AOD=150°,则∠BOC等于()",
-  "problem_text_en": "As shown in the figure, a set of triangular plates (the vertices of right angles coincide) is placed on the desktop, if ∠AOD = N_0, then ∠BOC is equal to ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠AOD=150°，三角形AOB为直角三角形，CO和OD是直角三角形COD的两个直角边。求∠COB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AOD=150°, AO and OB are the legs of the right △ AOB, CO and OD are the legs of the right △ COD. Find the measure of ∠COB.",
   "problem_img": "3796.png",
   "construction_cdl": [
     "Shape(AO,OE,EA)",
@@ -17,7 +17,11 @@
     "Collinear(DGFC)",
     "Collinear(OGB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(AOD),150)",
+    "RightTriangle(AOB)",
+    "RightTriangle(COD)"
+  ],
   "image_cdl": [
     "RightTriangle(AOB)",
     "RightTriangle(COD)",
@@ -29,7 +33,7 @@
     "angle_addition(1,AOE,EOG)",
     "angle_addition(1,AOE,EOD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,AOE,EOG)",
       "angle_addition(1,AOE,EOD)"

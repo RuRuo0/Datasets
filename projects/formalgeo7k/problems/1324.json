@@ -2,16 +2,21 @@
   "problem_id": 1324,
   "annotation": "DengfengYue_2023-04-09",
   "source": "Geometry3k-1372",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，BA=5*x，DC=3*x+6，⌒OBA的角度为127，弧OCD的角度为127。求x的值。",
+  "problem_text_en": "As shown in the diagram, BA=5*x, DC=3*x+6, the measure of ⌒OBA is 127, the measure of arc OCD is 127. Find the value of x.",
   "problem_img": "1324.png",
   "construction_cdl": [
     "Shape(OB,BA,AO)",
     "Shape(OC,CD,DO)",
     "Cocircular(O,BACD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BA),5*x)",
+    "Equal(LengthOfLine(DC),3*x+6)",
+    "Equal(MeasureOfArc(OBA),127)",
+    "Equal(MeasureOfArc(OCD),127)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfArc(OBA),127)",
     "Equal(LengthOfLine(BA),5*x)",
@@ -24,12 +29,12 @@
     "congruent_arc_judgment_measure_equal(1,OBA,OCD)",
     "congruent_arc_property_chord_equal(1,OBA,OCD)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_measure_equal(1,OBA,OCD)": [
-      "congruent_arc_property_chord_equal(1,OBA,OCD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "congruent_arc_judgment_measure_equal(1,OBA,OCD)"
+    ],
+    "congruent_arc_judgment_measure_equal(1,OBA,OCD)": [
+      "congruent_arc_property_chord_equal(1,OBA,OCD)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 5716,
   "annotation": "NaZhu_2023-05-28",
   "source": "GeoQA-7490",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB∥DC,AC与BD交于点E,EF∥DC交BC于点F,CE=5,CF=4,AE=BC,则\\frac{DC}{AB}等于()",
-  "problem_text_en": "As shown in the figure, AB ∥ DC, AC and BD intersect at point E, EF ∥ DC intersect BC at point F, CE = N_0, CF = N_1, AE = BC, then \\\\frac {DC}{AB} is equal to ()",
+  "problem_level": 12,
+  "problem_text_cn": "如图所示，AE=BC，CE=5，CF=4，DC∥AB，DC∥EF。求直线DC的长度与直线AB的长度之比。",
+  "problem_text_en": "As shown in the diagram, AE=BC, CE=5, CF=4, DC∥AB, DC∥EF. Find the ratio of the length of line DC to the length of line AB.",
   "problem_img": "5716.png",
   "construction_cdl": [
     "Shape(DE,EC,CD)",
@@ -16,11 +16,11 @@
     "Collinear(DEB)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(DC,AB)",
-    "ParallelBetweenLine(DC,EF)",
+    "Equal(LengthOfLine(AE),LengthOfLine(BC))",
     "Equal(LengthOfLine(CE),5)",
     "Equal(LengthOfLine(CF),4)",
-    "Equal(LengthOfLine(AE),LengthOfLine(BC))"
+    "ParallelBetweenLine(DC,AB)",
+    "ParallelBetweenLine(DC,EF)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Div(LengthOfLine(DC),LengthOfLine(AB)))",
@@ -39,7 +39,13 @@
     "similar_triangle_property_line_ratio(1,EAB,ECD)",
     "line_addition(1,AE,EC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_alternate_interior_angle(1,DC,AB)",
+      "parallel_property_alternate_interior_angle(2,DC,AB)",
+      "parallel_property_alternate_interior_angle(2,DC,EF)",
+      "line_addition(1,AE,EC)"
+    ],
     "parallel_property_alternate_interior_angle(1,DC,AB)": [
       "similar_triangle_judgment_aa(1,ECD,EAB)",
       "similar_triangle_judgment_aa(1,EAB,ECD)"
@@ -62,12 +68,6 @@
     ],
     "similar_triangle_judgment_aa(1,EAB,ECD)": [
       "similar_triangle_property_line_ratio(1,EAB,ECD)"
-    ],
-    "START": [
-      "parallel_property_alternate_interior_angle(1,DC,AB)",
-      "parallel_property_alternate_interior_angle(2,DC,AB)",
-      "parallel_property_alternate_interior_angle(2,DC,EF)",
-      "line_addition(1,AE,EC)"
     ]
   }
 }

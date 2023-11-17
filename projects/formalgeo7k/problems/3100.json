@@ -2,9 +2,9 @@
   "problem_id": 3100,
   "annotation": "YimingHe_2023-04-23",
   "source": "GeoQA-340",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知直线a∥b,∠1=100°,则∠2等于()",
-  "problem_text_en": "As shown in the figure, given the straight line a ∥ b, ∠1 = N_0, then ∠2 is equal to ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠CGA=100°，CD平行于EF。求∠GHF的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CGA=100°, CD∥EF. Find the measure of ∠GHF.",
   "problem_img": "3100.png",
   "construction_cdl": [
     "Shape(CG,GA)",
@@ -19,7 +19,10 @@
     "Collinear(EHF)",
     "Collinear(AGHB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(CGA),100)",
+    "ParallelBetweenLine(CD,EF)"
+  ],
   "image_cdl": [
     "ParallelBetweenLine(CD,EF)",
     "Equal(MeasureOfAngle(CGA),100)"
@@ -32,16 +35,16 @@
     "parallel_property_corresponding_angle(2,HE,GC,A)",
     "adjacent_complementary_angle(1,EHG,GHF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,CD,EF,G)",
+      "adjacent_complementary_angle(1,EHG,GHF)"
+    ],
     "parallel_property_collinear_extend(3,CD,EF,G)": [
       "parallel_property_collinear_extend(3,FE,GC,H)"
     ],
     "parallel_property_collinear_extend(3,FE,GC,H)": [
       "parallel_property_corresponding_angle(2,HE,GC,A)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,CD,EF,G)",
-      "adjacent_complementary_angle(1,EHG,GHF)"
     ]
   }
 }

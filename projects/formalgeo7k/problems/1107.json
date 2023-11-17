@@ -2,16 +2,24 @@
   "problem_id": 1107,
   "annotation": "NaZhu_2023-03-19",
   "source": "Geometry3k-1144",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=y，AC=8，BC=6，SA=z，SB=x，BA垂直于SA，SC垂直于AC。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=y, AC=8, BC=6, SA=z, SB=x, BA⊥SA, SC⊥AC. Find the value of x.",
   "problem_img": "1107.png",
   "construction_cdl": [
     "Shape(BA,AC,CB)",
     "Shape(CA,AS,SC)",
     "Collinear(BCS)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),y)",
+    "Equal(LengthOfLine(AC),8)",
+    "Equal(LengthOfLine(BC),6)",
+    "Equal(LengthOfLine(SA),z)",
+    "Equal(LengthOfLine(SB),x)",
+    "PerpendicularBetweenLine(BA,SA)",
+    "PerpendicularBetweenLine(SC,AC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BC),6)",
     "Equal(LengthOfLine(AC),8)",
@@ -32,7 +40,12 @@
     "similar_triangle_property_line_ratio(1,ACB,SCA)",
     "similar_triangle_property_line_ratio(1,BAC,ASC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,BC,CS)",
+      "adjacent_complementary_angle(1,SCA,ACB)",
+      "mirror_similar_triangle_judgment_aa(1,ASC,BAS)"
+    ],
     "adjacent_complementary_angle(1,SCA,ACB)": [
       "similar_triangle_judgment_aa(1,ACB,SCA)"
     ],
@@ -45,11 +58,6 @@
     "similar_triangle_judgment_aa(1,ACB,SCA)": [
       "similar_triangle_property_line_ratio(1,ACB,SCA)",
       "similar_triangle_property_line_ratio(1,BAC,ASC)"
-    ],
-    "START": [
-      "line_addition(1,BC,CS)",
-      "adjacent_complementary_angle(1,SCA,ACB)",
-      "mirror_similar_triangle_judgment_aa(1,ASC,BAS)"
     ]
   }
 }

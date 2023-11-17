@@ -2,9 +2,9 @@
   "problem_id": 4478,
   "annotation": "NaZhu_2023-05-14",
   "source": "GeoQA-3471",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点A、B、C、D在⊙O上,C是⁀{AB}的中点,∠CDB=25°,∠AOB的度数是()",
-  "problem_text_en": "As shown in the figure, points A, B, C, and D are on ⊙O, C is the midpoint of ⁀AB, ∠CDB = N_0, and the degree of ∠AOB is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠BDE=25°，O是圆O的圆心，C平分⌒OAB。求∠EOA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BDE=25°, the center of circle O is O, C is the midpoint of arc OAB. Find the measure of ∠EOA.",
   "problem_img": "4478.png",
   "construction_cdl": [
     "Shape(OAC,CE,EO,OA)",
@@ -17,9 +17,9 @@
     "Cocircular(O,ACBD)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(BDE),25)",
     "IsCentreOfCircle(O,O)",
-    "IsMidpointOfArc(C,OAB)",
-    "Equal(MeasureOfAngle(BDE),25)"
+    "IsMidpointOfArc(C,OAB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(EOA))",
@@ -31,15 +31,15 @@
     "arc_addition_measure(1,OAC,OCB)",
     "arc_property_center_angle(1,OAB,O)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_length_equal(1,OAC,OCB)": [
-      "congruent_arc_property_measure_equal(1,OAC,OCB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_circumference_angle_external(1,OCB,D)",
       "congruent_arc_judgment_length_equal(1,OAC,OCB)",
       "arc_addition_measure(1,OAC,OCB)",
       "arc_property_center_angle(1,OAB,O)"
+    ],
+    "congruent_arc_judgment_length_equal(1,OAC,OCB)": [
+      "congruent_arc_property_measure_equal(1,OAC,OCB)"
     ]
   }
 }

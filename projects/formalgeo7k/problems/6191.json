@@ -2,9 +2,9 @@
   "problem_id": 6191,
   "annotation": "DengfengYue_2023-05-28",
   "source": "GeoQA-8769",
-  "problem_level": 1,
-  "problem_text_cn": "如图,圆O的半径为6,点A、B、C在圆O上,且∠ACB=45°,则弦AB的长是()",
-  "problem_text_en": "As shown in the figure, the radius of circle O is N_0, vertices A, B, and C are on circle O, and ∠ACB = N_1, then the length of chord AB is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠BCA=45°，⊙O的半径为6，圆O的圆心为O。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, ∠BCA=45°, the radius of ⊙O is 6, O is the center of ⊙O. Find the length of line AB.",
   "problem_img": "6191.png",
   "construction_cdl": [
     "Shape(CA,AO,OB,BC)",
@@ -15,9 +15,9 @@
     "Cocircular(O,CAB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(BCA),45)",
     "Equal(RadiusOfCircle(O),6)",
-    "Equal(MeasureOfAngle(BCA),45)"
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -32,7 +32,15 @@
     "triangle_property_angle_sum(1,OAB)",
     "sine_theorem(1,ABO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "arc_property_circumference_angle_external(1,OAB,C)",
+      "arc_property_center_angle(1,OAB,O)",
+      "triangle_property_angle_sum(1,OAB)",
+      "sine_theorem(1,ABO)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OAB)"
     ],
@@ -41,14 +49,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OAB)": [
       "isosceles_triangle_property_angle_equal(1,OAB)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "arc_property_circumference_angle_external(1,OAB,C)",
-      "arc_property_center_angle(1,OAB,O)",
-      "triangle_property_angle_sum(1,OAB)",
-      "sine_theorem(1,ABO)"
     ]
   }
 }

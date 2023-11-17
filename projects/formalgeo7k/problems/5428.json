@@ -2,9 +2,9 @@
   "problem_id": 5428,
   "annotation": "XiaoxiaoJin_2023-05-21",
   "source": "GeoQA-5747",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在▱ABCD中,对角线AC与BD相交于点O,E是边CD的中点,连结OE．若∠ABC=50°,∠BAC=80°,则∠1的度数为()",
-  "problem_text_en": "As shown in the figure, in ▱ABCD, diagonal AC and BD intersect at point O, E is the midpoint of edge CD. Connect OE. If ∠ABC = N_0, ∠BAC = N_1, then the degree of ∠1 is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，DE=CE，∠ABC=50°，∠CAB=80°，四边形ABCD是▱。求∠EOC的大小。",
+  "problem_text_en": "As shown in the diagram, DE=CE, ∠ABC=50°, ∠CAB=80°, quadrilateral ABCD is a ▱. Find the measure of ∠EOC.",
   "problem_img": "5428.png",
   "construction_cdl": [
     "Shape(AB,BO,OA)",
@@ -18,9 +18,9 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(DE),LengthOfLine(CE))",
-    "Parallelogram(ABCD)",
     "Equal(MeasureOfAngle(ABC),50)",
-    "Equal(MeasureOfAngle(CAB),80)"
+    "Equal(MeasureOfAngle(CAB),80)",
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(EOC))",
@@ -33,7 +33,12 @@
     "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
     "angle_addition(1,DAO,OAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallelogram_property_diagonal_bisection(1,ABCD,O)",
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
+      "angle_addition(1,DAO,OAB)"
+    ],
     "parallelogram_property_diagonal_bisection(1,ABCD,O)": [
       "midsegment_of_triangle_judgment_midpoint(1,EO,CDA)"
     ],
@@ -42,11 +47,6 @@
     ],
     "midsegment_of_triangle_property_parallel(1,EO,CDA)": [
       "parallel_property_corresponding_angle(2,AD,OE,C)"
-    ],
-    "START": [
-      "parallelogram_property_diagonal_bisection(1,ABCD,O)",
-      "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
-      "angle_addition(1,DAO,OAB)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 1626,
   "annotation": "XiaoxiaoJin_2023-04-16",
   "source": "Geometry3k-1687",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x. (Hint: Draw an auxiliary line).",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠GJC=50°，∠IAH=x°，∠JLA=72°，IO∥PL，PL∥CN。求x的值。",
+  "problem_text_en": "As shown in the diagram, ∠GJC=50°, ∠IAH=x°, ∠JLA=72°, IO∥PL, PL∥CN. Find the value of x.",
   "problem_img": "1626.png",
   "construction_cdl": [
     "Shape(IA,AH)",
@@ -22,7 +22,13 @@
     "Collinear(IAO)",
     "Collinear(CJN)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(GJC),50)",
+    "Equal(MeasureOfAngle(IAH),x)",
+    "Equal(MeasureOfAngle(JLA),72)",
+    "ParallelBetweenLine(IO,PL)",
+    "ParallelBetweenLine(PL,CN)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(IAH),x)",
     "Equal(MeasureOfAngle(JLA),72)",
@@ -39,17 +45,17 @@
     "parallel_property_collinear_extend(3,IO,PL,A)",
     "parallel_property_corresponding_angle(2,LP,AI,H)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "angle_addition(1,JLP,PLA)",
+      "parallel_property_collinear_extend(3,NC,LP,J)",
+      "parallel_property_collinear_extend(3,IO,PL,A)"
+    ],
     "parallel_property_collinear_extend(3,NC,LP,J)": [
       "parallel_property_corresponding_angle(1,JC,LP,G)"
     ],
     "parallel_property_collinear_extend(3,IO,PL,A)": [
       "parallel_property_corresponding_angle(2,LP,AI,H)"
-    ],
-    "START": [
-      "angle_addition(1,JLP,PLA)",
-      "parallel_property_collinear_extend(3,NC,LP,J)",
-      "parallel_property_collinear_extend(3,IO,PL,A)"
     ]
   }
 }

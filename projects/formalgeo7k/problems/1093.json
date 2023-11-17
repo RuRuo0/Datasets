@@ -2,9 +2,9 @@
   "problem_id": 1093,
   "annotation": "XiaoxiaoJin_2023-04-09",
   "source": "Geometry3k-1130",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In rhombus L M P Q, m \\angle Q L M = 2 x^ { 2 } - 10, m \\angle Q P M = 8 x, and M P = 10. Find m \\angle L P Q.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，MP=10，∠MPQ=8*x°，∠QLM=2*x**2-10°，四边形LMPQ是菱形。求∠LPQ的大小。",
+  "problem_text_en": "As shown in the diagram, MP=10, ∠MPQ=8*x°, ∠QLM=2*x**2-10°, quadrilateral LMPQ is a rhombus. Find the measure of ∠LPQ.",
   "problem_img": "1093.png",
   "construction_cdl": [
     "Shape(QL,LR,RQ)",
@@ -15,10 +15,10 @@
     "Collinear(QRM)"
   ],
   "text_cdl": [
-    "Rhombus(LMPQ)",
-    "Equal(MeasureOfAngle(QLM),2*x**2-10)",
+    "Equal(LengthOfLine(MP),10)",
     "Equal(MeasureOfAngle(MPQ),8*x)",
-    "Equal(LengthOfLine(MP),10)"
+    "Equal(MeasureOfAngle(QLM),2*x**2-10)",
+    "Rhombus(LMPQ)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(LPQ))",
@@ -29,14 +29,14 @@
     "kite_property_diagonal_perpendicular_bisection(1,PQLM,R)",
     "perpendicular_bisector_property_bisector(1,PR,QM)"
   ],
-  "theorem_seq_dag": {
-    "kite_property_diagonal_perpendicular_bisection(1,PQLM,R)": [
-      "perpendicular_bisector_property_bisector(1,PR,QM)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,MPR,RPQ)",
       "parallelogram_property_opposite_angle_equal(1,LMPQ)",
       "kite_property_diagonal_perpendicular_bisection(1,PQLM,R)"
+    ],
+    "kite_property_diagonal_perpendicular_bisection(1,PQLM,R)": [
+      "perpendicular_bisector_property_bisector(1,PR,QM)"
     ]
   }
 }

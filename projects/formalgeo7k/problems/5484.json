@@ -2,9 +2,9 @@
   "problem_id": 5484,
   "annotation": "ChenyangMao_2023-05-21",
   "source": "GeoQA-5940",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,D是BC边的中点,AE是∠BAC的角平分线,AE⊥CE于点E,连接DE．若AB=7,DE=1,则AC的长度是()",
-  "problem_text_en": "As shown in the figure, in △ABC, D is the midpoint of BC, AE is the angular bisector of ∠BAC, AE ⊥ CE at point E. Connect DE. If AB = N_0, DE = N_1, then the length of AC is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AB=7，DE=1，AE是∠CAB的角平分线，D是线段BC的中点，AE垂直于CE。求直线AC的长度。",
+  "problem_text_en": "As shown in the diagram, AB=7, DE=1, AE bisects ∠CAB, D is the midpoint of segment BC, AE is perpendicular to CE. Find the length of line AC.",
   "problem_img": "5484.png",
   "construction_cdl": [
     "Shape(AF,FE,EA)",
@@ -16,11 +16,11 @@
     "Collinear(CEF)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(AE,CE)",
+    "Equal(LengthOfLine(AB),7)",
+    "Equal(LengthOfLine(DE),1)",
     "IsBisectorOfAngle(AE,CAB)",
     "IsMidpointOfLine(D,BC)",
-    "Equal(LengthOfLine(AB),7)",
-    "Equal(LengthOfLine(DE),1)"
+    "PerpendicularBetweenLine(AE,CE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AC))",
@@ -36,7 +36,13 @@
     "midsegment_of_triangle_judgment_midpoint(1,ED,CFB)",
     "midsegment_of_triangle_property_length(1,ED,CFB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,FEA,AEC)",
+      "triangle_property_angle_sum(1,AFE)",
+      "triangle_property_angle_sum(1,AEC)",
+      "line_addition(1,BF,FA)"
+    ],
     "adjacent_complementary_angle(1,FEA,AEC)": [
       "mirror_congruent_triangle_judgment_aas(1,AEC,AFE)"
     ],
@@ -55,12 +61,6 @@
     ],
     "midsegment_of_triangle_judgment_midpoint(1,ED,CFB)": [
       "midsegment_of_triangle_property_length(1,ED,CFB)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,FEA,AEC)",
-      "triangle_property_angle_sum(1,AFE)",
-      "triangle_property_angle_sum(1,AEC)",
-      "line_addition(1,BF,FA)"
     ]
   }
 }

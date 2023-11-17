@@ -2,43 +2,36 @@
   "problem_id": 2228,
   "annotation": "DengfengYue_2023-04-16",
   "source": "Geometry3k-2327",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x so that p \\parallel q.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠BGC=4*x+10°，∠IHA=110°，IH平行于CG。求x的值。",
+  "problem_text_en": "As shown in the diagram, ∠BGC=4*x+10°, ∠IHA=110°, IH∥CG. Find the value of x.",
   "problem_img": "2228.png",
   "construction_cdl": [
-    "Collinear(IHP)",
-    "Collinear(CGF)",
-    "Collinear(BGHA)"
+    "Shape(AI,IH,HA)",
+    "Shape(HI,IC,CG,GH)",
+    "Shape(GC,CB,BG)",
+    "Collinear(AHGB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(BGC),4*x+10)",
+    "Equal(MeasureOfAngle(IHA),110)",
+    "ParallelBetweenLine(IH,CG)"
+  ],
   "image_cdl": [
-    "Angle(AHP)",
-    "Angle(IHA)",
-    "Angle(PHG)",
-    "Angle(GHI)",
-    "Angle(HGF)",
-    "Angle(CGH)",
-    "Angle(BGC)",
-    "Angle(FGB)",
-    "ParallelBetweenLine(HP,GF)",
+    "ParallelBetweenLine(IH,CG)",
     "Equal(MeasureOfAngle(IHA),110)",
     "Equal(MeasureOfAngle(BGC),4*x+10)"
   ],
   "goal_cdl": "Value(x)",
   "problem_answer": "15",
   "theorem_seqs": [
-    "flat_angle(1,IHP)",
-    "angle_addition(1,IHA,AHP)",
-    "parallel_property_corresponding_angle(1,HP,GF,A)",
-    "vertical_angle(1,BGC,HGF)"
+    "parallel_property_corresponding_angle(1,GC,HI,B)",
+    "adjacent_complementary_angle(1,GHI,IHA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
-      "flat_angle(1,IHP)",
-      "angle_addition(1,IHA,AHP)",
-      "parallel_property_corresponding_angle(1,HP,GF,A)",
-      "vertical_angle(1,BGC,HGF)"
+      "parallel_property_corresponding_angle(1,GC,HI,B)",
+      "adjacent_complementary_angle(1,GHI,IHA)"
     ]
   }
 }

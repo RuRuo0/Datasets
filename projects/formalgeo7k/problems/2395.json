@@ -2,9 +2,9 @@
   "problem_id": 2395,
   "annotation": "FangzhenZhu_2023-04-23",
   "source": "Geometry3k-2510",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Circle J has a radius of 10 units, \\odot K has a radius of 8 units, and B C = 5.4 units. Find J K.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，BC=5，⊙J的半径为10，圆K的半径为8，J是⊙J的圆心，⊙K的圆心为K。求直线JK的长度。",
+  "problem_text_en": "As shown in the diagram, BC=5, the radius of ⊙J is 10, the radius of circle K is 8, the center of circle J is J, K is the center of ⊙K. Find the length of line JK.",
   "problem_img": "2395.png",
   "construction_cdl": [
     "Shape(JAC,CJ,JA)",
@@ -15,7 +15,13 @@
     "Cocircular(J,AC)",
     "Cocircular(K,BD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BC),5)",
+    "Equal(RadiusOfCircle(J),10)",
+    "Equal(RadiusOfCircle(K),8)",
+    "IsCentreOfCircle(J,J)",
+    "IsCentreOfCircle(K,K)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(J,J)",
     "IsCentreOfCircle(K,K)",
@@ -31,7 +37,7 @@
     "radius_of_circle_property_length_equal(1,JC,J)",
     "radius_of_circle_property_length_equal(1,KB,K)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,BC,CK)",
       "line_addition(1,JC,CK)",

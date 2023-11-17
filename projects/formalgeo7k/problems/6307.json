@@ -2,9 +2,9 @@
   "problem_id": 6307,
   "annotation": "ZheZhu_2023-05-28",
   "source": "GeoQA-9080",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在矩形ABCD中,AB=4,BC=2,P是矩形上方一个动点．且满足∠APB=90°,连接DP,则DP的最大值是()",
-  "problem_text_en": "As shown in the figure, in the rectangle ABCD, AB = N_0, BC = N_1, and P is a moving point above the rectangle. And satisfies ∠APB = N_2, connected to DP, then the maximum value of DP is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=4，AD=2，OA=2，OB=2，∠BPA=90°，PO是△PAB的中线，ADCB是矩形。求直线DP的长度。",
+  "problem_text_en": "As shown in the diagram, AB=4, AD=2, OA=2, OB=2, ∠BPA=90°, PO is the median of triangle PAB, quadrilateral ADCB is a rectangle. Find the length of line DP.",
   "problem_img": "6307.png",
   "construction_cdl": [
     "Shape(OA,AD,DO)",
@@ -15,13 +15,13 @@
     "Collinear(POD)"
   ],
   "text_cdl": [
-    "Rectangle(ADCB)",
     "Equal(LengthOfLine(AB),4)",
+    "Equal(LengthOfLine(AD),2)",
     "Equal(LengthOfLine(OA),2)",
     "Equal(LengthOfLine(OB),2)",
-    "Equal(LengthOfLine(AD),2)",
+    "Equal(MeasureOfAngle(BPA),90)",
     "IsMedianOfTriangle(PO,PAB)",
-    "Equal(MeasureOfAngle(BPA),90)"
+    "Rectangle(ADCB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(DP))",
@@ -33,17 +33,17 @@
     "right_triangle_property_length_of_median(1,BPA,O)",
     "line_addition(1,PO,OD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "right_triangle_judgment_angle(1,OAD)",
+      "right_triangle_judgment_angle(1,BPA)",
+      "line_addition(1,PO,OD)"
+    ],
     "right_triangle_judgment_angle(1,OAD)": [
       "right_triangle_property_pythagorean(1,OAD)"
     ],
     "right_triangle_judgment_angle(1,BPA)": [
       "right_triangle_property_length_of_median(1,BPA,O)"
-    ],
-    "START": [
-      "right_triangle_judgment_angle(1,OAD)",
-      "right_triangle_judgment_angle(1,BPA)",
-      "line_addition(1,PO,OD)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 3110,
   "annotation": "YimingHe_2023-04-23",
   "source": "GeoQA-360",
-  "problem_level": 1,
-  "problem_text_cn": "如图,直线a∥b,将含有30°角的三角板ABC的直角顶点C放在直线a上,若∠1=65°,则∠2的度数为()",
-  "problem_text_en": "As shown in the figure, the straight line a ∥ b, put the vertex of right angle C of the triangle plate ABC with N_0 angle on the straight line a, if ∠1 = N_1, then the degree of ∠2 is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠ABC=60°，∠BCA=90°，∠CAB=30°，∠ICE=65°，FG平行于DE。求∠BHF的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABC=60°, ∠BCA=90°, ∠CAB=30°, ∠ICE=65°, FG∥DE. Find the measure of ∠BHF.",
   "problem_img": "3110.png",
   "construction_cdl": [
     "Shape(FH,HA)",
@@ -23,8 +23,8 @@
   "text_cdl": [
     "Equal(MeasureOfAngle(ABC),60)",
     "Equal(MeasureOfAngle(BCA),90)",
-    "Equal(MeasureOfAngle(ICE),65)",
     "Equal(MeasureOfAngle(CAB),30)",
+    "Equal(MeasureOfAngle(ICE),65)",
     "ParallelBetweenLine(FG,DE)"
   ],
   "image_cdl": [],
@@ -37,17 +37,17 @@
     "quadrilateral_property_angle_sum(1,IHBC)",
     "adjacent_complementary_angle(1,IHB,BHF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,FG,DE,I)",
+      "quadrilateral_property_angle_sum(1,IHBC)",
+      "adjacent_complementary_angle(1,IHB,BHF)"
+    ],
     "parallel_property_collinear_extend(3,FG,DE,I)": [
       "parallel_property_collinear_extend(3,ED,IF,C)"
     ],
     "parallel_property_collinear_extend(3,ED,IF,C)": [
       "parallel_property_alternate_interior_angle(2,EC,IF)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,FG,DE,I)",
-      "quadrilateral_property_angle_sum(1,IHBC)",
-      "adjacent_complementary_angle(1,IHB,BHF)"
     ]
   }
 }

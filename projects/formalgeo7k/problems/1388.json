@@ -2,16 +2,24 @@
   "problem_id": 1388,
   "annotation": "YimingHe_2023-03-19",
   "source": "Geometry3k-1438",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AB=y，AD=z，BC=x，BD=4，CD=10，AB⊥CB，DC⊥AC。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=y, AD=z, BC=x, BD=4, CD=10, AB is perpendicular to CB, DC⊥AC. Find the value of x.",
   "problem_img": "1388.png",
   "construction_cdl": [
     "Shape(AB,BC,CA)",
     "Shape(CB,BD,DC)",
     "Collinear(ABD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),y)",
+    "Equal(LengthOfLine(AD),z)",
+    "Equal(LengthOfLine(BC),x)",
+    "Equal(LengthOfLine(BD),4)",
+    "Equal(LengthOfLine(CD),10)",
+    "PerpendicularBetweenLine(AB,CB)",
+    "PerpendicularBetweenLine(DC,AC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(CD),10)",
     "Equal(LengthOfLine(BC),x)",
@@ -28,15 +36,15 @@
     "right_triangle_judgment_angle(1,CBD)",
     "right_triangle_property_pythagorean(1,CBD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,ABC,CBD)"
+    ],
     "adjacent_complementary_angle(1,ABC,CBD)": [
       "right_triangle_judgment_angle(1,CBD)"
     ],
     "right_triangle_judgment_angle(1,CBD)": [
       "right_triangle_property_pythagorean(1,CBD)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,ABC,CBD)"
     ]
   }
 }

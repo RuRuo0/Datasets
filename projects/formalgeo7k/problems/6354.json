@@ -2,9 +2,9 @@
   "problem_id": 6354,
   "annotation": "ChengQin_2023-06-04",
   "source": "GeoQA-9177",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在菱形ABCD中,E是AB的中点,作EF∥BC,交AC于点F、如果EF=4,那么CD的长为()",
-  "problem_text_en": "As shown in the figure, in the diamond ABCD, E is the midpoint of AB, as EF ∥ BC, crossing AC at point F, if EF = N_0, then the length of CD is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，EF=4，E平分线段AB，EF∥BC，ABCD是菱形。求直线CD的长度。",
+  "problem_text_en": "As shown in the diagram, EF=4, E is the midpoint of segment AB, EF is parallel to BC, quadrilateral ABCD is a rhombus. Find the length of line CD.",
   "problem_img": "6354.png",
   "construction_cdl": [
     "Shape(AE,EF,FA)",
@@ -14,10 +14,10 @@
     "Collinear(AFC)"
   ],
   "text_cdl": [
-    "Rhombus(ABCD)",
+    "Equal(LengthOfLine(EF),4)",
     "IsMidpointOfLine(E,AB)",
     "ParallelBetweenLine(EF,BC)",
-    "Equal(LengthOfLine(EF),4)"
+    "Rhombus(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(CD))",
@@ -26,12 +26,12 @@
     "midsegment_of_triangle_judgment_parallel(1,EF,ABC)",
     "midsegment_of_triangle_property_length(1,EF,ABC)"
   ],
-  "theorem_seq_dag": {
-    "midsegment_of_triangle_judgment_parallel(1,EF,ABC)": [
-      "midsegment_of_triangle_property_length(1,EF,ABC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "midsegment_of_triangle_judgment_parallel(1,EF,ABC)"
+    ],
+    "midsegment_of_triangle_judgment_parallel(1,EF,ABC)": [
+      "midsegment_of_triangle_property_length(1,EF,ABC)"
     ]
   }
 }

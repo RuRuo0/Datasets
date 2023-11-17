@@ -2,9 +2,9 @@
   "problem_id": 6539,
   "annotation": "XiaokaiZhang_2023-06-04",
   "source": "GeoQA-9462",
-  "problem_level": 1,
-  "problem_text_cn": "如图,E为平行四边形ABCD内一点,且EA=EB=EC,若∠D=50°,则∠AEC的度数是()",
-  "problem_text_en": "As shown in the figure, E is a point in the parallelogram ABCD, and EA = EB = EC, if ∠D = N_0, then the degree of ∠AEC is ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，EA=EB，EB=EC，∠CDA=50°，AD和BC是平行四边形ABCD的一组对边。求∠AEC的大小。",
+  "problem_text_en": "As shown in the diagram, EA=EB, EB=EC, ∠CDA=50°, quadrilateral ABCD is a ▱. Find the measure of ∠AEC.",
   "problem_img": "6539.png",
   "construction_cdl": [
     "Shape(AB,BE,EA)",
@@ -12,10 +12,10 @@
     "Shape(AE,EC,CD,DA)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
     "Equal(LengthOfLine(EA),LengthOfLine(EB))",
     "Equal(LengthOfLine(EB),LengthOfLine(EC))",
-    "Equal(MeasureOfAngle(CDA),50)"
+    "Equal(MeasureOfAngle(CDA),50)",
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(AEC))",
@@ -32,13 +32,7 @@
     "angle_addition(1,CEB,BEA)",
     "round_angle(1,AEC,CEA)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,EAB)": [
-      "isosceles_triangle_property_angle_equal(1,EAB)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,EBC)": [
-      "isosceles_triangle_property_angle_equal(1,EBC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_property_opposite_angle_equal(1,BCDA)",
       "isosceles_triangle_judgment_line_equal(1,EAB)",
@@ -48,6 +42,12 @@
       "angle_addition(1,ABE,EBC)",
       "angle_addition(1,CEB,BEA)",
       "round_angle(1,AEC,CEA)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,EAB)": [
+      "isosceles_triangle_property_angle_equal(1,EAB)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,EBC)": [
+      "isosceles_triangle_property_angle_equal(1,EBC)"
     ]
   }
 }

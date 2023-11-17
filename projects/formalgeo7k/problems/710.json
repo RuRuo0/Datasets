@@ -2,9 +2,9 @@
   "problem_id": 710,
   "annotation": "YimingHe_2023-03-12",
   "source": "Geometry3k-730",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\triangle E F G, H L \\parallel E F, E H = 9, H G = 21, and F L = 6. Find L G.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，EH=9，FL=6，HG=21，EF∥HL。求直线LG的长度。",
+  "problem_text_en": "As shown in the diagram, EH=9, FL=6, HG=21, EF is parallel to HL. Find the length of line LG.",
   "problem_img": "710.png",
   "construction_cdl": [
     "Shape(EH,HL,LF,FE)",
@@ -12,7 +12,12 @@
     "Collinear(EHG)",
     "Collinear(FLG)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(EH),9)",
+    "Equal(LengthOfLine(FL),6)",
+    "Equal(LengthOfLine(HG),21)",
+    "ParallelBetweenLine(EF,HL)"
+  ],
   "image_cdl": [
     "ParallelBetweenLine(EF,HL)",
     "Equal(LengthOfLine(EH),9)",
@@ -30,18 +35,18 @@
     "similar_triangle_property_line_ratio(1,HGL,EGF)",
     "similar_triangle_property_line_ratio(1,LHG,FEG)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,LH,FE,G)",
+      "line_addition(1,GL,LF)",
+      "line_addition(1,GH,HE)"
+    ],
     "parallel_property_corresponding_angle(1,LH,FE,G)": [
       "similar_triangle_judgment_aa(1,HGL,EGF)"
     ],
     "similar_triangle_judgment_aa(1,HGL,EGF)": [
       "similar_triangle_property_line_ratio(1,HGL,EGF)",
       "similar_triangle_property_line_ratio(1,LHG,FEG)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,LH,FE,G)",
-      "line_addition(1,GL,LF)",
-      "line_addition(1,GH,HE)"
     ]
   }
 }

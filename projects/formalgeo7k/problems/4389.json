@@ -2,9 +2,9 @@
   "problem_id": 4389,
   "annotation": "YimingHe_2023-05-14",
   "source": "GeoQA-3318",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点A、B、C都在⊙O上,点B为弧AC的中点,若∠AOB=72°,则∠OAC的度数是()",
-  "problem_text_en": "As shown in the figure, points A, B, and C are on ⊙O, and point B is the midpoint of arc AC. If ∠AOB = N_0, then the degree of ∠OAC is ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，⌒OAB的长度与弧OBC的长度相等，∠BOA=72°，O是⊙O的圆心。求∠OAC的大小。",
+  "problem_text_en": "As shown in the diagram, the length of ⌒OAB is equal to the length of arc OBC, ∠BOA=72°, O is the center of ⊙O. Find the measure of ∠OAC.",
   "problem_img": "4389.png",
   "construction_cdl": [
     "Shape(AO,OD,DC,OCA)",
@@ -37,7 +37,16 @@
     "triangle_property_angle_sum(1,OAB)",
     "angle_addition(1,OAC,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "congruent_arc_judgment_length_equal(1,OAB,OBC)",
+      "arc_property_center_angle(1,OAB,O)",
+      "arc_property_circumference_angle_external(1,OBC,A)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "triangle_property_angle_sum(1,OAB)",
+      "angle_addition(1,OAC,CAB)"
+    ],
     "congruent_arc_judgment_length_equal(1,OAB,OBC)": [
       "congruent_arc_property_measure_equal(1,OAB,OBC)"
     ],
@@ -49,15 +58,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OAB)": [
       "isosceles_triangle_property_angle_equal(1,OAB)"
-    ],
-    "START": [
-      "congruent_arc_judgment_length_equal(1,OAB,OBC)",
-      "arc_property_center_angle(1,OAB,O)",
-      "arc_property_circumference_angle_external(1,OBC,A)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "triangle_property_angle_sum(1,OAB)",
-      "angle_addition(1,OAC,CAB)"
     ]
   }
 }

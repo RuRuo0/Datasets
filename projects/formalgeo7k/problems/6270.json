@@ -2,9 +2,9 @@
   "problem_id": 6270,
   "annotation": "FangzhenZhu_2023-06-04",
   "source": "GeoQA-8928",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的弦,从圆上任意一点作弦CD⊥AB,作∠OCD的平分线交⊙O于点P,若AP=5,则BP的值为()",
-  "problem_text_en": "As shown in the figure, AB is the chord of ⊙O. Draw chord CD ⊥ AB from any point on the circle, and draw the bisector of ∠OCD to intersect ⊙O at point P. If AP = N_0, then the value of BP is ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，AP=5，CP是∠OCD的角平分线，⊙O的圆心为O，CM垂直于BM。求直线BP的长度。",
+  "problem_text_en": "As shown in the diagram, AP=5, CP is the angle bisector of ∠OCD, O is the center of ⊙O, CM is perpendicular to BM. Find the length of line BP.",
   "problem_img": "6270.png",
   "construction_cdl": [
     "Shape(OCA,AM,MC)",
@@ -24,9 +24,9 @@
     "Cocircular(O,ADPBC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsBisectorOfAngle(CP,OCD)",
     "Equal(LengthOfLine(AP),5)",
+    "IsBisectorOfAngle(CP,OCD)",
+    "IsCentreOfCircle(O,O)",
     "PerpendicularBetweenLine(CM,BM)"
   ],
   "image_cdl": [],
@@ -45,7 +45,12 @@
     "congruent_arc_judgment_length_equal(1,OAP,OPB)",
     "congruent_arc_property_chord_equal(1,OAP,OPB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OP,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "adjacent_complementary_angle(1,AEO,OEB)"
+    ],
     "radius_of_circle_property_length_equal(1,OP,O)": [
       "isosceles_triangle_judgment_line_equal(1,OCP)"
     ],
@@ -75,11 +80,6 @@
     ],
     "congruent_arc_judgment_length_equal(1,OAP,OPB)": [
       "congruent_arc_property_chord_equal(1,OAP,OPB)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OP,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "adjacent_complementary_angle(1,AEO,OEB)"
     ]
   }
 }

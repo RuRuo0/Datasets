@@ -2,9 +2,9 @@
   "problem_id": 3723,
   "annotation": "Yangli_2023-04-30",
   "source": "GeoQA-1499",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在菱形ABCD中,∠A=110°,E,F分别是边AB和BC的中点,EP⊥CD于点P,则∠FPC=()",
-  "problem_text_en": "As shown in the figure, in the diamond ABCD, ∠A = N_0, E, F are the midvertices of edges AB and BC, respectively, EP ⊥ CD is at point P, then ∠FPC = ()",
+  "problem_level": 22,
+  "problem_text_cn": "如图所示，∠DAB=110°，E是线段AB的中点，F是线段BC的中点，CP垂直于EP，EP垂直于DP，ABCD是菱形。求∠CPF的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DAB=110°, E bisects segment AB, F is the midpoint of segment BC, CP is perpendicular to EP, EP is perpendicular to DP, quadrilateral ABCD is a rhombus. Find the measure of ∠CPF.",
   "problem_img": "3723.png",
   "construction_cdl": [
     "Shape(AE,EP,PD,DA)",
@@ -18,12 +18,12 @@
     "Collinear(AEBG)"
   ],
   "text_cdl": [
-    "Rhombus(ABCD)",
     "Equal(MeasureOfAngle(DAB),110)",
-    "IsMidpointOfLine(F,BC)",
     "IsMidpointOfLine(E,AB)",
+    "IsMidpointOfLine(F,BC)",
     "PerpendicularBetweenLine(CP,EP)",
-    "PerpendicularBetweenLine(EP,DP)"
+    "PerpendicularBetweenLine(EP,DP)",
+    "Rhombus(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CPF))",
@@ -52,7 +52,18 @@
     "triangle_property_angle_sum(1,PEG)",
     "angle_addition(1,CPF,FPE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AE,EB)",
+      "line_addition(1,BF,FC)",
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
+      "triangle_property_angle_sum(1,BFE)",
+      "parallel_property_collinear_extend(1,BA,CD,G)",
+      "vertical_angle(1,PFC,GFB)",
+      "line_addition(1,PF,FG)",
+      "triangle_property_angle_sum(1,PEG)",
+      "angle_addition(1,CPF,FPE)"
+    ],
     "line_addition(1,AE,EB)": [
       "isosceles_triangle_judgment_line_equal(1,BFE)"
     ],
@@ -102,17 +113,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,FEG)": [
       "isosceles_triangle_property_angle_equal(1,FEG)"
-    ],
-    "START": [
-      "line_addition(1,AE,EB)",
-      "line_addition(1,BF,FC)",
-      "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
-      "triangle_property_angle_sum(1,BFE)",
-      "parallel_property_collinear_extend(1,BA,CD,G)",
-      "vertical_angle(1,PFC,GFB)",
-      "line_addition(1,PF,FG)",
-      "triangle_property_angle_sum(1,PEG)",
-      "angle_addition(1,CPF,FPE)"
     ]
   }
 }

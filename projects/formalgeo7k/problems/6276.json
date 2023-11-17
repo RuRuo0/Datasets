@@ -2,9 +2,9 @@
   "problem_id": 6276,
   "annotation": "ZheZhu_2023-05-28",
   "source": "GeoQA-8940",
-  "problem_level": 1,
-  "problem_text_cn": "如图,PA切⊙O于点A,PBC是经过O点的割线,若∠P=30°,则弧AB的度数是()",
-  "problem_text_en": "As shown in the figure, PA tangents O at point A, PBC is the secant line passing through O, if ∠P = N_0, then the degree of arc AB is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠APO=30°，⊙O的圆心为O，⊙O的切线为PA。求∠BOA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠APO=30°, the center of ⊙O is O, the tangent to ⊙O is PA. Find the measure of ∠BOA.",
   "problem_img": "6276.png",
   "construction_cdl": [
     "Shape(OA,OAB,BO)",
@@ -13,9 +13,9 @@
     "Cocircular(O,AB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(APO),30)",
     "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(PA,O)",
-    "Equal(MeasureOfAngle(APO),30)"
+    "IsTangentOfCircle(PA,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BOA))",
@@ -24,7 +24,7 @@
     "tangent_of_circle_property_perpendicular(1,PA,O,O)",
     "triangle_property_angle_sum(1,OAP)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(1,PA,O,O)",
       "triangle_property_angle_sum(1,OAP)"

@@ -2,9 +2,9 @@
   "problem_id": 3972,
   "annotation": "ZheZhu_2023-04-30",
   "source": "GeoQA-1914",
-  "problem_level": 1,
-  "problem_text_cn": "如图⊙O中,OA⊥BC,∠AOC=50°,则∠ADB的度数为()",
-  "problem_text_en": "As shown in the figure ⊙O, OA ⊥ BC, ∠AOC = 50, then the degree of ∠ADB is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠AOC=50°，O是⊙O的圆心，AE⊥CE。求∠BDA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AOC=50°, the center of ⊙O is O, AE is perpendicular to CE. Find the measure of ∠BDA.",
   "problem_img": "3972.png",
   "construction_cdl": [
     "Shape(EA,OAB,BE)",
@@ -24,7 +24,11 @@
     "Collinear(CHGO)",
     "Cocircular(O,ABDC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(AOC),50)",
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(AE,CE)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfAngle(AOC),50)",
@@ -40,7 +44,12 @@
     "congruent_arc_property_measure_equal(1,OAB,OCA)",
     "arc_property_circumference_angle_external(1,OAB,D)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_center_angle(1,OCA,O)",
+      "adjacent_complementary_angle(1,AEI,IEF)",
+      "arc_property_circumference_angle_external(1,OAB,D)"
+    ],
     "adjacent_complementary_angle(1,AEI,IEF)": [
       "circle_property_chord_perpendicular_bisect_arc(1,OCB,OEA)"
     ],
@@ -49,11 +58,6 @@
     ],
     "congruent_arc_judgment_length_equal(1,OAB,OCA)": [
       "congruent_arc_property_measure_equal(1,OAB,OCA)"
-    ],
-    "START": [
-      "arc_property_center_angle(1,OCA,O)",
-      "adjacent_complementary_angle(1,AEI,IEF)",
-      "arc_property_circumference_angle_external(1,OAB,D)"
     ]
   }
 }

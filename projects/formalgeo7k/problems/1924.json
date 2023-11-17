@@ -2,9 +2,9 @@
   "problem_id": 1924,
   "annotation": "ZheZhu_2023-04-16",
   "source": "Geometry3k-2001",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "m \\widehat J H = 114. Find m \\angle 1.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，弧AJH的角度为114，圆A的圆心为A，GB垂直于HB，JH垂直于GH。求∠FHG的大小。",
+  "problem_text_en": "As shown in the diagram, the measure of ⌒AJH is 114, A is the center of ⊙A, GB is perpendicular to HB, JH is perpendicular to GH. Find the measure of ∠FHG.",
   "problem_img": "1924.png",
   "construction_cdl": [
     "Shape(AGF,FB,BG)",
@@ -18,7 +18,12 @@
     "Collinear(FBH)",
     "Cocircular(A,GFJH)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfArc(A,JH),114)",
+    "IsCentreOfCircle(A,A)",
+    "PerpendicularBetweenLine(GB,HB)",
+    "PerpendicularBetweenLine(JH,GH)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(A,A)",
     "Equal(MeasureOfArc(A,JH),114)",
@@ -37,7 +42,14 @@
     "isosceles_triangle_property_angle_equal(1,AJH)",
     "triangle_property_angle_sum(1,AJH)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_center_angle(1,AJH,A)",
+      "mirror_similar_triangle_judgment_aa(1,HGB,JHG)",
+      "radius_of_circle_property_length_equal(1,AJ,A)",
+      "radius_of_circle_property_length_equal(1,AH,A)",
+      "triangle_property_angle_sum(1,AJH)"
+    ],
     "mirror_similar_triangle_judgment_aa(1,HGB,JHG)": [
       "mirror_similar_triangle_property_angle_equal(1,HGB,JHG)"
     ],
@@ -49,13 +61,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,AJH)": [
       "isosceles_triangle_property_angle_equal(1,AJH)"
-    ],
-    "START": [
-      "arc_property_center_angle(1,AJH,A)",
-      "mirror_similar_triangle_judgment_aa(1,HGB,JHG)",
-      "radius_of_circle_property_length_equal(1,AJ,A)",
-      "radius_of_circle_property_length_equal(1,AH,A)",
-      "triangle_property_angle_sum(1,AJH)"
     ]
   }
 }

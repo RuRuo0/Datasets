@@ -2,18 +2,18 @@
   "problem_id": 3540,
   "annotation": "YanjunGuo_2023-04-30",
   "source": "GeoQA-1167",
-  "problem_level": 1,
-  "problem_text_cn": "已知:如图,AB∥CD,BC平分∠ABD,且∠C=40°,则∠D的度数是()",
-  "problem_text_en": "Known: As shown in the figure, AB ∥ CD, BC bisects ∠ABD, and ∠C = N_0, then the degree of ∠D is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠DCB=40°，BC是∠ABD的角平分线，CD平行于AB。求∠BDC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DCB=40°, BC is the angle bisector of ∠ABD, CD∥AB. Find the measure of ∠BDC.",
   "problem_img": "3540.png",
   "construction_cdl": [
     "Shape(CB,BD,DC)",
     "Shape(AB,BC)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(CD,AB)",
     "Equal(MeasureOfAngle(DCB),40)",
-    "IsBisectorOfAngle(BC,ABD)"
+    "IsBisectorOfAngle(BC,ABD)",
+    "ParallelBetweenLine(CD,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BDC))",
@@ -23,7 +23,7 @@
     "angle_addition(1,ABC,CBD)",
     "parallel_property_ipsilateral_internal_angle(1,BA,DC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_alternate_interior_angle(1,CD,AB)",
       "angle_addition(1,ABC,CBD)",

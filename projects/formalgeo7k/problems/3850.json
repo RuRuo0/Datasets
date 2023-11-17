@@ -2,9 +2,9 @@
   "problem_id": 3850,
   "annotation": "YifanWang_2023-05-07",
   "source": "GeoQA-1727",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O的直径AB=8,∠CBD=30°,则CD等于()",
-  "problem_text_en": "As shown in the figure, the diameter of ⊙O AB = N_0, ∠CBD = N_1, then CD is equal to ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=8，∠DBC=30°，O是圆O的圆心，AB是圆O的直径。求直线CD的长度。",
+  "problem_text_en": "As shown in the diagram, AB=8, ∠DBC=30°, O is the center of circle O, the diameter of circle O is AB. Find the length of line CD.",
   "problem_img": "3850.png",
   "construction_cdl": [
     "Shape(AO,OD,ODA)",
@@ -20,7 +20,12 @@
     "Collinear(CEO)",
     "Cocircular(O,ABCD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),8)",
+    "Equal(MeasureOfAngle(DBC),30)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)",
@@ -38,7 +43,7 @@
     "radius_of_circle_property_length_equal(1,OD,O)",
     "cosine_theorem(1,OCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,OCD,O)",
       "arc_property_circumference_angle_external(1,OCD,B)",

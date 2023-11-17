@@ -2,9 +2,9 @@
   "problem_id": 158,
   "annotation": "XiaokaiZhang_2023-04-02",
   "source": "Geometry3k-160",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find z in the figure.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠HPM=4*y°，∠MPR=68°，∠PRC=x°，∠SCR=5*z+2°，MC平行于PR，PM平行于RC。求z的值。",
+  "problem_text_en": "As shown in the diagram, ∠HPM=4*y°, ∠MPR=68°, ∠PRC=x°, ∠SCR=5*z+2°, MC is parallel to PR, PM is parallel to RC. Find the value of z.",
   "problem_img": "158.png",
   "construction_cdl": [
     "Shape(NC,CS)",
@@ -25,7 +25,14 @@
     "Collinear(SCME)",
     "Collinear(GRPH)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(HPM),4*y)",
+    "Equal(MeasureOfAngle(MPR),68)",
+    "Equal(MeasureOfAngle(PRC),x)",
+    "Equal(MeasureOfAngle(SCR),5*z+2)",
+    "ParallelBetweenLine(MC,PR)",
+    "ParallelBetweenLine(PM,RC)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(SCR),5*z+2)",
     "Equal(MeasureOfAngle(PRC),x)",
@@ -41,13 +48,13 @@
     "parallelogram_property_opposite_angle_equal(1,CMPR)",
     "adjacent_complementary_angle(1,SCR,RCM)"
   ],
-  "theorem_seq_dag": {
-    "parallelogram_judgment_parallel_and_parallel(1,CMPR)": [
-      "parallelogram_property_opposite_angle_equal(1,CMPR)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_judgment_parallel_and_parallel(1,CMPR)",
       "adjacent_complementary_angle(1,SCR,RCM)"
+    ],
+    "parallelogram_judgment_parallel_and_parallel(1,CMPR)": [
+      "parallelogram_property_opposite_angle_equal(1,CMPR)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 2538,
   "annotation": "ChenyangMao_2023-04-23",
   "source": "Geometry3k-2663",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Trapezoid G H J K has an area of 188.35 square feet. If H J is 16.5 feet, find G K.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，HGKJ的面积为188，HI=8，HJ=16，HI垂直于KI，HG和KJ是梯形HGKJ的腰。求直线GK的长度。",
+  "problem_text_en": "As shown in the diagram, the area of quadrilateral HGKJ is 188, HI=8, HJ=16, HI is perpendicular to KI, HJ and GK are the parallel sides of trapezoid HGKJ. Find the length of line GK.",
   "problem_img": "2538.png",
   "construction_cdl": [
     "Shape(HG,GI,IH)",
@@ -12,6 +12,10 @@
     "Collinear(GIK)"
   ],
   "text_cdl": [
+    "Equal(AreaOfQuadrilateral(HGKJ),188)",
+    "Equal(LengthOfLine(HI),8)",
+    "Equal(LengthOfLine(HJ),16)",
+    "PerpendicularBetweenLine(HI,KI)",
     "Trapezoid(HGKJ)"
   ],
   "image_cdl": [
@@ -27,13 +31,13 @@
     "altitude_of_quadrilateral_judgment_left_vertex(2,HI,HGKJ)",
     "trapezoid_area_formula(1,HGKJ)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,GIH,HIK)": [
-      "altitude_of_quadrilateral_judgment_left_vertex(2,HI,HGKJ)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,GIH,HIK)",
       "trapezoid_area_formula(1,HGKJ)"
+    ],
+    "adjacent_complementary_angle(1,GIH,HIK)": [
+      "altitude_of_quadrilateral_judgment_left_vertex(2,HI,HGKJ)"
     ]
   }
 }

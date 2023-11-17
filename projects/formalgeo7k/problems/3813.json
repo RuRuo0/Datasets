@@ -2,9 +2,9 @@
   "problem_id": 3813,
   "annotation": "YifanWang_2023-05-07",
   "source": "GeoQA-1670",
-  "problem_level": 1,
-  "problem_text_cn": "如图,游乐园的大观览车半径为25米,已知观览车绕圆心O顺时针做匀速运动,旋转一周用12分钟,某人从观览车的最低处(地面A处)乘车,问经过4分钟后,此人距地面CD的高度是(观览处最低处距地面的高度忽略不计)()",
-  "problem_text_en": "As shown in the figure, the radius of the large observation car in the amusement park is N_0. It is known that the observation car is moving clockwise around the center O at a constant speed, and it takes N_1 minutes to make a revolution. Someone rides from the lowest point of the observation car (ground A). After N_2 minutes, what is the height of this person from the ground CD (the height from the lowest point of the viewing area to the ground is ignored) ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，OA=EC，∠BOA=120°，⊙O的半径为25，O是圆O的圆心，AC垂直于BC，OA垂直于CA，OE⊥BE，OACE是长方形。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, OA=EC, ∠BOA=120°, the radius of circle O is 25, the center of ⊙O is O, AC is perpendicular to BC, OA⊥CA, OE⊥BE, OACE is a rectangle. Find the length of line BC.",
   "problem_img": "3813.png",
   "construction_cdl": [
     "Shape(AO,OB,OBA)",
@@ -15,7 +15,16 @@
     "Collinear(BEDC)",
     "Cocircular(O,ADB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(OA),LengthOfLine(EC))",
+    "Equal(MeasureOfAngle(BOA),120)",
+    "Equal(RadiusOfCircle(O),25)",
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(AC,BC)",
+    "PerpendicularBetweenLine(OA,CA)",
+    "PerpendicularBetweenLine(OE,BE)",
+    "Rectangle(OACE)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "Equal(RadiusOfCircle(O),25)",
@@ -35,7 +44,7 @@
     "sine_theorem(1,BOE)",
     "line_addition(1,BE,EC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,OA,O)",
       "radius_of_circle_property_length_equal(1,OB,O)",

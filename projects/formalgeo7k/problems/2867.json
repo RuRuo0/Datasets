@@ -2,9 +2,9 @@
   "problem_id": 2867,
   "annotation": "YimingHe_2023-04-16",
   "source": "GeoQA-29",
-  "problem_level": 1,
-  "problem_text_cn": "将一条两边沿平行的纸带如图折叠,若∠1=62°,则∠2等于()",
-  "problem_text_en": "Fold a paper tape with two parallel edges as shown in the figure, if ∠1 = N_0, then ∠2 is equal to ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠EAB=118°，∠GAB=62°，AD平行于BC，AE∥BF。求∠GBC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠EAB=118°, ∠GAB=62°, AD∥BC, AE∥BF. Find the measure of ∠GBC.",
   "problem_img": "2867.png",
   "construction_cdl": [
     "Shape(EA,AG,GF,FE)",
@@ -14,10 +14,10 @@
     "Collinear(BGF)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AE,BF)",
-    "ParallelBetweenLine(AD,BC)",
     "Equal(MeasureOfAngle(EAB),118)",
-    "Equal(MeasureOfAngle(GAB),62)"
+    "Equal(MeasureOfAngle(GAB),62)",
+    "ParallelBetweenLine(AD,BC)",
+    "ParallelBetweenLine(AE,BF)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(GBC))",
@@ -27,7 +27,7 @@
     "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
     "angle_addition(1,ABG,GBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_ipsilateral_internal_angle(1,AE,BF)",
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",

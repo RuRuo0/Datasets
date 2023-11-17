@@ -2,9 +2,9 @@
   "problem_id": 3280,
   "annotation": "XiaokaiZhang_2023-04-23",
   "source": "GeoQA-591",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是半圆的直径,点D是弧AC的中点,∠ABC=50°,则∠DAB等于()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of the semicircle, vertex D is the midpoint of the arc AC, ∠ABC = N_0, then ∠DAB is equal to ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠CBA=50°，⊙O的直径为AB，D平分⌒OAC。求∠BAD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CBA=50°, AB is the diameter of ⊙O, D bisects arc OAC. Find the measure of ∠BAD.",
   "problem_img": "3280.png",
   "construction_cdl": [
     "Shape(OCB,BC)",
@@ -15,9 +15,9 @@
     "Cocircular(O,ADCB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(CBA),50)",
     "IsDiameterOfCircle(AB,O)",
-    "IsMidpointOfArc(D,OAC)",
-    "Equal(MeasureOfAngle(CBA),50)"
+    "IsMidpointOfArc(D,OAC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BAD))",
@@ -31,10 +31,7 @@
     "diameter_of_circle_property_right_angle(1,ADB,O)",
     "triangle_property_angle_sum(1,BAD)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_length_equal(1,OAD,ODC)": [
-      "congruent_arc_property_measure_equal(1,OAD,ODC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "congruent_arc_judgment_length_equal(1,OAD,ODC)",
       "arc_property_circumference_angle_external(1,OAD,B)",
@@ -42,6 +39,9 @@
       "angle_addition(1,CBD,DBA)",
       "diameter_of_circle_property_right_angle(1,ADB,O)",
       "triangle_property_angle_sum(1,BAD)"
+    ],
+    "congruent_arc_judgment_length_equal(1,OAD,ODC)": [
+      "congruent_arc_property_measure_equal(1,OAD,ODC)"
     ]
   }
 }

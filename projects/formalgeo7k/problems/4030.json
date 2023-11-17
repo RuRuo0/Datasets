@@ -2,9 +2,9 @@
   "problem_id": 4030,
   "annotation": "JiaZou_2023-05-07",
   "source": "GeoQA-2237",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在⊙O中,弦AB的长为10,圆周角∠ACB=45°,则这个圆的直径AD为()",
-  "problem_text_en": "As shown in the figure, in ⊙O, the length of chord AB is N_0, and the angle of circumference ∠ACB = N_1, then the diameter of the circle AD is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AB=10，∠BCA=45°，⊙O的圆心为O，AD是圆O的直径。求圆O的直径。",
+  "problem_text_en": "As shown in the diagram, AB=10, ∠BCA=45°, the center of ⊙O is O, the diameter of ⊙O is AD. Find the diameter of circle O.",
   "problem_img": "4030.png",
   "construction_cdl": [
     "Shape(CA,AO,OE,EC)",
@@ -19,10 +19,10 @@
     "Cocircular(O,ABDC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(AD,O)",
     "Equal(LengthOfLine(AB),10)",
-    "Equal(MeasureOfAngle(BCA),45)"
+    "Equal(MeasureOfAngle(BCA),45)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AD,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(DiameterOfCircle(O))",
@@ -37,7 +37,14 @@
     "right_triangle_property_pythagorean(1,ABD)",
     "diameter_of_circle_property_length_equal(1,AD,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_circumference_angle_external(1,OAB,C)",
+      "arc_property_circumference_angle_external(1,OAB,D)",
+      "diameter_of_circle_property_right_angle(1,ABD,O)",
+      "triangle_property_angle_sum(1,ABD)",
+      "diameter_of_circle_property_length_equal(1,AD,O)"
+    ],
     "arc_property_circumference_angle_external(1,OAB,C)": [
       "isosceles_triangle_judgment_angle_equal(1,BDA)",
       "isosceles_triangle_judgment_angle_equal(1,BDA)"
@@ -55,13 +62,6 @@
     ],
     "right_triangle_judgment_angle(1,ABD)": [
       "right_triangle_property_pythagorean(1,ABD)"
-    ],
-    "START": [
-      "arc_property_circumference_angle_external(1,OAB,C)",
-      "arc_property_circumference_angle_external(1,OAB,D)",
-      "diameter_of_circle_property_right_angle(1,ABD,O)",
-      "triangle_property_angle_sum(1,ABD)",
-      "diameter_of_circle_property_length_equal(1,AD,O)"
     ]
   }
 }

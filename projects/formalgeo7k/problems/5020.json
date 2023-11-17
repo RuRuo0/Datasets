@@ -2,9 +2,9 @@
   "problem_id": 5020,
   "annotation": "ZheZhu_2023-05-14",
   "source": "GeoQA-4739",
-  "problem_level": 1,
-  "problem_text_cn": "如图,平行四边形ABCD中,F是边AB上的点,DF交AC于点E,如果CD=10,\\frac{AE}{EC}=\\frac{2}{5},那么BF的长是()",
-  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, F is a point on AB, DF intersects AC at point E, if CD = N_0, \\frac{AE}{EC}=\\frac{N_1}{N_2}, then the length of BF is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，Div(LengthOfLine(AE)=LengthOfLine(EC))，CD=10，DC和AB是平行四边形DABC的一组对边。求直线BF的长度。",
+  "problem_text_en": "As shown in the diagram, Div(LengthOfLine(AE)=LengthOfLine(EC)), CD=10, DC and AB are opposite sides of the parallelogram DABC. Find the length of line BF.",
   "problem_img": "5020.png",
   "construction_cdl": [
     "Shape(DA,AE,ED)",
@@ -16,9 +16,9 @@
     "Collinear(DEF)"
   ],
   "text_cdl": [
-    "Parallelogram(DABC)",
+    "Equal(Div(LengthOfLine(AE),LengthOfLine(EC)),2/5)",
     "Equal(LengthOfLine(CD),10)",
-    "Equal(Div(LengthOfLine(AE),LengthOfLine(EC)),2/5)"
+    "Parallelogram(DABC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BF))",
@@ -32,7 +32,13 @@
     "parallelogram_property_opposite_line_equal(1,ABCD)",
     "line_addition(1,AF,FB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_alternate_interior_angle(2,DC,AB)",
+      "vertical_angle(1,DEC,FEA)",
+      "parallelogram_property_opposite_line_equal(1,ABCD)",
+      "line_addition(1,AF,FB)"
+    ],
     "parallel_property_alternate_interior_angle(2,DC,AB)": [
       "similar_triangle_judgment_aa(1,FEA,DEC)"
     ],
@@ -42,12 +48,6 @@
     "similar_triangle_judgment_aa(1,FEA,DEC)": [
       "similar_triangle_property_line_ratio(1,FEA,DEC)",
       "similar_triangle_property_line_ratio(1,EAF,ECD)"
-    ],
-    "START": [
-      "parallel_property_alternate_interior_angle(2,DC,AB)",
-      "vertical_angle(1,DEC,FEA)",
-      "parallelogram_property_opposite_line_equal(1,ABCD)",
-      "line_addition(1,AF,FB)"
     ]
   }
 }

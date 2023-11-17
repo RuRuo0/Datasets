@@ -2,9 +2,9 @@
   "problem_id": 1852,
   "annotation": "YanjunGuo_2023-04-23",
   "source": "Geometry3k-1921",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot D, D E \\cong E C, m C F = 60, and D E \\perp E C. Find m \\angle 4.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，CF=60，DE=EC，D是圆D的圆心，圆D的直径为AC，CE⊥DE，DE垂直于EE。求∠BAC的大小。",
+  "problem_text_en": "As shown in the diagram, CF=60, DE=EC, the center of ⊙D is D, AC is the diameter of circle D, CE is perpendicular to DE, DE⊥EE. Find the measure of ∠BAC.",
   "problem_img": "1852.png",
   "construction_cdl": [
     "Shape(AB,DBA)",
@@ -19,11 +19,12 @@
     "Cocircular(D,AFCB)"
   ],
   "text_cdl": [
-    "IsDiameterOfCircle(AC,D)",
-    "Equal(LengthOfLine(DE),LengthOfLine(EC))",
     "Equal(LengthOfLine(CF),60)",
-    "PerpendicularBetweenLine(DE,EC)",
-    "PerpendicularBetweenLine(CE,DE)"
+    "Equal(LengthOfLine(DE),LengthOfLine(EC))",
+    "IsCentreOfCircle(D,D)",
+    "IsDiameterOfCircle(AC,D)",
+    "PerpendicularBetweenLine(CE,DE)",
+    "PerpendicularBetweenLine(DE,EC)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(D,D)"
@@ -37,15 +38,15 @@
     "triangle_property_angle_sum(1,EDC)",
     "triangle_property_angle_sum(1,BAC)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,EDC)": [
-      "isosceles_triangle_property_angle_equal(1,EDC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,CBA,D)",
       "isosceles_triangle_judgment_line_equal(1,EDC)",
       "triangle_property_angle_sum(1,EDC)",
       "triangle_property_angle_sum(1,BAC)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,EDC)": [
+      "isosceles_triangle_property_angle_equal(1,EDC)"
     ]
   }
 }

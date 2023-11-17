@@ -2,9 +2,9 @@
   "problem_id": 5038,
   "annotation": "ZheZhu_2023-05-14",
   "source": "GeoQA-4776",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB∥CD∥EF,且AO=OD=DF,OE=6,则BE=()",
-  "problem_text_en": "As shown in the figure, AB ∥ CD ∥ EF, and AO = OD = DF, OE = N_0, then BE = ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AO=OD，DF=OD，OE=6，AB∥CD，EF平行于AB，EF平行于CD，FE∥BA。求直线BE的长度。",
+  "problem_text_en": "As shown in the diagram, AO=OD, DF=OD, OE=6, AB is parallel to CD, EF∥AB, EF is parallel to CD, FE is parallel to BA. Find the length of line BE.",
   "problem_img": "5038.png",
   "construction_cdl": [
     "Shape(BA,AO,OB)",
@@ -14,13 +14,13 @@
     "Collinear(BOCE)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AB,CD)",
-    "ParallelBetweenLine(EF,CD)",
-    "ParallelBetweenLine(EF,AB)",
-    "ParallelBetweenLine(FE,BA)",
-    "Equal(LengthOfLine(OE),6)",
     "Equal(LengthOfLine(AO),LengthOfLine(OD))",
-    "Equal(LengthOfLine(DF),LengthOfLine(OD))"
+    "Equal(LengthOfLine(DF),LengthOfLine(OD))",
+    "Equal(LengthOfLine(OE),6)",
+    "ParallelBetweenLine(AB,CD)",
+    "ParallelBetweenLine(EF,AB)",
+    "ParallelBetweenLine(EF,CD)",
+    "ParallelBetweenLine(FE,BA)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BE))",
@@ -34,7 +34,13 @@
     "similar_triangle_property_line_ratio(1,BAO,EFO)",
     "similar_triangle_property_line_ratio(1,AOB,FOE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "vertical_angle(1,AOB,DOC)",
+      "line_addition(1,OD,DF)",
+      "line_addition(1,BO,OE)",
+      "parallel_property_alternate_interior_angle(1,FE,BA)"
+    ],
     "vertical_angle(1,AOB,DOC)": [
       "similar_triangle_judgment_aa(1,BAO,EFO)"
     ],
@@ -44,12 +50,6 @@
     "similar_triangle_judgment_aa(1,BAO,EFO)": [
       "similar_triangle_property_line_ratio(1,BAO,EFO)",
       "similar_triangle_property_line_ratio(1,AOB,FOE)"
-    ],
-    "START": [
-      "vertical_angle(1,AOB,DOC)",
-      "line_addition(1,OD,DF)",
-      "line_addition(1,BO,OE)",
-      "parallel_property_alternate_interior_angle(1,FE,BA)"
     ]
   }
 }

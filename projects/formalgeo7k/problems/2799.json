@@ -2,16 +2,21 @@
   "problem_id": 2799,
   "annotation": "ZheZhu_2023-04-09",
   "source": "Geometry3k-2948",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure, A D is perpendicular to B C and A B is perpendicular to A C. What is B C?",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AB=10，BD=5，BD⊥AD，CA⊥BA。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, BD=5, BD⊥AD, CA⊥BA. Find the length of line BC.",
   "problem_img": "2799.png",
   "construction_cdl": [
     "Shape(AB,BD,DA)",
     "Shape(AD,DC,CA)",
     "Collinear(BDC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),10)",
+    "Equal(LengthOfLine(BD),5)",
+    "PerpendicularBetweenLine(BD,AD)",
+    "PerpendicularBetweenLine(CA,BA)"
+  ],
   "image_cdl": [
     "PerpendicularBetweenLine(CA,BA)",
     "PerpendicularBetweenLine(BD,AD)",
@@ -30,7 +35,13 @@
     "right_triangle_property_pythagorean(1,ADC)",
     "right_triangle_property_pythagorean(1,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,BD,DC)",
+      "adjacent_complementary_angle(1,BDA,ADC)",
+      "right_triangle_judgment_angle(1,BDA)",
+      "right_triangle_judgment_angle(1,CAB)"
+    ],
     "adjacent_complementary_angle(1,BDA,ADC)": [
       "right_triangle_judgment_angle(1,ADC)"
     ],
@@ -42,12 +53,6 @@
     ],
     "right_triangle_judgment_angle(1,CAB)": [
       "right_triangle_property_pythagorean(1,CAB)"
-    ],
-    "START": [
-      "line_addition(1,BD,DC)",
-      "adjacent_complementary_angle(1,BDA,ADC)",
-      "right_triangle_judgment_angle(1,BDA)",
-      "right_triangle_judgment_angle(1,CAB)"
     ]
   }
 }

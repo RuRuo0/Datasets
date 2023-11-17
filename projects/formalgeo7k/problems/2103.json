@@ -2,9 +2,9 @@
   "problem_id": 2103,
   "annotation": "QikeHuang_2023-04-23",
   "source": "Geometry3k-2192",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure. Round to the nearest tenth if necessary.",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，AE=7，DC=32，FC=22，MF=3，CF垂直于EF，FE垂直于DE，CM和AD是梯形CMAD的腰。求CMAD的面积。",
+  "problem_text_en": "As shown in the diagram, AE=7, DC=32, FC=22, MF=3, CF⊥EF, FE⊥DE, quadrilateral CMAD is a trapezoid. Find the area of CMAD.",
   "problem_img": "2103.png",
   "construction_cdl": [
     "Shape(CM,MF,FC)",
@@ -12,7 +12,15 @@
     "Shape(DE,EA,AD)",
     "Collinear(MFEA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AE),7)",
+    "Equal(LengthOfLine(DC),32)",
+    "Equal(LengthOfLine(FC),22)",
+    "Equal(LengthOfLine(MF),3)",
+    "PerpendicularBetweenLine(CF,EF)",
+    "PerpendicularBetweenLine(FE,DE)",
+    "Trapezoid(CMAD)"
+  ],
   "image_cdl": [
     "Trapezoid(CMAD)",
     "Equal(LengthOfLine(DC),32)",
@@ -36,7 +44,15 @@
     "line_addition(1,ME,EA)",
     "trapezoid_area_formula(1,CMAD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,AM,DC,E)",
+      "parallel_judgment_per_per(1,FC,ED)",
+      "adjacent_complementary_angle(1,MFC,CFE)",
+      "line_addition(1,MF,FE)",
+      "line_addition(1,ME,EA)",
+      "trapezoid_area_formula(1,CMAD)"
+    ],
     "parallel_property_collinear_extend(3,AM,DC,E)": [
       "parallel_property_collinear_extend(3,EM,DC,F)"
     ],
@@ -51,14 +67,6 @@
     ],
     "adjacent_complementary_angle(1,MFC,CFE)": [
       "altitude_of_quadrilateral_judgment_left_vertex(2,CF,CMAD)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,AM,DC,E)",
-      "parallel_judgment_per_per(1,FC,ED)",
-      "adjacent_complementary_angle(1,MFC,CFE)",
-      "line_addition(1,MF,FE)",
-      "line_addition(1,ME,EA)",
-      "trapezoid_area_formula(1,CMAD)"
     ]
   }
 }

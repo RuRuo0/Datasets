@@ -2,9 +2,9 @@
   "problem_id": 1014,
   "annotation": "YanjunGuo_2023-04-09",
   "source": "Geometry3k-1047",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find \\angle 10.",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，∠FEQ=100°，∠QEC=160°，⊙E的圆心为E，DC是圆O的切线，⊙O的切线为GC。求∠GCF的大小。",
+  "problem_text_en": "As shown in the diagram, ∠FEQ=100°, ∠QEC=160°, the center of ⊙E is E, the tangent to circle E is DC, GC is the tangent to ⊙E. Find the measure of ∠GCF.",
   "problem_img": "1014.png",
   "construction_cdl": [
     "Shape(CF,EFC)",
@@ -17,7 +17,13 @@
     "Collinear(GCD)",
     "Cocircular(E,FCQ)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(FEQ),100)",
+    "Equal(MeasureOfAngle(QEC),160)",
+    "IsCentreOfCircle(E,E)",
+    "IsTangentOfCircle(DC,E)",
+    "IsTangentOfCircle(GC,E)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(E,E)",
     "IsTangentOfCircle(GC,E)",
@@ -38,16 +44,7 @@
     "tangent_of_circle_property_perpendicular(2,GC,E,E)",
     "angle_addition(1,GCF,FCE)"
   ],
-  "theorem_seq_dag": {
-    "radius_of_circle_property_length_equal(1,EF,E)": [
-      "isosceles_triangle_judgment_line_equal(1,EFC)"
-    ],
-    "radius_of_circle_property_length_equal(1,EC,E)": [
-      "isosceles_triangle_judgment_line_equal(1,EFC)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,EFC)": [
-      "isosceles_triangle_property_angle_equal(1,EFC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,EF,E)",
       "radius_of_circle_property_length_equal(1,EC,E)",
@@ -56,6 +53,15 @@
       "triangle_property_angle_sum(1,EFC)",
       "tangent_of_circle_property_perpendicular(2,GC,E,E)",
       "angle_addition(1,GCF,FCE)"
+    ],
+    "radius_of_circle_property_length_equal(1,EF,E)": [
+      "isosceles_triangle_judgment_line_equal(1,EFC)"
+    ],
+    "radius_of_circle_property_length_equal(1,EC,E)": [
+      "isosceles_triangle_judgment_line_equal(1,EFC)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,EFC)": [
+      "isosceles_triangle_property_angle_equal(1,EFC)"
     ]
   }
 }

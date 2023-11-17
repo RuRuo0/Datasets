@@ -2,9 +2,9 @@
   "problem_id": 5422,
   "annotation": "XiaoxiaoJin_2023-05-21",
   "source": "GeoQA-5736",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在平行四边形ABCD中,AB=7,AD=4,AE平分∠DAB交BC的延长线于点F,则CF的长是()",
-  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, AB = N_0, AD = N_1, AE bisects the extended line of ∠DAB and BC at point F, then the length of CF is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=7，AD=4，AF平分∠DAB，AD和BC是平行四边形ABCD的一组对边。求直线CF的长度。",
+  "problem_text_en": "As shown in the diagram, AB=7, AD=4, AF bisects ∠DAB, quadrilateral ABCD is a ▱. Find the length of line CF.",
   "problem_img": "5422.png",
   "construction_cdl": [
     "Shape(ED,DA,AE)",
@@ -17,8 +17,8 @@
   "text_cdl": [
     "Equal(LengthOfLine(AB),7)",
     "Equal(LengthOfLine(AD),4)",
-    "Parallelogram(ABCD)",
-    "IsBisectorOfAngle(AF,DAB)"
+    "IsBisectorOfAngle(AF,DAB)",
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(CF))",
@@ -30,17 +30,17 @@
     "parallelogram_property_opposite_line_equal(1,BCDA)",
     "isosceles_triangle_judgment_angle_equal(1,BFA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,BC,CF)",
+      "parallel_property_collinear_extend(1,CB,DA,F)",
+      "parallelogram_property_opposite_line_equal(1,BCDA)"
+    ],
     "parallel_property_collinear_extend(1,CB,DA,F)": [
       "parallel_property_alternate_interior_angle(1,FC,DA)"
     ],
     "parallel_property_alternate_interior_angle(1,FC,DA)": [
       "isosceles_triangle_judgment_angle_equal(1,BFA)"
-    ],
-    "START": [
-      "line_addition(1,BC,CF)",
-      "parallel_property_collinear_extend(1,CB,DA,F)",
-      "parallelogram_property_opposite_line_equal(1,BCDA)"
     ]
   }
 }

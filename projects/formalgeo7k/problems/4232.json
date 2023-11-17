@@ -2,9 +2,9 @@
   "problem_id": 4232,
   "annotation": "ChenyangMao_2023-05-07",
   "source": "GeoQA-2999",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,∠ABC和∠ACB的外角平分线交于点O,且∠BOC=40°,则∠A=()",
-  "problem_text_en": "As shown in the figure, in △ABC, the bisectors of the exterior angles of ∠ABC and ∠ACB intersects at point O, and ∠BOC = N_0, then ∠A = ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠BOC=40°，BO平分∠CBD，CO是∠ECB的角平分线。求∠CAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BOC=40°, BO bisects ∠CBD, CO bisects ∠ECB. Find the measure of ∠CAB.",
   "problem_img": "4232.png",
   "construction_cdl": [
     "Shape(AB,BC,CA)",
@@ -15,9 +15,9 @@
     "Collinear(ACE)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(BOC),40)",
     "IsBisectorOfAngle(BO,CBD)",
-    "IsBisectorOfAngle(CO,ECB)",
-    "Equal(MeasureOfAngle(BOC),40)"
+    "IsBisectorOfAngle(CO,ECB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CAB))",
@@ -30,7 +30,7 @@
     "adjacent_complementary_angle(1,ABC,CBD)",
     "adjacent_complementary_angle(1,ECB,BCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,ABC)",
       "triangle_property_angle_sum(1,BOC)",

@@ -2,9 +2,9 @@
   "problem_id": 3844,
   "annotation": "YifanWang_2023-05-07",
   "source": "GeoQA-1719",
-  "problem_level": 1,
-  "problem_text_cn": "如图,半径为5的⊙A中,弦BC,ED所对的圆心角分别是∠BAC,∠EAD,若DE=6,∠BAC+∠EAD=180°,则弦BC的弦心距长等于()",
-  "problem_text_en": "As shown in the figure, in ⊙A with a radius of N_0, the central angles of chords BC and ED are ∠BAC and ∠EAD, respectively. If DE = N_1, ∠BAC + ∠EAD = N_2, then the distance from the chord BC to the centre is equal to ()",
+  "problem_level": 13,
+  "problem_text_cn": "如图所示，Add(MeasureOfAngle(BAC)=MeasureOfAngle(DAE))，ED=6，⊙A的半径为5，⊙A的圆心为A，FC是⊙A的直径，CH⊥AH。求直线HA的长度。",
+  "problem_text_en": "As shown in the diagram, Add(MeasureOfAngle(BAC)=MeasureOfAngle(DAE)), ED=6, the radius of circle A is 5, A is the center of ⊙A, the diameter of circle A is FC, CH is perpendicular to AH. Find the length of line HA.",
   "problem_img": "3844.png",
   "construction_cdl": [
     "Shape(BH,HC,ACB)",
@@ -20,7 +20,14 @@
     "Collinear(CHB)",
     "Cocircular(A,CBFED)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(Add(MeasureOfAngle(BAC),MeasureOfAngle(DAE)),180)",
+    "Equal(LengthOfLine(ED),6)",
+    "Equal(RadiusOfCircle(A),5)",
+    "IsCentreOfCircle(A,A)",
+    "IsDiameterOfCircle(FC,A)",
+    "PerpendicularBetweenLine(CH,AH)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(A,A)",
     "IsDiameterOfCircle(FC,A)",
@@ -46,7 +53,16 @@
     "midsegment_of_triangle_judgment_midpoint(1,HA,CBF)",
     "midsegment_of_triangle_property_length(1,HA,CBF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,FAB,BAC)",
+      "arc_property_center_angle(1,ABF,A)",
+      "arc_property_center_angle(1,AED,A)",
+      "radius_of_circle_property_length_equal(1,AC,A)",
+      "radius_of_circle_property_length_equal(1,AB,A)",
+      "radius_of_circle_property_length_equal(1,AF,A)",
+      "altitude_of_triangle_judgment(1,AH,ACB)"
+    ],
     "adjacent_complementary_angle(1,FAB,BAC)": [
       "congruent_arc_judgment_measure_equal(1,ABF,AED)"
     ],
@@ -80,15 +96,6 @@
     ],
     "midsegment_of_triangle_judgment_midpoint(1,HA,CBF)": [
       "midsegment_of_triangle_property_length(1,HA,CBF)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,FAB,BAC)",
-      "arc_property_center_angle(1,ABF,A)",
-      "arc_property_center_angle(1,AED,A)",
-      "radius_of_circle_property_length_equal(1,AC,A)",
-      "radius_of_circle_property_length_equal(1,AB,A)",
-      "radius_of_circle_property_length_equal(1,AF,A)",
-      "altitude_of_triangle_judgment(1,AH,ACB)"
     ]
   }
 }

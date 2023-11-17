@@ -2,9 +2,9 @@
   "problem_id": 2428,
   "annotation": "Yangli_2023-04-23",
   "source": "Geometry3k-2547",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，QT=2*x，QU=14，SR=27，ST=17，W是⊙W的圆心，QT是⊙O的切线，QU是圆O的切线，⊙O的切线为RU，RV是圆O的切线，圆O的切线为ST，SV是⊙O的切线。求x的值。",
+  "problem_text_en": "As shown in the diagram, QT=2*x, QU=14, SR=27, ST=17, the center of ⊙W is W, QT is the tangent to circle W, the tangent to circle W is QU, RU is the tangent to circle W, RV is the tangent to ⊙W, ST is the tangent to ⊙W, the tangent to ⊙W is SV. Find the value of x.",
   "problem_img": "2428.png",
   "construction_cdl": [
     "Shape(VR,RU,WVU)",
@@ -20,7 +20,19 @@
     "Collinear(QAW)",
     "Cocircular(W,UATV)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(QT),2*x)",
+    "Equal(LengthOfLine(QU),14)",
+    "Equal(LengthOfLine(SR),27)",
+    "Equal(LengthOfLine(ST),17)",
+    "IsCentreOfCircle(W,W)",
+    "IsTangentOfCircle(QT,W)",
+    "IsTangentOfCircle(QU,W)",
+    "IsTangentOfCircle(RU,W)",
+    "IsTangentOfCircle(RV,W)",
+    "IsTangentOfCircle(ST,W)",
+    "IsTangentOfCircle(SV,W)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(W,W)",
     "IsTangentOfCircle(QT,W)",
@@ -44,7 +56,13 @@
     "mirror_congruent_triangle_judgment_hl(2,WUQ,WQT)",
     "mirror_congruent_triangle_property_line_equal(1,WUQ,WQT)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(1,QU,W,W)",
+      "tangent_of_circle_property_perpendicular(2,QT,W,W)",
+      "radius_of_circle_property_length_equal(1,WU,W)",
+      "radius_of_circle_property_length_equal(1,WT,W)"
+    ],
     "tangent_of_circle_property_perpendicular(1,QU,W,W)": [
       "mirror_congruent_triangle_judgment_hl(2,WUQ,WQT)"
     ],
@@ -59,12 +77,6 @@
     ],
     "mirror_congruent_triangle_judgment_hl(2,WUQ,WQT)": [
       "mirror_congruent_triangle_property_line_equal(1,WUQ,WQT)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(1,QU,W,W)",
-      "tangent_of_circle_property_perpendicular(2,QT,W,W)",
-      "radius_of_circle_property_length_equal(1,WU,W)",
-      "radius_of_circle_property_length_equal(1,WT,W)"
     ]
   }
 }

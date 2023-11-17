@@ -2,9 +2,9 @@
   "problem_id": 6379,
   "annotation": "YimingHe_2023-06-04",
   "source": "GeoQA-9235",
-  "problem_level": 1,
-  "problem_text_cn": "如图,将▱ABCD沿对角线AC折叠,使点B落在B′处,若∠1=∠2=44°,则∠B为()",
-  "problem_text_en": "As shown in the figure, fold ▱ABCD along the diagonal AC so that point B falls at B′. If ∠1 = ∠2 = N_0, then ∠B is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，∠AFD=44°，∠BCA=44°，△BCA与△EAC是镜像全等三角形，ABCD是平行四边形。求∠ABC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AFD=44°, ∠BCA=44°, △BCA is mirror congruent to △EAC, quadrilateral ABCD is a parallelogram. Find the measure of ∠ABC.",
   "problem_img": "6379.png",
   "construction_cdl": [
     "Shape(AF,FD,DA)",
@@ -15,10 +15,10 @@
     "Collinear(EFA)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
     "Equal(MeasureOfAngle(AFD),44)",
     "Equal(MeasureOfAngle(BCA),44)",
-    "MirrorCongruentBetweenTriangle(BCA,EAC)"
+    "MirrorCongruentBetweenTriangle(BCA,EAC)",
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ABC))",
@@ -34,7 +34,7 @@
     "triangle_property_angle_sum(1,EFC)",
     "triangle_property_angle_sum(1,FAC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "mirror_congruent_triangle_property_angle_equal(1,BCA,EAC)",
       "mirror_congruent_triangle_property_angle_equal(1,CAB,CEA)",

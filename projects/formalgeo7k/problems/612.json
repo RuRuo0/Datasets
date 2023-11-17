@@ -2,9 +2,9 @@
   "problem_id": 612,
   "annotation": "YimingHe_2023-04-09",
   "source": "Geometry3k-629",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Refer to the figure at the right. Find the value of m \\angle B C E if p \\parallel q.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠ABP=3*x-60°，∠MCL=2*x+15°，∠PBC=y°，OB∥NC，OP平行于NM。求∠BCM的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABP=3*x-60°, ∠MCL=2*x+15°, ∠PBC=y°, OB∥NC, OP∥NM. Find the measure of ∠BCM.",
   "problem_img": "612.png",
   "construction_cdl": [
     "Shape(OR,RA)",
@@ -20,6 +20,10 @@
     "Collinear(NCM)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(ABP),3*x-60)",
+    "Equal(MeasureOfAngle(MCL),2*x+15)",
+    "Equal(MeasureOfAngle(PBC),y)",
+    "ParallelBetweenLine(OB,NC)",
     "ParallelBetweenLine(OP,NM)"
   ],
   "image_cdl": [
@@ -37,17 +41,17 @@
     "adjacent_complementary_angle(1,ABP,PBC)",
     "adjacent_complementary_angle(1,BCM,MCL)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(2,OB,NC,P)",
+      "adjacent_complementary_angle(1,ABP,PBC)",
+      "adjacent_complementary_angle(1,BCM,MCL)"
+    ],
     "parallel_property_collinear_extend(2,OB,NC,P)": [
       "parallel_property_collinear_extend(1,CN,PB,M)"
     ],
     "parallel_property_collinear_extend(1,CN,PB,M)": [
       "parallel_property_corresponding_angle(2,BP,CM,L)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(2,OB,NC,P)",
-      "adjacent_complementary_angle(1,ABP,PBC)",
-      "adjacent_complementary_angle(1,BCM,MCL)"
     ]
   }
 }

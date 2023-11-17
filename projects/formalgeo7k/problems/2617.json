@@ -2,15 +2,23 @@
   "problem_id": 2617,
   "annotation": "DengfengYue_2023-04-23",
   "source": "Geometry3k-2747",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure. Round to the nearest hundredth, if necessary.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，四边形ADNB的面积为Add(AreaOfTriangle(ADN),AreaOfTriangle(ANB))，AB=3，AB=DN，AD=BN，∠ANB=62°，AD⊥ND，NB垂直于AB。求四边形ADNB的面积。",
+  "problem_text_en": "As shown in the diagram, the area of ADNB is Add(AreaOfTriangle(ADN),AreaOfTriangle(ANB)), AB=3, AB=DN, AD=BN, ∠ANB=62°, AD⊥ND, NB⊥AB. Find the area of quadrilateral ADNB.",
   "problem_img": "2617.png",
   "construction_cdl": [
     "Shape(AD,DN,NA)",
     "Shape(AN,NB,BA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(AreaOfQuadrilateral(ADNB),Add(AreaOfTriangle(ADN),AreaOfTriangle(ANB)))",
+    "Equal(LengthOfLine(AB),3)",
+    "Equal(LengthOfLine(AB),LengthOfLine(DN))",
+    "Equal(LengthOfLine(AD),LengthOfLine(BN))",
+    "Equal(MeasureOfAngle(ANB),62)",
+    "PerpendicularBetweenLine(AD,ND)",
+    "PerpendicularBetweenLine(NB,AB)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AB),3)",
     "Equal(MeasureOfAngle(ANB),62)",
@@ -28,7 +36,7 @@
     "triangle_area_formula_sine(1,BAN)",
     "triangle_area_formula_sine(1,DNA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,ANB)",
       "sine_theorem(1,BAN)",

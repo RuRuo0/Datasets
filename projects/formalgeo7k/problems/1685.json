@@ -2,9 +2,9 @@
   "problem_id": 1685,
   "annotation": "NaZhu_2023-03-26",
   "source": "Geometry3k-1749",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "X Y and X Z are midsegments of \\triangle R S T. Find X Z.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，RT=13，XY=7，∠ZXY=124°，XZ是三角形SRT的中位线，YX是三角形RTS的中位线。求直线XZ的长度。",
+  "problem_text_en": "As shown in the diagram, RT=13, XY=7, ∠ZXY=124°, XZ is the midsegment of △ SRT, YX is the midsegment of triangle RTS. Find the length of line XZ.",
   "problem_img": "1685.png",
   "construction_cdl": [
     "Shape(SX,XZ,ZS)",
@@ -15,8 +15,11 @@
     "Collinear(RYT)"
   ],
   "text_cdl": [
-    "IsMidsegmentOfTriangle(YX,RTS)",
-    "IsMidsegmentOfTriangle(XZ,SRT)"
+    "Equal(LengthOfLine(RT),13)",
+    "Equal(LengthOfLine(XY),7)",
+    "Equal(MeasureOfAngle(ZXY),124)",
+    "IsMidsegmentOfTriangle(XZ,SRT)",
+    "IsMidsegmentOfTriangle(YX,RTS)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(RT),13)",
@@ -33,7 +36,11 @@
     "similar_triangle_property_line_ratio(1,ZSX,TSR)",
     "similar_triangle_property_line_ratio(1,SXZ,SRT)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,SX,XR)",
+      "midsegment_of_triangle_property_parallel(1,XZ,SRT)"
+    ],
     "midsegment_of_triangle_property_parallel(1,XZ,SRT)": [
       "parallel_property_corresponding_angle(1,XZ,RT,S)"
     ],
@@ -43,10 +50,6 @@
     "similar_triangle_judgment_aa(1,ZSX,TSR)": [
       "similar_triangle_property_line_ratio(1,ZSX,TSR)",
       "similar_triangle_property_line_ratio(1,SXZ,SRT)"
-    ],
-    "START": [
-      "line_addition(1,SX,XR)",
-      "midsegment_of_triangle_property_parallel(1,XZ,SRT)"
     ]
   }
 }

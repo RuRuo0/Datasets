@@ -2,15 +2,21 @@
   "problem_id": 2780,
   "annotation": "RunanWang_2023-05-07",
   "source": "Geometry3k-2927",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "The area of trapezoid J K L M is 138 square feet. The area of trapezoid Q R S T is 5.52 square feet. If trapezoid J K L M \\sim trapezoid Q R S T, find the value of x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，四边形KLMJ的面积为121，QRST的面积为11，KJ=5，QT=x，四边形KLMJ相似于四边形QRST。求x的值。",
+  "problem_text_en": "As shown in the diagram, the area of KLMJ is 121, the area of quadrilateral QRST is 11, KJ=5, QT=x, KLMJ is similar to QRST. Find the value of x.",
   "problem_img": "2780.png",
   "construction_cdl": [
     "Shape(KL,LM,MJ,JK)",
     "Shape(QR,RS,ST,TQ)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(AreaOfQuadrilateral(KLMJ),121)",
+    "Equal(AreaOfQuadrilateral(QRST),11)",
+    "Equal(LengthOfLine(KJ),5)",
+    "Equal(LengthOfLine(QT),x)",
+    "SimilarBetweenQuadrilateral(KLMJ,QRST)"
+  ],
   "image_cdl": [
     "Equal(AreaOfQuadrilateral(KLMJ),121)",
     "Equal(AreaOfQuadrilateral(QRST),11)",
@@ -24,7 +30,7 @@
     "similar_quadrilateral_property_area_square_ratio(1,KLMJ,QRST)",
     "similar_quadrilateral_property_line_ratio(1,JKLM,TQRS)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "similar_quadrilateral_property_area_square_ratio(1,KLMJ,QRST)",
       "similar_quadrilateral_property_line_ratio(1,JKLM,TQRS)"

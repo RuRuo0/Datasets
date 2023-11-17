@@ -2,9 +2,9 @@
   "problem_id": 1115,
   "annotation": "XiaoxiaoJin_2023-04-09",
   "source": "Geometry3k-1152",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x. Assume that segments that appear to be tangent are tangent.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AD=x，CA=8，CD=17，圆C的圆心为C，圆O的切线为DA。求x的值。",
+  "problem_text_en": "As shown in the diagram, AD=x, CA=8, CD=17, the center of circle C is C, the tangent to ⊙C is DA. Find the value of x.",
   "problem_img": "1115.png",
   "construction_cdl": [
     "Shape(AC,CE,CEA)",
@@ -13,7 +13,13 @@
     "Collinear(CED)",
     "Cocircular(C,EA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AD),x)",
+    "Equal(LengthOfLine(CA),8)",
+    "Equal(LengthOfLine(CD),17)",
+    "IsCentreOfCircle(C,C)",
+    "IsTangentOfCircle(DA,C)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(C,C)",
     "IsTangentOfCircle(DA,C)",
@@ -28,15 +34,15 @@
     "right_triangle_judgment_angle(1,DAC)",
     "right_triangle_property_pythagorean(1,DAC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(2,DA,C,C)"
+    ],
     "tangent_of_circle_property_perpendicular(2,DA,C,C)": [
       "right_triangle_judgment_angle(1,DAC)"
     ],
     "right_triangle_judgment_angle(1,DAC)": [
       "right_triangle_property_pythagorean(1,DAC)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(2,DA,C,C)"
     ]
   }
 }

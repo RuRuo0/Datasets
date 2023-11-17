@@ -2,9 +2,9 @@
   "problem_id": 2390,
   "annotation": "FangzhenZhu_2023-04-23",
   "source": "Geometry3k-2505",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the rhombus.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AE=7，AE=BE，CE=DE，DE=12，BDAC是菱形。求BDAC的面积。",
+  "problem_text_en": "As shown in the diagram, AE=7, AE=BE, CE=DE, DE=12, quadrilateral BDAC is a rhombus. Find the area of BDAC.",
   "problem_img": "2390.png",
   "construction_cdl": [
     "Shape(BD,DE,EB)",
@@ -14,7 +14,13 @@
     "Collinear(BEA)",
     "Collinear(DEC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AE),7)",
+    "Equal(LengthOfLine(AE),LengthOfLine(BE))",
+    "Equal(LengthOfLine(CE),LengthOfLine(DE))",
+    "Equal(LengthOfLine(DE),12)",
+    "Rhombus(BDAC)"
+  ],
   "image_cdl": [
     "Rhombus(BDAC)",
     "Equal(LengthOfLine(DE),12)",
@@ -29,7 +35,7 @@
     "line_addition(1,DE,EC)",
     "kite_area_formula_diagonal(1,BDAC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,BE,EA)",
       "line_addition(1,DE,EC)",

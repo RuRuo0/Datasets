@@ -2,9 +2,9 @@
   "problem_id": 5663,
   "annotation": "JiaZou_2023-05-28",
   "source": "GeoQA-7348",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,点D、E分别是AB、AC的中点,若△ADE的面积为4,则△ABC的面积为()",
-  "problem_text_en": "As shown in the figure, in △ABC, points D and E are the midpoints of AB and AC respectively. If the area of ​​△ADE is N_0, then the area of ​​△ABC is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，△ADE的面积为4，D是线段AB的中点，E是线段AC的中点。求三角形ABC的面积。",
+  "problem_text_en": "As shown in the diagram, the area of △ADE is 4, D is the midpoint of segment AB, E is the midpoint of segment AC. Find the area of △ABC.",
   "problem_img": "5663.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -13,9 +13,9 @@
     "Collinear(AEC)"
   ],
   "text_cdl": [
+    "Equal(AreaOfTriangle(ADE),4)",
     "IsMidpointOfLine(D,AB)",
-    "IsMidpointOfLine(E,AC)",
-    "Equal(AreaOfTriangle(ADE),4)"
+    "IsMidpointOfLine(E,AC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(AreaOfTriangle(ABC))",
@@ -27,7 +27,11 @@
     "similar_triangle_property_line_ratio(1,DEA,BCA)",
     "similar_triangle_property_area_square_ratio(1,ADE,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AD,DB)",
+      "line_addition(1,AE,EC)"
+    ],
     "line_addition(1,AD,DB)": [
       "similar_triangle_judgment_sas(1,ADE,ABC)"
     ],
@@ -37,10 +41,6 @@
     "similar_triangle_judgment_sas(1,ADE,ABC)": [
       "similar_triangle_property_area_square_ratio(1,ADE,ABC)",
       "similar_triangle_property_line_ratio(1,DEA,BCA)"
-    ],
-    "START": [
-      "line_addition(1,AD,DB)",
-      "line_addition(1,AE,EC)"
     ]
   }
 }

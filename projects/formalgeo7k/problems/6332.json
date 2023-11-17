@@ -2,9 +2,9 @@
   "problem_id": 6332,
   "annotation": "ChengQin_2023-06-04",
   "source": "GeoQA-9141",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在菱形ABCD中,若∠B=60°,点E、F分别在AB、AD上,且BE=AF,则∠AEC+∠AFC的度数等于()",
-  "problem_text_en": "As shown in the figure, in the diamond ABCD, if ∠B = N_0, points E and F are on AB and AD respectively, and BE = AF, then the degree of ∠AEC + ∠AFC is equal to ()",
+  "problem_level": 16,
+  "problem_text_cn": "如图所示，BE=AF，∠EBC=60°，四边形ABCD是菱形。求∠AEC的大小与∠CFA的大小之和。",
+  "problem_text_en": "As shown in the diagram, BE=AF, ∠EBC=60°, quadrilateral ABCD is a rhombus. Find the sum of the measure of ∠AEC and the measure of ∠CFA.",
   "problem_img": "6332.png",
   "construction_cdl": [
     "Shape(AE,EC,CA)",
@@ -15,9 +15,9 @@
     "Collinear(AFD)"
   ],
   "text_cdl": [
-    "Rhombus(ABCD)",
+    "Equal(LengthOfLine(BE),LengthOfLine(AF))",
     "Equal(MeasureOfAngle(EBC),60)",
-    "Equal(LengthOfLine(BE),LengthOfLine(AF))"
+    "Rhombus(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Add(MeasureOfAngle(AEC),MeasureOfAngle(CFA)))",
@@ -40,7 +40,20 @@
     "angle_addition(1,FAC,CAE)",
     "quadrilateral_property_angle_sum(1,AECF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "isosceles_triangle_judgment_line_equal(1,BCA)",
+      "triangle_property_angle_sum(1,ABC)",
+      "parallelogram_property_opposite_angle_equal(1,DABC)",
+      "isosceles_triangle_judgment_line_equal(1,DAC)",
+      "triangle_property_angle_sum(1,DAC)",
+      "line_addition(1,BE,EA)",
+      "line_addition(1,AF,FD)",
+      "angle_addition(1,ACF,FCD)",
+      "angle_addition(1,ECA,ACF)",
+      "angle_addition(1,FAC,CAE)",
+      "quadrilateral_property_angle_sum(1,AECF)"
+    ],
     "isosceles_triangle_judgment_line_equal(1,BCA)": [
       "isosceles_triangle_property_angle_equal(1,BCA)"
     ],
@@ -75,19 +88,6 @@
     ],
     "congruent_triangle_judgment_sas(1,AEC,DFC)": [
       "congruent_triangle_property_angle_equal(1,CAE,CDF)"
-    ],
-    "START": [
-      "isosceles_triangle_judgment_line_equal(1,BCA)",
-      "triangle_property_angle_sum(1,ABC)",
-      "parallelogram_property_opposite_angle_equal(1,DABC)",
-      "isosceles_triangle_judgment_line_equal(1,DAC)",
-      "triangle_property_angle_sum(1,DAC)",
-      "line_addition(1,BE,EA)",
-      "line_addition(1,AF,FD)",
-      "angle_addition(1,ACF,FCD)",
-      "angle_addition(1,ECA,ACF)",
-      "angle_addition(1,FAC,CAE)",
-      "quadrilateral_property_angle_sum(1,AECF)"
     ]
   }
 }

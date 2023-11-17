@@ -2,9 +2,9 @@
   "problem_id": 6254,
   "annotation": "FangzhenZhu_2023-06-04",
   "source": "GeoQA-8873",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AD⊥BC于点D,AD=4cm,AB=8cm,AC=6cm,则⊙O的直径是()",
-  "problem_text_en": "As shown in the figure, AD ⊥ BC is at point D, AD = N_0, AB = N_1, AC = N_2, then the diameter of ⊙O is ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，AB=8，AC=6，AD=4，⊙O的圆心为O，AD垂直于CD。求圆O的直径。",
+  "problem_text_en": "As shown in the diagram, AB=8, AC=6, AD=4, the center of circle O is O, AD is perpendicular to CD. Find the diameter of ⊙O.",
   "problem_img": "6254.png",
   "construction_cdl": [
     "Shape(OAB,BA)",
@@ -18,11 +18,11 @@
     "Cocircular(O,CABE)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(AD),4)",
     "Equal(LengthOfLine(AB),8)",
     "Equal(LengthOfLine(AC),6)",
-    "PerpendicularBetweenLine(AD,CD)",
-    "IsCentreOfCircle(O,O)"
+    "Equal(LengthOfLine(AD),4)",
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(AD,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(DiameterOfCircle(O))",
@@ -40,7 +40,16 @@
     "radius_of_circle_property_length_equal(1,OE,O)",
     "circle_property_length_of_radius_and_diameter(1,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AO,OE)",
+      "diameter_of_circle_judgment_pass_centre(1,AOE,O)",
+      "arc_property_circumference_angle_external(1,OAB,C)",
+      "arc_property_circumference_angle_external(1,OAB,E)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OE,O)",
+      "circle_property_length_of_radius_and_diameter(1,O)"
+    ],
     "diameter_of_circle_judgment_pass_centre(1,AOE,O)": [
       "diameter_of_circle_property_right_angle(1,ABE,O)"
     ],
@@ -56,15 +65,6 @@
     "similar_triangle_judgment_aa(1,ADC,ABE)": [
       "similar_triangle_property_line_ratio(1,DCA,BEA)",
       "similar_triangle_property_line_ratio(1,CAD,EAB)"
-    ],
-    "START": [
-      "line_addition(1,AO,OE)",
-      "diameter_of_circle_judgment_pass_centre(1,AOE,O)",
-      "arc_property_circumference_angle_external(1,OAB,C)",
-      "arc_property_circumference_angle_external(1,OAB,E)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OE,O)",
-      "circle_property_length_of_radius_and_diameter(1,O)"
     ]
   }
 }

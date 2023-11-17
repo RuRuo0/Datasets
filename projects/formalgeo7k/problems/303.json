@@ -2,9 +2,9 @@
   "problem_id": 303,
   "annotation": "NaZhu_2023-04-02",
   "source": "Geometry3k-307",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "For trapezoid Q R S T, M and P are midpoints of the legs. If T S = 2 x, P M = 20, and Q R = 6 x, find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，PM=20，QR=6*x，TS=2*x，M平分线段RS，P平分线段QT，QT和SR是梯形QTSR的腰。求x的值。",
+  "problem_text_en": "As shown in the diagram, PM=20, QR=6*x, TS=2*x, M bisects segment RS, P bisects segment QT, quadrilateral QTSR is a trapezoid. Find the value of x.",
   "problem_img": "303.png",
   "construction_cdl": [
     "Shape(QP,PM,MR,RQ)",
@@ -13,12 +13,12 @@
     "Collinear(RMS)"
   ],
   "text_cdl": [
-    "Trapezoid(QTSR)",
-    "IsMidpointOfLine(P,QT)",
-    "IsMidpointOfLine(M,RS)",
-    "Equal(LengthOfLine(TS),2*x)",
     "Equal(LengthOfLine(PM),20)",
-    "Equal(LengthOfLine(QR),6*x)"
+    "Equal(LengthOfLine(QR),6*x)",
+    "Equal(LengthOfLine(TS),2*x)",
+    "IsMidpointOfLine(M,RS)",
+    "IsMidpointOfLine(P,QT)",
+    "Trapezoid(QTSR)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(x)",
@@ -27,12 +27,12 @@
     "midsegment_of_quadrilateral_judgment_midpoint(1,PM,QTSR)",
     "midsegment_of_quadrilateral_property_length(1,PM,QTSR)"
   ],
-  "theorem_seq_dag": {
-    "midsegment_of_quadrilateral_judgment_midpoint(1,PM,QTSR)": [
-      "midsegment_of_quadrilateral_property_length(1,PM,QTSR)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "midsegment_of_quadrilateral_judgment_midpoint(1,PM,QTSR)"
+    ],
+    "midsegment_of_quadrilateral_judgment_midpoint(1,PM,QTSR)": [
+      "midsegment_of_quadrilateral_property_length(1,PM,QTSR)"
     ]
   }
 }

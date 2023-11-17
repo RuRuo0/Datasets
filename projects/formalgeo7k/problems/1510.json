@@ -2,9 +2,9 @@
   "problem_id": 1510,
   "annotation": "QikeHuang_2023-04-16",
   "source": "Geometry3k-1567",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Solve for x in the figure below.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠FDL=4*x-9°，∠KHG=65°，BL平行于EK。求x的值。",
+  "problem_text_en": "As shown in the diagram, ∠FDL=4*x-9°, ∠KHG=65°, BL is parallel to EK. Find the value of x.",
   "problem_img": "1510.png",
   "construction_cdl": [
     "Shape(FD)",
@@ -26,7 +26,11 @@
     "Collinear(BDL)",
     "Collinear(EHK)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(FDL),4*x-9)",
+    "Equal(MeasureOfAngle(KHG),65)",
+    "ParallelBetweenLine(BL,EK)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(KHG),65)",
     "Equal(MeasureOfAngle(FDL),4*x-9)",
@@ -40,16 +44,16 @@
     "parallel_property_corresponding_angle(2,DL,HK,G)",
     "adjacent_complementary_angle(1,FDL,LDH)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,BL,EK,D)",
+      "adjacent_complementary_angle(1,FDL,LDH)"
+    ],
     "parallel_property_collinear_extend(3,BL,EK,D)": [
       "parallel_property_collinear_extend(3,KE,LD,H)"
     ],
     "parallel_property_collinear_extend(3,KE,LD,H)": [
       "parallel_property_corresponding_angle(2,DL,HK,G)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,BL,EK,D)",
-      "adjacent_complementary_angle(1,FDL,LDH)"
     ]
   }
 }

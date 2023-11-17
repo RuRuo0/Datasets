@@ -2,9 +2,9 @@
   "problem_id": 3318,
   "annotation": "YimingHe_2023-04-30",
   "source": "GeoQA-705",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC内接于⊙O,∠BAC=30°,BC=12,则⊙O的直径为()",
-  "problem_text_en": "As shown in the figure, △ABC is inscribed in ⊙O, ∠BAC = N_0, BC = N_1, then the diameter of ⊙O is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，BC=12，∠CAB=30°，圆O的圆心为O。求圆O的直径。",
+  "problem_text_en": "As shown in the diagram, BC=12, ∠CAB=30°, the center of ⊙O is O. Find the diameter of circle O.",
   "problem_img": "3318.png",
   "construction_cdl": [
     "Shape(AC,OCA)",
@@ -19,9 +19,9 @@
     "Cocircular(O,ADBC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(BC),12)",
-    "Equal(MeasureOfAngle(CAB),30)"
+    "Equal(MeasureOfAngle(CAB),30)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(DiameterOfCircle(O))",
@@ -34,16 +34,16 @@
     "sine_theorem(1,CDB)",
     "diameter_of_circle_property_length_equal(1,DC,O)"
   ],
-  "theorem_seq_dag": {
-    "diameter_of_circle_judgment_pass_centre(1,DOC,O)": [
-      "diameter_of_circle_property_length_equal(1,DC,O)",
-      "diameter_of_circle_property_right_angle(1,DBC,O)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_judgment_pass_centre(1,DOC,O)",
       "arc_property_circumference_angle_external(1,OBC,A)",
       "arc_property_circumference_angle_external(1,OBC,D)",
       "sine_theorem(1,CDB)"
+    ],
+    "diameter_of_circle_judgment_pass_centre(1,DOC,O)": [
+      "diameter_of_circle_property_length_equal(1,DC,O)",
+      "diameter_of_circle_property_right_angle(1,DBC,O)"
     ]
   }
 }

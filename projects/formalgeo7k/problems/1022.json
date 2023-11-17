@@ -2,9 +2,9 @@
   "problem_id": 1022,
   "annotation": "YanjunGuo_2023-04-09",
   "source": "Geometry3k-1055",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "The two circles are congruent. Find x.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=2*x+9，CD=3*x-7，弧EAB的角度为76，⌒EDC的角度为284，E是⊙E的圆心。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=2*x+9, CD=3*x-7, the measure of ⌒EAB is 76, the measure of ⌒EDC is 284, E is the center of circle E. Find the value of x.",
   "problem_img": "1022.png",
   "construction_cdl": [
     "Shape(EAB,BA)",
@@ -13,7 +13,13 @@
     "Shape(ECD,DC)",
     "Cocircular(E,BCDA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),2*x+9)",
+    "Equal(LengthOfLine(CD),3*x-7)",
+    "Equal(MeasureOfArc(EAB),76)",
+    "Equal(MeasureOfArc(EDC),284)",
+    "IsCentreOfCircle(E,E)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(E,E)",
     "Equal(LengthOfLine(CD),3*x-7)",
@@ -30,7 +36,12 @@
     "congruent_arc_judgment_measure_equal(1,EAB,ECD)",
     "congruent_arc_property_chord_equal(1,EAB,ECD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_center_angle(1,EDC,E)",
+      "arc_property_center_angle(1,ECD,E)",
+      "round_angle(1,CED,DEC)"
+    ],
     "arc_property_center_angle(1,EDC,E)": [
       "congruent_arc_judgment_measure_equal(1,EAB,ECD)"
     ],
@@ -42,11 +53,6 @@
     ],
     "congruent_arc_judgment_measure_equal(1,EAB,ECD)": [
       "congruent_arc_property_chord_equal(1,EAB,ECD)"
-    ],
-    "START": [
-      "arc_property_center_angle(1,EDC,E)",
-      "arc_property_center_angle(1,ECD,E)",
-      "round_angle(1,CED,DEC)"
     ]
   }
 }

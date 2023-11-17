@@ -2,9 +2,9 @@
   "problem_id": 943,
   "annotation": "XiaokaiZhang_2023-04-09",
   "source": "Geometry3k-972",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the parallelogram.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AE=10，NB=7，NC=12，四边形ABNC是平行四边形，AE⊥NE。求ABNC的周长。",
+  "problem_text_en": "As shown in the diagram, AE=10, NB=7, NC=12, ABNC is a parallelogram, AE is perpendicular to NE. Find the perimeter of ABNC.",
   "problem_img": "943.png",
   "construction_cdl": [
     "Shape(AB,BE,EA)",
@@ -12,7 +12,11 @@
     "Collinear(BEN)"
   ],
   "text_cdl": [
-    "Parallelogram(ABNC)"
+    "Equal(LengthOfLine(AE),10)",
+    "Equal(LengthOfLine(NB),7)",
+    "Equal(LengthOfLine(NC),12)",
+    "Parallelogram(ABNC)",
+    "PerpendicularBetweenLine(AE,NE)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(AE),10)",
@@ -27,7 +31,7 @@
     "parallelogram_property_opposite_line_equal(1,BNCA)",
     "quadrilateral_perimeter_formula(1,ABNC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_property_opposite_line_equal(1,ABNC)",
       "parallelogram_property_opposite_line_equal(1,BNCA)",

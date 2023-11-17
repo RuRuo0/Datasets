@@ -2,9 +2,9 @@
   "problem_id": 3263,
   "annotation": "XiaokaiZhang_2023-04-23",
   "source": "GeoQA-569",
-  "problem_level": 1,
-  "problem_text_cn": "如图,a∥b,点B在直线a上,且AB⊥BC,∠1=35°,那么∠2=()",
-  "problem_text_en": "As shown in the figure, a ∥ b, point B is on the straight line a, and AB ⊥ BC, ∠1 = N_0, then ∠2 = ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠EBC=35°，CD∥EF，CB垂直于AB。求∠AGD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠EBC=35°, CD is parallel to EF, CB⊥AB. Find the measure of ∠AGD.",
   "problem_img": "3263.png",
   "construction_cdl": [
     "Shape(CE,EB,BC)",
@@ -17,9 +17,9 @@
     "Collinear(ADF)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(EBC),35)",
     "ParallelBetweenLine(CD,EF)",
-    "PerpendicularBetweenLine(CB,AB)",
-    "Equal(MeasureOfAngle(EBC),35)"
+    "PerpendicularBetweenLine(CB,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(AGD))",
@@ -31,17 +31,17 @@
     "parallel_property_ipsilateral_internal_angle(1,BE,GC)",
     "vertical_angle(1,AGD,BGC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,CD,EF,G)",
+      "angle_addition(1,EBC,CBG)",
+      "vertical_angle(1,AGD,BGC)"
+    ],
     "parallel_property_collinear_extend(3,CD,EF,G)": [
       "parallel_property_collinear_extend(3,FE,GC,B)"
     ],
     "parallel_property_collinear_extend(3,FE,GC,B)": [
       "parallel_property_ipsilateral_internal_angle(1,BE,GC)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,CD,EF,G)",
-      "angle_addition(1,EBC,CBG)",
-      "vertical_angle(1,AGD,BGC)"
     ]
   }
 }

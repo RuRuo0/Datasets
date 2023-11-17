@@ -2,9 +2,9 @@
   "problem_id": 5365,
   "annotation": "QikeHuang_2023-05-21",
   "source": "GeoQA-5643",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点C、D在线段AB的同侧,CA=4,AB=12,BD=9,M是AB的中点,∠CMD=120°,则CD长的最大值是()",
-  "problem_text_en": "As shown in the figure, points C and D are on the same side of line AB, CA = N_0, AB = N_1, BD = N_2, M is the midpoint of AB, ∠CMD = N_3, then the maximum length of CD is ()",
+  "problem_level": 14,
+  "problem_text_cn": "如图所示，AB=12，BD=9，CA=4，∠CMD=120°，M是线段AB的中点，CAMH是风筝形，MB和MN是风筝形MBDN的一组临边。求直线CD的长度。",
+  "problem_text_en": "As shown in the diagram, AB=12, BD=9, CA=4, ∠CMD=120°, M bisects segment AB, CAMH is a kite, DB and DN are one pair of adjacent sides of the kite MBDN. Find the length of line CD.",
   "problem_img": "5365.png",
   "construction_cdl": [
     "Shape(HC,CP,PH)",
@@ -24,13 +24,13 @@
     "Collinear(AMB)"
   ],
   "text_cdl": [
-    "IsMidpointOfLine(M,AB)",
-    "Equal(LengthOfLine(CA),4)",
     "Equal(LengthOfLine(AB),12)",
     "Equal(LengthOfLine(BD),9)",
+    "Equal(LengthOfLine(CA),4)",
+    "Equal(MeasureOfAngle(CMD),120)",
+    "IsMidpointOfLine(M,AB)",
     "Kite(CAMH)",
-    "Kite(MBDN)",
-    "Equal(MeasureOfAngle(CMD),120)"
+    "Kite(MBDN)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(CD))",
@@ -51,13 +51,7 @@
     "line_addition(1,CN,ND)",
     "line_addition(1,AM,MB)"
   ],
-  "theorem_seq_dag": {
-    "kite_property_diagonal_perpendicular_bisection(1,MHCA,P)": [
-      "perpendicular_bisector_property_bisector(1,MP,HA)"
-    ],
-    "kite_property_diagonal_perpendicular_bisection(1,MBDN,Q)": [
-      "perpendicular_bisector_property_bisector(1,MQ,BN)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,AMC,CMD)",
       "adjacent_complementary_angle(1,AMD,DMB)",
@@ -71,6 +65,12 @@
       "line_addition(1,CH,HN)",
       "line_addition(1,CN,ND)",
       "line_addition(1,AM,MB)"
+    ],
+    "kite_property_diagonal_perpendicular_bisection(1,MHCA,P)": [
+      "perpendicular_bisector_property_bisector(1,MP,HA)"
+    ],
+    "kite_property_diagonal_perpendicular_bisection(1,MBDN,Q)": [
+      "perpendicular_bisector_property_bisector(1,MQ,BN)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 2088,
   "annotation": "YimingHe_2023-03-26",
   "source": "Geometry3k-2175",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，BF=10，BG=8，CE=14，CF=x，∠AEC=∠BGD。求x的值。",
+  "problem_text_en": "As shown in the diagram, BF=10, BG=8, CE=14, CF=x, ∠AEC=∠BGD. Find the value of x.",
   "problem_img": "2088.png",
   "construction_cdl": [
     "Shape(CA,AE,EC)",
@@ -14,7 +14,13 @@
     "Collinear(EAFB)",
     "Collinear(CFDG)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BF),10)",
+    "Equal(LengthOfLine(BG),8)",
+    "Equal(LengthOfLine(CE),14)",
+    "Equal(LengthOfLine(CF),x)",
+    "Equal(MeasureOfAngle(AEC),MeasureOfAngle(BGD))"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(CE),14)",
     "Equal(LengthOfLine(BG),8)",
@@ -30,16 +36,16 @@
     "mirror_similar_triangle_property_line_ratio(1,FEC,FBG)",
     "mirror_similar_triangle_property_line_ratio(1,ECF,GFB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "vertical_angle(1,CFE,GFB)"
+    ],
     "vertical_angle(1,CFE,GFB)": [
       "mirror_similar_triangle_judgment_aa(1,CFE,BGF)"
     ],
     "mirror_similar_triangle_judgment_aa(1,CFE,BGF)": [
       "mirror_similar_triangle_property_line_ratio(1,FEC,FBG)",
       "mirror_similar_triangle_property_line_ratio(1,ECF,GFB)"
-    ],
-    "START": [
-      "vertical_angle(1,CFE,GFB)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 2654,
   "annotation": "DengfengYue_2023-04-09",
   "source": "Geometry3k-2790",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "U J = 9, V J = 3, and Z T = 18. Find S V.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，ST=UT，SY=YZ，UJ=9，VJ=3，ZT=18，ZV=UV。求直线SV的长度。",
+  "problem_text_en": "As shown in the diagram, ST=UT, SY=YZ, UJ=9, VJ=3, ZT=18, ZV=UV. Find the length of line SV.",
   "problem_img": "2654.png",
   "construction_cdl": [
     "Shape(SY,YJ,JS)",
@@ -20,7 +20,14 @@
     "Collinear(ZJT)",
     "Collinear(YJU)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(ST),LengthOfLine(UT))",
+    "Equal(LengthOfLine(SY),LengthOfLine(YZ))",
+    "Equal(LengthOfLine(UJ),9)",
+    "Equal(LengthOfLine(VJ),3)",
+    "Equal(LengthOfLine(ZT),18)",
+    "Equal(LengthOfLine(ZV),LengthOfLine(UV))"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(UJ),9)",
     "Equal(LengthOfLine(VJ),3)",
@@ -38,7 +45,12 @@
     "centroid_of_triangle_property_line_ratio(1,J,SZU,V)",
     "line_addition(1,SJ,JV)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "median_of_triangle_judgment(1,SV,SZU)",
+      "median_of_triangle_judgment(1,UY,USZ)",
+      "line_addition(1,SJ,JV)"
+    ],
     "median_of_triangle_judgment(1,SV,SZU)": [
       "centroid_of_triangle_judgment_intersection(1,J,ZUS,V,Y)"
     ],
@@ -47,11 +59,6 @@
     ],
     "centroid_of_triangle_judgment_intersection(1,J,ZUS,V,Y)": [
       "centroid_of_triangle_property_line_ratio(1,J,SZU,V)"
-    ],
-    "START": [
-      "median_of_triangle_judgment(1,SV,SZU)",
-      "median_of_triangle_judgment(1,UY,USZ)",
-      "line_addition(1,SJ,JV)"
     ]
   }
 }

@@ -2,16 +2,22 @@
   "problem_id": 514,
   "annotation": "JiaZou_2023-03-12",
   "source": "Geometry3k-526",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AB=x，AC=x-5，BC=54，BD=28，∠DAC=∠BAD。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=x, AC=x-5, BC=54, BD=28, ∠DAC=∠BAD. Find the value of x.",
   "problem_img": "514.png",
   "construction_cdl": [
     "Shape(CD,DA,AC)",
     "Shape(DB,BA,AD)",
     "Collinear(CDB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),x)",
+    "Equal(LengthOfLine(AC),x-5)",
+    "Equal(LengthOfLine(BC),54)",
+    "Equal(LengthOfLine(BD),28)",
+    "Equal(MeasureOfAngle(DAC),MeasureOfAngle(BAD))"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AC),x-5)",
     "Equal(LengthOfLine(BC),54)",
@@ -26,13 +32,13 @@
     "bisector_of_angle_judgment_angle_equal(1,AD,BAC)",
     "bisector_of_angle_property_line_ratio(1,AD,BAC)"
   ],
-  "theorem_seq_dag": {
-    "bisector_of_angle_judgment_angle_equal(1,AD,BAC)": [
-      "bisector_of_angle_property_line_ratio(1,AD,BAC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,CD,DB)",
       "bisector_of_angle_judgment_angle_equal(1,AD,BAC)"
+    ],
+    "bisector_of_angle_judgment_angle_equal(1,AD,BAC)": [
+      "bisector_of_angle_property_line_ratio(1,AD,BAC)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 5986,
   "annotation": "Yangli_2023-05-28",
   "source": "GeoQA-8444",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,点C、D在⊙O上,∠BOC=116°,AD∥OC,∠AOD的度数为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, points C and D are on ⊙O, ∠BOC = N_0, AD ∥ OC, the degree of ∠AOD is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠BOC=116°，O是⊙O的圆心，AD平行于CO。求∠AOD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BOC=116°, the center of ⊙O is O, AD is parallel to CO. Find the measure of ∠AOD.",
   "problem_img": "5986.png",
   "construction_cdl": [
     "Shape(AD,ODA)",
@@ -33,7 +33,15 @@
     "isosceles_triangle_property_angle_equal(1,ODA)",
     "triangle_property_angle_sum(1,ODA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OD,O)",
+      "flat_angle(1,BOA)",
+      "angle_addition(1,BOC,COA)",
+      "parallel_property_alternate_interior_angle(1,AD,CO)",
+      "triangle_property_angle_sum(1,ODA)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,ODA)"
     ],
@@ -42,14 +50,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,ODA)": [
       "isosceles_triangle_property_angle_equal(1,ODA)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OD,O)",
-      "flat_angle(1,BOA)",
-      "angle_addition(1,BOC,COA)",
-      "parallel_property_alternate_interior_angle(1,AD,CO)",
-      "triangle_property_angle_sum(1,ODA)"
     ]
   }
 }

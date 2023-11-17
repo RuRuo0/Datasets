@@ -2,15 +2,22 @@
   "problem_id": 2462,
   "annotation": "RunanWang_2023-04-23",
   "source": "Geometry3k-2582",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find P N.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，NP=4*x-2，PL=3*x+6，∠LMP=25°，∠PMN=25°，MN垂直于PN，PL垂直于ML。求直线NP的长度。",
+  "problem_text_en": "As shown in the diagram, NP=4*x-2, PL=3*x+6, ∠LMP=25°, ∠PMN=25°, MN⊥PN, PL⊥ML. Find the length of line NP.",
   "problem_img": "2462.png",
   "construction_cdl": [
     "Shape(LM,MP,PL)",
     "Shape(PM,MN,NP)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(NP),4*x-2)",
+    "Equal(LengthOfLine(PL),3*x+6)",
+    "Equal(MeasureOfAngle(LMP),25)",
+    "Equal(MeasureOfAngle(PMN),25)",
+    "PerpendicularBetweenLine(MN,PN)",
+    "PerpendicularBetweenLine(PL,ML)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(NP),4*x-2)",
     "Equal(MeasureOfAngle(PMN),25)",
@@ -25,12 +32,12 @@
     "mirror_congruent_triangle_judgment_aas(1,PMN,PLM)",
     "mirror_congruent_triangle_property_line_equal(1,MNP,MPL)"
   ],
-  "theorem_seq_dag": {
-    "mirror_congruent_triangle_judgment_aas(1,PMN,PLM)": [
-      "mirror_congruent_triangle_property_line_equal(1,MNP,MPL)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "mirror_congruent_triangle_judgment_aas(1,PMN,PLM)"
+    ],
+    "mirror_congruent_triangle_judgment_aas(1,PMN,PLM)": [
+      "mirror_congruent_triangle_property_line_equal(1,MNP,MPL)"
     ]
   }
 }

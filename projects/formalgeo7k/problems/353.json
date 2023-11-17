@@ -2,9 +2,9 @@
   "problem_id": 353,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-360",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "The square is circumscribed to the circle. Find the exact circumference of the circle.",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，FD=25，圆O的圆心为O，EH是圆O的直径，圆O的切线为DH，圆O的切线为FE，EF垂直于NF，HA垂直于KA，KG⊥EG，ND垂直于HD。求圆O的周长。",
+  "problem_text_en": "As shown in the diagram, FD=25, the center of ⊙O is O, the diameter of ⊙O is EH, the tangent to circle O is DH, the tangent to ⊙O is FE, EF⊥NF, HA⊥KA, KG is perpendicular to EG, ND is perpendicular to HD. Find the circumference of the circle O.",
   "problem_img": "353.png",
   "construction_cdl": [
     "Shape(KG,GE,OKE)",
@@ -21,7 +21,17 @@
     "Collinear(EOH)",
     "Cocircular(O,KENH)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(FD),25)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(EH,O)",
+    "IsTangentOfCircle(DH,O)",
+    "IsTangentOfCircle(FE,O)",
+    "PerpendicularBetweenLine(EF,NF)",
+    "PerpendicularBetweenLine(HA,KA)",
+    "PerpendicularBetweenLine(KG,EG)",
+    "PerpendicularBetweenLine(ND,HD)"
+  ],
   "image_cdl": [
     "IsDiameterOfCircle(EH,O)",
     "IsCentreOfCircle(O,O)",
@@ -47,7 +57,14 @@
     "circle_property_length_of_radius_and_diameter(1,O)",
     "circle_perimeter_formula(1,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(1,FE,O,O)",
+      "tangent_of_circle_property_perpendicular(2,DH,O,O)",
+      "diameter_of_circle_property_length_equal(1,EH,O)",
+      "circle_property_length_of_radius_and_diameter(1,O)",
+      "circle_perimeter_formula(1,O)"
+    ],
     "tangent_of_circle_property_perpendicular(1,FE,O,O)": [
       "parallel_judgment_ipsilateral_internal_angle(1,EO,FD)",
       "parallel_judgment_ipsilateral_internal_angle(1,HD,EF)"
@@ -66,13 +83,6 @@
     ],
     "parallelogram_judgment_parallel_and_parallel(1,EFDH)": [
       "parallelogram_property_opposite_line_equal(1,FDHE)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(1,FE,O,O)",
-      "tangent_of_circle_property_perpendicular(2,DH,O,O)",
-      "diameter_of_circle_property_length_equal(1,EH,O)",
-      "circle_property_length_of_radius_and_diameter(1,O)",
-      "circle_perimeter_formula(1,O)"
     ]
   }
 }

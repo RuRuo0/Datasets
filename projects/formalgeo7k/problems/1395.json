@@ -2,15 +2,22 @@
   "problem_id": 1395,
   "annotation": "YimingHe_2023-03-19",
   "source": "Geometry3k-1445",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find X Y.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，XY=6*x-3，YZ=4*x+5，∠YWX=33°，∠ZWY=33°，WX垂直于YX，YZ垂直于WZ。求直线XY的长度。",
+  "problem_text_en": "As shown in the diagram, XY=6*x-3, YZ=4*x+5, ∠YWX=33°, ∠ZWY=33°, WX is perpendicular to YX, YZ is perpendicular to WZ. Find the length of line XY.",
   "problem_img": "1395.png",
   "construction_cdl": [
     "Shape(ZW,WY,YZ)",
     "Shape(WX,XY,YW)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(XY),6*x-3)",
+    "Equal(LengthOfLine(YZ),4*x+5)",
+    "Equal(MeasureOfAngle(YWX),33)",
+    "Equal(MeasureOfAngle(ZWY),33)",
+    "PerpendicularBetweenLine(WX,YX)",
+    "PerpendicularBetweenLine(YZ,WZ)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(YZ),4*x+5)",
     "Equal(MeasureOfAngle(ZWY),33)",
@@ -25,12 +32,12 @@
     "mirror_congruent_triangle_judgment_aas(1,YWX,YZW)",
     "mirror_congruent_triangle_property_line_equal(1,WXY,WYZ)"
   ],
-  "theorem_seq_dag": {
-    "mirror_congruent_triangle_judgment_aas(1,YWX,YZW)": [
-      "mirror_congruent_triangle_property_line_equal(1,WXY,WYZ)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "mirror_congruent_triangle_judgment_aas(1,YWX,YZW)"
+    ],
+    "mirror_congruent_triangle_judgment_aas(1,YWX,YZW)": [
+      "mirror_congruent_triangle_property_line_equal(1,WXY,WYZ)"
     ]
   }
 }

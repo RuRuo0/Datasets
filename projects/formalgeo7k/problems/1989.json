@@ -2,9 +2,9 @@
   "problem_id": 1989,
   "annotation": "ZheZhu_2023-04-16",
   "source": "Geometry3k-2073",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x. Assume that any segment that appears to be tangent is tangent.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠EBD=60°，⌒CFG的角度为5*x，弧CJF的角度为105，圆O的切线为BF，BD⊥HD，FB垂直于DB，HE垂直于CE。求x的值。",
+  "problem_text_en": "As shown in the diagram, ∠EBD=60°, the measure of ⌒CFG is 5*x, the measure of ⌒CJF is 105, BF is the tangent to ⊙C, BD⊥HD, FB is perpendicular to DB, HE is perpendicular to CE. Find the value of x.",
   "problem_img": "1989.png",
   "construction_cdl": [
     "Shape(BD,DH,CGH,GB)",
@@ -20,7 +20,15 @@
     "Collinear(DHE)",
     "Cocircular(C,FGHJ)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(EBD),60)",
+    "Equal(MeasureOfArc(CFG),5*x)",
+    "Equal(MeasureOfArc(CJF),105)",
+    "IsTangentOfCircle(BF,C)",
+    "PerpendicularBetweenLine(BD,HD)",
+    "PerpendicularBetweenLine(FB,DB)",
+    "PerpendicularBetweenLine(HE,CE)"
+  ],
   "image_cdl": [
     "IsTangentOfCircle(BF,C)",
     "Equal(MeasureOfArc(CFG),5*x)",
@@ -36,7 +44,7 @@
     "angle_addition(1,FBG,GBD)",
     "circle_property_circular_power_tangent_and_segment_angle(1,BF,BGJ,C)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,FBG,GBD)",
       "circle_property_circular_power_tangent_and_segment_angle(1,BF,BGJ,C)"

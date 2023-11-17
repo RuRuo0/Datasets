@@ -2,9 +2,9 @@
   "problem_id": 619,
   "annotation": "YimingHe_2023-04-09",
   "source": "Geometry3k-636",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If m \\angle X Z Y = 3 x + 6 and m \\angle X Z W = 5 x - 12, find m \\angle Y X Z.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠XZW=5*x-12°，∠YZX=3*x+6°，ZWXY是▱，ZW垂直于XW。求∠ZXY的大小。",
+  "problem_text_en": "As shown in the diagram, ∠XZW=5*x-12°, ∠YZX=3*x+6°, ZY and WX are opposite sides of the parallelogram ZWXY, ZW is perpendicular to XW. Find the measure of ∠ZXY.",
   "problem_img": "619.png",
   "construction_cdl": [
     "Shape(ZW,WP,PZ)",
@@ -15,8 +15,10 @@
     "Collinear(WPY)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(XZW),5*x-12)",
     "Equal(MeasureOfAngle(YZX),3*x+6)",
-    "Equal(MeasureOfAngle(XZW),5*x-12)"
+    "Parallelogram(ZWXY)",
+    "PerpendicularBetweenLine(ZW,XW)"
   ],
   "image_cdl": [
     "Parallelogram(ZWXY)",
@@ -29,7 +31,7 @@
     "angle_addition(1,YZX,XZW)",
     "parallel_property_alternate_interior_angle(2,YX,ZW)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_ipsilateral_internal_angle(1,ZY,WX)",
       "angle_addition(1,YZX,XZW)",

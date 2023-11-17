@@ -2,9 +2,9 @@
   "problem_id": 2136,
   "annotation": "YiwenHuang_2023-04-23",
   "source": "Geometry3k-2229",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，FJ=y+12，FK=3*x+7，GK=4*x-1，HJ=2*y-5，HJ=FJ，FG垂直于HG，FK垂直于JK。求x的值。",
+  "problem_text_en": "As shown in the diagram, FJ=y+12, FK=3*x+7, GK=4*x-1, HJ=2*y-5, HJ=FJ, FG⊥HG, FK is perpendicular to JK. Find the value of x.",
   "problem_img": "2136.png",
   "construction_cdl": [
     "Shape(JF,FK,KJ)",
@@ -12,7 +12,15 @@
     "Collinear(FKG)",
     "Collinear(FJH)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(FJ),y+12)",
+    "Equal(LengthOfLine(FK),3*x+7)",
+    "Equal(LengthOfLine(GK),4*x-1)",
+    "Equal(LengthOfLine(HJ),2*y-5)",
+    "Equal(LengthOfLine(HJ),LengthOfLine(FJ))",
+    "PerpendicularBetweenLine(FG,HG)",
+    "PerpendicularBetweenLine(FK,JK)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(HJ),2*y-5)",
     "Equal(LengthOfLine(FJ),y+12)",
@@ -31,15 +39,15 @@
     "similar_triangle_property_line_ratio(1,JFK,HFG)",
     "similar_triangle_property_line_ratio(1,KJF,GHF)"
   ],
-  "theorem_seq_dag": {
-    "similar_triangle_judgment_aa(1,JFK,HFG)": [
-      "similar_triangle_property_line_ratio(1,JFK,HFG)",
-      "similar_triangle_property_line_ratio(1,KJF,GHF)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "similar_triangle_judgment_aa(1,JFK,HFG)",
       "line_addition(1,FK,KG)",
       "line_addition(1,FJ,JH)"
+    ],
+    "similar_triangle_judgment_aa(1,JFK,HFG)": [
+      "similar_triangle_property_line_ratio(1,JFK,HFG)",
+      "similar_triangle_property_line_ratio(1,KJF,GHF)"
     ]
   }
 }

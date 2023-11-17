@@ -2,9 +2,9 @@
   "problem_id": 3964,
   "annotation": "ZheZhu_2023-04-30",
   "source": "GeoQA-1900",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知⊙O的直径AE=10cm,∠B=∠EAC,则AC的长为()",
-  "problem_text_en": "As shown in the figure, if the diameter of ⊙O is known as AE = N_0, ∠B = ∠EAC, then the length of AC is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AE=10，∠CAE=∠ABC，O是圆O的圆心，AE是⊙O的直径。求直线AC的长度。",
+  "problem_text_en": "As shown in the diagram, AE=10, ∠CAE=∠ABC, the center of circle O is O, the diameter of ⊙O is AE. Find the length of line AC.",
   "problem_img": "3964.png",
   "construction_cdl": [
     "Shape(OAB,BA)",
@@ -19,7 +19,12 @@
     "Collinear(BDC)",
     "Cocircular(O,ABEC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AE),10)",
+    "Equal(MeasureOfAngle(CAE),MeasureOfAngle(ABC))",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AE,O)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AE,O)",
@@ -37,7 +42,12 @@
     "right_triangle_judgment_angle(1,ECA)",
     "right_triangle_property_pythagorean(1,ECA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_circumference_angle_external(1,OCA,B)",
+      "arc_property_circumference_angle_external(1,OEC,A)",
+      "diameter_of_circle_property_right_angle(1,ECA,O)"
+    ],
     "arc_property_circumference_angle_external(1,OCA,B)": [
       "congruent_arc_judgment_measure_equal(1,OEC,OCA)"
     ],
@@ -52,11 +62,6 @@
     ],
     "right_triangle_judgment_angle(1,ECA)": [
       "right_triangle_property_pythagorean(1,ECA)"
-    ],
-    "START": [
-      "arc_property_circumference_angle_external(1,OCA,B)",
-      "arc_property_circumference_angle_external(1,OEC,A)",
-      "diameter_of_circle_property_right_angle(1,ECA,O)"
     ]
   }
 }

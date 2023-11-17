@@ -2,9 +2,9 @@
   "problem_id": 2471,
   "annotation": "Yangli_2023-04-23",
   "source": "Geometry3k-2592",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the shaded region.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，BC=6，∠ABC=240°，B是圆B的圆心。求扇形BAC的面积减去△BAC的面积。",
+  "problem_text_en": "As shown in the diagram, BC=6, ∠ABC=240°, the center of circle B is B. Find the area of the sector BAC minus the area of △BAC.",
   "problem_img": "2471.png",
   "construction_cdl": [
     "Shape(AC,CB,BA)",
@@ -12,7 +12,11 @@
     "Shape(AB,BC,BCA)",
     "Cocircular(B,CA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BC),6)",
+    "Equal(MeasureOfAngle(ABC),240)",
+    "IsCentreOfCircle(B,B)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(B,B)",
     "Equal(LengthOfLine(BC),6)",
@@ -28,7 +32,7 @@
     "arc_property_center_angle(1,BAC,B)",
     "sector_area_formula(1,BAC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "round_angle(1,CBA,ABC)",
       "radius_of_circle_property_length_equal(1,BC,B)",

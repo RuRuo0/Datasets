@@ -2,9 +2,9 @@
   "problem_id": 4006,
   "annotation": "ZheZhu_2023-04-30",
   "source": "GeoQA-1974",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙A,⊙B和⊙C两两不相交,且半径都是2cm,则图中的三个扇形(即三个阴影部分)的面积之和为()",
-  "problem_text_en": "As shown in the figure, ⊙A, ⊙B and ⊙C do not intersect each other, and the radii are all N_0, then the sum of the areas of the three sectors (that is, the three shaded parts) in the figure is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，Add(AreaOfSector(BIH)=AreaOfSector(AED)，圆A的半径为2，⊙B的半径为2，圆C的半径为2，圆A的圆心为A，B是圆B的圆心，C是⊙C的圆心。求x的值。",
+  "problem_text_en": "As shown in the diagram, Add(AreaOfSector(BIH)=AreaOfSector(AED), the radius of circle A is 2, the radius of circle B is 2, the radius of circle C is 2, A is the center of circle A, the center of ⊙B is B, C is the center of circle C. Find the value of x.",
   "problem_img": "4006.png",
   "construction_cdl": [
     "Shape(DA,AE,AED)",
@@ -21,7 +21,15 @@
     "Cocircular(B,IH)",
     "Cocircular(C,GF)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(Add(AreaOfSector(BIH),AreaOfSector(AED),AreaOfSector(CGF)),x)",
+    "Equal(RadiusOfCircle(A),2)",
+    "Equal(RadiusOfCircle(B),2)",
+    "Equal(RadiusOfCircle(C),2)",
+    "IsCentreOfCircle(A,A)",
+    "IsCentreOfCircle(B,B)",
+    "IsCentreOfCircle(C,C)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(A,A)",
     "IsCentreOfCircle(C,C)",
@@ -42,7 +50,7 @@
     "sector_area_formula(1,BIH)",
     "sector_area_formula(1,CGF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,ACB)",
       "arc_property_center_angle(1,AED,A)",

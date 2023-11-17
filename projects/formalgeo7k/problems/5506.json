@@ -2,9 +2,9 @@
   "problem_id": 5506,
   "annotation": "DengfengYue_2023-05-21",
   "source": "GeoQA-5970",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,点M为BC的中点,AD为△ABC的外角平分线,且AD⊥BD,若AB=6,AC=9,则MD的长为()",
-  "problem_text_en": "As shown in the figure, in △ABC, point M is the midpoint of BC, AD is the bisector of exterior angle of △ABC, and AD ⊥ BD, if AB = N_0, AC = N_1, the length of MD is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=6，AC=9，AD平分∠BAE，M是线段BC的中点，AD垂直于BD。求直线MD的长度。",
+  "problem_text_en": "As shown in the diagram, AB=6, AC=9, AD bisects ∠BAE, M bisects segment BC, AD⊥BD. Find the length of line MD.",
   "problem_img": "5506.png",
   "construction_cdl": [
     "Shape(ED,DA,AE)",
@@ -19,11 +19,11 @@
     "Collinear(BMC)"
   ],
   "text_cdl": [
-    "IsMidpointOfLine(M,BC)",
-    "IsBisectorOfAngle(AD,BAE)",
-    "PerpendicularBetweenLine(AD,BD)",
     "Equal(LengthOfLine(AB),6)",
-    "Equal(LengthOfLine(AC),9)"
+    "Equal(LengthOfLine(AC),9)",
+    "IsBisectorOfAngle(AD,BAE)",
+    "IsMidpointOfLine(M,BC)",
+    "PerpendicularBetweenLine(AD,BD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(MD))",
@@ -37,7 +37,11 @@
     "midsegment_of_triangle_judgment_midpoint(1,MD,BCE)",
     "midsegment_of_triangle_property_length(1,MD,BCE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,EDA,ADB)",
+      "line_addition(1,EA,AC)"
+    ],
     "adjacent_complementary_angle(1,EDA,ADB)": [
       "mirror_congruent_triangle_judgment_aas(2,EDA,BAD)"
     ],
@@ -50,10 +54,6 @@
     ],
     "midsegment_of_triangle_judgment_midpoint(1,MD,BCE)": [
       "midsegment_of_triangle_property_length(1,MD,BCE)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,EDA,ADB)",
-      "line_addition(1,EA,AC)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 3665,
   "annotation": "XiaoxiaoJin_2023-04-30",
   "source": "GeoQA-1388",
-  "problem_level": 1,
-  "problem_text_cn": "如图,将△AOB绕点O按逆时针方向旋转45°后得到△A′OB′,若△AOB=15°,则∠AOB′的度数是()",
-  "problem_text_en": "As shown in the figure, rotate △AOB around point O by N_0 counterclockwise to get △A′OB′, if △AOB = N_1, then the degree of ∠AOB′ is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，△ODC与△OBA是全等三角形，∠AOB=15°，∠COA=45°。求∠DOA的大小。",
+  "problem_text_en": "As shown in the diagram, △ODC is congruent to △OBA, ∠AOB=15°, ∠COA=45°. Find the measure of ∠DOA.",
   "problem_img": "3665.png",
   "construction_cdl": [
     "Shape(AO,OB,BA)",
@@ -12,9 +12,9 @@
     "Shape(DO,OA)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(COA),45)",
     "CongruentBetweenTriangle(ODC,OBA)",
-    "Equal(MeasureOfAngle(AOB),15)"
+    "Equal(MeasureOfAngle(AOB),15)",
+    "Equal(MeasureOfAngle(COA),45)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DOA))",
@@ -23,7 +23,7 @@
     "angle_addition(1,COD,DOA)",
     "congruent_triangle_property_angle_equal(1,ODC,OBA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,COD,DOA)",
       "congruent_triangle_property_angle_equal(1,ODC,OBA)"

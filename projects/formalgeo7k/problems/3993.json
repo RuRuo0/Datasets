@@ -2,9 +2,9 @@
   "problem_id": 3993,
   "annotation": "ZheZhu_2023-04-30",
   "source": "GeoQA-1944",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,∠C=60°,∠B=50°,D是BC上一点,DE⊥AB于点E,DF⊥AC于点F,则∠EDF的度数为()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠C = N_0, ∠B = N_1, D is a point on BC, DE ⊥ AB is at point E, DF ⊥ AC is at point F, then the degree of ∠EDF is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠ABC=50°，∠BCA=60°，CF⊥DF，DE垂直于BE。求∠EDF的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABC=50°, ∠BCA=60°, CF is perpendicular to DF, DE⊥BE. Find the measure of ∠EDF.",
   "problem_img": "3993.png",
   "construction_cdl": [
     "Shape(AE,ED,DF,FA)",
@@ -14,7 +14,12 @@
     "Collinear(AEB)",
     "Collinear(AFC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(ABC),50)",
+    "Equal(MeasureOfAngle(BCA),60)",
+    "PerpendicularBetweenLine(CF,DF)",
+    "PerpendicularBetweenLine(DE,BE)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(BCA),60)",
     "Equal(MeasureOfAngle(ABC),50)",
@@ -29,7 +34,7 @@
     "triangle_property_angle_sum(1,BCA)",
     "quadrilateral_property_angle_sum(1,AEDF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,AED,DEB)",
       "adjacent_complementary_angle(1,CFD,DFA)",

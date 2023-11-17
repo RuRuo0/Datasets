@@ -2,9 +2,9 @@
   "problem_id": 2261,
   "annotation": "DengfengYue_2023-04-16",
   "source": "Geometry3k-2364",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the regular polygon. Round to the nearest tenth.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AC=9，四边形DAEB是正方形。求DAEB的面积。",
+  "problem_text_en": "As shown in the diagram, AC=9, DAEB is a square. Find the area of DAEB.",
   "problem_img": "2261.png",
   "construction_cdl": [
     "Shape(DA,AC,CD)",
@@ -14,7 +14,10 @@
     "Collinear(DCE)",
     "Collinear(ACB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),9)",
+    "Square(DAEB)"
+  ],
   "image_cdl": [
     "Square(DAEB)",
     "Equal(LengthOfLine(AC),9)"
@@ -30,10 +33,7 @@
     "sine_theorem(1,ABD)",
     "parallelogram_area_formula_sine(1,DAEB)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,DAB)": [
-      "isosceles_triangle_property_angle_equal(1,DAB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_property_diagonal_bisection(1,AEBD,C)",
       "line_addition(1,AC,CB)",
@@ -41,6 +41,9 @@
       "triangle_property_angle_sum(1,DAB)",
       "sine_theorem(1,ABD)",
       "parallelogram_area_formula_sine(1,DAEB)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,DAB)": [
+      "isosceles_triangle_property_angle_equal(1,DAB)"
     ]
   }
 }

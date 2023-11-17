@@ -2,9 +2,9 @@
   "problem_id": 4810,
   "annotation": "ChenyangMao_2023-05-14",
   "source": "GeoQA-4235",
-  "problem_level": 1,
-  "problem_text_cn": "如图,PA、PB分别切⊙O于点A、B,若∠P=70°,则∠C的大小为()",
-  "problem_text_en": "As shown in the figure, PA and PB are tangent to ⊙O at points A and B respectively, if ∠P = N_0, then the size of ∠C is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠BPA=70°，圆O的圆心为O，⊙O的切线为PA，圆O的切线为PB。求∠ACB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BPA=70°, the center of ⊙O is O, the tangent to circle O is PA, PB is the tangent to ⊙O. Find the measure of ∠ACB.",
   "problem_img": "4810.png",
   "construction_cdl": [
     "Shape(OBA,AO,OB)",
@@ -15,10 +15,10 @@
     "Cocircular(O,ACB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(BPA),70)",
     "IsCentreOfCircle(O,O)",
     "IsTangentOfCircle(PA,O)",
-    "IsTangentOfCircle(PB,O)",
-    "Equal(MeasureOfAngle(BPA),70)"
+    "IsTangentOfCircle(PB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ACB))",
@@ -30,7 +30,7 @@
     "arc_property_center_angle(1,OBA,O)",
     "arc_property_circumference_angle_external(1,OBA,C)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(2,PA,O,O)",
       "tangent_of_circle_property_perpendicular(1,PB,O,O)",

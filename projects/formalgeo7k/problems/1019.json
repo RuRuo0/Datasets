@@ -2,15 +2,21 @@
   "problem_id": 1019,
   "annotation": "YanjunGuo_2023-04-09",
   "source": "Geometry3k-1052",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If Q R S T is a kite, find m \\angle R S T.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，QR=RS，QT=TS，∠QTS=68°，∠SRQ=136°，QRST是风筝形。求∠TSR的大小。",
+  "problem_text_en": "As shown in the diagram, QR=RS, QT=TS, ∠QTS=68°, ∠SRQ=136°, QR and QT are one pair of adjacent sides of the kite QRST. Find the measure of ∠TSR.",
   "problem_img": "1019.png",
   "construction_cdl": [
     "Shape(RQ,QS,SR)",
     "Shape(QT,TS,SQ)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(QR),LengthOfLine(RS))",
+    "Equal(LengthOfLine(QT),LengthOfLine(TS))",
+    "Equal(MeasureOfAngle(QTS),68)",
+    "Equal(MeasureOfAngle(SRQ),136)",
+    "Kite(QRST)"
+  ],
   "image_cdl": [
     "Kite(QRST)",
     "Equal(MeasureOfAngle(SRQ),136)",
@@ -29,19 +35,19 @@
     "triangle_property_angle_sum(1,TSQ)",
     "angle_addition(1,TSQ,QSR)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,RQS)": [
-      "isosceles_triangle_property_angle_equal(1,RQS)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,TSQ)": [
-      "isosceles_triangle_property_angle_equal(1,TSQ)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,RQS)",
       "isosceles_triangle_judgment_line_equal(1,TSQ)",
       "triangle_property_angle_sum(1,RQS)",
       "triangle_property_angle_sum(1,TSQ)",
       "angle_addition(1,TSQ,QSR)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,RQS)": [
+      "isosceles_triangle_property_angle_equal(1,RQS)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,TSQ)": [
+      "isosceles_triangle_property_angle_equal(1,TSQ)"
     ]
   }
 }

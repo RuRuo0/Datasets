@@ -2,9 +2,9 @@
   "problem_id": 6791,
   "annotation": "Yangli_2023-06-04",
   "source": "GeoQA-9915",
-  "problem_level": 1,
-  "problem_text_cn": "如图,A、B是⊙O上的两点,AC是⊙O的切线,∠B=65°,则∠BAC=()",
-  "problem_text_en": "As shown in the figure, A and B are two points on ⊙O, AC is the tangent of ⊙O, ∠B = N_0, then ∠BAC = ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠ABO=65°，⊙O的圆心为O，CA是⊙O的切线。求∠BAC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABO=65°, O is the center of ⊙O, CA is the tangent to ⊙O. Find the measure of ∠BAC.",
   "problem_img": "6791.png",
   "construction_cdl": [
     "Shape(AO,OB,OBA)",
@@ -15,8 +15,8 @@
   ],
   "text_cdl": [
     "Equal(MeasureOfAngle(ABO),65)",
-    "IsTangentOfCircle(CA,O)",
-    "IsCentreOfCircle(O,O)"
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(CA,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BAC))",
@@ -29,7 +29,13 @@
     "tangent_of_circle_property_perpendicular(1,CA,O,O)",
     "angle_addition(1,OAB,BAC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "tangent_of_circle_property_perpendicular(1,CA,O,O)",
+      "angle_addition(1,OAB,BAC)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OAB)"
     ],
@@ -38,12 +44,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OAB)": [
       "isosceles_triangle_property_angle_equal(1,OAB)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "tangent_of_circle_property_perpendicular(1,CA,O,O)",
-      "angle_addition(1,OAB,BAC)"
     ]
   }
 }

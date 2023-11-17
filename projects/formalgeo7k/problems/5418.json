@@ -2,9 +2,9 @@
   "problem_id": 5418,
   "annotation": "XiaoxiaoJin_2023-05-21",
   "source": "GeoQA-5730",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在▱ABCD中,对角线AC、BD交于点O,E是BC边上的中点,若OE=2,AD=5,则▱ABCD的周长为()",
-  "problem_text_en": "As shown in the figure, in ▱ABCD, the diagonal AC and BD intersect at point O, and E is the midpoint on the edge of BC. If OE = N_0, AD = N_1, then the perimeter of ▱ABCD is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AD=5，OE=2，E是线段BC的中点，AD和BC是平行四边形ABCD的一组对边。求ABCD的周长。",
+  "problem_text_en": "As shown in the diagram, AD=5, OE=2, E is the midpoint of segment BC, AD and BC are opposite sides of the parallelogram ABCD. Find the perimeter of quadrilateral ABCD.",
   "problem_img": "5418.png",
   "construction_cdl": [
     "Shape(AB,BO,OA)",
@@ -17,8 +17,8 @@
     "Collinear(BOD)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(OE),2)",
     "Equal(LengthOfLine(AD),5)",
+    "Equal(LengthOfLine(OE),2)",
     "IsMidpointOfLine(E,BC)",
     "Parallelogram(ABCD)"
   ],
@@ -35,7 +35,13 @@
     "midsegment_of_triangle_property_length(1,EO,BCD)",
     "quadrilateral_perimeter_formula(1,ABCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallelogram_property_opposite_line_equal(1,BCDA)",
+      "parallelogram_property_diagonal_bisection(1,ABCD,O)",
+      "parallelogram_property_diagonal_bisection(1,BCDA,O)",
+      "quadrilateral_perimeter_formula(1,ABCD)"
+    ],
     "parallelogram_property_diagonal_bisection(1,ABCD,O)": [
       "midsegment_of_triangle_judgment_midpoint(1,OE,CAB)"
     ],
@@ -47,12 +53,6 @@
     ],
     "midsegment_of_triangle_judgment_midpoint(1,EO,BCD)": [
       "midsegment_of_triangle_property_length(1,EO,BCD)"
-    ],
-    "START": [
-      "parallelogram_property_opposite_line_equal(1,BCDA)",
-      "parallelogram_property_diagonal_bisection(1,ABCD,O)",
-      "parallelogram_property_diagonal_bisection(1,BCDA,O)",
-      "quadrilateral_perimeter_formula(1,ABCD)"
     ]
   }
 }

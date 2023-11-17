@@ -2,9 +2,9 @@
   "problem_id": 2123,
   "annotation": "XiaoxiaoJin_2023-04-23",
   "source": "Geometry3k-2215",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot P, P D = 10, P Q = 10, and Q E = 20, find A B.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，PD=10，PQ=10，QE=20，P是圆P的圆心，CQ垂直于PQ，PD⊥BD。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, PD=10, PQ=10, QE=20, P is the center of ⊙P, CQ is perpendicular to PQ, PD is perpendicular to BD. Find the length of line AB.",
   "problem_img": "2123.png",
   "construction_cdl": [
     "Shape(BD,DG,PGB)",
@@ -21,7 +21,14 @@
     "Collinear(PQF)",
     "Cocircular(P,AGBCFE)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(PD),10)",
+    "Equal(LengthOfLine(PQ),10)",
+    "Equal(LengthOfLine(QE),20)",
+    "IsCentreOfCircle(P,P)",
+    "PerpendicularBetweenLine(CQ,PQ)",
+    "PerpendicularBetweenLine(PD,BD)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(P,P)",
     "Equal(LengthOfLine(PD),10)",
@@ -42,7 +49,14 @@
     "mirror_congruent_triangle_judgment_hl(1,ADP,EPQ)",
     "mirror_congruent_triangle_property_line_equal(1,PAD,PQE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AD,DB)",
+      "adjacent_complementary_angle(1,ADP,PDB)",
+      "adjacent_complementary_angle(1,CQP,PQE)",
+      "radius_of_circle_property_length_equal(1,PA,P)",
+      "radius_of_circle_property_length_equal(1,PE,P)"
+    ],
     "adjacent_complementary_angle(1,ADP,PDB)": [
       "circle_property_chord_perpendicular_bisect_chord(1,P,PD,AB)",
       "mirror_congruent_triangle_judgment_hl(1,ADP,EPQ)"
@@ -58,13 +72,6 @@
     ],
     "mirror_congruent_triangle_judgment_hl(1,ADP,EPQ)": [
       "mirror_congruent_triangle_property_line_equal(1,PAD,PQE)"
-    ],
-    "START": [
-      "line_addition(1,AD,DB)",
-      "adjacent_complementary_angle(1,ADP,PDB)",
-      "adjacent_complementary_angle(1,CQP,PQE)",
-      "radius_of_circle_property_length_equal(1,PA,P)",
-      "radius_of_circle_property_length_equal(1,PE,P)"
     ]
   }
 }

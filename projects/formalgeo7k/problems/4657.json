@@ -2,9 +2,9 @@
   "problem_id": 4657,
   "annotation": "YiwenHuang_2023-05-21",
   "source": "GeoQA-3909",
-  "problem_level": 1,
-  "problem_text_cn": "如图,PA切⊙O于点A,PO交⊙O于点B,若PA=8,OP=10,则⊙O的半径等于()",
-  "problem_text_en": "As shown in the figure, PA tangents to ⊙O at point A, and PO intersects ⊙O at point B. If PA = N_0, OP = N_1, then the radius of ⊙O is equal to ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，OP=10，PA=8，O是圆O的圆心，PA是⊙O的切线。求直线OA的长度。",
+  "problem_text_en": "As shown in the diagram, OP=10, PA=8, O is the center of ⊙O, the tangent to circle O is PA. Find the length of line OA.",
   "problem_img": "4657.png",
   "construction_cdl": [
     "Shape(AO,OB,OBA)",
@@ -13,10 +13,10 @@
     "Cocircular(O,BA)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(PA,O)",
+    "Equal(LengthOfLine(OP),10)",
     "Equal(LengthOfLine(PA),8)",
-    "Equal(LengthOfLine(OP),10)"
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(PA,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(OA))",
@@ -26,15 +26,15 @@
     "right_triangle_judgment_angle(1,PAO)",
     "right_triangle_property_pythagorean(1,PAO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(2,PA,O,O)"
+    ],
     "tangent_of_circle_property_perpendicular(2,PA,O,O)": [
       "right_triangle_judgment_angle(1,PAO)"
     ],
     "right_triangle_judgment_angle(1,PAO)": [
       "right_triangle_property_pythagorean(1,PAO)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(2,PA,O,O)"
     ]
   }
 }

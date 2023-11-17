@@ -2,9 +2,9 @@
   "problem_id": 3133,
   "annotation": "YimingHe_2023-04-23",
   "source": "GeoQA-389",
-  "problem_level": 1,
-  "problem_text_cn": "如图,四边形ABDC中,△EDC是由△ABC绕顶点C旋转40°所得,顶点A恰好转到AB上一点E的位置,则∠1+∠2=()",
-  "problem_text_en": "As shown in the figure, in the quadrilateral ABDC, △EDC is obtained by rotating △ABC around vertex C by N_0, vertex A happens to turn to the position of point E on AB, then ∠1 + ∠2 = ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，三角形ABC与三角形EDC是全等三角形，∠DCO=40°，∠ECA=40°。求∠OBD的大小与∠OEB的大小之和。",
+  "problem_text_en": "As shown in the diagram, △ABC is congruent to △EDC, ∠DCO=40°, ∠ECA=40°. Find the sum of the measure of ∠OBD and the measure of ∠OEB.",
   "problem_img": "3133.png",
   "construction_cdl": [
     "Shape(BD,DO,OB)",
@@ -18,8 +18,8 @@
   ],
   "text_cdl": [
     "CongruentBetweenTriangle(ABC,EDC)",
-    "Equal(MeasureOfAngle(ECA),40)",
-    "Equal(MeasureOfAngle(DCO),40)"
+    "Equal(MeasureOfAngle(DCO),40)",
+    "Equal(MeasureOfAngle(ECA),40)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Add(MeasureOfAngle(OBD),MeasureOfAngle(OEB)))",
@@ -34,13 +34,7 @@
     "angle_addition(1,AEC,CEO)",
     "adjacent_complementary_angle(1,AEO,OEB)"
   ],
-  "theorem_seq_dag": {
-    "congruent_triangle_property_line_equal(1,ABC,EDC)": [
-      "isosceles_triangle_judgment_line_equal(1,CBD)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,CBD)": [
-      "isosceles_triangle_property_angle_equal(1,CBD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "congruent_triangle_property_line_equal(1,ABC,EDC)",
       "triangle_property_angle_sum(1,CBD)",
@@ -48,6 +42,12 @@
       "triangle_property_angle_sum(1,CAE)",
       "angle_addition(1,AEC,CEO)",
       "adjacent_complementary_angle(1,AEO,OEB)"
+    ],
+    "congruent_triangle_property_line_equal(1,ABC,EDC)": [
+      "isosceles_triangle_judgment_line_equal(1,CBD)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,CBD)": [
+      "isosceles_triangle_property_angle_equal(1,CBD)"
     ]
   }
 }

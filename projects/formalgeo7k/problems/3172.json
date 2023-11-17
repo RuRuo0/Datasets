@@ -2,9 +2,9 @@
   "problem_id": 3172,
   "annotation": "JiaZou_2023-04-23",
   "source": "GeoQA-448",
-  "problem_level": 1,
-  "problem_text_cn": "如图,直线AB∥CD,∠C=44°,∠E为直角,则∠1等于()",
-  "problem_text_en": "As shown in the figure, the straight line AB ∥ CD, ∠C = N_0, ∠E is a right angle, then ∠1 is equal to ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠CEA=90°，∠ECD=44°，AB∥FE，FE平行于CD。求∠MAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CEA=90°, ∠ECD=44°, AB∥FE, FE is parallel to CD. Find the measure of ∠MAB.",
   "problem_img": "3172.png",
   "construction_cdl": [
     "Shape(MA,AB)",
@@ -15,10 +15,10 @@
     "Collinear(MAE)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AB,FE)",
-    "ParallelBetweenLine(FE,CD)",
+    "Equal(MeasureOfAngle(CEA),90)",
     "Equal(MeasureOfAngle(ECD),44)",
-    "Equal(MeasureOfAngle(CEA),90)"
+    "ParallelBetweenLine(AB,FE)",
+    "ParallelBetweenLine(FE,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(MAB))",
@@ -29,7 +29,7 @@
     "angle_addition(1,CEF,FEA)",
     "adjacent_complementary_angle(1,MAB,BAE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_alternate_interior_angle(2,FE,CD)",
       "parallel_property_alternate_interior_angle(1,AB,FE)",

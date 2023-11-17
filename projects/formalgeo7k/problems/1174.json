@@ -2,9 +2,9 @@
   "problem_id": 1174,
   "annotation": "ChenyangMao_2023-04-09",
   "source": "Geometry3k-1214",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure, m \\angle 1 = 123. Find the measure of \\angle 11.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠HUN=123°，KA平行于UQ，UK∥QA。求∠QAK的大小。",
+  "problem_text_en": "As shown in the diagram, ∠HUN=123°, KA is parallel to UQ, UK is parallel to QA. Find the measure of ∠QAK.",
   "problem_img": "1174.png",
   "construction_cdl": [
     "Shape(GK,KF)",
@@ -18,7 +18,9 @@
     "Collinear(JAQI)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(HUN),123)"
+    "Equal(MeasureOfAngle(HUN),123)",
+    "ParallelBetweenLine(KA,UQ)",
+    "ParallelBetweenLine(UK,QA)"
   ],
   "image_cdl": [
     "ParallelBetweenLine(KA,UQ)",
@@ -31,13 +33,13 @@
     "parallelogram_judgment_parallel_and_parallel(1,UQAK)",
     "parallelogram_property_opposite_angle_equal(1,UQAK)"
   ],
-  "theorem_seq_dag": {
-    "parallelogram_judgment_parallel_and_parallel(1,UQAK)": [
-      "parallelogram_property_opposite_angle_equal(1,UQAK)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "vertical_angle(1,HUN,KUQ)",
       "parallelogram_judgment_parallel_and_parallel(1,UQAK)"
+    ],
+    "parallelogram_judgment_parallel_and_parallel(1,UQAK)": [
+      "parallelogram_property_opposite_angle_equal(1,UQAK)"
     ]
   }
 }

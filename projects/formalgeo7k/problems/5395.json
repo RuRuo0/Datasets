@@ -2,9 +2,9 @@
   "problem_id": 5395,
   "annotation": "XiaoxiaoJin_2023-05-21",
   "source": "GeoQA-5687",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB∥CD,AD=CD,∠1=65°,则∠2的度数是()",
-  "problem_text_en": "As shown in the figure, AB ∥ CD, AD = CD, ∠1 = N_0, then the degree of ∠2 is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AD=CD，∠EAB=65°，AB平行于CD。求∠CDA的大小。",
+  "problem_text_en": "As shown in the diagram, AD=CD, ∠EAB=65°, AB∥CD. Find the measure of ∠CDA.",
   "problem_img": "5395.png",
   "construction_cdl": [
     "Shape(EA,AB)",
@@ -13,9 +13,9 @@
     "Collinear(EAC)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AB,CD)",
     "Equal(LengthOfLine(AD),LengthOfLine(CD))",
-    "Equal(MeasureOfAngle(EAB),65)"
+    "Equal(MeasureOfAngle(EAB),65)",
+    "ParallelBetweenLine(AB,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CDA))",
@@ -26,14 +26,14 @@
     "isosceles_triangle_property_angle_equal(1,DAC)",
     "triangle_property_angle_sum(1,ACD)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,DAC)": [
-      "isosceles_triangle_property_angle_equal(1,DAC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_corresponding_angle(1,AB,CD,E)",
       "isosceles_triangle_judgment_line_equal(1,DAC)",
       "triangle_property_angle_sum(1,ACD)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,DAC)": [
+      "isosceles_triangle_property_angle_equal(1,DAC)"
     ]
   }
 }

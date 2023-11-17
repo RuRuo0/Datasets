@@ -2,9 +2,9 @@
   "problem_id": 5492,
   "annotation": "ChenyangMao_2023-05-21",
   "source": "GeoQA-5949",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,∠C=90°,E是CA延长线上一点,F是CB上一点,AE=12,BF=8,点P,Q,D分别是AF,BE,AB的中点,则PQ的长为()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠C = N_0, E is a point on the CA extension line, F is a point on the CB, AE = N_1, BF = N_2, points P, Q, D are the middle of AF, BE, AB, respectively Point, then the length of PQ is ()",
+  "problem_level": 13,
+  "problem_text_cn": "如图所示，AE=12，BF=8，D是线段AB的中点，P是线段AF的中点，Q平分线段EB，∠BCA是直角△BCA的直角。求直线PQ的长度。",
+  "problem_text_en": "As shown in the diagram, AE=12, BF=8, D is the midpoint of segment AB, P is the midpoint of segment AF, Q is the midpoint of segment EB, BC and CA are the legs of the right △ BCA. Find the length of line PQ.",
   "problem_img": "5492.png",
   "construction_cdl": [
     "Shape(CA,AP,PF,FC)",
@@ -20,12 +20,12 @@
     "Collinear(BFC)"
   ],
   "text_cdl": [
-    "RightTriangle(BCA)",
-    "IsMidpointOfLine(Q,EB)",
+    "Equal(LengthOfLine(AE),12)",
+    "Equal(LengthOfLine(BF),8)",
     "IsMidpointOfLine(D,AB)",
     "IsMidpointOfLine(P,AF)",
-    "Equal(LengthOfLine(AE),12)",
-    "Equal(LengthOfLine(BF),8)"
+    "IsMidpointOfLine(Q,EB)",
+    "RightTriangle(BCA)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(PQ))",
@@ -45,7 +45,13 @@
     "right_triangle_judgment_angle(1,QDP)",
     "right_triangle_property_pythagorean(1,QDP)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "triangle_property_angle_sum(1,BCA)",
+      "angle_addition(1,QDA,ADP)",
+      "midsegment_of_triangle_judgment_midpoint(1,DP,ABF)",
+      "midsegment_of_triangle_judgment_midpoint(1,DQ,BAE)"
+    ],
     "triangle_property_angle_sum(1,BCA)": [
       "right_triangle_judgment_angle(1,QDP)"
     ],
@@ -77,12 +83,6 @@
     ],
     "right_triangle_judgment_angle(1,QDP)": [
       "right_triangle_property_pythagorean(1,QDP)"
-    ],
-    "START": [
-      "triangle_property_angle_sum(1,BCA)",
-      "angle_addition(1,QDA,ADP)",
-      "midsegment_of_triangle_judgment_midpoint(1,DP,ABF)",
-      "midsegment_of_triangle_judgment_midpoint(1,DQ,BAE)"
     ]
   }
 }

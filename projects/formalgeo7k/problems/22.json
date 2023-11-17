@@ -2,9 +2,9 @@
   "problem_id": 22,
   "annotation": "XiaokaiZhang_2023-04-02",
   "source": "Geometry3k-21",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure, m \\angle 4 = 101. Find the measure of \\angle 5.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠NJK=101°，JA∥NF。求∠HNJ的大小。",
+  "problem_text_en": "As shown in the diagram, ∠NJK=101°, JA is parallel to NF. Find the measure of ∠HNJ.",
   "problem_img": "22.png",
   "construction_cdl": [
     "Shape(KJ,JE)",
@@ -20,7 +20,8 @@
     "Collinear(EJNI)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(NJK),101)"
+    "Equal(MeasureOfAngle(NJK),101)",
+    "ParallelBetweenLine(JA,NF)"
   ],
   "image_cdl": [
     "ParallelBetweenLine(JA,NF)"
@@ -32,15 +33,15 @@
     "parallel_property_collinear_extend(2,FN,JK,H)",
     "parallel_property_ipsilateral_internal_angle(1,NH,JK)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(1,JA,NF,K)"
+    ],
     "parallel_property_collinear_extend(1,JA,NF,K)": [
       "parallel_property_collinear_extend(2,FN,JK,H)"
     ],
     "parallel_property_collinear_extend(2,FN,JK,H)": [
       "parallel_property_ipsilateral_internal_angle(1,NH,JK)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(1,JA,NF,K)"
     ]
   }
 }

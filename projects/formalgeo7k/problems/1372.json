@@ -2,9 +2,9 @@
   "problem_id": 1372,
   "annotation": "ZheZhu_2023-04-09",
   "source": "Geometry3k-1420",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x so that m \\parallel n.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠GFC=14*x+9°，∠GHD=5*x+90°，AD平行于BC。求x的值。",
+  "problem_text_en": "As shown in the diagram, ∠GFC=14*x+9°, ∠GHD=5*x+90°, AD∥BC. Find the value of x.",
   "problem_img": "1372.png",
   "construction_cdl": [
     "Shape(GH,HD)",
@@ -13,7 +13,11 @@
     "Collinear(BFC)",
     "Collinear(AHD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(GFC),14*x+9)",
+    "Equal(MeasureOfAngle(GHD),5*x+90)",
+    "ParallelBetweenLine(AD,BC)"
+  ],
   "image_cdl": [
     "ParallelBetweenLine(AD,BC)",
     "Equal(MeasureOfAngle(GHD),5*x+90)",
@@ -26,15 +30,15 @@
     "parallel_property_collinear_extend(3,CB,DH,F)",
     "parallel_property_corresponding_angle(1,HD,FC,G)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,AD,BC,H)"
+    ],
     "parallel_property_collinear_extend(3,AD,BC,H)": [
       "parallel_property_collinear_extend(3,CB,DH,F)"
     ],
     "parallel_property_collinear_extend(3,CB,DH,F)": [
       "parallel_property_corresponding_angle(1,HD,FC,G)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,AD,BC,H)"
     ]
   }
 }

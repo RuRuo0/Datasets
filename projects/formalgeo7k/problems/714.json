@@ -2,9 +2,9 @@
   "problem_id": 714,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-735",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Q R S T is a rectangle. If Q P = 3 x + 11 and P S = 4 x + 8, find Q S.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，PS=4*x+8，QP=3*x+11，四边形QTSR是矩形。求直线QS的长度。",
+  "problem_text_en": "As shown in the diagram, PS=4*x+8, QP=3*x+11, quadrilateral QTSR is a rectangle. Find the length of line QS.",
   "problem_img": "714.png",
   "construction_cdl": [
     "Shape(QP,PR,RQ)",
@@ -14,7 +14,11 @@
     "Collinear(QPS)",
     "Collinear(TPR)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(PS),4*x+8)",
+    "Equal(LengthOfLine(QP),3*x+11)",
+    "Rectangle(QTSR)"
+  ],
   "image_cdl": [
     "Rectangle(QTSR)",
     "Equal(LengthOfLine(QP),3*x+11)",
@@ -26,7 +30,7 @@
     "parallelogram_property_diagonal_bisection(1,QTSR,P)",
     "line_addition(1,QP,PS)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_property_diagonal_bisection(1,QTSR,P)",
       "line_addition(1,QP,PS)"

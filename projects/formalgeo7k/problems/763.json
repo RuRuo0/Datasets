@@ -2,9 +2,9 @@
   "problem_id": 763,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-788",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot F, G K = 14 and m \\widehat G H K = 142. Find J K.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，GK=14，MF=8，弧FKG的角度为142，圆F的圆心为F，HJ⊥KJ。求直线JK的长度。",
+  "problem_text_en": "As shown in the diagram, GK=14, MF=8, the measure of ⌒FKG is 142, F is the center of circle F, HJ is perpendicular to KJ. Find the length of line JK.",
   "problem_img": "763.png",
   "construction_cdl": [
     "Shape(GJ,JH,FHG)",
@@ -15,7 +15,13 @@
     "Collinear(HJFM)",
     "Cocircular(F,GMKH)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(GK),14)",
+    "Equal(LengthOfLine(MF),8)",
+    "Equal(MeasureOfArc(FKG),142)",
+    "IsCentreOfCircle(F,F)",
+    "PerpendicularBetweenLine(HJ,KJ)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(F,F)",
     "Equal(LengthOfLine(GK),14)",
@@ -30,13 +36,13 @@
     "circle_property_chord_perpendicular_bisect_chord(1,F,FJ,KG)",
     "line_addition(1,GJ,JK)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,HJK,KJF)": [
-      "circle_property_chord_perpendicular_bisect_chord(1,F,FJ,KG)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,HJK,KJF)",
       "line_addition(1,GJ,JK)"
+    ],
+    "adjacent_complementary_angle(1,HJK,KJF)": [
+      "circle_property_chord_perpendicular_bisect_chord(1,F,FJ,KG)"
     ]
   }
 }

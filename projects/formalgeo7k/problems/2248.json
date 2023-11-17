@@ -2,16 +2,22 @@
   "problem_id": 2248,
   "annotation": "Yangli_2023-04-09",
   "source": "Geometry3k-2349",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the value of x. Round to the nearest tenth.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AE=x，ED=2，∠AED=15°，∠CAD=70°，DC⊥AC。求x的值。",
+  "problem_text_en": "As shown in the diagram, AE=x, ED=2, ∠AED=15°, ∠CAD=70°, DC is perpendicular to AC. Find the value of x.",
   "problem_img": "2248.png",
   "construction_cdl": [
     "Shape(AE,ED,DA)",
     "Shape(AD,DC,CA)",
     "Collinear(EDC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AE),x)",
+    "Equal(LengthOfLine(ED),2)",
+    "Equal(MeasureOfAngle(AED),15)",
+    "Equal(MeasureOfAngle(CAD),70)",
+    "PerpendicularBetweenLine(DC,AC)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(CAD),70)",
     "Equal(LengthOfLine(AE),x)",
@@ -27,7 +33,7 @@
     "triangle_property_angle_sum(1,EDA)",
     "sine_theorem(1,EDA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,CAE)",
       "angle_addition(1,CAD,DAE)",

@@ -2,9 +2,9 @@
   "problem_id": 3787,
   "annotation": "ChenyangMao_2023-04-30",
   "source": "GeoQA-1626",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,∠BAC=90°,AD⊥BC于点D,AE平分∠DAC,∠B=50°,求∠DAE的度数为()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠BAC = N_0, AD ⊥ BC at point D, AE bisects ∠DAC, ∠B = N_1, so the degree of ∠DAE is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠ABC=50°，∠CAB=90°，AE是∠CAD的角平分线，AD垂直于CD，BD⊥AD。求∠EAD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABC=50°, ∠CAB=90°, AE bisects ∠CAD, AD is perpendicular to CD, BD is perpendicular to AD. Find the measure of ∠EAD.",
   "problem_img": "3787.png",
   "construction_cdl": [
     "Shape(AB,BD,DA)",
@@ -12,7 +12,13 @@
     "Shape(AE,EC,CA)",
     "Collinear(BDEC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(ABC),50)",
+    "Equal(MeasureOfAngle(CAB),90)",
+    "IsBisectorOfAngle(AE,CAD)",
+    "PerpendicularBetweenLine(AD,CD)",
+    "PerpendicularBetweenLine(BD,AD)"
+  ],
   "image_cdl": [
     "PerpendicularBetweenLine(BD,AD)",
     "PerpendicularBetweenLine(AD,CD)",
@@ -27,7 +33,7 @@
     "triangle_property_angle_sum(1,ABC)",
     "angle_addition(1,CAE,EAD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,ADC)",
       "triangle_property_angle_sum(1,ABC)",

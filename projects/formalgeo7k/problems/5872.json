@@ -2,9 +2,9 @@
   "problem_id": 5872,
   "annotation": "QikeHuang_2023-05-28",
   "source": "GeoQA-7914",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在边长为9的正方形ABCD中,F为AB上一点,连接CF．过点F作FE⊥CF,交AD于点E,若AF=3,则AE等于()",
-  "problem_text_en": "As shown in the figure, in the square ABCD with edge length N_0, F is a point on AB. Connect CF. Pass point F to draw FE ⊥ CF which intersects AD at point E, if AF = N_1, then AE is equal to ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=9，AF=3，EF垂直于CF，ABCD是正方形。求直线AE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=9, AF=3, EF is perpendicular to CF, quadrilateral ABCD is a square. Find the length of line AE.",
   "problem_img": "5872.png",
   "construction_cdl": [
     "Shape(DE,EF,FC,CD)",
@@ -14,10 +14,10 @@
     "Collinear(AFB)"
   ],
   "text_cdl": [
-    "Square(ABCD)",
-    "PerpendicularBetweenLine(EF,CF)",
+    "Equal(LengthOfLine(AB),9)",
     "Equal(LengthOfLine(AF),3)",
-    "Equal(LengthOfLine(AB),9)"
+    "PerpendicularBetweenLine(EF,CF)",
+    "Square(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AE))",
@@ -31,7 +31,13 @@
     "similar_triangle_property_line_ratio(1,FEA,CFB)",
     "similar_triangle_property_line_ratio(1,EAF,FBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "angle_addition(1,AFE,EFC)",
+      "adjacent_complementary_angle(1,AFC,CFB)",
+      "triangle_property_angle_sum(1,EAF)",
+      "line_addition(1,AF,FB)"
+    ],
     "angle_addition(1,AFE,EFC)": [
       "similar_triangle_judgment_aa(1,FEA,CFB)"
     ],
@@ -44,12 +50,6 @@
     "similar_triangle_judgment_aa(1,FEA,CFB)": [
       "similar_triangle_property_line_ratio(1,FEA,CFB)",
       "similar_triangle_property_line_ratio(1,EAF,FBC)"
-    ],
-    "START": [
-      "angle_addition(1,AFE,EFC)",
-      "adjacent_complementary_angle(1,AFC,CFB)",
-      "triangle_property_angle_sum(1,EAF)",
-      "line_addition(1,AF,FB)"
     ]
   }
 }

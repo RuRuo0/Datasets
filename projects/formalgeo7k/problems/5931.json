@@ -2,9 +2,9 @@
   "problem_id": 5931,
   "annotation": "XiaoxiaoJin_2023-05-28",
   "source": "GeoQA-8236",
-  "problem_level": 1,
-  "problem_text_cn": "如图,某教学兴趣小组想测量一棵树CD的高度,他们先在点A处测得树顶C的仰角为30°,然后沿AD方向前行10m,到达B点,在B处测得树顶C的仰角高度为60°(A、B、D三点在同一直线上)则这棵树CD的高度为()",
-  "problem_text_en": "As shown in the figure, a teaching interest group wants to measure the height of a tree CD. They firstly measured the elevation angle of the tree top C at point A as N_0, and then proceeded N_1 along the direction of AD to point B, and the elevation angle of tree top C measured at B is N_2  (the three points A, B, and D are on the same straight line), then the height of the tree CD is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=10，∠BDC=90°，∠CAB=30°，∠CBD=60°。求直线DC的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, ∠BDC=90°, ∠CAB=30°, ∠CBD=60°. Find the length of line DC.",
   "problem_img": "5931.png",
   "construction_cdl": [
     "Shape(CA,AB,BC)",
@@ -13,9 +13,9 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(AB),10)",
+    "Equal(MeasureOfAngle(BDC),90)",
     "Equal(MeasureOfAngle(CAB),30)",
-    "Equal(MeasureOfAngle(CBD),60)",
-    "Equal(MeasureOfAngle(BDC),90)"
+    "Equal(MeasureOfAngle(CBD),60)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(DC))",
@@ -26,17 +26,17 @@
     "isosceles_triangle_judgment_angle_equal(1,BCA)",
     "sine_theorem(1,CBD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,ABC,CBD)",
+      "triangle_property_angle_sum(1,ABC)",
+      "sine_theorem(1,CBD)"
+    ],
     "adjacent_complementary_angle(1,ABC,CBD)": [
       "isosceles_triangle_judgment_angle_equal(1,BCA)"
     ],
     "triangle_property_angle_sum(1,ABC)": [
       "isosceles_triangle_judgment_angle_equal(1,BCA)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,ABC,CBD)",
-      "triangle_property_angle_sum(1,ABC)",
-      "sine_theorem(1,CBD)"
     ]
   }
 }

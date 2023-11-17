@@ -2,9 +2,9 @@
   "problem_id": 6375,
   "annotation": "ChengQin_2023-06-04",
   "source": "GeoQA-9231",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在平行四边形ABCD中,AC与BD相交于点O,AB⊥AC,∠DAC=45°,AC=2,则BD的长为()",
-  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, AC and BD intersect at point O, AB ⊥ AC, ∠DAC = N_0, AC = N_1, then the length of BD is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AC=2，∠DAC=45°，AD和BC是▱ABCD的一组对边，CA垂直于BA。求直线BD的长度。",
+  "problem_text_en": "As shown in the diagram, AC=2, ∠DAC=45°, AD and BC are opposite sides of the ▱ ABCD, CA is perpendicular to BA. Find the length of line BD.",
   "problem_img": "6375.png",
   "construction_cdl": [
     "Shape(AB,BO,OA)",
@@ -15,10 +15,10 @@
     "Collinear(BOD)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
-    "PerpendicularBetweenLine(CA,BA)",
+    "Equal(LengthOfLine(AC),2)",
     "Equal(MeasureOfAngle(DAC),45)",
-    "Equal(LengthOfLine(AC),2)"
+    "Parallelogram(ABCD)",
+    "PerpendicularBetweenLine(CA,BA)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BD))",
@@ -34,7 +34,16 @@
     "parallelogram_property_diagonal_bisection(1,BCDA,O)",
     "line_addition(1,BO,OD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallelogram_property_diagonal_bisection(1,ABCD,O)",
+      "line_addition(1,AO,OC)",
+      "parallel_property_alternate_interior_angle(1,AD,BC)",
+      "triangle_property_angle_sum(1,ABC)",
+      "right_triangle_judgment_angle(1,OAB)",
+      "parallelogram_property_diagonal_bisection(1,BCDA,O)",
+      "line_addition(1,BO,OD)"
+    ],
     "parallel_property_alternate_interior_angle(1,AD,BC)": [
       "isosceles_triangle_judgment_angle_equal(1,ABC)",
       "isosceles_triangle_judgment_angle_equal(1,ABC)"
@@ -44,15 +53,6 @@
     ],
     "right_triangle_judgment_angle(1,OAB)": [
       "right_triangle_property_pythagorean(1,OAB)"
-    ],
-    "START": [
-      "parallelogram_property_diagonal_bisection(1,ABCD,O)",
-      "line_addition(1,AO,OC)",
-      "parallel_property_alternate_interior_angle(1,AD,BC)",
-      "triangle_property_angle_sum(1,ABC)",
-      "right_triangle_judgment_angle(1,OAB)",
-      "parallelogram_property_diagonal_bisection(1,BCDA,O)",
-      "line_addition(1,BO,OD)"
     ]
   }
 }

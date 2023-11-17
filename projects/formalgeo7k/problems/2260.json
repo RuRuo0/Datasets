@@ -2,9 +2,9 @@
   "problem_id": 2260,
   "annotation": "Yangli_2023-04-09",
   "source": "Geometry3k-2363",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the value of x in the figure at the right.",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，AB=13，AD=x，AF=3，BE=15，CE=15/2，DC=12，BF⊥AF，DE⊥BE。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=13, AD=x, AF=3, BE=15, CE=15/2, DC=12, BF⊥AF, DE⊥BE. Find the value of x.",
   "problem_img": "2260.png",
   "construction_cdl": [
     "Shape(DC,CE,ED)",
@@ -14,7 +14,16 @@
     "Collinear(DFB)",
     "Collinear(CEB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),13)",
+    "Equal(LengthOfLine(AD),x)",
+    "Equal(LengthOfLine(AF),3)",
+    "Equal(LengthOfLine(BE),15)",
+    "Equal(LengthOfLine(CE),15/2)",
+    "Equal(LengthOfLine(DC),12)",
+    "PerpendicularBetweenLine(BF,AF)",
+    "PerpendicularBetweenLine(DE,BE)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AD),x)",
     "Equal(LengthOfLine(AF),3)",
@@ -40,7 +49,14 @@
     "right_triangle_property_pythagorean(1,BFA)",
     "right_triangle_property_pythagorean(1,AFD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,DF,FB)",
+      "adjacent_complementary_angle(1,BFA,AFD)",
+      "adjacent_complementary_angle(1,CED,DEB)",
+      "right_triangle_judgment_angle(1,DEB)",
+      "right_triangle_judgment_angle(1,BFA)"
+    ],
     "adjacent_complementary_angle(1,BFA,AFD)": [
       "right_triangle_judgment_angle(1,AFD)"
     ],
@@ -58,13 +74,6 @@
     ],
     "right_triangle_judgment_angle(1,BFA)": [
       "right_triangle_property_pythagorean(1,BFA)"
-    ],
-    "START": [
-      "line_addition(1,DF,FB)",
-      "adjacent_complementary_angle(1,BFA,AFD)",
-      "adjacent_complementary_angle(1,CED,DEB)",
-      "right_triangle_judgment_angle(1,DEB)",
-      "right_triangle_judgment_angle(1,BFA)"
     ]
   }
 }

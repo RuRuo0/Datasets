@@ -2,16 +2,22 @@
   "problem_id": 748,
   "annotation": "YimingHe_2023-03-12",
   "source": "Geometry3k-773",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the triangle. Round to the nearest tenth if necessary.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，BC=11，CA=23，OA=25，OB=35，OA垂直于CA。求△OCB的周长。",
+  "problem_text_en": "As shown in the diagram, BC=11, CA=23, OA=25, OB=35, OA⊥CA. Find the perimeter of △OCB.",
   "problem_img": "748.png",
   "construction_cdl": [
     "Shape(OA,AC,CO)",
     "Shape(OC,CB,BO)",
     "Collinear(ACB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BC),11)",
+    "Equal(LengthOfLine(CA),23)",
+    "Equal(LengthOfLine(OA),25)",
+    "Equal(LengthOfLine(OB),35)",
+    "PerpendicularBetweenLine(OA,CA)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(OB),35)",
     "Equal(LengthOfLine(OA),25)",
@@ -26,13 +32,13 @@
     "right_triangle_property_pythagorean(1,OAC)",
     "triangle_perimeter_formula(1,OCB)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,OAC)": [
-      "right_triangle_property_pythagorean(1,OAC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,OAC)",
       "triangle_perimeter_formula(1,OCB)"
+    ],
+    "right_triangle_judgment_angle(1,OAC)": [
+      "right_triangle_property_pythagorean(1,OAC)"
     ]
   }
 }

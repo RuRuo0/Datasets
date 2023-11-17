@@ -2,9 +2,9 @@
   "problem_id": 1097,
   "annotation": "XiaoxiaoJin_2023-04-09",
   "source": "Geometry3k-1134",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find m \\angle 4.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠ADB=64°，AC⊥DC，BA⊥CA，BF⊥DF，CD垂直于BD。求∠DAC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ADB=64°, AC⊥DC, BA is perpendicular to CA, BF is perpendicular to DF, CD⊥BD. Find the measure of ∠DAC.",
   "problem_img": "1097.png",
   "construction_cdl": [
     "Shape(BA,AF,FB)",
@@ -13,7 +13,13 @@
     "Collinear(AFD)",
     "Collinear(CEGD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(ADB),64)",
+    "PerpendicularBetweenLine(AC,DC)",
+    "PerpendicularBetweenLine(BA,CA)",
+    "PerpendicularBetweenLine(BF,DF)",
+    "PerpendicularBetweenLine(CD,BD)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(ADB),64)",
     "PerpendicularBetweenLine(BA,CA)",
@@ -27,12 +33,12 @@
     "parallel_judgment_per_per(1,CA,DB)",
     "parallel_property_alternate_interior_angle(2,CA,DB)"
   ],
-  "theorem_seq_dag": {
-    "parallel_judgment_per_per(1,CA,DB)": [
-      "parallel_property_alternate_interior_angle(2,CA,DB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_judgment_per_per(1,CA,DB)"
+    ],
+    "parallel_judgment_per_per(1,CA,DB)": [
+      "parallel_property_alternate_interior_angle(2,CA,DB)"
     ]
   }
 }

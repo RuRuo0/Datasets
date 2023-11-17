@@ -2,9 +2,9 @@
   "problem_id": 6377,
   "annotation": "YimingHe_2023-06-04",
   "source": "GeoQA-9233",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知O是▱ABCD的对角线交点,AC=24,BD=38,AD=14,那么△OBC的周长等于()",
-  "problem_text_en": "As shown in the figure, it is known that O is the diagonal intersection of ▱ABCD, AC = N_0, BD = N_1, AD = N_2, then the perimeter of △OBC is equal to ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AC=24，AD=14，BD=38，ABCD是▱。求三角形OBC的周长。",
+  "problem_text_en": "As shown in the diagram, AC=24, AD=14, BD=38, quadrilateral ABCD is a parallelogram. Find the perimeter of triangle OBC.",
   "problem_img": "6377.png",
   "construction_cdl": [
     "Shape(AO,OD,DA)",
@@ -15,10 +15,10 @@
     "Collinear(BOD)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
     "Equal(LengthOfLine(AC),24)",
+    "Equal(LengthOfLine(AD),14)",
     "Equal(LengthOfLine(BD),38)",
-    "Equal(LengthOfLine(AD),14)"
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfTriangle(OBC))",
@@ -31,7 +31,7 @@
     "line_addition(1,BO,OD)",
     "triangle_perimeter_formula(1,OBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_property_opposite_line_equal(1,BCDA)",
       "parallelogram_property_diagonal_bisection(1,ABCD,O)",

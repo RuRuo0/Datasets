@@ -2,9 +2,9 @@
   "problem_id": 5309,
   "annotation": "YanjunGuo_2023-05-21",
   "source": "GeoQA-5505",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点P为O外一点,PA为⊙O的切线,A为切点,PO交⊙O于点B．若∠P=30°,OB=3,则线段AP的长为()",
-  "problem_text_en": "As shown in the figure, point P is a point outside ⊙O, PA is the tangent of ⊙O, A is the tangent point, and PO intersects ⊙O at point B. If ∠P = N_0, OB = N_1, then the length of the line segment AP is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，OB=3，∠BPA=30°，O是圆O的圆心，PA是圆O的切线。求直线AP的长度。",
+  "problem_text_en": "As shown in the diagram, OB=3, ∠BPA=30°, O is the center of circle O, the tangent to circle O is PA. Find the length of line AP.",
   "problem_img": "5309.png",
   "construction_cdl": [
     "Shape(BO,OA,OAB)",
@@ -16,8 +16,8 @@
   "text_cdl": [
     "Equal(LengthOfLine(OB),3)",
     "Equal(MeasureOfAngle(BPA),30)",
-    "IsTangentOfCircle(PA,O)",
-    "IsCentreOfCircle(O,O)"
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(PA,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AP))",
@@ -29,7 +29,7 @@
     "triangle_property_angle_sum(1,AOP)",
     "sine_theorem(1,AOP)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(2,PA,O,O)",
       "radius_of_circle_property_length_equal(1,OB,O)",

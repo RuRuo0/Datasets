@@ -2,9 +2,9 @@
   "problem_id": 5488,
   "annotation": "ChenyangMao_2023-05-21",
   "source": "GeoQA-5945",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在Rt△ABC中,∠ACB=90°,∠A=30°,D,E,F分别为AB,AD,AC的中点,若CB=4,则EF的长度为()",
-  "problem_text_en": "As shown in the figure, in Rt△ABC, ∠ACB = N_0, ∠A = N_1, D, E, F are the midpoints of AB, AD, AC, respectively. If CB = N_2, the length of EF is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，CB=4，∠CAB=30°，D是线段AB的中点，E平分线段AD，F平分线段AC，∠BCA是直角△BCA的直角。求直线EF的长度。",
+  "problem_text_en": "As shown in the diagram, CB=4, ∠CAB=30°, D bisects segment AB, E is the midpoint of segment AD, F is the midpoint of segment AC, BC and CA are the legs of the right triangle BCA. Find the length of line EF.",
   "problem_img": "5488.png",
   "construction_cdl": [
     "Shape(AE,EF,FA)",
@@ -14,12 +14,12 @@
     "Collinear(AFC)"
   ],
   "text_cdl": [
-    "RightTriangle(BCA)",
+    "Equal(LengthOfLine(CB),4)",
+    "Equal(MeasureOfAngle(CAB),30)",
     "IsMidpointOfLine(D,AB)",
     "IsMidpointOfLine(E,AD)",
     "IsMidpointOfLine(F,AC)",
-    "Equal(LengthOfLine(CB),4)",
-    "Equal(MeasureOfAngle(CAB),30)"
+    "RightTriangle(BCA)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(EF))",
@@ -31,17 +31,17 @@
     "midsegment_of_triangle_judgment_midpoint(1,EF,ADC)",
     "midsegment_of_triangle_property_length(1,EF,ADC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "sine_theorem(1,BCA)",
+      "median_of_triangle_judgment(1,CD,CAB)",
+      "midsegment_of_triangle_judgment_midpoint(1,EF,ADC)"
+    ],
     "median_of_triangle_judgment(1,CD,CAB)": [
       "right_triangle_property_length_of_median(1,BCA,D)"
     ],
     "midsegment_of_triangle_judgment_midpoint(1,EF,ADC)": [
       "midsegment_of_triangle_property_length(1,EF,ADC)"
-    ],
-    "START": [
-      "sine_theorem(1,BCA)",
-      "median_of_triangle_judgment(1,CD,CAB)",
-      "midsegment_of_triangle_judgment_midpoint(1,EF,ADC)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 3399,
   "annotation": "JiaZou_2023-04-30",
   "source": "GeoQA-926",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,点D为AB的中点,过点D作DE⊥AB交AC于点E,连接BE,△BEC的周长为15,AD=3,则△ABC的周长为()",
-  "problem_text_en": "As shown in the figure, in △ABC, point D is the midpoint of AB, passing point D to draw DE ⊥ AB and it intersects AC at point E, connecting BE, the perimeter of △BEC is N_0, AD = N_1, then the perimeter of △ABC is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AD=3，△BCE的周长为15，ED是AB的垂直平分线。求△ABC的周长。",
+  "problem_text_en": "As shown in the diagram, AD=3, the perimeter of triangle BCE is 15, ED perpendicular bisects AB. Find the perimeter of triangle ABC.",
   "problem_img": "3399.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -14,9 +14,9 @@
     "Collinear(ADB)"
   ],
   "text_cdl": [
-    "IsPerpendicularBisectorOfLine(ED,AB)",
+    "Equal(LengthOfLine(AD),3)",
     "Equal(PerimeterOfTriangle(BCE),15)",
-    "Equal(LengthOfLine(AD),3)"
+    "IsPerpendicularBisectorOfLine(ED,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfTriangle(ABC))",
@@ -28,7 +28,7 @@
     "line_addition(1,AE,EC)",
     "triangle_perimeter_formula(1,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "perpendicular_bisector_property_distance_equal(1,ED,AB)",
       "line_addition(1,AD,DB)",

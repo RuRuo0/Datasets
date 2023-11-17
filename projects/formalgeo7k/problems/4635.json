@@ -2,9 +2,9 @@
   "problem_id": 4635,
   "annotation": "QikeHuang_2023-05-14",
   "source": "GeoQA-3851",
-  "problem_level": 1,
-  "problem_text_cn": "如图,P为⊙O外一点,PA为⊙O的切线,A为切点,PO交⊙O于点B,∠P=30°,OB=4,则线段BP的长为()",
-  "problem_text_en": "As shown in the figure, P is a point outside of ⊙O, PA is the tangent of ⊙O, A is the tangent point, PO intersects with ⊙O at point B, ∠P = N_0, OB = N_1, then the length of the line segment BP is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，OB=4，∠OPA=30°，O是⊙O的圆心，⊙O的切线为PA。求直线BP的长度。",
+  "problem_text_en": "As shown in the diagram, OB=4, ∠OPA=30°, the center of circle O is O, the tangent to circle O is PA. Find the length of line BP.",
   "problem_img": "4635.png",
   "construction_cdl": [
     "Shape(OA,OAB,BO)",
@@ -14,10 +14,10 @@
     "Cocircular(O,BA)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(PA,O)",
     "Equal(LengthOfLine(OB),4)",
-    "Equal(MeasureOfAngle(OPA),30)"
+    "Equal(MeasureOfAngle(OPA),30)",
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(PA,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BP))",
@@ -29,7 +29,7 @@
     "sine_theorem(1,OPA)",
     "line_addition(1,OB,BP)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(2,PA,O,O)",
       "radius_of_circle_property_length_equal(1,OB,O)",

@@ -2,9 +2,9 @@
   "problem_id": 2740,
   "annotation": "ZheZhu_2023-04-23",
   "source": "Geometry3k-2887",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot F, F H \\cong F L and F K = 17. Find J G.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，FH=8，FH=FL，FJ=17，F是圆F的圆心，JH⊥FH。求直线JG的长度。",
+  "problem_text_en": "As shown in the diagram, FH=8, FH=FL, FJ=17, the center of ⊙F is F, JH⊥FH. Find the length of line JG.",
   "problem_img": "2740.png",
   "construction_cdl": [
     "Shape(JH,HF,FJ)",
@@ -14,7 +14,13 @@
     "Collinear(JHG)",
     "Cocircular(F,JG)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(FH),8)",
+    "Equal(LengthOfLine(FH),LengthOfLine(FL))",
+    "Equal(LengthOfLine(FJ),17)",
+    "IsCentreOfCircle(F,F)",
+    "PerpendicularBetweenLine(JH,FH)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(F,F)",
     "Equal(LengthOfLine(FH),LengthOfLine(FL))",
@@ -34,7 +40,14 @@
     "right_triangle_property_pythagorean(1,FHG)",
     "line_addition(1,JH,HG)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,JHF,FHG)",
+      "right_triangle_judgment_angle(1,JHF)",
+      "radius_of_circle_property_length_equal(1,FJ,F)",
+      "radius_of_circle_property_length_equal(1,FG,F)",
+      "line_addition(1,JH,HG)"
+    ],
     "adjacent_complementary_angle(1,JHF,FHG)": [
       "right_triangle_judgment_angle(1,FHG)"
     ],
@@ -43,13 +56,6 @@
     ],
     "right_triangle_judgment_angle(1,FHG)": [
       "right_triangle_property_pythagorean(1,FHG)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,JHF,FHG)",
-      "right_triangle_judgment_angle(1,JHF)",
-      "radius_of_circle_property_length_equal(1,FJ,F)",
-      "radius_of_circle_property_length_equal(1,FG,F)",
-      "line_addition(1,JH,HG)"
     ]
   }
 }

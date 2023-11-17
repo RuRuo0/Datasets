@@ -2,9 +2,9 @@
   "problem_id": 4924,
   "annotation": "DengfengYue_2023-05-14",
   "source": "GeoQA-4522",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知BE∥CF∥DG,AB:BC:CD=2:1:3,若AE=4,则EG的长是()",
-  "problem_text_en": "As shown in the figure, it is known that BE ∥ CF ∥ DG, AB:BC:CD = N_0:N_1:N_2, if AE = N_3, then the length of EG is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=2，AE=4，BC=1，CD=3，BE平行于CF，BE平行于DG，CF∥DG。求直线EG的长度。",
+  "problem_text_en": "As shown in the diagram, AB=2, AE=4, BC=1, CD=3, BE∥CF, BE is parallel to DG, CF∥DG. Find the length of line EG.",
   "problem_img": "4924.png",
   "construction_cdl": [
     "Shape(AB,BE,EA)",
@@ -15,12 +15,12 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(AB),2)",
+    "Equal(LengthOfLine(AE),4)",
     "Equal(LengthOfLine(BC),1)",
     "Equal(LengthOfLine(CD),3)",
-    "Equal(LengthOfLine(AE),4)",
     "ParallelBetweenLine(BE,CF)",
-    "ParallelBetweenLine(CF,DG)",
-    "ParallelBetweenLine(BE,DG)"
+    "ParallelBetweenLine(BE,DG)",
+    "ParallelBetweenLine(CF,DG)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(EG))",
@@ -34,19 +34,19 @@
     "similar_triangle_property_line_ratio(1,BEA,DGA)",
     "line_addition(1,AE,EG)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,BE,DG,A)",
+      "line_addition(1,AB,BC)",
+      "line_addition(1,AC,CD)",
+      "line_addition(1,AE,EG)"
+    ],
     "parallel_property_corresponding_angle(1,BE,DG,A)": [
       "similar_triangle_judgment_aa(1,EAB,GAD)"
     ],
     "similar_triangle_judgment_aa(1,EAB,GAD)": [
       "similar_triangle_property_line_ratio(1,EAB,GAD)",
       "similar_triangle_property_line_ratio(1,BEA,DGA)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,BE,DG,A)",
-      "line_addition(1,AB,BC)",
-      "line_addition(1,AC,CD)",
-      "line_addition(1,AE,EG)"
     ]
   }
 }

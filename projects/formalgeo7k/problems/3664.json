@@ -2,9 +2,9 @@
   "problem_id": 3664,
   "annotation": "XiaoxiaoJin_2023-04-30",
   "source": "GeoQA-1380",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在⊙O中,弦AC∥半径OB,∠BOC=48°,则∠OAB的度数为()",
-  "problem_text_en": "As shown in the figure, in ⊙O, chord AC ∥ radius OB, ∠BOC = N_0, then the degree of ∠OAB is ()",
+  "problem_level": 12,
+  "problem_text_cn": "如图所示，∠BOD=48°，O是圆O的圆心，OB平行于AC。求∠OAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BOD=48°, the center of circle O is O, OB is parallel to AC. Find the measure of ∠OAB.",
   "problem_img": "3664.png",
   "construction_cdl": [
     "Shape(AD,DO,OA)",
@@ -39,7 +39,17 @@
     "triangle_property_angle_sum(1,OAC)",
     "adjacent_complementary_angle(1,ADO,ODB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "parallel_property_alternate_interior_angle(1,OB,AC)",
+      "triangle_property_angle_sum(1,ADO)",
+      "triangle_property_angle_sum(1,ODB)",
+      "triangle_property_angle_sum(1,OAC)",
+      "adjacent_complementary_angle(1,ADO,ODB)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OAC)",
       "isosceles_triangle_judgment_line_equal(1,OAB)"
@@ -55,16 +65,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OAB)": [
       "isosceles_triangle_property_angle_equal(1,OAB)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "parallel_property_alternate_interior_angle(1,OB,AC)",
-      "triangle_property_angle_sum(1,ADO)",
-      "triangle_property_angle_sum(1,ODB)",
-      "triangle_property_angle_sum(1,OAC)",
-      "adjacent_complementary_angle(1,ADO,ODB)"
     ]
   }
 }

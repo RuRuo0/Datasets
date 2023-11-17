@@ -2,9 +2,9 @@
   "problem_id": 5865,
   "annotation": "QikeHuang_2023-05-28",
   "source": "GeoQA-7903",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在边长为9的等边△ABC中,BD=3,∠ADE=60°,则AE的长为()",
-  "problem_text_en": "As shown in the figure, in the equilateral △ABC with edge length N_0, BD = N_1, ∠ADE = N_2, then the length of AE is ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，AB=9，BD=3，∠ADE=60°，三角形ABC为等边三角形。求直线AE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=9, BD=3, ∠ADE=60°, △ABC is an equilateral △. Find the length of line AE.",
   "problem_img": "5865.png",
   "construction_cdl": [
     "Shape(AB,BD,DA)",
@@ -14,10 +14,10 @@
     "Collinear(AEC)"
   ],
   "text_cdl": [
-    "EquilateralTriangle(ABC)",
     "Equal(LengthOfLine(AB),9)",
     "Equal(LengthOfLine(BD),3)",
-    "Equal(MeasureOfAngle(ADE),60)"
+    "Equal(MeasureOfAngle(ADE),60)",
+    "EquilateralTriangle(ABC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AE))",
@@ -34,7 +34,16 @@
     "similar_triangle_property_line_ratio(1,DAB,EDC)",
     "similar_triangle_property_line_ratio(1,ABD,DCE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "equilateral_triangle_property_angle(1,BCA)",
+      "equilateral_triangle_property_angle(1,CAB)",
+      "triangle_property_angle_sum(1,ABD)",
+      "angle_addition(1,BDA,ADE)",
+      "adjacent_complementary_angle(1,BDE,EDC)",
+      "line_addition(1,BD,DC)",
+      "line_addition(1,AE,EC)"
+    ],
     "equilateral_triangle_property_angle(1,BCA)": [
       "similar_triangle_judgment_aa(1,DAB,EDC)"
     ],
@@ -53,15 +62,6 @@
     "similar_triangle_judgment_aa(1,DAB,EDC)": [
       "similar_triangle_property_line_ratio(1,DAB,EDC)",
       "similar_triangle_property_line_ratio(1,ABD,DCE)"
-    ],
-    "START": [
-      "equilateral_triangle_property_angle(1,BCA)",
-      "equilateral_triangle_property_angle(1,CAB)",
-      "triangle_property_angle_sum(1,ABD)",
-      "angle_addition(1,BDA,ADE)",
-      "adjacent_complementary_angle(1,BDE,EDC)",
-      "line_addition(1,BD,DC)",
-      "line_addition(1,AE,EC)"
     ]
   }
 }

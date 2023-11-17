@@ -2,9 +2,9 @@
   "problem_id": 6108,
   "annotation": "YifanWang_2023-06-04",
   "source": "GeoQA-8656",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB为⊙O的直径,CD为⊙O的弦,若∠BCD=35°,则∠ABD=()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, CD is the chord of ⊙O, if ∠BCD = N_0, then ∠ABD = ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠DCB=35°，圆O的圆心为O。求∠ABD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DCB=35°, the center of ⊙O is O. Find the measure of ∠ABD.",
   "problem_img": "6108.png",
   "construction_cdl": [
     "Shape(AD,ODA)",
@@ -19,8 +19,8 @@
     "Cocircular(O,ACBD)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "Equal(MeasureOfAngle(DCB),35)"
+    "Equal(MeasureOfAngle(DCB),35)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ABD))",
@@ -32,15 +32,15 @@
     "diameter_of_circle_property_right_angle(1,BDA,O)",
     "triangle_property_angle_sum(1,DAB)"
   ],
-  "theorem_seq_dag": {
-    "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
-      "diameter_of_circle_property_right_angle(1,BDA,O)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_circumference_angle_external(1,OBD,A)",
       "arc_property_circumference_angle_external(1,OBD,C)",
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "triangle_property_angle_sum(1,DAB)"
+    ],
+    "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+      "diameter_of_circle_property_right_angle(1,BDA,O)"
     ]
   }
 }

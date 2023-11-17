@@ -2,9 +2,9 @@
   "problem_id": 6550,
   "annotation": "XiaokaiZhang_2023-06-04",
   "source": "GeoQA-9479",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB,BC,CD都与半圆相切,A、D是切点．其中AB=4,CD=9,则半圆的半径是()",
-  "problem_text_en": "As shown in the figure, AB, BC, and CD are all tangent to the semicircle. Where AB = N_0, CD = N_1, BC = N_2, the radius of the semicircle is ()",
+  "problem_level": 16,
+  "problem_text_cn": "如图所示，AB=4，CD=9，⊙O的圆心为O，圆O的直径为AD，BA是圆O的切线，⊙O的切线为BE，CD是圆O的切线，圆O的切线为CE，DH垂直于BH。求圆O的半径。",
+  "problem_text_en": "As shown in the diagram, AB=4, CD=9, O is the center of circle O, AD is the diameter of circle O, BA is the tangent to ⊙O, BE is the tangent to circle O, CD is the tangent to ⊙O, CE is the tangent to circle O, DH⊥BH. Find the radius of ⊙O.",
   "problem_img": "6550.png",
   "construction_cdl": [
     "Shape(CE,OGE,GH,HC)",
@@ -20,14 +20,14 @@
     "Cocircular(O,DGEFA)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AB),4)",
+    "Equal(LengthOfLine(CD),9)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AD,O)",
     "IsTangentOfCircle(BA,O)",
     "IsTangentOfCircle(BE,O)",
-    "IsTangentOfCircle(CE,O)",
     "IsTangentOfCircle(CD,O)",
-    "Equal(LengthOfLine(AB),4)",
-    "Equal(LengthOfLine(CD),9)",
+    "IsTangentOfCircle(CE,O)",
     "PerpendicularBetweenLine(DH,BH)"
   ],
   "image_cdl": [],
@@ -51,7 +51,18 @@
     "diameter_of_circle_property_length_equal(1,AD,O)",
     "circle_property_length_of_radius_and_diameter(1,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(2,BA,O,O)",
+      "tangent_of_circle_property_perpendicular(1,CD,O,O)",
+      "line_addition(1,CH,HD)",
+      "tangent_of_circle_property_length_equal(1,BA,BE,O)",
+      "tangent_of_circle_property_length_equal(1,CE,CD,O)",
+      "line_addition(1,BE,EC)",
+      "adjacent_complementary_angle(1,DHB,BHC)",
+      "diameter_of_circle_property_length_equal(1,AD,O)",
+      "circle_property_length_of_radius_and_diameter(1,O)"
+    ],
     "tangent_of_circle_property_perpendicular(2,BA,O,O)": [
       "parallel_judgment_ipsilateral_internal_angle(1,AB,DH)"
     ],
@@ -74,17 +85,6 @@
     ],
     "right_triangle_judgment_angle(1,BHC)": [
       "right_triangle_property_pythagorean(1,BHC)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(2,BA,O,O)",
-      "tangent_of_circle_property_perpendicular(1,CD,O,O)",
-      "line_addition(1,CH,HD)",
-      "tangent_of_circle_property_length_equal(1,BA,BE,O)",
-      "tangent_of_circle_property_length_equal(1,CE,CD,O)",
-      "line_addition(1,BE,EC)",
-      "adjacent_complementary_angle(1,DHB,BHC)",
-      "diameter_of_circle_property_length_equal(1,AD,O)",
-      "circle_property_length_of_radius_and_diameter(1,O)"
     ]
   }
 }

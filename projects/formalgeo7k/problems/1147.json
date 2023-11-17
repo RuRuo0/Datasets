@@ -2,9 +2,9 @@
   "problem_id": 1147,
   "annotation": "JiaZou_2023-03-19",
   "source": "Geometry3k-1186",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "\\triangle D F G and \\triangle F G H are isosceles, m \\angle F D H = 28 and D G \\cong F G \\cong F H. Find the measure of \\angle D F G.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，DG=FG，FG=FH，FH=DG，∠FDH=28°，∠FGH和∠GHF是等腰三角形FGH的底角。求∠GFD的大小。",
+  "problem_text_en": "As shown in the diagram, DG=FG, FG=FH, FH=DG, ∠FDH=28°, ∠FGH and ∠GHF are the base angles of the isosceles △ FGH. Find the measure of ∠GFD.",
   "problem_img": "1147.png",
   "construction_cdl": [
     "Shape(DG,GF,FD)",
@@ -12,6 +12,10 @@
     "Collinear(DGH)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(DG),LengthOfLine(FG))",
+    "Equal(LengthOfLine(FG),LengthOfLine(FH))",
+    "Equal(LengthOfLine(FH),LengthOfLine(DG))",
+    "Equal(MeasureOfAngle(FDH),28)",
     "IsoscelesTriangle(FGH))"
   ],
   "image_cdl": [
@@ -26,12 +30,12 @@
     "isosceles_triangle_judgment_line_equal(1,GFD)",
     "isosceles_triangle_property_angle_equal(1,GFD)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,GFD)": [
-      "isosceles_triangle_property_angle_equal(1,GFD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,GFD)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,GFD)": [
+      "isosceles_triangle_property_angle_equal(1,GFD)"
     ]
   }
 }

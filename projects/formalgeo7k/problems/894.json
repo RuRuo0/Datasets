@@ -3,14 +3,19 @@
   "annotation": "XiaokaiZhang_2023-04-09",
   "source": "Geometry3k-923",
   "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the parallelogram.",
+  "problem_text_cn": "如图所示，BD=5，DF=4，EB=DF，EF=DB，EBDF是平行四边形，EB垂直于DB。求EBDF的面积。",
+  "problem_text_en": "As shown in the diagram, BD=5, DF=4, EB=DF, EF=DB, BE and DF are opposite sides of the parallelogram EBDF, EB is perpendicular to DB. Find the area of quadrilateral EBDF.",
   "problem_img": "894.png",
   "construction_cdl": [
     "Shape(EB,BD,DF,FE)"
   ],
   "text_cdl": [
-    "Parallelogram(EBDF)"
+    "Equal(LengthOfLine(BD),5)",
+    "Equal(LengthOfLine(DF),4)",
+    "Equal(LengthOfLine(EB),LengthOfLine(DF))",
+    "Equal(LengthOfLine(EF),LengthOfLine(DB))",
+    "Parallelogram(EBDF)",
+    "PerpendicularBetweenLine(EB,DB)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(DF),4)",
@@ -24,7 +29,7 @@
   "theorem_seqs": [
     "parallelogram_area_formula_sine(1,EBDF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_area_formula_sine(1,EBDF)"
     ]

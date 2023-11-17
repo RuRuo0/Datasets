@@ -2,9 +2,9 @@
   "problem_id": 824,
   "annotation": "NaZhu_2023-04-09",
   "source": "Geometry3k-853",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Circle L has a radius of 32 centimeters. L H \\perp G J, and G J = 40 centimeters. Find L K.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，GJ=40，圆L的半径为32，圆L的圆心为L，JK垂直于LK。求直线LK的长度。",
+  "problem_text_en": "As shown in the diagram, GJ=40, the radius of circle L is 32, L is the center of circle L, JK⊥LK. Find the length of line LK.",
   "problem_img": "824.png",
   "construction_cdl": [
     "Shape(LHG,GK,KH)",
@@ -16,8 +16,10 @@
     "Cocircular(L,JHG)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(GJ),40)",
     "Equal(RadiusOfCircle(L),32)",
-    "Equal(LengthOfLine(GJ),40)"
+    "IsCentreOfCircle(L,L)",
+    "PerpendicularBetweenLine(JK,LK)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(L,L)",
@@ -32,15 +34,15 @@
     "right_triangle_judgment_angle(1,JKL)",
     "right_triangle_property_pythagorean(1,JKL)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,JKL)": [
-      "right_triangle_property_pythagorean(1,JKL)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,GK,KJ)",
       "circle_property_chord_perpendicular_bisect_chord(1,L,LK,JG)",
       "radius_of_circle_property_length_equal(1,LJ,L)",
       "right_triangle_judgment_angle(1,JKL)"
+    ],
+    "right_triangle_judgment_angle(1,JKL)": [
+      "right_triangle_property_pythagorean(1,JKL)"
     ]
   }
 }

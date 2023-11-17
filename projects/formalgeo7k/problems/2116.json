@@ -2,9 +2,9 @@
   "problem_id": 2116,
   "annotation": "QikeHuang_2023-04-23",
   "source": "Geometry3k-2206",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，BA=5*x-1，BC=4*x+3，⌒OBA的角度为85，弧OCB的角度为85。求x的值。",
+  "problem_text_en": "As shown in the diagram, BA=5*x-1, BC=4*x+3, the measure of arc OBA is 85, the measure of arc OCB is 85. Find the value of x.",
   "problem_img": "2116.png",
   "construction_cdl": [
     "Shape(O)",
@@ -13,7 +13,12 @@
     "Shape(CB,BA,OAC)",
     "Cocircular(O,CBA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BA),5*x-1)",
+    "Equal(LengthOfLine(BC),4*x+3)",
+    "Equal(MeasureOfArc(OBA),85)",
+    "Equal(MeasureOfArc(OCB),85)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfArc(OBA),85)",
     "Equal(LengthOfLine(BC),4*x+3)",
@@ -26,12 +31,12 @@
     "congruent_arc_judgment_measure_equal(1,OCB,OBA)",
     "congruent_arc_property_chord_equal(1,OCB,OBA)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_measure_equal(1,OCB,OBA)": [
-      "congruent_arc_property_chord_equal(1,OCB,OBA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "congruent_arc_judgment_measure_equal(1,OCB,OBA)"
+    ],
+    "congruent_arc_judgment_measure_equal(1,OCB,OBA)": [
+      "congruent_arc_property_chord_equal(1,OCB,OBA)"
     ]
   }
 }

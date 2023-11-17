@@ -2,9 +2,9 @@
   "problem_id": 5904,
   "annotation": "YiwenHuang_2023-06-04",
   "source": "GeoQA-8020",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示,D,E分别是△ABC的边AB、AC上的点,∠1=∠B,AE=EC=4,BC=10,AB=12,则△ADE和△ABC的周长之比为()",
-  "problem_text_en": "As shown in the figure, D and E are the points on AB and AC of △ABC respectively, ∠1 = ∠B, AE = EC = N_0, BC = N_1, AB = N_2, then the ratio of the perimeter of △ADE and △ABC is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=12，AE=4，BC=10，EC=4，∠DEA=∠ABC。求三角形ADE和三角形ABC的镜像相似比。",
+  "problem_text_en": "As shown in the diagram, AB=12, AE=4, BC=10, EC=4, ∠DEA=∠ABC. Find the ratio of mirror similar △ADE and △ABC.",
   "problem_img": "5904.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -13,10 +13,10 @@
     "Collinear(AEC)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(AE),4)",
-    "Equal(LengthOfLine(EC),4)",
-    "Equal(LengthOfLine(BC),10)",
     "Equal(LengthOfLine(AB),12)",
+    "Equal(LengthOfLine(AE),4)",
+    "Equal(LengthOfLine(BC),10)",
+    "Equal(LengthOfLine(EC),4)",
     "Equal(MeasureOfAngle(DEA),MeasureOfAngle(ABC))"
   ],
   "image_cdl": [],
@@ -26,12 +26,12 @@
     "mirror_similar_triangle_judgment_aa(1,DEA,CAB)",
     "mirror_similar_triangle_property_line_ratio(1,DEA,CAB)"
   ],
-  "theorem_seq_dag": {
-    "mirror_similar_triangle_judgment_aa(1,DEA,CAB)": [
-      "mirror_similar_triangle_property_line_ratio(1,DEA,CAB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "mirror_similar_triangle_judgment_aa(1,DEA,CAB)"
+    ],
+    "mirror_similar_triangle_judgment_aa(1,DEA,CAB)": [
+      "mirror_similar_triangle_property_line_ratio(1,DEA,CAB)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 4848,
   "annotation": "RunanWang_2023-05-21",
   "source": "GeoQA-4327",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O的半径OC=5cm,直线l⊥OC,垂足为H,且l交⊙O于A、B两点,AB=8cm,则l沿OC所在直线向下平移与⊙O相切时,移动的距离应等于()",
-  "problem_text_en": "As shown in the figure, the radius of ⊙O OC = N_0, the straight line l ⊥ OC, the vertical foot is H, and l intersects ⊙O at the two points A and B, AB = N_1, then when l moves downward along the straight line where OC is tangent to ⊙O, the moving distance should be equal to ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AB=8，AH=BH，⊙O的半径为5，圆O的圆心为O，OH⊥BH。求直线HC的长度。",
+  "problem_text_en": "As shown in the diagram, AB=8, AH=BH, the radius of ⊙O is 5, O is the center of ⊙O, OH⊥BH. Find the length of line HC.",
   "problem_img": "4848.png",
   "construction_cdl": [
     "Shape(OAC,CH,HA)",
@@ -16,7 +16,11 @@
     "Cocircular(O,ACB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)"
+    "Equal(LengthOfLine(AB),8)",
+    "Equal(LengthOfLine(AH),LengthOfLine(BH))",
+    "Equal(RadiusOfCircle(O),5)",
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(OH,BH)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(AB),8)",
@@ -34,16 +38,16 @@
     "line_addition(1,AH,HB)",
     "line_addition(1,OH,HC)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,OHB)": [
-      "right_triangle_property_pythagorean(1,OHB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,OC,O)",
       "radius_of_circle_property_length_equal(1,OB,O)",
       "right_triangle_judgment_angle(1,OHB)",
       "line_addition(1,AH,HB)",
       "line_addition(1,OH,HC)"
+    ],
+    "right_triangle_judgment_angle(1,OHB)": [
+      "right_triangle_property_pythagorean(1,OHB)"
     ]
   }
 }

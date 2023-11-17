@@ -2,9 +2,9 @@
   "problem_id": 4711,
   "annotation": "XiaoxiaoJin_2023-05-14",
   "source": "GeoQA-4028",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙C与∠AOB的两边分别相切,其中OA边与⊙C相切于点P．若∠AOB=90°,OP=6,则OC的长为()",
-  "problem_text_en": "As shown in the figure, the two edges of ∠AOB and are tangent to ⊙C respectively, and the OA edge and ⊙C are tangent to the vertex P. If ∠AOB = N_0, OP = N_1, then the length of OC is ()",
+  "problem_level": 12,
+  "problem_text_cn": "如图所示，OP=6，∠POB=90°，C是圆C的圆心，OB是圆O的切线，⊙O的切线为OP。求直线OC的长度。",
+  "problem_text_en": "As shown in the diagram, OP=6, ∠POB=90°, C is the center of ⊙C, the tangent to ⊙C is OB, OP is the tangent to circle C. Find the length of line OC.",
   "problem_img": "4711.png",
   "construction_cdl": [
     "Shape(DC,CP,CPD)",
@@ -18,9 +18,9 @@
   "text_cdl": [
     "Equal(LengthOfLine(OP),6)",
     "Equal(MeasureOfAngle(POB),90)",
-    "IsTangentOfCircle(OP,C)",
+    "IsCentreOfCircle(C,C)",
     "IsTangentOfCircle(OB,C)",
-    "IsCentreOfCircle(C,C)"
+    "IsTangentOfCircle(OP,C)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(OC))",
@@ -39,19 +39,7 @@
     "sine_theorem(1,CPO)",
     "sine_theorem(1,POC)"
   ],
-  "theorem_seq_dag": {
-    "radius_of_circle_property_length_equal(1,CP,C)": [
-      "mirror_congruent_triangle_judgment_sss(1,CPO,COB)"
-    ],
-    "radius_of_circle_property_length_equal(1,CB,C)": [
-      "mirror_congruent_triangle_judgment_sss(1,CPO,COB)"
-    ],
-    "tangent_of_circle_property_length_equal(1,OP,OB,C)": [
-      "mirror_congruent_triangle_judgment_sss(1,CPO,COB)"
-    ],
-    "mirror_congruent_triangle_judgment_sss(1,CPO,COB)": [
-      "mirror_congruent_triangle_property_angle_equal(1,OCP,OBC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,CP,C)",
       "radius_of_circle_property_length_equal(1,CB,C)",
@@ -63,6 +51,18 @@
       "triangle_property_angle_sum(1,CPO)",
       "sine_theorem(1,CPO)",
       "sine_theorem(1,POC)"
+    ],
+    "radius_of_circle_property_length_equal(1,CP,C)": [
+      "mirror_congruent_triangle_judgment_sss(1,CPO,COB)"
+    ],
+    "radius_of_circle_property_length_equal(1,CB,C)": [
+      "mirror_congruent_triangle_judgment_sss(1,CPO,COB)"
+    ],
+    "tangent_of_circle_property_length_equal(1,OP,OB,C)": [
+      "mirror_congruent_triangle_judgment_sss(1,CPO,COB)"
+    ],
+    "mirror_congruent_triangle_judgment_sss(1,CPO,COB)": [
+      "mirror_congruent_triangle_property_angle_equal(1,OCP,OBC)"
     ]
   }
 }

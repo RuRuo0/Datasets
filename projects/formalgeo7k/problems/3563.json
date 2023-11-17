@@ -2,9 +2,9 @@
   "problem_id": 3563,
   "annotation": "YanjunGuo_2023-04-30",
   "source": "GeoQA-1193",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的弦,PA是⊙O的切线,若∠PAB=40°,则∠AOB=()",
-  "problem_text_en": "As shown in the figure, AB is the chord of ⊙O, PA is the tangent of ⊙O, if ∠PAB = N_0, then ∠AOB = ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠BAP=40°，O是⊙O的圆心，PA是圆O的切线。求∠BOA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BAP=40°, O is the center of circle O, PA is the tangent to circle O. Find the measure of ∠BOA.",
   "problem_img": "3563.png",
   "construction_cdl": [
     "Shape(AP,PB,OAB)",
@@ -14,9 +14,9 @@
     "Cocircular(O,AB)"
   ],
   "text_cdl": [
-    "IsTangentOfCircle(PA,O)",
     "Equal(MeasureOfAngle(BAP),40)",
-    "IsCentreOfCircle(O,O)"
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(PA,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BOA))",
@@ -30,7 +30,14 @@
     "isosceles_triangle_property_angle_equal(1,OAB)",
     "triangle_property_angle_sum(1,ABO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(1,PA,O,O)",
+      "angle_addition(1,OAB,BAP)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "triangle_property_angle_sum(1,ABO)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OAB)"
     ],
@@ -39,13 +46,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OAB)": [
       "isosceles_triangle_property_angle_equal(1,OAB)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(1,PA,O,O)",
-      "angle_addition(1,OAB,BAP)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "triangle_property_angle_sum(1,ABO)"
     ]
   }
 }

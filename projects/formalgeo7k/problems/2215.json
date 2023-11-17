@@ -2,20 +2,24 @@
   "problem_id": 2215,
   "annotation": "XiaoxiaoJin_2023-04-09",
   "source": "Geometry3k-2313",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find A C.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，BE=BC，ED=7，BD⊥CD。求直线EC的长度。",
+  "problem_text_en": "As shown in the diagram, BE=BC, ED=7, BD is perpendicular to CD. Find the length of line EC.",
   "problem_img": "2215.png",
   "construction_cdl": [
+    "Shape(EF,FD,DE)",
+    "Shape(FC,CD,DF)",
     "Shape(ED,DB,BE)",
     "Shape(DC,CB,BD)",
     "Collinear(EDC)",
-    "Collinear(FDBA)"
+    "Collinear(FDB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BE),LengthOfLine(BC))",
+    "Equal(LengthOfLine(ED),7)",
+    "PerpendicularBetweenLine(BD,CD)"
+  ],
   "image_cdl": [
-    "Angle(FDE)",
-    "Angle(EBA)",
     "Equal(LengthOfLine(ED),7)",
     "PerpendicularBetweenLine(BD,CD)",
     "Equal(LengthOfLine(BE),LengthOfLine(BC))"
@@ -29,7 +33,12 @@
     "altitude_of_triangle_judgment(1,BD,BEC)",
     "isosceles_triangle_property_line_coincidence(1,BEC,D)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,ED,DC)",
+      "adjacent_complementary_angle(1,EDB,BDC)",
+      "isosceles_triangle_judgment_line_equal(1,BEC)"
+    ],
     "adjacent_complementary_angle(1,EDB,BDC)": [
       "altitude_of_triangle_judgment(1,BD,BEC)"
     ],
@@ -38,11 +47,6 @@
     ],
     "altitude_of_triangle_judgment(1,BD,BEC)": [
       "isosceles_triangle_property_line_coincidence(1,BEC,D)"
-    ],
-    "START": [
-      "line_addition(1,ED,DC)",
-      "adjacent_complementary_angle(1,EDB,BDC)",
-      "isosceles_triangle_judgment_line_equal(1,BEC)"
     ]
   }
 }

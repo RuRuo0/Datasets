@@ -2,9 +2,9 @@
   "problem_id": 2973,
   "annotation": "NaZhu_2023-04-16",
   "source": "GeoQA-170",
-  "problem_level": 1,
-  "problem_text_cn": "如图,铁道口的栏杆短臂OA长1m,长臂OB长8m．当短臂外端A下降0.5m时,长臂外端B升高()",
-  "problem_text_en": "As shown in the figure, the short arm OA of the railing at the railway crossing is long N_0, and the long arm OB is long N_1. When the outer end A of the short arm drops by N_2, the outer end B of the long arm rises () ",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AC=1/2，AO=1，OB=8，OA垂直于CA，OB⊥DB。求直线DB的长度。",
+  "problem_text_en": "As shown in the diagram, AC=1/2, AO=1, OB=8, OA is perpendicular to CA, OB⊥DB. Find the length of line DB.",
   "problem_img": "2973.png",
   "construction_cdl": [
     "Shape(OA,AC,CO)",
@@ -13,9 +13,11 @@
     "Collinear(COD)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AC),1/2)",
     "Equal(LengthOfLine(AO),1)",
     "Equal(LengthOfLine(OB),8)",
-    "Equal(LengthOfLine(AC),1/2)"
+    "PerpendicularBetweenLine(OA,CA)",
+    "PerpendicularBetweenLine(OB,DB)"
   ],
   "image_cdl": [
     "PerpendicularBetweenLine(OA,CA)",
@@ -29,16 +31,16 @@
     "similar_triangle_property_line_ratio(1,COA,DOB)",
     "similar_triangle_property_line_ratio(1,OAC,OBD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "vertical_angle(1,COA,DOB)"
+    ],
     "vertical_angle(1,COA,DOB)": [
       "similar_triangle_judgment_aa(1,COA,DOB)"
     ],
     "similar_triangle_judgment_aa(1,COA,DOB)": [
       "similar_triangle_property_line_ratio(1,COA,DOB)",
       "similar_triangle_property_line_ratio(1,OAC,OBD)"
-    ],
-    "START": [
-      "vertical_angle(1,COA,DOB)"
     ]
   }
 }

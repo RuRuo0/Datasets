@@ -2,9 +2,9 @@
   "problem_id": 4231,
   "annotation": "ChenyangMao_2023-05-07",
   "source": "GeoQA-2997",
-  "problem_level": 1,
-  "problem_text_cn": "如图,OA,OC是⊙O的半径,点B在⊙O上,若AB∥OC,∠BCO=21°,则∠AOC的度数是()",
-  "problem_text_en": "As shown in the figure, OA and OC are the radius of ⊙O, and point B is on ⊙O. If AB ∥ OC, ∠BCO = N_0, then the degree of ∠AOC is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠OCB=21°，O是圆O的圆心，CO∥AB。求∠AOC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠OCB=21°, the center of ⊙O is O, CO is parallel to AB. Find the measure of ∠AOC.",
   "problem_img": "4231.png",
   "construction_cdl": [
     "Shape(OAB,BA)",
@@ -16,9 +16,9 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(OCB),21)",
     "IsCentreOfCircle(O,O)",
-    "ParallelBetweenLine(CO,AB)",
-    "Equal(MeasureOfAngle(OCB),21)"
+    "ParallelBetweenLine(CO,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(AOC))",
@@ -28,7 +28,7 @@
     "arc_property_center_angle(1,OCA,O)",
     "arc_property_circumference_angle_external(1,OCA,B)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_alternate_interior_angle(1,CO,AB)",
       "arc_property_center_angle(1,OCA,O)",

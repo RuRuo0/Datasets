@@ -3,8 +3,8 @@
   "annotation": "ZheZhu_2023-06-04",
   "source": "GeoQA-angle-10125",
   "problem_level": 1,
-  "problem_text_cn": "如图，锐角△ABC内接于⊙O，∠C﹣∠B＝33°，OD⊥BC于点D，连接OA，则∠AOD的度数为（）",
-  "problem_text_en": "",
+  "problem_text_cn": "如图所示，∠AOC=Mul(2,MeasureOfAngle(ABC))°，∠COD=Sub(147,Mul(2,MeasureOfAngle(ABC)))°，∠ODC=90°，Sub(MeasureOfAngle(BCA)=MeasureOfAngle(ABC))，O是圆O的圆心。求∠AOD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AOC=Mul(2,MeasureOfAngle(ABC))°, ∠COD=Sub(147,Mul(2,MeasureOfAngle(ABC)))°, ∠ODC=90°, Sub(MeasureOfAngle(BCA)=MeasureOfAngle(ABC)), O is the center of ⊙O. Find the measure of ∠AOD.",
   "problem_img": "6893.png",
   "construction_cdl": [
     "Shape(AB,BO,OA)",
@@ -15,11 +15,11 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "Equal(MeasureOfAngle(ODC),90)",
-    "Equal(MeasureOfAngle(COD),Sub(147,Mul(2,MeasureOfAngle(ABC))))",
     "Equal(MeasureOfAngle(AOC),Mul(2,MeasureOfAngle(ABC)))",
-    "Equal(Sub(MeasureOfAngle(BCA),MeasureOfAngle(ABC)),33)"
+    "Equal(MeasureOfAngle(COD),Sub(147,Mul(2,MeasureOfAngle(ABC))))",
+    "Equal(MeasureOfAngle(ODC),90)",
+    "Equal(Sub(MeasureOfAngle(BCA),MeasureOfAngle(ABC)),33)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(AOD))",
@@ -27,7 +27,7 @@
   "theorem_seqs": [
     "angle_addition(1,AOC,COD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,AOC,COD)"
     ]

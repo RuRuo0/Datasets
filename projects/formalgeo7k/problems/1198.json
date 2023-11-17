@@ -2,9 +2,9 @@
   "problem_id": 1198,
   "annotation": "RunanWang_2023-04-23",
   "source": "Geometry3k-1238",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the value of the variable x in the figure.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠EGB=x+55°，∠GEA=2*x-15°，AH∥CB。求x的值。",
+  "problem_text_en": "As shown in the diagram, ∠EGB=x+55°, ∠GEA=2*x-15°, AH∥CB. Find the value of x.",
   "problem_img": "1198.png",
   "construction_cdl": [
     "Shape(AE,EI)",
@@ -17,7 +17,11 @@
     "Collinear(AEH)",
     "Collinear(CGB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(EGB),x+55)",
+    "Equal(MeasureOfAngle(GEA),2*x-15)",
+    "ParallelBetweenLine(AH,CB)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(GEA),2*x-15)",
     "Equal(MeasureOfAngle(EGB),x+55)",
@@ -30,15 +34,15 @@
     "parallel_property_collinear_extend(3,AH,GB,E)",
     "parallel_property_alternate_interior_angle(2,AE,GB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,BC,HA,G)"
+    ],
     "parallel_property_collinear_extend(3,BC,HA,G)": [
       "parallel_property_collinear_extend(3,AH,GB,E)"
     ],
     "parallel_property_collinear_extend(3,AH,GB,E)": [
       "parallel_property_alternate_interior_angle(2,AE,GB)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,BC,HA,G)"
     ]
   }
 }

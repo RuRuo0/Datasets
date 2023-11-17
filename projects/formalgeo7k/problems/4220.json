@@ -2,9 +2,9 @@
   "problem_id": 4220,
   "annotation": "ChenyangMao_2023-05-07",
   "source": "GeoQA-2973",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点A、B、C、D都在⊙O上,OB⊥CD,∠BOC=50°,则∠BAD的度数为()",
-  "problem_text_en": "As shown in the figure, vertices A, B, C, and D are all on ⊙O, OB ⊥ CD, ∠BOC = N_0, then the degree of ∠BAD is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠BOC=50°，O是圆O的圆心，CE⊥OE。求∠DAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BOC=50°, the center of circle O is O, CE is perpendicular to OE. Find the measure of ∠DAB.",
   "problem_img": "4220.png",
   "construction_cdl": [
     "Shape(OCB,BE,EC)",
@@ -18,9 +18,9 @@
     "Cocircular(O,CBDA)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(BOC),50)",
     "IsCentreOfCircle(O,O)",
-    "PerpendicularBetweenLine(CE,OE)",
-    "Equal(MeasureOfAngle(BOC),50)"
+    "PerpendicularBetweenLine(CE,OE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DAB))",
@@ -32,17 +32,17 @@
     "congruent_arc_property_measure_equal(1,OCB,OBD)",
     "arc_property_circumference_angle_external(1,OBD,A)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "circle_property_chord_perpendicular_bisect_arc(1,OCD,OEB)",
+      "arc_property_center_angle(1,OCB,O)",
+      "arc_property_circumference_angle_external(1,OBD,A)"
+    ],
     "circle_property_chord_perpendicular_bisect_arc(1,OCD,OEB)": [
       "congruent_arc_judgment_length_equal(1,OCB,OBD)"
     ],
     "congruent_arc_judgment_length_equal(1,OCB,OBD)": [
       "congruent_arc_property_measure_equal(1,OCB,OBD)"
-    ],
-    "START": [
-      "circle_property_chord_perpendicular_bisect_arc(1,OCD,OEB)",
-      "arc_property_center_angle(1,OCB,O)",
-      "arc_property_circumference_angle_external(1,OBD,A)"
     ]
   }
 }

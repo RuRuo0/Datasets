@@ -2,9 +2,9 @@
   "problem_id": 4880,
   "annotation": "YifanWang_2023-05-21",
   "source": "GeoQA-4403",
-  "problem_level": 1,
-  "problem_text_cn": "如图,直线BC与⊙O相切于点A,AD是⊙O的弦,连接OD,若∠DAC=50°,则∠ODA的度数为()",
-  "problem_text_en": "As shown in the figure, the straight line BC is tangent to ⊙O at point A, AD is the chord of ⊙O. Connect OD, if ∠DAC = N_0, then the degree of ∠ODA is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠DAC=50°，圆O的圆心为O，圆O的切线为CA。求∠ADO的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DAC=50°, the center of circle O is O, the tangent to ⊙O is CA. Find the measure of ∠ADO.",
   "problem_img": "4880.png",
   "construction_cdl": [
     "Shape(AO,OD,ODA)",
@@ -14,9 +14,9 @@
     "Cocircular(O,AD)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(DAC),50)",
     "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(CA,O)",
-    "Equal(MeasureOfAngle(DAC),50)"
+    "IsTangentOfCircle(CA,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ADO))",
@@ -29,7 +29,13 @@
     "isosceles_triangle_judgment_line_equal(1,OAD)",
     "isosceles_triangle_property_angle_equal(1,OAD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(1,CA,O,O)",
+      "angle_addition(1,OAD,DAC)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OD,O)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OAD)"
     ],
@@ -38,12 +44,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OAD)": [
       "isosceles_triangle_property_angle_equal(1,OAD)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(1,CA,O,O)",
-      "angle_addition(1,OAD,DAC)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OD,O)"
     ]
   }
 }

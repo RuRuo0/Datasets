@@ -2,16 +2,22 @@
   "problem_id": 2164,
   "annotation": "YiwenHuang_2023-04-23",
   "source": "Geometry3k-2259",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "\\triangle D F G and \\triangle F G H are isosceles, m \\angle F D H = 28 and D G \\cong F G \\cong F H. Find the measure of \\angle D G F.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，DG=GF，FG=FH，∠FDH=28°，FG和FH是等腰三角形FGH的腰，GF和GD是等腰三角形GFD的腰。求∠DGF的大小。",
+  "problem_text_en": "As shown in the diagram, DG=GF, FG=FH, ∠FDH=28°, ∠FGH and ∠GHF are the base angles of the isosceles △ FGH, triangleGFD is an isosceles triangle. Find the measure of ∠DGF.",
   "problem_img": "2164.png",
   "construction_cdl": [
     "Shape(FD,DG,GF)",
     "Shape(FG,GH,HF)",
     "Collinear(DGH)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(DG),LengthOfLine(GF))",
+    "Equal(LengthOfLine(FG),LengthOfLine(FH))",
+    "Equal(MeasureOfAngle(FDH),28)",
+    "IsoscelesTriangle(FGH)",
+    "IsoscelesTriangle(GFD)"
+  ],
   "image_cdl": [
     "IsoscelesTriangle(GFD)",
     "IsoscelesTriangle(FGH)",
@@ -26,7 +32,7 @@
     "isosceles_triangle_property_angle_equal(1,GFD)",
     "triangle_property_angle_sum(1,FDG)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_property_angle_equal(1,GFD)",
       "triangle_property_angle_sum(1,FDG)"

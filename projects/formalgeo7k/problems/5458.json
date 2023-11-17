@@ -2,9 +2,9 @@
   "problem_id": 5458,
   "annotation": "Yangli_2023-05-21",
   "source": "GeoQA-5865",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,AB=AC=10,∠BAC=120°,AD是△ABC的中线,AE是∠BAD的角平分线,DF∥AB交AE的延长线于点F,则DF的长是()",
-  "problem_text_en": "As shown in the figure, in △ABC, AB = AC = N_0, ∠BAC = N_1, AD is the midline of △ABC, AE is the angular bisector of ∠BAD, DF ∥ AB intersects the extended line of AE at point F, then the length of DF is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=10，AC=10，∠BAC=120°，AD是∠BAC的角平分线，AE是∠BAD的角平分线，FD平行于BA。求直线DF的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, AC=10, ∠BAC=120°, AD is the angle bisector of ∠BAC, AE is the angle bisector of ∠BAD, FD is parallel to BA. Find the length of line DF.",
   "problem_img": "5458.png",
   "construction_cdl": [
     "Shape(AC,CD,DA)",
@@ -34,19 +34,19 @@
     "isosceles_triangle_judgment_angle_equal(1,DFA)",
     "sine_theorem(1,ACD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "triangle_property_angle_sum(1,ACB)",
+      "isosceles_triangle_judgment_line_equal(1,ACB)",
+      "parallel_property_alternate_interior_angle(1,FD,BA)",
+      "sine_theorem(1,ACD)"
+    ],
     "isosceles_triangle_judgment_line_equal(1,ACB)": [
       "isosceles_triangle_property_angle_equal(1,ACB)",
       "isosceles_triangle_property_line_coincidence(3,ACB,D)"
     ],
     "parallel_property_alternate_interior_angle(1,FD,BA)": [
       "isosceles_triangle_judgment_angle_equal(1,DFA)"
-    ],
-    "START": [
-      "triangle_property_angle_sum(1,ACB)",
-      "isosceles_triangle_judgment_line_equal(1,ACB)",
-      "parallel_property_alternate_interior_angle(1,FD,BA)",
-      "sine_theorem(1,ACD)"
     ]
   }
 }

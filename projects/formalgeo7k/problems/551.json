@@ -2,9 +2,9 @@
   "problem_id": 551,
   "annotation": "JiaZou_2023-03-12",
   "source": "Geometry3k-564",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "J H, J P, and P H are midsegments of \\triangle K L M. Find x.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠HJP=57°，∠JHL=x°，HP是三角形MLK的中位线，JH是三角形LKM的中位线，PJ是三角形KML的中位线。求x的值。",
+  "problem_text_en": "As shown in the diagram, ∠HJP=57°, ∠JHL=x°, HP is the midsegment of triangle MLK, JH is the midsegment of triangle LKM, PJ is the midsegment of △ KML. Find the value of x.",
   "problem_img": "551.png",
   "construction_cdl": [
     "Shape(KP,PJ,JK)",
@@ -16,9 +16,11 @@
     "Collinear(LHM)"
   ],
   "text_cdl": [
-    "IsMidsegmentOfTriangle(PJ,KML)",
+    "Equal(MeasureOfAngle(HJP),57)",
+    "Equal(MeasureOfAngle(JHL),x)",
+    "IsMidsegmentOfTriangle(HP,MLK)",
     "IsMidsegmentOfTriangle(JH,LKM)",
-    "IsMidsegmentOfTriangle(HP,MLK)"
+    "IsMidsegmentOfTriangle(PJ,KML)"
   ],
   "image_cdl": [
     "Equal(MeasureOfAngle(HJP),57)",
@@ -31,15 +33,15 @@
     "parallel_property_collinear_extend(3,LM,JP,H)",
     "parallel_property_alternate_interior_angle(2,LH,JP)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "midsegment_of_triangle_property_parallel(1,PJ,KML)"
+    ],
     "midsegment_of_triangle_property_parallel(1,PJ,KML)": [
       "parallel_property_collinear_extend(3,LM,JP,H)"
     ],
     "parallel_property_collinear_extend(3,LM,JP,H)": [
       "parallel_property_alternate_interior_angle(2,LH,JP)"
-    ],
-    "START": [
-      "midsegment_of_triangle_property_parallel(1,PJ,KML)"
     ]
   }
 }

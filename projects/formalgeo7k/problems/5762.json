@@ -2,9 +2,9 @@
   "problem_id": 5762,
   "annotation": "XiaokaiZhang_2023-05-28",
   "source": "GeoQA-7628",
-  "problem_level": 1,
-  "problem_text_cn": "如图的△ABC中有一正方形DEFG,其中D在AC上,E、F在AB上,直线AG分别交DE、BC于M、N两点．若∠B=90°,AB=4,BC=3,EF=1,则BN的长度为何？()",
-  "problem_text_en": "As shown in the figure, there is a square DEFG in △ABC, where D is on AC, E and F are on AB, and the straight line AG intersects DE and BC at M and N points respectively. If ∠B = N_0, AB = N_1, BC = N_2, EF = N_3, what is the length of BN? ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AB=4，BC=3，EF=1，∠ABC=90°，DEFG是正方形。求直线BN的长度。",
+  "problem_text_en": "As shown in the diagram, AB=4, BC=3, EF=1, ∠ABC=90°, DEFG is a square. Find the length of line BN.",
   "problem_img": "5762.png",
   "construction_cdl": [
     "Shape(DA,AM,MD)",
@@ -20,11 +20,11 @@
     "Collinear(CNB)"
   ],
   "text_cdl": [
-    "Square(DEFG)",
-    "Equal(MeasureOfAngle(ABC),90)",
     "Equal(LengthOfLine(AB),4)",
     "Equal(LengthOfLine(BC),3)",
-    "Equal(LengthOfLine(EF),1)"
+    "Equal(LengthOfLine(EF),1)",
+    "Equal(MeasureOfAngle(ABC),90)",
+    "Square(DEFG)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BN))",
@@ -39,7 +39,12 @@
     "similar_triangle_property_line_ratio(1,GAF,NAB)",
     "similar_triangle_property_line_ratio(1,AFG,ABN)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,AED,DEF)",
+      "line_addition(1,AE,EF)",
+      "similar_triangle_judgment_aa(1,GAF,NAB)"
+    ],
     "adjacent_complementary_angle(1,AED,DEF)": [
       "similar_triangle_judgment_aa(1,DAE,CAB)"
     ],
@@ -50,11 +55,6 @@
     "similar_triangle_judgment_aa(1,GAF,NAB)": [
       "similar_triangle_property_line_ratio(1,GAF,NAB)",
       "similar_triangle_property_line_ratio(1,AFG,ABN)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,AED,DEF)",
-      "line_addition(1,AE,EF)",
-      "similar_triangle_judgment_aa(1,GAF,NAB)"
     ]
   }
 }

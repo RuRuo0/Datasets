@@ -2,9 +2,9 @@
   "problem_id": 897,
   "annotation": "XiaokaiZhang_2023-03-19",
   "source": "Geometry3k-926",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If P R \\parallel W X, W X = 10, X Y = 6, W Y = 8, R Y = 5, and P S = 3, find S Y.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，PS=3，RY=5，WX=10，WY=8，XY=6，RP∥XW，BQ⊥SQ，SY垂直于BY，YS垂直于PS。求直线SY的长度。",
+  "problem_text_en": "As shown in the diagram, PS=3, RY=5, WX=10, WY=8, XY=6, RP∥XW, BQ is perpendicular to SQ, SY⊥BY, YS⊥PS. Find the length of line SY.",
   "problem_img": "897.png",
   "construction_cdl": [
     "Shape(YR,RB,BY)",
@@ -20,12 +20,15 @@
     "Collinear(PSQ)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(RP,XW)",
-    "Equal(LengthOfLine(WX),10)",
-    "Equal(LengthOfLine(XY),6)",
-    "Equal(LengthOfLine(WY),8)",
+    "Equal(LengthOfLine(PS),3)",
     "Equal(LengthOfLine(RY),5)",
-    "Equal(LengthOfLine(PS),3)"
+    "Equal(LengthOfLine(WX),10)",
+    "Equal(LengthOfLine(WY),8)",
+    "Equal(LengthOfLine(XY),6)",
+    "ParallelBetweenLine(RP,XW)",
+    "PerpendicularBetweenLine(BQ,SQ)",
+    "PerpendicularBetweenLine(SY,BY)",
+    "PerpendicularBetweenLine(YS,PS)"
   ],
   "image_cdl": [
     "PerpendicularBetweenLine(SY,BY)",
@@ -42,16 +45,16 @@
     "triangle_property_angle_sum(1,PYS)",
     "sine_theorem(1,SPY)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,RP,XW,Y)": [
-      "parallel_property_ipsilateral_internal_angle(1,YP,XW)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "cosine_theorem(1,XWY)",
       "parallel_property_collinear_extend(3,RP,XW,Y)",
       "angle_addition(1,PYS,SYB)",
       "triangle_property_angle_sum(1,PYS)",
       "sine_theorem(1,SPY)"
+    ],
+    "parallel_property_collinear_extend(3,RP,XW,Y)": [
+      "parallel_property_ipsilateral_internal_angle(1,YP,XW)"
     ]
   }
 }

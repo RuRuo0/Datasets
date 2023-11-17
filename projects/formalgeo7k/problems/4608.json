@@ -2,9 +2,9 @@
   "problem_id": 4608,
   "annotation": "QikeHuang_2023-05-14",
   "source": "GeoQA-3775",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O过点B、C．圆心O在等腰直角△ABC的内部,∠BAC=90°,OA=2,BC=6,则⊙O的半径为()",
-  "problem_text_en": "As shown in the figure, ⊙O passes points B and C. The center O is inside the isosceles right triangle △ABC, ∠BAC = N_0, OA = N_1, BC = N_2, then the radius of ⊙O is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，BC=6，OA=2，∠CAB=90°，O是⊙O的圆心，AB和AC是等腰直角三角形ABC的腰。求圆O的半径。",
+  "problem_text_en": "As shown in the diagram, BC=6, OA=2, ∠CAB=90°, the center of circle O is O, ∠CAB is the right angle of the isosceles right triangle ABC. Find the radius of circle O.",
   "problem_img": "4608.png",
   "construction_cdl": [
     "Shape(AC,OCB,BA)",
@@ -15,11 +15,11 @@
     "Cocircular(O,BC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsoscelesRightTriangle(ABC)",
-    "Equal(LengthOfLine(OA),2)",
     "Equal(LengthOfLine(BC),6)",
-    "Equal(MeasureOfAngle(CAB),90)"
+    "Equal(LengthOfLine(OA),2)",
+    "Equal(MeasureOfAngle(CAB),90)",
+    "IsCentreOfCircle(O,O)",
+    "IsoscelesRightTriangle(ABC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(RadiusOfCircle(O))",
@@ -33,7 +33,14 @@
     "right_triangle_property_pythagorean(1,CAB)",
     "cosine_theorem(1,ABO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "angle_addition(1,COA,OAB)",
+      "right_triangle_property_pythagorean(1,CAB)",
+      "cosine_theorem(1,ABO)"
+    ],
     "radius_of_circle_property_length_equal(1,OB,O)": [
       "mirror_congruent_triangle_judgment_sss(1,ABO,AOC)"
     ],
@@ -42,13 +49,6 @@
     ],
     "mirror_congruent_triangle_judgment_sss(1,ABO,AOC)": [
       "mirror_congruent_triangle_property_angle_equal(1,ABO,AOC)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "angle_addition(1,COA,OAB)",
-      "right_triangle_property_pythagorean(1,CAB)",
-      "cosine_theorem(1,ABO)"
     ]
   }
 }

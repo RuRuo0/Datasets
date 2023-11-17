@@ -2,9 +2,9 @@
   "problem_id": 5537,
   "annotation": "ZheZhu_2023-05-21",
   "source": "GeoQA-6712",
-  "problem_level": 1,
-  "problem_text_cn": "如图,三个半径都为2的圆两两外离,则图中阴影部分的面积为()",
-  "problem_text_en": "As shown in the figure, the three circles with radii of N_0 are separated by two, then the area of ​​the shaded part in the figure is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，⊙A的半径为2，⊙B的半径为2，圆C的半径为2，圆A的圆心为A，圆B的圆心为B，⊙C的圆心为C。求扇形CDE的面积、扇形AGF的面积与扇形BIH的面积之和。",
+  "problem_text_en": "As shown in the diagram, the radius of circle A is 2, the radius of circle B is 2, the radius of ⊙C is 2, A is the center of ⊙A, B is the center of ⊙B, the center of circle C is C. Find the sum of the area of the sector CDE, the area of the sector AGF and the area of the sector BIH.",
   "problem_img": "5537.png",
   "construction_cdl": [
     "Shape(CD,CDE,EC)",
@@ -19,12 +19,12 @@
     "Cocircular(B,IH)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(C,C)",
-    "IsCentreOfCircle(A,A)",
-    "IsCentreOfCircle(B,B)",
     "Equal(RadiusOfCircle(A),2)",
     "Equal(RadiusOfCircle(B),2)",
-    "Equal(RadiusOfCircle(C),2)"
+    "Equal(RadiusOfCircle(C),2)",
+    "IsCentreOfCircle(A,A)",
+    "IsCentreOfCircle(B,B)",
+    "IsCentreOfCircle(C,C)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Add(AreaOfSector(CDE),AreaOfSector(AGF),AreaOfSector(BIH)))",
@@ -38,7 +38,7 @@
     "sector_area_formula(1,AGF)",
     "sector_area_formula(1,BIH)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,CAB)",
       "arc_property_center_angle(1,CDE,C)",

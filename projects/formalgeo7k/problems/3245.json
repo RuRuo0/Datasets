@@ -2,9 +2,9 @@
   "problem_id": 3245,
   "annotation": "NaZhu_2023-04-23",
   "source": "GeoQA-548",
-  "problem_level": 1,
-  "problem_text_cn": "直线a,b,c,d的位置如图所示,如果∠1=∠2,∠3=43°,那么∠4等于()",
-  "problem_text_en": "The positions of the straight lines a, b, c, d are as shown in the figure, if ∠1 = ∠2, ∠3 = N_0, then ∠4 is equal to ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠CPM=43°，∠NPD=∠GNB。求∠EMN的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CPM=43°, ∠NPD=∠GNB. Find the measure of ∠EMN.",
   "problem_img": "3245.png",
   "construction_cdl": [
     "Shape(NM,MP,PN)",
@@ -26,8 +26,8 @@
     "Collinear(GNPH)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(NPD),MeasureOfAngle(GNB))",
-    "Equal(MeasureOfAngle(CPM),43)"
+    "Equal(MeasureOfAngle(CPM),43)",
+    "Equal(MeasureOfAngle(NPD),MeasureOfAngle(GNB))"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(EMN))",
@@ -39,17 +39,17 @@
     "flat_angle(1,CPD)",
     "angle_addition(1,CPM,MPD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_judgment_corresponding_angle(1,NB,PD,G)",
+      "flat_angle(1,CPD)",
+      "angle_addition(1,CPM,MPD)"
+    ],
     "parallel_judgment_corresponding_angle(1,NB,PD,G)": [
       "parallel_property_collinear_extend(1,NB,PD,M)"
     ],
     "parallel_property_collinear_extend(1,NB,PD,M)": [
       "parallel_property_corresponding_angle(1,MN,PD,E)"
-    ],
-    "START": [
-      "parallel_judgment_corresponding_angle(1,NB,PD,G)",
-      "flat_angle(1,CPD)",
-      "angle_addition(1,CPM,MPD)"
     ]
   }
 }

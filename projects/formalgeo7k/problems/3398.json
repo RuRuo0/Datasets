@@ -2,9 +2,9 @@
   "problem_id": 3398,
   "annotation": "JiaZou_2023-04-30",
   "source": "GeoQA-921",
-  "problem_level": 1,
-  "problem_text_cn": "如图,将△ABC沿直线DE折叠后,使得点B与点A重合．已知AC=4cm,△ADC的周长为15cm,则BC的长()",
-  "problem_text_en": "As shown in the figure, after folding △ABC along the straight line DE, point B and point A coincide. Given that AC = N_0, the perimeter of △ADC is N_1, then the length of BC is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AC=4，△ADC的周长为15，△EDA镜像全等于△EBD。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, AC=4, the perimeter of △ADC is 15, triangle EDA is mirror congruent to triangle EBD. Find the length of line BC.",
   "problem_img": "3398.png",
   "construction_cdl": [
     "Shape(EB,BD,DE)",
@@ -14,9 +14,9 @@
     "Collinear(BDC)"
   ],
   "text_cdl": [
-    "MirrorCongruentBetweenTriangle(EDA,EBD)",
     "Equal(LengthOfLine(AC),4)",
-    "Equal(PerimeterOfTriangle(ADC),15)"
+    "Equal(PerimeterOfTriangle(ADC),15)",
+    "MirrorCongruentBetweenTriangle(EDA,EBD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BC))",
@@ -26,7 +26,7 @@
     "triangle_perimeter_formula(1,ADC)",
     "line_addition(1,BD,DC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "mirror_congruent_triangle_property_line_equal(1,EDA,EBD)",
       "triangle_perimeter_formula(1,ADC)",

@@ -2,9 +2,9 @@
   "problem_id": 841,
   "annotation": "NaZhu_2023-04-09",
   "source": "Geometry3k-870",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find m \\angle 1 in the figure.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠AHN=37°，∠EKL=110°，AQ平行于HN，KL∥AQ，KL平行于HN。求∠HAK的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AHN=37°, ∠EKL=110°, AQ is parallel to HN, KL is parallel to AQ, KL is parallel to HN. Find the measure of ∠HAK.",
   "problem_img": "841.png",
   "construction_cdl": [
     "Shape(JK,KE)",
@@ -25,7 +25,13 @@
     "Collinear(AHF)",
     "Collinear(PAQ)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(AHN),37)",
+    "Equal(MeasureOfAngle(EKL),110)",
+    "ParallelBetweenLine(AQ,HN)",
+    "ParallelBetweenLine(KL,AQ)",
+    "ParallelBetweenLine(KL,HN)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(EKL),110)",
     "Equal(MeasureOfAngle(AHN),37)",
@@ -43,16 +49,16 @@
     "parallel_property_alternate_interior_angle(2,PA,HN)",
     "angle_addition(1,HAP,PAK)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(1,AQ,HN,P)": [
-      "parallel_property_alternate_interior_angle(2,PA,HN)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_corresponding_angle(1,KL,AQ,E)",
       "flat_angle(1,PAQ)",
       "angle_addition(1,PAK,KAQ)",
       "parallel_property_collinear_extend(1,AQ,HN,P)",
       "angle_addition(1,HAP,PAK)"
+    ],
+    "parallel_property_collinear_extend(1,AQ,HN,P)": [
+      "parallel_property_alternate_interior_angle(2,PA,HN)"
     ]
   }
 }

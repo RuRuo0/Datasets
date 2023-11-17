@@ -2,9 +2,9 @@
   "problem_id": 3749,
   "annotation": "ChenyangMao_2023-04-30",
   "source": "GeoQA-1547",
-  "problem_level": 1,
-  "problem_text_cn": "如图,直线AD∥BC,若∠1=42°,∠BAC=78°,则∠2的度数为()",
-  "problem_text_en": "As shown in the figure, the straight line AD ∥ BC, if ∠1 = N_0, ∠BAC = N_1, then the degree of ∠2 is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠BCA=42°，∠CAB=78°，AD平行于BC。求∠BAE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BCA=42°, ∠CAB=78°, AD is parallel to BC. Find the measure of ∠BAE.",
   "problem_img": "3749.png",
   "construction_cdl": [
     "Shape(BA,AE)",
@@ -12,7 +12,11 @@
     "Shape(AB,BC,CA)",
     "Collinear(EAD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(BCA),42)",
+    "Equal(MeasureOfAngle(CAB),78)",
+    "ParallelBetweenLine(AD,BC)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(BCA),42)",
     "Equal(MeasureOfAngle(CAB),78)",
@@ -25,13 +29,13 @@
     "parallel_property_collinear_extend(1,AD,BC,E)",
     "parallel_property_alternate_interior_angle(2,EA,BC)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(1,AD,BC,E)": [
-      "parallel_property_alternate_interior_angle(2,EA,BC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,ABC)",
       "parallel_property_collinear_extend(1,AD,BC,E)"
+    ],
+    "parallel_property_collinear_extend(1,AD,BC,E)": [
+      "parallel_property_alternate_interior_angle(2,EA,BC)"
     ]
   }
 }

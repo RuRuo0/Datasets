@@ -2,9 +2,9 @@
   "problem_id": 5675,
   "annotation": "NaZhu_2023-05-28",
   "source": "GeoQA-7379",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,M、N分别为AC、BC的中点,若S~△CMN~=1,则S~△ABC~为()",
-  "problem_text_en": "As shown in the figure, in △ABC, M and N are the midvertices of AC and BC respectively. If S~△CMN~ = N_0, then S~△ABC~ is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，三角形CNM的面积为1，M平分线段CA，N是线段CB的中点。求三角形CBA的面积。",
+  "problem_text_en": "As shown in the diagram, the area of △CNM is 1, M is the midpoint of segment CA, N is the midpoint of segment CB. Find the area of triangle CBA.",
   "problem_img": "5675.png",
   "construction_cdl": [
     "Shape(CN,NM,MC)",
@@ -13,9 +13,9 @@
     "Collinear(CNB)"
   ],
   "text_cdl": [
+    "Equal(AreaOfTriangle(CNM),1)",
     "IsMidpointOfLine(M,CA)",
-    "IsMidpointOfLine(N,CB)",
-    "Equal(AreaOfTriangle(CNM),1)"
+    "IsMidpointOfLine(N,CB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(AreaOfTriangle(CBA))",
@@ -27,7 +27,11 @@
     "similar_triangle_property_line_ratio(1,NMC,BAC)",
     "similar_triangle_property_area_square_ratio(1,CNM,CBA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,CM,MA)",
+      "line_addition(1,CN,NB)"
+    ],
     "line_addition(1,CM,MA)": [
       "similar_triangle_judgment_sas(1,CNM,CBA)"
     ],
@@ -37,10 +41,6 @@
     "similar_triangle_judgment_sas(1,CNM,CBA)": [
       "similar_triangle_property_area_square_ratio(1,CNM,CBA)",
       "similar_triangle_property_line_ratio(1,NMC,BAC)"
-    ],
-    "START": [
-      "line_addition(1,CM,MA)",
-      "line_addition(1,CN,NB)"
     ]
   }
 }

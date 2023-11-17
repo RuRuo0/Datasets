@@ -2,9 +2,9 @@
   "problem_id": 6774,
   "annotation": "Yangli_2023-06-04",
   "source": "GeoQA-9873",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,BC是弦,CD切⊙O于点C．作AD⊥CD于D,若∠A=50°,则∠BCD的度数为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of O, BC is the chord, and CD tangents O at point C. As AD ⊥ CD in D, if ∠A = N_0, then the degree of ∠BCD is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，∠OAE=50°，O是圆O的圆心，AB是圆O的直径，⊙O的切线为DC，ED⊥CD。求∠DCB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠OAE=50°, O is the center of circle O, the diameter of circle O is AB, DC is the tangent to ⊙O, ED is perpendicular to CD. Find the measure of ∠DCB.",
   "problem_img": "6774.png",
   "construction_cdl": [
     "Shape(AO,OB,OBA)",
@@ -18,11 +18,11 @@
     "Cocircular(O,AECB)"
   ],
   "text_cdl": [
-    "IsDiameterOfCircle(AB,O)",
+    "Equal(MeasureOfAngle(OAE),50)",
     "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)",
     "IsTangentOfCircle(DC,O)",
-    "PerpendicularBetweenLine(ED,CD)",
-    "Equal(MeasureOfAngle(OAE),50)"
+    "PerpendicularBetweenLine(ED,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DCB))",
@@ -38,7 +38,14 @@
     "triangle_property_angle_sum(1,OCB)",
     "angle_addition(1,DCO,OCB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(2,DC,O,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "triangle_property_angle_sum(1,OCB)",
+      "angle_addition(1,DCO,OCB)"
+    ],
     "tangent_of_circle_property_perpendicular(2,DC,O,O)": [
       "parallel_judgment_ipsilateral_internal_angle(1,DA,CO)"
     ],
@@ -53,13 +60,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OCB)": [
       "isosceles_triangle_property_angle_equal(1,OCB)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(2,DC,O,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "triangle_property_angle_sum(1,OCB)",
-      "angle_addition(1,DCO,OCB)"
     ]
   }
 }

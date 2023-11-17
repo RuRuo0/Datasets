@@ -2,9 +2,9 @@
   "problem_id": 1974,
   "annotation": "ZheZhu_2023-04-16",
   "source": "Geometry3k-2054",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Triangle A D C is circumscribed about \\odot O. Find the perimeter of \\triangle A D C if E C = D E + A F.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=19，EC=Add(LengthOfLine(DE),LengthOfLine(FA))，FD=6，△DCA的内心为O，AB是圆O的切线，AF是⊙O的切线，CB是⊙O的切线，圆O的切线为CE，DE是圆O的切线，DF是圆O的切线。求△DCA的周长。",
+  "problem_text_en": "As shown in the diagram, AB=19, EC=Add(LengthOfLine(DE),LengthOfLine(FA)), FD=6, the incenter of triangle DCA is O, AB is the tangent to ⊙O, the tangent to ⊙O is AF, the tangent to circle O is CB, CE is the tangent to ⊙O, DE is the tangent to circle O, DF is the tangent to circle O. Find the perimeter of triangle DCA.",
   "problem_img": "1974.png",
   "construction_cdl": [
     "Shape(EC,CB,OEB)",
@@ -16,7 +16,18 @@
     "Collinear(CBA)",
     "Cocircular(O,EBF)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),19)",
+    "Equal(LengthOfLine(EC),Add(LengthOfLine(DE),LengthOfLine(FA)))",
+    "Equal(LengthOfLine(FD),6)",
+    "IsIncenterOfTriangle(O,DCA)",
+    "IsTangentOfCircle(AB,O)",
+    "IsTangentOfCircle(AF,O)",
+    "IsTangentOfCircle(CB,O)",
+    "IsTangentOfCircle(CE,O)",
+    "IsTangentOfCircle(DE,O)",
+    "IsTangentOfCircle(DF,O)"
+  ],
   "image_cdl": [
     "IsIncenterOfTriangle(O,DCA)",
     "IsTangentOfCircle(DE,O)",
@@ -40,7 +51,7 @@
     "line_addition(1,CB,BA)",
     "triangle_perimeter_formula(1,CAD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_length_equal(1,AB,AF,O)",
       "tangent_of_circle_property_length_equal(1,CE,CB,O)",

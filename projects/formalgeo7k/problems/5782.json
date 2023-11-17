@@ -2,9 +2,9 @@
   "problem_id": 5782,
   "annotation": "YanjunGuo_2023-05-28",
   "source": "GeoQA-7678",
-  "problem_level": 1,
-  "problem_text_cn": "已知如图,AD:BD=1:2,DE∥BC,若DE=2时,BC的值是()",
-  "problem_text_en": "As shown in the figure, AD:BD=N_0:N_1,DE∥BC, if DE = N_1, the value of BC is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，Div(LengthOfLine(AD)=LengthOfLine(BD))，DE=2，DE平行于BC。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, Div(LengthOfLine(AD)=LengthOfLine(BD)), DE=2, DE∥BC. Find the length of line BC.",
   "problem_img": "5782.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -13,8 +13,8 @@
     "Collinear(AEC)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(DE),2)",
     "Equal(Div(LengthOfLine(AD),LengthOfLine(BD)),1/2)",
+    "Equal(LengthOfLine(DE),2)",
     "ParallelBetweenLine(DE,BC)"
   ],
   "image_cdl": [],
@@ -28,7 +28,12 @@
     "similar_triangle_property_line_ratio(1,ABC,ADE)",
     "similar_triangle_property_line_ratio(1,CAB,EAD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AD,DB)",
+      "parallel_property_corresponding_angle(1,DE,BC,A)",
+      "parallel_property_corresponding_angle(2,CB,ED,A)"
+    ],
     "parallel_property_corresponding_angle(1,DE,BC,A)": [
       "similar_triangle_judgment_aa(1,ABC,ADE)"
     ],
@@ -38,11 +43,6 @@
     "similar_triangle_judgment_aa(1,ABC,ADE)": [
       "similar_triangle_property_line_ratio(1,ABC,ADE)",
       "similar_triangle_property_line_ratio(1,CAB,EAD)"
-    ],
-    "START": [
-      "line_addition(1,AD,DB)",
-      "parallel_property_corresponding_angle(1,DE,BC,A)",
-      "parallel_property_corresponding_angle(2,CB,ED,A)"
     ]
   }
 }

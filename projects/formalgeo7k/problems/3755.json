@@ -2,9 +2,9 @@
   "problem_id": 3755,
   "annotation": "ChenyangMao_2023-04-30",
   "source": "GeoQA-1559",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB∥CD,射线AE交CD于点F,若∠1=115°,则∠2的度数是()",
-  "problem_text_en": "As shown in the figure, AB ∥ CD, radial AE intersects CD at point F, if ∠1 = N_0, then the degree of ∠2 is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠FAB=115°，CD∥AB。求∠CFE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠FAB=115°, CD∥AB. Find the measure of ∠CFE.",
   "problem_img": "3755.png",
   "construction_cdl": [
     "Shape(FA,AB)",
@@ -15,7 +15,10 @@
     "Collinear(AFE)",
     "Collinear(CFD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(FAB),115)",
+    "ParallelBetweenLine(CD,AB)"
+  ],
   "image_cdl": [
     "ParallelBetweenLine(CD,AB)",
     "Equal(MeasureOfAngle(FAB),115)"
@@ -27,13 +30,13 @@
     "parallel_property_corresponding_angle(1,FD,AB,E)",
     "adjacent_complementary_angle(1,CFE,EFD)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,CD,AB,F)": [
-      "parallel_property_corresponding_angle(1,FD,AB,E)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_collinear_extend(3,CD,AB,F)",
       "adjacent_complementary_angle(1,CFE,EFD)"
+    ],
+    "parallel_property_collinear_extend(3,CD,AB,F)": [
+      "parallel_property_corresponding_angle(1,FD,AB,E)"
     ]
   }
 }

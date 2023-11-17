@@ -2,9 +2,9 @@
   "problem_id": 3068,
   "annotation": "XiaokaiZhang_2023-04-16",
   "source": "GeoQA-293",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知AD=AE,BE=CD,∠1=∠2=110°,∠BAC=80°,则∠CAE的度数是()",
-  "problem_text_en": "As shown in the figure, given that AD = AE, BE = CD, ∠1 = ∠2 = N_0, ∠BAC = N_1, then the degree of ∠CAE is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AD=AE，BE=CD，∠AEC=110°，∠BDA=110°，∠CAB=80°。求∠CAE的大小。",
+  "problem_text_en": "As shown in the diagram, AD=AE, BE=CD, ∠AEC=110°, ∠BDA=110°, ∠CAB=80°. Find the measure of ∠CAE.",
   "problem_img": "3068.png",
   "construction_cdl": [
     "Shape(AB,BD,DA)",
@@ -15,8 +15,8 @@
   "text_cdl": [
     "Equal(LengthOfLine(AD),LengthOfLine(AE))",
     "Equal(LengthOfLine(BE),LengthOfLine(CD))",
-    "Equal(MeasureOfAngle(BDA),110)",
     "Equal(MeasureOfAngle(AEC),110)",
+    "Equal(MeasureOfAngle(BDA),110)",
     "Equal(MeasureOfAngle(CAB),80)"
   ],
   "image_cdl": [],
@@ -30,7 +30,13 @@
     "triangle_property_angle_sum(1,ABC)",
     "triangle_property_angle_sum(1,AEC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,BDA,ADE)",
+      "adjacent_complementary_angle(1,DEA,AEC)",
+      "triangle_property_angle_sum(1,ABC)",
+      "triangle_property_angle_sum(1,AEC)"
+    ],
     "adjacent_complementary_angle(1,BDA,ADE)": [
       "mirror_congruent_triangle_judgment_sas(1,EAB,DCA)"
     ],
@@ -39,12 +45,6 @@
     ],
     "mirror_congruent_triangle_judgment_sas(1,EAB,DCA)": [
       "mirror_congruent_triangle_property_angle_equal(1,BEA,CAD)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,BDA,ADE)",
-      "adjacent_complementary_angle(1,DEA,AEC)",
-      "triangle_property_angle_sum(1,ABC)",
-      "triangle_property_angle_sum(1,AEC)"
     ]
   }
 }

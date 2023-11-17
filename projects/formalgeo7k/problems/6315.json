@@ -2,9 +2,9 @@
   "problem_id": 6315,
   "annotation": "ZheZhu_2023-05-28",
   "source": "GeoQA-9103",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示,四边形ABCD为矩形,点O为对角线的交点,∠BOC=120°,AE⊥BO交BO于点E,AB=4,则AE等于()",
-  "problem_text_en": "As shown in the figure, the quadrilateral ABCD is a rectangle, the point O is the intersection of the diagonals, ∠BOC = N_0, AE ⊥ BO intersects BO at the point E, AB = N_1, then AE is equal to ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，AB=4，∠AEO=90°，∠COB=120°，四边形ABCD是矩形。求直线AE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=4, ∠AEO=90°, ∠COB=120°, quadrilateral ABCD is a rectangle. Find the length of line AE.",
   "problem_img": "6315.png",
   "construction_cdl": [
     "Shape(AB,BE,EA)",
@@ -16,10 +16,10 @@
     "Collinear(BEOD)"
   ],
   "text_cdl": [
-    "Rectangle(ABCD)",
     "Equal(LengthOfLine(AB),4)",
+    "Equal(MeasureOfAngle(AEO),90)",
     "Equal(MeasureOfAngle(COB),120)",
-    "Equal(MeasureOfAngle(AEO),90)"
+    "Rectangle(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AE))",
@@ -36,7 +36,7 @@
     "sine_theorem(1,BDA)",
     "sine_theorem(1,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "flat_angle(1,BEO)",
       "angle_addition(1,ABE,EBC)",

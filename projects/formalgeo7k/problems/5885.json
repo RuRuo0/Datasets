@@ -2,9 +2,9 @@
   "problem_id": 5885,
   "annotation": "QikeHuang_2023-05-28",
   "source": "GeoQA-7945",
-  "problem_level": 1,
-  "problem_text_cn": "如图,把边长分别为8cm和6cm的两个正方形ABCD与BEFG并排放在一起,直线EG交DC于P,AC交PG于K,则△AEK的面积是()",
-  "problem_text_en": "As shown in the figure, the two squares ABCD and BEFG with edge length N_0 and N_1 are placed side by side. The straight line EG crosses DC to P, AC intersects PG at K, then the area of ​​△AEK is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AB=8，BE=6，ABCD是正方形，四边形BEFG是正方形。求三角形AEK的面积。",
+  "problem_text_en": "As shown in the diagram, AB=8, BE=6, ABCD is a square, quadrilateral BEFG is a square. Find the area of △AEK.",
   "problem_img": "5885.png",
   "construction_cdl": [
     "Shape(DA,AK,KP,PD)",
@@ -20,10 +20,10 @@
     "Collinear(ABE)"
   ],
   "text_cdl": [
-    "Square(ABCD)",
-    "Square(BEFG)",
     "Equal(LengthOfLine(AB),8)",
-    "Equal(LengthOfLine(BE),6)"
+    "Equal(LengthOfLine(BE),6)",
+    "Square(ABCD)",
+    "Square(BEFG)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(AreaOfTriangle(AEK))",
@@ -38,7 +38,7 @@
     "line_addition(1,AB,BE)",
     "triangle_area_formula_sine(1,AEK)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,ABC)",
       "triangle_property_angle_sum(1,BEG)",

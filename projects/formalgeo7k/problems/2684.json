@@ -2,9 +2,9 @@
   "problem_id": 2684,
   "annotation": "ZheZhu_2023-04-23",
   "source": "Geometry3k-2825",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot P, J K = 10 and \\widehat J K L = 134. Find m \\widehat J L.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，JK=10，PM=6，⌒PJK的角度为134，⊙P的圆心为P，PQ垂直于KQ。求弧PJL的角度。",
+  "problem_text_en": "As shown in the diagram, JK=10, PM=6, the measure of ⌒PJK is 134, P is the center of ⊙P, PQ is perpendicular to KQ. Find the measure of arc PJL.",
   "problem_img": "2684.png",
   "construction_cdl": [
     "Shape(JQ,QP,PM,PMJ)",
@@ -15,7 +15,13 @@
     "Collinear(MPQL)",
     "Cocircular(P,MJLK)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(JK),10)",
+    "Equal(LengthOfLine(PM),6)",
+    "Equal(MeasureOfArc(PJK),134)",
+    "IsCentreOfCircle(P,P)",
+    "PerpendicularBetweenLine(PQ,KQ)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(P,P)",
     "Equal(LengthOfLine(JK),10)",
@@ -32,7 +38,11 @@
     "congruent_arc_property_measure_equal(1,PJL,PLK)",
     "arc_addition_measure(1,PJL,PLK)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,JQP,PQK)",
+      "arc_addition_measure(1,PJL,PLK)"
+    ],
     "adjacent_complementary_angle(1,JQP,PQK)": [
       "circle_property_chord_perpendicular_bisect_arc(1,PJK,PQL)"
     ],
@@ -41,10 +51,6 @@
     ],
     "congruent_arc_judgment_length_equal(1,PJL,PLK)": [
       "congruent_arc_property_measure_equal(1,PJL,PLK)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,JQP,PQK)",
-      "arc_addition_measure(1,PJL,PLK)"
     ]
   }
 }

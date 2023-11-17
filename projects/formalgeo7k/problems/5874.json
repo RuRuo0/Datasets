@@ -2,9 +2,9 @@
   "problem_id": 5874,
   "annotation": "QikeHuang_2023-05-28",
   "source": "GeoQA-7920",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点D、E分别在△ABC的边AB、AC上,且AD:AC=AE:AB=1:2,若BC=6,则DE的长为()",
-  "problem_text_en": "As shown in the figure, points D and E are respectively on AB and AC of △ABC, and AD: AC = AE: AB = N_0:N_1, if BC = N_2, then the length of DE is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，Div(LengthOfLine(AD)=LengthOfLine(AC))，Div(LengthOfLine(AE)=LengthOfLine(AB))，BC=6。求直线DE的长度。",
+  "problem_text_en": "As shown in the diagram, Div(LengthOfLine(AD)=LengthOfLine(AC)), Div(LengthOfLine(AE)=LengthOfLine(AB)), BC=6. Find the length of line DE.",
   "problem_img": "5874.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -25,13 +25,13 @@
     "mirror_similar_triangle_property_line_ratio(1,ADE,ABC)",
     "mirror_similar_triangle_property_line_ratio(1,DEA,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "mirror_similar_triangle_judgment_sas(1,ADE,ABC)"
+    ],
     "mirror_similar_triangle_judgment_sas(1,ADE,ABC)": [
       "mirror_similar_triangle_property_line_ratio(1,ADE,ABC)",
       "mirror_similar_triangle_property_line_ratio(1,DEA,CAB)"
-    ],
-    "START": [
-      "mirror_similar_triangle_judgment_sas(1,ADE,ABC)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 1759,
   "annotation": "ChenyangMao_2023-04-16",
   "source": "Geometry3k-1824",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure.",
+  "problem_level": 12,
+  "problem_text_cn": "如图所示，CH=14，MD=6，OH=4，Sub(AreaOfQuadrilateral(MHCD)=AreaOfSector(OHM))，O是圆O的圆心，圆O的直径为MH，CH是圆O的切线，⊙O的切线为DM。求x的值。",
+  "problem_text_en": "As shown in the diagram, CH=14, MD=6, OH=4, Sub(AreaOfQuadrilateral(MHCD)=AreaOfSector(OHM)), O is the center of circle O, the diameter of ⊙O is MH, CH is the tangent to ⊙O, the tangent to circle O is DM. Find the value of x.",
   "problem_img": "1759.png",
   "construction_cdl": [
     "Shape(DM,MO,OH,HC,CD)",
@@ -12,7 +12,16 @@
     "Collinear(MOH)",
     "Cocircular(O,HM)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(CH),14)",
+    "Equal(LengthOfLine(MD),6)",
+    "Equal(LengthOfLine(OH),4)",
+    "Equal(Sub(AreaOfQuadrilateral(MHCD),AreaOfSector(OHM)),x)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(MH,O)",
+    "IsTangentOfCircle(CH,O)",
+    "IsTangentOfCircle(DM,O)"
+  ],
   "image_cdl": [
     "IsDiameterOfCircle(MH,O)",
     "IsCentreOfCircle(O,O)",
@@ -39,7 +48,17 @@
     "right_trapezoid_judgment_right_angle(1,MHCD)",
     "right_trapezoid_area_formular(1,MHCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(2,DM,O,O)",
+      "tangent_of_circle_property_perpendicular(1,CH,O,O)",
+      "circle_property_length_of_radius_and_diameter(1,O)",
+      "flat_angle(1,MOH)",
+      "diameter_of_circle_property_length_equal(1,MH,O)",
+      "arc_property_center_angle(1,OHM,O)",
+      "radius_of_circle_property_length_equal(1,OH,O)",
+      "sector_area_formula(1,OHM)"
+    ],
     "tangent_of_circle_property_perpendicular(2,DM,O,O)": [
       "parallel_judgment_ipsilateral_internal_angle(1,MD,HC)"
     ],
@@ -55,16 +74,6 @@
     ],
     "right_trapezoid_judgment_right_angle(1,MHCD)": [
       "right_trapezoid_area_formular(1,MHCD)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(2,DM,O,O)",
-      "tangent_of_circle_property_perpendicular(1,CH,O,O)",
-      "circle_property_length_of_radius_and_diameter(1,O)",
-      "flat_angle(1,MOH)",
-      "diameter_of_circle_property_length_equal(1,MH,O)",
-      "arc_property_center_angle(1,OHM,O)",
-      "radius_of_circle_property_length_equal(1,OH,O)",
-      "sector_area_formula(1,OHM)"
     ]
   }
 }

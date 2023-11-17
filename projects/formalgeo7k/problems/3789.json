@@ -2,9 +2,9 @@
   "problem_id": 3789,
   "annotation": "RunanWang_2023-05-07",
   "source": "GeoQA-1629",
-  "problem_level": 1,
-  "problem_text_cn": "如图,小明设计两个直角,来测量河宽BC,他量得AB=20米,BD=30米,CE=90米,则河宽BC为()",
-  "problem_text_en": "As shown in the figure, Xiaoming designed two right angles to measure the width of the river BC, he measured AB = N_0, BD = N_1, CE = N_2, then the width of the river BC is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=20，BD=30，CE=90，DB垂直于AB，EC⊥AC。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, AB=20, BD=30, CE=90, DB⊥AB, EC is perpendicular to AC. Find the length of line BC.",
   "problem_img": "3789.png",
   "construction_cdl": [
     "Shape(EC,CB,BD,DE)",
@@ -12,7 +12,13 @@
     "Collinear(ADE)",
     "Collinear(CBA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),20)",
+    "Equal(LengthOfLine(BD),30)",
+    "Equal(LengthOfLine(CE),90)",
+    "PerpendicularBetweenLine(DB,AB)",
+    "PerpendicularBetweenLine(EC,AC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AB),20)",
     "Equal(LengthOfLine(BD),30)",
@@ -28,14 +34,14 @@
     "similar_triangle_property_line_ratio(1,ADB,AEC)",
     "line_addition(1,CB,BA)"
   ],
-  "theorem_seq_dag": {
-    "similar_triangle_judgment_aa(1,DBA,ECA)": [
-      "similar_triangle_property_line_ratio(1,DBA,ECA)",
-      "similar_triangle_property_line_ratio(1,ADB,AEC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "similar_triangle_judgment_aa(1,DBA,ECA)",
       "line_addition(1,CB,BA)"
+    ],
+    "similar_triangle_judgment_aa(1,DBA,ECA)": [
+      "similar_triangle_property_line_ratio(1,DBA,ECA)",
+      "similar_triangle_property_line_ratio(1,ADB,AEC)"
     ]
   }
 }

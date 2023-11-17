@@ -2,16 +2,21 @@
   "problem_id": 1853,
   "annotation": "JiaZou_2023-03-26",
   "source": "Geometry3k-1922",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the triangle. Round to the nearest tenth if necessary.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=6，AC=3.6，DC=2，BD垂直于CD。求△BAC的面积。",
+  "problem_text_en": "As shown in the diagram, AB=6, AC=3.6, DC=2, BD⊥CD. Find the area of △BAC.",
   "problem_img": "1853.png",
   "construction_cdl": [
     "Shape(CB,BD,DC)",
     "Shape(CD,DA,AC)",
     "Collinear(BDA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),6)",
+    "Equal(LengthOfLine(AC),3.6)",
+    "Equal(LengthOfLine(DC),2)",
+    "PerpendicularBetweenLine(BD,CD)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AC),3.6)",
     "Equal(LengthOfLine(DC),2)",
@@ -24,7 +29,7 @@
     "altitude_of_triangle_judgment(1,CD,CBA)",
     "triangle_area_formula_common(1,CBA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "altitude_of_triangle_judgment(1,CD,CBA)",
       "triangle_area_formula_common(1,CBA)"

@@ -2,9 +2,9 @@
   "problem_id": 2026,
   "annotation": "QikeHuang_2023-04-23",
   "source": "Geometry3k-2112",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If the perimeter of square 2 is 200 units and the perimeter of square 1 is 150 units, what is the perimeter of square 3?",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，四边形DCIA的周长为200，IGHB的周长为150，AI垂直于BI，ABEF是正方形，DCIA是正方形，IGHB是正方形。求四边形ABEF的周长。",
+  "problem_text_en": "As shown in the diagram, the perimeter of quadrilateral DCIA is 200, the perimeter of IGHB is 150, AI⊥BI, quadrilateral ABEF is a square, DCIA is a square, IGHB is a square. Find the perimeter of ABEF.",
   "problem_img": "2026.png",
   "construction_cdl": [
     "Shape(DC,CI,IA,AD)",
@@ -15,11 +15,12 @@
     "Collinear(AIG)"
   ],
   "text_cdl": [
-    "Square(DCIA)",
-    "Square(IGHB)",
-    "Square(ABEF)",
     "Equal(PerimeterOfQuadrilateral(DCIA),200)",
-    "Equal(PerimeterOfQuadrilateral(IGHB),150)"
+    "Equal(PerimeterOfQuadrilateral(IGHB),150)",
+    "PerpendicularBetweenLine(AI,BI)",
+    "Square(ABEF)",
+    "Square(DCIA)",
+    "Square(IGHB)"
   ],
   "image_cdl": [
     "PerpendicularBetweenLine(AI,BI)"
@@ -33,15 +34,15 @@
     "right_triangle_judgment_angle(1,AIB)",
     "right_triangle_property_pythagorean(1,AIB)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,AIB)": [
-      "right_triangle_property_pythagorean(1,AIB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "quadrilateral_perimeter_formula(1,DCIA)",
       "quadrilateral_perimeter_formula(1,ABEF)",
       "quadrilateral_perimeter_formula(1,IGHB)",
       "right_triangle_judgment_angle(1,AIB)"
+    ],
+    "right_triangle_judgment_angle(1,AIB)": [
+      "right_triangle_property_pythagorean(1,AIB)"
     ]
   }
 }

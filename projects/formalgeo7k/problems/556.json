@@ -2,9 +2,9 @@
   "problem_id": 556,
   "annotation": "YimingHe_2023-04-02",
   "source": "Geometry3k-569",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the triangle at the right. Assume that segments that appear to be tangent are tangent.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AM=9，BC=14，ME=15，圆O的切线为BA，BC是⊙O的切线，EC是圆O的切线，EF是圆O的切线，MA是圆O的切线，圆O的切线为MF。求△BEM的周长。",
+  "problem_text_en": "As shown in the diagram, AM=9, BC=14, ME=15, BA is the tangent to ⊙O, the tangent to circle O is BC, the tangent to ⊙O is EC, the tangent to ⊙O is EF, the tangent to ⊙O is MA, the tangent to circle O is MF. Find the perimeter of triangle BEM.",
   "problem_img": "556.png",
   "construction_cdl": [
     "Shape(BC,OAC,AB)",
@@ -17,10 +17,13 @@
     "Cocircular(O,ACF)"
   ],
   "text_cdl": [
-    "IsTangentOfCircle(BC,O)",
+    "Equal(LengthOfLine(AM),9)",
+    "Equal(LengthOfLine(BC),14)",
+    "Equal(LengthOfLine(ME),15)",
     "IsTangentOfCircle(BA,O)",
-    "IsTangentOfCircle(EF,O)",
+    "IsTangentOfCircle(BC,O)",
     "IsTangentOfCircle(EC,O)",
+    "IsTangentOfCircle(EF,O)",
     "IsTangentOfCircle(MA,O)",
     "IsTangentOfCircle(MF,O)"
   ],
@@ -40,7 +43,7 @@
     "line_addition(1,BA,AM)",
     "triangle_perimeter_formula(1,BEM)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_length_equal(1,EF,EC,O)",
       "tangent_of_circle_property_length_equal(1,BC,BA,O)",

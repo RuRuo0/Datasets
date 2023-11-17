@@ -2,15 +2,24 @@
   "problem_id": 508,
   "annotation": "JiaZou_2023-03-12",
   "source": "Geometry3k-519",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find z.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=y，AD=x，BC=z，BD=8，∠BAC=45°，∠BDA=60°，AC垂直于BC，DA⊥BA。求z的值。",
+  "problem_text_en": "As shown in the diagram, AB=y, AD=x, BC=z, BD=8, ∠BAC=45°, ∠BDA=60°, AC⊥BC, DA⊥BA. Find the value of z.",
   "problem_img": "508.png",
   "construction_cdl": [
     "Shape(DA,AB,BD)",
     "Shape(BA,AC,CB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),y)",
+    "Equal(LengthOfLine(AD),x)",
+    "Equal(LengthOfLine(BC),z)",
+    "Equal(LengthOfLine(BD),8)",
+    "Equal(MeasureOfAngle(BAC),45)",
+    "Equal(MeasureOfAngle(BDA),60)",
+    "PerpendicularBetweenLine(AC,BC)",
+    "PerpendicularBetweenLine(DA,BA)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BC),z)",
     "Equal(LengthOfLine(BD),8)",
@@ -27,7 +36,7 @@
     "sine_theorem(1,BDA)",
     "sine_theorem(1,BAC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "sine_theorem(1,BDA)",
       "sine_theorem(1,BAC)"

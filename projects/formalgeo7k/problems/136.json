@@ -3,14 +3,20 @@
   "annotation": "XiaokaiZhang_2023-03-12",
   "source": "Geometry3k-138",
   "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If b=3, find c.",
+  "problem_text_cn": "如图所示，AC=b，BA=c，BC=a，∠ABC=60°，∠CAB=30°，b=3，BC垂直于AC。求c的值。",
+  "problem_text_en": "As shown in the diagram, AC=b, BA=c, BC=a, ∠ABC=60°, ∠CAB=30°, b=3, BC is perpendicular to AC. Find the value of c.",
   "problem_img": "136.png",
   "construction_cdl": [
     "Shape(BC,CA,AB)"
   ],
   "text_cdl": [
-    "Equal(b,3)"
+    "Equal(LengthOfLine(AC),b)",
+    "Equal(LengthOfLine(BA),c)",
+    "Equal(LengthOfLine(BC),a)",
+    "Equal(MeasureOfAngle(ABC),60)",
+    "Equal(MeasureOfAngle(CAB),30)",
+    "Equal(b,3)",
+    "PerpendicularBetweenLine(BC,AC)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(BA),c)",
@@ -25,7 +31,7 @@
   "theorem_seqs": [
     "sine_theorem(1,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "sine_theorem(1,ABC)"
     ]

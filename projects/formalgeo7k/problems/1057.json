@@ -2,15 +2,23 @@
   "problem_id": 1057,
   "annotation": "QikeHuang_2023-04-09",
   "source": "Geometry3k-1091",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=17，AC=AD，AC=BC，BC=x，BD=AC，∠ABD=y°，BD⊥AD。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=17, AC=AD, AC=BC, BC=x, BD=AC, ∠ABD=y°, BD⊥AD. Find the value of x.",
   "problem_img": "1057.png",
   "construction_cdl": [
     "Shape(BD,DA,AB)",
     "Shape(BA,AC,CB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),17)",
+    "Equal(LengthOfLine(AC),LengthOfLine(AD))",
+    "Equal(LengthOfLine(AC),LengthOfLine(BC))",
+    "Equal(LengthOfLine(BC),x)",
+    "Equal(LengthOfLine(BD),LengthOfLine(AC))",
+    "Equal(MeasureOfAngle(ABD),y)",
+    "PerpendicularBetweenLine(BD,AD)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BC),x)",
     "Equal(MeasureOfAngle(ABD),y)",
@@ -26,12 +34,12 @@
     "right_triangle_judgment_angle(1,BDA)",
     "right_triangle_property_pythagorean(1,BDA)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,BDA)": [
-      "right_triangle_property_pythagorean(1,BDA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,BDA)"
+    ],
+    "right_triangle_judgment_angle(1,BDA)": [
+      "right_triangle_property_pythagorean(1,BDA)"
     ]
   }
 }

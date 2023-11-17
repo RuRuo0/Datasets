@@ -2,9 +2,9 @@
   "problem_id": 2029,
   "annotation": "QikeHuang_2023-04-23",
   "source": "Geometry3k-2115",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AD=3*x+11，BD=5*x-8，BD=AD，BE=2*y-1，CE=4*y-7，AC∥DE，DE∥AC。求y的值。",
+  "problem_text_en": "As shown in the diagram, AD=3*x+11, BD=5*x-8, BD=AD, BE=2*y-1, CE=4*y-7, AC is parallel to DE, DE is parallel to AC. Find the value of y.",
   "problem_img": "2029.png",
   "construction_cdl": [
     "Shape(AC,CE,ED,DA)",
@@ -12,7 +12,15 @@
     "Collinear(ADB)",
     "Collinear(CEB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AD),3*x+11)",
+    "Equal(LengthOfLine(BD),5*x-8)",
+    "Equal(LengthOfLine(BD),LengthOfLine(AD))",
+    "Equal(LengthOfLine(BE),2*y-1)",
+    "Equal(LengthOfLine(CE),4*y-7)",
+    "ParallelBetweenLine(AC,DE)",
+    "ParallelBetweenLine(DE,AC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(CE),4*y-7)",
     "Equal(LengthOfLine(BD),5*x-8)",
@@ -32,18 +40,18 @@
     "similar_triangle_property_line_ratio(1,DEB,ACB)",
     "similar_triangle_property_line_ratio(1,EBD,CBA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(2,CA,ED,B)",
+      "line_addition(1,AD,DB)",
+      "line_addition(1,CE,EB)"
+    ],
     "parallel_property_corresponding_angle(2,CA,ED,B)": [
       "similar_triangle_judgment_aa(1,DEB,ACB)"
     ],
     "similar_triangle_judgment_aa(1,DEB,ACB)": [
       "similar_triangle_property_line_ratio(1,DEB,ACB)",
       "similar_triangle_property_line_ratio(1,EBD,CBA)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(2,CA,ED,B)",
-      "line_addition(1,AD,DB)",
-      "line_addition(1,CE,EB)"
     ]
   }
 }

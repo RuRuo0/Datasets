@@ -2,9 +2,9 @@
   "problem_id": 5441,
   "annotation": "Yangli_2023-05-21",
   "source": "GeoQA-5783",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示．△ABC中,∠B=∠C,D在BC上,∠BAD=50°,AE=AD,则∠EDC的度数为()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠B = ∠C, D is on BC, ∠BAD = N_0, AE = AD, then the degree of ∠EDC is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AE=AD，∠ABC=∠BCA，∠DAB=50°。求∠EDC的大小。",
+  "problem_text_en": "As shown in the diagram, AE=AD, ∠ABC=∠BCA, ∠DAB=50°. Find the measure of ∠EDC.",
   "problem_img": "5441.png",
   "construction_cdl": [
     "Shape(AB,BD,DA)",
@@ -15,8 +15,8 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(AE),LengthOfLine(AD))",
-    "Equal(MeasureOfAngle(DAB),50)",
-    "Equal(MeasureOfAngle(ABC),MeasureOfAngle(BCA))"
+    "Equal(MeasureOfAngle(ABC),MeasureOfAngle(BCA))",
+    "Equal(MeasureOfAngle(DAB),50)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(EDC))",
@@ -30,10 +30,7 @@
     "isosceles_triangle_property_angle_equal(1,ADE)",
     "angle_addition(1,ADE,EDC)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,ADE)": [
-      "isosceles_triangle_property_angle_equal(1,ADE)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,CED,DEA)",
       "triangle_property_angle_sum(1,EDC)",
@@ -41,6 +38,9 @@
       "triangle_property_angle_sum(1,DAB)",
       "isosceles_triangle_judgment_line_equal(1,ADE)",
       "angle_addition(1,ADE,EDC)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,ADE)": [
+      "isosceles_triangle_property_angle_equal(1,ADE)"
     ]
   }
 }

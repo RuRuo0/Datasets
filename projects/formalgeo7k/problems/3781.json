@@ -2,9 +2,9 @@
   "problem_id": 3781,
   "annotation": "ChenyangMao_2023-04-30",
   "source": "GeoQA-1613",
-  "problem_level": 1,
-  "problem_text_cn": "如图,BD是⊙O的直径,圆周角∠A=30°,则∠CBD的度数是()",
-  "problem_text_en": "As shown in the figure, BD is the diameter of ⊙O, and the angle of circumference ∠A = N_0, then the degree of ∠CBD is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，弧OBC的角度为60，⌒OBD的角度为180，圆O的圆心为O，圆O的直径为BD。求∠DBC的大小。",
+  "problem_text_en": "As shown in the diagram, the measure of arc OBC is 60, the measure of ⌒OBD is 180, the center of circle O is O, the diameter of circle O is BD. Find the measure of ∠DBC.",
   "problem_img": "3781.png",
   "construction_cdl": [
     "Shape(ODA,AB,BO,OD)",
@@ -14,7 +14,12 @@
     "Collinear(BOD)",
     "Cocircular(O,ABCD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfArc(OBC),60)",
+    "Equal(MeasureOfArc(OBD),180)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(BD,O)"
+  ],
   "image_cdl": [
     "IsDiameterOfCircle(BD,O)",
     "IsCentreOfCircle(O,O)",
@@ -27,7 +32,7 @@
     "arc_property_circumference_angle_external(1,OCD,B)",
     "arc_addition_measure(1,OBC,OCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_circumference_angle_external(1,OCD,B)",
       "arc_addition_measure(1,OBC,OCD)"

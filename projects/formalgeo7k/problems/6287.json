@@ -2,9 +2,9 @@
   "problem_id": 6287,
   "annotation": "ZheZhu_2023-05-28",
   "source": "GeoQA-8978",
-  "problem_level": 1,
-  "problem_text_cn": "如图,正方形P、Q夹在ABCD框架中,正方形P下边一条边与AB夹角为15°,正方形P、Q有两个相邻边夹角为150°,则∠1为()",
-  "problem_text_en": "As shown in the figure, the squares P and Q are sandwiched in the ABCD frame, the angle between the lower edge of the square P and AB is N_0, and the angle between the two adjacent edges of the square P and Q is N_1, then ∠1 is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠BEA=75°，∠EMD=90°，∠EQP=90°，∠PAE=90°，∠QPA=150°。求∠MDE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BEA=75°, ∠EMD=90°, ∠EQP=90°, ∠PAE=90°, ∠QPA=150°. Find the measure of ∠MDE.",
   "problem_img": "6287.png",
   "construction_cdl": [
     "Shape(QP,PA,AE,EQ)",
@@ -14,11 +14,11 @@
     "Collinear(BEM)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(QPA),150)",
     "Equal(MeasureOfAngle(BEA),75)",
+    "Equal(MeasureOfAngle(EMD),90)",
     "Equal(MeasureOfAngle(EQP),90)",
     "Equal(MeasureOfAngle(PAE),90)",
-    "Equal(MeasureOfAngle(EMD),90)"
+    "Equal(MeasureOfAngle(QPA),150)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(MDE))",
@@ -30,7 +30,7 @@
     "angle_addition(1,BED,DEM)",
     "triangle_property_angle_sum(1,DEM)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "quadrilateral_property_angle_sum(1,QPAE)",
       "flat_angle(1,BEM)",

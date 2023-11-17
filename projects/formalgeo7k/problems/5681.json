@@ -2,9 +2,9 @@
   "problem_id": 5681,
   "annotation": "NaZhu_2023-05-28",
   "source": "GeoQA-7398",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC中,∠ACB=90°,CD⊥AB于D,CD=4,BC=5,则AC=()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠ACB = N_0, CD ⊥ AB at D, CD = N_1, BC = N_2, then AC = ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，BC=5，CD=4，∠ACB=90°，BD⊥CD。求直线AC的长度。",
+  "problem_text_en": "As shown in the diagram, BC=5, CD=4, ∠ACB=90°, BD is perpendicular to CD. Find the length of line AC.",
   "problem_img": "5681.png",
   "construction_cdl": [
     "Shape(CB,BD,DC)",
@@ -12,10 +12,10 @@
     "Collinear(BDA)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(ACB),90)",
-    "PerpendicularBetweenLine(BD,CD)",
+    "Equal(LengthOfLine(BC),5)",
     "Equal(LengthOfLine(CD),4)",
-    "Equal(LengthOfLine(BC),5)"
+    "Equal(MeasureOfAngle(ACB),90)",
+    "PerpendicularBetweenLine(BD,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AC))",
@@ -30,7 +30,13 @@
     "similar_triangle_property_line_ratio(1,CBD,ACD)",
     "similar_triangle_property_line_ratio(1,DCB,DAC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "right_triangle_judgment_angle(1,BDC)",
+      "adjacent_complementary_angle(1,BDC,CDA)",
+      "triangle_property_angle_sum(1,CDA)",
+      "triangle_property_angle_sum(1,CBA)"
+    ],
     "right_triangle_judgment_angle(1,BDC)": [
       "right_triangle_property_pythagorean(1,BDC)"
     ],
@@ -46,12 +52,6 @@
     "similar_triangle_judgment_aa(1,CBD,ACD)": [
       "similar_triangle_property_line_ratio(1,CBD,ACD)",
       "similar_triangle_property_line_ratio(1,DCB,DAC)"
-    ],
-    "START": [
-      "right_triangle_judgment_angle(1,BDC)",
-      "adjacent_complementary_angle(1,BDC,CDA)",
-      "triangle_property_angle_sum(1,CDA)",
-      "triangle_property_angle_sum(1,CBA)"
     ]
   }
 }

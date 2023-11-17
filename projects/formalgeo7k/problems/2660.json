@@ -2,9 +2,9 @@
   "problem_id": 2660,
   "annotation": "DengfengYue_2023-04-09",
   "source": "Geometry3k-2797",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If R L = 5, R T = 9, and W S = 6, find R W.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，RL=5，RT=9，WS=6，TS平行于LW。求直线RW的长度。",
+  "problem_text_en": "As shown in the diagram, RL=5, RT=9, WS=6, TS∥LW. Find the length of line RW.",
   "problem_img": "2660.png",
   "construction_cdl": [
     "Shape(LR,RW,WL)",
@@ -12,7 +12,12 @@
     "Collinear(RLT)",
     "Collinear(RWS)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(RL),5)",
+    "Equal(LengthOfLine(RT),9)",
+    "Equal(LengthOfLine(WS),6)",
+    "ParallelBetweenLine(TS,LW)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(RL),5)",
     "Equal(LengthOfLine(RT),9)",
@@ -28,17 +33,17 @@
     "similar_triangle_property_line_ratio(1,WLR,STR)",
     "similar_triangle_property_line_ratio(1,LRW,TRS)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,SW,WR)",
+      "parallel_property_corresponding_angle(2,TS,LW,R)"
+    ],
     "parallel_property_corresponding_angle(2,TS,LW,R)": [
       "similar_triangle_judgment_aa(1,WLR,STR)"
     ],
     "similar_triangle_judgment_aa(1,WLR,STR)": [
       "similar_triangle_property_line_ratio(1,WLR,STR)",
       "similar_triangle_property_line_ratio(1,LRW,TRS)"
-    ],
-    "START": [
-      "line_addition(1,SW,WR)",
-      "parallel_property_corresponding_angle(2,TS,LW,R)"
     ]
   }
 }

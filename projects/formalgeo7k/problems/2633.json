@@ -2,16 +2,22 @@
   "problem_id": 2633,
   "annotation": "DengfengYue_2023-04-09",
   "source": "Geometry3k-2766",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=15，AC=x，BC=8，CD=16，AB⊥CB。求直线AC的长度。",
+  "problem_text_en": "As shown in the diagram, AB=15, AC=x, BC=8, CD=16, AB⊥CB. Find the length of line AC.",
   "problem_img": "2633.png",
   "construction_cdl": [
     "Shape(DB,BA,AD)",
     "Shape(BC,CA,AB)",
     "Collinear(DBC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),15)",
+    "Equal(LengthOfLine(AC),x)",
+    "Equal(LengthOfLine(BC),8)",
+    "Equal(LengthOfLine(CD),16)",
+    "PerpendicularBetweenLine(AB,CB)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AB),15)",
     "Equal(LengthOfLine(AC),x)",
@@ -25,12 +31,12 @@
     "right_triangle_judgment_angle(1,ABC)",
     "right_triangle_property_pythagorean(1,ABC)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,ABC)": [
-      "right_triangle_property_pythagorean(1,ABC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,ABC)"
+    ],
+    "right_triangle_judgment_angle(1,ABC)": [
+      "right_triangle_property_pythagorean(1,ABC)"
     ]
   }
 }

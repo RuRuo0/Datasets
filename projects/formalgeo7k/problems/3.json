@@ -2,9 +2,9 @@
   "problem_id": 3,
   "annotation": "XiaokaiZhang_2023-04-02",
   "source": "Geometry3k-2",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Let J K be the midsegment of A Q T B. Find J K.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，BT=SB，QA=RA，QT=86，RS=54，JK是四边形AQTB的中位线。求直线JK的长度。",
+  "problem_text_en": "As shown in the diagram, BT=SB, QA=RA, QT=86, RS=54, the midsegment of quadrilateral AQTB is JK. Find the length of line JK.",
   "problem_img": "3.png",
   "construction_cdl": [
     "Shape(RA,AB,BS,SR)",
@@ -14,6 +14,10 @@
     "Collinear(SBKT)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(BT),LengthOfLine(SB))",
+    "Equal(LengthOfLine(QA),LengthOfLine(RA))",
+    "Equal(LengthOfLine(QT),86)",
+    "Equal(LengthOfLine(RS),54)",
     "IsMidsegmentOfQuadrilateral(JK,AQTB)"
   ],
   "image_cdl": [
@@ -29,13 +33,13 @@
     "midsegment_of_quadrilateral_property_length(1,AB,RQTS)",
     "midsegment_of_quadrilateral_property_length(1,JK,AQTB)"
   ],
-  "theorem_seq_dag": {
-    "midsegment_of_quadrilateral_judgment_midpoint(1,AB,RQTS)": [
-      "midsegment_of_quadrilateral_property_length(1,AB,RQTS)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "midsegment_of_quadrilateral_judgment_midpoint(1,AB,RQTS)",
       "midsegment_of_quadrilateral_property_length(1,JK,AQTB)"
+    ],
+    "midsegment_of_quadrilateral_judgment_midpoint(1,AB,RQTS)": [
+      "midsegment_of_quadrilateral_property_length(1,AB,RQTS)"
     ]
   }
 }

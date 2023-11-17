@@ -2,9 +2,9 @@
   "problem_id": 1681,
   "annotation": "Yangli_2023-04-16",
   "source": "Geometry3k-1745",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "J H is tangent to \\odot G at J. Find the value of x.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，HJ=12，HK=8，JG=x，KG=x，⊙G的圆心为G，HJ是圆O的切线。求x的值。",
+  "problem_text_en": "As shown in the diagram, HJ=12, HK=8, JG=x, KG=x, G is the center of ⊙G, the tangent to circle G is HJ. Find the value of x.",
   "problem_img": "1681.png",
   "construction_cdl": [
     "Shape(JG,GK,GKJ)",
@@ -15,6 +15,11 @@
     "Shape(GJ,JH,HK,KG)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(HJ),12)",
+    "Equal(LengthOfLine(HK),8)",
+    "Equal(LengthOfLine(JG),x)",
+    "Equal(LengthOfLine(KG),x)",
+    "IsCentreOfCircle(G,G)",
     "IsTangentOfCircle(HJ,G)"
   ],
   "image_cdl": [
@@ -32,16 +37,16 @@
     "right_triangle_judgment_angle(1,GJH)",
     "right_triangle_property_pythagorean(1,GJH)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,GK,KH)",
+      "tangent_of_circle_property_perpendicular(1,HJ,G,G)"
+    ],
     "tangent_of_circle_property_perpendicular(1,HJ,G,G)": [
       "right_triangle_judgment_angle(1,GJH)"
     ],
     "right_triangle_judgment_angle(1,GJH)": [
       "right_triangle_property_pythagorean(1,GJH)"
-    ],
-    "START": [
-      "line_addition(1,GK,KH)",
-      "tangent_of_circle_property_perpendicular(1,HJ,G,G)"
     ]
   }
 }

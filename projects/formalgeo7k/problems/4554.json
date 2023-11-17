@@ -2,9 +2,9 @@
   "problem_id": 4554,
   "annotation": "YanjunGuo_2023-05-14",
   "source": "GeoQA-3661",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC是⊙O的内接三角形,若∠ACB=30°,AB=6,则⊙O的半径是()",
-  "problem_text_en": "As shown in the figure, △ABC is the inscribed triangle of ⊙O, if ∠ACB = N_0, AB = N_1, then the radius of ⊙O is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AB=6，∠ACB=30°，O是圆O的圆心。求⊙O的半径。",
+  "problem_text_en": "As shown in the diagram, AB=6, ∠ACB=30°, O is the center of circle O. Find the radius of circle O.",
   "problem_img": "4554.png",
   "construction_cdl": [
     "Shape(OE,EC,OCB,BO)",
@@ -35,7 +35,15 @@
     "isosceles_triangle_property_angle_equal(1,OBA)",
     "sine_theorem(1,AOB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_circumference_angle_external(1,OBA,C)",
+      "arc_property_center_angle(1,OBA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "triangle_property_angle_sum(1,OBA)",
+      "sine_theorem(1,AOB)"
+    ],
     "radius_of_circle_property_length_equal(1,OB,O)": [
       "isosceles_triangle_judgment_line_equal(1,OBA)"
     ],
@@ -44,14 +52,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OBA)": [
       "isosceles_triangle_property_angle_equal(1,OBA)"
-    ],
-    "START": [
-      "arc_property_circumference_angle_external(1,OBA,C)",
-      "arc_property_center_angle(1,OBA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "triangle_property_angle_sum(1,OBA)",
-      "sine_theorem(1,AOB)"
     ]
   }
 }

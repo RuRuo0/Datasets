@@ -2,9 +2,9 @@
   "problem_id": 1808,
   "annotation": "ChenyangMao_2023-04-16",
   "source": "Geometry3k-1874",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Circle J has a radius of 10 units, \\odot K has a radius of 8 units, and B C = 5.4 units. Find A B.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，BC=5，⊙J的半径为10，圆K的半径为8，J是⊙J的圆心，K是圆K的圆心，圆J的直径为AC。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, BC=5, the radius of circle J is 10, the radius of circle K is 8, J is the center of ⊙J, the center of ⊙K is K, AC is the diameter of ⊙J. Find the length of line AB.",
   "problem_img": "1808.png",
   "construction_cdl": [
     "Shape(JEA,AJ,JB,KEB)",
@@ -17,7 +17,14 @@
     "Cocircular(J,AFCE)",
     "Cocircular(K,EBFD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BC),5)",
+    "Equal(RadiusOfCircle(J),10)",
+    "Equal(RadiusOfCircle(K),8)",
+    "IsCentreOfCircle(J,J)",
+    "IsCentreOfCircle(K,K)",
+    "IsDiameterOfCircle(AC,J)"
+  ],
   "image_cdl": [
     "IsDiameterOfCircle(AC,J)",
     "IsCentreOfCircle(J,J)",
@@ -33,7 +40,7 @@
     "diameter_of_circle_property_length_equal(1,AC,J)",
     "line_addition(1,AB,BC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "circle_property_length_of_radius_and_diameter(1,J)",
       "diameter_of_circle_property_length_equal(1,AC,J)",

@@ -2,9 +2,9 @@
   "problem_id": 6318,
   "annotation": "ZheZhu_2023-05-28",
   "source": "GeoQA-9112",
-  "problem_level": 1,
-  "problem_text_cn": "如图,矩形ABCD中,对角线AC,BD交于点D,过点D作AC的平行线与BC的延长线交于点E,已知∠AOD=130°,则∠DEC的度数为()",
-  "problem_text_en": "As shown in the figure, in the rectangle ABCD, the diagonal AC and BD intersect at the point D, and the parallel line passing through the point D as AC and the extended line line of BC intersect at the point E. It is known that ∠AOD = N_0, then the degree of ∠DEC is ( )",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，∠AOD=130°，AC平行于DE，CA平行于ED，ABCD是矩形。求∠CED的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AOD=130°, AC∥DE, CA∥ED, quadrilateral ABCD is a rectangle. Find the measure of ∠CED.",
   "problem_img": "6318.png",
   "construction_cdl": [
     "Shape(AB,BO,OA)",
@@ -17,10 +17,10 @@
     "Collinear(BCE)"
   ],
   "text_cdl": [
-    "Rectangle(ABCD)",
     "Equal(MeasureOfAngle(AOD),130)",
     "ParallelBetweenLine(AC,DE)",
-    "ParallelBetweenLine(CA,ED)"
+    "ParallelBetweenLine(CA,ED)",
+    "Rectangle(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CED))",
@@ -37,7 +37,17 @@
     "triangle_property_angle_sum(1,BCO)",
     "parallel_property_corresponding_angle(1,CA,ED,B)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AO,OC)",
+      "line_addition(1,BO,OD)",
+      "vertical_angle(1,AOD,COB)",
+      "rectangle_property_diagonal_equal(1,ABCD)",
+      "parallelogram_property_diagonal_bisection(1,ABCD,O)",
+      "parallelogram_property_diagonal_bisection(1,BCDA,O)",
+      "triangle_property_angle_sum(1,BCO)",
+      "parallel_property_corresponding_angle(1,CA,ED,B)"
+    ],
     "line_addition(1,AO,OC)": [
       "isosceles_triangle_judgment_line_equal(1,OBC)"
     ],
@@ -55,16 +65,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OBC)": [
       "isosceles_triangle_property_angle_equal(1,OBC)"
-    ],
-    "START": [
-      "line_addition(1,AO,OC)",
-      "line_addition(1,BO,OD)",
-      "vertical_angle(1,AOD,COB)",
-      "rectangle_property_diagonal_equal(1,ABCD)",
-      "parallelogram_property_diagonal_bisection(1,ABCD,O)",
-      "parallelogram_property_diagonal_bisection(1,BCDA,O)",
-      "triangle_property_angle_sum(1,BCO)",
-      "parallel_property_corresponding_angle(1,CA,ED,B)"
     ]
   }
 }

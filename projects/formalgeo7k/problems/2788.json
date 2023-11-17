@@ -2,16 +2,25 @@
   "problem_id": 2788,
   "annotation": "RunanWang_2023-05-07",
   "source": "Geometry3k-2935",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure in feet. Round to the nearest tenth, if necessary.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AB=12，AE=2，CD=8，DA=CB，∠ADE=30°，DE是四边形CBAD的高，DE⊥AE，四边形CBAD是梯形。求四边形CBAD的面积。",
+  "problem_text_en": "As shown in the diagram, AB=12, AE=2, CD=8, DA=CB, ∠ADE=30°, the height of CBAD is DE, DE⊥AE, CBAD is a trapezoid. Find the area of quadrilateral CBAD.",
   "problem_img": "2788.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
     "Shape(ED,DC,CB,BE)",
     "Collinear(AEB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),12)",
+    "Equal(LengthOfLine(AE),2)",
+    "Equal(LengthOfLine(CD),8)",
+    "Equal(LengthOfLine(DA),LengthOfLine(CB))",
+    "Equal(MeasureOfAngle(ADE),30)",
+    "IsAltitudeOfQuadrilateral(DE,CBAD)",
+    "PerpendicularBetweenLine(DE,AE)",
+    "Trapezoid(CBAD)"
+  ],
   "image_cdl": [
     "Trapezoid(CBAD)",
     "Equal(LengthOfLine(AB),12)",
@@ -29,7 +38,7 @@
     "cosine_theorem(1,EAD)",
     "trapezoid_area_formula(1,CBAD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "cosine_theorem(1,DEA)",
       "cosine_theorem(1,EAD)",

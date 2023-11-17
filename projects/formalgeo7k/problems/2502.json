@@ -2,16 +2,20 @@
   "problem_id": 2502,
   "annotation": "ChenyangMao_2023-04-23",
   "source": "Geometry3k-2626",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "What is the area of \\parallelogram A B C D?",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，BD=6，DA=10，BC和AD是平行四边形BADC的一组对边，BD⊥CD，DB⊥AB。求四边形BADC的面积。",
+  "problem_text_en": "As shown in the diagram, BD=6, DA=10, quadrilateral BADC is a ▱, BD is perpendicular to CD, DB⊥AB. Find the area of quadrilateral BADC.",
   "problem_img": "2502.png",
   "construction_cdl": [
     "Shape(BA,AD,DB)",
     "Shape(BD,DC,CB)"
   ],
   "text_cdl": [
-    "Parallelogram(BADC)"
+    "Equal(LengthOfLine(BD),6)",
+    "Equal(LengthOfLine(DA),10)",
+    "Parallelogram(BADC)",
+    "PerpendicularBetweenLine(BD,CD)",
+    "PerpendicularBetweenLine(DB,AB)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(BD),6)",
@@ -27,14 +31,14 @@
     "altitude_of_quadrilateral_judgment_diagonal(3,CBAD)",
     "parallelogram_area_formula_common(1,CBAD)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,DBA)": [
-      "right_triangle_property_pythagorean(1,DBA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,DBA)",
       "altitude_of_quadrilateral_judgment_diagonal(3,CBAD)",
       "parallelogram_area_formula_common(1,CBAD)"
+    ],
+    "right_triangle_judgment_angle(1,DBA)": [
+      "right_triangle_property_pythagorean(1,DBA)"
     ]
   }
 }

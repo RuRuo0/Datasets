@@ -2,15 +2,19 @@
   "problem_id": 3779,
   "annotation": "ChenyangMao_2023-04-30",
   "source": "GeoQA-1610",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,BF平分∠ABC,CF平分∠ACB,∠BFC=115°,则∠A的度数是()",
-  "problem_text_en": "As shown in the figure, in △ABC, BF bisects ∠ABC, CF bisects ∠ACB, ∠BFC = N_0, then the degree of ∠A is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠CFB=115°，BF平分∠ABC，CF是∠BCA的角平分线。求∠CAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CFB=115°, BF is the angle bisector of ∠ABC, CF bisects ∠BCA. Find the measure of ∠CAB.",
   "problem_img": "3779.png",
   "construction_cdl": [
     "Shape(AB,BF,FC,CA)",
     "Shape(FB,BC,CF)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(CFB),115)",
+    "IsBisectorOfAngle(BF,ABC)",
+    "IsBisectorOfAngle(CF,BCA)"
+  ],
   "image_cdl": [
     "IsBisectorOfAngle(BF,ABC)",
     "IsBisectorOfAngle(CF,BCA)",
@@ -24,7 +28,7 @@
     "triangle_property_angle_sum(1,FBC)",
     "triangle_property_angle_sum(1,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,ABF,FBC)",
       "angle_addition(1,BCF,FCA)",

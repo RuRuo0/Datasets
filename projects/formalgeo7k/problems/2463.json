@@ -2,9 +2,9 @@
   "problem_id": 2463,
   "annotation": "Yangli_2023-04-23",
   "source": "Geometry3k-2583",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If L K = 4, M P = 3, P Q = 6, K J = 2, R S = 6, and L P = 2, find M L.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，KJ=2，LK=4，LP=2，MP=3，PQ=6，RS=6，HS∥KQ，JR∥HS，LP∥KQ。求直线ML的长度。",
+  "problem_text_en": "As shown in the diagram, KJ=2, LK=4, LP=2, MP=3, PQ=6, RS=6, HS∥KQ, JR∥HS, LP is parallel to KQ. Find the length of line ML.",
   "problem_img": "2463.png",
   "construction_cdl": [
     "Shape(LP,PM,ML)",
@@ -14,7 +14,17 @@
     "Collinear(HJKLM)",
     "Collinear(SRQPM)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(KJ),2)",
+    "Equal(LengthOfLine(LK),4)",
+    "Equal(LengthOfLine(LP),2)",
+    "Equal(LengthOfLine(MP),3)",
+    "Equal(LengthOfLine(PQ),6)",
+    "Equal(LengthOfLine(RS),6)",
+    "ParallelBetweenLine(HS,KQ)",
+    "ParallelBetweenLine(JR,HS)",
+    "ParallelBetweenLine(LP,KQ)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(LK),4)",
     "Equal(LengthOfLine(MP),3)",
@@ -36,18 +46,18 @@
     "similar_triangle_property_line_ratio(1,LPM,KQM)",
     "similar_triangle_property_line_ratio(1,PML,QMK)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,LP,KQ,M)",
+      "line_addition(1,QP,PM)",
+      "line_addition(1,KL,LM)"
+    ],
     "parallel_property_corresponding_angle(1,LP,KQ,M)": [
       "similar_triangle_judgment_aa(1,PML,QMK)"
     ],
     "similar_triangle_judgment_aa(1,PML,QMK)": [
       "similar_triangle_property_line_ratio(1,PML,QMK)",
       "similar_triangle_property_line_ratio(1,LPM,KQM)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,LP,KQ,M)",
-      "line_addition(1,QP,PM)",
-      "line_addition(1,KL,LM)"
     ]
   }
 }

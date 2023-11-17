@@ -2,9 +2,9 @@
   "problem_id": 5347,
   "annotation": "QikeHuang_2023-05-21",
   "source": "GeoQA-5590",
-  "problem_level": 1,
-  "problem_text_cn": "如图,是用一把直尺、含60°角的直角三角板和光盘摆放而成,点A为60°角与直尺交点,点B为光盘与直尺唯一交点,若AB=3,则光盘的直径是()",
-  "problem_text_en": "As shown in the figure, it is made by placing a straightedge, a right triangle plate with angle N_0 and a compact disc. Point A is the intersection point of angle N_1 and the ruler, and point B is the only intersection point between the compact disc and the ruler. If AB = N_2, then the length of the diameter of the disc is ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，AB=3，∠CAD=60°，圆O的圆心为O，圆O的切线为AB，⊙O的切线为AE，△DCA为直角△。求圆O的直径。",
+  "problem_text_en": "As shown in the diagram, AB=3, ∠CAD=60°, the center of circle O is O, the tangent to circle O is AB, AE is the tangent to ⊙O, ∠DCA is the right angle of the right △ DCA. Find the diameter of circle O.",
   "problem_img": "5347.png",
   "construction_cdl": [
     "Shape(DC,CA,AE,ED)",
@@ -17,12 +17,12 @@
     "Cocircular(O,EB)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AB),3)",
+    "Equal(MeasureOfAngle(CAD),60)",
     "IsCentreOfCircle(O,O)",
-    "RightTriangle(DCA)",
     "IsTangentOfCircle(AB,O)",
     "IsTangentOfCircle(AE,O)",
-    "Equal(MeasureOfAngle(CAD),60)",
-    "Equal(LengthOfLine(AB),3)"
+    "RightTriangle(DCA)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(DiameterOfCircle(O))",
@@ -39,7 +39,7 @@
     "cosine_theorem(1,OEB)",
     "circle_property_length_of_radius_and_diameter(1,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,CAD,DAB)",
       "tangent_of_circle_property_perpendicular(2,AB,O,O)",

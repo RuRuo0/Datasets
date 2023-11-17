@@ -2,9 +2,9 @@
   "problem_id": 760,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-785",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the exact circumference of the circle.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，⊙P的直径与直线CB的长度相等，CB=9，AD⊥BD，BC垂直于AC，CA⊥DA，DB⊥CB。求圆P的周长。",
+  "problem_text_en": "As shown in the diagram, the diameter of circle P is equal to the length of line CB, CB=9, AD⊥BD, BC is perpendicular to AC, CA is perpendicular to DA, DB⊥CB. Find the circumference of the ⊙P.",
   "problem_img": "760.png",
   "construction_cdl": [
     "Shape(FC,CH,PFH)",
@@ -17,7 +17,14 @@
     "Collinear(DEB)",
     "Cocircular(P,FHGE)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(DiameterOfCircle(P),LengthOfLine(CB))",
+    "Equal(LengthOfLine(CB),9)",
+    "PerpendicularBetweenLine(AD,BD)",
+    "PerpendicularBetweenLine(BC,AC)",
+    "PerpendicularBetweenLine(CA,DA)",
+    "PerpendicularBetweenLine(DB,CB)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(CB),9)",
     "Equal(DiameterOfCircle(P),LengthOfLine(CB))",
@@ -32,7 +39,7 @@
     "circle_property_length_of_radius_and_diameter(1,P)",
     "circle_perimeter_formula(1,P)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "circle_property_length_of_radius_and_diameter(1,P)",
       "circle_perimeter_formula(1,P)"

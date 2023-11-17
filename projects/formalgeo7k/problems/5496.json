@@ -2,9 +2,9 @@
   "problem_id": 5496,
   "annotation": "ChenyangMao_2023-05-21",
   "source": "GeoQA-5953",
-  "problem_level": 1,
-  "problem_text_cn": "如图,某校园内有一池塘,为得到池塘边的两棵树A,B间的距离,小亮测得了以下数据:∠A=∠CDE,AD=DC,DE=10m,则A,B间的距离是()",
-  "problem_text_en": "As shown in the figure, there is a pond on a campus. In order to obtain the distance between the two trees A and B by the pond, Xiao Liang measured the following data: ∠A = ∠CDE, AD = DC, DE = N_0, then the distance between A and B is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AD=DC，DE=10，∠DAB=∠CDE。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, AD=DC, DE=10, ∠DAB=∠CDE. Find the length of line AB.",
   "problem_img": "5496.png",
   "construction_cdl": [
     "Shape(AB,BE,ED,DA)",
@@ -25,15 +25,15 @@
     "midsegment_of_triangle_judgment_parallel(1,DE,CAB)",
     "midsegment_of_triangle_property_length(1,DE,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_judgment_corresponding_angle(1,DE,AB,C)"
+    ],
     "parallel_judgment_corresponding_angle(1,DE,AB,C)": [
       "midsegment_of_triangle_judgment_parallel(1,DE,CAB)"
     ],
     "midsegment_of_triangle_judgment_parallel(1,DE,CAB)": [
       "midsegment_of_triangle_property_length(1,DE,CAB)"
-    ],
-    "START": [
-      "parallel_judgment_corresponding_angle(1,DE,AB,C)"
     ]
   }
 }

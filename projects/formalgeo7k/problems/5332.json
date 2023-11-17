@@ -2,9 +2,9 @@
   "problem_id": 5332,
   "annotation": "QikeHuang_2023-05-21",
   "source": "GeoQA-5557",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O是△ABC的内切圆,切AB,AC于点D、E,∠DOE=110°,则∠BOC的度数为()",
-  "problem_text_en": "As shown in the figure, ⊙O is the inscribed circle of △ABC, tangent to AB, AC at points D and E, ∠DOE = N_0, then the degree of ∠BOC is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠DOE=110°，⊙O的圆心为O，三角形ABC的内切圆圆心为O，AD是⊙O的切线，AE是⊙O的切线。求∠COB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DOE=110°, the center of circle O is O, O is the incenter of triangle ABC, the tangent to circle O is AD, the tangent to ⊙O is AE. Find the measure of ∠COB.",
   "problem_img": "5332.png",
   "construction_cdl": [
     "Shape(AD,OED,EA)",
@@ -24,11 +24,11 @@
     "Cocircular(O,DMFNE)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(DOE),110)",
     "IsCentreOfCircle(O,O)",
     "IsIncenterOfTriangle(O,ABC)",
     "IsTangentOfCircle(AD,O)",
-    "IsTangentOfCircle(AE,O)",
-    "Equal(MeasureOfAngle(DOE),110)"
+    "IsTangentOfCircle(AE,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(COB))",
@@ -42,7 +42,7 @@
     "angle_addition(1,BCO,OCA)",
     "triangle_property_angle_sum(1,OBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(2,AD,O,O)",
       "tangent_of_circle_property_perpendicular(1,AE,O,O)",

@@ -2,9 +2,9 @@
   "problem_id": 6958,
   "annotation": "ChengQin_2023-06-04",
   "source": "GeoQA-angle-10212",
-  "problem_level": 1,
-  "problem_text_cn": "如图，等边△ABC的三个顶点都在⊙O上，AD是⊙O的直径．若OA＝3，则劣弧BD的长是（）",
-  "problem_text_en": "",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，OA=3，三角形ABC为等边三角形，⊙O的圆心为O，圆O的直径为AD。求弧OBD的长度。",
+  "problem_text_en": "As shown in the diagram, OA=3, △ABC is an equilateral △, O is the center of circle O, the diameter of ⊙O is AD. Find the length of ⌒OBD.",
   "problem_img": "6958.png",
   "construction_cdl": [
     "Shape(OAB,BA)",
@@ -20,10 +20,10 @@
     "Cocircular(O,ABDC)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(OA),3)",
     "EquilateralTriangle(ABC)",
     "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(AD,O)",
-    "Equal(LengthOfLine(OA),3)"
+    "IsDiameterOfCircle(AD,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfArc(OBD))",
@@ -41,16 +41,7 @@
     "arc_property_center_angle(1,OBD,O)",
     "arc_length_formula(1,OBD)"
   ],
-  "theorem_seq_dag": {
-    "radius_of_circle_property_length_equal(1,OB,O)": [
-      "isosceles_triangle_judgment_line_equal(1,OBD)"
-    ],
-    "radius_of_circle_property_length_equal(1,OD,O)": [
-      "isosceles_triangle_judgment_line_equal(1,OBD)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,OBD)": [
-      "isosceles_triangle_property_angle_equal(1,OBD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "equilateral_triangle_property_angle(1,CAB)",
       "arc_property_circumference_angle_external(1,OAB,C)",
@@ -61,6 +52,15 @@
       "radius_of_circle_property_length_equal(1,OA,O)",
       "arc_property_center_angle(1,OBD,O)",
       "arc_length_formula(1,OBD)"
+    ],
+    "radius_of_circle_property_length_equal(1,OB,O)": [
+      "isosceles_triangle_judgment_line_equal(1,OBD)"
+    ],
+    "radius_of_circle_property_length_equal(1,OD,O)": [
+      "isosceles_triangle_judgment_line_equal(1,OBD)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,OBD)": [
+      "isosceles_triangle_property_angle_equal(1,OBD)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 874,
   "annotation": "XiaokaiZhang_2023-03-19",
   "source": "Geometry3k-903",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Points S, T, and U are the midpoints of D E, E F, and D F, respectively. Find x.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=4*z，AT=2*x-5，AU=2.9，DA=6，EA=y，FA=4.6，S是线段DE的中点，T平分线段EF，U是线段DF的中点。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=4*z, AT=2*x-5, AU=2.9, DA=6, EA=y, FA=4.6, S is the midpoint of segment DE, T is the midpoint of segment EF, U is the midpoint of segment DF. Find the value of x.",
   "problem_img": "874.png",
   "construction_cdl": [
     "Shape(ES,SA,AE)",
@@ -21,9 +21,15 @@
     "Collinear(DAT)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AB),4*z)",
+    "Equal(LengthOfLine(AT),2*x-5)",
+    "Equal(LengthOfLine(AU),2.9)",
+    "Equal(LengthOfLine(DA),6)",
+    "Equal(LengthOfLine(EA),y)",
+    "Equal(LengthOfLine(FA),4.6)",
     "IsMidpointOfLine(S,DE)",
-    "IsMidpointOfLine(U,DF)",
-    "IsMidpointOfLine(T,EF)"
+    "IsMidpointOfLine(T,EF)",
+    "IsMidpointOfLine(U,DF)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(EA),y)",
@@ -41,7 +47,11 @@
     "centroid_of_triangle_judgment_intersection(1,A,FED,T,U)",
     "centroid_of_triangle_property_line_ratio(1,A,DFE,T)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "median_of_triangle_judgment(1,DT,DFE)",
+      "median_of_triangle_judgment(1,EU,EDF)"
+    ],
     "median_of_triangle_judgment(1,DT,DFE)": [
       "centroid_of_triangle_judgment_intersection(1,A,FED,T,U)"
     ],
@@ -50,10 +60,6 @@
     ],
     "centroid_of_triangle_judgment_intersection(1,A,FED,T,U)": [
       "centroid_of_triangle_property_line_ratio(1,A,DFE,T)"
-    ],
-    "START": [
-      "median_of_triangle_judgment(1,DT,DFE)",
-      "median_of_triangle_judgment(1,EU,EDF)"
     ]
   }
 }

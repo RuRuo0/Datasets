@@ -2,9 +2,9 @@
   "problem_id": 6411,
   "annotation": "YimingHe_2023-06-04",
   "source": "GeoQA-9276",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在▱ABCD中,对角线AC、BD相交于点O,AC=10,BD=6,AD=4,则▱ABCD的面积是()",
-  "problem_text_en": "As shown in the figure, in ▱ABCD, the diagonal AC and BD intersect at point O, AC = N_0, BD = N_1, AD = N_2, then the area of ​​▱ABCD is ()",
+  "problem_level": 13,
+  "problem_text_cn": "如图所示，AC=10，AD=4，BD=6，AD和BC是▱ABCD的一组对边。求△DAC的面积与△ABC的面积之和。",
+  "problem_text_en": "As shown in the diagram, AC=10, AD=4, BD=6, AD and BC are opposite sides of the parallelogram ABCD. Find the sum of the area of triangle DAC and the area of △ABC.",
   "problem_img": "6411.png",
   "construction_cdl": [
     "Shape(AO,OD,DA)",
@@ -15,10 +15,10 @@
     "Collinear(AOC)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
     "Equal(LengthOfLine(AC),10)",
+    "Equal(LengthOfLine(AD),4)",
     "Equal(LengthOfLine(BD),6)",
-    "Equal(LengthOfLine(AD),4)"
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Add(AreaOfTriangle(DAC),AreaOfTriangle(ABC)))",
@@ -38,7 +38,20 @@
     "triangle_area_formula_sine(1,ACD)",
     "triangle_area_formula_sine(1,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,DO,OB)",
+      "line_addition(1,AO,OC)",
+      "parallelogram_property_diagonal_bisection(1,ABCD,O)",
+      "parallelogram_property_diagonal_bisection(1,BCDA,O)",
+      "parallelogram_property_opposite_line_equal(1,BCDA)",
+      "triangle_area_formula_sine(1,AOD)",
+      "triangle_area_formula_sine(1,DAO)",
+      "triangle_area_formula_sine(1,BCO)",
+      "triangle_area_formula_sine(1,COB)",
+      "triangle_area_formula_sine(1,ACD)",
+      "triangle_area_formula_sine(1,CAB)"
+    ],
     "line_addition(1,DO,OB)": [
       "right_triangle_judgment_pythagorean_inverse(1,ODA)",
       "right_triangle_judgment_pythagorean_inverse(1,OBC)"
@@ -57,19 +70,6 @@
     ],
     "parallelogram_property_opposite_line_equal(1,BCDA)": [
       "right_triangle_judgment_pythagorean_inverse(1,OBC)"
-    ],
-    "START": [
-      "line_addition(1,DO,OB)",
-      "line_addition(1,AO,OC)",
-      "parallelogram_property_diagonal_bisection(1,ABCD,O)",
-      "parallelogram_property_diagonal_bisection(1,BCDA,O)",
-      "parallelogram_property_opposite_line_equal(1,BCDA)",
-      "triangle_area_formula_sine(1,AOD)",
-      "triangle_area_formula_sine(1,DAO)",
-      "triangle_area_formula_sine(1,BCO)",
-      "triangle_area_formula_sine(1,COB)",
-      "triangle_area_formula_sine(1,ACD)",
-      "triangle_area_formula_sine(1,CAB)"
     ]
   }
 }

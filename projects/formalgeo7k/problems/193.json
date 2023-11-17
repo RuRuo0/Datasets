@@ -2,16 +2,24 @@
   "problem_id": 193,
   "annotation": "XiaokaiZhang_2023-03-12",
   "source": "Geometry3k-195",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=12，AC=y，AD=4，BC=x，CD=z，BA垂直于CA，DC⊥BC。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=12, AC=y, AD=4, BC=x, CD=z, BA⊥CA, DC⊥BC. Find the value of x.",
   "problem_img": "193.png",
   "construction_cdl": [
     "Shape(CB,BA,AC)",
     "Shape(CA,AD,DC)",
     "Collinear(BAD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),12)",
+    "Equal(LengthOfLine(AC),y)",
+    "Equal(LengthOfLine(AD),4)",
+    "Equal(LengthOfLine(BC),x)",
+    "Equal(LengthOfLine(CD),z)",
+    "PerpendicularBetweenLine(BA,CA)",
+    "PerpendicularBetweenLine(DC,BC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BC),x)",
     "Equal(LengthOfLine(AC),y)",
@@ -29,14 +37,14 @@
     "mirror_similar_triangle_property_line_ratio(1,ACB,CBD)",
     "mirror_similar_triangle_property_line_ratio(1,CBA,DCB)"
   ],
-  "theorem_seq_dag": {
-    "mirror_similar_triangle_judgment_aa(1,CBA,DCB)": [
-      "mirror_similar_triangle_property_line_ratio(1,CBA,DCB)",
-      "mirror_similar_triangle_property_line_ratio(1,ACB,CBD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,BA,AD)",
       "mirror_similar_triangle_judgment_aa(1,CBA,DCB)"
+    ],
+    "mirror_similar_triangle_judgment_aa(1,CBA,DCB)": [
+      "mirror_similar_triangle_property_line_ratio(1,CBA,DCB)",
+      "mirror_similar_triangle_property_line_ratio(1,ACB,CBD)"
     ]
   }
 }

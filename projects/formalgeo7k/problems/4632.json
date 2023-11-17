@@ -2,9 +2,9 @@
   "problem_id": 4632,
   "annotation": "QikeHuang_2023-05-14",
   "source": "GeoQA-3839",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB切⊙O于点B,AO交⊙O于点C,点D在⊙O上,若∠A=40°,则∠BDC的度数为()",
-  "problem_text_en": "As shown in the figure, AB cuts ⊙O at point B, AO intersects ⊙O at point C, and point D is at ⊙O. If ∠A = N_0, then the degree of ∠BDC is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠BAO=40°，O是圆O的圆心，⊙O的切线为AB。求∠CDB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BAO=40°, the center of circle O is O, AB is the tangent to ⊙O. Find the measure of ∠CDB.",
   "problem_img": "4632.png",
   "construction_cdl": [
     "Shape(OM,MD,ODB,BO)",
@@ -18,9 +18,9 @@
     "Cocircular(O,BCD)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(BAO),40)",
     "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(AB,O)",
-    "Equal(MeasureOfAngle(BAO),40)"
+    "IsTangentOfCircle(AB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CDB))",
@@ -31,7 +31,7 @@
     "tangent_of_circle_property_perpendicular(1,AB,O,O)",
     "triangle_property_angle_sum(1,OBA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,OBC,O)",
       "arc_property_circumference_angle_external(1,OBC,D)",

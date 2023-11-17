@@ -2,9 +2,9 @@
   "problem_id": 1480,
   "annotation": "QikeHuang_2023-04-16",
   "source": "Geometry3k-1534",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure, m \\angle 1 = 50 and m \\angle 3 = 60. Find the measure of \\angle 5.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠AGK=60°，∠MJB=50°，HA∥CG，MH∥EN，WD∥BT。求∠ORP的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AGK=60°, ∠MJB=50°, HA∥CG, MH∥EN, WD is parallel to BT. Find the measure of ∠ORP.",
   "problem_img": "1480.png",
   "construction_cdl": [
     "Shape(HC,CP,PN,NH)",
@@ -36,7 +36,13 @@
     "Collinear(ICPRGK)",
     "Collinear(HNQAU)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(AGK),60)",
+    "Equal(MeasureOfAngle(MJB),50)",
+    "ParallelBetweenLine(HA,CG)",
+    "ParallelBetweenLine(MH,EN)",
+    "ParallelBetweenLine(WD,BT)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(MJB),50)",
     "Equal(MeasureOfAngle(AGK),60)",
@@ -54,7 +60,11 @@
     "vertical_angle(1,AGK,FGR)",
     "parallel_property_corresponding_angle(2,GF,RO,P)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,WD,BT,O)",
+      "vertical_angle(1,AGK,FGR)"
+    ],
     "parallel_property_collinear_extend(3,WD,BT,O)": [
       "parallel_property_collinear_extend(3,OD,BT,R)"
     ],
@@ -66,10 +76,6 @@
     ],
     "parallel_property_collinear_extend(3,TF,RO,G)": [
       "parallel_property_corresponding_angle(2,GF,RO,P)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,WD,BT,O)",
-      "vertical_angle(1,AGK,FGR)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 2997,
   "annotation": "NaZhu_2023-04-16",
   "source": "GeoQA-201",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知AB=AC=AD,∠CBD=2∠BDC,∠BAC=44°,则∠CAD的度数为()",
-  "problem_text_en": "As shown in the figure, it is known that AB = AC = AD, ∠CBD = N_0 ∠BDC, ∠BAC = N_1, then the degree of ∠CAD is () ",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=AC，AC=AD，∠EAB=44°，∠EBC=Mul(MeasureOfAngle(CDE),2)°，圆A的圆心为A。求∠DAE的大小。",
+  "problem_text_en": "As shown in the diagram, AB=AC, AC=AD, ∠EAB=44°, ∠EBC=Mul(MeasureOfAngle(CDE),2)°, A is the center of circle A. Find the measure of ∠DAE.",
   "problem_img": "2997.png",
   "construction_cdl": [
     "Shape(ADB,BA,AD)",
@@ -21,8 +21,9 @@
   "text_cdl": [
     "Equal(LengthOfLine(AB),LengthOfLine(AC))",
     "Equal(LengthOfLine(AC),LengthOfLine(AD))",
+    "Equal(MeasureOfAngle(EAB),44)",
     "Equal(MeasureOfAngle(EBC),Mul(MeasureOfAngle(CDE),2))",
-    "Equal(MeasureOfAngle(EAB),44)"
+    "IsCentreOfCircle(A,A)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(A,A)"
@@ -35,7 +36,7 @@
     "arc_property_center_angle(1,ABC,A)",
     "arc_property_center_angle(1,ACD,A)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_circumference_angle_external(1,ABC,D)",
       "arc_property_circumference_angle_external(1,ACD,B)",

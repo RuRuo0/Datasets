@@ -2,9 +2,9 @@
   "problem_id": 5632,
   "annotation": "JiaZou_2023-05-28",
   "source": "GeoQA-7251",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,DE∥BC,分别交AB,AC于点D,E．若AE=3,EC=6,则\\frac{DE}{BC}的值为()",
-  "problem_text_en": "As shown in the figure, in △ABC, DE ∥ BC, intersect AB and AC at points D and E respectively. If AE = N_0, EC = N_1, then the value of \\frac DEBC is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AE=3，EC=6，DE平行于BC。求直线DE的长度与直线BC的长度之比。",
+  "problem_text_en": "As shown in the diagram, AE=3, EC=6, DE is parallel to BC. Find the ratio of the length of line DE to the length of line BC.",
   "problem_img": "5632.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -27,17 +27,17 @@
     "similar_triangle_property_line_ratio(1,ABC,ADE)",
     "similar_triangle_property_line_ratio(1,BCA,DEA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AE,EC)",
+      "parallel_property_corresponding_angle(1,DE,BC,A)"
+    ],
     "parallel_property_corresponding_angle(1,DE,BC,A)": [
       "similar_triangle_judgment_aa(1,CAB,EAD)"
     ],
     "similar_triangle_judgment_aa(1,CAB,EAD)": [
       "similar_triangle_property_line_ratio(1,ABC,ADE)",
       "similar_triangle_property_line_ratio(1,BCA,DEA)"
-    ],
-    "START": [
-      "line_addition(1,AE,EC)",
-      "parallel_property_corresponding_angle(1,DE,BC,A)"
     ]
   }
 }

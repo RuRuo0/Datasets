@@ -2,9 +2,9 @@
   "problem_id": 6137,
   "annotation": "YifanWang_2023-06-04",
   "source": "GeoQA-8695",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,∠ABC=40°,则∠BAC=()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of O, ∠ABC = N_0, then ∠BAC = ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠CBA=40°，⊙O的圆心为O。求∠BAC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CBA=40°, O is the center of circle O. Find the measure of ∠BAC.",
   "problem_img": "6137.png",
   "construction_cdl": [
     "Shape(AO,OB,OBA)",
@@ -15,8 +15,8 @@
     "Cocircular(O,ACB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "Equal(MeasureOfAngle(CBA),40)"
+    "Equal(MeasureOfAngle(CBA),40)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BAC))",
@@ -26,13 +26,13 @@
     "diameter_of_circle_property_right_angle(1,ACB,O)",
     "triangle_property_angle_sum(1,BAC)"
   ],
-  "theorem_seq_dag": {
-    "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
-      "diameter_of_circle_property_right_angle(1,ACB,O)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "triangle_property_angle_sum(1,BAC)"
+    ],
+    "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+      "diameter_of_circle_property_right_angle(1,ACB,O)"
     ]
   }
 }

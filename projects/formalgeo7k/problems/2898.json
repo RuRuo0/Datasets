@@ -2,9 +2,9 @@
   "problem_id": 2898,
   "annotation": "YimingHe_2023-04-16",
   "source": "GeoQA-69",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB为⊙O的直径,点C、D在⊙O上,∠BAC=50°,则∠ADC为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, vertices C and D are on ⊙O, ∠BAC = N_0, then ∠ADC is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠CAB=50°，⊙O的圆心为O，⊙O的直径为BA。求∠ADC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAB=50°, O is the center of ⊙O, BA is the diameter of circle O. Find the measure of ∠ADC.",
   "problem_img": "2898.png",
   "construction_cdl": [
     "Shape(AC,OCA)",
@@ -19,7 +19,9 @@
     "Cocircular(O,BCAD)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(CAB),50)"
+    "Equal(MeasureOfAngle(CAB),50)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(BA,O)"
   ],
   "image_cdl": [
     "IsDiameterOfCircle(BA,O)",
@@ -33,7 +35,7 @@
     "arc_property_circumference_angle_external(1,OCA,B)",
     "arc_property_circumference_angle_external(1,OCA,D)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,BCA,O)",
       "triangle_property_angle_sum(1,ABC)",

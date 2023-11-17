@@ -2,9 +2,9 @@
   "problem_id": 4346,
   "annotation": "ChengQin_2023-05-21",
   "source": "GeoQA-3235",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知AB是⊙O的直径,BC是弦,∠ABC=30°,过圆心O作OD⊥BC交弧BC于点D,连接DC,则∠DCB的度数为()度．",
-  "problem_text_en": "As shown in the figure, it is known that AB is the diameter of ⊙O, BC is the chord, ∠ABC = N_0, cross the center O to make OD ⊥ BC intersects BC at point D. Connect DC, then the degree of ∠DCB is () degree.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠CBA=30°，圆O的圆心为O，圆O的直径为AB，OE⊥BE。求∠BCD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CBA=30°, O is the center of ⊙O, the diameter of circle O is AB, OE⊥BE. Find the measure of ∠BCD.",
   "problem_img": "4346.png",
   "construction_cdl": [
     "Shape(OCD,DC)",
@@ -20,10 +20,10 @@
     "Cocircular(O,ACDB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(CBA),30)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)",
-    "PerpendicularBetweenLine(OE,BE)",
-    "Equal(MeasureOfAngle(CBA),30)"
+    "PerpendicularBetweenLine(OE,BE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BCD))",
@@ -33,7 +33,7 @@
     "arc_property_center_angle(1,ODB,O)",
     "arc_property_circumference_angle_external(1,ODB,C)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,OEB)",
       "arc_property_center_angle(1,ODB,O)",

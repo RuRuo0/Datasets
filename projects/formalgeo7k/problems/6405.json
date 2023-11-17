@@ -2,9 +2,9 @@
   "problem_id": 6405,
   "annotation": "YimingHe_2023-06-04",
   "source": "GeoQA-9266",
-  "problem_level": 1,
-  "problem_text_cn": "如图,平行四边形ABCD中,AB=6,BC=8,AC的垂直平分线交AD于E,则三角形CDE的周长是()",
-  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, AB = N_0, BC = N_1, the perpendicular bisector of AC intersects AD at E, then the perimeter of the triangle CDE is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=6，BC=8，EO垂直平分AB，AD和BC是平行四边形ABCD的一组对边。求△CDE的周长。",
+  "problem_text_en": "As shown in the diagram, AB=6, BC=8, EO is the perpendicular bisector of AC, BA and CD are opposite sides of the parallelogram ABCD. Find the perimeter of △CDE.",
   "problem_img": "6405.png",
   "construction_cdl": [
     "Shape(BC,CO,OA,AB)",
@@ -15,10 +15,10 @@
     "Collinear(AED)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
     "Equal(LengthOfLine(AB),6)",
     "Equal(LengthOfLine(BC),8)",
-    "IsPerpendicularBisectorOfLine(EO,AC)"
+    "IsPerpendicularBisectorOfLine(EO,AC)",
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfTriangle(CDE))",
@@ -30,7 +30,7 @@
     "perpendicular_bisector_property_distance_equal(1,EO,AC)",
     "triangle_perimeter_formula(1,ECD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AE,ED)",
       "parallelogram_property_opposite_line_equal(1,ABCD)",

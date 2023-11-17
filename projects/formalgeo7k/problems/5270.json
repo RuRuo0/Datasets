@@ -2,9 +2,9 @@
   "problem_id": 5270,
   "annotation": "XiaokaiZhang_2023-05-21",
   "source": "GeoQA-5394",
-  "problem_level": 1,
-  "problem_text_cn": "如图,BP是△ABC中∠ABC的平分线,CP是∠ACB的外角的平分线,如果∠ABP=20°,∠ACP=50°,则∠A=()",
-  "problem_text_en": "As shown in the figure, BP is the bisector of ∠ABC in △ABC, and CP is the bisector of the exterior angle of ∠ACB. If ∠ABP = N_0, ∠ACP = N_1, then ∠A = ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠ABP=20°，∠ACP=50°，BP是∠ABC的角平分线，CP平分∠ACM。求∠CAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABP=20°, ∠ACP=50°, BP is the angle bisector of ∠ABC, CP is the angle bisector of ∠ACM. Find the measure of ∠CAB.",
   "problem_img": "5270.png",
   "construction_cdl": [
     "Shape(AB,BO,OA)",
@@ -17,10 +17,10 @@
     "Collinear(BCM)"
   ],
   "text_cdl": [
-    "IsBisectorOfAngle(BP,ABC)",
-    "IsBisectorOfAngle(CP,ACM)",
     "Equal(MeasureOfAngle(ABP),20)",
-    "Equal(MeasureOfAngle(ACP),50)"
+    "Equal(MeasureOfAngle(ACP),50)",
+    "IsBisectorOfAngle(BP,ABC)",
+    "IsBisectorOfAngle(CP,ACM)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CAB))",
@@ -31,7 +31,7 @@
     "adjacent_complementary_angle(1,BCA,ACM)",
     "triangle_property_angle_sum(1,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,ABP,PBC)",
       "angle_addition(1,ACP,PCM)",

@@ -2,9 +2,9 @@
   "problem_id": 1796,
   "annotation": "NaZhu_2023-03-26",
   "source": "Geometry3k-1862",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "m \\angle B A C = 40, m \\angle D A C = 40, and D C = 10, find B C.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，DC=10，∠BAC=40°，∠CAD=40°，CD⊥ND，FB⊥CB。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, DC=10, ∠BAC=40°, ∠CAD=40°, CD is perpendicular to ND, FB is perpendicular to CB. Find the length of line BC.",
   "problem_img": "1796.png",
   "construction_cdl": [
     "Shape(AD,DC,CA)",
@@ -13,9 +13,11 @@
     "Collinear(ABF)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(DC),10)",
     "Equal(MeasureOfAngle(BAC),40)",
     "Equal(MeasureOfAngle(CAD),40)",
-    "Equal(LengthOfLine(DC),10)"
+    "PerpendicularBetweenLine(CD,ND)",
+    "PerpendicularBetweenLine(FB,CB)"
   ],
   "image_cdl": [
     "PerpendicularBetweenLine(FB,CB)",
@@ -29,7 +31,11 @@
     "mirror_congruent_triangle_judgment_aas(3,CBA,CAD)",
     "mirror_congruent_triangle_property_line_equal(1,ACB,ADC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,ADC,CDN)",
+      "adjacent_complementary_angle(1,FBC,CBA)"
+    ],
     "adjacent_complementary_angle(1,ADC,CDN)": [
       "mirror_congruent_triangle_judgment_aas(3,CBA,CAD)"
     ],
@@ -38,10 +44,6 @@
     ],
     "mirror_congruent_triangle_judgment_aas(3,CBA,CAD)": [
       "mirror_congruent_triangle_property_line_equal(1,ACB,ADC)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,ADC,CDN)",
-      "adjacent_complementary_angle(1,FBC,CBA)"
     ]
   }
 }

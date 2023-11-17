@@ -2,9 +2,9 @@
   "problem_id": 1773,
   "annotation": "NaZhu_2023-03-26",
   "source": "Geometry3k-1838",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find A C.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，BA=x+2，CB=6，DA=8，DE=5，EB∥DC。求直线AC的长度。",
+  "problem_text_en": "As shown in the diagram, BA=x+2, CB=6, DA=8, DE=5, EB is parallel to DC. Find the length of line AC.",
   "problem_img": "1773.png",
   "construction_cdl": [
     "Shape(AE,EB,BA)",
@@ -12,7 +12,13 @@
     "Collinear(AED)",
     "Collinear(ABC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BA),x+2)",
+    "Equal(LengthOfLine(CB),6)",
+    "Equal(LengthOfLine(DA),8)",
+    "Equal(LengthOfLine(DE),5)",
+    "ParallelBetweenLine(EB,DC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BA),x+2)",
     "Equal(LengthOfLine(DA),8)",
@@ -30,18 +36,18 @@
     "similar_triangle_property_line_ratio(1,BAE,CAD)",
     "similar_triangle_property_line_ratio(1,EBA,DCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AE,ED)",
+      "line_addition(1,AB,BC)",
+      "parallel_property_corresponding_angle(1,EB,DC,A)"
+    ],
     "parallel_property_corresponding_angle(1,EB,DC,A)": [
       "similar_triangle_judgment_aa(1,BAE,CAD)"
     ],
     "similar_triangle_judgment_aa(1,BAE,CAD)": [
       "similar_triangle_property_line_ratio(1,BAE,CAD)",
       "similar_triangle_property_line_ratio(1,EBA,DCA)"
-    ],
-    "START": [
-      "line_addition(1,AE,ED)",
-      "line_addition(1,AB,BC)",
-      "parallel_property_corresponding_angle(1,EB,DC,A)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 3726,
   "annotation": "Yangli_2023-04-30",
   "source": "GeoQA-1505",
-  "problem_level": 1,
-  "problem_text_cn": "如图,∠AOB的两边OA,OB均为平面反光镜,∠AOB=40°．在射线OB上有一点P,从P点射出一束光线经OA上的Q点反射后,反射光线QR恰好与OB平行,则∠QPB的度数是()",
-  "problem_text_en": "As shown in the figure, OA and OB on both edges of ∠AOB are plane mirrors, ∠AOB = N_0. There is a point P on the ray OB. After a beam of light is emitted from the point P and reflected by the Q point on the OA, the reflected light QR is exactly parallel to the OB, then the degree of ∠QPB is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠AQR=∠PQO，∠QOP=40°，QR平行于OP。求∠QPB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AQR=∠PQO, ∠QOP=40°, QR∥OP. Find the measure of ∠QPB.",
   "problem_img": "3726.png",
   "construction_cdl": [
     "Shape(QO,OP,PQ)",
@@ -15,9 +15,9 @@
     "Collinear(AQO)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(AQR),MeasureOfAngle(PQO))",
     "Equal(MeasureOfAngle(QOP),40)",
-    "ParallelBetweenLine(QR,OP)",
-    "Equal(MeasureOfAngle(AQR),MeasureOfAngle(PQO))"
+    "ParallelBetweenLine(QR,OP)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(QPB))",
@@ -27,7 +27,7 @@
     "parallel_property_corresponding_angle(1,QR,OP,A)",
     "adjacent_complementary_angle(1,OPQ,QPB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,QOP)",
       "parallel_property_corresponding_angle(1,QR,OP,A)",

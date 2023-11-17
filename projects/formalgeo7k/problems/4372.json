@@ -2,9 +2,9 @@
   "problem_id": 4372,
   "annotation": "YimingHe_2023-05-14",
   "source": "GeoQA-3287",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O直径,点C为⊙O上一点,∠C=20°,则∠BOC度数为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, point C is a point on ⊙O, ∠C = N_0, then the degree of ∠BOC is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠OCA=20°，O是⊙O的圆心，⊙O的直径为AB。求∠COB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠OCA=20°, the center of circle O is O, the diameter of ⊙O is AB. Find the measure of ∠COB.",
   "problem_img": "4372.png",
   "construction_cdl": [
     "Shape(AO,OC,CA)",
@@ -15,9 +15,9 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
-    "IsDiameterOfCircle(AB,O)",
     "Equal(MeasureOfAngle(OCA),20)",
-    "IsCentreOfCircle(O,O)"
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(COB))",
@@ -30,7 +30,13 @@
     "triangle_property_angle_sum(1,AOC)",
     "adjacent_complementary_angle(1,AOC,COB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "triangle_property_angle_sum(1,AOC)",
+      "adjacent_complementary_angle(1,AOC,COB)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OCA)"
     ],
@@ -39,12 +45,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OCA)": [
       "isosceles_triangle_property_angle_equal(1,OCA)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "triangle_property_angle_sum(1,AOC)",
-      "adjacent_complementary_angle(1,AOC,COB)"
     ]
   }
 }

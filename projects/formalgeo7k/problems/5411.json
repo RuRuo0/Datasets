@@ -2,9 +2,9 @@
   "problem_id": 5411,
   "annotation": "XiaoxiaoJin_2023-05-21",
   "source": "GeoQA-5712",
-  "problem_level": 1,
-  "problem_text_cn": "如图．在▱ABCD中,点E是BC的中点．延长BA到点F,使BA=AF,连接EF,FC、AE．若AD=12,▱ABCD的周长为34．FE⊥AD,则AE的长为()",
-  "problem_text_en": "As shown in the figure. In ▱ABCD, point E is the midpoint of BC. Extend BA to point F, make BA = AF. Connect EF, FC, AE. If AD = N_0, the perimeter of ▱ABCD is N_1. FE ⊥ AD, then the length of AE is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AD=12，BA=AF，BE=EC，四边形ABCD的周长为34，AD和BC是平行四边形ABCD的一组对边，BE⊥FE。求直线AE的长度。",
+  "problem_text_en": "As shown in the diagram, AD=12, BA=AF, BE=EC, the perimeter of ABCD is 34, AD and BC are opposite sides of the ▱ ABCD, BE is perpendicular to FE. Find the length of line AE.",
   "problem_img": "5411.png",
   "construction_cdl": [
     "Shape(FA,AG,GF)",
@@ -20,12 +20,12 @@
     "Collinear(FHC)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AD),12)",
     "Equal(LengthOfLine(BA),LengthOfLine(AF))",
     "Equal(LengthOfLine(BE),LengthOfLine(EC))",
-    "Equal(LengthOfLine(AD),12)",
-    "PerpendicularBetweenLine(BE,FE)",
+    "Equal(PerimeterOfQuadrilateral(ABCD),34)",
     "Parallelogram(ABCD)",
-    "Equal(PerimeterOfQuadrilateral(ABCD),34)"
+    "PerpendicularBetweenLine(BE,FE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AE))",
@@ -40,13 +40,7 @@
     "midsegment_of_triangle_judgment_midpoint(1,EA,BCF)",
     "midsegment_of_triangle_property_length(1,EA,BCF)"
   ],
-  "theorem_seq_dag": {
-    "perpendicular_bisector_judgment_per_and_mid(1,FE,BC)": [
-      "perpendicular_bisector_property_distance_equal(1,FE,BC)"
-    ],
-    "midsegment_of_triangle_judgment_midpoint(1,EA,BCF)": [
-      "midsegment_of_triangle_property_length(1,EA,BCF)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,BA,AF)",
       "quadrilateral_perimeter_formula(1,ABCD)",
@@ -54,6 +48,12 @@
       "parallelogram_property_opposite_line_equal(1,ABCD)",
       "parallelogram_property_opposite_line_equal(1,BCDA)",
       "midsegment_of_triangle_judgment_midpoint(1,EA,BCF)"
+    ],
+    "perpendicular_bisector_judgment_per_and_mid(1,FE,BC)": [
+      "perpendicular_bisector_property_distance_equal(1,FE,BC)"
+    ],
+    "midsegment_of_triangle_judgment_midpoint(1,EA,BCF)": [
+      "midsegment_of_triangle_property_length(1,EA,BCF)"
     ]
   }
 }

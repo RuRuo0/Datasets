@@ -2,16 +2,21 @@
   "problem_id": 1346,
   "annotation": "YimingHe_2023-03-19",
   "source": "Geometry3k-1394",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find E G.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，ED=6.5，GD=6.5，GF=5，DF⊥EF。求直线EG的长度。",
+  "problem_text_en": "As shown in the diagram, ED=6.5, GD=6.5, GF=5, DF is perpendicular to EF. Find the length of line EG.",
   "problem_img": "1346.png",
   "construction_cdl": [
     "Shape(DG,GF,FD)",
     "Shape(DF,FE,ED)",
     "Collinear(GFE)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(ED),6.5)",
+    "Equal(LengthOfLine(GD),6.5)",
+    "Equal(LengthOfLine(GF),5)",
+    "PerpendicularBetweenLine(DF,EF)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(GF),5)",
     "Equal(LengthOfLine(GD),6.5)",
@@ -26,16 +31,16 @@
     "mirror_congruent_triangle_property_line_equal(1,DGF,DFE)",
     "line_addition(1,GF,FE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,GFD,DFE)",
+      "line_addition(1,GF,FE)"
+    ],
     "adjacent_complementary_angle(1,GFD,DFE)": [
       "mirror_congruent_triangle_judgment_hl(1,GFD,EDF)"
     ],
     "mirror_congruent_triangle_judgment_hl(1,GFD,EDF)": [
       "mirror_congruent_triangle_property_line_equal(1,DGF,DFE)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,GFD,DFE)",
-      "line_addition(1,GF,FE)"
     ]
   }
 }

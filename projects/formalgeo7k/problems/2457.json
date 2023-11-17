@@ -2,9 +2,9 @@
   "problem_id": 2457,
   "annotation": "RunanWang_2023-04-23",
   "source": "Geometry3k-2577",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，PT=27/2，SP=PR，SP=x，UQ=3，UQ=QV，WQ=9，∠RTS=∠VWU，∠TSR=∠UVW。求x的值。",
+  "problem_text_en": "As shown in the diagram, PT=27/2, SP=PR, SP=x, UQ=3, UQ=QV, WQ=9, ∠RTS=∠VWU, ∠TSR=∠UVW. Find the value of x.",
   "problem_img": "2457.png",
   "construction_cdl": [
     "Shape(SP,PT,TS)",
@@ -14,7 +14,16 @@
     "Collinear(SPR)",
     "Collinear(UQV)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(PT),27/2)",
+    "Equal(LengthOfLine(SP),LengthOfLine(PR))",
+    "Equal(LengthOfLine(SP),x)",
+    "Equal(LengthOfLine(UQ),3)",
+    "Equal(LengthOfLine(UQ),LengthOfLine(QV))",
+    "Equal(LengthOfLine(WQ),9)",
+    "Equal(MeasureOfAngle(RTS),MeasureOfAngle(VWU))",
+    "Equal(MeasureOfAngle(TSR),MeasureOfAngle(UVW))"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(PT),27/2)",
     "Equal(LengthOfLine(UQ),3)",
@@ -37,7 +46,12 @@
     "mirror_similar_triangle_property_line_ratio(1,SPT,VWQ)",
     "mirror_similar_triangle_property_line_ratio(1,TSP,WQV)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,SP,PR)",
+      "line_addition(1,UQ,QV)",
+      "mirror_similar_triangle_judgment_aa(1,RTS,UVW)"
+    ],
     "line_addition(1,SP,PR)": [
       "mirror_similar_triangle_judgment_sas(1,SPT,VWQ)"
     ],
@@ -57,11 +71,6 @@
     "mirror_similar_triangle_judgment_sas(1,SPT,VWQ)": [
       "mirror_similar_triangle_property_line_ratio(1,SPT,VWQ)",
       "mirror_similar_triangle_property_line_ratio(1,TSP,WQV)"
-    ],
-    "START": [
-      "line_addition(1,SP,PR)",
-      "line_addition(1,UQ,QV)",
-      "mirror_similar_triangle_judgment_aa(1,RTS,UVW)"
     ]
   }
 }

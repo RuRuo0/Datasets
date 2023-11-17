@@ -2,9 +2,9 @@
   "problem_id": 3528,
   "annotation": "YanjunGuo_2023-04-30",
   "source": "GeoQA-1146",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB∥CE,∠B=60°,DM平分∠BDC,DM⊥DN,则∠NDE()",
-  "problem_text_en": "As shown in the figure, AB ∥ CE, ∠B = N_0, DM equally divides ∠BDC, DM ⊥ DN, then ∠NDE = ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠DBA=60°，DA是∠CDB的角平分线，AB平行于CD，AD垂直于ND。求∠NDE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DBA=60°, DA bisects ∠CDB, AB∥CD, AD⊥ND. Find the measure of ∠NDE.",
   "problem_img": "3528.png",
   "construction_cdl": [
     "Shape(AD,DB,BA)",
@@ -15,9 +15,9 @@
   ],
   "text_cdl": [
     "Equal(MeasureOfAngle(DBA),60)",
-    "PerpendicularBetweenLine(AD,ND)",
+    "IsBisectorOfAngle(DA,CDB)",
     "ParallelBetweenLine(AB,CD)",
-    "IsBisectorOfAngle(DA,CDB)"
+    "PerpendicularBetweenLine(AD,ND)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(NDE))",
@@ -29,7 +29,7 @@
     "angle_addition(1,ADB,BDN)",
     "angle_addition(1,BDN,NDE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_ipsilateral_internal_angle(1,DC,BA)",
       "adjacent_complementary_angle(1,CDB,BDE)",

@@ -2,9 +2,9 @@
   "problem_id": 406,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-414",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If C E = t - 2. E B = t + 1, C D = 2, and C A = 10, find t.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，CA=10，CD=2，CE=t-2，EB=t+1，AB∥DE。求t的值。",
+  "problem_text_en": "As shown in the diagram, CA=10, CD=2, CE=t-2, EB=t+1, AB is parallel to DE. Find the value of t.",
   "problem_img": "406.png",
   "construction_cdl": [
     "Shape(AD,DE,EB,BA)",
@@ -12,7 +12,13 @@
     "Collinear(ADC)",
     "Collinear(CEB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(CA),10)",
+    "Equal(LengthOfLine(CD),2)",
+    "Equal(LengthOfLine(CE),t-2)",
+    "Equal(LengthOfLine(EB),t+1)",
+    "ParallelBetweenLine(AB,DE)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(CE),t-2)",
     "Equal(LengthOfLine(EB),t+1)",
@@ -29,17 +35,17 @@
     "similar_triangle_property_line_ratio(1,EDC,BAC)",
     "similar_triangle_property_line_ratio(1,DCE,ACB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,CE,EB)",
+      "parallel_property_corresponding_angle(2,AB,DE,C)"
+    ],
     "parallel_property_corresponding_angle(2,AB,DE,C)": [
       "similar_triangle_judgment_aa(1,EDC,BAC)"
     ],
     "similar_triangle_judgment_aa(1,EDC,BAC)": [
       "similar_triangle_property_line_ratio(1,EDC,BAC)",
       "similar_triangle_property_line_ratio(1,DCE,ACB)"
-    ],
-    "START": [
-      "line_addition(1,CE,EB)",
-      "parallel_property_corresponding_angle(2,AB,DE,C)"
     ]
   }
 }

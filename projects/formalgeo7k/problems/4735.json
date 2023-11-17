@@ -2,9 +2,9 @@
   "problem_id": 4735,
   "annotation": "XiaoxiaoJin_2023-05-14",
   "source": "GeoQA-4074",
-  "problem_level": 1,
-  "problem_text_cn": "如图,PA、PB分别与⊙O相切于点A、B,⊙O的切线EF分别交PA、PB于点E、F,切点C在弧AB上,若PA长为2,则△PEF的周长是()",
-  "problem_text_en": "As shown in the figure, PA and PB are tangent to ⊙O at points A and B respectively, the tangent EF of ⊙O intersects PA and PB at points E and F respectively, and the tangent point C is on the arc AB. If the length of PA is N_0, then the perimeter of △PEF is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，PA=2，⊙O的圆心为O，EA是⊙O的切线，EC是⊙O的切线，⊙O的切线为FB，⊙O的切线为FC，PA是⊙O的切线，PB是⊙O的切线。求△EPF的周长。",
+  "problem_text_en": "As shown in the diagram, PA=2, O is the center of ⊙O, the tangent to ⊙O is EA, EC is the tangent to circle O, the tangent to circle O is FB, FC is the tangent to circle O, PA is the tangent to ⊙O, PB is the tangent to circle O. Find the perimeter of △EPF.",
   "problem_img": "4735.png",
   "construction_cdl": [
     "Shape(EP,PF,FC,CE)",
@@ -17,13 +17,13 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(PA),2)",
-    "IsTangentOfCircle(PA,O)",
-    "IsTangentOfCircle(PB,O)",
-    "IsTangentOfCircle(EC,O)",
-    "IsTangentOfCircle(FC,O)",
+    "IsCentreOfCircle(O,O)",
     "IsTangentOfCircle(EA,O)",
+    "IsTangentOfCircle(EC,O)",
     "IsTangentOfCircle(FB,O)",
-    "IsCentreOfCircle(O,O)"
+    "IsTangentOfCircle(FC,O)",
+    "IsTangentOfCircle(PA,O)",
+    "IsTangentOfCircle(PB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfTriangle(EPF))",
@@ -37,7 +37,7 @@
     "line_addition(1,EC,CF)",
     "triangle_perimeter_formula(1,EPF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_length_equal(1,PA,PB,O)",
       "tangent_of_circle_property_length_equal(1,EC,EA,O)",

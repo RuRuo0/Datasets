@@ -2,9 +2,9 @@
   "problem_id": 3854,
   "annotation": "DengfengYue_2023-04-30",
   "source": "GeoQA-1732",
-  "problem_level": 1,
-  "problem_text_cn": "如图,OA,OB是⊙O的半径,C是⊙O上的一点,∠AOB=40°,∠OCB=50°,则∠OAC的度数为()",
-  "problem_text_en": "As shown in the figure, OA, OB are the radius of ⊙O, C is a point on ⊙O, ∠AOB = N_0, ∠OCB = N_1, then the degree of ∠OAC is ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，∠BCO=50°，∠BOA=40°，⊙O的圆心为O。求∠OAC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BCO=50°, ∠BOA=40°, the center of circle O is O. Find the measure of ∠OAC.",
   "problem_img": "3854.png",
   "construction_cdl": [
     "Shape(OA,AD,DO)",
@@ -17,8 +17,9 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(BCO),50)",
     "Equal(MeasureOfAngle(BOA),40)",
-    "Equal(MeasureOfAngle(BCO),50)"
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)"
@@ -37,7 +38,15 @@
     "isosceles_triangle_property_angle_equal(1,OAC)",
     "triangle_property_angle_sum(1,OAC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "triangle_property_angle_sum(1,OBC)",
+      "angle_addition(1,COD,DOA)",
+      "triangle_property_angle_sum(1,OAC)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OAC)"
     ],
@@ -53,14 +62,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OAC)": [
       "isosceles_triangle_property_angle_equal(1,OAC)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "triangle_property_angle_sum(1,OBC)",
-      "angle_addition(1,COD,DOA)",
-      "triangle_property_angle_sum(1,OAC)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 1616,
   "annotation": "YiwenHuang_2023-04-23",
   "source": "Geometry3k-1676",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，BC=x，GJ=6，HJ=9，VB=8，∠BAC=∠CVB，∠HGJ=∠CVB，∠HGJ=∠HIJ，BC垂直于VC，JH⊥GH。求x的值。",
+  "problem_text_en": "As shown in the diagram, BC=x, GJ=6, HJ=9, VB=8, ∠BAC=∠CVB, ∠HGJ=∠CVB, ∠HGJ=∠HIJ, BC is perpendicular to VC, JH⊥GH. Find the value of x.",
   "problem_img": "1616.png",
   "construction_cdl": [
     "Shape(BC,CV,VB)",
@@ -14,7 +14,17 @@
     "Collinear(ACV)",
     "Collinear(GHI)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BC),x)",
+    "Equal(LengthOfLine(GJ),6)",
+    "Equal(LengthOfLine(HJ),9)",
+    "Equal(LengthOfLine(VB),8)",
+    "Equal(MeasureOfAngle(BAC),MeasureOfAngle(CVB))",
+    "Equal(MeasureOfAngle(HGJ),MeasureOfAngle(CVB))",
+    "Equal(MeasureOfAngle(HGJ),MeasureOfAngle(HIJ))",
+    "PerpendicularBetweenLine(BC,VC)",
+    "PerpendicularBetweenLine(JH,GH)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(VB),8)",
     "Equal(LengthOfLine(HJ),9)",
@@ -33,13 +43,13 @@
     "similar_triangle_property_line_ratio(1,CVB,HGJ)",
     "similar_triangle_property_line_ratio(1,VBC,GJH)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "similar_triangle_judgment_aa(1,BCV,JHG)"
+    ],
     "similar_triangle_judgment_aa(1,BCV,JHG)": [
       "similar_triangle_property_line_ratio(1,CVB,HGJ)",
       "similar_triangle_property_line_ratio(1,VBC,GJH)"
-    ],
-    "START": [
-      "similar_triangle_judgment_aa(1,BCV,JHG)"
     ]
   }
 }

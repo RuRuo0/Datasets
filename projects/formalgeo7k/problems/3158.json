@@ -2,9 +2,9 @@
   "problem_id": 3158,
   "annotation": "JiaZou_2023-04-23",
   "source": "GeoQA-426",
-  "problem_level": 1,
-  "problem_text_cn": "如图,∠1=62°,若m∥n,则∠2的度数为()",
-  "problem_text_en": "As shown in the figure, ∠1 = N_0, if ∥ n, then the degree of ∠2 is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠ACD=62°，BD∥EG。求∠CFG的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ACD=62°, BD∥EG. Find the measure of ∠CFG.",
   "problem_img": "3158.png",
   "construction_cdl": [
     "Shape(BC,CA)",
@@ -20,8 +20,8 @@
     "Collinear(ACFH)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(BD,EG)",
-    "Equal(MeasureOfAngle(ACD),62)"
+    "Equal(MeasureOfAngle(ACD),62)",
+    "ParallelBetweenLine(BD,EG)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CFG))",
@@ -31,15 +31,15 @@
     "parallel_property_collinear_extend(3,GE,DC,F)",
     "parallel_property_corresponding_angle(1,CD,FG,A)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,BD,EG,C)"
+    ],
     "parallel_property_collinear_extend(3,BD,EG,C)": [
       "parallel_property_collinear_extend(3,GE,DC,F)"
     ],
     "parallel_property_collinear_extend(3,GE,DC,F)": [
       "parallel_property_corresponding_angle(1,CD,FG,A)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,BD,EG,C)"
     ]
   }
 }

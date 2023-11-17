@@ -2,9 +2,9 @@
   "problem_id": 4139,
   "annotation": "XiaoxiaoJin_2023-05-07",
   "source": "GeoQA-2711",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB为⊙O的直径,C、D是⊙O上的两点,∠BAC=30°,弧BC等于弧CD,则∠DAC的度数是()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, C and D are two points on ⊙O, ∠BAC = N_0, arc BC is equal to arc CD, then the degree of ∠DAC is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，弧OBC的长度与弧OCD的长度相等，∠CAB=30°，P是圆O的圆心，AB是圆O的直径。求∠DAC的大小。",
+  "problem_text_en": "As shown in the diagram, the length of arc OBC is equal to the length of ⌒OCD, ∠CAB=30°, the center of ⊙O is P, the diameter of circle O is AB. Find the measure of ∠DAC.",
   "problem_img": "4139.png",
   "construction_cdl": [
     "Shape(AD,ODA)",
@@ -15,10 +15,10 @@
     "Cocircular(O,ABCD)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(P,O)",
-    "IsDiameterOfCircle(AB,O)",
+    "Equal(LengthOfArc(OBC),LengthOfArc(OCD))",
     "Equal(MeasureOfAngle(CAB),30)",
-    "Equal(LengthOfArc(OBC),LengthOfArc(OCD))"
+    "IsCentreOfCircle(P,O)",
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DAC))",
@@ -29,14 +29,14 @@
     "arc_property_circumference_angle_external(1,OBC,A)",
     "arc_property_circumference_angle_external(1,OCD,A)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_length_equal(1,OBC,OCD)": [
-      "congruent_arc_property_measure_equal(1,OBC,OCD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "congruent_arc_judgment_length_equal(1,OBC,OCD)",
       "arc_property_circumference_angle_external(1,OBC,A)",
       "arc_property_circumference_angle_external(1,OCD,A)"
+    ],
+    "congruent_arc_judgment_length_equal(1,OBC,OCD)": [
+      "congruent_arc_property_measure_equal(1,OBC,OCD)"
     ]
   }
 }

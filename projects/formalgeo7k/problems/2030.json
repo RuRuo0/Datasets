@@ -2,9 +2,9 @@
   "problem_id": 2030,
   "annotation": "YimingHe_2023-03-26",
   "source": "Geometry3k-2116",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If R Q \\cong R S, R P \\cong R T and m \\angle R Q S = 80, find m \\angle P.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，RP=RT，RQ=RS，∠RQS=80°。求∠RPT的大小。",
+  "problem_text_en": "As shown in the diagram, RP=RT, RQ=RS, ∠RQS=80°. Find the measure of ∠RPT.",
   "problem_img": "2030.png",
   "construction_cdl": [
     "Shape(RQ,QS,SR)",
@@ -15,7 +15,11 @@
     "Collinear(PUT)",
     "Collinear(RST)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(RP),LengthOfLine(RT))",
+    "Equal(LengthOfLine(RQ),LengthOfLine(RS))",
+    "Equal(MeasureOfAngle(RQS),80)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(RQ),LengthOfLine(RS))",
     "Equal(LengthOfLine(RP),LengthOfLine(RT))",
@@ -31,18 +35,18 @@
     "triangle_property_angle_sum(1,RQS)",
     "triangle_property_angle_sum(1,RPT)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,RQS)": [
-      "isosceles_triangle_property_angle_equal(1,RQS)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,RPT)": [
-      "isosceles_triangle_property_angle_equal(1,RPT)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,RQS)",
       "isosceles_triangle_judgment_line_equal(1,RPT)",
       "triangle_property_angle_sum(1,RQS)",
       "triangle_property_angle_sum(1,RPT)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,RQS)": [
+      "isosceles_triangle_property_angle_equal(1,RQS)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,RPT)": [
+      "isosceles_triangle_property_angle_equal(1,RPT)"
     ]
   }
 }

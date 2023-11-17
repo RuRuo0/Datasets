@@ -2,9 +2,9 @@
   "problem_id": 5427,
   "annotation": "XiaoxiaoJin_2023-05-21",
   "source": "GeoQA-5746",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在平行四边形ABCD中,BE=2,AD=8,DE平分∠ADC,则平行四边形的周长为()",
-  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, BE = N_0, AD = N_1, DE bisects ∠ADC, then the perimeter of the parallelogram is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AD=8，BE=2，DE是∠CDA的角平分线，ABCD是平行四边形。求ABCD的周长。",
+  "problem_text_en": "As shown in the diagram, AD=8, BE=2, DE is the angle bisector of ∠CDA, BA and CD are opposite sides of the parallelogram ABCD. Find the perimeter of quadrilateral ABCD.",
   "problem_img": "5427.png",
   "construction_cdl": [
     "Shape(AB,BE,ED,DA)",
@@ -12,8 +12,8 @@
     "Collinear(BEC)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(BE),2)",
     "Equal(LengthOfLine(AD),8)",
+    "Equal(LengthOfLine(BE),2)",
     "IsBisectorOfAngle(DE,CDA)",
     "Parallelogram(ABCD)"
   ],
@@ -29,19 +29,19 @@
     "isosceles_triangle_judgment_angle_equal(1,CDE)",
     "quadrilateral_perimeter_formula(1,ABCD)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,CB,DA,E)": [
-      "parallel_property_alternate_interior_angle(2,CE,DA)"
-    ],
-    "parallel_property_alternate_interior_angle(2,CE,DA)": [
-      "isosceles_triangle_judgment_angle_equal(1,CDE)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,BE,EC)",
       "parallel_property_collinear_extend(3,CB,DA,E)",
       "parallelogram_property_opposite_line_equal(1,ABCD)",
       "parallelogram_property_opposite_line_equal(1,BCDA)",
       "quadrilateral_perimeter_formula(1,ABCD)"
+    ],
+    "parallel_property_collinear_extend(3,CB,DA,E)": [
+      "parallel_property_alternate_interior_angle(2,CE,DA)"
+    ],
+    "parallel_property_alternate_interior_angle(2,CE,DA)": [
+      "isosceles_triangle_judgment_angle_equal(1,CDE)"
     ]
   }
 }

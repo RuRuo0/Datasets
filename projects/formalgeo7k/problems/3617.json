@@ -2,9 +2,9 @@
   "problem_id": 3617,
   "annotation": "QikeHuang_2023-04-30",
   "source": "GeoQA-1292",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,∠ACB=45°,AD⊥BC于点D,点E为AD上一点,连接CE,CE=AB,若∠ACE=20°,则∠B的度数为()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠ACB = N_0, AD ⊥ BC is at point D, point E is a point on AD, connected to CE, CE = AB, if ∠ACE = N_1, then the degree of ∠B is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=CE，∠BCA=45°，∠ECA=20°，AD垂直于CD。求∠ABD的大小。",
+  "problem_text_en": "As shown in the diagram, AB=CE, ∠BCA=45°, ∠ECA=20°, AD⊥CD. Find the measure of ∠ABD.",
   "problem_img": "3617.png",
   "construction_cdl": [
     "Shape(AB,BD,DE,EA)",
@@ -14,10 +14,10 @@
     "Collinear(BDC)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AB),LengthOfLine(CE))",
     "Equal(MeasureOfAngle(BCA),45)",
     "Equal(MeasureOfAngle(ECA),20)",
-    "PerpendicularBetweenLine(AD,CD)",
-    "Equal(LengthOfLine(AB),LengthOfLine(CE))"
+    "PerpendicularBetweenLine(AD,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ABD))",
@@ -31,7 +31,13 @@
     "congruent_triangle_judgment_hl(2,BDA,EDC)",
     "congruent_triangle_property_angle_equal(1,BDA,EDC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "triangle_property_angle_sum(1,ADC)",
+      "triangle_property_angle_sum(1,CED)",
+      "angle_addition(1,DCE,ECA)",
+      "adjacent_complementary_angle(1,BDE,EDC)"
+    ],
     "triangle_property_angle_sum(1,ADC)": [
       "isosceles_triangle_judgment_angle_equal(1,DCA)"
     ],
@@ -43,12 +49,6 @@
     ],
     "congruent_triangle_judgment_hl(2,BDA,EDC)": [
       "congruent_triangle_property_angle_equal(1,BDA,EDC)"
-    ],
-    "START": [
-      "triangle_property_angle_sum(1,ADC)",
-      "triangle_property_angle_sum(1,CED)",
-      "angle_addition(1,DCE,ECA)",
-      "adjacent_complementary_angle(1,BDE,EDC)"
     ]
   }
 }

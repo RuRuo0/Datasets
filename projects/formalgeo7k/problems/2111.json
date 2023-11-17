@@ -2,9 +2,9 @@
   "problem_id": 2111,
   "annotation": "QikeHuang_2023-04-23",
   "source": "Geometry3k-2201",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If A B = 32 and F C = 11, find F E.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=32，FC=11，⊙C的圆心为C，⊙C的直径为AB，CF垂直于EF。求直线FE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=32, FC=11, the center of circle C is C, the diameter of ⊙C is AB, CF⊥EF. Find the length of line FE.",
   "problem_img": "2111.png",
   "construction_cdl": [
     "Shape(FA,CAE,EF)",
@@ -17,7 +17,13 @@
     "Collinear(EFD)",
     "Cocircular(C,AEBD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),32)",
+    "Equal(LengthOfLine(FC),11)",
+    "IsCentreOfCircle(C,C)",
+    "IsDiameterOfCircle(AB,C)",
+    "PerpendicularBetweenLine(CF,EF)"
+  ],
   "image_cdl": [
     "IsDiameterOfCircle(AB,C)",
     "Equal(LengthOfLine(AB),32)",
@@ -34,15 +40,15 @@
     "right_triangle_judgment_angle(1,CFE)",
     "right_triangle_property_pythagorean(1,CFE)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,CFE)": [
-      "right_triangle_property_pythagorean(1,CFE)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_length_equal(1,AB,C)",
       "circle_property_length_of_radius_and_diameter(1,C)",
       "radius_of_circle_property_length_equal(1,CE,C)",
       "right_triangle_judgment_angle(1,CFE)"
+    ],
+    "right_triangle_judgment_angle(1,CFE)": [
+      "right_triangle_property_pythagorean(1,CFE)"
     ]
   }
 }

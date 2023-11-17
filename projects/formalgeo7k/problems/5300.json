@@ -2,9 +2,9 @@
   "problem_id": 5300,
   "annotation": "YanjunGuo_2023-05-21",
   "source": "GeoQA-5493",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在⊙O中,⌒{AB}=⌒{AC},∠A=40°,则∠B的度数是()",
-  "problem_text_en": "As shown in the figure, in ⊙O, ⌒AB = ⌒AC, ∠A = N_0, then the degree of ∠B is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，⌒OAB的长度与弧OCA的长度相等，∠CAB=40°。求∠ABC的大小。",
+  "problem_text_en": "As shown in the diagram, the length of arc OAB is equal to the length of arc OCA, ∠CAB=40°. Find the measure of ∠ABC.",
   "problem_img": "5300.png",
   "construction_cdl": [
     "Shape(BA,OAB)",
@@ -27,7 +27,11 @@
     "isosceles_triangle_property_angle_equal(1,ABC)",
     "triangle_property_angle_sum(1,BCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "congruent_arc_judgment_length_equal(1,OAB,OCA)",
+      "triangle_property_angle_sum(1,BCA)"
+    ],
     "congruent_arc_judgment_length_equal(1,OAB,OCA)": [
       "congruent_arc_property_chord_equal(1,OAB,OCA)"
     ],
@@ -36,10 +40,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,ABC)": [
       "isosceles_triangle_property_angle_equal(1,ABC)"
-    ],
-    "START": [
-      "congruent_arc_judgment_length_equal(1,OAB,OCA)",
-      "triangle_property_angle_sum(1,BCA)"
     ]
   }
 }

@@ -2,17 +2,17 @@
   "problem_id": 6371,
   "annotation": "ChengQin_2023-06-04",
   "source": "GeoQA-9225",
-  "problem_level": 1,
-  "problem_text_cn": "如图,菱形ABCD中,已知∠ABD=20°,则∠C的大小是()",
-  "problem_text_en": "As shown in the figure, in the diamond ABCD, it is known that ∠ABD = N_0, then the size of ∠C is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠ABD=20°，四边形ABCD是菱形。求∠BCD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABD=20°, ABCD is a rhombus. Find the measure of ∠BCD.",
   "problem_img": "6371.png",
   "construction_cdl": [
     "Shape(AB,BD,DA)",
     "Shape(BC,CD,DB)"
   ],
   "text_cdl": [
-    "Rhombus(ABCD)",
-    "Equal(MeasureOfAngle(ABD),20)"
+    "Equal(MeasureOfAngle(ABD),20)",
+    "Rhombus(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BCD))",
@@ -23,14 +23,14 @@
     "triangle_property_angle_sum(1,ABD)",
     "parallelogram_property_opposite_angle_equal(1,ABCD)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,ABD)": [
-      "isosceles_triangle_property_angle_equal(1,ABD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,ABD)",
       "triangle_property_angle_sum(1,ABD)",
       "parallelogram_property_opposite_angle_equal(1,ABCD)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,ABD)": [
+      "isosceles_triangle_property_angle_equal(1,ABD)"
     ]
   }
 }

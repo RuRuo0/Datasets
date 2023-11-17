@@ -2,9 +2,9 @@
   "problem_id": 6743,
   "annotation": "XiaoxiaoJin_2023-06-04",
   "source": "GeoQA-9801",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O是△ABC的外接圆,AD是⊙O的直径,若⊙O的半径为\\frac{3}{2},AC=2,则DC的值是()",
-  "problem_text_en": "As shown in the figure, ⊙O is the circumscribe of △ABC, AD is the diameter of ⊙O, if the radius of ⊙O is \\frac{N_0}{N_1}, AC = N_2, then the value of DC is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AC=2，AO=3/2，⊙O的圆心为O，⊙O的直径为AD。求直线DC的长度。",
+  "problem_text_en": "As shown in the diagram, AC=2, AO=3/2, O is the center of ⊙O, AD is the diameter of circle O. Find the length of line DC.",
   "problem_img": "6743.png",
   "construction_cdl": [
     "Shape(AB,BE,EO,OA)",
@@ -19,9 +19,9 @@
     "Cocircular(O,ABDC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(AC),2)",
     "Equal(LengthOfLine(AO),3/2)",
+    "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AD,O)"
   ],
   "image_cdl": [],
@@ -35,18 +35,18 @@
     "right_triangle_judgment_angle(1,DCA)",
     "right_triangle_property_pythagorean(1,DCA)"
   ],
-  "theorem_seq_dag": {
-    "diameter_of_circle_property_right_angle(1,DCA,O)": [
-      "right_triangle_judgment_angle(1,DCA)"
-    ],
-    "right_triangle_judgment_angle(1,DCA)": [
-      "right_triangle_property_pythagorean(1,DCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AO,OD)",
       "diameter_of_circle_property_right_angle(1,DCA,O)",
       "radius_of_circle_property_length_equal(1,OA,O)",
       "radius_of_circle_property_length_equal(1,OD,O)"
+    ],
+    "diameter_of_circle_property_right_angle(1,DCA,O)": [
+      "right_triangle_judgment_angle(1,DCA)"
+    ],
+    "right_triangle_judgment_angle(1,DCA)": [
+      "right_triangle_property_pythagorean(1,DCA)"
     ]
   }
 }

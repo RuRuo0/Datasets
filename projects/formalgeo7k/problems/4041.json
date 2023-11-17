@@ -2,9 +2,9 @@
   "problem_id": 4041,
   "annotation": "NaZhu_2023-05-07",
   "source": "GeoQA-2312",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在⊙O中,点M是⁀{AB}的中点,连结MO并延长,交⊙O于点N,连结BN,若∠AOB=140°,则∠N的度数为()",
-  "problem_text_en": "As shown in the figure, in ⊙O, point M is the midpoint of ⁀AB. Connect MO and extend it to intersect ⊙O at point N, connect BN, if ∠AOB = N_0, then the degree of ∠N is ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，∠BOA=140°，O是圆O的圆心，M是⌒OAB的中点。求∠BNO的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BOA=140°, the center of ⊙O is O, M bisects arc OAB. Find the measure of ∠BNO.",
   "problem_img": "4041.png",
   "construction_cdl": [
     "Shape(ONA,AO,ON)",
@@ -16,9 +16,9 @@
     "Cocircular(O,AMBN)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(BOA),140)",
     "IsCentreOfCircle(O,O)",
-    "IsMidpointOfArc(M,OAB)",
-    "Equal(MeasureOfAngle(BOA),140)"
+    "IsMidpointOfArc(M,OAB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BNO))",
@@ -36,7 +36,17 @@
     "isosceles_triangle_property_angle_equal(1,OBN)",
     "triangle_property_angle_sum(1,OBN)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_center_angle(1,OAB,O)",
+      "arc_property_center_angle(1,OMB,O)",
+      "congruent_arc_judgment_length_equal(1,OAM,OMB)",
+      "arc_addition_measure(1,OAM,OMB)",
+      "adjacent_complementary_angle(1,NOB,BOM)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "radius_of_circle_property_length_equal(1,ON,O)",
+      "triangle_property_angle_sum(1,OBN)"
+    ],
     "congruent_arc_judgment_length_equal(1,OAM,OMB)": [
       "congruent_arc_property_measure_equal(1,OAM,OMB)"
     ],
@@ -48,16 +58,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OBN)": [
       "isosceles_triangle_property_angle_equal(1,OBN)"
-    ],
-    "START": [
-      "arc_property_center_angle(1,OAB,O)",
-      "arc_property_center_angle(1,OMB,O)",
-      "congruent_arc_judgment_length_equal(1,OAM,OMB)",
-      "arc_addition_measure(1,OAM,OMB)",
-      "adjacent_complementary_angle(1,NOB,BOM)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "radius_of_circle_property_length_equal(1,ON,O)",
-      "triangle_property_angle_sum(1,OBN)"
     ]
   }
 }

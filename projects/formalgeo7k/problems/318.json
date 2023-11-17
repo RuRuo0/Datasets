@@ -2,9 +2,9 @@
   "problem_id": 318,
   "annotation": "NaZhu_2023-03-12",
   "source": "Geometry3k-322",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find U B if \\triangle R S T \\sim \\triangle U V W, T A and W B are medians, T A = 8, R A = 3, W B = 3 x - 6, and U B = x + 2.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，RA=3，TA=8，UB=x+2，WB=3*x-6，TA是三角形TRS的中线，WB是三角形WUV的中线，三角形RST相似于三角形UVW。求直线UB的长度。",
+  "problem_text_en": "As shown in the diagram, RA=3, TA=8, UB=x+2, WB=3*x-6, TA is the median of △ TRS, WB is the median of △ WUV, triangle RST is similar to triangle UVW.. Find the length of line UB.",
   "problem_img": "318.png",
   "construction_cdl": [
     "Shape(TR,RA,AT)",
@@ -15,13 +15,13 @@
     "Collinear(UBV)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(TA),8)",
     "Equal(LengthOfLine(RA),3)",
-    "Equal(LengthOfLine(WB),3*x-6)",
+    "Equal(LengthOfLine(TA),8)",
     "Equal(LengthOfLine(UB),x+2)",
-    "SimilarBetweenTriangle(RST,UVW)",
+    "Equal(LengthOfLine(WB),3*x-6)",
     "IsMedianOfTriangle(TA,TRS)",
-    "IsMedianOfTriangle(WB,WUV)"
+    "IsMedianOfTriangle(WB,WUV)",
+    "SimilarBetweenTriangle(RST,UVW)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(UB))",
@@ -36,7 +36,14 @@
     "similar_triangle_property_line_ratio(1,RAT,UBW)",
     "similar_triangle_property_line_ratio(1,TRA,WUB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "similar_triangle_property_angle_equal(1,RST,UVW)",
+      "similar_triangle_property_line_ratio(1,TRS,WUV)",
+      "similar_triangle_property_line_ratio(1,STR,VWU)",
+      "line_addition(1,RA,AS)",
+      "line_addition(1,UB,BV)"
+    ],
     "similar_triangle_property_angle_equal(1,RST,UVW)": [
       "similar_triangle_judgment_sas(1,RAT,UBW)"
     ],
@@ -55,13 +62,6 @@
     "similar_triangle_judgment_sas(1,RAT,UBW)": [
       "similar_triangle_property_line_ratio(1,RAT,UBW)",
       "similar_triangle_property_line_ratio(1,TRA,WUB)"
-    ],
-    "START": [
-      "similar_triangle_property_angle_equal(1,RST,UVW)",
-      "similar_triangle_property_line_ratio(1,TRS,WUV)",
-      "similar_triangle_property_line_ratio(1,STR,VWU)",
-      "line_addition(1,RA,AS)",
-      "line_addition(1,UB,BV)"
     ]
   }
 }

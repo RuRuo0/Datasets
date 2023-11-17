@@ -2,9 +2,9 @@
   "problem_id": 3203,
   "annotation": "NaZhu_2023-04-23",
   "source": "GeoQA-494",
-  "problem_level": 1,
-  "problem_text_cn": "如图,直线a∥b,∠1=85°,∠2=35°,则∠3=()",
-  "problem_text_en": "As shown in the figure, the straight line a ∥ b, ∠1 = N_0, ∠2 = N_1, then ∠3 = ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠PFQ=35°，∠PMA=85°，AB∥CD。求∠NQD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠PFQ=35°, ∠PMA=85°, AB∥CD. Find the measure of ∠NQD.",
   "problem_img": "3203.png",
   "construction_cdl": [
     "Shape(MP,PQ,QN,NM)",
@@ -25,9 +25,9 @@
     "Collinear(GNQF)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AB,CD)",
+    "Equal(MeasureOfAngle(PFQ),35)",
     "Equal(MeasureOfAngle(PMA),85)",
-    "Equal(MeasureOfAngle(PFQ),35)"
+    "ParallelBetweenLine(AB,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(NQD))",
@@ -40,18 +40,18 @@
     "parallel_property_collinear_extend(3,DC,NA,Q)",
     "parallel_property_alternate_interior_angle(2,DQ,NA)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,AB,CD,N)": [
-      "parallel_property_collinear_extend(3,DC,NA,Q)"
-    ],
-    "parallel_property_collinear_extend(3,DC,NA,Q)": [
-      "parallel_property_alternate_interior_angle(2,DQ,NA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "flat_angle(1,NMA)",
       "angle_addition(1,NMP,PMA)",
       "triangle_property_angle_sum(1,MFN)",
       "parallel_property_collinear_extend(3,AB,CD,N)"
+    ],
+    "parallel_property_collinear_extend(3,AB,CD,N)": [
+      "parallel_property_collinear_extend(3,DC,NA,Q)"
+    ],
+    "parallel_property_collinear_extend(3,DC,NA,Q)": [
+      "parallel_property_alternate_interior_angle(2,DQ,NA)"
     ]
   }
 }

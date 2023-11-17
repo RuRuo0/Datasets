@@ -2,14 +2,19 @@
   "problem_id": 2406,
   "annotation": "RunanWang_2023-04-23",
   "source": "Geometry3k-2521",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x for the equilateral triangle R S T if R S = x + 9, S T = 2 x, and R T = 3 x - 9.",
+  "problem_level": 0,
+  "problem_text_cn": "如图所示，RT=3*x-9，SR=x+9，TS=2*x，三角形SRT为等边三角形。求x的值。",
+  "problem_text_en": "As shown in the diagram, RT=3*x-9, SR=x+9, TS=2*x, triangle SRT is an equilateral triangle. Find the value of x.",
   "problem_img": "2406.png",
   "construction_cdl": [
     "Shape(SR,RT,TS)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(RT),3*x-9)",
+    "Equal(LengthOfLine(SR),x+9)",
+    "Equal(LengthOfLine(TS),2*x)",
+    "EquilateralTriangle(SRT)"
+  ],
   "image_cdl": [
     "EquilateralTriangle(SRT)",
     "Equal(LengthOfLine(SR),x+9)",
@@ -19,5 +24,7 @@
   "goal_cdl": "Value(x)",
   "problem_answer": "9",
   "theorem_seqs": [],
-  "theorem_seq_dag": {}
+  "theorem_seqs_dag": {
+    "START": []
+  }
 }

@@ -2,9 +2,9 @@
   "problem_id": 4256,
   "annotation": "ChenyangMao_2023-05-07",
   "source": "GeoQA-3041",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,点C,D在⊙O上,若∠DCB=110°,则∠AED的度数为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, points C and D are on ⊙O, if ∠DCB = N_0, then the degree of ∠AED is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠BCD=110°，圆O的圆心为O，⊙O的直径为AB。求∠AED的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BCD=110°, the center of ⊙O is O, AB is the diameter of circle O. Find the measure of ∠AED.",
   "problem_img": "4256.png",
   "construction_cdl": [
     "Shape(ODA,AE,ED)",
@@ -18,9 +18,9 @@
     "Cocircular(O,EBCDA)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(BCD),110)",
     "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(AB,O)",
-    "Equal(MeasureOfAngle(BCD),110)"
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(AED))",
@@ -31,7 +31,7 @@
     "arc_property_circumference_angle_external(1,ODA,E)",
     "arc_property_circumference_angle_external(1,ODA,C)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,BCA,ACD)",
       "diameter_of_circle_property_right_angle(1,BCA,O)",

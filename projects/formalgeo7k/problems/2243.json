@@ -2,9 +2,9 @@
   "problem_id": 2243,
   "annotation": "DengfengYue_2023-04-16",
   "source": "Geometry3k-2342",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Use rectangle L M N P, parallelogram L K M J to solve the problem. If M K = 6 x, K L = 3 x + 2 y, and J N = 14 - x, find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，JN=14-x，KL=3*x+2*y，MK=6*x，JL和MK是▱LJMK的一组对边，四边形PNML是矩形。求x的值。",
+  "problem_text_en": "As shown in the diagram, JN=14-x, KL=3*x+2*y, MK=6*x, LK and JM are opposite sides of the parallelogram LJMK, quadrilateral PNML is a rectangle. Find the value of x.",
   "problem_img": "2243.png",
   "construction_cdl": [
     "Shape(PN,NJ,JP)",
@@ -16,8 +16,11 @@
     "Collinear(LJN)"
   ],
   "text_cdl": [
-    "Rectangle(PNML)",
-    "Parallelogram(LJMK)"
+    "Equal(LengthOfLine(JN),14-x)",
+    "Equal(LengthOfLine(KL),3*x+2*y)",
+    "Equal(LengthOfLine(MK),6*x)",
+    "Parallelogram(LJMK)",
+    "Rectangle(PNML)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(MK),6*x)",
@@ -30,7 +33,7 @@
     "parallelogram_property_diagonal_bisection(1,NMLP,J)",
     "parallelogram_property_opposite_line_equal(1,LJMK)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_property_diagonal_bisection(1,NMLP,J)",
       "parallelogram_property_opposite_line_equal(1,LJMK)"

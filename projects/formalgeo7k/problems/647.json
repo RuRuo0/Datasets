@@ -2,9 +2,9 @@
   "problem_id": 647,
   "annotation": "YimingHe_2023-04-09",
   "source": "Geometry3k-664",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，JK=6*x-5，LK=4*x+3，MP=3*y+8，QP=5*y-7，QP=MP，MJ∥PK，PK∥QL。求x的值。",
+  "problem_text_en": "As shown in the diagram, JK=6*x-5, LK=4*x+3, MP=3*y+8, QP=5*y-7, QP=MP, MJ is parallel to PK, PK is parallel to QL. Find the value of x.",
   "problem_img": "647.png",
   "construction_cdl": [
     "Shape(GJ,JA)",
@@ -31,7 +31,15 @@
     "Collinear(BKPE)",
     "Collinear(CLQF)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(JK),6*x-5)",
+    "Equal(LengthOfLine(LK),4*x+3)",
+    "Equal(LengthOfLine(MP),3*y+8)",
+    "Equal(LengthOfLine(QP),5*y-7)",
+    "Equal(LengthOfLine(QP),LengthOfLine(MP))",
+    "ParallelBetweenLine(MJ,PK)",
+    "ParallelBetweenLine(PK,QL)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(LK),4*x+3)",
     "Equal(LengthOfLine(JK),6*x-5)",
@@ -48,15 +56,15 @@
     "trapezoid_judgment_parallel(1,MQLJ)",
     "midsegment_of_quadrilateral_judgment_parallel(1,PK,MQLJ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_judgment_par_par(1,MJ,PK,QL)"
+    ],
     "parallel_judgment_par_par(1,MJ,PK,QL)": [
       "trapezoid_judgment_parallel(1,MQLJ)"
     ],
     "trapezoid_judgment_parallel(1,MQLJ)": [
       "midsegment_of_quadrilateral_judgment_parallel(1,PK,MQLJ)"
-    ],
-    "START": [
-      "parallel_judgment_par_par(1,MJ,PK,QL)"
     ]
   }
 }

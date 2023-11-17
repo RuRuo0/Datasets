@@ -2,9 +2,9 @@
   "problem_id": 5670,
   "annotation": "JiaZou_2023-05-28",
   "source": "GeoQA-7372",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在平行四边形ABCD中,AE:EB=1:2,E为AB上一点,AC与DE相交于点F．S~△AEF~=3,则S~△FCD~为()",
-  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, AE:EB=N_0:N_1, E is a point on AB, and AC and DE intersect at point F. S~△AEF~ = N_2, then S~△FCD~ is ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，△AEF的面积为3，Div(LengthOfLine(AE)=LengthOfLine(EB))，ABCD是平行四边形。求△FCD的面积。",
+  "problem_text_en": "As shown in the diagram, the area of △AEF is 3, Div(LengthOfLine(AE)=LengthOfLine(EB)), ABCD is a ▱. Find the area of triangle FCD.",
   "problem_img": "5670.png",
   "construction_cdl": [
     "Shape(AF,FD,DA)",
@@ -16,9 +16,9 @@
     "Collinear(AEB)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
+    "Equal(AreaOfTriangle(AEF),3)",
     "Equal(Div(LengthOfLine(AE),LengthOfLine(EB)),1/2)",
-    "Equal(AreaOfTriangle(AEF),3)"
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(AreaOfTriangle(FCD))",
@@ -36,7 +36,12 @@
     "similar_triangle_property_line_ratio(1,CAB,ACD)",
     "similar_triangle_property_area_square_ratio(1,FCD,FAE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,BA,CD,E)",
+      "parallel_property_alternate_interior_angle(1,AD,BC)",
+      "line_addition(1,AE,EB)"
+    ],
     "parallel_property_collinear_extend(3,BA,CD,E)": [
       "parallel_property_alternate_interior_angle(1,EA,CD)",
       "parallel_property_alternate_interior_angle(2,EA,CD)"
@@ -58,11 +63,6 @@
     "similar_triangle_judgment_aa(1,BCA,DAC)": [
       "similar_triangle_property_line_ratio(1,BCA,DAC)",
       "similar_triangle_property_line_ratio(1,CAB,ACD)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,BA,CD,E)",
-      "parallel_property_alternate_interior_angle(1,AD,BC)",
-      "line_addition(1,AE,EB)"
     ]
   }
 }

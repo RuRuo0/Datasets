@@ -2,9 +2,9 @@
   "problem_id": 4588,
   "annotation": "YanjunGuo_2023-05-14",
   "source": "GeoQA-3743",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O是△ABC的外接圆,∠AOB=60°,AB=AC=4,则弦BC的长为()",
-  "problem_text_en": "As shown in the figure, ⊙O is the circumscribed circle of △ABC, ∠AOB = N_0, AB = AC = N_1, then the length of chord BC is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AB=4，BE=EC，∠AOB=60°，O是⊙O的圆心。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, AB=4, BE=EC, ∠AOB=60°, O is the center of circle O. Find the length of line BC.",
   "problem_img": "4588.png",
   "construction_cdl": [
     "Shape(BO,OE,EC,OCB)",
@@ -37,16 +37,7 @@
     "sine_theorem(1,BAE)",
     "line_addition(1,BE,EC)"
   ],
-  "theorem_seq_dag": {
-    "radius_of_circle_property_length_equal(1,OB,O)": [
-      "isosceles_triangle_judgment_line_equal(1,OBA)"
-    ],
-    "radius_of_circle_property_length_equal(1,OA,O)": [
-      "isosceles_triangle_judgment_line_equal(1,OBA)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,OBA)": [
-      "isosceles_triangle_property_angle_equal(1,OBA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,OB,O)",
       "radius_of_circle_property_length_equal(1,OA,O)",
@@ -55,6 +46,15 @@
       "adjacent_complementary_angle(1,AEB,BEO)",
       "sine_theorem(1,BAE)",
       "line_addition(1,BE,EC)"
+    ],
+    "radius_of_circle_property_length_equal(1,OB,O)": [
+      "isosceles_triangle_judgment_line_equal(1,OBA)"
+    ],
+    "radius_of_circle_property_length_equal(1,OA,O)": [
+      "isosceles_triangle_judgment_line_equal(1,OBA)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,OBA)": [
+      "isosceles_triangle_property_angle_equal(1,OBA)"
     ]
   }
 }

@@ -2,15 +2,27 @@
   "problem_id": 2601,
   "annotation": "YiwenHuang_2023-05-07",
   "source": "Geometry3k-2730",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Each pair of polygons is similar. Find G F.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，EF=11，GF=x，RT=15，SR=20，ST=10，∠EFG=110°，∠GEF=27°，∠RTS=110°，∠SRT=27°，∠TSR=43°，△SRT相似于△GEF。求直线GF的长度。",
+  "problem_text_en": "As shown in the diagram, EF=11, GF=x, RT=15, SR=20, ST=10, ∠EFG=110°, ∠GEF=27°, ∠RTS=110°, ∠SRT=27°, ∠TSR=43°, △SRT is similar to △GEF.. Find the length of line GF.",
   "problem_img": "2601.png",
   "construction_cdl": [
     "Shape(SR,RT,TS)",
     "Shape(GE,EF,FG)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(EF),11)",
+    "Equal(LengthOfLine(GF),x)",
+    "Equal(LengthOfLine(RT),15)",
+    "Equal(LengthOfLine(SR),20)",
+    "Equal(LengthOfLine(ST),10)",
+    "Equal(MeasureOfAngle(EFG),110)",
+    "Equal(MeasureOfAngle(GEF),27)",
+    "Equal(MeasureOfAngle(RTS),110)",
+    "Equal(MeasureOfAngle(SRT),27)",
+    "Equal(MeasureOfAngle(TSR),43)",
+    "SimilarBetweenTriangle(SRT,GEF)"
+  ],
   "image_cdl": [
     "SimilarBetweenTriangle(SRT,GEF)",
     "Equal(LengthOfLine(SR),20)",
@@ -30,7 +42,7 @@
     "similar_triangle_property_line_ratio(1,SRT,GEF)",
     "similar_triangle_property_line_ratio(1,RTS,EFG)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "similar_triangle_property_line_ratio(1,SRT,GEF)",
       "similar_triangle_property_line_ratio(1,RTS,EFG)"

@@ -2,9 +2,9 @@
   "problem_id": 5608,
   "annotation": "YimingHe_2023-05-28",
   "source": "GeoQA-7165",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,DE∥BC,分别交AB,AC于点D,E．若AD=2,DB=3,BC=6,则DE的长为()",
-  "problem_text_en": "As shown in the figure, in △ABC, DE ∥ BC, intersect AB and AC at points D and E respectively. If AD = N_0, DB = N_1, BC = N_2, then the length of DE is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AD=2，BC=6，DB=3，DE平行于BC。求直线DE的长度。",
+  "problem_text_en": "As shown in the diagram, AD=2, BC=6, DB=3, DE is parallel to BC. Find the length of line DE.",
   "problem_img": "5608.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -13,10 +13,10 @@
     "Collinear(AEC)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(DE,BC)",
     "Equal(LengthOfLine(AD),2)",
+    "Equal(LengthOfLine(BC),6)",
     "Equal(LengthOfLine(DB),3)",
-    "Equal(LengthOfLine(BC),6)"
+    "ParallelBetweenLine(DE,BC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(DE))",
@@ -29,7 +29,12 @@
     "similar_triangle_property_line_ratio(1,ADE,ABC)",
     "similar_triangle_property_line_ratio(1,EAD,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AD,DB)",
+      "parallel_property_corresponding_angle(1,DE,BC,A)",
+      "parallel_property_corresponding_angle(2,CB,ED,A)"
+    ],
     "parallel_property_corresponding_angle(1,DE,BC,A)": [
       "similar_triangle_judgment_aa(1,ADE,ABC)"
     ],
@@ -39,11 +44,6 @@
     "similar_triangle_judgment_aa(1,ADE,ABC)": [
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ],
-    "START": [
-      "line_addition(1,AD,DB)",
-      "parallel_property_corresponding_angle(1,DE,BC,A)",
-      "parallel_property_corresponding_angle(2,CB,ED,A)"
     ]
   }
 }

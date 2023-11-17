@@ -2,9 +2,9 @@
   "problem_id": 5364,
   "annotation": "QikeHuang_2023-05-21",
   "source": "GeoQA-5641",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABO∽△CDO,若BO=6,DO=3,CD=2,则AB的长是()",
-  "problem_text_en": "As shown in the figure, △ABO ∽ △CDO, if BO = N_0, DO = N_1, CD = N_2, then the length of AB is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，BO=6，CD=2，DO=3，三角形ABO相似于三角形CDO。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, BO=6, CD=2, DO=3, triangle ABO is similar to triangle CDO.. Find the length of line AB.",
   "problem_img": "5364.png",
   "construction_cdl": [
     "Shape(AB,BO,OA)",
@@ -13,10 +13,10 @@
     "Collinear(AOC)"
   ],
   "text_cdl": [
-    "SimilarBetweenTriangle(ABO,CDO)",
     "Equal(LengthOfLine(BO),6)",
+    "Equal(LengthOfLine(CD),2)",
     "Equal(LengthOfLine(DO),3)",
-    "Equal(LengthOfLine(CD),2)"
+    "SimilarBetweenTriangle(ABO,CDO)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -25,7 +25,7 @@
     "similar_triangle_property_line_ratio(1,ABO,CDO)",
     "similar_triangle_property_line_ratio(1,OAB,OCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "similar_triangle_property_line_ratio(1,ABO,CDO)",
       "similar_triangle_property_line_ratio(1,OAB,OCD)"

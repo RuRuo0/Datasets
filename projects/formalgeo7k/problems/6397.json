@@ -2,9 +2,9 @@
   "problem_id": 6397,
   "annotation": "YimingHe_2023-06-04",
   "source": "GeoQA-9255",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在▱ABCD中,EF∥AB,点F为BD的中点,EF=4,则CD的长为()",
-  "problem_text_en": "As shown in the figure, in ▱ABCD, EF ∥ AB, point F is the midpoint of BD, EF = N_0, then the length of CD is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，EF=4，F是线段BD的中点，EF平行于AB，AD和BC是平行四边形ABCD的一组对边。求直线CD的长度。",
+  "problem_text_en": "As shown in the diagram, EF=4, F bisects segment BD, EF∥AB, AD and BC are opposite sides of the ▱ ABCD. Find the length of line CD.",
   "problem_img": "6397.png",
   "construction_cdl": [
     "Shape(DE,EF,FD)",
@@ -14,10 +14,10 @@
     "Collinear(DFB)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
+    "Equal(LengthOfLine(EF),4)",
     "IsMidpointOfLine(F,BD)",
     "ParallelBetweenLine(EF,AB)",
-    "Equal(LengthOfLine(EF),4)"
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(CD))",
@@ -27,13 +27,13 @@
     "midsegment_of_triangle_property_length(1,EF,DAB)",
     "parallelogram_property_opposite_line_equal(1,ABCD)"
   ],
-  "theorem_seq_dag": {
-    "midsegment_of_triangle_judgment_parallel(2,EF,DAB)": [
-      "midsegment_of_triangle_property_length(1,EF,DAB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "midsegment_of_triangle_judgment_parallel(2,EF,DAB)",
       "parallelogram_property_opposite_line_equal(1,ABCD)"
+    ],
+    "midsegment_of_triangle_judgment_parallel(2,EF,DAB)": [
+      "midsegment_of_triangle_property_length(1,EF,DAB)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 4736,
   "annotation": "XiaoxiaoJin_2023-05-14",
   "source": "GeoQA-4076",
-  "problem_level": 1,
-  "problem_text_cn": "如图,四边形ABCD各边与⊙O相切,AB=10,BC=7,CD=8,则AD的长度为()",
-  "problem_text_en": "As shown in the figure, each side of the quadrilateral ABCD is tangent to ⊙O, AB = N_0, BC = N_1, CD = N_2, then the length of AD is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AB=10，BC=7，CD=8，⊙O的圆心为O，AE是圆O的切线，圆O的切线为AH，⊙O的切线为BE，圆O的切线为BF，CF是圆O的切线，圆O的切线为CG，DG是圆O的切线，DH是⊙O的切线。求直线AD的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, BC=7, CD=8, the center of ⊙O is O, AE is the tangent to circle O, the tangent to circle O is AH, the tangent to ⊙O is BE, BF is the tangent to ⊙O, CF is the tangent to ⊙O, the tangent to ⊙O is CG, DG is the tangent to ⊙O, the tangent to circle O is DH. Find the length of line AD.",
   "problem_img": "4736.png",
   "construction_cdl": [
     "Shape(EB,BF,OEF)",
@@ -21,15 +21,15 @@
     "Equal(LengthOfLine(AB),10)",
     "Equal(LengthOfLine(BC),7)",
     "Equal(LengthOfLine(CD),8)",
-    "IsTangentOfCircle(DG,O)",
-    "IsTangentOfCircle(DH,O)",
-    "IsTangentOfCircle(AH,O)",
+    "IsCentreOfCircle(O,O)",
     "IsTangentOfCircle(AE,O)",
+    "IsTangentOfCircle(AH,O)",
     "IsTangentOfCircle(BE,O)",
     "IsTangentOfCircle(BF,O)",
     "IsTangentOfCircle(CF,O)",
     "IsTangentOfCircle(CG,O)",
-    "IsCentreOfCircle(O,O)"
+    "IsTangentOfCircle(DG,O)",
+    "IsTangentOfCircle(DH,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AD))",
@@ -44,7 +44,7 @@
     "line_addition(1,CG,GD)",
     "line_addition(1,DH,HA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_length_equal(1,DG,DH,O)",
       "tangent_of_circle_property_length_equal(1,AH,AE,O)",

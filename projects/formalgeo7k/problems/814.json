@@ -2,9 +2,9 @@
   "problem_id": 814,
   "annotation": "NaZhu_2023-04-09",
   "source": "Geometry3k-840",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，弧ONM的长度与⌒OPQ的长度相等，NM=26，PQ=3*x+5。求x的值。",
+  "problem_text_en": "As shown in the diagram, the length of ⌒ONM is equal to the length of ⌒OPQ, NM=26, PQ=3*x+5. Find the value of x.",
   "problem_img": "814.png",
   "construction_cdl": [
     "Shape(ONM,MN)",
@@ -12,7 +12,11 @@
     "Shape(OQN,NM,OMP,PQ)",
     "Cocircular(O,NMPQ)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfArc(ONM),LengthOfArc(OPQ))",
+    "Equal(LengthOfLine(NM),26)",
+    "Equal(LengthOfLine(PQ),3*x+5)"
+  ],
   "image_cdl": [
     "Equal(LengthOfArc(ONM),LengthOfArc(OPQ))",
     "Equal(LengthOfLine(NM),26)",
@@ -24,12 +28,12 @@
     "congruent_arc_judgment_length_equal(1,ONM,OPQ)",
     "congruent_arc_property_chord_equal(1,ONM,OPQ)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_length_equal(1,ONM,OPQ)": [
-      "congruent_arc_property_chord_equal(1,ONM,OPQ)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "congruent_arc_judgment_length_equal(1,ONM,OPQ)"
+    ],
+    "congruent_arc_judgment_length_equal(1,ONM,OPQ)": [
+      "congruent_arc_property_chord_equal(1,ONM,OPQ)"
     ]
   }
 }

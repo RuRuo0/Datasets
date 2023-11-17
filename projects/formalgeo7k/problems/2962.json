@@ -2,9 +2,9 @@
   "problem_id": 2962,
   "annotation": "NaZhu_2023-04-16",
   "source": "GeoQA-157",
-  "problem_level": 1,
-  "problem_text_cn": "如图,直线a∥b,直角三角形如图放置,∠DCB=90°,若∠2+∠B=70°,则∠1的度数为()",
-  "problem_text_en": "As shown in the figure, the straight line a ∥ b, the right triangle is placed as shown, ∠DCB = N_0, if ∠2 + ∠B = N_1, then the degree of ∠1 is () ",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，Add(MeasureOfAngle(HCD)=MeasureOfAngle(ABF))，∠DCE=90°，DE∥HC，FA∥DE，FA∥HC，DC⊥EC。求∠BFA的大小。",
+  "problem_text_en": "As shown in the diagram, Add(MeasureOfAngle(HCD)=MeasureOfAngle(ABF)), ∠DCE=90°, DE is parallel to HC, FA∥DE, FA is parallel to HC, DC⊥EC. Find the measure of ∠BFA.",
   "problem_img": "2962.png",
   "construction_cdl": [
     "Shape(BF,FA,AB)",
@@ -15,9 +15,12 @@
     "Collinear(BAEC)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(FA,HC)",
+    "Equal(Add(MeasureOfAngle(HCD),MeasureOfAngle(ABF)),70)",
     "Equal(MeasureOfAngle(DCE),90)",
-    "Equal(Add(MeasureOfAngle(HCD),MeasureOfAngle(ABF)),70)"
+    "ParallelBetweenLine(DE,HC)",
+    "ParallelBetweenLine(FA,DE)",
+    "ParallelBetweenLine(FA,HC)",
+    "PerpendicularBetweenLine(DC,EC)"
   ],
   "image_cdl": [
     "PerpendicularBetweenLine(DC,EC)",
@@ -32,7 +35,7 @@
     "angle_addition(1,FDE,EDC)",
     "triangle_property_angle_sum(1,BDC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_corresponding_angle(1,FA,DE,B)",
       "parallel_property_alternate_interior_angle(1,DE,HC)",

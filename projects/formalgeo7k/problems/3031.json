@@ -2,9 +2,9 @@
   "problem_id": 3031,
   "annotation": "XiaokaiZhang_2023-04-16",
   "source": "GeoQA-242",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AD∥CB,∠D=43°,∠B=25°,则∠DEB的度数为()",
-  "problem_text_en": "As shown in the figure, AD ∥ CB, ∠D = N_0, ∠B = N_1, then the degree of ∠DEB is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠CBE=25°，∠EDA=43°，AD∥CB。求∠DEB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CBE=25°, ∠EDA=43°, AD is parallel to CB. Find the measure of ∠DEB.",
   "problem_img": "3031.png",
   "construction_cdl": [
     "Shape(ED,DA)",
@@ -13,9 +13,9 @@
     "Collinear(DEC)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AD,CB)",
+    "Equal(MeasureOfAngle(CBE),25)",
     "Equal(MeasureOfAngle(EDA),43)",
-    "Equal(MeasureOfAngle(CBE),25)"
+    "ParallelBetweenLine(AD,CB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DEB))",
@@ -25,7 +25,7 @@
     "triangle_property_angle_sum(1,ECB)",
     "adjacent_complementary_angle(1,DEB,BEC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_alternate_interior_angle(2,AD,CB)",
       "triangle_property_angle_sum(1,ECB)",

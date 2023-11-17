@@ -2,9 +2,9 @@
   "problem_id": 2692,
   "annotation": "ZheZhu_2023-04-23",
   "source": "Geometry3k-2835",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "A square is inscribed in a circle of area 18 \\pi square units. Find the length of a side of the square.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，⊙O的面积为18*pi，O是⊙O的圆心，CEDB是正方形。求直线CE的长度。",
+  "problem_text_en": "As shown in the diagram, the area of the circle O is 18*pi, the center of ⊙O is O, quadrilateral CEDB is a square. Find the length of line CE.",
   "problem_img": "2692.png",
   "construction_cdl": [
     "Shape(CE,EO,OC)",
@@ -19,7 +19,11 @@
     "Collinear(EOB)",
     "Cocircular(O,CEDB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(AreaOfCircle(O),18*pi)",
+    "IsCentreOfCircle(O,O)",
+    "Square(CEDB)"
+  ],
   "image_cdl": [
     "Square(CEDB)",
     "IsCentreOfCircle(O,O)",
@@ -35,18 +39,18 @@
     "right_triangle_judgment_angle(1,EOC)",
     "right_triangle_property_pythagorean(1,EOC)"
   ],
-  "theorem_seq_dag": {
-    "kite_property_diagonal_perpendicular_bisection(1,CEDB,O)": [
-      "right_triangle_judgment_angle(1,EOC)"
-    ],
-    "right_triangle_judgment_angle(1,EOC)": [
-      "right_triangle_property_pythagorean(1,EOC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "circle_area_formula(1,O)",
       "radius_of_circle_property_length_equal(1,OC,O)",
       "radius_of_circle_property_length_equal(1,OE,O)",
       "kite_property_diagonal_perpendicular_bisection(1,CEDB,O)"
+    ],
+    "kite_property_diagonal_perpendicular_bisection(1,CEDB,O)": [
+      "right_triangle_judgment_angle(1,EOC)"
+    ],
+    "right_triangle_judgment_angle(1,EOC)": [
+      "right_triangle_property_pythagorean(1,EOC)"
     ]
   }
 }

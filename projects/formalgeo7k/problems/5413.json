@@ -2,9 +2,9 @@
   "problem_id": 5413,
   "annotation": "XiaoxiaoJin_2023-05-21",
   "source": "GeoQA-5717",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在平行四边形ABCD中,∠BAD的平分线交BC于点E,∠ABC的平分线交AD于点F,若BF=12,AB=10,则AE的长为()",
-  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, the bisector of ∠BAD intersects BC at point E, and the bisector of ∠ABC intersects AD at point F. If BF = N_0, AB = N_1, the length of AE is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AB=10，BF=12，AE平分∠DAB，BF平分∠ABC，AD和BC是平行四边形ABCD的一组对边。求直线AE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, BF=12, AE is the angle bisector of ∠DAB, BF is the angle bisector of ∠ABC, AD and BC are opposite sides of the ▱ ABCD. Find the length of line AE.",
   "problem_img": "5413.png",
   "construction_cdl": [
     "Shape(AB,BO,OA)",
@@ -18,11 +18,11 @@
     "Collinear(BOF)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(BF),12)",
     "Equal(LengthOfLine(AB),10)",
-    "Parallelogram(ABCD)",
+    "Equal(LengthOfLine(BF),12)",
+    "IsBisectorOfAngle(AE,DAB)",
     "IsBisectorOfAngle(BF,ABC)",
-    "IsBisectorOfAngle(AE,DAB)"
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AE))",
@@ -38,7 +38,14 @@
     "cosine_theorem(1,BEA)",
     "cosine_theorem(1,ABF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,AD,BC,F)",
+      "parallel_property_collinear_extend(3,CB,DA,E)",
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
+      "cosine_theorem(1,BEA)",
+      "cosine_theorem(1,ABF)"
+    ],
     "parallel_property_collinear_extend(3,AD,BC,F)": [
       "parallel_property_alternate_interior_angle(2,AF,BC)"
     ],
@@ -50,13 +57,6 @@
     ],
     "parallel_property_alternate_interior_angle(2,AF,BC)": [
       "isosceles_triangle_judgment_angle_equal(1,ABF)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,AD,BC,F)",
-      "parallel_property_collinear_extend(3,CB,DA,E)",
-      "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
-      "cosine_theorem(1,BEA)",
-      "cosine_theorem(1,ABF)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 2785,
   "annotation": "RunanWang_2023-05-07",
   "source": "Geometry3k-2932",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "For trapezoid A B C D, S and T are midpoints of the legs. If C D = 14, S T = 10, and A B = 2 x, find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=2*x，CD=14，ST=10，S平分线段AC，T平分线段BD，ACDB是梯形。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=2*x, CD=14, ST=10, S is the midpoint of segment AC, T bisects segment BD, quadrilateral ACDB is a trapezoid. Find the value of x.",
   "problem_img": "2785.png",
   "construction_cdl": [
     "Shape(SC,CD,DT,TS)",
@@ -12,7 +12,14 @@
     "Collinear(ASC)",
     "Collinear(BTD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),2*x)",
+    "Equal(LengthOfLine(CD),14)",
+    "Equal(LengthOfLine(ST),10)",
+    "IsMidpointOfLine(S,AC)",
+    "IsMidpointOfLine(T,BD)",
+    "Trapezoid(ACDB)"
+  ],
   "image_cdl": [
     "Trapezoid(ACDB)",
     "IsMidpointOfLine(S,AC)",
@@ -27,12 +34,12 @@
     "midsegment_of_quadrilateral_judgment_midpoint(1,ST,ACDB)",
     "midsegment_of_quadrilateral_property_length(1,ST,ACDB)"
   ],
-  "theorem_seq_dag": {
-    "midsegment_of_quadrilateral_judgment_midpoint(1,ST,ACDB)": [
-      "midsegment_of_quadrilateral_property_length(1,ST,ACDB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "midsegment_of_quadrilateral_judgment_midpoint(1,ST,ACDB)"
+    ],
+    "midsegment_of_quadrilateral_judgment_midpoint(1,ST,ACDB)": [
+      "midsegment_of_quadrilateral_property_length(1,ST,ACDB)"
     ]
   }
 }

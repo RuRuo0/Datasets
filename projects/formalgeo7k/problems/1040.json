@@ -2,9 +2,9 @@
   "problem_id": 1040,
   "annotation": "NaZhu_2023-03-19",
   "source": "Geometry3k-1073",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Each triangle in the figure is a 45 - 45 - 90 triangle. Find x.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，CD=6，DF=x，∠ACD=45°，∠BED=45°，∠EAD=45°，∠FBD=45°，CD垂直于ED，DA⊥CA，DB垂直于EB，DE垂直于AE，DF垂直于BF。求x的值。",
+  "problem_text_en": "As shown in the diagram, CD=6, DF=x, ∠ACD=45°, ∠BED=45°, ∠EAD=45°, ∠FBD=45°, CD⊥ED, DA⊥CA, DB⊥EB, DE⊥AE, DF⊥BF. Find the value of x.",
   "problem_img": "1040.png",
   "construction_cdl": [
     "Shape(AC,CD,DA)",
@@ -12,7 +12,19 @@
     "Shape(ED,DB,BE)",
     "Shape(BD,DF,FB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(CD),6)",
+    "Equal(LengthOfLine(DF),x)",
+    "Equal(MeasureOfAngle(ACD),45)",
+    "Equal(MeasureOfAngle(BED),45)",
+    "Equal(MeasureOfAngle(EAD),45)",
+    "Equal(MeasureOfAngle(FBD),45)",
+    "PerpendicularBetweenLine(CD,ED)",
+    "PerpendicularBetweenLine(DA,CA)",
+    "PerpendicularBetweenLine(DB,EB)",
+    "PerpendicularBetweenLine(DE,AE)",
+    "PerpendicularBetweenLine(DF,BF)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(ACD),45)",
     "Equal(MeasureOfAngle(EAD),45)",
@@ -34,7 +46,7 @@
     "sine_theorem(1,DBE)",
     "sine_theorem(1,DFB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "sine_theorem(1,DAC)",
       "sine_theorem(1,DEA)",

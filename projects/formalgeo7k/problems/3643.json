@@ -2,9 +2,9 @@
   "problem_id": 3643,
   "annotation": "XiaoxiaoJin_2023-04-30",
   "source": "GeoQA-1336",
-  "problem_level": 1,
-  "problem_text_cn": "将一直角三角板与两边平行的纸条如图放置.若∠1=60°,则∠2的度数为()",
-  "problem_text_en": "Place the paper strips parallel to the two edges of the right angle triangle as shown in the figure. If ∠1 = N_0, then the degree of ∠2 is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠ABC=60°，DF平行于AE，CB⊥DB。求∠GDF的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABC=60°, DF is parallel to AE, CB is perpendicular to DB. Find the measure of ∠GDF.",
   "problem_img": "3643.png",
   "construction_cdl": [
     "Shape(AB,BC)",
@@ -18,9 +18,9 @@
     "Collinear(CDF)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(ABC),60)",
     "ParallelBetweenLine(DF,AE)",
-    "PerpendicularBetweenLine(CB,DB)",
-    "Equal(MeasureOfAngle(ABC),60)"
+    "PerpendicularBetweenLine(CB,DB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(GDF))",
@@ -31,14 +31,14 @@
     "parallel_property_collinear_extend(3,EA,FD,B)",
     "parallel_property_corresponding_angle(1,DF,BE,G)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,EA,FD,B)": [
-      "parallel_property_corresponding_angle(1,DF,BE,G)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,ABC,CBD)",
       "adjacent_complementary_angle(1,ABD,DBE)",
       "parallel_property_collinear_extend(3,EA,FD,B)"
+    ],
+    "parallel_property_collinear_extend(3,EA,FD,B)": [
+      "parallel_property_corresponding_angle(1,DF,BE,G)"
     ]
   }
 }

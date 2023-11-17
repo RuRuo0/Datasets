@@ -2,16 +2,22 @@
   "problem_id": 2767,
   "annotation": "YiwenHuang_2023-05-07",
   "source": "Geometry3k-2914",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the parallelogram. Round to the nearest tenth if necessary.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，CB=26，CE=24，DB=22，CA和BD是▱CBDA的一组对边，BE垂直于CE。求四边形CBDA的面积。",
+  "problem_text_en": "As shown in the diagram, CB=26, CE=24, DB=22, CBDA is a parallelogram, BE⊥CE. Find the area of quadrilateral CBDA.",
   "problem_img": "2767.png",
   "construction_cdl": [
     "Shape(CB,BE,EC)",
     "Shape(CE,ED,DA,AC)",
     "Collinear(BED)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(CB),26)",
+    "Equal(LengthOfLine(CE),24)",
+    "Equal(LengthOfLine(DB),22)",
+    "Parallelogram(CBDA)",
+    "PerpendicularBetweenLine(BE,CE)"
+  ],
   "image_cdl": [
     "Parallelogram(CBDA)",
     "Equal(LengthOfLine(CB),26)",
@@ -25,7 +31,7 @@
     "altitude_of_quadrilateral_judgment_left_vertex(1,CE,CBDA)",
     "parallelogram_area_formula_common(1,CBDA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "altitude_of_quadrilateral_judgment_left_vertex(1,CE,CBDA)",
       "parallelogram_area_formula_common(1,CBDA)"

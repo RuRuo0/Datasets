@@ -2,9 +2,9 @@
   "problem_id": 5185,
   "annotation": "NaZhu_2023-05-21",
   "source": "GeoQA-5168",
-  "problem_level": 1,
-  "problem_text_cn": "如图在⊙O中,弦AB=8,OC⊥AB,垂足为C,且OC=3,则⊙O的半径()",
-  "problem_text_en": "As shown in the figure in ⊙O, chord AB = N_0, OC ⊥ AB, vertical foot is C, and OC = N_1, then the radius of ⊙O ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=8，OC=3，O是圆O的圆心，AC垂直于OC。求圆O的半径。",
+  "problem_text_en": "As shown in the diagram, AB=8, OC=3, the center of circle O is O, AC is perpendicular to OC. Find the radius of circle O.",
   "problem_img": "5185.png",
   "construction_cdl": [
     "Shape(OA,AC,CO)",
@@ -14,10 +14,10 @@
     "Cocircular(O,AB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "PerpendicularBetweenLine(AC,OC)",
     "Equal(LengthOfLine(AB),8)",
-    "Equal(LengthOfLine(OC),3)"
+    "Equal(LengthOfLine(OC),3)",
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(AC,OC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(RadiusOfCircle(O))",
@@ -29,15 +29,15 @@
     "right_triangle_property_pythagorean(1,ACO)",
     "radius_of_circle_property_length_equal(1,OA,O)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,ACO)": [
-      "right_triangle_property_pythagorean(1,ACO)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "circle_property_chord_perpendicular_bisect_chord(1,O,OC,AB)",
       "line_addition(1,AC,CB)",
       "right_triangle_judgment_angle(1,ACO)",
       "radius_of_circle_property_length_equal(1,OA,O)"
+    ],
+    "right_triangle_judgment_angle(1,ACO)": [
+      "right_triangle_property_pythagorean(1,ACO)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 4347,
   "annotation": "ChengQin_2023-05-21",
   "source": "GeoQA-3236",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示,某公园的一座石拱桥是圆弧形(劣弧),其跨度为12m,拱的半径为10m,则拱高为()",
-  "problem_text_en": "As shown in the figure, the shape of a stone arch bridge in a park is an arc (minor arc), its span is N_0, the radius of the arch is N_1, and the height of the arch is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=12，圆O的半径为10，O是圆O的圆心，BD垂直于OD。求直线CD的长度。",
+  "problem_text_en": "As shown in the diagram, AB=12, the radius of circle O is 10, the center of ⊙O is O, BD is perpendicular to OD. Find the length of line CD.",
   "problem_img": "4347.png",
   "construction_cdl": [
     "Shape(OCA,AD,DC)",
@@ -16,9 +16,9 @@
     "Cocircular(O,BCA)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(AB),12)",
     "Equal(RadiusOfCircle(O),10)",
+    "IsCentreOfCircle(O,O)",
     "PerpendicularBetweenLine(BD,OD)"
   ],
   "image_cdl": [],
@@ -33,19 +33,19 @@
     "radius_of_circle_property_length_equal(1,OC,O)",
     "line_addition(1,CD,DO)"
   ],
-  "theorem_seq_dag": {
-    "circle_property_chord_perpendicular_bisect_chord(1,O,OD,BA)": [
-      "right_triangle_judgment_angle(1,ODA)"
-    ],
-    "right_triangle_judgment_angle(1,ODA)": [
-      "right_triangle_property_pythagorean(1,ODA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,OA,O)",
       "circle_property_chord_perpendicular_bisect_chord(1,O,OD,BA)",
       "line_addition(1,AD,DB)",
       "radius_of_circle_property_length_equal(1,OC,O)",
       "line_addition(1,CD,DO)"
+    ],
+    "circle_property_chord_perpendicular_bisect_chord(1,O,OD,BA)": [
+      "right_triangle_judgment_angle(1,ODA)"
+    ],
+    "right_triangle_judgment_angle(1,ODA)": [
+      "right_triangle_property_pythagorean(1,ODA)"
     ]
   }
 }

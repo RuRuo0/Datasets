@@ -2,16 +2,21 @@
   "problem_id": 549,
   "annotation": "JiaZou_2023-03-12",
   "source": "Geometry3k-562",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，BC=6，CA=8，BA垂直于SA，SC⊥AC。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, BC=6, CA=8, BA⊥SA, SC is perpendicular to AC. Find the length of line AB.",
   "problem_img": "549.png",
   "construction_cdl": [
     "Shape(AC,CB,BA)",
     "Shape(CA,AS,SC)",
     "Collinear(SCB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BC),6)",
+    "Equal(LengthOfLine(CA),8)",
+    "PerpendicularBetweenLine(BA,SA)",
+    "PerpendicularBetweenLine(SC,AC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BC),6)",
     "Equal(LengthOfLine(CA),8)",
@@ -25,15 +30,15 @@
     "right_triangle_judgment_angle(1,ACB)",
     "right_triangle_property_pythagorean(1,ACB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,SCA,ACB)"
+    ],
     "adjacent_complementary_angle(1,SCA,ACB)": [
       "right_triangle_judgment_angle(1,ACB)"
     ],
     "right_triangle_judgment_angle(1,ACB)": [
       "right_triangle_property_pythagorean(1,ACB)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,SCA,ACB)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 5382,
   "annotation": "QikeHuang_2023-05-21",
   "source": "GeoQA-5666",
-  "problem_level": 1,
-  "problem_text_cn": "如图,矩形纸片ABCD中,AD=10cm,将纸片沿DE折叠,使点C落在边AD上(与点F重合),若BE=6cm,则CD等于()",
-  "problem_text_en": "As shown in the figure, in the rectangular paper ABCD, AD = N_0, fold the paper along DE, so that point C falls on edge AD (coincident with point F), if BE = N_1, then CD is equal to ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AD=10，BE=6，三角形DFE与三角形DEC是镜像全等三角形，四边形ABCD是矩形。求直线CD的长度。",
+  "problem_text_en": "As shown in the diagram, AD=10, BE=6, △DFE is mirror congruent to △DEC, ABCD is a rectangle. Find the length of line CD.",
   "problem_img": "5382.png",
   "construction_cdl": [
     "Shape(AB,BE,EF,FA)",
@@ -14,10 +14,10 @@
     "Collinear(BEC)"
   ],
   "text_cdl": [
-    "Rectangle(ABCD)",
-    "MirrorCongruentBetweenTriangle(DFE,DEC)",
     "Equal(LengthOfLine(AD),10)",
-    "Equal(LengthOfLine(BE),6)"
+    "Equal(LengthOfLine(BE),6)",
+    "MirrorCongruentBetweenTriangle(DFE,DEC)",
+    "Rectangle(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(CD))",
@@ -31,7 +31,15 @@
     "parallelogram_property_opposite_line_equal(1,BCDA)",
     "line_addition(1,BE,EC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "mirror_congruent_triangle_property_angle_equal(1,FED,CDE)",
+      "mirror_congruent_triangle_property_angle_equal(1,EDF,ECD)",
+      "angle_addition(1,CDE,EDF)",
+      "triangle_property_angle_sum(1,FED)",
+      "parallelogram_property_opposite_line_equal(1,BCDA)",
+      "line_addition(1,BE,EC)"
+    ],
     "mirror_congruent_triangle_property_angle_equal(1,FED,CDE)": [
       "isosceles_triangle_judgment_angle_equal(1,CDE)"
     ],
@@ -43,14 +51,6 @@
     ],
     "triangle_property_angle_sum(1,FED)": [
       "isosceles_triangle_judgment_angle_equal(1,CDE)"
-    ],
-    "START": [
-      "mirror_congruent_triangle_property_angle_equal(1,FED,CDE)",
-      "mirror_congruent_triangle_property_angle_equal(1,EDF,ECD)",
-      "angle_addition(1,CDE,EDF)",
-      "triangle_property_angle_sum(1,FED)",
-      "parallelogram_property_opposite_line_equal(1,BCDA)",
-      "line_addition(1,BE,EC)"
     ]
   }
 }

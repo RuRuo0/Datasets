@@ -2,9 +2,9 @@
   "problem_id": 4378,
   "annotation": "YimingHe_2023-05-14",
   "source": "GeoQA-3302",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在⊙O中,AB是直径,AC是弦,连接OC,若∠ACO=30°,则∠BOC的度数是()",
-  "problem_text_en": "As shown in the figure, in ⊙O, AB is the diameter, AC is the chord, connect OC, if ∠ACO = N_0, then the degree of ∠BOC is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠OCA=30°，O是圆O的圆心，⊙O的直径为AB。求∠COB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠OCA=30°, the center of ⊙O is O, the diameter of ⊙O is AB. Find the measure of ∠COB.",
   "problem_img": "4378.png",
   "construction_cdl": [
     "Shape(AC,OCA)",
@@ -15,9 +15,9 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
-    "IsDiameterOfCircle(AB,O)",
     "Equal(MeasureOfAngle(OCA),30)",
-    "IsCentreOfCircle(O,O)"
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(COB))",
@@ -30,7 +30,13 @@
     "arc_property_center_angle(1,OBC,O)",
     "arc_property_circumference_angle_external(1,OBC,A)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "arc_property_center_angle(1,OBC,O)",
+      "arc_property_circumference_angle_external(1,OBC,A)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OCA)"
     ],
@@ -39,12 +45,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OCA)": [
       "isosceles_triangle_property_angle_equal(1,OCA)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "arc_property_center_angle(1,OBC,O)",
-      "arc_property_circumference_angle_external(1,OBC,A)"
     ]
   }
 }

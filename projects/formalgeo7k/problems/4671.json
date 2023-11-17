@@ -2,9 +2,9 @@
   "problem_id": 4671,
   "annotation": "YiwenHuang_2023-05-21",
   "source": "GeoQA-3943",
-  "problem_level": 1,
-  "problem_text_cn": "如图,直线AB与⊙O相切于点A,AC、CD是⊙O的两条弦,且CD∥AB,若⊙O的半径为5,CD=8,则弦AC的长为()",
-  "problem_text_en": "As shown in the figure, the straight line AB and ⊙O are tangent to point A, AC and CD are the two chords of ⊙O, and CD ∥ AB, if the radius of ⊙O is N_0, CD = N_1, then the length of chord AC is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，CD=8，CO=5，⊙O的圆心为O，DE垂直于OE，OE垂直于CE。求直线AC的长度。",
+  "problem_text_en": "As shown in the diagram, CD=8, CO=5, O is the center of circle O, DE⊥OE, OE is perpendicular to CE. Find the length of line AC.",
   "problem_img": "4671.png",
   "construction_cdl": [
     "Shape(EC,CO,OE)",
@@ -17,11 +17,11 @@
     "Cocircular(O,CAD)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(DE,OE)",
-    "PerpendicularBetweenLine(OE,CE)",
-    "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(CD),8)",
-    "Equal(LengthOfLine(CO),5)"
+    "Equal(LengthOfLine(CO),5)",
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(DE,OE)",
+    "PerpendicularBetweenLine(OE,CE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AC))",
@@ -37,13 +37,7 @@
     "right_triangle_property_pythagorean(1,OEC)",
     "right_triangle_property_pythagorean(1,AEC)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,OEC)": [
-      "right_triangle_property_pythagorean(1,OEC)"
-    ],
-    "right_triangle_judgment_angle(1,AEC)": [
-      "right_triangle_property_pythagorean(1,AEC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "circle_property_chord_perpendicular_bisect_chord(1,O,OE,DC)",
       "line_addition(1,CE,ED)",
@@ -52,6 +46,12 @@
       "radius_of_circle_property_length_equal(1,OA,O)",
       "right_triangle_judgment_angle(1,OEC)",
       "right_triangle_judgment_angle(1,AEC)"
+    ],
+    "right_triangle_judgment_angle(1,OEC)": [
+      "right_triangle_property_pythagorean(1,OEC)"
+    ],
+    "right_triangle_judgment_angle(1,AEC)": [
+      "right_triangle_property_pythagorean(1,AEC)"
     ]
   }
 }

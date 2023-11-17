@@ -2,9 +2,9 @@
   "problem_id": 5692,
   "annotation": "NaZhu_2023-05-28",
   "source": "GeoQA-7424",
-  "problem_level": 1,
-  "problem_text_cn": "在△ABC中,分别以AB,AC为斜边作Rt△ABD和Rt△ACE,∠ADB=∠AEC=90°,∠ABD=∠ACE=30°,连接ED,若DE=5,则BC长为()",
-  "problem_text_en": "In △ABC, use AB and AC as the hypotenuse to draw Rt△ABD and Rt△ACE, ∠ADB = ∠AEC = N_0, ∠ABD = ∠ACE = N_1, connect ED, if DE = N_2, then length of BC is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，DE=5，∠ABD=30°，∠FCE=30°，∠BDA是直角△BDA的直角，CE和EA是直角△CEA的两个直角边。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, DE=5, ∠ABD=30°, ∠FCE=30°, ∠BDA is the right angle of the right triangle BDA, ∠CEA is the right angle of the right triangle CEA. Find the length of line BC.",
   "problem_img": "5692.png",
   "construction_cdl": [
     "Shape(AB,BD,DA)",
@@ -16,11 +16,11 @@
     "Collinear(DFE)"
   ],
   "text_cdl": [
-    "RightTriangle(BDA)",
-    "RightTriangle(CEA)",
     "Equal(LengthOfLine(DE),5)",
     "Equal(MeasureOfAngle(ABD),30)",
-    "Equal(MeasureOfAngle(FCE),30)"
+    "Equal(MeasureOfAngle(FCE),30)",
+    "RightTriangle(BDA)",
+    "RightTriangle(CEA)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BC))",
@@ -36,7 +36,14 @@
     "similar_triangle_property_line_ratio(1,ABC,ADE)",
     "similar_triangle_property_line_ratio(1,CAB,EAD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "similar_triangle_judgment_aa(1,ABD,ACE)",
+      "angle_addition(1,FAD,DAB)",
+      "angle_addition(1,EAF,FAD)",
+      "sine_theorem(1,ABD)",
+      "sine_theorem(1,ACE)"
+    ],
     "similar_triangle_judgment_aa(1,ABD,ACE)": [
       "similar_triangle_property_angle_equal(1,ABD,ACE)"
     ],
@@ -58,13 +65,6 @@
     "similar_triangle_judgment_sas(1,ABC,ADE)": [
       "similar_triangle_property_line_ratio(1,ABC,ADE)",
       "similar_triangle_property_line_ratio(1,CAB,EAD)"
-    ],
-    "START": [
-      "similar_triangle_judgment_aa(1,ABD,ACE)",
-      "angle_addition(1,FAD,DAB)",
-      "angle_addition(1,EAF,FAD)",
-      "sine_theorem(1,ABD)",
-      "sine_theorem(1,ACE)"
     ]
   }
 }

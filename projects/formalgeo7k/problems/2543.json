@@ -2,16 +2,23 @@
   "problem_id": 2543,
   "annotation": "YiwenHuang_2023-05-07",
   "source": "Geometry3k-2668",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y.  经典题",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=y，BD=x，CD=12，∠BCD=55°，∠DAB=47°，BD⊥AD。求y的值。",
+  "problem_text_en": "As shown in the diagram, AB=y, BD=x, CD=12, ∠BCD=55°, ∠DAB=47°, BD is perpendicular to AD. Find the value of y.",
   "problem_img": "2543.png",
   "construction_cdl": [
     "Shape(BC,CD,DB)",
     "Shape(BD,DA,AB)",
     "Collinear(CDA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),y)",
+    "Equal(LengthOfLine(BD),x)",
+    "Equal(LengthOfLine(CD),12)",
+    "Equal(MeasureOfAngle(BCD),55)",
+    "Equal(MeasureOfAngle(DAB),47)",
+    "PerpendicularBetweenLine(BD,AD)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(DAB),47)",
     "Equal(MeasureOfAngle(BCD),55)",
@@ -28,7 +35,7 @@
     "sine_theorem(1,DBC)",
     "sine_theorem(1,BDA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,CDB,BDA)",
       "triangle_property_angle_sum(1,BCD)",

@@ -2,9 +2,9 @@
   "problem_id": 1079,
   "annotation": "YiwenHuang_2023-04-23",
   "source": "Geometry3k-1115",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the quadrilateral.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AI=10，BI=13，CI=10，DI=13，AD和AB是风筝形CDAB的一组临边，DI⊥CI。求四边形CDAB的面积。",
+  "problem_text_en": "As shown in the diagram, AI=10, BI=13, CI=10, DI=13, AD and AB are one pair of adjacent sides of the kite CDAB, DI is perpendicular to CI. Find the area of CDAB.",
   "problem_img": "1079.png",
   "construction_cdl": [
     "Shape(CD,DI,IC)",
@@ -14,7 +14,14 @@
     "Collinear(CIA)",
     "Collinear(DIB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AI),10)",
+    "Equal(LengthOfLine(BI),13)",
+    "Equal(LengthOfLine(CI),10)",
+    "Equal(LengthOfLine(DI),13)",
+    "Kite(CDAB)",
+    "PerpendicularBetweenLine(DI,CI)"
+  ],
   "image_cdl": [
     "Kite(CDAB)",
     "Equal(LengthOfLine(CI),10)",
@@ -30,7 +37,7 @@
     "line_addition(1,DI,IB)",
     "kite_area_formula_diagonal(1,CDAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,CI,IA)",
       "line_addition(1,DI,IB)",

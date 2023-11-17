@@ -2,9 +2,9 @@
   "problem_id": 6892,
   "annotation": "ZheZhu_2023-06-04",
   "source": "GeoQA-angle-10124",
-  "problem_level": 1,
-  "problem_text_cn": "如图，四边形ABCD内接于⊙O，AC、BD为其两条对角线，CB＝CD，∠CAD＝30°，∠ACD＝45°，连接OA，OB，则∠OAB的大小为（）",
-  "problem_text_en": "",
+  "problem_level": 19,
+  "problem_text_cn": "如图所示，CB=CD，∠ACD=45°，∠DAC=30°，O是⊙O的圆心。求∠OAB的大小。",
+  "problem_text_en": "As shown in the diagram, CB=CD, ∠ACD=45°, ∠DAC=30°, O is the center of circle O. Find the measure of ∠OAB.",
   "problem_img": "6892.png",
   "construction_cdl": [
     "Shape(ODA,AD)",
@@ -20,10 +20,10 @@
     "Cocircular(O,ABCD)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(CB),LengthOfLine(CD))",
+    "Equal(MeasureOfAngle(ACD),45)",
     "Equal(MeasureOfAngle(DAC),30)",
-    "Equal(MeasureOfAngle(ACD),45)"
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(OAB))",
@@ -49,19 +49,7 @@
     "triangle_property_angle_sum(1,CDB)",
     "triangle_property_angle_sum(1,DAB)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_chord_equal(1,OBC,OCD)": [
-      "congruent_arc_property_measure_equal(1,OBC,OCD)"
-    ],
-    "radius_of_circle_property_length_equal(1,OA,O)": [
-      "isosceles_triangle_judgment_line_equal(1,OAB)"
-    ],
-    "radius_of_circle_property_length_equal(1,OB,O)": [
-      "isosceles_triangle_judgment_line_equal(1,OAB)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,OAB)": [
-      "isosceles_triangle_property_angle_equal(1,OAB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,OAB,O)",
       "arc_property_circumference_angle_external(1,OAB,D)",
@@ -79,6 +67,18 @@
       "triangle_property_angle_sum(1,OAB)",
       "triangle_property_angle_sum(1,CDB)",
       "triangle_property_angle_sum(1,DAB)"
+    ],
+    "congruent_arc_judgment_chord_equal(1,OBC,OCD)": [
+      "congruent_arc_property_measure_equal(1,OBC,OCD)"
+    ],
+    "radius_of_circle_property_length_equal(1,OA,O)": [
+      "isosceles_triangle_judgment_line_equal(1,OAB)"
+    ],
+    "radius_of_circle_property_length_equal(1,OB,O)": [
+      "isosceles_triangle_judgment_line_equal(1,OAB)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,OAB)": [
+      "isosceles_triangle_property_angle_equal(1,OAB)"
     ]
   }
 }

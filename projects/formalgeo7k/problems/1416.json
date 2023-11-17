@@ -2,9 +2,9 @@
   "problem_id": 1416,
   "annotation": "YanjunGuo_2023-04-16",
   "source": "Geometry3k-1467",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find m \\angle A B C if m \\widehat A B = 102.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，⌒GAB的角度为102，G是圆G的圆心，CB是⊙O的切线。求∠ABC的大小。",
+  "problem_text_en": "As shown in the diagram, the measure of arc GAB is 102, the center of circle G is G, the tangent to ⊙G is CB. Find the measure of ∠ABC.",
   "problem_img": "1416.png",
   "construction_cdl": [
     "Shape(GA,AB,BG)",
@@ -14,7 +14,9 @@
     "Cocircular(G,AB)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfArc(GAB),102)"
+    "Equal(MeasureOfArc(GAB),102)",
+    "IsCentreOfCircle(G,G)",
+    "IsTangentOfCircle(CB,G)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(G,G)",
@@ -32,7 +34,15 @@
     "triangle_property_angle_sum(1,GAB)",
     "angle_addition(1,ABG,GBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_center_angle(1,GAB,G)",
+      "tangent_of_circle_property_perpendicular(1,CB,G,G)",
+      "radius_of_circle_property_length_equal(1,GA,G)",
+      "radius_of_circle_property_length_equal(1,GB,G)",
+      "triangle_property_angle_sum(1,GAB)",
+      "angle_addition(1,ABG,GBC)"
+    ],
     "radius_of_circle_property_length_equal(1,GA,G)": [
       "isosceles_triangle_judgment_line_equal(1,GAB)"
     ],
@@ -41,14 +51,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,GAB)": [
       "isosceles_triangle_property_angle_equal(1,GAB)"
-    ],
-    "START": [
-      "arc_property_center_angle(1,GAB,G)",
-      "tangent_of_circle_property_perpendicular(1,CB,G,G)",
-      "radius_of_circle_property_length_equal(1,GA,G)",
-      "radius_of_circle_property_length_equal(1,GB,G)",
-      "triangle_property_angle_sum(1,GAB)",
-      "angle_addition(1,ABG,GBC)"
     ]
   }
 }

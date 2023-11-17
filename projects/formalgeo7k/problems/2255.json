@@ -3,14 +3,20 @@
   "annotation": "Yangli_2023-04-09",
   "source": "Geometry3k-2357",
   "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If b = 3, find a.",
+  "problem_text_cn": "如图所示，AB=c，BC=a，CA=b，∠ABC=60°，∠CAB=30°，b=3，CB垂直于CB。求a的值。",
+  "problem_text_en": "As shown in the diagram, AB=c, BC=a, CA=b, ∠ABC=60°, ∠CAB=30°, b=3, CB⊥CB. Find the value of a.",
   "problem_img": "2255.png",
   "construction_cdl": [
     "Shape(BC,CA,AB)"
   ],
   "text_cdl": [
-    "Equal(b,3)"
+    "Equal(LengthOfLine(AB),c)",
+    "Equal(LengthOfLine(BC),a)",
+    "Equal(LengthOfLine(CA),b)",
+    "Equal(MeasureOfAngle(ABC),60)",
+    "Equal(MeasureOfAngle(CAB),30)",
+    "Equal(b,3)",
+    "PerpendicularBetweenLine(CB,CA)"
   ],
   "image_cdl": [
     "Equal(MeasureOfAngle(ABC),60)",
@@ -25,7 +31,7 @@
   "theorem_seqs": [
     "sine_theorem(1,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "sine_theorem(1,CAB)"
     ]

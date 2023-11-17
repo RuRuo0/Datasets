@@ -2,9 +2,9 @@
   "problem_id": 5490,
   "annotation": "ChenyangMao_2023-05-21",
   "source": "GeoQA-5947",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在四边形ABCD中,AB=3,BC=5,∠A=130°,∠D=100°,AD=CD．若点E,F分别是边AD,CD的中点,则EF的长是()",
-  "problem_text_en": "As shown in the figure, in the quadrilateral ABCD, AB = N_0, BC = N_1, ∠A = N_2, ∠D = N_3, AD = CD. If points E and F are the midpoints of edges AD and CD respectively, then the length of EF is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AB=3，AD=CD，BC=5，∠CDA=100°，∠DAB=130°，E平分线段AD，F平分线段CD。求直线EF的长度。",
+  "problem_text_en": "As shown in the diagram, AB=3, AD=CD, BC=5, ∠CDA=100°, ∠DAB=130°, E is the midpoint of segment AD, F bisects segment CD. Find the length of line EF.",
   "problem_img": "5490.png",
   "construction_cdl": [
     "Shape(DE,EF,FD)",
@@ -14,13 +14,13 @@
     "Collinear(CFD)"
   ],
   "text_cdl": [
-    "IsMidpointOfLine(E,AD)",
-    "IsMidpointOfLine(F,CD)",
     "Equal(LengthOfLine(AB),3)",
-    "Equal(LengthOfLine(BC),5)",
     "Equal(LengthOfLine(AD),LengthOfLine(CD))",
+    "Equal(LengthOfLine(BC),5)",
+    "Equal(MeasureOfAngle(CDA),100)",
     "Equal(MeasureOfAngle(DAB),130)",
-    "Equal(MeasureOfAngle(CDA),100)"
+    "IsMidpointOfLine(E,AD)",
+    "IsMidpointOfLine(F,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(EF))",
@@ -35,7 +35,13 @@
     "midsegment_of_triangle_judgment_midpoint(1,EF,DAC)",
     "midsegment_of_triangle_property_length(1,EF,DAC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "isosceles_triangle_judgment_line_equal(1,DAC)",
+      "triangle_property_angle_sum(1,DAC)",
+      "angle_addition(1,EAC,CAB)",
+      "midsegment_of_triangle_judgment_midpoint(1,EF,DAC)"
+    ],
     "isosceles_triangle_judgment_line_equal(1,DAC)": [
       "isosceles_triangle_property_angle_equal(1,DAC)"
     ],
@@ -53,12 +59,6 @@
     ],
     "midsegment_of_triangle_judgment_midpoint(1,EF,DAC)": [
       "midsegment_of_triangle_property_length(1,EF,DAC)"
-    ],
-    "START": [
-      "isosceles_triangle_judgment_line_equal(1,DAC)",
-      "triangle_property_angle_sum(1,DAC)",
-      "angle_addition(1,EAC,CAB)",
-      "midsegment_of_triangle_judgment_midpoint(1,EF,DAC)"
     ]
   }
 }

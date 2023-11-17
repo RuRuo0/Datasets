@@ -2,9 +2,9 @@
   "problem_id": 4981,
   "annotation": "FangzhenZhu_2023-05-21",
   "source": "GeoQA-4667",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AD∥BE∥CF,直线l_{1}、l_{2}与这三条平行线分别交于点A、B、C和点D、E、F．若AB=1,BC=2,DE=1.5,则EF的长为()",
-  "problem_text_en": "As shown in the figure, AD ∥ BE ∥ CF, straight lines l_{N_0}, l_{N_1} and these three parallel lines intersect at points A, B, C and points D, E, and F respectively. If AB = N_2, BC = N_3, DE = N_4, then the length of EF is ()",
+  "problem_level": 14,
+  "problem_text_cn": "如图所示，AB=1，BC=2，DE=3/2，AD∥BE，AD平行于CF，BE平行于CF。求直线EF的长度。",
+  "problem_text_en": "As shown in the diagram, AB=1, BC=2, DE=3/2, AD∥BE, AD is parallel to CF, BE is parallel to CF. Find the length of line EF.",
   "problem_img": "4981.png",
   "construction_cdl": [
     "Shape(MA,AD,DM)",
@@ -40,7 +40,17 @@
     "line_addition(1,MD,DE)",
     "line_addition(1,ME,EF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,AD,BE,M)",
+      "parallel_property_corresponding_angle(1,AD,CF,M)",
+      "parallel_property_corresponding_angle(2,EB,DA,M)",
+      "parallel_property_corresponding_angle(2,FC,DA,M)",
+      "line_addition(1,MA,AB)",
+      "line_addition(1,MB,BC)",
+      "line_addition(1,MD,DE)",
+      "line_addition(1,ME,EF)"
+    ],
     "parallel_property_corresponding_angle(1,AD,BE,M)": [
       "similar_triangle_judgment_aa(1,MAD,MBE)"
     ],
@@ -60,16 +70,6 @@
     "similar_triangle_judgment_aa(1,MAD,MCF)": [
       "similar_triangle_property_line_ratio(1,ADM,CFM)",
       "similar_triangle_property_line_ratio(1,DMA,FMC)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,AD,BE,M)",
-      "parallel_property_corresponding_angle(1,AD,CF,M)",
-      "parallel_property_corresponding_angle(2,EB,DA,M)",
-      "parallel_property_corresponding_angle(2,FC,DA,M)",
-      "line_addition(1,MA,AB)",
-      "line_addition(1,MB,BC)",
-      "line_addition(1,MD,DE)",
-      "line_addition(1,ME,EF)"
     ]
   }
 }

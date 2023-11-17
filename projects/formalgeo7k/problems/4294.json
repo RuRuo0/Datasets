@@ -2,9 +2,9 @@
   "problem_id": 4294,
   "annotation": "DengfengYue_2023-05-07",
   "source": "GeoQA-3099",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,CD是⊙O的弦,连结AC、AD、BD,若∠CAB=35°,则∠ADC的度数为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, CD is the chord of ⊙O, connect AC, AD, BD, if ∠CAB = N_0, then the degree of ∠ADC is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠CAB=35°，⊙O的圆心为O，圆O的直径为AB。求∠ADC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAB=35°, O is the center of circle O, the diameter of circle O is AB. Find the measure of ∠ADC.",
   "problem_img": "4294.png",
   "construction_cdl": [
     "Shape(AC,OCA)",
@@ -19,9 +19,9 @@
     "Cocircular(O,CADB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(CAB),35)",
     "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(AB,O)",
-    "Equal(MeasureOfAngle(CAB),35)"
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ADC))",
@@ -32,7 +32,7 @@
     "arc_property_circumference_angle_external(1,OBC,D)",
     "angle_addition(1,ADE,EDB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,ADB,O)",
       "arc_property_circumference_angle_external(1,OBC,A)",

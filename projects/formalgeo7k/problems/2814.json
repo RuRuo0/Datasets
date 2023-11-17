@@ -2,9 +2,9 @@
   "problem_id": 2814,
   "annotation": "ZheZhu_2023-04-09",
   "source": "Geometry3k-2963",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure, C P is an altitude, C Q is the angle bisector of \\angle A C B, and R is the midpoint of A B. Find m \\angle A C Q if m \\angle A C B = 123 - x and m \\angle Q C B = 42 + x.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠BCA=123-x°，∠BCQ=42+x°，CP是△CAB的高，CQ是∠BCA的角平分线，R平分线段AB。求∠QCA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BCA=123-x°, ∠BCQ=42+x°, CP is the altitude of triangle CAB, CQ is the angle bisector of ∠BCA, R is the midpoint of segment AB. Find the measure of ∠QCA.",
   "problem_img": "2814.png",
   "construction_cdl": [
     "Shape(CA,AP,PC)",
@@ -14,11 +14,11 @@
     "Collinear(APQRB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(BCA),123-x)",
+    "Equal(MeasureOfAngle(BCQ),42+x)",
     "IsAltitudeOfTriangle(CP,CAB)",
     "IsBisectorOfAngle(CQ,BCA)",
-    "IsMidpointOfLine(R,AB)",
-    "Equal(MeasureOfAngle(BCA),123-x)",
-    "Equal(MeasureOfAngle(BCQ),42+x)"
+    "IsMidpointOfLine(R,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(QCA))",
@@ -28,7 +28,7 @@
     "angle_addition(1,BCR,RCQ)",
     "angle_addition(1,BCR,RCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,RCQ,QCA)",
       "angle_addition(1,BCR,RCQ)",

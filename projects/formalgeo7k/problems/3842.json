@@ -2,9 +2,9 @@
   "problem_id": 3842,
   "annotation": "YifanWang_2023-05-07",
   "source": "GeoQA-1715",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在⊙O中,∠AOC=140°,∠ACB=50°,则∠BAC的度数为()",
-  "problem_text_en": "As shown in the figure, in ⊙O, ∠AOC = N_0, ∠ACB = N_1, then the degree of ∠BAC is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠BCA=50°，∠COA=140°，⊙O的圆心为O。求∠CAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BCA=50°, ∠COA=140°, the center of ⊙O is O. Find the measure of ∠CAB.",
   "problem_img": "3842.png",
   "construction_cdl": [
     "Shape(AO,OC,OCA)",
@@ -18,7 +18,11 @@
     "Collinear(AOC)",
     "Cocircular(O,ABC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(BCA),50)",
+    "Equal(MeasureOfAngle(COA),140)",
+    "IsCentreOfCircle(O,O)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfAngle(COA),140)",
@@ -33,7 +37,7 @@
     "arc_property_circumference_angle_external(1,OAB,C)",
     "arc_property_circumference_angle_external(1,OBC,A)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,COD,DOA)",
       "arc_property_center_angle(1,OAB,O)",

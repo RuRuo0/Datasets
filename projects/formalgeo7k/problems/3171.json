@@ -2,9 +2,9 @@
   "problem_id": 3171,
   "annotation": "JiaZou_2023-04-23",
   "source": "GeoQA-444",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知AB∥CD,直线MN分别交AB、CD于点M、N,NG平分∠MND,若∠1=70°,则∠2的度数为().",
-  "problem_text_en": "As shown in the figure, it is known that AB ∥ CD, the line MN intersects AB and CD at points M, N, and NG bisects ∠MND. If ∠1 = N_0, then the degree of ∠2 is ().",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠MEG=70°，NG平分∠END，AB平行于CD。求∠NGE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠MEG=70°, NG bisects ∠END, AB is parallel to CD. Find the measure of ∠NGE.",
   "problem_img": "3171.png",
   "construction_cdl": [
     "Shape(AE,EM)",
@@ -18,9 +18,9 @@
     "Collinear(CND)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AB,CD)",
+    "Equal(MeasureOfAngle(MEG),70)",
     "IsBisectorOfAngle(NG,END)",
-    "Equal(MeasureOfAngle(MEG),70)"
+    "ParallelBetweenLine(AB,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(NGE))",
@@ -33,18 +33,18 @@
     "adjacent_complementary_angle(1,MEG,GEN)",
     "triangle_property_angle_sum(1,ENG)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,AB,CD,E)": [
-      "parallel_property_collinear_extend(3,DC,BE,N)"
-    ],
-    "parallel_property_collinear_extend(3,DC,BE,N)": [
-      "parallel_property_corresponding_angle(1,EB,ND,M)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_collinear_extend(3,AB,CD,E)",
       "angle_addition(1,ENG,GND)",
       "adjacent_complementary_angle(1,MEG,GEN)",
       "triangle_property_angle_sum(1,ENG)"
+    ],
+    "parallel_property_collinear_extend(3,AB,CD,E)": [
+      "parallel_property_collinear_extend(3,DC,BE,N)"
+    ],
+    "parallel_property_collinear_extend(3,DC,BE,N)": [
+      "parallel_property_corresponding_angle(1,EB,ND,M)"
     ]
   }
 }

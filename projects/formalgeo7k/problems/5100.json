@@ -2,9 +2,9 @@
   "problem_id": 5100,
   "annotation": "YimingHe_2023-05-21",
   "source": "GeoQA-4923",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在四边形ABCD中,∠A=110°,∠B=85°将△BMN沿着MN翻折,得到△FMN,若MF∥AD,FN∥DC,则∠C的度数为()",
-  "problem_text_en": "As shown in the figure, in the quadrilateral ABCD, ∠A = N_0, ∠B = N_1 fold △BMN along MN to get △FMN, if MF ∥ AD, FN ∥ DC, then the degree of ∠C is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠DAM=110°，∠MBN=85°，三角形BNM与三角形FMN是镜像全等三角形，AD平行于MF，DC平行于FN。求∠NCD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DAM=110°, ∠MBN=85°, △BNM is mirror congruent to △FMN, AD∥MF, DC∥FN. Find the measure of ∠NCD.",
   "problem_img": "5100.png",
   "construction_cdl": [
     "Shape(DA,AM,MF,FN,NC,CD)",
@@ -14,11 +14,11 @@
     "Collinear(AMB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(DAM),110)",
+    "Equal(MeasureOfAngle(MBN),85)",
     "MirrorCongruentBetweenTriangle(BNM,FMN)",
     "ParallelBetweenLine(AD,MF)",
-    "ParallelBetweenLine(DC,FN)",
-    "Equal(MeasureOfAngle(DAM),110)",
-    "Equal(MeasureOfAngle(MBN),85)"
+    "ParallelBetweenLine(DC,FN)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(NCD))",
@@ -32,7 +32,7 @@
     "triangle_property_angle_sum(1,NFM)",
     "triangle_property_angle_sum(1,NMB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_corresponding_angle(1,NF,CD,B)",
       "parallel_property_corresponding_angle(2,AD,MF,B)",

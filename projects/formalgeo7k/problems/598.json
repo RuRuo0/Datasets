@@ -2,15 +2,23 @@
   "problem_id": 598,
   "annotation": "YimingHe_2023-04-09",
   "source": "Geometry3k-613",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AB=9.6，AC=CD，BC=y，CD=BA，CD=BD，∠BCD=x°，CD⊥BD。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=9.6, AC=CD, BC=y, CD=BA, CD=BD, ∠BCD=x°, CD is perpendicular to BD. Find the value of x.",
   "problem_img": "598.png",
   "construction_cdl": [
     "Shape(CD,DB,BC)",
     "Shape(CB,BA,AC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),9.6)",
+    "Equal(LengthOfLine(AC),LengthOfLine(CD))",
+    "Equal(LengthOfLine(BC),y)",
+    "Equal(LengthOfLine(CD),LengthOfLine(BA))",
+    "Equal(LengthOfLine(CD),LengthOfLine(BD))",
+    "Equal(MeasureOfAngle(BCD),x)",
+    "PerpendicularBetweenLine(CD,BD)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BC),y)",
     "Equal(MeasureOfAngle(BCD),x)",
@@ -27,13 +35,13 @@
     "isosceles_triangle_property_angle_equal(1,DBC)",
     "triangle_property_angle_sum(1,DBC)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,DBC)": [
-      "isosceles_triangle_property_angle_equal(1,DBC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,DBC)",
       "triangle_property_angle_sum(1,DBC)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,DBC)": [
+      "isosceles_triangle_property_angle_equal(1,DBC)"
     ]
   }
 }

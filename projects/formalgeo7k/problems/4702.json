@@ -2,9 +2,9 @@
   "problem_id": 4702,
   "annotation": "XiaoxiaoJin_2023-05-14",
   "source": "GeoQA-4006",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,PA切⊙O于点A,PO交⊙O于点C,连接BC．若∠B=20°,则∠P等于()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of O, PA is tangent to ⊙O to point A, PO intersects ⊙O at point C, and connect BC. If ∠B = N_0, then ∠P is equal to ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠CBA=20°，O是⊙O的圆心，AB是⊙O的直径，⊙O的切线为PA。求∠APC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CBA=20°, the center of circle O is O, the diameter of ⊙O is AB, the tangent to ⊙O is PA. Find the measure of ∠APC.",
   "problem_img": "4702.png",
   "construction_cdl": [
     "Shape(AP,PC,OAC)",
@@ -18,10 +18,10 @@
     "Cocircular(O,ACB)"
   ],
   "text_cdl": [
-    "IsTangentOfCircle(PA,O)",
-    "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfAngle(CBA),20)",
-    "IsDiameterOfCircle(AB,O)"
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)",
+    "IsTangentOfCircle(PA,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(APC))",
@@ -32,7 +32,7 @@
     "arc_property_circumference_angle_external(1,OAC,B)",
     "triangle_property_angle_sum(1,APO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(1,PA,O,O)",
       "arc_property_center_angle(1,OAC,O)",

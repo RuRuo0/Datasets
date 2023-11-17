@@ -2,9 +2,9 @@
   "problem_id": 2533,
   "annotation": "ChenyangMao_2023-04-23",
   "source": "Geometry3k-2658",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x. Assume that segments that appear to be tangent are tangent.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，ED=16，EF=12，FG=x，G是⊙G的圆心，⊙O的切线为ED。求x的值。",
+  "problem_text_en": "As shown in the diagram, ED=16, EF=12, FG=x, the center of ⊙G is G, ED is the tangent to circle G. Find the value of x.",
   "problem_img": "2533.png",
   "construction_cdl": [
     "Shape(DE,EF,GDF)",
@@ -13,7 +13,13 @@
     "Collinear(EFG)",
     "Cocircular(G,DF)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(ED),16)",
+    "Equal(LengthOfLine(EF),12)",
+    "Equal(LengthOfLine(FG),x)",
+    "IsCentreOfCircle(G,G)",
+    "IsTangentOfCircle(ED,G)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(G,G)",
     "IsTangentOfCircle(ED,G)",
@@ -31,18 +37,18 @@
     "radius_of_circle_property_length_equal(1,GF,G)",
     "radius_of_circle_property_length_equal(1,GD,G)"
   ],
-  "theorem_seq_dag": {
-    "tangent_of_circle_property_perpendicular(1,ED,G,G)": [
-      "right_triangle_judgment_angle(1,GDE)"
-    ],
-    "right_triangle_judgment_angle(1,GDE)": [
-      "right_triangle_property_pythagorean(1,GDE)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,EF,FG)",
       "tangent_of_circle_property_perpendicular(1,ED,G,G)",
       "radius_of_circle_property_length_equal(1,GF,G)",
       "radius_of_circle_property_length_equal(1,GD,G)"
+    ],
+    "tangent_of_circle_property_perpendicular(1,ED,G,G)": [
+      "right_triangle_judgment_angle(1,GDE)"
+    ],
+    "right_triangle_judgment_angle(1,GDE)": [
+      "right_triangle_property_pythagorean(1,GDE)"
     ]
   }
 }

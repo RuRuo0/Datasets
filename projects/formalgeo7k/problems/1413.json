@@ -2,9 +2,9 @@
   "problem_id": 1413,
   "annotation": "YanjunGuo_2023-04-16",
   "source": "Geometry3k-1463",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the figure in feet. Round to the nearest tenth, if necessary.",
+  "problem_level": 14,
+  "problem_text_cn": "如图所示，AB=12，CD=8，DA=CB，∠ADE=30°，BF垂直于CF，DE⊥AE，四边形CBAD是梯形。求四边形ADCB的周长。",
+  "problem_text_en": "As shown in the diagram, AB=12, CD=8, DA=CB, ∠ADE=30°, BF is perpendicular to CF, DE⊥AE, quadrilateral CBAD is a trapezoid. Find the perimeter of quadrilateral ADCB.",
   "problem_img": "1413.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -12,7 +12,15 @@
     "Shape(FC,CB,BF)",
     "Collinear(AEFB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),12)",
+    "Equal(LengthOfLine(CD),8)",
+    "Equal(LengthOfLine(DA),LengthOfLine(CB))",
+    "Equal(MeasureOfAngle(ADE),30)",
+    "PerpendicularBetweenLine(BF,CF)",
+    "PerpendicularBetweenLine(DE,AE)",
+    "Trapezoid(CBAD)"
+  ],
   "image_cdl": [
     "Trapezoid(CBAD)",
     "Equal(LengthOfLine(AB),12)",
@@ -40,7 +48,16 @@
     "sine_theorem(1,ADE)",
     "quadrilateral_perimeter_formula(1,ADCB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,AB,DC,E)",
+      "adjacent_complementary_angle(1,BFC,CFA)",
+      "isosceles_trapezoid_judgment_line_equal(1,CBAD)",
+      "line_addition(1,AE,EF)",
+      "line_addition(1,AF,FB)",
+      "sine_theorem(1,ADE)",
+      "quadrilateral_perimeter_formula(1,ADCB)"
+    ],
     "parallel_property_collinear_extend(3,AB,DC,E)": [
       "parallel_property_collinear_extend(3,EB,DC,F)"
     ],
@@ -64,15 +81,6 @@
     ],
     "mirror_congruent_triangle_judgment_aas(3,DEA,CBF)": [
       "mirror_congruent_triangle_property_line_equal(1,DEA,CBF)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,AB,DC,E)",
-      "adjacent_complementary_angle(1,BFC,CFA)",
-      "isosceles_trapezoid_judgment_line_equal(1,CBAD)",
-      "line_addition(1,AE,EF)",
-      "line_addition(1,AF,FB)",
-      "sine_theorem(1,ADE)",
-      "quadrilateral_perimeter_formula(1,ADCB)"
     ]
   }
 }

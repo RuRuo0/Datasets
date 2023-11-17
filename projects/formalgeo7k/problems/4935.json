@@ -2,9 +2,9 @@
   "problem_id": 4935,
   "annotation": "DengfengYue_2023-05-14",
   "source": "GeoQA-4553",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,DE∥BC,若AB=7cm,AC=5cm,AD=3cm,则DE=()",
-  "problem_text_en": "As shown in the figure, in △ABC, DE ∥ BC, if AB = N_0, AC = N_1, AD = N_2, then DE = ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=7，AC=5，AD=3，ED∥CA。求直线DE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=7, AC=5, AD=3, ED is parallel to CA. Find the length of line DE.",
   "problem_img": "4935.png",
   "construction_cdl": [
     "Shape(DB,BE,ED)",
@@ -13,10 +13,10 @@
     "Collinear(BEC)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(ED,CA)",
     "Equal(LengthOfLine(AB),7)",
     "Equal(LengthOfLine(AC),5)",
-    "Equal(LengthOfLine(AD),3)"
+    "Equal(LengthOfLine(AD),3)",
+    "ParallelBetweenLine(ED,CA)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(DE))",
@@ -28,17 +28,17 @@
     "similar_triangle_property_line_ratio(1,BED,BCA)",
     "similar_triangle_property_line_ratio(1,EDB,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AD,DB)",
+      "parallel_property_corresponding_angle(1,ED,CA,B)"
+    ],
     "parallel_property_corresponding_angle(1,ED,CA,B)": [
       "similar_triangle_judgment_aa(1,DBE,ABC)"
     ],
     "similar_triangle_judgment_aa(1,DBE,ABC)": [
       "similar_triangle_property_line_ratio(1,BED,BCA)",
       "similar_triangle_property_line_ratio(1,EDB,CAB)"
-    ],
-    "START": [
-      "line_addition(1,AD,DB)",
-      "parallel_property_corresponding_angle(1,ED,CA,B)"
     ]
   }
 }

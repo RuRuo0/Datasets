@@ -2,9 +2,9 @@
   "problem_id": 965,
   "annotation": "XiaokaiZhang_2023-04-09",
   "source": "Geometry3k-994",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠BIG=24°，∠DIB=84°，∠GIE=x°，EI垂直于DI。求x的值。",
+  "problem_text_en": "As shown in the diagram, ∠BIG=24°, ∠DIB=84°, ∠GIE=x°, EI⊥DI. Find the value of x.",
   "problem_img": "965.png",
   "construction_cdl": [
     "Shape(ID,IDE,EI)",
@@ -13,7 +13,12 @@
     "Shape(IB,IBD,DI)",
     "Cocircular(I,EGBD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(BIG),24)",
+    "Equal(MeasureOfAngle(DIB),84)",
+    "Equal(MeasureOfAngle(GIE),x)",
+    "PerpendicularBetweenLine(EI,DI)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(DIB),84)",
     "Equal(MeasureOfAngle(BIG),24)",
@@ -27,7 +32,7 @@
     "angle_addition(1,EIB,BIG)",
     "round_angle(1,GIE,EIG)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,EID,DIB)",
       "angle_addition(1,EIB,BIG)",

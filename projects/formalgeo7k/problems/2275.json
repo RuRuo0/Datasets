@@ -2,16 +2,23 @@
   "problem_id": 2275,
   "annotation": "DengfengYue_2023-04-16",
   "source": "Geometry3k-2379",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Circle W has a radius of 4 units, \\odot Z has a radius of 7 units, and X Y = 2. Find I X.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，XY=2，⊙W的半径为4，⊙Z的半径为7，⊙W的圆心为W，⊙Z的圆心为Z，IY是圆W的直径。求直线IX的长度。",
+  "problem_text_en": "As shown in the diagram, XY=2, the radius of ⊙W is 4, the radius of circle Z is 7, the center of ⊙W is W, the center of ⊙Z is Z, the diameter of circle W is IY. Find the length of line IX.",
   "problem_img": "2275.png",
   "construction_cdl": [
     "Collinear(IWXYZC)",
     "Cocircular(W,YI)",
     "Cocircular(Z,CX)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(XY),2)",
+    "Equal(RadiusOfCircle(W),4)",
+    "Equal(RadiusOfCircle(Z),7)",
+    "IsCentreOfCircle(W,W)",
+    "IsCentreOfCircle(Z,Z)",
+    "IsDiameterOfCircle(IY,W)"
+  ],
   "image_cdl": [
     "IsDiameterOfCircle(IY,W)",
     "IsCentreOfCircle(W,W)",
@@ -27,7 +34,7 @@
     "diameter_of_circle_property_length_equal(1,IY,W)",
     "line_addition(1,IX,XY)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "circle_property_length_of_radius_and_diameter(1,W)",
       "diameter_of_circle_property_length_equal(1,IY,W)",

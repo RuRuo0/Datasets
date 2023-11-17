@@ -2,9 +2,9 @@
   "problem_id": 4163,
   "annotation": "XiaoxiaoJin_2023-05-07",
   "source": "GeoQA-2797",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在Rt△ABC中,CD是斜边AB上的中线,已知CD=5,AC=6,则tanB的值是()",
-  "problem_text_en": "As shown in the figure, in Rt△ABC, CD is the midline on the hypotenuse AB, given that CD = N_0, AC = N_1, then the value of tanB is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AC=6，CD=5，CD是△CAB的中线，∠BCA是直角△BCA的直角。求tan(AB)的值。",
+  "problem_text_en": "As shown in the diagram, AC=6, CD=5, CD is the median of △ CAB, triangle BCA is a right triangle. Find the value of tan(AB).",
   "problem_img": "4163.png",
   "construction_cdl": [
     "Shape(AD,DC,CA)",
@@ -12,10 +12,10 @@
     "Collinear(ADB)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(CD),5)",
     "Equal(LengthOfLine(AC),6)",
-    "RightTriangle(BCA)",
-    "IsMedianOfTriangle(CD,CAB)"
+    "Equal(LengthOfLine(CD),5)",
+    "IsMedianOfTriangle(CD,CAB)",
+    "RightTriangle(BCA)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Tan(MeasureOfAngle(ABC)))",
@@ -25,7 +25,7 @@
     "cosine_theorem(1,CAB)",
     "cosine_theorem(1,BCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_property_length_of_median(1,BCA,D)",
       "cosine_theorem(1,CAB)",

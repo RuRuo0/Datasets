@@ -2,9 +2,9 @@
   "problem_id": 3430,
   "annotation": "NaZhu_2023-04-30",
   "source": "GeoQA-987",
-  "problem_level": 1,
-  "problem_text_cn": "如图,直线a,b被直线c所截,a∥b,∠2=∠3,若∠1=80°,则∠4等于()",
-  "problem_text_en": "As shown in the figure, the straight line a, b is intercepted by the straight line c, a ∥ b, ∠2 = ∠3, if ∠1 = N_0, then ∠4 is equal to ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠GHD=80°，∠MGA=∠HGM，AB平行于CD。求∠GMH的大小。",
+  "problem_text_en": "As shown in the diagram, ∠GHD=80°, ∠MGA=∠HGM, AB is parallel to CD. Find the measure of ∠GMH.",
   "problem_img": "3430.png",
   "construction_cdl": [
     "Shape(GM,MH,HG)",
@@ -24,9 +24,9 @@
     "Collinear(GMN)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AB,CD)",
+    "Equal(MeasureOfAngle(GHD),80)",
     "Equal(MeasureOfAngle(MGA),MeasureOfAngle(HGM))",
-    "Equal(MeasureOfAngle(GHD),80)"
+    "ParallelBetweenLine(AB,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(GMH))",
@@ -39,7 +39,11 @@
     "angle_addition(1,HGM,MGA)",
     "parallel_property_alternate_interior_angle(2,AG,MD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,AB,CD,G)",
+      "angle_addition(1,HGM,MGA)"
+    ],
     "parallel_property_collinear_extend(3,AB,CD,G)": [
       "parallel_property_collinear_extend(3,DC,GA,M)",
       "parallel_property_collinear_extend(3,DC,GA,H)"
@@ -49,10 +53,6 @@
     ],
     "parallel_property_collinear_extend(3,DC,GA,H)": [
       "parallel_property_alternate_interior_angle(2,AG,HD)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,AB,CD,G)",
-      "angle_addition(1,HGM,MGA)"
     ]
   }
 }

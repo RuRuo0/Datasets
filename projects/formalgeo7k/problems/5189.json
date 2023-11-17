@@ -2,9 +2,9 @@
   "problem_id": 5189,
   "annotation": "NaZhu_2023-05-21",
   "source": "GeoQA-5182",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB为⊙O的直径,CD是弦,AB⊥CD于E,若AB=10,OE=3,则弦CD的长为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, CD is the chord, AB ⊥ CD at E, if AB = N_0, OE = N_1, then the length of the chord CD is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AB=10，OE=3，圆O的圆心为O，OE垂直于CE。求直线CD的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, OE=3, the center of circle O is O, OE⊥CE. Find the length of line CD.",
   "problem_img": "5189.png",
   "construction_cdl": [
     "Shape(OAD,DE,EO,OA)",
@@ -17,10 +17,10 @@
     "Cocircular(O,ADBC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "PerpendicularBetweenLine(OE,CE)",
     "Equal(LengthOfLine(AB),10)",
-    "Equal(LengthOfLine(OE),3)"
+    "Equal(LengthOfLine(OE),3)",
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(OE,CE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(CD))",
@@ -36,7 +36,15 @@
     "circle_property_chord_perpendicular_bisect_chord(1,O,OE,DC)",
     "line_addition(1,CE,ED)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
+      "circle_property_length_of_radius_and_diameter(1,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "right_triangle_judgment_angle(1,OEC)",
+      "adjacent_complementary_angle(1,DEO,OEC)",
+      "line_addition(1,CE,ED)"
+    ],
     "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
       "diameter_of_circle_property_length_equal(1,AB,O)"
     ],
@@ -45,14 +53,6 @@
     ],
     "adjacent_complementary_angle(1,DEO,OEC)": [
       "circle_property_chord_perpendicular_bisect_chord(1,O,OE,DC)"
-    ],
-    "START": [
-      "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
-      "circle_property_length_of_radius_and_diameter(1,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "right_triangle_judgment_angle(1,OEC)",
-      "adjacent_complementary_angle(1,DEO,OEC)",
-      "line_addition(1,CE,ED)"
     ]
   }
 }

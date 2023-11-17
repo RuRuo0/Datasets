@@ -2,9 +2,9 @@
   "problem_id": 6181,
   "annotation": "DengfengYue_2023-05-28",
   "source": "GeoQA-8754",
-  "problem_level": 1,
-  "problem_text_cn": "如图,A、B、C是⊙O上的三个点,若∠C=35°,则∠OAB的度数是()",
-  "problem_text_en": "As shown in the figure, A, B, and C are the three points on ⊙O, if ∠C = N_0, then the degree of ∠OAB is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠ACB=35°，⊙O的圆心为O。求∠BAO的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ACB=35°, O is the center of circle O. Find the measure of ∠BAO.",
   "problem_img": "6181.png",
   "construction_cdl": [
     "Shape(AO,OD,DA)",
@@ -18,8 +18,8 @@
     "Cocircular(O,ACB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "Equal(MeasureOfAngle(ACB),35)"
+    "Equal(MeasureOfAngle(ACB),35)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BAO))",
@@ -33,7 +33,14 @@
     "isosceles_triangle_property_angle_equal(1,OBA)",
     "triangle_property_angle_sum(1,AOB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_circumference_angle_external(1,OBA,C)",
+      "arc_property_center_angle(1,OBA,O)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "triangle_property_angle_sum(1,AOB)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OBA)"
     ],
@@ -42,13 +49,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OBA)": [
       "isosceles_triangle_property_angle_equal(1,OBA)"
-    ],
-    "START": [
-      "arc_property_circumference_angle_external(1,OBA,C)",
-      "arc_property_center_angle(1,OBA,O)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "triangle_property_angle_sum(1,AOB)"
     ]
   }
 }

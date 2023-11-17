@@ -2,9 +2,9 @@
   "problem_id": 4020,
   "annotation": "YimingHe_2023-05-07",
   "source": "GeoQA-2079",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O中,弦AB,CD相交与点P,∠A=40°,∠APD=76°,则∠B的大小是()",
-  "problem_text_en": "As shown in the figure, in ⊙O, chords AB and CD intersect with point P, ∠A = N_0, ∠APD = N_1, then the size of ∠B is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠APD=76°，∠PAC=40°，⊙O的圆心为O。求∠PBD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠APD=76°, ∠PAC=40°, O is the center of circle O. Find the measure of ∠PBD.",
   "problem_img": "4020.png",
   "construction_cdl": [
     "Shape(DB,OBD)",
@@ -18,9 +18,9 @@
     "Cocircular(O,DACB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(APD),76)",
     "Equal(MeasureOfAngle(PAC),40)",
-    "Equal(MeasureOfAngle(APD),76)"
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(PBD))",
@@ -31,7 +31,7 @@
     "arc_property_circumference_angle_external(1,ODA,C)",
     "arc_property_circumference_angle_external(1,ODA,B)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,CPA,APD)",
       "triangle_property_angle_sum(1,PAC)",

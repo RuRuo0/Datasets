@@ -2,9 +2,9 @@
   "problem_id": 2425,
   "annotation": "RunanWang_2023-04-23",
   "source": "Geometry3k-2543",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of \\triangle B C D, if \\triangle B C D \\sim \\triangle F D E, C D = 12, F D = 5, F E = 4, and D E = 8.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，CD=12，DE=8，DF=5，EF=4，△BCD与△FDE是相似三角形。求△BCD的周长。",
+  "problem_text_en": "As shown in the diagram, CD=12, DE=8, DF=5, EF=4, triangle BCD is similar to triangle FDE.. Find the perimeter of △BCD.",
   "problem_img": "2425.png",
   "construction_cdl": [
     "Shape(BC,CD,DB)",
@@ -14,7 +14,13 @@
     "Collinear(CDE)",
     "Collinear(EFA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(CD),12)",
+    "Equal(LengthOfLine(DE),8)",
+    "Equal(LengthOfLine(DF),5)",
+    "Equal(LengthOfLine(EF),4)",
+    "SimilarBetweenTriangle(BCD,FDE)"
+  ],
   "image_cdl": [
     "SimilarBetweenTriangle(BCD,FDE)",
     "Equal(LengthOfLine(CD),12)",
@@ -30,7 +36,7 @@
     "similar_triangle_property_line_ratio(1,DBC,EFD)",
     "triangle_perimeter_formula(1,BCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "similar_triangle_property_line_ratio(1,BCD,FDE)",
       "similar_triangle_property_line_ratio(1,CDB,DEF)",

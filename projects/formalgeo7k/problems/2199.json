@@ -2,9 +2,9 @@
   "problem_id": 2199,
   "annotation": "XiaoxiaoJin_2023-04-23",
   "source": "Geometry3k-2296",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "The radius of \\odot P is 5 and P R = 3. Find Q R.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，PR=3，圆P的半径为5，⊙P的圆心为P，PR⊥QR。求直线QR的长度。",
+  "problem_text_en": "As shown in the diagram, PR=3, the radius of circle P is 5, the center of circle P is P, PR⊥QR. Find the length of line QR.",
   "problem_img": "2199.png",
   "construction_cdl": [
     "Shape(SP,PQ,PQS)",
@@ -14,7 +14,12 @@
     "Collinear(QRS)",
     "Cocircular(P,QS)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(PR),3)",
+    "Equal(RadiusOfCircle(P),5)",
+    "IsCentreOfCircle(P,P)",
+    "PerpendicularBetweenLine(PR,QR)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(P,P)",
     "Equal(RadiusOfCircle(P),5)",
@@ -28,13 +33,13 @@
     "right_triangle_judgment_angle(1,PRQ)",
     "right_triangle_property_pythagorean(1,PRQ)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,PRQ)": [
-      "right_triangle_property_pythagorean(1,PRQ)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,PQ,P)",
       "right_triangle_judgment_angle(1,PRQ)"
+    ],
+    "right_triangle_judgment_angle(1,PRQ)": [
+      "right_triangle_property_pythagorean(1,PRQ)"
     ]
   }
 }

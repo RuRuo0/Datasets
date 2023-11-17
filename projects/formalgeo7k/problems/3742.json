@@ -2,9 +2,9 @@
   "problem_id": 3742,
   "annotation": "ChenyangMao_2023-04-30",
   "source": "GeoQA-1535",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知∠1+∠2=180°,∠3=55°,那么∠4的度数是()",
-  "problem_text_en": "As shown in the figure, it is known that ∠1 + ∠2 = N_0, ∠3 = N_1, then the degree of ∠4 is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，Add(MeasureOfAngle(CBD)=MeasureOfAngle(BDE))，∠JIH=55°。求∠DKL的大小。",
+  "problem_text_en": "As shown in the diagram, Add(MeasureOfAngle(CBD)=MeasureOfAngle(BDE)), ∠JIH=55°. Find the measure of ∠DKL.",
   "problem_img": "3742.png",
   "construction_cdl": [
     "Shape(AB,BC)",
@@ -28,7 +28,10 @@
     "Collinear(HIKL)",
     "Collinear(EDKM)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(Add(MeasureOfAngle(CBD),MeasureOfAngle(BDE)),180)",
+    "Equal(MeasureOfAngle(JIH),55)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(JIH),55)",
     "Equal(Add(MeasureOfAngle(CBD),MeasureOfAngle(BDE)),180)"
@@ -42,7 +45,11 @@
     "vertical_angle(1,JIH,BIK)",
     "parallel_property_corresponding_angle(2,IB,KE,L)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_judgment_ipsilateral_internal_angle(1,BC,DE)",
+      "vertical_angle(1,JIH,BIK)"
+    ],
     "parallel_judgment_ipsilateral_internal_angle(1,BC,DE)": [
       "parallel_property_collinear_extend(1,BC,DE,I)"
     ],
@@ -51,10 +58,6 @@
     ],
     "parallel_property_collinear_extend(2,ED,BI,K)": [
       "parallel_property_corresponding_angle(2,IB,KE,L)"
-    ],
-    "START": [
-      "parallel_judgment_ipsilateral_internal_angle(1,BC,DE)",
-      "vertical_angle(1,JIH,BIK)"
     ]
   }
 }

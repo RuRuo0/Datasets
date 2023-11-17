@@ -2,9 +2,9 @@
   "problem_id": 1433,
   "annotation": "YanjunGuo_2023-04-16",
   "source": "Geometry3k-1486",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot R, S U = 20, Y W = 20, and m \\widehat Y X = 45. Find S V.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，SU=20，YW=20，弧RYX的角度为45，R是圆R的圆心，RZ⊥WZ，UV⊥RV。求直线SV的长度。",
+  "problem_text_en": "As shown in the diagram, SU=20, YW=20, the measure of arc RYX is 45, R is the center of circle R, RZ is perpendicular to WZ, UV is perpendicular to RV. Find the length of line SV.",
   "problem_img": "1433.png",
   "construction_cdl": [
     "Shape(RV,VS,RSY,YZ,ZR)",
@@ -19,7 +19,14 @@
     "Collinear(YZW)",
     "Cocircular(R,YXWUTS)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(SU),20)",
+    "Equal(LengthOfLine(YW),20)",
+    "Equal(MeasureOfArc(RYX),45)",
+    "IsCentreOfCircle(R,R)",
+    "PerpendicularBetweenLine(RZ,WZ)",
+    "PerpendicularBetweenLine(UV,RV)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(R,R)",
     "Equal(LengthOfLine(SU),20)",
@@ -34,7 +41,7 @@
     "circle_property_chord_perpendicular_bisect_chord(1,R,RV,US)",
     "line_addition(1,SV,VU)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "circle_property_chord_perpendicular_bisect_chord(1,R,RV,US)",
       "line_addition(1,SV,VU)"

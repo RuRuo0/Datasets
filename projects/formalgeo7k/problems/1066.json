@@ -2,9 +2,9 @@
   "problem_id": 1066,
   "annotation": "YiwenHuang_2023-04-23",
   "source": "Geometry3k-1101",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the shaded region. Assume that all polygons that appear to be regular are regular. Round to the nearest tenth.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AD=5，AD=EG，DB=10，Sub(AreaOfQuadrilateral(CBDA)=AreaOfCircle(O))，圆O的圆心为O，CBDA是长方形。求x的值。",
+  "problem_text_en": "As shown in the diagram, AD=5, AD=EG, DB=10, Sub(AreaOfQuadrilateral(CBDA)=AreaOfCircle(O)), O is the center of ⊙O, quadrilateral CBDA is a rectangle. Find the value of x.",
   "problem_img": "1066.png",
   "construction_cdl": [
     "Shape(GC,CF,OGF)",
@@ -18,7 +18,14 @@
     "Collinear(GOE)",
     "Cocircular(O,GFE)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AD),5)",
+    "Equal(LengthOfLine(AD),LengthOfLine(EG))",
+    "Equal(LengthOfLine(DB),10)",
+    "Equal(Sub(AreaOfQuadrilateral(CBDA),AreaOfCircle(O)),x)",
+    "IsCentreOfCircle(O,O)",
+    "Rectangle(CBDA)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "Rectangle(CBDA)",
@@ -36,15 +43,15 @@
     "parallelogram_area_formula_sine(1,BDAC)",
     "circle_area_formula(1,O)"
   ],
-  "theorem_seq_dag": {
-    "diameter_of_circle_judgment_pass_centre(1,GOE,O)": [
-      "diameter_of_circle_property_length_equal(1,GE,O)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_judgment_pass_centre(1,GOE,O)",
       "circle_property_length_of_radius_and_diameter(1,O)",
       "parallelogram_area_formula_sine(1,BDAC)",
       "circle_area_formula(1,O)"
+    ],
+    "diameter_of_circle_judgment_pass_centre(1,GOE,O)": [
+      "diameter_of_circle_property_length_equal(1,GE,O)"
     ]
   }
 }

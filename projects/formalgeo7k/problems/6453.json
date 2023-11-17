@@ -2,18 +2,18 @@
   "problem_id": 6453,
   "annotation": "JiaZou_2023-06-04",
   "source": "GeoQA-9331",
-  "problem_level": 1,
-  "problem_text_cn": "如图,▱ABCD的周长是22cm,△ABC的周长是17cm,则AC的长为()",
-  "problem_text_en": "As shown in the figure, the perimeter of ▱ABCD is N_0, the perimeter of △ABC is N_1, then the length of AC is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，四边形ABCD的周长为22，△ABC的周长为17，ABCD是▱。求直线AC的长度。",
+  "problem_text_en": "As shown in the diagram, the perimeter of quadrilateral ABCD is 22, the perimeter of △ABC is 17, BA and CD are opposite sides of the ▱ ABCD. Find the length of line AC.",
   "problem_img": "6453.png",
   "construction_cdl": [
     "Shape(AB,BC,CA)",
     "Shape(AC,CD,DA)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
     "Equal(PerimeterOfQuadrilateral(ABCD),22)",
-    "Equal(PerimeterOfTriangle(ABC),17)"
+    "Equal(PerimeterOfTriangle(ABC),17)",
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AC))",
@@ -24,7 +24,7 @@
     "quadrilateral_perimeter_formula(1,ABCD)",
     "triangle_perimeter_formula(1,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_property_opposite_line_equal(1,ABCD)",
       "parallelogram_property_opposite_line_equal(1,BCDA)",

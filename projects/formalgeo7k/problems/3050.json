@@ -2,9 +2,9 @@
   "problem_id": 3050,
   "annotation": "XiaokaiZhang_2023-04-16",
   "source": "GeoQA-267",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,AB=1,AC=2,现将△ABC绕点C顺时针旋转90°得到△EDC,连接AD,并有AD=3,则∠A的度数为()",
-  "problem_text_en": "As shown in the figure, in △ABC, AB = N_0, AC = N_1, now rotate △ABC clockwise around point C by N_2 to get △A′B′C′, connect AB′, and AB′ = N_3, then the degree of ∠A′ is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，三角形ABC与三角形EDC是全等三角形，AB=1，AC=2，AD=3，AC⊥EC，BC垂直于DC。求∠CED的大小。",
+  "problem_text_en": "As shown in the diagram, △ABC is congruent to △EDC, AB=1, AC=2, AD=3, AC⊥EC, BC⊥DC. Find the measure of ∠CED.",
   "problem_img": "3050.png",
   "construction_cdl": [
     "Shape(AB,BC,CA)",
@@ -16,12 +16,12 @@
     "Collinear(DFC)"
   ],
   "text_cdl": [
+    "CongruentBetweenTriangle(ABC,EDC)",
     "Equal(LengthOfLine(AB),1)",
     "Equal(LengthOfLine(AC),2)",
     "Equal(LengthOfLine(AD),3)",
-    "PerpendicularBetweenLine(BC,DC)",
     "PerpendicularBetweenLine(AC,EC)",
-    "CongruentBetweenTriangle(ABC,EDC)"
+    "PerpendicularBetweenLine(BC,DC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CED))",
@@ -37,7 +37,14 @@
     "triangle_property_angle_sum(1,CEA)",
     "angle_addition(1,CEA,AED)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "congruent_triangle_property_line_equal(1,BCA,DCE)",
+      "congruent_triangle_property_line_equal(1,CAB,CED)",
+      "right_triangle_judgment_angle(1,ACE)",
+      "triangle_property_angle_sum(1,CEA)",
+      "angle_addition(1,CEA,AED)"
+    ],
     "congruent_triangle_property_line_equal(1,BCA,DCE)": [
       "isosceles_triangle_judgment_line_equal(1,CEA)",
       "right_triangle_judgment_pythagorean_inverse(1,AED)"
@@ -53,13 +60,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,CEA)": [
       "isosceles_triangle_property_angle_equal(1,CEA)"
-    ],
-    "START": [
-      "congruent_triangle_property_line_equal(1,BCA,DCE)",
-      "congruent_triangle_property_line_equal(1,CAB,CED)",
-      "right_triangle_judgment_angle(1,ACE)",
-      "triangle_property_angle_sum(1,CEA)",
-      "angle_addition(1,CEA,AED)"
     ]
   }
 }

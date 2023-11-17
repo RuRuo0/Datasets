@@ -2,9 +2,9 @@
   "problem_id": 2378,
   "annotation": "FangzhenZhu_2023-04-23",
   "source": "Geometry3k-2493",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot M, F L = 24, H J = 48, and m \\widehat H P = 65. Find F G.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，FL=24，HJ=48，弧MHP的角度为65，M是圆M的圆心，JN⊥PN，KL⊥GL。求直线FG的长度。",
+  "problem_text_en": "As shown in the diagram, FL=24, HJ=48, the measure of arc MHP is 65, M is the center of ⊙M, JN is perpendicular to PN, KL is perpendicular to GL. Find the length of line FG.",
   "problem_img": "2378.png",
   "construction_cdl": [
     "Shape(MKF,FL,LK)",
@@ -19,7 +19,14 @@
     "Collinear(MNP)",
     "Cocircular(M,FHPJGK)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(FL),24)",
+    "Equal(LengthOfLine(HJ),48)",
+    "Equal(MeasureOfArc(MHP),65)",
+    "IsCentreOfCircle(M,M)",
+    "PerpendicularBetweenLine(JN,PN)",
+    "PerpendicularBetweenLine(KL,GL)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(M,M)",
     "Equal(LengthOfLine(FL),24)",
@@ -35,13 +42,13 @@
     "adjacent_complementary_angle(1,KLG,GLM)",
     "circle_property_chord_perpendicular_bisect_chord(1,M,ML,GF)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,KLG,GLM)": [
-      "circle_property_chord_perpendicular_bisect_chord(1,M,ML,GF)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,FL,LG)",
       "adjacent_complementary_angle(1,KLG,GLM)"
+    ],
+    "adjacent_complementary_angle(1,KLG,GLM)": [
+      "circle_property_chord_perpendicular_bisect_chord(1,M,ML,GF)"
     ]
   }
 }

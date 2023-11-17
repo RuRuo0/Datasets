@@ -3,13 +3,18 @@
   "annotation": "ZheZhu_2023-04-30",
   "source": "GeoQA-1924",
   "problem_level": 1,
-  "problem_text_cn": "如图,一棵树在一次强台风中,从离地面5m处折断,倒下的部分与地面成30°角,如图所示,这棵树在折断前的高度是()",
-  "problem_text_en": "As shown in the figure, a tree broke from a point N_0 from the ground during a strong typhoon, and the fallen part formed an angle N_1 with the ground. As shown in the figure, the height of the tree before the break was ()",
+  "problem_text_cn": "如图所示，Add(LengthOfLine(AB)=LengthOfLine(CA))，AB=5，∠ABC=90°，∠BCA=30°。求x的值。",
+  "problem_text_en": "As shown in the diagram, Add(LengthOfLine(AB)=LengthOfLine(CA)), AB=5, ∠ABC=90°, ∠BCA=30°. Find the value of x.",
   "problem_img": "3980.png",
   "construction_cdl": [
     "Shape(AB,BC,CA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(Add(LengthOfLine(AB),LengthOfLine(CA)),x)",
+    "Equal(LengthOfLine(AB),5)",
+    "Equal(MeasureOfAngle(ABC),90)",
+    "Equal(MeasureOfAngle(BCA),30)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AB),5)",
     "Equal(Add(LengthOfLine(AB),LengthOfLine(CA)),x)",
@@ -21,7 +26,7 @@
   "theorem_seqs": [
     "sine_theorem(1,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "sine_theorem(1,ABC)"
     ]

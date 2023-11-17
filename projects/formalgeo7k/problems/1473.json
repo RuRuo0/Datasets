@@ -2,15 +2,24 @@
   "problem_id": 1473,
   "annotation": "YanjunGuo_2023-04-09",
   "source": "Geometry3k-1527",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AB=y，AC=z，AD=8，BD=x，∠ABC=45°，∠ADB=60°，BC⊥AC，DB垂直于AB。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=y, AC=z, AD=8, BD=x, ∠ABC=45°, ∠ADB=60°, BC⊥AC, DB⊥AB. Find the value of x.",
   "problem_img": "1473.png",
   "construction_cdl": [
     "Shape(AD,DB,BA)",
     "Shape(AB,BC,CA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),y)",
+    "Equal(LengthOfLine(AC),z)",
+    "Equal(LengthOfLine(AD),8)",
+    "Equal(LengthOfLine(BD),x)",
+    "Equal(MeasureOfAngle(ABC),45)",
+    "Equal(MeasureOfAngle(ADB),60)",
+    "PerpendicularBetweenLine(BC,AC)",
+    "PerpendicularBetweenLine(DB,AB)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AC),z)",
     "Equal(LengthOfLine(AD),8)",
@@ -28,13 +37,13 @@
     "cosine_theorem(1,DBA)",
     "right_triangle_property_pythagorean(1,DBA)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,DBA)": [
-      "right_triangle_property_pythagorean(1,DBA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,DBA)",
       "cosine_theorem(1,DBA)"
+    ],
+    "right_triangle_judgment_angle(1,DBA)": [
+      "right_triangle_property_pythagorean(1,DBA)"
     ]
   }
 }

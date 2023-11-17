@@ -2,9 +2,9 @@
   "problem_id": 3384,
   "annotation": "JiaZou_2023-04-30",
   "source": "GeoQA-891",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,CD⊥AB于点D,BE⊥AC于点E,F为BC的中点,DE=5,BC=8,则△DEF的周长是()",
-  "problem_text_en": "As shown in the figure, in △ABC, CD ⊥ AB at point D, BE ⊥ AC at point E, F is the midpoint of BC, DE = N_0, BC = N_1, then the perimeter of △DEF is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，BC=8，DE=5，F是线段BC的中点，CD⊥BD，CE⊥BE。求三角形DFE的周长。",
+  "problem_text_en": "As shown in the diagram, BC=8, DE=5, F is the midpoint of segment BC, CD is perpendicular to BD, CE is perpendicular to BE. Find the perimeter of triangle DFE.",
   "problem_img": "3384.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -25,11 +25,11 @@
     "Collinear(EIF)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(CD,BD)",
-    "PerpendicularBetweenLine(CE,BE)",
-    "IsMidpointOfLine(F,BC)",
+    "Equal(LengthOfLine(BC),8)",
     "Equal(LengthOfLine(DE),5)",
-    "Equal(LengthOfLine(BC),8)"
+    "IsMidpointOfLine(F,BC)",
+    "PerpendicularBetweenLine(CD,BD)",
+    "PerpendicularBetweenLine(CE,BE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfTriangle(DFE))",
@@ -43,7 +43,14 @@
     "right_triangle_property_length_of_median(1,CEB,F)",
     "triangle_perimeter_formula(1,DFE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "right_triangle_judgment_angle(1,CDB)",
+      "right_triangle_judgment_angle(1,CEB)",
+      "median_of_triangle_judgment(1,DF,DBC)",
+      "median_of_triangle_judgment(1,EF,EBC)",
+      "triangle_perimeter_formula(1,DFE)"
+    ],
     "right_triangle_judgment_angle(1,CDB)": [
       "right_triangle_property_length_of_median(1,CDB,F)"
     ],
@@ -55,13 +62,6 @@
     ],
     "median_of_triangle_judgment(1,EF,EBC)": [
       "right_triangle_property_length_of_median(1,CEB,F)"
-    ],
-    "START": [
-      "right_triangle_judgment_angle(1,CDB)",
-      "right_triangle_judgment_angle(1,CEB)",
-      "median_of_triangle_judgment(1,DF,DBC)",
-      "median_of_triangle_judgment(1,EF,EBC)",
-      "triangle_perimeter_formula(1,DFE)"
     ]
   }
 }

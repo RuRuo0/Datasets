@@ -2,9 +2,9 @@
   "problem_id": 5691,
   "annotation": "NaZhu_2023-05-28",
   "source": "GeoQA-7423",
-  "problem_level": 1,
-  "problem_text_cn": "如图,平行四边形ABCD中,EF∥AB,DE:EA=2:3,EF=6,则CD的长()",
-  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, EF ∥ AB, DE:EA=N_0:N_1,EF=N_2, then the length of CD ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，Div(LengthOfLine(DE)=LengthOfLine(EA))，EF=6，EF∥AB，四边形ABCD是▱。求直线CD的长度。",
+  "problem_text_en": "As shown in the diagram, Div(LengthOfLine(DE)=LengthOfLine(EA)), EF=6, EF is parallel to AB, ABCD is a ▱. Find the length of line CD.",
   "problem_img": "5691.png",
   "construction_cdl": [
     "Shape(DE,EF,FD)",
@@ -14,10 +14,10 @@
     "Collinear(DFB)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
-    "ParallelBetweenLine(EF,AB)",
     "Equal(Div(LengthOfLine(DE),LengthOfLine(EA)),2/3)",
-    "Equal(LengthOfLine(EF),6)"
+    "Equal(LengthOfLine(EF),6)",
+    "ParallelBetweenLine(EF,AB)",
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(CD))",
@@ -31,7 +31,13 @@
     "line_addition(1,DE,EA)",
     "parallelogram_property_opposite_line_equal(1,ABCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,EF,AB,D)",
+      "parallel_property_corresponding_angle(2,BA,FE,D)",
+      "line_addition(1,DE,EA)",
+      "parallelogram_property_opposite_line_equal(1,ABCD)"
+    ],
     "parallel_property_corresponding_angle(1,EF,AB,D)": [
       "similar_triangle_judgment_aa(1,DEF,DAB)"
     ],
@@ -41,12 +47,6 @@
     "similar_triangle_judgment_aa(1,DEF,DAB)": [
       "similar_triangle_property_line_ratio(1,DEF,DAB)",
       "similar_triangle_property_line_ratio(1,FDE,BDA)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,EF,AB,D)",
-      "parallel_property_corresponding_angle(2,BA,FE,D)",
-      "line_addition(1,DE,EA)",
-      "parallelogram_property_opposite_line_equal(1,ABCD)"
     ]
   }
 }

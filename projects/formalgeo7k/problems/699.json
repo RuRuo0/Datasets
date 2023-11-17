@@ -2,16 +2,24 @@
   "problem_id": 699,
   "annotation": "YimingHe_2023-03-12",
   "source": "Geometry3k-718",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find z.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AB=20，AC=x，AD=10，BC=z，BD=y，CA垂直于BA，DB垂直于CB。求直线CB的长度。",
+  "problem_text_en": "As shown in the diagram, AB=20, AC=x, AD=10, BC=z, BD=y, CA is perpendicular to BA, DB is perpendicular to CB. Find the length of line CB.",
   "problem_img": "699.png",
   "construction_cdl": [
     "Shape(CA,AB,BC)",
     "Shape(AD,DB,BA)",
     "Collinear(CAD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),20)",
+    "Equal(LengthOfLine(AC),x)",
+    "Equal(LengthOfLine(AD),10)",
+    "Equal(LengthOfLine(BC),z)",
+    "Equal(LengthOfLine(BD),y)",
+    "PerpendicularBetweenLine(CA,BA)",
+    "PerpendicularBetweenLine(DB,CB)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AC),x)",
     "Equal(LengthOfLine(BC),z)",
@@ -31,7 +39,10 @@
     "mirror_similar_triangle_property_line_ratio(1,BAD,CDB)",
     "mirror_similar_triangle_property_line_ratio(1,DBA,DBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,CAB,BAD)"
+    ],
     "adjacent_complementary_angle(1,CAB,BAD)": [
       "right_triangle_judgment_angle(1,BAD)",
       "mirror_similar_triangle_judgment_aa(1,BAD,CDB)"
@@ -42,9 +53,6 @@
     "mirror_similar_triangle_judgment_aa(1,BAD,CDB)": [
       "mirror_similar_triangle_property_line_ratio(1,BAD,CDB)",
       "mirror_similar_triangle_property_line_ratio(1,DBA,DBC)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,CAB,BAD)"
     ]
   }
 }

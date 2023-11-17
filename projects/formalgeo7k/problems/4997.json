@@ -2,9 +2,9 @@
   "problem_id": 4997,
   "annotation": "FangzhenZhu_2023-05-21",
   "source": "GeoQA-4692",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,点D、E分别在AB、AC边上,DE∥BC,若\\frac{AE}{AC}=\\frac{3}{4},AD=6,则AB等于()",
-  "problem_text_en": "As shown in the figure, in △ABC, the points D and E are on the edges AB and AC respectively, DE ∥ BC, if \\frac{AE}{AC} = \\frac{N_0}{N_1}, AD = N_2, then AB is equal to ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，Div(LengthOfLine(AE)=LengthOfLine(AC))，AD=6，DE∥BC。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, Div(LengthOfLine(AE)=LengthOfLine(AC)), AD=6, DE∥BC. Find the length of line AB.",
   "problem_img": "4997.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -13,8 +13,8 @@
     "Collinear(AEC)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(AD),6)",
     "Equal(Div(LengthOfLine(AE),LengthOfLine(AC)),3/4)",
+    "Equal(LengthOfLine(AD),6)",
     "ParallelBetweenLine(DE,BC)"
   ],
   "image_cdl": [],
@@ -27,7 +27,11 @@
     "similar_triangle_property_line_ratio(1,DEA,BCA)",
     "similar_triangle_property_line_ratio(1,EAD,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,DE,BC,A)",
+      "parallel_property_corresponding_angle(2,CB,ED,A)"
+    ],
     "parallel_property_corresponding_angle(1,DE,BC,A)": [
       "similar_triangle_judgment_aa(1,ADE,ABC)"
     ],
@@ -37,10 +41,6 @@
     "similar_triangle_judgment_aa(1,ADE,ABC)": [
       "similar_triangle_property_line_ratio(1,DEA,BCA)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,DE,BC,A)",
-      "parallel_property_corresponding_angle(2,CB,ED,A)"
     ]
   }
 }

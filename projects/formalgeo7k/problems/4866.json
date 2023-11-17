@@ -2,9 +2,9 @@
   "problem_id": 4866,
   "annotation": "YifanWang_2023-05-21",
   "source": "GeoQA-4375",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB与⊙O相切于点B,AO的延长线交⊙O于点C,联结BC,若∠A=36°,则∠C等于()",
-  "problem_text_en": "As shown in the figure, AB is tangent to ⊙O at point B, and the extended line of AO intersects ⊙O at point C. Connect BC, if ∠A = N_0, then ∠C is equal to ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠OAB=36°，⊙O的圆心为O，AB是⊙O的切线。求∠BCO的大小。",
+  "problem_text_en": "As shown in the diagram, ∠OAB=36°, O is the center of ⊙O, the tangent to circle O is AB. Find the measure of ∠BCO.",
   "problem_img": "4866.png",
   "construction_cdl": [
     "Shape(DO,OC,OCD)",
@@ -16,9 +16,9 @@
     "Cocircular(O,BCD)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(OAB),36)",
     "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(AB,O)",
-    "Equal(MeasureOfAngle(OAB),36)"
+    "IsTangentOfCircle(AB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BCO))",
@@ -29,7 +29,7 @@
     "arc_property_center_angle(1,ODB,O)",
     "arc_property_circumference_angle_external(1,ODB,C)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(2,AB,O,O)",
       "triangle_property_angle_sum(1,ABO)",

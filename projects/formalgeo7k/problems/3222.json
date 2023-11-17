@@ -2,9 +2,9 @@
   "problem_id": 3222,
   "annotation": "NaZhu_2023-04-23",
   "source": "GeoQA-520",
-  "problem_level": 1,
-  "problem_text_cn": "如图,平行线a、b被直线c所截,若∠1=50°,则∠2的度数是()",
-  "problem_text_en": "As shown in the figure, the parallel lines a and b are intercepted by the straight line c. If ∠1 = N_0, then the degree of ∠2 is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠EGB=50°，AB平行于CD。求∠CHG的大小。",
+  "problem_text_en": "As shown in the diagram, ∠EGB=50°, AB∥CD. Find the measure of ∠CHG.",
   "problem_img": "3222.png",
   "construction_cdl": [
     "Shape(AG,GE)",
@@ -20,8 +20,8 @@
     "Collinear(EGHF)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AB,CD)",
-    "Equal(MeasureOfAngle(EGB),50)"
+    "Equal(MeasureOfAngle(EGB),50)",
+    "ParallelBetweenLine(AB,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CHG))",
@@ -33,17 +33,17 @@
     "flat_angle(1,CHD)",
     "angle_addition(1,CHG,GHD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,AB,CD,G)",
+      "flat_angle(1,CHD)",
+      "angle_addition(1,CHG,GHD)"
+    ],
     "parallel_property_collinear_extend(3,AB,CD,G)": [
       "parallel_property_collinear_extend(3,DC,BG,H)"
     ],
     "parallel_property_collinear_extend(3,DC,BG,H)": [
       "parallel_property_corresponding_angle(1,GB,HD,E)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,AB,CD,G)",
-      "flat_angle(1,CHD)",
-      "angle_addition(1,CHG,GHD)"
     ]
   }
 }

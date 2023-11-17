@@ -2,9 +2,9 @@
   "problem_id": 2068,
   "annotation": "QikeHuang_2023-04-23",
   "source": "Geometry3k-2155",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x so that m \\parallel n.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠AMC=9*x-5°，∠FCB=7*x+3°，GB∥AE。求x的值。",
+  "problem_text_en": "As shown in the diagram, ∠AMC=9*x-5°, ∠FCB=7*x+3°, GB is parallel to AE. Find the value of x.",
   "problem_img": "2068.png",
   "construction_cdl": [
     "Shape(DM,MA)",
@@ -19,7 +19,11 @@
     "Collinear(GCB)",
     "Collinear(DMCF)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(AMC),9*x-5)",
+    "Equal(MeasureOfAngle(FCB),7*x+3)",
+    "ParallelBetweenLine(GB,AE)"
+  ],
   "image_cdl": [
     "ParallelBetweenLine(GB,AE)",
     "Equal(MeasureOfAngle(FCB),7*x+3)",
@@ -33,16 +37,16 @@
     "parallel_property_ipsilateral_internal_angle(1,MA,CG)",
     "vertical_angle(1,MCG,FCB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,GB,AE,C)",
+      "vertical_angle(1,MCG,FCB)"
+    ],
     "parallel_property_collinear_extend(3,GB,AE,C)": [
       "parallel_property_collinear_extend(3,EA,CG,M)"
     ],
     "parallel_property_collinear_extend(3,EA,CG,M)": [
       "parallel_property_ipsilateral_internal_angle(1,MA,CG)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,GB,AE,C)",
-      "vertical_angle(1,MCG,FCB)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 6909,
   "annotation": "ZheZhu_2023-06-04",
   "source": "GeoQA-angle-10158",
-  "problem_level": 1,
-  "problem_text_cn": "如图，△ABC内接于⊙O，∠BAC＝50°，过点A作AD平行于BC，交CO的延长线于点D，则∠D的度数（）",
-  "problem_text_en": "",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠COB=100°，⊙O的圆心为O，AD平行于CB，DA平行于BC。求∠ADC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠COB=100°, the center of ⊙O is O, AD is parallel to CB, DA is parallel to BC. Find the measure of ∠ADC.",
   "problem_img": "6909.png",
   "construction_cdl": [
     "Shape(AD,DO,OC,CA)",
@@ -13,10 +13,10 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(COB),100)",
     "IsCentreOfCircle(O,O)",
-    "ParallelBetweenLine(DA,BC)",
     "ParallelBetweenLine(AD,CB)",
-    "Equal(MeasureOfAngle(COB),100)"
+    "ParallelBetweenLine(DA,BC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ADC))",
@@ -29,7 +29,13 @@
     "triangle_property_angle_sum(1,OBC)",
     "parallel_property_alternate_interior_angle(1,DA,BC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "triangle_property_angle_sum(1,OBC)",
+      "parallel_property_alternate_interior_angle(1,DA,BC)"
+    ],
     "radius_of_circle_property_length_equal(1,OB,O)": [
       "isosceles_triangle_judgment_line_equal(1,OBC)"
     ],
@@ -38,12 +44,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OBC)": [
       "isosceles_triangle_property_angle_equal(1,OBC)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "triangle_property_angle_sum(1,OBC)",
-      "parallel_property_alternate_interior_angle(1,DA,BC)"
     ]
   }
 }

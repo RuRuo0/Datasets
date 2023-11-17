@@ -2,9 +2,9 @@
   "problem_id": 4668,
   "annotation": "YiwenHuang_2023-05-21",
   "source": "GeoQA-3933",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB、BC与⊙O相切于点A、B,EF与⊙O相切于点D．若BA=20,则△BEF的周长等于()",
-  "problem_text_en": "As shown in the figure, AB, BC are tangent to ⊙O at points A and B, and EF is tangent to ⊙O at point D. If BA = N_0, then the perimeter of △BEF is equal to ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=20，BC=20，CF=DF，ED=EA，⊙O的圆心为O。求△BEF的周长。",
+  "problem_text_en": "As shown in the diagram, AB=20, BC=20, CF=DF, ED=EA, the center of circle O is O. Find the perimeter of triangle BEF.",
   "problem_img": "4668.png",
   "construction_cdl": [
     "Shape(BE,ED,DF,FB)",
@@ -17,11 +17,11 @@
     "Cocircular(O,DAC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(AB),20)",
     "Equal(LengthOfLine(BC),20)",
+    "Equal(LengthOfLine(CF),LengthOfLine(DF))",
     "Equal(LengthOfLine(ED),LengthOfLine(EA))",
-    "Equal(LengthOfLine(CF),LengthOfLine(DF))"
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfTriangle(BEF))",
@@ -32,7 +32,7 @@
     "line_addition(1,BF,FC)",
     "triangle_perimeter_formula(1,BEF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,ED,DF)",
       "line_addition(1,AE,EB)",

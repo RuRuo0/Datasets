@@ -2,15 +2,22 @@
   "problem_id": 3795,
   "annotation": "YifanWang_2023-05-07",
   "source": "GeoQA-1639",
-  "problem_level": 1,
-  "problem_text_cn": "如图,∠1=∠2,AC=AD,∠C=∠D,若AB=4cm,BC=3cm,AC=2cm,则DE的长是()",
-  "problem_text_en": "As shown in the figure, ∠1 = ∠2, AC = AD, ∠C = ∠D, if AB = N_0, BC = N_1, AC = N_2, then the length of DE is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AC=2，BA=4，CB=3，DA=AC，∠ACB=∠EDA，∠BAC=∠DAE。求直线ED的长度。",
+  "problem_text_en": "As shown in the diagram, AC=2, BA=4, CB=3, DA=AC, ∠ACB=∠EDA, ∠BAC=∠DAE. Find the length of line ED.",
   "problem_img": "3795.png",
   "construction_cdl": [
     "Shape(BA,AC,CB)",
     "Shape(ED,DA,AE)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),2)",
+    "Equal(LengthOfLine(BA),4)",
+    "Equal(LengthOfLine(CB),3)",
+    "Equal(LengthOfLine(DA),LengthOfLine(AC))",
+    "Equal(MeasureOfAngle(ACB),MeasureOfAngle(EDA))",
+    "Equal(MeasureOfAngle(BAC),MeasureOfAngle(DAE))"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BA),4)",
     "Equal(LengthOfLine(CB),3)",
@@ -25,12 +32,12 @@
     "mirror_congruent_triangle_judgment_aas(2,BAC,EDA)",
     "mirror_congruent_triangle_property_line_equal(1,ACB,AED)"
   ],
-  "theorem_seq_dag": {
-    "mirror_congruent_triangle_judgment_aas(2,BAC,EDA)": [
-      "mirror_congruent_triangle_property_line_equal(1,ACB,AED)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "mirror_congruent_triangle_judgment_aas(2,BAC,EDA)"
+    ],
+    "mirror_congruent_triangle_judgment_aas(2,BAC,EDA)": [
+      "mirror_congruent_triangle_property_line_equal(1,ACB,AED)"
     ]
   }
 }

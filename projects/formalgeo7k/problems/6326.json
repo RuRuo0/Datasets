@@ -2,9 +2,9 @@
   "problem_id": 6326,
   "annotation": "ChengQin_2023-06-04",
   "source": "GeoQA-9129",
-  "problem_level": 1,
-  "problem_text_cn": "如图,菱形ABCD中,对角线AC与BD相交于点O,BE=CE,AC=6cm,BD=8cm,则OE的长为()",
-  "problem_text_en": "As shown in the figure, in the diamond ABCD, the diagonal AC and BD intersect at the point O, BE = CE, AC = N_0, BD = N_1, then the length of OE is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AC=6，BD=8，BE=EC，四边形ABCD是菱形。求直线OE的长度。",
+  "problem_text_en": "As shown in the diagram, AC=6, BD=8, BE=EC, ABCD is a rhombus. Find the length of line OE.",
   "problem_img": "6326.png",
   "construction_cdl": [
     "Shape(AB,BO,OA)",
@@ -17,10 +17,10 @@
     "Collinear(BEC)"
   ],
   "text_cdl": [
-    "Rhombus(ABCD)",
-    "Equal(LengthOfLine(BE),LengthOfLine(EC))",
     "Equal(LengthOfLine(AC),6)",
-    "Equal(LengthOfLine(BD),8)"
+    "Equal(LengthOfLine(BD),8)",
+    "Equal(LengthOfLine(BE),LengthOfLine(EC))",
+    "Rhombus(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(OE))",
@@ -35,7 +35,13 @@
     "midsegment_of_triangle_judgment_midpoint(1,EO,BCD)",
     "midsegment_of_triangle_property_length(1,EO,BCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallelogram_property_diagonal_bisection(1,DABC,O)",
+      "kite_property_diagonal_perpendicular_bisection(1,DABC,O)",
+      "line_addition(1,BO,OD)",
+      "line_addition(1,AO,OC)"
+    ],
     "parallelogram_property_diagonal_bisection(1,DABC,O)": [
       "midsegment_of_triangle_judgment_midpoint(1,EO,BCD)"
     ],
@@ -47,12 +53,6 @@
     ],
     "midsegment_of_triangle_judgment_midpoint(1,EO,BCD)": [
       "midsegment_of_triangle_property_length(1,EO,BCD)"
-    ],
-    "START": [
-      "parallelogram_property_diagonal_bisection(1,DABC,O)",
-      "kite_property_diagonal_perpendicular_bisection(1,DABC,O)",
-      "line_addition(1,BO,OD)",
-      "line_addition(1,AO,OC)"
     ]
   }
 }

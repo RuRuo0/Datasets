@@ -2,16 +2,19 @@
   "problem_id": 1774,
   "annotation": "ChenyangMao_2023-04-16",
   "source": "Geometry3k-1839",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the parallelogram. Round to the nearest tenth if necessary.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，CB=4，∠CBO=45°，四边形CBOA是平行四边形，BO垂直于CO。求四边形CBOA的周长。",
+  "problem_text_en": "As shown in the diagram, CB=4, ∠CBO=45°, CA and BO are opposite sides of the ▱ CBOA, BO⊥CO. Find the perimeter of CBOA.",
   "problem_img": "1774.png",
   "construction_cdl": [
     "Shape(CB,BO,OC)",
     "Shape(CO,OA,AC)"
   ],
   "text_cdl": [
-    "Parallelogram(CBOA)"
+    "Equal(LengthOfLine(CB),4)",
+    "Equal(MeasureOfAngle(CBO),45)",
+    "Parallelogram(CBOA)",
+    "PerpendicularBetweenLine(BO,CO)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(CB),4)",
@@ -29,19 +32,19 @@
     "parallelogram_property_opposite_line_equal(1,BOAC)",
     "quadrilateral_perimeter_formula(1,CBOA)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,BOC)": [
-      "right_triangle_property_pythagorean(1,BOC)"
-    ],
-    "triangle_property_angle_sum(1,BOC)": [
-      "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,BOC)",
       "triangle_property_angle_sum(1,BOC)",
       "parallelogram_property_opposite_line_equal(1,CBOA)",
       "parallelogram_property_opposite_line_equal(1,BOAC)",
       "quadrilateral_perimeter_formula(1,CBOA)"
+    ],
+    "right_triangle_judgment_angle(1,BOC)": [
+      "right_triangle_property_pythagorean(1,BOC)"
+    ],
+    "triangle_property_angle_sum(1,BOC)": [
+      "isosceles_triangle_judgment_angle_equal(1,OCB)"
     ]
   }
 }

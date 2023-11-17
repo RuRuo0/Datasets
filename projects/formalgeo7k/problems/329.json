@@ -2,9 +2,9 @@
   "problem_id": 329,
   "annotation": "NaZhu_2023-04-02",
   "source": "Geometry3k-334",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure, m \\angle 4 = 104, m \\angle 14 = 118. Find the measure of \\angle 9.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠FOE=118°，∠JDA=104°，OD∥FI。求∠IFJ的大小。",
+  "problem_text_en": "As shown in the diagram, ∠FOE=118°, ∠JDA=104°, OD is parallel to FI. Find the measure of ∠IFJ.",
   "problem_img": "329.png",
   "construction_cdl": [
     "Shape(JD,DA)",
@@ -16,7 +16,11 @@
     "Collinear(ADOE)",
     "Collinear(BIFK)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(FOE),118)",
+    "Equal(MeasureOfAngle(JDA),104)",
+    "ParallelBetweenLine(OD,FI)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(JDA),104)",
     "Equal(MeasureOfAngle(FOE),118)",
@@ -31,17 +35,17 @@
     "flat_angle(1,IFK)",
     "angle_addition(1,IFJ,JFK)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(1,OD,FI,E)",
+      "flat_angle(1,IFK)",
+      "angle_addition(1,IFJ,JFK)"
+    ],
     "parallel_property_collinear_extend(1,OD,FI,E)": [
       "parallel_property_collinear_extend(2,IF,OE,K)"
     ],
     "parallel_property_collinear_extend(2,IF,OE,K)": [
       "parallel_property_corresponding_angle(1,FK,OE,J)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(1,OD,FI,E)",
-      "flat_angle(1,IFK)",
-      "angle_addition(1,IFJ,JFK)"
     ]
   }
 }

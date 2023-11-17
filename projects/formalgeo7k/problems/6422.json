@@ -2,9 +2,9 @@
   "problem_id": 6422,
   "annotation": "YimingHe_2023-06-04",
   "source": "GeoQA-9293",
-  "problem_level": 1,
-  "problem_text_cn": "如图,▱ABCD的对角线AC,BD相交于O,E是边BC的中点,连接OE,已知AB=6,那么OE的长是()",
-  "problem_text_en": "As shown in the figure, the diagonal AC and BD of ▱ABCD intersect at O, and E is the midpoint of edge BC, connecting OE, and it is known that AB = N_0, then the length of OE is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AB=6，E是线段BC的中点，BA和CD是平行四边形ABCD的一组对边。求直线OE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=6, E is the midpoint of segment BC, ABCD is a ▱. Find the length of line OE.",
   "problem_img": "6422.png",
   "construction_cdl": [
     "Shape(AO,OD,DA)",
@@ -17,9 +17,9 @@
     "Collinear(BEC)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
+    "Equal(LengthOfLine(AB),6)",
     "IsMidpointOfLine(E,BC)",
-    "Equal(LengthOfLine(AB),6)"
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(OE))",
@@ -29,15 +29,15 @@
     "midsegment_of_triangle_judgment_midpoint(1,OE,CAB)",
     "midsegment_of_triangle_property_length(1,OE,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallelogram_property_diagonal_bisection(1,ABCD,O)"
+    ],
     "parallelogram_property_diagonal_bisection(1,ABCD,O)": [
       "midsegment_of_triangle_judgment_midpoint(1,OE,CAB)"
     ],
     "midsegment_of_triangle_judgment_midpoint(1,OE,CAB)": [
       "midsegment_of_triangle_property_length(1,OE,CAB)"
-    ],
-    "START": [
-      "parallelogram_property_diagonal_bisection(1,ABCD,O)"
     ]
   }
 }

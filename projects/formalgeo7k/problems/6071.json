@@ -2,9 +2,9 @@
   "problem_id": 6071,
   "annotation": "RunanWang_2023-06-04",
   "source": "GeoQA-8585",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,C,D是⊙O上两点,CD⊥AB．若∠DAB=65°,则∠BOC=()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, C and D are two vertices on ⊙O, CD ⊥ AB. If ∠DAB = N_0, then ∠BOC = ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠DAB=65°，⊙O的圆心为O，DE垂直于OE。求∠BOC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DAB=65°, O is the center of ⊙O, DE is perpendicular to OE. Find the measure of ∠BOC.",
   "problem_img": "6071.png",
   "construction_cdl": [
     "Shape(ODA,AD)",
@@ -18,7 +18,9 @@
     "Cocircular(O,DACB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)"
+    "Equal(MeasureOfAngle(DAB),65)",
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(DE,OE)"
   ],
   "image_cdl": [
     "PerpendicularBetweenLine(DE,OE)",
@@ -33,7 +35,7 @@
     "adjacent_complementary_angle(1,AED,DEO)",
     "adjacent_complementary_angle(1,BOC,COA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,DAE)",
       "arc_property_center_angle(1,OAC,O)",

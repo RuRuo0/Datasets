@@ -2,9 +2,9 @@
   "problem_id": 5677,
   "annotation": "NaZhu_2023-05-28",
   "source": "GeoQA-7387",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,点D是AB边上的一点,若∠ACD=∠B,AD=1,AC=3,△ADC的面积为1,则△ABC的面积为()",
-  "problem_text_en": "As shown in the figure, in △ABC, point D is a point on the edge of AB, if ∠ACD = ∠B, AD = N_0, AC = N_1, the area of △ADC is N_2, then the area of △ABC is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，三角形ADC的面积为1，AC=3，AD=1，∠DCA=∠DBC。求△ABC的面积。",
+  "problem_text_en": "As shown in the diagram, the area of triangle ADC is 1, AC=3, AD=1, ∠DCA=∠DBC. Find the area of △ABC.",
   "problem_img": "5677.png",
   "construction_cdl": [
     "Shape(AD,DC,CA)",
@@ -12,10 +12,10 @@
     "Collinear(BDA)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(DCA),MeasureOfAngle(DBC))",
-    "Equal(LengthOfLine(AD),1)",
+    "Equal(AreaOfTriangle(ADC),1)",
     "Equal(LengthOfLine(AC),3)",
-    "Equal(AreaOfTriangle(ADC),1)"
+    "Equal(LengthOfLine(AD),1)",
+    "Equal(MeasureOfAngle(DCA),MeasureOfAngle(DBC))"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(AreaOfTriangle(ABC))",
@@ -25,13 +25,13 @@
     "mirror_similar_triangle_property_line_ratio(1,CAD,BCA)",
     "mirror_similar_triangle_property_area_square_ratio(1,DCA,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "mirror_similar_triangle_judgment_aa(1,DCA,CAB)"
+    ],
     "mirror_similar_triangle_judgment_aa(1,DCA,CAB)": [
       "mirror_similar_triangle_property_area_square_ratio(1,DCA,CAB)",
       "mirror_similar_triangle_property_line_ratio(1,CAD,BCA)"
-    ],
-    "START": [
-      "mirror_similar_triangle_judgment_aa(1,DCA,CAB)"
     ]
   }
 }

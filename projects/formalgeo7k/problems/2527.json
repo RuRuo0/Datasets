@@ -2,9 +2,9 @@
   "problem_id": 2527,
   "annotation": "ChenyangMao_2023-04-23",
   "source": "Geometry3k-2651",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Quadrilateral A B C D is inscribed in \\odot Z such that m \\angle B Z A = 104, m \\widehat C B = 94, and A B \\parallel D C. Find m \\angle Z A C.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠AZB=104°，弧ZCB的角度为94，Z是⊙Z的圆心，AB∥DC。求∠ZAC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AZB=104°, the measure of ⌒ZCB is 94, Z is the center of ⊙Z, AB is parallel to DC. Find the measure of ∠ZAC.",
   "problem_img": "2527.png",
   "construction_cdl": [
     "Shape(ZB,BA,AZ)",
@@ -20,7 +20,12 @@
     "Collinear(CEA)",
     "Cocircular(Z,BADC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(AZB),104)",
+    "Equal(MeasureOfArc(ZCB),94)",
+    "IsCentreOfCircle(Z,Z)",
+    "ParallelBetweenLine(AB,DC)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(Z,Z)",
     "Equal(MeasureOfAngle(AZB),104)",
@@ -38,7 +43,14 @@
     "arc_property_circumference_angle_external(1,ZCB,A)",
     "angle_addition(1,BAZ,ZAE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,ZB,Z)",
+      "radius_of_circle_property_length_equal(1,ZA,Z)",
+      "triangle_property_angle_sum(1,ZBA)",
+      "arc_property_circumference_angle_external(1,ZCB,A)",
+      "angle_addition(1,BAZ,ZAE)"
+    ],
     "radius_of_circle_property_length_equal(1,ZB,Z)": [
       "isosceles_triangle_judgment_line_equal(1,ZBA)"
     ],
@@ -47,13 +59,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,ZBA)": [
       "isosceles_triangle_property_angle_equal(1,ZBA)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,ZB,Z)",
-      "radius_of_circle_property_length_equal(1,ZA,Z)",
-      "triangle_property_angle_sum(1,ZBA)",
-      "arc_property_circumference_angle_external(1,ZCB,A)",
-      "angle_addition(1,BAZ,ZAE)"
     ]
   }
 }

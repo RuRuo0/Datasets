@@ -2,9 +2,9 @@
   "problem_id": 4001,
   "annotation": "ZheZhu_2023-04-30",
   "source": "GeoQA-1958",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的弦,AB=10,点C是⊙O上的一个动点,且∠C=45°．若点M、N分别是弦AB、AC的中点,则MN的最大值是()",
-  "problem_text_en": "As shown in the figure, AB is the chord of ⊙O, AB = N_0, point C is a moving point on ⊙O, and ∠C = N_1. If the points M and N are the midpoints of the chords AB and AC respectively, the maximum value of MN is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=10，∠BCA=45°，圆O的圆心为O，圆O的直径为CB，M平分线段AB，N是线段AC的中点。求直线MN的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, ∠BCA=45°, O is the center of circle O, CB is the diameter of circle O, M is the midpoint of segment AB, N bisects segment AC. Find the length of line MN.",
   "problem_img": "4001.png",
   "construction_cdl": [
     "Shape(NA,AM,MN)",
@@ -17,7 +17,14 @@
     "Collinear(ANC)",
     "Cocircular(O,CAB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),10)",
+    "Equal(MeasureOfAngle(BCA),45)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(CB,O)",
+    "IsMidpointOfLine(M,AB)",
+    "IsMidpointOfLine(N,AC)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(CB,O)",
@@ -37,7 +44,13 @@
     "similar_triangle_property_line_ratio(1,AMN,ABC)",
     "similar_triangle_property_line_ratio(1,NAM,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AM,MB)",
+      "line_addition(1,AN,NC)",
+      "diameter_of_circle_property_right_angle(1,CAB,O)",
+      "sine_theorem(1,BCA)"
+    ],
     "line_addition(1,AM,MB)": [
       "similar_triangle_judgment_sas(1,AMN,ABC)"
     ],
@@ -47,12 +60,6 @@
     "similar_triangle_judgment_sas(1,AMN,ABC)": [
       "similar_triangle_property_line_ratio(1,AMN,ABC)",
       "similar_triangle_property_line_ratio(1,NAM,CAB)"
-    ],
-    "START": [
-      "line_addition(1,AM,MB)",
-      "line_addition(1,AN,NC)",
-      "diameter_of_circle_property_right_angle(1,CAB,O)",
-      "sine_theorem(1,BCA)"
     ]
   }
 }

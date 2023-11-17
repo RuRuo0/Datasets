@@ -2,9 +2,9 @@
   "problem_id": 3235,
   "annotation": "NaZhu_2023-04-23",
   "source": "GeoQA-536",
-  "problem_level": 1,
-  "problem_text_cn": "如图,玲玲在美术课上用丝线绣成了一个“2”,AB∥DE,∠A=30°,∠ACE=110°,则∠E的度数为()",
-  "problem_text_en": "As shown in the figure, Lingling embroidered an \"N_0\" with silk thread in art class, AB ∥ DE, ∠A = N_1, ∠ACE = N_2, then the degree of ∠E is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠ACE=110°，∠CAB=30°，BA平行于ED，DE∥FC，FC平行于AB。求∠CED的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ACE=110°, ∠CAB=30°, BA is parallel to ED, DE is parallel to FC, FC is parallel to AB. Find the measure of ∠CED.",
   "problem_img": "3235.png",
   "construction_cdl": [
     "Shape(CE,ED)",
@@ -14,11 +14,11 @@
     "Shape(AC,CE)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(ACE),110)",
+    "Equal(MeasureOfAngle(CAB),30)",
     "ParallelBetweenLine(BA,ED)",
     "ParallelBetweenLine(DE,FC)",
-    "ParallelBetweenLine(FC,AB)",
-    "Equal(MeasureOfAngle(ACE),110)",
-    "Equal(MeasureOfAngle(CAB),30)"
+    "ParallelBetweenLine(FC,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CED))",
@@ -28,7 +28,7 @@
     "angle_addition(1,ACF,FCE)",
     "parallel_property_ipsilateral_internal_angle(1,CF,ED)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_alternate_interior_angle(2,FC,AB)",
       "angle_addition(1,ACF,FCE)",

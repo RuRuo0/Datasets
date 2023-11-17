@@ -2,9 +2,9 @@
   "problem_id": 959,
   "annotation": "NaZhu_2023-03-19",
   "source": "Geometry3k-988",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "P is the incenter of \\triangle A E C. Find D E. Rounded to the nearest hundredth.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AB=10，AP=13，EP=15，∠DCP=28°，∠PAF=33°，三角形AEC的内切圆圆心为P，ED⊥PD，PB垂直于AB，PF⊥EF。求直线DE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, AP=13, EP=15, ∠DCP=28°, ∠PAF=33°, the incenter of △AEC is P, ED is perpendicular to PD, PB is perpendicular to AB, PF⊥EF. Find the length of line DE.",
   "problem_img": "959.png",
   "construction_cdl": [
     "Shape(AF,FP,PA)",
@@ -18,7 +18,15 @@
     "Collinear(EDC)"
   ],
   "text_cdl": [
-    "IsIncenterOfTriangle(P,AEC)"
+    "Equal(LengthOfLine(AB),10)",
+    "Equal(LengthOfLine(AP),13)",
+    "Equal(LengthOfLine(EP),15)",
+    "Equal(MeasureOfAngle(DCP),28)",
+    "Equal(MeasureOfAngle(PAF),33)",
+    "IsIncenterOfTriangle(P,AEC)",
+    "PerpendicularBetweenLine(ED,PD)",
+    "PerpendicularBetweenLine(PB,AB)",
+    "PerpendicularBetweenLine(PF,EF)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(AB),10)",
@@ -40,7 +48,7 @@
     "triangle_property_angle_sum(1,PED)",
     "sine_theorem(1,EDP)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,BAP,PAF)",
       "angle_addition(1,FEP,PED)",

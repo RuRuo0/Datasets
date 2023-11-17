@@ -2,9 +2,9 @@
   "problem_id": 6477,
   "annotation": "JiaZou_2023-06-04",
   "source": "GeoQA-9370",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在▱ABCD中,AB=6,AD=9,∠BAD的平分线交DC的延长线于点E,CE的长为()",
-  "problem_text_en": "As shown in the figure, in ▱ABCD, AB = N_0, AD = N_1, the bisector of ∠BAD intersects the extended line of DC at point E, and the length of CE is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AB=6，AD=9，AF是∠DAB的角平分线，AD和BC是▱ABCD的一组对边。求直线CE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=6, AD=9, AF bisects ∠DAB, BA and CD are opposite sides of the ▱ ABCD. Find the length of line CE.",
   "problem_img": "6477.png",
   "construction_cdl": [
     "Shape(AB,BF,FA)",
@@ -15,10 +15,10 @@
     "Collinear(ECD)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
     "Equal(LengthOfLine(AB),6)",
     "Equal(LengthOfLine(AD),9)",
-    "IsBisectorOfAngle(AF,DAB)"
+    "IsBisectorOfAngle(AF,DAB)",
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(CE))",
@@ -34,7 +34,14 @@
     "vertical_angle(1,BFA,CFE)",
     "isosceles_triangle_judgment_angle_equal(1,CFE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,CB,DA,F)",
+      "parallelogram_property_opposite_line_equal(1,BCDA)",
+      "line_addition(1,BF,FC)",
+      "parallel_property_collinear_extend(2,DC,AB,E)",
+      "vertical_angle(1,BFA,CFE)"
+    ],
     "parallel_property_collinear_extend(3,CB,DA,F)": [
       "parallel_property_alternate_interior_angle(1,AD,BF)"
     ],
@@ -50,13 +57,6 @@
     ],
     "vertical_angle(1,BFA,CFE)": [
       "isosceles_triangle_judgment_angle_equal(1,CFE)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,CB,DA,F)",
-      "parallelogram_property_opposite_line_equal(1,BCDA)",
-      "line_addition(1,BF,FC)",
-      "parallel_property_collinear_extend(2,DC,AB,E)",
-      "vertical_angle(1,BFA,CFE)"
     ]
   }
 }

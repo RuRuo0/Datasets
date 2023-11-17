@@ -2,9 +2,9 @@
   "problem_id": 2741,
   "annotation": "FangzhenZhu_2023-04-09",
   "source": "Geometry3k-2888",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AD=10，BC=15，BD=CD，EG=x，FG=HG，FH=12，∠ABC=∠GHE，∠EFG=∠BCA。求x的值。",
+  "problem_text_en": "As shown in the diagram, AD=10, BC=15, BD=CD, EG=x, FG=HG, FH=12, ∠ABC=∠GHE, ∠EFG=∠BCA. Find the value of x.",
   "problem_img": "2741.png",
   "construction_cdl": [
     "Shape(EF,FG,GE)",
@@ -14,7 +14,16 @@
     "Collinear(FGH)",
     "Collinear(BDC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AD),10)",
+    "Equal(LengthOfLine(BC),15)",
+    "Equal(LengthOfLine(BD),LengthOfLine(CD))",
+    "Equal(LengthOfLine(EG),x)",
+    "Equal(LengthOfLine(FG),LengthOfLine(HG))",
+    "Equal(LengthOfLine(FH),12)",
+    "Equal(MeasureOfAngle(ABC),MeasureOfAngle(GHE))",
+    "Equal(MeasureOfAngle(EFG),MeasureOfAngle(BCA))"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AD),10)",
     "Equal(LengthOfLine(FH),12)",
@@ -37,7 +46,12 @@
     "mirror_similar_triangle_property_line_ratio(1,HEG,BDA)",
     "mirror_similar_triangle_property_line_ratio(1,EGH,ABD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,FG,GH)",
+      "line_addition(1,BD,DC)",
+      "mirror_similar_triangle_judgment_aa(1,EFH,ABC)"
+    ],
     "line_addition(1,FG,GH)": [
       "mirror_similar_triangle_judgment_sas(1,HEG,BDA)"
     ],
@@ -57,11 +71,6 @@
     "mirror_similar_triangle_judgment_sas(1,HEG,BDA)": [
       "mirror_similar_triangle_property_line_ratio(1,HEG,BDA)",
       "mirror_similar_triangle_property_line_ratio(1,EGH,ABD)"
-    ],
-    "START": [
-      "line_addition(1,FG,GH)",
-      "line_addition(1,BD,DC)",
-      "mirror_similar_triangle_judgment_aa(1,EFH,ABC)"
     ]
   }
 }

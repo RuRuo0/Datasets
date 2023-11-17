@@ -2,9 +2,9 @@
   "problem_id": 5063,
   "annotation": "ChengQin_2023-05-21",
   "source": "GeoQA-4829",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知△ABC∽△DEB,BE=3,CE=2,则\\frac{ED}{AB}的值为()",
-  "problem_text_en": "As shown in the figure, it is known that △ABC ∽ △DEB, BE = N_0, CE = N_1, then the value of \\frac EDAB is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，BE=3，CE=2，三角形ABC与三角形DEB是相似三角形。求直线ED的长度与直线AB的长度之比。",
+  "problem_text_en": "As shown in the diagram, BE=3, CE=2, triangle ABC is similar to triangle DEB.. Find the ratio of the length of line ED to the length of line AB.",
   "problem_img": "5063.png",
   "construction_cdl": [
     "Shape(AB,BE,EC,CA)",
@@ -12,9 +12,9 @@
     "Collinear(BEC)"
   ],
   "text_cdl": [
-    "SimilarBetweenTriangle(ABC,DEB)",
     "Equal(LengthOfLine(BE),3)",
-    "Equal(LengthOfLine(CE),2)"
+    "Equal(LengthOfLine(CE),2)",
+    "SimilarBetweenTriangle(ABC,DEB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Div(LengthOfLine(ED),LengthOfLine(AB)))",
@@ -24,7 +24,7 @@
     "similar_triangle_property_line_ratio(1,ABC,DEB)",
     "similar_triangle_property_line_ratio(1,CAB,BDE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,BE,EC)",
       "similar_triangle_property_line_ratio(1,ABC,DEB)",

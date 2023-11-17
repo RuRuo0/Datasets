@@ -2,9 +2,9 @@
   "problem_id": 659,
   "annotation": "YimingHe_2023-03-12",
   "source": "Geometry3k-676",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\triangle E D F, T is the centroid and F T = 12. Find T Q.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AF=EA，CF=DC，FT=12，QD=EQ。求直线TQ的长度。",
+  "problem_text_en": "As shown in the diagram, AF=EA, CF=DC, FT=12, QD=EQ. Find the length of line TQ.",
   "problem_img": "659.png",
   "construction_cdl": [
     "Shape(FA,AT,TF)",
@@ -20,7 +20,12 @@
     "Collinear(EQD)",
     "Collinear(ATD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AF),LengthOfLine(EA))",
+    "Equal(LengthOfLine(CF),LengthOfLine(DC))",
+    "Equal(LengthOfLine(FT),12)",
+    "Equal(LengthOfLine(QD),LengthOfLine(EQ))"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(FT),12)",
     "Equal(LengthOfLine(AF),LengthOfLine(EA))",
@@ -35,7 +40,11 @@
     "centroid_of_triangle_judgment_intersection(1,T,EDF,Q,A)",
     "centroid_of_triangle_property_line_ratio(1,T,FED,Q)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "median_of_triangle_judgment(1,DA,DFE)",
+      "median_of_triangle_judgment(1,FQ,FED)"
+    ],
     "median_of_triangle_judgment(1,DA,DFE)": [
       "centroid_of_triangle_judgment_intersection(1,T,EDF,Q,A)"
     ],
@@ -44,10 +53,6 @@
     ],
     "centroid_of_triangle_judgment_intersection(1,T,EDF,Q,A)": [
       "centroid_of_triangle_property_line_ratio(1,T,FED,Q)"
-    ],
-    "START": [
-      "median_of_triangle_judgment(1,DA,DFE)",
-      "median_of_triangle_judgment(1,FQ,FED)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 3516,
   "annotation": "XiaokaiZhang_2023-04-30",
   "source": "GeoQA-1129",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点A在直线BG上,AD∥BC,AE平分∠GAD,若∠CBA=80°,则∠GAE=()",
-  "problem_text_en": "As shown in the figure, point A is on the straight line BG, AD ∥ BC, AE equally bisect ∠GAD, if ∠CBA = N_0, then ∠GAE = ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠ABC=80°，AE平分∠DAG，DA平行于BC。求∠EAG的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABC=80°, AE is the angle bisector of ∠DAG, DA∥BC. Find the measure of ∠EAG.",
   "problem_img": "3516.png",
   "construction_cdl": [
     "Shape(EA,AG)",
@@ -14,9 +14,9 @@
     "Collinear(GAB)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(DA,BC)",
+    "Equal(MeasureOfAngle(ABC),80)",
     "IsBisectorOfAngle(AE,DAG)",
-    "Equal(MeasureOfAngle(ABC),80)"
+    "ParallelBetweenLine(DA,BC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(EAG))",
@@ -26,7 +26,7 @@
     "adjacent_complementary_angle(1,BAD,DAG)",
     "angle_addition(1,DAE,EAG)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_alternate_interior_angle(2,DA,BC)",
       "adjacent_complementary_angle(1,BAD,DAG)",

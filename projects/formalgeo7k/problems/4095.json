@@ -2,9 +2,9 @@
   "problem_id": 4095,
   "annotation": "YanjunGuo_2023-05-07",
   "source": "GeoQA-2476",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点A、B、C、D、E都是⊙O上的点,⁀{AB}=⁀{CD},⁀{BC}=⁀{DE},∠D=128°,则∠B的度数为()",
-  "problem_text_en": "As shown in the figure, vertices A, B, C, D, and E are all vertices on ⊙O, ⁀AB = ⁀CD, ⁀BC = ⁀DE, ∠D = N_0, then the degree of ∠B is ()",
+  "problem_level": 12,
+  "problem_text_cn": "如图所示，AB=CD，BC=DE，∠CDE=128°。求∠ABC的大小。",
+  "problem_text_en": "As shown in the diagram, AB=CD, BC=DE, ∠CDE=128°. Find the measure of ∠ABC.",
   "problem_img": "4095.png",
   "construction_cdl": [
     "Shape(CB,OBC)",
@@ -37,7 +37,17 @@
     "arc_property_circumference_angle_external(1,OCA,B)",
     "arc_property_circumference_angle_external(1,OEC,D)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "congruent_arc_judgment_chord_equal(1,OAB,OCD)",
+      "congruent_arc_judgment_chord_equal(1,OBC,ODE)",
+      "arc_addition_length(1,OEA,OAB)",
+      "arc_addition_length(1,OEB,OBC)",
+      "arc_addition_length(1,OCD,ODE)",
+      "arc_addition_length(1,OCE,OEA)",
+      "arc_property_circumference_angle_external(1,OCA,B)",
+      "arc_property_circumference_angle_external(1,OEC,D)"
+    ],
     "congruent_arc_judgment_chord_equal(1,OAB,OCD)": [
       "congruent_arc_property_length_equal(1,OAB,OCD)"
     ],
@@ -64,16 +74,6 @@
     ],
     "congruent_arc_judgment_length_equal(1,OCA,OEC)": [
       "congruent_arc_property_measure_equal(1,OCA,OEC)"
-    ],
-    "START": [
-      "congruent_arc_judgment_chord_equal(1,OAB,OCD)",
-      "congruent_arc_judgment_chord_equal(1,OBC,ODE)",
-      "arc_addition_length(1,OEA,OAB)",
-      "arc_addition_length(1,OEB,OBC)",
-      "arc_addition_length(1,OCD,ODE)",
-      "arc_addition_length(1,OCE,OEA)",
-      "arc_property_circumference_angle_external(1,OCA,B)",
-      "arc_property_circumference_angle_external(1,OEC,D)"
     ]
   }
 }

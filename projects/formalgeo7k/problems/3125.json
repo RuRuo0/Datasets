@@ -2,9 +2,9 @@
   "problem_id": 3125,
   "annotation": "YimingHe_2023-04-23",
   "source": "GeoQA-377",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB∥CD,CP交AB于O,AO=PO,若∠C=50°,则∠A的度数为()",
-  "problem_text_en": "As shown in the figure, AB ∥ CD, CP intersects AB at O, AO = PO, if ∠C = N_0, then the degree of ∠A is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AO=PO，∠OCD=50°，AB∥CD。求∠PAO的大小。",
+  "problem_text_en": "As shown in the diagram, AO=PO, ∠OCD=50°, AB∥CD. Find the measure of ∠PAO.",
   "problem_img": "3125.png",
   "construction_cdl": [
     "Shape(AO,OP,PA)",
@@ -16,9 +16,9 @@
     "Collinear(POC)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AB,CD)",
+    "Equal(LengthOfLine(AO),LengthOfLine(PO))",
     "Equal(MeasureOfAngle(OCD),50)",
-    "Equal(LengthOfLine(AO),LengthOfLine(PO))"
+    "ParallelBetweenLine(AB,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(PAO))",
@@ -31,18 +31,18 @@
     "isosceles_triangle_property_angle_equal(1,OPA)",
     "triangle_property_angle_sum(1,AOP)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,AB,CD,O)": [
-      "parallel_property_ipsilateral_internal_angle(1,OB,CD)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,OPA)": [
-      "isosceles_triangle_property_angle_equal(1,OPA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_collinear_extend(3,AB,CD,O)",
       "vertical_angle(1,AOP,BOC)",
       "isosceles_triangle_judgment_line_equal(1,OPA)",
       "triangle_property_angle_sum(1,AOP)"
+    ],
+    "parallel_property_collinear_extend(3,AB,CD,O)": [
+      "parallel_property_ipsilateral_internal_angle(1,OB,CD)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,OPA)": [
+      "isosceles_triangle_property_angle_equal(1,OPA)"
     ]
   }
 }

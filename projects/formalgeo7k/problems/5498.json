@@ -2,9 +2,9 @@
   "problem_id": 5498,
   "annotation": "ChenyangMao_2023-05-21",
   "source": "GeoQA-5955",
-  "problem_level": 1,
-  "problem_text_cn": "如图,四边形ABCD中,AC⊥BC,AD∥BC,BC=3,AC=4,AD=6．M是BD的中点,则CM的长为()",
-  "problem_text_en": "As shown in the figure, in the quadrilateral ABCD, AC ⊥ BC, AD ∥ BC, BC = N_0, AC = N_1, AD = N_2. M is the midpoint of BD, then the length of CM is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AC=4，AD=6，BC=3，M平分线段BD，BA和ED是平行四边形ABED的一组对边，BC垂直于AC。求直线CM的长度。",
+  "problem_text_en": "As shown in the diagram, AC=4, AD=6, BC=3, M bisects segment BD, BA and ED are opposite sides of the ▱ ABED, BC⊥AC. Find the length of line CM.",
   "problem_img": "5498.png",
   "construction_cdl": [
     "Shape(AB,BN,NA)",
@@ -18,12 +18,12 @@
     "Collinear(BCE)"
   ],
   "text_cdl": [
-    "Parallelogram(ABED)",
-    "PerpendicularBetweenLine(BC,AC)",
-    "IsMidpointOfLine(M,BD)",
-    "Equal(LengthOfLine(BC),3)",
     "Equal(LengthOfLine(AC),4)",
-    "Equal(LengthOfLine(AD),6)"
+    "Equal(LengthOfLine(AD),6)",
+    "Equal(LengthOfLine(BC),3)",
+    "IsMidpointOfLine(M,BD)",
+    "Parallelogram(ABED)",
+    "PerpendicularBetweenLine(BC,AC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(CM))",
@@ -37,7 +37,13 @@
     "midsegment_of_triangle_judgment_midpoint(1,CM,BED)",
     "midsegment_of_triangle_property_length(1,CM,BED)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "right_triangle_judgment_angle(1,BCA)",
+      "parallelogram_property_opposite_line_equal(1,ABED)",
+      "parallelogram_property_opposite_line_equal(1,BEDA)",
+      "line_addition(1,BC,CE)"
+    ],
     "right_triangle_judgment_angle(1,BCA)": [
       "right_triangle_property_pythagorean(1,BCA)"
     ],
@@ -49,12 +55,6 @@
     ],
     "midsegment_of_triangle_judgment_midpoint(1,CM,BED)": [
       "midsegment_of_triangle_property_length(1,CM,BED)"
-    ],
-    "START": [
-      "right_triangle_judgment_angle(1,BCA)",
-      "parallelogram_property_opposite_line_equal(1,ABED)",
-      "parallelogram_property_opposite_line_equal(1,BEDA)",
-      "line_addition(1,BC,CE)"
     ]
   }
 }

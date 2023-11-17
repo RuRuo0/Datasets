@@ -2,9 +2,9 @@
   "problem_id": 3831,
   "annotation": "YifanWang_2023-05-07",
   "source": "GeoQA-1702",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知AB、CD是⊙O的两条直径,且∠AOC=50°,过A作AE∥CD交⊙O于E,则∠AOE的度数为()",
-  "problem_text_en": "As shown in the figure, it is known that AB and CD are the two diameters of ⊙O, and ∠AOC = N_0, passing A as AE ∥ CD and intersecting ⊙O at E, then the degree of ∠AOE is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠COA=50°，圆O的圆心为O，圆O的直径为AB，CD是圆O的直径，AE平行于OD。求∠AOE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠COA=50°, O is the center of circle O, AB is the diameter of ⊙O, CD is the diameter of ⊙O, AE∥OD. Find the measure of ∠AOE.",
   "problem_img": "3831.png",
   "construction_cdl": [
     "Shape(CO,OA,OAC)",
@@ -17,7 +17,13 @@
     "Collinear(COD)",
     "Cocircular(O,CBDEA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(COA),50)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)",
+    "IsDiameterOfCircle(CD,O)",
+    "ParallelBetweenLine(AE,OD)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(CD,O)",
@@ -36,7 +42,13 @@
     "isosceles_triangle_property_angle_equal(1,OEA)",
     "triangle_property_angle_sum(1,AOE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(2,DO,EA,C)",
+      "radius_of_circle_property_length_equal(1,OE,O)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "triangle_property_angle_sum(1,AOE)"
+    ],
     "parallel_property_collinear_extend(2,DO,EA,C)": [
       "parallel_property_alternate_interior_angle(1,OC,EA)"
     ],
@@ -48,12 +60,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OEA)": [
       "isosceles_triangle_property_angle_equal(1,OEA)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(2,DO,EA,C)",
-      "radius_of_circle_property_length_equal(1,OE,O)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "triangle_property_angle_sum(1,AOE)"
     ]
   }
 }

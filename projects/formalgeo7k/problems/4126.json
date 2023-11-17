@@ -2,9 +2,9 @@
   "problem_id": 4126,
   "annotation": "QikeHuang_2023-05-07",
   "source": "GeoQA-2648",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB,CD是⊙O的弦,AB⊥CD,BE是⊙O的直径．若AC=3,则DE的长是()",
-  "problem_text_en": "As shown in the figure, AB and CD are the chords of ⊙O, and AB ⊥ CD, BE are the diameters of ⊙O. If AC = N_0, then the length of DE is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AC=3，圆O的圆心为O，AP⊥DP。求直线DE的长度。",
+  "problem_text_en": "As shown in the diagram, AC=3, the center of ⊙O is O, AP⊥DP. Find the length of line DE.",
   "problem_img": "4126.png",
   "construction_cdl": [
     "Shape(OAC,CA)",
@@ -27,9 +27,9 @@
     "Cocircular(O,ACBDE)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AC),3)",
     "IsCentreOfCircle(O,O)",
-    "PerpendicularBetweenLine(AP,DP)",
-    "Equal(LengthOfLine(AC),3)"
+    "PerpendicularBetweenLine(AP,DP)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(DE))",
@@ -44,7 +44,12 @@
     "congruent_arc_judgment_measure_equal(1,OAC,ODE)",
     "congruent_arc_property_chord_equal(1,OAC,ODE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "diameter_of_circle_judgment_pass_centre(1,BOE,O)",
+      "arc_property_circumference_angle_external(1,OAC,D)",
+      "arc_property_circumference_angle_external(1,ODE,A)"
+    ],
     "diameter_of_circle_judgment_pass_centre(1,BOE,O)": [
       "diameter_of_circle_property_right_angle(1,EAB,O)"
     ],
@@ -65,11 +70,6 @@
     ],
     "congruent_arc_judgment_measure_equal(1,OAC,ODE)": [
       "congruent_arc_property_chord_equal(1,OAC,ODE)"
-    ],
-    "START": [
-      "diameter_of_circle_judgment_pass_centre(1,BOE,O)",
-      "arc_property_circumference_angle_external(1,OAC,D)",
-      "arc_property_circumference_angle_external(1,ODE,A)"
     ]
   }
 }

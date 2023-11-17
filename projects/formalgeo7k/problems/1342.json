@@ -2,9 +2,9 @@
   "problem_id": 1342,
   "annotation": "FangzhenZhu_2023-04-09",
   "source": "Geometry3k-1390",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure, m \\angle 12 = 64. Find the measure of \\angle 3.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠UEN=64°，AK∥WJ，IL∥BN。求∠DUA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠UEN=64°, AK∥WJ, IL is parallel to BN. Find the measure of ∠DUA.",
   "problem_img": "1342.png",
   "construction_cdl": [
     "Shape(WD,DI)",
@@ -17,7 +17,11 @@
     "Collinear(WDHJ)",
     "Collinear(AUEK)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(UEN),64)",
+    "ParallelBetweenLine(AK,WJ)",
+    "ParallelBetweenLine(IL,BN)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(UEN),64)",
     "ParallelBetweenLine(AK,WJ)",
@@ -31,16 +35,16 @@
     "parallel_property_corresponding_angle(1,UL,EN,A)",
     "adjacent_complementary_angle(1,DUA,AUL)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,IL,BN,U)",
+      "adjacent_complementary_angle(1,DUA,AUL)"
+    ],
     "parallel_property_collinear_extend(3,IL,BN,U)": [
       "parallel_property_collinear_extend(3,NB,LU,E)"
     ],
     "parallel_property_collinear_extend(3,NB,LU,E)": [
       "parallel_property_corresponding_angle(1,UL,EN,A)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,IL,BN,U)",
-      "adjacent_complementary_angle(1,DUA,AUL)"
     ]
   }
 }

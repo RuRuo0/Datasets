@@ -2,16 +2,23 @@
   "problem_id": 1950,
   "annotation": "JiaZou_2023-03-26",
   "source": "Geometry3k-2029",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AC=10，AD=x，BD=y，CD=4，BD垂直于AD，CA⊥BA。求x的值。",
+  "problem_text_en": "As shown in the diagram, AC=10, AD=x, BD=y, CD=4, BD⊥AD, CA is perpendicular to BA. Find the value of x.",
   "problem_img": "1950.png",
   "construction_cdl": [
     "Shape(AB,BD,DA)",
     "Shape(AD,DC,CA)",
     "Collinear(BDC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),10)",
+    "Equal(LengthOfLine(AD),x)",
+    "Equal(LengthOfLine(BD),y)",
+    "Equal(LengthOfLine(CD),4)",
+    "PerpendicularBetweenLine(BD,AD)",
+    "PerpendicularBetweenLine(CA,BA)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AC),10)",
     "Equal(LengthOfLine(AD),x)",
@@ -27,15 +34,15 @@
     "right_triangle_judgment_angle(1,ADC)",
     "right_triangle_property_pythagorean(1,ADC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,BDA,ADC)"
+    ],
     "adjacent_complementary_angle(1,BDA,ADC)": [
       "right_triangle_judgment_angle(1,ADC)"
     ],
     "right_triangle_judgment_angle(1,ADC)": [
       "right_triangle_property_pythagorean(1,ADC)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,BDA,ADC)"
     ]
   }
 }

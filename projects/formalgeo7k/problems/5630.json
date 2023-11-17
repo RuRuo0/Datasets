@@ -2,9 +2,9 @@
   "problem_id": 5630,
   "annotation": "JiaZou_2023-05-28",
   "source": "GeoQA-7245",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,∠ADE=∠B,DE=8,BC=10,BD=1.5,则AB的长为()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠ADE = ∠B, DE = N_0, BC = N_1, BD = N_2, then the length of AB is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，BC=10，BD=3/2，DE=8，∠ADE=∠ABC。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, BC=10, BD=3/2, DE=8, ∠ADE=∠ABC. Find the length of line AB.",
   "problem_img": "5630.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -13,9 +13,9 @@
     "Collinear(AEC)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(DE),8)",
     "Equal(LengthOfLine(BC),10)",
     "Equal(LengthOfLine(BD),3/2)",
+    "Equal(LengthOfLine(DE),8)",
     "Equal(MeasureOfAngle(ADE),MeasureOfAngle(ABC))"
   ],
   "image_cdl": [],
@@ -27,14 +27,14 @@
     "similar_triangle_property_line_ratio(1,EAD,CAB)",
     "similar_triangle_property_line_ratio(1,ADE,ABC)"
   ],
-  "theorem_seq_dag": {
-    "similar_triangle_judgment_aa(1,EAD,CAB)": [
-      "similar_triangle_property_line_ratio(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AD,DB)",
       "similar_triangle_judgment_aa(1,EAD,CAB)"
+    ],
+    "similar_triangle_judgment_aa(1,EAD,CAB)": [
+      "similar_triangle_property_line_ratio(1,EAD,CAB)",
+      "similar_triangle_property_line_ratio(1,ADE,ABC)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 6040,
   "annotation": "ChenyangMao_2023-05-28",
   "source": "GeoQA-8537",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在⊙O中,OD⊥BC,∠BOD=50°,则∠CAD的度数等于()",
-  "problem_text_en": "As shown in the figure, in ⊙O, OD ⊥ BC, ∠BOD = N_0, then the degree of ∠CAD is equal to ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠DOB=50°，O是圆O的圆心，BE⊥OE。求∠CAD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DOB=50°, the center of ⊙O is O, BE⊥OE. Find the measure of ∠CAD.",
   "problem_img": "6040.png",
   "construction_cdl": [
     "Shape(OAB,OBD,DA)",
@@ -19,9 +19,9 @@
     "Cocircular(O,ABDC)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(DOB),50)",
     "IsCentreOfCircle(O,O)",
-    "PerpendicularBetweenLine(BE,OE)",
-    "Equal(MeasureOfAngle(DOB),50)"
+    "PerpendicularBetweenLine(BE,OE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CAD))",
@@ -33,17 +33,17 @@
     "arc_property_center_angle(1,OBD,O)",
     "arc_property_circumference_angle_external(1,ODC,A)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "circle_property_chord_perpendicular_bisect_arc(1,OBC,OED)",
+      "arc_property_center_angle(1,OBD,O)",
+      "arc_property_circumference_angle_external(1,ODC,A)"
+    ],
     "circle_property_chord_perpendicular_bisect_arc(1,OBC,OED)": [
       "congruent_arc_judgment_length_equal(1,OBD,ODC)"
     ],
     "congruent_arc_judgment_length_equal(1,OBD,ODC)": [
       "congruent_arc_property_measure_equal(1,OBD,ODC)"
-    ],
-    "START": [
-      "circle_property_chord_perpendicular_bisect_arc(1,OBC,OED)",
-      "arc_property_center_angle(1,OBD,O)",
-      "arc_property_circumference_angle_external(1,ODC,A)"
     ]
   }
 }

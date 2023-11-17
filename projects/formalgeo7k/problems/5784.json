@@ -2,9 +2,9 @@
   "problem_id": 5784,
   "annotation": "YanjunGuo_2023-05-28",
   "source": "GeoQA-7693",
-  "problem_level": 1,
-  "problem_text_cn": "如图,平行四边形ABCD中,E为AB中点,F为AD上一点,EF交AC于点G,AF=3cm,DF=6cm,AG=4cm,则AC的长为()",
-  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, E is the midpoint of AB, F is the point on AD, EF intersects AC at point G, AF = N_0, DF = N_1, AG = N_2, then the length of AC is ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，Div(LengthOfLine(EO)=LengthOfLine(AD))，AF=3，AG=4，DF=6，E平分线段AB，AF平行于EO，四边形ABCD是平行四边形。求直线AC的长度。",
+  "problem_text_en": "As shown in the diagram, Div(LengthOfLine(EO)=LengthOfLine(AD)), AF=3, AG=4, DF=6, E bisects segment AB, AF∥EO, ABCD is a ▱. Find the length of line AC.",
   "problem_img": "5784.png",
   "construction_cdl": [
     "Shape(DF,FG,GO,OC,CD)",
@@ -18,13 +18,13 @@
     "Collinear(AGOC)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(AF),3)",
-    "Equal(LengthOfLine(DF),6)",
-    "Equal(LengthOfLine(AG),4)",
     "Equal(Div(LengthOfLine(EO),LengthOfLine(AD)),1/2)",
+    "Equal(LengthOfLine(AF),3)",
+    "Equal(LengthOfLine(AG),4)",
+    "Equal(LengthOfLine(DF),6)",
     "IsMidpointOfLine(E,AB)",
-    "Parallelogram(ABCD)",
-    "ParallelBetweenLine(AF,EO)"
+    "ParallelBetweenLine(AF,EO)",
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AC))",
@@ -42,7 +42,14 @@
     "similar_triangle_property_line_ratio(1,DAC,EOA)",
     "similar_triangle_property_line_ratio(1,CDA,AEO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,DF,FA)",
+      "line_addition(1,AG,GO)",
+      "parallel_property_alternate_interior_angle(1,AF,EO)",
+      "parallel_property_alternate_interior_angle(2,AF,EO)",
+      "parallel_property_alternate_interior_angle(2,BA,CD)"
+    ],
     "parallel_property_alternate_interior_angle(1,AF,EO)": [
       "similar_triangle_judgment_aa(1,GFA,GEO)",
       "similar_triangle_judgment_aa(1,DAC,EOA)"
@@ -60,13 +67,6 @@
     "similar_triangle_judgment_aa(1,DAC,EOA)": [
       "similar_triangle_property_line_ratio(1,DAC,EOA)",
       "similar_triangle_property_line_ratio(1,CDA,AEO)"
-    ],
-    "START": [
-      "line_addition(1,DF,FA)",
-      "line_addition(1,AG,GO)",
-      "parallel_property_alternate_interior_angle(1,AF,EO)",
-      "parallel_property_alternate_interior_angle(2,AF,EO)",
-      "parallel_property_alternate_interior_angle(2,BA,CD)"
     ]
   }
 }

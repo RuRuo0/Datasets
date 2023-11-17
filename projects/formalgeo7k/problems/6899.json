@@ -2,9 +2,9 @@
   "problem_id": 6899,
   "annotation": "ZheZhu_2023-06-04",
   "source": "GeoQA-angle-10133",
-  "problem_level": 1,
-  "problem_text_cn": "如图，△ABC内接于⊙O，AB＝AC，连接BO并延长交AC于点D，若∠A＝50°，则∠BDC的度数为（）",
-  "problem_text_en": "",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AB=AC，∠CAB=50°，⊙O的圆心为O，⊙O的直径为BE。求∠CDB的大小。",
+  "problem_text_en": "As shown in the diagram, AB=AC, ∠CAB=50°, O is the center of circle O, the diameter of circle O is BE. Find the measure of ∠CDB.",
   "problem_img": "6899.png",
   "construction_cdl": [
     "Shape(AB,BO,OD,DA)",
@@ -15,10 +15,10 @@
     "Cocircular(O,ABCE)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(BE,O)",
     "Equal(LengthOfLine(AB),LengthOfLine(AC))",
-    "Equal(MeasureOfAngle(CAB),50)"
+    "Equal(MeasureOfAngle(CAB),50)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(BE,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CDB))",
@@ -33,10 +33,7 @@
     "arc_property_circumference_angle_external(1,OBC,E)",
     "diameter_of_circle_property_right_angle(1,BCE,O)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,ABC)": [
-      "isosceles_triangle_property_angle_equal(1,ABC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,ABC)",
       "triangle_property_angle_sum(1,DBC)",
@@ -45,6 +42,9 @@
       "arc_property_circumference_angle_external(1,OBC,A)",
       "arc_property_circumference_angle_external(1,OBC,E)",
       "diameter_of_circle_property_right_angle(1,BCE,O)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,ABC)": [
+      "isosceles_triangle_property_angle_equal(1,ABC)"
     ]
   }
 }

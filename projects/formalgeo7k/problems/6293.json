@@ -2,9 +2,9 @@
   "problem_id": 6293,
   "annotation": "ZheZhu_2023-05-28",
   "source": "GeoQA-9000",
-  "problem_level": 1,
-  "problem_text_cn": "正方形ABCD的边长AD=8cm,AE=FC=1cm,那么EF的长是()",
-  "problem_text_en": "The side length of the square ABCD AD = N_0, AE = FC = N_1, then the length of EF is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=8，AE=1，AE=GF，AG=EF，FC=1，AE平行于GF，EF平行于AG，ABCD是正方形。求直线EF的长度。",
+  "problem_text_en": "As shown in the diagram, AB=8, AE=1, AE=GF, AG=EF, FC=1, AE is parallel to GF, EF is parallel to AG, ABCD is a square. Find the length of line EF.",
   "problem_img": "6293.png",
   "construction_cdl": [
     "Shape(AE,EF,FG,GA)",
@@ -14,14 +14,14 @@
     "Collinear(DGFC)"
   ],
   "text_cdl": [
-    "Square(ABCD)",
-    "Equal(LengthOfLine(AE),1)",
-    "Equal(LengthOfLine(FC),1)",
     "Equal(LengthOfLine(AB),8)",
+    "Equal(LengthOfLine(AE),1)",
     "Equal(LengthOfLine(AE),LengthOfLine(GF))",
     "Equal(LengthOfLine(AG),LengthOfLine(EF))",
+    "Equal(LengthOfLine(FC),1)",
     "ParallelBetweenLine(AE,GF)",
-    "ParallelBetweenLine(EF,AG)"
+    "ParallelBetweenLine(EF,AG)",
+    "Square(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(EF))",
@@ -32,14 +32,14 @@
     "right_triangle_judgment_angle(1,GDA)",
     "right_triangle_property_pythagorean(1,GDA)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,GDA)": [
-      "right_triangle_property_pythagorean(1,GDA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,DG,GC)",
       "line_addition(1,GF,FC)",
       "right_triangle_judgment_angle(1,GDA)"
+    ],
+    "right_triangle_judgment_angle(1,GDA)": [
+      "right_triangle_property_pythagorean(1,GDA)"
     ]
   }
 }

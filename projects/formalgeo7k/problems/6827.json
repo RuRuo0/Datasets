@@ -2,9 +2,9 @@
   "problem_id": 6827,
   "annotation": "ChenyangMao_2023-06-04",
   "source": "GeoQA-angle-10042",
-  "problem_level": 1,
-  "problem_text_cn": "如图，在▱ABCD中，AB＝BD，点E在BD上，CE＝CB．如果∠ADB＝65°，那么∠DCE等于（）",
-  "problem_text_en": "",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AB=BD，CE=CB，∠BDA=65°，BA和CD是平行四边形ABCD的一组对边。求∠ECD的大小。",
+  "problem_text_en": "As shown in the diagram, AB=BD, CE=CB, ∠BDA=65°, ABCD is a ▱. Find the measure of ∠ECD.",
   "problem_img": "6827.png",
   "construction_cdl": [
     "Shape(AB,BE,ED,DA)",
@@ -13,10 +13,10 @@
     "Collinear(DEB)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
     "Equal(LengthOfLine(AB),LengthOfLine(BD))",
     "Equal(LengthOfLine(CE),LengthOfLine(CB))",
-    "Equal(MeasureOfAngle(BDA),65)"
+    "Equal(MeasureOfAngle(BDA),65)",
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ECD))",
@@ -32,13 +32,7 @@
     "parallel_property_ipsilateral_internal_angle(1,BA,CD)",
     "triangle_property_angle_sum(1,CEB)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,BDA)": [
-      "isosceles_triangle_property_angle_equal(1,BDA)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,CEB)": [
-      "isosceles_triangle_property_angle_equal(1,CEB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_alternate_interior_angle(2,AD,BC)",
       "isosceles_triangle_judgment_line_equal(1,BDA)",
@@ -47,6 +41,12 @@
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "parallel_property_ipsilateral_internal_angle(1,BA,CD)",
       "triangle_property_angle_sum(1,CEB)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,BDA)": [
+      "isosceles_triangle_property_angle_equal(1,BDA)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,CEB)": [
+      "isosceles_triangle_property_angle_equal(1,CEB)"
     ]
   }
 }

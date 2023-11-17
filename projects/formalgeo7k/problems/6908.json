@@ -2,9 +2,9 @@
   "problem_id": 6908,
   "annotation": "ZheZhu_2023-06-04",
   "source": "GeoQA-angle-10157",
-  "problem_level": 1,
-  "problem_text_cn": "如图，AB为⊙O的直径，点C在⊙O上，且CO⊥AB于点O，弦CD与AB相交于点E，若∠AEC＝64°，连接AD，则∠BAD的度数为（）",
-  "problem_text_en": "",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠CEA=64°，∠COA=90°，O是圆O的圆心，圆O的直径为AB。求∠DAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CEA=64°, ∠COA=90°, O is the center of circle O, AB is the diameter of circle O. Find the measure of ∠DAB.",
   "problem_img": "6908.png",
   "construction_cdl": [
     "Shape(DA,AO,OE,ED)",
@@ -16,10 +16,10 @@
     "Cocircular(O,ACBD)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(AB,O)",
     "Equal(MeasureOfAngle(CEA),64)",
-    "Equal(MeasureOfAngle(COA),90)"
+    "Equal(MeasureOfAngle(COA),90)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DAB))",
@@ -31,7 +31,7 @@
     "flat_angle(1,CED)",
     "angle_addition(1,CEA,AED)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,OAC,O)",
       "arc_property_circumference_angle_external(1,OAC,D)",

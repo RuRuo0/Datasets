@@ -2,9 +2,9 @@
   "problem_id": 6931,
   "annotation": "ChengQin_2023-06-04",
   "source": "GeoQA-angle-10183",
-  "problem_level": 1,
-  "problem_text_cn": "如图，⊙O中，点C为弦AB中点，连接OC，OB，∠COB＝56°，点D是AB上任意一点，则∠ADB度数为（）",
-  "problem_text_en": "",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠BOC=56°，圆O的圆心为O，C是线段AB的中点。求∠ADB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BOC=56°, O is the center of circle O, C is the midpoint of segment AB. Find the measure of ∠ADB.",
   "problem_img": "6931.png",
   "construction_cdl": [
     "Shape(OPA,AP)",
@@ -19,9 +19,9 @@
     "Cocircular(O,ADBP)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(BOC),56)",
     "IsCentreOfCircle(O,O)",
-    "IsMidpointOfLine(C,AB)",
-    "Equal(MeasureOfAngle(BOC),56)"
+    "IsMidpointOfLine(C,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ADB))",
@@ -33,15 +33,15 @@
     "arc_property_center_angle(1,OAB,O)",
     "arc_property_circumference_angle_internal(1,OAB,D)"
   ],
-  "theorem_seq_dag": {
-    "circle_property_chord_perpendicular_bisect_chord(2,O,OC,AB)": [
-      "perpendicular_bisector_property_bisector(1,OC,AB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "circle_property_chord_perpendicular_bisect_chord(2,O,OC,AB)",
       "angle_addition(1,BOC,COA)",
       "arc_property_center_angle(1,OAB,O)",
       "arc_property_circumference_angle_internal(1,OAB,D)"
+    ],
+    "circle_property_chord_perpendicular_bisect_chord(2,O,OC,AB)": [
+      "perpendicular_bisector_property_bisector(1,OC,AB)"
     ]
   }
 }

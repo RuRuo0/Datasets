@@ -2,17 +2,17 @@
   "problem_id": 5241,
   "annotation": "XiaokaiZhang_2023-05-21",
   "source": "GeoQA-5319",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知∠1=40°,∠A+∠B=140°,则∠C+∠D的度数为()",
-  "problem_text_en": "As shown in the figure, it is known that ∠1 = N_0, ∠A + ∠B = N_1, then the degree of ∠C + ∠D is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，Add(MeasureOfAngle(DAB)=MeasureOfAngle(ABC))，∠DEC=40°。求∠EDA的大小与∠BCE的大小之和。",
+  "problem_text_en": "As shown in the diagram, Add(MeasureOfAngle(DAB)=MeasureOfAngle(ABC)), ∠DEC=40°. Find the sum of the measure of ∠EDA and the measure of ∠BCE.",
   "problem_img": "5241.png",
   "construction_cdl": [
     "Shape(DE,EC,CD)",
     "Shape(DA,AB,BC,CE,ED)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(DEC),40)",
-    "Equal(Add(MeasureOfAngle(DAB),MeasureOfAngle(ABC)),140)"
+    "Equal(Add(MeasureOfAngle(DAB),MeasureOfAngle(ABC)),140)",
+    "Equal(MeasureOfAngle(DEC),40)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Add(MeasureOfAngle(EDA),MeasureOfAngle(BCE)))",
@@ -23,7 +23,7 @@
     "angle_addition(1,CDE,EDA)",
     "angle_addition(1,BCE,ECD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,ECD)",
       "quadrilateral_property_angle_sum(1,DABC)",

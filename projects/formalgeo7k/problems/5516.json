@@ -2,9 +2,9 @@
   "problem_id": 5516,
   "annotation": "DengfengYue_2023-05-21",
   "source": "GeoQA-5989",
-  "problem_level": 1,
-  "problem_text_cn": "在△ABC中,AB=AC,AB的中垂线交AB,AC于点D,E,△BCE的周长是8,AB=5,则△ABC的周长是()",
-  "problem_text_en": "In △ABC, AB = AC, the mid-perpendicular line of AB intersects AB, AC at points D, E, and the perimeter of △BCE is N_0, AB = N_1, then the perimeter of △ABC is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=5，AB=AC，△BCE的周长为8，ED是AB的垂直平分线。求三角形ABC的周长。",
+  "problem_text_en": "As shown in the diagram, AB=5, AB=AC, the perimeter of triangle BCE is 8, ED perpendicular bisects AB. Find the perimeter of △ABC.",
   "problem_img": "5516.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -14,10 +14,10 @@
     "Collinear(AEC)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(AB),LengthOfLine(AC))",
     "Equal(LengthOfLine(AB),5)",
-    "IsPerpendicularBisectorOfLine(ED,AB)",
-    "Equal(PerimeterOfTriangle(BCE),8)"
+    "Equal(LengthOfLine(AB),LengthOfLine(AC))",
+    "Equal(PerimeterOfTriangle(BCE),8)",
+    "IsPerpendicularBisectorOfLine(ED,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfTriangle(ABC))",
@@ -28,7 +28,7 @@
     "triangle_perimeter_formula(1,ABC)",
     "line_addition(1,AE,EC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "perpendicular_bisector_property_distance_equal(1,ED,AB)",
       "triangle_perimeter_formula(1,EBC)",

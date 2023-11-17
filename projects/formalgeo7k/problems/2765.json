@@ -2,9 +2,9 @@
   "problem_id": 2765,
   "annotation": "YiwenHuang_2023-05-07",
   "source": "Geometry3k-2912",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure, m \\angle 12 = 64. Find the measure of \\angle 7.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠AEN=64°，IL平行于RN，WJ∥AK。求∠EZD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AEN=64°, IL∥RN, WJ is parallel to AK. Find the measure of ∠EZD.",
   "problem_img": "2765.png",
   "construction_cdl": [
     "Shape(AE,EN)",
@@ -14,7 +14,11 @@
     "Collinear(WDHJ)",
     "Collinear(AZEK)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(AEN),64)",
+    "ParallelBetweenLine(IL,RN)",
+    "ParallelBetweenLine(WJ,AK)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(AEN),64)",
     "ParallelBetweenLine(WJ,AK)",
@@ -27,15 +31,15 @@
     "parallel_property_collinear_extend(3,NR,ZI,E)",
     "parallel_property_alternate_interior_angle(2,NE,ZI)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,IL,RN,Z)"
+    ],
     "parallel_property_collinear_extend(3,IL,RN,Z)": [
       "parallel_property_collinear_extend(3,NR,ZI,E)"
     ],
     "parallel_property_collinear_extend(3,NR,ZI,E)": [
       "parallel_property_alternate_interior_angle(2,NE,ZI)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,IL,RN,Z)"
     ]
   }
 }

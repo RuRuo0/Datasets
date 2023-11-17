@@ -2,9 +2,9 @@
   "problem_id": 207,
   "annotation": "XiaokaiZhang_2023-04-02",
   "source": "Geometry3k-209",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the parallelogram.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AC=16，CD=23，∠BDE=60°，BA和DC是平行四边形BDCA的一组对边，DE⊥BE。求BDCA的面积。",
+  "problem_text_en": "As shown in the diagram, AC=16, CD=23, ∠BDE=60°, quadrilateral BDCA is a parallelogram, DE is perpendicular to BE. Find the area of quadrilateral BDCA.",
   "problem_img": "207.png",
   "construction_cdl": [
     "Shape(BD,DE,EB)",
@@ -12,7 +12,11 @@
     "Collinear(DEC)"
   ],
   "text_cdl": [
-    "Parallelogram(BDCA)"
+    "Equal(LengthOfLine(AC),16)",
+    "Equal(LengthOfLine(CD),23)",
+    "Equal(MeasureOfAngle(BDE),60)",
+    "Parallelogram(BDCA)",
+    "PerpendicularBetweenLine(DE,BE)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(AC),16)",
@@ -26,7 +30,7 @@
     "parallelogram_property_opposite_line_equal(1,BDCA)",
     "parallelogram_area_formula_sine(1,BDCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_property_opposite_line_equal(1,BDCA)",
       "parallelogram_area_formula_sine(1,BDCA)"

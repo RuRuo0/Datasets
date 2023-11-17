@@ -2,9 +2,9 @@
   "problem_id": 3797,
   "annotation": "YifanWang_2023-05-07",
   "source": "GeoQA-1642",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知∠1=∠2=∠3=62°,则∠4=()",
-  "problem_text_en": "As shown in the figure, it is known that ∠1 = ∠2 = ∠3 = N_0, then ∠4 = ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠ABD=62°，∠ABD=∠CGH，∠ABD=∠FGB。求∠BCE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABD=62°, ∠ABD=∠CGH, ∠ABD=∠FGB. Find the measure of ∠BCE.",
   "problem_img": "3797.png",
   "construction_cdl": [
     "Shape(BG,GC,CB)",
@@ -18,7 +18,11 @@
     "Collinear(GCE)",
     "Collinear(FGH)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(ABD),62)",
+    "Equal(MeasureOfAngle(ABD),MeasureOfAngle(CGH))",
+    "Equal(MeasureOfAngle(ABD),MeasureOfAngle(FGB))"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(ABD),MeasureOfAngle(FGB))",
     "Equal(MeasureOfAngle(ABD),62)",
@@ -33,7 +37,11 @@
     "parallel_property_alternate_interior_angle(2,BC,GH)",
     "adjacent_complementary_angle(1,GCB,BCE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_judgment_corresponding_angle(2,GF,BA,D)",
+      "adjacent_complementary_angle(1,GCB,BCE)"
+    ],
     "parallel_judgment_corresponding_angle(2,GF,BA,D)": [
       "parallel_property_collinear_extend(1,GF,BA,H)"
     ],
@@ -42,10 +50,6 @@
     ],
     "parallel_property_collinear_extend(2,AB,GH,C)": [
       "parallel_property_alternate_interior_angle(2,BC,GH)"
-    ],
-    "START": [
-      "parallel_judgment_corresponding_angle(2,GF,BA,D)",
-      "adjacent_complementary_angle(1,GCB,BCE)"
     ]
   }
 }

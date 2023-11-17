@@ -2,9 +2,9 @@
   "problem_id": 3013,
   "annotation": "NaZhu_2023-04-16",
   "source": "GeoQA-218",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,C、D是⊙O上的两点,分别连结AC、BC、CD、OD.若∠DOB=140°,则∠ACD=()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, C and D are two points on ⊙O. Connect AC, BC, CD, and OD respectively. If ∠DOB = N_0, then ∠ACD = ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠BOD=140°，O是⊙O的圆心，⊙O的直径为BA。求∠ECA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BOD=140°, the center of ⊙O is O, the diameter of ⊙O is BA. Find the measure of ∠ECA.",
   "problem_img": "3013.png",
   "construction_cdl": [
     "Shape(OBC,CB)",
@@ -19,7 +19,9 @@
     "Cocircular(O,ADBC)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(BOD),140)"
+    "Equal(MeasureOfAngle(BOD),140)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(BA,O)"
   ],
   "image_cdl": [
     "IsDiameterOfCircle(BA,O)",
@@ -33,7 +35,7 @@
     "diameter_of_circle_property_right_angle(1,BCA,O)",
     "angle_addition(1,BCE,ECA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,ODB,O)",
       "arc_property_circumference_angle_external(1,ODB,C)",

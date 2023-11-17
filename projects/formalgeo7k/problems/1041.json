@@ -2,9 +2,9 @@
   "problem_id": 1041,
   "annotation": "QikeHuang_2023-04-09",
   "source": "Geometry3k-1074",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the shaded region. Assume that the triangle is equilateral.",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AF=4，Sub(AreaOfCircle(F)=AreaOfTriangle(ADC))，三角形ADC为等边三角形，F是⊙F的圆心。求x的值。",
+  "problem_text_en": "As shown in the diagram, AF=4, Sub(AreaOfCircle(F)=AreaOfTriangle(ADC)), triangle ADC is an equilateral triangle, the center of ⊙F is F. Find the value of x.",
   "problem_img": "1041.png",
   "construction_cdl": [
     "Shape(FAD,DA)",
@@ -15,7 +15,10 @@
     "Cocircular(F,ADC)"
   ],
   "text_cdl": [
-    "EquilateralTriangle(ADC)"
+    "Equal(LengthOfLine(AF),4)",
+    "Equal(Sub(AreaOfCircle(F),AreaOfTriangle(ADC)),x)",
+    "EquilateralTriangle(ADC)",
+    "IsCentreOfCircle(F,F)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(F,F)",
@@ -35,7 +38,7 @@
     "triangle_area_formula_sine(1,ADC)",
     "circle_area_formula(1,F)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "equilateral_triangle_property_angle(1,ADC)",
       "equilateral_triangle_property_angle(1,CAD)",

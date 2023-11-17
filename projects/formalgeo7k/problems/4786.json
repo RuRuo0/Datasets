@@ -2,9 +2,9 @@
   "problem_id": 4786,
   "annotation": "ChenyangMao_2023-05-14",
   "source": "GeoQA-4178",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB为⊙O的直径,C为⊙O外一点,过点C作⊙O的切线,切点为B,连结AC交⊙O于D,∠C=38°．点E在AB右侧的半圆上运动(不与A、B重合),则∠AED的大小是()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, C is a vertex outside of ⊙O, crossing vertex C is the tangent of ⊙O, and the tangent vertex is B, connecting AC to ⊙O and D, ∠C = N_0. vertex E moves on the semicircle on the right edge of AB (not coincident with A and B), then the size of ∠AED is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠DCB=38°，O是⊙O的圆心，圆O的直径为AB，圆O的切线为CB。求∠DEA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DCB=38°, the center of ⊙O is O, AB is the diameter of circle O, CB is the tangent to ⊙O. Find the measure of ∠DEA.",
   "problem_img": "4786.png",
   "construction_cdl": [
     "Shape(AD,DB,BO,OA)",
@@ -19,10 +19,10 @@
     "Cocircular(O,DBEA)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(DCB),38)",
     "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(CB,O)",
     "IsDiameterOfCircle(AB,O)",
-    "Equal(MeasureOfAngle(DCB),38)"
+    "IsTangentOfCircle(CB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DEA))",
@@ -35,7 +35,7 @@
     "arc_property_circumference_angle_external(1,OAD,B)",
     "arc_property_circumference_angle_external(1,OAD,E)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,ADB,O)",
       "tangent_of_circle_property_perpendicular(2,CB,O,O)",

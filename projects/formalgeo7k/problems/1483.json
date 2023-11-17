@@ -2,9 +2,9 @@
   "problem_id": 1483,
   "annotation": "QikeHuang_2023-04-16",
   "source": "Geometry3k-1538",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find J L, if K P = 4 and P M = 7.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，JK=ML，KP=4，PM=7，KL∥JM。求直线JL的长度。",
+  "problem_text_en": "As shown in the diagram, JK=ML, KP=4, PM=7, KL is parallel to JM. Find the length of line JL.",
   "problem_img": "1483.png",
   "construction_cdl": [
     "Shape(KJ,JP,PK)",
@@ -15,8 +15,10 @@
     "Collinear(JPL)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(JK),LengthOfLine(ML))",
     "Equal(LengthOfLine(KP),4)",
-    "Equal(LengthOfLine(PM),7)"
+    "Equal(LengthOfLine(PM),7)",
+    "ParallelBetweenLine(KL,JM)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(JK),LengthOfLine(ML))",
@@ -30,16 +32,16 @@
     "line_addition(1,KP,PM)",
     "isosceles_trapezoid_property_diagonal_equal(1,KJML)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "trapezoid_judgment_parallel(1,KJML)",
+      "line_addition(1,KP,PM)"
+    ],
     "trapezoid_judgment_parallel(1,KJML)": [
       "isosceles_trapezoid_judgment_line_equal(1,KJML)"
     ],
     "isosceles_trapezoid_judgment_line_equal(1,KJML)": [
       "isosceles_trapezoid_property_diagonal_equal(1,KJML)"
-    ],
-    "START": [
-      "trapezoid_judgment_parallel(1,KJML)",
-      "line_addition(1,KP,PM)"
     ]
   }
 }

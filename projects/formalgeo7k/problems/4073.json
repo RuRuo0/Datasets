@@ -2,9 +2,9 @@
   "problem_id": 4073,
   "annotation": "XiaokaiZhang_2023-05-07",
   "source": "GeoQA-2396",
-  "problem_level": 1,
-  "problem_text_cn": "如图,为了测量油桶内油面的高度,将一根细木棒自油桶边缘的小孔插入桶内,测得木棒插入部分的长为100cm,木棒上沾油部分的长为60cm,桶高为80cm,那么桶内油面的高度是()",
-  "problem_text_en": "As shown in the figure, in order to measure the height of the oil surface in the oil drum, a thin wooden stick is inserted into the barrel from the small hole on the edge of the oil drum. N_1, the height of the barrel is N_2, then the height of the oil level in the barrel is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=80，AC=100，EC=60，AB垂直于CB，AD⊥ED。求直线DB的长度。",
+  "problem_text_en": "As shown in the diagram, AB=80, AC=100, EC=60, AB⊥CB, AD is perpendicular to ED. Find the length of line DB.",
   "problem_img": "4073.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -13,11 +13,11 @@
     "Collinear(ADB)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(AD,ED)",
-    "PerpendicularBetweenLine(AB,CB)",
+    "Equal(LengthOfLine(AB),80)",
     "Equal(LengthOfLine(AC),100)",
     "Equal(LengthOfLine(EC),60)",
-    "Equal(LengthOfLine(AB),80)"
+    "PerpendicularBetweenLine(AB,CB)",
+    "PerpendicularBetweenLine(AD,ED)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(DB))",
@@ -29,15 +29,15 @@
     "line_addition(1,AE,EC)",
     "line_addition(1,AD,DB)"
   ],
-  "theorem_seq_dag": {
-    "similar_triangle_judgment_aa(1,EAD,CAB)": [
-      "similar_triangle_property_line_ratio(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,DEA,BCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "line_addition(1,AE,EC)",
       "line_addition(1,AD,DB)"
+    ],
+    "similar_triangle_judgment_aa(1,EAD,CAB)": [
+      "similar_triangle_property_line_ratio(1,EAD,CAB)",
+      "similar_triangle_property_line_ratio(1,DEA,BCA)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 3835,
   "annotation": "YifanWang_2023-05-07",
   "source": "GeoQA-1708",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知⊙C的半径为2,圆外一点O满足OC=3.5,点P为⊙C上一动点,经过点O的直线l上有两点A、B,且OA=OB,∠APB=90°,l不经过点C,则AB的最小值为()",
-  "problem_text_en": "As shown in the figure, it is known that the radius of ⊙C is N_0, a point O outside the circle satisfies OC = N_1, point P is a moving point on ⊙C, and there are two points A and B on the straight line l passing through point O, and OA = OB, ∠ APB = N_2, l does not pass through point C, then the minimum value of AB is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AO=OB，CO=7/2，圆C的半径为2，C是圆C的圆心，三角形BPA为直角三角形。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, AO=OB, CO=7/2, the radius of circle C is 2, the center of ⊙C is C, ∠BPA is the right angle of the right triangle BPA. Find the length of line AB.",
   "problem_img": "3835.png",
   "construction_cdl": [
     "Shape(AO,OP,PA)",
@@ -15,7 +15,13 @@
     "Collinear(DCPO)",
     "Cocircular(C,PD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AO),LengthOfLine(OB))",
+    "Equal(LengthOfLine(CO),7/2)",
+    "Equal(RadiusOfCircle(C),2)",
+    "IsCentreOfCircle(C,C)",
+    "RightTriangle(BPA)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(C,C)",
     "Equal(LengthOfLine(CO),7/2)",
@@ -33,16 +39,16 @@
     "median_of_triangle_judgment(1,PO,PAB)",
     "right_triangle_property_length_of_median(1,BPA,O)"
   ],
-  "theorem_seq_dag": {
-    "median_of_triangle_judgment(1,PO,PAB)": [
-      "right_triangle_property_length_of_median(1,BPA,O)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,CP,C)",
       "line_addition(1,DC,CP)",
       "line_addition(1,DC,CO)",
       "line_addition(1,DP,PO)",
       "median_of_triangle_judgment(1,PO,PAB)"
+    ],
+    "median_of_triangle_judgment(1,PO,PAB)": [
+      "right_triangle_property_length_of_median(1,BPA,O)"
     ]
   }
 }

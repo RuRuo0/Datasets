@@ -2,9 +2,9 @@
   "problem_id": 6531,
   "annotation": "NaZhu_2023-06-04",
   "source": "GeoQA-9452",
-  "problem_level": 1,
-  "problem_text_cn": "平行四边形ABCD的周长是28cm,AC与BD相交于点O,△AOB的周长比△OBC的周长大4cm,那么AB等于()",
-  "problem_text_en": "The perimeter of the parallelogram ABCD is N_0, AC and BD intersect at point O, the perimeter of △AOB is N_1 larger than the perimeter of △OBC, then AB is equal to ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，四边形ABCD的周长为28，Sub(PerimeterOfTriangle(ABO)=PerimeterOfTriangle(OBC))，四边形ABCD是平行四边形。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, the perimeter of ABCD is 28, Sub(PerimeterOfTriangle(ABO)=PerimeterOfTriangle(OBC)), BA and CD are opposite sides of the parallelogram ABCD. Find the length of line AB.",
   "problem_img": "6531.png",
   "construction_cdl": [
     "Shape(AO,OD,DA)",
@@ -15,9 +15,9 @@
     "Collinear(BOD)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
     "Equal(PerimeterOfQuadrilateral(ABCD),28)",
-    "Equal(Sub(PerimeterOfTriangle(ABO),PerimeterOfTriangle(OBC)),4)"
+    "Equal(Sub(PerimeterOfTriangle(ABO),PerimeterOfTriangle(OBC)),4)",
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -30,7 +30,7 @@
     "parallelogram_property_opposite_line_equal(1,ABCD)",
     "parallelogram_property_opposite_line_equal(1,BCDA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "quadrilateral_perimeter_formula(1,DABC)",
       "triangle_perimeter_formula(1,ABO)",

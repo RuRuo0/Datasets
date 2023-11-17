@@ -2,9 +2,9 @@
   "problem_id": 48,
   "annotation": "XiaokaiZhang_2023-04-02",
   "source": "Geometry3k-48",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y in the figure.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠EYQ=3*y+1°，∠MAQ=3*x+11°，∠YQF=4*x-5°，EF平行于YQ，QA∥YM，YQ平行于MA。求y的值。",
+  "problem_text_en": "As shown in the diagram, ∠EYQ=3*y+1°, ∠MAQ=3*x+11°, ∠YQF=4*x-5°, EF∥YQ, QA is parallel to YM, YQ∥MA. Find the value of y.",
   "problem_img": "48.png",
   "construction_cdl": [
     "Shape(EY,YQ,QF,FE)",
@@ -12,7 +12,14 @@
     "Collinear(EYM)",
     "Collinear(FQA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(EYQ),3*y+1)",
+    "Equal(MeasureOfAngle(MAQ),3*x+11)",
+    "Equal(MeasureOfAngle(YQF),4*x-5)",
+    "ParallelBetweenLine(EF,YQ)",
+    "ParallelBetweenLine(QA,YM)",
+    "ParallelBetweenLine(YQ,MA)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(YQF),4*x-5)",
     "Equal(MeasureOfAngle(EYQ),3*y+1)",
@@ -29,14 +36,14 @@
     "parallelogram_property_opposite_angle_equal(1,YMAQ)",
     "adjacent_complementary_angle(1,EYQ,QYM)"
   ],
-  "theorem_seq_dag": {
-    "parallelogram_judgment_parallel_and_parallel(1,YMAQ)": [
-      "parallelogram_property_opposite_angle_equal(1,YMAQ)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_corresponding_angle(2,AM,QY,F)",
       "parallelogram_judgment_parallel_and_parallel(1,YMAQ)",
       "adjacent_complementary_angle(1,EYQ,QYM)"
+    ],
+    "parallelogram_judgment_parallel_and_parallel(1,YMAQ)": [
+      "parallelogram_property_opposite_angle_equal(1,YMAQ)"
     ]
   }
 }

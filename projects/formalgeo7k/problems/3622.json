@@ -2,9 +2,9 @@
   "problem_id": 3622,
   "annotation": "QikeHuang_2023-04-30",
   "source": "GeoQA-1299",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知钝角三角形ABC,将△ABC绕点A按逆时针方向旋转110°得到△AB′C′,连接BB′,若AC′∥BB′,则∠CAB′的度数为()",
-  "problem_text_en": "As shown in the figure, given the obtuse triangle ABC, rotate △ABC counterclockwise around point A by N_0 to get △AB′C′, connect BB′, if AC′ ∥ BB′, then the degree of ∠CAB′ is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，三角形ABC全等于三角形ADE，∠DAB=110°，AE∥BD。求∠DAC的大小。",
+  "problem_text_en": "As shown in the diagram, triangle ABC is congruent to triangle ADE, ∠DAB=110°, AE∥BD. Find the measure of ∠DAC.",
   "problem_img": "3622.png",
   "construction_cdl": [
     "Shape(AB,BC,CA)",
@@ -29,13 +29,7 @@
     "angle_addition(1,DAC,CAB)",
     "congruent_triangle_property_angle_equal(1,ABC,ADE)"
   ],
-  "theorem_seq_dag": {
-    "congruent_triangle_property_line_equal(1,CAB,EAD)": [
-      "isosceles_triangle_judgment_line_equal(1,ABD)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,ABD)": [
-      "isosceles_triangle_property_angle_equal(1,ABD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "congruent_triangle_property_line_equal(1,CAB,EAD)",
       "triangle_property_angle_sum(1,ABD)",
@@ -43,6 +37,12 @@
       "angle_addition(1,EAD,DAB)",
       "angle_addition(1,DAC,CAB)",
       "congruent_triangle_property_angle_equal(1,ABC,ADE)"
+    ],
+    "congruent_triangle_property_line_equal(1,CAB,EAD)": [
+      "isosceles_triangle_judgment_line_equal(1,ABD)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,ABD)": [
+      "isosceles_triangle_property_angle_equal(1,ABD)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 2993,
   "annotation": "NaZhu_2023-04-16",
   "source": "GeoQA-196",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在⊙O中,弦AC∥半径OB,∠BOC=50°,则∠OAB的度数为()",
-  "problem_text_en": "As shown in the figure, in ⊙O, chord AC ∥ radius OB, ∠BOC = N_0, then the degree of ∠OAB is ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，∠BOD=50°，O是⊙O的圆心，OB平行于AC。求∠OAD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BOD=50°, the center of ⊙O is O, OB is parallel to AC. Find the measure of ∠OAD.",
   "problem_img": "2993.png",
   "construction_cdl": [
     "Shape(OBA,AO,OB)",
@@ -18,8 +18,9 @@
     "Cocircular(O,ACB)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(OB,AC)",
-    "Equal(MeasureOfAngle(BOD),50)"
+    "Equal(MeasureOfAngle(BOD),50)",
+    "IsCentreOfCircle(O,O)",
+    "ParallelBetweenLine(OB,AC)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)"
@@ -39,7 +40,16 @@
     "isosceles_triangle_property_angle_equal(1,OAB)",
     "triangle_property_angle_sum(1,OAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_alternate_interior_angle(1,OB,AC)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "triangle_property_angle_sum(1,OAC)",
+      "angle_addition(1,BOD,DOA)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "triangle_property_angle_sum(1,OAB)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OAC)",
       "isosceles_triangle_judgment_line_equal(1,OAB)"
@@ -55,15 +65,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OAB)": [
       "isosceles_triangle_property_angle_equal(1,OAB)"
-    ],
-    "START": [
-      "parallel_property_alternate_interior_angle(1,OB,AC)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "triangle_property_angle_sum(1,OAC)",
-      "angle_addition(1,BOD,DOA)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "triangle_property_angle_sum(1,OAB)"
     ]
   }
 }

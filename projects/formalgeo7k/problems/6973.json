@@ -2,9 +2,9 @@
   "problem_id": 6973,
   "annotation": "ChengQin_2023-06-04",
   "source": "GeoQA-angle-10227",
-  "problem_level": 1,
-  "problem_text_cn": "如图，在⊙O中，弦AB与半径OC交于点D，且BC＝CD，连接AC，若∠B＝52°，则∠BAC的度数为（）",
-  "problem_text_en": "",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，BC=CD，∠CBA=52°，圆O的圆心为O。求∠BAC的大小。",
+  "problem_text_en": "As shown in the diagram, BC=CD, ∠CBA=52°, O is the center of ⊙O. Find the measure of ∠BAC.",
   "problem_img": "6973.png",
   "construction_cdl": [
     "Shape(OBA,AD,DO,OB)",
@@ -18,9 +18,9 @@
     "Cocircular(O,ACB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(BC),LengthOfLine(CD))",
-    "Equal(MeasureOfAngle(CBA),52)"
+    "Equal(MeasureOfAngle(CBA),52)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BAC))",
@@ -37,7 +37,16 @@
     "arc_property_center_angle(1,OCB,O)",
     "arc_property_circumference_angle_external(1,OCB,A)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "isosceles_triangle_judgment_line_equal(1,CBD)",
+      "triangle_property_angle_sum(1,CBD)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "triangle_property_angle_sum(1,OCB)",
+      "arc_property_center_angle(1,OCB,O)",
+      "arc_property_circumference_angle_external(1,OCB,A)"
+    ],
     "isosceles_triangle_judgment_line_equal(1,CBD)": [
       "isosceles_triangle_property_angle_equal(1,CBD)"
     ],
@@ -49,15 +58,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OCB)": [
       "isosceles_triangle_property_angle_equal(1,OCB)"
-    ],
-    "START": [
-      "isosceles_triangle_judgment_line_equal(1,CBD)",
-      "triangle_property_angle_sum(1,CBD)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "triangle_property_angle_sum(1,OCB)",
-      "arc_property_center_angle(1,OCB,O)",
-      "arc_property_circumference_angle_external(1,OCB,A)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 2648,
   "annotation": "DengfengYue_2023-04-23",
   "source": "Geometry3k-2784",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x. Assume that segments that appear to be tangent are tangent.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AD=9，CD=x，CE=6，圆A的圆心为A，CD是圆O的切线。求x的值。",
+  "problem_text_en": "As shown in the diagram, AD=9, CD=x, CE=6, A is the center of circle A, CD is the tangent to circle A. Find the value of x.",
   "problem_img": "2648.png",
   "construction_cdl": [
     "Shape(DC,CE,ADE)",
@@ -14,6 +14,10 @@
     "Cocircular(A,DE)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AD),9)",
+    "Equal(LengthOfLine(CD),x)",
+    "Equal(LengthOfLine(CE),6)",
+    "IsCentreOfCircle(A,A)",
     "IsTangentOfCircle(CD,A)"
   ],
   "image_cdl": [
@@ -32,18 +36,18 @@
     "right_triangle_judgment_angle(1,ADC)",
     "right_triangle_property_pythagorean(1,ADC)"
   ],
-  "theorem_seq_dag": {
-    "tangent_of_circle_property_perpendicular(1,CD,A,A)": [
-      "right_triangle_judgment_angle(1,ADC)"
-    ],
-    "right_triangle_judgment_angle(1,ADC)": [
-      "right_triangle_property_pythagorean(1,ADC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,AD,A)",
       "radius_of_circle_property_length_equal(1,AE,A)",
       "line_addition(1,CE,EA)",
       "tangent_of_circle_property_perpendicular(1,CD,A,A)"
+    ],
+    "tangent_of_circle_property_perpendicular(1,CD,A,A)": [
+      "right_triangle_judgment_angle(1,ADC)"
+    ],
+    "right_triangle_judgment_angle(1,ADC)": [
+      "right_triangle_property_pythagorean(1,ADC)"
     ]
   }
 }

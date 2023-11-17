@@ -2,9 +2,9 @@
   "problem_id": 2418,
   "annotation": "Yangli_2023-04-23",
   "source": "Geometry3k-2534",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "E B \\parallel D C. Find x.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AD=10，BA=x-2，BC=5，ED=4，EB∥DC。求x的值。",
+  "problem_text_en": "As shown in the diagram, AD=10, BA=x-2, BC=5, ED=4, EB is parallel to DC. Find the value of x.",
   "problem_img": "2418.png",
   "construction_cdl": [
     "Shape(AE,EB,BA)",
@@ -12,7 +12,13 @@
     "Collinear(AED)",
     "Collinear(ABC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AD),10)",
+    "Equal(LengthOfLine(BA),x-2)",
+    "Equal(LengthOfLine(BC),5)",
+    "Equal(LengthOfLine(ED),4)",
+    "ParallelBetweenLine(EB,DC)"
+  ],
   "image_cdl": [
     "ParallelBetweenLine(EB,DC)",
     "Equal(LengthOfLine(BC),5)",
@@ -30,18 +36,18 @@
     "similar_triangle_property_line_ratio(1,BAE,CAD)",
     "similar_triangle_property_line_ratio(1,EBA,DCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,EB,DC,A)",
+      "line_addition(1,AE,ED)",
+      "line_addition(1,AB,BC)"
+    ],
     "parallel_property_corresponding_angle(1,EB,DC,A)": [
       "similar_triangle_judgment_aa(1,BAE,CAD)"
     ],
     "similar_triangle_judgment_aa(1,BAE,CAD)": [
       "similar_triangle_property_line_ratio(1,BAE,CAD)",
       "similar_triangle_property_line_ratio(1,EBA,DCA)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,EB,DC,A)",
-      "line_addition(1,AE,ED)",
-      "line_addition(1,AB,BC)"
     ]
   }
 }

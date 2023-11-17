@@ -2,9 +2,9 @@
   "problem_id": 4357,
   "annotation": "ChengQin_2023-05-21",
   "source": "GeoQA-3260",
-  "problem_level": 1,
-  "problem_text_cn": "截面直径为100cm的圆形下水道横截面如图所示,水面宽60cm,则下水道中水的最大深度为()",
-  "problem_text_en": "The cross-section of a circular sewer with a cross-sectional diameter of N_0 is shown in the figure, and the water surface width is N_1, then the maximum depth of water in the sewer is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，圆O的直径为100，AB=60，O是⊙O的圆心，AC⊥OC。求直线CD的长度。",
+  "problem_text_en": "As shown in the diagram, the diameter of circle O is 100, AB=60, O is the center of ⊙O, AC is perpendicular to OC. Find the length of line CD.",
   "problem_img": "4357.png",
   "construction_cdl": [
     "Shape(OAB,BA)",
@@ -16,10 +16,10 @@
     "Cocircular(O,ABD)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "PerpendicularBetweenLine(AC,OC)",
+    "Equal(DiameterOfCircle(O),100)",
     "Equal(LengthOfLine(AB),60)",
-    "Equal(DiameterOfCircle(O),100)"
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(AC,OC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(CD))",
@@ -34,13 +34,7 @@
     "radius_of_circle_property_length_equal(1,OD,O)",
     "line_addition(1,CO,OD)"
   ],
-  "theorem_seq_dag": {
-    "circle_property_chord_perpendicular_bisect_chord(1,O,OC,AB)": [
-      "right_triangle_judgment_angle(1,OCB)"
-    ],
-    "right_triangle_judgment_angle(1,OCB)": [
-      "right_triangle_property_pythagorean(1,OCB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "circle_property_chord_perpendicular_bisect_chord(1,O,OC,AB)",
       "line_addition(1,AC,CB)",
@@ -48,6 +42,12 @@
       "radius_of_circle_property_length_equal(1,OB,O)",
       "radius_of_circle_property_length_equal(1,OD,O)",
       "line_addition(1,CO,OD)"
+    ],
+    "circle_property_chord_perpendicular_bisect_chord(1,O,OC,AB)": [
+      "right_triangle_judgment_angle(1,OCB)"
+    ],
+    "right_triangle_judgment_angle(1,OCB)": [
+      "right_triangle_property_pythagorean(1,OCB)"
     ]
   }
 }

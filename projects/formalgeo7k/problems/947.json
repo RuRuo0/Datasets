@@ -2,9 +2,9 @@
   "problem_id": 947,
   "annotation": "XiaokaiZhang_2023-03-19",
   "source": "Geometry3k-976",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "M C = 7, R M = 4, and A T = 16. Find R B.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AR=RC，AT=16，CT=TB，MC=7，RM=4，SA=SB，三角形ACB的重心为O。求直线RB的长度。",
+  "problem_text_en": "As shown in the diagram, AR=RC, AT=16, CT=TB, MC=7, RM=4, SA=SB, the centroid of △ACB is M. Find the length of line RB.",
   "problem_img": "947.png",
   "construction_cdl": [
     "Shape(AR,RM,MA)",
@@ -21,9 +21,13 @@
     "Collinear(CMS)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AR),LengthOfLine(RC))",
+    "Equal(LengthOfLine(AT),16)",
+    "Equal(LengthOfLine(CT),LengthOfLine(TB))",
     "Equal(LengthOfLine(MC),7)",
     "Equal(LengthOfLine(RM),4)",
-    "Equal(LengthOfLine(AT),16)"
+    "Equal(LengthOfLine(SA),LengthOfLine(SB))",
+    "IsCentroidOfTriangle(M,ACB)"
   ],
   "image_cdl": [
     "IsCentroidOfTriangle(M,ACB)",
@@ -39,7 +43,7 @@
     "centroid_of_triangle_property_line_ratio(1,M,BAC,R)",
     "line_addition(1,RM,MB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "centroid_of_triangle_property_line_ratio(1,M,BAC,R)",
       "line_addition(1,RM,MB)"

@@ -2,9 +2,9 @@
   "problem_id": 3659,
   "annotation": "XiaoxiaoJin_2023-04-30",
   "source": "GeoQA-1368",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知AB、AD是圆O的弦,∠ABO=30°,∠ADO=20°,则∠BAD=()",
-  "problem_text_en": "As shown in the figure, it is known that AB and AD are the chords of circle O, ∠ABO = N_0, ∠ADO = N_1, then ∠BAD = ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠ABO=30°，∠ODA=20°，O是⊙O的圆心。求∠DAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABO=30°, ∠ODA=20°, the center of ⊙O is O. Find the measure of ∠DAB.",
   "problem_img": "3659.png",
   "construction_cdl": [
     "Shape(AD,ODA)",
@@ -32,7 +32,13 @@
     "isosceles_triangle_property_angle_equal(1,OAB)",
     "angle_addition(1,DAO,OAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "radius_of_circle_property_length_equal(1,OD,O)",
+      "angle_addition(1,DAO,OAB)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,ODA)",
       "isosceles_triangle_judgment_line_equal(1,OAB)"
@@ -48,12 +54,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OAB)": [
       "isosceles_triangle_property_angle_equal(1,OAB)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "radius_of_circle_property_length_equal(1,OD,O)",
-      "angle_addition(1,DAO,OAB)"
     ]
   }
 }

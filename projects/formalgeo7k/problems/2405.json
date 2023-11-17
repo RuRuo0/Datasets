@@ -2,9 +2,9 @@
   "problem_id": 2405,
   "annotation": "RunanWang_2023-04-23",
   "source": "Geometry3k-2520",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "A B \\perp D C and G H \\perp F E. If \\triangle A C D \\sim \\triangle G E F, find A B.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，CA=4，EG=6，GH=3，AB⊥CB，GH垂直于EH，三角形ADC相似于三角形GFE。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, CA=4, EG=6, GH=3, AB⊥CB, GH⊥EH, △ADC is similar to △GFE.. Find the length of line AB.",
   "problem_img": "2405.png",
   "construction_cdl": [
     "Shape(AD,DB,BA)",
@@ -14,7 +14,14 @@
     "Collinear(DBC)",
     "Collinear(FHE)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(CA),4)",
+    "Equal(LengthOfLine(EG),6)",
+    "Equal(LengthOfLine(GH),3)",
+    "PerpendicularBetweenLine(AB,CB)",
+    "PerpendicularBetweenLine(GH,EH)",
+    "SimilarBetweenTriangle(ADC,GFE)"
+  ],
   "image_cdl": [
     "PerpendicularBetweenLine(AB,CB)",
     "PerpendicularBetweenLine(GH,EH)",
@@ -31,16 +38,16 @@
     "similar_triangle_property_line_ratio(1,BCA,HEG)",
     "similar_triangle_property_line_ratio(1,CAB,EGH)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "similar_triangle_property_angle_equal(1,CAD,EGF)"
+    ],
     "similar_triangle_property_angle_equal(1,CAD,EGF)": [
       "similar_triangle_judgment_aa(1,ABC,GHE)"
     ],
     "similar_triangle_judgment_aa(1,ABC,GHE)": [
       "similar_triangle_property_line_ratio(1,BCA,HEG)",
       "similar_triangle_property_line_ratio(1,CAB,EGH)"
-    ],
-    "START": [
-      "similar_triangle_property_angle_equal(1,CAD,EGF)"
     ]
   }
 }

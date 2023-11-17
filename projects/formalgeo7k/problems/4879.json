@@ -2,9 +2,9 @@
   "problem_id": 4879,
   "annotation": "YifanWang_2023-05-21",
   "source": "GeoQA-4401",
-  "problem_level": 1,
-  "problem_text_cn": "如图,BD是⊙O的直径,点A在BD的延长线上,AC切⊙O于点C,∠A=30°,则∠B=()",
-  "problem_text_en": "As shown in the figure, BD is the diameter of ⊙O, point A is on the extended line of BD, AC is tangent to ⊙O at point C, ∠A = N_0, then ∠B = ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠CAD=30°，O是圆O的圆心，AC是圆O的切线。求∠OBC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAD=30°, O is the center of circle O, AC is the tangent to circle O. Find the measure of ∠OBC.",
   "problem_img": "4879.png",
   "construction_cdl": [
     "Shape(BO,OD,ODB)",
@@ -16,9 +16,9 @@
     "Cocircular(O,BCD)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(CAD),30)",
     "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(AC,O)",
-    "Equal(MeasureOfAngle(CAD),30)"
+    "IsTangentOfCircle(AC,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(OBC))",
@@ -29,7 +29,7 @@
     "arc_property_center_angle(1,OCD,O)",
     "arc_property_circumference_angle_external(1,OCD,B)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(1,AC,O,O)",
       "triangle_property_angle_sum(1,OCA)",

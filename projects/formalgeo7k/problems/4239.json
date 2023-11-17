@@ -2,9 +2,9 @@
   "problem_id": 4239,
   "annotation": "ChenyangMao_2023-05-07",
   "source": "GeoQA-3014",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的弦,OA、OC是⊙O的半径,⁀{AC}=⁀{BC},∠BAO=37°,则∠AOC的度数是()度．",
-  "problem_text_en": "As shown in the figure, AB is the chord of ⊙O, OA and OC are the radius of ⊙O, ⁀AC = ⁀BC, ∠BAO = N_0, then the degree of ∠AOC is () degree.",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，弧OAC的长度与⌒OCB的长度相等，∠BAO=37°，⊙O的圆心为O。求∠COA的大小。",
+  "problem_text_en": "As shown in the diagram, the length of arc OAC is equal to the length of arc OCB, ∠BAO=37°, O is the center of circle O. Find the measure of ∠COA.",
   "problem_img": "4239.png",
   "construction_cdl": [
     "Shape(OB,BA,AO)",
@@ -14,9 +14,9 @@
     "Cocircular(O,ACB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(LengthOfArc(OAC),LengthOfArc(OCB))",
-    "Equal(MeasureOfAngle(BAO),37)"
+    "Equal(MeasureOfAngle(BAO),37)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(COA))",
@@ -34,7 +34,17 @@
     "congruent_arc_judgment_length_equal(1,OAC,OCB)",
     "congruent_arc_property_measure_equal(1,OAC,OCB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "triangle_property_angle_sum(1,OBA)",
+      "angle_addition(1,BOC,COA)",
+      "round_angle(1,AOB,BOA)",
+      "arc_property_center_angle(1,OAC,O)",
+      "arc_property_center_angle(1,OCB,O)",
+      "congruent_arc_judgment_length_equal(1,OAC,OCB)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OBA)"
     ],
@@ -46,16 +56,6 @@
     ],
     "congruent_arc_judgment_length_equal(1,OAC,OCB)": [
       "congruent_arc_property_measure_equal(1,OAC,OCB)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "triangle_property_angle_sum(1,OBA)",
-      "angle_addition(1,BOC,COA)",
-      "round_angle(1,AOB,BOA)",
-      "arc_property_center_angle(1,OAC,O)",
-      "arc_property_center_angle(1,OCB,O)",
-      "congruent_arc_judgment_length_equal(1,OAC,OCB)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 1821,
   "annotation": "ChenyangMao_2023-04-16",
   "source": "Geometry3k-1889",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Rhombus A B C D is circumscribed about \\odot P and has a perimeter of 32. Find x.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AF=3，DH=x，ADCB的周长为32，AE是圆O的切线，AF是⊙O的切线，BF是⊙O的切线，BG是⊙O的切线，圆O的切线为CG，圆O的切线为CH，⊙O的切线为DE，DH是⊙O的切线，四边形ADCB是菱形。求x的值。",
+  "problem_text_en": "As shown in the diagram, AF=3, DH=x, the perimeter of ADCB is 32, AE is the tangent to ⊙P, the tangent to circle P is AF, BF is the tangent to circle P, BG is the tangent to circle P, the tangent to circle P is CG, CH is the tangent to ⊙P, the tangent to circle P is DE, DH is the tangent to ⊙P, quadrilateral ADCB is a rhombus. Find the value of x.",
   "problem_img": "1821.png",
   "construction_cdl": [
     "Shape(PFE,FA,AE)",
@@ -19,6 +19,17 @@
     "Cocircular(P,FEHG)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AF),3)",
+    "Equal(LengthOfLine(DH),x)",
+    "Equal(PerimeterOfQuadrilateral(ADCB),32)",
+    "IsTangentOfCircle(AE,P)",
+    "IsTangentOfCircle(AF,P)",
+    "IsTangentOfCircle(BF,P)",
+    "IsTangentOfCircle(BG,P)",
+    "IsTangentOfCircle(CG,P)",
+    "IsTangentOfCircle(CH,P)",
+    "IsTangentOfCircle(DE,P)",
+    "IsTangentOfCircle(DH,P)",
     "Rhombus(ADCB)"
   ],
   "image_cdl": [
@@ -42,7 +53,7 @@
     "tangent_of_circle_property_length_equal(1,DE,DH,P)",
     "line_addition(1,AE,ED)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "quadrilateral_perimeter_formula(1,ADCB)",
       "tangent_of_circle_property_length_equal(1,AF,AE,P)",

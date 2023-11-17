@@ -2,9 +2,9 @@
   "problem_id": 5323,
   "annotation": "YanjunGuo_2023-05-21",
   "source": "GeoQA-5545",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC内接于⊙O,AB为直径,CD为弦,连接AD,若∠ADC=55°,则∠CAB的度数为()",
-  "problem_text_en": "As shown in the figure, △ABC is internally connected to ⊙O, AB is the diameter, CD is the chord. Connect AD, if ∠ADC = N_0, then the degree of ∠CAB is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠ADC=55°，⊙O的圆心为O，AB是⊙O的直径。求∠CAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ADC=55°, the center of ⊙O is O, AB is the diameter of ⊙O. Find the measure of ∠CAB.",
   "problem_img": "5323.png",
   "construction_cdl": [
     "Shape(AC,OCA)",
@@ -19,9 +19,9 @@
     "Cocircular(O,ADBC)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(ADC),55)",
     "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(AB,O)",
-    "Equal(MeasureOfAngle(ADC),55)"
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CAB))",
@@ -32,7 +32,7 @@
     "arc_property_circumference_angle_external(1,OCA,B)",
     "triangle_property_angle_sum(1,BCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,BCA,O)",
       "arc_property_circumference_angle_external(1,OCA,D)",

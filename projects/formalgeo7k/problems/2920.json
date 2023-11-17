@@ -2,9 +2,9 @@
   "problem_id": 2920,
   "annotation": "JiaZou_2023-04-16",
   "source": "GeoQA-99",
-  "problem_level": 1,
-  "problem_text_cn": "如图,要测量的A、C两点被池塘隔开,李师傅在AC外任选一点B,连接BA和BC,分别取BA和BC的中点E、F,量得E、F两点间距离等于23米,则A、C两点间的距离为()",
-  "problem_text_en": "As shown in the figure, the two vertices A and C to be measured are separated by the pond. Master Li chooses a point B outedge AC, connects BA and BC, and takes the midvertices E and F of BA and BC respectively, and then measures E and F. The distance between the two vertices is equal to N_0, then the distance between the two vertices A and C is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，EF=23，E平分线段AB，F是线段BC的中点。求直线AC的长度。",
+  "problem_text_en": "As shown in the diagram, EF=23, E bisects segment AB, F is the midpoint of segment BC. Find the length of line AC.",
   "problem_img": "2920.png",
   "construction_cdl": [
     "Shape(BF,FE,EB)",
@@ -12,7 +12,11 @@
     "Collinear(BEA)",
     "Collinear(BFC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(EF),23)",
+    "IsMidpointOfLine(E,AB)",
+    "IsMidpointOfLine(F,BC)"
+  ],
   "image_cdl": [
     "IsMidpointOfLine(E,AB)",
     "IsMidpointOfLine(F,BC)",
@@ -24,12 +28,12 @@
     "midsegment_of_triangle_judgment_midpoint(1,FE,BCA)",
     "midsegment_of_triangle_property_length(1,FE,BCA)"
   ],
-  "theorem_seq_dag": {
-    "midsegment_of_triangle_judgment_midpoint(1,FE,BCA)": [
-      "midsegment_of_triangle_property_length(1,FE,BCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "midsegment_of_triangle_judgment_midpoint(1,FE,BCA)"
+    ],
+    "midsegment_of_triangle_judgment_midpoint(1,FE,BCA)": [
+      "midsegment_of_triangle_property_length(1,FE,BCA)"
     ]
   }
 }

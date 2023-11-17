@@ -2,9 +2,9 @@
   "problem_id": 2969,
   "annotation": "NaZhu_2023-04-16",
   "source": "GeoQA-165",
-  "problem_level": 1,
-  "problem_text_cn": "如图,直线AB∥CD,Rt△DEF如图放置,∠EDF=90°,若∠1+∠F=70°,则∠2的度数为()",
-  "problem_text_en": "As shown in the figure, the straight line AB ∥ CD, Rt△DEF is placed as shown, ∠EDF = N_0, if ∠1 + ∠F = N_1, then the degree of ∠2 is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，Add(MeasureOfAngle(FQB)=MeasureOfAngle(BFQ))，∠EDP=90°，EP∥CD，QB∥CD，QB平行于EP。求∠CDE的大小。",
+  "problem_text_en": "As shown in the diagram, Add(MeasureOfAngle(FQB)=MeasureOfAngle(BFQ)), ∠EDP=90°, EP∥CD, QB∥CD, QB∥EP. Find the measure of ∠CDE.",
   "problem_img": "2969.png",
   "construction_cdl": [
     "Shape(QE,EP,PB,BQ)",
@@ -16,9 +16,11 @@
     "Collinear(FBPD)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(QB,CD)",
+    "Equal(Add(MeasureOfAngle(FQB),MeasureOfAngle(BFQ)),70)",
     "Equal(MeasureOfAngle(EDP),90)",
-    "Equal(Add(MeasureOfAngle(FQB),MeasureOfAngle(BFQ)),70)"
+    "ParallelBetweenLine(EP,CD)",
+    "ParallelBetweenLine(QB,CD)",
+    "ParallelBetweenLine(QB,EP)"
   ],
   "image_cdl": [
     "ParallelBetweenLine(QB,EP)",
@@ -32,7 +34,7 @@
     "triangle_property_angle_sum(1,FED)",
     "angle_addition(1,QEP,PED)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_corresponding_angle(1,QB,EP,F)",
       "parallel_property_alternate_interior_angle(1,EP,CD)",

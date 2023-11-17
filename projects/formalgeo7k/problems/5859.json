@@ -2,9 +2,9 @@
   "problem_id": 5859,
   "annotation": "QikeHuang_2023-05-28",
   "source": "GeoQA-7886",
-  "problem_level": 1,
-  "problem_text_cn": "某铁路路基的横断面是一个等腰梯形(如图),若腰的坡比为2:3,路基顶宽3米,高4米,则路基的下底宽为()",
-  "problem_text_en": "The cross section of a railway subgrade is an isosceles trapezoid (as shown in the figure). If the slope ratio of the waist is N_0:N_1, the top width of the subgrade is N_2, and the height is N_3, then the width of the bottom of the subgrade is ()",
+  "problem_level": 15,
+  "problem_text_cn": "如图所示，AD=3，AE=4，Tan(MeasureOfAngle(ABE))=2/3，ABCD是等腰梯形，BE垂直于AE，DF⊥CF。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, AD=3, AE=4, Tan(MeasureOfAngle(ABE))=2/3, AB and CD are the non-parallel sides of isosceles trapezoid ABCD, BE⊥AE, DF⊥CF. Find the length of line BC.",
   "problem_img": "5859.png",
   "construction_cdl": [
     "Shape(AB,BE,EA)",
@@ -13,12 +13,12 @@
     "Collinear(BEFC)"
   ],
   "text_cdl": [
-    "IsoscelesTrapezoid(ABCD)",
-    "PerpendicularBetweenLine(BE,AE)",
-    "PerpendicularBetweenLine(DF,CF)",
     "Equal(LengthOfLine(AD),3)",
     "Equal(LengthOfLine(AE),4)",
-    "Equal(Tan(MeasureOfAngle(ABE)),2/3)"
+    "Equal(Tan(MeasureOfAngle(ABE)),2/3)",
+    "IsoscelesTrapezoid(ABCD)",
+    "PerpendicularBetweenLine(BE,AE)",
+    "PerpendicularBetweenLine(DF,CF)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BC))",
@@ -40,7 +40,19 @@
     "line_addition(1,BE,EF)",
     "line_addition(1,BF,FC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "isosceles_trapezoid_property_angle_equal(1,ABCD)",
+      "adjacent_complementary_angle(1,BEA,AEF)",
+      "adjacent_complementary_angle(1,BFD,DFC)",
+      "parallel_property_collinear_extend(3,CB,DA,F)",
+      "triangle_property_angle_sum(1,ABE)",
+      "triangle_property_angle_sum(1,DFC)",
+      "sine_theorem(1,EAB)",
+      "sine_theorem(1,FCD)",
+      "line_addition(1,BE,EF)",
+      "line_addition(1,BF,FC)"
+    ],
     "adjacent_complementary_angle(1,BEA,AEF)": [
       "parallel_judgment_ipsilateral_internal_angle(1,EA,FD)"
     ],
@@ -59,18 +71,6 @@
     "parallelogram_judgment_parallel_and_parallel(1,AEFD)": [
       "parallelogram_property_opposite_line_equal(1,AEFD)",
       "parallelogram_property_opposite_line_equal(1,EFDA)"
-    ],
-    "START": [
-      "isosceles_trapezoid_property_angle_equal(1,ABCD)",
-      "adjacent_complementary_angle(1,BEA,AEF)",
-      "adjacent_complementary_angle(1,BFD,DFC)",
-      "parallel_property_collinear_extend(3,CB,DA,F)",
-      "triangle_property_angle_sum(1,ABE)",
-      "triangle_property_angle_sum(1,DFC)",
-      "sine_theorem(1,EAB)",
-      "sine_theorem(1,FCD)",
-      "line_addition(1,BE,EF)",
-      "line_addition(1,BF,FC)"
     ]
   }
 }

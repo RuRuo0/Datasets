@@ -2,9 +2,9 @@
   "problem_id": 4594,
   "annotation": "QikeHuang_2023-05-14",
   "source": "GeoQA-3751",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O是△ABC的外接圆,⊙O的半径为2,∠A=30°,则BC=()",
-  "problem_text_en": "As shown in the figure, ⊙O is the circumscribe of △ABC, the radius of ⊙O is N_0, ∠A = N_1, then BC = ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠CAB=30°，⊙O的半径为2，O是⊙O的圆心。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, ∠CAB=30°, the radius of ⊙O is 2, the center of ⊙O is O. Find the length of line BC.",
   "problem_img": "4594.png",
   "construction_cdl": [
     "Shape(OAB,BA)",
@@ -15,9 +15,9 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(CAB),30)",
     "Equal(RadiusOfCircle(O),2)",
-    "Equal(MeasureOfAngle(CAB),30)"
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BC))",
@@ -29,7 +29,7 @@
     "arc_property_center_angle(1,OBC,O)",
     "cosine_theorem(1,OBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,OB,O)",
       "radius_of_circle_property_length_equal(1,OC,O)",

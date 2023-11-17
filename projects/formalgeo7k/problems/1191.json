@@ -2,9 +2,9 @@
   "problem_id": 1191,
   "annotation": "RunanWang_2023-04-23",
   "source": "Geometry3k-1231",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In A, the radius is 14 and C D = 22. Find E B. Round to the nearest hundredth.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，CD=22，⊙A的半径为14，A是⊙A的圆心，AE垂直于DE。求直线EB的长度。",
+  "problem_text_en": "As shown in the diagram, CD=22, the radius of circle A is 14, the center of ⊙A is A, AE is perpendicular to DE. Find the length of line EB.",
   "problem_img": "1191.png",
   "construction_cdl": [
     "Shape(EC,ACB,BE)",
@@ -15,7 +15,12 @@
     "Collinear(AEB)",
     "Cocircular(A,CBD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(CD),22)",
+    "Equal(RadiusOfCircle(A),14)",
+    "IsCentreOfCircle(A,A)",
+    "PerpendicularBetweenLine(AE,DE)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(A,A)",
     "Equal(RadiusOfCircle(A),14)",
@@ -34,13 +39,7 @@
     "right_triangle_judgment_angle(1,AED)",
     "right_triangle_property_pythagorean(1,AED)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,CEA,AED)": [
-      "circle_property_chord_perpendicular_bisect_chord(1,A,AE,CD)"
-    ],
-    "right_triangle_judgment_angle(1,AED)": [
-      "right_triangle_property_pythagorean(1,AED)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,AB,A)",
       "radius_of_circle_property_length_equal(1,AD,A)",
@@ -48,6 +47,12 @@
       "line_addition(1,CE,ED)",
       "line_addition(1,AE,EB)",
       "right_triangle_judgment_angle(1,AED)"
+    ],
+    "adjacent_complementary_angle(1,CEA,AED)": [
+      "circle_property_chord_perpendicular_bisect_chord(1,A,AE,CD)"
+    ],
+    "right_triangle_judgment_angle(1,AED)": [
+      "right_triangle_property_pythagorean(1,AED)"
     ]
   }
 }

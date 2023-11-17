@@ -2,9 +2,9 @@
   "problem_id": 3020,
   "annotation": "XiaokaiZhang_2023-04-16",
   "source": "GeoQA-227",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB⊥BC,AE平分∠BAD交BC于点E,AE⊥DE,∠1+∠2=90°,M、N分别是BA、CD延长线上的点,∠EAM和∠EDN的平分线交于点F,∠F的度数为()",
-  "problem_text_en": "As shown in the figure, AB ⊥ BC, AE bisects ∠BAD crosses BC at point E, AE ⊥ DE, ∠1 + ∠2 = N_0, M and N are points on the extended lines of BA and CD respectively, and the bisectors of ∠EAM and ∠EDN intersect at point F, and the degree of ∠F is () ",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，Add(MeasureOfAngle(EAB)=MeasureOfAngle(CDE))，AE是∠DAB的角平分线，AF平分∠MAE，DF平分∠EDN，AB垂直于EB，AE垂直于DE。求∠DFA的大小。",
+  "problem_text_en": "As shown in the diagram, Add(MeasureOfAngle(EAB)=MeasureOfAngle(CDE)), AE is the angle bisector of ∠DAB, AF is the angle bisector of ∠MAE, DF bisects ∠EDN, AB⊥EB, AE⊥DE. Find the measure of ∠DFA.",
   "problem_img": "3020.png",
   "construction_cdl": [
     "Shape(MA,AF)",
@@ -18,12 +18,12 @@
     "Collinear(NDC)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(AB,EB)",
-    "IsBisectorOfAngle(AE,DAB)",
-    "PerpendicularBetweenLine(AE,DE)",
     "Equal(Add(MeasureOfAngle(EAB),MeasureOfAngle(CDE)),90)",
+    "IsBisectorOfAngle(AE,DAB)",
     "IsBisectorOfAngle(AF,MAE)",
-    "IsBisectorOfAngle(DF,EDN)"
+    "IsBisectorOfAngle(DF,EDN)",
+    "PerpendicularBetweenLine(AB,EB)",
+    "PerpendicularBetweenLine(AE,DE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DFA))",
@@ -38,7 +38,7 @@
     "triangle_property_angle_sum(1,AED)",
     "triangle_property_angle_sum(1,ADF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,MAE,EAB)",
       "adjacent_complementary_angle(1,CDE,EDN)",

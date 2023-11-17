@@ -2,9 +2,9 @@
   "problem_id": 4077,
   "annotation": "XiaokaiZhang_2023-05-07",
   "source": "GeoQA-2421",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O中,弦BC与半径OA相交于点D,连接AB,OC．若∠A=60°,∠ADC=85°,则∠C的度数是()",
-  "problem_text_en": "As shown in the figure, in ⊙O, chord BC and radius OA intersect at point D, connecting AB and OC. If ∠A = N_0, ∠ADC = N_1, then the degree of ∠C is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠BAO=60°，∠CDA=85°，O是⊙O的圆心。求∠BCO的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BAO=60°, ∠CDA=85°, the center of ⊙O is O. Find the measure of ∠BCO.",
   "problem_img": "4077.png",
   "construction_cdl": [
     "Shape(OCB,BD,DO,OC)",
@@ -17,9 +17,9 @@
     "Cocircular(O,BAC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfAngle(BAO),60)",
-    "Equal(MeasureOfAngle(CDA),85)"
+    "Equal(MeasureOfAngle(CDA),85)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BCO))",
@@ -32,7 +32,7 @@
     "arc_property_center_angle(1,OAC,O)",
     "triangle_property_angle_sum(1,ODC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,CDA,ADB)",
       "adjacent_complementary_angle(1,ODC,CDA)",

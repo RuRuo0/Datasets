@@ -2,9 +2,9 @@
   "problem_id": 6042,
   "annotation": "ChenyangMao_2023-05-28",
   "source": "GeoQA-8540",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC是圆O的内接三角形,若∠OBC=70°,则∠A的度数是()",
-  "problem_text_en": "As shown in the figure, △ABC is the inscribed triangle of circle O. If ∠OBC = N_0, then the degree of ∠A is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠CBO=70°，圆O的圆心为O。求∠BAC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CBO=70°, O is the center of circle O. Find the measure of ∠BAC.",
   "problem_img": "6042.png",
   "construction_cdl": [
     "Shape(AC,CB,BA)",
@@ -15,8 +15,8 @@
     "Cocircular(O,ACB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "Equal(MeasureOfAngle(CBO),70)"
+    "Equal(MeasureOfAngle(CBO),70)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BAC))",
@@ -30,7 +30,14 @@
     "arc_property_circumference_angle_external(1,OCB,A)",
     "arc_property_center_angle(1,OCB,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "triangle_property_angle_sum(1,BOC)",
+      "arc_property_circumference_angle_external(1,OCB,A)",
+      "arc_property_center_angle(1,OCB,O)"
+    ],
     "radius_of_circle_property_length_equal(1,OC,O)": [
       "isosceles_triangle_judgment_line_equal(1,OCB)"
     ],
@@ -39,13 +46,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OCB)": [
       "isosceles_triangle_property_angle_equal(1,OCB)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "triangle_property_angle_sum(1,BOC)",
-      "arc_property_circumference_angle_external(1,OCB,A)",
-      "arc_property_center_angle(1,OCB,O)"
     ]
   }
 }

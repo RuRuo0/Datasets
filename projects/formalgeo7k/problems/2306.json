@@ -2,9 +2,9 @@
   "problem_id": 2306,
   "annotation": "Yangli_2023-04-09",
   "source": "Geometry3k-2414",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find A E if A B = 12, A C = 16, and E D = 5.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=12，AC=16，ED=5，CD平行于BE。求直线AE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=12, AC=16, ED=5, CD∥BE. Find the length of line AE.",
   "problem_img": "2306.png",
   "construction_cdl": [
     "Shape(AE,EB,BA)",
@@ -15,7 +15,8 @@
   "text_cdl": [
     "Equal(LengthOfLine(AB),12)",
     "Equal(LengthOfLine(AC),16)",
-    "Equal(LengthOfLine(ED),5)"
+    "Equal(LengthOfLine(ED),5)",
+    "ParallelBetweenLine(CD,BE)"
   ],
   "image_cdl": [
     "ParallelBetweenLine(CD,BE)"
@@ -29,17 +30,17 @@
     "similar_triangle_property_line_ratio(1,EBA,DCA)",
     "similar_triangle_property_line_ratio(1,BAE,CAD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AE,ED)",
+      "parallel_property_corresponding_angle(2,CD,BE,A)"
+    ],
     "parallel_property_corresponding_angle(2,CD,BE,A)": [
       "similar_triangle_judgment_aa(1,EBA,DCA)"
     ],
     "similar_triangle_judgment_aa(1,EBA,DCA)": [
       "similar_triangle_property_line_ratio(1,EBA,DCA)",
       "similar_triangle_property_line_ratio(1,BAE,CAD)"
-    ],
-    "START": [
-      "line_addition(1,AE,ED)",
-      "parallel_property_corresponding_angle(2,CD,BE,A)"
     ]
   }
 }

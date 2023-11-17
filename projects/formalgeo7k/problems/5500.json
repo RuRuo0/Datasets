@@ -2,9 +2,9 @@
   "problem_id": 5500,
   "annotation": "ChenyangMao_2023-05-21",
   "source": "GeoQA-5957",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,AB=AC,D、E、F分别是边AB、AC、BC的中点,若CE=2,则四边形ADFE的周长为()",
-  "problem_text_en": "As shown in the figure, in △ABC, AB = AC, D, E, and F are the midpoints of edges AB, AC, and BC, respectively. If CE = N_0, the perimeter of the quadrilateral ADFE is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=AC，CE=2，D平分线段AB，E平分线段AC，F是线段BC的中点。求四边形ADFE的周长。",
+  "problem_text_en": "As shown in the diagram, AB=AC, CE=2, D is the midpoint of segment AB, E is the midpoint of segment AC, F bisects segment BC. Find the perimeter of ADFE.",
   "problem_img": "5500.png",
   "construction_cdl": [
     "Shape(AD,DF,FE,EA)",
@@ -15,11 +15,11 @@
     "Collinear(BFC)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AB),LengthOfLine(AC))",
+    "Equal(LengthOfLine(CE),2)",
     "IsMidpointOfLine(D,AB)",
     "IsMidpointOfLine(E,AC)",
-    "IsMidpointOfLine(F,BC)",
-    "Equal(LengthOfLine(AB),LengthOfLine(AC))",
-    "Equal(LengthOfLine(CE),2)"
+    "IsMidpointOfLine(F,BC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfQuadrilateral(ADFE))",
@@ -33,19 +33,19 @@
     "midsegment_of_triangle_property_length(1,FD,BCA)",
     "midsegment_of_triangle_property_length(1,EF,CAB)"
   ],
-  "theorem_seq_dag": {
-    "midsegment_of_triangle_judgment_midpoint(1,FD,BCA)": [
-      "midsegment_of_triangle_property_length(1,FD,BCA)"
-    ],
-    "midsegment_of_triangle_judgment_midpoint(1,EF,CAB)": [
-      "midsegment_of_triangle_property_length(1,EF,CAB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AD,DB)",
       "line_addition(1,AE,EC)",
       "quadrilateral_perimeter_formula(1,ADFE)",
       "midsegment_of_triangle_judgment_midpoint(1,FD,BCA)",
       "midsegment_of_triangle_judgment_midpoint(1,EF,CAB)"
+    ],
+    "midsegment_of_triangle_judgment_midpoint(1,FD,BCA)": [
+      "midsegment_of_triangle_property_length(1,FD,BCA)"
+    ],
+    "midsegment_of_triangle_judgment_midpoint(1,EF,CAB)": [
+      "midsegment_of_triangle_property_length(1,EF,CAB)"
     ]
   }
 }

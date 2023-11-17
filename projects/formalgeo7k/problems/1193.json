@@ -3,8 +3,8 @@
   "annotation": "RunanWang_2023-04-23",
   "source": "Geometry3k-1233",
   "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Trapezoid N O P Q has an area of 250 square inches. Find the height of N O P Q.",
+  "problem_text_cn": "如图所示，NQPO的面积为250，ON=20，QP=30，四边形NQPO的高为AH，NQPO是梯形。求四边形NQPO的高。",
+  "problem_text_en": "As shown in the diagram, the area of NQPO is 250, ON=20, QP=30, AH is the height of NQPO, NQ and PO are the non-parallel sides (legs) of trapezoid NQPO. Find the height of NQPO.",
   "problem_img": "1193.png",
   "construction_cdl": [
     "Shape(NQ,QH,HA,AN)",
@@ -12,7 +12,13 @@
     "Collinear(NAO)",
     "Collinear(QHP)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(AreaOfQuadrilateral(NQPO),250)",
+    "Equal(LengthOfLine(ON),20)",
+    "Equal(LengthOfLine(QP),30)",
+    "IsAltitudeOfQuadrilateral(AH,NQPO)",
+    "Trapezoid(NQPO)"
+  ],
   "image_cdl": [
     "Trapezoid(NQPO)",
     "Equal(AreaOfQuadrilateral(NQPO),250)",
@@ -25,7 +31,7 @@
   "theorem_seqs": [
     "trapezoid_area_formula(1,NQPO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "trapezoid_area_formula(1,NQPO)"
     ]

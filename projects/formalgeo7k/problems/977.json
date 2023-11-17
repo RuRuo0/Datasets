@@ -2,16 +2,22 @@
   "problem_id": 977,
   "annotation": "NaZhu_2023-03-19",
   "source": "Geometry3k-1006",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=24，AC=3*x-1，BD=18，CD=2*x+1，∠BAD=∠DAC。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=24, AC=3*x-1, BD=18, CD=2*x+1, ∠BAD=∠DAC. Find the value of x.",
   "problem_img": "977.png",
   "construction_cdl": [
     "Shape(BA,AD,DB)",
     "Shape(AC,CD,DA)",
     "Collinear(BDC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),24)",
+    "Equal(LengthOfLine(AC),3*x-1)",
+    "Equal(LengthOfLine(BD),18)",
+    "Equal(LengthOfLine(CD),2*x+1)",
+    "Equal(MeasureOfAngle(BAD),MeasureOfAngle(DAC))"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BD),18)",
     "Equal(LengthOfLine(AB),24)",
@@ -25,12 +31,12 @@
     "bisector_of_angle_judgment_angle_equal(1,AD,BAC)",
     "bisector_of_angle_property_line_ratio(1,AD,BAC)"
   ],
-  "theorem_seq_dag": {
-    "bisector_of_angle_judgment_angle_equal(1,AD,BAC)": [
-      "bisector_of_angle_property_line_ratio(1,AD,BAC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "bisector_of_angle_judgment_angle_equal(1,AD,BAC)"
+    ],
+    "bisector_of_angle_judgment_angle_equal(1,AD,BAC)": [
+      "bisector_of_angle_property_line_ratio(1,AD,BAC)"
     ]
   }
 }

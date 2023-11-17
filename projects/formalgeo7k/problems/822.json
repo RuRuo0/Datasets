@@ -2,16 +2,21 @@
   "problem_id": 822,
   "annotation": "XiaokaiZhang_2023-03-19",
   "source": "Geometry3k-850",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the measure of the altitude drawn to the hypotenuse.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，QT=18，RT=34，QS垂直于RS，RT垂直于ST。求△SRQ的高。",
+  "problem_text_en": "As shown in the diagram, QT=18, RT=34, QS⊥RS, RT⊥ST. Find the height of triangle SRQ.",
   "problem_img": "822.png",
   "construction_cdl": [
     "Shape(SR,RT,TS)",
     "Shape(ST,TQ,QS)",
     "Collinear(RTQ)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(QT),18)",
+    "Equal(LengthOfLine(RT),34)",
+    "PerpendicularBetweenLine(QS,RS)",
+    "PerpendicularBetweenLine(RT,ST)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(QT),18)",
     "Equal(LengthOfLine(RT),34)",
@@ -29,19 +34,19 @@
     "mirror_similar_triangle_property_line_ratio(1,SRT,QSR)",
     "mirror_similar_triangle_property_line_ratio(1,TSR,SRQ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "mirror_similar_triangle_judgment_aa(1,SRT,QSR)",
+      "altitude_of_triangle_judgment(1,ST,SRQ)",
+      "line_addition(1,QT,TR)",
+      "right_triangle_judgment_angle(1,RTS)"
+    ],
     "mirror_similar_triangle_judgment_aa(1,SRT,QSR)": [
       "mirror_similar_triangle_property_line_ratio(1,SRT,QSR)",
       "mirror_similar_triangle_property_line_ratio(1,TSR,SRQ)"
     ],
     "right_triangle_judgment_angle(1,RTS)": [
       "right_triangle_property_pythagorean(1,RTS)"
-    ],
-    "START": [
-      "mirror_similar_triangle_judgment_aa(1,SRT,QSR)",
-      "altitude_of_triangle_judgment(1,ST,SRQ)",
-      "line_addition(1,QT,TR)",
-      "right_triangle_judgment_angle(1,RTS)"
     ]
   }
 }

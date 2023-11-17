@@ -2,9 +2,9 @@
   "problem_id": 5479,
   "annotation": "ChenyangMao_2023-05-21",
   "source": "GeoQA-5917",
-  "problem_level": 1,
-  "problem_text_cn": "如图,牧童家在B处,A、B两处相距河岸的距离AC、BD分别为500m和300m,且C、D两处的距离为600m,天黑牧童从A处将牛牵到河边去饮水,在赶回家,那么牧童最少要走()",
-  "problem_text_en": "As shown in the figure, the shepherd boy’s house is at B. The distances AC and BD between A and B from the river bank are N_0 and N_1, and the distance between C and D is N_2. The black shepherd boy leads the cow from A to the river bank. Go drinking water, rushing home, then the shepherd boy has to leave at least ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AC=500，BD=300，BF=600，CD=600，CF=300，ZC=500，∠ZFB=90°。求直线ZB的长度。",
+  "problem_text_en": "As shown in the diagram, AC=500, BD=300, BF=600, CD=600, CF=300, ZC=500, ∠ZFB=90°. Find the length of line ZB.",
   "problem_img": "5479.png",
   "construction_cdl": [
     "Shape(EC,CA)",
@@ -16,12 +16,12 @@
     "Collinear(ZCFA)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(ZC),500)",
     "Equal(LengthOfLine(AC),500)",
     "Equal(LengthOfLine(BD),300)",
-    "Equal(LengthOfLine(CD),600)",
     "Equal(LengthOfLine(BF),600)",
+    "Equal(LengthOfLine(CD),600)",
     "Equal(LengthOfLine(CF),300)",
+    "Equal(LengthOfLine(ZC),500)",
     "Equal(MeasureOfAngle(ZFB),90)"
   ],
   "image_cdl": [],
@@ -32,13 +32,13 @@
     "right_triangle_judgment_angle(1,ZFB)",
     "right_triangle_property_pythagorean(1,ZFB)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,ZFB)": [
-      "right_triangle_property_pythagorean(1,ZFB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,ZC,CF)",
       "right_triangle_judgment_angle(1,ZFB)"
+    ],
+    "right_triangle_judgment_angle(1,ZFB)": [
+      "right_triangle_property_pythagorean(1,ZFB)"
     ]
   }
 }

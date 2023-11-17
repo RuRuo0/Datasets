@@ -3,8 +3,8 @@
   "annotation": "FangzhenZhu_2023-04-09",
   "source": "Geometry3k-1393",
   "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Refer to trapezoid C D F G with median H E. Find G F.",
+  "problem_text_cn": "如图所示，CD=46，HE=38，四边形CGFD的中位线为HE，CGFD是梯形。求直线GF的长度。",
+  "problem_text_en": "As shown in the diagram, CD=46, HE=38, the midsegment of quadrilateral CGFD is HE, CG and FD are the non-parallel sides (legs) of trapezoid CGFD. Find the length of line GF.",
   "problem_img": "1345.png",
   "construction_cdl": [
     "Shape(CH,HE,ED,DC)",
@@ -12,7 +12,12 @@
     "Collinear(CHG)",
     "Collinear(DEF)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(CD),46)",
+    "Equal(LengthOfLine(HE),38)",
+    "IsMidsegmentOfQuadrilateral(HE,CGFD)",
+    "Trapezoid(CGFD)"
+  ],
   "image_cdl": [
     "Trapezoid(CGFD)",
     "IsMidsegmentOfQuadrilateral(HE,CGFD)",
@@ -24,7 +29,7 @@
   "theorem_seqs": [
     "midsegment_of_quadrilateral_property_length(1,HE,CGFD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "midsegment_of_quadrilateral_property_length(1,HE,CGFD)"
     ]

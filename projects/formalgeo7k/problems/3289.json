@@ -2,9 +2,9 @@
   "problem_id": 3289,
   "annotation": "XiaokaiZhang_2023-04-23",
   "source": "GeoQA-606",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB∥CD,∠1=50°,∠2=110°,则∠3=()",
-  "problem_text_en": "As shown in the figure, AB ∥ CD, ∠1 = N_0, ∠2 = N_1, then ∠3 = ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠CHF=110°，∠FEG=50°，AB平行于CD。求∠EGF的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CHF=110°, ∠FEG=50°, AB∥CD. Find the measure of ∠EGF.",
   "problem_img": "3289.png",
   "construction_cdl": [
     "Shape(AC,CH,HG,GE,EA)",
@@ -15,9 +15,9 @@
     "Collinear(HGF)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AB,CD)",
+    "Equal(MeasureOfAngle(CHF),110)",
     "Equal(MeasureOfAngle(FEG),50)",
-    "Equal(MeasureOfAngle(CHF),110)"
+    "ParallelBetweenLine(AB,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(EGF))",
@@ -28,16 +28,16 @@
     "parallel_property_ipsilateral_internal_angle(1,HC,FA)",
     "triangle_property_angle_sum(1,EGF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,AB,CD,F)",
+      "triangle_property_angle_sum(1,EGF)"
+    ],
     "parallel_property_collinear_extend(3,AB,CD,F)": [
       "parallel_property_collinear_extend(3,DC,FA,H)"
     ],
     "parallel_property_collinear_extend(3,DC,FA,H)": [
       "parallel_property_ipsilateral_internal_angle(1,HC,FA)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,AB,CD,F)",
-      "triangle_property_angle_sum(1,EGF)"
     ]
   }
 }

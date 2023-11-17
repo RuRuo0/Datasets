@@ -2,9 +2,9 @@
   "problem_id": 6702,
   "annotation": "XiaoxiaoJin_2023-06-04",
   "source": "GeoQA-9734",
-  "problem_level": 1,
-  "problem_text_cn": "如图,线段AB是⊙O的直径,弦CD⊥AB,∠CAB=20°,则∠AOD等于()",
-  "problem_text_en": "As shown in the figure, the line segment AB is the diameter of ⊙O, chord CD ⊥ AB, ∠CAB = N_0, then ∠AOD is equal to ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠CAB=20°，O是圆O的圆心，圆O的直径为AB，DE垂直于AE。求∠DOA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAB=20°, O is the center of ⊙O, the diameter of circle O is AB, DE is perpendicular to AE. Find the measure of ∠DOA.",
   "problem_img": "6702.png",
   "construction_cdl": [
     "Shape(CA,AO,OE,EC)",
@@ -18,10 +18,10 @@
     "Cocircular(O,ADBC)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(DE,AE)",
-    "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfAngle(CAB),20)",
-    "IsDiameterOfCircle(AB,O)"
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)",
+    "PerpendicularBetweenLine(DE,AE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DOA))",
@@ -34,18 +34,18 @@
     "congruent_arc_property_measure_equal(1,ODB,OBC)",
     "adjacent_complementary_angle(1,EOD,DOA)"
   ],
-  "theorem_seq_dag": {
-    "circle_property_chord_perpendicular_bisect_arc(1,ODC,OEB)": [
-      "congruent_arc_judgment_length_equal(1,ODB,OBC)"
-    ],
-    "congruent_arc_judgment_length_equal(1,ODB,OBC)": [
-      "congruent_arc_property_measure_equal(1,ODB,OBC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,ODB,O)",
       "arc_property_circumference_angle_external(1,OBC,A)",
       "circle_property_chord_perpendicular_bisect_arc(1,ODC,OEB)",
       "adjacent_complementary_angle(1,EOD,DOA)"
+    ],
+    "circle_property_chord_perpendicular_bisect_arc(1,ODC,OEB)": [
+      "congruent_arc_judgment_length_equal(1,ODB,OBC)"
+    ],
+    "congruent_arc_judgment_length_equal(1,ODB,OBC)": [
+      "congruent_arc_property_measure_equal(1,ODB,OBC)"
     ]
   }
 }

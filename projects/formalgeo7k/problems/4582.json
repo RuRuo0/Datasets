@@ -2,9 +2,9 @@
   "problem_id": 4582,
   "annotation": "YanjunGuo_2023-05-14",
   "source": "GeoQA-3725",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC是⊙O的内接三角形,D是AB边的中点,OA=6,∠ACB=30°,则OD=()",
-  "problem_text_en": "As shown in the figure, △ABC is the inscribed triangle of ⊙O, D is the midpoint of the AB side, OA = N_0, ∠ACB = N_1, then OD = ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，OA=6，∠BCA=30°，O是圆O的圆心，OD是三角形OAB的中线。求直线OD的长度。",
+  "problem_text_en": "As shown in the diagram, OA=6, ∠BCA=30°, the center of ⊙O is O, OD is the median of △ OAB. Find the length of line OD.",
   "problem_img": "4582.png",
   "construction_cdl": [
     "Shape(AO,OE,EC,OCA)",
@@ -41,7 +41,15 @@
     "isosceles_triangle_property_line_coincidence(2,OAB,D)",
     "sine_theorem(1,OAD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_circumference_angle_external(1,OAB,C)",
+      "arc_property_center_angle(1,OAB,O)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "triangle_property_angle_sum(1,OAB)",
+      "sine_theorem(1,OAD)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OAB)"
     ],
@@ -51,14 +59,6 @@
     "isosceles_triangle_judgment_line_equal(1,OAB)": [
       "isosceles_triangle_property_angle_equal(1,OAB)",
       "isosceles_triangle_property_line_coincidence(2,OAB,D)"
-    ],
-    "START": [
-      "arc_property_circumference_angle_external(1,OAB,C)",
-      "arc_property_center_angle(1,OAB,O)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "triangle_property_angle_sum(1,OAB)",
-      "sine_theorem(1,OAD)"
     ]
   }
 }

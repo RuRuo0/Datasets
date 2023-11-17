@@ -2,9 +2,9 @@
   "problem_id": 1065,
   "annotation": "YiwenHuang_2023-04-23",
   "source": "Geometry3k-1100",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x if \\odot M \\cong \\odot N.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，ST=VU，弧MST的角度为2*x，⌒MVU的角度为5*x-27，M是⊙M的圆心。求x的值。",
+  "problem_text_en": "As shown in the diagram, ST=VU, the measure of ⌒MST is 2*x, the measure of arc MVU is 5*x-27, M is the center of circle M. Find the value of x.",
   "problem_img": "1065.png",
   "construction_cdl": [
     "Shape(MST,TS)",
@@ -17,7 +17,12 @@
     "Collinear(TMU)",
     "Cocircular(M,STVU)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(ST),LengthOfLine(VU))",
+    "Equal(MeasureOfArc(MST),2*x)",
+    "Equal(MeasureOfArc(MVU),5*x-27)",
+    "IsCentreOfCircle(M,M)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(M,M)",
     "Equal(MeasureOfArc(MST),2*x)",
@@ -30,12 +35,12 @@
     "congruent_arc_judgment_chord_equal(1,MST,MVU)",
     "congruent_arc_property_measure_equal(1,MST,MVU)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_chord_equal(1,MST,MVU)": [
-      "congruent_arc_property_measure_equal(1,MST,MVU)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "congruent_arc_judgment_chord_equal(1,MST,MVU)"
+    ],
+    "congruent_arc_judgment_chord_equal(1,MST,MVU)": [
+      "congruent_arc_property_measure_equal(1,MST,MVU)"
     ]
   }
 }

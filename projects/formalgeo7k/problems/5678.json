@@ -2,9 +2,9 @@
   "problem_id": 5678,
   "annotation": "NaZhu_2023-05-28",
   "source": "GeoQA-7389",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点F在平行四边形ABCD的边CD上,且\\frac{CF}{AB}=\\frac{2}{3},连接BF并延长交AD的延长线于点E,则\\frac{DE}{BC}的值为()",
-  "problem_text_en": "As shown in the figure, in Rt△ABC, ∠ABC = N_0, BD ⊥ AD is at point D, where \\frac{BC}{AC}=\\frac{N_1}{N_2}, then \\frac{BD}{AD}= ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，Div(LengthOfLine(CF)=LengthOfLine(AB))，ADCB是▱。求直线DE的长度与直线BC的长度之比。",
+  "problem_text_en": "As shown in the diagram, Div(LengthOfLine(CF)=LengthOfLine(AB)), quadrilateral ADCB is a ▱. Find the ratio of the length of line DE to the length of line BC.",
   "problem_img": "5678.png",
   "construction_cdl": [
     "Shape(AD,DF,FB,BA)",
@@ -15,8 +15,8 @@
     "Collinear(ADE)"
   ],
   "text_cdl": [
-    "Parallelogram(ADCB)",
-    "Equal(Div(LengthOfLine(CF),LengthOfLine(AB)),2/3)"
+    "Equal(Div(LengthOfLine(CF),LengthOfLine(AB)),2/3)",
+    "Parallelogram(ADCB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Div(LengthOfLine(DE),LengthOfLine(BC)))",
@@ -31,7 +31,12 @@
     "similar_triangle_property_line_ratio(1,FCB,FDE)",
     "similar_triangle_property_line_ratio(1,BFC,EFD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallelogram_property_opposite_line_equal(1,DCBA)",
+      "line_addition(1,CF,FD)",
+      "parallel_property_collinear_extend(1,DA,CB,E)"
+    ],
     "parallel_property_collinear_extend(1,DA,CB,E)": [
       "parallel_property_alternate_interior_angle(1,ED,CB)",
       "parallel_property_alternate_interior_angle(2,ED,CB)"
@@ -45,11 +50,6 @@
     "similar_triangle_judgment_aa(1,FCB,FDE)": [
       "similar_triangle_property_line_ratio(1,FCB,FDE)",
       "similar_triangle_property_line_ratio(1,BFC,EFD)"
-    ],
-    "START": [
-      "parallelogram_property_opposite_line_equal(1,DCBA)",
-      "line_addition(1,CF,FD)",
-      "parallel_property_collinear_extend(1,DA,CB,E)"
     ]
   }
 }

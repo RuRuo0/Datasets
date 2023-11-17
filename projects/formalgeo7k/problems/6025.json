@@ -2,9 +2,9 @@
   "problem_id": 6025,
   "annotation": "ChenyangMao_2023-05-28",
   "source": "GeoQA-8508",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC内接于⊙O,∠BAC=120°,AB=AC=4,BD为⊙O的直径,则BD等于()",
-  "problem_text_en": "As shown in the figure, △ABC is inscribed in ⊙O, ∠BAC = N_0, AB = AC = N_1, BD is the diameter of ⊙O, then BD is equal to ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=4，AB=AC，∠BAC=120°，O是圆O的圆心，BD是⊙O的直径。求直线BD的长度。",
+  "problem_text_en": "As shown in the diagram, AB=4, AB=AC, ∠BAC=120°, the center of circle O is O, BD is the diameter of ⊙O. Find the length of line BD.",
   "problem_img": "6025.png",
   "construction_cdl": [
     "Shape(OBA,AB)",
@@ -18,11 +18,11 @@
     "Cocircular(O,BACD)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(AB),4)",
-    "IsDiameterOfCircle(BD,O)",
     "Equal(LengthOfLine(AB),LengthOfLine(AC))",
-    "Equal(MeasureOfAngle(BAC),120)"
+    "Equal(MeasureOfAngle(BAC),120)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(BD,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BD))",
@@ -36,10 +36,7 @@
     "diameter_of_circle_property_right_angle(1,BAD,O)",
     "sine_theorem(1,BAD)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,ACB)": [
-      "isosceles_triangle_property_angle_equal(1,ACB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,ACB)",
       "triangle_property_angle_sum(1,CBA)",
@@ -47,6 +44,9 @@
       "arc_property_circumference_angle_external(1,OBA,D)",
       "diameter_of_circle_property_right_angle(1,BAD,O)",
       "sine_theorem(1,BAD)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,ACB)": [
+      "isosceles_triangle_property_angle_equal(1,ACB)"
     ]
   }
 }

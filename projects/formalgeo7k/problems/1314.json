@@ -2,16 +2,22 @@
   "problem_id": 1314,
   "annotation": "YimingHe_2023-03-19",
   "source": "Geometry3k-1362",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x. Round to the nearest tenth.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AB=x，AC=AD，AD=46，∠ACB=73°，AB垂直于DB。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=x, AC=AD, AD=46, ∠ACB=73°, AB is perpendicular to DB. Find the value of x.",
   "problem_img": "1314.png",
   "construction_cdl": [
     "Shape(AC,CB,BA)",
     "Shape(AB,BD,DA)",
     "Collinear(CBD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),x)",
+    "Equal(LengthOfLine(AC),LengthOfLine(AD))",
+    "Equal(LengthOfLine(AD),46)",
+    "Equal(MeasureOfAngle(ACB),73)",
+    "PerpendicularBetweenLine(AB,DB)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AD),46)",
     "Equal(LengthOfLine(AB),x)",
@@ -26,13 +32,13 @@
     "isosceles_triangle_property_angle_equal(1,ACD)",
     "sine_theorem(1,ABD)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,ACD)": [
-      "isosceles_triangle_property_angle_equal(1,ACD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,ACD)",
       "sine_theorem(1,ABD)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,ACD)": [
+      "isosceles_triangle_property_angle_equal(1,ACD)"
     ]
   }
 }

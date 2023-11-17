@@ -2,9 +2,9 @@
   "problem_id": 5168,
   "annotation": "JiaZou_2023-05-21",
   "source": "GeoQA-5124",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB为⊙O的弦,半径OC⊥AB于点D,若OB=10,CD=2,则AB的长是()",
-  "problem_text_en": "As shown in the figure, AB is the chord of ⊙O, the radius OC ⊥ AB at point D, if OB = N_0, CD = N_1, then the length of AB is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，CD=2，OB=10，O是⊙O的圆心，BD⊥OD。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, CD=2, OB=10, O is the center of circle O, BD is perpendicular to OD. Find the length of line AB.",
   "problem_img": "5168.png",
   "construction_cdl": [
     "Shape(AD,DC,OCA)",
@@ -16,10 +16,10 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "PerpendicularBetweenLine(BD,OD)",
+    "Equal(LengthOfLine(CD),2)",
     "Equal(LengthOfLine(OB),10)",
-    "Equal(LengthOfLine(CD),2)"
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(BD,OD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -33,10 +33,7 @@
     "right_triangle_property_pythagorean(1,BDO)",
     "line_addition(1,AD,DB)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,BDO)": [
-      "right_triangle_property_pythagorean(1,BDO)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "circle_property_chord_perpendicular_bisect_chord(1,O,OD,BA)",
       "radius_of_circle_property_length_equal(1,OB,O)",
@@ -44,6 +41,9 @@
       "line_addition(1,CD,DO)",
       "right_triangle_judgment_angle(1,BDO)",
       "line_addition(1,AD,DB)"
+    ],
+    "right_triangle_judgment_angle(1,BDO)": [
+      "right_triangle_property_pythagorean(1,BDO)"
     ]
   }
 }

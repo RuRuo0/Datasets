@@ -2,9 +2,9 @@
   "problem_id": 4017,
   "annotation": "YimingHe_2023-05-07",
   "source": "GeoQA-2046",
-  "problem_level": 1,
-  "problem_text_cn": "如图,四边形ABCD中,DC∥AB,BC=2,AB=AC=AD=3,则BD的长为()",
-  "problem_text_en": "As shown in the figure, in the quadrilateral ABCD, DC ∥ AB, BC = N_0, AB = AC = AD = N_1, then the length of BD is ()",
+  "problem_level": 12,
+  "problem_text_cn": "如图所示，AB=3，AC=3，AD=3，BC=2，A是圆A的圆心，DC∥AB。求直线BD的长度。",
+  "problem_text_en": "As shown in the diagram, AB=3, AC=3, AD=3, BC=2, A is the center of circle A, DC is parallel to AB. Find the length of line BD.",
   "problem_img": "4017.png",
   "construction_cdl": [
     "Shape(FD,ADF)",
@@ -22,12 +22,12 @@
     "Cocircular(A,DFBC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(A,A)",
-    "ParallelBetweenLine(DC,AB)",
-    "Equal(LengthOfLine(BC),2)",
     "Equal(LengthOfLine(AB),3)",
     "Equal(LengthOfLine(AC),3)",
-    "Equal(LengthOfLine(AD),3)"
+    "Equal(LengthOfLine(AD),3)",
+    "Equal(LengthOfLine(BC),2)",
+    "IsCentreOfCircle(A,A)",
+    "ParallelBetweenLine(DC,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BD))",
@@ -46,7 +46,16 @@
     "right_triangle_judgment_angle(1,BDF)",
     "right_triangle_property_pythagorean(1,BDF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,AB,A)",
+      "radius_of_circle_property_length_equal(1,AF,A)",
+      "diameter_of_circle_judgment_pass_centre(1,FAB,A)",
+      "parallel_property_alternate_interior_angle(1,DC,AB)",
+      "arc_property_circumference_angle_external(1,ADF,B)",
+      "arc_property_circumference_angle_external(1,ABC,D)",
+      "line_addition(1,FA,AB)"
+    ],
     "diameter_of_circle_judgment_pass_centre(1,FAB,A)": [
       "diameter_of_circle_property_right_angle(1,BDF,A)"
     ],
@@ -67,15 +76,6 @@
     ],
     "right_triangle_judgment_angle(1,BDF)": [
       "right_triangle_property_pythagorean(1,BDF)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,AB,A)",
-      "radius_of_circle_property_length_equal(1,AF,A)",
-      "diameter_of_circle_judgment_pass_centre(1,FAB,A)",
-      "parallel_property_alternate_interior_angle(1,DC,AB)",
-      "arc_property_circumference_angle_external(1,ADF,B)",
-      "arc_property_circumference_angle_external(1,ABC,D)",
-      "line_addition(1,FA,AB)"
     ]
   }
 }

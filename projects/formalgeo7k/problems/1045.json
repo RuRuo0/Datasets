@@ -2,9 +2,9 @@
   "problem_id": 1045,
   "annotation": "QikeHuang_2023-04-09",
   "source": "Geometry3k-1078",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x. Assume that segments that appear to be tangent are tangent.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，HK=5，HN=2，KL=x，ML=4，⊙O的切线为HJ，圆O的切线为HN，圆O的切线为KJ，圆O的切线为KL，ML是⊙O的切线，⊙O的切线为MN。求x的值。",
+  "problem_text_en": "As shown in the diagram, HK=5, HN=2, KL=x, ML=4, the tangent to circle O is HJ, the tangent to circle O is HN, the tangent to ⊙O is KJ, the tangent to ⊙O is KL, ML is the tangent to ⊙O, the tangent to ⊙O is MN. Find the value of x.",
   "problem_img": "1045.png",
   "construction_cdl": [
     "Shape(KJ,OJL,LK)",
@@ -17,12 +17,16 @@
     "Cocircular(O,JNL)"
   ],
   "text_cdl": [
-    "IsTangentOfCircle(KJ,O)",
+    "Equal(LengthOfLine(HK),5)",
+    "Equal(LengthOfLine(HN),2)",
+    "Equal(LengthOfLine(KL),x)",
+    "Equal(LengthOfLine(ML),4)",
     "IsTangentOfCircle(HJ,O)",
     "IsTangentOfCircle(HN,O)",
-    "IsTangentOfCircle(MN,O)",
+    "IsTangentOfCircle(KJ,O)",
+    "IsTangentOfCircle(KL,O)",
     "IsTangentOfCircle(ML,O)",
-    "IsTangentOfCircle(KL,O)"
+    "IsTangentOfCircle(MN,O)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(ML),4)",
@@ -37,7 +41,7 @@
     "tangent_of_circle_property_length_equal(1,HJ,HN,O)",
     "line_addition(1,KJ,JH)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_length_equal(1,KJ,KL,O)",
       "tangent_of_circle_property_length_equal(1,HJ,HN,O)",

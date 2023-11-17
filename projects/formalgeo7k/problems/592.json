@@ -2,9 +2,9 @@
   "problem_id": 592,
   "annotation": "YimingHe_2023-04-09",
   "source": "Geometry3k-607",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure. Round to the nearest tenth if necessary.",
+  "problem_level": 15,
+  "problem_text_cn": "如图所示，AG=5，CE=5，CF=6，CG=2，DB=8，EB=AD，FM=1，GF=6，EA平行于BD，FH垂直于EH。求EBDA的面积减去三角形CFG的面积。",
+  "problem_text_en": "As shown in the diagram, AG=5, CE=5, CF=6, CG=2, DB=8, EB=AD, FM=1, GF=6, EA is parallel to BD, FH⊥EH. Find the area of EBDA minus the area of △CFG.",
   "problem_img": "592.png",
   "construction_cdl": [
     "Shape(EB,BM,MF,FC,CE)",
@@ -15,7 +15,18 @@
     "Collinear(BMD)",
     "Collinear(HFM)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AG),5)",
+    "Equal(LengthOfLine(CE),5)",
+    "Equal(LengthOfLine(CF),6)",
+    "Equal(LengthOfLine(CG),2)",
+    "Equal(LengthOfLine(DB),8)",
+    "Equal(LengthOfLine(EB),LengthOfLine(AD))",
+    "Equal(LengthOfLine(FM),1)",
+    "Equal(LengthOfLine(GF),6)",
+    "ParallelBetweenLine(EA,BD)",
+    "PerpendicularBetweenLine(FH,EH)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(CE),5)",
     "Equal(LengthOfLine(CG),2)",
@@ -47,7 +58,19 @@
     "line_addition(1,HF,FM)",
     "right_triangle_property_pythagorean(1,FHC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,GHF,FHE)",
+      "trapezoid_judgment_parallel(1,EBDA)",
+      "triangle_area_formula_common(1,FGC)",
+      "line_addition(1,EC,CH)",
+      "line_addition(1,HG,GA)",
+      "line_addition(1,EH,HA)",
+      "isosceles_triangle_judgment_line_equal(1,FGC)",
+      "right_triangle_judgment_angle(1,FHC)",
+      "line_addition(1,CH,HG)",
+      "line_addition(1,HF,FM)"
+    ],
     "adjacent_complementary_angle(1,GHF,FHE)": [
       "altitude_of_triangle_judgment(1,FH,FGC)",
       "altitude_of_quadrilateral_judgment(2,MH,DAEB)"
@@ -64,18 +87,6 @@
     ],
     "right_triangle_judgment_angle(1,FHC)": [
       "right_triangle_property_pythagorean(1,FHC)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,GHF,FHE)",
-      "trapezoid_judgment_parallel(1,EBDA)",
-      "triangle_area_formula_common(1,FGC)",
-      "line_addition(1,EC,CH)",
-      "line_addition(1,HG,GA)",
-      "line_addition(1,EH,HA)",
-      "isosceles_triangle_judgment_line_equal(1,FGC)",
-      "right_triangle_judgment_angle(1,FHC)",
-      "line_addition(1,CH,HG)",
-      "line_addition(1,HF,FM)"
     ]
   }
 }

@@ -2,14 +2,19 @@
   "problem_id": 1606,
   "annotation": "QikeHuang_2023-04-09",
   "source": "Geometry3k-1666",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x. Round to the nearest tenth.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，SU=x，TU=15*sqrt(3)，∠SUT=63°，UT⊥ST。求x的值。",
+  "problem_text_en": "As shown in the diagram, SU=x, TU=15*sqrt(3), ∠SUT=63°, UT is perpendicular to ST. Find the value of x.",
   "problem_img": "1606.png",
   "construction_cdl": [
     "Shape(UT,TS,SU)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(SU),x)",
+    "Equal(LengthOfLine(TU),15*sqrt(3))",
+    "Equal(MeasureOfAngle(SUT),63)",
+    "PerpendicularBetweenLine(UT,ST)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(TU),15*sqrt(3))",
     "Equal(MeasureOfAngle(SUT),63)",
@@ -22,7 +27,7 @@
     "triangle_property_angle_sum(1,UTS)",
     "sine_theorem(1,UTS)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,UTS)",
       "sine_theorem(1,UTS)"

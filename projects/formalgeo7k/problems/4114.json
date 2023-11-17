@@ -2,9 +2,9 @@
   "problem_id": 4114,
   "annotation": "QikeHuang_2023-05-07",
   "source": "GeoQA-2561",
-  "problem_level": 1,
-  "problem_text_cn": "已知,如图AB,AD是⊙O的弦,∠B=30°,点C在弦AB上,连结CO并延长交⊙O于点D,∠D=35°,则∠BAD的度数是()",
-  "problem_text_en": "It is known that, as shown in the figure, AB and AD are the chords of ⊙O, ∠B = N_0, point C is on chord AB, connect CO and extend to intersect ⊙O at point D, ∠D = N_1, then the degree of ∠BAD is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠CBO=30°，∠ODA=35°，圆O的圆心为O。求∠DAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CBO=30°, ∠ODA=35°, the center of circle O is O. Find the measure of ∠DAB.",
   "problem_img": "4114.png",
   "construction_cdl": [
     "Shape(DA,AO,OD)",
@@ -18,9 +18,9 @@
     "Cocircular(O,DAB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfAngle(CBO),30)",
-    "Equal(MeasureOfAngle(ODA),35)"
+    "Equal(MeasureOfAngle(ODA),35)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DAB))",
@@ -35,7 +35,13 @@
     "isosceles_triangle_property_angle_equal(1,OAB)",
     "angle_addition(1,DAO,OAC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OD,O)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "angle_addition(1,DAO,OAC)"
+    ],
     "radius_of_circle_property_length_equal(1,OD,O)": [
       "isosceles_triangle_judgment_line_equal(1,ODA)"
     ],
@@ -51,12 +57,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OAB)": [
       "isosceles_triangle_property_angle_equal(1,OAB)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OD,O)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "angle_addition(1,DAO,OAC)"
     ]
   }
 }

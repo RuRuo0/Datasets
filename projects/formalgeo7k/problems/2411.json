@@ -2,9 +2,9 @@
   "problem_id": 2411,
   "annotation": "Yangli_2023-04-23",
   "source": "Geometry3k-2527",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the parallelogram. Round to the nearest tenth if necessary.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AB=20，AD=18，CE=16，AB和DC是平行四边形BADC的一组对边，CE垂直于DE。求四边形BADC的周长。",
+  "problem_text_en": "As shown in the diagram, AB=20, AD=18, CE=16, AB and DC are opposite sides of the ▱ BADC, CE⊥DE. Find the perimeter of BADC.",
   "problem_img": "2411.png",
   "construction_cdl": [
     "Shape(BA,AE,EC,CB)",
@@ -12,7 +12,11 @@
     "Collinear(AED)"
   ],
   "text_cdl": [
-    "Parallelogram(BADC)"
+    "Equal(LengthOfLine(AB),20)",
+    "Equal(LengthOfLine(AD),18)",
+    "Equal(LengthOfLine(CE),16)",
+    "Parallelogram(BADC)",
+    "PerpendicularBetweenLine(CE,DE)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(CE),16)",
@@ -27,7 +31,7 @@
     "parallelogram_property_opposite_line_equal(1,BADC)",
     "quadrilateral_perimeter_formula(1,BADC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_property_opposite_line_equal(1,ADCB)",
       "parallelogram_property_opposite_line_equal(1,BADC)",

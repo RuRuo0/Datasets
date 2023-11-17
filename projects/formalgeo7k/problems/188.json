@@ -2,9 +2,9 @@
   "problem_id": 188,
   "annotation": "XiaokaiZhang_2023-04-02",
   "source": "Geometry3k-190",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "G R I D I N In the figure, the radius of circle A is twice the radius of circle B and four times the radius of circle C. If the sum of the circumferences of the three circles is 42 \\pi, find the measure of A C.",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，Add(PerimeterOfCircle(A)=PerimeterOfCircle(B)，圆A的半径为Mul(RadiusOfCircle(B),2)，圆A的半径为Mul(RadiusOfCircle(C),4)，⊙A的圆心为A，B是圆B的圆心，C是圆C的圆心。求直线AC的长度。",
+  "problem_text_en": "As shown in the diagram, Add(PerimeterOfCircle(A)=PerimeterOfCircle(B), the radius of circle A is Mul(RadiusOfCircle(B),2), the radius of ⊙A is Mul(RadiusOfCircle(C),4), A is the center of circle A, the center of ⊙B is B, the center of circle C is C. Find the length of line AC.",
   "problem_img": "188.png",
   "construction_cdl": [
     "Shape(BD,BDE,EB)",
@@ -14,7 +14,14 @@
     "Cocircular(B,DE)",
     "Cocircular(A,E)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(Add(PerimeterOfCircle(A),PerimeterOfCircle(B),PerimeterOfCircle(C)),42*pi)",
+    "Equal(RadiusOfCircle(A),Mul(RadiusOfCircle(B),2))",
+    "Equal(RadiusOfCircle(A),Mul(RadiusOfCircle(C),4))",
+    "IsCentreOfCircle(A,A)",
+    "IsCentreOfCircle(B,B)",
+    "IsCentreOfCircle(C,C)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(C,C)",
     "IsCentreOfCircle(B,B)",
@@ -37,7 +44,7 @@
     "line_addition(1,CB,BE)",
     "line_addition(1,CE,EA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "circle_perimeter_formula(1,A)",
       "circle_perimeter_formula(1,B)",

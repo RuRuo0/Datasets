@@ -2,9 +2,9 @@
   "problem_id": 6250,
   "annotation": "FangzhenZhu_2023-06-04",
   "source": "GeoQA-8859",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AC为⊙O的弦,半径OB⊥AC于点D,若∠ACB=22.5°,AD=1,则DB的长度为()",
-  "problem_text_en": "As shown in the figure, AC is the chord of ⊙O, the radius OB ⊥ AC at point D, if ∠ACB = N_0, AD = N_1, then the length of DB is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AD=1，∠BCA=22.5°，圆O的圆心为O，AD⊥OD。求直线DB的长度。",
+  "problem_text_en": "As shown in the diagram, AD=1, ∠BCA=22.5°, O is the center of ⊙O, AD is perpendicular to OD. Find the length of line DB.",
   "problem_img": "6250.png",
   "construction_cdl": [
     "Shape(OA,AD,DO)",
@@ -17,9 +17,9 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(AD),1)",
     "Equal(MeasureOfAngle(BCA),22.5)",
+    "IsCentreOfCircle(O,O)",
     "PerpendicularBetweenLine(AD,OD)"
   ],
   "image_cdl": [],
@@ -36,7 +36,16 @@
     "right_triangle_judgment_angle(1,ADO)",
     "right_triangle_property_pythagorean(1,ADO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,OD,DB)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "arc_property_center_angle(1,OAB,O)",
+      "arc_property_circumference_angle_external(1,OAB,C)",
+      "triangle_property_angle_sum(1,OAD)",
+      "right_triangle_judgment_angle(1,ADO)"
+    ],
     "arc_property_center_angle(1,OAB,O)": [
       "isosceles_triangle_judgment_angle_equal(1,DOA)",
       "isosceles_triangle_judgment_angle_equal(1,DOA)"
@@ -50,15 +59,6 @@
     ],
     "right_triangle_judgment_angle(1,ADO)": [
       "right_triangle_property_pythagorean(1,ADO)"
-    ],
-    "START": [
-      "line_addition(1,OD,DB)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "arc_property_center_angle(1,OAB,O)",
-      "arc_property_circumference_angle_external(1,OAB,C)",
-      "triangle_property_angle_sum(1,OAD)",
-      "right_triangle_judgment_angle(1,ADO)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 2956,
   "annotation": "JiaZou_2023-04-16",
   "source": "GeoQA-151",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,∠C=90°,点D在BC边上,DE∥AB,若∠CDE=150°,则∠A的度数为()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠C = N_0, point D is on the edge of BC, DE ∥ AB, if ∠CDE = N_1, then the degree of ∠A is () ",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠BCA=90°，∠CDE=150°，DE∥AB。求∠CAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BCA=90°, ∠CDE=150°, DE is parallel to AB. Find the measure of ∠CAB.",
   "problem_img": "2956.png",
   "construction_cdl": [
     "Shape(AB,BD,DC,CA)",
@@ -13,9 +13,9 @@
     "Collinear(CDB)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(DE,AB)",
+    "Equal(MeasureOfAngle(BCA),90)",
     "Equal(MeasureOfAngle(CDE),150)",
-    "Equal(MeasureOfAngle(BCA),90)"
+    "ParallelBetweenLine(DE,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CAB))",
@@ -25,7 +25,7 @@
     "parallel_property_alternate_interior_angle(1,DE,AB)",
     "triangle_property_angle_sum(1,BCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,CDE,EDB)",
       "parallel_property_alternate_interior_angle(1,DE,AB)",

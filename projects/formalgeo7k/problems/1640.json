@@ -2,9 +2,9 @@
   "problem_id": 1640,
   "annotation": "XiaoxiaoJin_2023-04-16",
   "source": "Geometry3k-1701",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the figure in feet. Round to the nearest tenth, if necessary.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，LA=6，LB=3*sqrt(2)，LP=PB，LP=PT，PT=PB，LP⊥BP。求四边形ATBL的周长。",
+  "problem_text_en": "As shown in the diagram, LA=6, LB=3*sqrt(2), LP=PB, LP=PT, PT=PB, LP⊥BP. Find the perimeter of quadrilateral ATBL.",
   "problem_img": "1640.png",
   "construction_cdl": [
     "Shape(LA,AP,PL)",
@@ -14,7 +14,14 @@
     "Collinear(APB)",
     "Collinear(LPT)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(LA),6)",
+    "Equal(LengthOfLine(LB),3*sqrt(2))",
+    "Equal(LengthOfLine(LP),LengthOfLine(PB))",
+    "Equal(LengthOfLine(LP),LengthOfLine(PT))",
+    "Equal(LengthOfLine(PT),LengthOfLine(PB))",
+    "PerpendicularBetweenLine(LP,BP)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(LA),6)",
     "Equal(LengthOfLine(LB),3*sqrt(2))",
@@ -35,7 +42,13 @@
     "mirror_congruent_triangle_property_line_equal(1,PLA,PAT)",
     "quadrilateral_perimeter_formula(1,ATBL)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,APL,LPB)",
+      "adjacent_complementary_angle(1,LPB,BPT)",
+      "adjacent_complementary_angle(1,TPA,APL)",
+      "quadrilateral_perimeter_formula(1,ATBL)"
+    ],
     "adjacent_complementary_angle(1,APL,LPB)": [
       "mirror_congruent_triangle_judgment_sas(1,PLA,PAT)",
       "mirror_congruent_triangle_judgment_sas(1,PLA,PAT)"
@@ -51,12 +64,6 @@
     ],
     "mirror_congruent_triangle_judgment_sas(1,PLA,PAT)": [
       "mirror_congruent_triangle_property_line_equal(1,PLA,PAT)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,APL,LPB)",
-      "adjacent_complementary_angle(1,LPB,BPT)",
-      "adjacent_complementary_angle(1,TPA,APL)",
-      "quadrilateral_perimeter_formula(1,ATBL)"
     ]
   }
 }

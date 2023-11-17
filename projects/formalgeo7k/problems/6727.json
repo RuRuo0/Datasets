@@ -2,9 +2,9 @@
   "problem_id": 6727,
   "annotation": "XiaoxiaoJin_2023-06-04",
   "source": "GeoQA-9775",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知△ABC中,∠ACB=90°,∠B=30°,以C为圆心,CA为半径的⊙C交AB于点D,交BC的延长线于点E,则∠E的度数为()",
-  "problem_text_en": "As shown in the figure, it is known that in △ABC, ∠ACB = N_0, ∠B = N_1, with C as the center and CA as the radius of ⊙C intersects AB at point D, intersects the extended line line of BC at point E, then the degree of ∠E for()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠ABC=30°，圆C的圆心为C，圆C的直径为EF，BC⊥AC。求∠BED的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABC=30°, C is the center of ⊙C, the diameter of circle C is EF, BC⊥AC. Find the measure of ∠BED.",
   "problem_img": "6727.png",
   "construction_cdl": [
     "Shape(DB,BF,ODF)",
@@ -21,10 +21,10 @@
     "Cocircular(C,ADFE)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(BC,AC)",
-    "IsCentreOfCircle(C,C)",
     "Equal(MeasureOfAngle(ABC),30)",
-    "IsDiameterOfCircle(EF,C)"
+    "IsCentreOfCircle(C,C)",
+    "IsDiameterOfCircle(EF,C)",
+    "PerpendicularBetweenLine(BC,AC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BED))",
@@ -36,7 +36,7 @@
     "adjacent_complementary_angle(1,BCG,GCE)",
     "triangle_property_angle_sum(1,DBE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,CEA,C)",
       "arc_property_circumference_angle_external(1,CEA,D)",

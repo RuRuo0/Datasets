@@ -2,9 +2,9 @@
   "problem_id": 4858,
   "annotation": "RunanWang_2023-05-21",
   "source": "GeoQA-4359",
-  "problem_level": 1,
-  "problem_text_cn": "圆O半径为5,AB是圆O的直径,D是AB延长线上一点,DC是圆O切线,∠CAB=30°,则BD长()",
-  "problem_text_en": "The radius of circle O is N_0, AB is the diameter of circle O, D is a point on the extended line of AB, DC is the tangent of circle O, ∠CAB = N_1, then the length of BD is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，OC=5，∠DAC=30°，O是⊙O的圆心，⊙O的切线为DC。求直线DB的长度。",
+  "problem_text_en": "As shown in the diagram, OC=5, ∠DAC=30°, the center of ⊙O is O, the tangent to ⊙O is DC. Find the length of line DB.",
   "problem_img": "4858.png",
   "construction_cdl": [
     "Shape(DB,OCB,CD)",
@@ -16,7 +16,10 @@
     "Cocircular(O,ACB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)"
+    "Equal(LengthOfLine(OC),5)",
+    "Equal(MeasureOfAngle(DAC),30)",
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(DC,O)"
   ],
   "image_cdl": [
     "IsTangentOfCircle(DC,O)",
@@ -35,7 +38,7 @@
     "sine_theorem(1,OCD)",
     "line_addition(1,OB,BD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(1,DC,O,O)",
       "radius_of_circle_property_length_equal(1,OC,O)",

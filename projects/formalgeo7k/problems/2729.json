@@ -2,9 +2,9 @@
   "problem_id": 2729,
   "annotation": "FangzhenZhu_2023-04-09",
   "source": "Geometry3k-2874",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If P R \\parallel K L, K N = 9, L N = 16, P M = 2 K P, find M N.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，KN=9，LN=16，PM=Mul(LengthOfLine(KP),2)，PR∥KL，KN垂直于MN，LM垂直于KM。求直线MN的长度。",
+  "problem_text_en": "As shown in the diagram, KN=9, LN=16, PM=Mul(LengthOfLine(KP),2), PR is parallel to KL, KN⊥MN, LM⊥KM. Find the length of line MN.",
   "problem_img": "2729.png",
   "construction_cdl": [
     "Shape(LR,RQ,QN,NL)",
@@ -17,7 +17,14 @@
     "Collinear(LRM)",
     "Collinear(MPK)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(KN),9)",
+    "Equal(LengthOfLine(LN),16)",
+    "Equal(LengthOfLine(PM),Mul(LengthOfLine(KP),2))",
+    "ParallelBetweenLine(PR,KL)",
+    "PerpendicularBetweenLine(KN,MN)",
+    "PerpendicularBetweenLine(LM,KM)"
+  ],
   "image_cdl": [
     "ParallelBetweenLine(PR,KL)",
     "Equal(LengthOfLine(KN),9)",
@@ -38,7 +45,13 @@
     "right_triangle_property_pythagorean(1,MNL)",
     "right_triangle_property_pythagorean(1,LMK)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,LN,NK)",
+      "adjacent_complementary_angle(1,KNQ,QNL)",
+      "right_triangle_judgment_angle(1,KNM)",
+      "right_triangle_judgment_angle(1,LMK)"
+    ],
     "adjacent_complementary_angle(1,KNQ,QNL)": [
       "right_triangle_judgment_angle(1,MNL)"
     ],
@@ -50,12 +63,6 @@
     ],
     "right_triangle_judgment_angle(1,LMK)": [
       "right_triangle_property_pythagorean(1,LMK)"
-    ],
-    "START": [
-      "line_addition(1,LN,NK)",
-      "adjacent_complementary_angle(1,KNQ,QNL)",
-      "right_triangle_judgment_angle(1,KNM)",
-      "right_triangle_judgment_angle(1,LMK)"
     ]
   }
 }

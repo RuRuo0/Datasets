@@ -2,9 +2,9 @@
   "problem_id": 4683,
   "annotation": "YiwenHuang_2023-05-21",
   "source": "GeoQA-3968",
-  "problem_level": 1,
-  "problem_text_cn": "如图,BM与⊙O相切于点B,若∠MBA=140°,则∠ACB的度数为()",
-  "problem_text_en": "As shown in the figure, BM and ⊙O are tangent to point B, if ∠MBA = N_0, then the degree of ∠ACB is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，∠ABM=140°，O是⊙O的圆心，⊙O的切线为MB。求∠BCA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABM=140°, the center of circle O is O, the tangent to ⊙O is MB. Find the measure of ∠BCA.",
   "problem_img": "4683.png",
   "construction_cdl": [
     "Shape(OA,AB,BO)",
@@ -16,9 +16,9 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(ABM),140)",
     "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(MB,O)",
-    "Equal(MeasureOfAngle(ABM),140)"
+    "IsTangentOfCircle(MB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BCA))",
@@ -34,16 +34,7 @@
     "arc_property_center_angle(1,OAB,O)",
     "arc_property_circumference_angle_external(1,OAB,C)"
   ],
-  "theorem_seq_dag": {
-    "radius_of_circle_property_length_equal(1,OA,O)": [
-      "isosceles_triangle_judgment_line_equal(1,OAB)"
-    ],
-    "radius_of_circle_property_length_equal(1,OB,O)": [
-      "isosceles_triangle_judgment_line_equal(1,OAB)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,OAB)": [
-      "isosceles_triangle_property_angle_equal(1,OAB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(1,MB,O,O)",
       "angle_addition(1,ABO,OBM)",
@@ -52,6 +43,15 @@
       "triangle_property_angle_sum(1,OAB)",
       "arc_property_center_angle(1,OAB,O)",
       "arc_property_circumference_angle_external(1,OAB,C)"
+    ],
+    "radius_of_circle_property_length_equal(1,OA,O)": [
+      "isosceles_triangle_judgment_line_equal(1,OAB)"
+    ],
+    "radius_of_circle_property_length_equal(1,OB,O)": [
+      "isosceles_triangle_judgment_line_equal(1,OAB)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,OAB)": [
+      "isosceles_triangle_property_angle_equal(1,OAB)"
     ]
   }
 }

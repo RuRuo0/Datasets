@@ -2,9 +2,9 @@
   "problem_id": 6268,
   "annotation": "FangzhenZhu_2023-06-04",
   "source": "GeoQA-8925",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示,⊙O的弦AB、AC的夹角为50°,MN分别为弧AB和弧AC的中点,OM、ON分别交AB、AC于点E、F,则∠MON的度数为()",
-  "problem_text_en": "As shown in the figure, the included angle of chord AB and AC of ⊙O is N_0, MN is the midpoint of arc AB and arc AC respectively, and OM and ON intersect AB and AC at points E and F respectively, then the degree of ∠MON is ()",
+  "problem_level": 20,
+  "problem_text_cn": "如图所示，∠FAE=50°，O是圆O的圆心，M是弧OAB的中点，N平分弧OCA。求∠MON的大小。",
+  "problem_text_en": "As shown in the diagram, ∠FAE=50°, the center of ⊙O is O, M bisects ⌒OAB, N bisects ⌒OCA. Find the measure of ∠MON.",
   "problem_img": "6268.png",
   "construction_cdl": [
     "Shape(OCN,NF,FC)",
@@ -25,10 +25,10 @@
     "Cocircular(O,AMBCN)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(FAE),50)",
     "IsCentreOfCircle(O,O)",
-    "IsMidpointOfArc(N,OCA)",
     "IsMidpointOfArc(M,OAB)",
-    "Equal(MeasureOfAngle(FAE),50)"
+    "IsMidpointOfArc(N,OCA)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(MON))",
@@ -55,7 +55,23 @@
     "angle_addition(1,MOA,AON)",
     "round_angle(1,BOC,COB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_center_angle(1,OBC,O)",
+      "arc_property_circumference_angle_external(1,OBC,A)",
+      "congruent_arc_judgment_length_equal(1,OAM,OMB)",
+      "congruent_arc_judgment_length_equal(1,ONA,OCN)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OM,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "radius_of_circle_property_length_equal(1,ON,O)",
+      "angle_addition(1,AON,NOC)",
+      "angle_addition(1,BOM,MOA)",
+      "angle_addition(1,BOA,AOC)",
+      "angle_addition(1,MOA,AON)",
+      "round_angle(1,BOC,COB)"
+    ],
     "congruent_arc_judgment_length_equal(1,OAM,OMB)": [
       "congruent_arc_property_chord_equal(1,OAM,OMB)"
     ],
@@ -73,6 +89,7 @@
       "congruent_triangle_judgment_sss(1,OMB,OAM)"
     ],
     "radius_of_circle_property_length_equal(1,OM,O)": [
+      "congruent_triangle_judgment_sss(1,OCN,ONA)",
       "congruent_triangle_judgment_sss(1,OMB,OAM)"
     ],
     "radius_of_circle_property_length_equal(1,OB,O)": [
@@ -82,29 +99,14 @@
       "congruent_triangle_judgment_sss(1,OCN,ONA)"
     ],
     "radius_of_circle_property_length_equal(1,ON,O)": [
-      "congruent_triangle_judgment_sss(1,OCN,ONA)"
+      "congruent_triangle_judgment_sss(1,OCN,ONA)",
+      "congruent_triangle_judgment_sss(1,OMB,OAM)"
     ],
     "congruent_triangle_judgment_sss(1,OCN,ONA)": [
       "congruent_triangle_property_angle_equal(1,OCN,ONA)"
     ],
     "congruent_triangle_judgment_sss(1,OMB,OAM)": [
       "congruent_triangle_property_angle_equal(1,OMB,OAM)"
-    ],
-    "START": [
-      "arc_property_center_angle(1,OBC,O)",
-      "arc_property_circumference_angle_external(1,OBC,A)",
-      "congruent_arc_judgment_length_equal(1,OAM,OMB)",
-      "congruent_arc_judgment_length_equal(1,ONA,OCN)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OM,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "radius_of_circle_property_length_equal(1,ON,O)",
-      "angle_addition(1,AON,NOC)",
-      "angle_addition(1,BOM,MOA)",
-      "angle_addition(1,BOA,AOC)",
-      "angle_addition(1,MOA,AON)",
-      "round_angle(1,BOC,COB)"
     ]
   }
 }

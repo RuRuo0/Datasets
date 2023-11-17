@@ -2,14 +2,18 @@
   "problem_id": 2415,
   "annotation": "RunanWang_2023-04-23",
   "source": "Geometry3k-2531",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the triangle. Round to the nearest hundredth.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=AC，BC=7/2，∠BCA=45°。求三角形ABC的周长。",
+  "problem_text_en": "As shown in the diagram, AB=AC, BC=7/2, ∠BCA=45°. Find the perimeter of △ABC.",
   "problem_img": "2415.png",
   "construction_cdl": [
     "Shape(AB,BC,CA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),LengthOfLine(AC))",
+    "Equal(LengthOfLine(BC),7/2)",
+    "Equal(MeasureOfAngle(BCA),45)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BC),7/2)",
     "Equal(MeasureOfAngle(BCA),45)",
@@ -23,14 +27,14 @@
     "cosine_theorem(1,BCA)",
     "triangle_perimeter_formula(1,ABC)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,ABC)": [
-      "isosceles_triangle_property_angle_equal(1,ABC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,ABC)",
       "cosine_theorem(1,BCA)",
       "triangle_perimeter_formula(1,ABC)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,ABC)": [
+      "isosceles_triangle_property_angle_equal(1,ABC)"
     ]
   }
 }

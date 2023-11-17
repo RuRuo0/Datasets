@@ -2,16 +2,22 @@
   "problem_id": 2110,
   "annotation": "YimingHe_2023-03-26",
   "source": "Geometry3k-2200",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x. A = 165 cm^2.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，三角形ABC的面积为165，AC=x，AD=11，DB=41，DA⊥CA。求x的值。",
+  "problem_text_en": "As shown in the diagram, the area of triangle ABC is 165, AC=x, AD=11, DB=41, DA⊥CA. Find the value of x.",
   "problem_img": "2110.png",
   "construction_cdl": [
     "Shape(DA,AC,CD)",
     "Shape(CA,AB,BC)",
     "Collinear(DAB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(AreaOfTriangle(ABC),165)",
+    "Equal(LengthOfLine(AC),x)",
+    "Equal(LengthOfLine(AD),11)",
+    "Equal(LengthOfLine(DB),41)",
+    "PerpendicularBetweenLine(DA,CA)"
+  ],
   "image_cdl": [
     "Equal(AreaOfTriangle(ABC),165)",
     "Equal(LengthOfLine(AC),x)",
@@ -26,7 +32,7 @@
     "adjacent_complementary_angle(1,DAC,CAB)",
     "triangle_area_formula_sine(1,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,DA,AB)",
       "adjacent_complementary_angle(1,DAC,CAB)",

@@ -2,9 +2,9 @@
   "problem_id": 4036,
   "annotation": "NaZhu_2023-05-07",
   "source": "GeoQA-2287",
-  "problem_level": 1,
-  "problem_text_cn": "如图,为了估计荆河的宽度,在荆河的对岸选定一个目标点P,在近岸取点Q和S,使点P、Q、S在一条直线上,且直线PS与河垂直,在过点S且与PS垂直的直线a上选择适当的点T,PT与过点Q且与PS垂直的直线b的交点为R,如果QS=60m,ST=120m,QR=80m,则荆河的宽度PQ为()",
-  "problem_text_en": "As shown in the figure, in order to estimate the width of the Jing River, a target point P is selected on the opposite bank of the Jing River, and points Q and S are taken near the bank, so that the points P, Q, and S are in a straight line, and the straight line PS is perpendicular to the river. Choose an appropriate point T on the straight line a passing point S and perpendicular to PS. The intersection of PT and the straight line b passing point Q and perpendicular to PS is R. If QS = N_0, ST = N_1, QR = N_2, then the width of the river PQ is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，QR=60，QS=60，ST=120，PQ⊥RQ，QS垂直于TS。求直线PQ的长度。",
+  "problem_text_en": "As shown in the diagram, QR=60, QS=60, ST=120, PQ⊥RQ, QS is perpendicular to TS. Find the length of line PQ.",
   "problem_img": "4036.png",
   "construction_cdl": [
     "Shape(PQ,QR,RP)",
@@ -13,9 +13,11 @@
     "Collinear(PRT)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(QS),60)",
     "Equal(LengthOfLine(QR),60)",
-    "Equal(LengthOfLine(ST),120)"
+    "Equal(LengthOfLine(QS),60)",
+    "Equal(LengthOfLine(ST),120)",
+    "PerpendicularBetweenLine(PQ,RQ)",
+    "PerpendicularBetweenLine(QS,TS)"
   ],
   "image_cdl": [
     "PerpendicularBetweenLine(PQ,RQ)",
@@ -29,14 +31,14 @@
     "similar_triangle_property_line_ratio(1,RPQ,TPS)",
     "similar_triangle_property_line_ratio(1,PQR,PST)"
   ],
-  "theorem_seq_dag": {
-    "similar_triangle_judgment_aa(1,RPQ,TPS)": [
-      "similar_triangle_property_line_ratio(1,RPQ,TPS)",
-      "similar_triangle_property_line_ratio(1,PQR,PST)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,PQ,QS)",
       "similar_triangle_judgment_aa(1,RPQ,TPS)"
+    ],
+    "similar_triangle_judgment_aa(1,RPQ,TPS)": [
+      "similar_triangle_property_line_ratio(1,RPQ,TPS)",
+      "similar_triangle_property_line_ratio(1,PQR,PST)"
     ]
   }
 }

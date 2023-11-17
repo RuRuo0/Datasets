@@ -2,9 +2,9 @@
   "problem_id": 1826,
   "annotation": "JiaZou_2023-03-26",
   "source": "Geometry3k-1894",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find E H if \\triangle A B C \\sim \\triangle D E F, B G is an altitude of \\triangle A B C, E H is an altitude of \\triangle D E F, B G = 3, B F = 4, F C = 2, and C E = 1.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，BF=4，BG=3，BG=HeightOfTriangle(ABC)，CE=1，EH=HeightOfTriangle(DFE)，FC=2，三角形ABC与三角形DFE是镜像相似三角形，AB垂直于FB，BG⊥AG，CE⊥DE，EH⊥FH。求直线EH的长度。",
+  "problem_text_en": "As shown in the diagram, BF=4, BG=3, BG=HeightOfTriangle(ABC), CE=1, EH=HeightOfTriangle(DFE), FC=2, Triangle ABC is mirror similar to triangle DFE., AB⊥FB, BG⊥AG, CE is perpendicular to DE, EH⊥FH. Find the length of line EH.",
   "problem_img": "1826.png",
   "construction_cdl": [
     "Shape(AB,BG,GA)",
@@ -17,7 +17,17 @@
     "Collinear(BFCE)"
   ],
   "text_cdl": [
-    "MirrorSimilarBetweenTriangle(ABC,DFE)"
+    "Equal(LengthOfLine(BF),4)",
+    "Equal(LengthOfLine(BG),3)",
+    "Equal(LengthOfLine(BG),HeightOfTriangle(ABC))",
+    "Equal(LengthOfLine(CE),1)",
+    "Equal(LengthOfLine(EH),HeightOfTriangle(DFE))",
+    "Equal(LengthOfLine(FC),2)",
+    "MirrorSimilarBetweenTriangle(ABC,DFE)",
+    "PerpendicularBetweenLine(AB,FB)",
+    "PerpendicularBetweenLine(BG,AG)",
+    "PerpendicularBetweenLine(CE,DE)",
+    "PerpendicularBetweenLine(EH,FH)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(BG),HeightOfTriangle(ABC))",
@@ -43,7 +53,13 @@
     "mirror_similar_triangle_property_line_ratio(1,CGB,FEH)",
     "mirror_similar_triangle_property_line_ratio(1,GBC,HFE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,BF,FC)",
+      "line_addition(1,FC,CE)",
+      "mirror_similar_triangle_property_angle_equal(1,CAB,FED)",
+      "adjacent_complementary_angle(1,IGB,BGA)"
+    ],
     "mirror_similar_triangle_property_angle_equal(1,CAB,FED)": [
       "mirror_similar_triangle_judgment_aa(1,BCG,EHF)"
     ],
@@ -53,12 +69,6 @@
     "mirror_similar_triangle_judgment_aa(1,BCG,EHF)": [
       "mirror_similar_triangle_property_line_ratio(1,CGB,FEH)",
       "mirror_similar_triangle_property_line_ratio(1,GBC,HFE)"
-    ],
-    "START": [
-      "line_addition(1,BF,FC)",
-      "line_addition(1,FC,CE)",
-      "mirror_similar_triangle_property_angle_equal(1,CAB,FED)",
-      "adjacent_complementary_angle(1,IGB,BGA)"
     ]
   }
 }

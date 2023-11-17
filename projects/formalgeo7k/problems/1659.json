@@ -2,9 +2,9 @@
   "problem_id": 1659,
   "annotation": "Yangli_2023-04-16",
   "source": "Geometry3k-1721",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find S C.",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，CA=42，DM=MS，M是⊙M的圆心，AD垂直于MD，MS⊥TS。求直线SC的长度。",
+  "problem_text_en": "As shown in the diagram, CA=42, DM=MS, the center of circle M is M, AD⊥MD, MS⊥TS. Find the length of line SC.",
   "problem_img": "1659.png",
   "construction_cdl": [
     "Shape(CD,DA,MAC)",
@@ -17,7 +17,13 @@
     "Collinear(CST)",
     "Cocircular(M,CTA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(CA),42)",
+    "Equal(LengthOfLine(DM),LengthOfLine(MS))",
+    "IsCentreOfCircle(M,M)",
+    "PerpendicularBetweenLine(AD,MD)",
+    "PerpendicularBetweenLine(MS,TS)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(M,M)",
     "Equal(LengthOfLine(CA),42)",
@@ -40,7 +46,14 @@
     "mirror_congruent_triangle_judgment_hl(1,CSM,CMD)",
     "mirror_congruent_triangle_property_line_equal(1,MCS,MDC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AD,DC)",
+      "radius_of_circle_property_length_equal(1,MA,M)",
+      "radius_of_circle_property_length_equal(1,MC,M)",
+      "adjacent_complementary_angle(1,ADM,MDC)",
+      "adjacent_complementary_angle(1,CSM,MST)"
+    ],
     "radius_of_circle_property_length_equal(1,MA,M)": [
       "isosceles_triangle_judgment_line_equal(1,MAC)"
     ],
@@ -65,13 +78,6 @@
     ],
     "mirror_congruent_triangle_judgment_hl(1,CSM,CMD)": [
       "mirror_congruent_triangle_property_line_equal(1,MCS,MDC)"
-    ],
-    "START": [
-      "line_addition(1,AD,DC)",
-      "radius_of_circle_property_length_equal(1,MA,M)",
-      "radius_of_circle_property_length_equal(1,MC,M)",
-      "adjacent_complementary_angle(1,ADM,MDC)",
-      "adjacent_complementary_angle(1,CSM,MST)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 6552,
   "annotation": "XiaokaiZhang_2023-06-04",
   "source": "GeoQA-9482",
-  "problem_level": 1,
-  "problem_text_cn": "如图,线段AB过圆心O,交⊙O于点A、C,∠B=30°,直线BD与⊙O切于点D,则∠ADB的度数是()",
-  "problem_text_en": "As shown in the figure, the line segment AB crosses the center O, intersects ⊙O at points A and C, ∠B = N_0, and the straight line BD and ⊙O tangent to point D, then the degree of ∠ADB is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，∠ABD=30°，圆O的圆心为O，BD是圆O的切线。求∠BDA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABD=30°, the center of circle O is O, the tangent to circle O is BD. Find the measure of ∠BDA.",
   "problem_img": "6552.png",
   "construction_cdl": [
     "Shape(ODA,AD)",
@@ -16,8 +16,8 @@
     "Cocircular(O,CDA)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfAngle(ABD),30)",
+    "IsCentreOfCircle(O,O)",
     "IsTangentOfCircle(BD,O)"
   ],
   "image_cdl": [],
@@ -34,16 +34,7 @@
     "triangle_property_angle_sum(1,ODA)",
     "triangle_property_angle_sum(1,DAB)"
   ],
-  "theorem_seq_dag": {
-    "radius_of_circle_property_length_equal(1,OD,O)": [
-      "isosceles_triangle_judgment_line_equal(1,ODA)"
-    ],
-    "radius_of_circle_property_length_equal(1,OA,O)": [
-      "isosceles_triangle_judgment_line_equal(1,ODA)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,ODA)": [
-      "isosceles_triangle_property_angle_equal(1,ODA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(2,BD,O,O)",
       "triangle_property_angle_sum(1,DOB)",
@@ -52,6 +43,15 @@
       "radius_of_circle_property_length_equal(1,OA,O)",
       "triangle_property_angle_sum(1,ODA)",
       "triangle_property_angle_sum(1,DAB)"
+    ],
+    "radius_of_circle_property_length_equal(1,OD,O)": [
+      "isosceles_triangle_judgment_line_equal(1,ODA)"
+    ],
+    "radius_of_circle_property_length_equal(1,OA,O)": [
+      "isosceles_triangle_judgment_line_equal(1,ODA)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,ODA)": [
+      "isosceles_triangle_property_angle_equal(1,ODA)"
     ]
   }
 }

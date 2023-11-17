@@ -2,9 +2,9 @@
   "problem_id": 5440,
   "annotation": "Yangli_2023-05-21",
   "source": "GeoQA-5781",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,过顶点A的直线DE∥BC,∠ABC、∠ACB的平分线分别交DE于点E、D,若AC=3,AB=4,则DE的长为()",
-  "problem_text_en": "As shown in the figure, in △ABC, the straight line DE ∥BC, ∠ABC, ∠ACB passing through the vertex A intersects DE at points E and D, respectively. If AC = N_0, AB = N_1, then the length of DE is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=4，AC=3，BE是∠ABC的角平分线，CD平分∠BCA，DE平行于BC。求直线DE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=4, AC=3, BE bisects ∠ABC, CD is the angle bisector of ∠BCA, DE is parallel to BC. Find the length of line DE.",
   "problem_img": "5440.png",
   "construction_cdl": [
     "Shape(DF,FA,AD)",
@@ -22,9 +22,9 @@
   "text_cdl": [
     "Equal(LengthOfLine(AB),4)",
     "Equal(LengthOfLine(AC),3)",
-    "ParallelBetweenLine(DE,BC)",
     "IsBisectorOfAngle(BE,ABC)",
-    "IsBisectorOfAngle(CD,BCA)"
+    "IsBisectorOfAngle(CD,BCA)",
+    "ParallelBetweenLine(DE,BC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(DE))",
@@ -36,17 +36,17 @@
     "isosceles_triangle_judgment_angle_equal(1,ABE)",
     "line_addition(1,DA,AE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_alternate_interior_angle(1,DE,BC)",
+      "parallel_property_alternate_interior_angle(2,DE,BC)",
+      "line_addition(1,DA,AE)"
+    ],
     "parallel_property_alternate_interior_angle(1,DE,BC)": [
       "isosceles_triangle_judgment_angle_equal(1,ADC)"
     ],
     "parallel_property_alternate_interior_angle(2,DE,BC)": [
       "isosceles_triangle_judgment_angle_equal(1,ABE)"
-    ],
-    "START": [
-      "parallel_property_alternate_interior_angle(1,DE,BC)",
-      "parallel_property_alternate_interior_angle(2,DE,BC)",
-      "line_addition(1,DA,AE)"
     ]
   }
 }

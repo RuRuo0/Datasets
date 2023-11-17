@@ -2,9 +2,9 @@
   "problem_id": 359,
   "annotation": "NaZhu_2023-03-12",
   "source": "Geometry3k-366",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find A E.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=2，AE=x-1，CD=5，ED=x+5，BA平行于DC。求直线AE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=2, AE=x-1, CD=5, ED=x+5, BA∥DC. Find the length of line AE.",
   "problem_img": "359.png",
   "construction_cdl": [
     "Shape(AB,BE,EA)",
@@ -12,7 +12,13 @@
     "Collinear(BEC)",
     "Collinear(AED)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),2)",
+    "Equal(LengthOfLine(AE),x-1)",
+    "Equal(LengthOfLine(CD),5)",
+    "Equal(LengthOfLine(ED),x+5)",
+    "ParallelBetweenLine(BA,DC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AB),2)",
     "Equal(LengthOfLine(AE),x-1)",
@@ -29,7 +35,11 @@
     "similar_triangle_property_line_ratio(1,EAB,EDC)",
     "similar_triangle_property_line_ratio(1,BEA,CED)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "vertical_angle(1,BEA,CED)",
+      "parallel_property_alternate_interior_angle(1,BA,DC)"
+    ],
     "vertical_angle(1,BEA,CED)": [
       "similar_triangle_judgment_aa(1,ABE,DCE)"
     ],
@@ -39,10 +49,6 @@
     "similar_triangle_judgment_aa(1,ABE,DCE)": [
       "similar_triangle_property_line_ratio(1,BEA,CED)",
       "similar_triangle_property_line_ratio(1,EAB,EDC)"
-    ],
-    "START": [
-      "vertical_angle(1,BEA,CED)",
-      "parallel_property_alternate_interior_angle(1,BA,DC)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 3930,
   "annotation": "FangzhenZhu_2023-05-07",
   "source": "GeoQA-1849",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点A,B,C在⊙O上,已知∠ABC=130°,则∠AOC=()",
-  "problem_text_en": "As shown in the figure, the points A, B, and C are on ⊙O, and it is known that ∠ABC = N_0, then ∠AOC = ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠ABC=130°，圆O的圆心为O。求∠COA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABC=130°, the center of ⊙O is O. Find the measure of ∠COA.",
   "problem_img": "3930.png",
   "construction_cdl": [
     "Shape(OAB,BA)",
@@ -16,7 +16,10 @@
     "Shape(DA,AO,OD)",
     "Cocircular(O,ABCD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(ABC),130)",
+    "IsCentreOfCircle(O,O)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfAngle(ABC),130)"
@@ -27,7 +30,7 @@
     "arc_property_center_angle(1,OAC,O)",
     "arc_property_circumference_angle_internal(1,OAC,B)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,OAC,O)",
       "arc_property_circumference_angle_internal(1,OAC,B)"

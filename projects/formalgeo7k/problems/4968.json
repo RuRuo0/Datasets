@@ -2,9 +2,9 @@
   "problem_id": 4968,
   "annotation": "FangzhenZhu_2023-05-21",
   "source": "GeoQA-4649",
-  "problem_level": 1,
-  "problem_text_cn": "如图,直线l1∥l2∥l3,若AB=3,BC=4,则\\frac{DE}{DF}的值是()",
-  "problem_text_en": "As shown in the figure, the straight line l1∥l2∥l3, if AB=N_0,BC=N_1, then the value of \\frac{DE}{DF} is ()",
+  "problem_level": 14,
+  "problem_text_cn": "如图所示，AB=3，CB=4，DE=3，MA=5，AD平行于BE，AD∥CF，BE平行于CF。求直线DF的长度。",
+  "problem_text_en": "As shown in the diagram, AB=3, CB=4, DE=3, MA=5, AD is parallel to BE, AD∥CF, BE is parallel to CF. Find the length of line DF.",
   "problem_img": "4968.png",
   "construction_cdl": [
     "Shape(MA,AD,DM)",
@@ -15,9 +15,9 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(AB),3)",
-    "Equal(LengthOfLine(MA),5)",
     "Equal(LengthOfLine(CB),4)",
     "Equal(LengthOfLine(DE),3)",
+    "Equal(LengthOfLine(MA),5)",
     "ParallelBetweenLine(AD,BE)",
     "ParallelBetweenLine(AD,CF)",
     "ParallelBetweenLine(BE,CF)"
@@ -41,7 +41,17 @@
     "similar_triangle_property_line_ratio(1,BEM,CFM)",
     "similar_triangle_property_line_ratio(1,EMB,FMC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,AD,BE,M)",
+      "parallel_property_corresponding_angle(1,BE,CF,M)",
+      "parallel_property_corresponding_angle(2,EB,DA,M)",
+      "parallel_property_corresponding_angle(2,FC,EB,M)",
+      "line_addition(1,MA,AB)",
+      "line_addition(1,MB,BC)",
+      "line_addition(1,MD,DE)",
+      "line_addition(1,MD,DF)"
+    ],
     "parallel_property_corresponding_angle(1,AD,BE,M)": [
       "similar_triangle_judgment_aa(1,MAD,MBE)"
     ],
@@ -61,16 +71,6 @@
     "similar_triangle_judgment_aa(1,MBE,MCF)": [
       "similar_triangle_property_line_ratio(1,BEM,CFM)",
       "similar_triangle_property_line_ratio(1,EMB,FMC)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,AD,BE,M)",
-      "parallel_property_corresponding_angle(1,BE,CF,M)",
-      "parallel_property_corresponding_angle(2,EB,DA,M)",
-      "parallel_property_corresponding_angle(2,FC,EB,M)",
-      "line_addition(1,MA,AB)",
-      "line_addition(1,MB,BC)",
-      "line_addition(1,MD,DE)",
-      "line_addition(1,MD,DF)"
     ]
   }
 }

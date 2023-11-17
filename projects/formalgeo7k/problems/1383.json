@@ -2,9 +2,9 @@
   "problem_id": 1383,
   "annotation": "YimingHe_2023-03-19",
   "source": "Geometry3k-1432",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Each pair of polygons is similar. Find E D.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=10，AE=25/4，BC=x+2，DE=x-1，三角形ABE与三角形ACD是相似三角形。求直线ED的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, AE=25/4, BC=x+2, DE=x-1, △ABE is similar to △ACD.. Find the length of line ED.",
   "problem_img": "1383.png",
   "construction_cdl": [
     "Shape(AB,BE,EA)",
@@ -12,7 +12,13 @@
     "Collinear(ABC)",
     "Collinear(AED)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),10)",
+    "Equal(LengthOfLine(AE),25/4)",
+    "Equal(LengthOfLine(BC),x+2)",
+    "Equal(LengthOfLine(DE),x-1)",
+    "SimilarBetweenTriangle(ABE,ACD)"
+  ],
   "image_cdl": [
     "SimilarBetweenTriangle(ABE,ACD)",
     "Equal(LengthOfLine(AE),25/4)",
@@ -28,7 +34,7 @@
     "similar_triangle_property_line_ratio(1,EAB,DAC)",
     "similar_triangle_property_line_ratio(1,BEA,CDA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AB,BC)",
       "line_addition(1,AE,ED)",

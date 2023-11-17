@@ -2,9 +2,9 @@
   "problem_id": 666,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-683",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the height of the parallelogram given its area with 100 square units.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，BCDA的面积为100，AB=x+15，BE=x，BCDA是平行四边形，CE⊥BE。求BCDA的高。",
+  "problem_text_en": "As shown in the diagram, the area of quadrilateral BCDA is 100, AB=x+15, BE=x, BCDA is a ▱, CE⊥BE. Find the height of BCDA.",
   "problem_img": "666.png",
   "construction_cdl": [
     "Shape(CE,EB,BC)",
@@ -12,7 +12,11 @@
     "Collinear(CED)"
   ],
   "text_cdl": [
-    "Parallelogram(BCDA)"
+    "Equal(AreaOfQuadrilateral(BCDA),100)",
+    "Equal(LengthOfLine(AB),x+15)",
+    "Equal(LengthOfLine(BE),x)",
+    "Parallelogram(BCDA)",
+    "PerpendicularBetweenLine(CE,BE)"
   ],
   "image_cdl": [
     "Equal(AreaOfQuadrilateral(BCDA),100)",
@@ -27,7 +31,7 @@
     "parallelogram_property_opposite_line_equal(1,CDAB)",
     "parallelogram_area_formula_common(1,BCDA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "altitude_of_quadrilateral_judgment_left_vertex(1,BE,BCDA)",
       "parallelogram_property_opposite_line_equal(1,CDAB)",

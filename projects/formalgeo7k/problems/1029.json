@@ -2,9 +2,9 @@
   "problem_id": 1029,
   "annotation": "YanjunGuo_2023-04-09",
   "source": "Geometry3k-1062",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If L K = 4, M P = 3, P Q = 6, K J = 2, R S = 6, and L P = 2, find Q R.",
+  "problem_level": 12,
+  "problem_text_cn": "如图所示，KJ=2，LK=4，LP=2，MP=3，PQ=6，RS=6，KQ∥JR，LP∥HS，LP平行于JR，LP平行于KQ。求直线QR的长度。",
+  "problem_text_en": "As shown in the diagram, KJ=2, LK=4, LP=2, MP=3, PQ=6, RS=6, KQ is parallel to JR, LP is parallel to HS, LP is parallel to JR, LP is parallel to KQ. Find the length of line QR.",
   "problem_img": "1029.png",
   "construction_cdl": [
     "Shape(HS,SR,RJ,JH)",
@@ -15,12 +15,16 @@
     "Collinear(HJKLM)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(KJ),2)",
     "Equal(LengthOfLine(LK),4)",
+    "Equal(LengthOfLine(LP),2)",
     "Equal(LengthOfLine(MP),3)",
     "Equal(LengthOfLine(PQ),6)",
-    "Equal(LengthOfLine(KJ),2)",
     "Equal(LengthOfLine(RS),6)",
-    "Equal(LengthOfLine(LP),2)"
+    "ParallelBetweenLine(KQ,JR)",
+    "ParallelBetweenLine(LP,HS)",
+    "ParallelBetweenLine(LP,JR)",
+    "ParallelBetweenLine(LP,KQ)"
   ],
   "image_cdl": [
     "ParallelBetweenLine(KQ,JR)",
@@ -44,7 +48,15 @@
     "similar_triangle_property_line_ratio(1,QMK,RMJ)",
     "similar_triangle_property_line_ratio(1,KQM,JRM)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,LP,KQ,M)",
+      "parallel_property_corresponding_angle(1,KQ,JR,M)",
+      "line_addition(1,ML,LK)",
+      "line_addition(1,MP,PQ)",
+      "line_addition(1,MK,KJ)",
+      "line_addition(1,MQ,QR)"
+    ],
     "parallel_property_corresponding_angle(1,LP,KQ,M)": [
       "similar_triangle_judgment_aa(1,PML,QMK)"
     ],
@@ -58,14 +70,6 @@
     "similar_triangle_judgment_aa(1,QMK,RMJ)": [
       "similar_triangle_property_line_ratio(1,QMK,RMJ)",
       "similar_triangle_property_line_ratio(1,KQM,JRM)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,LP,KQ,M)",
-      "parallel_property_corresponding_angle(1,KQ,JR,M)",
-      "line_addition(1,ML,LK)",
-      "line_addition(1,MP,PQ)",
-      "line_addition(1,MK,KJ)",
-      "line_addition(1,MQ,QR)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 2523,
   "annotation": "ChenyangMao_2023-04-23",
   "source": "Geometry3k-2647",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x so that m \\parallel n.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠ABD=4*x-23°，∠UEC=2*x+17°，AC平行于FU。求x的值。",
+  "problem_text_en": "As shown in the diagram, ∠ABD=4*x-23°, ∠UEC=2*x+17°, AC∥FU. Find the value of x.",
   "problem_img": "2523.png",
   "construction_cdl": [
     "Shape(AB,BD)",
@@ -19,7 +19,11 @@
     "Collinear(FEU)",
     "Collinear(DBEC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(ABD),4*x-23)",
+    "Equal(MeasureOfAngle(UEC),2*x+17)",
+    "ParallelBetweenLine(AC,FU)"
+  ],
   "image_cdl": [
     "ParallelBetweenLine(AC,FU)",
     "Equal(MeasureOfAngle(ABD),4*x-23)",
@@ -33,16 +37,16 @@
     "vertical_angle(1,FED,UEC)",
     "parallel_property_corresponding_angle(2,EF,BA,D)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,AC,FU,B)",
+      "vertical_angle(1,FED,UEC)"
+    ],
     "parallel_property_collinear_extend(3,AC,FU,B)": [
       "parallel_property_collinear_extend(3,UF,BA,E)"
     ],
     "parallel_property_collinear_extend(3,UF,BA,E)": [
       "parallel_property_corresponding_angle(2,EF,BA,D)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,AC,FU,B)",
-      "vertical_angle(1,FED,UEC)"
     ]
   }
 }

@@ -2,16 +2,21 @@
   "problem_id": 1278,
   "annotation": "YimingHe_2023-03-19",
   "source": "Geometry3k-1324",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of \\triangle J K M.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，JK=17/2，KL=4，KM=5，KL垂直于ML。求△JMK的面积。",
+  "problem_text_en": "As shown in the diagram, JK=17/2, KL=4, KM=5, KL⊥ML. Find the area of △JMK.",
   "problem_img": "1278.png",
   "construction_cdl": [
     "Shape(JL,LK,KJ)",
     "Shape(KL,LM,MK)",
     "Collinear(JLM)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(JK),17/2)",
+    "Equal(LengthOfLine(KL),4)",
+    "Equal(LengthOfLine(KM),5)",
+    "PerpendicularBetweenLine(KL,ML)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(JK),17/2)",
     "Equal(LengthOfLine(KM),5)",
@@ -30,7 +35,13 @@
     "altitude_of_triangle_judgment(1,KL,KJM)",
     "triangle_area_formula_common(1,KJM)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,JLK,KLM)",
+      "right_triangle_judgment_angle(1,KLM)",
+      "line_addition(1,JL,LM)",
+      "triangle_area_formula_common(1,KJM)"
+    ],
     "adjacent_complementary_angle(1,JLK,KLM)": [
       "right_triangle_judgment_angle(1,JLK)",
       "altitude_of_triangle_judgment(1,KL,KJM)"
@@ -40,12 +51,6 @@
     ],
     "right_triangle_judgment_angle(1,JLK)": [
       "right_triangle_property_pythagorean(1,JLK)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,JLK,KLM)",
-      "right_triangle_judgment_angle(1,KLM)",
-      "line_addition(1,JL,LM)",
-      "triangle_area_formula_common(1,KJM)"
     ]
   }
 }

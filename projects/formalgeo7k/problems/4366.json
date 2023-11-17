@@ -2,9 +2,9 @@
   "problem_id": 4366,
   "annotation": "YimingHe_2023-05-14",
   "source": "GeoQA-3275",
-  "problem_level": 1,
-  "problem_text_cn": "已知:如图,在⊙O中,OA⊥BC,∠AOB=70°,则∠ADC的度数为()",
-  "problem_text_en": "Known: As shown in the figure, in ⊙O, OA ⊥ BC, ∠AOB = N_0, then the degree of ∠ADC is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠AOB=70°，O是圆O的圆心，BE⊥OE。求∠CDA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AOB=70°, O is the center of ⊙O, BE⊥OE. Find the measure of ∠CDA.",
   "problem_img": "4366.png",
   "construction_cdl": [
     "Shape(DC,OCD)",
@@ -23,9 +23,9 @@
     "Cocircular(O,ACDB)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(BE,OE)",
     "Equal(MeasureOfAngle(AOB),70)",
-    "IsCentreOfCircle(O,O)"
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(BE,OE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CDA))",
@@ -39,7 +39,14 @@
     "arc_property_center_angle(1,OAC,O)",
     "arc_property_circumference_angle_external(1,OAC,D)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "adjacent_complementary_angle(1,BEO,OEC)",
+      "arc_property_center_angle(1,OAC,O)",
+      "arc_property_circumference_angle_external(1,OAC,D)"
+    ],
     "radius_of_circle_property_length_equal(1,OC,O)": [
       "mirror_congruent_triangle_judgment_hl(1,BEO,COE)"
     ],
@@ -51,13 +58,6 @@
     ],
     "mirror_congruent_triangle_judgment_hl(1,BEO,COE)": [
       "mirror_congruent_triangle_property_angle_equal(1,OBE,OEC)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "adjacent_complementary_angle(1,BEO,OEC)",
-      "arc_property_center_angle(1,OAC,O)",
-      "arc_property_circumference_angle_external(1,OAC,D)"
     ]
   }
 }

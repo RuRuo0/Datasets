@@ -2,9 +2,9 @@
   "problem_id": 6960,
   "annotation": "ChengQin_2023-06-04",
   "source": "GeoQA-angle-10214",
-  "problem_level": 1,
-  "problem_text_cn": "如图，AB是半圆O的直径，C是半圆O上异于A，B的一点，D为弧AC中点，延长DC交AB的延长线于点E，若∠CAE＝14°，则∠E的度数是（）",
-  "problem_text_en": "",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，∠CAE=14°，⊙O的圆心为O，AB是⊙O的直径，D是⌒OCA的中点。求∠BEC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAE=14°, O is the center of ⊙O, AB is the diameter of circle O, D is the midpoint of arc OCA. Find the measure of ∠BEC.",
   "problem_img": "6960.png",
   "construction_cdl": [
     "Shape(ODA,AD)",
@@ -19,10 +19,10 @@
     "Cocircular(O,ABCD)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(CAE),14)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)",
-    "IsMidpointOfArc(D,OCA)",
-    "Equal(MeasureOfAngle(CAE),14)"
+    "IsMidpointOfArc(D,OCA)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BEC))",
@@ -39,10 +39,7 @@
     "angle_addition(1,DAC,CAB)",
     "triangle_property_angle_sum(1,EDA)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_length_equal(1,ODA,OCD)": [
-      "congruent_arc_property_measure_equal(1,ODA,OCD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,BCA,O)",
       "triangle_property_angle_sum(1,BCA)",
@@ -53,6 +50,9 @@
       "triangle_property_angle_sum(1,DAC)",
       "angle_addition(1,DAC,CAB)",
       "triangle_property_angle_sum(1,EDA)"
+    ],
+    "congruent_arc_judgment_length_equal(1,ODA,OCD)": [
+      "congruent_arc_property_measure_equal(1,ODA,OCD)"
     ]
   }
 }

@@ -3,8 +3,8 @@
   "annotation": "ZheZhu_2023-05-21",
   "source": "GeoQA-6793",
   "problem_level": 1,
-  "problem_text_cn": "如图,为了测量山坡护坡石坝的坡度(坡面的铅直高度与水平宽度的比称为坡度),把一根长5m的竹竿AC斜靠在石坝旁,量出杆长1m处的D点离地面的高度DE=0.6m,又量得杆底与坝脚的距离AB=3m,则石坝的坡度为()",
-  "problem_text_en": "As shown in the figure, in order to measure the slope of the slope protection rock dam (the ratio of the vertical height of the slope to the horizontal width is called the slope), a bamboo pole AC with a length of N_0 is leaned against the rock dam, and the pole length N_1 is measured. The height of point D from the ground DE = N_2, and the distance between the bottom of the pole and the dam foot AB = N_3, then the slope of the rock dam is ()",
+  "problem_text_cn": "如图所示，AB=3，AC=5，AD=1，DE=0.6，△ABC为直角△，AE和ED是直角三角形AED的两个直角边。求直线CB的长度与直线AB的长度之比。",
+  "problem_text_en": "As shown in the diagram, AB=3, AC=5, AD=1, DE=0.6, △ABC is a right △, ∠AED is the right angle of the right triangle AED. Find the ratio of the length of line CB to the length of line AB.",
   "problem_img": "5552.png",
   "construction_cdl": [
     "Shape(DA,AE,ED)",
@@ -13,12 +13,12 @@
     "Collinear(ADC)"
   ],
   "text_cdl": [
-    "RightTriangle(AED)",
-    "RightTriangle(ABC)",
-    "Equal(LengthOfLine(AD),1)",
-    "Equal(LengthOfLine(AC),5)",
     "Equal(LengthOfLine(AB),3)",
-    "Equal(LengthOfLine(DE),0.6)"
+    "Equal(LengthOfLine(AC),5)",
+    "Equal(LengthOfLine(AD),1)",
+    "Equal(LengthOfLine(DE),0.6)",
+    "RightTriangle(ABC)",
+    "RightTriangle(AED)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Div(LengthOfLine(CB),LengthOfLine(AB)))",
@@ -26,7 +26,7 @@
   "theorem_seqs": [
     "right_triangle_property_pythagorean(1,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_property_pythagorean(1,ABC)"
     ]

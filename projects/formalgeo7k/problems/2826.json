@@ -2,9 +2,9 @@
   "problem_id": 2826,
   "annotation": "RunanWang_2023-05-07",
   "source": "Geometry3k-2975",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Tangent M P is drawn to \\odot O. Find x if M O = 20.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，MO=20，MP=16，OC=x，OF=x，OP=x，PB=5，O是⊙O的圆心，圆O的切线为MP。求x的值。",
+  "problem_text_en": "As shown in the diagram, MO=20, MP=16, OC=x, OF=x, OP=x, PB=5, O is the center of circle O, MP is the tangent to ⊙O. Find the value of x.",
   "problem_img": "2826.png",
   "construction_cdl": [
     "Shape(MC,OCP,PM)",
@@ -18,7 +18,14 @@
     "Cocircular(O,EPCF)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)"
+    "Equal(LengthOfLine(MO),20)",
+    "Equal(LengthOfLine(MP),16)",
+    "Equal(LengthOfLine(OC),x)",
+    "Equal(LengthOfLine(OF),x)",
+    "Equal(LengthOfLine(OP),x)",
+    "Equal(LengthOfLine(PB),5)",
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(MP,O)"
   ],
   "image_cdl": [
     "IsTangentOfCircle(MP,O)",
@@ -37,7 +44,7 @@
     "line_addition(1,CO,OF)",
     "circle_property_circular_power_tangent_and_segment_line(1,MP,MCF,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,MC,CF)",
       "line_addition(1,MO,OF)",

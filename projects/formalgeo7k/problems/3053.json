@@ -2,9 +2,9 @@
   "problem_id": 3053,
   "annotation": "XiaokaiZhang_2023-04-16",
   "source": "GeoQA-272",
-  "problem_level": 1,
-  "problem_text_cn": "已知,如图,AD与BC相交于点O,AB∥CD,如果∠B=20°,∠D=40°,那么∠BOD为()",
-  "problem_text_en": "As shown in the figure, it is known that AD and BC intersect at point O, AB ∥ CD, if ∠B = N_0, ∠D = N_1, then ∠BOD is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠CDO=40°，∠OBA=20°，AB∥CD。求∠BOD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CDO=40°, ∠OBA=20°, AB∥CD. Find the measure of ∠BOD.",
   "problem_img": "3053.png",
   "construction_cdl": [
     "Shape(AO,OB,BA)",
@@ -15,9 +15,9 @@
     "Collinear(BOC)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AB,CD)",
+    "Equal(MeasureOfAngle(CDO),40)",
     "Equal(MeasureOfAngle(OBA),20)",
-    "Equal(MeasureOfAngle(CDO),40)"
+    "ParallelBetweenLine(AB,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BOD))",
@@ -27,7 +27,7 @@
     "triangle_property_angle_sum(1,AOB)",
     "adjacent_complementary_angle(1,AOB,BOD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_alternate_interior_angle(1,AB,CD)",
       "triangle_property_angle_sum(1,AOB)",

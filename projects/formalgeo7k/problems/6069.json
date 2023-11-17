@@ -2,9 +2,9 @@
   "problem_id": 6069,
   "annotation": "RunanWang_2023-06-04",
   "source": "GeoQA-8582",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,AC是弦,∠A=30°,连接BC,则∠OCB为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of O, AC is the chord, ∠A = N_0, connect BC, then ∠OCB is ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，∠CAB=30°，O是圆O的圆心，AB是⊙O的直径。求∠BCO的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAB=30°, the center of ⊙O is O, the diameter of ⊙O is AB. Find the measure of ∠BCO.",
   "problem_img": "6069.png",
   "construction_cdl": [
     "Shape(OCA,AC)",
@@ -16,7 +16,9 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)"
+    "Equal(MeasureOfAngle(CAB),30)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [
     "Equal(MeasureOfAngle(CAB),30)",
@@ -36,7 +38,15 @@
     "isosceles_triangle_property_angle_equal(1,OBC)",
     "triangle_property_angle_sum(1,OCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "arc_property_center_angle(1,OCA,O)",
+      "arc_property_circumference_angle_external(1,OCA,B)",
+      "triangle_property_angle_sum(1,OCA)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OCA)"
     ],
@@ -52,14 +62,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OBC)": [
       "isosceles_triangle_property_angle_equal(1,OBC)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "arc_property_center_angle(1,OCA,O)",
-      "arc_property_circumference_angle_external(1,OCA,B)",
-      "triangle_property_angle_sum(1,OCA)"
     ]
   }
 }

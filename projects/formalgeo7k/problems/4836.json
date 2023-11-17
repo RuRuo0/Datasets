@@ -2,9 +2,9 @@
   "problem_id": 4836,
   "annotation": "RunanWang_2023-05-21",
   "source": "GeoQA-4294",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB为⊙O的直径,P为AB延长线上一点,PT切⊙O于T,若PT=6,PB=2,则⊙O的直径为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, P is a vertex on the extended line of AB, PT tangents ⊙O to T, if PT = N_0, PB = N_1, then the diameter of ⊙O is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，PB=2，PT=6，圆O的圆心为O，PT是圆O的切线。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, PB=2, PT=6, O is the center of circle O, PT is the tangent to circle O. Find the length of line AB.",
   "problem_img": "4836.png",
   "construction_cdl": [
     "Shape(TP,PB,OTB)",
@@ -14,7 +14,10 @@
     "Cocircular(O,TBA)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)"
+    "Equal(LengthOfLine(PB),2)",
+    "Equal(LengthOfLine(PT),6)",
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(PT,O)"
   ],
   "image_cdl": [
     "IsTangentOfCircle(PT,O)",
@@ -27,7 +30,7 @@
     "line_addition(1,PB,BA)",
     "circle_property_circular_power_tangent_and_segment_line(1,PT,PBA,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,PB,BA)",
       "circle_property_circular_power_tangent_and_segment_line(1,PT,PBA,O)"

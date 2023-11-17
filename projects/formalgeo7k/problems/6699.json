@@ -2,9 +2,9 @@
   "problem_id": 6699,
   "annotation": "XiaoxiaoJin_2023-06-04",
   "source": "GeoQA-9729",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在⊙O中,直径AB⊥弦CD于点H,E是⊙O上的点,若∠BEC=25°,则∠BAD的度数为()",
-  "problem_text_en": "As shown in the figure, in ⊙O, the diameter AB ⊥ chord CD at point H, E is the point on ⊙O, if ∠BEC = N_0, then the degree of ∠BAD is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠BEC=25°，圆O的圆心为O，⊙O的直径为AB，CH⊥AH。求∠DAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BEC=25°, the center of ⊙O is O, AB is the diameter of ⊙O, CH⊥AH. Find the measure of ∠DAB.",
   "problem_img": "6699.png",
   "construction_cdl": [
     "Shape(CA,OAC)",
@@ -27,10 +27,10 @@
     "Cocircular(O,ACBDE)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(CH,AH)",
-    "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfAngle(BEC),25)",
-    "IsDiameterOfCircle(AB,O)"
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)",
+    "PerpendicularBetweenLine(CH,AH)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DAB))",
@@ -42,17 +42,17 @@
     "congruent_arc_judgment_length_equal(1,OCB,OBD)",
     "congruent_arc_property_measure_equal(1,OCB,OBD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_circumference_angle_external(1,OBD,A)",
+      "arc_property_circumference_angle_external(1,OCB,E)",
+      "circle_property_chord_perpendicular_bisect_arc(1,OCD,OHB)"
+    ],
     "circle_property_chord_perpendicular_bisect_arc(1,OCD,OHB)": [
       "congruent_arc_judgment_length_equal(1,OCB,OBD)"
     ],
     "congruent_arc_judgment_length_equal(1,OCB,OBD)": [
       "congruent_arc_property_measure_equal(1,OCB,OBD)"
-    ],
-    "START": [
-      "arc_property_circumference_angle_external(1,OBD,A)",
-      "arc_property_circumference_angle_external(1,OCB,E)",
-      "circle_property_chord_perpendicular_bisect_arc(1,OCD,OHB)"
     ]
   }
 }

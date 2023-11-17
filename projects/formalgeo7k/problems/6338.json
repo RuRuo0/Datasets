@@ -2,9 +2,9 @@
   "problem_id": 6338,
   "annotation": "ChengQin_2023-06-04",
   "source": "GeoQA-9154",
-  "problem_level": 1,
-  "problem_text_cn": "如图为菱形ABCD与△ABE的重叠情形,其中D在BE上．若AB=17,BD=16,AE=25,则DE的长度为何？()",
-  "problem_text_en": "The picture shows the overlap of diamond ABCD and △ABE, where D is on BE. If AB = N_0, BD = N_1, AE = N_2, what is the length of DE? ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=17，AE=25，BD=16，四边形ABCD是菱形。求直线DE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=17, AE=25, BD=16, quadrilateral ABCD is a rhombus. Find the length of line DE.",
   "problem_img": "6338.png",
   "construction_cdl": [
     "Shape(AB,BO,OA)",
@@ -16,10 +16,10 @@
     "Collinear(BODE)"
   ],
   "text_cdl": [
-    "Rhombus(ABCD)",
     "Equal(LengthOfLine(AB),17)",
+    "Equal(LengthOfLine(AE),25)",
     "Equal(LengthOfLine(BD),16)",
-    "Equal(LengthOfLine(AE),25)"
+    "Rhombus(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(DE))",
@@ -33,7 +33,12 @@
     "right_triangle_property_pythagorean(1,AOE)",
     "line_addition(1,OD,DE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "kite_property_diagonal_perpendicular_bisection(1,ABCD,O)",
+      "line_addition(1,BO,OD)",
+      "line_addition(1,OD,DE)"
+    ],
     "kite_property_diagonal_perpendicular_bisection(1,ABCD,O)": [
       "right_triangle_judgment_angle(1,AOD)",
       "right_triangle_judgment_angle(1,AOE)"
@@ -43,11 +48,6 @@
     ],
     "right_triangle_judgment_angle(1,AOE)": [
       "right_triangle_property_pythagorean(1,AOE)"
-    ],
-    "START": [
-      "kite_property_diagonal_perpendicular_bisection(1,ABCD,O)",
-      "line_addition(1,BO,OD)",
-      "line_addition(1,OD,DE)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 6274,
   "annotation": "ZheZhu_2023-05-28",
   "source": "GeoQA-8935",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是半圆O的直径,C、D是半圆上的两点,半圆O的切线PC交AB的延长线于点P,∠PCB=29°,则∠ADC=()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of semicircle O, C and D are two vertices on the semicircle, the tangent PC of semicircle O intersects the extended line line of AB at point P, ∠PCB = N_0, then ∠ADC = ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，∠PCB=29°，⊙O的圆心为O，AB是⊙O的直径，PC是圆O的切线。求∠CDA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠PCB=29°, the center of ⊙O is O, the diameter of circle O is AB, PC is the tangent to ⊙O. Find the measure of ∠CDA.",
   "problem_img": "6274.png",
   "construction_cdl": [
     "Shape(OC,CD,DA,AO)",
@@ -18,10 +18,10 @@
     "Cocircular(O,ABCD)"
   ],
   "text_cdl": [
-    "IsDiameterOfCircle(AB,O)",
+    "Equal(MeasureOfAngle(PCB),29)",
     "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(PC,O)",
-    "Equal(MeasureOfAngle(PCB),29)"
+    "IsDiameterOfCircle(AB,O)",
+    "IsTangentOfCircle(PC,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CDA))",
@@ -39,16 +39,7 @@
     "arc_property_center_angle(1,OCA,O)",
     "arc_property_circumference_angle_internal(1,OCA,D)"
   ],
-  "theorem_seq_dag": {
-    "radius_of_circle_property_length_equal(1,OB,O)": [
-      "isosceles_triangle_judgment_line_equal(1,OBC)"
-    ],
-    "radius_of_circle_property_length_equal(1,OC,O)": [
-      "isosceles_triangle_judgment_line_equal(1,OBC)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,OBC)": [
-      "isosceles_triangle_property_angle_equal(1,OBC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(2,PC,O,O)",
       "angle_addition(1,AOC,COB)",
@@ -59,6 +50,15 @@
       "flat_angle(1,AOB)",
       "arc_property_center_angle(1,OCA,O)",
       "arc_property_circumference_angle_internal(1,OCA,D)"
+    ],
+    "radius_of_circle_property_length_equal(1,OB,O)": [
+      "isosceles_triangle_judgment_line_equal(1,OBC)"
+    ],
+    "radius_of_circle_property_length_equal(1,OC,O)": [
+      "isosceles_triangle_judgment_line_equal(1,OBC)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,OBC)": [
+      "isosceles_triangle_property_angle_equal(1,OBC)"
     ]
   }
 }

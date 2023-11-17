@@ -2,9 +2,9 @@
   "problem_id": 845,
   "annotation": "NaZhu_2023-04-09",
   "source": "Geometry3k-874",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the exact circumference of \\odot P.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AB=12，DA=5，P是圆P的圆心，⊙P的直径为BD，⊙P的直径为DB。求圆P的周长。",
+  "problem_text_en": "As shown in the diagram, AB=12, DA=5, P is the center of ⊙P, the diameter of ⊙P is BD, the diameter of ⊙P is DB. Find the circumference of the circle P.",
   "problem_img": "845.png",
   "construction_cdl": [
     "Shape(PBC,CB)",
@@ -16,7 +16,13 @@
     "Collinear(DPB)",
     "Cocircular(P,ABCD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),12)",
+    "Equal(LengthOfLine(DA),5)",
+    "IsCentreOfCircle(P,P)",
+    "IsDiameterOfCircle(BD,P)",
+    "IsDiameterOfCircle(DB,P)"
+  ],
   "image_cdl": [
     "IsDiameterOfCircle(DB,P)",
     "IsDiameterOfCircle(BD,P)",
@@ -34,18 +40,18 @@
     "circle_property_length_of_radius_and_diameter(1,P)",
     "circle_perimeter_formula(1,P)"
   ],
-  "theorem_seq_dag": {
-    "diameter_of_circle_property_right_angle(1,DAB,P)": [
-      "right_triangle_judgment_angle(1,DAB)"
-    ],
-    "right_triangle_judgment_angle(1,DAB)": [
-      "right_triangle_property_pythagorean(1,DAB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,DAB,P)",
       "diameter_of_circle_property_length_equal(1,BD,P)",
       "circle_property_length_of_radius_and_diameter(1,P)",
       "circle_perimeter_formula(1,P)"
+    ],
+    "diameter_of_circle_property_right_angle(1,DAB,P)": [
+      "right_triangle_judgment_angle(1,DAB)"
+    ],
+    "right_triangle_judgment_angle(1,DAB)": [
+      "right_triangle_property_pythagorean(1,DAB)"
     ]
   }
 }

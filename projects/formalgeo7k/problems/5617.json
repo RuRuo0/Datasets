@@ -2,9 +2,9 @@
   "problem_id": 5617,
   "annotation": "YimingHe_2023-05-28",
   "source": "GeoQA-7198",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AD•AB=AE•AC,∠ADE=80°,∠A=60°,则∠B=()",
-  "problem_text_en": "As shown in the figure, AD•AB = AE•AC, ∠ADE = N_0, ∠A = N_1, then ∠B = ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠ADE=80°，∠EAD=60°，Mul(LengthOfLine(AD)=LengthOfLine(AB))。求∠DBC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ADE=80°, ∠EAD=60°, Mul(LengthOfLine(AD)=LengthOfLine(AB)). Find the measure of ∠DBC.",
   "problem_img": "5617.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -13,9 +13,9 @@
     "Collinear(AEC)"
   ],
   "text_cdl": [
-    "Equal(Mul(LengthOfLine(AD),LengthOfLine(AB)),Mul(LengthOfLine(AE),LengthOfLine(AC)))",
     "Equal(MeasureOfAngle(ADE),80)",
-    "Equal(MeasureOfAngle(EAD),60)"
+    "Equal(MeasureOfAngle(EAD),60)",
+    "Equal(Mul(LengthOfLine(AD),LengthOfLine(AB)),Mul(LengthOfLine(AE),LengthOfLine(AC)))"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DBC))",
@@ -25,13 +25,13 @@
     "mirror_similar_triangle_property_angle_equal(1,DEA,CAB)",
     "triangle_property_angle_sum(1,ABC)"
   ],
-  "theorem_seq_dag": {
-    "mirror_similar_triangle_judgment_sas(1,ADE,ABC)": [
-      "mirror_similar_triangle_property_angle_equal(1,DEA,CAB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "mirror_similar_triangle_judgment_sas(1,ADE,ABC)",
       "triangle_property_angle_sum(1,ABC)"
+    ],
+    "mirror_similar_triangle_judgment_sas(1,ADE,ABC)": [
+      "mirror_similar_triangle_property_angle_equal(1,DEA,CAB)"
     ]
   }
 }

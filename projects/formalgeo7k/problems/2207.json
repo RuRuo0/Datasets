@@ -2,9 +2,9 @@
   "problem_id": 2207,
   "annotation": "XiaoxiaoJin_2023-04-23",
   "source": "Geometry3k-2304",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "A B C D is a rectangle. If C F = 4 x + 1 and D F = x + 13, find x.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，CF=4*x+1，DF=x+13，ADCB是矩形。求x的值。",
+  "problem_text_en": "As shown in the diagram, CF=4*x+1, DF=x+13, quadrilateral ADCB is a rectangle. Find the value of x.",
   "problem_img": "2207.png",
   "construction_cdl": [
     "Shape(BA,AF,FB)",
@@ -14,7 +14,11 @@
     "Collinear(AFC)",
     "Collinear(DFB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(CF),4*x+1)",
+    "Equal(LengthOfLine(DF),x+13)",
+    "Rectangle(ADCB)"
+  ],
   "image_cdl": [
     "Rectangle(ADCB)",
     "Equal(LengthOfLine(CF),4*x+1)",
@@ -29,7 +33,7 @@
     "parallelogram_property_diagonal_bisection(1,ADCB,F)",
     "parallelogram_property_diagonal_bisection(1,DCBA,F)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AF,FC)",
       "line_addition(1,DF,FB)",

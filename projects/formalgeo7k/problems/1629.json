@@ -2,9 +2,9 @@
   "problem_id": 1629,
   "annotation": "NaZhu_2023-03-26",
   "source": "Geometry3k-1690",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find S P.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，SM=3*x+5，SP=6*x-7，∠MJS=∠SJP，SM垂直于JM，SP垂直于TP。求直线SP的长度。",
+  "problem_text_en": "As shown in the diagram, SM=3*x+5, SP=6*x-7, ∠MJS=∠SJP, SM⊥JM, SP is perpendicular to TP. Find the length of line SP.",
   "problem_img": "1629.png",
   "construction_cdl": [
     "Shape(MJ,JS,SM)",
@@ -13,7 +13,13 @@
     "Collinear(JSB)",
     "Collinear(JPT)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(SM),3*x+5)",
+    "Equal(LengthOfLine(SP),6*x-7)",
+    "Equal(MeasureOfAngle(MJS),MeasureOfAngle(SJP))",
+    "PerpendicularBetweenLine(SM,JM)",
+    "PerpendicularBetweenLine(SP,TP)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(SM),3*x+5)",
     "Equal(LengthOfLine(SP),6*x-7)",
@@ -30,7 +36,12 @@
     "mirror_congruent_triangle_judgment_aas(1,JSM,JPS)",
     "mirror_congruent_triangle_property_line_equal(1,JSM,JPS)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,JPS,SPT)",
+      "triangle_property_angle_sum(1,MJS)",
+      "triangle_property_angle_sum(1,SJP)"
+    ],
     "adjacent_complementary_angle(1,JPS,SPT)": [
       "mirror_congruent_triangle_judgment_aas(1,JSM,JPS)"
     ],
@@ -42,11 +53,6 @@
     ],
     "mirror_congruent_triangle_judgment_aas(1,JSM,JPS)": [
       "mirror_congruent_triangle_property_line_equal(1,JSM,JPS)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,JPS,SPT)",
-      "triangle_property_angle_sum(1,MJS)",
-      "triangle_property_angle_sum(1,SJP)"
     ]
   }
 }

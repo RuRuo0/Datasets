@@ -2,9 +2,9 @@
   "problem_id": 1053,
   "annotation": "QikeHuang_2023-04-09",
   "source": "Geometry3k-1086",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Refer to trapezoid C D F G with median H E. Let Y Z be the median of H E F G. Find Y Z.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，DC=46，EH=38，CGFD的中位线为HE，HGFE的中位线为YZ，四边形CGFD是梯形。求直线YZ的长度。",
+  "problem_text_en": "As shown in the diagram, DC=46, EH=38, the midsegment of CGFD is HE, the midsegment of quadrilateral HGFE is YZ, CGFD is a trapezoid. Find the length of line YZ.",
   "problem_img": "1053.png",
   "construction_cdl": [
     "Shape(CH,HE,ED,DC)",
@@ -13,7 +13,13 @@
     "Collinear(CHYG)",
     "Collinear(DEZF)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(DC),46)",
+    "Equal(LengthOfLine(EH),38)",
+    "IsMidsegmentOfQuadrilateral(HE,CGFD)",
+    "IsMidsegmentOfQuadrilateral(YZ,HGFE)",
+    "Trapezoid(CGFD)"
+  ],
   "image_cdl": [
     "Trapezoid(CGFD)",
     "IsMidsegmentOfQuadrilateral(HE,CGFD)",
@@ -27,7 +33,7 @@
     "midsegment_of_quadrilateral_property_length(1,HE,CGFD)",
     "midsegment_of_quadrilateral_property_length(1,YZ,HGFE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "midsegment_of_quadrilateral_property_length(1,HE,CGFD)",
       "midsegment_of_quadrilateral_property_length(1,YZ,HGFE)"

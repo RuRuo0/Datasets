@@ -2,9 +2,9 @@
   "problem_id": 2258,
   "annotation": "DengfengYue_2023-04-16",
   "source": "Geometry3k-2361",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If the circumference of the circle is 16 \\pi units, what is the total area of the shaded regions?",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，Add(AreaOfSector(EDB)=AreaOfSector(ECA))，⊙E的周长为16*pi，⊙E的圆心为E，AE垂直于CE，BE⊥DE。求x的值。",
+  "problem_text_en": "As shown in the diagram, Add(AreaOfSector(EDB)=AreaOfSector(ECA)), the circumference of the ⊙E is 16*pi, E is the center of ⊙E, AE is perpendicular to CE, BE is perpendicular to DE. Find the value of x.",
   "problem_img": "2258.png",
   "construction_cdl": [
     "Shape(ED,EDB,BE)",
@@ -15,7 +15,13 @@
     "Collinear(DEC)",
     "Cocircular(E,DBCA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(Add(AreaOfSector(EDB),AreaOfSector(ECA)),x)",
+    "Equal(PerimeterOfCircle(E),16*pi)",
+    "IsCentreOfCircle(E,E)",
+    "PerpendicularBetweenLine(AE,CE)",
+    "PerpendicularBetweenLine(BE,DE)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(E,E)",
     "Equal(PerimeterOfCircle(E),16*pi)",
@@ -32,7 +38,7 @@
     "sector_area_formula(1,EDB)",
     "sector_area_formula(1,ECA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,EDB,E)",
       "arc_property_center_angle(1,ECA,E)",

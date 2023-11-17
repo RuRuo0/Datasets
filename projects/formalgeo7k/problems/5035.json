@@ -2,9 +2,9 @@
   "problem_id": 5035,
   "annotation": "ZheZhu_2023-05-14",
   "source": "GeoQA-4773",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB∥CD,AD与BC相交于点P,AB=3,CD=6,AP=4,则DP的长为()",
-  "problem_text_en": "As shown in the figure, AB ∥ CD, AD and BC intersect at point P, AB = N_0, CD = N_1, AP = N_2, then the length of DP is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=3，AP=4，CD=6，AB平行于CD，BA∥DC。求直线DP的长度。",
+  "problem_text_en": "As shown in the diagram, AB=3, AP=4, CD=6, AB is parallel to CD, BA is parallel to DC. Find the length of line DP.",
   "problem_img": "5035.png",
   "construction_cdl": [
     "Shape(BA,AP,PB)",
@@ -13,11 +13,11 @@
     "Collinear(BPC)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AB,CD)",
-    "ParallelBetweenLine(BA,DC)",
     "Equal(LengthOfLine(AB),3)",
+    "Equal(LengthOfLine(AP),4)",
     "Equal(LengthOfLine(CD),6)",
-    "Equal(LengthOfLine(AP),4)"
+    "ParallelBetweenLine(AB,CD)",
+    "ParallelBetweenLine(BA,DC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(DP))",
@@ -29,7 +29,11 @@
     "similar_triangle_property_line_ratio(1,BAP,CDP)",
     "similar_triangle_property_line_ratio(1,PBA,PCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "vertical_angle(1,APB,DPC)",
+      "parallel_property_alternate_interior_angle(1,AB,CD)"
+    ],
     "vertical_angle(1,APB,DPC)": [
       "similar_triangle_judgment_aa(1,BAP,CDP)"
     ],
@@ -39,10 +43,6 @@
     "similar_triangle_judgment_aa(1,BAP,CDP)": [
       "similar_triangle_property_line_ratio(1,BAP,CDP)",
       "similar_triangle_property_line_ratio(1,PBA,PCD)"
-    ],
-    "START": [
-      "vertical_angle(1,APB,DPC)",
-      "parallel_property_alternate_interior_angle(1,AB,CD)"
     ]
   }
 }

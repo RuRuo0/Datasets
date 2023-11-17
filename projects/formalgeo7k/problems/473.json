@@ -2,9 +2,9 @@
   "problem_id": 473,
   "annotation": "YimingHe_2023-04-02",
   "source": "Geometry3k-484",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x. Assume that segments that appear to be tangent are tangent.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，BE=16，BF=x，CF=12，DE=16，C是⊙C的圆心，BE是⊙O的切线，DE是⊙O的切线。求x的值。",
+  "problem_text_en": "As shown in the diagram, BE=16, BF=x, CF=12, DE=16, C is the center of circle C, the tangent to ⊙C is BE, DE is the tangent to circle C. Find the value of x.",
   "problem_img": "473.png",
   "construction_cdl": [
     "Shape(BE,CFE,FB)",
@@ -18,6 +18,11 @@
     "Cocircular(C,FEA)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(BE),16)",
+    "Equal(LengthOfLine(BF),x)",
+    "Equal(LengthOfLine(CF),12)",
+    "Equal(LengthOfLine(DE),16)",
+    "IsCentreOfCircle(C,C)",
     "IsTangentOfCircle(BE,C)",
     "IsTangentOfCircle(DE,C)"
   ],
@@ -38,18 +43,18 @@
     "right_triangle_judgment_angle(1,BEC)",
     "right_triangle_property_pythagorean(1,BEC)"
   ],
-  "theorem_seq_dag": {
-    "tangent_of_circle_property_perpendicular(2,BE,C,C)": [
-      "right_triangle_judgment_angle(1,BEC)"
-    ],
-    "right_triangle_judgment_angle(1,BEC)": [
-      "right_triangle_property_pythagorean(1,BEC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(2,BE,C,C)",
       "radius_of_circle_property_length_equal(1,CF,C)",
       "radius_of_circle_property_length_equal(1,CE,C)",
       "line_addition(1,CF,FB)"
+    ],
+    "tangent_of_circle_property_perpendicular(2,BE,C,C)": [
+      "right_triangle_judgment_angle(1,BEC)"
+    ],
+    "right_triangle_judgment_angle(1,BEC)": [
+      "right_triangle_property_pythagorean(1,BEC)"
     ]
   }
 }

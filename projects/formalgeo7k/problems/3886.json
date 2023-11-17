@@ -2,9 +2,9 @@
   "problem_id": 3886,
   "annotation": "DengfengYue_2023-04-30",
   "source": "GeoQA-1782",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O的直径AB垂直于弦CD,垂足是点E,∠CAO=22.5°,OC=6,则CD的长为()",
-  "problem_text_en": "As shown in the figure, the diameter AB of ⊙O is perpendicular to the chord CD, the foot of perpendicular is the point E, ∠CAO = N_0, OC = N_1, then the length of CD is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，OC=6，∠CAO=22.5°，⊙O的圆心为O，DE⊥OE。求直线CD的长度。",
+  "problem_text_en": "As shown in the diagram, OC=6, ∠CAO=22.5°, the center of circle O is O, DE is perpendicular to OE. Find the length of line CD.",
   "problem_img": "3886.png",
   "construction_cdl": [
     "Shape(AC,OCA)",
@@ -18,10 +18,10 @@
     "Cocircular(O,CADB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(OC),6)",
-    "PerpendicularBetweenLine(DE,OE)",
-    "Equal(MeasureOfAngle(CAO),22.5)"
+    "Equal(MeasureOfAngle(CAO),22.5)",
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(DE,OE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(CD))",
@@ -36,7 +36,14 @@
     "right_triangle_property_pythagorean(1,OEC)",
     "line_addition(1,CE,ED)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "circle_property_chord_perpendicular_bisect_chord(1,O,OE,DC)",
+      "arc_property_circumference_angle_external(1,OBC,A)",
+      "arc_property_center_angle(1,OBC,O)",
+      "triangle_property_angle_sum(1,COE)",
+      "line_addition(1,CE,ED)"
+    ],
     "circle_property_chord_perpendicular_bisect_chord(1,O,OE,DC)": [
       "right_triangle_judgment_angle(1,OEC)",
       "isosceles_triangle_judgment_angle_equal(1,ECO)"
@@ -54,13 +61,6 @@
     ],
     "right_triangle_judgment_angle(1,OEC)": [
       "right_triangle_property_pythagorean(1,OEC)"
-    ],
-    "START": [
-      "circle_property_chord_perpendicular_bisect_chord(1,O,OE,DC)",
-      "arc_property_circumference_angle_external(1,OBC,A)",
-      "arc_property_center_angle(1,OBC,O)",
-      "triangle_property_angle_sum(1,COE)",
-      "line_addition(1,CE,ED)"
     ]
   }
 }

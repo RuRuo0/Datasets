@@ -2,9 +2,9 @@
   "problem_id": 4034,
   "annotation": "NaZhu_2023-05-07",
   "source": "GeoQA-2284",
-  "problem_level": 1,
-  "problem_text_cn": "如图,小明为了测量一凉亭的高度AB(顶端A到水平地面BD的距离),在凉亭的旁边放置一个与凉亭台阶BC等高的台阶DE(DE=BC=0.6米,求A、B、C三点共线),把一面镜子水平放置在平台上的点G处,测得CG=12米,然后沿直线CG后退到点E处,这时恰好在镜子里看到凉亭的顶端A,测得GE=2米,小明身高EF=1.6米,则凉亭的高度AB约为()",
-  "problem_text_en": "As shown in the figure, in order to measure the height AB of a pavilion (the distance from the top A to the horizontal ground BD), Xiaoming placed a step DE (DE = BC = N_0) that is the same height as the pavilion step BC beside the pavilion, find A, B, C Three points are collinear), place a mirror horizontally at point G on the platform, and measure CG = N_1, and then move back along the straight line CG to point E. At this time, you can see the top A of the pavilion in the mirror, and measure GE = N_2, Xiaoming's height EF = N_3, then the height of the pavilion AB is approximately ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，CB=1/2，CG=12，FE=3/2，GE=2，∠CGA=∠FGE，CBDE是长方形，△ACG为直角△，∠GEF是直角三角形GEF的直角。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, CB=1/2, CG=12, FE=3/2, GE=2, ∠CGA=∠FGE, CBDE is a rectangle, AC and CG are the legs of the right △ ACG, ∠GEF is the right angle of the right triangle GEF. Find the length of line AB.",
   "problem_img": "4034.png",
   "construction_cdl": [
     "Shape(AC,CG,GA)",
@@ -15,12 +15,14 @@
     "Collinear(FED)"
   ],
   "text_cdl": [
-    "Rectangle(CBDE)",
-    "Equal(LengthOfLine(CG),12)",
-    "Equal(LengthOfLine(GE),2)",
-    "Equal(LengthOfLine(FE),3/2)",
     "Equal(LengthOfLine(CB),1/2)",
-    "Equal(MeasureOfAngle(CGA),MeasureOfAngle(FGE))"
+    "Equal(LengthOfLine(CG),12)",
+    "Equal(LengthOfLine(FE),3/2)",
+    "Equal(LengthOfLine(GE),2)",
+    "Equal(MeasureOfAngle(CGA),MeasureOfAngle(FGE))",
+    "Rectangle(CBDE)",
+    "RightTriangle(ACG)",
+    "RightTriangle(GEF)"
   ],
   "image_cdl": [
     "RightTriangle(ACG)",
@@ -34,14 +36,14 @@
     "mirror_similar_triangle_property_line_ratio(1,GAC,GEF)",
     "line_addition(1,AC,CB)"
   ],
-  "theorem_seq_dag": {
-    "mirror_similar_triangle_judgment_aa(1,ACG,FGE)": [
-      "mirror_similar_triangle_property_line_ratio(1,ACG,FGE)",
-      "mirror_similar_triangle_property_line_ratio(1,GAC,GEF)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "mirror_similar_triangle_judgment_aa(1,ACG,FGE)",
       "line_addition(1,AC,CB)"
+    ],
+    "mirror_similar_triangle_judgment_aa(1,ACG,FGE)": [
+      "mirror_similar_triangle_property_line_ratio(1,ACG,FGE)",
+      "mirror_similar_triangle_property_line_ratio(1,GAC,GEF)"
     ]
   }
 }

@@ -2,16 +2,21 @@
   "problem_id": 661,
   "annotation": "YimingHe_2023-03-12",
   "source": "Geometry3k-678",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "The orthocenter of \\triangle A B C is located 6.4 units from point D. Find B C.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AD=5，BD=6，AB⊥CB，CD垂直于BD。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, AD=5, BD=6, AB is perpendicular to CB, CD⊥BD. Find the length of line BC.",
   "problem_img": "661.png",
   "construction_cdl": [
     "Shape(AB,BD,DA)",
     "Shape(DB,BC,CD)",
     "Collinear(ADC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AD),5)",
+    "Equal(LengthOfLine(BD),6)",
+    "PerpendicularBetweenLine(AB,CB)",
+    "PerpendicularBetweenLine(CD,BD)"
+  ],
   "image_cdl": [
     "PerpendicularBetweenLine(CD,BD)",
     "PerpendicularBetweenLine(AB,CB)",
@@ -30,7 +35,12 @@
     "mirror_similar_triangle_property_line_ratio(1,DAB,BCA)",
     "mirror_similar_triangle_property_line_ratio(1,ABD,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,CDB,BDA)",
+      "line_addition(1,AD,DC)",
+      "right_triangle_judgment_angle(1,CDB)"
+    ],
     "adjacent_complementary_angle(1,CDB,BDA)": [
       "mirror_similar_triangle_judgment_aa(1,BDA,CAB)"
     ],
@@ -41,11 +51,6 @@
     ],
     "right_triangle_judgment_angle(1,CDB)": [
       "right_triangle_property_pythagorean(1,CDB)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,CDB,BDA)",
-      "line_addition(1,AD,DC)",
-      "right_triangle_judgment_angle(1,CDB)"
     ]
   }
 }

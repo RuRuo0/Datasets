@@ -2,18 +2,18 @@
   "problem_id": 5366,
   "annotation": "QikeHuang_2023-05-21",
   "source": "GeoQA-5644",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC与△ADC关于AC所在的直线对称,∠BCA=35°,∠D=80°,则∠BAD的度数为()",
-  "problem_text_en": "As shown in the figure, △ABC and △ADC are symmetrical with respect to the line where AC is located, ∠BCA = N_0, ∠D = N_1, then the degree of ∠BAD is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠BCA=35°，∠CDA=80°，三角形BCA镜像全等于三角形DAC。求∠DAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BCA=35°, ∠CDA=80°, triangle BCA is mirror congruent to triangle DAC. Find the measure of ∠DAB.",
   "problem_img": "5366.png",
   "construction_cdl": [
     "Shape(AB,BC,CA)",
     "Shape(AC,CD,DA)"
   ],
   "text_cdl": [
-    "MirrorCongruentBetweenTriangle(BCA,DAC)",
     "Equal(MeasureOfAngle(BCA),35)",
-    "Equal(MeasureOfAngle(CDA),80)"
+    "Equal(MeasureOfAngle(CDA),80)",
+    "MirrorCongruentBetweenTriangle(BCA,DAC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DAB))",
@@ -25,7 +25,7 @@
     "triangle_property_angle_sum(1,ACD)",
     "angle_addition(1,DAC,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "mirror_congruent_triangle_property_angle_equal(1,BCA,DAC)",
       "mirror_congruent_triangle_property_angle_equal(1,CAB,CDA)",

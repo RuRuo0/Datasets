@@ -3,15 +3,25 @@
   "annotation": "XiaokaiZhang_2023-03-12",
   "source": "Geometry3k-119",
   "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find cos(CAD).",
+  "problem_text_cn": "如图所示，AC=5*sqrt(26)，AD=25，CB=sqrt(26)，CD=5，DB=1，∠BCD=y°，∠DCA=x°，AD⊥CD，BC垂直于AC。求cos(CA)的值。",
+  "problem_text_en": "As shown in the diagram, AC=5*sqrt(26), AD=25, CB=sqrt(26), CD=5, DB=1, ∠BCD=y°, ∠DCA=x°, AD is perpendicular to CD, BC is perpendicular to AC. Find the value of cos(CA).",
   "problem_img": "117.png",
   "construction_cdl": [
     "Shape(CA,AD,DC)",
     "Shape(CD,DB,BC)",
     "Collinear(ADB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),5*sqrt(26))",
+    "Equal(LengthOfLine(AD),25)",
+    "Equal(LengthOfLine(CB),sqrt(26))",
+    "Equal(LengthOfLine(CD),5)",
+    "Equal(LengthOfLine(DB),1)",
+    "Equal(MeasureOfAngle(BCD),y)",
+    "Equal(MeasureOfAngle(DCA),x)",
+    "PerpendicularBetweenLine(AD,CD)",
+    "PerpendicularBetweenLine(BC,AC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AC),5*sqrt(26))",
     "Equal(LengthOfLine(CD),5)",
@@ -28,7 +38,7 @@
   "theorem_seqs": [
     "cosine_theorem(1,ADC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "cosine_theorem(1,ADC)"
     ]

@@ -2,9 +2,9 @@
   "problem_id": 6556,
   "annotation": "XiaokaiZhang_2023-06-04",
   "source": "GeoQA-9497",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,PA切⊙O于A,OP交⊙O于C,连BC．若∠P=30°,则∠B的度数为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, PA tangents ⊙O to A, OP crosses ⊙O to C, even BC. If ∠P = N_0, then the degree of ∠B is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠OPA=30°，圆O的圆心为O，AB是⊙O的直径，PA是圆O的切线。求∠ABC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠OPA=30°, the center of ⊙O is O, AB is the diameter of circle O, the tangent to circle O is PA. Find the measure of ∠ABC.",
   "problem_img": "6556.png",
   "construction_cdl": [
     "Shape(BO,OA,OAB)",
@@ -17,10 +17,10 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(OPA),30)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)",
-    "IsTangentOfCircle(PA,O)",
-    "Equal(MeasureOfAngle(OPA),30)"
+    "IsTangentOfCircle(PA,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ABC))",
@@ -35,7 +35,15 @@
     "isosceles_triangle_property_angle_equal(1,OBC)",
     "triangle_property_angle_sum(1,OBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(2,PA,O,O)",
+      "triangle_property_angle_sum(1,AOP)",
+      "adjacent_complementary_angle(1,AOP,POB)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "triangle_property_angle_sum(1,OBC)"
+    ],
     "radius_of_circle_property_length_equal(1,OC,O)": [
       "isosceles_triangle_judgment_line_equal(1,OBC)"
     ],
@@ -44,14 +52,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OBC)": [
       "isosceles_triangle_property_angle_equal(1,OBC)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(2,PA,O,O)",
-      "triangle_property_angle_sum(1,AOP)",
-      "adjacent_complementary_angle(1,AOP,POB)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "triangle_property_angle_sum(1,OBC)"
     ]
   }
 }

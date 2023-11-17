@@ -2,15 +2,23 @@
   "problem_id": 2546,
   "annotation": "YiwenHuang_2023-05-07",
   "source": "Geometry3k-2671",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find K L.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，JK=4，LK=x，XY=5，YZ=15，∠LKJ=51°，∠XYZ=51°，∠ZXY=∠KJL。求直线KL的长度。",
+  "problem_text_en": "As shown in the diagram, JK=4, LK=x, XY=5, YZ=15, ∠LKJ=51°, ∠XYZ=51°, ∠ZXY=∠KJL. Find the length of line KL.",
   "problem_img": "2546.png",
   "construction_cdl": [
     "Shape(XY,YZ,ZX)",
     "Shape(JL,LK,KJ)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(JK),4)",
+    "Equal(LengthOfLine(LK),x)",
+    "Equal(LengthOfLine(XY),5)",
+    "Equal(LengthOfLine(YZ),15)",
+    "Equal(MeasureOfAngle(LKJ),51)",
+    "Equal(MeasureOfAngle(XYZ),51)",
+    "Equal(MeasureOfAngle(ZXY),MeasureOfAngle(KJL))"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(XYZ),51)",
     "Equal(MeasureOfAngle(LKJ),51)",
@@ -27,13 +35,13 @@
     "mirror_similar_triangle_property_line_ratio(1,ZXY,LKJ)",
     "mirror_similar_triangle_property_line_ratio(1,XYZ,JLK)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "mirror_similar_triangle_judgment_aa(1,ZXY,LKJ)"
+    ],
     "mirror_similar_triangle_judgment_aa(1,ZXY,LKJ)": [
       "mirror_similar_triangle_property_line_ratio(1,ZXY,LKJ)",
       "mirror_similar_triangle_property_line_ratio(1,XYZ,JLK)"
-    ],
-    "START": [
-      "mirror_similar_triangle_judgment_aa(1,ZXY,LKJ)"
     ]
   }
 }

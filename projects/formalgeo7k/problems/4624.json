@@ -2,9 +2,9 @@
   "problem_id": 4624,
   "annotation": "QikeHuang_2023-05-14",
   "source": "GeoQA-3823",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,AB=13,AC=5,BC=12,经过点C且与边AB相切的动圆与CA、CB分别相交于点P、Q,则线段PQ长度的最小值是()",
-  "problem_text_en": "As shown in the figure, in △ABC, AB = N_0, AC = N_1, BC = N_2, the moving circle passing through point C and tangent to the side AB intersects with CA and CB at points P and Q respectively, then the minimum value of the length of the line segment PQ is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AB=13，AC=5，BC=12，圆O的圆心为O，BM是圆O的切线。求直线PQ的长度。",
+  "problem_text_en": "As shown in the diagram, AB=13, AC=5, BC=12, O is the center of circle O, BM is the tangent to ⊙O. Find the length of line PQ.",
   "problem_img": "4624.png",
   "construction_cdl": [
     "Shape(BQ,OMQ,MB)",
@@ -23,11 +23,11 @@
     "Cocircular(O,CPMQ)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(BM,O)",
     "Equal(LengthOfLine(AB),13)",
+    "Equal(LengthOfLine(AC),5)",
     "Equal(LengthOfLine(BC),12)",
-    "Equal(LengthOfLine(AC),5)"
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(BM,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(PQ))",
@@ -42,13 +42,7 @@
     "diameter_of_circle_property_length_equal(1,CM,O)",
     "diameter_of_circle_property_length_equal(1,PQ,O)"
   ],
-  "theorem_seq_dag": {
-    "diameter_of_circle_judgment_pass_centre(1,COM,O)": [
-      "diameter_of_circle_property_length_equal(1,CM,O)"
-    ],
-    "diameter_of_circle_judgment_pass_centre(1,POQ,O)": [
-      "diameter_of_circle_property_length_equal(1,PQ,O)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_pythagorean_inverse(1,BCA)",
       "tangent_of_circle_property_perpendicular(1,BM,O,O)",
@@ -56,6 +50,12 @@
       "sine_theorem(1,CMB)",
       "diameter_of_circle_judgment_pass_centre(1,COM,O)",
       "diameter_of_circle_judgment_pass_centre(1,POQ,O)"
+    ],
+    "diameter_of_circle_judgment_pass_centre(1,COM,O)": [
+      "diameter_of_circle_property_length_equal(1,CM,O)"
+    ],
+    "diameter_of_circle_judgment_pass_centre(1,POQ,O)": [
+      "diameter_of_circle_property_length_equal(1,PQ,O)"
     ]
   }
 }

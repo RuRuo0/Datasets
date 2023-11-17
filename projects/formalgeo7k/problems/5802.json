@@ -2,9 +2,9 @@
   "problem_id": 5802,
   "annotation": "YanjunGuo_2023-05-28",
   "source": "GeoQA-7741",
-  "problem_level": 1,
-  "problem_text_cn": "如图,正方形ABCD中,E为AB的中点,G、F分别为AD、BC上的点,若AG=2,BF=4,∠GEF=90°,则GF的长为()",
-  "problem_text_en": "As shown in the figure, in the square ABCD, E is the midpoint of AB, G and F are points on AD and BC, respectively. If AG = N_0, BF = N_1, ∠GEF = N_2, then the length of GF is ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，AG=2，BF=4，∠GEF=90°，E平分线段AB，ABCD是正方形。求直线GF的长度。",
+  "problem_text_en": "As shown in the diagram, AG=2, BF=4, ∠GEF=90°, E bisects segment AB, quadrilateral ABCD is a square. Find the length of line GF.",
   "problem_img": "5802.png",
   "construction_cdl": [
     "Shape(DG,GF,FC,CD)",
@@ -38,7 +38,14 @@
     "right_triangle_property_pythagorean(1,GEF)",
     "right_triangle_property_pythagorean(1,GAE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "triangle_property_angle_sum(1,GAE)",
+      "angle_addition(1,AEG,GEF)",
+      "adjacent_complementary_angle(1,AEF,FEB)",
+      "right_triangle_judgment_angle(1,GEF)",
+      "right_triangle_judgment_angle(1,GAE)"
+    ],
     "triangle_property_angle_sum(1,GAE)": [
       "similar_triangle_judgment_aa(1,EGA,FEB)"
     ],
@@ -58,13 +65,6 @@
     ],
     "right_triangle_judgment_angle(1,GAE)": [
       "right_triangle_property_pythagorean(1,GAE)"
-    ],
-    "START": [
-      "triangle_property_angle_sum(1,GAE)",
-      "angle_addition(1,AEG,GEF)",
-      "adjacent_complementary_angle(1,AEF,FEB)",
-      "right_triangle_judgment_angle(1,GEF)",
-      "right_triangle_judgment_angle(1,GAE)"
     ]
   }
 }

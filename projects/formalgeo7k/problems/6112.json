@@ -2,9 +2,9 @@
   "problem_id": 6112,
   "annotation": "YifanWang_2023-06-04",
   "source": "GeoQA-8660",
-  "problem_level": 1,
-  "problem_text_cn": "已知,如图,BC为⊙O的直径,过点C的弦CD平行于半径OA,若∠A=20°,则∠C的度数等于()",
-  "problem_text_en": "It is known that, as shown in the figure, BC is the diameter of ⊙O, and the chord CD passing through point C is parallel to the radius OA. If ∠A = N_0, then the degree of ∠C is equal to ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠BAO=20°，O是⊙O的圆心，AO∥CD。求∠OCD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BAO=20°, the center of ⊙O is O, AO∥CD. Find the measure of ∠OCD.",
   "problem_img": "6112.png",
   "construction_cdl": [
     "Shape(AB,OBA)",
@@ -16,9 +16,9 @@
     "Cocircular(O,ACDB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(BAO),20)",
     "IsCentreOfCircle(O,O)",
-    "ParallelBetweenLine(AO,CD)",
-    "Equal(MeasureOfAngle(BAO),20)"
+    "ParallelBetweenLine(AO,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(OCD))",
@@ -32,7 +32,14 @@
     "arc_property_center_angle(1,OAC,O)",
     "arc_property_circumference_angle_external(1,OAC,B)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "parallel_property_alternate_interior_angle(2,AO,CD)",
+      "arc_property_center_angle(1,OAC,O)",
+      "arc_property_circumference_angle_external(1,OAC,B)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OBA)"
     ],
@@ -41,13 +48,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OBA)": [
       "isosceles_triangle_property_angle_equal(1,OBA)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "parallel_property_alternate_interior_angle(2,AO,CD)",
-      "arc_property_center_angle(1,OAC,O)",
-      "arc_property_circumference_angle_external(1,OAC,B)"
     ]
   }
 }

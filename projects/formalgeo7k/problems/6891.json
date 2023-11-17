@@ -2,9 +2,9 @@
   "problem_id": 6891,
   "annotation": "ZheZhu_2023-06-04",
   "source": "GeoQA-angle-10122",
-  "problem_level": 1,
-  "problem_text_cn": "如图，等腰△ABC的顶角∠BAC＝50°，以AB为直径的半圆分别交BC，AC于点D，E．则DE的度数是（）",
-  "problem_text_en": "",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠CAB=50°，圆O的圆心为O，圆O的直径为AB，AB和AC是等腰三角形ABC的腰。求⌒ODE的角度。",
+  "problem_text_en": "As shown in the diagram, ∠CAB=50°, the center of circle O is O, AB is the diameter of ⊙O, ∠ABC and ∠BCA are the base angles of the isosceles triangle ABC. Find the measure of ⌒ODE.",
   "problem_img": "6891.png",
   "construction_cdl": [
     "Shape(OEA,AE)",
@@ -18,10 +18,10 @@
     "Cocircular(O,ABDE)"
   ],
   "text_cdl": [
-    "IsoscelesTriangle(ABC)",
+    "Equal(MeasureOfAngle(CAB),50)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)",
-    "Equal(MeasureOfAngle(CAB),50)"
+    "IsoscelesTriangle(ABC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfArc(ODE))",
@@ -33,17 +33,17 @@
     "angle_addition(1,CAD,DAB)",
     "arc_property_circumference_angle_external(1,ODE,A)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "diameter_of_circle_property_right_angle(1,BDA,O)",
+      "angle_addition(1,CAD,DAB)",
+      "arc_property_circumference_angle_external(1,ODE,A)"
+    ],
     "diameter_of_circle_property_right_angle(1,BDA,O)": [
       "altitude_of_triangle_judgment(1,AD,ABC)"
     ],
     "altitude_of_triangle_judgment(1,AD,ABC)": [
       "isosceles_triangle_property_line_coincidence(1,ABC,D)"
-    ],
-    "START": [
-      "diameter_of_circle_property_right_angle(1,BDA,O)",
-      "angle_addition(1,CAD,DAB)",
-      "arc_property_circumference_angle_external(1,ODE,A)"
     ]
   }
 }

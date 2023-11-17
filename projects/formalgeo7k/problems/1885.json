@@ -2,9 +2,9 @@
   "problem_id": 1885,
   "annotation": "YanjunGuo_2023-04-23",
   "source": "Geometry3k-1960",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find m \\widehat P M.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠PMQ=72°，O是圆O的圆心，圆O的切线为QM。求⌒OMP的角度。",
+  "problem_text_en": "As shown in the diagram, ∠PMQ=72°, the center of circle O is O, QM is the tangent to ⊙O. Find the measure of arc OMP.",
   "problem_img": "1885.png",
   "construction_cdl": [
     "Shape(OP,OPM,MO)",
@@ -13,7 +13,11 @@
     "Shape(PM,MQ)",
     "Cocircular(O,PM)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(PMQ),72)",
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(QM,O)"
+  ],
   "image_cdl": [
     "IsTangentOfCircle(QM,O)",
     "IsCentreOfCircle(O,O)",
@@ -31,7 +35,15 @@
     "triangle_property_angle_sum(1,OMP)",
     "arc_property_center_angle(1,OMP,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(1,QM,O,O)",
+      "angle_addition(1,OMP,PMQ)",
+      "radius_of_circle_property_length_equal(1,OP,O)",
+      "radius_of_circle_property_length_equal(1,OM,O)",
+      "triangle_property_angle_sum(1,OMP)",
+      "arc_property_center_angle(1,OMP,O)"
+    ],
     "radius_of_circle_property_length_equal(1,OP,O)": [
       "isosceles_triangle_judgment_line_equal(1,OMP)"
     ],
@@ -40,14 +52,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OMP)": [
       "isosceles_triangle_property_angle_equal(1,OMP)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(1,QM,O,O)",
-      "angle_addition(1,OMP,PMQ)",
-      "radius_of_circle_property_length_equal(1,OP,O)",
-      "radius_of_circle_property_length_equal(1,OM,O)",
-      "triangle_property_angle_sum(1,OMP)",
-      "arc_property_center_angle(1,OMP,O)"
     ]
   }
 }

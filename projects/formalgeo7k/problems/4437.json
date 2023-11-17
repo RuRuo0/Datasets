@@ -2,9 +2,9 @@
   "problem_id": 4437,
   "annotation": "JiaZou_2023-05-14",
   "source": "GeoQA-3395",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在直角三角形△ABC中,∠BAC=90°,点E是斜边BC的中点,⊙O经过A、C、E三点,F是弧EC上的一个点,且∠AFC=36°,则∠B=()",
-  "problem_text_en": "As shown in the figure, in the right triangle △ABC, ∠BAC = N_0, point E is the midpoint of the hypotenuse BC, ⊙O passes through three points A, C, and E, F is a point on the arc EC, and ∠AFC = N_1. Then ∠B = ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠AFC=36°，圆O的圆心为O，AE是三角形ABC的中线，E是线段BC的中点，CA和AB是直角三角形CAB的两个直角边。求∠ABC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AFC=36°, O is the center of circle O, AE is the median of triangle ABC, E is the midpoint of segment BC, △CAB is a right △. Find the measure of ∠ABC.",
   "problem_img": "4437.png",
   "construction_cdl": [
     "Shape(GA,OAG)",
@@ -22,11 +22,11 @@
     "Cocircular(O,AGEFC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsMidpointOfLine(E,BC)",
     "Equal(MeasureOfAngle(AFC),36)",
-    "RightTriangle(CAB)",
-    "IsMedianOfTriangle(AE,ABC)"
+    "IsCentreOfCircle(O,O)",
+    "IsMedianOfTriangle(AE,ABC)",
+    "IsMidpointOfLine(E,BC)",
+    "RightTriangle(CAB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ABC))",
@@ -41,7 +41,15 @@
     "isosceles_triangle_property_angle_equal(1,EAB)",
     "triangle_property_angle_sum(1,EAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_circumference_angle_external(1,OCA,F)",
+      "arc_property_circumference_angle_external(1,OCA,E)",
+      "right_triangle_property_length_of_median(1,CAB,E)",
+      "adjacent_complementary_angle(1,BEA,AEC)",
+      "line_addition(1,BE,EC)",
+      "triangle_property_angle_sum(1,EAB)"
+    ],
     "right_triangle_property_length_of_median(1,CAB,E)": [
       "isosceles_triangle_judgment_line_equal(1,EAB)"
     ],
@@ -50,14 +58,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,EAB)": [
       "isosceles_triangle_property_angle_equal(1,EAB)"
-    ],
-    "START": [
-      "arc_property_circumference_angle_external(1,OCA,F)",
-      "arc_property_circumference_angle_external(1,OCA,E)",
-      "right_triangle_property_length_of_median(1,CAB,E)",
-      "adjacent_complementary_angle(1,BEA,AEC)",
-      "line_addition(1,BE,EC)",
-      "triangle_property_angle_sum(1,EAB)"
     ]
   }
 }

@@ -2,19 +2,19 @@
   "problem_id": 5070,
   "annotation": "ChengQin_2023-05-21",
   "source": "GeoQA-4851",
-  "problem_level": 1,
-  "problem_text_cn": "如图,Rt△ABC∽Rt△DEF,∠A=35°,则∠E的度数为()",
-  "problem_text_en": "As shown in the figure, Rt△ABC ∽ Rt△DEF, ∠A = N_0, then the degree of ∠E is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠CAB=35°，BC和CA是直角三角形BCA的两个直角边，∠EFD是直角三角形EFD的直角，△ABC相似于△DEF。求∠DEF的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAB=35°, ∠BCA is the right angle of the right △ BCA, △EFD is a right △, triangle ABC is similar to triangle DEF.. Find the measure of ∠DEF.",
   "problem_img": "5070.png",
   "construction_cdl": [
     "Shape(AB,BC,CA)",
     "Shape(DE,EF,FD)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(CAB),35)",
     "RightTriangle(BCA)",
     "RightTriangle(EFD)",
-    "SimilarBetweenTriangle(ABC,DEF)",
-    "Equal(MeasureOfAngle(CAB),35)"
+    "SimilarBetweenTriangle(ABC,DEF)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DEF))",
@@ -23,7 +23,7 @@
     "similar_triangle_property_angle_equal(1,ABC,DEF)",
     "triangle_property_angle_sum(1,DEF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "similar_triangle_property_angle_equal(1,ABC,DEF)",
       "triangle_property_angle_sum(1,DEF)"

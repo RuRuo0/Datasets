@@ -2,15 +2,22 @@
   "problem_id": 312,
   "annotation": "NaZhu_2023-03-12",
   "source": "Geometry3k-316",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find D E.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AB=x，BC=5，DE=x-4，FE=3，∠ABC=∠FED，∠CAB=∠EDF。求直线DE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=x, BC=5, DE=x-4, FE=3, ∠ABC=∠FED, ∠CAB=∠EDF. Find the length of line DE.",
   "problem_img": "312.png",
   "construction_cdl": [
     "Shape(AB,BC,CA)",
     "Shape(DF,FE,ED)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),x)",
+    "Equal(LengthOfLine(BC),5)",
+    "Equal(LengthOfLine(DE),x-4)",
+    "Equal(LengthOfLine(FE),3)",
+    "Equal(MeasureOfAngle(ABC),MeasureOfAngle(FED))",
+    "Equal(MeasureOfAngle(CAB),MeasureOfAngle(EDF))"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BC),5)",
     "Equal(LengthOfLine(AB),x)",
@@ -26,13 +33,13 @@
     "mirror_similar_triangle_property_line_ratio(1,CAB,FED)",
     "mirror_similar_triangle_property_line_ratio(1,ABC,DFE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "mirror_similar_triangle_judgment_aa(1,CAB,FED)"
+    ],
     "mirror_similar_triangle_judgment_aa(1,CAB,FED)": [
       "mirror_similar_triangle_property_line_ratio(1,CAB,FED)",
       "mirror_similar_triangle_property_line_ratio(1,ABC,DFE)"
-    ],
-    "START": [
-      "mirror_similar_triangle_judgment_aa(1,CAB,FED)"
     ]
   }
 }

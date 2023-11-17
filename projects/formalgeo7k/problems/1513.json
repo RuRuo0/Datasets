@@ -2,16 +2,23 @@
   "problem_id": 1513,
   "annotation": "QikeHuang_2023-04-16",
   "source": "Geometry3k-1571",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x. A = 78 cm^2.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，四边形DBCA的面积为78，AD=6，CB=13，DE=x，DE垂直于CE，四边形DBCA是梯形。求x的值。",
+  "problem_text_en": "As shown in the diagram, the area of quadrilateral DBCA is 78, AD=6, CB=13, DE=x, DE is perpendicular to CE, DB and CA are the non-parallel sides (legs) of trapezoid DBCA. Find the value of x.",
   "problem_img": "1513.png",
   "construction_cdl": [
     "Shape(DB,BE,ED)",
     "Shape(AD,DE,EC,CA)",
     "Collinear(BEC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(AreaOfQuadrilateral(DBCA),78)",
+    "Equal(LengthOfLine(AD),6)",
+    "Equal(LengthOfLine(CB),13)",
+    "Equal(LengthOfLine(DE),x)",
+    "PerpendicularBetweenLine(DE,CE)",
+    "Trapezoid(DBCA)"
+  ],
   "image_cdl": [
     "Trapezoid(DBCA)",
     "Equal(AreaOfQuadrilateral(DBCA),78)",
@@ -27,13 +34,13 @@
     "altitude_of_quadrilateral_judgment_left_vertex(2,DE,DBCA)",
     "trapezoid_area_formula(1,DBCA)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,BED,DEC)": [
-      "altitude_of_quadrilateral_judgment_left_vertex(2,DE,DBCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,BED,DEC)",
       "trapezoid_area_formula(1,DBCA)"
+    ],
+    "adjacent_complementary_angle(1,BED,DEC)": [
+      "altitude_of_quadrilateral_judgment_left_vertex(2,DE,DBCA)"
     ]
   }
 }

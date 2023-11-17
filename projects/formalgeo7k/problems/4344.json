@@ -2,9 +2,9 @@
   "problem_id": 4344,
   "annotation": "ZheZhu_2023-05-07",
   "source": "GeoQA-3233",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在Rt△ABC中,∠C=90°,∠A=26°,以点C为圆心,BC为半径的圆分别交AB、AC于点D、点E,则弧BD的度数为()",
-  "problem_text_en": "As shown in the figure, in Rt△ABC, ∠C = N_0, ∠A = N_1, the circle with point C as the center and BC as the radius intersects AB and AC at points D and E respectively, then the degree of arc BD is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，CB=CD，∠BCA=90°，∠CAB=26°，⊙C的圆心为C。求∠BCD的大小。",
+  "problem_text_en": "As shown in the diagram, CB=CD, ∠BCA=90°, ∠CAB=26°, the center of circle C is C. Find the measure of ∠BCD.",
   "problem_img": "4344.png",
   "construction_cdl": [
     "Shape(BC,CD,DB)",
@@ -17,10 +17,10 @@
     "Cocircular(C,EDB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(C,C)",
     "Equal(LengthOfLine(CB),LengthOfLine(CD))",
+    "Equal(MeasureOfAngle(BCA),90)",
     "Equal(MeasureOfAngle(CAB),26)",
-    "Equal(MeasureOfAngle(BCA),90)"
+    "IsCentreOfCircle(C,C)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BCD))",
@@ -31,14 +31,14 @@
     "isosceles_triangle_judgment_line_equal(1,CDB)",
     "isosceles_triangle_property_angle_equal(1,CDB)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,CDB)": [
-      "isosceles_triangle_property_angle_equal(1,CDB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,BCD)",
       "triangle_property_angle_sum(1,BCA)",
       "isosceles_triangle_judgment_line_equal(1,CDB)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,CDB)": [
+      "isosceles_triangle_property_angle_equal(1,CDB)"
     ]
   }
 }

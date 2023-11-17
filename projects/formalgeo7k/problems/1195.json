@@ -2,9 +2,9 @@
   "problem_id": 1195,
   "annotation": "RunanWang_2023-04-23",
   "source": "Geometry3k-1235",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x in the figure.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠AMD=56°，∠KDJ=4*x°，DJ∥MB。求x的值。",
+  "problem_text_en": "As shown in the diagram, ∠AMD=56°, ∠KDJ=4*x°, DJ is parallel to MB. Find the value of x.",
   "problem_img": "1195.png",
   "construction_cdl": [
     "Shape(PD,DK)",
@@ -17,7 +17,11 @@
     "Collinear(PDJ)",
     "Collinear(AMB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(AMD),56)",
+    "Equal(MeasureOfAngle(KDJ),4*x)",
+    "ParallelBetweenLine(DJ,MB)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(KDJ),4*x)",
     "Equal(MeasureOfAngle(AMD),56)",
@@ -31,16 +35,16 @@
     "parallel_property_corresponding_angle(2,MA,DP,K)",
     "adjacent_complementary_angle(1,PDK,KDJ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(1,DJ,MB,P)",
+      "adjacent_complementary_angle(1,PDK,KDJ)"
+    ],
     "parallel_property_collinear_extend(1,DJ,MB,P)": [
       "parallel_property_collinear_extend(2,BM,DP,A)"
     ],
     "parallel_property_collinear_extend(2,BM,DP,A)": [
       "parallel_property_corresponding_angle(2,MA,DP,K)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(1,DJ,MB,P)",
-      "adjacent_complementary_angle(1,PDK,KDJ)"
     ]
   }
 }

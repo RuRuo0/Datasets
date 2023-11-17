@@ -2,9 +2,9 @@
   "problem_id": 1590,
   "annotation": "XiaoxiaoJin_2023-04-16",
   "source": "Geometry3k-1650",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure. Round to the nearest tenth, if necessary.",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，AE=28，BE=16，DE=20，LD=15，AC垂直于DC，DE垂直于AE，EA⊥CA，LD垂直于CD。求△LBE的面积、△LDC的面积与CDEA的面积之和。",
+  "problem_text_en": "As shown in the diagram, AE=28, BE=16, DE=20, LD=15, AC⊥DC, DE is perpendicular to AE, EA⊥CA, LD is perpendicular to CD. Find the sum of the area of △LBE, the area of △LDC and the area of quadrilateral CDEA.",
   "problem_img": "1590.png",
   "construction_cdl": [
     "Shape(LB,BE,ED,DL)",
@@ -13,7 +13,16 @@
     "Collinear(LDE)",
     "Collinear(BEA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AE),28)",
+    "Equal(LengthOfLine(BE),16)",
+    "Equal(LengthOfLine(DE),20)",
+    "Equal(LengthOfLine(LD),15)",
+    "PerpendicularBetweenLine(AC,DC)",
+    "PerpendicularBetweenLine(DE,AE)",
+    "PerpendicularBetweenLine(EA,CA)",
+    "PerpendicularBetweenLine(LD,CD)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(LD),15)",
     "Equal(LengthOfLine(DE),20)",
@@ -38,7 +47,15 @@
     "triangle_area_formula_sine(1,ELB)",
     "triangle_area_formula_sine(1,DCL)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,LD,DE)",
+      "adjacent_complementary_angle(1,BED,DEA)",
+      "parallel_judgment_per_per(1,ED,AC)",
+      "parallel_judgment_per_per(1,AE,CD)",
+      "triangle_area_formula_sine(1,ELB)",
+      "triangle_area_formula_sine(1,DCL)"
+    ],
     "parallel_judgment_per_per(1,ED,AC)": [
       "parallelogram_judgment_parallel_and_parallel(1,ACDE)"
     ],
@@ -49,14 +66,6 @@
       "parallelogram_property_opposite_line_equal(1,ACDE)",
       "parallelogram_property_opposite_line_equal(1,CDEA)",
       "parallelogram_area_formula_sine(1,EACD)"
-    ],
-    "START": [
-      "line_addition(1,LD,DE)",
-      "adjacent_complementary_angle(1,BED,DEA)",
-      "parallel_judgment_per_per(1,ED,AC)",
-      "parallel_judgment_per_per(1,AE,CD)",
-      "triangle_area_formula_sine(1,ELB)",
-      "triangle_area_formula_sine(1,DCL)"
     ]
   }
 }

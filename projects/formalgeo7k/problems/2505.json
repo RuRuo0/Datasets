@@ -2,9 +2,9 @@
   "problem_id": 2505,
   "annotation": "ChenyangMao_2023-04-23",
   "source": "Geometry3k-2629",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure, m \\angle 9 = 75. Find the measure of \\angle 6.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠FJE=75°，GD∥IM，IM∥CE。求∠MFJ的大小。",
+  "problem_text_en": "As shown in the diagram, ∠FJE=75°, GD is parallel to IM, IM is parallel to CE. Find the measure of ∠MFJ.",
   "problem_img": "2505.png",
   "construction_cdl": [
     "Shape(LB,BD)",
@@ -25,7 +25,9 @@
     "Collinear(EJC)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(FJE),75)"
+    "Equal(MeasureOfAngle(FJE),75)",
+    "ParallelBetweenLine(GD,IM)",
+    "ParallelBetweenLine(IM,CE)"
   ],
   "image_cdl": [
     "ParallelBetweenLine(GD,IM)",
@@ -38,15 +40,15 @@
     "parallel_property_collinear_extend(3,EC,MF,J)",
     "parallel_property_ipsilateral_internal_angle(1,FM,JE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,IM,CE,F)"
+    ],
     "parallel_property_collinear_extend(3,IM,CE,F)": [
       "parallel_property_collinear_extend(3,EC,MF,J)"
     ],
     "parallel_property_collinear_extend(3,EC,MF,J)": [
       "parallel_property_ipsilateral_internal_angle(1,FM,JE)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,IM,CE,F)"
     ]
   }
 }

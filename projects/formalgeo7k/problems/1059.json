@@ -2,9 +2,9 @@
   "problem_id": 1059,
   "annotation": "QikeHuang_2023-04-09",
   "source": "Geometry3k-1093",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot K, M N = 16 and m \\widehat M N = 98. Find the measure of m \\widehat N J. Round to the nearest hundredth.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，JK=10，MN=16，弧KMN的角度为98，⊙K的圆心为K，MP垂直于KP。求⌒KNJ的角度。",
+  "problem_text_en": "As shown in the diagram, JK=10, MN=16, the measure of ⌒KMN is 98, K is the center of circle K, MP⊥KP. Find the measure of arc KNJ.",
   "problem_img": "1059.png",
   "construction_cdl": [
     "Shape(KJM,MK,KJ)",
@@ -18,8 +18,11 @@
     "Cocircular(K,JMLN)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(JK),10)",
     "Equal(LengthOfLine(MN),16)",
-    "Equal(MeasureOfArc(KMN),98)"
+    "Equal(MeasureOfArc(KMN),98)",
+    "IsCentreOfCircle(K,K)",
+    "PerpendicularBetweenLine(MP,KP)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(K,K)",
@@ -38,7 +41,15 @@
     "angle_addition(1,NKP,PKM)",
     "adjacent_complementary_angle(1,JKN,NKL)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,KM,K)",
+      "radius_of_circle_property_length_equal(1,KN,K)",
+      "arc_property_center_angle(1,KNJ,K)",
+      "arc_property_center_angle(1,KMN,K)",
+      "angle_addition(1,NKP,PKM)",
+      "adjacent_complementary_angle(1,JKN,NKL)"
+    ],
     "radius_of_circle_property_length_equal(1,KM,K)": [
       "perpendicular_bisector_judgment_distance_equal(1,KP,MN)"
     ],
@@ -47,14 +58,6 @@
     ],
     "perpendicular_bisector_judgment_distance_equal(1,KP,MN)": [
       "perpendicular_bisector_property_bisector(1,KP,MN)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,KM,K)",
-      "radius_of_circle_property_length_equal(1,KN,K)",
-      "arc_property_center_angle(1,KNJ,K)",
-      "arc_property_center_angle(1,KMN,K)",
-      "angle_addition(1,NKP,PKM)",
-      "adjacent_complementary_angle(1,JKN,NKL)"
     ]
   }
 }

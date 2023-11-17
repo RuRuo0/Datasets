@@ -2,9 +2,9 @@
   "problem_id": 3377,
   "annotation": "JiaZou_2023-04-30",
   "source": "GeoQA-878",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,∠C=90°,∠BAC=70°,将△ABC绕点A顺时针旋转70°,B,C旋转后的对应点分别是B′和C′,连接BB′,则∠B′BC′的度数是()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠C = N_0, ∠BAC = N_1, rotate △ABC clockwise around point A by N_2, B and C after the corresponding points are B′ and C′ respectively, connect BB′, then ∠The degree of B′BC′ is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，△BCA与△EDA是全等三角形，∠BCA=90°，∠CAB=70°。求∠EBD的大小。",
+  "problem_text_en": "As shown in the diagram, triangle BCA is congruent to triangle EDA, ∠BCA=90°, ∠CAB=70°. Find the measure of ∠EBD.",
   "problem_img": "3377.png",
   "construction_cdl": [
     "Shape(BC,CA,AB)",
@@ -27,17 +27,17 @@
     "congruent_triangle_property_angle_equal(1,ABC,AED)",
     "triangle_property_angle_sum(1,AEB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "congruent_triangle_property_line_equal(1,CAB,DAE)",
+      "congruent_triangle_property_angle_equal(1,ABC,AED)",
+      "triangle_property_angle_sum(1,AEB)"
+    ],
     "congruent_triangle_property_line_equal(1,CAB,DAE)": [
       "isosceles_triangle_judgment_line_equal(1,AEB)"
     ],
     "isosceles_triangle_judgment_line_equal(1,AEB)": [
       "isosceles_triangle_property_angle_equal(1,AEB)"
-    ],
-    "START": [
-      "congruent_triangle_property_line_equal(1,CAB,DAE)",
-      "congruent_triangle_property_angle_equal(1,ABC,AED)",
-      "triangle_property_angle_sum(1,AEB)"
     ]
   }
 }

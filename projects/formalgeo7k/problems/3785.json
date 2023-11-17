@@ -2,9 +2,9 @@
   "problem_id": 3785,
   "annotation": "ChenyangMao_2023-04-30",
   "source": "GeoQA-1618",
-  "problem_level": 1,
-  "problem_text_cn": "如图,Rt△ABC中,∠C=90°,AB的垂直平分线DE交AC于点E,连接BE,若∠A=35°,则∠CBE的度数是()",
-  "problem_text_en": "As shown in the figure, in Rt△ABC, ∠C = N_0, the perpendicular bisector of AB and intersects AC at point E, and connects BE. If ∠A = N_1, then the degree of ∠CBE is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠DAE=35°，∠ECB=90°，ED是BA的垂直平分线，三角形ACB为直角三角形。求∠CBE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DAE=35°, ∠ECB=90°, ED perpendicular bisects BA, ∠ACB is the right angle of the right triangle ACB. Find the measure of ∠CBE.",
   "problem_img": "3785.png",
   "construction_cdl": [
     "Shape(AE,ED,DA)",
@@ -13,7 +13,12 @@
     "Collinear(AEC)",
     "Collinear(ADB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(DAE),35)",
+    "Equal(MeasureOfAngle(ECB),90)",
+    "IsPerpendicularBisectorOfLine(ED,BA)",
+    "RightTriangle(ACB)"
+  ],
   "image_cdl": [
     "RightTriangle(ACB)",
     "IsPerpendicularBisectorOfLine(ED,BA)",
@@ -29,17 +34,17 @@
     "isosceles_triangle_property_angle_equal(1,EBA)",
     "angle_addition(1,CBE,EBD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "triangle_property_angle_sum(1,ACB)",
+      "perpendicular_bisector_property_distance_equal(1,ED,BA)",
+      "angle_addition(1,CBE,EBD)"
+    ],
     "perpendicular_bisector_property_distance_equal(1,ED,BA)": [
       "isosceles_triangle_judgment_line_equal(1,EBA)"
     ],
     "isosceles_triangle_judgment_line_equal(1,EBA)": [
       "isosceles_triangle_property_angle_equal(1,EBA)"
-    ],
-    "START": [
-      "triangle_property_angle_sum(1,ACB)",
-      "perpendicular_bisector_property_distance_equal(1,ED,BA)",
-      "angle_addition(1,CBE,EBD)"
     ]
   }
 }

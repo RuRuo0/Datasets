@@ -2,16 +2,24 @@
   "problem_id": 343,
   "annotation": "NaZhu_2023-03-12",
   "source": "Geometry3k-349",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，BC=z，BX=6*x，CA=y，CX=36，XA=x，AC垂直于BC，BX垂直于CX。求y的值。",
+  "problem_text_en": "As shown in the diagram, BC=z, BX=6*x, CA=y, CX=36, XA=x, AC is perpendicular to BC, BX⊥CX. Find the value of y.",
   "problem_img": "343.png",
   "construction_cdl": [
     "Shape(CB,BX,XC)",
     "Shape(CX,XA,AC)",
     "Collinear(BXA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BC),z)",
+    "Equal(LengthOfLine(BX),6*x)",
+    "Equal(LengthOfLine(CA),y)",
+    "Equal(LengthOfLine(CX),36)",
+    "Equal(LengthOfLine(XA),x)",
+    "PerpendicularBetweenLine(AC,BC)",
+    "PerpendicularBetweenLine(BX,CX)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BC),z)",
     "Equal(LengthOfLine(BX),6*x)",
@@ -33,7 +41,12 @@
     "right_triangle_judgment_angle(1,CXA)",
     "right_triangle_property_pythagorean(1,CXA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,BXC,CXA)",
+      "angle_addition(1,ACX,XCB)",
+      "triangle_property_angle_sum(1,CBX)"
+    ],
     "adjacent_complementary_angle(1,BXC,CXA)": [
       "similar_triangle_judgment_aa(1,CBX,ACX)",
       "right_triangle_judgment_angle(1,CXA)"
@@ -50,11 +63,6 @@
     ],
     "right_triangle_judgment_angle(1,CXA)": [
       "right_triangle_property_pythagorean(1,CXA)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,BXC,CXA)",
-      "angle_addition(1,ACX,XCB)",
-      "triangle_property_angle_sum(1,CBX)"
     ]
   }
 }

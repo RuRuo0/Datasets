@@ -2,9 +2,9 @@
   "problem_id": 1517,
   "annotation": "QikeHuang_2023-04-16",
   "source": "Geometry3k-1575",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠CBA=55°，弧DAC的角度为x，圆D的圆心为D，BA是⊙O的切线，BC是⊙O的切线。求x的值。",
+  "problem_text_en": "As shown in the diagram, ∠CBA=55°, the measure of arc DAC is x, the center of circle D is D, BA is the tangent to circle D, the tangent to circle D is BC. Find the value of x.",
   "problem_img": "1517.png",
   "construction_cdl": [
     "Shape(DAC,CD,DA)",
@@ -12,7 +12,13 @@
     "Shape(BA,DCA,CB)",
     "Cocircular(D,AC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(CBA),55)",
+    "Equal(MeasureOfArc(DAC),x)",
+    "IsCentreOfCircle(D,D)",
+    "IsTangentOfCircle(BA,D)",
+    "IsTangentOfCircle(BC,D)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(D,D)",
     "IsTangentOfCircle(BA,D)",
@@ -29,7 +35,7 @@
     "round_angle(1,CDA,ADC)",
     "arc_property_center_angle(1,DAC,D)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(2,BA,D,D)",
       "tangent_of_circle_property_perpendicular(1,BC,D,D)",

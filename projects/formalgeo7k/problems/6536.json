@@ -2,9 +2,9 @@
   "problem_id": 6536,
   "annotation": "XiaokaiZhang_2023-06-04",
   "source": "GeoQA-9459",
-  "problem_level": 1,
-  "problem_text_cn": "如图,平行四边形ABCD中,对角线AC和BD交于O点,过O点作OE∥BC交DC于点E,若OE=2.5,则AD的长是()",
-  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, the diagonal AC and BD intersect at point O, and cross O point to draw OE ∥ BC and it intersects DC at point E. If OE = N_0, then the length of AD is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，OE=5/2，OE∥BC，BA和CD是▱ABCD的一组对边。求直线AD的长度。",
+  "problem_text_en": "As shown in the diagram, OE=5/2, OE is parallel to BC, quadrilateral ABCD is a parallelogram. Find the length of line AD.",
   "problem_img": "6536.png",
   "construction_cdl": [
     "Shape(AB,BO,OA)",
@@ -17,9 +17,9 @@
     "Collinear(CED)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
+    "Equal(LengthOfLine(OE),5/2)",
     "ParallelBetweenLine(OE,BC)",
-    "Equal(LengthOfLine(OE),5/2)"
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AD))",
@@ -30,16 +30,16 @@
     "midsegment_of_triangle_property_length(1,OE,DBC)",
     "parallelogram_property_opposite_line_equal(1,BCDA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallelogram_property_diagonal_bisection(1,BCDA,O)",
+      "parallelogram_property_opposite_line_equal(1,BCDA)"
+    ],
     "parallelogram_property_diagonal_bisection(1,BCDA,O)": [
       "midsegment_of_triangle_judgment_parallel(1,OE,DBC)"
     ],
     "midsegment_of_triangle_judgment_parallel(1,OE,DBC)": [
       "midsegment_of_triangle_property_length(1,OE,DBC)"
-    ],
-    "START": [
-      "parallelogram_property_diagonal_bisection(1,BCDA,O)",
-      "parallelogram_property_opposite_line_equal(1,BCDA)"
     ]
   }
 }

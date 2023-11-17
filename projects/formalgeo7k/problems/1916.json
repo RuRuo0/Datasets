@@ -2,9 +2,9 @@
   "problem_id": 1916,
   "annotation": "JiaZou_2023-03-26",
   "source": "Geometry3k-1992",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "P is the incenter of \\angle X Y Z. Find m \\angle L Z P.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，ZJ=12，ZP=20，∠YXP=31°，∠ZYP=27°，P是三角形XZY的内心，PJ⊥YJ，PL⊥ZL，YK垂直于PK。求∠LZP的大小。",
+  "problem_text_en": "As shown in the diagram, ZJ=12, ZP=20, ∠YXP=31°, ∠ZYP=27°, the center of the inscribed circle of △XZY is P, PJ is perpendicular to YJ, PL is perpendicular to ZL, YK⊥PK. Find the measure of ∠LZP.",
   "problem_img": "1916.png",
   "construction_cdl": [
     "Shape(XL,LP,PX)",
@@ -21,7 +21,14 @@
     "Collinear(XPJ)"
   ],
   "text_cdl": [
-    "IsIncenterOfTriangle(P,XZY)"
+    "Equal(LengthOfLine(ZJ),12)",
+    "Equal(LengthOfLine(ZP),20)",
+    "Equal(MeasureOfAngle(YXP),31)",
+    "Equal(MeasureOfAngle(ZYP),27)",
+    "IsIncenterOfTriangle(P,XZY)",
+    "PerpendicularBetweenLine(PJ,YJ)",
+    "PerpendicularBetweenLine(PL,ZL)",
+    "PerpendicularBetweenLine(YK,PK)"
   ],
   "image_cdl": [
     "Equal(MeasureOfAngle(YXP),31)",
@@ -38,7 +45,7 @@
     "triangle_property_angle_sum(1,ZYL)",
     "angle_addition(1,LZP,PZJ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,ZYL)",
       "angle_addition(1,LZP,PZJ)"

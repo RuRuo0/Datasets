@@ -2,9 +2,9 @@
   "problem_id": 1670,
   "annotation": "Yangli_2023-04-16",
   "source": "Geometry3k-1734",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure. Round to the nearest hundredth, if necessary.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AC=12，CE=4，∠CBE=35°，CB和AD是▱BCAD的一组对边，BE垂直于CE。求四边形BCAD的面积。",
+  "problem_text_en": "As shown in the diagram, AC=12, CE=4, ∠CBE=35°, BCAD is a parallelogram, BE is perpendicular to CE. Find the area of quadrilateral BCAD.",
   "problem_img": "1670.png",
   "construction_cdl": [
     "Shape(BE,EC,CB)",
@@ -12,7 +12,11 @@
     "Collinear(ECA)"
   ],
   "text_cdl": [
-    "Parallelogram(BCAD)"
+    "Equal(LengthOfLine(AC),12)",
+    "Equal(LengthOfLine(CE),4)",
+    "Equal(MeasureOfAngle(CBE),35)",
+    "Parallelogram(BCAD)",
+    "PerpendicularBetweenLine(BE,CE)"
   ],
   "image_cdl": [
     "Equal(MeasureOfAngle(CBE),35)",
@@ -30,16 +34,16 @@
     "adjacent_complementary_angle(1,ECB,BCA)",
     "parallelogram_area_formula_sine(1,BCAD)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,BEC)": [
-      "right_triangle_property_pythagorean(1,BEC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,ECB)",
       "sine_theorem(1,ECB)",
       "right_triangle_judgment_angle(1,BEC)",
       "adjacent_complementary_angle(1,ECB,BCA)",
       "parallelogram_area_formula_sine(1,BCAD)"
+    ],
+    "right_triangle_judgment_angle(1,BEC)": [
+      "right_triangle_property_pythagorean(1,BEC)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 1106,
   "annotation": "XiaoxiaoJin_2023-04-09",
   "source": "Geometry3k-1143",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure. ",
+  "problem_level": 13,
+  "problem_text_cn": "如图所示，AC=22，BD=31，CB=15，⊙O的圆心为O，⊙O的直径为AD，CEDA是长方形。求△CBE的面积、四边形ACED的面积与扇形ODA的面积之和。",
+  "problem_text_en": "As shown in the diagram, AC=22, BD=31, CB=15, O is the center of circle O, AD is the diameter of circle O, CEDA is a rectangle. Find the sum of the area of triangle CBE, the area of quadrilateral ACED and the area of the sector ODA.",
   "problem_img": "1106.png",
   "construction_cdl": [
     "Shape(AC,CE,ED,DO,OA)",
@@ -15,6 +15,9 @@
     "Cocircular(O,DA)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AC),22)",
+    "Equal(LengthOfLine(BD),31)",
+    "Equal(LengthOfLine(CB),15)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AD,O)",
     "Rectangle(CEDA)"
@@ -41,13 +44,7 @@
     "arc_property_center_angle(1,ODA,O)",
     "sector_area_formula(1,ODA)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,BEC,CED)": [
-      "right_triangle_judgment_angle(1,BEC)"
-    ],
-    "right_triangle_judgment_angle(1,BEC)": [
-      "right_triangle_property_pythagorean(1,BEC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_property_opposite_line_equal(1,CEDA)",
       "parallelogram_property_opposite_line_equal(1,EDAC)",
@@ -60,6 +57,12 @@
       "flat_angle(1,AOD)",
       "arc_property_center_angle(1,ODA,O)",
       "sector_area_formula(1,ODA)"
+    ],
+    "adjacent_complementary_angle(1,BEC,CED)": [
+      "right_triangle_judgment_angle(1,BEC)"
+    ],
+    "right_triangle_judgment_angle(1,BEC)": [
+      "right_triangle_property_pythagorean(1,BEC)"
     ]
   }
 }

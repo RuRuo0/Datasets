@@ -2,9 +2,9 @@
   "problem_id": 6613,
   "annotation": "YanjunGuo_2023-06-04",
   "source": "GeoQA-9604",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB和CD是⊙O的两条直径,弦DE∥AB,∠DOE=50°,那么∠BOD为()",
-  "problem_text_en": "As shown in the figure, AB and CD are the two diameters of ⊙O, chord DE ∥ AB, ∠DOE = N_0, then ∠BOD is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠EOD=50°，O是圆O的圆心，圆O的直径为AB，圆O的直径为CD，ED平行于AO。求∠DOB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠EOD=50°, the center of ⊙O is O, AB is the diameter of ⊙O, the diameter of circle O is CD, ED∥AO. Find the measure of ∠DOB.",
   "problem_img": "6613.png",
   "construction_cdl": [
     "Shape(AO,OE,OEA)",
@@ -18,11 +18,11 @@
     "Cocircular(O,ACBDE)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(ED,AO)",
     "Equal(MeasureOfAngle(EOD),50)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)",
-    "IsDiameterOfCircle(CD,O)"
+    "IsDiameterOfCircle(CD,O)",
+    "ParallelBetweenLine(ED,AO)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DOB))",
@@ -37,7 +37,15 @@
     "angle_addition(1,AOE,EOD)",
     "adjacent_complementary_angle(1,AOD,DOB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OD,O)",
+      "radius_of_circle_property_length_equal(1,OE,O)",
+      "triangle_property_angle_sum(1,DEO)",
+      "parallel_property_alternate_interior_angle(1,ED,AO)",
+      "angle_addition(1,AOE,EOD)",
+      "adjacent_complementary_angle(1,AOD,DOB)"
+    ],
     "radius_of_circle_property_length_equal(1,OD,O)": [
       "isosceles_triangle_judgment_line_equal(1,ODE)"
     ],
@@ -46,14 +54,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,ODE)": [
       "isosceles_triangle_property_angle_equal(1,ODE)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OD,O)",
-      "radius_of_circle_property_length_equal(1,OE,O)",
-      "triangle_property_angle_sum(1,DEO)",
-      "parallel_property_alternate_interior_angle(1,ED,AO)",
-      "angle_addition(1,AOE,EOD)",
-      "adjacent_complementary_angle(1,AOD,DOB)"
     ]
   }
 }

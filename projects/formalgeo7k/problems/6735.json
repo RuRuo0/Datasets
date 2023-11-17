@@ -2,9 +2,9 @@
   "problem_id": 6735,
   "annotation": "XiaoxiaoJin_2023-06-04",
   "source": "GeoQA-9787",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC顶点A、B、C都在⊙O上,连接AO、BO,若∠OAB=50°,则∠ACB的大小是()",
-  "problem_text_en": "As shown in the figure, △ABC vertices A, B, and C are all on ⊙O, connecting AO and BO, if ∠OAB = N_0, then the size of ∠ACB is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠OAB=50°，圆O的圆心为O。求∠BCA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠OAB=50°, O is the center of circle O. Find the measure of ∠BCA.",
   "problem_img": "6735.png",
   "construction_cdl": [
     "Shape(OA,AD,DO)",
@@ -18,8 +18,8 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "Equal(MeasureOfAngle(OAB),50)"
+    "Equal(MeasureOfAngle(OAB),50)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BCA))",
@@ -33,7 +33,14 @@
     "isosceles_triangle_property_angle_equal(1,OAB)",
     "triangle_property_angle_sum(1,OAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "arc_property_center_angle(1,OAB,O)",
+      "arc_property_circumference_angle_external(1,OAB,C)",
+      "triangle_property_angle_sum(1,OAB)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OAB)"
     ],
@@ -42,13 +49,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OAB)": [
       "isosceles_triangle_property_angle_equal(1,OAB)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "arc_property_center_angle(1,OAB,O)",
-      "arc_property_circumference_angle_external(1,OAB,C)",
-      "triangle_property_angle_sum(1,OAB)"
     ]
   }
 }

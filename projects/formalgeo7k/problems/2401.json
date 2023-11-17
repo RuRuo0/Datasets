@@ -2,15 +2,23 @@
   "problem_id": 2401,
   "annotation": "RunanWang_2023-04-23",
   "source": "Geometry3k-2516",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "\\triangle R S V \\cong \\triangle T V S. Find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，△SRV与△VTS是全等三角形，SR=2*y-1，TS=24.5，VT=24，∠RVS=78°，∠VTS=x°，VS垂直于RS。求x的值。",
+  "problem_text_en": "As shown in the diagram, triangle SRV is congruent to triangle VTS, SR=2*y-1, TS=24.5, VT=24, ∠RVS=78°, ∠VTS=x°, VS⊥RS. Find the value of x.",
   "problem_img": "2401.png",
   "construction_cdl": [
     "Shape(SR,RV,VS)",
     "Shape(SV,VT,TS)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "CongruentBetweenTriangle(SRV,VTS)",
+    "Equal(LengthOfLine(SR),2*y-1)",
+    "Equal(LengthOfLine(TS),24.5)",
+    "Equal(LengthOfLine(VT),24)",
+    "Equal(MeasureOfAngle(RVS),78)",
+    "Equal(MeasureOfAngle(VTS),x)",
+    "PerpendicularBetweenLine(VS,RS)"
+  ],
   "image_cdl": [
     "CongruentBetweenTriangle(SRV,VTS)",
     "Equal(LengthOfLine(TS),24.5)",
@@ -26,7 +34,7 @@
     "triangle_property_angle_sum(1,SRV)",
     "congruent_triangle_property_angle_equal(1,RVS,TSV)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,SRV)",
       "congruent_triangle_property_angle_equal(1,RVS,TSV)"

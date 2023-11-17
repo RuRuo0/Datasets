@@ -2,9 +2,9 @@
   "problem_id": 5977,
   "annotation": "XiaoxiaoJin_2023-05-28",
   "source": "GeoQA-8422",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,AB=BC=2,以AB为直径的⊙O与BC相切于点B,则AC等于()",
-  "problem_text_en": "As shown in the figure, in △ABC, AB = BC = N_0, ⊙O with AB as the diameter is tangent to BC at point B, then AC is equal to ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AB=2，BC=2，O是⊙O的圆心，CB是圆O的切线。求直线AC的长度。",
+  "problem_text_en": "As shown in the diagram, AB=2, BC=2, O is the center of ⊙O, the tangent to circle O is CB. Find the length of line AC.",
   "problem_img": "5977.png",
   "construction_cdl": [
     "Shape(DA,AO,OB,OBD)",
@@ -29,15 +29,15 @@
     "right_triangle_judgment_angle(1,ABC)",
     "right_triangle_property_pythagorean(1,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(1,CB,O,O)"
+    ],
     "tangent_of_circle_property_perpendicular(1,CB,O,O)": [
       "right_triangle_judgment_angle(1,ABC)"
     ],
     "right_triangle_judgment_angle(1,ABC)": [
       "right_triangle_property_pythagorean(1,ABC)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(1,CB,O,O)"
     ]
   }
 }

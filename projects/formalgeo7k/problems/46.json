@@ -2,16 +2,20 @@
   "problem_id": 46,
   "annotation": "XiaokaiZhang_2023-04-02",
   "source": "Geometry3k-46",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the shaded sector.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，KJ=11，∠JKL=65°，圆K的圆心为K。求扇形KJL的面积。",
+  "problem_text_en": "As shown in the diagram, KJ=11, ∠JKL=65°, the center of circle K is K. Find the area of the sector KJL.",
   "problem_img": "46.png",
   "construction_cdl": [
     "Shape(KJ,KJL,LK)",
     "Shape(JK,KL,KLJ)",
     "Cocircular(K,JL)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(KJ),11)",
+    "Equal(MeasureOfAngle(JKL),65)",
+    "IsCentreOfCircle(K,K)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(K,K)",
     "Equal(LengthOfLine(KJ),11)",
@@ -25,7 +29,7 @@
     "arc_property_center_angle(1,KJL,K)",
     "sector_area_formula(1,KJL)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "round_angle(1,JKL,LKJ)",
       "radius_of_circle_property_length_equal(1,KJ,K)",

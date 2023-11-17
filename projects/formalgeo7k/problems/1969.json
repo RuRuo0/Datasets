@@ -2,15 +2,21 @@
   "problem_id": 1969,
   "annotation": "ZheZhu_2023-04-16",
   "source": "Geometry3k-2048",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x so that the quadrilateral is a parallelogram.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠BCH=8*y-12°，∠BHD=1/4*x°，∠HBC=y-8°，∠HDB=4*x-8°，DH和BC是▱DBCH的一组对边。求x的值。",
+  "problem_text_en": "As shown in the diagram, ∠BCH=8*y-12°, ∠BHD=1/4*x°, ∠HBC=y-8°, ∠HDB=4*x-8°, BD and CH are opposite sides of the ▱ DBCH. Find the value of x.",
   "problem_img": "1969.png",
   "construction_cdl": [
     "Shape(DB,BH,HD)",
     "Shape(BC,CH,HB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(BCH),8*y-12)",
+    "Equal(MeasureOfAngle(BHD),1/4*x)",
+    "Equal(MeasureOfAngle(HBC),y-8)",
+    "Equal(MeasureOfAngle(HDB),4*x-8)",
+    "Parallelogram(DBCH)"
+  ],
   "image_cdl": [
     "Parallelogram(DBCH)",
     "Equal(MeasureOfAngle(BHD),1/4*x)",
@@ -24,7 +30,7 @@
     "parallelogram_property_opposite_angle_equal(1,DBCH)",
     "parallel_property_alternate_interior_angle(2,DH,BC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_property_opposite_angle_equal(1,DBCH)",
       "parallel_property_alternate_interior_angle(2,DH,BC)"

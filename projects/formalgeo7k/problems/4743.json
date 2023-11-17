@@ -2,9 +2,9 @@
   "problem_id": 4743,
   "annotation": "Yangli_2023-05-14",
   "source": "GeoQA-4088",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知⊙O的直径AB与弦AC的夹角为30°,过C点的切线PC与AB的延长线于P．若圆半径等于5,则线段CP的长度是()",
-  "problem_text_en": "As shown in the figure, it is known that the angle between the diameter AB of ⊙O and the chord AC is N_0, and the tangent line PC passing through point C and the extended line of AB intersect at P. If the radius of the circle is equal to N_1, the length of the line segment CP is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，OA=5，OB=5，OC=5，∠CAO=30°，圆O的圆心为O，圆O的切线为PC。求直线CP的长度。",
+  "problem_text_en": "As shown in the diagram, OA=5, OB=5, OC=5, ∠CAO=30°, O is the center of circle O, the tangent to circle O is PC. Find the length of line CP.",
   "problem_img": "4743.png",
   "construction_cdl": [
     "Shape(AC,OCA)",
@@ -16,9 +16,9 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(OC),5)",
-    "Equal(LengthOfLine(OB),5)",
     "Equal(LengthOfLine(OA),5)",
+    "Equal(LengthOfLine(OB),5)",
+    "Equal(LengthOfLine(OC),5)",
     "Equal(MeasureOfAngle(CAO),30)",
     "IsCentreOfCircle(O,O)",
     "IsTangentOfCircle(PC,O)"
@@ -35,7 +35,14 @@
     "triangle_property_angle_sum(1,CAP)",
     "isosceles_triangle_judgment_angle_equal(1,CAP)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(2,PC,O,O)",
+      "isosceles_triangle_judgment_line_equal(1,OCA)",
+      "angle_addition(1,PCO,OCA)",
+      "cosine_theorem(1,AOC)",
+      "triangle_property_angle_sum(1,CAP)"
+    ],
     "tangent_of_circle_property_perpendicular(2,PC,O,O)": [
       "isosceles_triangle_judgment_angle_equal(1,CAP)"
     ],
@@ -50,13 +57,6 @@
     ],
     "triangle_property_angle_sum(1,CAP)": [
       "isosceles_triangle_judgment_angle_equal(1,CAP)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(2,PC,O,O)",
-      "isosceles_triangle_judgment_line_equal(1,OCA)",
-      "angle_addition(1,PCO,OCA)",
-      "cosine_theorem(1,AOC)",
-      "triangle_property_angle_sum(1,CAP)"
     ]
   }
 }

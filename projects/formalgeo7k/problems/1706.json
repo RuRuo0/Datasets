@@ -2,16 +2,21 @@
   "problem_id": 1706,
   "annotation": "NaZhu_2023-03-26",
   "source": "Geometry3k-1770",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the triangle. Round to the nearest tenth if necessary.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AC=20，BM=30，CM=12，CM垂直于AM。求△AMB的面积。",
+  "problem_text_en": "As shown in the diagram, AC=20, BM=30, CM=12, CM is perpendicular to AM. Find the area of triangle AMB.",
   "problem_img": "1706.png",
   "construction_cdl": [
     "Shape(AC,CM,MA)",
     "Shape(AM,MB,BA)",
     "Collinear(CMB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),20)",
+    "Equal(LengthOfLine(BM),30)",
+    "Equal(LengthOfLine(CM),12)",
+    "PerpendicularBetweenLine(CM,AM)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AC),20)",
     "Equal(LengthOfLine(BM),30)",
@@ -26,14 +31,14 @@
     "adjacent_complementary_angle(1,CMA,AMB)",
     "triangle_area_formula_sine(1,MBA)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,CMA)": [
-      "right_triangle_property_pythagorean(1,CMA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,CMA)",
       "adjacent_complementary_angle(1,CMA,AMB)",
       "triangle_area_formula_sine(1,MBA)"
+    ],
+    "right_triangle_judgment_angle(1,CMA)": [
+      "right_triangle_property_pythagorean(1,CMA)"
     ]
   }
 }

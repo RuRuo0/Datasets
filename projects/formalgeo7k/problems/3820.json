@@ -2,9 +2,9 @@
   "problem_id": 3820,
   "annotation": "YifanWang_2023-05-07",
   "source": "GeoQA-1683",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O的半径为2,点A为⊙O上一点,半径OD⊥弦BC于D,如果∠BAC=60°,那么OD的长是()",
-  "problem_text_en": "As shown in the figure, the radius of ⊙O is N_0, point A is a point on ⊙O, radius OD ⊥ chord BC to D, if ∠BAC = N_1, then the length of OD is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠CAB=60°，圆O的半径为2，OD是∠COB的角平分线，圆O的圆心为O，OD垂直平分AB。求直线OD的长度。",
+  "problem_text_en": "As shown in the diagram, ∠CAB=60°, the radius of ⊙O is 2, OD bisects ∠COB, the center of ⊙O is O, OD perpendicular bisects BC. Find the length of line OD.",
   "problem_img": "3820.png",
   "construction_cdl": [
     "Shape(BA,OAB)",
@@ -21,7 +21,13 @@
     "Collinear(BDC)",
     "Cocircular(O,ABC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(CAB),60)",
+    "Equal(RadiusOfCircle(O),2)",
+    "IsBisectorOfAngle(OD,COB)",
+    "IsCentreOfCircle(O,O)",
+    "IsPerpendicularBisectorOfLine(OD,BC)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "IsPerpendicularBisectorOfLine(OD,BC)",
@@ -41,7 +47,7 @@
     "sine_theorem(1,BDO)",
     "sine_theorem(1,DOB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_circumference_angle_external(1,OBC,A)",
       "arc_property_center_angle(1,OBC,O)",

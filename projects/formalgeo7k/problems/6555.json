@@ -2,9 +2,9 @@
   "problem_id": 6555,
   "annotation": "XiaokaiZhang_2023-06-04",
   "source": "GeoQA-9493",
-  "problem_level": 1,
-  "problem_text_cn": "如图,P是⊙O外一点,PA、PB切⊙O于点A、B,点C在优弧AB上,若∠P=68°,则∠ACB等于()",
-  "problem_text_en": "As shown in the figure, P is a point outside ⊙O, PA and PB tangent ⊙O at points A and B, and point C is on the superior arc AB. If ∠P = N_0, then ∠ACB is equal to ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠BPA=68°，O是圆O的圆心，PA是⊙O的切线，PB是⊙O的切线。求∠ACB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BPA=68°, the center of ⊙O is O, PA is the tangent to circle O, the tangent to circle O is PB. Find the measure of ∠ACB.",
   "problem_img": "6555.png",
   "construction_cdl": [
     "Shape(OAC,CA)",
@@ -15,10 +15,10 @@
     "Cocircular(O,ACB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(BPA),68)",
     "IsCentreOfCircle(O,O)",
     "IsTangentOfCircle(PA,O)",
-    "IsTangentOfCircle(PB,O)",
-    "Equal(MeasureOfAngle(BPA),68)"
+    "IsTangentOfCircle(PB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ACB))",
@@ -30,7 +30,7 @@
     "arc_property_center_angle(1,OBA,O)",
     "arc_property_circumference_angle_external(1,OBA,C)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(1,PB,O,O)",
       "tangent_of_circle_property_perpendicular(2,PA,O,O)",

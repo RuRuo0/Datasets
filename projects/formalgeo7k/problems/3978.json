@@ -2,9 +2,9 @@
   "problem_id": 3978,
   "annotation": "ZheZhu_2023-04-30",
   "source": "GeoQA-1922",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC中,∠C=90°,AE平分∠BAC,BD⊥AE交AE的延长线于D．若∠1=24°,则∠EAB等于()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠C = N_0, AE bisects ∠BAC, BD ⊥ AE intersects the extended line of AE at D. If ∠1 = N_1, then ∠EAB is equal to ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠BCA=90°，∠BDA=90°，∠EBD=24°，AD是∠CAB的角平分线。求∠DAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BCA=90°, ∠BDA=90°, ∠EBD=24°, AD bisects ∠CAB. Find the measure of ∠DAB.",
   "problem_img": "3978.png",
   "construction_cdl": [
     "Shape(CA,AE,EC)",
@@ -13,7 +13,12 @@
     "Collinear(CEB)",
     "Collinear(AED)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(BCA),90)",
+    "Equal(MeasureOfAngle(BDA),90)",
+    "Equal(MeasureOfAngle(EBD),24)",
+    "IsBisectorOfAngle(AD,CAB)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(EBD),24)",
     "Equal(MeasureOfAngle(BCA),90)",
@@ -27,7 +32,7 @@
     "triangle_property_angle_sum(1,DEB)",
     "vertical_angle(1,AEC,DEB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,CAE)",
       "triangle_property_angle_sum(1,DEB)",

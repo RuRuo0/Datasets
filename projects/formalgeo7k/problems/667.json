@@ -2,15 +2,23 @@
   "problem_id": 667,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-684",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find z in the figure.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠CGH=42°，∠DGC=3*x°，∠GCD=z°，∠GHC=y°，∠HCG=48°，GD∥HC，HG∥CD。求z的值。",
+  "problem_text_en": "As shown in the diagram, ∠CGH=42°, ∠DGC=3*x°, ∠GCD=z°, ∠GHC=y°, ∠HCG=48°, GD is parallel to HC, HG∥CD. Find the value of z.",
   "problem_img": "667.png",
   "construction_cdl": [
     "Shape(GH,HC,CG)",
     "Shape(CD,DG,GC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(CGH),42)",
+    "Equal(MeasureOfAngle(DGC),3*x)",
+    "Equal(MeasureOfAngle(GCD),z)",
+    "Equal(MeasureOfAngle(GHC),y)",
+    "Equal(MeasureOfAngle(HCG),48)",
+    "ParallelBetweenLine(GD,HC)",
+    "ParallelBetweenLine(HG,CD)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(DGC),3*x)",
     "Equal(MeasureOfAngle(CGH),42)",
@@ -29,15 +37,15 @@
     "angle_addition(1,HCG,GCD)",
     "parallelogram_property_opposite_angle_equal(1,GHCD)"
   ],
-  "theorem_seq_dag": {
-    "parallelogram_judgment_parallel_and_parallel(1,GHCD)": [
-      "parallelogram_property_opposite_angle_equal(1,GHCD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_judgment_parallel_and_parallel(1,GHCD)",
       "parallel_property_alternate_interior_angle(1,GD,HC)",
       "angle_addition(1,DGC,CGH)",
       "angle_addition(1,HCG,GCD)"
+    ],
+    "parallelogram_judgment_parallel_and_parallel(1,GHCD)": [
+      "parallelogram_property_opposite_angle_equal(1,GHCD)"
     ]
   }
 }

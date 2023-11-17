@@ -2,9 +2,9 @@
   "problem_id": 4458,
   "annotation": "JiaZou_2023-05-14",
   "source": "GeoQA-3430",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,∠ADC=30°,OA=2,则AC的长为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, ∠ADC = N_0, OA = N_1, then the length of AC is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，OA=2，∠CDA=30°，O是⊙O的圆心，AB是圆O的直径。求直线AC的长度。",
+  "problem_text_en": "As shown in the diagram, OA=2, ∠CDA=30°, the center of circle O is O, the diameter of ⊙O is AB. Find the length of line AC.",
   "problem_img": "4458.png",
   "construction_cdl": [
     "Shape(BO,OA,AE,EB)",
@@ -20,10 +20,10 @@
     "Cocircular(O.ACDB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(AB,O)",
     "Equal(LengthOfLine(OA),2)",
-    "Equal(MeasureOfAngle(CDA),30)"
+    "Equal(MeasureOfAngle(CDA),30)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AC))",
@@ -37,7 +37,7 @@
     "diameter_of_circle_property_length_equal(1,AB,O)",
     "sine_theorem(1,ACB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,ACB,O)",
       "arc_property_circumference_angle_external(1,OAC,B)",

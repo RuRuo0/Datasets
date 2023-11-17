@@ -2,9 +2,9 @@
   "problem_id": 3119,
   "annotation": "YimingHe_2023-04-23",
   "source": "GeoQA-370",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,点D、E、F分别在边AC、AB、BC上,EF∥AC,DF∥AB,若∠B=45°,∠C=65°,则∠EFD的大小为()",
-  "problem_text_en": "As shown in the figure, in △ABC, the vertices D, E, and F are on the edges AC, AB, and BC respectively, EF ∥ AC, DF ∥ AB, if ∠B = N_0, ∠C = N_1, then the size of ∠EFD is ( )",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠EBF=45°，∠FCD=65°，DF∥AB，FE平行于CA。求∠EFD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠EBF=45°, ∠FCD=65°, DF∥AB, FE is parallel to CA. Find the measure of ∠EFD.",
   "problem_img": "3119.png",
   "construction_cdl": [
     "Shape(EB,BF,FE)",
@@ -15,10 +15,10 @@
     "Collinear(ADC)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(FE,CA)",
-    "ParallelBetweenLine(DF,AB)",
     "Equal(MeasureOfAngle(EBF),45)",
-    "Equal(MeasureOfAngle(FCD),65)"
+    "Equal(MeasureOfAngle(FCD),65)",
+    "ParallelBetweenLine(DF,AB)",
+    "ParallelBetweenLine(FE,CA)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(EFD))",
@@ -29,7 +29,7 @@
     "angle_addition(1,BFE,EFD)",
     "adjacent_complementary_angle(1,BFD,DFC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_corresponding_angle(1,FE,CA,B)",
       "parallel_property_corresponding_angle(2,BA,FD,C)",

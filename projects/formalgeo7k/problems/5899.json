@@ -2,9 +2,9 @@
   "problem_id": 5899,
   "annotation": "YiwenHuang_2023-06-04",
   "source": "GeoQA-8006",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在▱ABCD中,点E在DC上,若EC:AB=2:3,EF=4,则BF的长为()",
-  "problem_text_en": "As shown in the figure, in ▱ABCD, point E is on DC, if EC:AB = N_0:N_1, EF = N_2, then the length of BF is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，Div(LengthOfLine(EC)=LengthOfLine(AB))，EF=4，DABC是平行四边形。求直线BF的长度。",
+  "problem_text_en": "As shown in the diagram, Div(LengthOfLine(EC)=LengthOfLine(AB)), EF=4, AD and BC are opposite sides of the ▱ DABC. Find the length of line BF.",
   "problem_img": "5899.png",
   "construction_cdl": [
     "Shape(DA,AF,FE,ED)",
@@ -16,9 +16,9 @@
     "Collinear(DEC)"
   ],
   "text_cdl": [
-    "Parallelogram(DABC)",
     "Equal(Div(LengthOfLine(EC),LengthOfLine(AB)),2/3)",
-    "Equal(LengthOfLine(EF),4)"
+    "Equal(LengthOfLine(EF),4)",
+    "Parallelogram(DABC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BF))",
@@ -31,7 +31,10 @@
     "similar_triangle_property_line_ratio(1,FCE,FAB)",
     "similar_triangle_property_line_ratio(1,CEF,ABF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,DC,AB,E)"
+    ],
     "parallel_property_collinear_extend(3,DC,AB,E)": [
       "parallel_property_alternate_interior_angle(1,EC,AB)",
       "parallel_property_alternate_interior_angle(2,EC,AB)"
@@ -45,9 +48,6 @@
     "similar_triangle_judgment_aa(1,FCE,FAB)": [
       "similar_triangle_property_line_ratio(1,FCE,FAB)",
       "similar_triangle_property_line_ratio(1,CEF,ABF)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,DC,AB,E)"
     ]
   }
 }

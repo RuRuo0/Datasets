@@ -2,9 +2,9 @@
   "problem_id": 5165,
   "annotation": "JiaZou_2023-05-21",
   "source": "GeoQA-5113",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB,AC是⊙O的弦,OE⊥AB,OF⊥AC,垂足分别为E,F．如果EF=3.5,那么BC=()",
-  "problem_text_en": "As shown in the figure, AB and AC are the chords of ⊙O, OE ⊥ AB, OF ⊥ AC, and the vertical feet are E and F respectively. If EF = N_0, then BC = ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，EF=7/2，O是圆O的圆心，AE⊥OE，CF⊥OF。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, EF=7/2, the center of circle O is O, AE is perpendicular to OE, CF⊥OF. Find the length of line BC.",
   "problem_img": "5165.png",
   "construction_cdl": [
     "Shape(BC,CF,FO,OE,EB)",
@@ -18,10 +18,10 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(EF),7/2)",
     "IsCentreOfCircle(O,O)",
     "PerpendicularBetweenLine(AE,OE)",
-    "PerpendicularBetweenLine(CF,OF)",
-    "Equal(LengthOfLine(EF),7/2)"
+    "PerpendicularBetweenLine(CF,OF)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BC))",
@@ -35,7 +35,13 @@
     "similar_triangle_property_line_ratio(1,BCA,EFA)",
     "similar_triangle_property_line_ratio(1,ABC,AEF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "circle_property_chord_perpendicular_bisect_chord(1,O,OF,CA)",
+      "circle_property_chord_perpendicular_bisect_chord(1,O,OE,AB)",
+      "line_addition(1,BE,EA)",
+      "line_addition(1,CF,FA)"
+    ],
     "circle_property_chord_perpendicular_bisect_chord(1,O,OF,CA)": [
       "similar_triangle_judgment_sas(1,ABC,AEF)"
     ],
@@ -51,12 +57,6 @@
     "similar_triangle_judgment_sas(1,ABC,AEF)": [
       "similar_triangle_property_line_ratio(1,ABC,AEF)",
       "similar_triangle_property_line_ratio(1,BCA,EFA)"
-    ],
-    "START": [
-      "circle_property_chord_perpendicular_bisect_chord(1,O,OF,CA)",
-      "circle_property_chord_perpendicular_bisect_chord(1,O,OE,AB)",
-      "line_addition(1,BE,EA)",
-      "line_addition(1,CF,FA)"
     ]
   }
 }

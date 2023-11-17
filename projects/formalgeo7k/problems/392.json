@@ -2,9 +2,9 @@
   "problem_id": 392,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-399",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot F, G K = 14 and m \\widehat G H K = 142. Find m \\widehat K M.",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，GK=14，MF=8，⌒FKG的角度为142，F是圆F的圆心，HJ⊥KJ。求弧FMK的角度。",
+  "problem_text_en": "As shown in the diagram, GK=14, MF=8, the measure of arc FKG is 142, F is the center of circle F, HJ is perpendicular to KJ. Find the measure of arc FMK.",
   "problem_img": "392.png",
   "construction_cdl": [
     "Shape(GJ,JH,FHG)",
@@ -17,7 +17,13 @@
     "Collinear(MFJH)",
     "Cocircular(F,GMKH)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(GK),14)",
+    "Equal(LengthOfLine(MF),8)",
+    "Equal(MeasureOfArc(FKG),142)",
+    "IsCentreOfCircle(F,F)",
+    "PerpendicularBetweenLine(HJ,KJ)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(F,F)",
     "Equal(LengthOfLine(GK),14)",
@@ -39,7 +45,16 @@
     "angle_addition(1,GFJ,JFK)",
     "arc_property_center_angle(1,FMK,F)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,FK,F)",
+      "radius_of_circle_property_length_equal(1,FG,F)",
+      "adjacent_complementary_angle(1,JFK,KFM)",
+      "adjacent_complementary_angle(1,HJK,KJM)",
+      "arc_property_center_angle(1,FKG,F)",
+      "angle_addition(1,GFJ,JFK)",
+      "arc_property_center_angle(1,FMK,F)"
+    ],
     "radius_of_circle_property_length_equal(1,FK,F)": [
       "isosceles_triangle_judgment_line_equal(1,FKG)"
     ],
@@ -54,15 +69,6 @@
     ],
     "altitude_of_triangle_judgment(1,FJ,FKG)": [
       "isosceles_triangle_property_line_coincidence(1,FKG,J)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,FK,F)",
-      "radius_of_circle_property_length_equal(1,FG,F)",
-      "adjacent_complementary_angle(1,JFK,KFM)",
-      "adjacent_complementary_angle(1,HJK,KJM)",
-      "arc_property_center_angle(1,FKG,F)",
-      "angle_addition(1,GFJ,JFK)",
-      "arc_property_center_angle(1,FMK,F)"
     ]
   }
 }

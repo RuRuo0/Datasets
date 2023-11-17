@@ -2,9 +2,9 @@
   "problem_id": 6772,
   "annotation": "Yangli_2023-06-04",
   "source": "GeoQA-9867",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点D为AC上一点,点O为边AB上一点,AD=DO．以O为圆心,OD长为半径作圆,交AC于另一点E,交AB于点F,G,连接EF．若∠BAC=22°,则∠EFG=()",
-  "problem_text_en": "As shown in the figure, point D is a point on AC, point O is a point on side AB, AD = DO. Take O as the center and OD length as the radius to make a circle, intersect AC at another point E, intersect AB at points F, G, and connect EF. If ∠BAC = N_0, then ∠EFG = ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，DO=AD，∠DAF=22°，O是⊙O的圆心。求∠GFO的大小。",
+  "problem_text_en": "As shown in the diagram, DO=AD, ∠DAF=22°, O is the center of ⊙O. Find the measure of ∠GFO.",
   "problem_img": "6772.png",
   "construction_cdl": [
     "Shape(DA,AF,ODF)",
@@ -36,16 +36,16 @@
     "triangle_property_angle_sum(1,EAF)",
     "adjacent_complementary_angle(1,AFG,GFO)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,DAO)": [
-      "isosceles_triangle_property_angle_equal(1,DAO)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,DAO)",
       "arc_property_center_angle(1,ODF,O)",
       "arc_property_circumference_angle_external(1,ODF,E)",
       "triangle_property_angle_sum(1,EAF)",
       "adjacent_complementary_angle(1,AFG,GFO)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,DAO)": [
+      "isosceles_triangle_property_angle_equal(1,DAO)"
     ]
   }
 }

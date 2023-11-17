@@ -2,9 +2,9 @@
   "problem_id": 2690,
   "annotation": "DengfengYue_2023-04-09",
   "source": "Geometry3k-2833",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\triangle C D F, K is the centroid and D K = 16. Find C D.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，DG=9，DK=16，KF=12，三角形CDF的重心为O。求直线CD的长度。",
+  "problem_text_en": "As shown in the diagram, DG=9, DK=16, KF=12, the centroid of triangle CDF is K. Find the length of line CD.",
   "problem_img": "2690.png",
   "construction_cdl": [
     "Shape(CG,GK,KC)",
@@ -20,7 +20,12 @@
     "Collinear(JKC)",
     "Collinear(DKH)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(DG),9)",
+    "Equal(LengthOfLine(DK),16)",
+    "Equal(LengthOfLine(KF),12)",
+    "IsCentroidOfTriangle(K,CDF)"
+  ],
   "image_cdl": [
     "IsCentroidOfTriangle(K,CDF)",
     "Equal(LengthOfLine(DK),16)",
@@ -33,7 +38,7 @@
     "centroid_of_triangle_property_intersection(1,K,FCD,G)",
     "line_addition(1,CG,GD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "centroid_of_triangle_property_intersection(1,K,FCD,G)",
       "line_addition(1,CG,GD)"

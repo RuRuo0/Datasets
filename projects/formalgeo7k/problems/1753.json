@@ -2,16 +2,22 @@
   "problem_id": 1753,
   "annotation": "NaZhu_2023-03-26",
   "source": "Geometry3k-1818",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AH=15，CA=x，CG=8，CH=18，∠GAC=∠HAG。求x的值。",
+  "problem_text_en": "As shown in the diagram, AH=15, CA=x, CG=8, CH=18, ∠GAC=∠HAG. Find the value of x.",
   "problem_img": "1753.png",
   "construction_cdl": [
     "Shape(AC,CG,GA)",
     "Shape(AG,GH,HA)",
     "Collinear(CGH)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AH),15)",
+    "Equal(LengthOfLine(CA),x)",
+    "Equal(LengthOfLine(CG),8)",
+    "Equal(LengthOfLine(CH),18)",
+    "Equal(MeasureOfAngle(GAC),MeasureOfAngle(HAG))"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AH),15)",
     "Equal(LengthOfLine(CA),x)",
@@ -26,13 +32,13 @@
     "bisector_of_angle_judgment_angle_equal(1,AG,HAC)",
     "bisector_of_angle_property_line_ratio(1,AG,HAC)"
   ],
-  "theorem_seq_dag": {
-    "bisector_of_angle_judgment_angle_equal(1,AG,HAC)": [
-      "bisector_of_angle_property_line_ratio(1,AG,HAC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,CG,GH)",
       "bisector_of_angle_judgment_angle_equal(1,AG,HAC)"
+    ],
+    "bisector_of_angle_judgment_angle_equal(1,AG,HAC)": [
+      "bisector_of_angle_property_line_ratio(1,AG,HAC)"
     ]
   }
 }

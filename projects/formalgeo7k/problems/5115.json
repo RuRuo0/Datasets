@@ -2,9 +2,9 @@
   "problem_id": 5115,
   "annotation": "YimingHe_2023-05-21",
   "source": "GeoQA-4967",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC,AB=8,AC=5,BC=7,AD是△ABC外角平分线,CD⊥AD于D,E是BC的中点,则DE=()",
-  "problem_text_en": "As shown in the figure, in △ABC, AB = N_0, AC = N_1, BC = N_2, AD is the bisector of the exterior angle of △ABC, CD ⊥ AD is at D, E is the midpoint of BC, then DE = ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AB=8，AC=5，BC=7，AD是∠MAC的角平分线，E平分线段BC，CD垂直于AD。求直线DE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=8, AC=5, BC=7, AD bisects ∠MAC, E is the midpoint of segment BC, CD⊥AD. Find the length of line DE.",
   "problem_img": "5115.png",
   "construction_cdl": [
     "Shape(MA,AD,DM)",
@@ -19,12 +19,12 @@
     "Collinear(CDM)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(CD,AD)",
-    "IsBisectorOfAngle(AD,MAC)",
     "Equal(LengthOfLine(AB),8)",
     "Equal(LengthOfLine(AC),5)",
     "Equal(LengthOfLine(BC),7)",
-    "IsMidpointOfLine(E,BC)"
+    "IsBisectorOfAngle(AD,MAC)",
+    "IsMidpointOfLine(E,BC)",
+    "PerpendicularBetweenLine(CD,AD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(DE))",
@@ -40,7 +40,14 @@
     "midsegment_of_triangle_judgment_midpoint(1,DE,CMB)",
     "midsegment_of_triangle_property_length(1,DE,CMB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,CDA,ADM)",
+      "triangle_property_angle_sum(1,ACD)",
+      "triangle_property_angle_sum(1,ADM)",
+      "altitude_of_triangle_judgment(1,AD,ACM)",
+      "line_addition(1,BA,AM)"
+    ],
     "adjacent_complementary_angle(1,CDA,ADM)": [
       "isosceles_triangle_judgment_angle_equal(1,ACM)"
     ],
@@ -61,13 +68,6 @@
     ],
     "midsegment_of_triangle_judgment_midpoint(1,DE,CMB)": [
       "midsegment_of_triangle_property_length(1,DE,CMB)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,CDA,ADM)",
-      "triangle_property_angle_sum(1,ACD)",
-      "triangle_property_angle_sum(1,ADM)",
-      "altitude_of_triangle_judgment(1,AD,ACM)",
-      "line_addition(1,BA,AM)"
     ]
   }
 }

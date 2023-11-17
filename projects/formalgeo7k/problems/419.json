@@ -2,9 +2,9 @@
   "problem_id": 419,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-427",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Quadrilateral R S T U is circumscribed about \\odot J. If the preimeter is 18 units, find x.",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，RD=3，SA=3，TA=x，UC=x，四边形TSRU的周长为18，RC是⊙O的切线，圆O的切线为RD，SA是⊙O的切线，⊙O的切线为SD，圆O的切线为TA，TB是⊙O的切线，UB是圆O的切线，⊙O的切线为UC。求x的值。",
+  "problem_text_en": "As shown in the diagram, RD=3, SA=3, TA=x, UC=x, the perimeter of quadrilateral TSRU is 18, RC is the tangent to ⊙J, RD is the tangent to circle J, SA is the tangent to ⊙J, the tangent to ⊙J is SD, TA is the tangent to circle J, the tangent to circle J is TB, the tangent to ⊙J is UB, UC is the tangent to ⊙J. Find the value of x.",
   "problem_img": "419.png",
   "construction_cdl": [
     "Shape(BT,TA,JBA)",
@@ -18,7 +18,21 @@
     "Collinear(UCR)",
     "Cocircular(J,BADC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(RD),3)",
+    "Equal(LengthOfLine(SA),3)",
+    "Equal(LengthOfLine(TA),x)",
+    "Equal(LengthOfLine(UC),x)",
+    "Equal(PerimeterOfQuadrilateral(TSRU),18)",
+    "IsTangentOfCircle(RC,J)",
+    "IsTangentOfCircle(RD,J)",
+    "IsTangentOfCircle(SA,J)",
+    "IsTangentOfCircle(SD,J)",
+    "IsTangentOfCircle(TA,J)",
+    "IsTangentOfCircle(TB,J)",
+    "IsTangentOfCircle(UB,J)",
+    "IsTangentOfCircle(UC,J)"
+  ],
   "image_cdl": [
     "IsTangentOfCircle(TB,J)",
     "IsTangentOfCircle(UB,J)",
@@ -47,7 +61,7 @@
     "line_addition(1,UC,CR)",
     "quadrilateral_perimeter_formula(1,TSRU)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_length_equal(1,SA,SD,J)",
       "tangent_of_circle_property_length_equal(1,TB,TA,J)",

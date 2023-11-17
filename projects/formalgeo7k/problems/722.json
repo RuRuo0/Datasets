@@ -3,8 +3,8 @@
   "annotation": "YimingHe_2023-03-12",
   "source": "Geometry3k-746",
   "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure, C P is an altitude, C Q is the angle bisector of \\angle A C B, and R is the midpoint of A B. Find A B if A R = 3 x + 6 and R B = 5 x - 14.",
+  "problem_text_cn": "如图所示，AB=y，AR=3*x+6，RB=5*x-14，CP是三角形CAB的高，CQ平分∠CCB，R是线段AB的中点。求y的值。",
+  "problem_text_en": "As shown in the diagram, AB=y, AR=3*x+6, RB=5*x-14, CP is the altitude of triangle CAB, CQ bisects ∠CCB, R is the midpoint of segment AB. Find the value of y.",
   "problem_img": "722.png",
   "construction_cdl": [
     "Shape(CA,AP,PC)",
@@ -13,7 +13,14 @@
     "Shape(CR,RB,BC)",
     "Collinear(APQRB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),y)",
+    "Equal(LengthOfLine(AR),3*x+6)",
+    "Equal(LengthOfLine(RB),5*x-14)",
+    "IsAltitudeOfTriangle(CP,CAB)",
+    "IsBisectorOfAngle(CQ,CAB)",
+    "IsMidpointOfLine(R,AB)"
+  ],
   "image_cdl": [
     "IsAltitudeOfTriangle(CP,CAB)",
     "IsBisectorOfAngle(CQ,CAB)",
@@ -27,7 +34,7 @@
   "theorem_seqs": [
     "line_addition(1,AR,RB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AR,RB)"
     ]

@@ -2,9 +2,9 @@
   "problem_id": 5794,
   "annotation": "YanjunGuo_2023-05-28",
   "source": "GeoQA-7720",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在平行四边形ABCD中,点E是CD延长线上一点,BE与AD交于点F,若CD=2DE,且△DEF的面积为3,则三角形ABF的面积为()",
-  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, point E is a point on the extended line of CD, BE and AD intersect at point F, if CD = 2 DE, and the area of ​​△DEF is N_0, then the area of ​​triangle ABF is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，三角形FDE的面积为3，Div(LengthOfLine(CD)=LengthOfLine(DE))，四边形ABCD是▱。求三角形FAB的面积。",
+  "problem_text_en": "As shown in the diagram, the area of △FDE is 3, Div(LengthOfLine(CD)=LengthOfLine(DE)), ABCD is a ▱. Find the area of △FAB.",
   "problem_img": "5794.png",
   "construction_cdl": [
     "Shape(AB,BF,FA)",
@@ -15,8 +15,8 @@
     "Collinear(AFD)"
   ],
   "text_cdl": [
-    "Equal(Div(LengthOfLine(CD),LengthOfLine(DE)),2)",
     "Equal(AreaOfTriangle(FDE),3)",
+    "Equal(Div(LengthOfLine(CD),LengthOfLine(DE)),2)",
     "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
@@ -31,7 +31,11 @@
     "similar_triangle_property_line_ratio(1,FAB,FDE)",
     "similar_triangle_property_area_square_ratio(1,FAB,FDE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(1,DC,AB,E)",
+      "parallelogram_property_opposite_line_equal(1,ABCD)"
+    ],
     "parallel_property_collinear_extend(1,DC,AB,E)": [
       "parallel_property_alternate_interior_angle(1,ED,AB)",
       "parallel_property_alternate_interior_angle(2,ED,AB)"
@@ -45,10 +49,6 @@
     "similar_triangle_judgment_aa(1,FAB,FDE)": [
       "similar_triangle_property_line_ratio(1,FAB,FDE)",
       "similar_triangle_property_area_square_ratio(1,FAB,FDE)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(1,DC,AB,E)",
-      "parallelogram_property_opposite_line_equal(1,ABCD)"
     ]
   }
 }

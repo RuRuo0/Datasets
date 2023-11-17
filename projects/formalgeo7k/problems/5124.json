@@ -2,9 +2,9 @@
   "problem_id": 5124,
   "annotation": "YimingHe_2023-05-21",
   "source": "GeoQA-4983",
-  "problem_level": 1,
-  "problem_text_cn": "如图,BD为△ABC的内角平分线,CE为△ABC的外角平分线,AD⊥BD于D,AE⊥CE于E,延长AD交BC的延长线于F,连接DE,设BC=2,AC=3,AB=4,则DE的长为()",
-  "problem_text_en": "As shown in the figure, BD is the bisector of inner angle of △ABC, CE is the bisector of exterior angle of △ABC, AD ⊥ BD at D, AE ⊥ CE at E, extend the extended line of AD and BC at F, connect DE, set BC = N_0 , AC = N_1, AB = N_2, then the length of DE is ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，AB=4，AC=3，BC=2，BD是∠ABC的角平分线，CE平分∠ACG，BD垂直于AD，CE垂直于AE，FD⊥BD。求直线DE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=4, AC=3, BC=2, BD bisects ∠ABC, CE is the angle bisector of ∠ACG, BD⊥AD, CE⊥AE, FD⊥BD. Find the length of line DE.",
   "problem_img": "5124.png",
   "construction_cdl": [
     "Shape(AB,BO,OA)",
@@ -23,13 +23,14 @@
     "Collinear(BCFG)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AB),4)",
+    "Equal(LengthOfLine(AC),3)",
+    "Equal(LengthOfLine(BC),2)",
     "IsBisectorOfAngle(BD,ABC)",
     "IsBisectorOfAngle(CE,ACG)",
     "PerpendicularBetweenLine(BD,AD)",
     "PerpendicularBetweenLine(CE,AE)",
-    "Equal(LengthOfLine(BC),2)",
-    "Equal(LengthOfLine(AC),3)",
-    "Equal(LengthOfLine(AB),4)"
+    "PerpendicularBetweenLine(FD,BD)"
   ],
   "image_cdl": [
     "PerpendicularBetweenLine(FD,BD)"
@@ -49,7 +50,13 @@
     "midsegment_of_triangle_judgment_midpoint(1,DE,AFG)",
     "midsegment_of_triangle_property_length(1,DE,AFG)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "mirror_congruent_triangle_judgment_aas(2,ABD,FDB)",
+      "line_addition(1,BC,CF)",
+      "adjacent_complementary_angle(1,GEC,CEA)",
+      "line_addition(1,CF,FG)"
+    ],
     "mirror_congruent_triangle_judgment_aas(2,ABD,FDB)": [
       "mirror_congruent_triangle_property_line_equal(1,BDA,BFD)",
       "mirror_congruent_triangle_property_line_equal(1,DAB,DBF)"
@@ -69,12 +76,6 @@
     ],
     "midsegment_of_triangle_judgment_midpoint(1,DE,AFG)": [
       "midsegment_of_triangle_property_length(1,DE,AFG)"
-    ],
-    "START": [
-      "mirror_congruent_triangle_judgment_aas(2,ABD,FDB)",
-      "line_addition(1,BC,CF)",
-      "adjacent_complementary_angle(1,GEC,CEA)",
-      "line_addition(1,CF,FG)"
     ]
   }
 }

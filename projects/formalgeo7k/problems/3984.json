@@ -2,9 +2,9 @@
   "problem_id": 3984,
   "annotation": "ZheZhu_2023-04-30",
   "source": "GeoQA-1929",
-  "problem_level": 1,
-  "problem_text_cn": "绍兴是著名的桥乡．如图,圆拱桥的桥顶到水面的距离CD为8m,桥拱半径OC为5m,则水面宽AB为()",
-  "problem_text_en": "Shaoxing is a famous bridge township. As shown in the figure, the distance CD from the top of the round arch bridge to the water surface is N_0, and the arch radius OC is N_1, so the width of the water surface AB is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，CD=8，OC=5，O是圆O的圆心，AD垂直于OD，OD垂直于BD。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, CD=8, OC=5, the center of circle O is O, AD⊥OD, OD is perpendicular to BD. Find the length of line AB.",
   "problem_img": "3984.png",
   "construction_cdl": [
     "Shape(OC,OCA,AO)",
@@ -16,7 +16,13 @@
     "Collinear(COD)",
     "Cocircular(O,CAB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(CD),8)",
+    "Equal(LengthOfLine(OC),5)",
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(AD,OD)",
+    "PerpendicularBetweenLine(OD,BD)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "PerpendicularBetweenLine(OD,BD)",
@@ -37,13 +43,7 @@
     "right_triangle_property_pythagorean(1,ADO)",
     "right_triangle_property_pythagorean(1,ODB)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,ADO)": [
-      "right_triangle_property_pythagorean(1,ADO)"
-    ],
-    "right_triangle_judgment_angle(1,ODB)": [
-      "right_triangle_property_pythagorean(1,ODB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AD,DB)",
       "line_addition(1,CO,OD)",
@@ -52,6 +52,12 @@
       "radius_of_circle_property_length_equal(1,OB,O)",
       "right_triangle_judgment_angle(1,ADO)",
       "right_triangle_judgment_angle(1,ODB)"
+    ],
+    "right_triangle_judgment_angle(1,ADO)": [
+      "right_triangle_property_pythagorean(1,ADO)"
+    ],
+    "right_triangle_judgment_angle(1,ODB)": [
+      "right_triangle_property_pythagorean(1,ODB)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 1474,
   "annotation": "QikeHuang_2023-04-16",
   "source": "Geometry3k-1528",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the shaded region formed by the circle and regular polygon. Round to the nearest tenth.",
+  "problem_level": 13,
+  "problem_text_cn": "如图所示，AC=2，△ABC为等边△，D是圆D的圆心，E是线段CA的中点。求⊙D的面积减去△ABC的面积。",
+  "problem_text_en": "As shown in the diagram, AC=2, triangle ABC is an equilateral triangle, the center of ⊙D is D, E bisects segment CA. Find the area of the circle D minus the area of △ABC.",
   "problem_img": "1474.png",
   "construction_cdl": [
     "Shape(DBC,CB)",
@@ -18,7 +18,12 @@
     "Collinear(CEA)",
     "Cocircular(D,ABC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),2)",
+    "EquilateralTriangle(ABC)",
+    "IsCentreOfCircle(D,D)",
+    "IsMidpointOfLine(E,CA)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(D,D)",
     "IsMidpointOfLine(E,CA)",
@@ -42,7 +47,17 @@
     "triangle_area_formula_sine(1,ABC)",
     "circle_area_formula(1,D)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,BD,DE)",
+      "line_addition(1,CE,EA)",
+      "radius_of_circle_property_length_equal(1,DB,D)",
+      "radius_of_circle_property_length_equal(1,DC,D)",
+      "equilateral_triangle_property_angle(1,ABC)",
+      "median_of_triangle_judgment(1,BE,BCA)",
+      "triangle_area_formula_sine(1,ABC)",
+      "circle_area_formula(1,D)"
+    ],
     "median_of_triangle_judgment(1,BE,BCA)": [
       "isosceles_triangle_property_line_coincidence(2,BCA,E)"
     ],
@@ -55,16 +70,6 @@
     ],
     "right_triangle_judgment_angle(1,CED)": [
       "right_triangle_property_pythagorean(1,CED)"
-    ],
-    "START": [
-      "line_addition(1,BD,DE)",
-      "line_addition(1,CE,EA)",
-      "radius_of_circle_property_length_equal(1,DB,D)",
-      "radius_of_circle_property_length_equal(1,DC,D)",
-      "equilateral_triangle_property_angle(1,ABC)",
-      "median_of_triangle_judgment(1,BE,BCA)",
-      "triangle_area_formula_sine(1,ABC)",
-      "circle_area_formula(1,D)"
     ]
   }
 }

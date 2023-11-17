@@ -2,9 +2,9 @@
   "problem_id": 5836,
   "annotation": "QikeHuang_2023-05-28",
   "source": "GeoQA-7838",
-  "problem_level": 1,
-  "problem_text_cn": "如图平行四边形ABCD中,AB=3,BC=5,BE平分∠ABC交AD于点E,交AC于点F,则\\frac{BF}{EF}=()",
-  "problem_text_en": "As shown in the parallelogram ABCD, AB = N_0, BC = N_1, BE bisects ∠ABC and intersects AD at point E as well as intersects AC at point F, then \\frac BFEF = ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=3，BC=5，BE平分∠ABC，ABCD是平行四边形。求直线BF的长度与直线EF的长度之比。",
+  "problem_text_en": "As shown in the diagram, AB=3, BC=5, BE bisects ∠ABC, BA and CD are opposite sides of the ▱ ABCD. Find the ratio of the length of line BF to the length of line EF.",
   "problem_img": "5836.png",
   "construction_cdl": [
     "Shape(AB,BF,FA)",
@@ -16,10 +16,10 @@
     "Collinear(BFE)"
   ],
   "text_cdl": [
-    "IsBisectorOfAngle(BE,ABC)",
-    "Parallelogram(ABCD)",
     "Equal(LengthOfLine(AB),3)",
-    "Equal(LengthOfLine(BC),5)"
+    "Equal(LengthOfLine(BC),5)",
+    "IsBisectorOfAngle(BE,ABC)",
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Div(LengthOfLine(BF),LengthOfLine(EF)))",
@@ -33,7 +33,10 @@
     "similar_triangle_property_line_ratio(1,FEA,FBC)",
     "similar_triangle_property_line_ratio(1,AFE,CFB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,AD,BC,E)"
+    ],
     "parallel_property_collinear_extend(3,AD,BC,E)": [
       "parallel_property_alternate_interior_angle(1,AE,BC)",
       "parallel_property_alternate_interior_angle(2,AE,BC)"
@@ -48,9 +51,6 @@
     "similar_triangle_judgment_aa(1,FEA,FBC)": [
       "similar_triangle_property_line_ratio(1,FEA,FBC)",
       "similar_triangle_property_line_ratio(1,AFE,CFB)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,AD,BC,E)"
     ]
   }
 }

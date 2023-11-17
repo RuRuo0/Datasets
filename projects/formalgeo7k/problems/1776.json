@@ -2,9 +2,9 @@
   "problem_id": 1776,
   "annotation": "NaZhu_2023-03-26",
   "source": "Geometry3k-1842",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If P R \\parallel K L, K N = 9, L N = 16, P M = 2 K P, find K M.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，KN=9，LN=16，PM=Mul(LengthOfLine(KP),2)，LN∥RQ，KN⊥QN，RM⊥PM。求直线KM的长度。",
+  "problem_text_en": "As shown in the diagram, KN=9, LN=16, PM=Mul(LengthOfLine(KP),2), LN is parallel to RQ, KN is perpendicular to QN, RM is perpendicular to PM. Find the length of line KM.",
   "problem_img": "1776.png",
   "construction_cdl": [
     "Shape(LR,RQ,QN,NL)",
@@ -17,7 +17,14 @@
     "Collinear(KPM)",
     "Collinear(NQM)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(KN),9)",
+    "Equal(LengthOfLine(LN),16)",
+    "Equal(LengthOfLine(PM),Mul(LengthOfLine(KP),2))",
+    "ParallelBetweenLine(LN,RQ)",
+    "PerpendicularBetweenLine(KN,QN)",
+    "PerpendicularBetweenLine(RM,PM)"
+  ],
   "image_cdl": [
     "ParallelBetweenLine(LN,RQ)",
     "Equal(LengthOfLine(KN),9)",
@@ -38,7 +45,12 @@
     "right_triangle_judgment_angle(1,KNM)",
     "right_triangle_property_pythagorean(1,KNM)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "mirror_similar_triangle_judgment_aa(1,MKN,LMK)",
+      "adjacent_complementary_angle(1,KNQ,QNL)",
+      "right_triangle_judgment_angle(1,KNM)"
+    ],
     "mirror_similar_triangle_judgment_aa(1,MKN,LMK)": [
       "mirror_similar_triangle_property_angle_equal(1,MKN,LMK)"
     ],
@@ -54,11 +66,6 @@
     ],
     "right_triangle_judgment_angle(1,KNM)": [
       "right_triangle_property_pythagorean(1,KNM)"
-    ],
-    "START": [
-      "mirror_similar_triangle_judgment_aa(1,MKN,LMK)",
-      "adjacent_complementary_angle(1,KNQ,QNL)",
-      "right_triangle_judgment_angle(1,KNM)"
     ]
   }
 }

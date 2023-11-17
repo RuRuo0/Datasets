@@ -2,9 +2,9 @@
   "problem_id": 3784,
   "annotation": "ChenyangMao_2023-04-30",
   "source": "GeoQA-1617",
-  "problem_level": 1,
-  "problem_text_cn": "如图,直线AB,CD相交于点O,OE⊥AB于O,∠COE=55°,则∠BOD的度数是()",
-  "problem_text_en": "As shown in the figure, the straight lines AB and CD intersect at point O, OE ⊥ AB at O, ∠COE = N_0, then the degree of ∠BOD is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠COE=55°，EO垂直于BO。求∠BOD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠COE=55°, EO is perpendicular to BO. Find the measure of ∠BOD.",
   "problem_img": "3784.png",
   "construction_cdl": [
     "Shape(CO,OE)",
@@ -12,7 +12,10 @@
     "Shape(BO,OD)",
     "Collinear(COD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(COE),55)",
+    "PerpendicularBetweenLine(EO,BO)"
+  ],
   "image_cdl": [
     "PerpendicularBetweenLine(EO,BO)",
     "Equal(MeasureOfAngle(COE),55)"
@@ -23,7 +26,7 @@
     "angle_addition(1,COE,EOB)",
     "adjacent_complementary_angle(1,COB,BOD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,COE,EOB)",
       "adjacent_complementary_angle(1,COB,BOD)"

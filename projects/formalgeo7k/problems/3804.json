@@ -2,9 +2,9 @@
   "problem_id": 3804,
   "annotation": "YifanWang_2023-05-07",
   "source": "GeoQA-1654",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC内接于圆O,AD是圆O的直径,∠ABC=30°,则∠CAD的度数等于()",
-  "problem_text_en": "As shown in the figure, △ABC is inscribed to circle O, AD is the diameter of circle O, ∠ABC = N_0, then the degree of ∠CAD is equal to ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，⊙O的直径与直线DA的长度相等，∠EBA=30°，O是⊙O的圆心，AD是⊙O的直径。求∠EAC的大小。",
+  "problem_text_en": "As shown in the diagram, the diameter of circle O is equal to the length of line DA, ∠EBA=30°, O is the center of circle O, AD is the diameter of circle O. Find the measure of ∠EAC.",
   "problem_img": "3804.png",
   "construction_cdl": [
     "Shape(BE,EO,OD,ODB)",
@@ -18,7 +18,12 @@
     "Collinear(BEC)",
     "Cocircular(O,DBAC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(DiameterOfCircle(O),LengthOfLine(DA))",
+    "Equal(MeasureOfAngle(EBA),30)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AD,O)"
+  ],
   "image_cdl": [
     "IsDiameterOfCircle(AD,O)",
     "IsCentreOfCircle(O,O)",
@@ -33,7 +38,7 @@
     "diameter_of_circle_property_right_angle(1,ACD,O)",
     "triangle_property_angle_sum(1,CDA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_circumference_angle_external(1,OAC,B)",
       "arc_property_circumference_angle_external(1,OAC,D)",

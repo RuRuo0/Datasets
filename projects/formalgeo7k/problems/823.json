@@ -2,9 +2,9 @@
   "problem_id": 823,
   "annotation": "NaZhu_2023-04-09",
   "source": "Geometry3k-851",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Use rhombus X Y Z W with m \\angle W Y Z = 53, V W = 3, X V = 2 a - 2, and Z V = \\frac { 5 a + 1 } { 4 }. Find m \\angle Y Z V.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，VW=3，XV=2*a-2，ZV=Div(5*a+1,4)，∠ZYV=53°，XWZY是菱形。求∠VZY的大小。",
+  "problem_text_en": "As shown in the diagram, VW=3, XV=2*a-2, ZV=Div(5*a+1,4), ∠ZYV=53°, XWZY is a rhombus. Find the measure of ∠VZY.",
   "problem_img": "823.png",
   "construction_cdl": [
     "Shape(XV,VY,YX)",
@@ -15,6 +15,10 @@
     "Collinear(YVW)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(VW),3)",
+    "Equal(LengthOfLine(XV),2*a-2)",
+    "Equal(LengthOfLine(ZV),Div(5*a+1,4))",
+    "Equal(MeasureOfAngle(ZYV),53)",
     "Rhombus(XWZY)"
   ],
   "image_cdl": [
@@ -29,7 +33,7 @@
     "kite_property_diagonal_perpendicular_bisection(1,ZYXW,V)",
     "triangle_property_angle_sum(1,YVZ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "kite_property_diagonal_perpendicular_bisection(1,ZYXW,V)",
       "triangle_property_angle_sum(1,YVZ)"

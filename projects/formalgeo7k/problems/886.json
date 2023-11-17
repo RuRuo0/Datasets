@@ -2,9 +2,9 @@
   "problem_id": 886,
   "annotation": "NaZhu_2023-04-09",
   "source": "Geometry3k-915",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "For trapezoid Q R T U, V and S are midpoints of the legs. If V S = 9 and U T = 12, find Q R.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，UT=12，VS=9，S是线段RT的中点，V是线段QU的中点，四边形QUTR是梯形。求直线QR的长度。",
+  "problem_text_en": "As shown in the diagram, UT=12, VS=9, S bisects segment RT, V bisects segment QU, QR and UT are the parallel sides of trapezoid QUTR. Find the length of line QR.",
   "problem_img": "886.png",
   "construction_cdl": [
     "Shape(QV,VS,SR,RQ)",
@@ -13,11 +13,11 @@
     "Collinear(RST)"
   ],
   "text_cdl": [
-    "Trapezoid(QUTR)",
-    "IsMidpointOfLine(V,QU)",
-    "IsMidpointOfLine(S,RT)",
+    "Equal(LengthOfLine(UT),12)",
     "Equal(LengthOfLine(VS),9)",
-    "Equal(LengthOfLine(UT),12)"
+    "IsMidpointOfLine(S,RT)",
+    "IsMidpointOfLine(V,QU)",
+    "Trapezoid(QUTR)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(QR))",
@@ -26,12 +26,12 @@
     "midsegment_of_quadrilateral_judgment_midpoint(1,VS,QUTR)",
     "midsegment_of_quadrilateral_property_length(1,VS,QUTR)"
   ],
-  "theorem_seq_dag": {
-    "midsegment_of_quadrilateral_judgment_midpoint(1,VS,QUTR)": [
-      "midsegment_of_quadrilateral_property_length(1,VS,QUTR)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "midsegment_of_quadrilateral_judgment_midpoint(1,VS,QUTR)"
+    ],
+    "midsegment_of_quadrilateral_judgment_midpoint(1,VS,QUTR)": [
+      "midsegment_of_quadrilateral_property_length(1,VS,QUTR)"
     ]
   }
 }

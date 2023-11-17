@@ -2,9 +2,9 @@
   "problem_id": 4237,
   "annotation": "ChenyangMao_2023-05-07",
   "source": "GeoQA-3011",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的弦,OC⊥AB,交⊙O于点C,连接OA,OB,BC,若∠ABC=20°,则∠AOB的度数是()",
-  "problem_text_en": "As shown in the figure, AB is the chord of ⊙O, OC ⊥ AB, intersect ⊙O at point C, connect OA, OB, BC, if ∠ABC = N_0, then the degree of ∠AOB is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠MBC=20°，O是圆O的圆心，BM垂直于OM。求∠AOB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠MBC=20°, O is the center of ⊙O, BM⊥OM. Find the measure of ∠AOB.",
   "problem_img": "4237.png",
   "construction_cdl": [
     "Shape(OBC,CB)",
@@ -18,9 +18,9 @@
     "Cocircular(O,CAB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(MBC),20)",
     "IsCentreOfCircle(O,O)",
-    "PerpendicularBetweenLine(BM,OM)",
-    "Equal(MeasureOfAngle(MBC),20)"
+    "PerpendicularBetweenLine(BM,OM)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(AOB))",
@@ -32,15 +32,15 @@
     "perpendicular_bisector_property_bisector(1,OM,BA)",
     "angle_addition(1,AOM,MOB)"
   ],
-  "theorem_seq_dag": {
-    "circle_property_chord_perpendicular_bisect_chord(1,O,OM,BA)": [
-      "perpendicular_bisector_property_bisector(1,OM,BA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "circle_property_chord_perpendicular_bisect_chord(1,O,OM,BA)",
       "arc_property_circumference_angle_external(1,OCA,B)",
       "arc_property_center_angle(1,OCA,O)",
       "angle_addition(1,AOM,MOB)"
+    ],
+    "circle_property_chord_perpendicular_bisect_chord(1,O,OM,BA)": [
+      "perpendicular_bisector_property_bisector(1,OM,BA)"
     ]
   }
 }

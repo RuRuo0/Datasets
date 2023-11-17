@@ -2,14 +2,18 @@
   "problem_id": 99,
   "annotation": "XiaokaiZhang_2023-03-12",
   "source": "Geometry3k-100",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the measure of angle QRP.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，PQ=25*sqrt(3)，RQ=25，PQ垂直于RQ。求∠QRP的大小。",
+  "problem_text_en": "As shown in the diagram, PQ=25*sqrt(3), RQ=25, PQ⊥RQ. Find the measure of ∠QRP.",
   "problem_img": "99.png",
   "construction_cdl": [
     "Shape(PQ,QR,RP)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(PQ),25*sqrt(3))",
+    "Equal(LengthOfLine(RQ),25)",
+    "PerpendicularBetweenLine(PQ,RQ)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(PQ),25*sqrt(3))",
     "Equal(LengthOfLine(RQ),25)",
@@ -22,13 +26,13 @@
     "right_triangle_property_pythagorean(1,PQR)",
     "cosine_theorem(1,RPQ)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,PQR)": [
-      "right_triangle_property_pythagorean(1,PQR)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,PQR)",
       "cosine_theorem(1,RPQ)"
+    ],
+    "right_triangle_judgment_angle(1,PQR)": [
+      "right_triangle_property_pythagorean(1,PQR)"
     ]
   }
 }

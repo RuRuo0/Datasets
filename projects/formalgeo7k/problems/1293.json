@@ -2,9 +2,9 @@
   "problem_id": 1293,
   "annotation": "YimingHe_2023-03-19",
   "source": "Geometry3k-1340",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If \\triangle S R Y \\sim \\triangle W X Q, R T is an altitude of \\triangle S R Y, X V is an altitude of \\triangle W X Q, R T = 5, R Q = 4, Q Y = 6, and Y X = 2, find X V.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，QY=6，RQ=4，RT=5，YX=2，RT是△RYS的高，XV是三角形XWQ的高，RT垂直于ST，SR垂直于YR，WV⊥XV，△SRY与△QXW是相似三角形。求直线QV的长度。",
+  "problem_text_en": "As shown in the diagram, QY=6, RQ=4, RT=5, YX=2, RT is the altitude of triangle RYS, XV is the altitude of triangle XWQ, RT is perpendicular to ST, SR is perpendicular to YR, WV⊥XV, triangle SRY is similar to triangle QXW.. Find the length of line QV.",
   "problem_img": "1293.png",
   "construction_cdl": [
     "Shape(WV,VX,XW)",
@@ -16,7 +16,18 @@
     "Collinear(WVAQ)",
     "Collinear(STAY)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(QY),6)",
+    "Equal(LengthOfLine(RQ),4)",
+    "Equal(LengthOfLine(RT),5)",
+    "Equal(LengthOfLine(YX),2)",
+    "IsAltitudeOfTriangle(RT,RYS)",
+    "IsAltitudeOfTriangle(XV,XWQ)",
+    "PerpendicularBetweenLine(RT,ST)",
+    "PerpendicularBetweenLine(SR,YR)",
+    "PerpendicularBetweenLine(WV,XV)",
+    "SimilarBetweenTriangle(SRY,QXW)"
+  ],
   "image_cdl": [
     "SimilarBetweenTriangle(SRY,QXW)",
     "IsAltitudeOfTriangle(XV,XWQ)",
@@ -41,7 +52,14 @@
     "similar_triangle_property_line_ratio(1,VQX,TRY)",
     "similar_triangle_property_line_ratio(1,XVQ,YTR)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "triangle_property_angle_sum(1,SRY)",
+      "triangle_property_angle_sum(1,RYT)",
+      "similar_triangle_property_angle_equal(1,SRY,QXW)",
+      "line_addition(1,YQ,QR)",
+      "line_addition(1,XY,YQ)"
+    ],
     "triangle_property_angle_sum(1,SRY)": [
       "similar_triangle_judgment_aa(1,XVQ,YTR)"
     ],
@@ -54,13 +72,6 @@
     "similar_triangle_judgment_aa(1,XVQ,YTR)": [
       "similar_triangle_property_line_ratio(1,XVQ,YTR)",
       "similar_triangle_property_line_ratio(1,VQX,TRY)"
-    ],
-    "START": [
-      "triangle_property_angle_sum(1,SRY)",
-      "triangle_property_angle_sum(1,RYT)",
-      "similar_triangle_property_angle_equal(1,SRY,QXW)",
-      "line_addition(1,YQ,QR)",
-      "line_addition(1,XY,YQ)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 3611,
   "annotation": "QikeHuang_2023-04-30",
   "source": "GeoQA-1280",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABE中,AE的垂直平分线MN交BE于点C,∠E=30°,且AB=CE,则∠BAE的度数是()",
-  "problem_text_en": "As shown in the figure, in △ABE, the perpendicular bisector of AE MN intersects BE at point C, ∠E = N_0, and AB = CE, then the degree of ∠BAE is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AC=AB，∠MEC=30°，CM垂直平分AB。求∠BAM的大小。",
+  "problem_text_en": "As shown in the diagram, AC=AB, ∠MEC=30°, CM perpendicular bisects AE. Find the measure of ∠BAM.",
   "problem_img": "3611.png",
   "construction_cdl": [
     "Shape(ME,EC,CM)",
@@ -14,9 +14,9 @@
     "Collinear(BCE)"
   ],
   "text_cdl": [
-    "IsPerpendicularBisectorOfLine(CM,AE)",
     "Equal(LengthOfLine(AC),LengthOfLine(AB))",
-    "Equal(MeasureOfAngle(MEC),30)"
+    "Equal(MeasureOfAngle(MEC),30)",
+    "IsPerpendicularBisectorOfLine(CM,AE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BAM))",
@@ -31,7 +31,14 @@
     "triangle_property_angle_sum(1,ECA)",
     "triangle_property_angle_sum(1,EBA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "perpendicular_bisector_property_distance_equal(1,CM,AE)",
+      "isosceles_triangle_judgment_line_equal(1,ACB)",
+      "adjacent_complementary_angle(1,ECA,ACB)",
+      "triangle_property_angle_sum(1,ECA)",
+      "triangle_property_angle_sum(1,EBA)"
+    ],
     "perpendicular_bisector_property_distance_equal(1,CM,AE)": [
       "isosceles_triangle_judgment_line_equal(1,CAE)"
     ],
@@ -40,13 +47,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,CAE)": [
       "isosceles_triangle_property_angle_equal(1,CAE)"
-    ],
-    "START": [
-      "perpendicular_bisector_property_distance_equal(1,CM,AE)",
-      "isosceles_triangle_judgment_line_equal(1,ACB)",
-      "adjacent_complementary_angle(1,ECA,ACB)",
-      "triangle_property_angle_sum(1,ECA)",
-      "triangle_property_angle_sum(1,EBA)"
     ]
   }
 }

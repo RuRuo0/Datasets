@@ -2,9 +2,9 @@
   "problem_id": 3743,
   "annotation": "ChenyangMao_2023-04-30",
   "source": "GeoQA-1536",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知AB∥CD,∠C=70°,∠F=30°,则∠A的度数为()",
-  "problem_text_en": "As shown in the figure, given that AB ∥ CD, ∠C = N_0, ∠F = N_1, then the degree of ∠A is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠ECD=70°，∠EFA=30°，AB平行于CD。求∠FAE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ECD=70°, ∠EFA=30°, AB∥CD. Find the measure of ∠FAE.",
   "problem_img": "3743.png",
   "construction_cdl": [
     "Shape(FA,AE,EF)",
@@ -14,7 +14,11 @@
     "Collinear(AEB)",
     "Collinear(FEC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(ECD),70)",
+    "Equal(MeasureOfAngle(EFA),30)",
+    "ParallelBetweenLine(AB,CD)"
+  ],
   "image_cdl": [
     "ParallelBetweenLine(AB,CD)",
     "Equal(MeasureOfAngle(EFA),30)",
@@ -28,14 +32,14 @@
     "adjacent_complementary_angle(1,AEF,FEB)",
     "triangle_property_angle_sum(1,FAE)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,AB,CD,E)": [
-      "parallel_property_corresponding_angle(1,EB,CD,F)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_collinear_extend(3,AB,CD,E)",
       "adjacent_complementary_angle(1,AEF,FEB)",
       "triangle_property_angle_sum(1,FAE)"
+    ],
+    "parallel_property_collinear_extend(3,AB,CD,E)": [
+      "parallel_property_corresponding_angle(1,EB,CD,F)"
     ]
   }
 }

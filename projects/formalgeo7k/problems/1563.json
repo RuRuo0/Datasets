@@ -2,9 +2,9 @@
   "problem_id": 1563,
   "annotation": "XiaoxiaoJin_2023-04-16",
   "source": "Geometry3k-1622",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure. Round to the nearest tenth.",
+  "problem_level": 16,
+  "problem_text_cn": "如图所示，BF=14，DB=21，EC=24，FH=8，BD∥CE，CB平行于AD，FA∥HP，FH垂直于PH，PE⊥AE。求四边形BCPD的面积与三角形APE的面积之和。",
+  "problem_text_en": "As shown in the diagram, BF=14, DB=21, EC=24, FH=8, BD is parallel to CE, CB∥AD, FA is parallel to HP, FH⊥PH, PE⊥AE. Find the sum of the area of BCPD and the area of triangle APE.",
   "problem_img": "1563.png",
   "construction_cdl": [
     "Shape(BG,GF,FB)",
@@ -17,7 +17,17 @@
     "Collinear(CHPE)",
     "Collinear(DAP)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BF),14)",
+    "Equal(LengthOfLine(DB),21)",
+    "Equal(LengthOfLine(EC),24)",
+    "Equal(LengthOfLine(FH),8)",
+    "ParallelBetweenLine(BD,CE)",
+    "ParallelBetweenLine(CB,AD)",
+    "ParallelBetweenLine(FA,HP)",
+    "PerpendicularBetweenLine(FH,PH)",
+    "PerpendicularBetweenLine(PE,AE)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(DB),21)",
     "Equal(LengthOfLine(BF),14)",
@@ -49,7 +59,18 @@
     "parallelogram_area_formula_common(1,BCPD)",
     "triangle_area_formula_sine(1,EAP)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,BF,FH)",
+      "line_addition(1,CP,PE)",
+      "parallel_property_collinear_extend(3,EC,DB,P)",
+      "parallel_property_collinear_extend(2,DA,BC,P)",
+      "parallel_property_collinear_extend(1,PH,AF,E)",
+      "adjacent_complementary_angle(1,CHF,FHP)",
+      "perpendicular_judgment_angle(1,HE,AE)",
+      "perpendicular_judgment_angle(1,FH,EH)",
+      "triangle_area_formula_sine(1,EAP)"
+    ],
     "parallel_property_collinear_extend(3,EC,DB,P)": [
       "parallelogram_judgment_parallel_and_parallel(1,BCPD)"
     ],
@@ -78,17 +99,6 @@
     ],
     "parallelogram_judgment_parallel_and_parallel(1,AFHE)": [
       "parallelogram_property_opposite_line_equal(1,FHEA)"
-    ],
-    "START": [
-      "line_addition(1,BF,FH)",
-      "line_addition(1,CP,PE)",
-      "parallel_property_collinear_extend(3,EC,DB,P)",
-      "parallel_property_collinear_extend(2,DA,BC,P)",
-      "parallel_property_collinear_extend(1,PH,AF,E)",
-      "adjacent_complementary_angle(1,CHF,FHP)",
-      "perpendicular_judgment_angle(1,HE,AE)",
-      "perpendicular_judgment_angle(1,FH,EH)",
-      "triangle_area_formula_sine(1,EAP)"
     ]
   }
 }

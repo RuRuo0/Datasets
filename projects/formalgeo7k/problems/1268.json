@@ -2,9 +2,9 @@
   "problem_id": 1268,
   "annotation": "YiwenHuang_2023-05-07",
   "source": "Geometry3k-1313",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure, m \\angle 3 = 43. Find the measure of \\angle 16.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠POM=43°，HP平行于NO，PO平行于HN。求∠FHG的大小。",
+  "problem_text_en": "As shown in the diagram, ∠POM=43°, HP is parallel to NO, PO is parallel to HN. Find the measure of ∠FHG.",
   "problem_img": "1268.png",
   "construction_cdl": [
     "Shape(OP,PH,HN,NO)",
@@ -16,7 +16,11 @@
     "Collinear(BPHF)",
     "Collinear(MONQ)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(POM),43)",
+    "ParallelBetweenLine(HP,NO)",
+    "ParallelBetweenLine(PO,HN)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(POM),43)",
     "ParallelBetweenLine(PO,HN)",
@@ -34,7 +38,13 @@
     "flat_angle(1,FHP)",
     "angle_addition(1,FHG,GHP)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(1,PO,HN,K)",
+      "parallel_property_collinear_extend(1,ON,PH,M)",
+      "flat_angle(1,FHP)",
+      "angle_addition(1,FHG,GHP)"
+    ],
     "parallel_property_collinear_extend(1,PO,HN,K)": [
       "parallel_property_collinear_extend(2,NH,PK,G)"
     ],
@@ -46,12 +56,6 @@
     ],
     "parallel_property_collinear_extend(2,HP,OM,B)": [
       "parallel_property_corresponding_angle(1,PB,OM,K)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(1,PO,HN,K)",
-      "parallel_property_collinear_extend(1,ON,PH,M)",
-      "flat_angle(1,FHP)",
-      "angle_addition(1,FHG,GHP)"
     ]
   }
 }

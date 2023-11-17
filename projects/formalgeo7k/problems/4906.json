@@ -2,9 +2,9 @@
   "problem_id": 4906,
   "annotation": "YifanWang_2023-05-21",
   "source": "GeoQA-4450",
-  "problem_level": 1,
-  "problem_text_cn": "如图,PA为⊙O的切线,A为切点,PO交⊙O于点B,PA=3,OA=4,则cos∠APO的值为()",
-  "problem_text_en": "As shown in the figure, PA is the tangent of ⊙O, A is the tangent point, PO intersects ⊙O at point B, PA = N_0, OA = N_1, then the value of cos∠APO is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AP=3，OA=4，⊙O的圆心为O，⊙O的切线为PA。求直线AP的长度与直线PO的长度之比。",
+  "problem_text_en": "As shown in the diagram, AP=3, OA=4, O is the center of ⊙O, PA is the tangent to circle O. Find the ratio of the length of line AP to the length of line PO.",
   "problem_img": "4906.png",
   "construction_cdl": [
     "Shape(AO,OB,OBA)",
@@ -14,10 +14,10 @@
     "Cocircular(O,AB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(PA,O)",
     "Equal(LengthOfLine(AP),3)",
-    "Equal(LengthOfLine(OA),4)"
+    "Equal(LengthOfLine(OA),4)",
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(PA,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Div(LengthOfLine(AP),LengthOfLine(PO)))",
@@ -27,15 +27,15 @@
     "right_triangle_judgment_angle(1,OAP)",
     "right_triangle_property_pythagorean(1,OAP)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(1,PA,O,O)"
+    ],
     "tangent_of_circle_property_perpendicular(1,PA,O,O)": [
       "right_triangle_judgment_angle(1,OAP)"
     ],
     "right_triangle_judgment_angle(1,OAP)": [
       "right_triangle_property_pythagorean(1,OAP)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(1,PA,O,O)"
     ]
   }
 }

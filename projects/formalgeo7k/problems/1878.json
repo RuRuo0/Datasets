@@ -2,9 +2,9 @@
   "problem_id": 1878,
   "annotation": "JiaZou_2023-03-26",
   "source": "Geometry3k-1952",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，VW=3*x-6，WX=x+4，YW=5，ZW=6，ZV∥XY。求x的值。",
+  "problem_text_en": "As shown in the diagram, VW=3*x-6, WX=x+4, YW=5, ZW=6, ZV is parallel to XY. Find the value of x.",
   "problem_img": "1878.png",
   "construction_cdl": [
     "Shape(VZ,ZW,WV)",
@@ -13,6 +13,10 @@
     "Collinear(ZWY)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(VW),3*x-6)",
+    "Equal(LengthOfLine(WX),x+4)",
+    "Equal(LengthOfLine(YW),5)",
+    "Equal(LengthOfLine(ZW),6)",
     "ParallelBetweenLine(ZV,XY)"
   ],
   "image_cdl": [
@@ -30,7 +34,11 @@
     "similar_triangle_property_line_ratio(1,ZWV,YWX)",
     "similar_triangle_property_line_ratio(1,VZW,XYW)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_alternate_interior_angle(2,ZV,XY)",
+      "vertical_angle(1,ZWV,YWX)"
+    ],
     "parallel_property_alternate_interior_angle(2,ZV,XY)": [
       "similar_triangle_judgment_aa(1,ZWV,YWX)"
     ],
@@ -40,10 +48,6 @@
     "similar_triangle_judgment_aa(1,ZWV,YWX)": [
       "similar_triangle_property_line_ratio(1,ZWV,YWX)",
       "similar_triangle_property_line_ratio(1,VZW,XYW)"
-    ],
-    "START": [
-      "parallel_property_alternate_interior_angle(2,ZV,XY)",
-      "vertical_angle(1,ZWV,YWX)"
     ]
   }
 }

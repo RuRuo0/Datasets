@@ -2,9 +2,9 @@
   "problem_id": 2735,
   "annotation": "FangzhenZhu_2023-04-09",
   "source": "Geometry3k-2881",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find E G if G is the incenter of \\triangle A B C.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，CG=13，FC=12，三角形BAC的内心为G，CF⊥GF，GD⊥CD，GE⊥AE。求直线EG的长度。",
+  "problem_text_en": "As shown in the diagram, CG=13, FC=12, the incenter of △BAC is G, CF is perpendicular to GF, GD⊥CD, GE⊥AE. Find the length of line EG.",
   "problem_img": "2735.png",
   "construction_cdl": [
     "Shape(BE,EG,GB)",
@@ -17,7 +17,14 @@
     "Collinear(ADC)",
     "Collinear(CFB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(CG),13)",
+    "Equal(LengthOfLine(FC),12)",
+    "IsIncenterOfTriangle(G,BAC)",
+    "PerpendicularBetweenLine(CF,GF)",
+    "PerpendicularBetweenLine(GD,CD)",
+    "PerpendicularBetweenLine(GE,AE)"
+  ],
   "image_cdl": [
     "IsIncenterOfTriangle(G,BAC)",
     "Equal(LengthOfLine(CG),13)",
@@ -36,7 +43,12 @@
     "right_triangle_judgment_angle(1,CFG)",
     "right_triangle_property_pythagorean(1,CFG)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,BEG,GEA)",
+      "adjacent_complementary_angle(1,CFG,GFB)",
+      "right_triangle_judgment_angle(1,CFG)"
+    ],
     "adjacent_complementary_angle(1,BEG,GEA)": [
       "mirror_congruent_triangle_judgment_aas(3,GFB,GBE)"
     ],
@@ -48,11 +60,6 @@
     ],
     "right_triangle_judgment_angle(1,CFG)": [
       "right_triangle_property_pythagorean(1,CFG)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,BEG,GEA)",
-      "adjacent_complementary_angle(1,CFG,GFB)",
-      "right_triangle_judgment_angle(1,CFG)"
     ]
   }
 }

@@ -2,14 +2,21 @@
   "problem_id": 1585,
   "annotation": "XiaoxiaoJin_2023-04-16",
   "source": "Geometry3k-1645",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，DE=8，EH=8，DE⊥HE，EH垂直于KH，HK垂直于DK，KD垂直于ED。求四边形DEHK的面积。",
+  "problem_text_en": "As shown in the diagram, DE=8, EH=8, DE⊥HE, EH⊥KH, HK⊥DK, KD is perpendicular to ED. Find the area of quadrilateral DEHK.",
   "problem_img": "1585.png",
   "construction_cdl": [
     "Shape(HK,KD,DE,EH)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(DE),8)",
+    "Equal(LengthOfLine(EH),8)",
+    "PerpendicularBetweenLine(DE,HE)",
+    "PerpendicularBetweenLine(EH,KH)",
+    "PerpendicularBetweenLine(HK,DK)",
+    "PerpendicularBetweenLine(KD,ED)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(EH),8)",
     "Equal(LengthOfLine(DE),8)",
@@ -26,7 +33,11 @@
     "parallelogram_judgment_parallel_and_parallel(1,DEHK)",
     "parallelogram_area_formula_sine(1,DEHK)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_judgment_per_per(1,KH,DE)",
+      "parallel_judgment_per_per(1,DK,EH)"
+    ],
     "parallel_judgment_per_per(1,KH,DE)": [
       "parallelogram_judgment_parallel_and_parallel(1,DEHK)"
     ],
@@ -35,10 +46,6 @@
     ],
     "parallelogram_judgment_parallel_and_parallel(1,DEHK)": [
       "parallelogram_area_formula_sine(1,DEHK)"
-    ],
-    "START": [
-      "parallel_judgment_per_per(1,KH,DE)",
-      "parallel_judgment_per_per(1,DK,EH)"
     ]
   }
 }

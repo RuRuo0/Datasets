@@ -2,9 +2,9 @@
   "problem_id": 6138,
   "annotation": "YifanWang_2023-06-04",
   "source": "GeoQA-8696",
-  "problem_level": 1,
-  "problem_text_cn": "如图,OA是⊙O的半径,弦BC⊥OA,D是⊙O上一点,若∠ADB=28°,则∠AOC的度数为()",
-  "problem_text_en": "As shown in the figure, OA is the radius of ⊙O, chord BC ⊥ OA, D is a point on ⊙O, if ∠ADB = N_0, then the degree of ∠AOC is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠ADB=28°，圆O的圆心为O，AG⊥BG，BG垂直于OG，CG垂直于AG，OG⊥CG。求∠COA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ADB=28°, O is the center of ⊙O, AG is perpendicular to BG, BG⊥OG, CG is perpendicular to AG, OG⊥CG. Find the measure of ∠COA.",
   "problem_img": "6138.png",
   "construction_cdl": [
     "Shape(BD,ODB)",
@@ -20,12 +20,12 @@
     "Cocircular(O,ACDB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(ADB),28)",
     "IsCentreOfCircle(O,O)",
-    "PerpendicularBetweenLine(BG,OG)",
-    "PerpendicularBetweenLine(OG,CG)",
     "PerpendicularBetweenLine(AG,BG)",
+    "PerpendicularBetweenLine(BG,OG)",
     "PerpendicularBetweenLine(CG,AG)",
-    "Equal(MeasureOfAngle(ADB),28)"
+    "PerpendicularBetweenLine(OG,CG)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(COA))",
@@ -37,17 +37,17 @@
     "arc_property_center_angle(1,OAC,O)",
     "arc_property_circumference_angle_external(1,OBA,D)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "circle_property_chord_perpendicular_bisect_arc(1,OBC,OGA)",
+      "arc_property_center_angle(1,OAC,O)",
+      "arc_property_circumference_angle_external(1,OBA,D)"
+    ],
     "circle_property_chord_perpendicular_bisect_arc(1,OBC,OGA)": [
       "congruent_arc_judgment_length_equal(1,OBA,OAC)"
     ],
     "congruent_arc_judgment_length_equal(1,OBA,OAC)": [
       "congruent_arc_property_measure_equal(1,OBA,OAC)"
-    ],
-    "START": [
-      "circle_property_chord_perpendicular_bisect_arc(1,OBC,OGA)",
-      "arc_property_center_angle(1,OAC,O)",
-      "arc_property_circumference_angle_external(1,OBA,D)"
     ]
   }
 }

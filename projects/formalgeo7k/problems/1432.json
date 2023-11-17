@@ -2,9 +2,9 @@
   "problem_id": 1432,
   "annotation": "YanjunGuo_2023-04-16",
   "source": "Geometry3k-1484",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "The triangle is inscribed into the circle. Find the exact circumference of the circle.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=6*sqrt(2)，AC=AB，圆I的圆心为I，圆I的直径为BC，CA垂直于BA。求⊙I的周长。",
+  "problem_text_en": "As shown in the diagram, AB=6*sqrt(2), AC=AB, the center of circle I is I, BC is the diameter of circle I, CA⊥BA. Find the circumference of the circle I.",
   "problem_img": "1432.png",
   "construction_cdl": [
     "Shape(BA,IAB)",
@@ -14,7 +14,13 @@
     "Collinear(BIC)",
     "Cocircular(I,ABC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),6*sqrt(2))",
+    "Equal(LengthOfLine(AC),LengthOfLine(AB))",
+    "IsCentreOfCircle(I,I)",
+    "IsDiameterOfCircle(BC,I)",
+    "PerpendicularBetweenLine(CA,BA)"
+  ],
   "image_cdl": [
     "IsDiameterOfCircle(BC,I)",
     "IsCentreOfCircle(I,I)",
@@ -30,7 +36,7 @@
     "circle_property_length_of_radius_and_diameter(1,I)",
     "circle_perimeter_formula(1,I)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "cosine_theorem(1,ABC)",
       "diameter_of_circle_property_length_equal(1,BC,I)",

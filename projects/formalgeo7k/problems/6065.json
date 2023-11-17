@@ -2,9 +2,9 @@
   "problem_id": 6065,
   "annotation": "ChenyangMao_2023-05-28",
   "source": "GeoQA-8578",
-  "problem_level": 1,
-  "problem_text_cn": "如图,A、B、C、D四点都在⊙O上,若OC⊥AB,∠AOC=50°,则圆周角∠D的度数为()",
-  "problem_text_en": "As shown in the figure, the four vertices A, B, C, and D are all on ⊙O, if OC ⊥ AB, ∠AOC = N_0, then the degree of angel ∠D is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠COA=50°，O是圆O的圆心，AE垂直于OE。求∠BDC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠COA=50°, the center of ⊙O is O, AE is perpendicular to OE. Find the measure of ∠BDC.",
   "problem_img": "6065.png",
   "construction_cdl": [
     "Shape(OA,AE,EO)",
@@ -18,9 +18,9 @@
     "Cocircular(O,ACBD)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(COA),50)",
     "IsCentreOfCircle(O,O)",
-    "PerpendicularBetweenLine(AE,OE)",
-    "Equal(MeasureOfAngle(COA),50)"
+    "PerpendicularBetweenLine(AE,OE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BDC))",
@@ -32,17 +32,17 @@
     "arc_property_center_angle(1,OAC,O)",
     "arc_property_circumference_angle_external(1,OCB,D)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "circle_property_chord_perpendicular_bisect_arc(1,OAB,OEC)",
+      "arc_property_center_angle(1,OAC,O)",
+      "arc_property_circumference_angle_external(1,OCB,D)"
+    ],
     "circle_property_chord_perpendicular_bisect_arc(1,OAB,OEC)": [
       "congruent_arc_judgment_length_equal(1,OAC,OCB)"
     ],
     "congruent_arc_judgment_length_equal(1,OAC,OCB)": [
       "congruent_arc_property_measure_equal(1,OAC,OCB)"
-    ],
-    "START": [
-      "circle_property_chord_perpendicular_bisect_arc(1,OAB,OEC)",
-      "arc_property_center_angle(1,OAC,O)",
-      "arc_property_circumference_angle_external(1,OCB,D)"
     ]
   }
 }

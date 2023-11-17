@@ -2,16 +2,22 @@
   "problem_id": 755,
   "annotation": "YimingHe_2023-03-12",
   "source": "Geometry3k-780",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AB=14，AC=20，AD=x，BC=11，∠DBC=∠ABD。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=14, AC=20, AD=x, BC=11, ∠DBC=∠ABD. Find the value of x.",
   "problem_img": "755.png",
   "construction_cdl": [
     "Shape(BC,CD,DB)",
     "Shape(BD,DA,AB)",
     "Collinear(CDA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),14)",
+    "Equal(LengthOfLine(AC),20)",
+    "Equal(LengthOfLine(AD),x)",
+    "Equal(LengthOfLine(BC),11)",
+    "Equal(MeasureOfAngle(DBC),MeasureOfAngle(ABD))"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AB),14)",
     "Equal(LengthOfLine(BC),11)",
@@ -26,13 +32,13 @@
     "bisector_of_angle_property_line_ratio(1,BD,ABC)",
     "line_addition(1,CD,DA)"
   ],
-  "theorem_seq_dag": {
-    "bisector_of_angle_judgment_angle_equal(1,BD,ABC)": [
-      "bisector_of_angle_property_line_ratio(1,BD,ABC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "bisector_of_angle_judgment_angle_equal(1,BD,ABC)",
       "line_addition(1,CD,DA)"
+    ],
+    "bisector_of_angle_judgment_angle_equal(1,BD,ABC)": [
+      "bisector_of_angle_property_line_ratio(1,BD,ABC)"
     ]
   }
 }

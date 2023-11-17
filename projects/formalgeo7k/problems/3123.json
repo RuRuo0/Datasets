@@ -2,9 +2,9 @@
   "problem_id": 3123,
   "annotation": "YimingHe_2023-04-23",
   "source": "GeoQA-374",
-  "problem_level": 1,
-  "problem_text_cn": "如图,a∥b,点B在直线a上,AB⊥BC,若∠1=38°,则∠2的度数为()",
-  "problem_text_en": "As shown in the figure, a ∥ b, point B is on the straight line a, AB ⊥ BC, if ∠1 = N_0, then the degree of ∠2 is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠EBI=38°，DE∥FG，AB垂直于CB。求∠CHF的大小。",
+  "problem_text_en": "As shown in the diagram, ∠EBI=38°, DE∥FG, AB is perpendicular to CB. Find the measure of ∠CHF.",
   "problem_img": "3123.png",
   "construction_cdl": [
     "Shape(HB,BD)",
@@ -22,9 +22,9 @@
     "Collinear(BIA)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(EBI),38)",
     "ParallelBetweenLine(DE,FG)",
-    "PerpendicularBetweenLine(AB,CB)",
-    "Equal(MeasureOfAngle(EBI),38)"
+    "PerpendicularBetweenLine(AB,CB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CHF))",
@@ -36,17 +36,17 @@
     "parallel_property_ipsilateral_internal_angle(1,BE,HG)",
     "vertical_angle(1,BHI,CHF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "angle_addition(1,EBI,IBH)",
+      "parallel_property_collinear_extend(3,DE,FG,B)",
+      "vertical_angle(1,BHI,CHF)"
+    ],
     "parallel_property_collinear_extend(3,DE,FG,B)": [
       "parallel_property_collinear_extend(3,GF,EB,H)"
     ],
     "parallel_property_collinear_extend(3,GF,EB,H)": [
       "parallel_property_ipsilateral_internal_angle(1,BE,HG)"
-    ],
-    "START": [
-      "angle_addition(1,EBI,IBH)",
-      "parallel_property_collinear_extend(3,DE,FG,B)",
-      "vertical_angle(1,BHI,CHF)"
     ]
   }
 }

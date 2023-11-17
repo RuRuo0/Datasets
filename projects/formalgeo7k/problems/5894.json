@@ -2,9 +2,9 @@
   "problem_id": 5894,
   "annotation": "YiwenHuang_2023-06-04",
   "source": "GeoQA-7985",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示,在▱ABCD中,CE是∠DCB的平分线,且交AB于E,DB与CE相交于O,已知AB=6,BC=4,则\\frac{OB}{DB}等于()",
-  "problem_text_en": "As shown in the figure, in ▱ABCD, CE is the bisector of ∠DCB, and it intersects AB at E, and DB and CE intersect at O. Given that AB = N_0, BC = N_1, then \\frac OBDB is equal to ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AB=6，BC=4，CE是∠BCD的角平分线，DABC是▱。求直线OB的长度与直线BD的长度之比。",
+  "problem_text_en": "As shown in the diagram, AB=6, BC=4, CE bisects ∠BCD, DC and AB are opposite sides of the parallelogram DABC. Find the ratio of the length of line OB to the length of line BD.",
   "problem_img": "5894.png",
   "construction_cdl": [
     "Shape(DA,AE,EO,OD)",
@@ -16,10 +16,10 @@
     "Collinear(AEB)"
   ],
   "text_cdl": [
-    "Parallelogram(DABC)",
-    "IsBisectorOfAngle(CE,BCD)",
     "Equal(LengthOfLine(AB),6)",
-    "Equal(LengthOfLine(BC),4)"
+    "Equal(LengthOfLine(BC),4)",
+    "IsBisectorOfAngle(CE,BCD)",
+    "Parallelogram(DABC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Div(LengthOfLine(OB),LengthOfLine(BD)))",
@@ -35,7 +35,13 @@
     "similar_triangle_property_line_ratio(1,OCD,OEB)",
     "similar_triangle_property_line_ratio(1,CDO,EBO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,DO,OB)",
+      "parallelogram_property_opposite_line_equal(1,ABCD)",
+      "parallel_property_collinear_extend(3,BA,CD,E)",
+      "parallel_property_alternate_interior_angle(1,DC,AB)"
+    ],
     "parallel_property_collinear_extend(3,BA,CD,E)": [
       "parallel_property_alternate_interior_angle(2,BE,CD)"
     ],
@@ -49,12 +55,6 @@
     "similar_triangle_judgment_aa(1,OCD,OEB)": [
       "similar_triangle_property_line_ratio(1,OCD,OEB)",
       "similar_triangle_property_line_ratio(1,CDO,EBO)"
-    ],
-    "START": [
-      "line_addition(1,DO,OB)",
-      "parallelogram_property_opposite_line_equal(1,ABCD)",
-      "parallel_property_collinear_extend(3,BA,CD,E)",
-      "parallel_property_alternate_interior_angle(1,DC,AB)"
     ]
   }
 }

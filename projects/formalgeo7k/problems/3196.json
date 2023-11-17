@@ -2,9 +2,9 @@
   "problem_id": 3196,
   "annotation": "NaZhu_2023-04-23",
   "source": "GeoQA-484",
-  "problem_level": 1,
-  "problem_text_cn": "把一尺与三角板如图放置,∠1=40°则∠2的度数为()",
-  "problem_text_en": "Place a ruler and a triangular plate as shown in the figure, ∠1 = N_0, then the degree of ∠2 is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠EMN=40°，四边形ABCD是长方形，∠GEF是直角三角形GEF的直角。求∠GQP的大小。",
+  "problem_text_en": "As shown in the diagram, ∠EMN=40°, ABCD is a rectangle, ∠GEF is the right angle of the right triangle GEF. Find the measure of ∠GQP.",
   "problem_img": "3196.png",
   "construction_cdl": [
     "Shape(EM,MN,NE)",
@@ -18,9 +18,9 @@
     "Collinear(ENQG)"
   ],
   "text_cdl": [
-    "RightTriangle(GEF)",
+    "Equal(MeasureOfAngle(EMN),40)",
     "Rectangle(ABCD)",
-    "Equal(MeasureOfAngle(EMN),40)"
+    "RightTriangle(GEF)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(GQP))",
@@ -33,18 +33,18 @@
     "flat_angle(1,GQN)",
     "angle_addition(1,GQP,PQN)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,AD,BC,N)": [
-      "parallel_property_collinear_extend(3,CB,NA,Q)"
-    ],
-    "parallel_property_collinear_extend(3,CB,NA,Q)": [
-      "parallel_property_corresponding_angle(2,QB,NA,E)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,EMN)",
       "parallel_property_collinear_extend(3,AD,BC,N)",
       "flat_angle(1,GQN)",
       "angle_addition(1,GQP,PQN)"
+    ],
+    "parallel_property_collinear_extend(3,AD,BC,N)": [
+      "parallel_property_collinear_extend(3,CB,NA,Q)"
+    ],
+    "parallel_property_collinear_extend(3,CB,NA,Q)": [
+      "parallel_property_corresponding_angle(2,QB,NA,E)"
     ]
   }
 }

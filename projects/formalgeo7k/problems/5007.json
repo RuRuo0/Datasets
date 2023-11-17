@@ -2,9 +2,9 @@
   "problem_id": 5007,
   "annotation": "ZheZhu_2023-05-14",
   "source": "GeoQA-4709",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,DE∥BC,DF∥AC,EG∥AB,且AE:EC=3:2,若BC=10,则FG的长为()",
-  "problem_text_en": "As shown in the figure, in △ABC, DE ∥ BC, DF ∥ AC, EG ∥ AB, and AE:EC=N_0:N_1, if BC = N_2, then the length of FG is ()",
+  "problem_level": 13,
+  "problem_text_cn": "如图所示，Div(LengthOfLine(AE)=LengthOfLine(EC))，BC=10，DE∥BC，DE∥FC，DF平行于AC，DF平行于EC，EG平行于AB，DFCE是▱。求直线FG的长度。",
+  "problem_text_en": "As shown in the diagram, Div(LengthOfLine(AE)=LengthOfLine(EC)), BC=10, DE∥BC, DE is parallel to FC, DF∥AC, DF is parallel to EC, EG is parallel to AB, DE and FC are opposite sides of the parallelogram DFCE. Find the length of line FG.",
   "problem_img": "5007.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -16,14 +16,14 @@
     "Collinear(BFGC)"
   ],
   "text_cdl": [
-    "Parallelogram(DFCE)",
     "Equal(Div(LengthOfLine(AE),LengthOfLine(EC)),3/2)",
+    "Equal(LengthOfLine(BC),10)",
     "ParallelBetweenLine(DE,BC)",
     "ParallelBetweenLine(DE,FC)",
     "ParallelBetweenLine(DF,AC)",
     "ParallelBetweenLine(DF,EC)",
     "ParallelBetweenLine(EG,AB)",
-    "Equal(LengthOfLine(BC),10)"
+    "Parallelogram(DFCE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(FG))",
@@ -43,7 +43,17 @@
     "similar_triangle_property_line_ratio(1,ADE,ABC)",
     "similar_triangle_property_line_ratio(1,DEA,BCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AE,EC)",
+      "line_addition(1,BF,FG)",
+      "line_addition(1,BF,FC)",
+      "parallel_property_collinear_extend(3,CB,ED,G)",
+      "parallel_property_collinear_extend(3,BA,GE,D)",
+      "parallelogram_property_opposite_line_equal(1,FCED)",
+      "parallel_property_corresponding_angle(1,DE,BC,A)",
+      "parallel_property_corresponding_angle(2,CF,ED,A)"
+    ],
     "parallel_property_collinear_extend(3,CB,ED,G)": [
       "parallelogram_judgment_parallel_and_parallel(1,DBGE)"
     ],
@@ -62,16 +72,6 @@
     "similar_triangle_judgment_aa(1,ADE,ABC)": [
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
       "similar_triangle_property_line_ratio(1,DEA,BCA)"
-    ],
-    "START": [
-      "line_addition(1,AE,EC)",
-      "line_addition(1,BF,FG)",
-      "line_addition(1,BF,FC)",
-      "parallel_property_collinear_extend(3,CB,ED,G)",
-      "parallel_property_collinear_extend(3,BA,GE,D)",
-      "parallelogram_property_opposite_line_equal(1,FCED)",
-      "parallel_property_corresponding_angle(1,DE,BC,A)",
-      "parallel_property_corresponding_angle(2,CF,ED,A)"
     ]
   }
 }

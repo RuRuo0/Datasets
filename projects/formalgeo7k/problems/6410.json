@@ -2,9 +2,9 @@
   "problem_id": 6410,
   "annotation": "YimingHe_2023-06-04",
   "source": "GeoQA-9274",
-  "problem_level": 1,
-  "problem_text_cn": "平行四边形ABCD中,对角线AC与BD交于点O,∠DAC=42°,∠CBD=23°,则∠COD是()",
-  "problem_text_en": "In the parallelogram ABCD, the diagonal AC and BD intersect at the point O, ∠DAC = N_0, ∠CBD = N_1, then ∠COD is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠DAO=42°，∠OBC=23°，四边形ABCD是▱。求∠DOC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DAO=42°, ∠OBC=23°, quadrilateral ABCD is a parallelogram. Find the measure of ∠DOC.",
   "problem_img": "6410.png",
   "construction_cdl": [
     "Shape(AO,OD,DA)",
@@ -15,9 +15,9 @@
     "Collinear(BOD)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
+    "Equal(MeasureOfAngle(DAO),42)",
     "Equal(MeasureOfAngle(OBC),23)",
-    "Equal(MeasureOfAngle(DAO),42)"
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DOC))",
@@ -27,7 +27,7 @@
     "triangle_property_angle_sum(1,OBC)",
     "adjacent_complementary_angle(1,DOC,COB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_alternate_interior_angle(1,AD,BC)",
       "triangle_property_angle_sum(1,OBC)",

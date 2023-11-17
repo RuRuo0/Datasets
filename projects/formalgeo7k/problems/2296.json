@@ -2,9 +2,9 @@
   "problem_id": 2296,
   "annotation": "DengfengYue_2023-04-16",
   "source": "Geometry3k-2402",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Circle O has a radius of 13 inches. Radius O B is perpendicular to chord C D which is 24 inches long. Find O X.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，CD=24，⊙O的半径为13，O是⊙O的圆心，BX⊥DX，DX⊥OX。求直线OX的长度。",
+  "problem_text_en": "As shown in the diagram, CD=24, the radius of circle O is 13, the center of circle O is O, BX is perpendicular to DX, DX is perpendicular to OX. Find the length of line OX.",
   "problem_img": "2296.png",
   "construction_cdl": [
     "Shape(OD,DX,XO)",
@@ -16,8 +16,11 @@
     "Cocircular(O,BCD)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(CD),24)",
     "Equal(RadiusOfCircle(O),13)",
-    "Equal(LengthOfLine(CD),24)"
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(BX,DX)",
+    "PerpendicularBetweenLine(DX,OX)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
@@ -33,15 +36,15 @@
     "right_triangle_judgment_angle(1,DXO)",
     "right_triangle_property_pythagorean(1,DXO)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,DXO)": [
-      "right_triangle_property_pythagorean(1,DXO)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,OD,O)",
       "circle_property_chord_perpendicular_bisect_chord(1,O,OX,DC)",
       "line_addition(1,DX,XC)",
       "right_triangle_judgment_angle(1,DXO)"
+    ],
+    "right_triangle_judgment_angle(1,DXO)": [
+      "right_triangle_property_pythagorean(1,DXO)"
     ]
   }
 }

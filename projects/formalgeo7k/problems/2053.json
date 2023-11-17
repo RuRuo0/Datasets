@@ -2,9 +2,9 @@
   "problem_id": 2053,
   "annotation": "YimingHe_2023-03-26",
   "source": "Geometry3k-2140",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Q is the incenter of \\triangle J K L. Find Q P.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，JP=20，JQ=25，∠PLQ=26°，∠QKM=29°，Q是△JKL内切圆的圆心，LP⊥QP，ML⊥QL，QN⊥KN。求直线QP的长度。",
+  "problem_text_en": "As shown in the diagram, JP=20, JQ=25, ∠PLQ=26°, ∠QKM=29°, the center of the inscribed circle of △JKL is Q, LP is perpendicular to QP, ML is perpendicular to QL, QN is perpendicular to KN. Find the length of line QP.",
   "problem_img": "2053.png",
   "construction_cdl": [
     "Shape(JQ,QP,PJ)",
@@ -17,7 +17,16 @@
     "Collinear(JNK)",
     "Collinear(LMK)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(JP),20)",
+    "Equal(LengthOfLine(JQ),25)",
+    "Equal(MeasureOfAngle(PLQ),26)",
+    "Equal(MeasureOfAngle(QKM),29)",
+    "IsIncenterOfTriangle(Q,JKL)",
+    "PerpendicularBetweenLine(LP,QP)",
+    "PerpendicularBetweenLine(ML,QM)",
+    "PerpendicularBetweenLine(QN,KN)"
+  ],
   "image_cdl": [
     "IsIncenterOfTriangle(Q,JKL)",
     "Equal(MeasureOfAngle(PLQ),26)",
@@ -35,15 +44,15 @@
     "right_triangle_judgment_angle(1,QPJ)",
     "right_triangle_property_pythagorean(1,QPJ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,LPQ,QPJ)"
+    ],
     "adjacent_complementary_angle(1,LPQ,QPJ)": [
       "right_triangle_judgment_angle(1,QPJ)"
     ],
     "right_triangle_judgment_angle(1,QPJ)": [
       "right_triangle_property_pythagorean(1,QPJ)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,LPQ,QPJ)"
     ]
   }
 }

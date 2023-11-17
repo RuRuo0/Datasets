@@ -2,9 +2,9 @@
   "problem_id": 4722,
   "annotation": "XiaoxiaoJin_2023-05-14",
   "source": "GeoQA-4052",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知⊙O的半径为2,AB是⊙O的直径,D是AB延长线上一点,DC是⊙O的切线,C是切点,连接AC,若∠CAB=30°,则BD的长为()",
-  "problem_text_en": "As shown in the figure, it is known that the radius of ⊙O is N_0, AB is the diameter of ⊙O, D is a point on the extended line of AB, DC is the tangent of ⊙O, C is the tangent point, connect AC, if ∠CAB = N_1, then the length of BD is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠BAC=30°，圆O的半径为2，O是⊙O的圆心，AB是⊙O的直径，DC是圆O的切线。求直线BD的长度。",
+  "problem_text_en": "As shown in the diagram, ∠BAC=30°, the radius of ⊙O is 2, O is the center of ⊙O, the diameter of circle O is AB, the tangent to ⊙O is DC. Find the length of line BD.",
   "problem_img": "4722.png",
   "construction_cdl": [
     "Shape(AO,OB,OBA)",
@@ -16,11 +16,11 @@
     "Cocircular(O,ACB)"
   ],
   "text_cdl": [
-    "IsTangentOfCircle(DC,O)",
-    "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfAngle(BAC),30)",
+    "Equal(RadiusOfCircle(O),2)",
+    "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)",
-    "Equal(RadiusOfCircle(O),2)"
+    "IsTangentOfCircle(DC,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BD))",
@@ -35,7 +35,7 @@
     "triangle_property_angle_sum(1,OCD)",
     "sine_theorem(1,OCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,OB,BD)",
       "radius_of_circle_property_length_equal(1,OC,O)",

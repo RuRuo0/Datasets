@@ -2,15 +2,21 @@
   "problem_id": 1815,
   "annotation": "ChenyangMao_2023-04-16",
   "source": "Geometry3k-1882",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the parallelogram. Round to the nearest tenth if necessary.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AC=13，AO=12，BA=5，四边形BOAC是平行四边形，OA垂直于BA。求四边形BOAC的面积。",
+  "problem_text_en": "As shown in the diagram, AC=13, AO=12, BA=5, OB and AC are opposite sides of the parallelogram BOAC, OA is perpendicular to BA. Find the area of quadrilateral BOAC.",
   "problem_img": "1815.png",
   "construction_cdl": [
     "Shape(BO,OA,AB)",
     "Shape(BA,AC,CB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),13)",
+    "Equal(LengthOfLine(AO),12)",
+    "Equal(LengthOfLine(BA),5)",
+    "Parallelogram(BOAC)",
+    "PerpendicularBetweenLine(OA,BA)"
+  ],
   "image_cdl": [
     "Parallelogram(BOAC)",
     "Equal(LengthOfLine(BA),5)",
@@ -24,7 +30,7 @@
     "altitude_of_quadrilateral_judgment_diagonal(1,BOAC)",
     "parallelogram_area_formula_common(1,BOAC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "altitude_of_quadrilateral_judgment_diagonal(1,BOAC)",
       "parallelogram_area_formula_common(1,BOAC)"

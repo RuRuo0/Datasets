@@ -2,9 +2,9 @@
   "problem_id": 2017,
   "annotation": "QikeHuang_2023-04-23",
   "source": "Geometry3k-2103",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the figure. Round to the nearest tenth if necessary.",
+  "problem_level": 15,
+  "problem_text_cn": "如图所示，AN=19，BF=10，CE=2，FN=20，AE垂直于FE，EF垂直于NF，ACBN是梯形。求四边形ACBN的周长。",
+  "problem_text_en": "As shown in the diagram, AN=19, BF=10, CE=2, FN=20, AE⊥FE, EF⊥NF, ACBN is a trapezoid. Find the perimeter of quadrilateral ACBN.",
   "problem_img": "2017.png",
   "construction_cdl": [
     "Shape(AC,CE,EA)",
@@ -12,7 +12,15 @@
     "Shape(NF,FB,BN)",
     "Collinear(CEFB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AN),19)",
+    "Equal(LengthOfLine(BF),10)",
+    "Equal(LengthOfLine(CE),2)",
+    "Equal(LengthOfLine(FN),20)",
+    "PerpendicularBetweenLine(AE,FE)",
+    "PerpendicularBetweenLine(EF,NF)",
+    "Trapezoid(ACBN)"
+  ],
   "image_cdl": [
     "Trapezoid(ACBN)",
     "Equal(LengthOfLine(FN),20)",
@@ -41,7 +49,16 @@
     "line_addition(1,CF,FB)",
     "quadrilateral_perimeter_formula(1,ACBN)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,CEA,AEF)",
+      "adjacent_complementary_angle(1,CFN,NFB)",
+      "parallel_judgment_per_per(1,EA,FN)",
+      "parallel_property_collinear_extend(3,BC,NA,F)",
+      "line_addition(1,CE,EF)",
+      "line_addition(1,CF,FB)",
+      "quadrilateral_perimeter_formula(1,ACBN)"
+    ],
     "adjacent_complementary_angle(1,CEA,AEF)": [
       "right_triangle_judgment_angle(1,CEA)"
     ],
@@ -66,15 +83,6 @@
     ],
     "right_triangle_judgment_angle(1,NFB)": [
       "right_triangle_property_pythagorean(1,NFB)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,CEA,AEF)",
-      "adjacent_complementary_angle(1,CFN,NFB)",
-      "parallel_judgment_per_per(1,EA,FN)",
-      "parallel_property_collinear_extend(3,BC,NA,F)",
-      "line_addition(1,CE,EF)",
-      "line_addition(1,CF,FB)",
-      "quadrilateral_perimeter_formula(1,ACBN)"
     ]
   }
 }

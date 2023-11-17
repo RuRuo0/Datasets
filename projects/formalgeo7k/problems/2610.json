@@ -2,9 +2,9 @@
   "problem_id": 2610,
   "annotation": "DengfengYue_2023-04-23",
   "source": "Geometry3k-2739",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the parallelogram.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=21，AC=17，EC=8，BA和DC是▱BDCA的一组对边，AE垂直于CE。求四边形BDCA的面积。",
+  "problem_text_en": "As shown in the diagram, AB=21, AC=17, EC=8, quadrilateral BDCA is a ▱, AE is perpendicular to CE. Find the area of BDCA.",
   "problem_img": "2610.png",
   "construction_cdl": [
     "Shape(BD,DE,EA,AB)",
@@ -12,7 +12,11 @@
     "Collinear(DEC)"
   ],
   "text_cdl": [
-    "Parallelogram(BDCA)"
+    "Equal(LengthOfLine(AB),21)",
+    "Equal(LengthOfLine(AC),17)",
+    "Equal(LengthOfLine(EC),8)",
+    "Parallelogram(BDCA)",
+    "PerpendicularBetweenLine(AE,CE)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(AB),21)",
@@ -31,7 +35,14 @@
     "altitude_of_quadrilateral_judgment_right_vertex(1,AE,BDCA)",
     "parallelogram_area_formula_common(1,BDCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "right_triangle_judgment_angle(1,AEC)",
+      "flat_angle(1,DEC)",
+      "angle_addition(1,DEA,AEC)",
+      "parallelogram_property_opposite_line_equal(1,ABDC)",
+      "parallelogram_area_formula_common(1,BDCA)"
+    ],
     "right_triangle_judgment_angle(1,AEC)": [
       "right_triangle_property_pythagorean(1,AEC)"
     ],
@@ -40,13 +51,6 @@
     ],
     "angle_addition(1,DEA,AEC)": [
       "altitude_of_quadrilateral_judgment_right_vertex(1,AE,BDCA)"
-    ],
-    "START": [
-      "right_triangle_judgment_angle(1,AEC)",
-      "flat_angle(1,DEC)",
-      "angle_addition(1,DEA,AEC)",
-      "parallelogram_property_opposite_line_equal(1,ABDC)",
-      "parallelogram_area_formula_common(1,BDCA)"
     ]
   }
 }

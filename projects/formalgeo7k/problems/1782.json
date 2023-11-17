@@ -2,15 +2,18 @@
   "problem_id": 1782,
   "annotation": "ChenyangMao_2023-04-16",
   "source": "Geometry3k-1848",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the parallelogram. Round to the nearest tenth if necessary.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，BD=3，BD=GD，GDBE是平行四边形，GD垂直于BD。求GDBE的周长。",
+  "problem_text_en": "As shown in the diagram, BD=3, BD=GD, GDBE is a parallelogram, GD⊥BD. Find the perimeter of GDBE.",
   "problem_img": "1782.png",
   "construction_cdl": [
     "Shape(GD,DB,BE,EG)"
   ],
   "text_cdl": [
-    "Parallelogram(GDBE)"
+    "Equal(LengthOfLine(BD),3)",
+    "Equal(LengthOfLine(BD),LengthOfLine(GD))",
+    "Parallelogram(GDBE)",
+    "PerpendicularBetweenLine(GD,BD)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(BD),LengthOfLine(GD))",
@@ -24,7 +27,7 @@
     "parallelogram_property_opposite_line_equal(1,DBEG)",
     "quadrilateral_perimeter_formula(1,GDBE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_property_opposite_line_equal(1,GDBE)",
       "parallelogram_property_opposite_line_equal(1,DBEG)",

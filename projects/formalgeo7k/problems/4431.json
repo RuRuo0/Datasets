@@ -2,9 +2,9 @@
   "problem_id": 4431,
   "annotation": "JiaZou_2023-05-14",
   "source": "GeoQA-3385",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在⊙O中,CD是直径,点A,点B在⊙O上,连接OA、OB、AC、AB,若∠AOB=40°,CD∥AB,则∠BAC的大小为()",
-  "problem_text_en": "As shown in the figure, in ⊙O, CD is the diameter, point A, point B on ⊙O, connect OA, OB, AC, AB, if ∠AOB = N_0, CD ∥ AB, then the size of ∠BAC is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，∠BOA=40°，⊙O的圆心为O，DC是⊙O的直径，DC平行于AB。求∠CAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BOA=40°, O is the center of circle O, the diameter of circle O is DC, DC∥AB. Find the measure of ∠CAB.",
   "problem_img": "4431.png",
   "construction_cdl": [
     "Shape(OA,AE,EO)",
@@ -19,10 +19,10 @@
     "Cocircular(O,ABCD)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(DC,AB)",
+    "Equal(MeasureOfAngle(BOA),40)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(DC,O)",
-    "Equal(MeasureOfAngle(BOA),40)"
+    "ParallelBetweenLine(DC,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CAB))",
@@ -38,7 +38,15 @@
     "arc_property_center_angle(1,OBC,O)",
     "arc_property_circumference_angle_external(1,OBC,A)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "triangle_property_angle_sum(1,OAB)",
+      "parallel_property_collinear_extend(3,DC,AB,O)",
+      "arc_property_center_angle(1,OBC,O)",
+      "arc_property_circumference_angle_external(1,OBC,A)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OAB)"
     ],
@@ -50,14 +58,6 @@
     ],
     "parallel_property_collinear_extend(3,DC,AB,O)": [
       "parallel_property_alternate_interior_angle(1,OC,AB)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "triangle_property_angle_sum(1,OAB)",
-      "parallel_property_collinear_extend(3,DC,AB,O)",
-      "arc_property_center_angle(1,OBC,O)",
-      "arc_property_circumference_angle_external(1,OBC,A)"
     ]
   }
 }

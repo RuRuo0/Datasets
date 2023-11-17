@@ -2,16 +2,21 @@
   "problem_id": 772,
   "annotation": "YimingHe_2023-03-12",
   "source": "Geometry3k-797",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\triangle P Q R, R S = 3 and Q S = 14. Find P S.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，QS=14，RS=3，PS垂直于QS，QP⊥RP。求直线PS的长度。",
+  "problem_text_en": "As shown in the diagram, QS=14, RS=3, PS⊥QS, QP⊥RP. Find the length of line PS.",
   "problem_img": "772.png",
   "construction_cdl": [
     "Shape(PR,RS,SP)",
     "Shape(PS,SQ,QP)",
     "Collinear(RSQ)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(QS),14)",
+    "Equal(LengthOfLine(RS),3)",
+    "PerpendicularBetweenLine(PS,QS)",
+    "PerpendicularBetweenLine(QP,RP)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(RS),3)",
     "Equal(LengthOfLine(QS),14)",
@@ -29,7 +34,11 @@
     "right_triangle_judgment_angle(1,RSP)",
     "right_triangle_property_pythagorean(1,RSP)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,RSP,PSQ)",
+      "line_addition(1,RS,SQ)"
+    ],
     "adjacent_complementary_angle(1,RSP,PSQ)": [
       "mirror_similar_triangle_judgment_aa(1,PRS,QPR)",
       "right_triangle_judgment_angle(1,RSP)"
@@ -40,10 +49,6 @@
     ],
     "right_triangle_judgment_angle(1,RSP)": [
       "right_triangle_property_pythagorean(1,RSP)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,RSP,PSQ)",
-      "line_addition(1,RS,SQ)"
     ]
   }
 }

@@ -2,16 +2,22 @@
   "problem_id": 2724,
   "annotation": "ZheZhu_2023-04-23",
   "source": "Geometry3k-2869",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x. A = 148 m^2.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，四边形DACB的面积为148，AC=8，BE=x，DB和AC是▱DACB的一组对边，CE⊥BE。求x的值。",
+  "problem_text_en": "As shown in the diagram, the area of quadrilateral DACB is 148, AC=8, BE=x, quadrilateral DACB is a parallelogram, CE is perpendicular to BE. Find the value of x.",
   "problem_img": "2724.png",
   "construction_cdl": [
     "Shape(DA,AC,CB,BD)",
     "Shape(BC,CE,EB)",
     "Collinear(ACE)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(AreaOfQuadrilateral(DACB),148)",
+    "Equal(LengthOfLine(AC),8)",
+    "Equal(LengthOfLine(BE),x)",
+    "Parallelogram(DACB)",
+    "PerpendicularBetweenLine(CE,BE)"
+  ],
   "image_cdl": [
     "Parallelogram(DACB)",
     "Equal(AreaOfQuadrilateral(DACB),148)",
@@ -25,7 +31,7 @@
     "altitude_of_quadrilateral_judgment_right_vertex(5,BE,DACB)",
     "parallelogram_area_formula_common(1,DACB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "altitude_of_quadrilateral_judgment_right_vertex(5,BE,DACB)",
       "parallelogram_area_formula_common(1,DACB)"

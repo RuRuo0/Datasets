@@ -2,9 +2,9 @@
   "problem_id": 1666,
   "annotation": "NaZhu_2023-03-26",
   "source": "Geometry3k-1730",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If J, P, and L are the midpoints of K H, H M and M K, respectively. Find x.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，QH=y，QJ=2*z，QK=7，QL=3，QM=4，QP=2*x-6，J是线段KH的中点，L平分线段MK，P是线段HM的中点。求x的值。",
+  "problem_text_en": "As shown in the diagram, QH=y, QJ=2*z, QK=7, QL=3, QM=4, QP=2*x-6, J is the midpoint of segment KH, L is the midpoint of segment MK, P bisects segment HM. Find the value of x.",
   "problem_img": "1666.png",
   "construction_cdl": [
     "Shape(HJ,JQ,QH)",
@@ -20,7 +20,17 @@
     "Collinear(KQP)",
     "Collinear(HQL)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(QH),y)",
+    "Equal(LengthOfLine(QJ),2*z)",
+    "Equal(LengthOfLine(QK),7)",
+    "Equal(LengthOfLine(QL),3)",
+    "Equal(LengthOfLine(QM),4)",
+    "Equal(LengthOfLine(QP),2*x-6)",
+    "IsMidpointOfLine(J,KH)",
+    "IsMidpointOfLine(L,MK)",
+    "IsMidpointOfLine(P,HM)"
+  ],
   "image_cdl": [
     "IsMidpointOfLine(J,KH)",
     "IsMidpointOfLine(P,HM)",
@@ -40,7 +50,11 @@
     "centroid_of_triangle_judgment_intersection(1,Q,HKM,J,P)",
     "centroid_of_triangle_property_line_ratio(1,Q,KMH,P)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "median_of_triangle_judgment(1,KP,KMH)",
+      "median_of_triangle_judgment(1,MJ,MHK)"
+    ],
     "median_of_triangle_judgment(1,KP,KMH)": [
       "centroid_of_triangle_judgment_intersection(1,Q,HKM,J,P)"
     ],
@@ -49,10 +63,6 @@
     ],
     "centroid_of_triangle_judgment_intersection(1,Q,HKM,J,P)": [
       "centroid_of_triangle_property_line_ratio(1,Q,KMH,P)"
-    ],
-    "START": [
-      "median_of_triangle_judgment(1,KP,KMH)",
-      "median_of_triangle_judgment(1,MJ,MHK)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 4990,
   "annotation": "FangzhenZhu_2023-05-21",
   "source": "GeoQA-4680",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AD、BC相交于点O,AB∥CD,若\\frac{AO}{OD}=\\frac{2}{3},则\\frac{AB}{CD}的值是()",
-  "problem_text_en": "As shown in the figure, AD and BC intersect at the vertex O, AB ∥ CD, if \\frac {AO}{OD} = \\frac{N_0}{N_1}, then the value of \\frac {AB}{CD} is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，Div(LengthOfLine(AO)=LengthOfLine(OD))，AB平行于CD。求直线AB的长度与直线CD的长度之比。",
+  "problem_text_en": "As shown in the diagram, Div(LengthOfLine(AO)=LengthOfLine(OD)), AB∥CD. Find the ratio of the length of line AB to the length of line CD.",
   "problem_img": "4990.png",
   "construction_cdl": [
     "Shape(AO,OB,BA)",
@@ -26,7 +26,11 @@
     "similar_triangle_property_line_ratio(1,OCD,OBA)",
     "similar_triangle_property_line_ratio(1,CDO,BAO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_alternate_interior_angle(1,AB,CD)",
+      "parallel_property_alternate_interior_angle(2,AB,CD)"
+    ],
     "parallel_property_alternate_interior_angle(1,AB,CD)": [
       "similar_triangle_judgment_aa(1,OCD,OBA)"
     ],
@@ -36,10 +40,6 @@
     "similar_triangle_judgment_aa(1,OCD,OBA)": [
       "similar_triangle_property_line_ratio(1,OCD,OBA)",
       "similar_triangle_property_line_ratio(1,CDO,BAO)"
-    ],
-    "START": [
-      "parallel_property_alternate_interior_angle(1,AB,CD)",
-      "parallel_property_alternate_interior_angle(2,AB,CD)"
     ]
   }
 }

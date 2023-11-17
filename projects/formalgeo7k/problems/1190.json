@@ -2,9 +2,9 @@
   "problem_id": 1190,
   "annotation": "JiaZou_2023-03-19",
   "source": "Geometry3k-1230",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x if A D is an altitude of \\triangle A B C.",
+  "problem_level": 0,
+  "problem_text_cn": "如图所示，DB=2*x-15，DC=x+7，∠ADC=4*x-6°，AD是三角形ABC的高，BD垂直于AD。求x的值。",
+  "problem_text_en": "As shown in the diagram, DB=2*x-15, DC=x+7, ∠ADC=4*x-6°, AD is the altitude of △ ABC, BD⊥AD. Find the value of x.",
   "problem_img": "1190.png",
   "construction_cdl": [
     "Shape(AD,DC,CA)",
@@ -12,7 +12,11 @@
     "Collinear(CDB)"
   ],
   "text_cdl": [
-    "IsAltitudeOfTriangle(AD,ABC)"
+    "Equal(LengthOfLine(DB),2*x-15)",
+    "Equal(LengthOfLine(DC),x+7)",
+    "Equal(MeasureOfAngle(ADC),4*x-6)",
+    "IsAltitudeOfTriangle(AD,ABC)",
+    "PerpendicularBetweenLine(BD,AD)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(DC),x+7)",
@@ -23,5 +27,7 @@
   "goal_cdl": "Value(x)",
   "problem_answer": "24",
   "theorem_seqs": [],
-  "theorem_seq_dag": {}
+  "theorem_seqs_dag": {
+    "START": []
+  }
 }

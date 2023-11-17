@@ -2,9 +2,9 @@
   "problem_id": 3790,
   "annotation": "RunanWang_2023-05-07",
   "source": "GeoQA-1632",
-  "problem_level": 1,
-  "problem_text_cn": "如图,直线l∥m∥n,三角形ABC的顶点B,C分别在直线n和m上,边BC与直线n所夹的角为25°,且∠ACB=60°,则∠a的度数为()",
-  "problem_text_en": "As shown in the figure, the line l ∥ m ∥ n, the vertices B and C of the triangle ABC are on the line n and line m, the angle between BC and the line n is N_0, and ∠ACB = N_1, then the degree of ∠a is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠ACB=60°，∠HBC=25°，CF平行于HB，GE∥CF。求∠AGE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ACB=60°, ∠HBC=25°, CF is parallel to HB, GE∥CF. Find the measure of ∠AGE.",
   "problem_img": "3790.png",
   "construction_cdl": [
     "Shape(AG,GE,EA)",
@@ -14,7 +14,12 @@
     "Collinear(AEFB)",
     "Collinear(AGC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(ACB),60)",
+    "Equal(MeasureOfAngle(HBC),25)",
+    "ParallelBetweenLine(CF,HB)",
+    "ParallelBetweenLine(GE,CF)"
+  ],
   "image_cdl": [
     "ParallelBetweenLine(GE,CF)",
     "ParallelBetweenLine(CF,HB)",
@@ -28,7 +33,7 @@
     "parallel_property_corresponding_angle(1,GE,CF,A)",
     "angle_addition(1,GCF,FCB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_alternate_interior_angle(1,CF,HB)",
       "parallel_property_corresponding_angle(1,GE,CF,A)",

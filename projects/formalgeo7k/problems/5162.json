@@ -2,9 +2,9 @@
   "problem_id": 5162,
   "annotation": "JiaZou_2023-05-21",
   "source": "GeoQA-5110",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O的直径AB的长是12,CD是⊙O的弦,AB⊥CD,垂足为E,如果∠BOC=60°,则BE的长度为()",
-  "problem_text_en": "As shown in the figure, the diameter of ⊙O and the length of AB are N_0, CD is the chord of ⊙O, AB ⊥ CD, and the vertical foot is E. If ∠BOC = N_1, the length of BE is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=12，∠BOC=60°，O是圆O的圆心，⊙O的直径为AB，CE垂直于AE。求直线BE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=12, ∠BOC=60°, O is the center of circle O, the diameter of circle O is AB, CE is perpendicular to AE. Find the length of line BE.",
   "problem_img": "5162.png",
   "construction_cdl": [
     "Shape(CO,OA,OAC)",
@@ -17,11 +17,11 @@
     "Cocircular(O,CBDA)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AB),12)",
+    "Equal(MeasureOfAngle(BOC),60)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)",
-    "PerpendicularBetweenLine(CE,AE)",
-    "Equal(LengthOfLine(AB),12)",
-    "Equal(MeasureOfAngle(BOC),60)"
+    "PerpendicularBetweenLine(CE,AE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BE))",
@@ -35,7 +35,7 @@
     "sine_theorem(1,OCE)",
     "line_addition(1,OE,EB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_length_equal(1,AB,O)",
       "circle_property_length_of_radius_and_diameter(1,O)",

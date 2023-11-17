@@ -2,9 +2,9 @@
   "problem_id": 6350,
   "annotation": "ChengQin_2023-06-04",
   "source": "GeoQA-9173",
-  "problem_level": 1,
-  "problem_text_cn": "在菱形ABCD中,E为AB的中点,OE=3,则菱形ABCD的周长为()",
-  "problem_text_en": "In the diamond ABCD, E is the midpoint of AB, OE = N_0, then the perimeter of the diamond ABCD is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，OE=3，E平分线段AB，ABCD是菱形。求ABCD的周长。",
+  "problem_text_en": "As shown in the diagram, OE=3, E is the midpoint of segment AB, ABCD is a rhombus. Find the perimeter of ABCD.",
   "problem_img": "6350.png",
   "construction_cdl": [
     "Shape(AE,EO,OA)",
@@ -17,9 +17,9 @@
     "Collinear(BOD)"
   ],
   "text_cdl": [
-    "Rhombus(ABCD)",
+    "Equal(LengthOfLine(OE),3)",
     "IsMidpointOfLine(E,AB)",
-    "Equal(LengthOfLine(OE),3)"
+    "Rhombus(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfQuadrilateral(ABCD))",
@@ -30,16 +30,16 @@
     "midsegment_of_triangle_property_length(1,OE,BDA)",
     "quadrilateral_perimeter_formula(1,ABCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "kite_property_diagonal_perpendicular_bisection(1,ABCD,O)",
+      "quadrilateral_perimeter_formula(1,ABCD)"
+    ],
     "kite_property_diagonal_perpendicular_bisection(1,ABCD,O)": [
       "midsegment_of_triangle_judgment_midpoint(1,OE,BDA)"
     ],
     "midsegment_of_triangle_judgment_midpoint(1,OE,BDA)": [
       "midsegment_of_triangle_property_length(1,OE,BDA)"
-    ],
-    "START": [
-      "kite_property_diagonal_perpendicular_bisection(1,ABCD,O)",
-      "quadrilateral_perimeter_formula(1,ABCD)"
     ]
   }
 }

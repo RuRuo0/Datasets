@@ -2,9 +2,9 @@
   "problem_id": 3373,
   "annotation": "JiaZou_2023-04-30",
   "source": "GeoQA-868",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,∠CAB=80°,在同一平面内,将△ABC绕点A旋转到△AB′C′的位置,使得CC′∥AB,则∠BAB′等于()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠CAB = N_0, in the same plane, rotate △ABC around point A to the position of △AB′C′, so that CC′ ∥ AB, then ∠BAB′ is equal to ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，△CAB与△DAF是全等三角形，∠CAB=80°，DC∥AB。求∠HAB的大小。",
+  "problem_text_en": "As shown in the diagram, △CAB is congruent to △DAF, ∠CAB=80°, DC∥AB. Find the measure of ∠HAB.",
   "problem_img": "3373.png",
   "construction_cdl": [
     "Shape(DA,AE,ED)",
@@ -37,13 +37,7 @@
     "angle_addition(1,DAC,CAF)",
     "angle_addition(1,CAF,FAB)"
   ],
-  "theorem_seq_dag": {
-    "congruent_triangle_property_line_equal(1,BCA,FDA)": [
-      "isosceles_triangle_judgment_line_equal(1,ACD)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,ACD)": [
-      "isosceles_triangle_property_angle_equal(1,ACD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_alternate_interior_angle(2,DC,AB)",
       "congruent_triangle_property_line_equal(1,BCA,FDA)",
@@ -51,6 +45,12 @@
       "congruent_triangle_property_angle_equal(1,ABC,AFD)",
       "angle_addition(1,DAC,CAF)",
       "angle_addition(1,CAF,FAB)"
+    ],
+    "congruent_triangle_property_line_equal(1,BCA,FDA)": [
+      "isosceles_triangle_judgment_line_equal(1,ACD)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,ACD)": [
+      "isosceles_triangle_property_angle_equal(1,ACD)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 4079,
   "annotation": "YanjunGuo_2023-05-07",
   "source": "GeoQA-2433",
-  "problem_level": 1,
-  "problem_text_cn": "如图,工地上竖着两根电线杆AB、CD,分别自两杆上高出地面10m,15m的A,C处向两侧地面上的E,D,B,F点处拉钢索将两杆固定,此时钢索AD与钢索BC的交点M离地面的高度是()",
-  "problem_text_en": "As shown in the figure, two telephone poles AB and CD are erected on the construction site. From the two poles above the ground N_0, A, C of N_1 pull steel cables to points E, D, B, and F on the ground on both sides. The two rods are fixed. At this time, the height of the intersection M of the steel cable AD and the steel cable BC from the ground is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=10，CD=15，△ABD与△MHD是相似三角形，△MAB相似于△MDC。求直线MH的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, CD=15, triangle ABD is similar to triangle MHD., triangle MAB is similar to triangle MDC.. Find the length of line MH.",
   "problem_img": "4079.png",
   "construction_cdl": [
     "Shape(AB,BM,MA)",
@@ -18,8 +18,8 @@
   "text_cdl": [
     "Equal(LengthOfLine(AB),10)",
     "Equal(LengthOfLine(CD),15)",
-    "SimilarBetweenTriangle(MAB,MDC)",
-    "SimilarBetweenTriangle(ABD,MHD)"
+    "SimilarBetweenTriangle(ABD,MHD)",
+    "SimilarBetweenTriangle(MAB,MDC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(MH))",
@@ -31,7 +31,7 @@
     "similar_triangle_property_line_ratio(1,DAB,DMH)",
     "line_addition(1,AM,MD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "similar_triangle_property_line_ratio(1,MAB,MDC)",
       "similar_triangle_property_line_ratio(1,BMA,CMD)",

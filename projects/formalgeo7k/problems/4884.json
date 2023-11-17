@@ -2,9 +2,9 @@
   "problem_id": 4884,
   "annotation": "YifanWang_2023-05-21",
   "source": "GeoQA-4415",
-  "problem_level": 1,
-  "problem_text_cn": "如图,四边形OBCD中,∠BCD=90°,E为CD的中点,以OB为半径的⊙O切CD于E,交BC于M,若BM=CM=2,则OC的长为()",
-  "problem_text_en": "As shown in the figure, in the quadrilateral OBCD, ∠BCD = N_0, E is the midpoint of CD, ⊙O with OB as the radius is tangent to CD at E, and intersects BC at M. If BM = CM = N_1, then the length of OC is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，BM=2，MC=2，OE=3，∠BCD=90°，圆O的圆心为O，OG垂直平分AB，CE是圆O的切线，⊙O的切线为DE，OGCE是长方形。求直线OC的长度。",
+  "problem_text_en": "As shown in the diagram, BM=2, MC=2, OE=3, ∠BCD=90°, the center of circle O is O, OG is the perpendicular bisector of BM, CE is the tangent to circle O, the tangent to circle O is DE, quadrilateral OGCE is a rectangle. Find the length of line OC.",
   "problem_img": "4884.png",
   "construction_cdl": [
     "Shape(BO,OA,OAB)",
@@ -24,14 +24,14 @@
     "Cocircular(O,BMFEA)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(CE,O)",
-    "IsTangentOfCircle(DE,O)",
-    "IsPerpendicularBisectorOfLine(OG,BM)",
     "Equal(LengthOfLine(BM),2)",
     "Equal(LengthOfLine(MC),2)",
     "Equal(LengthOfLine(OE),3)",
     "Equal(MeasureOfAngle(BCD),90)",
+    "IsCentreOfCircle(O,O)",
+    "IsPerpendicularBisectorOfLine(OG,BM)",
+    "IsTangentOfCircle(CE,O)",
+    "IsTangentOfCircle(DE,O)",
     "Rectangle(OGCE)"
   ],
   "image_cdl": [],
@@ -48,13 +48,7 @@
     "right_triangle_property_pythagorean(1,BGO)",
     "right_triangle_property_pythagorean(1,OGC)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,BGO)": [
-      "right_triangle_property_pythagorean(1,BGO)"
-    ],
-    "right_triangle_judgment_angle(1,OGC)": [
-      "right_triangle_property_pythagorean(1,OGC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,OB,O)",
       "radius_of_circle_property_length_equal(1,OE,O)",
@@ -63,6 +57,12 @@
       "line_addition(1,BM,MC)",
       "right_triangle_judgment_angle(1,BGO)",
       "right_triangle_judgment_angle(1,OGC)"
+    ],
+    "right_triangle_judgment_angle(1,BGO)": [
+      "right_triangle_property_pythagorean(1,BGO)"
+    ],
+    "right_triangle_judgment_angle(1,OGC)": [
+      "right_triangle_property_pythagorean(1,OGC)"
     ]
   }
 }

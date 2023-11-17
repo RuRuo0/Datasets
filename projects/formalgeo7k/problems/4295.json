@@ -2,9 +2,9 @@
   "problem_id": 4295,
   "annotation": "DengfengYue_2023-05-07",
   "source": "GeoQA-3100",
-  "problem_level": 1,
-  "problem_text_cn": "如图,BC是⊙O的弦,OA⊥BC,∠AOB=70°,则∠ADC的度数是()",
-  "problem_text_en": "As shown in the figure, BC is the chord of ⊙O, OA ⊥ BC, ∠AOB = N_0, then the degree of ∠ADC is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠AOB=70°，∠BGO=90°，⊙O的圆心为O。求∠CDA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AOB=70°, ∠BGO=90°, O is the center of ⊙O. Find the measure of ∠CDA.",
   "problem_img": "4295.png",
   "construction_cdl": [
     "Shape(BO,OD,ODB)",
@@ -24,9 +24,9 @@
     "Cocircular(O,DBAC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfAngle(AOB),70)",
-    "Equal(MeasureOfAngle(BGO),90)"
+    "Equal(MeasureOfAngle(BGO),90)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CDA))",
@@ -38,17 +38,17 @@
     "congruent_arc_property_measure_equal(1,OBA,OAC)",
     "arc_property_circumference_angle_external(1,OAC,D)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_center_angle(1,OBA,O)",
+      "circle_property_chord_perpendicular_bisect_arc(1,OBC,OGA)",
+      "arc_property_circumference_angle_external(1,OAC,D)"
+    ],
     "circle_property_chord_perpendicular_bisect_arc(1,OBC,OGA)": [
       "congruent_arc_judgment_length_equal(1,OBA,OAC)"
     ],
     "congruent_arc_judgment_length_equal(1,OBA,OAC)": [
       "congruent_arc_property_measure_equal(1,OBA,OAC)"
-    ],
-    "START": [
-      "arc_property_center_angle(1,OBA,O)",
-      "circle_property_chord_perpendicular_bisect_arc(1,OBC,OGA)",
-      "arc_property_circumference_angle_external(1,OAC,D)"
     ]
   }
 }

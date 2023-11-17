@@ -2,16 +2,21 @@
   "problem_id": 663,
   "annotation": "YimingHe_2023-03-12",
   "source": "Geometry3k-680",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the measure of the altitude drawn to the hypotenuse.",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AY=9，XA=5，XZ⊥YZ，ZA垂直于XA。求直线ZA的长度。",
+  "problem_text_en": "As shown in the diagram, AY=9, XA=5, XZ is perpendicular to YZ, ZA⊥XA. Find the length of line ZA.",
   "problem_img": "663.png",
   "construction_cdl": [
     "Shape(XZ,ZA,AX)",
     "Shape(AZ,ZY,YA)",
     "Collinear(XAY)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AY),9)",
+    "Equal(LengthOfLine(XA),5)",
+    "PerpendicularBetweenLine(XZ,YZ)",
+    "PerpendicularBetweenLine(ZA,XA)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(XA),5)",
     "Equal(LengthOfLine(AY),9)",
@@ -31,7 +36,12 @@
     "mirror_similar_triangle_property_line_ratio(1,ZYA,XZY)",
     "mirror_similar_triangle_property_line_ratio(1,YAZ,YXZ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,XA,AY)",
+      "adjacent_complementary_angle(1,YAZ,ZAX)",
+      "mirror_similar_triangle_judgment_aa(1,ZAX,YXZ)"
+    ],
     "adjacent_complementary_angle(1,YAZ,ZAX)": [
       "mirror_similar_triangle_judgment_aa(1,ZYA,XZY)"
     ],
@@ -43,11 +53,6 @@
     "mirror_similar_triangle_judgment_aa(1,ZYA,XZY)": [
       "mirror_similar_triangle_property_line_ratio(1,ZYA,XZY)",
       "mirror_similar_triangle_property_line_ratio(1,YAZ,YXZ)"
-    ],
-    "START": [
-      "line_addition(1,XA,AY)",
-      "adjacent_complementary_angle(1,YAZ,ZAX)",
-      "mirror_similar_triangle_judgment_aa(1,ZAX,YXZ)"
     ]
   }
 }

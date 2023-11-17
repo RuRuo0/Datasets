@@ -2,9 +2,9 @@
   "problem_id": 5780,
   "annotation": "YanjunGuo_2023-05-28",
   "source": "GeoQA-7675",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在平行四边形ABCD中,EF∥AB交AD于点E,交BD于点F,若DE:EA=3:4,CD=7,则EF的长为()",
-  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, EF ∥ AB and it intersects AD at point E as well as intersects BD at point F. If DE:EA = N_0:N_1,CD=N_2,then the length of EF is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，Div(LengthOfLine(DE)=LengthOfLine(EA))，CD=7，EF∥AB，BA和CD是平行四边形ABCD的一组对边。求直线EF的长度。",
+  "problem_text_en": "As shown in the diagram, Div(LengthOfLine(DE)=LengthOfLine(EA)), CD=7, EF is parallel to AB, ABCD is a ▱. Find the length of line EF.",
   "problem_img": "5780.png",
   "construction_cdl": [
     "Shape(DE,EF,FD)",
@@ -14,8 +14,8 @@
     "Collinear(DFB)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(CD),7)",
     "Equal(Div(LengthOfLine(DE),LengthOfLine(EA)),3/4)",
+    "Equal(LengthOfLine(CD),7)",
     "ParallelBetweenLine(EF,AB)",
     "Parallelogram(ABCD)"
   ],
@@ -31,7 +31,13 @@
     "similar_triangle_property_line_ratio(1,DAB,DEF)",
     "similar_triangle_property_line_ratio(1,BDA,FDE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallelogram_property_opposite_line_equal(1,ABCD)",
+      "line_addition(1,DE,EA)",
+      "parallel_property_corresponding_angle(1,EF,AB,D)",
+      "parallel_property_corresponding_angle(2,BA,FE,D)"
+    ],
     "parallel_property_corresponding_angle(1,EF,AB,D)": [
       "similar_triangle_judgment_aa(1,DAB,DEF)"
     ],
@@ -41,12 +47,6 @@
     "similar_triangle_judgment_aa(1,DAB,DEF)": [
       "similar_triangle_property_line_ratio(1,DAB,DEF)",
       "similar_triangle_property_line_ratio(1,BDA,FDE)"
-    ],
-    "START": [
-      "parallelogram_property_opposite_line_equal(1,ABCD)",
-      "line_addition(1,DE,EA)",
-      "parallel_property_corresponding_angle(1,EF,AB,D)",
-      "parallel_property_corresponding_angle(2,BA,FE,D)"
     ]
   }
 }

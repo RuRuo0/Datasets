@@ -2,9 +2,9 @@
   "problem_id": 4384,
   "annotation": "YimingHe_2023-05-14",
   "source": "GeoQA-3308",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点A、B、C、D在⊙O上,DE⊥OA,DF⊥OB,垂足分别为E,F,若∠EDF=50°,则∠C的度数为()",
-  "problem_text_en": "As shown in the figure, points A, B, C, D are on ⊙O, DE ⊥ OA, DF ⊥ OB, and the feet of perpendicular are E, F respectively. If ∠EDF = N_0, then the degree of ∠C is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠FDE=50°，O是⊙O的圆心，AE垂直于DE，OF⊥DF。求∠ACB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠FDE=50°, O is the center of circle O, AE is perpendicular to DE, OF is perpendicular to DF. Find the measure of ∠ACB.",
   "problem_img": "4384.png",
   "construction_cdl": [
     "Shape(AE,ED,ODA)",
@@ -18,10 +18,10 @@
     "Cocircular(O,ACBD)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(AE,DE)",
-    "PerpendicularBetweenLine(OF,DF)",
     "Equal(MeasureOfAngle(FDE),50)",
-    "IsCentreOfCircle(O,O)"
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(AE,DE)",
+    "PerpendicularBetweenLine(OF,DF)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ACB))",
@@ -32,7 +32,7 @@
     "arc_property_circumference_angle_external(1,OBA,C)",
     "arc_property_center_angle(1,OBA,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,AED,DEO)",
       "quadrilateral_property_angle_sum(1,DEOF)",

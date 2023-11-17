@@ -2,9 +2,9 @@
   "problem_id": 5265,
   "annotation": "XiaokaiZhang_2023-05-21",
   "source": "GeoQA-5381",
-  "problem_level": 1,
-  "problem_text_cn": "小明把一副直角三角尺按如图所示的方式摆放在一起,其中∠A=45°,∠D=30°,则∠1+∠2等于()",
-  "problem_text_en": "Xiao Ming put a pair of right triangle rulers together as shown in the figure, where ∠E = N_0, ∠C = N_1, ∠A = N_2, ∠D = N_3, then ∠1 + ∠2 is equal to ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠CAB=45°，∠EDF=30°，BC和CA是直角△BCA的两个直角边，FE和ED是直角△FED的两个直角边。求∠ARD的大小与∠ESB的大小之和。",
+  "problem_text_en": "As shown in the diagram, ∠CAB=45°, ∠EDF=30°, ∠BCA is the right angle of the right triangle BCA, ∠FED is the right angle of the right △ FED. Find the sum of the measure of ∠ARD and the measure of ∠ESB.",
   "problem_img": "5265.png",
   "construction_cdl": [
     "Shape(DO,OC)",
@@ -28,10 +28,10 @@
     "Collinear(AQHB)"
   ],
   "text_cdl": [
-    "RightTriangle(FED)",
-    "RightTriangle(BCA)",
     "Equal(MeasureOfAngle(CAB),45)",
-    "Equal(MeasureOfAngle(EDF),30)"
+    "Equal(MeasureOfAngle(EDF),30)",
+    "RightTriangle(BCA)",
+    "RightTriangle(FED)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Add(MeasureOfAngle(ARD),MeasureOfAngle(ESB)))",
@@ -45,7 +45,7 @@
     "vertical_angle(1,ROD,COP)",
     "vertical_angle(1,OPC,EPS)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,ARD,DRO)",
       "adjacent_complementary_angle(1,PSE,ESB)",

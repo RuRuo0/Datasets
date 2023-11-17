@@ -2,9 +2,9 @@
   "problem_id": 1839,
   "annotation": "YanjunGuo_2023-04-23",
   "source": "Geometry3k-1907",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Use parallelogram N Q R M to find Q R.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，ML=w，NM=2*y+5，NQ=3*x+2，QL=12，RM=4*x-2，RQ=3*y，NQ和MR是▱NMRQ的一组对边。求直线QR的长度。",
+  "problem_text_en": "As shown in the diagram, ML=w, NM=2*y+5, NQ=3*x+2, QL=12, RM=4*x-2, RQ=3*y, MN and RQ are opposite sides of the ▱ NMRQ. Find the length of line QR.",
   "problem_img": "1839.png",
   "construction_cdl": [
     "Shape(NM,ML,LN)",
@@ -15,6 +15,12 @@
     "Collinear(MLQ)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(ML),w)",
+    "Equal(LengthOfLine(NM),2*y+5)",
+    "Equal(LengthOfLine(NQ),3*x+2)",
+    "Equal(LengthOfLine(QL),12)",
+    "Equal(LengthOfLine(RM),4*x-2)",
+    "Equal(LengthOfLine(RQ),3*y)",
     "Parallelogram(NMRQ)"
   ],
   "image_cdl": [
@@ -34,7 +40,12 @@
     "congruent_triangle_judgment_sas(1,LNM,LRQ)",
     "congruent_triangle_property_line_equal(1,LNM,LRQ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallelogram_property_diagonal_bisection(1,NMRQ,L)",
+      "parallelogram_property_diagonal_bisection(1,MRQN,L)",
+      "vertical_angle(1,MLN,QLR)"
+    ],
     "parallelogram_property_diagonal_bisection(1,NMRQ,L)": [
       "congruent_triangle_judgment_sas(1,LNM,LRQ)"
     ],
@@ -46,11 +57,6 @@
     ],
     "congruent_triangle_judgment_sas(1,LNM,LRQ)": [
       "congruent_triangle_property_line_equal(1,LNM,LRQ)"
-    ],
-    "START": [
-      "parallelogram_property_diagonal_bisection(1,NMRQ,L)",
-      "parallelogram_property_diagonal_bisection(1,MRQN,L)",
-      "vertical_angle(1,MLN,QLR)"
     ]
   }
 }

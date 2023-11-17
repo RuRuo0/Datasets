@@ -2,15 +2,21 @@
   "problem_id": 254,
   "annotation": "XiaokaiZhang_2023-03-12",
   "source": "Geometry3k-257",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the length of line XZ.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，ZX=3*x+5，ZY=5*x-7，∠ZWX=∠YWZ，WX垂直于ZX，ZY垂直于WY。求直线XZ的长度。",
+  "problem_text_en": "As shown in the diagram, ZX=3*x+5, ZY=5*x-7, ∠ZWX=∠YWZ, WX⊥ZX, ZY is perpendicular to WY. Find the length of line XZ.",
   "problem_img": "254.png",
   "construction_cdl": [
     "Shape(WX,XZ,ZW)",
     "Shape(WZ,ZY,YW)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(ZX),3*x+5)",
+    "Equal(LengthOfLine(ZY),5*x-7)",
+    "Equal(MeasureOfAngle(ZWX),MeasureOfAngle(YWZ))",
+    "PerpendicularBetweenLine(WX,ZX)",
+    "PerpendicularBetweenLine(ZY,WY)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(ZY),5*x-7)",
     "Equal(LengthOfLine(ZX),3*x+5)",
@@ -24,12 +30,12 @@
     "mirror_congruent_triangle_judgment_aas(3,ZYW,ZWX)",
     "mirror_congruent_triangle_property_line_equal(1,WZY,WXZ)"
   ],
-  "theorem_seq_dag": {
-    "mirror_congruent_triangle_judgment_aas(3,ZYW,ZWX)": [
-      "mirror_congruent_triangle_property_line_equal(1,WZY,WXZ)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "mirror_congruent_triangle_judgment_aas(3,ZYW,ZWX)"
+    ],
+    "mirror_congruent_triangle_judgment_aas(3,ZYW,ZWX)": [
+      "mirror_congruent_triangle_property_line_equal(1,WZY,WXZ)"
     ]
   }
 }

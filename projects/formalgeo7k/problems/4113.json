@@ -2,16 +2,16 @@
   "problem_id": 4113,
   "annotation": "QikeHuang_2023-05-07",
   "source": "GeoQA-2555",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在Rt△ABC中,∠C=90°,BC=4,AC=3,则sinB=()",
-  "problem_text_en": "As shown in the figure, in Rt△ABC, ∠C = N_0, BC = N_1, AC = N_2, then sinB = ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AC=3，BC=4，∠BCA=90°。求sin(AB)的值。",
+  "problem_text_en": "As shown in the diagram, AC=3, BC=4, ∠BCA=90°. Find the value of sin(AB).",
   "problem_img": "4113.png",
   "construction_cdl": [
     "Shape(BC,CA,AB)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(BC),4)",
     "Equal(LengthOfLine(AC),3)",
+    "Equal(LengthOfLine(BC),4)",
     "Equal(MeasureOfAngle(BCA),90)"
   ],
   "image_cdl": [],
@@ -23,14 +23,14 @@
     "sine_theorem(1,BCA)",
     "sine_theorem(1,CAB)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,BCA)": [
-      "right_triangle_property_pythagorean(1,BCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,BCA)",
       "sine_theorem(1,BCA)",
       "sine_theorem(1,CAB)"
+    ],
+    "right_triangle_judgment_angle(1,BCA)": [
+      "right_triangle_property_pythagorean(1,BCA)"
     ]
   }
 }

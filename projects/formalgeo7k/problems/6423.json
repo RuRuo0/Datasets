@@ -2,9 +2,9 @@
   "problem_id": 6423,
   "annotation": "YimingHe_2023-06-04",
   "source": "GeoQA-9294",
-  "problem_level": 1,
-  "problem_text_cn": "如图,▱ABCD的对角线AC,BD交于点O,点E是AD的中点,△BCD的周长为18,则△DEO的周长是()",
-  "problem_text_en": "As shown in the figure, the diagonal AC and BD of ▱ABCD intersect at point O, point E is the midpoint of AD, and the perimeter of △BCD is N_0, then the perimeter of △DEO is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，三角形BCD的周长为18，E是线段AD的中点，ABCD是平行四边形。求三角形DEO的周长。",
+  "problem_text_en": "As shown in the diagram, the perimeter of triangle BCD is 18, E bisects segment AD, quadrilateral ABCD is a ▱. Find the perimeter of triangle DEO.",
   "problem_img": "6423.png",
   "construction_cdl": [
     "Shape(AO,OE,EA)",
@@ -17,9 +17,9 @@
     "Collinear(AED)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
+    "Equal(PerimeterOfTriangle(BCD),18)",
     "IsMidpointOfLine(E,AD)",
-    "Equal(PerimeterOfTriangle(BCD),18)"
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfTriangle(DEO))",
@@ -35,13 +35,7 @@
     "triangle_perimeter_formula(1,EOD)",
     "triangle_perimeter_formula(1,CDB)"
   ],
-  "theorem_seq_dag": {
-    "parallelogram_property_diagonal_bisection(1,ABCD,O)": [
-      "midsegment_of_triangle_judgment_midpoint(1,OE,ACD)"
-    ],
-    "midsegment_of_triangle_judgment_midpoint(1,OE,ACD)": [
-      "midsegment_of_triangle_property_length(1,OE,ACD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,DO,OB)",
       "line_addition(1,AE,ED)",
@@ -50,6 +44,12 @@
       "parallelogram_property_diagonal_bisection(1,BCDA,O)",
       "triangle_perimeter_formula(1,EOD)",
       "triangle_perimeter_formula(1,CDB)"
+    ],
+    "parallelogram_property_diagonal_bisection(1,ABCD,O)": [
+      "midsegment_of_triangle_judgment_midpoint(1,OE,ACD)"
+    ],
+    "midsegment_of_triangle_judgment_midpoint(1,OE,ACD)": [
+      "midsegment_of_triangle_property_length(1,OE,ACD)"
     ]
   }
 }

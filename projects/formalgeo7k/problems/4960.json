@@ -2,9 +2,9 @@
   "problem_id": 4960,
   "annotation": "FangzhenZhu_2023-05-21",
   "source": "GeoQA-4640",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC中,点D,E分别在边AB,BC上,DE∥AC．若BD=4,DA=2,BE=3,则BC=()",
-  "problem_text_en": "As shown in the figure, in △ABC, the points D and E are on the edges AB and BC respectively, DE ∥ AC. If BD = N_0, DA = N_1, BE = N_2, then BC = ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，BD=4，BE=3，DA=2，ED∥CA。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, BD=4, BE=3, DA=2, ED∥CA. Find the length of line BC.",
   "problem_img": "4960.png",
   "construction_cdl": [
     "Shape(DB,BE,ED)",
@@ -14,8 +14,8 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(BD),4)",
-    "Equal(LengthOfLine(DA),2)",
     "Equal(LengthOfLine(BE),3)",
+    "Equal(LengthOfLine(DA),2)",
     "ParallelBetweenLine(ED,CA)"
   ],
   "image_cdl": [],
@@ -29,7 +29,12 @@
     "similar_triangle_property_line_ratio(1,DBE,ABC)",
     "line_addition(1,BD,DA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,ED,CA,B)",
+      "parallel_property_corresponding_angle(2,AC,DE,B)",
+      "line_addition(1,BD,DA)"
+    ],
     "parallel_property_corresponding_angle(1,ED,CA,B)": [
       "similar_triangle_judgment_aa(1,BED,BCA)"
     ],
@@ -39,11 +44,6 @@
     "similar_triangle_judgment_aa(1,BED,BCA)": [
       "similar_triangle_property_line_ratio(1,EDB,CAB)",
       "similar_triangle_property_line_ratio(1,DBE,ABC)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,ED,CA,B)",
-      "parallel_property_corresponding_angle(2,AC,DE,B)",
-      "line_addition(1,BD,DA)"
     ]
   }
 }

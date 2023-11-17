@@ -2,9 +2,9 @@
   "problem_id": 6235,
   "annotation": "FangzhenZhu_2023-06-04",
   "source": "GeoQA-8833",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知AB为⊙O的弦,OC⊥AB,垂足为C,若OA=10,AB=16,则弦心距OC的长为()",
-  "problem_text_en": "As shown in the figure, it is known that AB is the string of ⊙O, OC ⊥ AB, and the foot of perpendicular is C. If OA = N_0, AB = N_1, the length of the string center to OC is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=16，OA=10，⊙O的圆心为O，AC⊥OC。求直线OC的长度。",
+  "problem_text_en": "As shown in the diagram, AB=16, OA=10, the center of ⊙O is O, AC is perpendicular to OC. Find the length of line OC.",
   "problem_img": "6235.png",
   "construction_cdl": [
     "Shape(AC,CO,OA)",
@@ -17,9 +17,9 @@
     "Cocircular(O,ADB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "Equal(LengthOfLine(OA),10)",
     "Equal(LengthOfLine(AB),16)",
+    "Equal(LengthOfLine(OA),10)",
+    "IsCentreOfCircle(O,O)",
     "PerpendicularBetweenLine(AC,OC)"
   ],
   "image_cdl": [],
@@ -31,14 +31,14 @@
     "right_triangle_property_pythagorean(1,ACO)",
     "line_addition(1,AC,CB)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,ACO)": [
-      "right_triangle_property_pythagorean(1,ACO)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "circle_property_chord_perpendicular_bisect_chord(1,O,OC,AB)",
       "right_triangle_judgment_angle(1,ACO)",
       "line_addition(1,AC,CB)"
+    ],
+    "right_triangle_judgment_angle(1,ACO)": [
+      "right_triangle_property_pythagorean(1,ACO)"
     ]
   }
 }

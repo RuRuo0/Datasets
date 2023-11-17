@@ -2,9 +2,9 @@
   "problem_id": 4116,
   "annotation": "QikeHuang_2023-05-07",
   "source": "GeoQA-2581",
-  "problem_level": 1,
-  "problem_text_cn": "如图,A、D是⊙O上的两个点,BC是直径,若∠OAC=55°,则∠D的度数是()",
-  "problem_text_en": "As shown in the figure, A and D are two vertices on ⊙O, BC is the diameter, if ∠OAC = N_0, then the degree of ∠D is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠CAO=55°，O是⊙O的圆心，BC是⊙O的直径。求∠ADC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAO=55°, O is the center of ⊙O, BC is the diameter of ⊙O. Find the measure of ∠ADC.",
   "problem_img": "4116.png",
   "construction_cdl": [
     "Shape(OAB,BA)",
@@ -20,9 +20,9 @@
     "Cocircular(O,ABDC)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(CAO),55)",
     "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(BC,O)",
-    "Equal(MeasureOfAngle(CAO),55)"
+    "IsDiameterOfCircle(BC,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ADC))",
@@ -37,7 +37,15 @@
     "arc_property_circumference_angle_external(1,OCA,D)",
     "arc_property_circumference_angle_external(1,OCA,B)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "diameter_of_circle_property_right_angle(1,CAB,O)",
+      "angle_addition(1,CAO,OAB)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "arc_property_circumference_angle_external(1,OCA,D)",
+      "arc_property_circumference_angle_external(1,OCA,B)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OAB)"
     ],
@@ -46,14 +54,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OAB)": [
       "isosceles_triangle_property_angle_equal(1,OAB)"
-    ],
-    "START": [
-      "diameter_of_circle_property_right_angle(1,CAB,O)",
-      "angle_addition(1,CAO,OAB)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "arc_property_circumference_angle_external(1,OCA,D)",
-      "arc_property_circumference_angle_external(1,OCA,B)"
     ]
   }
 }

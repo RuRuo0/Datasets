@@ -2,16 +2,20 @@
   "problem_id": 3999,
   "annotation": "ZheZhu_2023-04-30",
   "source": "GeoQA-1956",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC中,∠C=90°,∠A=30°,BD平分∠ABC,则∠BDC的度数为()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠C = N_0, ∠A = N_1, BD bisects ∠ABC, then the degree of ∠BDC is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠BCD=90°，∠DAB=30°，BD平分∠ABC。求∠CDB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BCD=90°, ∠DAB=30°, BD is the angle bisector of ∠ABC. Find the measure of ∠CDB.",
   "problem_img": "3999.png",
   "construction_cdl": [
     "Shape(CD,DB,BC)",
     "Shape(DA,AB,BD)",
     "Collinear(CDA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(BCD),90)",
+    "Equal(MeasureOfAngle(DAB),30)",
+    "IsBisectorOfAngle(BD,ABC)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(DAB),30)",
     "Equal(MeasureOfAngle(BCD),90)",
@@ -24,7 +28,7 @@
     "triangle_property_angle_sum(1,BCA)",
     "angle_addition(1,ABD,DBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,CDB)",
       "triangle_property_angle_sum(1,BCA)",

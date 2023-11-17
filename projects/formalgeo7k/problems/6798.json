@@ -2,9 +2,9 @@
   "problem_id": 6798,
   "annotation": "ChenyangMao_2023-06-04",
   "source": "GeoQA-angle-10004",
-  "problem_level": 1,
-  "problem_text_cn": "如图，已知∠B＝20°，∠C＝30°，若MP和QN分别垂直平分AB和AC，则∠PAQ等于（）",
-  "problem_text_en": "",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，∠ABC=20°，∠BCA=30°，PM垂直平分AB，QN是CA的垂直平分线。求∠QAP的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABC=20°, ∠BCA=30°, PM is the perpendicular bisector of AB, QN perpendicular bisects CA. Find the measure of ∠QAP.",
   "problem_img": "6798.png",
   "construction_cdl": [
     "Shape(AM,MP,PA)",
@@ -17,10 +17,10 @@
     "Collinear(BPQC)"
   ],
   "text_cdl": [
-    "IsPerpendicularBisectorOfLine(PM,AB)",
-    "IsPerpendicularBisectorOfLine(QN,CA)",
     "Equal(MeasureOfAngle(ABC),20)",
-    "Equal(MeasureOfAngle(BCA),30)"
+    "Equal(MeasureOfAngle(BCA),30)",
+    "IsPerpendicularBisectorOfLine(PM,AB)",
+    "IsPerpendicularBisectorOfLine(QN,CA)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(QAP))",
@@ -36,7 +36,14 @@
     "angle_addition(1,NAP,PAM)",
     "triangle_property_angle_sum(1,BCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "perpendicular_bisector_property_distance_equal(1,PM,AB)",
+      "perpendicular_bisector_property_distance_equal(1,QN,CA)",
+      "angle_addition(1,NAQ,QAP)",
+      "angle_addition(1,NAP,PAM)",
+      "triangle_property_angle_sum(1,BCA)"
+    ],
     "perpendicular_bisector_property_distance_equal(1,PM,AB)": [
       "isosceles_triangle_judgment_line_equal(1,PAB)"
     ],
@@ -48,13 +55,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,QCA)": [
       "isosceles_triangle_property_angle_equal(1,QCA)"
-    ],
-    "START": [
-      "perpendicular_bisector_property_distance_equal(1,PM,AB)",
-      "perpendicular_bisector_property_distance_equal(1,QN,CA)",
-      "angle_addition(1,NAQ,QAP)",
-      "angle_addition(1,NAP,PAM)",
-      "triangle_property_angle_sum(1,BCA)"
     ]
   }
 }

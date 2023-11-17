@@ -2,9 +2,9 @@
   "problem_id": 6187,
   "annotation": "DengfengYue_2023-05-28",
   "source": "GeoQA-8763",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC内接于⊙O,AB=BC,∠ABC=120°,AD为⊙O的直径,AD=6,那么AB的值为()",
-  "problem_text_en": "As shown in the figure, △ABC is inscribed in ⊙O, AB = BC, ∠ABC = N_0, AD is the diameter of ⊙O, AD = N_1, then the value of AB is ()",
+  "problem_level": 15,
+  "problem_text_cn": "如图所示，AB=BC，AD=6，∠ABC=120°，圆O的圆心为O，圆O的直径为AD。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, AB=BC, AD=6, ∠ABC=120°, the center of ⊙O is O, AD is the diameter of ⊙O. Find the length of line AB.",
   "problem_img": "6187.png",
   "construction_cdl": [
     "Shape(AD,ODA)",
@@ -20,11 +20,11 @@
     "Cocircular(O,ABCD)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(AD,O)",
     "Equal(LengthOfLine(AB),LengthOfLine(BC))",
     "Equal(LengthOfLine(AD),6)",
-    "Equal(MeasureOfAngle(ABC),120)"
+    "Equal(MeasureOfAngle(ABC),120)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AD,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -46,10 +46,7 @@
     "sine_theorem(1,EAB)",
     "sine_theorem(1,ABE)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,BCA)": [
-      "isosceles_triangle_property_angle_equal(1,BCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,BCA)",
       "triangle_property_angle_sum(1,DAE)",
@@ -65,6 +62,9 @@
       "sine_theorem(1,BCE)",
       "sine_theorem(1,EAB)",
       "sine_theorem(1,ABE)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,BCA)": [
+      "isosceles_triangle_property_angle_equal(1,BCA)"
     ]
   }
 }

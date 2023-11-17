@@ -2,9 +2,9 @@
   "problem_id": 3713,
   "annotation": "Yangli_2023-04-30",
   "source": "GeoQA-1482",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知CA、CB分别与⊙O相切于A、B两点,D是⊙O上的一点,连接AD、BD,若∠C=56°,则∠D等于()",
-  "problem_text_en": "As shown in the figure, it is known that CA and CB are tangent to ⊙O at two vertices A and B, D is a point on ⊙O, connecting AD and BD, if ∠C = N_0, then ∠D is equal to ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠ACB=56°，O是⊙O的圆心，CA是⊙O的切线，圆O的切线为CB。求∠BDA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ACB=56°, the center of ⊙O is O, the tangent to circle O is CA, CB is the tangent to circle O. Find the measure of ∠BDA.",
   "problem_img": "3713.png",
   "construction_cdl": [
     "Shape(AC,CB,OAB)",
@@ -16,8 +16,9 @@
   ],
   "text_cdl": [
     "Equal(MeasureOfAngle(ACB),56)",
-    "IsTangentOfCircle(CB,O)",
-    "IsTangentOfCircle(CA,O)"
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(CA,O)",
+    "IsTangentOfCircle(CB,O)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)"
@@ -31,7 +32,7 @@
     "arc_property_center_angle(1,OAB,O)",
     "arc_property_circumference_angle_external(1,OAB,D)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(1,CA,O,O)",
       "tangent_of_circle_property_perpendicular(2,CB,O,O)",

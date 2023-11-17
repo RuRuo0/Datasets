@@ -2,9 +2,9 @@
   "problem_id": 2548,
   "annotation": "ChenyangMao_2023-04-23",
   "source": "Geometry3k-2673",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot R, find T V. Round to the nearest hundredth.",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，SR=6，US=5，圆R的圆心为R，VS垂直于US。求直线TV的长度。",
+  "problem_text_en": "As shown in the diagram, SR=6, US=5, the center of ⊙R is R, VS⊥US. Find the length of line TV.",
   "problem_img": "2548.png",
   "construction_cdl": [
     "Shape(RTU,US,ST)",
@@ -16,7 +16,12 @@
     "Collinear(TSV)",
     "Cocircular(R,TUV)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(SR),6)",
+    "Equal(LengthOfLine(US),5)",
+    "IsCentreOfCircle(R,R)",
+    "PerpendicularBetweenLine(VS,US)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(R,R)",
     "Equal(LengthOfLine(US),5)",
@@ -38,7 +43,16 @@
     "right_triangle_property_pythagorean(1,TSR)",
     "right_triangle_property_pythagorean(1,RSV)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,US,SR)",
+      "line_addition(1,TS,SV)",
+      "radius_of_circle_property_length_equal(1,RU,R)",
+      "radius_of_circle_property_length_equal(1,RT,R)",
+      "radius_of_circle_property_length_equal(1,RV,R)",
+      "vertical_angle(1,VSU,TSR)",
+      "adjacent_complementary_angle(1,TSR,RSV)"
+    ],
     "vertical_angle(1,VSU,TSR)": [
       "right_triangle_judgment_angle(1,TSR)",
       "right_triangle_judgment_angle(1,RSV)"
@@ -51,15 +65,6 @@
     ],
     "right_triangle_judgment_angle(1,RSV)": [
       "right_triangle_property_pythagorean(1,RSV)"
-    ],
-    "START": [
-      "line_addition(1,US,SR)",
-      "line_addition(1,TS,SV)",
-      "radius_of_circle_property_length_equal(1,RU,R)",
-      "radius_of_circle_property_length_equal(1,RT,R)",
-      "radius_of_circle_property_length_equal(1,RV,R)",
-      "vertical_angle(1,VSU,TSR)",
-      "adjacent_complementary_angle(1,TSR,RSV)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 1166,
   "annotation": "ChenyangMao_2023-04-09",
   "source": "Geometry3k-1206",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot R, S U = 20, Y W = 20, and m \\widehat Y X = 45. Find m \\widehat Y W.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，SU=20，YW=20，⌒RYX的角度为45，⊙R的圆心为R，SV⊥RV，YZ垂直于RZ。求⌒RYW的角度。",
+  "problem_text_en": "As shown in the diagram, SU=20, YW=20, the measure of ⌒RYX is 45, the center of circle R is R, SV is perpendicular to RV, YZ⊥RZ. Find the measure of ⌒RYW.",
   "problem_img": "1166.png",
   "construction_cdl": [
     "Shape(RSY,YR,RV,VS)",
@@ -24,7 +24,10 @@
   "text_cdl": [
     "Equal(LengthOfLine(SU),20)",
     "Equal(LengthOfLine(YW),20)",
-    "Equal(MeasureOfArc(RYX),45)"
+    "Equal(MeasureOfArc(RYX),45)",
+    "IsCentreOfCircle(R,R)",
+    "PerpendicularBetweenLine(SV,RV)",
+    "PerpendicularBetweenLine(YZ,RZ)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(R,R)",
@@ -41,19 +44,19 @@
     "arc_property_center_angle(1,RYX,R)",
     "arc_property_center_angle(1,RYW,R)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "circle_property_chord_perpendicular_bisect_chord(1,R,RZ,YW)",
+      "angle_addition(1,WRZ,ZRY)",
+      "arc_property_center_angle(1,RYX,R)",
+      "arc_property_center_angle(1,RYW,R)"
+    ],
     "circle_property_chord_perpendicular_bisect_chord(1,R,RZ,YW)": [
       "mirror_congruent_triangle_judgment_sas(1,ZRY,ZWR)",
       "mirror_congruent_triangle_judgment_sas(1,ZRY,ZWR)"
     ],
     "mirror_congruent_triangle_judgment_sas(1,ZRY,ZWR)": [
       "mirror_congruent_triangle_property_angle_equal(1,RYZ,RZW)"
-    ],
-    "START": [
-      "circle_property_chord_perpendicular_bisect_chord(1,R,RZ,YW)",
-      "angle_addition(1,WRZ,ZRY)",
-      "arc_property_center_angle(1,RYX,R)",
-      "arc_property_center_angle(1,RYW,R)"
     ]
   }
 }

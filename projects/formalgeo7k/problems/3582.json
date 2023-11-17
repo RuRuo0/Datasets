@@ -2,9 +2,9 @@
   "problem_id": 3582,
   "annotation": "QikeHuang_2023-04-30",
   "source": "GeoQA-1226",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,点D在BC上,AB=AD=DC,∠B=72°,那么∠DAC的大小是()",
-  "problem_text_en": "As shown in the figure, in △ABC, point D is on BC, AB = AD = DC, ∠B = N_0, then the size of ∠DAC is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AB=AD，AD=DC，∠ABD=72°。求∠CAD的大小。",
+  "problem_text_en": "As shown in the diagram, AB=AD, AD=DC, ∠ABD=72°. Find the measure of ∠CAD.",
   "problem_img": "3582.png",
   "construction_cdl": [
     "Shape(AB,BD,DA)",
@@ -27,18 +27,18 @@
     "adjacent_complementary_angle(1,BDA,ADC)",
     "triangle_property_angle_sum(1,ADC)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,ABD)": [
-      "isosceles_triangle_property_angle_equal(1,ABD)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,DCA)": [
-      "isosceles_triangle_property_angle_equal(1,DCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,ABD)",
       "isosceles_triangle_judgment_line_equal(1,DCA)",
       "adjacent_complementary_angle(1,BDA,ADC)",
       "triangle_property_angle_sum(1,ADC)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,ABD)": [
+      "isosceles_triangle_property_angle_equal(1,ABD)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,DCA)": [
+      "isosceles_triangle_property_angle_equal(1,DCA)"
     ]
   }
 }

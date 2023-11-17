@@ -2,9 +2,9 @@
   "problem_id": 5576,
   "annotation": "YimingHe_2023-05-28",
   "source": "GeoQA-6890",
-  "problem_level": 1,
-  "problem_text_cn": "如图,上午8时一条船从A出发(60海里/时)向正东航行,8时30分到B处,经测小岛M在A北偏东45°,在B北偏东30°方向,那么BM的距离为()",
-  "problem_text_en": "As shown in the figure, at N_0 in the morning, a boat departs from A (N_1 nautical miles/hour) and sails due east, and arrives at point B at N_2 at N_3. It is measured that the small island M is N_4 northeast of A, and it is in the direction of N_5 north east of B. Then the distance of BM is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AB=30，∠BDM=90°，∠BNA=90°，∠CAB=90°，∠CAM=45°，∠MBD=60°。求直线BM的长度。",
+  "problem_text_en": "As shown in the diagram, AB=30, ∠BDM=90°, ∠BNA=90°, ∠CAB=90°, ∠CAM=45°, ∠MBD=60°. Find the length of line BM.",
   "problem_img": "5576.png",
   "construction_cdl": [
     "Shape(CA,AN,NM,MC)",
@@ -15,13 +15,12 @@
     "Collinear(ANM)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(BNA),90)",
-    "Equal(MeasureOfAngle(BDM),90)",
-    "Equal(MeasureOfAngle(CAB),90)",
     "Equal(LengthOfLine(AB),30)",
+    "Equal(MeasureOfAngle(BDM),90)",
+    "Equal(MeasureOfAngle(BNA),90)",
+    "Equal(MeasureOfAngle(CAB),90)",
     "Equal(MeasureOfAngle(CAM),45)",
-    "Equal(MeasureOfAngle(MBD),60)",
-    "Equal(LengthOfLine(AB),30)"
+    "Equal(MeasureOfAngle(MBD),60)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BM))",
@@ -36,7 +35,7 @@
     "sine_theorem(1,BNA)",
     "sine_theorem(1,BMN)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,CAN,NAB)",
       "triangle_property_angle_sum(1,NAB)",

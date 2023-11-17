@@ -2,9 +2,9 @@
   "problem_id": 402,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-410",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，YW=18，ZY=18，弧OYW的角度为143，⌒OZY的角度为2*x-1。求x的值。",
+  "problem_text_en": "As shown in the diagram, YW=18, ZY=18, the measure of arc OYW is 143, the measure of arc OZY is 2*x-1. Find the value of x.",
   "problem_img": "402.png",
   "construction_cdl": [
     "Shape(WY,OYW)",
@@ -12,7 +12,12 @@
     "Shape(YZ,OZY)",
     "Cocircular(O,YWZ)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(YW),18)",
+    "Equal(LengthOfLine(ZY),18)",
+    "Equal(MeasureOfArc(OYW),143)",
+    "Equal(MeasureOfArc(OZY),2*x-1)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfArc(OYW),143)",
     "Equal(MeasureOfArc(OZY),2*x-1)",
@@ -25,12 +30,12 @@
     "congruent_arc_judgment_chord_equal(1,OYW,OZY)",
     "congruent_arc_property_measure_equal(1,OYW,OZY)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_chord_equal(1,OYW,OZY)": [
-      "congruent_arc_property_measure_equal(1,OYW,OZY)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "congruent_arc_judgment_chord_equal(1,OYW,OZY)"
+    ],
+    "congruent_arc_judgment_chord_equal(1,OYW,OZY)": [
+      "congruent_arc_property_measure_equal(1,OYW,OZY)"
     ]
   }
 }

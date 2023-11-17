@@ -2,9 +2,9 @@
   "problem_id": 5117,
   "annotation": "YimingHe_2023-05-21",
   "source": "GeoQA-4970",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,从A点向∠ACB的角平分线作垂线,垂足为D,E是AB的中点,已知AC=4,BC=6,则DE的长为()",
-  "problem_text_en": "As shown in the figure, in △ABC, the angle bisector from point A to ∠ACB is a vertical line, the vertical foot is D, and E is the midpoint of AB, it is known that AC = N_0, BC = N_1, then the length of DE is ( )",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AC=4，BC=6，CD是∠BCA的角平分线，E是线段AB的中点，AD⊥CD。求直线DE的长度。",
+  "problem_text_en": "As shown in the diagram, AC=4, BC=6, CD bisects ∠BCA, E is the midpoint of segment AB, AD⊥CD. Find the length of line DE.",
   "problem_img": "5117.png",
   "construction_cdl": [
     "Shape(AE,ED,DA)",
@@ -16,11 +16,11 @@
     "Collinear(BFC)"
   ],
   "text_cdl": [
-    "IsBisectorOfAngle(CD,BCA)",
-    "PerpendicularBetweenLine(AD,CD)",
-    "IsMidpointOfLine(E,AB)",
     "Equal(LengthOfLine(AC),4)",
-    "Equal(LengthOfLine(BC),6)"
+    "Equal(LengthOfLine(BC),6)",
+    "IsBisectorOfAngle(CD,BCA)",
+    "IsMidpointOfLine(E,AB)",
+    "PerpendicularBetweenLine(AD,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(DE))",
@@ -36,7 +36,14 @@
     "midsegment_of_triangle_judgment_midpoint(1,ED,ABF)",
     "midsegment_of_triangle_property_length(1,ED,ABF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,ADC,CDF)",
+      "triangle_property_angle_sum(1,ADC)",
+      "triangle_property_angle_sum(1,DFC)",
+      "altitude_of_triangle_judgment(1,CD,CAF)",
+      "line_addition(1,BF,FC)"
+    ],
     "adjacent_complementary_angle(1,ADC,CDF)": [
       "isosceles_triangle_judgment_angle_equal(1,CAF)"
     ],
@@ -57,13 +64,6 @@
     ],
     "midsegment_of_triangle_judgment_midpoint(1,ED,ABF)": [
       "midsegment_of_triangle_property_length(1,ED,ABF)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,ADC,CDF)",
-      "triangle_property_angle_sum(1,ADC)",
-      "triangle_property_angle_sum(1,DFC)",
-      "altitude_of_triangle_judgment(1,CD,CAF)",
-      "line_addition(1,BF,FC)"
     ]
   }
 }

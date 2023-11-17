@@ -2,9 +2,9 @@
   "problem_id": 3174,
   "annotation": "JiaZou_2023-04-23",
   "source": "GeoQA-450",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB∥CD,CD⊥EF,若∠1=125°,则∠2=()",
-  "problem_text_en": "As shown in the figure, AB ∥ CD, CD ⊥ EF, if ∠1 = N_0, then ∠2 = ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠AHG=125°，AB∥CD，FE垂直于CE。求∠FEI的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AHG=125°, AB∥CD, FE⊥CE. Find the measure of ∠FEI.",
   "problem_img": "3174.png",
   "construction_cdl": [
     "Shape(AH,HG)",
@@ -21,9 +21,9 @@
     "Collinear(GHEI)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(AHG),125)",
     "ParallelBetweenLine(AB,CD)",
-    "PerpendicularBetweenLine(FE,CE)",
-    "Equal(MeasureOfAngle(AHG),125)"
+    "PerpendicularBetweenLine(FE,CE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(FEI))",
@@ -35,17 +35,17 @@
     "adjacent_complementary_angle(1,IEC,CEH)",
     "angle_addition(1,FEI,IEC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,AB,CD,H)",
+      "adjacent_complementary_angle(1,IEC,CEH)",
+      "angle_addition(1,FEI,IEC)"
+    ],
     "parallel_property_collinear_extend(3,AB,CD,H)": [
       "parallel_property_collinear_extend(3,DC,HA,E)"
     ],
     "parallel_property_collinear_extend(3,DC,HA,E)": [
       "parallel_property_corresponding_angle(2,EC,HA,G)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,AB,CD,H)",
-      "adjacent_complementary_angle(1,IEC,CEH)",
-      "angle_addition(1,FEI,IEC)"
     ]
   }
 }

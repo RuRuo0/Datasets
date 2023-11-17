@@ -2,9 +2,9 @@
   "problem_id": 5380,
   "annotation": "QikeHuang_2023-05-21",
   "source": "GeoQA-5664",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示,五边形ABCDE关于过点A的直线l轴对称,若∠DAE=40°,∠ADE=60°,则∠B的度数为()",
-  "problem_text_en": "As shown in the figure, the pentagonal ABCDE is symmetrical with respect to the line l passing through the point A. If ∠DAE = N_0, ∠ADE = N_1, then the degree of ∠B is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠ADE=60°，∠EAD=40°，ABCM与AMDE镜像全等。求∠ABC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ADE=60°, ∠EAD=40°, quadrilateral ABCM is mirror congruent to quadrilateral AMDE. Find the measure of ∠ABC.",
   "problem_img": "5380.png",
   "construction_cdl": [
     "Shape(AB,BC,CM,MA)",
@@ -13,9 +13,9 @@
     "Collinear(CMD)"
   ],
   "text_cdl": [
-    "MirrorCongruentBetweenQuadrilateral(ABCM,AMDE)",
+    "Equal(MeasureOfAngle(ADE),60)",
     "Equal(MeasureOfAngle(EAD),40)",
-    "Equal(MeasureOfAngle(ADE),60)"
+    "MirrorCongruentBetweenQuadrilateral(ABCM,AMDE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ABC))",
@@ -24,7 +24,7 @@
     "triangle_property_angle_sum(1,ADE)",
     "mirror_congruent_quadrilateral_property_angle_equal(1,BCMA,EAMD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,ADE)",
       "mirror_congruent_quadrilateral_property_angle_equal(1,BCMA,EAMD)"

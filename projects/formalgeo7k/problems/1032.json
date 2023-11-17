@@ -2,16 +2,21 @@
   "problem_id": 1032,
   "annotation": "YanjunGuo_2023-04-09",
   "source": "Geometry3k-1065",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the shaded sector. Round to the nearest tenth, if necessary.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，YZ=11，ZY=RadiusOfCircle(Y)，∠XYZ=55°，Y是⊙Y的圆心。求扇形YXZ的面积。",
+  "problem_text_en": "As shown in the diagram, YZ=11, ZY=RadiusOfCircle(Y), ∠XYZ=55°, the center of circle Y is Y. Find the area of the sector YXZ.",
   "problem_img": "1032.png",
   "construction_cdl": [
     "Shape(XY,YZ,YZX)",
     "Shape(YX,YXZ,ZY)",
     "Cocircular(Y,XZ)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(YZ),11)",
+    "Equal(LengthOfLine(ZY),RadiusOfCircle(Y))",
+    "Equal(MeasureOfAngle(XYZ),55)",
+    "IsCentreOfCircle(Y,Y)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(Y,Y)",
     "Equal(LengthOfLine(ZY),RadiusOfCircle(Y))",
@@ -25,7 +30,7 @@
     "arc_property_center_angle(1,YXZ,Y)",
     "sector_area_formula(1,YXZ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "round_angle(1,XYZ,ZYX)",
       "arc_property_center_angle(1,YXZ,Y)",

@@ -2,9 +2,9 @@
   "problem_id": 1984,
   "annotation": "YimingHe_2023-03-26",
   "source": "Geometry3k-2068",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find V W.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，VW=3*x-6，WX=x+4，YW=5，ZW=6，YX∥VZ。求直线VW的长度。",
+  "problem_text_en": "As shown in the diagram, VW=3*x-6, WX=x+4, YW=5, ZW=6, YX is parallel to VZ. Find the length of line VW.",
   "problem_img": "1984.png",
   "construction_cdl": [
     "Shape(VZ,ZW,WV)",
@@ -12,7 +12,13 @@
     "Collinear(VWX)",
     "Collinear(ZWY)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(VW),3*x-6)",
+    "Equal(LengthOfLine(WX),x+4)",
+    "Equal(LengthOfLine(YW),5)",
+    "Equal(LengthOfLine(ZW),6)",
+    "ParallelBetweenLine(YX,VZ)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(VW),3*x-6)",
     "Equal(LengthOfLine(YW),5)",
@@ -29,7 +35,11 @@
     "similar_triangle_property_line_ratio(1,ZWV,YWX)",
     "similar_triangle_property_line_ratio(1,VZW,XYW)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_alternate_interior_angle(1,YX,VZ)",
+      "parallel_property_alternate_interior_angle(2,YX,VZ)"
+    ],
     "parallel_property_alternate_interior_angle(1,YX,VZ)": [
       "similar_triangle_judgment_aa(1,WVZ,WXY)"
     ],
@@ -39,10 +49,6 @@
     "similar_triangle_judgment_aa(1,WVZ,WXY)": [
       "similar_triangle_property_line_ratio(1,VZW,XYW)",
       "similar_triangle_property_line_ratio(1,ZWV,YWX)"
-    ],
-    "START": [
-      "parallel_property_alternate_interior_angle(1,YX,VZ)",
-      "parallel_property_alternate_interior_angle(2,YX,VZ)"
     ]
   }
 }

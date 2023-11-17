@@ -2,9 +2,9 @@
   "problem_id": 1610,
   "annotation": "YiwenHuang_2023-04-23",
   "source": "Geometry3k-1670",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，CA=1，CB=x+3，DC=6，EC=11*x-2，AB∥ED。求x的值。",
+  "problem_text_en": "As shown in the diagram, CA=1, CB=x+3, DC=6, EC=11*x-2, AB is parallel to ED. Find the value of x.",
   "problem_img": "1610.png",
   "construction_cdl": [
     "Shape(BA,AC,CB)",
@@ -12,7 +12,13 @@
     "Collinear(BCE)",
     "Collinear(ACD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(CA),1)",
+    "Equal(LengthOfLine(CB),x+3)",
+    "Equal(LengthOfLine(DC),6)",
+    "Equal(LengthOfLine(EC),11*x-2)",
+    "ParallelBetweenLine(AB,ED)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(CB),x+3)",
     "Equal(LengthOfLine(DC),6)",
@@ -29,7 +35,11 @@
     "similar_triangle_property_line_ratio(1,EDC,BAC)",
     "similar_triangle_property_line_ratio(1,DCE,ACB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_alternate_interior_angle(1,AB,ED)",
+      "parallel_property_alternate_interior_angle(2,AB,ED)"
+    ],
     "parallel_property_alternate_interior_angle(1,AB,ED)": [
       "similar_triangle_judgment_aa(1,CED,CBA)"
     ],
@@ -39,10 +49,6 @@
     "similar_triangle_judgment_aa(1,CED,CBA)": [
       "similar_triangle_property_line_ratio(1,EDC,BAC)",
       "similar_triangle_property_line_ratio(1,DCE,ACB)"
-    ],
-    "START": [
-      "parallel_property_alternate_interior_angle(1,AB,ED)",
-      "parallel_property_alternate_interior_angle(2,AB,ED)"
     ]
   }
 }

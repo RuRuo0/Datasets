@@ -2,14 +2,18 @@
   "problem_id": 123,
   "annotation": "XiaokaiZhang_2023-03-12",
   "source": "Geometry3k-125",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the measure of angle CBA.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，CB=12，CB=AB，∠BAC=44°。求∠CBA的大小。",
+  "problem_text_en": "As shown in the diagram, CB=12, CB=AB, ∠BAC=44°. Find the measure of ∠CBA.",
   "problem_img": "123.png",
   "construction_cdl": [
     "Shape(BA,AC,CB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(CB),12)",
+    "Equal(LengthOfLine(CB),LengthOfLine(AB))",
+    "Equal(MeasureOfAngle(BAC),44)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(CB),12)",
     "Equal(MeasureOfAngle(BAC),44)",
@@ -22,13 +26,13 @@
     "isosceles_triangle_property_angle_equal(1,BAC)",
     "triangle_property_angle_sum(1,BAC)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,BAC)": [
-      "isosceles_triangle_property_angle_equal(1,BAC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,BAC)",
       "triangle_property_angle_sum(1,BAC)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,BAC)": [
+      "isosceles_triangle_property_angle_equal(1,BAC)"
     ]
   }
 }

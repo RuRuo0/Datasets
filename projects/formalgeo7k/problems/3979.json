@@ -2,9 +2,9 @@
   "problem_id": 3979,
   "annotation": "ZheZhu_2023-04-30",
   "source": "GeoQA-1923",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在锐角三角形ABC中,AD、CE分别是边BC、AB上的高,垂足分别是D、E,AD、CE相交于点O,若∠B=60°,则∠AOE的度数是()",
-  "problem_text_en": "As shown in the figure, in the acute triangle ABC, AD and CE are the heights on sides BC and AB respectively, and the feet of perpendicular are D and E respectively. AD and CE intersect at point O. If ∠B = N_0, then the degree of ∠AOE is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠ABC=60°，BD⊥AD，CE⊥BE。求∠EOA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABC=60°, BD is perpendicular to AD, CE⊥BE. Find the measure of ∠EOA.",
   "problem_img": "3979.png",
   "construction_cdl": [
     "Shape(CA,AO,OC)",
@@ -16,7 +16,11 @@
     "Collinear(AOD)",
     "Collinear(AEB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(ABC),60)",
+    "PerpendicularBetweenLine(BD,AD)",
+    "PerpendicularBetweenLine(CE,BE)"
+  ],
   "image_cdl": [
     "PerpendicularBetweenLine(CE,BE)",
     "PerpendicularBetweenLine(BD,AD)",
@@ -28,7 +32,7 @@
     "adjacent_complementary_angle(1,DOE,EOA)",
     "quadrilateral_property_angle_sum(1,DOEB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,DOE,EOA)",
       "quadrilateral_property_angle_sum(1,DOEB)"

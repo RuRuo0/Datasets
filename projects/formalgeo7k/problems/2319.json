@@ -2,16 +2,22 @@
   "problem_id": 2319,
   "annotation": "FangzhenZhu_2023-04-23",
   "source": "Geometry3k-2429",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the parallelogram. Round to the nearest tenth if necessary.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，CB=14，ED=7，∠EDB=60°，CB和AD是▱CADB的一组对边，AE垂直于BE。求CADB的面积。",
+  "problem_text_en": "As shown in the diagram, CB=14, ED=7, ∠EDB=60°, CADB is a parallelogram, AE is perpendicular to BE. Find the area of quadrilateral CADB.",
   "problem_img": "2319.png",
   "construction_cdl": [
     "Shape(CA,AE,EB,BC)",
     "Shape(BE,ED,DB)",
     "Collinear(AED)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(CB),14)",
+    "Equal(LengthOfLine(ED),7)",
+    "Equal(MeasureOfAngle(EDB),60)",
+    "Parallelogram(CADB)",
+    "PerpendicularBetweenLine(AE,BE)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(CB),14)",
     "Equal(LengthOfLine(ED),7)",
@@ -28,7 +34,7 @@
     "sine_theorem(1,DBE)",
     "triangle_property_angle_sum(1,BED)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_property_opposite_line_equal(1,BCAD)",
       "parallelogram_area_formula_sine(1,ADBC)",

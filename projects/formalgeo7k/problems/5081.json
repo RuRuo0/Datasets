@@ -2,9 +2,9 @@
   "problem_id": 5081,
   "annotation": "ChengQin_2023-05-21",
   "source": "GeoQA-4879",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AC∥BD,直线l1、l2与这两条平行线分别交于点A、B和点C、D,l1与l2交于点E,若\\frac{AE}{BE}=\\frac{1}{2},则\\frac{CE}{CD}的值是()",
-  "problem_text_en": "As shown in the figure, AC ∥ BD, straight lines lN_0, lN_1 and these two parallel lines intersect at vertices A, B and vertices C, D, respectively, lN_2 and lN_3 intersect at vertex E, if \\frac{AE}{BE}=\\frac{N_0}{N_1}, then \\frac {CE}{CD} Value is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，Div(LengthOfLine(AE)=LengthOfLine(BE))，AC∥DB。求直线CE的长度与直线CD的长度之比。",
+  "problem_text_en": "As shown in the diagram, Div(LengthOfLine(AE)=LengthOfLine(BE)), AC is parallel to DB. Find the ratio of the length of line CE to the length of line CD.",
   "problem_img": "5081.png",
   "construction_cdl": [
     "Shape(AE,EC,CA)",
@@ -13,8 +13,8 @@
     "Collinear(CED)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AC,DB)",
-    "Equal(Div(LengthOfLine(AE),LengthOfLine(BE)),1/2)"
+    "Equal(Div(LengthOfLine(AE),LengthOfLine(BE)),1/2)",
+    "ParallelBetweenLine(AC,DB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Div(LengthOfLine(CE),LengthOfLine(CD)))",
@@ -27,7 +27,12 @@
     "similar_triangle_property_line_ratio(1,AEC,BED)",
     "line_addition(1,CE,ED)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_alternate_interior_angle(1,AC,DB)",
+      "parallel_property_alternate_interior_angle(2,AC,DB)",
+      "line_addition(1,CE,ED)"
+    ],
     "parallel_property_alternate_interior_angle(1,AC,DB)": [
       "similar_triangle_judgment_aa(1,ECA,EDB)"
     ],
@@ -37,11 +42,6 @@
     "similar_triangle_judgment_aa(1,ECA,EDB)": [
       "similar_triangle_property_line_ratio(1,CAE,DBE)",
       "similar_triangle_property_line_ratio(1,AEC,BED)"
-    ],
-    "START": [
-      "parallel_property_alternate_interior_angle(1,AC,DB)",
-      "parallel_property_alternate_interior_angle(2,AC,DB)",
-      "line_addition(1,CE,ED)"
     ]
   }
 }

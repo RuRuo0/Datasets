@@ -2,9 +2,9 @@
   "problem_id": 2474,
   "annotation": "Yangli_2023-04-23",
   "source": "Geometry3k-2595",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "The diameter of \\odot S is 30 units, the diameter of \\odot R is 20 units, and D S = 9 units. Find R C.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，CS=15，DS=9，RD=10，圆R的圆心为R，圆S的圆心为S。求直线RC的长度。",
+  "problem_text_en": "As shown in the diagram, CS=15, DS=9, RD=10, the center of circle R is R, the center of circle S is S. Find the length of line RC.",
   "problem_img": "2474.png",
   "construction_cdl": [
     "Shape(DS,SB,SBA,RDA)",
@@ -18,8 +18,10 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(CS),15)",
+    "Equal(LengthOfLine(DS),9)",
     "Equal(LengthOfLine(RD),10)",
-    "Equal(LengthOfLine(DS),9)"
+    "IsCentreOfCircle(R,R)",
+    "IsCentreOfCircle(S,S)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(S,S)",
@@ -31,7 +33,7 @@
     "line_addition(1,RC,CD)",
     "line_addition(1,CD,DS)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,RC,CD)",
       "line_addition(1,CD,DS)"

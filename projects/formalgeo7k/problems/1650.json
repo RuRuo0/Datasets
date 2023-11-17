@@ -2,16 +2,21 @@
   "problem_id": 1650,
   "annotation": "NaZhu_2023-03-26",
   "source": "Geometry3k-1712",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find S W.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，RW=SR，ST=2*x+2，TW=4*x-4，RT垂直于WT。求直线SW的长度。",
+  "problem_text_en": "As shown in the diagram, RW=SR, ST=2*x+2, TW=4*x-4, RT⊥WT. Find the length of line SW.",
   "problem_img": "1650.png",
   "construction_cdl": [
     "Shape(WR,RT,TW)",
     "Shape(RS,ST,TR)",
     "Collinear(WTS)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(RW),LengthOfLine(SR))",
+    "Equal(LengthOfLine(ST),2*x+2)",
+    "Equal(LengthOfLine(TW),4*x-4)",
+    "PerpendicularBetweenLine(RT,WT)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(TW),4*x-4)",
     "Equal(LengthOfLine(ST),2*x+2)",
@@ -28,7 +33,12 @@
     "mirror_congruent_triangle_property_line_equal(1,RTW,RST)",
     "line_addition(1,WT,TS)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,STR,RTW)",
+      "isosceles_triangle_judgment_line_equal(1,RSW)",
+      "line_addition(1,WT,TS)"
+    ],
     "adjacent_complementary_angle(1,STR,RTW)": [
       "mirror_congruent_triangle_judgment_aas(1,RTW,RST)"
     ],
@@ -40,11 +50,6 @@
     ],
     "mirror_congruent_triangle_judgment_aas(1,RTW,RST)": [
       "mirror_congruent_triangle_property_line_equal(1,RTW,RST)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,STR,RTW)",
-      "isosceles_triangle_judgment_line_equal(1,RSW)",
-      "line_addition(1,WT,TS)"
     ]
   }
 }

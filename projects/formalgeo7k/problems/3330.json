@@ -2,9 +2,9 @@
   "problem_id": 3330,
   "annotation": "YimingHe_2023-04-30",
   "source": "GeoQA-732",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知AB∥CF,E为DF的中点,若AB=8㎝,CF=5㎝,则BD为()．",
-  "problem_text_en": "As shown in the figure, it is known that AB ∥ CF and E are the midpoints of DF. If AB = N_0 cm and CF = N_1 cm, then BD is ().",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=8，CF=5，E是线段DF的中点，BA∥CF。求直线DB的长度。",
+  "problem_text_en": "As shown in the diagram, AB=8, CF=5, E bisects segment DF, BA is parallel to CF. Find the length of line DB.",
   "problem_img": "3330.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -15,10 +15,10 @@
     "Collinear(DEF)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(BA,CF)",
-    "IsMidpointOfLine(E,DF)",
     "Equal(LengthOfLine(AB),8)",
-    "Equal(LengthOfLine(CF),5)"
+    "Equal(LengthOfLine(CF),5)",
+    "IsMidpointOfLine(E,DF)",
+    "ParallelBetweenLine(BA,CF)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(DB))",
@@ -30,7 +30,12 @@
     "congruent_triangle_property_line_equal(1,EAD,ECF)",
     "line_addition(1,AD,DB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "vertical_angle(1,DEA,FEC)",
+      "parallel_property_alternate_interior_angle(2,BA,CF)",
+      "line_addition(1,AD,DB)"
+    ],
     "vertical_angle(1,DEA,FEC)": [
       "congruent_triangle_judgment_aas(1,DEA,FEC)"
     ],
@@ -39,11 +44,6 @@
     ],
     "congruent_triangle_judgment_aas(1,DEA,FEC)": [
       "congruent_triangle_property_line_equal(1,EAD,ECF)"
-    ],
-    "START": [
-      "vertical_angle(1,DEA,FEC)",
-      "parallel_property_alternate_interior_angle(2,BA,CF)",
-      "line_addition(1,AD,DB)"
     ]
   }
 }

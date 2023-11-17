@@ -2,9 +2,9 @@
   "problem_id": 4667,
   "annotation": "YiwenHuang_2023-05-21",
   "source": "GeoQA-3931",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,AC是⊙O的切线,A为切点,连接BC交⊙O于点D,若∠C=50°,则∠AOD的度数()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, AC is the tangent of ⊙O, A is the tangent point, connect BC and intersect ⊙O at point D, if ∠C = N_0, then the degree of ∠AOD ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠ACD=50°，∠OAC=90°，O是圆O的圆心，AB是⊙O的直径。求∠DOA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ACD=50°, ∠OAC=90°, O is the center of circle O, AB is the diameter of ⊙O. Find the measure of ∠DOA.",
   "problem_img": "4667.png",
   "construction_cdl": [
     "Shape(BO,OD,DB)",
@@ -16,10 +16,10 @@
     "Cocircular(O,BAD)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(AB,O)",
     "Equal(MeasureOfAngle(ACD),50)",
-    "Equal(MeasureOfAngle(OAC),90)"
+    "Equal(MeasureOfAngle(OAC),90)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DOA))",
@@ -29,7 +29,7 @@
     "arc_property_circumference_angle_external(1,OAD,B)",
     "triangle_property_angle_sum(1,BAC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,OAD,O)",
       "arc_property_circumference_angle_external(1,OAD,B)",

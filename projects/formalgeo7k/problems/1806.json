@@ -2,9 +2,9 @@
   "problem_id": 1806,
   "annotation": "ChenyangMao_2023-04-16",
   "source": "Geometry3k-1872",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x. Assume that segments that appear to be tangent are tangent.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，LE=x，LK=36，MK=15，∠EML=66°，圆M的圆心为M，A平分线段EK，圆O的切线为LE，圆O的切线为LK。求x的值。",
+  "problem_text_en": "As shown in the diagram, LE=x, LK=36, MK=15, ∠EML=66°, M is the center of ⊙M, A bisects segment EK, LE is the tangent to circle M, the tangent to circle M is LK. Find the value of x.",
   "problem_img": "1806.png",
   "construction_cdl": [
     "Shape(EM,MA,AE)",
@@ -18,7 +18,16 @@
     "Collinear(KAE)",
     "Cocircular(M,EKP)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(LE),x)",
+    "Equal(LengthOfLine(LK),36)",
+    "Equal(LengthOfLine(MK),15)",
+    "Equal(MeasureOfAngle(EML),66)",
+    "IsCentreOfCircle(M,M)",
+    "IsMidpointOfLine(A,EK)",
+    "IsTangentOfCircle(LE,M)",
+    "IsTangentOfCircle(LK,M"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(M,M)",
     "IsMidpointOfLine(A,EK)",
@@ -41,7 +50,13 @@
     "right_triangle_property_pythagorean(1,LEM)",
     "right_triangle_property_pythagorean(1,MKL)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(2,LE,M,M)",
+      "tangent_of_circle_property_perpendicular(1,LK,M,M)",
+      "radius_of_circle_property_length_equal(1,ME,M)",
+      "radius_of_circle_property_length_equal(1,MK,M)"
+    ],
     "tangent_of_circle_property_perpendicular(2,LE,M,M)": [
       "right_triangle_judgment_angle(1,LEM)"
     ],
@@ -53,12 +68,6 @@
     ],
     "right_triangle_judgment_angle(1,MKL)": [
       "right_triangle_property_pythagorean(1,MKL)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(2,LE,M,M)",
-      "tangent_of_circle_property_perpendicular(1,LK,M,M)",
-      "radius_of_circle_property_length_equal(1,ME,M)",
-      "radius_of_circle_property_length_equal(1,MK,M)"
     ]
   }
 }

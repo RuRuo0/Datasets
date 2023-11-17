@@ -2,15 +2,21 @@
   "problem_id": 1326,
   "annotation": "FangzhenZhu_2023-04-09",
   "source": "Geometry3k-1374",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "The segment is tangent to the circle. Find x.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，LM=x，LN=12，MN=16，L是⊙L的圆心，MN是⊙O的切线。求x的值。",
+  "problem_text_en": "As shown in the diagram, LM=x, LN=12, MN=16, the center of circle L is L, the tangent to circle L is MN. Find the value of x.",
   "problem_img": "1326.png",
   "construction_cdl": [
     "Shape(NM,ML,LN)",
     "Cocircular(L,N)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(LM),x)",
+    "Equal(LengthOfLine(LN),12)",
+    "Equal(LengthOfLine(MN),16)",
+    "IsCentreOfCircle(L,L)",
+    "IsTangentOfCircle(MN,L)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(L,L)",
     "IsTangentOfCircle(MN,L)",
@@ -25,15 +31,15 @@
     "right_triangle_judgment_angle(1,LNM)",
     "right_triangle_property_pythagorean(1,LNM)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(1,MN,L,L)"
+    ],
     "tangent_of_circle_property_perpendicular(1,MN,L,L)": [
       "right_triangle_judgment_angle(1,LNM)"
     ],
     "right_triangle_judgment_angle(1,LNM)": [
       "right_triangle_property_pythagorean(1,LNM)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(1,MN,L,L)"
     ]
   }
 }

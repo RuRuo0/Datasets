@@ -2,9 +2,9 @@
   "problem_id": 6060,
   "annotation": "ChenyangMao_2023-05-28",
   "source": "GeoQA-8569",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O直径AB=8,∠CBD=30°,则CD=()",
-  "problem_text_en": "As shown in the figure, ⊙O diameter AB = N_0, ∠CBD = N_1, then CD = ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，⊙O的直径为8，∠DBC=30°，O是⊙O的圆心，AB是⊙O的直径，⊙O的直径为DE。求直线CD的长度。",
+  "problem_text_en": "As shown in the diagram, the diameter of circle O is 8, ∠DBC=30°, O is the center of ⊙O, the diameter of circle O is AB, the diameter of ⊙O is DE. Find the length of line CD.",
   "problem_img": "6060.png",
   "construction_cdl": [
     "Shape(ODA,AO,OB,BD)",
@@ -19,11 +19,11 @@
     "Cocircular(O,AEBCD)"
   ],
   "text_cdl": [
+    "Equal(DiameterOfCircle(O),8)",
+    "Equal(MeasureOfAngle(DBC),30)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)",
-    "IsDiameterOfCircle(DE,O)",
-    "Equal(DiameterOfCircle(O),8)",
-    "Equal(MeasureOfAngle(DBC),30)"
+    "IsDiameterOfCircle(DE,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(CD))",
@@ -35,7 +35,7 @@
     "arc_property_circumference_angle_external(1,OCD,B)",
     "sine_theorem(1,DEC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_length_equal(1,DE,O)",
       "diameter_of_circle_property_right_angle(1,ECD,O)",

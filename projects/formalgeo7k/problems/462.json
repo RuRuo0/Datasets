@@ -2,9 +2,9 @@
   "problem_id": 462,
   "annotation": "YimingHe_2023-04-02",
   "source": "Geometry3k-472",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "The lengths of the bases of an isosceles trapezoid are shown below. If the perimeter is 74 meters, what is its area?",
+  "problem_level": 16,
+  "problem_text_cn": "如图所示，AB=35，CD=19，四边形DBAC的周长为74，四边形DBAC是等腰梯形，CF垂直于AF，DE垂直于AE。求DBAC的面积。",
+  "problem_text_en": "As shown in the diagram, AB=35, CD=19, the perimeter of quadrilateral DBAC is 74, DBAC is a isosceles trapezoid, CF⊥AF, DE⊥AE. Find the area of DBAC.",
   "problem_img": "462.png",
   "construction_cdl": [
     "Shape(DB,BE,ED)",
@@ -13,8 +13,12 @@
     "Collinear(BEFA)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AB),35)",
+    "Equal(LengthOfLine(CD),19)",
+    "Equal(PerimeterOfQuadrilateral(DBAC),74)",
     "IsoscelesTrapezoid(DBAC)",
-    "Equal(PerimeterOfQuadrilateral(DBAC),74)"
+    "PerpendicularBetweenLine(CF,AF)",
+    "PerpendicularBetweenLine(DE,AE)"
   ],
   "image_cdl": [
     "PerpendicularBetweenLine(DE,AE)",
@@ -42,7 +46,15 @@
     "right_triangle_property_pythagorean(1,BED)",
     "trapezoid_area_formula(1,DBAC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "quadrilateral_perimeter_formula(1,DBAC)",
+      "adjacent_complementary_angle(1,BED,DEF)",
+      "adjacent_complementary_angle(1,BFC,CFA)",
+      "line_addition(1,BE,EF)",
+      "line_addition(1,BF,FA)",
+      "trapezoid_area_formula(1,DBAC)"
+    ],
     "adjacent_complementary_angle(1,BED,DEF)": [
       "altitude_of_quadrilateral_judgment_left_vertex(2,DE,DBAC)",
       "mirror_congruent_triangle_judgment_hl(1,BED,ACF)",
@@ -73,14 +85,6 @@
     ],
     "right_triangle_judgment_angle(1,BED)": [
       "right_triangle_property_pythagorean(1,BED)"
-    ],
-    "START": [
-      "quadrilateral_perimeter_formula(1,DBAC)",
-      "adjacent_complementary_angle(1,BED,DEF)",
-      "adjacent_complementary_angle(1,BFC,CFA)",
-      "line_addition(1,BE,EF)",
-      "line_addition(1,BF,FA)",
-      "trapezoid_area_formula(1,DBAC)"
     ]
   }
 }

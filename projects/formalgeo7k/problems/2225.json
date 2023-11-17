@@ -2,9 +2,9 @@
   "problem_id": 2225,
   "annotation": "XiaoxiaoJin_2023-04-09",
   "source": "Geometry3k-2323",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of \\triangle A D F, if \\triangle A D F \\sim \\triangle B C E, B C = 24, E B = 12, C E = 18, and D F = 21.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，BC=24，CE=18，DF=21，EB=12，三角形AFD与三角形BEC是相似三角形。求△AFD的周长。",
+  "problem_text_en": "As shown in the diagram, BC=24, CE=18, DF=21, EB=12, triangle AFD is similar to triangle BEC.. Find the perimeter of triangle AFD.",
   "problem_img": "2225.png",
   "construction_cdl": [
     "Shape(AF,FD,DC,CE,EB,BA)",
@@ -12,11 +12,11 @@
     "Collinear(ABCD)"
   ],
   "text_cdl": [
-    "SimilarBetweenTriangle(AFD,BEC)",
     "Equal(LengthOfLine(BC),24)",
-    "Equal(LengthOfLine(EB),12)",
     "Equal(LengthOfLine(CE),18)",
-    "Equal(LengthOfLine(DF),21)"
+    "Equal(LengthOfLine(DF),21)",
+    "Equal(LengthOfLine(EB),12)",
+    "SimilarBetweenTriangle(AFD,BEC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfTriangle(AFD))",
@@ -26,7 +26,7 @@
     "similar_triangle_property_line_ratio(1,AFD,BEC)",
     "similar_triangle_property_perimeter_ratio(1,AFD,BEC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_perimeter_formula(1,BEC)",
       "similar_triangle_property_line_ratio(1,AFD,BEC)",

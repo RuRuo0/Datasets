@@ -2,9 +2,9 @@
   "problem_id": 5421,
   "annotation": "XiaoxiaoJin_2023-05-21",
   "source": "GeoQA-5733",
-  "problem_level": 1,
-  "problem_text_cn": "如图,四边形ABCD是平行四边形,点E在BC的延长线上,且CE=BC,AE=AB,AE、DC相交于点O,连接DE．若∠AOD=120°,AC=4,则CD的大小为()",
-  "problem_text_en": "As shown in the figure, the quadrilateral ABCD is a parallelogram, point E is on the extended line of BC, and CE = BC, AE = AB, AE and DC intersect at point O. Connect DE. If ∠AOD = N_0, AC = N_1, then the size of CD is ()",
+  "problem_level": 14,
+  "problem_text_cn": "如图所示，AC=4，AE=AB，CE=BC，∠AOD=120°，AD和CE是平行四边形ACED的一组对边。求直线CD的长度。",
+  "problem_text_en": "As shown in the diagram, AC=4, AE=AB, CE=BC, ∠AOD=120°, ACED is a parallelogram. Find the length of line CD.",
   "problem_img": "5421.png",
   "construction_cdl": [
     "Shape(AB,BC,CA)",
@@ -17,9 +17,9 @@
     "Collinear(AOE)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(CE),LengthOfLine(BC))",
-    "Equal(LengthOfLine(AE),LengthOfLine(AB))",
     "Equal(LengthOfLine(AC),4)",
+    "Equal(LengthOfLine(AE),LengthOfLine(AB))",
+    "Equal(LengthOfLine(CE),LengthOfLine(BC))",
     "Equal(MeasureOfAngle(AOD),120)",
     "Parallelogram(ACED)"
   ],
@@ -42,7 +42,18 @@
     "triangle_property_angle_sum(1,OCE)",
     "sine_theorem(1,ACE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,CO,OD)",
+      "line_addition(1,AO,OE)",
+      "median_of_triangle_judgment(1,AC,ABE)",
+      "isosceles_triangle_judgment_line_equal(1,ABE)",
+      "parallelogram_property_diagonal_bisection(1,ACED,O)",
+      "parallelogram_property_diagonal_bisection(1,CEDA,O)",
+      "vertical_angle(1,AOD,EOC)",
+      "triangle_property_angle_sum(1,OCE)",
+      "sine_theorem(1,ACE)"
+    ],
     "line_addition(1,CO,OD)": [
       "isosceles_triangle_judgment_line_equal(1,OCE)"
     ],
@@ -72,17 +83,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OCE)": [
       "isosceles_triangle_property_angle_equal(1,OCE)"
-    ],
-    "START": [
-      "line_addition(1,CO,OD)",
-      "line_addition(1,AO,OE)",
-      "median_of_triangle_judgment(1,AC,ABE)",
-      "isosceles_triangle_judgment_line_equal(1,ABE)",
-      "parallelogram_property_diagonal_bisection(1,ACED,O)",
-      "parallelogram_property_diagonal_bisection(1,CEDA,O)",
-      "vertical_angle(1,AOD,EOC)",
-      "triangle_property_angle_sum(1,OCE)",
-      "sine_theorem(1,ACE)"
     ]
   }
 }

@@ -2,15 +2,22 @@
   "problem_id": 743,
   "annotation": "YimingHe_2023-03-12",
   "source": "Geometry3k-768",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Solve for x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AC=7*x-4，AD=6*x+1，∠ABC=30°，∠ADB=90°，∠BCA=90°，∠DBA=30°。求x的值。",
+  "problem_text_en": "As shown in the diagram, AC=7*x-4, AD=6*x+1, ∠ABC=30°, ∠ADB=90°, ∠BCA=90°, ∠DBA=30°. Find the value of x.",
   "problem_img": "743.png",
   "construction_cdl": [
     "Shape(BC,CA,AB)",
     "Shape(BA,AD,DB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),7*x-4)",
+    "Equal(LengthOfLine(AD),6*x+1)",
+    "Equal(MeasureOfAngle(ABC),30)",
+    "Equal(MeasureOfAngle(ADB),90)",
+    "Equal(MeasureOfAngle(BCA),90)",
+    "Equal(MeasureOfAngle(DBA),30)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(ADB),90)",
     "Equal(LengthOfLine(AD),6*x+1)",
@@ -25,12 +32,12 @@
     "mirror_congruent_triangle_judgment_aas(3,ADB,ABC)",
     "mirror_congruent_triangle_property_line_equal(1,BAD,BCA)"
   ],
-  "theorem_seq_dag": {
-    "mirror_congruent_triangle_judgment_aas(3,ADB,ABC)": [
-      "mirror_congruent_triangle_property_line_equal(1,BAD,BCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "mirror_congruent_triangle_judgment_aas(3,ADB,ABC)"
+    ],
+    "mirror_congruent_triangle_judgment_aas(3,ADB,ABC)": [
+      "mirror_congruent_triangle_property_line_equal(1,BAD,BCA)"
     ]
   }
 }

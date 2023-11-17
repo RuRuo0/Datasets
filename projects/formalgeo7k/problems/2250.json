@@ -2,9 +2,9 @@
   "problem_id": 2250,
   "annotation": "DengfengYue_2023-04-16",
   "source": "Geometry3k-2351",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "The segment is tangent to the circle. Find x.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，NP=10，NQ=x，QP=24，圆N的圆心为N，⊙O的切线为QP。求x的值。",
+  "problem_text_en": "As shown in the diagram, NP=10, NQ=x, QP=24, N is the center of circle N, QP is the tangent to circle N. Find the value of x.",
   "problem_img": "2250.png",
   "construction_cdl": [
     "Shape(QP,PN,NQ)",
@@ -14,6 +14,10 @@
     "Cocircular(N,GP)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(NP),10)",
+    "Equal(LengthOfLine(NQ),x)",
+    "Equal(LengthOfLine(QP),24)",
+    "IsCentreOfCircle(N,N)",
     "IsTangentOfCircle(QP,N)"
   ],
   "image_cdl": [
@@ -29,15 +33,15 @@
     "right_triangle_judgment_angle(1,QPN)",
     "right_triangle_property_pythagorean(1,QPN)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(2,QP,N,N)"
+    ],
     "tangent_of_circle_property_perpendicular(2,QP,N,N)": [
       "right_triangle_judgment_angle(1,QPN)"
     ],
     "right_triangle_judgment_angle(1,QPN)": [
       "right_triangle_property_pythagorean(1,QPN)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(2,QP,N,N)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 3047,
   "annotation": "XiaokaiZhang_2023-04-16",
   "source": "GeoQA-260",
-  "problem_level": 1,
-  "problem_text_cn": "如图,直线a∥b,AB⊥BC,∠1=40°,则∠2的度数为()",
-  "problem_text_en": "As shown in the figure, the straight line a ∥ b, AB ⊥ BC, ∠1 = N_0, then the degree of ∠2 is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠DBE=40°，BE平行于CA，AB垂直于CB。求∠CAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DBE=40°, BE is parallel to CA, AB⊥CB. Find the measure of ∠CAB.",
   "problem_img": "3047.png",
   "construction_cdl": [
     "Shape(DB,BE)",
@@ -13,9 +13,9 @@
     "Collinear(DBC)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(AB,CB)",
+    "Equal(MeasureOfAngle(DBE),40)",
     "ParallelBetweenLine(BE,CA)",
-    "Equal(MeasureOfAngle(DBE),40)"
+    "PerpendicularBetweenLine(AB,CB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CAB))",
@@ -24,7 +24,7 @@
     "parallel_property_corresponding_angle(1,BE,CA,D)",
     "triangle_property_angle_sum(1,BCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_corresponding_angle(1,BE,CA,D)",
       "triangle_property_angle_sum(1,BCA)"

@@ -2,9 +2,9 @@
   "problem_id": 1083,
   "annotation": "NaZhu_2023-03-19",
   "source": "Geometry3k-1120",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If X N = t - 2, N Z = t + 1, X M = 2, and X Y = 10, solve for t.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，NZ=t+1，XM=2，XN=t-2，XY=10，YZ平行于MN。求t的值。",
+  "problem_text_en": "As shown in the diagram, NZ=t+1, XM=2, XN=t-2, XY=10, YZ is parallel to MN. Find the value of t.",
   "problem_img": "1083.png",
   "construction_cdl": [
     "Shape(MX,XN,NM)",
@@ -13,10 +13,11 @@
     "Collinear(XNZ)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(XN),t-2)",
     "Equal(LengthOfLine(NZ),t+1)",
     "Equal(LengthOfLine(XM),2)",
-    "Equal(LengthOfLine(XY),10)"
+    "Equal(LengthOfLine(XN),t-2)",
+    "Equal(LengthOfLine(XY),10)",
+    "ParallelBetweenLine(YZ,MN)"
   ],
   "image_cdl": [
     "ParallelBetweenLine(YZ,MN)"
@@ -30,17 +31,17 @@
     "similar_triangle_property_line_ratio(1,MXN,YXZ)",
     "similar_triangle_property_line_ratio(1,NMX,ZYX)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,XN,NZ)",
+      "parallel_property_corresponding_angle(1,NM,ZY,X)"
+    ],
     "parallel_property_corresponding_angle(1,NM,ZY,X)": [
       "similar_triangle_judgment_aa(1,MXN,YXZ)"
     ],
     "similar_triangle_judgment_aa(1,MXN,YXZ)": [
       "similar_triangle_property_line_ratio(1,MXN,YXZ)",
       "similar_triangle_property_line_ratio(1,NMX,ZYX)"
-    ],
-    "START": [
-      "line_addition(1,XN,NZ)",
-      "parallel_property_corresponding_angle(1,NM,ZY,X)"
     ]
   }
 }

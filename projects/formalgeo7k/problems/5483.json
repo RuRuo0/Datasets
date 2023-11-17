@@ -2,9 +2,9 @@
   "problem_id": 5483,
   "annotation": "ChenyangMao_2023-05-21",
   "source": "GeoQA-5939",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,AD是角平分线,AE是中线,CF⊥AD于点F,AC=5,AB=13,则EF的长为()",
-  "problem_text_en": "As shown in the figure, in △ABC, AD is the angular bisector, AE is the midline, CF ⊥ AD at point F, AC = N_0, AB = N_1, then the length of EF is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AB=13，AC=5，AD平分∠BAC，AE是三角形ACB的中线，CF⊥AF。求直线EF的长度。",
+  "problem_text_en": "As shown in the diagram, AB=13, AC=5, AD is the angle bisector of ∠BAC, AE is the median of △ ACB, CF⊥AF. Find the length of line EF.",
   "problem_img": "5483.png",
   "construction_cdl": [
     "Shape(AC,CF,FA)",
@@ -21,11 +21,11 @@
     "Collinear(CDEB)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(CF,AF)",
+    "Equal(LengthOfLine(AB),13)",
+    "Equal(LengthOfLine(AC),5)",
     "IsBisectorOfAngle(AD,BAC)",
     "IsMedianOfTriangle(AE,ACB)",
-    "Equal(LengthOfLine(AC),5)",
-    "Equal(LengthOfLine(AB),13)"
+    "PerpendicularBetweenLine(CF,AF)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(EF))",
@@ -41,7 +41,13 @@
     "midsegment_of_triangle_judgment_midpoint(1,EF,CBG)",
     "midsegment_of_triangle_property_length(1,EF,CBG)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,CFA,AFH)",
+      "triangle_property_angle_sum(1,ACF)",
+      "triangle_property_angle_sum(1,AFG)",
+      "line_addition(1,AG,GB)"
+    ],
     "adjacent_complementary_angle(1,CFA,AFH)": [
       "mirror_congruent_triangle_judgment_aas(1,AFG,ACF)"
     ],
@@ -60,12 +66,6 @@
     ],
     "midsegment_of_triangle_judgment_midpoint(1,EF,CBG)": [
       "midsegment_of_triangle_property_length(1,EF,CBG)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,CFA,AFH)",
-      "triangle_property_angle_sum(1,ACF)",
-      "triangle_property_angle_sum(1,AFG)",
-      "line_addition(1,AG,GB)"
     ]
   }
 }

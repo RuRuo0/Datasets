@@ -2,9 +2,9 @@
   "problem_id": 5787,
   "annotation": "YanjunGuo_2023-05-28",
   "source": "GeoQA-7703",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在平行四边形ABCD中,AE:EB=1:2,如果S~△AEF~=4cm²,那么S~△DCF~=()",
-  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, AE:EB=N_0:N_1,如果S~△AEF~=N_2cm²,then S~△DCF~ = ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，△AEF的面积为4，Div(LengthOfLine(AE)=LengthOfLine(EB))，DC和AB是▱DABC的一组对边。求三角形CDF的面积。",
+  "problem_text_en": "As shown in the diagram, the area of triangle AEF is 4, Div(LengthOfLine(AE)=LengthOfLine(EB)), quadrilateral DABC is a ▱. Find the area of △CDF.",
   "problem_img": "5787.png",
   "construction_cdl": [
     "Shape(DA,AF,FD)",
@@ -16,8 +16,8 @@
     "Collinear(AEB)"
   ],
   "text_cdl": [
-    "Equal(Div(LengthOfLine(AE),LengthOfLine(EB)),1/2)",
     "Equal(AreaOfTriangle(AEF),4)",
+    "Equal(Div(LengthOfLine(AE),LengthOfLine(EB)),1/2)",
     "Parallelogram(DABC)"
   ],
   "image_cdl": [],
@@ -32,7 +32,13 @@
     "similar_triangle_property_line_ratio(1,FCD,FAE)",
     "similar_triangle_property_area_square_ratio(1,DFC,EFA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AE,EB)",
+      "parallelogram_property_opposite_line_equal(1,ABCD)",
+      "parallel_property_alternate_interior_angle(2,DC,AB)",
+      "vertical_angle(1,DFC,EFA)"
+    ],
     "parallel_property_alternate_interior_angle(2,DC,AB)": [
       "similar_triangle_judgment_aa(1,DFC,EFA)"
     ],
@@ -42,12 +48,6 @@
     "similar_triangle_judgment_aa(1,DFC,EFA)": [
       "similar_triangle_property_area_square_ratio(1,DFC,EFA)",
       "similar_triangle_property_line_ratio(1,FCD,FAE)"
-    ],
-    "START": [
-      "line_addition(1,AE,EB)",
-      "parallelogram_property_opposite_line_equal(1,ABCD)",
-      "parallel_property_alternate_interior_angle(2,DC,AB)",
-      "vertical_angle(1,DFC,EFA)"
     ]
   }
 }

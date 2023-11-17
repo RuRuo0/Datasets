@@ -2,16 +2,22 @@
   "problem_id": 1244,
   "annotation": "JiaZou_2023-03-19",
   "source": "Geometry3k-1285",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find b.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，BD=15，CA=b，CB=28，CD=27，∠ADB=∠CDA。求b的值。",
+  "problem_text_en": "As shown in the diagram, BD=15, CA=b, CB=28, CD=27, ∠ADB=∠CDA. Find the value of b.",
   "problem_img": "1244.png",
   "construction_cdl": [
     "Shape(DB,BA,AD)",
     "Shape(DA,AC,CD)",
     "Collinear(BAC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BD),15)",
+    "Equal(LengthOfLine(CA),b)",
+    "Equal(LengthOfLine(CB),28)",
+    "Equal(LengthOfLine(CD),27)",
+    "Equal(MeasureOfAngle(ADB),MeasureOfAngle(CDA))"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(CD),27)",
     "Equal(LengthOfLine(CA),b)",
@@ -26,13 +32,13 @@
     "bisector_of_angle_judgment_angle_equal(1,DA,CDB)",
     "bisector_of_angle_property_line_ratio(1,DA,CDB)"
   ],
-  "theorem_seq_dag": {
-    "bisector_of_angle_judgment_angle_equal(1,DA,CDB)": [
-      "bisector_of_angle_property_line_ratio(1,DA,CDB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,BA,AC)",
       "bisector_of_angle_judgment_angle_equal(1,DA,CDB)"
+    ],
+    "bisector_of_angle_judgment_angle_equal(1,DA,CDB)": [
+      "bisector_of_angle_property_line_ratio(1,DA,CDB)"
     ]
   }
 }

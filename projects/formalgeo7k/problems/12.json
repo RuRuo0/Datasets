@@ -2,9 +2,9 @@
   "problem_id": 12,
   "annotation": "XiaokaiZhang_2023-04-02",
   "source": "Geometry3k-11",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot X, A B = 30, C D = 30, and m \\widehat C Z = 40. Find m \\widehat A B.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AB=30，CD=30，⌒XCZ的角度为40，⊙X的圆心为X，AM垂直于YM，DN⊥ZN。求弧XBA的角度。",
+  "problem_text_en": "As shown in the diagram, AB=30, CD=30, the measure of arc XCZ is 40, the center of ⊙X is X, AM is perpendicular to YM, DN⊥ZN. Find the measure of arc XBA.",
   "problem_img": "12.png",
   "construction_cdl": [
     "Shape(XBY,YM,MB)",
@@ -19,7 +19,14 @@
     "Collinear(CND)",
     "Cocircular(X,ACZDBY)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),30)",
+    "Equal(LengthOfLine(CD),30)",
+    "Equal(MeasureOfArc(XCZ),40)",
+    "IsCentreOfCircle(X,X)",
+    "PerpendicularBetweenLine(AM,YM)",
+    "PerpendicularBetweenLine(DN,ZN)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(X,X)",
     "Equal(LengthOfLine(AB),30)",
@@ -40,7 +47,13 @@
     "congruent_arc_judgment_chord_equal(1,XCD,XBA)",
     "congruent_arc_property_measure_equal(1,XCD,XBA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "vertical_angle(1,CNX,DNZ)",
+      "arc_addition_length(1,XCZ,XZD)",
+      "similar_arc_judgment_cocircular(1,XCZ,XCD)",
+      "congruent_arc_judgment_chord_equal(1,XCD,XBA)"
+    ],
     "vertical_angle(1,CNX,DNZ)": [
       "circle_property_chord_perpendicular_bisect_arc(1,XCD,XNZ)"
     ],
@@ -50,12 +63,6 @@
     ],
     "congruent_arc_judgment_chord_equal(1,XCD,XBA)": [
       "congruent_arc_property_measure_equal(1,XCD,XBA)"
-    ],
-    "START": [
-      "vertical_angle(1,CNX,DNZ)",
-      "arc_addition_length(1,XCZ,XZD)",
-      "similar_arc_judgment_cocircular(1,XCZ,XCD)",
-      "congruent_arc_judgment_chord_equal(1,XCD,XBA)"
     ]
   }
 }

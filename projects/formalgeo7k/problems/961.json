@@ -2,16 +2,24 @@
   "problem_id": 961,
   "annotation": "NaZhu_2023-03-19",
   "source": "Geometry3k-990",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y.",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，AB=y，AD=z，BD=9，CA=x，CD=4，BD垂直于AD，CA垂直于BA。求y的值。",
+  "problem_text_en": "As shown in the diagram, AB=y, AD=z, BD=9, CA=x, CD=4, BD⊥AD, CA is perpendicular to BA. Find the value of y.",
   "problem_img": "961.png",
   "construction_cdl": [
     "Shape(CA,AD,DC)",
     "Shape(DA,AB,BD)",
     "Collinear(CDB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),y)",
+    "Equal(LengthOfLine(AD),z)",
+    "Equal(LengthOfLine(BD),9)",
+    "Equal(LengthOfLine(CA),x)",
+    "Equal(LengthOfLine(CD),4)",
+    "PerpendicularBetweenLine(BD,AD)",
+    "PerpendicularBetweenLine(CA,BA)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(CD),4)",
     "Equal(LengthOfLine(BD),9)",
@@ -36,7 +44,13 @@
     "similar_triangle_property_line_ratio(1,CAD,ABD)",
     "similar_triangle_property_line_ratio(1,ADC,BDA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,BDA,ADC)",
+      "line_addition(1,CD,DB)",
+      "angle_addition(1,CAD,DAB)",
+      "triangle_property_angle_sum(1,DAB)"
+    ],
     "adjacent_complementary_angle(1,BDA,ADC)": [
       "mirror_similar_triangle_judgment_aa(1,ADC,BCA)",
       "similar_triangle_judgment_aa(1,CAD,ABD)"
@@ -55,12 +69,6 @@
     "similar_triangle_judgment_aa(1,CAD,ABD)": [
       "similar_triangle_property_line_ratio(1,CAD,ABD)",
       "similar_triangle_property_line_ratio(1,ADC,BDA)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,BDA,ADC)",
-      "line_addition(1,CD,DB)",
-      "angle_addition(1,CAD,DAB)",
-      "triangle_property_angle_sum(1,DAB)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 3102,
   "annotation": "YimingHe_2023-04-23",
   "source": "GeoQA-343",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点A,B,C,P在⊙O上,CD⊥OA,CE⊥OB,垂足分别为D,E,∠DCE=40°,则∠P的度数为()",
-  "problem_text_en": "As shown in the figure, the vertices A, B, C, and P are on ⊙O, CD ⊥ OA, CE ⊥ OB, and the feet of perpendicular are D, E, ∠DCE = N_0, then the degree of ∠P is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠ECD=40°，O是⊙O的圆心，CD垂直于OD，OE垂直于CE。求∠APB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ECD=40°, the center of circle O is O, CD is perpendicular to OD, OE⊥CE. Find the measure of ∠APB.",
   "problem_img": "3102.png",
   "construction_cdl": [
     "Shape(AD,DC,OCA)",
@@ -18,10 +18,10 @@
     "Cocircular(O,CAPB)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(CD,OD)",
-    "PerpendicularBetweenLine(OE,CE)",
     "Equal(MeasureOfAngle(ECD),40)",
-    "IsCentreOfCircle(O,O)"
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(CD,OD)",
+    "PerpendicularBetweenLine(OE,CE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(APB))",
@@ -31,7 +31,7 @@
     "arc_property_center_angle(1,OBA,O)",
     "arc_property_circumference_angle_external(1,OBA,P)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "quadrilateral_property_angle_sum(1,CDOE)",
       "arc_property_center_angle(1,OBA,O)",

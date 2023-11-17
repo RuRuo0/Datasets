@@ -3,15 +3,22 @@
   "annotation": "RunanWang_2023-05-07",
   "source": "Geometry3k-2949",
   "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure. Round to the nearest tenth if necessary.",
+  "problem_text_cn": "如图所示，AC=11，BH=10，DB=8，BCAD的高为BH，BH⊥AH，BCAD是梯形。求四边形BCAD的面积。",
+  "problem_text_en": "As shown in the diagram, AC=11, BH=10, DB=8, the height of BCAD is BH, BH⊥AH, quadrilateral BCAD is a trapezoid. Find the area of quadrilateral BCAD.",
   "problem_img": "2800.png",
   "construction_cdl": [
     "Shape(BC,CH,HB)",
     "Shape(BH,HA,AD,DB)",
     "Collinear(CHA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),11)",
+    "Equal(LengthOfLine(BH),10)",
+    "Equal(LengthOfLine(DB),8)",
+    "IsAltitudeOfQuadrilateral(BH,BCAD)",
+    "PerpendicularBetweenLine(BH,AH)",
+    "Trapezoid(BCAD)"
+  ],
   "image_cdl": [
     "Trapezoid(BCAD)",
     "IsAltitudeOfQuadrilateral(BH,BCAD)",
@@ -25,7 +32,7 @@
   "theorem_seqs": [
     "trapezoid_area_formula(1,BCAD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "trapezoid_area_formula(1,BCAD)"
     ]

@@ -2,9 +2,9 @@
   "problem_id": 3367,
   "annotation": "JiaZou_2023-04-30",
   "source": "GeoQA-855",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在Rt△ABC中,∠BAC=90°,DE⊥BC,BE=EC,∠1=∠2,AC=6,AB=10,则△BDE的周长是()",
-  "problem_text_en": "As shown in the figure, in Rt△ABC, ∠BAC = N_0, DE ⊥ BC, BE = EC, ∠1 = ∠2, AC = N_1, AB = N_2, then the perimeter of △BDE is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=10，AC=6，BE=EC，∠CAD=90°，∠DEC=90°，∠ECD=∠DCA。求△BED的周长。",
+  "problem_text_en": "As shown in the diagram, AB=10, AC=6, BE=EC, ∠CAD=90°, ∠DEC=90°, ∠ECD=∠DCA. Find the perimeter of △BED.",
   "problem_img": "3367.png",
   "construction_cdl": [
     "Shape(AD,DC,CA)",
@@ -14,9 +14,9 @@
     "Collinear(BEC)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(BE),LengthOfLine(EC))",
-    "Equal(LengthOfLine(AC),6)",
     "Equal(LengthOfLine(AB),10)",
+    "Equal(LengthOfLine(AC),6)",
+    "Equal(LengthOfLine(BE),LengthOfLine(EC))",
     "Equal(MeasureOfAngle(CAD),90)",
     "Equal(MeasureOfAngle(DEC),90)",
     "Equal(MeasureOfAngle(ECD),MeasureOfAngle(DCA))"
@@ -31,15 +31,15 @@
     "line_addition(1,BD,DA)",
     "triangle_perimeter_formula(1,DBE)"
   ],
-  "theorem_seq_dag": {
-    "mirror_congruent_triangle_judgment_aas(3,DEC,DCA)": [
-      "mirror_congruent_triangle_property_line_equal(1,DEC,DCA)",
-      "mirror_congruent_triangle_property_line_equal(1,CDE,CAD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "mirror_congruent_triangle_judgment_aas(3,DEC,DCA)",
       "line_addition(1,BD,DA)",
       "triangle_perimeter_formula(1,DBE)"
+    ],
+    "mirror_congruent_triangle_judgment_aas(3,DEC,DCA)": [
+      "mirror_congruent_triangle_property_line_equal(1,DEC,DCA)",
+      "mirror_congruent_triangle_property_line_equal(1,CDE,CAD)"
     ]
   }
 }

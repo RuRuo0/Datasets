@@ -2,9 +2,9 @@
   "problem_id": 6805,
   "annotation": "ChenyangMao_2023-06-04",
   "source": "GeoQA-angle-10012",
-  "problem_level": 1,
-  "problem_text_cn": "如图，将等边△ABC的顶点B放在一组平行线的直线b上，边AB，AC分别交直线a于D，E两点，若∠1＝40°，则∠2的大小为（）",
-  "problem_text_en": "",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠DEA=40°，三角形ABC为等边三角形，DE∥PC，PC∥BF。求∠CBF的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DEA=40°, triangle ABC is an equilateral triangle, DE∥PC, PC is parallel to BF. Find the measure of ∠CBF.",
   "problem_img": "6805.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -15,10 +15,10 @@
     "Collinear(AEC)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(DE,PC)",
-    "ParallelBetweenLine(PC,BF)",
+    "Equal(MeasureOfAngle(DEA),40)",
     "EquilateralTriangle(ABC)",
-    "Equal(MeasureOfAngle(DEA),40)"
+    "ParallelBetweenLine(DE,PC)",
+    "ParallelBetweenLine(PC,BF)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CBF))",
@@ -29,7 +29,7 @@
     "angle_addition(1,BCP,PCA)",
     "parallel_property_alternate_interior_angle(2,PC,BF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "equilateral_triangle_property_angle(1,CAB)",
       "parallel_property_corresponding_angle(2,CP,ED,A)",

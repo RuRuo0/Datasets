@@ -2,16 +2,24 @@
   "problem_id": 2761,
   "annotation": "FangzhenZhu_2023-04-09",
   "source": "Geometry3k-2908",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，JM=5，KM=20，LJ=y，LK=z，LM=x，JL垂直于KL，KM垂直于LM。求y的值。",
+  "problem_text_en": "As shown in the diagram, JM=5, KM=20, LJ=y, LK=z, LM=x, JL is perpendicular to KL, KM⊥LM. Find the value of y.",
   "problem_img": "2761.png",
   "construction_cdl": [
     "Shape(KM,ML,LK)",
     "Shape(MJ,JL,LM)",
     "Collinear(KMJ)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(JM),5)",
+    "Equal(LengthOfLine(KM),20)",
+    "Equal(LengthOfLine(LJ),y)",
+    "Equal(LengthOfLine(LK),z)",
+    "Equal(LengthOfLine(LM),x)",
+    "PerpendicularBetweenLine(JL,KL)",
+    "PerpendicularBetweenLine(KM,LM)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(KM),20)",
     "Equal(LengthOfLine(LK),z)",
@@ -33,7 +41,13 @@
     "right_triangle_property_pythagorean(1,LMJ)",
     "right_triangle_property_pythagorean(1,JLK)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,KM,MJ)",
+      "adjacent_complementary_angle(1,KML,LMJ)",
+      "right_triangle_judgment_angle(1,KML)",
+      "right_triangle_judgment_angle(1,JLK)"
+    ],
     "adjacent_complementary_angle(1,KML,LMJ)": [
       "right_triangle_judgment_angle(1,LMJ)"
     ],
@@ -45,12 +59,6 @@
     ],
     "right_triangle_judgment_angle(1,JLK)": [
       "right_triangle_property_pythagorean(1,JLK)"
-    ],
-    "START": [
-      "line_addition(1,KM,MJ)",
-      "adjacent_complementary_angle(1,KML,LMJ)",
-      "right_triangle_judgment_angle(1,KML)",
-      "right_triangle_judgment_angle(1,JLK)"
     ]
   }
 }

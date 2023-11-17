@@ -2,9 +2,9 @@
   "problem_id": 3991,
   "annotation": "ZheZhu_2023-04-30",
   "source": "GeoQA-1940",
-  "problem_level": 1,
-  "problem_text_cn": "一条排污水管的横截面如图所示,已知排污水管的横截面圆半径OB=5m,横截面的圆心O到污水面的距离OC=3m,则污水面宽AB等于()",
-  "problem_text_en": "The cross section of a sewage pipe is shown as the figure. It is known that the radius of the cross sectional of the sewage pipe is OB = N_0, and the distance from the center O of the cross section to the sewage surface OC = N_1, then the width of sewage surface AB is equal to ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，OB=5，OC=3，O是圆O的圆心，OC⊥BC。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, OB=5, OC=3, O is the center of circle O, OC⊥BC. Find the length of line AB.",
   "problem_img": "3991.png",
   "construction_cdl": [
     "Shape(OC,CB,BO)",
@@ -13,7 +13,12 @@
     "Collinear(ACB)",
     "Cocircular(O,AB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(OB),5)",
+    "Equal(LengthOfLine(OC),3)",
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(OC,BC)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "PerpendicularBetweenLine(OC,BC)",
@@ -29,17 +34,17 @@
     "right_triangle_judgment_angle(1,OCB)",
     "right_triangle_property_pythagorean(1,OCB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,ACO,OCB)",
+      "line_addition(1,AC,CB)",
+      "right_triangle_judgment_angle(1,OCB)"
+    ],
     "adjacent_complementary_angle(1,ACO,OCB)": [
       "circle_property_chord_perpendicular_bisect_chord(1,O,OC,AB)"
     ],
     "right_triangle_judgment_angle(1,OCB)": [
       "right_triangle_property_pythagorean(1,OCB)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,ACO,OCB)",
-      "line_addition(1,AC,CB)",
-      "right_triangle_judgment_angle(1,OCB)"
     ]
   }
 }

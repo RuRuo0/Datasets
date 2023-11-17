@@ -2,9 +2,9 @@
   "problem_id": 2736,
   "annotation": "ZheZhu_2023-04-23",
   "source": "Geometry3k-2882",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "G H \\cong K J. Find x.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，GH=KJ，∠JLG=83°，∠KLH=2*x-27°，圆L的圆心为L。求x的值。",
+  "problem_text_en": "As shown in the diagram, GH=KJ, ∠JLG=83°, ∠KLH=2*x-27°, L is the center of circle L. Find the value of x.",
   "problem_img": "2736.png",
   "construction_cdl": [
     "Shape(LKG,GL,LK)",
@@ -22,7 +22,12 @@
     "Collinear(GCBH)",
     "Cocircular(L,KGJH)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(GH),LengthOfLine(KJ))",
+    "Equal(MeasureOfAngle(JLG),83)",
+    "Equal(MeasureOfAngle(KLH),2*x-27)",
+    "IsCentreOfCircle(L,L)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(L,L)",
     "Equal(LengthOfLine(GH),LengthOfLine(KJ))",
@@ -41,7 +46,14 @@
     "arc_property_center_angle(1,LGJ,L)",
     "arc_property_center_angle(1,LHK,L)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "congruent_arc_judgment_chord_equal(1,LGH,LJK)",
+      "arc_addition_length(1,LGJ,LJH)",
+      "arc_addition_length(1,LJH,LHK)",
+      "arc_property_center_angle(1,LGJ,L)",
+      "arc_property_center_angle(1,LHK,L)"
+    ],
     "congruent_arc_judgment_chord_equal(1,LGH,LJK)": [
       "congruent_arc_property_length_equal(1,LGH,LJK)"
     ],
@@ -56,13 +68,6 @@
     ],
     "congruent_arc_judgment_length_equal(1,LHK,LGJ)": [
       "congruent_arc_property_measure_equal(1,LHK,LGJ)"
-    ],
-    "START": [
-      "congruent_arc_judgment_chord_equal(1,LGH,LJK)",
-      "arc_addition_length(1,LGJ,LJH)",
-      "arc_addition_length(1,LJH,LHK)",
-      "arc_property_center_angle(1,LGJ,L)",
-      "arc_property_center_angle(1,LHK,L)"
     ]
   }
 }

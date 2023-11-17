@@ -2,9 +2,9 @@
   "problem_id": 2485,
   "annotation": "YifanWang_2023-04-23",
   "source": "Geometry3k-2607",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find B C.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，BA=x+3，BC=2*x-8，DB=3，EB=5，EA平行于CD。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, BA=x+3, BC=2*x-8, DB=3, EB=5, EA∥CD. Find the length of line BC.",
   "problem_img": "2485.png",
   "construction_cdl": [
     "Shape(AE,EB,BA)",
@@ -12,7 +12,13 @@
     "Collinear(ABC)",
     "Collinear(EBD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BA),x+3)",
+    "Equal(LengthOfLine(BC),2*x-8)",
+    "Equal(LengthOfLine(DB),3)",
+    "Equal(LengthOfLine(EB),5)",
+    "ParallelBetweenLine(EA,CD)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(EB),5)",
     "Equal(LengthOfLine(BC),2*x-8)",
@@ -29,7 +35,11 @@
     "similar_triangle_property_line_ratio(1,AEB,CDB)",
     "similar_triangle_property_line_ratio(1,EBA,DBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_alternate_interior_angle(1,EA,CD)",
+      "vertical_angle(1,EBA,DBC)"
+    ],
     "parallel_property_alternate_interior_angle(1,EA,CD)": [
       "similar_triangle_judgment_aa(1,AEB,CDB)"
     ],
@@ -39,10 +49,6 @@
     "similar_triangle_judgment_aa(1,AEB,CDB)": [
       "similar_triangle_property_line_ratio(1,AEB,CDB)",
       "similar_triangle_property_line_ratio(1,EBA,DBC)"
-    ],
-    "START": [
-      "parallel_property_alternate_interior_angle(1,EA,CD)",
-      "vertical_angle(1,EBA,DBC)"
     ]
   }
 }

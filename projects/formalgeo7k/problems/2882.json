@@ -2,9 +2,9 @@
   "problem_id": 2882,
   "annotation": "YimingHe_2023-04-16",
   "source": "GeoQA-50",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O的直径CD过弦EF的中点G,∠DCF=20°,则∠EOD等于()",
-  "problem_text_en": "As shown in the figure, the diameter CD of ⊙O crosses the midpoint G of chord EF, ∠DCF = N_0, then ∠EOD is equal to ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠FCD=20°，O是圆O的圆心，G平分线段EF。求∠DOE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠FCD=20°, the center of ⊙O is O, G bisects segment EF. Find the measure of ∠DOE.",
   "problem_img": "2882.png",
   "construction_cdl": [
     "Shape(EO,OC,OCE)",
@@ -20,6 +20,7 @@
   ],
   "text_cdl": [
     "Equal(MeasureOfAngle(FCD),20)",
+    "IsCentreOfCircle(O,O)",
     "IsMidpointOfLine(G,EF)"
   ],
   "image_cdl": [
@@ -35,7 +36,13 @@
     "arc_property_circumference_angle_external(1,ODF,C)",
     "arc_property_center_angle(1,ODF,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OE,O)",
+      "radius_of_circle_property_length_equal(1,OF,O)",
+      "arc_property_circumference_angle_external(1,ODF,C)",
+      "arc_property_center_angle(1,ODF,O)"
+    ],
     "radius_of_circle_property_length_equal(1,OE,O)": [
       "mirror_congruent_triangle_judgment_sss(1,OEG,OGF)"
     ],
@@ -44,12 +51,6 @@
     ],
     "mirror_congruent_triangle_judgment_sss(1,OEG,OGF)": [
       "mirror_congruent_triangle_property_angle_equal(1,OEG,OGF)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OE,O)",
-      "radius_of_circle_property_length_equal(1,OF,O)",
-      "arc_property_circumference_angle_external(1,ODF,C)",
-      "arc_property_center_angle(1,ODF,O)"
     ]
   }
 }

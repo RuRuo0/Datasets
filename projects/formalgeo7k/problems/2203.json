@@ -2,9 +2,9 @@
   "problem_id": 2203,
   "annotation": "XiaoxiaoJin_2023-04-23",
   "source": "Geometry3k-2300",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find A P.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，OK=8，RB=OB，O是圆O的圆心，AB⊥OB。求直线AP的长度。",
+  "problem_text_en": "As shown in the diagram, OK=8, RB=OB, the center of circle O is O, AB⊥OB. Find the length of line AP.",
   "problem_img": "2203.png",
   "construction_cdl": [
     "Shape(PB,BR,OPR)",
@@ -16,7 +16,12 @@
     "Collinear(OBR)",
     "Cocircular(O,ARPK)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(OK),8)",
+    "Equal(LengthOfLine(RB),LengthOfLine(OB))",
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(AB,OB)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(OK),8)",
     "PerpendicularBetweenLine(AB,OB)",
@@ -35,10 +40,7 @@
     "right_triangle_judgment_angle(1,ABO)",
     "right_triangle_property_pythagorean(1,ABO)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,ABO)": [
-      "right_triangle_property_pythagorean(1,ABO)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,OA,O)",
       "radius_of_circle_property_length_equal(1,OR,O)",
@@ -47,6 +49,9 @@
       "line_addition(1,PB,BA)",
       "circle_property_chord_perpendicular_bisect_chord(1,O,OB,AP)",
       "right_triangle_judgment_angle(1,ABO)"
+    ],
+    "right_triangle_judgment_angle(1,ABO)": [
+      "right_triangle_property_pythagorean(1,ABO)"
     ]
   }
 }

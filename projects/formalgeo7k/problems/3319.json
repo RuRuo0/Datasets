@@ -2,9 +2,9 @@
   "problem_id": 3319,
   "annotation": "YimingHe_2023-04-30",
   "source": "GeoQA-708",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,∠C=90°,AC=BC,AD平分∠BAC交BC于点D,DE⊥AB于点E,若BD=5cm,DE=3cm,则AC的长为()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠C = N_0, AC = BC, AD bisects ∠BAC and it intersects BC at point D, DE ⊥ AB at point E, if BD = N_1, DE = N_2, then the length of AC is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AC=BC，BD=5，DE=3，∠ACD=90°，AD是∠EAC的角平分线，DE垂直于AE。求直线AC的长度。",
+  "problem_text_en": "As shown in the diagram, AC=BC, BD=5, DE=3, ∠ACD=90°, AD bisects ∠EAC, DE is perpendicular to AE. Find the length of line AC.",
   "problem_img": "3319.png",
   "construction_cdl": [
     "Shape(AC,CD,DA)",
@@ -14,12 +14,12 @@
     "Collinear(AEB)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(ACD),90)",
     "Equal(LengthOfLine(AC),LengthOfLine(BC))",
-    "IsBisectorOfAngle(AD,EAC)",
-    "PerpendicularBetweenLine(DE,AE)",
     "Equal(LengthOfLine(BD),5)",
-    "Equal(LengthOfLine(DE),3)"
+    "Equal(LengthOfLine(DE),3)",
+    "Equal(MeasureOfAngle(ACD),90)",
+    "IsBisectorOfAngle(AD,EAC)",
+    "PerpendicularBetweenLine(DE,AE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AC))",
@@ -29,13 +29,13 @@
     "mirror_congruent_triangle_property_line_equal(1,ACD,ADE)",
     "line_addition(1,CD,DB)"
   ],
-  "theorem_seq_dag": {
-    "mirror_congruent_triangle_judgment_aas(1,DAC,DEA)": [
-      "mirror_congruent_triangle_property_line_equal(1,ACD,ADE)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "mirror_congruent_triangle_judgment_aas(1,DAC,DEA)",
       "line_addition(1,CD,DB)"
+    ],
+    "mirror_congruent_triangle_judgment_aas(1,DAC,DEA)": [
+      "mirror_congruent_triangle_property_line_equal(1,ACD,ADE)"
     ]
   }
 }

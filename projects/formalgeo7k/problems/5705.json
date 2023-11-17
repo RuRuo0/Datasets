@@ -2,9 +2,9 @@
   "problem_id": 5705,
   "annotation": "NaZhu_2023-05-28",
   "source": "GeoQA-7459",
-  "problem_level": 1,
-  "problem_text_cn": "在△ABC中,DE∥BC,AD:AB=3:4,△ABC的面积等于48,则△ADE的面积等于()",
-  "problem_text_en": "In △ABC, DE ∥ BC, AD:AB = N_0:N_1, the area of △ABC is equal to N_2, then the area of △ADE is equal to ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，△ABC的面积为48，Div(LengthOfLine(AD)=LengthOfLine(AB))，DE∥BC。求三角形ADE的面积。",
+  "problem_text_en": "As shown in the diagram, the area of △ABC is 48, Div(LengthOfLine(AD)=LengthOfLine(AB)), DE is parallel to BC. Find the area of triangle ADE.",
   "problem_img": "5705.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -13,9 +13,9 @@
     "Collinear(AEC)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(DE,BC)",
+    "Equal(AreaOfTriangle(ABC),48)",
     "Equal(Div(LengthOfLine(AD),LengthOfLine(AB)),3/4)",
-    "Equal(AreaOfTriangle(ABC),48)"
+    "ParallelBetweenLine(DE,BC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(AreaOfTriangle(ADE))",
@@ -27,7 +27,11 @@
     "similar_triangle_property_line_ratio(1,EAD,CAB)",
     "similar_triangle_property_area_square_ratio(1,ADE,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,DE,BC,A)",
+      "parallel_property_corresponding_angle(2,CB,ED,A)"
+    ],
     "parallel_property_corresponding_angle(1,DE,BC,A)": [
       "similar_triangle_judgment_aa(1,ADE,ABC)"
     ],
@@ -37,10 +41,6 @@
     "similar_triangle_judgment_aa(1,ADE,ABC)": [
       "similar_triangle_property_area_square_ratio(1,ADE,ABC)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,DE,BC,A)",
-      "parallel_property_corresponding_angle(2,CB,ED,A)"
     ]
   }
 }

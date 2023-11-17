@@ -2,9 +2,9 @@
   "problem_id": 6115,
   "annotation": "YifanWang_2023-06-04",
   "source": "GeoQA-8664",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,∠ADC=30°,OA=2,则BC长为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of O, ∠ADC = N_0, OA = N_1, then BC is long ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，OA=2，∠CDA=30°，圆O的圆心为O。求直线CB的长度。",
+  "problem_text_en": "As shown in the diagram, OA=2, ∠CDA=30°, O is the center of ⊙O. Find the length of line CB.",
   "problem_img": "6115.png",
   "construction_cdl": [
     "Shape(AO,OB,OBA)",
@@ -20,9 +20,9 @@
     "Cocircular(O,ACDB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(OA),2)",
-    "Equal(MeasureOfAngle(CDA),30)"
+    "Equal(MeasureOfAngle(CDA),30)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(CB))",
@@ -38,11 +38,7 @@
     "cosine_theorem(1,CBA)",
     "sine_theorem(1,ACB)"
   ],
-  "theorem_seq_dag": {
-    "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
-      "diameter_of_circle_property_length_equal(1,AB,O)",
-      "diameter_of_circle_property_right_angle(1,ACB,O)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_circumference_angle_external(1,OAC,D)",
       "arc_property_circumference_angle_external(1,OAC,B)",
@@ -51,6 +47,10 @@
       "radius_of_circle_property_length_equal(1,OA,O)",
       "cosine_theorem(1,CBA)",
       "sine_theorem(1,ACB)"
+    ],
+    "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+      "diameter_of_circle_property_length_equal(1,AB,O)",
+      "diameter_of_circle_property_right_angle(1,ACB,O)"
     ]
   }
 }

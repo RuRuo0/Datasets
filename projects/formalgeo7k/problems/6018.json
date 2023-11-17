@@ -2,9 +2,9 @@
   "problem_id": 6018,
   "annotation": "ChenyangMao_2023-05-28",
   "source": "GeoQA-8498",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC的顶点A、B、C均在⊙O上,∠OAC=40°,∠OBC=15°则∠AOB的度数是()",
-  "problem_text_en": "As shown in the figure, the vertices A, B, and C of △ABC are all on ⊙O, ∠OAC = N_0, ∠OBC = N_1, then the degree of ∠AOB is ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，∠CAO=40°，∠OBC=15°，O是圆O的圆心。求∠BOA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAO=40°, ∠OBC=15°, the center of circle O is O. Find the measure of ∠BOA.",
   "problem_img": "6018.png",
   "construction_cdl": [
     "Shape(OCA,AC)",
@@ -16,9 +16,9 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(CAO),40)",
     "Equal(MeasureOfAngle(OBC),15)",
-    "Equal(MeasureOfAngle(CAO),40)"
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BOA))",
@@ -35,7 +35,15 @@
     "arc_property_circumference_angle_external(1,OAB,C)",
     "arc_property_center_angle(1,OAB,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "angle_addition(1,BCO,OCA)",
+      "arc_property_circumference_angle_external(1,OAB,C)",
+      "arc_property_center_angle(1,OAB,O)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OCA)"
     ],
@@ -51,14 +59,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OBC)": [
       "isosceles_triangle_property_angle_equal(1,OBC)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "angle_addition(1,BCO,OCA)",
-      "arc_property_circumference_angle_external(1,OAB,C)",
-      "arc_property_center_angle(1,OAB,O)"
     ]
   }
 }

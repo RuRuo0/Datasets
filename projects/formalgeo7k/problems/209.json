@@ -2,9 +2,9 @@
   "problem_id": 209,
   "annotation": "XiaokaiZhang_2023-03-12",
   "source": "Geometry3k-211",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If IJ*YJ=HJ*XJ, WXH=130, and YZI=20, find the measure of angle HIJ.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠WXH=130°，∠YZI=20°，Mul(LengthOfLine(IJ)=LengthOfLine(YJ))。求∠HIJ的大小。",
+  "problem_text_en": "As shown in the diagram, ∠WXH=130°, ∠YZI=20°, Mul(LengthOfLine(IJ)=LengthOfLine(YJ)). Find the measure of ∠HIJ.",
   "problem_img": "209.png",
   "construction_cdl": [
     "Shape(JH,HI,IJ)",
@@ -17,9 +17,9 @@
     "Collinear(HIZ)"
   ],
   "text_cdl": [
-    "Equal(Mul(LengthOfLine(IJ),LengthOfLine(YJ)),Mul(LengthOfLine(HJ),LengthOfLine(XJ)))",
     "Equal(MeasureOfAngle(WXH),130)",
-    "Equal(MeasureOfAngle(YZI),20)"
+    "Equal(MeasureOfAngle(YZI),20)",
+    "Equal(Mul(LengthOfLine(IJ),LengthOfLine(YJ)),Mul(LengthOfLine(HJ),LengthOfLine(XJ)))"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(HIJ))",
@@ -29,13 +29,13 @@
     "mirror_similar_triangle_judgment_sas(1,JHI,JXY)",
     "mirror_similar_triangle_property_angle_equal(1,IJH,XYJ)"
   ],
-  "theorem_seq_dag": {
-    "mirror_similar_triangle_judgment_sas(1,JHI,JXY)": [
-      "mirror_similar_triangle_property_angle_equal(1,IJH,XYJ)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,WXH,HXY)",
       "mirror_similar_triangle_judgment_sas(1,JHI,JXY)"
+    ],
+    "mirror_similar_triangle_judgment_sas(1,JHI,JXY)": [
+      "mirror_similar_triangle_property_angle_equal(1,IJH,XYJ)"
     ]
   }
 }

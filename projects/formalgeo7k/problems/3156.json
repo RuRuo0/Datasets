@@ -2,9 +2,9 @@
   "problem_id": 3156,
   "annotation": "JiaZou_2023-04-23",
   "source": "GeoQA-423",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB和CD都是⊙O的直径,∠AOC=50°,则∠C的度数是()",
-  "problem_text_en": "As shown in the figure, AB and CD are both the diameter of ⊙O, ∠AOC = N_0, then the degree of ∠C is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AB=DiameterOfCircle(O)，∠AOC=50°，O是圆O的圆心。求∠BCO的大小。",
+  "problem_text_en": "As shown in the diagram, AB=DiameterOfCircle(O), ∠AOC=50°, O is the center of circle O. Find the measure of ∠BCO.",
   "problem_img": "3156.png",
   "construction_cdl": [
     "Shape(CO,OB,BC)",
@@ -17,9 +17,9 @@
     "Cocircular(O,ADBC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(AB),DiameterOfCircle(O))",
-    "Equal(MeasureOfAngle(AOC),50)"
+    "Equal(MeasureOfAngle(AOC),50)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BCO))",
@@ -32,7 +32,13 @@
     "isosceles_triangle_judgment_line_equal(1,OBC)",
     "isosceles_triangle_property_angle_equal(1,OBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_circumference_angle_external(1,OCA,B)",
+      "arc_property_center_angle(1,OCA,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)"
+    ],
     "radius_of_circle_property_length_equal(1,OC,O)": [
       "isosceles_triangle_judgment_line_equal(1,OBC)"
     ],
@@ -41,12 +47,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OBC)": [
       "isosceles_triangle_property_angle_equal(1,OBC)"
-    ],
-    "START": [
-      "arc_property_circumference_angle_external(1,OCA,B)",
-      "arc_property_center_angle(1,OCA,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)"
     ]
   }
 }

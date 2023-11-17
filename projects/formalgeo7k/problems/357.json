@@ -2,9 +2,9 @@
   "problem_id": 357,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-364",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "A B C D is a rhombus. If P B = 12, A B = 15, and m \\angle A B D = 24. Find m \\angle A C B.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=15，PB=12，∠DBA=24°，ADCB是菱形。求∠ACB的大小。",
+  "problem_text_en": "As shown in the diagram, AB=15, PB=12, ∠DBA=24°, ADCB is a rhombus. Find the measure of ∠ACB.",
   "problem_img": "357.png",
   "construction_cdl": [
     "Shape(AD,DP,PA)",
@@ -15,6 +15,9 @@
     "Collinear(APC)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AB),15)",
+    "Equal(LengthOfLine(PB),12)",
+    "Equal(MeasureOfAngle(DBA),24)",
     "Rhombus(ADCB)"
   ],
   "image_cdl": [
@@ -31,7 +34,12 @@
     "isosceles_triangle_property_line_coincidence(1,BAC,P)",
     "triangle_property_angle_sum(1,BPC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "kite_property_diagonal_perpendicular_bisection(1,BADC,P)",
+      "isosceles_triangle_judgment_line_equal(1,BAC)",
+      "triangle_property_angle_sum(1,BPC)"
+    ],
     "kite_property_diagonal_perpendicular_bisection(1,BADC,P)": [
       "altitude_of_triangle_judgment(1,BP,BAC)"
     ],
@@ -40,11 +48,6 @@
     ],
     "altitude_of_triangle_judgment(1,BP,BAC)": [
       "isosceles_triangle_property_line_coincidence(1,BAC,P)"
-    ],
-    "START": [
-      "kite_property_diagonal_perpendicular_bisection(1,BADC,P)",
-      "isosceles_triangle_judgment_line_equal(1,BAC)",
-      "triangle_property_angle_sum(1,BPC)"
     ]
   }
 }

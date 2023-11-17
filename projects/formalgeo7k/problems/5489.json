@@ -2,9 +2,9 @@
   "problem_id": 5489,
   "annotation": "ChenyangMao_2023-05-21",
   "source": "GeoQA-5946",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,点D、E分别是AB、AC的中点,若DE=1.5,则BC的长是()",
-  "problem_text_en": "As shown in the figure, in △ABC, points D and E are the midpoints of AB and AC respectively. If DE = N_0, the length of BC is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，DE=3/2，D平分线段AB，E是线段AC的中点。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, DE=3/2, D is the midpoint of segment AB, E bisects segment AC. Find the length of line BC.",
   "problem_img": "5489.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -13,9 +13,9 @@
     "Collinear(AEC)"
   ],
   "text_cdl": [
-    "IsMidpointOfLine(E,AC)",
+    "Equal(LengthOfLine(DE),3/2)",
     "IsMidpointOfLine(D,AB)",
-    "Equal(LengthOfLine(DE),3/2)"
+    "IsMidpointOfLine(E,AC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BC))",
@@ -24,12 +24,12 @@
     "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)",
     "midsegment_of_triangle_property_length(1,DE,ABC)"
   ],
-  "theorem_seq_dag": {
-    "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)": [
-      "midsegment_of_triangle_property_length(1,DE,ABC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)"
+    ],
+    "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)": [
+      "midsegment_of_triangle_property_length(1,DE,ABC)"
     ]
   }
 }

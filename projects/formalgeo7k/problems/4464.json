@@ -2,9 +2,9 @@
   "problem_id": 4464,
   "annotation": "JiaZou_2023-05-14",
   "source": "GeoQA-3443",
-  "problem_level": 1,
-  "problem_text_cn": "在直径为20cm的圆柱形油槽内装入一些油后,截面如图所示,若油槽面宽AB=16cm,则油的最大深度为()",
-  "problem_text_en": "After filling some oil in a cylindrical oil groove with a diameter of N_0, the cross section is as shown in the figure. If the oil groove surface width AB = N_1, the maximum oil depth is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AB=16，CD=20，∠AEO=90°，O是⊙O的圆心，圆O的直径为CD。求直线EP的长度。",
+  "problem_text_en": "As shown in the diagram, AB=16, CD=20, ∠AEO=90°, the center of ⊙O is O, CD is the diameter of ⊙O. Find the length of line EP.",
   "problem_img": "4464.png",
   "construction_cdl": [
     "Shape(CO,OD,ODC)",
@@ -18,11 +18,11 @@
     "Cocircular(O,APBDC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(CD,O)",
-    "Equal(LengthOfLine(CD),20)",
     "Equal(LengthOfLine(AB),16)",
-    "Equal(MeasureOfAngle(AEO),90)"
+    "Equal(LengthOfLine(CD),20)",
+    "Equal(MeasureOfAngle(AEO),90)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(CD,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(EP))",
@@ -38,10 +38,7 @@
     "radius_of_circle_property_length_equal(1,OP,O)",
     "line_addition(1,OE,EP)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,AEO)": [
-      "right_triangle_property_pythagorean(1,AEO)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "circle_property_chord_perpendicular_bisect_chord(1,O,OE,AB)",
       "line_addition(1,AE,EB)",
@@ -51,6 +48,9 @@
       "right_triangle_judgment_angle(1,AEO)",
       "radius_of_circle_property_length_equal(1,OP,O)",
       "line_addition(1,OE,EP)"
+    ],
+    "right_triangle_judgment_angle(1,AEO)": [
+      "right_triangle_property_pythagorean(1,AEO)"
     ]
   }
 }

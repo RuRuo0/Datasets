@@ -2,9 +2,9 @@
   "problem_id": 4658,
   "annotation": "YiwenHuang_2023-05-21",
   "source": "GeoQA-3910",
-  "problem_level": 1,
-  "problem_text_cn": "如图,两个圆都以点O为圆心,大圆的弦AB与小圆相切,已知AB=10cm,则两因形成的圆环的面积等于()",
-  "problem_text_en": "As shown in the figure, the two circles are centered at point O, and the chord AB of the great circle is tangent to the small circle. Knowing that AB = N_0, the area of ​​the ring formed by the two factors is equal to ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，圆O的半径为8，圆P的半径为sqrt(39)，圆O的圆心为O，⊙P的圆心为P。求⊙O的面积减去⊙P的面积。",
+  "problem_text_en": "As shown in the diagram, the radius of circle O is 8, the radius of ⊙P is sqrt(39), O is the center of ⊙O, P is the center of circle P. Find the area of the ⊙O minus the area of the circle P.",
   "problem_img": "4658.png",
   "construction_cdl": [
     "Shape(OAB,OBA)",
@@ -13,10 +13,10 @@
     "Cocircular(P,CD)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsCentreOfCircle(P,P)",
     "Equal(RadiusOfCircle(O),8)",
-    "Equal(RadiusOfCircle(P),sqrt(39))"
+    "Equal(RadiusOfCircle(P),sqrt(39))",
+    "IsCentreOfCircle(O,O)",
+    "IsCentreOfCircle(P,P)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Sub(AreaOfCircle(O),AreaOfCircle(P)))",
@@ -25,7 +25,7 @@
     "circle_area_formula(1,O)",
     "circle_area_formula(1,P)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "circle_area_formula(1,O)",
       "circle_area_formula(1,P)"

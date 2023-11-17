@@ -2,9 +2,9 @@
   "problem_id": 4823,
   "annotation": "ChenyangMao_2023-05-14",
   "source": "GeoQA-4266",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点C是半圆O的直径AB的延长线上一点．CD与半圆O相切,D为切点,过点D作DE∥AB交半圆O于点E．若四边形OCDE是平行四边形,CD=4,则ED的长为()",
-  "problem_text_en": "As shown in the figure, point C is a point on the extended line of the diameter AB of the semicircle O. CD is tangent to the semicircle O, D is the tangent point, passing through point D is DE ∥ AB intersects the semicircle O at point E. If the quadrilateral OCDE is a parallelogram, CD = N_0, then the length of ED is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，CD=4，O是圆O的圆心，AB是⊙O的直径，CD是⊙O的切线，CO和DE是▱OCDE的一组对边。求直线ED的长度。",
+  "problem_text_en": "As shown in the diagram, CD=4, O is the center of ⊙O, AB is the diameter of ⊙O, CD is the tangent to circle O, quadrilateral OCDE is a parallelogram. Find the length of line ED.",
   "problem_img": "4823.png",
   "construction_cdl": [
     "Shape(OEA,AO,OE)",
@@ -16,10 +16,10 @@
     "Cocircular(O,BDEA)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(CD,O)",
-    "IsDiameterOfCircle(AB,O)",
     "Equal(LengthOfLine(CD),4)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)",
+    "IsTangentOfCircle(CD,O)",
     "Parallelogram(OCDE)"
   ],
   "image_cdl": [],
@@ -34,7 +34,14 @@
     "right_triangle_judgment_angle(1,EOD)",
     "right_triangle_property_pythagorean(1,EOD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallelogram_property_opposite_line_equal(1,CDEO)",
+      "tangent_of_circle_property_perpendicular(2,CD,O,O)",
+      "parallel_property_alternate_interior_angle(1,OE,CD)",
+      "radius_of_circle_property_length_equal(1,OD,O)",
+      "radius_of_circle_property_length_equal(1,OE,O)"
+    ],
     "tangent_of_circle_property_perpendicular(2,CD,O,O)": [
       "right_triangle_judgment_angle(1,EOD)"
     ],
@@ -43,13 +50,6 @@
     ],
     "right_triangle_judgment_angle(1,EOD)": [
       "right_triangle_property_pythagorean(1,EOD)"
-    ],
-    "START": [
-      "parallelogram_property_opposite_line_equal(1,CDEO)",
-      "tangent_of_circle_property_perpendicular(2,CD,O,O)",
-      "parallel_property_alternate_interior_angle(1,OE,CD)",
-      "radius_of_circle_property_length_equal(1,OD,O)",
-      "radius_of_circle_property_length_equal(1,OE,O)"
     ]
   }
 }

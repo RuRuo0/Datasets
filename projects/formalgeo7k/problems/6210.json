@@ -2,9 +2,9 @@
   "problem_id": 6210,
   "annotation": "DengfengYue_2023-05-28",
   "source": "GeoQA-8798",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,C是⊙O上的一点,若BC=6,AB=10,OD⊥BC于点D,则OD的长为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, C is a point on ⊙O, if BC = N_0, AB = N_1, OD ⊥ BC at point D, then the length of OD is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AB=10，BC=6，O是⊙O的圆心，AB是圆O的直径，BD垂直于OD。求直线OD的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, BC=6, O is the center of ⊙O, AB is the diameter of ⊙O, BD⊥OD. Find the length of line OD.",
   "problem_img": "6210.png",
   "construction_cdl": [
     "Shape(AC,OCA)",
@@ -17,10 +17,10 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AB),10)",
+    "Equal(LengthOfLine(BC),6)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)",
-    "Equal(LengthOfLine(BC),6)",
-    "Equal(LengthOfLine(AB),10)",
     "PerpendicularBetweenLine(BD,OD)"
   ],
   "image_cdl": [],
@@ -36,7 +36,12 @@
     "midsegment_of_triangle_judgment_parallel(1,DO,BCA)",
     "midsegment_of_triangle_property_length(1,DO,BCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "diameter_of_circle_property_right_angle(1,BCA,O)",
+      "adjacent_complementary_angle(1,BDO,ODC)",
+      "circle_property_chord_perpendicular_bisect_chord(1,O,OD,BC)"
+    ],
     "diameter_of_circle_property_right_angle(1,BCA,O)": [
       "right_triangle_judgment_angle(1,BCA)",
       "parallel_judgment_ipsilateral_internal_angle(1,DO,CA)"
@@ -55,11 +60,6 @@
     ],
     "midsegment_of_triangle_judgment_parallel(1,DO,BCA)": [
       "midsegment_of_triangle_property_length(1,DO,BCA)"
-    ],
-    "START": [
-      "diameter_of_circle_property_right_angle(1,BCA,O)",
-      "adjacent_complementary_angle(1,BDO,ODC)",
-      "circle_property_chord_perpendicular_bisect_chord(1,O,OD,BC)"
     ]
   }
 }

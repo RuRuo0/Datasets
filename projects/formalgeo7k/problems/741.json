@@ -3,8 +3,8 @@
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-766",
   "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "R S T V is a trapezoid with bases R V and S T and median M N. Find x if M N = 60, S T = 4 x - 1, and R V = 6 x + 11.",
+  "problem_text_cn": "如图所示，MN=60，RV=6*x+11，ST=4*x-1，MN是RSTV的中位线。求x的值。",
+  "problem_text_en": "As shown in the diagram, MN=60, RV=6*x+11, ST=4*x-1, the midsegment of quadrilateral RSTV is MN. Find the value of x.",
   "problem_img": "741.png",
   "construction_cdl": [
     "Shape(RM,MN,NV,VR)",
@@ -12,7 +12,12 @@
     "Collinear(RMS)",
     "Collinear(VNT)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(MN),60)",
+    "Equal(LengthOfLine(RV),6*x+11)",
+    "Equal(LengthOfLine(ST),4*x-1)",
+    "IsMidsegmentOfQuadrilateral(MN,RSTV)"
+  ],
   "image_cdl": [
     "IsMidsegmentOfQuadrilateral(MN,RSTV)",
     "Equal(LengthOfLine(MN),60)",
@@ -24,7 +29,7 @@
   "theorem_seqs": [
     "midsegment_of_quadrilateral_property_length(1,MN,RSTV)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "midsegment_of_quadrilateral_property_length(1,MN,RSTV)"
     ]

@@ -2,9 +2,9 @@
   "problem_id": 2872,
   "annotation": "YimingHe_2023-04-16",
   "source": "GeoQA-38",
-  "problem_level": 1,
-  "problem_text_cn": "绍兴市著名的桥乡,如图,石拱桥的桥顶到水面的距离CD为8m,桥拱半径OC为5m,则水面宽AB为()",
-  "problem_text_en": "The famous bridge township in Shaoxing, as shown in the figure, the distance CD from the top of the stone arch bridge to the water surface is N_0, the arch radius OC is N_1, and the water surface width AB is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，CD=8，圆O的半径为5，圆O的圆心为O，OD垂直平分AB。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, CD=8, the radius of circle O is 5, the center of circle O is O, OD perpendicular bisects AB. Find the length of line AB.",
   "problem_img": "2872.png",
   "construction_cdl": [
     "Shape(AD,DO,OA)",
@@ -18,6 +18,7 @@
   "text_cdl": [
     "Equal(LengthOfLine(CD),8)",
     "Equal(RadiusOfCircle(O),5)",
+    "IsCentreOfCircle(O,O)",
     "IsPerpendicularBisectorOfLine(OD,AB)"
   ],
   "image_cdl": [
@@ -33,16 +34,16 @@
     "right_triangle_property_pythagorean(1,ADO)",
     "line_addition(1,AD,DB)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,ADO)": [
-      "right_triangle_property_pythagorean(1,ADO)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,OC,O)",
       "radius_of_circle_property_length_equal(1,OA,O)",
       "line_addition(1,CO,OD)",
       "right_triangle_judgment_angle(1,ADO)",
       "line_addition(1,AD,DB)"
+    ],
+    "right_triangle_judgment_angle(1,ADO)": [
+      "right_triangle_property_pythagorean(1,ADO)"
     ]
   }
 }

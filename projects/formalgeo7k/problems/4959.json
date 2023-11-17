@@ -2,9 +2,9 @@
   "problem_id": 4959,
   "annotation": "FangzhenZhu_2023-05-21",
   "source": "GeoQA-4639",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知AD为△ABC的角平分线,DE∥AB交AC于E,如果\\frac{AE}{EC}=\\frac{3}{5},那么\\frac{AC}{AB}=()",
-  "problem_text_en": "As shown in the figure, it is known that AD is the angular bisector of △ABC, DE ∥ AB crosses AC to E, if \\frac{AE}{EC} = \\frac{N_0}{N_1}, then \\frac {AC}{AB} = ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，Div(LengthOfLine(AE)=LengthOfLine(EC))，AD是∠CAB的角平分线，ED∥AB。求直线AC的长度与直线AB的长度之比。",
+  "problem_text_en": "As shown in the diagram, Div(LengthOfLine(AE)=LengthOfLine(EC)), AD is the angle bisector of ∠CAB, ED∥AB. Find the ratio of the length of line AC to the length of line AB.",
   "problem_img": "4959.png",
   "construction_cdl": [
     "Shape(AB,BD,DA)",
@@ -14,9 +14,9 @@
     "Collinear(BDC)"
   ],
   "text_cdl": [
+    "Equal(Div(LengthOfLine(AE),LengthOfLine(EC)),3/5)",
     "IsBisectorOfAngle(AD,CAB)",
-    "ParallelBetweenLine(ED,AB)",
-    "Equal(Div(LengthOfLine(AE),LengthOfLine(EC)),3/5)"
+    "ParallelBetweenLine(ED,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Div(LengthOfLine(AC),LengthOfLine(AB)))",
@@ -30,7 +30,12 @@
     "similar_triangle_property_line_ratio(1,CED,CAB)",
     "line_addition(1,AE,EC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_alternate_interior_angle(2,ED,AB)",
+      "parallel_property_corresponding_angle(2,BA,DE,C)",
+      "line_addition(1,AE,EC)"
+    ],
     "parallel_property_alternate_interior_angle(2,ED,AB)": [
       "isosceles_triangle_judgment_angle_equal(1,EAD)"
     ],
@@ -40,11 +45,6 @@
     "similar_triangle_judgment_aa(1,EDC,ABC)": [
       "similar_triangle_property_line_ratio(1,DCE,BCA)",
       "similar_triangle_property_line_ratio(1,CED,CAB)"
-    ],
-    "START": [
-      "parallel_property_alternate_interior_angle(2,ED,AB)",
-      "parallel_property_corresponding_angle(2,BA,DE,C)",
-      "line_addition(1,AE,EC)"
     ]
   }
 }

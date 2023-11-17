@@ -2,9 +2,9 @@
   "problem_id": 2024,
   "annotation": "QikeHuang_2023-04-23",
   "source": "Geometry3k-2110",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of A B C D.",
+  "problem_level": 17,
+  "problem_text_cn": "如图所示，AF=y，DA=8，DC=z，DF=x，FE=6，∠DAF=30°，∠EBC=45°，DC平行于FE，AF垂直于DF，CE⊥BE。求四边形ABCD的周长。",
+  "problem_text_en": "As shown in the diagram, AF=y, DA=8, DC=z, DF=x, FE=6, ∠DAF=30°, ∠EBC=45°, DC∥FE, AF⊥DF, CE is perpendicular to BE. Find the perimeter of quadrilateral ABCD.",
   "problem_img": "2024.png",
   "construction_cdl": [
     "Shape(DA,AF,FD)",
@@ -12,7 +12,18 @@
     "Shape(CE,EB,BC)",
     "Collinear(AFEB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AF),y)",
+    "Equal(LengthOfLine(DA),8)",
+    "Equal(LengthOfLine(DC),z)",
+    "Equal(LengthOfLine(DF),x)",
+    "Equal(LengthOfLine(FE),6)",
+    "Equal(MeasureOfAngle(DAF),30)",
+    "Equal(MeasureOfAngle(EBC),45)",
+    "ParallelBetweenLine(DC,FE)",
+    "PerpendicularBetweenLine(AF,DF)",
+    "PerpendicularBetweenLine(CE,BE)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(DC),z)",
     "Equal(MeasureOfAngle(DAF),30)",
@@ -46,7 +57,20 @@
     "line_addition(1,AE,EB)",
     "quadrilateral_perimeter_formula(1,ABCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,AFD,DFE)",
+      "adjacent_complementary_angle(1,AEC,CEB)",
+      "triangle_property_angle_sum(1,DAF)",
+      "triangle_property_angle_sum(1,CEB)",
+      "sine_theorem(1,DAF)",
+      "sine_theorem(1,AFD)",
+      "sine_theorem(1,CEB)",
+      "sine_theorem(1,EBC)",
+      "line_addition(1,AF,FE)",
+      "line_addition(1,AE,EB)",
+      "quadrilateral_perimeter_formula(1,ABCD)"
+    ],
     "adjacent_complementary_angle(1,AFD,DFE)": [
       "perpendicular_judgment_angle(1,DF,EF)"
     ],
@@ -65,19 +89,6 @@
     "parallelogram_judgment_parallel_and_parallel(1,DFEC)": [
       "parallelogram_property_opposite_line_equal(1,DFEC)",
       "parallelogram_property_opposite_line_equal(1,FECD)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,AFD,DFE)",
-      "adjacent_complementary_angle(1,AEC,CEB)",
-      "triangle_property_angle_sum(1,DAF)",
-      "triangle_property_angle_sum(1,CEB)",
-      "sine_theorem(1,DAF)",
-      "sine_theorem(1,AFD)",
-      "sine_theorem(1,CEB)",
-      "sine_theorem(1,EBC)",
-      "line_addition(1,AF,FE)",
-      "line_addition(1,AE,EB)",
-      "quadrilateral_perimeter_formula(1,ABCD)"
     ]
   }
 }

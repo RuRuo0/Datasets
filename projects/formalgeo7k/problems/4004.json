@@ -2,9 +2,9 @@
   "problem_id": 4004,
   "annotation": "ZheZhu_2023-04-30",
   "source": "GeoQA-1965",
-  "problem_level": 1,
-  "problem_text_cn": "如图,一块三角板与圆片重合,直角边AB=AC=2,使AB与圆片直径重合,则阴影部分的面积为()",
-  "problem_text_en": "As shown in the figure, a triangular plate coincides with the disc, the right-angle edgeAB = AC = N_0, so that AB coincides with the diameter of the disc, then the area of ​​the shaded part is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AB=2，AC=2，∠ABC=45°，∠BCA=45°，∠CAB=90°，⊙O的圆心为O，⊙O的直径为AB。求三角形DCA的面积。",
+  "problem_text_en": "As shown in the diagram, AB=2, AC=2, ∠ABC=45°, ∠BCA=45°, ∠CAB=90°, O is the center of ⊙O, the diameter of circle O is AB. Find the area of △DCA.",
   "problem_img": "4004.png",
   "construction_cdl": [
     "Shape(DC,CA,ODA)",
@@ -16,7 +16,15 @@
     "Collinear(BDC)",
     "Cocircular(O,BDA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),2)",
+    "Equal(LengthOfLine(AC),2)",
+    "Equal(MeasureOfAngle(ABC),45)",
+    "Equal(MeasureOfAngle(BCA),45)",
+    "Equal(MeasureOfAngle(CAB),90)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)"
+  ],
   "image_cdl": [
     "IsDiameterOfCircle(AB,O)",
     "IsCentreOfCircle(O,O)",
@@ -39,7 +47,15 @@
     "right_triangle_property_pythagorean(1,BDA)",
     "triangle_area_formula_sine(1,ADC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "diameter_of_circle_property_right_angle(1,BDA,O)",
+      "flat_angle(1,BDC)",
+      "angle_addition(1,BDA,ADC)",
+      "triangle_property_angle_sum(1,BDA)",
+      "triangle_property_angle_sum(1,DCA)",
+      "triangle_area_formula_sine(1,ADC)"
+    ],
     "diameter_of_circle_property_right_angle(1,BDA,O)": [
       "right_triangle_judgment_angle(1,BDA)",
       "isosceles_triangle_judgment_angle_equal(1,DAB)"
@@ -49,14 +65,6 @@
     ],
     "right_triangle_judgment_angle(1,BDA)": [
       "right_triangle_property_pythagorean(1,BDA)"
-    ],
-    "START": [
-      "diameter_of_circle_property_right_angle(1,BDA,O)",
-      "flat_angle(1,BDC)",
-      "angle_addition(1,BDA,ADC)",
-      "triangle_property_angle_sum(1,BDA)",
-      "triangle_property_angle_sum(1,DCA)",
-      "triangle_area_formula_sine(1,ADC)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 3091,
   "annotation": "YimingHe_2023-04-23",
   "source": "GeoQA-326",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,点C在圆周上,连结BC、OC,过点A作AD∥OC交⊙O于点D,若∠B=25°,则∠BAD的度数是()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, point C is on the circumference, connect BC and OC, and pass point A to draw AD ∥ OC and AD intersects ⊙O at point D, if ∠B = N_0, then the degree of ∠BAD is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠CBO=25°，O是⊙O的圆心，AD平行于CO。求∠DAO的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CBO=25°, the center of ⊙O is O, AD∥CO. Find the measure of ∠DAO.",
   "problem_img": "3091.png",
   "construction_cdl": [
     "Shape(AD,ODA)",
@@ -16,9 +16,9 @@
     "Cocircular(O,DACB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(CBO),25)",
     "IsCentreOfCircle(O,O)",
-    "ParallelBetweenLine(AD,CO)",
-    "Equal(MeasureOfAngle(CBO),25)"
+    "ParallelBetweenLine(AD,CO)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DAO))",
@@ -32,7 +32,14 @@
     "adjacent_complementary_angle(1,BOC,COA)",
     "parallel_property_alternate_interior_angle(1,AD,CO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "triangle_property_angle_sum(1,BOC)",
+      "adjacent_complementary_angle(1,BOC,COA)",
+      "parallel_property_alternate_interior_angle(1,AD,CO)"
+    ],
     "radius_of_circle_property_length_equal(1,OC,O)": [
       "isosceles_triangle_judgment_line_equal(1,OCB)"
     ],
@@ -41,13 +48,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OCB)": [
       "isosceles_triangle_property_angle_equal(1,OCB)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "triangle_property_angle_sum(1,BOC)",
-      "adjacent_complementary_angle(1,BOC,COA)",
-      "parallel_property_alternate_interior_angle(1,AD,CO)"
     ]
   }
 }

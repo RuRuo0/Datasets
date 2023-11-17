@@ -2,9 +2,9 @@
   "problem_id": 2716,
   "annotation": "FangzhenZhu_2023-04-09",
   "source": "Geometry3k-2860",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the value of the variable t.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AD=12，BD=24，CD=t+1，BD⊥AD，CA垂直于BA。求t的值。",
+  "problem_text_en": "As shown in the diagram, AD=12, BD=24, CD=t+1, BD⊥AD, CA⊥BA. Find the value of t.",
   "problem_img": "2716.png",
   "construction_cdl": [
     "Shape(AB,BC,CA)",
@@ -14,8 +14,8 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(AD),12)",
-    "Equal(LengthOfLine(CD),t+1)",
     "Equal(LengthOfLine(BD),24)",
+    "Equal(LengthOfLine(CD),t+1)",
     "PerpendicularBetweenLine(BD,AD)",
     "PerpendicularBetweenLine(CA,BA)"
   ],
@@ -32,7 +32,13 @@
     "right_triangle_property_pythagorean(1,ADC)",
     "right_triangle_property_pythagorean(1,BDA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,BD,DC)",
+      "adjacent_complementary_angle(1,BDA,ADC)",
+      "right_triangle_judgment_angle(1,CAB)",
+      "right_triangle_judgment_angle(1,BDA)"
+    ],
     "adjacent_complementary_angle(1,BDA,ADC)": [
       "right_triangle_judgment_angle(1,ADC)"
     ],
@@ -44,12 +50,6 @@
     ],
     "right_triangle_judgment_angle(1,ADC)": [
       "right_triangle_property_pythagorean(1,ADC)"
-    ],
-    "START": [
-      "line_addition(1,BD,DC)",
-      "adjacent_complementary_angle(1,BDA,ADC)",
-      "right_triangle_judgment_angle(1,CAB)",
-      "right_triangle_judgment_angle(1,BDA)"
     ]
   }
 }

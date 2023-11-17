@@ -2,9 +2,9 @@
   "problem_id": 3264,
   "annotation": "XiaokaiZhang_2023-04-23",
   "source": "GeoQA-570",
-  "problem_level": 1,
-  "problem_text_cn": "如图,把三角板的直角顶点放在直尺的一边上,若∠1=30°,则∠2的度数为()",
-  "problem_text_en": "As shown in the figure, put the right-angled vertex of the triangular plate on one side of the ruler, if ∠1 = N_0, then the degree of ∠2 is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠IAF=30°，∠BAC是等腰直角△ACB的直角，四边形DEFG是矩形。求∠DHB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠IAF=30°, AC and AB are the legs of the isosceles right triangle ACB, DEFG is a rectangle. Find the measure of ∠DHB.",
   "problem_img": "3264.png",
   "construction_cdl": [
     "Shape(BH,HI,IC,CB)",
@@ -19,9 +19,9 @@
     "Collinear(CIA)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(IAF),30)",
     "IsoscelesRightTriangle(ACB)",
-    "Rectangle(DEFG)",
-    "Equal(MeasureOfAngle(IAF),30)"
+    "Rectangle(DEFG)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DHB))",
@@ -33,17 +33,17 @@
     "parallel_property_ipsilateral_internal_angle(1,HG,AF)",
     "vertical_angle(1,DHB,IHA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "angle_addition(1,BAC,CAF)",
+      "parallel_property_collinear_extend(3,DG,EF,H)",
+      "vertical_angle(1,DHB,IHA)"
+    ],
     "parallel_property_collinear_extend(3,DG,EF,H)": [
       "parallel_property_collinear_extend(3,FE,GH,A)"
     ],
     "parallel_property_collinear_extend(3,FE,GH,A)": [
       "parallel_property_ipsilateral_internal_angle(1,HG,AF)"
-    ],
-    "START": [
-      "angle_addition(1,BAC,CAF)",
-      "parallel_property_collinear_extend(3,DG,EF,H)",
-      "vertical_angle(1,DHB,IHA)"
     ]
   }
 }

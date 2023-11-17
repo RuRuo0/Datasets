@@ -2,9 +2,9 @@
   "problem_id": 2137,
   "annotation": "YiwenHuang_2023-04-23",
   "source": "Geometry3k-2230",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find J K.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，JL=4，KJ=x，LP=6，PM=12，∠KJL=∠LPM。求直线JK的长度。",
+  "problem_text_en": "As shown in the diagram, JL=4, KJ=x, LP=6, PM=12, ∠KJL=∠LPM. Find the length of line JK.",
   "problem_img": "2137.png",
   "construction_cdl": [
     "Shape(KJ,JL,LK)",
@@ -12,7 +12,13 @@
     "Collinear(JLM)",
     "Collinear(KLP)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(JL),4)",
+    "Equal(LengthOfLine(KJ),x)",
+    "Equal(LengthOfLine(LP),6)",
+    "Equal(LengthOfLine(PM),12)",
+    "Equal(MeasureOfAngle(KJL),MeasureOfAngle(LPM))"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(KJ),x)",
     "Equal(LengthOfLine(JL),4)",
@@ -28,16 +34,16 @@
     "mirror_similar_triangle_property_line_ratio(1,KJL,MLP)",
     "mirror_similar_triangle_property_line_ratio(1,LKJ,LPM)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "vertical_angle(1,JLK,MLP)"
+    ],
     "vertical_angle(1,JLK,MLP)": [
       "mirror_similar_triangle_judgment_aa(1,KJL,MLP)"
     ],
     "mirror_similar_triangle_judgment_aa(1,KJL,MLP)": [
       "mirror_similar_triangle_property_line_ratio(1,KJL,MLP)",
       "mirror_similar_triangle_property_line_ratio(1,LKJ,LPM)"
-    ],
-    "START": [
-      "vertical_angle(1,JLK,MLP)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 2663,
   "annotation": "ZheZhu_2023-04-23",
   "source": "Geometry3k-2801",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Use parallelogram A B C D to find m \\angle A C D.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AD=13，BA=3*y-8，CB=2*x+7，DC=10，∠ADF=59°，∠BFC=49°，∠FBA=20°，AB和DC是▱ADCB的一组对边。求∠DCA的大小。",
+  "problem_text_en": "As shown in the diagram, AD=13, BA=3*y-8, CB=2*x+7, DC=10, ∠ADF=59°, ∠BFC=49°, ∠FBA=20°, DA and CB are opposite sides of the ▱ ADCB. Find the measure of ∠DCA.",
   "problem_img": "2663.png",
   "construction_cdl": [
     "Shape(AD,DF,FA)",
@@ -14,7 +14,16 @@
     "Collinear(AFC)",
     "Collinear(BFD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AD),13)",
+    "Equal(LengthOfLine(BA),3*y-8)",
+    "Equal(LengthOfLine(CB),2*x+7)",
+    "Equal(LengthOfLine(DC),10)",
+    "Equal(MeasureOfAngle(ADF),59)",
+    "Equal(MeasureOfAngle(BFC),49)",
+    "Equal(MeasureOfAngle(FBA),20)",
+    "Parallelogram(ADCB)"
+  ],
   "image_cdl": [
     "Parallelogram(ADCB)",
     "Equal(LengthOfLine(BA),3*y-8)",
@@ -33,7 +42,7 @@
     "triangle_property_angle_sum(1,AFB)",
     "parallel_property_alternate_interior_angle(1,AB,DC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "flat_angle(1,AFC)",
       "angle_addition(1,AFB,BFC)",

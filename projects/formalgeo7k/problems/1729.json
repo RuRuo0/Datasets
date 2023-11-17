@@ -2,9 +2,9 @@
   "problem_id": 1729,
   "annotation": "Yangli_2023-04-16",
   "source": "Geometry3k-1794",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "\\odot J \\cong \\odot K and \\widehat M N \\cong \\widehat P Q. Find P Q.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，NM=2*x+1，PQ=3*x-7，⌒JNM的角度与弧JQP的角度相等。求直线PQ的长度。",
+  "problem_text_en": "As shown in the diagram, NM=2*x+1, PQ=3*x-7, the measure of arc JNM is equal to the measure of ⌒JQP. Find the length of line PQ.",
   "problem_img": "1729.png",
   "construction_cdl": [
     "Shape(QP,JPN,NM,JMQ)",
@@ -12,7 +12,11 @@
     "Shape(PQ,JQP)",
     "Cocircular(J,NMQP)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(NM),2*x+1)",
+    "Equal(LengthOfLine(PQ),3*x-7)",
+    "Equal(MeasureOfArc(JNM),MeasureOfArc(JQP))"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(NM),2*x+1)",
     "Equal(LengthOfLine(PQ),3*x-7)",
@@ -24,12 +28,12 @@
     "congruent_arc_judgment_measure_equal(1,JNM,JQP)",
     "congruent_arc_property_chord_equal(1,JNM,JQP)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_measure_equal(1,JNM,JQP)": [
-      "congruent_arc_property_chord_equal(1,JNM,JQP)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "congruent_arc_judgment_measure_equal(1,JNM,JQP)"
+    ],
+    "congruent_arc_judgment_measure_equal(1,JNM,JQP)": [
+      "congruent_arc_property_chord_equal(1,JNM,JQP)"
     ]
   }
 }

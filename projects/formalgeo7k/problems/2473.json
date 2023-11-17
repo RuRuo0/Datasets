@@ -2,16 +2,22 @@
   "problem_id": 2473,
   "annotation": "YifanWang_2023-04-23",
   "source": "Geometry3k-2594",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the triangle.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AC=30，BA=41，CN=27，NB=19，AC⊥NC。求三角形BAN的面积。",
+  "problem_text_en": "As shown in the diagram, AC=30, BA=41, CN=27, NB=19, AC⊥NC. Find the area of △BAN.",
   "problem_img": "2473.png",
   "construction_cdl": [
     "Shape(BA,AN,NB)",
     "Shape(NA,AC,CN)",
     "Collinear(BNC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),30)",
+    "Equal(LengthOfLine(BA),41)",
+    "Equal(LengthOfLine(CN),27)",
+    "Equal(LengthOfLine(NB),19)",
+    "PerpendicularBetweenLine(AC,NC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(NB),19)",
     "Equal(LengthOfLine(CN),27)",
@@ -25,7 +31,7 @@
     "altitude_of_triangle_judgment(2,AC,ANB)",
     "triangle_area_formula_common(1,ANB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "altitude_of_triangle_judgment(2,AC,ANB)",
       "triangle_area_formula_common(1,ANB)"

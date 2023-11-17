@@ -2,16 +2,24 @@
   "problem_id": 2285,
   "annotation": "Yangli_2023-04-09",
   "source": "Geometry3k-2390",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AC=11，AD=y，CD=x，∠ABC=60°，∠BCA=60°，∠CAD=30°，BD⊥AD。求y的值。",
+  "problem_text_en": "As shown in the diagram, AC=11, AD=y, CD=x, ∠ABC=60°, ∠BCA=60°, ∠CAD=30°, BD is perpendicular to AD. Find the value of y.",
   "problem_img": "2285.png",
   "construction_cdl": [
     "Shape(CA,AD,DC)",
     "Shape(DA,AB,BD)",
     "Collinear(CDB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),11)",
+    "Equal(LengthOfLine(AD),y)",
+    "Equal(LengthOfLine(CD),x)",
+    "Equal(MeasureOfAngle(ABC),60)",
+    "Equal(MeasureOfAngle(BCA),60)",
+    "Equal(MeasureOfAngle(CAD),30)",
+    "PerpendicularBetweenLine(BD,AD)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(CD),x)",
     "Equal(MeasureOfAngle(BCA),60)",
@@ -27,7 +35,7 @@
     "adjacent_complementary_angle(1,BDA,ADC)",
     "sine_theorem(1,ADC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,BDA,ADC)",
       "sine_theorem(1,ADC)"

@@ -2,9 +2,9 @@
   "problem_id": 4078,
   "annotation": "YanjunGuo_2023-05-07",
   "source": "GeoQA-2432",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点A、B、C在⊙O上,∠ABO=40°,∠ACO=30°,则∠BOC的度数为()",
-  "problem_text_en": "As shown in the figure, points A, B, and C are on ⊙O, ∠ABO = N_0, ∠ACO = N_1, then the degree of ∠BOC is ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，∠ABO=40°，∠OCA=30°，O是⊙O的圆心。求∠COB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABO=40°, ∠OCA=30°, the center of circle O is O. Find the measure of ∠COB.",
   "problem_img": "4078.png",
   "construction_cdl": [
     "Shape(BA,OAB)",
@@ -34,7 +34,15 @@
     "arc_property_circumference_angle_external(1,OBC,A)",
     "arc_property_center_angle(1,OBC,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "angle_addition(1,CAO,OAB)",
+      "arc_property_circumference_angle_external(1,OBC,A)",
+      "arc_property_center_angle(1,OBC,O)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OAB)",
       "isosceles_triangle_judgment_line_equal(1,OCA)"
@@ -50,14 +58,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OCA)": [
       "isosceles_triangle_property_angle_equal(1,OCA)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "angle_addition(1,CAO,OAB)",
-      "arc_property_circumference_angle_external(1,OBC,A)",
-      "arc_property_center_angle(1,OBC,O)"
     ]
   }
 }

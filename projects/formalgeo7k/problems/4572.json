@@ -2,9 +2,9 @@
   "problem_id": 4572,
   "annotation": "YanjunGuo_2023-05-14",
   "source": "GeoQA-3706",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知⊙O是△ABC的外接圆,连接AO,若∠B=40°,则∠OAC=()",
-  "problem_text_en": "As shown in the figure, it is known that ⊙O is the circumscribed circle of △ABC. Connect AO, if ∠B = N_0, then ∠OAC = ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠ABC=40°，O是⊙O的圆心。求∠CAO的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABC=40°, O is the center of circle O. Find the measure of ∠CAO.",
   "problem_img": "4572.png",
   "construction_cdl": [
     "Shape(AC,OCA)",
@@ -16,8 +16,8 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "Equal(MeasureOfAngle(ABC),40)"
+    "Equal(MeasureOfAngle(ABC),40)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CAO))",
@@ -31,7 +31,14 @@
     "triangle_property_angle_sum(1,CAO)",
     "isosceles_triangle_property_angle_equal(1,OCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_circumference_angle_external(1,OCA,B)",
+      "arc_property_center_angle(1,OCA,O)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "triangle_property_angle_sum(1,CAO)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OCA)"
     ],
@@ -40,13 +47,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OCA)": [
       "isosceles_triangle_property_angle_equal(1,OCA)"
-    ],
-    "START": [
-      "arc_property_circumference_angle_external(1,OCA,B)",
-      "arc_property_center_angle(1,OCA,O)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "triangle_property_angle_sum(1,CAO)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 1223,
   "annotation": "JiaZou_2023-03-19",
   "source": "Geometry3k-1263",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find C D if A E = 8, E D = 4, and B E = 6.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AE=8，BE=6，ED=4，CD∥BE。求直线CD的长度。",
+  "problem_text_en": "As shown in the diagram, AE=8, BE=6, ED=4, CD is parallel to BE. Find the length of line CD.",
   "problem_img": "1223.png",
   "construction_cdl": [
     "Shape(BA,AE,EB)",
@@ -12,7 +12,12 @@
     "Collinear(ABC)",
     "Collinear(AED)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AE),8)",
+    "Equal(LengthOfLine(BE),6)",
+    "Equal(LengthOfLine(ED),4)",
+    "ParallelBetweenLine(CD,BE)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AE),8)",
     "Equal(LengthOfLine(ED),4)",
@@ -28,17 +33,17 @@
     "similar_triangle_property_line_ratio(1,BAE,CAD)",
     "line_addition(1,AE,ED)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,EB,DC,A)",
+      "line_addition(1,AE,ED)"
+    ],
     "parallel_property_corresponding_angle(1,EB,DC,A)": [
       "similar_triangle_judgment_aa(1,BAE,CAD)"
     ],
     "similar_triangle_judgment_aa(1,BAE,CAD)": [
       "similar_triangle_property_line_ratio(1,BAE,CAD)",
       "similar_triangle_property_line_ratio(1,AEB,ADC)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,EB,DC,A)",
-      "line_addition(1,AE,ED)"
     ]
   }
 }

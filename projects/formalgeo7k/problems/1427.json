@@ -2,9 +2,9 @@
   "problem_id": 1427,
   "annotation": "YanjunGuo_2023-04-16",
   "source": "Geometry3k-1479",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure. Round to the nearest tenth if necessary.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AC=20，BE=12，DE=15，DF=10，DF垂直于AF，FEBC是矩形。求△DFA的面积与四边形FEBC的面积之和。",
+  "problem_text_en": "As shown in the diagram, AC=20, BE=12, DE=15, DF=10, DF⊥AF, FEBC is a rectangle. Find the sum of the area of triangle DFA and the area of quadrilateral FEBC.",
   "problem_img": "1427.png",
   "construction_cdl": [
     "Shape(AD,DF,FA)",
@@ -12,7 +12,14 @@
     "Collinear(FDE)",
     "Collinear(AFC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),20)",
+    "Equal(LengthOfLine(BE),12)",
+    "Equal(LengthOfLine(DE),15)",
+    "Equal(LengthOfLine(DF),10)",
+    "PerpendicularBetweenLine(DF,AF)",
+    "Rectangle(FEBC)"
+  ],
   "image_cdl": [
     "Rectangle(FEBC)",
     "Equal(LengthOfLine(AC),20)",
@@ -30,7 +37,7 @@
     "line_addition(1,FD,DE)",
     "parallelogram_area_formula_sine(1,CFEB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_property_opposite_line_equal(1,CFEB)",
       "line_addition(1,AF,FC)",

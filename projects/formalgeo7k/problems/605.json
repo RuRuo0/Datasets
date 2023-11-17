@@ -2,9 +2,9 @@
   "problem_id": 605,
   "annotation": "YimingHe_2023-04-09",
   "source": "Geometry3k-622",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure, square W X Y Z is inscribed in \\odot R. Find the measure of a central angle.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，R是圆R的圆心，RS垂直于XS，WZYX是正方形。求∠XRY的大小。",
+  "problem_text_en": "As shown in the diagram, R is the center of ⊙R, RS⊥XS, quadrilateral WZYX is a square. Find the measure of ∠XRY.",
   "problem_img": "605.png",
   "construction_cdl": [
     "Shape(WZ,ZY,YR,RW)",
@@ -20,6 +20,8 @@
     "Cocircular(R,WZYX)"
   ],
   "text_cdl": [
+    "IsCentreOfCircle(R,R)",
+    "PerpendicularBetweenLine(RS,XS)",
     "Square(WZYX)"
   ],
   "image_cdl": [
@@ -35,15 +37,15 @@
     "arc_property_circumference_angle_external(1,RYX,W)",
     "arc_property_center_angle(1,RYX,R)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,XWY)": [
-      "isosceles_triangle_property_angle_equal(1,XWY)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,XWY)",
       "triangle_property_angle_sum(1,XWY)",
       "arc_property_circumference_angle_external(1,RYX,W)",
       "arc_property_center_angle(1,RYX,R)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,XWY)": [
+      "isosceles_triangle_property_angle_equal(1,XWY)"
     ]
   }
 }

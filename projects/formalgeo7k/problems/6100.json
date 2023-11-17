@@ -2,9 +2,9 @@
   "problem_id": 6100,
   "annotation": "RunanWang_2023-06-04",
   "source": "GeoQA-8638",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O是△ACD的外接圆,AB是⊙O的直径,∠BAD=50°,则∠C的度数是()",
-  "problem_text_en": "As shown in the figure, ⊙O is the circumscribe of △ACD, AB is the diameter of ⊙O, ∠BAD = N_0, then the degree of ∠C is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠DAB=50°，O是圆O的圆心，AB是圆O的直径。求∠ACD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DAB=50°, the center of ⊙O is O, the diameter of ⊙O is AB. Find the measure of ∠ACD.",
   "problem_img": "6100.png",
   "construction_cdl": [
     "Shape(OAC,CA)",
@@ -19,7 +19,9 @@
     "Cocircular(O,ACBD)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)"
+    "Equal(MeasureOfAngle(DAB),50)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [
     "Equal(MeasureOfAngle(DAB),50)",
@@ -33,7 +35,7 @@
     "arc_property_circumference_angle_external(1,ODA,C)",
     "arc_property_circumference_angle_external(1,ODA,B)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,BDA,O)",
       "triangle_property_angle_sum(1,DAB)",

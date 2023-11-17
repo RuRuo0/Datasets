@@ -2,16 +2,25 @@
   "problem_id": 2273,
   "annotation": "Yangli_2023-04-09",
   "source": "Geometry3k-2377",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find z.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=y，AC=x，AD=z，BC=9，CD=4，AC⊥DC，BC垂直于AC，DA⊥BA。求z的值。",
+  "problem_text_en": "As shown in the diagram, AB=y, AC=x, AD=z, BC=9, CD=4, AC is perpendicular to DC, BC is perpendicular to AC, DA⊥BA. Find the value of z.",
   "problem_img": "2273.png",
   "construction_cdl": [
     "Shape(AB,BC,CA)",
     "Shape(AC,CD,DA)",
     "Collinear(BCD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),y)",
+    "Equal(LengthOfLine(AC),x)",
+    "Equal(LengthOfLine(AD),z)",
+    "Equal(LengthOfLine(BC),9)",
+    "Equal(LengthOfLine(CD),4)",
+    "PerpendicularBetweenLine(AC,DC)",
+    "PerpendicularBetweenLine(BC,AC)",
+    "PerpendicularBetweenLine(DA,BA)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AB),y)",
     "Equal(LengthOfLine(AD),z)",
@@ -33,7 +42,13 @@
     "right_triangle_property_pythagorean(1,ACD)",
     "right_triangle_property_pythagorean(1,DAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,BC,CD)",
+      "right_triangle_judgment_angle(1,BCA)",
+      "right_triangle_judgment_angle(1,ACD)",
+      "right_triangle_judgment_angle(1,DAB)"
+    ],
     "right_triangle_judgment_angle(1,BCA)": [
       "right_triangle_property_pythagorean(1,BCA)"
     ],
@@ -42,12 +57,6 @@
     ],
     "right_triangle_judgment_angle(1,DAB)": [
       "right_triangle_property_pythagorean(1,DAB)"
-    ],
-    "START": [
-      "line_addition(1,BC,CD)",
-      "right_triangle_judgment_angle(1,BCA)",
-      "right_triangle_judgment_angle(1,ACD)",
-      "right_triangle_judgment_angle(1,DAB)"
     ]
   }
 }

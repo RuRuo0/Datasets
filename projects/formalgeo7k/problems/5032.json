@@ -2,9 +2,9 @@
   "problem_id": 5032,
   "annotation": "ZheZhu_2023-05-14",
   "source": "GeoQA-4769",
-  "problem_level": 1,
-  "problem_text_cn": "如图,l_{1}∥l_{2}∥l_{3},AB=3,AD=2,DE=4,EF=7.5,则BE=()",
-  "problem_text_en": "As shown in the figure, l_{N_0}∥l_{N_1}∥l_{N_2},AB=N_3,AD=N_4,DE=N_5,EF=N_6, then BE = ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=3，AD=2，DE=4，EF=15/2，BD平行于CE，FA平行于BD，FA∥CE。求直线BE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=3, AD=2, DE=4, EF=15/2, BD is parallel to CE, FA∥BD, FA is parallel to CE. Find the length of line BE.",
   "problem_img": "5032.png",
   "construction_cdl": [
     "Shape(AF,FB,BA)",
@@ -16,13 +16,13 @@
     "Collinear(ADE)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(FA,BD)",
-    "ParallelBetweenLine(BD,CE)",
-    "ParallelBetweenLine(FA,CE)",
     "Equal(LengthOfLine(AB),3)",
     "Equal(LengthOfLine(AD),2)",
     "Equal(LengthOfLine(DE),4)",
-    "Equal(LengthOfLine(EF),15/2)"
+    "Equal(LengthOfLine(EF),15/2)",
+    "ParallelBetweenLine(BD,CE)",
+    "ParallelBetweenLine(FA,BD)",
+    "ParallelBetweenLine(FA,CE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BE))",
@@ -34,17 +34,17 @@
     "similar_triangle_property_line_ratio(1,BED,FEA)",
     "similar_triangle_property_line_ratio(1,DBE,AFE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AD,DE)",
+      "parallel_property_corresponding_angle(1,DB,AF,E)"
+    ],
     "parallel_property_corresponding_angle(1,DB,AF,E)": [
       "similar_triangle_judgment_aa(1,BED,FEA)"
     ],
     "similar_triangle_judgment_aa(1,BED,FEA)": [
       "similar_triangle_property_line_ratio(1,BED,FEA)",
       "similar_triangle_property_line_ratio(1,DBE,AFE)"
-    ],
-    "START": [
-      "line_addition(1,AD,DE)",
-      "parallel_property_corresponding_angle(1,DB,AF,E)"
     ]
   }
 }

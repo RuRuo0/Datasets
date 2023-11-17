@@ -2,9 +2,9 @@
   "problem_id": 6943,
   "annotation": "ChengQin_2023-06-04",
   "source": "GeoQA-angle-10197",
-  "problem_level": 1,
-  "problem_text_cn": "如图，直线AB与⊙O相切于点C，AO交⊙O于点D，连接CD，OC．若∠AOC＝50°，则∠ACD的度数为（）",
-  "problem_text_en": "",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠COA=50°，⊙O的圆心为O，圆O的切线为AC。求∠ACD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠COA=50°, O is the center of ⊙O, AC is the tangent to circle O. Find the measure of ∠ACD.",
   "problem_img": "6943.png",
   "construction_cdl": [
     "Shape(OC,OCD,DO)",
@@ -15,9 +15,9 @@
     "Cocircular(O,DC)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(COA),50)",
     "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(AC,O)",
-    "Equal(MeasureOfAngle(COA),50)"
+    "IsTangentOfCircle(AC,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ACD))",
@@ -31,7 +31,14 @@
     "triangle_property_angle_sum(1,ODC)",
     "angle_addition(1,ACD,DCO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(2,AC,O,O)",
+      "radius_of_circle_property_length_equal(1,OD,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "triangle_property_angle_sum(1,ODC)",
+      "angle_addition(1,ACD,DCO)"
+    ],
     "radius_of_circle_property_length_equal(1,OD,O)": [
       "isosceles_triangle_judgment_line_equal(1,ODC)"
     ],
@@ -40,13 +47,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,ODC)": [
       "isosceles_triangle_property_angle_equal(1,ODC)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(2,AC,O,O)",
-      "radius_of_circle_property_length_equal(1,OD,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "triangle_property_angle_sum(1,ODC)",
-      "angle_addition(1,ACD,DCO)"
     ]
   }
 }

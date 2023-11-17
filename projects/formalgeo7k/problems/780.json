@@ -2,9 +2,9 @@
   "problem_id": 780,
   "annotation": "NaZhu_2023-04-09",
   "source": "Geometry3k-805",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，EK=y，JQ=2*x+6，KM=3/5*y+2，RJ=20-5*x，RJ=JQ，JK平行于QM，RE平行于JK，RE∥QM。求y的值。",
+  "problem_text_en": "As shown in the diagram, EK=y, JQ=2*x+6, KM=3/5*y+2, RJ=20-5*x, RJ=JQ, JK∥QM, RE∥JK, RE is parallel to QM. Find the value of y.",
   "problem_img": "780.png",
   "construction_cdl": [
     "Shape(RJ,JK,KE,ER)",
@@ -31,7 +31,16 @@
     "Collinear(PJKP)",
     "Collinear(XQMH)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(EK),y)",
+    "Equal(LengthOfLine(JQ),2*x+6)",
+    "Equal(LengthOfLine(KM),3/5*y+2)",
+    "Equal(LengthOfLine(RJ),20-5*x)",
+    "Equal(LengthOfLine(RJ),LengthOfLine(JQ))",
+    "ParallelBetweenLine(JK,QM)",
+    "ParallelBetweenLine(RE,JK)",
+    "ParallelBetweenLine(RE,QM)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(RJ),LengthOfLine(JQ))",
     "Equal(LengthOfLine(RJ),20-5*x)",
@@ -48,12 +57,12 @@
     "trapezoid_judgment_parallel(1,RQME)",
     "midsegment_of_quadrilateral_judgment_parallel(1,JK,RQME)"
   ],
-  "theorem_seq_dag": {
-    "trapezoid_judgment_parallel(1,RQME)": [
-      "midsegment_of_quadrilateral_judgment_parallel(1,JK,RQME)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "trapezoid_judgment_parallel(1,RQME)"
+    ],
+    "trapezoid_judgment_parallel(1,RQME)": [
+      "midsegment_of_quadrilateral_judgment_parallel(1,JK,RQME)"
     ]
   }
 }

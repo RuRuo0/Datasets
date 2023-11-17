@@ -2,9 +2,9 @@
   "problem_id": 709,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-729",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If D E = 60 and F C = 16, find A B.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，DE=60，FC=16，C是⊙C的圆心，AB是⊙C的直径，CF垂直于EF。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, DE=60, FC=16, the center of circle C is C, the diameter of ⊙C is AB, CF is perpendicular to EF. Find the length of line AB.",
   "problem_img": "709.png",
   "construction_cdl": [
     "Shape(FC,CD,DF)",
@@ -16,7 +16,13 @@
     "Collinear(EFD)",
     "Cocircular(C,AEBD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(DE),60)",
+    "Equal(LengthOfLine(FC),16)",
+    "IsCentreOfCircle(C,C)",
+    "IsDiameterOfCircle(AB,C)",
+    "PerpendicularBetweenLine(CF,EF)"
+  ],
   "image_cdl": [
     "IsDiameterOfCircle(AB,C)",
     "IsCentreOfCircle(C,C)",
@@ -36,20 +42,20 @@
     "circle_property_length_of_radius_and_diameter(1,C)",
     "diameter_of_circle_property_length_equal(1,AB,C)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,DFC,CFE)": [
-      "right_triangle_judgment_angle(1,DFC)",
-      "circle_property_chord_perpendicular_bisect_chord(1,C,CF,DE)"
-    ],
-    "right_triangle_judgment_angle(1,DFC)": [
-      "right_triangle_property_pythagorean(1,DFC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,DFC,CFE)",
       "line_addition(1,EF,FD)",
       "radius_of_circle_property_length_equal(1,CD,C)",
       "circle_property_length_of_radius_and_diameter(1,C)",
       "diameter_of_circle_property_length_equal(1,AB,C)"
+    ],
+    "adjacent_complementary_angle(1,DFC,CFE)": [
+      "right_triangle_judgment_angle(1,DFC)",
+      "circle_property_chord_perpendicular_bisect_chord(1,C,CF,DE)"
+    ],
+    "right_triangle_judgment_angle(1,DFC)": [
+      "right_triangle_property_pythagorean(1,DFC)"
     ]
   }
 }

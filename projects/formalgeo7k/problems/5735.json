@@ -2,9 +2,9 @@
   "problem_id": 5735,
   "annotation": "XiaokaiZhang_2023-05-28",
   "source": "GeoQA-7538",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在菱形ABCD中,AB=12,点E为AD上一点,BE交AC于点F,若\\frac{AF}{FC}=\\frac{3}{9},则AE的长为()",
-  "problem_text_en": "As shown in the figure, in the diamond ABCD, AB = N_0, point E is a point on AD, BE intersects AC at point F, if \\frac{AF}{FC}=\\frac{N_1}{N_2}, then the length of AE is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AB=12，AF=3，FC=9，ABCD是菱形。求直线AE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=12, AF=3, FC=9, quadrilateral ABCD is a rhombus. Find the length of line AE.",
   "problem_img": "5735.png",
   "construction_cdl": [
     "Shape(AF,FE,EA)",
@@ -17,9 +17,9 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(AB),12)",
-    "Rhombus(ABCD)",
     "Equal(LengthOfLine(AF),3)",
-    "Equal(LengthOfLine(FC),9)"
+    "Equal(LengthOfLine(FC),9)",
+    "Rhombus(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AE))",
@@ -32,7 +32,10 @@
     "similar_triangle_property_line_ratio(1,FBC,FEA)",
     "similar_triangle_property_line_ratio(1,BCF,EAF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,AD,BC,E)"
+    ],
     "parallel_property_collinear_extend(3,AD,BC,E)": [
       "parallel_property_alternate_interior_angle(1,AE,BC)",
       "parallel_property_alternate_interior_angle(2,AE,BC)"
@@ -46,9 +49,6 @@
     "similar_triangle_judgment_aa(1,FBC,FEA)": [
       "similar_triangle_property_line_ratio(1,FBC,FEA)",
       "similar_triangle_property_line_ratio(1,BCF,EAF)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,AD,BC,E)"
     ]
   }
 }

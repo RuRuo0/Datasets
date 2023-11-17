@@ -2,9 +2,9 @@
   "problem_id": 2781,
   "annotation": "ZheZhu_2023-04-09",
   "source": "Geometry3k-2928",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find C F if B F bisects \\angle A B C and A C \\parallel E D, B A = 6, B C = 7.5, A C = 9, and D E = 9.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AC=9，BA=6，BC=15/2，DE=9，BF平分∠ABC，CF∥DE。求直线CF的长度。",
+  "problem_text_en": "As shown in the diagram, AC=9, BA=6, BC=15/2, DE=9, BF is the angle bisector of ∠ABC, CF is parallel to DE. Find the length of line CF.",
   "problem_img": "2781.png",
   "construction_cdl": [
     "Shape(AB,BF,FA)",
@@ -15,12 +15,12 @@
     "Collinear(AFC)"
   ],
   "text_cdl": [
-    "IsBisectorOfAngle(BF,ABC)",
-    "ParallelBetweenLine(CF,DE)",
+    "Equal(LengthOfLine(AC),9)",
     "Equal(LengthOfLine(BA),6)",
     "Equal(LengthOfLine(BC),15/2)",
-    "Equal(LengthOfLine(AC),9)",
-    "Equal(LengthOfLine(DE),9)"
+    "Equal(LengthOfLine(DE),9)",
+    "IsBisectorOfAngle(BF,ABC)",
+    "ParallelBetweenLine(CF,DE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(CF))",
@@ -29,7 +29,7 @@
     "bisector_of_angle_property_line_ratio(1,BF,ABC)",
     "line_addition(1,AF,FC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "bisector_of_angle_property_line_ratio(1,BF,ABC)",
       "line_addition(1,AF,FC)"

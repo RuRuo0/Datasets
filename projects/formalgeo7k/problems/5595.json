@@ -2,9 +2,9 @@
   "problem_id": 5595,
   "annotation": "YimingHe_2023-05-28",
   "source": "GeoQA-7126",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在矩形ABCD中,点E为AD中点,BD和CE相交于点F,如果DF=2,那么线段BF的长度为()",
-  "problem_text_en": "As shown in the figure, in the rectangle ABCD, point E is the midpoint of AD, and BD and CE intersect at point F. If DF = N_0, then the length of the line segment BF is ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，DF=2，E是线段AD的中点，ABCD是长方形。求直线BF的长度。",
+  "problem_text_en": "As shown in the diagram, DF=2, E bisects segment AD, ABCD is a rectangle. Find the length of line BF.",
   "problem_img": "5595.png",
   "construction_cdl": [
     "Shape(AB,BF,FE,EA)",
@@ -16,9 +16,9 @@
     "Collinear(AED)"
   ],
   "text_cdl": [
-    "Rectangle(ABCD)",
     "Equal(LengthOfLine(DF),2)",
-    "IsMidpointOfLine(E,AD)"
+    "IsMidpointOfLine(E,AD)",
+    "Rectangle(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BF))",
@@ -36,7 +36,12 @@
     "similar_triangle_property_line_ratio(1,ABD,CDB)",
     "similar_triangle_property_line_ratio(1,BDA,DBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AE,ED)",
+      "parallel_property_collinear_extend(3,AD,BC,E)",
+      "parallel_property_alternate_interior_angle(1,BA,CD)"
+    ],
     "parallel_property_collinear_extend(3,AD,BC,E)": [
       "parallel_property_alternate_interior_angle(1,ED,BC)",
       "parallel_property_alternate_interior_angle(2,ED,BC)"
@@ -58,11 +63,6 @@
     "similar_triangle_judgment_aa(1,ABD,CDB)": [
       "similar_triangle_property_line_ratio(1,ABD,CDB)",
       "similar_triangle_property_line_ratio(1,BDA,DBC)"
-    ],
-    "START": [
-      "line_addition(1,AE,ED)",
-      "parallel_property_collinear_extend(3,AD,BC,E)",
-      "parallel_property_alternate_interior_angle(1,BA,CD)"
     ]
   }
 }

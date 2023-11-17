@@ -2,9 +2,9 @@
   "problem_id": 3278,
   "annotation": "XiaokaiZhang_2023-04-23",
   "source": "GeoQA-588",
-  "problem_level": 1,
-  "problem_text_cn": "将量角器按如图摆放在三角形纸板上,使点C在半圆上．点A、B的读数分别为86°、30°,则∠ACB的大小为()",
-  "problem_text_en": "Place the protractor on the triangular cardboard as shown, so that point C is on a semicircle. The readings of points A and B are N_0 and N_1 respectively, then the size of ∠ACB is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠DOA=86°，∠DOB=30°，圆O的圆心为O。求∠BCA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DOA=86°, ∠DOB=30°, O is the center of ⊙O. Find the measure of ∠BCA.",
   "problem_img": "3278.png",
   "construction_cdl": [
     "Shape(OAB,BF,FA)",
@@ -19,9 +19,9 @@
     "Cocircular(O,ECABD)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(DOA),86)",
     "Equal(MeasureOfAngle(DOB),30)",
-    "Equal(MeasureOfAngle(DOA),86)"
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BCA))",
@@ -31,7 +31,7 @@
     "arc_property_center_angle(1,OAB,O)",
     "arc_property_circumference_angle_external(1,OAB,C)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,DOB,BOA)",
       "arc_property_center_angle(1,OAB,O)",

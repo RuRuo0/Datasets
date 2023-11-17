@@ -2,9 +2,9 @@
   "problem_id": 2974,
   "annotation": "NaZhu_2023-04-16",
   "source": "GeoQA-171",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,C,D是⊙O上的两点,若∠ABC=70°,则∠BDC的度数为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, C and D are two points on ⊙O, if ∠ABC = N_0, then the degree of ∠BDC is () ",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠EBC=70°，⊙O的圆心为O，⊙O的直径为BA。求∠EDB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠EBC=70°, O is the center of ⊙O, the diameter of ⊙O is BA. Find the measure of ∠EDB.",
   "problem_img": "2974.png",
   "construction_cdl": [
     "Shape(OBC,CB)",
@@ -19,7 +19,9 @@
     "Cocircular(O,ADBC)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(EBC),70)"
+    "Equal(MeasureOfAngle(EBC),70)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(BA,O)"
   ],
   "image_cdl": [
     "IsDiameterOfCircle(BA,O)",
@@ -33,7 +35,7 @@
     "arc_property_circumference_angle_external(1,OBC,A)",
     "arc_property_circumference_angle_external(1,OBC,D)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,BCA,O)",
       "triangle_property_angle_sum(1,CAB)",

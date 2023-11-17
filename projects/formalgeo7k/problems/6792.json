@@ -2,9 +2,9 @@
   "problem_id": 6792,
   "annotation": "ChenyangMao_2023-06-04",
   "source": "GeoQA-9916",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知BC是⊙O的直径,AD切⊙O于A,若∠C=40°,则∠DAC=()",
-  "problem_text_en": "As shown in the figure, it is known that BC is the diameter of ⊙O, AD tangents ⊙O to A, if ∠C = N_0, then ∠DAC = ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠BCA=40°，O是⊙O的圆心，圆O的直径为BC，DA是⊙O的切线。求∠DAC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BCA=40°, O is the center of ⊙O, the diameter of ⊙O is BC, the tangent to circle O is DA. Find the measure of ∠DAC.",
   "problem_img": "6792.png",
   "construction_cdl": [
     "Shape(DA,AC)",
@@ -16,10 +16,10 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(BCA),40)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(BC,O)",
-    "IsTangentOfCircle(DA,O)",
-    "Equal(MeasureOfAngle(BCA),40)"
+    "IsTangentOfCircle(DA,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DAC))",
@@ -30,7 +30,7 @@
     "arc_property_circumference_angle_external(1,OCA,B)",
     "circle_property_angle_of_osculation(2,OCA,D)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,CAB,O)",
       "triangle_property_angle_sum(1,BCA)",

@@ -2,9 +2,9 @@
   "problem_id": 2366,
   "annotation": "FangzhenZhu_2023-04-23",
   "source": "Geometry3k-2481",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "\\odot P \\cong \\odot Q. Find x.",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，RS=3*x，UT=7*x-44，⌒PSR的角度为155，弧QTU的角度为205，圆P的半径与圆Q的半径相等，P是圆P的圆心，⊙Q的圆心为Q。求x的值。",
+  "problem_text_en": "As shown in the diagram, RS=3*x, UT=7*x-44, the measure of arc PSR is 155, the measure of ⌒QTU is 205, the radius of circle P is equal to the radius of ⊙Q, the center of circle P is P, the center of ⊙Q is Q. Find the value of x.",
   "problem_img": "2366.png",
   "construction_cdl": [
     "Shape(PSR,RS)",
@@ -16,7 +16,15 @@
     "Cocircular(P,RS)",
     "Cocircular(Q,UT)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(RS),3*x)",
+    "Equal(LengthOfLine(UT),7*x-44)",
+    "Equal(MeasureOfArc(PSR),155)",
+    "Equal(MeasureOfArc(QTU),205)",
+    "Equal(RadiusOfCircle(P),RadiusOfCircle(Q))",
+    "IsCentreOfCircle(P,P)",
+    "IsCentreOfCircle(Q,Q)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(P,P)",
     "IsCentreOfCircle(Q,Q)",
@@ -39,7 +47,16 @@
     "congruent_triangle_judgment_sas(1,PSR,QUT)",
     "congruent_triangle_property_line_equal(1,PSR,QUT)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,PR,P)",
+      "radius_of_circle_property_length_equal(1,PS,P)",
+      "radius_of_circle_property_length_equal(1,QT,Q)",
+      "radius_of_circle_property_length_equal(1,QU,Q)",
+      "arc_property_center_angle(1,PSR,P)",
+      "arc_property_center_angle(1,QTU,Q)",
+      "round_angle(1,TQU,UQT)"
+    ],
     "radius_of_circle_property_length_equal(1,PR,P)": [
       "congruent_triangle_judgment_sas(1,PSR,QUT)"
     ],
@@ -63,15 +80,6 @@
     ],
     "congruent_triangle_judgment_sas(1,PSR,QUT)": [
       "congruent_triangle_property_line_equal(1,PSR,QUT)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,PR,P)",
-      "radius_of_circle_property_length_equal(1,PS,P)",
-      "radius_of_circle_property_length_equal(1,QT,Q)",
-      "radius_of_circle_property_length_equal(1,QU,Q)",
-      "arc_property_center_angle(1,PSR,P)",
-      "arc_property_center_angle(1,QTU,Q)",
-      "round_angle(1,TQU,UQT)"
     ]
   }
 }

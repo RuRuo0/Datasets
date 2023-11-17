@@ -2,9 +2,9 @@
   "problem_id": 3142,
   "annotation": "JiaZou_2023-04-23",
   "source": "GeoQA-399",
-  "problem_level": 1,
-  "problem_text_cn": "将一张宽度相等的长方形纸条按如图所示的方式折叠一下,如果∠1=140°,那么∠2的度数是()",
-  "problem_text_en": "Fold a rectangular piece of paper with equal width as shown in the figure. If ∠1 = N_0, then the degree of ∠2 is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠BGE=140°，∠FEG=∠DEF，AD∥BC。求∠EFC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BGE=140°, ∠FEG=∠DEF, AD is parallel to BC. Find the measure of ∠EFC.",
   "problem_img": "3142.png",
   "construction_cdl": [
     "Shape(AB,BG,GE,EA)",
@@ -32,7 +32,12 @@
     "parallel_property_collinear_extend(3,CB,DE,F)",
     "parallel_property_ipsilateral_internal_angle(1,ED,FC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,AD,BC,E)",
+      "adjacent_complementary_angle(1,DEG,GEA)",
+      "angle_addition(1,DEF,FEG)"
+    ],
     "parallel_property_collinear_extend(3,AD,BC,E)": [
       "parallel_property_collinear_extend(3,CB,EA,G)",
       "parallel_property_collinear_extend(3,CB,DE,F)"
@@ -42,11 +47,6 @@
     ],
     "parallel_property_collinear_extend(3,CB,DE,F)": [
       "parallel_property_ipsilateral_internal_angle(1,ED,FC)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,AD,BC,E)",
-      "adjacent_complementary_angle(1,DEG,GEA)",
-      "angle_addition(1,DEF,FEG)"
     ]
   }
 }

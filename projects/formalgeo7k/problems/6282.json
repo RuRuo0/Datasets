@@ -2,9 +2,9 @@
   "problem_id": 6282,
   "annotation": "ZheZhu_2023-05-28",
   "source": "GeoQA-8965",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,点C是AB延长线上一点,且OB=BC,CP、CQ、DE是⊙O的切线,P、Q是切点,若⊙O的半径为2,则△CDE的周长为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, point C is a point on the extended line line of AB, and OB = BC, CP, CQ, DE are the tangents of ⊙O, P and Q are the tangent vertices, if the radius of ⊙O is N_0, Then the perimeter of △CDE is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=2*sqrt(3)，BC=2*sqrt(3)，CF=DF，ED=EA，O是⊙O的圆心。求三角形BEF的周长。",
+  "problem_text_en": "As shown in the diagram, AB=2*sqrt(3), BC=2*sqrt(3), CF=DF, ED=EA, O is the center of circle O. Find the perimeter of △BEF.",
   "problem_img": "6282.png",
   "construction_cdl": [
     "Shape(BE,ED,DF,FB)",
@@ -17,11 +17,11 @@
     "Cocircular(O,DAC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(AB),2*sqrt(3))",
     "Equal(LengthOfLine(BC),2*sqrt(3))",
+    "Equal(LengthOfLine(CF),LengthOfLine(DF))",
     "Equal(LengthOfLine(ED),LengthOfLine(EA))",
-    "Equal(LengthOfLine(CF),LengthOfLine(DF))"
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfTriangle(BEF))",
@@ -32,7 +32,7 @@
     "line_addition(1,BF,FC)",
     "triangle_perimeter_formula(1,BEF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,ED,DF)",
       "line_addition(1,AE,EB)",

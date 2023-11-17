@@ -2,16 +2,21 @@
   "problem_id": 2755,
   "annotation": "FangzhenZhu_2023-04-09",
   "source": "Geometry3k-2902",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the measure of J K.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，JL=9*x-5，KJ=6*x+7，KN=LN，JN垂直于LN。求直线JK的长度。",
+  "problem_text_en": "As shown in the diagram, JL=9*x-5, KJ=6*x+7, KN=LN, JN⊥LN. Find the length of line JK.",
   "problem_img": "2755.png",
   "construction_cdl": [
     "Shape(JK,KN,NJ)",
     "Shape(JN,NL,LJ)",
     "Collinear(KNL)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(JL),9*x-5)",
+    "Equal(LengthOfLine(KJ),6*x+7)",
+    "Equal(LengthOfLine(KN),LengthOfLine(LN))",
+    "PerpendicularBetweenLine(JN,LN)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(JL),9*x-5)",
     "Equal(LengthOfLine(KJ),6*x+7)",
@@ -25,15 +30,15 @@
     "mirror_congruent_triangle_judgment_sas(1,NJK,NLJ)",
     "mirror_congruent_triangle_property_line_equal(1,NJK,NLJ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,KNJ,JNL)"
+    ],
     "adjacent_complementary_angle(1,KNJ,JNL)": [
       "mirror_congruent_triangle_judgment_sas(1,NJK,NLJ)"
     ],
     "mirror_congruent_triangle_judgment_sas(1,NJK,NLJ)": [
       "mirror_congruent_triangle_property_line_equal(1,NJK,NLJ)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,KNJ,JNL)"
     ]
   }
 }

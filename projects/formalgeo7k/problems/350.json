@@ -2,16 +2,23 @@
   "problem_id": 350,
   "annotation": "NaZhu_2023-03-12",
   "source": "Geometry3k-357",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，BC=y，BD=x，CD=2*sqrt(3)，DA=2，AC垂直于BC，BD垂直于CD。求x的值。",
+  "problem_text_en": "As shown in the diagram, BC=y, BD=x, CD=2*sqrt(3), DA=2, AC⊥BC, BD⊥CD. Find the value of x.",
   "problem_img": "350.png",
   "construction_cdl": [
     "Shape(CB,BD,DC)",
     "Shape(CD,DA,AC)",
     "Collinear(BDA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BC),y)",
+    "Equal(LengthOfLine(BD),x)",
+    "Equal(LengthOfLine(CD),2*sqrt(3))",
+    "Equal(LengthOfLine(DA),2)",
+    "PerpendicularBetweenLine(AC,BC)",
+    "PerpendicularBetweenLine(BD,CD)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BC),y)",
     "Equal(LengthOfLine(BD),x)",
@@ -30,7 +37,12 @@
     "similar_triangle_property_line_ratio(1,CBD,ACD)",
     "similar_triangle_property_line_ratio(1,BDC,CDA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,BDC,CDA)",
+      "angle_addition(1,ACD,DCB)",
+      "triangle_property_angle_sum(1,CBD)"
+    ],
     "adjacent_complementary_angle(1,BDC,CDA)": [
       "similar_triangle_judgment_aa(1,CBD,ACD)"
     ],
@@ -43,11 +55,6 @@
     "similar_triangle_judgment_aa(1,CBD,ACD)": [
       "similar_triangle_property_line_ratio(1,CBD,ACD)",
       "similar_triangle_property_line_ratio(1,BDC,CDA)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,BDC,CDA)",
-      "angle_addition(1,ACD,DCB)",
-      "triangle_property_angle_sum(1,CBD)"
     ]
   }
 }

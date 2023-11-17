@@ -2,9 +2,9 @@
   "problem_id": 4748,
   "annotation": "Yangli_2023-05-14",
   "source": "GeoQA-4100",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的弦,AO的延长线交过点B的⊙O的切线于点C,如果∠C=40°,则∠ABO的度数是()",
-  "problem_text_en": "As shown in the figure, AB is the chord of ⊙O, and the extended line of AO crosses the tangent of ⊙O at vertex B to vertex C. If ∠C = N_0, then the degree of ∠ABO is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠BCD=40°，O是圆O的圆心，圆O的切线为CB。求∠ABO的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BCD=40°, O is the center of ⊙O, CB is the tangent to ⊙O. Find the measure of ∠ABO.",
   "problem_img": "4748.png",
   "construction_cdl": [
     "Shape(AB,BO,OA)",
@@ -17,8 +17,8 @@
   ],
   "text_cdl": [
     "Equal(MeasureOfAngle(BCD),40)",
-    "IsTangentOfCircle(CB,O)",
-    "IsCentreOfCircle(O,O)"
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(CB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ABO))",
@@ -33,7 +33,15 @@
     "isosceles_triangle_judgment_line_equal(1,OAB)",
     "isosceles_triangle_property_angle_equal(1,OAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "tangent_of_circle_property_perpendicular(1,CB,O,O)",
+      "triangle_property_angle_sum(1,COB)",
+      "arc_property_center_angle(1,OBD,O)",
+      "arc_property_circumference_angle_external(1,OBD,A)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OAB)"
     ],
@@ -42,14 +50,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OAB)": [
       "isosceles_triangle_property_angle_equal(1,OAB)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "tangent_of_circle_property_perpendicular(1,CB,O,O)",
-      "triangle_property_angle_sum(1,COB)",
-      "arc_property_center_angle(1,OBD,O)",
-      "arc_property_circumference_angle_external(1,OBD,A)"
     ]
   }
 }

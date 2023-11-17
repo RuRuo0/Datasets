@@ -2,9 +2,9 @@
   "problem_id": 2891,
   "annotation": "YimingHe_2023-04-16",
   "source": "GeoQA-59",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知AB∥CD,∠2=135°,则∠1的度数是()",
-  "problem_text_en": "As shown in the figure, given that AB ∥ CD, ∠2 = N_0, then the degree of ∠1 is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠DFE=135°，AB∥CD。求∠FBA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DFE=135°, AB is parallel to CD. Find the measure of ∠FBA.",
   "problem_img": "2891.png",
   "construction_cdl": [
     "Shape(EF,FC)",
@@ -16,8 +16,8 @@
     "Collinear(EFB)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AB,CD)",
-    "Equal(MeasureOfAngle(DFE),135)"
+    "Equal(MeasureOfAngle(DFE),135)",
+    "ParallelBetweenLine(AB,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(FBA))",
@@ -27,13 +27,13 @@
     "parallel_property_ipsilateral_internal_angle(1,FC,BA)",
     "vertical_angle(1,CFB,DFE)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,DC,BA,F)": [
-      "parallel_property_ipsilateral_internal_angle(1,FC,BA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_collinear_extend(3,DC,BA,F)",
       "vertical_angle(1,CFB,DFE)"
+    ],
+    "parallel_property_collinear_extend(3,DC,BA,F)": [
+      "parallel_property_ipsilateral_internal_angle(1,FC,BA)"
     ]
   }
 }

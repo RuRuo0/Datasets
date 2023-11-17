@@ -2,9 +2,9 @@
   "problem_id": 5090,
   "annotation": "YimingHe_2023-05-21",
   "source": "GeoQA-4901",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知在△ABC中,点D,E,F分别是边AB,AC,BC上的点,DE∥BC,EF∥AB,且AD:DB=1:2,CF=6,那么BF等于()",
-  "problem_text_en": "As shown in the figure, it is known that in △ABC, points D, E, and F are points on the edges AB, AC, and BC respectively, DE ∥ BC, EF ∥ AB, and AD:DB=N_0:N_1, CF=N_2, then BF is equal to ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，Div(LengthOfLine(DB)=LengthOfLine(AD))，CF=6，DE∥BC，EF∥AB。求直线BF的长度。",
+  "problem_text_en": "As shown in the diagram, Div(LengthOfLine(DB)=LengthOfLine(AD)), CF=6, DE∥BC, EF is parallel to AB. Find the length of line BF.",
   "problem_img": "5090.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -15,10 +15,10 @@
     "Collinear(ADB)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(DE,BC)",
-    "ParallelBetweenLine(EF,AB)",
     "Equal(Div(LengthOfLine(DB),LengthOfLine(AD)),2)",
-    "Equal(LengthOfLine(CF),6)"
+    "Equal(LengthOfLine(CF),6)",
+    "ParallelBetweenLine(DE,BC)",
+    "ParallelBetweenLine(EF,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BF))",
@@ -36,7 +36,15 @@
     "line_addition(1,BF,FC)",
     "line_addition(1,AD,DB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,DE,BC,A)",
+      "parallel_property_corresponding_angle(2,CB,ED,A)",
+      "parallel_property_collinear_extend(3,CB,ED,F)",
+      "parallel_property_collinear_extend(3,BA,FE,D)",
+      "line_addition(1,BF,FC)",
+      "line_addition(1,AD,DB)"
+    ],
     "parallel_property_corresponding_angle(1,DE,BC,A)": [
       "similar_triangle_judgment_aa(1,ADE,ABC)"
     ],
@@ -55,14 +63,6 @@
     ],
     "parallelogram_judgment_parallel_and_parallel(1,DBFE)": [
       "parallelogram_property_opposite_line_equal(1,BFED)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,DE,BC,A)",
-      "parallel_property_corresponding_angle(2,CB,ED,A)",
-      "parallel_property_collinear_extend(3,CB,ED,F)",
-      "parallel_property_collinear_extend(3,BA,FE,D)",
-      "line_addition(1,BF,FC)",
-      "line_addition(1,AD,DB)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 6809,
   "annotation": "ChenyangMao_2023-06-04",
   "source": "GeoQA-angle-10023",
-  "problem_level": 1,
-  "problem_text_cn": "如图，点D，E分别是△ABC的边AB，AC的中点，连接DE．若∠B＝50°，∠A＝60°，则∠AED的度数等于（）",
-  "problem_text_en": "",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠ABC=50°，∠CAB=60°，D是线段AB的中点，E是线段AC的中点。求∠DEA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABC=50°, ∠CAB=60°, D bisects segment AB, E is the midpoint of segment AC. Find the measure of ∠DEA.",
   "problem_img": "6809.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -13,10 +13,10 @@
     "Collinear(AEC)"
   ],
   "text_cdl": [
-    "IsMidpointOfLine(E,AC)",
-    "IsMidpointOfLine(D,AB)",
+    "Equal(MeasureOfAngle(ABC),50)",
     "Equal(MeasureOfAngle(CAB),60)",
-    "Equal(MeasureOfAngle(ABC),50)"
+    "IsMidpointOfLine(D,AB)",
+    "IsMidpointOfLine(E,AC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DEA))",
@@ -27,16 +27,16 @@
     "midsegment_of_triangle_property_parallel(1,DE,ABC)",
     "parallel_property_corresponding_angle(2,CB,ED,A)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "triangle_property_angle_sum(1,ABC)",
+      "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)"
+    ],
     "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)": [
       "midsegment_of_triangle_property_parallel(1,DE,ABC)"
     ],
     "midsegment_of_triangle_property_parallel(1,DE,ABC)": [
       "parallel_property_corresponding_angle(2,CB,ED,A)"
-    ],
-    "START": [
-      "triangle_property_angle_sum(1,ABC)",
-      "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)"
     ]
   }
 }

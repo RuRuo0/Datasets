@@ -2,27 +2,27 @@
   "problem_id": 2209,
   "annotation": "XiaoxiaoJin_2023-04-09",
   "source": "Geometry3k-2306",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If \\overrightarrow A C bisects \\angle D A B, B C = 4 x + 8, and D C = 9 x - 7, find B C.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，BC=4*x+8，DC=9*x-7，EC平分∠BED，CD⊥ND，FB垂直于CB。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, BC=4*x+8, DC=9*x-7, EC is the angle bisector of ∠BED, CD⊥ND, FB is perpendicular to CB. Find the length of line BC.",
   "problem_img": "2209.png",
   "construction_cdl": [
     "Shape(ED,DC,CE)",
     "Shape(EC,CB,BE)",
+    "Shape(BC,CA,AF,FB)",
+    "Shape(CD,DN,NA,AC)",
     "Collinear(EDN)",
     "Collinear(ECA)",
     "Collinear(EBF)"
   ],
   "text_cdl": [
-    "IsBisectorOfAngle(EC,BED)",
     "Equal(LengthOfLine(BC),4*x+8)",
-    "Equal(LengthOfLine(DC),9*x-7)"
+    "Equal(LengthOfLine(DC),9*x-7)",
+    "IsBisectorOfAngle(EC,BED)",
+    "PerpendicularBetweenLine(CD,ND)",
+    "PerpendicularBetweenLine(FB,CB)"
   ],
   "image_cdl": [
-    "Angle(CDN)",
-    "Angle(FBC)",
-    "Angle(BCA)",
-    "Angle(ACD)",
     "PerpendicularBetweenLine(FB,CB)",
     "PerpendicularBetweenLine(CD,ND)"
   ],
@@ -33,16 +33,16 @@
     "adjacent_complementary_angle(1,FBC,CBE)",
     "bisector_of_angle_property_distance_equal(1,EC,BED)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,EDC,CDN)",
+      "adjacent_complementary_angle(1,FBC,CBE)"
+    ],
     "adjacent_complementary_angle(1,EDC,CDN)": [
       "bisector_of_angle_property_distance_equal(1,EC,BED)"
     ],
     "adjacent_complementary_angle(1,FBC,CBE)": [
       "bisector_of_angle_property_distance_equal(1,EC,BED)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,EDC,CDN)",
-      "adjacent_complementary_angle(1,FBC,CBE)"
     ]
   }
 }

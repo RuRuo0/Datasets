@@ -2,9 +2,9 @@
   "problem_id": 3757,
   "annotation": "ChenyangMao_2023-04-30",
   "source": "GeoQA-1562",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,BD、CE是△ABC的中线,BD与CE相交于点O,点F、G分别是OB、OC的中点,连接AO．若AO=3cm,BC=4cm,则四边形DEFG的周长是()",
-  "problem_text_en": "As shown in the figure, in △ABC, BD and CE are the midlines of △ABC, BD and CE intersect at point O, and vertices F and G are the midvertices of OB and OC respectively, connecting with AO. If AO = N_0, BC = N_1, then the perimeter of the quadrilateral DEFG is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AO=3，BC=4，BD是△BCA的中线，CE是△CAB的中线，F平分线段OB，G平分线段OC。求EFGD的周长。",
+  "problem_text_en": "As shown in the diagram, AO=3, BC=4, BD is the median of △ BCA, CE is the median of △ CAB, F is the midpoint of segment OB, G is the midpoint of segment OC. Find the perimeter of quadrilateral EFGD.",
   "problem_img": "3757.png",
   "construction_cdl": [
     "Shape(AE,EO,OA)",
@@ -21,7 +21,14 @@
     "Collinear(BFOD)",
     "Collinear(CGOE)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AO),3)",
+    "Equal(LengthOfLine(BC),4)",
+    "IsMedianOfTriangle(BD,BCA)",
+    "IsMedianOfTriangle(CE,CAB)",
+    "IsMidpointOfLine(F,OB)",
+    "IsMidpointOfLine(G,OC)"
+  ],
   "image_cdl": [
     "IsMedianOfTriangle(BD,BCA)",
     "IsMedianOfTriangle(CE,CAB)",
@@ -43,7 +50,14 @@
     "midsegment_of_triangle_property_length(1,ED,ABC)",
     "quadrilateral_perimeter_formula(1,EFGD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "midsegment_of_triangle_judgment_midpoint(1,FG,OBC)",
+      "midsegment_of_triangle_judgment_midpoint(1,FE,BOA)",
+      "midsegment_of_triangle_judgment_midpoint(1,DG,CAO)",
+      "midsegment_of_triangle_judgment_midpoint(1,ED,ABC)",
+      "quadrilateral_perimeter_formula(1,EFGD)"
+    ],
     "midsegment_of_triangle_judgment_midpoint(1,FG,OBC)": [
       "midsegment_of_triangle_property_length(1,FG,OBC)"
     ],
@@ -55,13 +69,6 @@
     ],
     "midsegment_of_triangle_judgment_midpoint(1,ED,ABC)": [
       "midsegment_of_triangle_property_length(1,ED,ABC)"
-    ],
-    "START": [
-      "midsegment_of_triangle_judgment_midpoint(1,FG,OBC)",
-      "midsegment_of_triangle_judgment_midpoint(1,FE,BOA)",
-      "midsegment_of_triangle_judgment_midpoint(1,DG,CAO)",
-      "midsegment_of_triangle_judgment_midpoint(1,ED,ABC)",
-      "quadrilateral_perimeter_formula(1,EFGD)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 4790,
   "annotation": "ChenyangMao_2023-05-14",
   "source": "GeoQA-4184",
-  "problem_level": 1,
-  "problem_text_cn": "如图,直线AB与⊙O相切于点A,⊙O的半径为2,若∠OBA=30°,则AB的长为()",
-  "problem_text_en": "As shown in the figure, the straight line AB and ⊙O are tangent to point A, the radius of ⊙O is N_0, if ∠OBA = N_1, then the length of AB is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠ABC=30°，圆O的半径为2，O是圆O的圆心，BA是圆O的切线。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, ∠ABC=30°, the radius of circle O is 2, the center of ⊙O is O, the tangent to ⊙O is BA. Find the length of line AB.",
   "problem_img": "4790.png",
   "construction_cdl": [
     "Shape(OAC,CO,OA)",
@@ -14,10 +14,10 @@
     "Cocircular(O,AC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(BA,O)",
+    "Equal(MeasureOfAngle(ABC),30)",
     "Equal(RadiusOfCircle(O),2)",
-    "Equal(MeasureOfAngle(ABC),30)"
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(BA,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -28,7 +28,7 @@
     "radius_of_circle_property_length_equal(1,OA,O)",
     "sine_theorem(1,ABO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(1,BA,O,O)",
       "triangle_property_angle_sum(1,OAB)",

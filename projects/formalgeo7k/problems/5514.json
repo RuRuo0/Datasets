@@ -2,9 +2,9 @@
   "problem_id": 5514,
   "annotation": "DengfengYue_2023-05-21",
   "source": "GeoQA-5987",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知AB∥CD,AD=CD,∠1=40°,则∠2的度数为()",
-  "problem_text_en": "As shown in the figure, given that AB ∥ CD, AD = CD, ∠1 = N_0, then the degree of ∠2 is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AD=CD，∠CDA=40°，AB平行于CD。求∠CAE的大小。",
+  "problem_text_en": "As shown in the diagram, AD=CD, ∠CDA=40°, AB∥CD. Find the measure of ∠CAE.",
   "problem_img": "5514.png",
   "construction_cdl": [
     "Shape(EC,CA,AE)",
@@ -13,9 +13,9 @@
     "Collinear(EAB)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AB,CD)",
     "Equal(LengthOfLine(AD),LengthOfLine(CD))",
-    "Equal(MeasureOfAngle(CDA),40)"
+    "Equal(MeasureOfAngle(CDA),40)",
+    "ParallelBetweenLine(AB,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CAE))",
@@ -28,16 +28,16 @@
     "angle_addition(1,BAD,DAC)",
     "adjacent_complementary_angle(1,BAC,CAE)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,DAC)": [
-      "isosceles_triangle_property_angle_equal(1,DAC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,DAC)",
       "triangle_property_angle_sum(1,DAC)",
       "parallel_property_alternate_interior_angle(1,AB,CD)",
       "angle_addition(1,BAD,DAC)",
       "adjacent_complementary_angle(1,BAC,CAE)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,DAC)": [
+      "isosceles_triangle_property_angle_equal(1,DAC)"
     ]
   }
 }

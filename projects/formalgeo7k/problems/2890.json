@@ -2,9 +2,9 @@
   "problem_id": 2890,
   "annotation": "YimingHe_2023-04-16",
   "source": "GeoQA-58",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB∥CD,AD平分∠BAC,若∠BAD=70°,则∠ACD的度数为()",
-  "problem_text_en": "As shown in the figure, AB ∥ CD, AD equally divide ∠BAC, if ∠BAD = N_0, then the degree of ∠ACD is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠BAD=70°，AD平分∠BAC，AB平行于CD。求∠ACD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BAD=70°, AD is the angle bisector of ∠BAC, AB is parallel to CD. Find the measure of ∠ACD.",
   "problem_img": "2890.png",
   "construction_cdl": [
     "Shape(EA,AF)",
@@ -24,9 +24,9 @@
     "Collinear(ADJ)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AB,CD)",
+    "Equal(MeasureOfAngle(BAD),70)",
     "IsBisectorOfAngle(AD,BAC)",
-    "Equal(MeasureOfAngle(BAD),70)"
+    "ParallelBetweenLine(AB,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ACD))",
@@ -35,7 +35,7 @@
     "triangle_property_angle_sum(1,ACD)",
     "parallel_property_alternate_interior_angle(1,AB,CD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,ACD)",
       "parallel_property_alternate_interior_angle(1,AB,CD)"

@@ -3,8 +3,8 @@
   "annotation": "XiaokaiZhang_2023-03-12",
   "source": "Geometry3k-92",
   "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Line WY is the perpendicular bisector of line ZX, WZ=4a-15 and WX=a+12. Find the length of line WX.",
+  "problem_text_cn": "如图所示，WX=a+12，WZ=4*a-15，XY=YZ，WY垂直平分AB。求直线WX的长度。",
+  "problem_text_en": "As shown in the diagram, WX=a+12, WZ=4*a-15, XY=YZ, WY is the perpendicular bisector of ZX. Find the length of line WX.",
   "problem_img": "91.png",
   "construction_cdl": [
     "Shape(WZ,ZY,YW)",
@@ -12,9 +12,10 @@
     "Collinear(ZYX)"
   ],
   "text_cdl": [
-    "IsPerpendicularBisectorOfLine(WY,ZX)",
+    "Equal(LengthOfLine(WX),a+12)",
     "Equal(LengthOfLine(WZ),4*a-15)",
-    "Equal(LengthOfLine(WX),a+12)"
+    "Equal(LengthOfLine(XY),LengthOfLine(YZ))",
+    "IsPerpendicularBisectorOfLine(WY,ZX)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(XY),LengthOfLine(YZ))"
@@ -24,7 +25,7 @@
   "theorem_seqs": [
     "perpendicular_bisector_property_distance_equal(1,WY,ZX)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "perpendicular_bisector_property_distance_equal(1,WY,ZX)"
     ]

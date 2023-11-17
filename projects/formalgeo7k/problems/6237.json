@@ -2,9 +2,9 @@
   "problem_id": 6237,
   "annotation": "FangzhenZhu_2023-06-04",
   "source": "GeoQA-8835",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在⊙O中,AB是弦,OC⊥AB,垂足为C,若AB=16,OC=6,则⊙O的半径OA等于()",
-  "problem_text_en": "As shown in the figure, in ⊙O, AB is the chord, OC ⊥ AB, and the foot of perpendicular is C. If AB = N_0, OC = N_1, then the radius OA of ⊙O is equal to ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AB=16，OC=6，O是圆O的圆心，OC⊥BC。求直线OA的长度。",
+  "problem_text_en": "As shown in the diagram, AB=16, OC=6, O is the center of circle O, OC⊥BC. Find the length of line OA.",
   "problem_img": "6237.png",
   "construction_cdl": [
     "Shape(OAB,BC,CA)",
@@ -33,7 +33,14 @@
     "right_triangle_property_pythagorean(1,OCB)",
     "line_addition(1,AC,CB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "adjacent_complementary_angle(1,ACO,OCB)",
+      "right_triangle_judgment_angle(1,OCB)",
+      "line_addition(1,AC,CB)"
+    ],
     "adjacent_complementary_angle(1,ACO,OCB)": [
       "right_triangle_judgment_angle(1,ACO)"
     ],
@@ -42,13 +49,6 @@
     ],
     "right_triangle_judgment_angle(1,OCB)": [
       "right_triangle_property_pythagorean(1,OCB)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "adjacent_complementary_angle(1,ACO,OCB)",
-      "right_triangle_judgment_angle(1,OCB)",
-      "line_addition(1,AC,CB)"
     ]
   }
 }

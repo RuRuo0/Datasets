@@ -2,9 +2,9 @@
   "problem_id": 2998,
   "annotation": "NaZhu_2023-04-16",
   "source": "GeoQA-202",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示,a∥b,∠1=158°,∠2=42°,∠4=50°．那么∠3=()",
-  "problem_text_en": "As shown in the figure, a ∥ b, ∠1 = N_0, ∠2 = N_1, ∠4 = N_2. Then ∠3 = ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，∠BMN=158°，∠HKQ=50°，∠MNH=42°，AB平行于CD，AB平行于PQ，CD∥EF，EF∥PQ。求∠KHN的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BMN=158°, ∠HKQ=50°, ∠MNH=42°, AB∥CD, AB is parallel to PQ, CD∥EF, EF∥PQ. Find the measure of ∠KHN.",
   "problem_img": "2998.png",
   "construction_cdl": [
     "Shape(NM,MA)",
@@ -27,10 +27,13 @@
     "Collinear(PKQ)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AB,PQ)",
     "Equal(MeasureOfAngle(BMN),158)",
+    "Equal(MeasureOfAngle(HKQ),50)",
     "Equal(MeasureOfAngle(MNH),42)",
-    "Equal(MeasureOfAngle(HKQ),50)"
+    "ParallelBetweenLine(AB,CD)",
+    "ParallelBetweenLine(AB,PQ)",
+    "ParallelBetweenLine(CD,EF)",
+    "ParallelBetweenLine(EF,PQ)"
   ],
   "image_cdl": [
     "ParallelBetweenLine(AB,CD)",
@@ -52,7 +55,14 @@
     "parallel_property_alternate_interior_angle(1,ND,EH)",
     "parallel_property_alternate_interior_angle(2,EH,KQ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,DC,BA,N)",
+      "parallel_property_collinear_extend(3,FE,DC,H)",
+      "parallel_property_collinear_extend(3,QP,FE,K)",
+      "angle_addition(1,MND,DNH)",
+      "angle_addition(1,KHE,EHN)"
+    ],
     "parallel_property_collinear_extend(3,DC,BA,N)": [
       "parallel_property_collinear_extend(3,AB,ND,M)"
     ],
@@ -70,13 +80,6 @@
     ],
     "parallel_property_collinear_extend(3,EF,KQ,H)": [
       "parallel_property_alternate_interior_angle(2,EH,KQ)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,DC,BA,N)",
-      "parallel_property_collinear_extend(3,FE,DC,H)",
-      "parallel_property_collinear_extend(3,QP,FE,K)",
-      "angle_addition(1,MND,DNH)",
-      "angle_addition(1,KHE,EHN)"
     ]
   }
 }

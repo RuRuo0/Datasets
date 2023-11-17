@@ -2,9 +2,9 @@
   "problem_id": 759,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-784",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the parallelogram. Round to the nearest tenth if necessary.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AB=17，CE=9，∠ACD=45°，CA和DB是▱ACDB的一组对边，AE⊥DE。求ACDB的面积。",
+  "problem_text_en": "As shown in the diagram, AB=17, CE=9, ∠ACD=45°, AB and CD are opposite sides of the ▱ ACDB, AE⊥DE. Find the area of quadrilateral ACDB.",
   "problem_img": "759.png",
   "construction_cdl": [
     "Shape(AC,CE,EA)",
@@ -12,7 +12,11 @@
     "Collinear(CED)"
   ],
   "text_cdl": [
-    "Parallelogram(ACDB)"
+    "Equal(LengthOfLine(AB),17)",
+    "Equal(LengthOfLine(CE),9)",
+    "Equal(MeasureOfAngle(ACD),45)",
+    "Parallelogram(ACDB)",
+    "PerpendicularBetweenLine(AE,DE)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(AB),17)",
@@ -30,16 +34,16 @@
     "parallelogram_property_opposite_line_equal(1,CDBA)",
     "parallelogram_area_formula_common(1,ACDB)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,CEA,AED)": [
-      "altitude_of_quadrilateral_judgment_left_vertex(1,AE,ACDB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,ACE)",
       "sine_theorem(1,EAC)",
       "adjacent_complementary_angle(1,CEA,AED)",
       "parallelogram_property_opposite_line_equal(1,CDBA)",
       "parallelogram_area_formula_common(1,ACDB)"
+    ],
+    "adjacent_complementary_angle(1,CEA,AED)": [
+      "altitude_of_quadrilateral_judgment_left_vertex(1,AE,ACDB)"
     ]
   }
 }

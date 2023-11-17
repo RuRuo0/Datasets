@@ -2,9 +2,9 @@
   "problem_id": 2638,
   "annotation": "DengfengYue_2023-04-09",
   "source": "Geometry3k-2773",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "P is the incenter of \\triangle A E C. Find m \\angle D E P.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=11，EP=15，PA=13，∠DCP=28°，∠PAF=33°，三角形AEC的内切圆圆心为P，ED垂直于PD，PB⊥AB，PF⊥EF。求∠PED的大小。",
+  "problem_text_en": "As shown in the diagram, AB=11, EP=15, PA=13, ∠DCP=28°, ∠PAF=33°, P is the center of the inscribed circle of △AEC, ED⊥PD, PB is perpendicular to AB, PF is perpendicular to EF. Find the measure of ∠PED.",
   "problem_img": "2638.png",
   "construction_cdl": [
     "Shape(AF,FP,PA)",
@@ -20,7 +20,17 @@
     "Collinear(CPF)",
     "Collinear(EPB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),11)",
+    "Equal(LengthOfLine(EP),15)",
+    "Equal(LengthOfLine(PA),13)",
+    "Equal(MeasureOfAngle(DCP),28)",
+    "Equal(MeasureOfAngle(PAF),33)",
+    "IsIncenterOfTriangle(P,AEC)",
+    "PerpendicularBetweenLine(ED,PD)",
+    "PerpendicularBetweenLine(PB,AB)",
+    "PerpendicularBetweenLine(PF,EF)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(PAF),33)",
     "Equal(LengthOfLine(AB),11)",
@@ -40,7 +50,7 @@
     "angle_addition(1,DCP,PCB)",
     "triangle_property_angle_sum(1,AEC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,AEP,PED)",
       "angle_addition(1,BAP,PAF)",

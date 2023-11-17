@@ -2,9 +2,9 @@
   "problem_id": 3798,
   "annotation": "YifanWang_2023-05-07",
   "source": "GeoQA-1644",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ADE∽△ABC,若AD=1,BD=2,则△ADE与△ABC的相似比是()．",
-  "problem_text_en": "As shown in the figure, △ADE ∽ △ABC, if AD = N_0, BD = N_1, then the similarity ratio between △ADE and △ABC is ().",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AD=1，DB=2，△ADE相似于△ABC。求△ADE和△ABC的相似比。",
+  "problem_text_en": "As shown in the diagram, AD=1, DB=2, △ADE is similar to △ABC.. Find the ratio of similar triangles ADE and ABC.",
   "problem_img": "3798.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -12,7 +12,11 @@
     "Collinear(ADB)",
     "Collinear(CEA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AD),1)",
+    "Equal(LengthOfLine(DB),2)",
+    "SimilarBetweenTriangle(ADE,ABC)"
+  ],
   "image_cdl": [
     "SimilarBetweenTriangle(ADE,ABC)",
     "Equal(LengthOfLine(AD),1)",
@@ -24,7 +28,7 @@
     "line_addition(1,AD,DB)",
     "similar_triangle_property_line_ratio(1,EAD,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AD,DB)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"

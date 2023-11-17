@@ -2,9 +2,9 @@
   "problem_id": 6217,
   "annotation": "DengfengYue_2023-05-28",
   "source": "GeoQA-8807",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,C为圆上一点,∠BAC的平分线交于⊙O于点D,若∠ABC=40°,那么∠DBC的度数为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, C is a point on the circle, the bisector of ∠BAC intersects ⊙O at point D, if ∠ABC = N_0, then the degree of ∠DBC is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠ABC=40°，AD是∠CAB的角平分线，圆O的圆心为O，AB是⊙O的直径。求∠CBD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABC=40°, AD is the angle bisector of ∠CAB, the center of ⊙O is O, the diameter of circle O is AB. Find the measure of ∠CBD.",
   "problem_img": "6217.png",
   "construction_cdl": [
     "Shape(BA,OAB)",
@@ -20,10 +20,10 @@
     "Cocircular(O,BDCA)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(AB,O)",
     "Equal(MeasureOfAngle(ABC),40)",
-    "IsBisectorOfAngle(AD,CAB)"
+    "IsBisectorOfAngle(AD,CAB)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CBD))",
@@ -35,7 +35,7 @@
     "arc_property_circumference_angle_external(1,ODC,B)",
     "arc_property_circumference_angle_external(1,ODC,A)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,BCA,O)",
       "triangle_property_angle_sum(1,ABC)",

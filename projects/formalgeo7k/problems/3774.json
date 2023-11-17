@@ -2,9 +2,9 @@
   "problem_id": 3774,
   "annotation": "ChenyangMao_2023-04-30",
   "source": "GeoQA-1602",
-  "problem_level": 1,
-  "problem_text_cn": "如图,∠1+∠2=180°,∠3=50°,则∠4的度数为()",
-  "problem_text_en": "As shown in the figure, ∠1 + ∠2 = N_0, ∠3 = N_1, then the degree of ∠4 is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，Add(MeasureOfAngle(GBA)=MeasureOfAngle(FGB))，∠IHG=50°。求∠DCE的大小。",
+  "problem_text_en": "As shown in the diagram, Add(MeasureOfAngle(GBA)=MeasureOfAngle(FGB)), ∠IHG=50°. Find the measure of ∠DCE.",
   "problem_img": "3774.png",
   "construction_cdl": [
     "Shape(GB,BA)",
@@ -19,7 +19,10 @@
     "Collinear(BGI)",
     "Collinear(IHCD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(Add(MeasureOfAngle(GBA),MeasureOfAngle(FGB)),180)",
+    "Equal(MeasureOfAngle(IHG),50)"
+  ],
   "image_cdl": [
     "Equal(Add(MeasureOfAngle(GBA),MeasureOfAngle(FGB)),180)",
     "Equal(MeasureOfAngle(IHG),50)"
@@ -33,7 +36,11 @@
     "parallel_property_corresponding_angle(1,HG,CA,I)",
     "vertical_angle(1,ICA,DCE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_judgment_ipsilateral_internal_angle(1,GF,BA)",
+      "vertical_angle(1,ICA,DCE)"
+    ],
     "parallel_judgment_ipsilateral_internal_angle(1,GF,BA)": [
       "parallel_property_collinear_extend(1,GF,BA,H)"
     ],
@@ -42,10 +49,6 @@
     ],
     "parallel_property_collinear_extend(2,AB,GH,C)": [
       "parallel_property_corresponding_angle(1,HG,CA,I)"
-    ],
-    "START": [
-      "parallel_judgment_ipsilateral_internal_angle(1,GF,BA)",
-      "vertical_angle(1,ICA,DCE)"
     ]
   }
 }

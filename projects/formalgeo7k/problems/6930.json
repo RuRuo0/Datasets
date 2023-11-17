@@ -2,9 +2,9 @@
   "problem_id": 6930,
   "annotation": "ChengQin_2023-06-04",
   "source": "GeoQA-angle-10182",
-  "problem_level": 1,
-  "problem_text_cn": "如图，AB是⊙O的直径，点C、D都在⊙O上，若∠ABD＝63°、∠DCO＝24°，则∠BDC的度数是（）",
-  "problem_text_en": "",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，∠DBA=63°，∠DCO=24°，⊙O的圆心为O，⊙O的直径为BA。求∠CDB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DBA=63°, ∠DCO=24°, O is the center of ⊙O, BA is the diameter of ⊙O. Find the measure of ∠CDB.",
   "problem_img": "6930.png",
   "construction_cdl": [
     "Shape(ODB,BD)",
@@ -19,10 +19,10 @@
     "Cocircular(O,ADBC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(BA,O)",
     "Equal(MeasureOfAngle(DBA),63)",
-    "Equal(MeasureOfAngle(DCO),24)"
+    "Equal(MeasureOfAngle(DCO),24)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(BA,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CDB))",
@@ -38,16 +38,7 @@
     "arc_property_circumference_angle_external(1,OBC,A)",
     "arc_property_circumference_angle_external(1,OBC,D)"
   ],
-  "theorem_seq_dag": {
-    "radius_of_circle_property_length_equal(1,OA,O)": [
-      "isosceles_triangle_judgment_line_equal(1,OCA)"
-    ],
-    "radius_of_circle_property_length_equal(1,OC,O)": [
-      "isosceles_triangle_judgment_line_equal(1,OCA)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,OCA)": [
-      "isosceles_triangle_property_angle_equal(1,OCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_circumference_angle_external(1,OAD,B)",
       "arc_property_circumference_angle_external(1,OAD,C)",
@@ -56,6 +47,15 @@
       "radius_of_circle_property_length_equal(1,OC,O)",
       "arc_property_circumference_angle_external(1,OBC,A)",
       "arc_property_circumference_angle_external(1,OBC,D)"
+    ],
+    "radius_of_circle_property_length_equal(1,OA,O)": [
+      "isosceles_triangle_judgment_line_equal(1,OCA)"
+    ],
+    "radius_of_circle_property_length_equal(1,OC,O)": [
+      "isosceles_triangle_judgment_line_equal(1,OCA)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,OCA)": [
+      "isosceles_triangle_property_angle_equal(1,OCA)"
     ]
   }
 }

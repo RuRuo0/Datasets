@@ -2,9 +2,9 @@
   "problem_id": 2507,
   "annotation": "ChenyangMao_2023-04-23",
   "source": "Geometry3k-2631",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x so that a \\parallel b.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠ABF=4*x+11°，∠CAB=8*x+1°，EC∥DF。求x的值。",
+  "problem_text_en": "As shown in the diagram, ∠ABF=4*x+11°, ∠CAB=8*x+1°, EC is parallel to DF. Find the value of x.",
   "problem_img": "2507.png",
   "construction_cdl": [
     "Shape(GB,BD)",
@@ -20,6 +20,8 @@
     "Collinear(EAC)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(ABF),4*x+11)",
+    "Equal(MeasureOfAngle(CAB),8*x+1)",
     "ParallelBetweenLine(EC,DF)"
   ],
   "image_cdl": [
@@ -33,15 +35,15 @@
     "parallel_property_collinear_extend(3,FD,CA,B)",
     "parallel_property_ipsilateral_internal_angle(1,AC,BF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,EC,DF,A)"
+    ],
     "parallel_property_collinear_extend(3,EC,DF,A)": [
       "parallel_property_collinear_extend(3,FD,CA,B)"
     ],
     "parallel_property_collinear_extend(3,FD,CA,B)": [
       "parallel_property_ipsilateral_internal_angle(1,AC,BF)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,EC,DF,A)"
     ]
   }
 }

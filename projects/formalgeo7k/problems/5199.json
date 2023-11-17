@@ -2,9 +2,9 @@
   "problem_id": 5199,
   "annotation": "NaZhu_2023-05-21",
   "source": "GeoQA-5199",
-  "problem_level": 1,
-  "problem_text_cn": "如图,CD是⊙E的弦,直径AB过CD的中点M,若∠BEC=40°,则∠ABD=()",
-  "problem_text_en": "As shown in the figure, CD is the chord of ⊙E, and the diameter AB passes the midpoint M of CD. If ∠BEC = N_0, then ∠ABD = ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠MEC=40°，E是⊙E的圆心，M是线段CD的中点。求∠MBD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠MEC=40°, the center of ⊙E is E, M bisects segment CD. Find the measure of ∠MBD.",
   "problem_img": "5199.png",
   "construction_cdl": [
     "Shape(EAC,CE,EA)",
@@ -19,9 +19,9 @@
     "Cocircular(E,ACBD)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(MEC),40)",
     "IsCentreOfCircle(E,E)",
-    "IsMidpointOfLine(M,CD)",
-    "Equal(MeasureOfAngle(MEC),40)"
+    "IsMidpointOfLine(M,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(MBD))",
@@ -36,7 +36,13 @@
     "isosceles_triangle_property_angle_equal(1,EBD)",
     "triangle_property_angle_sum(1,EBD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,EC,E)",
+      "radius_of_circle_property_length_equal(1,EB,E)",
+      "radius_of_circle_property_length_equal(1,ED,E)",
+      "triangle_property_angle_sum(1,EBD)"
+    ],
     "radius_of_circle_property_length_equal(1,EC,E)": [
       "mirror_congruent_triangle_judgment_sss(1,CME,DEM)"
     ],
@@ -52,12 +58,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,EBD)": [
       "isosceles_triangle_property_angle_equal(1,EBD)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,EC,E)",
-      "radius_of_circle_property_length_equal(1,EB,E)",
-      "radius_of_circle_property_length_equal(1,ED,E)",
-      "triangle_property_angle_sum(1,EBD)"
     ]
   }
 }

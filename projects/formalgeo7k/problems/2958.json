@@ -2,9 +2,9 @@
   "problem_id": 2958,
   "annotation": "JiaZou_2023-04-16",
   "source": "GeoQA-153",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB∥CD,EF⊥AB于E,EF交CD于F,已知∠1=50°,则∠2=()",
-  "problem_text_en": "As shown in the figure, AB ∥ CD, EF ⊥ AB is in E, EF crosses CD in F, it is known that ∠1 = N_0, then ∠2 = () ",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠CPQ=50°，CD∥AB，FE⊥BE。求∠PEF的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CPQ=50°, CD is parallel to AB, FE⊥BE. Find the measure of ∠PEF.",
   "problem_img": "2958.png",
   "construction_cdl": [
     "Shape(CP,PQ)",
@@ -24,9 +24,9 @@
     "Collinear(MFEN)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(CPQ),50)",
     "ParallelBetweenLine(CD,AB)",
-    "PerpendicularBetweenLine(FE,BE)",
-    "Equal(MeasureOfAngle(CPQ),50)"
+    "PerpendicularBetweenLine(FE,BE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(PEF))",
@@ -38,17 +38,17 @@
     "vertical_angle(1,CPQ,FPE)",
     "triangle_property_angle_sum(1,PEF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,CD,AB,F)",
+      "vertical_angle(1,CPQ,FPE)",
+      "triangle_property_angle_sum(1,PEF)"
+    ],
     "parallel_property_collinear_extend(3,CD,AB,F)": [
       "parallel_property_collinear_extend(3,BA,FC,E)"
     ],
     "parallel_property_collinear_extend(3,BA,FC,E)": [
       "parallel_property_alternate_interior_angle(2,CF,EB)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,CD,AB,F)",
-      "vertical_angle(1,CPQ,FPE)",
-      "triangle_property_angle_sum(1,PEF)"
     ]
   }
 }

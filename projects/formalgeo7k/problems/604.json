@@ -2,9 +2,9 @@
   "problem_id": 604,
   "annotation": "YimingHe_2023-04-09",
   "source": "Geometry3k-621",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure, m \\angle 12 = 64. Find the measure of \\angle 4.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠UEN=64°，IW平行于KA，JL平行于BN。求∠AUL的大小。",
+  "problem_text_en": "As shown in the diagram, ∠UEN=64°, IW∥KA, JL∥BN. Find the measure of ∠AUL.",
   "problem_img": "604.png",
   "construction_cdl": [
     "Shape(JD,DW)",
@@ -26,7 +26,9 @@
     "Collinear(BHEN)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(UEN),64)"
+    "Equal(MeasureOfAngle(UEN),64)",
+    "ParallelBetweenLine(IW,KA)",
+    "ParallelBetweenLine(JL,BN)"
   ],
   "image_cdl": [
     "ParallelBetweenLine(IW,KA)",
@@ -39,15 +41,15 @@
     "parallel_property_collinear_extend(3,NB,LU,E)",
     "parallel_property_corresponding_angle(1,UL,EN,A)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,JL,BN,U)"
+    ],
     "parallel_property_collinear_extend(3,JL,BN,U)": [
       "parallel_property_collinear_extend(3,NB,LU,E)"
     ],
     "parallel_property_collinear_extend(3,NB,LU,E)": [
       "parallel_property_corresponding_angle(1,UL,EN,A)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,JL,BN,U)"
     ]
   }
 }

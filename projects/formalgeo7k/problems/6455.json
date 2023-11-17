@@ -2,9 +2,9 @@
   "problem_id": 6455,
   "annotation": "JiaZou_2023-06-04",
   "source": "GeoQA-9336",
-  "problem_level": 1,
-  "problem_text_cn": "如图,平行四边形ABCD的对角线AC、BD相交于点O,点E是CD的中点,△ABD的周长为16cm,则△DOE的周长是()",
-  "problem_text_en": "As shown in the figure, the diagonals AC and BD of the parallelogram ABCD intersect at point O, point E is the midpoint of CD, and the perimeter of △ABD is N_0, then the perimeter of △DOE is ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，△ABD的周长为16，E是线段CD的中点，AD和BC是平行四边形ABCD的一组对边。求△DOE的周长。",
+  "problem_text_en": "As shown in the diagram, the perimeter of △ABD is 16, E bisects segment CD, AD and BC are opposite sides of the ▱ ABCD. Find the perimeter of triangle DOE.",
   "problem_img": "6455.png",
   "construction_cdl": [
     "Shape(AB,BO,OA)",
@@ -17,9 +17,9 @@
     "Collinear(CED)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
+    "Equal(PerimeterOfTriangle(ABD),16)",
     "IsMidpointOfLine(E,CD)",
-    "Equal(PerimeterOfTriangle(ABD),16)"
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfTriangle(DOE))",
@@ -36,7 +36,16 @@
     "triangle_perimeter_formula(1,ABD)",
     "triangle_perimeter_formula(1,OED)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallelogram_property_diagonal_bisection(1,BCDA,O)",
+      "line_addition(1,BO,OD)",
+      "line_addition(1,DE,EC)",
+      "parallelogram_property_opposite_line_equal(1,ABCD)",
+      "parallelogram_property_opposite_line_equal(1,BCDA)",
+      "triangle_perimeter_formula(1,ABD)",
+      "triangle_perimeter_formula(1,OED)"
+    ],
     "parallelogram_property_diagonal_bisection(1,BCDA,O)": [
       "similar_triangle_judgment_sas(1,DOE,DBC)"
     ],
@@ -49,15 +58,6 @@
     "similar_triangle_judgment_sas(1,DOE,DBC)": [
       "similar_triangle_property_line_ratio(1,DOE,DBC)",
       "similar_triangle_property_line_ratio(1,EDO,CDB)"
-    ],
-    "START": [
-      "parallelogram_property_diagonal_bisection(1,BCDA,O)",
-      "line_addition(1,BO,OD)",
-      "line_addition(1,DE,EC)",
-      "parallelogram_property_opposite_line_equal(1,ABCD)",
-      "parallelogram_property_opposite_line_equal(1,BCDA)",
-      "triangle_perimeter_formula(1,ABD)",
-      "triangle_perimeter_formula(1,OED)"
     ]
   }
 }

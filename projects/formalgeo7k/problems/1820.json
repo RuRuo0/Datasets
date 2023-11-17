@@ -2,9 +2,9 @@
   "problem_id": 1820,
   "annotation": "ChenyangMao_2023-04-16",
   "source": "Geometry3k-1888",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Triangle R S T is circumscribed about the circle below. What is the perimeter of the triangle?",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，BS=x-1，RB=5，RC=x+1，SD=x-1，TC=3*x-2，TD=10，⊙A的圆心为A，⊙O的切线为RB，⊙O的切线为RC，⊙O的切线为SB，SD是圆O的切线，⊙O的切线为TC，圆O的切线为TD。求△RST的周长。",
+  "problem_text_en": "As shown in the diagram, BS=x-1, RB=5, RC=x+1, SD=x-1, TC=3*x-2, TD=10, the center of ⊙A is A, the tangent to circle A is RB, the tangent to ⊙A is RC, SB is the tangent to circle A, SD is the tangent to circle A, the tangent to circle A is TC, the tangent to circle A is TD. Find the perimeter of △RST.",
   "problem_img": "1820.png",
   "construction_cdl": [
     "Shape(RB,ACB,CR)",
@@ -22,6 +22,13 @@
     "Cocircular(A,BDEC)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(BS),x-1)",
+    "Equal(LengthOfLine(RB),5)",
+    "Equal(LengthOfLine(RC),x+1)",
+    "Equal(LengthOfLine(SD),x-1)",
+    "Equal(LengthOfLine(TC),3*x-2)",
+    "Equal(LengthOfLine(TD),10)",
+    "IsCentreOfCircle(A,A)",
     "IsTangentOfCircle(RB,A)",
     "IsTangentOfCircle(RC,A)",
     "IsTangentOfCircle(SB,A)",
@@ -52,7 +59,17 @@
     "line_addition(1,RC,CT)",
     "triangle_perimeter_formula(1,RST)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(2,TC,A,A)",
+      "tangent_of_circle_property_perpendicular(1,TD,A,A)",
+      "radius_of_circle_property_length_equal(1,AC,A)",
+      "radius_of_circle_property_length_equal(1,AD,A)",
+      "line_addition(1,RB,BS)",
+      "line_addition(1,SD,DT)",
+      "line_addition(1,RC,CT)",
+      "triangle_perimeter_formula(1,RST)"
+    ],
     "tangent_of_circle_property_perpendicular(2,TC,A,A)": [
       "mirror_congruent_triangle_judgment_hl(2,ADT,ATC)"
     ],
@@ -67,16 +84,6 @@
     ],
     "mirror_congruent_triangle_judgment_hl(2,ADT,ATC)": [
       "mirror_congruent_triangle_property_line_equal(1,ADT,ATC)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(2,TC,A,A)",
-      "tangent_of_circle_property_perpendicular(1,TD,A,A)",
-      "radius_of_circle_property_length_equal(1,AC,A)",
-      "radius_of_circle_property_length_equal(1,AD,A)",
-      "line_addition(1,RB,BS)",
-      "line_addition(1,SD,DT)",
-      "line_addition(1,RC,CT)",
-      "triangle_perimeter_formula(1,RST)"
     ]
   }
 }

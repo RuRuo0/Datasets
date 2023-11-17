@@ -2,9 +2,9 @@
   "problem_id": 3457,
   "annotation": "NaZhu_2023-04-30",
   "source": "GeoQA-1031",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,AB=AC,D是BC的中点,∠B=40°,则∠BAD=()",
-  "problem_text_en": "As shown in the figure, in △ABC, AB = AC, D is the midpoint of BC, ∠B = N_0, then ∠BAD = ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AB=AC，∠ABD=40°，D平分线段BC。求∠DAB的大小。",
+  "problem_text_en": "As shown in the diagram, AB=AC, ∠ABD=40°, D is the midpoint of segment BC. Find the measure of ∠DAB.",
   "problem_img": "3457.png",
   "construction_cdl": [
     "Shape(AB,BD,DA)",
@@ -13,8 +13,8 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(AB),LengthOfLine(AC))",
-    "IsMidpointOfLine(D,BC)",
-    "Equal(MeasureOfAngle(ABD),40)"
+    "Equal(MeasureOfAngle(ABD),40)",
+    "IsMidpointOfLine(D,BC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DAB))",
@@ -27,7 +27,12 @@
     "adjacent_complementary_angle(1,BDA,ADC)",
     "triangle_property_angle_sum(1,ABD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "isosceles_triangle_judgment_line_equal(1,ABC)",
+      "adjacent_complementary_angle(1,BDA,ADC)",
+      "triangle_property_angle_sum(1,ABD)"
+    ],
     "isosceles_triangle_judgment_line_equal(1,ABC)": [
       "isosceles_triangle_property_angle_equal(1,ABC)"
     ],
@@ -36,11 +41,6 @@
     ],
     "mirror_congruent_triangle_judgment_sas(1,BDA,CAD)": [
       "mirror_congruent_triangle_property_angle_equal(1,DAB,DCA)"
-    ],
-    "START": [
-      "isosceles_triangle_judgment_line_equal(1,ABC)",
-      "adjacent_complementary_angle(1,BDA,ADC)",
-      "triangle_property_angle_sum(1,ABD)"
     ]
   }
 }

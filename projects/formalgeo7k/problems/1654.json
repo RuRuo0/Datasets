@@ -2,9 +2,9 @@
   "problem_id": 1654,
   "annotation": "NaZhu_2023-03-26",
   "source": "Geometry3k-1716",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find F B if S A and F B are altitudes and \\triangle R S T \\sim \\triangle E F G.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，FB=7-x，GF=5，SA=2，ST=x，FB是三角形FGB的高，SA是△STA的高，GB⊥FB，TA⊥SA，三角形SRT与三角形FEG是相似三角形。求直线FB的长度。",
+  "problem_text_en": "As shown in the diagram, FB=7-x, GF=5, SA=2, ST=x, FB is the altitude of triangle FGB, SA is the altitude of triangle STA, GB⊥FB, TA is perpendicular to SA, △SRT is similar to △FEG.. Find the length of line FB.",
   "problem_img": "1654.png",
   "construction_cdl": [
     "Shape(SR,RT,TS)",
@@ -14,7 +14,17 @@
     "Collinear(RTA)",
     "Collinear(EGB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(FB),7-x)",
+    "Equal(LengthOfLine(GF),5)",
+    "Equal(LengthOfLine(SA),2)",
+    "Equal(LengthOfLine(ST),x)",
+    "IsAltitudeOfTriangle(FB,FGB)",
+    "IsAltitudeOfTriangle(SA,STA)",
+    "PerpendicularBetweenLine(GB,FB)",
+    "PerpendicularBetweenLine(TA,SA)",
+    "SimilarBetweenTriangle(SRT,FEG)"
+  ],
   "image_cdl": [
     "IsAltitudeOfTriangle(SA,STA)",
     "IsAltitudeOfTriangle(FB,FGB)",
@@ -36,7 +46,12 @@
     "similar_triangle_property_line_ratio(1,TAS,GBF)",
     "similar_triangle_property_line_ratio(1,AST,BFG)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "similar_triangle_property_angle_equal(1,TSR,GFE)",
+      "adjacent_complementary_angle(1,RTS,STA)",
+      "adjacent_complementary_angle(1,EGF,FGB)"
+    ],
     "similar_triangle_property_angle_equal(1,TSR,GFE)": [
       "similar_triangle_judgment_aa(1,STA,FGB)"
     ],
@@ -49,11 +64,6 @@
     "similar_triangle_judgment_aa(1,STA,FGB)": [
       "similar_triangle_property_line_ratio(1,TAS,GBF)",
       "similar_triangle_property_line_ratio(1,AST,BFG)"
-    ],
-    "START": [
-      "similar_triangle_property_angle_equal(1,TSR,GFE)",
-      "adjacent_complementary_angle(1,RTS,STA)",
-      "adjacent_complementary_angle(1,EGF,FGB)"
     ]
   }
 }

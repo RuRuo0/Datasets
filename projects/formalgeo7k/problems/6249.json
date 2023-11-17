@@ -2,9 +2,9 @@
   "problem_id": 6249,
   "annotation": "FangzhenZhu_2023-06-04",
   "source": "GeoQA-8857",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O的直径AB=10cm,CD⊥AB,OE=3cm,则CD的长()cm．",
-  "problem_text_en": "As shown in the figure, the diameter of ⊙O AB = N_0, CD ⊥ AB, OE = N_1, then the length of CD ().",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AB=10，OE=3，O是圆O的圆心，DE垂直于OE。求直线CD的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, OE=3, O is the center of circle O, DE⊥OE. Find the length of line CD.",
   "problem_img": "6249.png",
   "construction_cdl": [
     "Shape(OD,DE,EO)",
@@ -17,9 +17,9 @@
     "Cocircular(O,ADBC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(AB),10)",
     "Equal(LengthOfLine(OE),3)",
+    "IsCentreOfCircle(O,O)",
     "PerpendicularBetweenLine(DE,OE)"
   ],
   "image_cdl": [],
@@ -35,10 +35,7 @@
     "right_triangle_judgment_angle(1,DEO)",
     "right_triangle_property_pythagorean(1,DEO)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,DEO)": [
-      "right_triangle_property_pythagorean(1,DEO)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AO,OB)",
       "line_addition(1,CE,ED)",
@@ -47,6 +44,9 @@
       "radius_of_circle_property_length_equal(1,OD,O)",
       "radius_of_circle_property_length_equal(1,OB,O)",
       "right_triangle_judgment_angle(1,DEO)"
+    ],
+    "right_triangle_judgment_angle(1,DEO)": [
+      "right_triangle_property_pythagorean(1,DEO)"
     ]
   }
 }

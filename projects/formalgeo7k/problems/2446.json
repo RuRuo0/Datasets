@@ -2,16 +2,22 @@
   "problem_id": 2446,
   "annotation": "Yangli_2023-04-23",
   "source": "Geometry3k-2566",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the height of the parallelogram given its area with 2000 square units.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，四边形BADC的面积为2000，BC=x+10，BE=x，BC和AD是▱BADC的一组对边，BE⊥DE。求x的值。",
+  "problem_text_en": "As shown in the diagram, the area of quadrilateral BADC is 2000, BC=x+10, BE=x, AB and DC are opposite sides of the ▱ BADC, BE is perpendicular to DE. Find the value of x.",
   "problem_img": "2446.png",
   "construction_cdl": [
     "Shape(BA,AE,EB)",
     "Shape(BE,ED,DC,CB)",
     "Collinear(AED)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(AreaOfQuadrilateral(BADC),2000)",
+    "Equal(LengthOfLine(BC),x+10)",
+    "Equal(LengthOfLine(BE),x)",
+    "Parallelogram(BADC)",
+    "PerpendicularBetweenLine(BE,DE)"
+  ],
   "image_cdl": [
     "Parallelogram(BADC)",
     "Equal(AreaOfQuadrilateral(BADC),2000)",
@@ -27,14 +33,14 @@
     "parallelogram_property_opposite_line_equal(1,ADCB)",
     "parallelogram_area_formula_common(1,BADC)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,AEB,BED)": [
-      "altitude_of_quadrilateral_judgment_left_vertex(1,BE,BADC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,AEB,BED)",
       "parallelogram_property_opposite_line_equal(1,ADCB)",
       "parallelogram_area_formula_common(1,BADC)"
+    ],
+    "adjacent_complementary_angle(1,AEB,BED)": [
+      "altitude_of_quadrilateral_judgment_left_vertex(1,BE,BADC)"
     ]
   }
 }

@@ -2,17 +2,17 @@
   "problem_id": 5258,
   "annotation": "XiaokaiZhang_2023-05-21",
   "source": "GeoQA-5363",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知点C把线段AB从左至右依次分成1:2两部分,点D是AB的中点,若DC=2,则线段AB的长是()",
-  "problem_text_en": "As shown in the figure, the known point C bisects the line segment AB into N_0:N_1 from left to right, and the point D is the midpoint of AB. If DC = N_2, the length of the line segment AB is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，CB=Mul(2,LengthOfLine(AC))，DC=2，D是线段AB的中点。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, CB=Mul(2,LengthOfLine(AC)), DC=2, D bisects segment AB. Find the length of line AB.",
   "problem_img": "5258.png",
   "construction_cdl": [
     "Collinear(ACDB)"
   ],
   "text_cdl": [
     "Equal(LengthOfLine(CB),Mul(2,LengthOfLine(AC)))",
-    "IsMidpointOfLine(D,AB)",
-    "Equal(LengthOfLine(DC),2)"
+    "Equal(LengthOfLine(DC),2)",
+    "IsMidpointOfLine(D,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -22,7 +22,7 @@
     "line_addition(1,AC,CB)",
     "line_addition(1,AD,DB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AC,CD)",
       "line_addition(1,AC,CB)",

@@ -2,9 +2,9 @@
   "problem_id": 5867,
   "annotation": "QikeHuang_2023-05-28",
   "source": "GeoQA-7906",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AD是△ABC的高,AB=15,AC=12,AD=10,则△ABC的外接圆直径AE长为()",
-  "problem_text_en": "As shown in the figure, AD is the height of △ABC, AB = N_0, AC = N_1, AD = N_2, then the diameter AE of the circumscribed circle of △ABC is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AB=15，AC=12，AD=10，AD是三角形ABC的高，O是圆O的圆心。求直线AE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=15, AC=12, AD=10, AD is the altitude of triangle ABC, the center of ⊙O is O. Find the length of line AE.",
   "problem_img": "5867.png",
   "construction_cdl": [
     "Shape(AB,BO,OA)",
@@ -20,11 +20,11 @@
     "Cocircular(O,ABEC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsAltitudeOfTriangle(AD,ABC)",
     "Equal(LengthOfLine(AB),15)",
     "Equal(LengthOfLine(AC),12)",
-    "Equal(LengthOfLine(AD),10)"
+    "Equal(LengthOfLine(AD),10)",
+    "IsAltitudeOfTriangle(AD,ABC)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AE))",
@@ -40,10 +40,7 @@
     "diameter_of_circle_judgment_pass_centre(1,AOE,O)",
     "diameter_of_circle_property_length_equal(1,AE,O)"
   ],
-  "theorem_seq_dag": {
-    "diameter_of_circle_judgment_pass_centre(1,AOE,O)": [
-      "diameter_of_circle_property_length_equal(1,AE,O)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "sine_theorem(1,ADC)",
       "arc_property_circumference_angle_external(1,OAB,C)",
@@ -53,6 +50,9 @@
       "cosine_theorem(1,OAB)",
       "circle_property_length_of_radius_and_diameter(1,O)",
       "diameter_of_circle_judgment_pass_centre(1,AOE,O)"
+    ],
+    "diameter_of_circle_judgment_pass_centre(1,AOE,O)": [
+      "diameter_of_circle_property_length_equal(1,AE,O)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 1131,
   "annotation": "JiaZou_2023-03-19",
   "source": "Geometry3k-1169",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，CD=33，CE=25，DE=x，DE垂直于CE。求x的值。",
+  "problem_text_en": "As shown in the diagram, CD=33, CE=25, DE=x, DE is perpendicular to CE. Find the value of x.",
   "problem_img": "1131.png",
   "construction_cdl": [
     "Shape(DA,AE,ED)",
@@ -14,7 +14,12 @@
     "Collinear(AEC)",
     "Collinear(DEB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(CD),33)",
+    "Equal(LengthOfLine(CE),25)",
+    "Equal(LengthOfLine(DE),x)",
+    "PerpendicularBetweenLine(DE,CE)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(CD),33)",
     "Equal(LengthOfLine(CE),25)",
@@ -27,12 +32,12 @@
     "right_triangle_judgment_angle(1,DEC)",
     "right_triangle_property_pythagorean(1,DEC)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,DEC)": [
-      "right_triangle_property_pythagorean(1,DEC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,DEC)"
+    ],
+    "right_triangle_judgment_angle(1,DEC)": [
+      "right_triangle_property_pythagorean(1,DEC)"
     ]
   }
 }

@@ -2,16 +2,23 @@
   "problem_id": 1804,
   "annotation": "ChenyangMao_2023-04-16",
   "source": "Geometry3k-1870",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure. Round to the nearest tenth if necessary.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，BO=15，BO=CA，CD=7，CO=13，CO=BA，OD⊥AD。求OCAB的面积。",
+  "problem_text_en": "As shown in the diagram, BO=15, BO=CA, CD=7, CO=13, CO=BA, OD⊥AD. Find the area of OCAB.",
   "problem_img": "1804.png",
   "construction_cdl": [
     "Shape(OC,CD,DO)",
     "Shape(OD,DA,AB,BO)",
     "Collinear(CDA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BO),15)",
+    "Equal(LengthOfLine(BO),LengthOfLine(CA))",
+    "Equal(LengthOfLine(CD),7)",
+    "Equal(LengthOfLine(CO),13)",
+    "Equal(LengthOfLine(CO),LengthOfLine(BA))",
+    "PerpendicularBetweenLine(OD,AD)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BO),15)",
     "Equal(LengthOfLine(CO),13)",
@@ -31,7 +38,12 @@
     "altitude_of_quadrilateral_judgment_left_vertex(1,OD,OCAB)",
     "parallelogram_area_formula_common(1,OCAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallelogram_judgment_equal_and_equal(1,OCAB)",
+      "flat_angle(1,CDA)",
+      "angle_addition(1,CDO,ODA)"
+    ],
     "parallelogram_judgment_equal_and_equal(1,OCAB)": [
       "altitude_of_quadrilateral_judgment_left_vertex(1,OD,OCAB)",
       "parallelogram_area_formula_common(1,OCAB)"
@@ -46,11 +58,6 @@
     ],
     "right_triangle_judgment_angle(1,CDO)": [
       "right_triangle_property_pythagorean(1,CDO)"
-    ],
-    "START": [
-      "parallelogram_judgment_equal_and_equal(1,OCAB)",
-      "flat_angle(1,CDA)",
-      "angle_addition(1,CDO,ODA)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 4995,
   "annotation": "FangzhenZhu_2023-05-21",
   "source": "GeoQA-4689",
-  "problem_level": 1,
-  "problem_text_cn": "如图,直线AD∥BE∥CF,直线m,n与这三条平行线分别交于点A、B、C和点D、E、F．若AB=2,AC=5,DE=1.4,则DF的长为()",
-  "problem_text_en": "As shown in the figure, the straight line AD ∥ BE ∥ CF, straight line, n and these three parallel lines intersect at points A, B, C and points D, E, and F respectively. If AB = N_0, AC = N_1, DE = N_2, then the length of DF is ()",
+  "problem_level": 14,
+  "problem_text_cn": "如图所示，AB=2，AC=5，DE=3/2，AD平行于BE，AD平行于CF，BE∥CF。求直线DF的长度。",
+  "problem_text_en": "As shown in the diagram, AB=2, AC=5, DE=3/2, AD is parallel to BE, AD∥CF, BE is parallel to CF. Find the length of line DF.",
   "problem_img": "4995.png",
   "construction_cdl": [
     "Shape(MA,AD,DM)",
@@ -40,7 +40,17 @@
     "line_addition(1,MD,DE)",
     "line_addition(1,MD,DF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,AD,BE,M)",
+      "parallel_property_corresponding_angle(1,AD,CF,M)",
+      "parallel_property_corresponding_angle(2,EB,DA,M)",
+      "parallel_property_corresponding_angle(2,FC,DA,M)",
+      "line_addition(1,MA,AB)",
+      "line_addition(1,MA,AC)",
+      "line_addition(1,MD,DE)",
+      "line_addition(1,MD,DF)"
+    ],
     "parallel_property_corresponding_angle(1,AD,BE,M)": [
       "similar_triangle_judgment_aa(1,MAD,MBE)"
     ],
@@ -60,16 +70,6 @@
     "similar_triangle_judgment_aa(1,MAD,MCF)": [
       "similar_triangle_property_line_ratio(1,ADM,CFM)",
       "similar_triangle_property_line_ratio(1,DMA,FMC)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,AD,BE,M)",
-      "parallel_property_corresponding_angle(1,AD,CF,M)",
-      "parallel_property_corresponding_angle(2,EB,DA,M)",
-      "parallel_property_corresponding_angle(2,FC,DA,M)",
-      "line_addition(1,MA,AB)",
-      "line_addition(1,MA,AC)",
-      "line_addition(1,MD,DE)",
-      "line_addition(1,MD,DF)"
     ]
   }
 }

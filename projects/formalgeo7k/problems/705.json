@@ -2,9 +2,9 @@
   "problem_id": 705,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-724",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the value of the variable x in the figure.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠ACH=x-10°，∠GMO=104°，JO平行于HD。求x的值。",
+  "problem_text_en": "As shown in the diagram, ∠ACH=x-10°, ∠GMO=104°, JO is parallel to HD. Find the value of x.",
   "problem_img": "705.png",
   "construction_cdl": [
     "Shape(GM,MO)",
@@ -19,7 +19,11 @@
     "Collinear(OMJ)",
     "Collinear(DCH)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(ACH),x-10)",
+    "Equal(MeasureOfAngle(GMO),104)",
+    "ParallelBetweenLine(JO,HD)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(ACH),x-10)",
     "Equal(MeasureOfAngle(GMO),104)",
@@ -33,16 +37,16 @@
     "parallel_property_corresponding_angle(1,MO,CD,G)",
     "vertical_angle(1,MCD,ACH)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,JO,HD,M)",
+      "vertical_angle(1,MCD,ACH)"
+    ],
     "parallel_property_collinear_extend(3,JO,HD,M)": [
       "parallel_property_collinear_extend(3,DH,OM,C)"
     ],
     "parallel_property_collinear_extend(3,DH,OM,C)": [
       "parallel_property_corresponding_angle(1,MO,CD,G)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,JO,HD,M)",
-      "vertical_angle(1,MCD,ACH)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 6231,
   "annotation": "FangzhenZhu_2023-06-04",
   "source": "GeoQA-8829",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB为⊙O的直径,C、D为⊙O上的两点,∠BAC=50°,则∠ADC的度数是()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, C and D are two points on ⊙O, ∠BAC = N_0, then the degree of ∠ADC is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠CAB=50°，O是圆O的圆心。求∠ADC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAB=50°, O is the center of ⊙O. Find the measure of ∠ADC.",
   "problem_img": "6231.png",
   "construction_cdl": [
     "Shape(OBC,CB)",
@@ -19,8 +19,8 @@
     "Cocircular(O,BCAD)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "Equal(MeasureOfAngle(CAB),50)"
+    "Equal(MeasureOfAngle(CAB),50)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ADC))",
@@ -32,15 +32,15 @@
     "arc_property_circumference_angle_external(1,OCA,B)",
     "arc_property_circumference_angle_external(1,OCA,D)"
   ],
-  "theorem_seq_dag": {
-    "diameter_of_circle_judgment_pass_centre(1,BOA,O)": [
-      "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,BCA)",
       "diameter_of_circle_judgment_pass_centre(1,BOA,O)",
       "arc_property_circumference_angle_external(1,OCA,B)",
       "arc_property_circumference_angle_external(1,OCA,D)"
+    ],
+    "diameter_of_circle_judgment_pass_centre(1,BOA,O)": [
+      "diameter_of_circle_property_right_angle(1,BCA,O)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 344,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-350",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y in the figure.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠GOI=3*y+1°，∠HBI=3*x+11°，∠OIE=4*x-5°，GE∥OI，HG∥BE，OI∥HB。求y的值。",
+  "problem_text_en": "As shown in the diagram, ∠GOI=3*y+1°, ∠HBI=3*x+11°, ∠OIE=4*x-5°, GE∥OI, HG∥BE, OI∥HB. Find the value of y.",
   "problem_img": "344.png",
   "construction_cdl": [
     "Shape(GO,OI,IE,EG)",
@@ -12,7 +12,14 @@
     "Collinear(GOH)",
     "Collinear(EIB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(GOI),3*y+1)",
+    "Equal(MeasureOfAngle(HBI),3*x+11)",
+    "Equal(MeasureOfAngle(OIE),4*x-5)",
+    "ParallelBetweenLine(GE,OI)",
+    "ParallelBetweenLine(HG,BE)",
+    "ParallelBetweenLine(OI,HB)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(GOI),3*y+1)",
     "Equal(MeasureOfAngle(OIE),4*x-5)",
@@ -29,16 +36,16 @@
     "parallel_property_collinear_extend(3,EB,GO,I)",
     "parallel_property_ipsilateral_internal_angle(1,OG,IE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(2,BH,IO,E)",
+      "parallel_property_collinear_extend(3,HG,BE,O)"
+    ],
     "parallel_property_collinear_extend(3,HG,BE,O)": [
       "parallel_property_collinear_extend(3,EB,GO,I)"
     ],
     "parallel_property_collinear_extend(3,EB,GO,I)": [
       "parallel_property_ipsilateral_internal_angle(1,OG,IE)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(2,BH,IO,E)",
-      "parallel_property_collinear_extend(3,HG,BE,O)"
     ]
   }
 }

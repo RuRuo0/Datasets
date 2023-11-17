@@ -2,9 +2,9 @@
   "problem_id": 6046,
   "annotation": "ChenyangMao_2023-05-28",
   "source": "GeoQA-8546",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC是⊙O的内接三角形,AC是⊙O的直径,∠C=60°,∠ABC的平分线BD交⊙O于点D,则∠BAD的度数是()",
-  "problem_text_en": "As shown in the figure, △ABC is the inscribed triangle of ⊙O, AC is the diameter of ⊙O, ∠C = N_0, the bisector of ∠ABC intersects ⊙O at point D, then the degree of ∠BAD is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠BCA=60°，BD平分∠ABC，O是圆O的圆心，AC是圆O的直径。求∠DAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BCA=60°, BD is the angle bisector of ∠ABC, O is the center of ⊙O, AC is the diameter of ⊙O. Find the measure of ∠DAB.",
   "problem_img": "6046.png",
   "construction_cdl": [
     "Shape(AB,BC,CA)",
@@ -17,10 +17,10 @@
     "Cocircular(O,ABCD)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(AC,O)",
+    "Equal(MeasureOfAngle(BCA),60)",
     "IsBisectorOfAngle(BD,ABC)",
-    "Equal(MeasureOfAngle(BCA),60)"
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AC,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DAB))",
@@ -32,7 +32,7 @@
     "angle_addition(1,ABD,DBC)",
     "triangle_property_angle_sum(1,ABD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,ABC,O)",
       "arc_property_circumference_angle_external(1,OAB,C)",

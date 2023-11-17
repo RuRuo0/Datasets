@@ -2,9 +2,9 @@
   "problem_id": 5975,
   "annotation": "XiaoxiaoJin_2023-05-28",
   "source": "GeoQA-8418",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是圆O的直径,点D在AB延长线上,且DC切圆O于点C,若∠A=30°,OA=2,则OD=()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of circle O, point D is on the extended line of AB, and DC tangent circle O to point C, if ∠A = N_0, OA = N_1, then OD = ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，OA=2，∠CAB=30°，O是⊙O的圆心，AB是圆O的直径，DC是⊙O的切线。求直线OD的长度。",
+  "problem_text_en": "As shown in the diagram, OA=2, ∠CAB=30°, O is the center of circle O, AB is the diameter of ⊙O, DC is the tangent to circle O. Find the length of line OD.",
   "problem_img": "5975.png",
   "construction_cdl": [
     "Shape(AO,OC,CA)",
@@ -19,8 +19,8 @@
     "Equal(LengthOfLine(OA),2)",
     "Equal(MeasureOfAngle(CAB),30)",
     "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(DC,O)",
-    "IsDiameterOfCircle(AB,O)"
+    "IsDiameterOfCircle(AB,O)",
+    "IsTangentOfCircle(DC,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(OD))",
@@ -37,7 +37,7 @@
     "sine_theorem(1,ODC)",
     "sine_theorem(1,CAD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(2,DC,O,O)",
       "triangle_property_angle_sum(1,AOC)",

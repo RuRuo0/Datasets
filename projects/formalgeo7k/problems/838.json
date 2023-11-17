@@ -2,14 +2,17 @@
   "problem_id": 838,
   "annotation": "XiaokaiZhang_2023-03-19",
   "source": "Geometry3k-867",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find m \\angle M R P.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，MP=MR，MR=RP。求∠MRP的大小。",
+  "problem_text_en": "As shown in the diagram, MP=MR, MR=RP. Find the measure of ∠MRP.",
   "problem_img": "838.png",
   "construction_cdl": [
     "Shape(MR,RP,PM)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(MP),LengthOfLine(MR))",
+    "Equal(LengthOfLine(MR),LengthOfLine(RP))"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(MP),LengthOfLine(MR))",
     "Equal(LengthOfLine(MR),LengthOfLine(RP))"
@@ -22,7 +25,11 @@
     "equilateral_triangle_judgment_isosceles_and_isosceles(1,MRP)",
     "equilateral_triangle_property_angle(1,RPM)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "isosceles_triangle_judgment_line_equal(1,MRP)",
+      "isosceles_triangle_judgment_line_equal(1,RPM)"
+    ],
     "isosceles_triangle_judgment_line_equal(1,MRP)": [
       "equilateral_triangle_judgment_isosceles_and_isosceles(1,MRP)"
     ],
@@ -31,10 +38,6 @@
     ],
     "equilateral_triangle_judgment_isosceles_and_isosceles(1,MRP)": [
       "equilateral_triangle_property_angle(1,RPM)"
-    ],
-    "START": [
-      "isosceles_triangle_judgment_line_equal(1,MRP)",
-      "isosceles_triangle_judgment_line_equal(1,RPM)"
     ]
   }
 }

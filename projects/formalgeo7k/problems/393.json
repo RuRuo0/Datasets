@@ -2,16 +2,24 @@
   "problem_id": 393,
   "annotation": "NaZhu_2023-03-12",
   "source": "Geometry3k-400",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=2*sqrt(3)，AY=x，YC=y，∠BAY=30°，∠YCB=60°，AY⊥BY，CB⊥AB。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=2*sqrt(3), AY=x, YC=y, ∠BAY=30°, ∠YCB=60°, AY⊥BY, CB is perpendicular to AB. Find the value of x.",
   "problem_img": "393.png",
   "construction_cdl": [
     "Shape(AY,YB,BA)",
     "Shape(BY,YC,CB)",
     "Collinear(AYC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),2*sqrt(3))",
+    "Equal(LengthOfLine(AY),x)",
+    "Equal(LengthOfLine(YC),y)",
+    "Equal(MeasureOfAngle(BAY),30)",
+    "Equal(MeasureOfAngle(YCB),60)",
+    "PerpendicularBetweenLine(AY,BY)",
+    "PerpendicularBetweenLine(CB,AB)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AB),2*sqrt(3))",
     "Equal(LengthOfLine(AY),x)",
@@ -27,7 +35,7 @@
     "triangle_property_angle_sum(1,AYB)",
     "sine_theorem(1,AYB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,AYB)",
       "sine_theorem(1,AYB)"

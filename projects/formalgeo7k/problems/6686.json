@@ -2,9 +2,9 @@
   "problem_id": 6686,
   "annotation": "QikeHuang_2023-06-04",
   "source": "GeoQA-9714",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O中,AD、BC是圆O的弦,OA⊥BC,∠AOB=50°,CE⊥AD,则∠DCE的度数是()",
-  "problem_text_en": "As shown in the figure, in ⊙O, AD and BC are the chords of circle O, OA ⊥ BC, ∠AOB = N_0, CE ⊥ AD, then the degree of ∠DCE is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠AOB=50°，圆O的圆心为O，BN⊥ON，DE⊥CE。求∠ECD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AOB=50°, O is the center of ⊙O, BN is perpendicular to ON, DE⊥CE. Find the measure of ∠ECD.",
   "problem_img": "6686.png",
   "construction_cdl": [
     "Shape(OAC,CM,MA)",
@@ -24,10 +24,10 @@
     "Cocircular(O,ACDB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(AOB),50)",
     "IsCentreOfCircle(O,O)",
-    "PerpendicularBetweenLine(DE,CE)",
     "PerpendicularBetweenLine(BN,ON)",
-    "Equal(MeasureOfAngle(AOB),50)"
+    "PerpendicularBetweenLine(DE,CE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ECD))",
@@ -42,7 +42,15 @@
     "arc_property_circumference_angle_external(1,OAC,D)",
     "triangle_property_angle_sum(1,ECD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "altitude_of_triangle_judgment(1,ON,OBC)",
+      "arc_property_center_angle(1,OAC,O)",
+      "arc_property_circumference_angle_external(1,OAC,D)",
+      "triangle_property_angle_sum(1,ECD)"
+    ],
     "radius_of_circle_property_length_equal(1,OC,O)": [
       "isosceles_triangle_judgment_line_equal(1,OBC)"
     ],
@@ -54,14 +62,6 @@
     ],
     "altitude_of_triangle_judgment(1,ON,OBC)": [
       "isosceles_triangle_property_line_coincidence(1,OBC,N)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "altitude_of_triangle_judgment(1,ON,OBC)",
-      "arc_property_center_angle(1,OAC,O)",
-      "arc_property_circumference_angle_external(1,OAC,D)",
-      "triangle_property_angle_sum(1,ECD)"
     ]
   }
 }

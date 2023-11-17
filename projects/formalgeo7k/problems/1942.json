@@ -2,9 +2,9 @@
   "problem_id": 1942,
   "annotation": "ZheZhu_2023-04-16",
   "source": "Geometry3k-2021",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x. Round to the nearest tenth if necessary. Assume that segments that appear to be tangent are tangent.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，CA=16，CX=x，XB=x+16，CA是⊙O的切线。求x的值。",
+  "problem_text_en": "As shown in the diagram, CA=16, CX=x, XB=x+16, the tangent to ⊙D is CA. Find the value of x.",
   "problem_img": "1942.png",
   "construction_cdl": [
     "Shape(DXB,BX)",
@@ -13,7 +13,12 @@
     "Collinear(BXC)",
     "Cocircular(D,BAX)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(CA),16)",
+    "Equal(LengthOfLine(CX),x)",
+    "Equal(LengthOfLine(XB),x+16)",
+    "IsTangentOfCircle(CA,D)"
+  ],
   "image_cdl": [
     "IsTangentOfCircle(CA,D)",
     "Equal(LengthOfLine(XB),x+16)",
@@ -26,7 +31,7 @@
     "line_addition(1,BX,XC)",
     "circle_property_circular_power_tangent_and_segment_line(1,CA,CXB,D)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,BX,XC)",
       "circle_property_circular_power_tangent_and_segment_line(1,CA,CXB,D)"

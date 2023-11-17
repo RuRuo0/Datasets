@@ -2,9 +2,9 @@
   "problem_id": 5019,
   "annotation": "ZheZhu_2023-05-14",
   "source": "GeoQA-4738",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC中,DE∥BC,AQ⊥BC于Q,交DE于P,AD=3,BD=2,则\\frac{AP}{AQ}等于()",
-  "problem_text_en": "As shown in the figure, in △ABC, DE ∥ BC, AQ ⊥ BC at Q and intersects DE at P, AD = N_0, BD = N_1, then \\frac APAQ is equal to ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AD=6，AP=3，BD=4，DE∥BC，AQ垂直于CQ，BQ垂直于AQ。求直线AQ的长度。",
+  "problem_text_en": "As shown in the diagram, AD=6, AP=3, BD=4, DE∥BC, AQ⊥CQ, BQ is perpendicular to AQ. Find the length of line AQ.",
   "problem_img": "5019.png",
   "construction_cdl": [
     "Shape(AD,DP,PA)",
@@ -18,10 +18,10 @@
     "Collinear(AEC)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(DE,BC)",
     "Equal(LengthOfLine(AD),6)",
-    "Equal(LengthOfLine(BD),4)",
     "Equal(LengthOfLine(AP),3)",
+    "Equal(LengthOfLine(BD),4)",
+    "ParallelBetweenLine(DE,BC)",
     "PerpendicularBetweenLine(AQ,CQ)",
     "PerpendicularBetweenLine(BQ,AQ)"
   ],
@@ -35,17 +35,17 @@
     "similar_triangle_property_line_ratio(1,PAD,QAB)",
     "similar_triangle_property_line_ratio(1,DPA,BQA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AD,DB)",
+      "parallel_property_corresponding_angle(1,DE,BC,A)"
+    ],
     "parallel_property_corresponding_angle(1,DE,BC,A)": [
       "similar_triangle_judgment_aa(1,PAD,QAB)"
     ],
     "similar_triangle_judgment_aa(1,PAD,QAB)": [
       "similar_triangle_property_line_ratio(1,PAD,QAB)",
       "similar_triangle_property_line_ratio(1,DPA,BQA)"
-    ],
-    "START": [
-      "line_addition(1,AD,DB)",
-      "parallel_property_corresponding_angle(1,DE,BC,A)"
     ]
   }
 }

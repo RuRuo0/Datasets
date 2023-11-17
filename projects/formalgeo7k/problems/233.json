@@ -2,15 +2,21 @@
   "problem_id": 233,
   "annotation": "XiaokaiZhang_2023-03-12",
   "source": "Geometry3k-236",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the length of line XY.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，WZ=4，XW=4，∠WYX=23°，WZ垂直于YZ，YX⊥WX。求直线XY的长度。",
+  "problem_text_en": "As shown in the diagram, WZ=4, XW=4, ∠WYX=23°, WZ is perpendicular to YZ, YX is perpendicular to WX. Find the length of line XY.",
   "problem_img": "233.png",
   "construction_cdl": [
     "Shape(XW,WY,YX)",
     "Shape(WZ,ZY,YW)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(WZ),4)",
+    "Equal(LengthOfLine(XW),4)",
+    "Equal(MeasureOfAngle(WYX),23)",
+    "PerpendicularBetweenLine(WZ,YZ)",
+    "PerpendicularBetweenLine(YX,WX)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(XW),4)",
     "Equal(MeasureOfAngle(WYX),23)",
@@ -24,7 +30,7 @@
     "triangle_property_angle_sum(1,XWY)",
     "sine_theorem(1,XWY)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,XWY)",
       "sine_theorem(1,XWY)"

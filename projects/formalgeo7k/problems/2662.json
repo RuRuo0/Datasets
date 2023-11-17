@@ -2,16 +2,22 @@
   "problem_id": 2662,
   "annotation": "ZheZhu_2023-04-23",
   "source": "Geometry3k-2800",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the parallelogram. Round to the nearest tenth if necessary.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=40，LA=27，NL=36，四边形NABC是平行四边形，NL⊥AL。求NABC的面积。",
+  "problem_text_en": "As shown in the diagram, AB=40, LA=27, NL=36, AN and BC are opposite sides of the ▱ NABC, NL is perpendicular to AL. Find the area of quadrilateral NABC.",
   "problem_img": "2662.png",
   "construction_cdl": [
     "Shape(NA,AB,BC,CN)",
     "Shape(NL,LA,AN)",
     "Collinear(LAB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),40)",
+    "Equal(LengthOfLine(LA),27)",
+    "Equal(LengthOfLine(NL),36)",
+    "Parallelogram(NABC)",
+    "PerpendicularBetweenLine(NL,AL)"
+  ],
   "image_cdl": [
     "Parallelogram(NABC)",
     "Equal(LengthOfLine(NL),36)",
@@ -25,7 +31,7 @@
     "altitude_of_quadrilateral_judgment_left_vertex(3,NL,NABC)",
     "parallelogram_area_formula_common(1,NABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "altitude_of_quadrilateral_judgment_left_vertex(3,NL,NABC)",
       "parallelogram_area_formula_common(1,NABC)"

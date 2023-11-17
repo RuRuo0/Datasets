@@ -2,9 +2,9 @@
   "problem_id": 3977,
   "annotation": "ZheZhu_2023-04-30",
   "source": "GeoQA-1920",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB为⊙O的直径,弦CD⊥AB,连结OD,AC,若∠CAO=70°,则∠BOD的度数为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, chord CD ⊥ AB, connect OD, AC, if ∠CAO = N_0, then the degree of ∠BOD is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠CAO=70°，O是⊙O的圆心，CE垂直于BE。求∠BOD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAO=70°, O is the center of ⊙O, CE⊥BE. Find the measure of ∠BOD.",
   "problem_img": "3977.png",
   "construction_cdl": [
     "Shape(CA,AE,EC)",
@@ -17,7 +17,11 @@
     "Collinear(CED)",
     "Cocircular(O,ADBC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(CAO),70)",
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(CE,BE)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "PerpendicularBetweenLine(CE,BE)",
@@ -32,7 +36,7 @@
     "arc_property_circumference_angle_external(1,OAD,C)",
     "arc_property_center_angle(1,OAD,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,AEC,CEO)",
       "adjacent_complementary_angle(1,BOD,DOA)",

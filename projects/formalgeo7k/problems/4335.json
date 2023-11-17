@@ -2,9 +2,9 @@
   "problem_id": 4335,
   "annotation": "ZheZhu_2023-05-07",
   "source": "GeoQA-3195",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在⊙O中,弦AC∥半径OB,∠BOC=40°,则∠OAB的度数为()",
-  "problem_text_en": "As shown in the figure, in ⊙O, chord AC ∥ radius OB, ∠BOC = N_0, then the degree of ∠OAB is ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，∠BOC=40°，O是⊙O的圆心，OB平行于AC。求∠OAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BOC=40°, the center of circle O is O, OB∥AC. Find the measure of ∠OAB.",
   "problem_img": "4335.png",
   "construction_cdl": [
     "Shape(OA,AD,DO)",
@@ -18,9 +18,9 @@
     "Cocircular(O,ACB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(BOC),40)",
     "IsCentreOfCircle(O,O)",
-    "ParallelBetweenLine(OB,AC)",
-    "Equal(MeasureOfAngle(BOC),40)"
+    "ParallelBetweenLine(OB,AC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(OAB))",
@@ -38,7 +38,16 @@
     "triangle_property_angle_sum(1,OAB)",
     "angle_addition(1,BOD,DOA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_alternate_interior_angle(1,OB,AC)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "triangle_property_angle_sum(1,OAC)",
+      "triangle_property_angle_sum(1,OAB)",
+      "angle_addition(1,BOD,DOA)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OAC)",
       "isosceles_triangle_judgment_line_equal(1,OAB)"
@@ -54,15 +63,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OAB)": [
       "isosceles_triangle_property_angle_equal(1,OAB)"
-    ],
-    "START": [
-      "parallel_property_alternate_interior_angle(1,OB,AC)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "triangle_property_angle_sum(1,OAC)",
-      "triangle_property_angle_sum(1,OAB)",
-      "angle_addition(1,BOD,DOA)"
     ]
   }
 }

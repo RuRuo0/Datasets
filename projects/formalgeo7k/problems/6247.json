@@ -2,9 +2,9 @@
   "problem_id": 6247,
   "annotation": "FangzhenZhu_2023-06-04",
   "source": "GeoQA-8855",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O的直径AB=8,OP⊥弦BC于点P,OP=2,则弦BC的长是()",
-  "problem_text_en": "As shown in the figure, the diameter of ⊙O AB = N_0, OP ⊥ chord BC at point P, OP = N_1, then the length of chord BC is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=8，OP=2，⊙O的圆心为O，BP垂直于OP。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, AB=8, OP=2, the center of ⊙O is O, BP⊥OP. Find the length of line BC.",
   "problem_img": "6247.png",
   "construction_cdl": [
     "Shape(OCA,AO,OP,PC)",
@@ -16,9 +16,9 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(AB),8)",
     "Equal(LengthOfLine(OP),2)",
+    "IsCentreOfCircle(O,O)",
     "PerpendicularBetweenLine(BP,OP)"
   ],
   "image_cdl": [],
@@ -33,10 +33,7 @@
     "right_triangle_judgment_angle(1,BPO)",
     "right_triangle_property_pythagorean(1,BPO)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,BPO)": [
-      "right_triangle_property_pythagorean(1,BPO)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AO,OB)",
       "line_addition(1,CP,PB)",
@@ -44,6 +41,9 @@
       "radius_of_circle_property_length_equal(1,OB,O)",
       "circle_property_chord_perpendicular_bisect_chord(1,O,OP,BC)",
       "right_triangle_judgment_angle(1,BPO)"
+    ],
+    "right_triangle_judgment_angle(1,BPO)": [
+      "right_triangle_property_pythagorean(1,BPO)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 1813,
   "annotation": "ChenyangMao_2023-04-16",
   "source": "Geometry3k-1880",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，JA=x，LK=10，圆J的半径为10，J是⊙J的圆心，LA垂直于JA。求x的值。",
+  "problem_text_en": "As shown in the diagram, JA=x, LK=10, the radius of circle J is 10, the center of circle J is J, LA⊥JA. Find the value of x.",
   "problem_img": "1813.png",
   "construction_cdl": [
     "Shape(JLK,KA,AL)",
@@ -14,7 +14,13 @@
     "Collinear(LAK)",
     "Cocircular(J,LKR)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(JA),x)",
+    "Equal(LengthOfLine(LK),10)",
+    "Equal(RadiusOfCircle(J),10)",
+    "IsCentreOfCircle(J,J)",
+    "PerpendicularBetweenLine(LA,JA)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(J,J)",
     "Equal(RadiusOfCircle(J),10)",
@@ -31,15 +37,15 @@
     "line_addition(1,LA,AK)",
     "right_triangle_property_pythagorean(1,LAJ)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,LAJ)": [
-      "right_triangle_property_pythagorean(1,LAJ)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,JL,J)",
       "circle_property_chord_perpendicular_bisect_chord(1,J,JA,LK)",
       "right_triangle_judgment_angle(1,LAJ)",
       "line_addition(1,LA,AK)"
+    ],
+    "right_triangle_judgment_angle(1,LAJ)": [
+      "right_triangle_property_pythagorean(1,LAJ)"
     ]
   }
 }

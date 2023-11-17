@@ -2,9 +2,9 @@
   "problem_id": 3570,
   "annotation": "YanjunGuo_2023-04-30",
   "source": "GeoQA-1202",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB∥CD∥EF,AC∥DF,若∠BAC=120°,则∠DFE的度数为()",
-  "problem_text_en": "As shown in the figure, AB ∥ CD ∥ EF, AC ∥ DF, if ∠BAC = N_0, then the degree of ∠DFE is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠BAC=120°，AB∥CD，AB平行于EF，CA平行于FD，CD平行于EF。求∠EFD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BAC=120°, AB is parallel to CD, AB∥EF, CA is parallel to FD, CD∥EF. Find the measure of ∠EFD.",
   "problem_img": "3570.png",
   "construction_cdl": [
     "Shape(BA,AC)",
@@ -13,11 +13,11 @@
     "Shape(EF,FD)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(BAC),120)",
     "ParallelBetweenLine(AB,CD)",
-    "ParallelBetweenLine(CD,EF)",
     "ParallelBetweenLine(AB,EF)",
     "ParallelBetweenLine(CA,FD)",
-    "Equal(MeasureOfAngle(BAC),120)"
+    "ParallelBetweenLine(CD,EF)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(EFD))",
@@ -27,7 +27,7 @@
     "parallel_property_ipsilateral_internal_angle(1,FE,DC)",
     "parallel_property_alternate_interior_angle(1,CA,FD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_ipsilateral_internal_angle(1,AB,CD)",
       "parallel_property_ipsilateral_internal_angle(1,FE,DC)",

@@ -2,9 +2,9 @@
   "problem_id": 2589,
   "annotation": "DengfengYue_2023-04-23",
   "source": "Geometry3k-2717",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure, m \\angle 3 = 43. Find the measure of \\angle 11.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠POM=43°，BF∥MQ，KC平行于GJ。求∠HNO的大小。",
+  "problem_text_en": "As shown in the diagram, ∠POM=43°, BF is parallel to MQ, KC is parallel to GJ. Find the measure of ∠HNO.",
   "problem_img": "2589.png",
   "construction_cdl": [
     "Shape(BP,PO,OM,MB)",
@@ -21,7 +21,11 @@
     "Collinear(KPOC)",
     "Collinear(GHNJ)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(POM),43)",
+    "ParallelBetweenLine(BF,MQ)",
+    "ParallelBetweenLine(KC,GJ)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(POM),43)",
     "ParallelBetweenLine(BF,MQ)",
@@ -38,19 +42,19 @@
     "parallel_property_corresponding_angle(1,OC,NJ,M)",
     "angle_addition(1,HNO,ONJ)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,KC,GJ,O)": [
-      "parallel_property_collinear_extend(3,JG,CO,N)"
-    ],
-    "parallel_property_collinear_extend(3,JG,CO,N)": [
-      "parallel_property_corresponding_angle(1,OC,NJ,M)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "flat_angle(1,POC)",
       "angle_addition(1,POM,MOC)",
       "flat_angle(1,HNJ)",
       "parallel_property_collinear_extend(3,KC,GJ,O)",
       "angle_addition(1,HNO,ONJ)"
+    ],
+    "parallel_property_collinear_extend(3,KC,GJ,O)": [
+      "parallel_property_collinear_extend(3,JG,CO,N)"
+    ],
+    "parallel_property_collinear_extend(3,JG,CO,N)": [
+      "parallel_property_corresponding_angle(1,OC,NJ,M)"
     ]
   }
 }

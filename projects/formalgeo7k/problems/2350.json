@@ -3,8 +3,8 @@
   "annotation": "ChenyangMao_2023-04-09",
   "source": "Geometry3k-2464",
   "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "m is the perpendicular bisector of X Z, W Z = 14.9. Find W X.",
+  "problem_text_cn": "如图所示，WZ=15，XY=YZ，WY是XZ的垂直平分线，XY⊥WY。求直线WX的长度。",
+  "problem_text_en": "As shown in the diagram, WZ=15, XY=YZ, WY perpendicular bisects XZ, XY⊥WY. Find the length of line WX.",
   "problem_img": "2350.png",
   "construction_cdl": [
     "Shape(WY,YX,XW)",
@@ -13,7 +13,10 @@
     "Collinear(XYZ)"
   ],
   "text_cdl": [
-    "IsPerpendicularBisectorOfLine(WY,XZ)"
+    "Equal(LengthOfLine(WZ),15)",
+    "Equal(LengthOfLine(XY),LengthOfLine(YZ))",
+    "IsPerpendicularBisectorOfLine(WY,XZ)",
+    "PerpendicularBetweenLine(XY,WY)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(WZ),15)",
@@ -25,7 +28,7 @@
   "theorem_seqs": [
     "perpendicular_bisector_property_distance_equal(1,WY,XZ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "perpendicular_bisector_property_distance_equal(1,WY,XZ)"
     ]

@@ -2,9 +2,9 @@
   "problem_id": 6246,
   "annotation": "FangzhenZhu_2023-06-04",
   "source": "GeoQA-8851",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在⊙O中,弦AC=7,弦AE垂直于半径OB,AE=24,且∠CAO=∠BOA,则⊙O的半径为()",
-  "problem_text_en": "As shown in the figure, in ⊙O, chord AC = N_0, chord AE is perpendicular to the radius OB, AE = N_1, and ∠CAO = ∠BOA, then the radius of ⊙O is ()",
+  "problem_level": 14,
+  "problem_text_cn": "如图所示，AC=7，AE=24，∠CAO=∠AOB，O是⊙O的圆心，EK垂直于OK。求⊙O的半径。",
+  "problem_text_en": "As shown in the diagram, AC=7, AE=24, ∠CAO=∠AOB, the center of ⊙O is O, EK is perpendicular to OK. Find the radius of circle O.",
   "problem_img": "6246.png",
   "construction_cdl": [
     "Shape(OCA,AC)",
@@ -19,10 +19,10 @@
     "Cocircular(O,AMEBC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "Equal(LengthOfLine(AE),24)",
     "Equal(LengthOfLine(AC),7)",
+    "Equal(LengthOfLine(AE),24)",
     "Equal(MeasureOfAngle(CAO),MeasureOfAngle(AOB))",
+    "IsCentreOfCircle(O,O)",
     "PerpendicularBetweenLine(EK,OK)"
   ],
   "image_cdl": [],
@@ -44,7 +44,15 @@
     "radius_of_circle_property_length_equal(1,OA,O)",
     "radius_of_circle_property_length_equal(1,OM,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "diameter_of_circle_judgment_pass_centre(1,AOM,O)",
+      "line_addition(1,AO,OM)",
+      "line_addition(1,AK,KE)",
+      "circle_property_chord_perpendicular_bisect_chord(1,O,OK,EA)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OM,O)"
+    ],
     "diameter_of_circle_judgment_pass_centre(1,AOM,O)": [
       "diameter_of_circle_property_right_angle(1,MCA,O)"
     ],
@@ -65,14 +73,6 @@
     "mirror_similar_triangle_judgment_aa(1,AOK,MCA)": [
       "mirror_similar_triangle_property_line_ratio(1,AOK,MCA)",
       "mirror_similar_triangle_property_line_ratio(1,OKA,AMC)"
-    ],
-    "START": [
-      "diameter_of_circle_judgment_pass_centre(1,AOM,O)",
-      "line_addition(1,AO,OM)",
-      "line_addition(1,AK,KE)",
-      "circle_property_chord_perpendicular_bisect_chord(1,O,OK,EA)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OM,O)"
     ]
   }
 }

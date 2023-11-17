@@ -2,9 +2,9 @@
   "problem_id": 4059,
   "annotation": "XiaokaiZhang_2023-05-07",
   "source": "GeoQA-2366",
-  "problem_level": 1,
-  "problem_text_cn": "如图,身高1.6m的某学生想测量一棵大树的高度,她沿着树影BA由B向A走去,当走到C点时,她的影子顶端正好与树的影子顶端重合,测得BA=4m,CA=0.8m,则树的高度为()",
-  "problem_text_en": "As shown in the figure, a student with a height of N_0 wants to measure the height of a big tree. She walks along the tree shadow BA from B to A. When reaching point C, the top of her shadow coincides with the top of the tree's shadow. Get BA = N_1, CA = N_2, then the height of the tree is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，BA=5，CA=1，DC=2，AB垂直于EB，AC垂直于DC。求直线EB的长度。",
+  "problem_text_en": "As shown in the diagram, BA=5, CA=1, DC=2, AB is perpendicular to EB, AC is perpendicular to DC. Find the length of line EB.",
   "problem_img": "4059.png",
   "construction_cdl": [
     "Shape(AC,CD,DA)",
@@ -13,11 +13,11 @@
     "Collinear(ACB)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(AC,DC)",
-    "PerpendicularBetweenLine(AB,EB)",
-    "Equal(LengthOfLine(DC),2)",
     "Equal(LengthOfLine(BA),5)",
-    "Equal(LengthOfLine(CA),1)"
+    "Equal(LengthOfLine(CA),1)",
+    "Equal(LengthOfLine(DC),2)",
+    "PerpendicularBetweenLine(AB,EB)",
+    "PerpendicularBetweenLine(AC,DC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(EB))",
@@ -27,13 +27,13 @@
     "similar_triangle_property_line_ratio(1,DAC,EAB)",
     "similar_triangle_property_line_ratio(1,ACD,ABE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "similar_triangle_judgment_aa(1,DAC,EAB)"
+    ],
     "similar_triangle_judgment_aa(1,DAC,EAB)": [
       "similar_triangle_property_line_ratio(1,DAC,EAB)",
       "similar_triangle_property_line_ratio(1,ACD,ABE)"
-    ],
-    "START": [
-      "similar_triangle_judgment_aa(1,DAC,EAB)"
     ]
   }
 }

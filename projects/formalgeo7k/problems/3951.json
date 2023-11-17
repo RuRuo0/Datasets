@@ -2,9 +2,9 @@
   "problem_id": 3951,
   "annotation": "FangzhenZhu_2023-05-07",
   "source": "GeoQA-1876",
-  "problem_level": 1,
-  "problem_text_cn": "如图,BC是⊙O的直径,点A,D在⊙O上,如果∠D=36°,那么∠BCA的度数是()",
-  "problem_text_en": "As shown in the figure, BC is the diameter of ⊙O, points A and D are on ⊙O, if ∠D = N_0, then the degree of ∠BCA is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠ADC=36°，O是圆O的圆心。求∠BCA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ADC=36°, O is the center of ⊙O. Find the measure of ∠BCA.",
   "problem_img": "3951.png",
   "construction_cdl": [
     "Shape(OBD,DE,EO,OB)",
@@ -18,7 +18,10 @@
     "Collinear(AED)",
     "Cocircular(O,BDCA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(ADC),36)",
+    "IsCentreOfCircle(O,O)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfAngle(ADC),36)"
@@ -32,15 +35,15 @@
     "diameter_of_circle_property_right_angle(1,CAB,O)",
     "triangle_property_angle_sum(1,CAB)"
   ],
-  "theorem_seq_dag": {
-    "diameter_of_circle_judgment_pass_centre(1,BOC,O)": [
-      "diameter_of_circle_property_right_angle(1,CAB,O)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_circumference_angle_external(1,OCA,B)",
       "arc_property_circumference_angle_external(1,OCA,D)",
       "diameter_of_circle_judgment_pass_centre(1,BOC,O)",
       "triangle_property_angle_sum(1,CAB)"
+    ],
+    "diameter_of_circle_judgment_pass_centre(1,BOC,O)": [
+      "diameter_of_circle_property_right_angle(1,CAB,O)"
     ]
   }
 }

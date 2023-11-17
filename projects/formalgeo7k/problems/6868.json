@@ -2,9 +2,9 @@
   "problem_id": 6868,
   "annotation": "DengfengYue_2023-06-04",
   "source": "GeoQA-angle-10094",
-  "problem_level": 1,
-  "problem_text_cn": "如图，点A、B、C、D、E都是⊙O上的点，AC=AE，∠B＝128°，则∠D的度数为（）",
-  "problem_text_en": "",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，⌒OAC的长度与弧OEA的长度相等，∠ABC=128°，圆O的圆心为O。求∠CDE的大小。",
+  "problem_text_en": "As shown in the diagram, the length of ⌒OAC is equal to the length of arc OEA, ∠ABC=128°, the center of ⊙O is O. Find the measure of ∠CDE.",
   "problem_img": "6868.png",
   "construction_cdl": [
     "Shape(BA,OAB)",
@@ -17,9 +17,9 @@
     "Cocircular(O,ABCDE)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(LengthOfArc(OAC),LengthOfArc(OEA))",
-    "Equal(MeasureOfAngle(ABC),128)"
+    "Equal(MeasureOfAngle(ABC),128)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CDE))",
@@ -33,10 +33,7 @@
     "arc_property_circumference_angle_internal(1,OCA,D)",
     "angle_addition(1,CDA,ADE)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_length_equal(1,OAC,OEA)": [
-      "congruent_arc_property_measure_equal(1,OAC,OEA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "congruent_arc_judgment_length_equal(1,OAC,OEA)",
       "arc_property_circumference_angle_external(1,OCA,B)",
@@ -44,6 +41,9 @@
       "arc_property_circumference_angle_internal(1,OAC,B)",
       "arc_property_circumference_angle_internal(1,OCA,D)",
       "angle_addition(1,CDA,ADE)"
+    ],
+    "congruent_arc_judgment_length_equal(1,OAC,OEA)": [
+      "congruent_arc_property_measure_equal(1,OAC,OEA)"
     ]
   }
 }

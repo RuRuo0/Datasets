@@ -2,9 +2,9 @@
   "problem_id": 4045,
   "annotation": "XiaokaiZhang_2023-05-07",
   "source": "GeoQA-2344",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是斜靠在墙上的一个梯子,梯脚B距墙1.4m,梯上点D距墙1.2m,BD长0.5m,则梯子的长为()",
-  "problem_text_en": "As shown in the figure, AB is a ladder leaning against the wall, the foot of the ladder B is away from the wall N_0, the point D on the ladder is away from the wall N_1, BD is long N_2, then the length of the ladder is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，BC=7/5，BD=1/2，DE=6/5，DE平行于BC。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, BC=7/5, BD=1/2, DE=6/5, DE is parallel to BC. Find the length of line AB.",
   "problem_img": "4045.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -13,10 +13,10 @@
     "Collinear(AEC)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(DE,BC)",
     "Equal(LengthOfLine(BC),7/5)",
+    "Equal(LengthOfLine(BD),1/2)",
     "Equal(LengthOfLine(DE),6/5)",
-    "Equal(LengthOfLine(BD),1/2)"
+    "ParallelBetweenLine(DE,BC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -28,17 +28,17 @@
     "similar_triangle_property_line_ratio(1,ADE,ABC)",
     "line_addition(1,AD,DB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,DE,BC,A)",
+      "line_addition(1,AD,DB)"
+    ],
     "parallel_property_corresponding_angle(1,DE,BC,A)": [
       "similar_triangle_judgment_aa(1,EAD,CAB)"
     ],
     "similar_triangle_judgment_aa(1,EAD,CAB)": [
       "similar_triangle_property_line_ratio(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,ADE,ABC)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,DE,BC,A)",
-      "line_addition(1,AD,DB)"
     ]
   }
 }

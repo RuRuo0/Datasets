@@ -2,9 +2,9 @@
   "problem_id": 3201,
   "annotation": "NaZhu_2023-04-23",
   "source": "GeoQA-492",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O的直径CD垂直于弦EF,垂足为G,若∠EOD=40°,则∠CDF等于()",
-  "problem_text_en": "As shown in the figure, the diameter CD of ⊙O is perpendicular to the chord EF, and the perpendicular foot is G. If ∠EOD = N_0, then ∠CDF is equal to ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠GOE=40°，⊙O的圆心为O，EG垂直于OG。求∠GDF的大小。",
+  "problem_text_en": "As shown in the diagram, ∠GOE=40°, O is the center of ⊙O, EG⊥OG. Find the measure of ∠GDF.",
   "problem_img": "3201.png",
   "construction_cdl": [
     "Shape(OCE,EO,OC)",
@@ -20,8 +20,8 @@
     "Cocircular(O,CEDF)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfAngle(GOE),40)",
+    "IsCentreOfCircle(O,O)",
     "PerpendicularBetweenLine(EG,OG)"
   ],
   "image_cdl": [],
@@ -34,15 +34,15 @@
     "arc_property_center_angle(1,OFC,O)",
     "arc_property_circumference_angle_external(1,OFC,D)"
   ],
-  "theorem_seq_dag": {
-    "circle_property_chord_perpendicular_bisect_chord(1,O,OG,EF)": [
-      "perpendicular_bisector_property_bisector(1,OG,EF)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,COF,FOG)",
       "circle_property_chord_perpendicular_bisect_chord(1,O,OG,EF)",
       "arc_property_center_angle(1,OFC,O)",
       "arc_property_circumference_angle_external(1,OFC,D)"
+    ],
+    "circle_property_chord_perpendicular_bisect_chord(1,O,OG,EF)": [
+      "perpendicular_bisector_property_bisector(1,OG,EF)"
     ]
   }
 }

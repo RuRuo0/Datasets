@@ -2,9 +2,9 @@
   "problem_id": 3368,
   "annotation": "JiaZou_2023-04-30",
   "source": "GeoQA-856",
-  "problem_level": 1,
-  "problem_text_cn": "如图,BM是△ABC的角平分线S,D是BC边上的一点,连接AD,使AD=DC,且∠BAD=120°,则∠AMB=()",
-  "problem_text_en": "As shown in the figure, BM is the angular bisector of △ABC, D is a point on the side of BC, connect AD and let AD = DC, and ∠BAD = N_0, then ∠AMB = ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AD=DC，∠DAB=120°，BM平分∠ABC。求∠BMA的大小。",
+  "problem_text_en": "As shown in the diagram, AD=DC, ∠DAB=120°, BM bisects ∠ABC. Find the measure of ∠BMA.",
   "problem_img": "3368.png",
   "construction_cdl": [
     "Shape(AB,BO,OA)",
@@ -17,9 +17,9 @@
     "Collinear(BOM)"
   ],
   "text_cdl": [
-    "IsBisectorOfAngle(BM,ABC)",
     "Equal(LengthOfLine(AD),LengthOfLine(DC))",
-    "Equal(MeasureOfAngle(DAB),120)"
+    "Equal(MeasureOfAngle(DAB),120)",
+    "IsBisectorOfAngle(BM,ABC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BMA))",
@@ -34,10 +34,7 @@
     "triangle_property_angle_sum(1,MBC)",
     "adjacent_complementary_angle(1,CMB,BMA)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,DCA)": [
-      "isosceles_triangle_property_angle_equal(1,DCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,DCA)",
       "triangle_property_angle_sum(1,DCA)",
@@ -46,6 +43,9 @@
       "triangle_property_angle_sum(1,ABD)",
       "triangle_property_angle_sum(1,MBC)",
       "adjacent_complementary_angle(1,CMB,BMA)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,DCA)": [
+      "isosceles_triangle_property_angle_equal(1,DCA)"
     ]
   }
 }

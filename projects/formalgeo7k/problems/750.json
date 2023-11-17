@@ -2,9 +2,9 @@
   "problem_id": 750,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-775",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x so that p \\parallel q.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠ACB=5*x+21°，∠CDG=12*x+6°，PA∥EG。求x的值。",
+  "problem_text_en": "As shown in the diagram, ∠ACB=5*x+21°, ∠CDG=12*x+6°, PA∥EG. Find the value of x.",
   "problem_img": "750.png",
   "construction_cdl": [
     "Shape(FC,CA)",
@@ -19,7 +19,11 @@
     "Collinear(ACP)",
     "Collinear(GDE)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(ACB),5*x+21)",
+    "Equal(MeasureOfAngle(CDG),12*x+6)",
+    "ParallelBetweenLine(PA,EG)"
+  ],
   "image_cdl": [
     "ParallelBetweenLine(PA,EG)",
     "Equal(MeasureOfAngle(ACB),5*x+21)",
@@ -32,15 +36,15 @@
     "parallel_property_collinear_extend(3,GE,AC,D)",
     "parallel_property_ipsilateral_internal_angle(1,CA,DG)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,PA,EG,C)"
+    ],
     "parallel_property_collinear_extend(3,PA,EG,C)": [
       "parallel_property_collinear_extend(3,GE,AC,D)"
     ],
     "parallel_property_collinear_extend(3,GE,AC,D)": [
       "parallel_property_ipsilateral_internal_angle(1,CA,DG)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,PA,EG,C)"
     ]
   }
 }

@@ -2,14 +2,19 @@
   "problem_id": 2673,
   "annotation": "DengfengYue_2023-04-09",
   "source": "Geometry3k-2811",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AC=16，BC=10，∠ABC=x°，BC垂直于AC。求x的值。",
+  "problem_text_en": "As shown in the diagram, AC=16, BC=10, ∠ABC=x°, BC⊥AC. Find the value of x.",
   "problem_img": "2673.png",
   "construction_cdl": [
     "Shape(CA,AB,BC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),16)",
+    "Equal(LengthOfLine(BC),10)",
+    "Equal(MeasureOfAngle(ABC),x)",
+    "PerpendicularBetweenLine(BC,AC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AC),16)",
     "Equal(LengthOfLine(BC),10)",
@@ -23,13 +28,13 @@
     "right_triangle_property_pythagorean(1,BCA)",
     "cosine_theorem(1,BCA)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,BCA)": [
-      "right_triangle_property_pythagorean(1,BCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,BCA)",
       "cosine_theorem(1,BCA)"
+    ],
+    "right_triangle_judgment_angle(1,BCA)": [
+      "right_triangle_property_pythagorean(1,BCA)"
     ]
   }
 }

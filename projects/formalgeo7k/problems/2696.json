@@ -2,9 +2,9 @@
   "problem_id": 2696,
   "annotation": "ZheZhu_2023-04-23",
   "source": "Geometry3k-2839",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "The area A of the shaded region is given. Find x. A = 66 cm^2.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，扇形KLJ的面积为66，JL=x，∠JKL=180°，圆K的圆心为K。求x的值。",
+  "problem_text_en": "As shown in the diagram, the area of the sector KLJ is 66, JL=x, ∠JKL=180°, the center of ⊙K is K. Find the value of x.",
   "problem_img": "2696.png",
   "construction_cdl": [
     "Shape(KJL,LK,KJ)",
@@ -12,7 +12,12 @@
     "Collinear(JKL)",
     "Cocircular(K,JL)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(AreaOfSector(KLJ),66)",
+    "Equal(LengthOfLine(JL),x)",
+    "Equal(MeasureOfAngle(JKL),180)",
+    "IsCentreOfCircle(K,K)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(K,K)",
     "Equal(AreaOfSector(KLJ),66)",
@@ -28,7 +33,7 @@
     "radius_of_circle_property_length_equal(1,KL,K)",
     "line_addition(1,JK,KL)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,KLJ,K)",
       "sector_area_formula(1,KLJ)",

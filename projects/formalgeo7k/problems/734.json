@@ -2,16 +2,22 @@
   "problem_id": 734,
   "annotation": "YimingHe_2023-03-12",
   "source": "Geometry3k-759",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the triangle.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AB=41，AC=30，NB=19，NC=27，AC垂直于BC。求△BAN的周长。",
+  "problem_text_en": "As shown in the diagram, AB=41, AC=30, NB=19, NC=27, AC⊥BC. Find the perimeter of △BAN.",
   "problem_img": "734.png",
   "construction_cdl": [
     "Shape(BA,AN,NB)",
     "Shape(NA,AC,CN)",
     "Collinear(BNC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),41)",
+    "Equal(LengthOfLine(AC),30)",
+    "Equal(LengthOfLine(NB),19)",
+    "Equal(LengthOfLine(NC),27)",
+    "PerpendicularBetweenLine(AC,BC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(NB),19)",
     "Equal(LengthOfLine(NC),27)",
@@ -26,13 +32,13 @@
     "right_triangle_property_pythagorean(1,ACN)",
     "triangle_perimeter_formula(1,BAN)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,ACN)": [
-      "right_triangle_property_pythagorean(1,ACN)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,ACN)",
       "triangle_perimeter_formula(1,BAN)"
+    ],
+    "right_triangle_judgment_angle(1,ACN)": [
+      "right_triangle_property_pythagorean(1,ACN)"
     ]
   }
 }

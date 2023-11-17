@@ -2,9 +2,9 @@
   "problem_id": 6695,
   "annotation": "QikeHuang_2023-06-04",
   "source": "GeoQA-9725",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB为⊙O的直径,∠ABD=38°,则∠DCB=()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of O, ∠ABD = N_0, then ∠DCB = ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠ABD=38°，O是⊙O的圆心，AB是⊙O的直径。求∠DCB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABD=38°, O is the center of circle O, AB is the diameter of circle O. Find the measure of ∠DCB.",
   "problem_img": "6695.png",
   "construction_cdl": [
     "Shape(ODA,AO,OD)",
@@ -18,9 +18,9 @@
     "Cocircular(O,ACBD)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(ABD),38)",
     "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(AB,O)",
-    "Equal(MeasureOfAngle(ABD),38)"
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DCB))",
@@ -33,16 +33,16 @@
     "diameter_of_circle_property_right_angle(1,CBD,O)",
     "triangle_property_angle_sum(1,CBD)"
   ],
-  "theorem_seq_dag": {
-    "diameter_of_circle_judgment_pass_centre(1,COD,O)": [
-      "diameter_of_circle_property_right_angle(1,CBD,O)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,OB,O)",
       "radius_of_circle_property_length_equal(1,OD,O)",
       "sine_theorem(1,OBD)",
       "diameter_of_circle_judgment_pass_centre(1,COD,O)",
       "triangle_property_angle_sum(1,CBD)"
+    ],
+    "diameter_of_circle_judgment_pass_centre(1,COD,O)": [
+      "diameter_of_circle_property_right_angle(1,CBD,O)"
     ]
   }
 }

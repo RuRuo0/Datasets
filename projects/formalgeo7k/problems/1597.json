@@ -2,9 +2,9 @@
   "problem_id": 1597,
   "annotation": "XiaoxiaoJin_2023-04-16",
   "source": "Geometry3k-1657",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure, m \\angle 1 = 53. Find the measure of \\angle 4.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠LWX=53°，GN平行于IK，ML平行于HE。求∠KZH的大小。",
+  "problem_text_en": "As shown in the diagram, ∠LWX=53°, GN is parallel to IK, ML is parallel to HE. Find the measure of ∠KZH.",
   "problem_img": "1597.png",
   "construction_cdl": [
     "Shape(GW,WL)",
@@ -29,7 +29,9 @@
     "Collinear(HZXE)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(LWX),53)"
+    "Equal(MeasureOfAngle(LWX),53)",
+    "ParallelBetweenLine(GN,IK)",
+    "ParallelBetweenLine(ML,HE)"
   ],
   "image_cdl": [
     "ParallelBetweenLine(GN,IK)",
@@ -46,7 +48,12 @@
     "parallel_property_ipsilateral_internal_angle(1,YL,ZE)",
     "vertical_angle(1,YZX,KZH)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,GN,IK,W)",
+      "parallel_property_collinear_extend(3,ML,HE,Y)",
+      "vertical_angle(1,YZX,KZH)"
+    ],
     "parallel_property_collinear_extend(3,GN,IK,W)": [
       "parallel_property_collinear_extend(3,KI,NW,Y)"
     ],
@@ -58,11 +65,6 @@
     ],
     "parallel_property_collinear_extend(3,EH,LY,Z)": [
       "parallel_property_ipsilateral_internal_angle(1,YL,ZE)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,GN,IK,W)",
-      "parallel_property_collinear_extend(3,ML,HE,Y)",
-      "vertical_angle(1,YZX,KZH)"
     ]
   }
 }

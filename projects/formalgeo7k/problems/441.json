@@ -2,15 +2,22 @@
   "problem_id": 441,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-451",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the figure. Round to the nearest hundredth, if necessary.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AB=3，AB=CN，AC=BN，∠ANB=62°，AC⊥NC，NB垂直于AB。求四边形ACNB的周长。",
+  "problem_text_en": "As shown in the diagram, AB=3, AB=CN, AC=BN, ∠ANB=62°, AC is perpendicular to NC, NB is perpendicular to AB. Find the perimeter of ACNB.",
   "problem_img": "441.png",
   "construction_cdl": [
     "Shape(AC,CN,NA)",
     "Shape(AN,NB,BA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),3)",
+    "Equal(LengthOfLine(AB),LengthOfLine(CN))",
+    "Equal(LengthOfLine(AC),LengthOfLine(BN))",
+    "Equal(MeasureOfAngle(ANB),62)",
+    "PerpendicularBetweenLine(AC,NC)",
+    "PerpendicularBetweenLine(NB,AB)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AB),3)",
     "Equal(MeasureOfAngle(ANB),62)",
@@ -26,7 +33,7 @@
     "sine_theorem(1,BAN)",
     "quadrilateral_perimeter_formula(1,ACNB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,ANB)",
       "sine_theorem(1,BAN)",

@@ -2,9 +2,9 @@
   "problem_id": 4560,
   "annotation": "YanjunGuo_2023-05-14",
   "source": "GeoQA-3678",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC内接于⊙O,∠OCA=38°,则∠ABC的度数是()",
-  "problem_text_en": "As shown in the figure, △ABC is inscribed in ⊙O, ∠OCA = N_0, then the degree of ∠ABC is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠OCA=38°，圆O的圆心为O。求∠ABC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠OCA=38°, O is the center of circle O. Find the measure of ∠ABC.",
   "problem_img": "4560.png",
   "construction_cdl": [
     "Shape(BA,OAB)",
@@ -15,8 +15,8 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "Equal(MeasureOfAngle(OCA),38)"
+    "Equal(MeasureOfAngle(OCA),38)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ABC))",
@@ -30,7 +30,14 @@
     "arc_property_center_angle(1,OCA,O)",
     "arc_property_circumference_angle_external(1,OCA,B)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "triangle_property_angle_sum(1,AOC)",
+      "arc_property_center_angle(1,OCA,O)",
+      "arc_property_circumference_angle_external(1,OCA,B)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OCA)"
     ],
@@ -39,13 +46,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OCA)": [
       "isosceles_triangle_property_angle_equal(1,OCA)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "triangle_property_angle_sum(1,AOC)",
-      "arc_property_center_angle(1,OCA,O)",
-      "arc_property_circumference_angle_external(1,OCA,B)"
     ]
   }
 }

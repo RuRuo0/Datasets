@@ -2,14 +2,20 @@
   "problem_id": 2787,
   "annotation": "ZheZhu_2023-04-09",
   "source": "Geometry3k-2934",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AC=x，BA=14*sqrt(3)，CB=y，∠CBA=30°，∠BAC是直角三角形BAC的直角。求y的值。",
+  "problem_text_en": "As shown in the diagram, AC=x, BA=14*sqrt(3), CB=y, ∠CBA=30°, BA and AC are the legs of the right triangle BAC. Find the value of y.",
   "problem_img": "2787.png",
   "construction_cdl": [
     "Shape(CB,BA,AC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),x)",
+    "Equal(LengthOfLine(BA),14*sqrt(3))",
+    "Equal(LengthOfLine(CB),y)",
+    "Equal(MeasureOfAngle(CBA),30)",
+    "RightTriangle(BAC)"
+  ],
   "image_cdl": [
     "RightTriangle(BAC)",
     "Equal(LengthOfLine(CB),y)",
@@ -23,7 +29,7 @@
     "triangle_property_angle_sum(1,ACB)",
     "sine_theorem(1,BAC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,ACB)",
       "sine_theorem(1,BAC)"

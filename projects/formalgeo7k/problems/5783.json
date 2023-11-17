@@ -2,9 +2,9 @@
   "problem_id": 5783,
   "annotation": "YanjunGuo_2023-05-28",
   "source": "GeoQA-7685",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知AB∥CD,AC、BD相交于点E,AB=2,CD=5,则△ABE与△CDE的周长之比是()",
-  "problem_text_en": "As shown in the figure, given that AB ∥ CD, AC and BD intersect at point E, AB = N_0, CD = N_1, then the ratio of the perimeter of △ABE to △CDE is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=2，CD=5，AB∥DC。求三角形AEB的周长与△EDC的周长之比。",
+  "problem_text_en": "As shown in the diagram, AB=2, CD=5, AB∥DC. Find the ratio of the perimeter of △AEB to the perimeter of △EDC.",
   "problem_img": "5783.png",
   "construction_cdl": [
     "Shape(AE,EB,BA)",
@@ -27,7 +27,11 @@
     "similar_triangle_property_line_ratio(1,EDC,EBA)",
     "similar_triangle_property_perimeter_ratio(1,EDC,EBA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_alternate_interior_angle(1,AB,DC)",
+      "parallel_property_alternate_interior_angle(2,AB,DC)"
+    ],
     "parallel_property_alternate_interior_angle(1,AB,DC)": [
       "similar_triangle_judgment_aa(1,EDC,EBA)"
     ],
@@ -37,10 +41,6 @@
     "similar_triangle_judgment_aa(1,EDC,EBA)": [
       "similar_triangle_property_line_ratio(1,EDC,EBA)",
       "similar_triangle_property_perimeter_ratio(1,EDC,EBA)"
-    ],
-    "START": [
-      "parallel_property_alternate_interior_angle(1,AB,DC)",
-      "parallel_property_alternate_interior_angle(2,AB,DC)"
     ]
   }
 }

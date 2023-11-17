@@ -2,9 +2,9 @@
   "problem_id": 4388,
   "annotation": "YimingHe_2023-05-14",
   "source": "GeoQA-3317",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,弦CD⊥AB于E,连结OC、AD,且∠A=35°,则∠AOC=()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, chord CD ⊥ AB at E. Connect OC and AD, and ∠A = N_0, then ∠AOC = ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠EAD=35°，⊙O的圆心为O，圆O的直径为AB，DE⊥AE。求∠AOC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠EAD=35°, the center of ⊙O is O, AB is the diameter of circle O, DE⊥AE. Find the measure of ∠AOC.",
   "problem_img": "4388.png",
   "construction_cdl": [
     "Shape(BE,ED,ODB)",
@@ -18,10 +18,10 @@
     "Cocircular(O,DBCA)"
   ],
   "text_cdl": [
-    "IsDiameterOfCircle(AB,O)",
-    "PerpendicularBetweenLine(DE,AE)",
     "Equal(MeasureOfAngle(EAD),35)",
-    "IsCentreOfCircle(O,O)"
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)",
+    "PerpendicularBetweenLine(DE,AE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(AOC))",
@@ -31,7 +31,7 @@
     "arc_property_center_angle(1,OCA,O)",
     "arc_property_circumference_angle_external(1,OCA,D)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,DEA)",
       "arc_property_center_angle(1,OCA,O)",

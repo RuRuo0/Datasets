@@ -2,9 +2,9 @@
   "problem_id": 324,
   "annotation": "NaZhu_2023-04-02",
   "source": "Geometry3k-329",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the polygon for the given information.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，NC=10，ND=2，圆M的圆心为M，⊙O的切线为NC。求△MNC的周长。",
+  "problem_text_en": "As shown in the diagram, NC=10, ND=2, M is the center of ⊙M, NC is the tangent to ⊙M. Find the perimeter of triangle MNC.",
   "problem_img": "324.png",
   "construction_cdl": [
     "Shape(MCD,DM,MC)",
@@ -14,6 +14,9 @@
     "Cocircular(M,DC)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(NC),10)",
+    "Equal(LengthOfLine(ND),2)",
+    "IsCentreOfCircle(M,M)",
     "IsTangentOfCircle(NC,M)"
   ],
   "image_cdl": [
@@ -32,19 +35,19 @@
     "right_triangle_property_pythagorean(1,NCM)",
     "triangle_perimeter_formula(1,NCM)"
   ],
-  "theorem_seq_dag": {
-    "tangent_of_circle_property_perpendicular(2,NC,M,M)": [
-      "right_triangle_judgment_angle(1,NCM)"
-    ],
-    "right_triangle_judgment_angle(1,NCM)": [
-      "right_triangle_property_pythagorean(1,NCM)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(2,NC,M,M)",
       "line_addition(1,ND,DM)",
       "radius_of_circle_property_length_equal(1,MD,M)",
       "radius_of_circle_property_length_equal(1,MC,M)",
       "triangle_perimeter_formula(1,NCM)"
+    ],
+    "tangent_of_circle_property_perpendicular(2,NC,M,M)": [
+      "right_triangle_judgment_angle(1,NCM)"
+    ],
+    "right_triangle_judgment_angle(1,NCM)": [
+      "right_triangle_property_pythagorean(1,NCM)"
     ]
   }
 }

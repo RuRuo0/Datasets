@@ -2,19 +2,19 @@
   "problem_id": 5372,
   "annotation": "QikeHuang_2023-05-21",
   "source": "GeoQA-5655",
-  "problem_level": 1,
-  "problem_text_cn": "如图,若▱ABCD与▱BCFE关于BC所在直线对称,∠ABE=86°,则∠E等于()",
-  "problem_text_en": "As shown in the figure, if ▱ABCD and ▱BCFE are symmetric with respect to the line where BC is located, ∠ABE = N_0, then ∠E is equal to ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠ABE=86°，BCDA镜像全等于BEFC，四边形ABCD是▱，BC和EF是平行四边形BEFC的一组对边。求∠BEF的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABE=86°, quadrilateral BCDA is mirror congruent to quadrilateral BEFC, AD and BC are opposite sides of the parallelogram ABCD, BEFC is a ▱. Find the measure of ∠BEF.",
   "problem_img": "5372.png",
   "construction_cdl": [
     "Shape(AB,BC,CD,DA)",
     "Shape(BE,EF,FC,CB)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
-    "Parallelogram(BEFC)",
+    "Equal(MeasureOfAngle(ABE),86)",
     "MirrorCongruentBetweenQuadrilateral(BCDA,BEFC)",
-    "Equal(MeasureOfAngle(ABE),86)"
+    "Parallelogram(ABCD)",
+    "Parallelogram(BEFC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BEF))",
@@ -24,7 +24,7 @@
     "angle_addition(1,ABC,CBE)",
     "parallel_property_ipsilateral_internal_angle(1,BC,EF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "mirror_congruent_quadrilateral_property_angle_equal(1,BCDA,BEFC)",
       "angle_addition(1,ABC,CBE)",

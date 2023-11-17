@@ -2,9 +2,9 @@
   "problem_id": 4171,
   "annotation": "Yangli_2023-05-07",
   "source": "GeoQA-2814",
-  "problem_level": 1,
-  "problem_text_cn": "如图,OA=4,线段OA的中点为B,点P在以O为圆心,OB为半径的圆上运动,PA的中点为Q．当点Q也落在⊙O上时,\\cos∠OQB的值等于()",
-  "problem_text_en": "As shown in the figure, OA = N_0, the midpoint of the line segment OA is B, the point P moves on a circle with O as the center and OB as the radius, and the midpoint of PA is Q. When the point Q also falls on ⊙O, the value of cos∠OQB is equal to ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，OA=4，OP=OB，OP=OQ，OQ=OB，B平分线段OA，Q是线段PA的中点。求cos(BQ)的值。",
+  "problem_text_en": "As shown in the diagram, OA=4, OP=OB, OP=OQ, OQ=OB, B bisects segment OA, Q bisects segment PA. Find the value of cos(BQ).",
   "problem_img": "4171.png",
   "construction_cdl": [
     "Shape(PO,OQ,QP)",
@@ -19,6 +19,9 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(OA),4)",
+    "Equal(LengthOfLine(OP),LengthOfLine(OB))",
+    "Equal(LengthOfLine(OP),LengthOfLine(OQ))",
+    "Equal(LengthOfLine(OQ),LengthOfLine(OB))",
     "IsMidpointOfLine(B,OA)",
     "IsMidpointOfLine(Q,PA)"
   ],
@@ -34,13 +37,13 @@
     "midsegment_of_triangle_property_length(1,QB,APO)",
     "cosine_theorem(1,QOB)"
   ],
-  "theorem_seq_dag": {
-    "midsegment_of_triangle_judgment_midpoint(1,QB,APO)": [
-      "midsegment_of_triangle_property_length(1,QB,APO)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "midsegment_of_triangle_judgment_midpoint(1,QB,APO)",
       "cosine_theorem(1,QOB)"
+    ],
+    "midsegment_of_triangle_judgment_midpoint(1,QB,APO)": [
+      "midsegment_of_triangle_property_length(1,QB,APO)"
     ]
   }
 }

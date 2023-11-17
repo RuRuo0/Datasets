@@ -2,9 +2,9 @@
   "problem_id": 1978,
   "annotation": "ZheZhu_2023-04-16",
   "source": "Geometry3k-2061",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find m \\angle K.",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，弧GKJ的角度为194，⊙G的圆心为G，圆O的切线为LK。求∠JKL的大小。",
+  "problem_text_en": "As shown in the diagram, the measure of arc GKJ is 194, the center of ⊙G is G, LK is the tangent to circle G. Find the measure of ∠JKL.",
   "problem_img": "1978.png",
   "construction_cdl": [
     "Shape(GJ,JK,KG)",
@@ -13,7 +13,11 @@
     "Shape(GK,KL)",
     "Cocircular(G,JK)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfArc(GKJ),194)",
+    "IsCentreOfCircle(G,G)",
+    "IsTangentOfCircle(LK,G)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(G,G)",
     "Equal(MeasureOfArc(GKJ),194)",
@@ -32,16 +36,7 @@
     "tangent_of_circle_property_perpendicular(1,LK,G,G)",
     "angle_addition(1,JKG,GKL)"
   ],
-  "theorem_seq_dag": {
-    "radius_of_circle_property_length_equal(1,GJ,G)": [
-      "isosceles_triangle_judgment_line_equal(1,GJK)"
-    ],
-    "radius_of_circle_property_length_equal(1,GK,G)": [
-      "isosceles_triangle_judgment_line_equal(1,GJK)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,GJK)": [
-      "isosceles_triangle_property_angle_equal(1,GJK)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,GKJ,G)",
       "round_angle(1,JGK,KGJ)",
@@ -50,6 +45,15 @@
       "triangle_property_angle_sum(1,GJK)",
       "tangent_of_circle_property_perpendicular(1,LK,G,G)",
       "angle_addition(1,JKG,GKL)"
+    ],
+    "radius_of_circle_property_length_equal(1,GJ,G)": [
+      "isosceles_triangle_judgment_line_equal(1,GJK)"
+    ],
+    "radius_of_circle_property_length_equal(1,GK,G)": [
+      "isosceles_triangle_judgment_line_equal(1,GJK)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,GJK)": [
+      "isosceles_triangle_property_angle_equal(1,GJK)"
     ]
   }
 }

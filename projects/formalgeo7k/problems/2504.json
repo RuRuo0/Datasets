@@ -2,9 +2,9 @@
   "problem_id": 2504,
   "annotation": "ChenyangMao_2023-04-23",
   "source": "Geometry3k-2628",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot M, F L = 24, H J = 48, and m \\widehat H P = 65. Find N J.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，FL=24，HJ=48，弧MHP的角度为65，M是⊙M的圆心，JN垂直于PN，KL⊥GL。求直线NJ的长度。",
+  "problem_text_en": "As shown in the diagram, FL=24, HJ=48, the measure of ⌒MHP is 65, the center of ⊙M is M, JN is perpendicular to PN, KL⊥GL. Find the length of line NJ.",
   "problem_img": "2504.png",
   "construction_cdl": [
     "Shape(MKF,FL,LK)",
@@ -22,7 +22,10 @@
   "text_cdl": [
     "Equal(LengthOfLine(FL),24)",
     "Equal(LengthOfLine(HJ),48)",
-    "Equal(MeasureOfArc(MHP),65)"
+    "Equal(MeasureOfArc(MHP),65)",
+    "IsCentreOfCircle(M,M)",
+    "PerpendicularBetweenLine(JN,PN)",
+    "PerpendicularBetweenLine(KL,GL)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(M,M)",
@@ -36,13 +39,13 @@
     "vertical_angle(1,HNM,JNP)",
     "circle_property_chord_perpendicular_bisect_chord(1,M,MN,HJ)"
   ],
-  "theorem_seq_dag": {
-    "vertical_angle(1,HNM,JNP)": [
-      "circle_property_chord_perpendicular_bisect_chord(1,M,MN,HJ)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,HN,NJ)",
       "vertical_angle(1,HNM,JNP)"
+    ],
+    "vertical_angle(1,HNM,JNP)": [
+      "circle_property_chord_perpendicular_bisect_chord(1,M,MN,HJ)"
     ]
   }
 }

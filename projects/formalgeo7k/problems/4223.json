@@ -2,9 +2,9 @@
   "problem_id": 4223,
   "annotation": "ChenyangMao_2023-05-07",
   "source": "GeoQA-2980",
-  "problem_level": 1,
-  "problem_text_cn": "如图,BC是⊙O的直径,A是⊙O上的一点,∠OAC=32°,则∠B的度数是()",
-  "problem_text_en": "As shown in the figure, BC is the diameter of ⊙O, A is a point on ⊙O, ∠OAC = N_0, then the degree of ∠B is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠CAO=32°，O是圆O的圆心，圆O的直径为CB。求∠ABO的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAO=32°, O is the center of ⊙O, CB is the diameter of circle O. Find the measure of ∠ABO.",
   "problem_img": "4223.png",
   "construction_cdl": [
     "Shape(OCA,AC)",
@@ -16,9 +16,9 @@
     "Cocircular(O,CAB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(CAO),32)",
     "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(CB,O)",
-    "Equal(MeasureOfAngle(CAO),32)"
+    "IsDiameterOfCircle(CB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ABO))",
@@ -31,7 +31,13 @@
     "isosceles_triangle_judgment_line_equal(1,OAB)",
     "isosceles_triangle_property_angle_equal(1,OAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "diameter_of_circle_property_right_angle(1,CAB,O)",
+      "angle_addition(1,CAO,OAB)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OAB)"
     ],
@@ -40,12 +46,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OAB)": [
       "isosceles_triangle_property_angle_equal(1,OAB)"
-    ],
-    "START": [
-      "diameter_of_circle_property_right_angle(1,CAB,O)",
-      "angle_addition(1,CAO,OAB)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)"
     ]
   }
 }

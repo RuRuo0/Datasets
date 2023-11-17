@@ -2,9 +2,9 @@
   "problem_id": 1359,
   "annotation": "YimingHe_2023-03-19",
   "source": "Geometry3k-1407",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Q is the incenter of \\triangle J K L. Find m \\angle Q J K.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，JP=20，JQ=25，∠QKM=29°，∠QLP=26°，△LJK的内心为Q，LP垂直于QP，QM垂直于LM，QN⊥KN。求∠QJK的大小。",
+  "problem_text_en": "As shown in the diagram, JP=20, JQ=25, ∠QKM=29°, ∠QLP=26°, Q is the incenter of △LJK, LP is perpendicular to QP, QM⊥LM, QN⊥KN. Find the measure of ∠QJK.",
   "problem_img": "1359.png",
   "construction_cdl": [
     "Shape(PQ,QL,LP)",
@@ -17,7 +17,16 @@
     "Collinear(JNK)",
     "Collinear(LMK)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(JP),20)",
+    "Equal(LengthOfLine(JQ),25)",
+    "Equal(MeasureOfAngle(QKM),29)",
+    "Equal(MeasureOfAngle(QLP),26)",
+    "IsIncenterOfTriangle(Q,LJK)",
+    "PerpendicularBetweenLine(LP,QP)",
+    "PerpendicularBetweenLine(QM,LM)",
+    "PerpendicularBetweenLine(QN,KN)"
+  ],
   "image_cdl": [
     "IsIncenterOfTriangle(Q,LJK)",
     "Equal(MeasureOfAngle(QLP),26)",
@@ -36,7 +45,7 @@
     "angle_addition(1,NKQ,QKM)",
     "triangle_property_angle_sum(1,LJK)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,MLQ,QLP)",
       "angle_addition(1,PJQ,QJN)",

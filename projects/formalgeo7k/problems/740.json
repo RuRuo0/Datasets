@@ -2,9 +2,9 @@
   "problem_id": 740,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-765",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the figure in feet.",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，BC=4，BO=OT，CO=OA，∠ABO=58°，CO⊥BO。求BCTA的周长。",
+  "problem_text_en": "As shown in the diagram, BC=4, BO=OT, CO=OA, ∠ABO=58°, CO⊥BO. Find the perimeter of BCTA.",
   "problem_img": "740.png",
   "construction_cdl": [
     "Shape(BC,CO,OB)",
@@ -14,7 +14,13 @@
     "Collinear(COA)",
     "Collinear(BOT)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BC),4)",
+    "Equal(LengthOfLine(BO),LengthOfLine(OT))",
+    "Equal(LengthOfLine(CO),LengthOfLine(OA))",
+    "Equal(MeasureOfAngle(ABO),58)",
+    "PerpendicularBetweenLine(CO,BO)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(ABO),58)",
     "Equal(LengthOfLine(BC),4)",
@@ -37,7 +43,14 @@
     "rhombus_judgment_parallelogram_and_kite(1,BCTA)",
     "quadrilateral_perimeter_formula(1,BCTA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "midpoint_of_line_judgment(1,O,CA)",
+      "midpoint_of_line_judgment(1,O,BT)",
+      "vertical_angle(1,COB,AOT)",
+      "perpendicular_bisector_judgment_per_and_mid(1,BO,CA)",
+      "quadrilateral_perimeter_formula(1,BCTA)"
+    ],
     "midpoint_of_line_judgment(1,O,CA)": [
       "parallelogram_judgment_diagonal_bisection(1,BCTA,O)"
     ],
@@ -64,13 +77,6 @@
     ],
     "kite_judgment_equal_and_equal(1,BCTA)": [
       "rhombus_judgment_parallelogram_and_kite(1,BCTA)"
-    ],
-    "START": [
-      "midpoint_of_line_judgment(1,O,CA)",
-      "midpoint_of_line_judgment(1,O,BT)",
-      "vertical_angle(1,COB,AOT)",
-      "perpendicular_bisector_judgment_per_and_mid(1,BO,CA)",
-      "quadrilateral_perimeter_formula(1,BCTA)"
     ]
   }
 }

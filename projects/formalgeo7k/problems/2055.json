@@ -2,9 +2,9 @@
   "problem_id": 2055,
   "annotation": "QikeHuang_2023-04-23",
   "source": "Geometry3k-2142",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot P, J K = 10 and \\widehat J K L = 134. Find P Q. Round to the nearest hundredth.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，JK=10，MP=6，弧PLJ的角度为134，P是圆P的圆心，PQ垂直于KQ。求直线PQ的长度。",
+  "problem_text_en": "As shown in the diagram, JK=10, MP=6, the measure of ⌒PLJ is 134, P is the center of circle P, PQ⊥KQ. Find the length of line PQ.",
   "problem_img": "2055.png",
   "construction_cdl": [
     "Shape(PMJ,JP,PM)",
@@ -18,7 +18,10 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(JK),10)",
-    "Equal(MeasureOfArc(PLJ),134)"
+    "Equal(LengthOfLine(MP),6)",
+    "Equal(MeasureOfArc(PLJ),134)",
+    "IsCentreOfCircle(P,P)",
+    "PerpendicularBetweenLine(PQ,KQ)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(P,P)",
@@ -36,19 +39,19 @@
     "right_triangle_judgment_angle(1,JQP)",
     "right_triangle_property_pythagorean(1,JQP)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,PJ,P)",
+      "radius_of_circle_property_length_equal(1,PM,P)",
+      "adjacent_complementary_angle(1,JQP,PQK)",
+      "line_addition(1,JQ,QK)"
+    ],
     "adjacent_complementary_angle(1,JQP,PQK)": [
       "circle_property_chord_perpendicular_bisect_chord(1,P,PQ,JK)",
       "right_triangle_judgment_angle(1,JQP)"
     ],
     "right_triangle_judgment_angle(1,JQP)": [
       "right_triangle_property_pythagorean(1,JQP)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,PJ,P)",
-      "radius_of_circle_property_length_equal(1,PM,P)",
-      "adjacent_complementary_angle(1,JQP,PQK)",
-      "line_addition(1,JQ,QK)"
     ]
   }
 }

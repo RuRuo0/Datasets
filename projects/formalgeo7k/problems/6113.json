@@ -2,9 +2,9 @@
   "problem_id": 6113,
   "annotation": "YifanWang_2023-06-04",
   "source": "GeoQA-8662",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC内接于⊙O,∠A=15°,连接OB,则∠OBC等于()",
-  "problem_text_en": "As shown in the figure, △ABC is inscribed in ⊙O, ∠A = N_0, connect OB, then ∠OBC is equal to ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠BAC=15°，O是圆O的圆心。求∠CBO的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BAC=15°, the center of ⊙O is O. Find the measure of ∠CBO.",
   "problem_img": "6113.png",
   "construction_cdl": [
     "Shape(CO,OD,DA,OAC)",
@@ -18,8 +18,8 @@
     "Cocircular(O,ACB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "Equal(MeasureOfAngle(BAC),15)"
+    "Equal(MeasureOfAngle(BAC),15)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CBO))",
@@ -33,7 +33,14 @@
     "isosceles_triangle_property_angle_equal(1,OCB)",
     "triangle_property_angle_sum(1,OCB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_center_angle(1,OCB,O)",
+      "arc_property_circumference_angle_external(1,OCB,A)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "triangle_property_angle_sum(1,OCB)"
+    ],
     "radius_of_circle_property_length_equal(1,OC,O)": [
       "isosceles_triangle_judgment_line_equal(1,OCB)"
     ],
@@ -42,13 +49,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OCB)": [
       "isosceles_triangle_property_angle_equal(1,OCB)"
-    ],
-    "START": [
-      "arc_property_center_angle(1,OCB,O)",
-      "arc_property_circumference_angle_external(1,OCB,A)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "triangle_property_angle_sum(1,OCB)"
     ]
   }
 }

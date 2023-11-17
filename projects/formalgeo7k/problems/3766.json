@@ -2,9 +2,9 @@
   "problem_id": 3766,
   "annotation": "ChenyangMao_2023-04-30",
   "source": "GeoQA-1585",
-  "problem_level": 1,
-  "problem_text_cn": "如图,直线a∥b,∠1=50°,∠2=40°,则∠3的度数为()",
-  "problem_text_en": "As shown in the figure, the straight line a ∥ b, ∠1 = N_0, ∠2 = N_1, then the degree of ∠3 is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠ABD=50°，∠GEF=40°，AC∥EF。求∠BEG的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABD=50°, ∠GEF=40°, AC∥EF. Find the measure of ∠BEG.",
   "problem_img": "3766.png",
   "construction_cdl": [
     "Shape(AB,BD)",
@@ -14,7 +14,11 @@
     "Collinear(ABC)",
     "Collinear(DBE)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(ABD),50)",
+    "Equal(MeasureOfAngle(GEF),40)",
+    "ParallelBetweenLine(AC,EF)"
+  ],
   "image_cdl": [
     "ParallelBetweenLine(AC,EF)",
     "Equal(MeasureOfAngle(ABD),50)",
@@ -28,14 +32,14 @@
     "parallel_property_ipsilateral_internal_angle(1,BC,EF)",
     "angle_addition(1,BEG,GEF)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,AC,EF,B)": [
-      "parallel_property_ipsilateral_internal_angle(1,BC,EF)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_collinear_extend(3,AC,EF,B)",
       "vertical_angle(1,ABD,CBE)",
       "angle_addition(1,BEG,GEF)"
+    ],
+    "parallel_property_collinear_extend(3,AC,EF,B)": [
+      "parallel_property_ipsilateral_internal_angle(1,BC,EF)"
     ]
   }
 }

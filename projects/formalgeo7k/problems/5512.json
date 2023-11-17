@@ -2,9 +2,9 @@
   "problem_id": 5512,
   "annotation": "DengfengYue_2023-05-21",
   "source": "GeoQA-5983",
-  "problem_level": 1,
-  "problem_text_cn": "如图,m∥n,点A在直线n上,以A为圆心的圆弧与直线n,m相交于B,C,若∠CAB=30°,则∠ABC的度数为()",
-  "problem_text_en": "As shown in the figure, ∥ n, point A is on the straight line n, and the arc with A as the center and the straight line n intersect at B and C. If ∠CAB = N_0, then the degree of ∠ABC is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠CAB=30°，圆A的圆心为A。求∠ABC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAB=30°, A is the center of ⊙A. Find the measure of ∠ABC.",
   "problem_img": "5512.png",
   "construction_cdl": [
     "Shape(CA,AB,BC)",
@@ -13,8 +13,8 @@
     "Cocircular(A,BC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(A,A)",
-    "Equal(MeasureOfAngle(CAB),30)"
+    "Equal(MeasureOfAngle(CAB),30)",
+    "IsCentreOfCircle(A,A)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ABC))",
@@ -26,7 +26,12 @@
     "isosceles_triangle_property_angle_equal(1,ABC)",
     "triangle_property_angle_sum(1,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,AB,A)",
+      "radius_of_circle_property_length_equal(1,AC,A)",
+      "triangle_property_angle_sum(1,CAB)"
+    ],
     "radius_of_circle_property_length_equal(1,AB,A)": [
       "isosceles_triangle_judgment_line_equal(1,ABC)"
     ],
@@ -35,11 +40,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,ABC)": [
       "isosceles_triangle_property_angle_equal(1,ABC)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,AB,A)",
-      "radius_of_circle_property_length_equal(1,AC,A)",
-      "triangle_property_angle_sum(1,CAB)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 4824,
   "annotation": "RunanWang_2023-05-21",
   "source": "GeoQA-4269",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC的三边分别切⊙O于D,E,F,若∠A=50°,则∠DEF=()",
-  "problem_text_en": "As shown in the figure, the three edges of △ABC are tangent ⊙O to D, E, F respectively, if ∠A = N_0, then ∠DEF = ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠CAB=50°，O是圆O的圆心，AD是圆O的切线，⊙O的切线为AF，⊙O的切线为BE。求∠DEF的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAB=50°, O is the center of circle O, AD is the tangent to ⊙O, AF is the tangent to circle O, BE is the tangent to ⊙O. Find the measure of ∠DEF.",
   "problem_img": "4824.png",
   "construction_cdl": [
     "Shape(AD,OFD,FA)",
@@ -20,7 +20,11 @@
     "Cocircular(O,DEF)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)"
+    "Equal(MeasureOfAngle(CAB),50)",
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(AD,O)",
+    "IsTangentOfCircle(AF,O)",
+    "IsTangentOfCircle(BE,O)"
   ],
   "image_cdl": [
     "IsTangentOfCircle(AD,O)",
@@ -37,7 +41,7 @@
     "arc_property_center_angle(1,OFD,O)",
     "arc_property_circumference_angle_external(1,OFD,E)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(2,AD,O,O)",
       "tangent_of_circle_property_perpendicular(1,AF,O,O)",

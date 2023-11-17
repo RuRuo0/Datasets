@@ -2,9 +2,9 @@
   "problem_id": 395,
   "annotation": "NaZhu_2023-03-12",
   "source": "Geometry3k-402",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "CE is per to AE, CBTA = 104 ft^2.Find x. ",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，CBTA的面积为104，AB=16，CE=ET，ET=x，CE⊥AE。求x的值。",
+  "problem_text_en": "As shown in the diagram, the area of CBTA is 104, AB=16, CE=ET, ET=x, CE is perpendicular to AE. Find the value of x.",
   "problem_img": "395.png",
   "construction_cdl": [
     "Shape(CB,BE,EC)",
@@ -16,6 +16,9 @@
   ],
   "text_cdl": [
     "Equal(AreaOfQuadrilateral(CBTA),104)",
+    "Equal(LengthOfLine(AB),16)",
+    "Equal(LengthOfLine(CE),LengthOfLine(ET))",
+    "Equal(LengthOfLine(ET),x)",
     "PerpendicularBetweenLine(CE,AE)"
   ],
   "image_cdl": [
@@ -36,7 +39,13 @@
     "kite_area_formula_diagonal(1,BTAC)",
     "line_addition(1,CE,ET)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,CEA,AET)",
+      "adjacent_complementary_angle(1,AET,TEB)",
+      "perpendicular_bisector_judgment_per_and_mid(1,AE,CT)",
+      "line_addition(1,CE,ET)"
+    ],
     "adjacent_complementary_angle(1,CEA,AET)": [
       "perpendicular_bisector_judgment_per_and_mid(1,BE,TC)"
     ],
@@ -57,12 +66,6 @@
     ],
     "kite_judgment_equal_and_equal(1,BTAC)": [
       "kite_area_formula_diagonal(1,BTAC)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,CEA,AET)",
-      "adjacent_complementary_angle(1,AET,TEB)",
-      "perpendicular_bisector_judgment_per_and_mid(1,AE,CT)",
-      "line_addition(1,CE,ET)"
     ]
   }
 }

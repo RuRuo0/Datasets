@@ -2,9 +2,9 @@
   "problem_id": 4636,
   "annotation": "QikeHuang_2023-05-14",
   "source": "GeoQA-3854",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AD、AE和BC分别切⊙O于点D、E、F,如果AD=18,则△ABC的周长为()",
-  "problem_text_en": "As shown in the figure, AD, AE and BC respectively tangent ⊙O to points D, E, F, if AD = N_0, then the perimeter of △ABC is ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，AD=18，O是⊙O的圆心，AD是圆O的切线，AE是圆O的切线，圆O的切线为BF，CF是圆O的切线。求△ABC的周长。",
+  "problem_text_en": "As shown in the diagram, AD=18, the center of circle O is O, AD is the tangent to ⊙O, AE is the tangent to circle O, the tangent to ⊙O is BF, CF is the tangent to circle O. Find the perimeter of △ABC.",
   "problem_img": "4636.png",
   "construction_cdl": [
     "Shape(AB,BF,FC,CA)",
@@ -19,12 +19,12 @@
     "Cocircular(O,DFE)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AD),18)",
     "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(AE,O)",
     "IsTangentOfCircle(AD,O)",
+    "IsTangentOfCircle(AE,O)",
     "IsTangentOfCircle(BF,O)",
-    "IsTangentOfCircle(CF,O)",
-    "Equal(LengthOfLine(AD),18)"
+    "IsTangentOfCircle(CF,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfTriangle(ABC))",
@@ -42,7 +42,16 @@
     "line_addition(1,BF,FC)",
     "triangle_perimeter_formula(1,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(1,AE,O,O)",
+      "tangent_of_circle_property_perpendicular(1,AD,O,O)",
+      "tangent_of_circle_property_length_equal(1,AE,AD,O)",
+      "line_addition(1,AB,BE)",
+      "line_addition(1,AC,CD)",
+      "line_addition(1,BF,FC)",
+      "triangle_perimeter_formula(1,ABC)"
+    ],
     "tangent_of_circle_property_perpendicular(1,AE,O,O)": [
       "tangent_of_circle_judgment_perpendicular(1,BE,O,O)"
     ],
@@ -54,15 +63,6 @@
     ],
     "tangent_of_circle_judgment_perpendicular(1,BE,O,O)": [
       "tangent_of_circle_property_length_equal(1,BF,BE,O)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(1,AE,O,O)",
-      "tangent_of_circle_property_perpendicular(1,AD,O,O)",
-      "tangent_of_circle_property_length_equal(1,AE,AD,O)",
-      "line_addition(1,AB,BE)",
-      "line_addition(1,AC,CD)",
-      "line_addition(1,BF,FC)",
-      "triangle_perimeter_formula(1,ABC)"
     ]
   }
 }

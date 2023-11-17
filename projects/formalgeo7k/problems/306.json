@@ -2,16 +2,20 @@
   "problem_id": 306,
   "annotation": "NaZhu_2023-04-02",
   "source": "Geometry3k-310",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the circumference of \\odot S. Round to the nearest hundredth.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，弧SRT的长度为8，∠TSR=70°，S是圆S的圆心。求圆S的周长。",
+  "problem_text_en": "As shown in the diagram, the length of arc SRT is 8, ∠TSR=70°, S is the center of ⊙S. Find the circumference of the circle S.",
   "problem_img": "306.png",
   "construction_cdl": [
     "Shape(STR,RS,ST)",
     "Shape(SRT,TS,SR)",
     "Cocircular(S,TR)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfArc(SRT),8)",
+    "Equal(MeasureOfAngle(TSR),70)",
+    "IsCentreOfCircle(S,S)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(S,S)",
     "Equal(LengthOfArc(SRT),8)",
@@ -24,7 +28,7 @@
     "arc_length_formula(1,SRT)",
     "circle_perimeter_formula(1,S)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,SRT,S)",
       "arc_length_formula(1,SRT)",

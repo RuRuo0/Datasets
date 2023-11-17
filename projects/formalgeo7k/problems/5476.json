@@ -2,9 +2,9 @@
   "problem_id": 5476,
   "annotation": "ChenyangMao_2023-05-21",
   "source": "GeoQA-5893",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,∠C=90°,∠A=15°,∠DBC=60°,BC=1,则AD的长为()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠C = N_0, ∠A = N_1, ∠DBC = N_2, BC = N_3, then the length of AD is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，BC=1，∠BAD=15°，∠CBD=60°，∠DCB=90°。求直线AD的长度。",
+  "problem_text_en": "As shown in the diagram, BC=1, ∠BAD=15°, ∠CBD=60°, ∠DCB=90°. Find the length of line AD.",
   "problem_img": "5476.png",
   "construction_cdl": [
     "Shape(BA,AD,DB)",
@@ -13,9 +13,9 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(BC),1)",
-    "Equal(MeasureOfAngle(DCB),90)",
     "Equal(MeasureOfAngle(BAD),15)",
-    "Equal(MeasureOfAngle(CBD),60)"
+    "Equal(MeasureOfAngle(CBD),60)",
+    "Equal(MeasureOfAngle(DCB),90)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AD))",
@@ -27,7 +27,13 @@
     "adjacent_complementary_angle(1,ADB,BDC)",
     "isosceles_triangle_judgment_angle_equal(1,DBA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "triangle_property_angle_sum(1,BAD)",
+      "triangle_property_angle_sum(1,BDC)",
+      "sine_theorem(1,BDC)",
+      "adjacent_complementary_angle(1,ADB,BDC)"
+    ],
     "triangle_property_angle_sum(1,BAD)": [
       "isosceles_triangle_judgment_angle_equal(1,DBA)"
     ],
@@ -36,12 +42,6 @@
     ],
     "adjacent_complementary_angle(1,ADB,BDC)": [
       "isosceles_triangle_judgment_angle_equal(1,DBA)"
-    ],
-    "START": [
-      "triangle_property_angle_sum(1,BAD)",
-      "triangle_property_angle_sum(1,BDC)",
-      "sine_theorem(1,BDC)",
-      "adjacent_complementary_angle(1,ADB,BDC)"
     ]
   }
 }

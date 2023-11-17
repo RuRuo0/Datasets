@@ -2,9 +2,9 @@
   "problem_id": 3252,
   "annotation": "XiaokaiZhang_2023-04-23",
   "source": "GeoQA-556",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,AB=AC,∠A=30°,AB的垂直平分线l交AC于点D,则∠CBD的度数为()",
-  "problem_text_en": "As shown in the figure, in △ABC, AB = AC, ∠A = N_0, the perpendicular bisector of AB intersects AC at vertex D, then the degree of ∠CBD is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AB=AC，∠CAB=30°，DI垂直平分AB。求∠DBC的大小。",
+  "problem_text_en": "As shown in the diagram, AB=AC, ∠CAB=30°, DI perpendicular bisects AB. Find the measure of ∠DBC.",
   "problem_img": "3252.png",
   "construction_cdl": [
     "Shape(AI,ID,DA)",
@@ -29,18 +29,18 @@
     "triangle_property_angle_sum(1,ABC)",
     "angle_addition(1,ABD,DBC)"
   ],
-  "theorem_seq_dag": {
-    "mirror_congruent_triangle_judgment_sas(1,IDA,IBD)": [
-      "mirror_congruent_triangle_property_angle_equal(1,AID,BDI)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,ABC)": [
-      "isosceles_triangle_property_angle_equal(1,ABC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "mirror_congruent_triangle_judgment_sas(1,IDA,IBD)",
       "isosceles_triangle_judgment_line_equal(1,ABC)",
       "triangle_property_angle_sum(1,ABC)",
       "angle_addition(1,ABD,DBC)"
+    ],
+    "mirror_congruent_triangle_judgment_sas(1,IDA,IBD)": [
+      "mirror_congruent_triangle_property_angle_equal(1,AID,BDI)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,ABC)": [
+      "isosceles_triangle_property_angle_equal(1,ABC)"
     ]
   }
 }

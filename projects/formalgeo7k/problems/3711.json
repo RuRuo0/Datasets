@@ -2,9 +2,9 @@
   "problem_id": 3711,
   "annotation": "Yangli_2023-04-30",
   "source": "GeoQA-1478",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知AB为⊙O的直径,∠ABD=20°,则∠BCD等于()",
-  "problem_text_en": "As shown in the figure, it is known that AB is the diameter of ⊙O, ∠ABD = N_0, then ∠BCD is equal to ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠DBO=20°，O是⊙O的圆心。求∠BCE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DBO=20°, the center of circle O is O. Find the measure of ∠BCE.",
   "problem_img": "3711.png",
   "construction_cdl": [
     "Shape(AE,EC,CA)",
@@ -21,7 +21,8 @@
     "Cocircular(O,ADBC)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(DBO),20)"
+    "Equal(MeasureOfAngle(DBO),20)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)"
@@ -37,7 +38,14 @@
     "arc_property_center_angle(1,ODB,O)",
     "arc_property_circumference_angle_external(1,ODB,C)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OD,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "triangle_property_angle_sum(1,ODB)",
+      "arc_property_center_angle(1,ODB,O)",
+      "arc_property_circumference_angle_external(1,ODB,C)"
+    ],
     "radius_of_circle_property_length_equal(1,OD,O)": [
       "isosceles_triangle_judgment_line_equal(1,ODB)"
     ],
@@ -46,13 +54,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,ODB)": [
       "isosceles_triangle_property_angle_equal(1,ODB)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OD,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "triangle_property_angle_sum(1,ODB)",
-      "arc_property_center_angle(1,ODB,O)",
-      "arc_property_circumference_angle_external(1,ODB,C)"
     ]
   }
 }

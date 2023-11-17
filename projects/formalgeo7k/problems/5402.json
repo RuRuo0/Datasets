@@ -2,9 +2,9 @@
   "problem_id": 5402,
   "annotation": "XiaoxiaoJin_2023-05-21",
   "source": "GeoQA-5695",
-  "problem_level": 1,
-  "problem_text_cn": "某城市几条道路的位置关系如图所示,已知AB∥CD,AE与AB的夹角为48°,若CF与EF的长度相等,则∠C的度数为()",
-  "problem_text_en": "The positional relationship of several roads in a certain city is shown in the figure. It is known that AB ∥ CD, the angle between AE and AB is N_0, if the length of CF and EF are equal, then the degree of ∠C is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，CF=FE，∠BAF=48°，AB平行于CD。求∠FCE的大小。",
+  "problem_text_en": "As shown in the diagram, CF=FE, ∠BAF=48°, AB is parallel to CD. Find the measure of ∠FCE.",
   "problem_img": "5402.png",
   "construction_cdl": [
     "Shape(BA,AF)",
@@ -31,18 +31,18 @@
     "adjacent_complementary_angle(1,DFE,EFC)",
     "parallel_property_corresponding_angle(2,AB,FD,E)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,DC,BA,F)": [
-      "parallel_property_corresponding_angle(2,AB,FD,E)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,FCE)": [
-      "isosceles_triangle_property_angle_equal(1,FCE)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_collinear_extend(3,DC,BA,F)",
       "triangle_property_angle_sum(1,EFC)",
       "isosceles_triangle_judgment_line_equal(1,FCE)",
       "adjacent_complementary_angle(1,DFE,EFC)"
+    ],
+    "parallel_property_collinear_extend(3,DC,BA,F)": [
+      "parallel_property_corresponding_angle(2,AB,FD,E)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,FCE)": [
+      "isosceles_triangle_property_angle_equal(1,FCE)"
     ]
   }
 }

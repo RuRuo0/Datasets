@@ -2,9 +2,9 @@
   "problem_id": 1371,
   "annotation": "ZheZhu_2023-04-09",
   "source": "Geometry3k-1419",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure, m \\angle 9 = 75. Find the measure of \\angle 3.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠FJE=75°，DG∥MI，EC平行于MI，GD∥CE。求∠TBG的大小。",
+  "problem_text_en": "As shown in the diagram, ∠FJE=75°, DG∥MI, EC is parallel to MI, GD is parallel to CE. Find the measure of ∠TBG.",
   "problem_img": "1371.png",
   "construction_cdl": [
     "Shape(FJ,JE)",
@@ -16,7 +16,12 @@
     "Collinear(MFI)",
     "Collinear(EJC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(FJE),75)",
+    "ParallelBetweenLine(DG,MI)",
+    "ParallelBetweenLine(EC,MI)",
+    "ParallelBetweenLine(GD,CE)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(FJE),75)",
     "ParallelBetweenLine(DG,MI)",
@@ -30,15 +35,15 @@
     "parallel_property_collinear_extend(3,EC,BG,J)",
     "parallel_property_alternate_interior_angle(2,GB,JE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,GD,CE,B)"
+    ],
     "parallel_property_collinear_extend(3,GD,CE,B)": [
       "parallel_property_collinear_extend(3,EC,BG,J)"
     ],
     "parallel_property_collinear_extend(3,EC,BG,J)": [
       "parallel_property_alternate_interior_angle(2,GB,JE)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,GD,CE,B)"
     ]
   }
 }

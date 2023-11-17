@@ -2,9 +2,9 @@
   "problem_id": 6295,
   "annotation": "ZheZhu_2023-05-28",
   "source": "GeoQA-9010",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点E,F是正方形ABCD内的两个点,AB=13,AE=CF=5,BE=DF=12,线段EF的长为()",
-  "problem_text_en": "As shown in the figure, points E and F are two points in the square ABCD, AB = N_0, AE = CF = N_1, BE = DF = N_2, and the length of the line segment EF is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，三角形BEA与三角形AGD是全等三角形，AB=13，AE=5，BE=12，CF=5，DF=12，∠FGE=90°，ABCD是正方形。求直线EF的长度。",
+  "problem_text_en": "As shown in the diagram, triangle BEA is congruent to triangle AGD, AB=13, AE=5, BE=12, CF=5, DF=12, ∠FGE=90°, ABCD is a square. Find the length of line EF.",
   "problem_img": "6295.png",
   "construction_cdl": [
     "Shape(EA,AB,BE)",
@@ -16,14 +16,14 @@
     "Collinear(DGF)"
   ],
   "text_cdl": [
-    "Square(ABCD)",
+    "CongruentBetweenTriangle(BEA,AGD)",
     "Equal(LengthOfLine(AB),13)",
     "Equal(LengthOfLine(AE),5)",
-    "Equal(LengthOfLine(CF),5)",
     "Equal(LengthOfLine(BE),12)",
+    "Equal(LengthOfLine(CF),5)",
     "Equal(LengthOfLine(DF),12)",
     "Equal(MeasureOfAngle(FGE),90)",
-    "CongruentBetweenTriangle(BEA,AGD)"
+    "Square(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(EF))",
@@ -36,16 +36,16 @@
     "right_triangle_judgment_angle(1,FGE)",
     "right_triangle_property_pythagorean(1,FGE)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,FGE)": [
-      "right_triangle_property_pythagorean(1,FGE)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "congruent_triangle_property_line_equal(1,BEA,AGD)",
       "congruent_triangle_property_line_equal(1,ABE,DAG)",
       "line_addition(1,AE,EG)",
       "line_addition(1,DG,GF)",
       "right_triangle_judgment_angle(1,FGE)"
+    ],
+    "right_triangle_judgment_angle(1,FGE)": [
+      "right_triangle_property_pythagorean(1,FGE)"
     ]
   }
 }

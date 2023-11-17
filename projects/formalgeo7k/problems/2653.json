@@ -2,9 +2,9 @@
   "problem_id": 2653,
   "annotation": "DengfengYue_2023-04-23",
   "source": "Geometry3k-2789",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot T, Z V = 1, and T W = 13. Find X Y.",
+  "problem_level": 12,
+  "problem_text_cn": "如图所示，TW=13，ZV=1，T是⊙T的圆心，TV垂直于XV。求直线XY的长度。",
+  "problem_text_en": "As shown in the diagram, TW=13, ZV=1, the center of circle T is T, TV⊥XV. Find the length of line XY.",
   "problem_img": "2653.png",
   "construction_cdl": [
     "Shape(ZV,VY,TYZ)",
@@ -16,7 +16,12 @@
     "Collinear(ZVTW)",
     "Cocircular(T,YZXW)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(TW),13)",
+    "Equal(LengthOfLine(ZV),1)",
+    "IsCentreOfCircle(T,T)",
+    "PerpendicularBetweenLine(TV,XV)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(T,T)",
     "Equal(LengthOfLine(ZV),1)",
@@ -39,7 +44,18 @@
     "right_triangle_property_pythagorean(1,YVT)",
     "line_addition(1,XV,VY)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,TW,T)",
+      "radius_of_circle_property_length_equal(1,TZ,T)",
+      "radius_of_circle_property_length_equal(1,TX,T)",
+      "radius_of_circle_property_length_equal(1,TY,T)",
+      "line_addition(1,ZV,VT)",
+      "flat_angle(1,YVX)",
+      "angle_addition(1,YVT,TVX)",
+      "right_triangle_judgment_angle(1,TVX)",
+      "line_addition(1,XV,VY)"
+    ],
     "flat_angle(1,YVX)": [
       "right_triangle_judgment_angle(1,YVT)"
     ],
@@ -51,17 +67,6 @@
     ],
     "right_triangle_judgment_angle(1,YVT)": [
       "right_triangle_property_pythagorean(1,YVT)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,TW,T)",
-      "radius_of_circle_property_length_equal(1,TZ,T)",
-      "radius_of_circle_property_length_equal(1,TX,T)",
-      "radius_of_circle_property_length_equal(1,TY,T)",
-      "line_addition(1,ZV,VT)",
-      "flat_angle(1,YVX)",
-      "angle_addition(1,YVT,TVX)",
-      "right_triangle_judgment_angle(1,TVX)",
-      "line_addition(1,XV,VY)"
     ]
   }
 }

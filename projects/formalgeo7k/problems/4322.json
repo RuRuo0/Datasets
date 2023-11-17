@@ -2,9 +2,9 @@
   "problem_id": 4322,
   "annotation": "ZheZhu_2023-05-07",
   "source": "GeoQA-3165",
-  "problem_level": 1,
-  "problem_text_cn": "如图,以AB为直径的半圆O上有两点D、E,ED与BA的延长线交于点C,且有DC=OE,若∠C=20°,则∠EOB的度数是()",
-  "problem_text_en": "As shown in the figure, there are two points D and E on the semicircle O with AB as the diameter. The extended line of ED and BA intersects at point C, and DC = OE. If ∠C = N_0, then the degree of ∠EOB is ()",
+  "problem_level": 13,
+  "problem_text_cn": "如图所示，DC=OE，∠DCO=20°，O是圆O的圆心，圆O的直径为AB。求∠EOB的大小。",
+  "problem_text_en": "As shown in the diagram, DC=OE, ∠DCO=20°, O is the center of circle O, AB is the diameter of circle O. Find the measure of ∠EOB.",
   "problem_img": "4322.png",
   "construction_cdl": [
     "Shape(DC,CA,ODA)",
@@ -18,10 +18,10 @@
     "Cocircular(O,EDAB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(AB,O)",
     "Equal(LengthOfLine(DC),LengthOfLine(OE))",
-    "Equal(MeasureOfAngle(DCO),20)"
+    "Equal(MeasureOfAngle(DCO),20)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(EOB))",
@@ -41,7 +41,18 @@
     "isosceles_triangle_property_angle_equal(1,OED)",
     "triangle_property_angle_sum(1,EDO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OE,O)",
+      "radius_of_circle_property_length_equal(1,OD,O)",
+      "triangle_property_angle_sum(1,DCO)",
+      "flat_angle(1,COB)",
+      "flat_angle(1,EDC)",
+      "angle_addition(1,EDO,ODC)",
+      "angle_addition(1,DOE,EOB)",
+      "angle_addition(1,AOD,DOB)",
+      "triangle_property_angle_sum(1,EDO)"
+    ],
     "radius_of_circle_property_length_equal(1,OE,O)": [
       "isosceles_triangle_judgment_line_equal(1,DCO)",
       "isosceles_triangle_judgment_line_equal(1,OED)"
@@ -55,17 +66,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OED)": [
       "isosceles_triangle_property_angle_equal(1,OED)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OE,O)",
-      "radius_of_circle_property_length_equal(1,OD,O)",
-      "triangle_property_angle_sum(1,DCO)",
-      "flat_angle(1,COB)",
-      "flat_angle(1,EDC)",
-      "angle_addition(1,EDO,ODC)",
-      "angle_addition(1,DOE,EOB)",
-      "angle_addition(1,AOD,DOB)",
-      "triangle_property_angle_sum(1,EDO)"
     ]
   }
 }

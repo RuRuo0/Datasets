@@ -2,9 +2,9 @@
   "problem_id": 6938,
   "annotation": "ChengQin_2023-06-04",
   "source": "GeoQA-angle-10190",
-  "problem_level": 1,
-  "problem_text_cn": "如图，△ABC内接于⊙O，∠A＝50°．OD⊥BC，垂足为E，连接BD，则∠CBD的大小为（）",
-  "problem_text_en": "",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，∠CAB=50°，O是圆O的圆心，BE⊥OE。求∠CBD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAB=50°, O is the center of ⊙O, BE⊥OE. Find the measure of ∠CBD.",
   "problem_img": "6938.png",
   "construction_cdl": [
     "Shape(OAB,BA)",
@@ -20,9 +20,9 @@
     "Cocircular(O,ABDC)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(CAB),50)",
     "IsCentreOfCircle(O,O)",
-    "PerpendicularBetweenLine(BE,OE)",
-    "Equal(MeasureOfAngle(CAB),50)"
+    "PerpendicularBetweenLine(BE,OE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CBD))",
@@ -38,7 +38,14 @@
     "isosceles_triangle_judgment_line_equal(1,DCB)",
     "isosceles_triangle_property_angle_equal(1,DCB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_circumference_angle_internal(1,OBC,D)",
+      "circle_property_chord_perpendicular_bisect_chord(1,O,OE,BC)",
+      "vertical_angle(1,BEO,CED)",
+      "arc_property_circumference_angle_external(1,OBC,A)",
+      "triangle_property_angle_sum(1,DCB)"
+    ],
     "circle_property_chord_perpendicular_bisect_chord(1,O,OE,BC)": [
       "perpendicular_bisector_judgment_per_and_mid(1,DE,CB)"
     ],
@@ -53,13 +60,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,DCB)": [
       "isosceles_triangle_property_angle_equal(1,DCB)"
-    ],
-    "START": [
-      "arc_property_circumference_angle_internal(1,OBC,D)",
-      "circle_property_chord_perpendicular_bisect_chord(1,O,OE,BC)",
-      "vertical_angle(1,BEO,CED)",
-      "arc_property_circumference_angle_external(1,OBC,A)",
-      "triangle_property_angle_sum(1,DCB)"
     ]
   }
 }

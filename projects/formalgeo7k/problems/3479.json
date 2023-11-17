@@ -2,9 +2,9 @@
   "problem_id": 3479,
   "annotation": "XiaokaiZhang_2023-04-30",
   "source": "GeoQA-1073",
-  "problem_level": 1,
-  "problem_text_cn": "如图,将△ABC折叠,使点A与BC边中点D重合,折痕为MN,若AB=9,BC=6,则△DNB的周长为()",
-  "problem_text_en": "As shown in the figure, fold △ABC so that point A coincides with point D at BC, and the crease is MN. If AB = N_0, BC = N_1, then the perimeter of △DNB is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AB=9，BC=6，D是线段CB的中点，MA和MD是风筝形MAND的一组临边。求三角形DNB的周长。",
+  "problem_text_en": "As shown in the diagram, AB=9, BC=6, D is the midpoint of segment CB, MA and MD are one pair of adjacent sides of the kite MAND. Find the perimeter of △DNB.",
   "problem_img": "3479.png",
   "construction_cdl": [
     "Shape(CM,MD,DC)",
@@ -15,10 +15,10 @@
     "Collinear(CDB)"
   ],
   "text_cdl": [
-    "Kite(MAND)",
-    "IsMidpointOfLine(D,CB)",
     "Equal(LengthOfLine(AB),9)",
-    "Equal(LengthOfLine(BC),6)"
+    "Equal(LengthOfLine(BC),6)",
+    "IsMidpointOfLine(D,CB)",
+    "Kite(MAND)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfTriangle(DNB))",
@@ -28,7 +28,7 @@
     "line_addition(1,AN,NB)",
     "triangle_perimeter_formula(1,DNB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,CD,DB)",
       "line_addition(1,AN,NB)",

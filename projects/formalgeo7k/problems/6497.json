@@ -2,9 +2,9 @@
   "problem_id": 6497,
   "annotation": "NaZhu_2023-06-04",
   "source": "GeoQA-9407",
-  "problem_level": 1,
-  "problem_text_cn": "如图,▱ABCD的周长为16cm,AC与BD相交于点O,OE⊥AC交AD于E,则△DCE的周长为()",
-  "problem_text_en": "As shown in the figure, the perimeter of ▱ABCD is N_0, AC and BD intersect at point O, and OE ⊥ AC intersects AD at E, then the perimeter of △DCE is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，四边形ABCD的周长为16，ABCD是平行四边形，AO⊥EO。求△DEC的周长。",
+  "problem_text_en": "As shown in the diagram, the perimeter of ABCD is 16, quadrilateral ABCD is a parallelogram, AO is perpendicular to EO. Find the perimeter of △DEC.",
   "problem_img": "6497.png",
   "construction_cdl": [
     "Shape(AO,OE,EA)",
@@ -20,9 +20,9 @@
     "Collinear(EFC)"
   ],
   "text_cdl": [
+    "Equal(PerimeterOfQuadrilateral(ABCD),16)",
     "Parallelogram(ABCD)",
-    "PerpendicularBetweenLine(AO,EO)",
-    "Equal(PerimeterOfQuadrilateral(ABCD),16)"
+    "PerpendicularBetweenLine(AO,EO)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfTriangle(DEC))",
@@ -38,16 +38,7 @@
     "line_addition(1,AE,ED)",
     "triangle_perimeter_formula(1,DEC)"
   ],
-  "theorem_seq_dag": {
-    "parallelogram_property_diagonal_bisection(1,ABCD,O)": [
-      "mirror_congruent_triangle_judgment_sas(1,OEA,OCE)"
-    ],
-    "adjacent_complementary_angle(1,AOE,EOC)": [
-      "mirror_congruent_triangle_judgment_sas(1,OEA,OCE)"
-    ],
-    "mirror_congruent_triangle_judgment_sas(1,OEA,OCE)": [
-      "mirror_congruent_triangle_property_line_equal(1,OEA,OCE)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "quadrilateral_perimeter_formula(1,ABCD)",
       "parallelogram_property_opposite_line_equal(1,ABCD)",
@@ -56,6 +47,15 @@
       "adjacent_complementary_angle(1,AOE,EOC)",
       "line_addition(1,AE,ED)",
       "triangle_perimeter_formula(1,DEC)"
+    ],
+    "parallelogram_property_diagonal_bisection(1,ABCD,O)": [
+      "mirror_congruent_triangle_judgment_sas(1,OEA,OCE)"
+    ],
+    "adjacent_complementary_angle(1,AOE,EOC)": [
+      "mirror_congruent_triangle_judgment_sas(1,OEA,OCE)"
+    ],
+    "mirror_congruent_triangle_judgment_sas(1,OEA,OCE)": [
+      "mirror_congruent_triangle_property_line_equal(1,OEA,OCE)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 1233,
   "annotation": "YifanWang_2023-04-23",
   "source": "Geometry3k-1273",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the shaded region.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，DE=9/2，FB=9，圆A的圆心为O，⊙C的圆心为O，圆A的直径为DE，⊙C的直径为FB。求圆C的面积减去⊙A的面积。",
+  "problem_text_en": "As shown in the diagram, DE=9/2, FB=9, the center of ⊙A is O, O is the center of circle C, DE is the diameter of ⊙A, the diameter of ⊙C is FB. Find the area of the circle C minus the area of the ⊙A.",
   "problem_img": "1233.png",
   "construction_cdl": [
     "Shape(A)",
@@ -13,7 +13,14 @@
     "Cocircular(C,FB)",
     "Cocircular(A,DE)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(DE),9/2)",
+    "Equal(LengthOfLine(FB),9)",
+    "IsCentreOfCircle(O,A)",
+    "IsCentreOfCircle(O,C)",
+    "IsDiameterOfCircle(DE,A)",
+    "IsDiameterOfCircle(FB,C)"
+  ],
   "image_cdl": [
     "IsDiameterOfCircle(FB,C)",
     "IsDiameterOfCircle(DE,A)",
@@ -32,7 +39,7 @@
     "circle_area_formula(1,C)",
     "circle_area_formula(1,A)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_length_equal(1,FB,C)",
       "diameter_of_circle_property_length_equal(1,DE,A)",

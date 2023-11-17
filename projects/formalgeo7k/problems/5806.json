@@ -2,9 +2,9 @@
   "problem_id": 5806,
   "annotation": "YanjunGuo_2023-05-28",
   "source": "GeoQA-7752",
-  "problem_level": 1,
-  "problem_text_cn": "在▱ABCD中,BE平分∠ABC交AD于点E,AF⊥CD于点F,交BE于点G,AH⊥BC于点H,交BE于点I．若BI=IG,且AI=3,则AE的长为()",
-  "problem_text_en": "In ▱ABCD, BE bisects ∠ABC and intersects AD at point E, AF ⊥ CD at point F, and intersects BE at point G, AH ⊥ BC at point H, and intersects BE at point I. If BI = IG, and AI = N_0, then the length of AE is ()",
+  "problem_level": 15,
+  "problem_text_cn": "如图所示，AI=3，BI=IG，BE是∠ABC的角平分线，AD和BC是▱ABCD的一组对边，AF垂直于DF，BH⊥AH。求直线AE的长度。",
+  "problem_text_en": "As shown in the diagram, AI=3, BI=IG, BE is the angle bisector of ∠ABC, quadrilateral ABCD is a ▱, AF⊥DF, BH is perpendicular to AH. Find the length of line AE.",
   "problem_img": "5806.png",
   "construction_cdl": [
     "Shape(AB,BI,IA)",
@@ -21,12 +21,12 @@
     "Collinear(BHC)"
   ],
   "text_cdl": [
-    "IsBisectorOfAngle(BE,ABC)",
-    "PerpendicularBetweenLine(AF,DF)",
-    "PerpendicularBetweenLine(BH,AH)",
     "Equal(LengthOfLine(AI),3)",
     "Equal(LengthOfLine(BI),LengthOfLine(IG))",
-    "Parallelogram(ABCD)"
+    "IsBisectorOfAngle(BE,ABC)",
+    "Parallelogram(ABCD)",
+    "PerpendicularBetweenLine(AF,DF)",
+    "PerpendicularBetweenLine(BH,AH)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AE))",
@@ -48,7 +48,12 @@
     "right_triangle_property_length_of_median(1,EAI,G)",
     "right_triangle_property_pythagorean(1,EAI)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,AD,BC,E)",
+      "parallel_property_collinear_extend(3,CB,DA,H)",
+      "parallelogram_property_opposite_angle_equal(1,BCDA)"
+    ],
     "parallel_property_collinear_extend(3,AD,BC,E)": [
       "parallel_property_alternate_interior_angle(2,AE,BC)"
     ],
@@ -87,11 +92,6 @@
     ],
     "median_of_triangle_judgment(1,AG,AIE)": [
       "right_triangle_property_length_of_median(1,EAI,G)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,AD,BC,E)",
-      "parallel_property_collinear_extend(3,CB,DA,H)",
-      "parallelogram_property_opposite_angle_equal(1,BCDA)"
     ]
   }
 }

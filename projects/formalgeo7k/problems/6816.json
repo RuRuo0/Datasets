@@ -2,9 +2,9 @@
   "problem_id": 6816,
   "annotation": "ChenyangMao_2023-06-04",
   "source": "GeoQA-angle-10031",
-  "problem_level": 1,
-  "problem_text_cn": "如图，在△ABC中，点D，E分别是AC、AB的中点，点F是BC延长线上一点，∠A＝35°，∠AED＝30°，则∠ACF的度数为（）",
-  "problem_text_en": "",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠AED=30°，∠CAB=35°，D平分线段AC，E平分线段AB。求∠ACF的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AED=30°, ∠CAB=35°, D bisects segment AC, E is the midpoint of segment AB. Find the measure of ∠ACF.",
   "problem_img": "6816.png",
   "construction_cdl": [
     "Shape(AE,ED,DA)",
@@ -15,10 +15,10 @@
     "Collinear(BCF)"
   ],
   "text_cdl": [
-    "IsMidpointOfLine(E,AB)",
-    "IsMidpointOfLine(D,AC)",
     "Equal(MeasureOfAngle(AED),30)",
-    "Equal(MeasureOfAngle(CAB),35)"
+    "Equal(MeasureOfAngle(CAB),35)",
+    "IsMidpointOfLine(D,AC)",
+    "IsMidpointOfLine(E,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ACF))",
@@ -30,17 +30,17 @@
     "triangle_property_angle_sum(1,ABC)",
     "adjacent_complementary_angle(1,BCD,DCF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "midsegment_of_triangle_judgment_midpoint(1,ED,ABC)",
+      "triangle_property_angle_sum(1,ABC)",
+      "adjacent_complementary_angle(1,BCD,DCF)"
+    ],
     "midsegment_of_triangle_judgment_midpoint(1,ED,ABC)": [
       "midsegment_of_triangle_property_parallel(1,ED,ABC)"
     ],
     "midsegment_of_triangle_property_parallel(1,ED,ABC)": [
       "parallel_property_corresponding_angle(1,ED,BC,A)"
-    ],
-    "START": [
-      "midsegment_of_triangle_judgment_midpoint(1,ED,ABC)",
-      "triangle_property_angle_sum(1,ABC)",
-      "adjacent_complementary_angle(1,BCD,DCF)"
     ]
   }
 }

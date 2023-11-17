@@ -2,16 +2,24 @@
   "problem_id": 1635,
   "annotation": "NaZhu_2023-03-26",
   "source": "Geometry3k-1696",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find z.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AB=z，AC=x，AD=y，BD=6，CD=4，AD垂直于BD，BA垂直于CA。求z的值。",
+  "problem_text_en": "As shown in the diagram, AB=z, AC=x, AD=y, BD=6, CD=4, AD⊥BD, BA is perpendicular to CA. Find the value of z.",
   "problem_img": "1635.png",
   "construction_cdl": [
     "Shape(AC,CD,DA)",
     "Shape(AD,DB,BA)",
     "Collinear(CDB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),z)",
+    "Equal(LengthOfLine(AC),x)",
+    "Equal(LengthOfLine(AD),y)",
+    "Equal(LengthOfLine(BD),6)",
+    "Equal(LengthOfLine(CD),4)",
+    "PerpendicularBetweenLine(AD,BD)",
+    "PerpendicularBetweenLine(BA,CA)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AB),z)",
     "Equal(LengthOfLine(AD),y)",
@@ -33,7 +41,13 @@
     "right_triangle_judgment_angle(1,ADB)",
     "right_triangle_property_pythagorean(1,ADB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,CDA,ADB)",
+      "angle_addition(1,BAD,DAC)",
+      "triangle_property_angle_sum(1,BAD)",
+      "right_triangle_judgment_angle(1,ADB)"
+    ],
     "adjacent_complementary_angle(1,CDA,ADB)": [
       "similar_triangle_judgment_aa(1,CDA,ADB)"
     ],
@@ -49,12 +63,6 @@
     ],
     "right_triangle_judgment_angle(1,ADB)": [
       "right_triangle_property_pythagorean(1,ADB)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,CDA,ADB)",
-      "angle_addition(1,BAD,DAC)",
-      "triangle_property_angle_sum(1,BAD)",
-      "right_triangle_judgment_angle(1,ADB)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 3832,
   "annotation": "YifanWang_2023-05-07",
   "source": "GeoQA-1705",
-  "problem_level": 1,
-  "problem_text_cn": "如图,一块直角三角板的30°角的顶点P落在⊙O上,两边分别交⊙O于A、B两点,若⊙O的直径为4,则弦AB长为()",
-  "problem_text_en": "As shown in the figure, the vertex P of the N_0 angle of a right triangular plate falls on ⊙O, and the two sides intersect ⊙O at two points A and B respectively. If the diameter of ⊙O is N_1, the length of chord AB is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，⊙O的直径为4，∠FPC=30°，圆O的圆心为O，圆O的直径为AD。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, the diameter of circle O is 4, ∠FPC=30°, O is the center of ⊙O, the diameter of ⊙O is AD. Find the length of line AB.",
   "problem_img": "3832.png",
   "construction_cdl": [
     "Shape(AC,CF,FB,OAB)",
@@ -20,7 +20,12 @@
     "Collinear(FBEP)",
     "Cocircular(O,ABDP)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(DiameterOfCircle(O),4)",
+    "Equal(MeasureOfAngle(FPC),30)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AD,O)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "Equal(DiameterOfCircle(O),4)",
@@ -36,7 +41,7 @@
     "diameter_of_circle_property_right_angle(1,ABD,O)",
     "sine_theorem(1,ABD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_circumference_angle_external(1,OAB,D)",
       "arc_property_circumference_angle_external(1,OAB,P)",

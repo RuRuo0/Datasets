@@ -2,9 +2,9 @@
   "problem_id": 1443,
   "annotation": "YanjunGuo_2023-04-16",
   "source": "Geometry3k-1496",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Quadrilateral A B D C is a rectangle. Find m \\angle 6 if m \\angle 1 = 38.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠CAE=38°，四边形ABDC是长方形。求∠CBD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAE=38°, ABDC is a rectangle. Find the measure of ∠CBD.",
   "problem_img": "1443.png",
   "construction_cdl": [
     "Shape(AB,BE,EA)",
@@ -14,7 +14,10 @@
     "Collinear(AED)",
     "Collinear(BEC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(CAE),38)",
+    "Rectangle(ABDC)"
+  ],
   "image_cdl": [
     "Rectangle(ABDC)",
     "Equal(MeasureOfAngle(CAE),38)"
@@ -31,7 +34,15 @@
     "isosceles_triangle_judgment_line_equal(1,EBD)",
     "isosceles_triangle_property_angle_equal(1,EBD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_alternate_interior_angle(1,AC,BD)",
+      "rectangle_property_diagonal_equal(1,ABDC)",
+      "parallelogram_property_diagonal_bisection(1,ABDC,E)",
+      "parallelogram_property_diagonal_bisection(1,BDCA,E)",
+      "line_addition(1,AE,ED)",
+      "line_addition(1,BE,EC)"
+    ],
     "rectangle_property_diagonal_equal(1,ABDC)": [
       "isosceles_triangle_judgment_line_equal(1,EBD)"
     ],
@@ -49,14 +60,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,EBD)": [
       "isosceles_triangle_property_angle_equal(1,EBD)"
-    ],
-    "START": [
-      "parallel_property_alternate_interior_angle(1,AC,BD)",
-      "rectangle_property_diagonal_equal(1,ABDC)",
-      "parallelogram_property_diagonal_bisection(1,ABDC,E)",
-      "parallelogram_property_diagonal_bisection(1,BDCA,E)",
-      "line_addition(1,AE,ED)",
-      "line_addition(1,BE,EC)"
     ]
   }
 }

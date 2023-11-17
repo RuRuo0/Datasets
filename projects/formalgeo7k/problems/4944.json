@@ -2,9 +2,9 @@
   "problem_id": 4944,
   "annotation": "DengfengYue_2023-05-14",
   "source": "GeoQA-4600",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在平行四边形ABCD中,点E为AB的中点,连接DE交对角线AC于点F,若AF=3,则FC的值为()",
-  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, point E is the midpoint of AB. Connect DE and it intersects the diagonal AC at point F. If AF = N_0, then the value of FC is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AF=3，E平分线段AB，DABC是▱。求直线FC的长度。",
+  "problem_text_en": "As shown in the diagram, AF=3, E is the midpoint of segment AB, DC and AB are opposite sides of the ▱ DABC. Find the length of line FC.",
   "problem_img": "4944.png",
   "construction_cdl": [
     "Shape(DA,AF,FD)",
@@ -16,9 +16,9 @@
     "Collinear(AFC)"
   ],
   "text_cdl": [
-    "Parallelogram(DABC)",
+    "Equal(LengthOfLine(AF),3)",
     "IsMidpointOfLine(E,AB)",
-    "Equal(LengthOfLine(AF),3)"
+    "Parallelogram(DABC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(FC))",
@@ -33,7 +33,12 @@
     "similar_triangle_property_line_ratio(1,FCD,FAE)",
     "similar_triangle_property_line_ratio(1,DFC,EFA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,BA,CD,E)",
+      "line_addition(1,AE,EB)",
+      "parallelogram_property_opposite_line_equal(1,ABCD)"
+    ],
     "parallel_property_collinear_extend(3,BA,CD,E)": [
       "parallel_property_alternate_interior_angle(1,EA,CD)",
       "parallel_property_alternate_interior_angle(2,EA,CD)"
@@ -47,11 +52,6 @@
     "similar_triangle_judgment_aa(1,FCD,FAE)": [
       "similar_triangle_property_line_ratio(1,FCD,FAE)",
       "similar_triangle_property_line_ratio(1,DFC,EFA)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,BA,CD,E)",
-      "line_addition(1,AE,EB)",
-      "parallelogram_property_opposite_line_equal(1,ABCD)"
     ]
   }
 }

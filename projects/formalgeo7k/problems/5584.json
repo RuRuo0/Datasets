@@ -2,9 +2,9 @@
   "problem_id": 5584,
   "annotation": "YimingHe_2023-05-28",
   "source": "GeoQA-7090",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知AB是⊙O的直径,CD是弦且CD⊥AB,CE=ED,BC=6,AC=8,则sin∠ABD的值是()",
-  "problem_text_en": "As shown in the figure, it is known that AB is the diameter of O, CD is the chord and CD ⊥ AB, CE = ED,BC = N_0, AC = N_1, then the value of sin∠ABD is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AC=8，BC=6，ED=CE，圆O的直径为AB，AE垂直于CE。求sin(DB)的值。",
+  "problem_text_en": "As shown in the diagram, AC=8, BC=6, ED=CE, AB is the diameter of ⊙O, AE is perpendicular to CE. Find the value of sin(DB).",
   "problem_img": "5584.png",
   "construction_cdl": [
     "Shape(AC,OCA)",
@@ -20,11 +20,11 @@
     "Cocircular(O,ADBC)"
   ],
   "text_cdl": [
-    "IsDiameterOfCircle(AB,O)",
-    "Equal(LengthOfLine(ED),LengthOfLine(CE))",
-    "PerpendicularBetweenLine(AE,CE)",
+    "Equal(LengthOfLine(AC),8)",
     "Equal(LengthOfLine(BC),6)",
-    "Equal(LengthOfLine(AC),8)"
+    "Equal(LengthOfLine(ED),LengthOfLine(CE))",
+    "IsDiameterOfCircle(AB,O)",
+    "PerpendicularBetweenLine(AE,CE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Sin(MeasureOfAngle(DBE)))",
@@ -39,7 +39,13 @@
     "mirror_congruent_triangle_judgment_sas(1,EBC,EDB)",
     "mirror_congruent_triangle_property_angle_equal(1,BCE,BED)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,AEC,CEB)",
+      "adjacent_complementary_angle(1,CEB,BED)",
+      "diameter_of_circle_property_right_angle(1,BCA,O)",
+      "sine_theorem(1,ABC)"
+    ],
     "adjacent_complementary_angle(1,AEC,CEB)": [
       "mirror_congruent_triangle_judgment_sas(1,EBC,EDB)",
       "mirror_congruent_triangle_judgment_sas(1,EBC,EDB)"
@@ -55,12 +61,6 @@
     ],
     "mirror_congruent_triangle_judgment_sas(1,EBC,EDB)": [
       "mirror_congruent_triangle_property_angle_equal(1,BCE,BED)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,AEC,CEB)",
-      "adjacent_complementary_angle(1,CEB,BED)",
-      "diameter_of_circle_property_right_angle(1,BCA,O)",
-      "sine_theorem(1,ABC)"
     ]
   }
 }

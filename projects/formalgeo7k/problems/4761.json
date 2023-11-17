@@ -2,9 +2,9 @@
   "problem_id": 4761,
   "annotation": "Yangli_2023-05-14",
   "source": "GeoQA-4128",
-  "problem_level": 1,
-  "problem_text_cn": "如图,PA、PB是⊙O的切线,点A和B是切点,AC是⊙O的直径,已知∠P=50°,则∠ACB的大小是()",
-  "problem_text_en": "As shown in the figure, PA and PB are the tangents of ⊙O, points A and B are the tangent points, and AC is the diameter of ⊙O. Given that ∠P = N_0, the size of ∠ACB is ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，∠BPA=50°，⊙O的圆心为O，圆O的切线为PA，PB是圆O的切线。求∠OCB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BPA=50°, the center of ⊙O is O, the tangent to ⊙O is PA, the tangent to circle O is PB. Find the measure of ∠OCB.",
   "problem_img": "4761.png",
   "construction_cdl": [
     "Shape(CO,OA,OAC)",
@@ -18,9 +18,9 @@
   ],
   "text_cdl": [
     "Equal(MeasureOfAngle(BPA),50)",
+    "IsCentreOfCircle(O,O)",
     "IsTangentOfCircle(PA,O)",
-    "IsTangentOfCircle(PB,O)",
-    "IsCentreOfCircle(O,O)"
+    "IsTangentOfCircle(PB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(OCB))",
@@ -37,16 +37,7 @@
     "isosceles_triangle_property_angle_equal(1,OCB)",
     "triangle_property_angle_sum(1,OCB)"
   ],
-  "theorem_seq_dag": {
-    "radius_of_circle_property_length_equal(1,OC,O)": [
-      "isosceles_triangle_judgment_line_equal(1,OCB)"
-    ],
-    "radius_of_circle_property_length_equal(1,OB,O)": [
-      "isosceles_triangle_judgment_line_equal(1,OCB)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,OCB)": [
-      "isosceles_triangle_property_angle_equal(1,OCB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,OC,O)",
       "radius_of_circle_property_length_equal(1,OB,O)",
@@ -56,6 +47,15 @@
       "flat_angle(1,AOC)",
       "angle_addition(1,AOB,BOC)",
       "triangle_property_angle_sum(1,OCB)"
+    ],
+    "radius_of_circle_property_length_equal(1,OC,O)": [
+      "isosceles_triangle_judgment_line_equal(1,OCB)"
+    ],
+    "radius_of_circle_property_length_equal(1,OB,O)": [
+      "isosceles_triangle_judgment_line_equal(1,OCB)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,OCB)": [
+      "isosceles_triangle_property_angle_equal(1,OCB)"
     ]
   }
 }

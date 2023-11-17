@@ -2,9 +2,9 @@
   "problem_id": 1289,
   "annotation": "YiwenHuang_2023-05-07",
   "source": "Geometry3k-1336",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Use rhombus X Y Z W with m \\angle W Y Z = 53, V W = 3, X V = 2 a - 2, and Z V = \\frac { 5 a + 1 } { 4 }. Find X W.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，VW=3，XV=2*a-2，ZV=5/4*a+1，∠ZYW=53°，四边形XWZY是菱形。求直线XW的长度。",
+  "problem_text_en": "As shown in the diagram, VW=3, XV=2*a-2, ZV=5/4*a+1, ∠ZYW=53°, quadrilateral XWZY is a rhombus. Find the length of line XW.",
   "problem_img": "1289.png",
   "construction_cdl": [
     "Shape(XW,WV,VX)",
@@ -14,7 +14,13 @@
     "Collinear(XVZ)",
     "Collinear(YVW)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(VW),3)",
+    "Equal(LengthOfLine(XV),2*a-2)",
+    "Equal(LengthOfLine(ZV),5/4*a+1)",
+    "Equal(MeasureOfAngle(ZYW),53)",
+    "Rhombus(XWZY)"
+  ],
   "image_cdl": [
     "Rhombus(XWZY)",
     "Equal(MeasureOfAngle(ZYW),53)",
@@ -29,15 +35,15 @@
     "right_triangle_judgment_angle(1,WVX)",
     "right_triangle_property_pythagorean(1,WVX)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "kite_property_diagonal_perpendicular_bisection(1,WZYX,V)"
+    ],
     "kite_property_diagonal_perpendicular_bisection(1,WZYX,V)": [
       "right_triangle_judgment_angle(1,WVX)"
     ],
     "right_triangle_judgment_angle(1,WVX)": [
       "right_triangle_property_pythagorean(1,WVX)"
-    ],
-    "START": [
-      "kite_property_diagonal_perpendicular_bisection(1,WZYX,V)"
     ]
   }
 }

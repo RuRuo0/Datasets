@@ -2,9 +2,9 @@
   "problem_id": 1153,
   "annotation": "Yangli_2023-04-09",
   "source": "Geometry3k-1192",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the figure. Round to the nearest hundredth, if necessary.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AC=12，CE=4，∠CBE=35°，CB和AD是▱BCAD的一组对边，BE垂直于CE。求BCAD的周长。",
+  "problem_text_en": "As shown in the diagram, AC=12, CE=4, ∠CBE=35°, BCAD is a parallelogram, BE is perpendicular to CE. Find the perimeter of quadrilateral BCAD.",
   "problem_img": "1153.png",
   "construction_cdl": [
     "Shape(BE,EC,CB)",
@@ -12,7 +12,11 @@
     "Collinear(ECA)"
   ],
   "text_cdl": [
-    "Parallelogram(BCAD)"
+    "Equal(LengthOfLine(AC),12)",
+    "Equal(LengthOfLine(CE),4)",
+    "Equal(MeasureOfAngle(CBE),35)",
+    "Parallelogram(BCAD)",
+    "PerpendicularBetweenLine(BE,CE)"
   ],
   "image_cdl": [
     "Equal(MeasureOfAngle(CBE),35)",
@@ -29,7 +33,7 @@
     "parallelogram_property_opposite_line_equal(1,CADB)",
     "quadrilateral_perimeter_formula(1,BCAD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "sine_theorem(1,BEC)",
       "sine_theorem(1,ECB)",

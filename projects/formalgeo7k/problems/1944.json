@@ -2,9 +2,9 @@
   "problem_id": 1944,
   "annotation": "JiaZou_2023-03-26",
   "source": "Geometry3k-2023",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find D E.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AD=DB，AF=FC，CA=15，CE=EB，EF=9.2，∠BDE=82°。求直线DE的长度。",
+  "problem_text_en": "As shown in the diagram, AD=DB, AF=FC, CA=15, CE=EB, EF=9.2, ∠BDE=82°. Find the length of line DE.",
   "problem_img": "1944.png",
   "construction_cdl": [
     "Shape(AF,FE,ED,DA)",
@@ -14,7 +14,14 @@
     "Collinear(CEB)",
     "Collinear(ADB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AD),LengthOfLine(DB))",
+    "Equal(LengthOfLine(AF),LengthOfLine(FC))",
+    "Equal(LengthOfLine(CA),15)",
+    "Equal(LengthOfLine(CE),LengthOfLine(EB))",
+    "Equal(LengthOfLine(EF),9.2)",
+    "Equal(MeasureOfAngle(BDE),82)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(CA),15)",
     "Equal(LengthOfLine(EF),9.2)",
@@ -29,12 +36,12 @@
     "midsegment_of_triangle_judgment_midpoint(1,DE,BAC)",
     "midsegment_of_triangle_property_length(1,DE,BAC)"
   ],
-  "theorem_seq_dag": {
-    "midsegment_of_triangle_judgment_midpoint(1,DE,BAC)": [
-      "midsegment_of_triangle_property_length(1,DE,BAC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "midsegment_of_triangle_judgment_midpoint(1,DE,BAC)"
+    ],
+    "midsegment_of_triangle_judgment_midpoint(1,DE,BAC)": [
+      "midsegment_of_triangle_property_length(1,DE,BAC)"
     ]
   }
 }

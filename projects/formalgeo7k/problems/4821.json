@@ -2,9 +2,9 @@
   "problem_id": 4821,
   "annotation": "ChenyangMao_2023-05-14",
   "source": "GeoQA-4261",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O是△ABC的外接圆,AD是⊙O的直径,EA是⊙O的切线．若∠EAC=120°,则∠ABC的度数是()",
-  "problem_text_en": "As shown in the figure, ⊙O is the circumscribed circle of △ABC, AD is the diameter of ⊙O, and EA is the tangent of ⊙O. If ∠EAC = N_0, then the degree of ∠ABC is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠CAE=120°，圆O的圆心为O，圆O的直径为AD，⊙O的切线为EA。求∠ABC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAE=120°, the center of circle O is O, AD is the diameter of circle O, the tangent to circle O is EA. Find the measure of ∠ABC.",
   "problem_img": "4821.png",
   "construction_cdl": [
     "Shape(OAB,BA)",
@@ -20,10 +20,10 @@
     "Cocircular(O,BDCA)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(CAE),120)",
     "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(EA,O)",
     "IsDiameterOfCircle(AD,O)",
-    "Equal(MeasureOfAngle(CAE),120)"
+    "IsTangentOfCircle(EA,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ABC))",
@@ -36,7 +36,7 @@
     "arc_property_circumference_angle_external(1,OCA,B)",
     "arc_property_circumference_angle_external(1,OCA,D)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,CAF,FAE)",
       "tangent_of_circle_property_perpendicular(1,EA,O,O)",

@@ -2,9 +2,9 @@
   "problem_id": 4770,
   "annotation": "Yangli_2023-05-14",
   "source": "GeoQA-4144",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O半径为4,BC是直径,AC是⊙O的切线,且AC=6,那么AB=()",
-  "problem_text_en": "As shown in the figure, the radius of ⊙O is N_0, BC is the diameter, AC is the tangent of ⊙O, and AC = N_1, then AB = ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AC=6，圆O的半径为4，O是圆O的圆心，BC是圆O的直径，AC是圆O的切线。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, AC=6, the radius of ⊙O is 4, O is the center of circle O, BC is the diameter of ⊙O, the tangent to circle O is AC. Find the length of line AB.",
   "problem_img": "4770.png",
   "construction_cdl": [
     "Shape(BD,ODB)",
@@ -17,10 +17,10 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(AC),6)",
-    "IsTangentOfCircle(AC,O)",
+    "Equal(RadiusOfCircle(O),4)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(BC,O)",
-    "Equal(RadiusOfCircle(O),4)"
+    "IsTangentOfCircle(AC,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -33,18 +33,18 @@
     "right_triangle_judgment_angle(1,BCA)",
     "right_triangle_property_pythagorean(1,BCA)"
   ],
-  "theorem_seq_dag": {
-    "tangent_of_circle_property_perpendicular(1,AC,O,O)": [
-      "right_triangle_judgment_angle(1,BCA)"
-    ],
-    "right_triangle_judgment_angle(1,BCA)": [
-      "right_triangle_property_pythagorean(1,BCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,BO,OC)",
       "radius_of_circle_property_length_equal(1,OC,O)",
       "radius_of_circle_property_length_equal(1,OB,O)",
       "tangent_of_circle_property_perpendicular(1,AC,O,O)"
+    ],
+    "tangent_of_circle_property_perpendicular(1,AC,O,O)": [
+      "right_triangle_judgment_angle(1,BCA)"
+    ],
+    "right_triangle_judgment_angle(1,BCA)": [
+      "right_triangle_property_pythagorean(1,BCA)"
     ]
   }
 }

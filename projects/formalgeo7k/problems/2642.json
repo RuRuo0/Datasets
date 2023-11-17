@@ -2,16 +2,24 @@
   "problem_id": 2642,
   "annotation": "DengfengYue_2023-04-09",
   "source": "Geometry3k-2777",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find z.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=y，AF=z，AL=sqrt(3)，FB=x，FL=2*sqrt(3)，FB⊥AB，LA⊥FA。求z的值。",
+  "problem_text_en": "As shown in the diagram, AB=y, AF=z, AL=sqrt(3), FB=x, FL=2*sqrt(3), FB is perpendicular to AB, LA⊥FA. Find the value of z.",
   "problem_img": "2642.png",
   "construction_cdl": [
     "Shape(FB,BA,AF)",
     "Shape(BL,LA,AB)",
     "Collinear(LBF)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),y)",
+    "Equal(LengthOfLine(AF),z)",
+    "Equal(LengthOfLine(AL),sqrt(3))",
+    "Equal(LengthOfLine(FB),x)",
+    "Equal(LengthOfLine(FL),2*sqrt(3))",
+    "PerpendicularBetweenLine(FB,AB)",
+    "PerpendicularBetweenLine(LA,FA)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(FB),x)",
     "Equal(LengthOfLine(AB),y)",
@@ -27,12 +35,12 @@
     "right_triangle_judgment_angle(1,LAF)",
     "right_triangle_property_pythagorean(1,LAF)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,LAF)": [
-      "right_triangle_property_pythagorean(1,LAF)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,LAF)"
+    ],
+    "right_triangle_judgment_angle(1,LAF)": [
+      "right_triangle_property_pythagorean(1,LAF)"
     ]
   }
 }

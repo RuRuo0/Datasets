@@ -2,9 +2,9 @@
   "problem_id": 3826,
   "annotation": "YifanWang_2023-05-07",
   "source": "GeoQA-1693",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,⁀{BD}=⁀{CD},∠BOD=60°,则∠AOC=()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of O, ⁀BD = ⁀CD, ∠BOD = N_0, then ∠AOC = ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，圆O的直径与直线AB的长度相等，∠BOD=60°，⌒OCD的角度与⌒ODB的角度相等，⊙O的圆心为O。求∠COA的大小。",
+  "problem_text_en": "As shown in the diagram, the diameter of ⊙O is equal to the length of line AB, ∠BOD=60°, the measure of ⌒OCD is equal to the measure of ⌒ODB, O is the center of circle O. Find the measure of ∠COA.",
   "problem_img": "3826.png",
   "construction_cdl": [
     "Shape(CO,OA,OAC)",
@@ -14,7 +14,12 @@
     "Collinear(AOB)",
     "Cocircular(O,ACDB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(DiameterOfCircle(O),LengthOfLine(AB))",
+    "Equal(MeasureOfAngle(BOD),60)",
+    "Equal(MeasureOfArc(OCD),MeasureOfArc(ODB))",
+    "IsCentreOfCircle(O,O)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "Equal(DiameterOfCircle(O),LengthOfLine(AB))",
@@ -29,7 +34,7 @@
     "arc_property_center_angle(1,ODB,O)",
     "adjacent_complementary_angle(1,BOC,COA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_addition_measure(1,OCD,ODB)",
       "arc_property_center_angle(1,OCB,O)",

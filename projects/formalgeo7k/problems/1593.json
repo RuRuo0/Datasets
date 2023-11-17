@@ -2,9 +2,9 @@
   "problem_id": 1593,
   "annotation": "XiaoxiaoJin_2023-04-16",
   "source": "Geometry3k-1653",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the value of the variable x in the figure.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠GHJ=2*x°，∠MGI=54°，JF∥DM。求x的值。",
+  "problem_text_en": "As shown in the diagram, ∠GHJ=2*x°, ∠MGI=54°, JF∥DM. Find the value of x.",
   "problem_img": "1593.png",
   "construction_cdl": [
     "Shape(JH,HB)",
@@ -19,7 +19,11 @@
     "Collinear(JHF)",
     "Collinear(DGM)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(GHJ),2*x)",
+    "Equal(MeasureOfAngle(MGI),54)",
+    "ParallelBetweenLine(JF,DM)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(GHJ),2*x)",
     "Equal(MeasureOfAngle(MGI),54)",
@@ -33,16 +37,16 @@
     "parallel_property_collinear_extend(3,MD,HJ,G)",
     "parallel_property_ipsilateral_internal_angle(1,GD,HJ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "vertical_angle(1,DGH,MGI)",
+      "parallel_property_collinear_extend(3,JF,DM,H)"
+    ],
     "parallel_property_collinear_extend(3,JF,DM,H)": [
       "parallel_property_collinear_extend(3,MD,HJ,G)"
     ],
     "parallel_property_collinear_extend(3,MD,HJ,G)": [
       "parallel_property_ipsilateral_internal_angle(1,GD,HJ)"
-    ],
-    "START": [
-      "vertical_angle(1,DGH,MGI)",
-      "parallel_property_collinear_extend(3,JF,DM,H)"
     ]
   }
 }

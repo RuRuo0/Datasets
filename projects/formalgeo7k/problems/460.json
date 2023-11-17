@@ -2,9 +2,9 @@
   "problem_id": 460,
   "annotation": "YimingHe_2023-04-02",
   "source": "Geometry3k-470",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x. Assume that segments that appear to be tangent are tangent.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，CE=7，ED=x，⊙C的圆心为C，DB是⊙O的切线，CE垂直于DE，DB⊥CB，ED⊥BD。求x的值。",
+  "problem_text_en": "As shown in the diagram, CE=7, ED=x, the center of circle C is C, DB is the tangent to ⊙C, CE is perpendicular to DE, DB⊥CB, ED⊥BD. Find the value of x.",
   "problem_img": "460.png",
   "construction_cdl": [
     "Shape(ED,DB,CEB)",
@@ -12,7 +12,15 @@
     "Shape(CB,CBE,EC)",
     "Cocircular(C,BE)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(CE),7)",
+    "Equal(LengthOfLine(ED),x)",
+    "IsCentreOfCircle(C,C)",
+    "IsTangentOfCircle(DB,C,B)",
+    "PerpendicularBetweenLine(CE,DE)",
+    "PerpendicularBetweenLine(DB,CB)",
+    "PerpendicularBetweenLine(ED,BD)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(C,C)",
     "IsTangentOfCircle(DB,C,B)",
@@ -32,7 +40,13 @@
     "radius_of_circle_property_length_equal(1,CE,C)",
     "radius_of_circle_property_length_equal(1,CB,C)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_judgment_ipsilateral_internal_angle(1,DE,BC)",
+      "parallel_judgment_ipsilateral_internal_angle(1,EC,DB)",
+      "radius_of_circle_property_length_equal(1,CE,C)",
+      "radius_of_circle_property_length_equal(1,CB,C)"
+    ],
     "parallel_judgment_ipsilateral_internal_angle(1,DE,BC)": [
       "parallelogram_judgment_parallel_and_parallel(1,EDBC)"
     ],
@@ -41,12 +55,6 @@
     ],
     "parallelogram_judgment_parallel_and_parallel(1,EDBC)": [
       "parallelogram_property_opposite_line_equal(1,EDBC)"
-    ],
-    "START": [
-      "parallel_judgment_ipsilateral_internal_angle(1,DE,BC)",
-      "parallel_judgment_ipsilateral_internal_angle(1,EC,DB)",
-      "radius_of_circle_property_length_equal(1,CE,C)",
-      "radius_of_circle_property_length_equal(1,CB,C)"
     ]
   }
 }

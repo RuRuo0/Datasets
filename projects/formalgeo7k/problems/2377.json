@@ -2,9 +2,9 @@
   "problem_id": 2377,
   "annotation": "FangzhenZhu_2023-04-23",
   "source": "Geometry3k-2492",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "A B \\cong D F. Find x.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=DF，CB=9*x，ED=2*x+14，L是⊙L的圆心，FE垂直于LE，LC⊥BC。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=DF, CB=9*x, ED=2*x+14, L is the center of circle L, FE is perpendicular to LE, LC⊥BC. Find the value of x.",
   "problem_img": "2377.png",
   "construction_cdl": [
     "Shape(LDA,AC,CL,LE,ED)",
@@ -18,7 +18,14 @@
     "Collinear(DEF)",
     "Cocircular(L,AGBFHD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),LengthOfLine(DF))",
+    "Equal(LengthOfLine(CB),9*x)",
+    "Equal(LengthOfLine(ED),2*x+14)",
+    "IsCentreOfCircle(L,L)",
+    "PerpendicularBetweenLine(FE,LE)",
+    "PerpendicularBetweenLine(LC,BC)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(L,L)",
     "Equal(LengthOfLine(AB),LengthOfLine(DF))",
@@ -36,15 +43,15 @@
     "circle_property_chord_perpendicular_bisect_chord(1,L,LC,AB)",
     "circle_property_chord_perpendicular_bisect_chord(1,L,LE,FD)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,ACL,LCB)": [
-      "circle_property_chord_perpendicular_bisect_chord(1,L,LC,AB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AC,CB)",
       "line_addition(1,DE,EF)",
       "adjacent_complementary_angle(1,ACL,LCB)",
       "circle_property_chord_perpendicular_bisect_chord(1,L,LE,FD)"
+    ],
+    "adjacent_complementary_angle(1,ACL,LCB)": [
+      "circle_property_chord_perpendicular_bisect_chord(1,L,LC,AB)"
     ]
   }
 }

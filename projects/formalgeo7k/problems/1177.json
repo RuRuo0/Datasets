@@ -2,9 +2,9 @@
   "problem_id": 1177,
   "annotation": "JiaZou_2023-03-19",
   "source": "Geometry3k-1217",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，PQ=2*x+1，PT=10，RQ=6，ST=4，QT∥RS。求x的值。",
+  "problem_text_en": "As shown in the diagram, PQ=2*x+1, PT=10, RQ=6, ST=4, QT is parallel to RS. Find the value of x.",
   "problem_img": "1177.png",
   "construction_cdl": [
     "Shape(RS,ST,TQ,QR)",
@@ -12,7 +12,13 @@
     "Collinear(RQP)",
     "Collinear(STP)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(PQ),2*x+1)",
+    "Equal(LengthOfLine(PT),10)",
+    "Equal(LengthOfLine(RQ),6)",
+    "Equal(LengthOfLine(ST),4)",
+    "ParallelBetweenLine(QT,RS)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(RQ),6)",
     "Equal(LengthOfLine(PQ),2*x+1)",
@@ -30,18 +36,18 @@
     "similar_triangle_property_line_ratio(1,TPQ,SPR)",
     "similar_triangle_property_line_ratio(1,QTP,RSP)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,QT,RS,P)",
+      "line_addition(1,PQ,QR)",
+      "line_addition(1,PT,TS)"
+    ],
     "parallel_property_corresponding_angle(1,QT,RS,P)": [
       "similar_triangle_judgment_aa(1,TPQ,SPR)"
     ],
     "similar_triangle_judgment_aa(1,TPQ,SPR)": [
       "similar_triangle_property_line_ratio(1,TPQ,SPR)",
       "similar_triangle_property_line_ratio(1,QTP,RSP)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,QT,RS,P)",
-      "line_addition(1,PQ,QR)",
-      "line_addition(1,PT,TS)"
     ]
   }
 }

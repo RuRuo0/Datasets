@@ -2,9 +2,9 @@
   "problem_id": 3168,
   "annotation": "JiaZou_2023-04-23",
   "source": "GeoQA-439",
-  "problem_level": 1,
-  "problem_text_cn": "如图,直线AB∥CD,直线EF分别交直线AB、CD于点E、F,过点F作FG⊥EF,交直线AB于点G.若∠1=36°,则∠2的大小是()",
-  "problem_text_en": "As shown in the figure, the straight line AB ∥ CD, the straight line EF intersects the straight lines AB and CD at vertices E and F respectively, the crossing point F is referred to as FG ⊥ EF, and the intersecting line AB at the point G. If ∠1 = N_0, then the size of ∠2 is ( )",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠NEB=36°，AB∥CD，GF⊥EF。求∠CFG的大小。",
+  "problem_text_en": "As shown in the diagram, ∠NEB=36°, AB∥CD, GF is perpendicular to EF. Find the measure of ∠CFG.",
   "problem_img": "3168.png",
   "construction_cdl": [
     "Shape(AG,GM)",
@@ -39,17 +39,17 @@
     "angle_addition(1,GFE,EFD)",
     "adjacent_complementary_angle(1,CFG,GFD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,AB,CD,E)",
+      "angle_addition(1,GFE,EFD)",
+      "adjacent_complementary_angle(1,CFG,GFD)"
+    ],
     "parallel_property_collinear_extend(3,AB,CD,E)": [
       "parallel_property_collinear_extend(3,DC,BE,F)"
     ],
     "parallel_property_collinear_extend(3,DC,BE,F)": [
       "parallel_property_corresponding_angle(1,EB,FD,N)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,AB,CD,E)",
-      "angle_addition(1,GFE,EFD)",
-      "adjacent_complementary_angle(1,CFG,GFD)"
     ]
   }
 }

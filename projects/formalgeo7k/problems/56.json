@@ -2,9 +2,9 @@
   "problem_id": 56,
   "annotation": "XiaokaiZhang_2023-03-12",
   "source": "Geometry3k-56",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "P is the incenter of triangle AEC. Find the measure of angle CAD.",
+  "problem_level": 0,
+  "problem_text_cn": "如图所示，AB=10.9，EP=14.9，PA=13，∠DCP=28.5°，∠PAE=33°，P是三角形AEC内切圆的圆心，ED垂直于PD，PB垂直于AB，PF⊥EF。求∠CAD的大小。",
+  "problem_text_en": "As shown in the diagram, AB=10.9, EP=14.9, PA=13, ∠DCP=28.5°, ∠PAE=33°, P is the center of the inscribed circle of triangle AEC, ED is perpendicular to PD, PB is perpendicular to AB, PF is perpendicular to EF. Find the measure of ∠CAD.",
   "problem_img": "56.png",
   "construction_cdl": [
     "Shape(AF,FP,PA)",
@@ -21,7 +21,15 @@
     "Collinear(DPA)"
   ],
   "text_cdl": [
-    "IsIncenterOfTriangle(P,AEC)"
+    "Equal(LengthOfLine(AB),10.9)",
+    "Equal(LengthOfLine(EP),14.9)",
+    "Equal(LengthOfLine(PA),13)",
+    "Equal(MeasureOfAngle(DCP),28.5)",
+    "Equal(MeasureOfAngle(PAE),33)",
+    "IsIncenterOfTriangle(P,AEC)",
+    "PerpendicularBetweenLine(ED,PD)",
+    "PerpendicularBetweenLine(PB,AB)",
+    "PerpendicularBetweenLine(PF,EF)"
   ],
   "image_cdl": [
     "Equal(MeasureOfAngle(PAE),33)",
@@ -36,5 +44,7 @@
   "goal_cdl": "Value(MeasureOfAngle(CAD))",
   "problem_answer": "33",
   "theorem_seqs": [],
-  "theorem_seq_dag": {}
+  "theorem_seqs_dag": {
+    "START": []
+  }
 }

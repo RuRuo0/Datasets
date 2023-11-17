@@ -2,9 +2,9 @@
   "problem_id": 5700,
   "annotation": "NaZhu_2023-05-28",
   "source": "GeoQA-7446",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,E、F分别在边AB、AC上,EF∥BC,EF=3,BC=4,则\\frac{AF}{AC}=()",
-  "problem_text_en": "As shown in the figure, in △ABC, E and F are on edges AB and AC respectively, EF ∥ BC, EF = N_0, BC = N_1, then \\\\frac {AF}{AC} = ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，BC=4，EF=3，EF平行于BC。求直线AF的长度与直线AC的长度之比。",
+  "problem_text_en": "As shown in the diagram, BC=4, EF=3, EF is parallel to BC. Find the ratio of the length of line AF to the length of line AC.",
   "problem_img": "5700.png",
   "construction_cdl": [
     "Shape(AE,EF,FA)",
@@ -13,9 +13,9 @@
     "Collinear(AFC)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(EF,BC)",
+    "Equal(LengthOfLine(BC),4)",
     "Equal(LengthOfLine(EF),3)",
-    "Equal(LengthOfLine(BC),4)"
+    "ParallelBetweenLine(EF,BC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Div(LengthOfLine(AF),LengthOfLine(AC)))",
@@ -27,7 +27,11 @@
     "similar_triangle_property_line_ratio(1,ABC,AEF)",
     "similar_triangle_property_line_ratio(1,BCA,EFA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,EF,BC,A)",
+      "parallel_property_corresponding_angle(2,CB,FE,A)"
+    ],
     "parallel_property_corresponding_angle(1,EF,BC,A)": [
       "similar_triangle_judgment_aa(1,ABC,AEF)"
     ],
@@ -37,10 +41,6 @@
     "similar_triangle_judgment_aa(1,ABC,AEF)": [
       "similar_triangle_property_line_ratio(1,ABC,AEF)",
       "similar_triangle_property_line_ratio(1,BCA,EFA)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,EF,BC,A)",
-      "parallel_property_corresponding_angle(2,CB,FE,A)"
     ]
   }
 }

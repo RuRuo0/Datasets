@@ -2,9 +2,9 @@
   "problem_id": 468,
   "annotation": "YimingHe_2023-04-02",
   "source": "Geometry3k-478",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find A X if E X = 24 and D E = 7.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，DE=7，EX=24，D是圆D的圆心，DA垂直于XA，XE垂直于DE。求直线AX的长度。",
+  "problem_text_en": "As shown in the diagram, DE=7, EX=24, the center of ⊙D is D, DA is perpendicular to XA, XE is perpendicular to DE. Find the length of line AX.",
   "problem_img": "468.png",
   "construction_cdl": [
     "Shape(AX,XQ,DAQ)",
@@ -17,8 +17,11 @@
     "Cocircular(D,AQET)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(DE),7)",
     "Equal(LengthOfLine(EX),24)",
-    "Equal(LengthOfLine(DE),7)"
+    "IsCentreOfCircle(D,D)",
+    "PerpendicularBetweenLine(DA,XA)",
+    "PerpendicularBetweenLine(XE,DE)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(D,D)",
@@ -35,18 +38,18 @@
     "right_triangle_property_pythagorean(1,DAX)",
     "right_triangle_property_pythagorean(1,XED)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,XED)": [
-      "right_triangle_property_pythagorean(1,XED)"
-    ],
-    "right_triangle_judgment_angle(1,DAX)": [
-      "right_triangle_property_pythagorean(1,DAX)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,DA,D)",
       "radius_of_circle_property_length_equal(1,DE,D)",
       "right_triangle_judgment_angle(1,XED)",
       "right_triangle_judgment_angle(1,DAX)"
+    ],
+    "right_triangle_judgment_angle(1,XED)": [
+      "right_triangle_property_pythagorean(1,XED)"
+    ],
+    "right_triangle_judgment_angle(1,DAX)": [
+      "right_triangle_property_pythagorean(1,DAX)"
     ]
   }
 }

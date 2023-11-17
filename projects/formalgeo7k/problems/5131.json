@@ -2,19 +2,19 @@
   "problem_id": 5131,
   "annotation": "JiaZou_2023-05-21",
   "source": "GeoQA-4994",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB⊥BC,CD⊥BC,AD∥BC,若AB=3cm,AD=4cm,则BC的长为()",
-  "problem_text_en": "As shown in the figure, AB ⊥ BC, CD ⊥ BC, AD ∥ BC, if AB = N_0, AD = N_1, then the length of BC is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=3，AD=4，AD平行于BC，AB⊥CB，CD⊥AD。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, AB=3, AD=4, AD is parallel to BC, AB⊥CB, CD is perpendicular to AD. Find the length of line BC.",
   "problem_img": "5131.png",
   "construction_cdl": [
     "Shape(AB,BC,CD,DA)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AB),3)",
+    "Equal(LengthOfLine(AD),4)",
     "ParallelBetweenLine(AD,BC)",
     "PerpendicularBetweenLine(AB,CB)",
-    "PerpendicularBetweenLine(CD,AD)",
-    "Equal(LengthOfLine(AB),3)",
-    "Equal(LengthOfLine(AD),4)"
+    "PerpendicularBetweenLine(CD,AD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BC))",
@@ -25,7 +25,11 @@
     "parallelogram_judgment_angle_and_angle(1,ABCD)",
     "parallelogram_property_opposite_line_equal(1,BCDA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
+      "parallel_property_ipsilateral_internal_angle(1,CB,DA)"
+    ],
     "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
       "parallelogram_judgment_angle_and_angle(1,ABCD)"
     ],
@@ -34,10 +38,6 @@
     ],
     "parallelogram_judgment_angle_and_angle(1,ABCD)": [
       "parallelogram_property_opposite_line_equal(1,BCDA)"
-    ],
-    "START": [
-      "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
-      "parallel_property_ipsilateral_internal_angle(1,CB,DA)"
     ]
   }
 }

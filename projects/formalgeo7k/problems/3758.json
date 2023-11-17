@@ -2,9 +2,9 @@
   "problem_id": 3758,
   "annotation": "ChenyangMao_2023-04-30",
   "source": "GeoQA-1563",
-  "problem_level": 1,
-  "problem_text_cn": "已知,如图a∥b,∠1=55°,则∠2的度数等于()",
-  "problem_text_en": "As shown in the figure, it is known that a ∥ b, ∠1 = N_0, then the degree of ∠2 is equal to ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠BEF=55°，AC平行于DF。求∠ABG的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BEF=55°, AC is parallel to DF. Find the measure of ∠ABG.",
   "problem_img": "3758.png",
   "construction_cdl": [
     "Shape(AB,BG)",
@@ -19,7 +19,10 @@
     "Collinear(DEF)",
     "Collinear(GBEH)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(BEF),55)",
+    "ParallelBetweenLine(AC,DF)"
+  ],
   "image_cdl": [
     "ParallelBetweenLine(AC,DF)",
     "Equal(MeasureOfAngle(BEF),55)"
@@ -32,16 +35,16 @@
     "parallel_property_alternate_interior_angle(2,FE,BA)",
     "adjacent_complementary_angle(1,EBA,ABG)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,AC,DF,B)",
+      "adjacent_complementary_angle(1,EBA,ABG)"
+    ],
     "parallel_property_collinear_extend(3,AC,DF,B)": [
       "parallel_property_collinear_extend(3,FD,BA,E)"
     ],
     "parallel_property_collinear_extend(3,FD,BA,E)": [
       "parallel_property_alternate_interior_angle(2,FE,BA)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,AC,DF,B)",
-      "adjacent_complementary_angle(1,EBA,ABG)"
     ]
   }
 }

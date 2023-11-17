@@ -2,9 +2,9 @@
   "problem_id": 2231,
   "annotation": "DengfengYue_2023-04-16",
   "source": "Geometry3k-2330",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot Z, \\angle W Z X \\cong \\angle X Z Y, m \\angle V Z U = 4 x, m \\angle U Z Y = 2 x + 24, and V Y and W U are diameters. Find m \\widehat X Y.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠UZY=2*x+24°，∠VZU=4*x°，∠XZW=∠YZX，⊙Z的圆心为Z。求弧ZXY的角度。",
+  "problem_text_en": "As shown in the diagram, ∠UZY=2*x+24°, ∠VZU=4*x°, ∠XZW=∠YZX, the center of ⊙Z is Z. Find the measure of arc ZXY.",
   "problem_img": "2231.png",
   "construction_cdl": [
     "Shape(ZV,ZVW,WZ)",
@@ -16,7 +16,12 @@
     "Collinear(VZY)",
     "Cocircular(Z,VWXYU)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(UZY),2*x+24)",
+    "Equal(MeasureOfAngle(VZU),4*x)",
+    "Equal(MeasureOfAngle(XZW),MeasureOfAngle(YZX))",
+    "IsCentreOfCircle(Z,Z)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(Z,Z)",
     "Equal(MeasureOfAngle(VZU),4*x)",
@@ -32,7 +37,7 @@
     "angle_addition(1,YZX,XZW)",
     "arc_property_center_angle(1,ZXY,Z)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "flat_angle(1,VZY)",
       "angle_addition(1,VZU,UZY)",

@@ -2,9 +2,9 @@
   "problem_id": 279,
   "annotation": "NaZhu_2023-04-02",
   "source": "Geometry3k-283",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the quadrilateral.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AI=18，FH=37，GB=9，GB垂直于HB，IA⊥FA。求三角形IHF的面积与△FHG的面积之和。",
+  "problem_text_en": "As shown in the diagram, AI=18, FH=37, GB=9, GB is perpendicular to HB, IA is perpendicular to FA. Find the sum of the area of △IHF and the area of △FHG.",
   "problem_img": "279.png",
   "construction_cdl": [
     "Shape(GF,FA,AB,BG)",
@@ -13,7 +13,13 @@
     "Shape(GB,BH,HG)",
     "Collinear(FABH)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AI),18)",
+    "Equal(LengthOfLine(FH),37)",
+    "Equal(LengthOfLine(GB),9)",
+    "PerpendicularBetweenLine(GB,HB)",
+    "PerpendicularBetweenLine(IA,FA)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(FH),37)",
     "Equal(LengthOfLine(AI),18)",
@@ -31,18 +37,18 @@
     "triangle_area_formula_common(1,GFH)",
     "triangle_area_formula_common(1,IHF)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,BAI,IAF)": [
-      "altitude_of_triangle_judgment(1,IA,IHF)"
-    ],
-    "adjacent_complementary_angle(1,FBG,GBH)": [
-      "altitude_of_triangle_judgment(1,GB,GFH)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,BAI,IAF)",
       "adjacent_complementary_angle(1,FBG,GBH)",
       "triangle_area_formula_common(1,GFH)",
       "triangle_area_formula_common(1,IHF)"
+    ],
+    "adjacent_complementary_angle(1,BAI,IAF)": [
+      "altitude_of_triangle_judgment(1,IA,IHF)"
+    ],
+    "adjacent_complementary_angle(1,FBG,GBH)": [
+      "altitude_of_triangle_judgment(1,GB,GFH)"
     ]
   }
 }

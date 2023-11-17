@@ -2,9 +2,9 @@
   "problem_id": 3588,
   "annotation": "QikeHuang_2023-04-30",
   "source": "GeoQA-1235",
-  "problem_level": 1,
-  "problem_text_cn": "小明用同种材料制成的金属框架如图所示,已知∠B=∠E,AB=DE=20,BF=EC=15,CF=10,AC=15则整个金属框架的质量为().",
-  "problem_text_en": "The metal frame made of the same material by Xiaoming is shown in the figure. It is known that ∠B = ∠E, AB = DE, BF = EC, where the mass of the frame △ABC is N_0 g, the mass of CF is N_1 g, then the whole The quality of the metal frame is ().",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=20，AB=DE，AC=15，BF=15，BF=EC，CF=10，∠ABF=∠CED。求三角形ABC和三角形DFE的周长和。",
+  "problem_text_en": "As shown in the diagram, AB=20, AB=DE, AC=15, BF=15, BF=EC, CF=10, ∠ABF=∠CED. Find the sum of the perimeters of triangle ABC and triangle DFE.",
   "problem_img": "3588.png",
   "construction_cdl": [
     "Shape(AB,BF,FM,MA)",
@@ -15,12 +15,12 @@
     "Collinear(DMF)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(AB),LengthOfLine(DE))",
-    "Equal(LengthOfLine(BF),LengthOfLine(EC))",
     "Equal(LengthOfLine(AB),20)",
-    "Equal(LengthOfLine(BF),15)",
-    "Equal(LengthOfLine(CF),10)",
+    "Equal(LengthOfLine(AB),LengthOfLine(DE))",
     "Equal(LengthOfLine(AC),15)",
+    "Equal(LengthOfLine(BF),15)",
+    "Equal(LengthOfLine(BF),LengthOfLine(EC))",
+    "Equal(LengthOfLine(CF),10)",
     "Equal(MeasureOfAngle(ABF),MeasureOfAngle(CED))"
   ],
   "image_cdl": [],
@@ -35,7 +35,14 @@
     "triangle_perimeter_formula(1,ABC)",
     "triangle_perimeter_formula(1,DFE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,FC,CE)",
+      "line_addition(1,BC,CE)",
+      "line_addition(1,BF,FE)",
+      "triangle_perimeter_formula(1,ABC)",
+      "triangle_perimeter_formula(1,DFE)"
+    ],
     "line_addition(1,FC,CE)": [
       "mirror_congruent_triangle_judgment_sas(1,BCA,EDF)",
       "mirror_congruent_triangle_judgment_sas(1,BCA,EDF)"
@@ -48,13 +55,6 @@
     ],
     "mirror_congruent_triangle_judgment_sas(1,BCA,EDF)": [
       "mirror_congruent_triangle_property_line_equal(1,BCA,EDF)"
-    ],
-    "START": [
-      "line_addition(1,FC,CE)",
-      "line_addition(1,BC,CE)",
-      "line_addition(1,BF,FE)",
-      "triangle_perimeter_formula(1,ABC)",
-      "triangle_perimeter_formula(1,DFE)"
     ]
   }
 }

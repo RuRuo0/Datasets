@@ -2,16 +2,22 @@
   "problem_id": 2547,
   "annotation": "YiwenHuang_2023-05-07",
   "source": "Geometry3k-2672",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AD=8，BC=30，BD=y，CD=28，∠ABC=∠DBA。求y的值。",
+  "problem_text_en": "As shown in the diagram, AD=8, BC=30, BD=y, CD=28, ∠ABC=∠DBA. Find the value of y.",
   "problem_img": "2547.png",
   "construction_cdl": [
     "Shape(BC,CA,AB)",
     "Shape(BA,AD,DB)",
     "Collinear(CAD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AD),8)",
+    "Equal(LengthOfLine(BC),30)",
+    "Equal(LengthOfLine(BD),y)",
+    "Equal(LengthOfLine(CD),28)",
+    "Equal(MeasureOfAngle(ABC),MeasureOfAngle(DBA))"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BD),y)",
     "Equal(LengthOfLine(BC),30)",
@@ -26,13 +32,13 @@
     "bisector_of_angle_judgment_angle_equal(1,BA,DBC)",
     "bisector_of_angle_property_line_ratio(1,BA,DBC)"
   ],
-  "theorem_seq_dag": {
-    "bisector_of_angle_judgment_angle_equal(1,BA,DBC)": [
-      "bisector_of_angle_property_line_ratio(1,BA,DBC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,CA,AD)",
       "bisector_of_angle_judgment_angle_equal(1,BA,DBC)"
+    ],
+    "bisector_of_angle_judgment_angle_equal(1,BA,DBC)": [
+      "bisector_of_angle_property_line_ratio(1,BA,DBC)"
     ]
   }
 }

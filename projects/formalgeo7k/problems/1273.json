@@ -2,9 +2,9 @@
   "problem_id": 1273,
   "annotation": "YiwenHuang_2023-05-07",
   "source": "Geometry3k-1319",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "A B is tangent to the circle. Find x. Round to the nearest tenth.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=10，AC=x，DC=x+4，E是⊙E的圆心，AB是⊙O的切线。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=10, AC=x, DC=x+4, the center of circle E is E, the tangent to ⊙E is AB. Find the value of x.",
   "problem_img": "1273.png",
   "construction_cdl": [
     "Shape(CA,AB,ECB)",
@@ -13,7 +13,13 @@
     "Collinear(ACD)",
     "Cocircular(E,CBD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),10)",
+    "Equal(LengthOfLine(AC),x)",
+    "Equal(LengthOfLine(DC),x+4)",
+    "IsCentreOfCircle(E,E)",
+    "IsTangentOfCircle(AB,E)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(E,E)",
     "IsTangentOfCircle(AB,E)",
@@ -27,7 +33,7 @@
     "line_addition(1,AC,CD)",
     "circle_property_circular_power_tangent_and_segment_line(1,AB,ACD,E)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AC,CD)",
       "circle_property_circular_power_tangent_and_segment_line(1,AB,ACD,E)"

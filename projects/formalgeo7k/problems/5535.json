@@ -2,9 +2,9 @@
   "problem_id": 5535,
   "annotation": "ZheZhu_2023-05-21",
   "source": "GeoQA-6701",
-  "problem_level": 1,
-  "problem_text_cn": "如图,一块呈三角形的草坪上,一小孩将绳子一端栓住兔子,另一端套在木桩A处．若∠BAC=120°,绳子长3米(不包括两个栓处用的绳子),则兔子在草坪上活动的最大面积是()",
-  "problem_text_en": "As shown in the figure, on a triangular lawn, a child tied one end of the rope to the rabbit and the other end to the stake A. If ∠BAC = N_0, the length of the rope is N_1 (not including the rope used for the two bolts), then the maximum area that the rabbit can move on the lawn is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AB=3，∠CAB=120°，圆A的圆心为A。求扇形ABC的面积。",
+  "problem_text_en": "As shown in the diagram, AB=3, ∠CAB=120°, A is the center of ⊙A. Find the area of the sector ABC.",
   "problem_img": "5535.png",
   "construction_cdl": [
     "Shape(AB,ABC,CA)",
@@ -12,9 +12,9 @@
     "Cocircular(A,BC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(A,A)",
     "Equal(LengthOfLine(AB),3)",
-    "Equal(MeasureOfAngle(CAB),120)"
+    "Equal(MeasureOfAngle(CAB),120)",
+    "IsCentreOfCircle(A,A)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(AreaOfSector(ABC))",
@@ -24,7 +24,7 @@
     "arc_property_center_angle(1,ABC,A)",
     "sector_area_formula(1,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,AB,A)",
       "arc_property_center_angle(1,ABC,A)",

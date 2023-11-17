@@ -2,9 +2,9 @@
   "problem_id": 6894,
   "annotation": "ZheZhu_2023-06-04",
   "source": "GeoQA-angle-10126",
-  "problem_level": 1,
-  "problem_text_cn": "如图，AB为⊙O的直径，弦CD⊥AB于点E，连接AC，OC，OD，若∠COD＝80°，则∠A的度数为（）",
-  "problem_text_en": "",
+  "problem_level": 12,
+  "problem_text_cn": "如图所示，∠CEO=90°，∠DOC=80°，∠OED=90°，O是圆O的圆心，AB是⊙O的直径。求∠OAC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CEO=90°, ∠DOC=80°, ∠OED=90°, O is the center of ⊙O, the diameter of ⊙O is AB. Find the measure of ∠OAC.",
   "problem_img": "6894.png",
   "construction_cdl": [
     "Shape(OA,AC,CO)",
@@ -17,11 +17,11 @@
     "Cocircular(O,ACBD)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(AB,O)",
-    "Equal(MeasureOfAngle(OED),90)",
     "Equal(MeasureOfAngle(CEO),90)",
-    "Equal(MeasureOfAngle(DOC),80)"
+    "Equal(MeasureOfAngle(DOC),80)",
+    "Equal(MeasureOfAngle(OED),90)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(OAC))",
@@ -40,7 +40,17 @@
     "flat_angle(1,EOA)",
     "angle_addition(1,EOC,COA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "radius_of_circle_property_length_equal(1,OD,O)",
+      "triangle_property_angle_sum(1,OAC)",
+      "triangle_property_angle_sum(1,EOC)",
+      "triangle_property_angle_sum(1,OCD)",
+      "flat_angle(1,EOA)",
+      "angle_addition(1,EOC,COA)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OAC)"
     ],
@@ -56,16 +66,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OCD)": [
       "isosceles_triangle_property_angle_equal(1,OCD)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "radius_of_circle_property_length_equal(1,OD,O)",
-      "triangle_property_angle_sum(1,OAC)",
-      "triangle_property_angle_sum(1,EOC)",
-      "triangle_property_angle_sum(1,OCD)",
-      "flat_angle(1,EOA)",
-      "angle_addition(1,EOC,COA)"
     ]
   }
 }

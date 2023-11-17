@@ -3,8 +3,8 @@
   "annotation": "YimingHe_2023-03-19",
   "source": "Geometry3k-1305",
   "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x if M S is an altitude of \\triangle M N Q, m \\angle 1 = 3 x + 11, and m \\angle 2 = 7 x + 9.",
+  "problem_text_cn": "如图所示，SQ=SN，∠QSR=7*x+9°，∠RSM=3*x+11°，MS是三角形MQN的高。求x的值。",
+  "problem_text_en": "As shown in the diagram, SQ=SN, ∠QSR=7*x+9°, ∠RSM=3*x+11°, MS is the altitude of △ MQN. Find the value of x.",
   "problem_img": "1262.png",
   "construction_cdl": [
     "Shape(QS,SR,RQ)",
@@ -13,7 +13,12 @@
     "Collinear(QRM)",
     "Collinear(QSN)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(SQ),LengthOfLine(SN))",
+    "Equal(MeasureOfAngle(QSR),7*x+9)",
+    "Equal(MeasureOfAngle(RSM),3*x+11)",
+    "IsAltitudeOfTriangle(MS,MQN)"
+  ],
   "image_cdl": [
     "IsAltitudeOfTriangle(MS,MQN)",
     "Equal(MeasureOfAngle(RSM),3*x+11)",
@@ -25,7 +30,7 @@
   "theorem_seqs": [
     "angle_addition(1,QSR,RSM)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,QSR,RSM)"
     ]

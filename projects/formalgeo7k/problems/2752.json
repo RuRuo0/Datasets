@@ -2,9 +2,9 @@
   "problem_id": 2752,
   "annotation": "YiwenHuang_2023-05-07",
   "source": "Geometry3k-2899",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If C W = W F and E D = 30, what is D F?",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，ED=30，W是圆W的圆心，WF⊥DF。求直线DF的长度。",
+  "problem_text_en": "As shown in the diagram, ED=30, W is the center of circle W, WF⊥DF. Find the length of line DF.",
   "problem_img": "2752.png",
   "construction_cdl": [
     "Shape(WED,DE)",
@@ -12,7 +12,11 @@
     "Collinear(EFD)",
     "Cocircular(W,ED)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(ED),30)",
+    "IsCentreOfCircle(W,W)",
+    "PerpendicularBetweenLine(WF,DF)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(W,W)",
     "Equal(LengthOfLine(ED),30)",
@@ -25,13 +29,13 @@
     "circle_property_chord_perpendicular_bisect_chord(1,W,WF,ED)",
     "line_addition(1,EF,FD)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,EFW,WFD)": [
-      "circle_property_chord_perpendicular_bisect_chord(1,W,WF,ED)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,EFW,WFD)",
       "line_addition(1,EF,FD)"
+    ],
+    "adjacent_complementary_angle(1,EFW,WFD)": [
+      "circle_property_chord_perpendicular_bisect_chord(1,W,WF,ED)"
     ]
   }
 }

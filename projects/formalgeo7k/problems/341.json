@@ -2,9 +2,9 @@
   "problem_id": 341,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-347",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AZ=y，QZ=z，RQ=12，RS=10，RZ=x，∠AQR=30°，∠SPA=45°，SR平行于AZ，PA垂直于SA，RZ⊥QZ。求y的值。",
+  "problem_text_en": "As shown in the diagram, AZ=y, QZ=z, RQ=12, RS=10, RZ=x, ∠AQR=30°, ∠SPA=45°, SR is parallel to AZ, PA is perpendicular to SA, RZ⊥QZ. Find the value of y.",
   "problem_img": "341.png",
   "construction_cdl": [
     "Shape(SP,PA,AS)",
@@ -12,7 +12,18 @@
     "Shape(RZ,ZQ,QR)",
     "Collinear(PAZQ)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AZ),y)",
+    "Equal(LengthOfLine(QZ),z)",
+    "Equal(LengthOfLine(RQ),12)",
+    "Equal(LengthOfLine(RS),10)",
+    "Equal(LengthOfLine(RZ),x)",
+    "Equal(MeasureOfAngle(AQR),30)",
+    "Equal(MeasureOfAngle(SPA),45)",
+    "ParallelBetweenLine(SR,AZ)",
+    "PerpendicularBetweenLine(PA,SA)",
+    "PerpendicularBetweenLine(RZ,QZ)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(RS),10)",
     "Equal(LengthOfLine(RQ),12)",
@@ -36,7 +47,11 @@
     "parallelogram_judgment_parallel_and_parallel(1,SAZR)",
     "parallelogram_property_opposite_line_equal(1,AZRS)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,PAS,SAZ)",
+      "adjacent_complementary_angle(1,PZR,RZQ)"
+    ],
     "adjacent_complementary_angle(1,PAS,SAZ)": [
       "perpendicular_judgment_angle(1,SA,ZA)"
     ],
@@ -54,10 +69,6 @@
     ],
     "parallelogram_judgment_parallel_and_parallel(1,SAZR)": [
       "parallelogram_property_opposite_line_equal(1,AZRS)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,PAS,SAZ)",
-      "adjacent_complementary_angle(1,PZR,RZQ)"
     ]
   }
 }

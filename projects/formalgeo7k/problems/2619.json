@@ -2,9 +2,9 @@
   "problem_id": 2619,
   "annotation": "DengfengYue_2023-04-23",
   "source": "Geometry3k-2750",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure. Round to the nearest tenth if necessary.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，EH=14，EH=AB，EL=9，EL=CD，Sub(AreaOfQuadrilateral(EGFH)=AreaOfQuadrilateral(CADB))，BC和BD是风筝形BCAD的一组临边，AB平行于EH，EGFH是平行四边形，AI⊥CI，EL⊥GL。求x的值。",
+  "problem_text_en": "As shown in the diagram, EH=14, EH=AB, EL=9, EL=CD, Sub(AreaOfQuadrilateral(EGFH)=AreaOfQuadrilateral(CADB)), BCAD is a kite, AB is parallel to EH, EGFH is a parallelogram, AI is perpendicular to CI, EL⊥GL. Find the value of x.",
   "problem_img": "2619.png",
   "construction_cdl": [
     "Shape(EA,AC,CE)",
@@ -23,7 +23,18 @@
     "Collinear(CID)",
     "Collinear(HBF)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(EH),14)",
+    "Equal(LengthOfLine(EH),LengthOfLine(AB))",
+    "Equal(LengthOfLine(EL),9)",
+    "Equal(LengthOfLine(EL),LengthOfLine(CD))",
+    "Equal(Sub(AreaOfQuadrilateral(EGFH),AreaOfQuadrilateral(CADB)),x)",
+    "Kite(BCAD)",
+    "ParallelBetweenLine(AB,EH)",
+    "Parallelogram(EGFH)",
+    "PerpendicularBetweenLine(AI,CI)",
+    "PerpendicularBetweenLine(EL,GL)"
+  ],
   "image_cdl": [
     "Kite(BCAD)",
     "Parallelogram(EGFH)",
@@ -44,7 +55,7 @@
     "parallelogram_property_opposite_line_equal(1,HEGF)",
     "parallelogram_area_formula_common(1,EGFH)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "altitude_of_quadrilateral_judgment_left_vertex(3,EL,EGFH)",
       "kite_area_formula_diagonal(1,BCAD)",

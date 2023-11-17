@@ -2,9 +2,9 @@
   "problem_id": 1303,
   "annotation": "DengfengYue_2023-04-09",
   "source": "Geometry3k-1350",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "For trapezoid J K L M, A and B are midpoints of the legs. If A B = 57 and K L = 21, find J M.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=57，KL=21，A是线段KJ的中点，B是线段LM的中点，四边形KJML是梯形。求直线JM的长度。",
+  "problem_text_en": "As shown in the diagram, AB=57, KL=21, A is the midpoint of segment KJ, B bisects segment LM, KJ and ML are the non-parallel sides (legs) of trapezoid KJML. Find the length of line JM.",
   "problem_img": "1303.png",
   "construction_cdl": [
     "Shape(KA,AB,BL,LK)",
@@ -13,6 +13,10 @@
     "Collinear(LBM)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AB),57)",
+    "Equal(LengthOfLine(KL),21)",
+    "IsMidpointOfLine(A,KJ)",
+    "IsMidpointOfLine(B,LM)",
     "Trapezoid(KJML)"
   ],
   "image_cdl": [
@@ -27,12 +31,12 @@
     "midsegment_of_quadrilateral_judgment_midpoint(1,AB,KJML)",
     "midsegment_of_quadrilateral_property_length(1,AB,KJML)"
   ],
-  "theorem_seq_dag": {
-    "midsegment_of_quadrilateral_judgment_midpoint(1,AB,KJML)": [
-      "midsegment_of_quadrilateral_property_length(1,AB,KJML)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "midsegment_of_quadrilateral_judgment_midpoint(1,AB,KJML)"
+    ],
+    "midsegment_of_quadrilateral_judgment_midpoint(1,AB,KJML)": [
+      "midsegment_of_quadrilateral_property_length(1,AB,KJML)"
     ]
   }
 }

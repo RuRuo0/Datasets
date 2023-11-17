@@ -2,9 +2,9 @@
   "problem_id": 3531,
   "annotation": "YanjunGuo_2023-04-30",
   "source": "GeoQA-1150",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在Rt△ABC中,∠BAC=90°,将△ABC绕点A顺时针旋转90°后得到△AB′C′(点B的对应点是点B′,点C的对应点是点C′),连接CC′.若∠CC′B′=32°,则∠AC′B′的大小是()",
-  "problem_text_en": "As shown in the figure, in Rt△ABC, ∠BAC = N_0, rotate △ABC clockwise around point A by N_1 to obtain △AB′C′ (the corresponding point of point B is point B′, and the corresponding point of point C is point C ′), connect CC′. If ∠CC′B′ = N_2, then the size of ∠AC′B′ is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，三角形BAC全等于三角形EAF，∠EFC=32°，△BAC为直角△。求∠AFE的大小。",
+  "problem_text_en": "As shown in the diagram, triangle BAC is congruent to triangle EAF, ∠EFC=32°, triangle BAC is a right triangle. Find the measure of ∠AFE.",
   "problem_img": "3531.png",
   "construction_cdl": [
     "Shape(BA,AC,CB)",
@@ -14,9 +14,9 @@
     "Collinear(BAF)"
   ],
   "text_cdl": [
-    "RightTriangle(BAC)",
+    "CongruentBetweenTriangle(BAC,EAF)",
     "Equal(MeasureOfAngle(EFC),32)",
-    "CongruentBetweenTriangle(BAC,EAF)"
+    "RightTriangle(BAC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(AFE))",
@@ -29,18 +29,18 @@
     "triangle_property_angle_sum(1,AFC)",
     "angle_addition(1,AFE,EFC)"
   ],
-  "theorem_seq_dag": {
-    "congruent_triangle_property_line_equal(1,BAC,EAF)": [
-      "isosceles_triangle_judgment_line_equal(1,AFC)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,AFC)": [
-      "isosceles_triangle_property_angle_equal(1,AFC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "congruent_triangle_property_line_equal(1,BAC,EAF)",
       "adjacent_complementary_angle(1,BAC,CAF)",
       "triangle_property_angle_sum(1,AFC)",
       "angle_addition(1,AFE,EFC)"
+    ],
+    "congruent_triangle_property_line_equal(1,BAC,EAF)": [
+      "isosceles_triangle_judgment_line_equal(1,AFC)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,AFC)": [
+      "isosceles_triangle_property_angle_equal(1,AFC)"
     ]
   }
 }

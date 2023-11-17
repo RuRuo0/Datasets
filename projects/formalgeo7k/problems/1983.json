@@ -2,9 +2,9 @@
   "problem_id": 1983,
   "annotation": "ZheZhu_2023-04-16",
   "source": "Geometry3k-2067",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Use rhombus A B C D with m \\angle 1 = 2 x + 20, m \\angle 2 = 5 x - 4, A C = 15, and m \\angle 3 = y^ { 2 } + 26. Find x.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠BAF=2*x+20°，∠FAD=5*x-4°，四边形BADC是菱形。求x的值。",
+  "problem_text_en": "As shown in the diagram, ∠BAF=2*x+20°, ∠FAD=5*x-4°, quadrilateral BADC is a rhombus. Find the value of x.",
   "problem_img": "1983.png",
   "construction_cdl": [
     "Shape(BA,AF,FB)",
@@ -15,9 +15,9 @@
     "Collinear(AFC)"
   ],
   "text_cdl": [
-    "Rhombus(BADC)",
     "Equal(MeasureOfAngle(BAF),2*x+20)",
-    "Equal(MeasureOfAngle(FAD),5*x-4)"
+    "Equal(MeasureOfAngle(FAD),5*x-4)",
+    "Rhombus(BADC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(x)",
@@ -27,15 +27,15 @@
     "mirror_congruent_triangle_judgment_sss(1,ADF,AFB)",
     "mirror_congruent_triangle_property_angle_equal(1,ADF,AFB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallelogram_property_diagonal_bisection(1,BADC,F)"
+    ],
     "parallelogram_property_diagonal_bisection(1,BADC,F)": [
       "mirror_congruent_triangle_judgment_sss(1,ADF,AFB)"
     ],
     "mirror_congruent_triangle_judgment_sss(1,ADF,AFB)": [
       "mirror_congruent_triangle_property_angle_equal(1,ADF,AFB)"
-    ],
-    "START": [
-      "parallelogram_property_diagonal_bisection(1,BADC,F)"
     ]
   }
 }

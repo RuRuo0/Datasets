@@ -2,9 +2,9 @@
   "problem_id": 3809,
   "annotation": "YifanWang_2023-05-07",
   "source": "GeoQA-1663",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在⊙O中,=,∠1=45°,则∠2=()",
-  "problem_text_en": "As shown in the figure, in ⊙O, =, ∠1 = N_0, then ∠2 = ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，⌒OBA与⌒ODC全等，∠AOB=45°，O是圆O的圆心。求∠COD的大小。",
+  "problem_text_en": "As shown in the diagram, ⌒OBA is congruent to ⌒ODC, ∠AOB=45°, the center of circle O is O. Find the measure of ∠COD.",
   "problem_img": "3809.png",
   "construction_cdl": [
     "Shape(AO,OD,OAD)",
@@ -13,7 +13,11 @@
     "Shape(CO,OD,ODC)",
     "Cocircular(O,ADCB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "CongruentBetweenArc(OBA,ODC)",
+    "Equal(MeasureOfAngle(AOB),45)",
+    "IsCentreOfCircle(O,O)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "CongruentBetweenArc(OBA,ODC)",
@@ -26,7 +30,7 @@
     "arc_property_center_angle(1,OBA,O)",
     "arc_property_center_angle(1,ODC,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "congruent_arc_property_measure_equal(1,OBA,ODC)",
       "arc_property_center_angle(1,OBA,O)",

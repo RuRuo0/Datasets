@@ -2,9 +2,9 @@
   "problem_id": 577,
   "annotation": "YimingHe_2023-04-09",
   "source": "Geometry3k-591",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the shaded region. Round to the nearest tenth.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=BC，BC=5*sqrt(2)，D是圆D的圆心，圆D的直径为AC。求⊙D的面积减去三角形ABC的面积。",
+  "problem_text_en": "As shown in the diagram, AB=BC, BC=5*sqrt(2), the center of ⊙D is D, AC is the diameter of circle D. Find the area of the ⊙D minus the area of △ABC.",
   "problem_img": "577.png",
   "construction_cdl": [
     "Shape(AD,DC,DCA)",
@@ -14,7 +14,12 @@
     "Collinear(ADC)",
     "Cocircular(D,ABC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),LengthOfLine(BC))",
+    "Equal(LengthOfLine(BC),5*sqrt(2))",
+    "IsCentreOfCircle(D,D)",
+    "IsDiameterOfCircle(AC,D)"
+  ],
   "image_cdl": [
     "IsDiameterOfCircle(AC,D)",
     "IsDiameterOfCircle(AC,D)",
@@ -33,19 +38,19 @@
     "circle_property_length_of_radius_and_diameter(1,D)",
     "circle_area_formula(1,D)"
   ],
-  "theorem_seq_dag": {
-    "diameter_of_circle_property_right_angle(1,ABC,D)": [
-      "right_triangle_judgment_angle(1,ABC)"
-    ],
-    "right_triangle_judgment_angle(1,ABC)": [
-      "right_triangle_property_pythagorean(1,ABC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,ABC,D)",
       "triangle_area_formula_sine(1,BCA)",
       "diameter_of_circle_property_length_equal(1,AC,D)",
       "circle_property_length_of_radius_and_diameter(1,D)",
       "circle_area_formula(1,D)"
+    ],
+    "diameter_of_circle_property_right_angle(1,ABC,D)": [
+      "right_triangle_judgment_angle(1,ABC)"
+    ],
+    "right_triangle_judgment_angle(1,ABC)": [
+      "right_triangle_property_pythagorean(1,ABC)"
     ]
   }
 }

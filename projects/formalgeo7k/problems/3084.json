@@ -2,9 +2,9 @@
   "problem_id": 3084,
   "annotation": "YimingHe_2023-04-23",
   "source": "GeoQA-316",
-  "problem_level": 1,
-  "problem_text_cn": "如图,将直尺和直角三角板按如图方式摆放,已知∠1=35°,则∠2的大小是()",
-  "problem_text_en": "As shown in the figure, place the ruler and the right triangular plate as shown in the figure. It is known that ∠1 = N_0, then the size of ∠2 is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠FEA=90°，∠FED=35°，CH∥DE。求∠HCE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠FEA=90°, ∠FED=35°, CH is parallel to DE. Find the measure of ∠HCE.",
   "problem_img": "3084.png",
   "construction_cdl": [
     "Shape(AB,BC,CA)",
@@ -17,7 +17,9 @@
     "Collinear(ACE)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(FED),35)"
+    "Equal(MeasureOfAngle(FEA),90)",
+    "Equal(MeasureOfAngle(FED),35)",
+    "ParallelBetweenLine(CH,DE)"
   ],
   "image_cdl": [
     "Equal(MeasureOfAngle(FEA),90)",
@@ -29,7 +31,7 @@
     "angle_addition(1,FED,DEC)",
     "parallel_property_alternate_interior_angle(1,CH,DE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,FED,DEC)",
       "parallel_property_alternate_interior_angle(1,CH,DE)"

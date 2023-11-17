@@ -2,16 +2,20 @@
   "problem_id": 1401,
   "annotation": "YimingHe_2023-03-19",
   "source": "Geometry3k-1451",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Given right triangle X Y Z with hypotenuse X Y, Y P is equal to Y Z. If m \\angle P Y Z = 26, find m \\angle X Z P.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，YP=YZ，∠PYZ=26°，YZ⊥XZ。求∠PZX的大小。",
+  "problem_text_en": "As shown in the diagram, YP=YZ, ∠PYZ=26°, YZ⊥XZ. Find the measure of ∠PZX.",
   "problem_img": "1401.png",
   "construction_cdl": [
     "Shape(YZ,ZP,PY)",
     "Shape(PZ,ZX,XP)",
     "Collinear(YPX)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(YP),LengthOfLine(YZ))",
+    "Equal(MeasureOfAngle(PYZ),26)",
+    "PerpendicularBetweenLine(YZ,XZ)"
+  ],
   "image_cdl": [
     "PerpendicularBetweenLine(YZ,XZ)",
     "Equal(LengthOfLine(YP),LengthOfLine(YZ))",
@@ -25,14 +29,14 @@
     "triangle_property_angle_sum(1,YZP)",
     "angle_addition(1,YZP,PZX)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,YZP)": [
-      "isosceles_triangle_property_angle_equal(1,YZP)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,YZP)",
       "triangle_property_angle_sum(1,YZP)",
       "angle_addition(1,YZP,PZX)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,YZP)": [
+      "isosceles_triangle_property_angle_equal(1,YZP)"
     ]
   }
 }

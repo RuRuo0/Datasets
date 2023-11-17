@@ -2,14 +2,21 @@
   "problem_id": 1980,
   "annotation": "ZheZhu_2023-04-16",
   "source": "Geometry3k-2064",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the figure.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，FK=16，KA=9，AD⊥FD，DF垂直于KF，FK垂直于AK，KA⊥DA。求四边形DFKA的周长。",
+  "problem_text_en": "As shown in the diagram, FK=16, KA=9, AD is perpendicular to FD, DF is perpendicular to KF, FK is perpendicular to AK, KA is perpendicular to DA. Find the perimeter of quadrilateral DFKA.",
   "problem_img": "1980.png",
   "construction_cdl": [
     "Shape(AD,DF,FK,KA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(FK),16)",
+    "Equal(LengthOfLine(KA),9)",
+    "PerpendicularBetweenLine(AD,FD)",
+    "PerpendicularBetweenLine(DF,KF)",
+    "PerpendicularBetweenLine(FK,AK)",
+    "PerpendicularBetweenLine(KA,DA)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(FK),16)",
     "Equal(LengthOfLine(KA),9)",
@@ -28,7 +35,12 @@
     "parallelogram_property_opposite_line_equal(1,DFKA)",
     "quadrilateral_perimeter_formula(1,ADFK)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_judgment_ipsilateral_internal_angle(1,DA,FK)",
+      "parallel_judgment_ipsilateral_internal_angle(1,FD,KA)",
+      "quadrilateral_perimeter_formula(1,ADFK)"
+    ],
     "parallel_judgment_ipsilateral_internal_angle(1,DA,FK)": [
       "parallelogram_judgment_parallel_and_parallel(1,ADFK)"
     ],
@@ -38,11 +50,6 @@
     "parallelogram_judgment_parallel_and_parallel(1,ADFK)": [
       "parallelogram_property_opposite_line_equal(1,ADFK)",
       "parallelogram_property_opposite_line_equal(1,DFKA)"
-    ],
-    "START": [
-      "parallel_judgment_ipsilateral_internal_angle(1,DA,FK)",
-      "parallel_judgment_ipsilateral_internal_angle(1,FD,KA)",
-      "quadrilateral_perimeter_formula(1,ADFK)"
     ]
   }
 }

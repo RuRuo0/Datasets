@@ -2,9 +2,9 @@
   "problem_id": 3882,
   "annotation": "DengfengYue_2023-04-30",
   "source": "GeoQA-1774",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的弦,OC⊥AB交⊙O于点C,点D是⊙O上一点,∠ADC=30°,则∠BOC的度数为()",
-  "problem_text_en": "As shown in the figure, AB is the chord of ⊙O, OC ⊥ AB intersects ⊙O at point C, point D is a point on ⊙O, ∠ADC = N_0, then the degree of ∠BOC is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠ADC=30°，圆O的圆心为O，BE⊥OE。求∠COB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ADC=30°, O is the center of ⊙O, BE⊥OE. Find the measure of ∠COB.",
   "problem_img": "3882.png",
   "construction_cdl": [
     "Shape(AE,EC,OCA)",
@@ -23,9 +23,9 @@
     "Cocircular(O,CADB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(ADC),30)",
     "IsCentreOfCircle(O,O)",
-    "PerpendicularBetweenLine(BE,OE)",
-    "Equal(MeasureOfAngle(ADC),30)"
+    "PerpendicularBetweenLine(BE,OE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(COB))",
@@ -36,14 +36,14 @@
     "circle_property_chord_perpendicular_bisect_chord(1,O,OE,BA)",
     "perpendicular_bisector_property_bisector(1,OE,BA)"
   ],
-  "theorem_seq_dag": {
-    "circle_property_chord_perpendicular_bisect_chord(1,O,OE,BA)": [
-      "perpendicular_bisector_property_bisector(1,OE,BA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_circumference_angle_external(1,OCA,D)",
       "arc_property_center_angle(1,OCA,O)",
       "circle_property_chord_perpendicular_bisect_chord(1,O,OE,BA)"
+    ],
+    "circle_property_chord_perpendicular_bisect_chord(1,O,OE,BA)": [
+      "perpendicular_bisector_property_bisector(1,OE,BA)"
     ]
   }
 }

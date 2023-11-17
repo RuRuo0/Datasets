@@ -2,9 +2,9 @@
   "problem_id": 4173,
   "annotation": "Yangli_2023-05-07",
   "source": "GeoQA-2821",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在Rt△ABC中,∠ACB=90°,CD是AB边上的中线,若BC=6,AC=8,则tan∠ACD的值为()",
-  "problem_text_en": "As shown in the figure, in Rt△ABC, ∠ACB = N_0, CD is the midline on the side of AB, if BC = N_1, AC = N_2, then the value of tan∠ACD is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AC=8，BC=6，CD=5，∠BCA=90°，D是线段AB的中点。求tan(DC)的值。",
+  "problem_text_en": "As shown in the diagram, AC=8, BC=6, CD=5, ∠BCA=90°, D bisects segment AB. Find the value of tan(DC).",
   "problem_img": "4173.png",
   "construction_cdl": [
     "Shape(CA,AD,DC)",
@@ -12,8 +12,8 @@
     "Collinear(ADB)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(BC),6)",
     "Equal(LengthOfLine(AC),8)",
+    "Equal(LengthOfLine(BC),6)",
     "Equal(LengthOfLine(CD),5)",
     "Equal(MeasureOfAngle(BCA),90)",
     "IsMidpointOfLine(D,AB)"
@@ -27,14 +27,14 @@
     "right_triangle_property_pythagorean(1,BCA)",
     "cosine_theorem(1,CAD)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,BCA)": [
-      "right_triangle_property_pythagorean(1,BCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AD,DB)",
       "right_triangle_judgment_angle(1,BCA)",
       "cosine_theorem(1,CAD)"
+    ],
+    "right_triangle_judgment_angle(1,BCA)": [
+      "right_triangle_property_pythagorean(1,BCA)"
     ]
   }
 }

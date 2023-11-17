@@ -2,9 +2,9 @@
   "problem_id": 3507,
   "annotation": "XiaokaiZhang_2023-04-30",
   "source": "GeoQA-1114",
-  "problem_level": 1,
-  "problem_text_cn": "如图,四边形ABCD内接于⊙O,AD∥BC,BD平分∠ABC,∠A=130°,则∠BDC的度数为()",
-  "problem_text_en": "As shown in the figure, the quadrilateral ABCD is inscribed in ⊙O, AD ∥ BC, BD bisects ∠ABC, ∠A = N_0, then the degree of ∠BDC is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠DAB=130°，BD是∠ABC的角平分线，AD∥BC。求∠CDB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DAB=130°, BD bisects ∠ABC, AD is parallel to BC. Find the measure of ∠CDB.",
   "problem_img": "3507.png",
   "construction_cdl": [
     "Shape(OCD,DC)",
@@ -16,9 +16,9 @@
     "Cocircular(O,ABCD)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AD,BC)",
+    "Equal(MeasureOfAngle(DAB),130)",
     "IsBisectorOfAngle(BD,ABC)",
-    "Equal(MeasureOfAngle(DAB),130)"
+    "ParallelBetweenLine(AD,BC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CDB))",
@@ -30,7 +30,7 @@
     "arc_property_circumference_angle_internal(1,ODB,A)",
     "triangle_property_angle_sum(1,DBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_alternate_interior_angle(2,AD,BC)",
       "triangle_property_angle_sum(1,ABD)",

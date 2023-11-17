@@ -2,9 +2,9 @@
   "problem_id": 1183,
   "annotation": "ChenyangMao_2023-04-09",
   "source": "Geometry3k-1223",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure.",
+  "problem_level": 14,
+  "problem_text_cn": "如图所示，DC=6，IC=19，NB=19，NC=6，ND=6，Sub(AreaOfQuadrilateral(CNBI)=AreaOfTriangle(CND))，圆E的圆心为E，⊙E的直径为IB，CN⊥BN，IC⊥NC。求x与扇形EBI面积和。",
+  "problem_text_en": "As shown in the diagram, DC=6, IC=19, NB=19, NC=6, ND=6, Sub(AreaOfQuadrilateral(CNBI)=AreaOfTriangle(CND)), the center of circle E is E, IB is the diameter of circle E, CN⊥BN, IC is perpendicular to NC. Find the sum of x and the area of sector EBI",
   "problem_img": "1183.png",
   "construction_cdl": [
     "Shape(IC,CD,DN,NB,BI)",
@@ -13,7 +13,18 @@
     "Collinear(IEB)",
     "Cocircular(E,BI)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(DC),6)",
+    "Equal(LengthOfLine(IC),19)",
+    "Equal(LengthOfLine(NB),19)",
+    "Equal(LengthOfLine(NC),6)",
+    "Equal(LengthOfLine(ND),6)",
+    "Equal(Sub(AreaOfQuadrilateral(CNBI),AreaOfTriangle(CND)),x)",
+    "IsCentreOfCircle(E,E)",
+    "IsDiameterOfCircle(IB,E)",
+    "PerpendicularBetweenLine(CN,BN)",
+    "PerpendicularBetweenLine(IC,NC)"
+  ],
   "image_cdl": [
     "IsDiameterOfCircle(IB,E)",
     "IsCentreOfCircle(E,E)",
@@ -44,7 +55,18 @@
     "arc_property_center_angle(1,EBI,E)",
     "equilateral_triangle_property_angle(1,DCN)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_judgment_per_per(1,CI,NB)",
+      "isosceles_triangle_judgment_line_equal(1,CND)",
+      "isosceles_triangle_judgment_line_equal(1,NDC)",
+      "triangle_area_formula_sine(1,DCN)",
+      "diameter_of_circle_property_length_equal(1,IB,E)",
+      "circle_property_length_of_radius_and_diameter(1,E)",
+      "sector_area_formula(1,EBI)",
+      "flat_angle(1,IEB)",
+      "arc_property_center_angle(1,EBI,E)"
+    ],
     "parallel_judgment_per_per(1,CI,NB)": [
       "parallelogram_judgment_parallel_and_equal(1,ICNB)"
     ],
@@ -60,17 +82,6 @@
     ],
     "equilateral_triangle_judgment_isosceles_and_isosceles(1,CND)": [
       "equilateral_triangle_property_angle(1,DCN)"
-    ],
-    "START": [
-      "parallel_judgment_per_per(1,CI,NB)",
-      "isosceles_triangle_judgment_line_equal(1,CND)",
-      "isosceles_triangle_judgment_line_equal(1,NDC)",
-      "triangle_area_formula_sine(1,DCN)",
-      "diameter_of_circle_property_length_equal(1,IB,E)",
-      "circle_property_length_of_radius_and_diameter(1,E)",
-      "sector_area_formula(1,EBI)",
-      "flat_angle(1,IEB)",
-      "arc_property_center_angle(1,EBI,E)"
     ]
   }
 }

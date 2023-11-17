@@ -2,9 +2,9 @@
   "problem_id": 5141,
   "annotation": "JiaZou_2023-05-21",
   "source": "GeoQA-5029",
-  "problem_level": 1,
-  "problem_text_cn": "如图,将一个直角三角形纸片ABC,沿线段CD折叠,使点B落在B′处,若∠ACB′=72°,则∠ACD的度数为()",
-  "problem_text_en": "As shown in the figure, fold a right triangle piece of paper ABC along the line CD so that point B falls at B′. If ∠ACB′ = N_0, then the degree of ∠ACD is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠ACB=90°，∠FCA=72°，三角形DCB与三角形DFC是镜像全等三角形。求∠ACD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ACB=90°, ∠FCA=72°, △DCB is mirror congruent to △DFC. Find the measure of ∠ACD.",
   "problem_img": "5141.png",
   "construction_cdl": [
     "Shape(AE,ED,DA)",
@@ -16,9 +16,9 @@
     "Collinear(AEC)"
   ],
   "text_cdl": [
-    "MirrorCongruentBetweenTriangle(DCB,DFC)",
     "Equal(MeasureOfAngle(ACB),90)",
-    "Equal(MeasureOfAngle(FCA),72)"
+    "Equal(MeasureOfAngle(FCA),72)",
+    "MirrorCongruentBetweenTriangle(DCB,DFC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ACD))",
@@ -29,7 +29,7 @@
     "mirror_congruent_triangle_property_angle_equal(1,CBD,CDF)",
     "angle_addition(1,ACD,DCB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,FCA,ACB)",
       "angle_addition(1,FCD,DCB)",

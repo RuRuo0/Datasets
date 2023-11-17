@@ -2,9 +2,9 @@
   "problem_id": 3202,
   "annotation": "NaZhu_2023-04-23",
   "source": "GeoQA-493",
-  "problem_level": 1,
-  "problem_text_cn": "已知,如图,AB是⊙O的直径,点D,C在⊙O上,连接AD、BD、DC、AC,如果∠BAD=25°,那么∠C的度数是()",
-  "problem_text_en": "It is known that, as shown in the figure, AB is the diameter of ⊙O, point D, C are on ⊙O, connect AD, BD, DC, AC, if ∠BAD = N_0, then the degree of ∠C is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠OAD=25°，O是⊙O的圆心，AB是圆O的直径。求∠ECA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠OAD=25°, the center of ⊙O is O, the diameter of circle O is AB. Find the measure of ∠ECA.",
   "problem_img": "3202.png",
   "construction_cdl": [
     "Shape(OCA,AC)",
@@ -19,9 +19,9 @@
     "Cocircular(O,ADBC)"
   ],
   "text_cdl": [
-    "IsDiameterOfCircle(AB,O)",
+    "Equal(MeasureOfAngle(OAD),25)",
     "IsCentreOfCircle(O,O)",
-    "Equal(MeasureOfAngle(OAD),25)"
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ECA))",
@@ -32,7 +32,7 @@
     "arc_property_circumference_angle_external(1,OAD,B)",
     "arc_property_circumference_angle_external(1,OAD,C)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,ADB)",
       "diameter_of_circle_property_right_angle(1,ADB,O)",

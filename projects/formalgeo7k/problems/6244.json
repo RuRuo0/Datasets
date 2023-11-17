@@ -2,9 +2,9 @@
   "problem_id": 6244,
   "annotation": "FangzhenZhu_2023-06-04",
   "source": "GeoQA-8848",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在⊙O中,弦AB所对的劣弧为120°,圆的半径为2,则圆心O到弦AB的距离OC为()",
-  "problem_text_en": "As shown in the figure, in ⊙O, the minor arc opposed by chord AB is N_0, and the radius of the circle is N_1, then the distance OC from the center O to chord AB is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，⌒OAB的角度为120，圆O的半径为2，⊙O的圆心为O，AC⊥OC。求直线OC的长度。",
+  "problem_text_en": "As shown in the diagram, the measure of ⌒OAB is 120, the radius of circle O is 2, O is the center of ⊙O, AC⊥OC. Find the length of line OC.",
   "problem_img": "6244.png",
   "construction_cdl": [
     "Shape(OAB,BC,CA)",
@@ -15,9 +15,9 @@
     "Cocircular(O,AB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "Equal(RadiusOfCircle(O),2)",
     "Equal(MeasureOfArc(OAB),120)",
+    "Equal(RadiusOfCircle(O),2)",
+    "IsCentreOfCircle(O,O)",
     "PerpendicularBetweenLine(AC,OC)"
   ],
   "image_cdl": [],
@@ -32,7 +32,14 @@
     "triangle_property_angle_sum(1,BOA)",
     "sine_theorem(1,OAC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_center_angle(1,OAB,O)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "triangle_property_angle_sum(1,BOA)",
+      "sine_theorem(1,OAC)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OAB)"
     ],
@@ -41,13 +48,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OAB)": [
       "isosceles_triangle_property_angle_equal(1,OAB)"
-    ],
-    "START": [
-      "arc_property_center_angle(1,OAB,O)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "triangle_property_angle_sum(1,BOA)",
-      "sine_theorem(1,OAC)"
     ]
   }
 }

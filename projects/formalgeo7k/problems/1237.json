@@ -2,9 +2,9 @@
   "problem_id": 1237,
   "annotation": "YifanWang_2023-04-23",
   "source": "Geometry3k-1277",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Use rhombus X Y Z W with m \\angle W Y Z = 53, V W = 3, X V = 2 a - 2, and Z V = \\frac { 5 a + 1 } { 4 }. Find m \\angle X Y W.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠ZYW=53°，四边形XWZY是菱形。求∠WYX的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ZYW=53°, XWZY is a rhombus. Find the measure of ∠WYX.",
   "problem_img": "1237.png",
   "construction_cdl": [
     "Shape(XW,WV,VX)",
@@ -14,7 +14,10 @@
     "Collinear(XVZ)",
     "Collinear(WVY)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(ZYW),53)",
+    "Rhombus(XWZY)"
+  ],
   "image_cdl": [
     "Rhombus(XWZY)",
     "Equal(MeasureOfAngle(ZYW),53)"
@@ -25,12 +28,12 @@
     "mirror_congruent_triangle_judgment_sss(1,XWY,ZYW)",
     "mirror_congruent_triangle_property_angle_equal(1,YXW,YWZ)"
   ],
-  "theorem_seq_dag": {
-    "mirror_congruent_triangle_judgment_sss(1,XWY,ZYW)": [
-      "mirror_congruent_triangle_property_angle_equal(1,YXW,YWZ)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "mirror_congruent_triangle_judgment_sss(1,XWY,ZYW)"
+    ],
+    "mirror_congruent_triangle_judgment_sss(1,XWY,ZYW)": [
+      "mirror_congruent_triangle_property_angle_equal(1,YXW,YWZ)"
     ]
   }
 }

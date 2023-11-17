@@ -2,9 +2,9 @@
   "problem_id": 3672,
   "annotation": "XiaoxiaoJin_2023-04-30",
   "source": "GeoQA-1401",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB∥CD,EF⊥AB于E,EF交CD于F,己知∠2=20°,则∠1等于()",
-  "problem_text_en": "As shown in the figure, AB ∥ CD, EF ⊥ AB is in E, EF crosses CD in F, knowing that ∠2 = N_0, then ∠1 is equal to ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠GEF=20°，CF平行于AE，AE⊥FE。求∠CGH的大小。",
+  "problem_text_en": "As shown in the diagram, ∠GEF=20°, CF∥AE, AE is perpendicular to FE. Find the measure of ∠CGH.",
   "problem_img": "3672.png",
   "construction_cdl": [
     "Shape(CG,GH)",
@@ -16,9 +16,9 @@
     "Collinear(CGF)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(GEF),20)",
     "ParallelBetweenLine(CF,AE)",
-    "PerpendicularBetweenLine(AE,FE)",
-    "Equal(MeasureOfAngle(GEF),20)"
+    "PerpendicularBetweenLine(AE,FE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CGH))",
@@ -28,13 +28,13 @@
     "angle_addition(1,AEG,GEF)",
     "parallel_property_corresponding_angle(2,EA,GC,H)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,CF,AE,G)": [
-      "parallel_property_corresponding_angle(2,EA,GC,H)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_collinear_extend(3,CF,AE,G)",
       "angle_addition(1,AEG,GEF)"
+    ],
+    "parallel_property_collinear_extend(3,CF,AE,G)": [
+      "parallel_property_corresponding_angle(2,EA,GC,H)"
     ]
   }
 }

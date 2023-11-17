@@ -2,9 +2,9 @@
   "problem_id": 4661,
   "annotation": "YiwenHuang_2023-05-21",
   "source": "GeoQA-3916",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,C是⊙O上的点,过点C作⊙O的切线交AB的延长线于点E,OD⊥AC于点D,若∠E=30°,CE=6,则OD的值为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, C is the point on ⊙O, passing point C is the tangent of ⊙O and intersects the extended line of AB at point E, OD ⊥ AC at point D, if ∠E = N_0, CE = N_1, then the value of OD is ()",
+  "problem_level": 12,
+  "problem_text_cn": "如图所示，CE=6，∠OEC=30°，O是圆O的圆心，⊙O的直径为AB，EC是圆O的切线，OD⊥AD。求直线OD的长度。",
+  "problem_text_en": "As shown in the diagram, CE=6, ∠OEC=30°, the center of circle O is O, the diameter of ⊙O is AB, the tangent to ⊙O is EC, OD is perpendicular to AD. Find the length of line OD.",
   "problem_img": "4661.png",
   "construction_cdl": [
     "Shape(OD,DA,AO)",
@@ -17,12 +17,12 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(OD,AD)",
+    "Equal(LengthOfLine(CE),6)",
+    "Equal(MeasureOfAngle(OEC),30)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)",
     "IsTangentOfCircle(EC,O)",
-    "Equal(LengthOfLine(CE),6)",
-    "Equal(MeasureOfAngle(OEC),30)"
+    "PerpendicularBetweenLine(OD,AD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(OD))",
@@ -41,16 +41,7 @@
     "sine_theorem(1,OCD)",
     "sine_theorem(1,COE)"
   ],
-  "theorem_seq_dag": {
-    "radius_of_circle_property_length_equal(1,OA,O)": [
-      "isosceles_triangle_judgment_line_equal(1,OCA)"
-    ],
-    "radius_of_circle_property_length_equal(1,OC,O)": [
-      "isosceles_triangle_judgment_line_equal(1,OCA)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,OCA)": [
-      "isosceles_triangle_property_angle_equal(1,OCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,COE)",
       "arc_property_center_angle(1,OBC,O)",
@@ -62,6 +53,15 @@
       "angle_addition(1,CDO,ODA)",
       "sine_theorem(1,OCD)",
       "sine_theorem(1,COE)"
+    ],
+    "radius_of_circle_property_length_equal(1,OA,O)": [
+      "isosceles_triangle_judgment_line_equal(1,OCA)"
+    ],
+    "radius_of_circle_property_length_equal(1,OC,O)": [
+      "isosceles_triangle_judgment_line_equal(1,OCA)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,OCA)": [
+      "isosceles_triangle_property_angle_equal(1,OCA)"
     ]
   }
 }

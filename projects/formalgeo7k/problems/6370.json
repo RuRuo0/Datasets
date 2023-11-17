@@ -2,9 +2,9 @@
   "problem_id": 6370,
   "annotation": "ChengQin_2023-06-04",
   "source": "GeoQA-9224",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在菱形ABCD中,∠C=110°,BC的垂直平分线交BD于点E,F为垂足,连接AE,则∠EAD的度数是()",
-  "problem_text_en": "As shown in the figure, in the diamond ABCD, ∠C = N_0, the perpendicular bisector of BC intersects BD at point E, F is the foot of perpendicular, connects AE, then the degree of ∠EAD is ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，∠BCD=110°，EF垂直平分AB，四边形ABCD是菱形。求∠DAE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BCD=110°, EF is the perpendicular bisector of BC, quadrilateral ABCD is a rhombus. Find the measure of ∠DAE.",
   "problem_img": "6370.png",
   "construction_cdl": [
     "Shape(AB,BE,EA)",
@@ -19,9 +19,9 @@
     "Collinear(AOC)"
   ],
   "text_cdl": [
-    "Rhombus(ABCD)",
     "Equal(MeasureOfAngle(BCD),110)",
-    "IsPerpendicularBisectorOfLine(EF,BC)"
+    "IsPerpendicularBisectorOfLine(EF,BC)",
+    "Rhombus(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DAE))",
@@ -39,7 +39,15 @@
     "parallelogram_property_opposite_angle_equal(1,ABCD)",
     "angle_addition(1,DAE,EAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "kite_property_diagonal_perpendicular_bisection(1,BCDA,O)",
+      "perpendicular_bisector_property_distance_equal(1,EF,BC)",
+      "parallel_property_ipsilateral_internal_angle(1,BA,CD)",
+      "angle_addition(1,ABE,EBF)",
+      "parallelogram_property_opposite_angle_equal(1,ABCD)",
+      "angle_addition(1,DAE,EAB)"
+    ],
     "kite_property_diagonal_perpendicular_bisection(1,BCDA,O)": [
       "perpendicular_bisector_property_bisector(1,BO,CA)",
       "perpendicular_bisector_judgment_per_and_mid(1,EO,CA)",
@@ -56,14 +64,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,EAB)": [
       "isosceles_triangle_property_angle_equal(1,EAB)"
-    ],
-    "START": [
-      "kite_property_diagonal_perpendicular_bisection(1,BCDA,O)",
-      "perpendicular_bisector_property_distance_equal(1,EF,BC)",
-      "parallel_property_ipsilateral_internal_angle(1,BA,CD)",
-      "angle_addition(1,ABE,EBF)",
-      "parallelogram_property_opposite_angle_equal(1,ABCD)",
-      "angle_addition(1,DAE,EAB)"
     ]
   }
 }

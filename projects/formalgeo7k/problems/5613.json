@@ -2,9 +2,9 @@
   "problem_id": 5613,
   "annotation": "YimingHe_2023-05-28",
   "source": "GeoQA-7185",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB为⊙O的直径,C为⊙O上一点,弦AD平分∠CAB,交BC于点E,AB=6,AD=5,则DE的长为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, C is the point on ⊙O, chord AD bisects ∠BAC, intersects BC at point E, AB = N_0, AD = N_1, then the length of DE is ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，AB=6，AD=5，AD平分∠CAB，⊙O的圆心为O，⊙O的直径为AB，CD∥AB。求直线DE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=6, AD=5, AD is the angle bisector of ∠CAB, O is the center of circle O, AB is the diameter of ⊙O, CD∥AB. Find the length of line DE.",
   "problem_img": "5613.png",
   "construction_cdl": [
     "Shape(AC,OCA)",
@@ -21,12 +21,12 @@
     "Cocircular(O,ABDC)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(CD,AB)",
+    "Equal(LengthOfLine(AB),6)",
+    "Equal(LengthOfLine(AD),5)",
+    "IsBisectorOfAngle(AD,CAB)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)",
-    "IsBisectorOfAngle(AD,CAB)",
-    "Equal(LengthOfLine(AB),6)",
-    "Equal(LengthOfLine(AD),5)"
+    "ParallelBetweenLine(CD,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(DE))",
@@ -43,7 +43,14 @@
     "parallel_property_alternate_interior_angle(1,CD,AB)",
     "isosceles_triangle_judgment_angle_equal(1,EAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_circumference_angle_external(1,OBD,A)",
+      "arc_property_circumference_angle_external(1,OBD,C)",
+      "line_addition(1,AE,ED)",
+      "diameter_of_circle_property_right_angle(1,BDA,O)",
+      "parallel_property_alternate_interior_angle(1,CD,AB)"
+    ],
     "arc_property_circumference_angle_external(1,OBD,A)": [
       "isosceles_triangle_judgment_angle_equal(1,EAB)"
     ],
@@ -62,13 +69,6 @@
     ],
     "parallel_property_alternate_interior_angle(1,CD,AB)": [
       "isosceles_triangle_judgment_angle_equal(1,EAB)"
-    ],
-    "START": [
-      "arc_property_circumference_angle_external(1,OBD,A)",
-      "arc_property_circumference_angle_external(1,OBD,C)",
-      "line_addition(1,AE,ED)",
-      "diameter_of_circle_property_right_angle(1,BDA,O)",
-      "parallel_property_alternate_interior_angle(1,CD,AB)"
     ]
   }
 }

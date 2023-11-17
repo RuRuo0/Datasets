@@ -2,9 +2,9 @@
   "problem_id": 2433,
   "annotation": "Yangli_2023-04-23",
   "source": "Geometry3k-2552",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Which segments are parallel?",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠BEC=80°，∠DEA=40°，∠EAD=60°，∠EBA=70°，∠ECB=60°。求证DA∥EB。",
+  "problem_text_en": "As shown in the diagram, ∠BEC=80°, ∠DEA=40°, ∠EAD=60°, ∠EBA=70°, ∠ECB=60°. Prove that DA∥EB.",
   "problem_img": "2433.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -12,7 +12,13 @@
     "Shape(BE,EC,CB)",
     "Collinear(DEC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(BEC),80)",
+    "Equal(MeasureOfAngle(DEA),40)",
+    "Equal(MeasureOfAngle(EAD),60)",
+    "Equal(MeasureOfAngle(EBA),70)",
+    "Equal(MeasureOfAngle(ECB),60)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(EAD),60)",
     "Equal(MeasureOfAngle(DEA),40)",
@@ -27,16 +33,16 @@
     "adjacent_complementary_angle(1,DEB,BEC)",
     "parallel_judgment_alternate_interior_angle(2,DA,EB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "angle_addition(1,DEA,AEB)",
+      "adjacent_complementary_angle(1,DEB,BEC)"
+    ],
     "angle_addition(1,DEA,AEB)": [
       "parallel_judgment_alternate_interior_angle(2,DA,EB)"
     ],
     "adjacent_complementary_angle(1,DEB,BEC)": [
       "parallel_judgment_alternate_interior_angle(2,DA,EB)"
-    ],
-    "START": [
-      "angle_addition(1,DEA,AEB)",
-      "adjacent_complementary_angle(1,DEB,BEC)"
     ]
   }
 }

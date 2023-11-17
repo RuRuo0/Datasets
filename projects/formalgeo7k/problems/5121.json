@@ -2,9 +2,9 @@
   "problem_id": 5121,
   "annotation": "YimingHe_2023-05-21",
   "source": "GeoQA-4980",
-  "problem_level": 1,
-  "problem_text_cn": "Rt△ABC中,∠BAC=90°,AB=6,BC=10,AD、AE分别是其角平分线和中线,过点B作BG⊥AD于G,交AC于F,连接EG,则线段EG的长为()",
-  "problem_text_en": "In Rt△ABC, ∠BAC = N_0, AB = N_1, BC = N_2, AD and AE are its angle bisectors and midlines, respectively, passing point B to draw BG ⊥ AD at G, crossing AC at F, connect EG, then the length of line segment EG is ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，AB=6，BC=10，∠CAB=90°，AD是∠CAB的角平分线，AE是三角形ABC的中线，BG垂直于AG，三角形CAB为直角三角形。求直线EG的长度。",
+  "problem_text_en": "As shown in the diagram, AB=6, BC=10, ∠CAB=90°, AD is the angle bisector of ∠CAB, AE is the median of triangle ABC, BG is perpendicular to AG, △CAB is a right △. Find the length of line EG.",
   "problem_img": "5121.png",
   "construction_cdl": [
     "Shape(BG,GA,AB)",
@@ -21,13 +21,13 @@
     "Collinear(BDEC)"
   ],
   "text_cdl": [
-    "RightTriangle(CAB)",
     "Equal(LengthOfLine(AB),6)",
     "Equal(LengthOfLine(BC),10)",
     "Equal(MeasureOfAngle(CAB),90)",
     "IsBisectorOfAngle(AD,CAB)",
     "IsMedianOfTriangle(AE,ABC)",
-    "PerpendicularBetweenLine(BG,AG)"
+    "PerpendicularBetweenLine(BG,AG)",
+    "RightTriangle(CAB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(EG))",
@@ -44,7 +44,14 @@
     "midsegment_of_triangle_judgment_midpoint(1,EG,BCF)",
     "midsegment_of_triangle_property_length(1,EG,BCF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "right_triangle_property_pythagorean(1,CAB)",
+      "adjacent_complementary_angle(1,BGA,AGF)",
+      "triangle_property_angle_sum(1,ABG)",
+      "triangle_property_angle_sum(1,AGF)",
+      "line_addition(1,AF,FC)"
+    ],
     "adjacent_complementary_angle(1,BGA,AGF)": [
       "mirror_congruent_triangle_judgment_aas(1,GAB,GFA)"
     ],
@@ -63,13 +70,6 @@
     ],
     "midsegment_of_triangle_judgment_midpoint(1,EG,BCF)": [
       "midsegment_of_triangle_property_length(1,EG,BCF)"
-    ],
-    "START": [
-      "right_triangle_property_pythagorean(1,CAB)",
-      "adjacent_complementary_angle(1,BGA,AGF)",
-      "triangle_property_angle_sum(1,ABG)",
-      "triangle_property_angle_sum(1,AGF)",
-      "line_addition(1,AF,FC)"
     ]
   }
 }

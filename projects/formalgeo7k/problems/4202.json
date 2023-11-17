@@ -2,9 +2,9 @@
   "problem_id": 4202,
   "annotation": "Yangli_2023-05-07",
   "source": "GeoQA-2897",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是半圆的直径,点D是⁀{AC}的中点,∠ABC=50°,则∠BCD等于()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of the semicircle, point D is the midpoint of ⁀AC, ∠ABC = N_0, then ∠BCD is equal to ()",
+  "problem_level": 16,
+  "problem_text_cn": "如图所示，∠OBC=50°，圆O的圆心为O，圆O的直径为AB，D平分弧OCA。求∠BCD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠OBC=50°, the center of ⊙O is O, AB is the diameter of ⊙O, D is the midpoint of ⌒OCA. Find the measure of ∠BCD.",
   "problem_img": "4202.png",
   "construction_cdl": [
     "Shape(AO,OD,DA)",
@@ -19,8 +19,9 @@
   ],
   "text_cdl": [
     "Equal(MeasureOfAngle(OBC),50)",
-    "IsMidpointOfArc(D,OCA)",
-    "IsDiameterOfCircle(AB,O)"
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)",
+    "IsMidpointOfArc(D,OCA)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)"
@@ -45,7 +46,20 @@
     "isosceles_triangle_property_angle_equal(1,OCD)",
     "triangle_property_angle_sum(1,OCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "angle_addition(1,BCO,OCD)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "radius_of_circle_property_length_equal(1,OD,O)",
+      "triangle_property_angle_sum(1,OBC)",
+      "adjacent_complementary_angle(1,AOC,COB)",
+      "congruent_arc_judgment_length_equal(1,OCD,ODA)",
+      "arc_property_center_angle(1,OCD,O)",
+      "arc_property_center_angle(1,ODA,O)",
+      "angle_addition(1,AOD,DOC)",
+      "triangle_property_angle_sum(1,OCD)"
+    ],
     "radius_of_circle_property_length_equal(1,OB,O)": [
       "isosceles_triangle_judgment_line_equal(1,OBC)"
     ],
@@ -64,19 +78,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OCD)": [
       "isosceles_triangle_property_angle_equal(1,OCD)"
-    ],
-    "START": [
-      "angle_addition(1,BCO,OCD)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "radius_of_circle_property_length_equal(1,OD,O)",
-      "triangle_property_angle_sum(1,OBC)",
-      "adjacent_complementary_angle(1,AOC,COB)",
-      "congruent_arc_judgment_length_equal(1,OCD,ODA)",
-      "arc_property_center_angle(1,OCD,O)",
-      "arc_property_center_angle(1,ODA,O)",
-      "angle_addition(1,AOD,DOC)",
-      "triangle_property_angle_sum(1,OCD)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 6980,
   "annotation": "ChengQin_2023-06-04",
   "source": "GeoQA-angle-10234",
-  "problem_level": 1,
-  "problem_text_cn": "如图，AB是⊙O的直径，PA与⊙O相切于点A，BC∥OP交⊙O于点C．若∠B＝70°，则∠OPC的度数为（）",
-  "problem_text_en": "",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，∠CBO=70°，O是⊙O的圆心，AB是⊙O的直径，PA是圆O的切线，PO平行于CB。求∠OPC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CBO=70°, O is the center of ⊙O, AB is the diameter of circle O, PA is the tangent to circle O, PO∥CB. Find the measure of ∠OPC.",
   "problem_img": "6980.png",
   "construction_cdl": [
     "Shape(AP,PD,OAD)",
@@ -19,11 +19,11 @@
     "Cocircular(O,ADCB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(CBO),70)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)",
     "IsTangentOfCircle(PA,O)",
-    "ParallelBetweenLine(PO,CB)",
-    "Equal(MeasureOfAngle(CBO),70)"
+    "ParallelBetweenLine(PO,CB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(OPC))",
@@ -41,7 +41,16 @@
     "mirror_congruent_triangle_judgment_sas(1,OPC,OAP)",
     "mirror_congruent_triangle_property_angle_equal(1,PCO,POA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(1,PA,O,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "parallel_property_corresponding_angle(2,BC,OP,A)",
+      "parallel_property_alternate_interior_angle(2,PO,CB)",
+      "triangle_property_angle_sum(1,APO)",
+      "radius_of_circle_property_length_equal(1,OA,O)"
+    ],
     "radius_of_circle_property_length_equal(1,OC,O)": [
       "isosceles_triangle_judgment_line_equal(1,OCB)",
       "mirror_congruent_triangle_judgment_sas(1,OPC,OAP)"
@@ -66,15 +75,6 @@
     ],
     "mirror_congruent_triangle_judgment_sas(1,OPC,OAP)": [
       "mirror_congruent_triangle_property_angle_equal(1,PCO,POA)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(1,PA,O,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "parallel_property_corresponding_angle(2,BC,OP,A)",
-      "parallel_property_alternate_interior_angle(2,PO,CB)",
-      "triangle_property_angle_sum(1,APO)",
-      "radius_of_circle_property_length_equal(1,OA,O)"
     ]
   }
 }

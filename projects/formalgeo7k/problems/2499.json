@@ -2,9 +2,9 @@
   "problem_id": 2499,
   "annotation": "ChenyangMao_2023-04-23",
   "source": "Geometry3k-2623",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "For trapezoid A B C D, S and T are midpoints of the legs. If A B = x + 4, C D = 3 x + 2, and S T = 9, find A B.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=x+4，CD=3*x+2，ST=9，S平分线段AC，T是线段BD的中点，AC和DB是梯形ACDB的腰。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, AB=x+4, CD=3*x+2, ST=9, S bisects segment AC, T is the midpoint of segment BD, AB and CD are the parallel sides of trapezoid ACDB. Find the length of line AB.",
   "problem_img": "2499.png",
   "construction_cdl": [
     "Shape(AS,ST,TB,BA)",
@@ -13,12 +13,12 @@
     "Collinear(BTD)"
   ],
   "text_cdl": [
-    "Trapezoid(ACDB)",
-    "IsMidpointOfLine(S,AC)",
-    "IsMidpointOfLine(T,BD)",
     "Equal(LengthOfLine(AB),x+4)",
     "Equal(LengthOfLine(CD),3*x+2)",
-    "Equal(LengthOfLine(ST),9)"
+    "Equal(LengthOfLine(ST),9)",
+    "IsMidpointOfLine(S,AC)",
+    "IsMidpointOfLine(T,BD)",
+    "Trapezoid(ACDB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -27,12 +27,12 @@
     "midsegment_of_quadrilateral_judgment_midpoint(1,ST,ACDB)",
     "midsegment_of_quadrilateral_property_length(1,ST,ACDB)"
   ],
-  "theorem_seq_dag": {
-    "midsegment_of_quadrilateral_judgment_midpoint(1,ST,ACDB)": [
-      "midsegment_of_quadrilateral_property_length(1,ST,ACDB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "midsegment_of_quadrilateral_judgment_midpoint(1,ST,ACDB)"
+    ],
+    "midsegment_of_quadrilateral_judgment_midpoint(1,ST,ACDB)": [
+      "midsegment_of_quadrilateral_property_length(1,ST,ACDB)"
     ]
   }
 }

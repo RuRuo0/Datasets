@@ -2,9 +2,9 @@
   "problem_id": 3702,
   "annotation": "Yangli_2023-04-30",
   "source": "GeoQA-1463",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点A、B、C在圆O的圆周上,连OA、OC,OD⊥AB于点D,若AO平分∠CAB,∠CAB=50°,则∠OCB=()",
-  "problem_text_en": "As shown in the figure, vertices A, B, and C are on the perimeter of circle O, connecting OA, OC, OD ⊥ AB to point D, if AO bisects ∠CAB, ∠CAB = N_0, then ∠OCB = ()",
+  "problem_level": 15,
+  "problem_text_cn": "如图所示，∠CAD=50°，AO平分∠CAD，圆O的圆心为O，AD垂直于OD，OD垂直于BD。求∠BCO的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAD=50°, AO is the angle bisector of ∠CAD, the center of circle O is O, AD is perpendicular to OD, OD is perpendicular to BD. Find the measure of ∠BCO.",
   "problem_img": "3702.png",
   "construction_cdl": [
     "Shape(CA,AO,OC)",
@@ -20,6 +20,7 @@
   "text_cdl": [
     "Equal(MeasureOfAngle(CAD),50)",
     "IsBisectorOfAngle(AO,CAD)",
+    "IsCentreOfCircle(O,O)",
     "PerpendicularBetweenLine(AD,OD)",
     "PerpendicularBetweenLine(OD,BD)"
   ],
@@ -45,7 +46,18 @@
     "arc_property_circumference_angle_external(1,OAB,C)",
     "angle_addition(1,BCO,OCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "angle_addition(1,CAO,OAD)",
+      "triangle_property_angle_sum(1,OAD)",
+      "angle_addition(1,BOD,DOA)",
+      "arc_property_center_angle(1,OAB,O)",
+      "arc_property_circumference_angle_external(1,OAB,C)",
+      "angle_addition(1,BCO,OCA)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OAB)",
       "isosceles_triangle_judgment_line_equal(1,OCA)",
@@ -69,17 +81,6 @@
     ],
     "mirror_congruent_triangle_judgment_aas(1,OAD,ODB)": [
       "mirror_congruent_triangle_property_angle_equal(1,OAD,ODB)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "angle_addition(1,CAO,OAD)",
-      "triangle_property_angle_sum(1,OAD)",
-      "angle_addition(1,BOD,DOA)",
-      "arc_property_center_angle(1,OAB,O)",
-      "arc_property_circumference_angle_external(1,OAB,C)",
-      "angle_addition(1,BCO,OCA)"
     ]
   }
 }

@@ -3,8 +3,8 @@
   "annotation": "NaZhu_2023-04-09",
   "source": "Geometry3k-906",
   "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Quadrilateral D E F G is a rectangle. If F D = 3 x - 7 and E G = x + 5, find E G.",
+  "problem_text_cn": "如图所示，EG=x+5，FD=3*x-7，DG⊥FG，DGFE是长方形。求直线EG的长度。",
+  "problem_text_en": "As shown in the diagram, EG=x+5, FD=3*x-7, DG is perpendicular to FG, DGFE is a rectangle. Find the length of line EG.",
   "problem_img": "877.png",
   "construction_cdl": [
     "Shape(AD,DG,GA)",
@@ -15,9 +15,10 @@
     "Collinear(GAE)"
   ],
   "text_cdl": [
-    "Rectangle(DGFE)",
+    "Equal(LengthOfLine(EG),x+5)",
     "Equal(LengthOfLine(FD),3*x-7)",
-    "Equal(LengthOfLine(EG),x+5)"
+    "PerpendicularBetweenLine(DG,FG)",
+    "Rectangle(DGFE)"
   ],
   "image_cdl": [
     "PerpendicularBetweenLine(DG,FG)"
@@ -27,7 +28,7 @@
   "theorem_seqs": [
     "rectangle_property_diagonal_equal(1,DGFE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "rectangle_property_diagonal_equal(1,DGFE)"
     ]

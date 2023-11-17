@@ -2,9 +2,9 @@
   "problem_id": 3523,
   "annotation": "XiaokaiZhang_2023-04-30",
   "source": "GeoQA-1138",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示,在△ABC中,∠A=90°,AB=AC,BD平分∠ABC交AC于点D,DE⊥BC于点E,若△CDE的周长为8cm,则斜边BC的长为()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠A = N_0, AB = AC, BD bisects ∠ABC intersects AC at point D, DE ⊥ BC at point E, if the perimeter of △CDE is N_1, the hypotenuse BC Long as()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AB=AC，∠CAB=90°，三角形DEC的周长为8，BD平分∠ABC，DE⊥CE。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, AB=AC, ∠CAB=90°, the perimeter of △DEC is 8, BD bisects ∠ABC, DE is perpendicular to CE. Find the length of line BC.",
   "problem_img": "3523.png",
   "construction_cdl": [
     "Shape(AB,BD,DA)",
@@ -16,9 +16,9 @@
   "text_cdl": [
     "Equal(LengthOfLine(AB),LengthOfLine(AC))",
     "Equal(MeasureOfAngle(CAB),90)",
+    "Equal(PerimeterOfTriangle(DEC),8)",
     "IsBisectorOfAngle(BD,ABC)",
-    "PerpendicularBetweenLine(DE,CE)",
-    "Equal(PerimeterOfTriangle(DEC),8)"
+    "PerpendicularBetweenLine(DE,CE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BC))",
@@ -33,7 +33,14 @@
     "mirror_congruent_triangle_property_line_equal(1,DBE,DAB)",
     "triangle_perimeter_formula(1,DEC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,BED,DEC)",
+      "bisector_of_angle_judgment_angle_equal(1,BD,ABE)",
+      "line_addition(1,AD,DC)",
+      "line_addition(1,BE,EC)",
+      "triangle_perimeter_formula(1,DEC)"
+    ],
     "adjacent_complementary_angle(1,BED,DEC)": [
       "bisector_of_angle_property_distance_equal(1,BD,ABE)",
       "mirror_congruent_triangle_judgment_hl(1,BED,BDA)"
@@ -46,13 +53,6 @@
     ],
     "mirror_congruent_triangle_judgment_hl(1,BED,BDA)": [
       "mirror_congruent_triangle_property_line_equal(1,DBE,DAB)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,BED,DEC)",
-      "bisector_of_angle_judgment_angle_equal(1,BD,ABE)",
-      "line_addition(1,AD,DC)",
-      "line_addition(1,BE,EC)",
-      "triangle_perimeter_formula(1,DEC)"
     ]
   }
 }

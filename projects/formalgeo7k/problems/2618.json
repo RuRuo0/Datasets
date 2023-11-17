@@ -2,9 +2,9 @@
   "problem_id": 2618,
   "annotation": "DengfengYue_2023-04-23",
   "source": "Geometry3k-2749",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If Z P = 4 x - 9 and P Y = 2 x + 5, find Z X.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，PY=2*x+5，ZP=4*x-9，ZW垂直于XW，ZWXY是矩形。求直线ZX的长度。",
+  "problem_text_en": "As shown in the diagram, PY=2*x+5, ZP=4*x-9, ZW⊥XW, ZWXY is a rectangle. Find the length of line ZX.",
   "problem_img": "2618.png",
   "construction_cdl": [
     "Shape(ZW,WP,PZ)",
@@ -14,7 +14,12 @@
     "Collinear(ZPX)",
     "Collinear(YPW)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(PY),2*x+5)",
+    "Equal(LengthOfLine(ZP),4*x-9)",
+    "PerpendicularBetweenLine(ZW,XW)",
+    "Rectangle(ZWXY)"
+  ],
   "image_cdl": [
     "Rectangle(ZWXY)",
     "Equal(LengthOfLine(ZP),4*x-9)",
@@ -30,7 +35,7 @@
     "line_addition(1,YP,PW)",
     "rectangle_property_diagonal_equal(1,ZWXY)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_property_diagonal_bisection(1,ZWXY,P)",
       "parallelogram_property_diagonal_bisection(1,WXYZ,P)",

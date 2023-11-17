@@ -2,16 +2,22 @@
   "problem_id": 2357,
   "annotation": "FangzhenZhu_2023-04-23",
   "source": "Geometry3k-2471",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the trapezoid.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AD=22，AE=23，CB=37，AE⊥CE，DBCA是梯形。求四边形DBCA的面积。",
+  "problem_text_en": "As shown in the diagram, AD=22, AE=23, CB=37, AE is perpendicular to CE, DBCA is a trapezoid. Find the area of DBCA.",
   "problem_img": "2357.png",
   "construction_cdl": [
     "Shape(DB,BE,EA,AD)",
     "Shape(AE,EC,CA)",
     "Collinear(BEC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AD),22)",
+    "Equal(LengthOfLine(AE),23)",
+    "Equal(LengthOfLine(CB),37)",
+    "PerpendicularBetweenLine(AE,CE)",
+    "Trapezoid(DBCA)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AE),23)",
     "Equal(LengthOfLine(CB),37)",
@@ -26,13 +32,13 @@
     "altitude_of_quadrilateral_judgment_right_vertex(2,AE,DBCA)",
     "trapezoid_area_formula(1,DBCA)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,BEA,AEC)": [
-      "altitude_of_quadrilateral_judgment_right_vertex(2,AE,DBCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,BEA,AEC)",
       "trapezoid_area_formula(1,DBCA)"
+    ],
+    "adjacent_complementary_angle(1,BEA,AEC)": [
+      "altitude_of_quadrilateral_judgment_right_vertex(2,AE,DBCA)"
     ]
   }
 }

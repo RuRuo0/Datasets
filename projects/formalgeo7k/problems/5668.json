@@ -2,9 +2,9 @@
   "problem_id": 5668,
   "annotation": "JiaZou_2023-05-28",
   "source": "GeoQA-7370",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在▱ABCD中,AD=18,点E、F分别是BD、CD上的点,EF∥BC,且\\frac{DE}{EB}=\\frac{1}{2},则EF等于()",
-  "problem_text_en": "As shown in the figure, in ▱ABCD, AD = N_0, points E and F are points on BD and CD respectively, EF ∥ BC, and \\frac{DE}{EB}=\\frac{N_1}{N_2}, then EF is equal to ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，Div(LengthOfLine(DE)=LengthOfLine(EB))，AD=18，EF∥BC，BA和CD是▱ABCD的一组对边。求直线EF的长度。",
+  "problem_text_en": "As shown in the diagram, Div(LengthOfLine(DE)=LengthOfLine(EB)), AD=18, EF∥BC, BA and CD are opposite sides of the ▱ ABCD. Find the length of line EF.",
   "problem_img": "5668.png",
   "construction_cdl": [
     "Shape(AB,BE,ED,DA)",
@@ -14,10 +14,10 @@
     "Collinear(DFC)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
+    "Equal(Div(LengthOfLine(DE),LengthOfLine(EB)),1/2)",
     "Equal(LengthOfLine(AD),18)",
     "ParallelBetweenLine(EF,BC)",
-    "Equal(Div(LengthOfLine(DE),LengthOfLine(EB)),1/2)"
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(EF))",
@@ -31,7 +31,13 @@
     "similar_triangle_property_line_ratio(1,DEF,DBC)",
     "similar_triangle_property_line_ratio(1,FDE,CDB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallelogram_property_opposite_line_equal(1,BCDA)",
+      "parallel_property_corresponding_angle(1,EF,BC,D)",
+      "parallel_property_corresponding_angle(2,CB,FE,D)",
+      "line_addition(1,BE,ED)"
+    ],
     "parallel_property_corresponding_angle(1,EF,BC,D)": [
       "similar_triangle_judgment_aa(1,DEF,DBC)"
     ],
@@ -41,12 +47,6 @@
     "similar_triangle_judgment_aa(1,DEF,DBC)": [
       "similar_triangle_property_line_ratio(1,DEF,DBC)",
       "similar_triangle_property_line_ratio(1,FDE,CDB)"
-    ],
-    "START": [
-      "parallelogram_property_opposite_line_equal(1,BCDA)",
-      "parallel_property_corresponding_angle(1,EF,BC,D)",
-      "parallel_property_corresponding_angle(2,CB,FE,D)",
-      "line_addition(1,BE,ED)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 4934,
   "annotation": "DengfengYue_2023-05-14",
   "source": "GeoQA-4552",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB为⊙O的直径,C为⊙O上一点,弦AD平分∠BAC,交弦BC于点E,CD=4,DE=2,则AE的长为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, C is the point on ⊙O, chord AD bisects ∠BAC, and chord BC is at point E, CD = N_0, DE = N_1, then the length of AE is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，CD=4，DE=2，AD平分∠CAB，O是圆O的圆心，⊙O的直径为AB。求直线AE的长度。",
+  "problem_text_en": "As shown in the diagram, CD=4, DE=2, AD is the angle bisector of ∠CAB, O is the center of circle O, the diameter of circle O is AB. Find the length of line AE.",
   "problem_img": "4934.png",
   "construction_cdl": [
     "Shape(AC,OCA)",
@@ -19,11 +19,11 @@
     "Cocircular(O,CABD)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(AB,O)",
-    "IsBisectorOfAngle(AD,CAB)",
     "Equal(LengthOfLine(CD),4)",
-    "Equal(LengthOfLine(DE),2)"
+    "Equal(LengthOfLine(DE),2)",
+    "IsBisectorOfAngle(AD,CAB)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AE))",
@@ -36,7 +36,12 @@
     "mirror_similar_triangle_property_line_ratio(1,EDC,CAD)",
     "mirror_similar_triangle_property_line_ratio(1,CED,ADC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_circumference_angle_external(1,OBD,C)",
+      "arc_property_circumference_angle_external(1,OBD,A)",
+      "line_addition(1,AE,ED)"
+    ],
     "arc_property_circumference_angle_external(1,OBD,C)": [
       "mirror_similar_triangle_judgment_aa(1,EDC,CAD)"
     ],
@@ -46,11 +51,6 @@
     "mirror_similar_triangle_judgment_aa(1,EDC,CAD)": [
       "mirror_similar_triangle_property_line_ratio(1,EDC,CAD)",
       "mirror_similar_triangle_property_line_ratio(1,CED,ADC)"
-    ],
-    "START": [
-      "arc_property_circumference_angle_external(1,OBD,C)",
-      "arc_property_circumference_angle_external(1,OBD,A)",
-      "line_addition(1,AE,ED)"
     ]
   }
 }

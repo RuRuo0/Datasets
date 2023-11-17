@@ -2,9 +2,9 @@
   "problem_id": 4803,
   "annotation": "ChenyangMao_2023-05-14",
   "source": "GeoQA-4223",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知四边形ABCD内接于⊙O,AB是⊙O的直径,EC与⊙O相切于点C,∠ECB=35°,则∠D的度数是()",
-  "problem_text_en": "As shown in the figure, given that the quadrilateral ABCD is inscribed in ⊙O, AB is the diameter of ⊙O, EC is tangent of ⊙O point C, ∠ECB = N_0, then the degree of ∠D is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠ECB=35°，O是⊙O的圆心，⊙O的直径为AB，圆O的切线为EC。求∠CDA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ECB=35°, O is the center of circle O, the diameter of circle O is AB, the tangent to circle O is EC. Find the measure of ∠CDA.",
   "problem_img": "4803.png",
   "construction_cdl": [
     "Shape(CD,DB,BC)",
@@ -18,10 +18,10 @@
     "Cocircular(O.CDAB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(ECB),35)",
     "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(EC,O)",
     "IsDiameterOfCircle(AB,O)",
-    "Equal(MeasureOfAngle(ECB),35)"
+    "IsTangentOfCircle(EC,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CDA))",
@@ -32,7 +32,7 @@
     "arc_property_circumference_angle_external(1,OBC,D)",
     "angle_addition(1,CDB,BDA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "circle_property_angle_of_osculation(2,OBC,E)",
       "diameter_of_circle_property_right_angle(1,BDA,O)",

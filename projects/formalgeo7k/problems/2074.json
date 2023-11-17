@@ -2,16 +2,24 @@
   "problem_id": 2074,
   "annotation": "YimingHe_2023-03-26",
   "source": "Geometry3k-2161",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find z.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AB=x，AC=12，AD=y，BD=z，CD=4，AD垂直于CD，CA垂直于BA。求z的值。",
+  "problem_text_en": "As shown in the diagram, AB=x, AC=12, AD=y, BD=z, CD=4, AD⊥CD, CA⊥BA. Find the value of z.",
   "problem_img": "2074.png",
   "construction_cdl": [
     "Shape(BD,DA,AB)",
     "Shape(AD,DC,CA)",
     "Collinear(BDC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),x)",
+    "Equal(LengthOfLine(AC),12)",
+    "Equal(LengthOfLine(AD),y)",
+    "Equal(LengthOfLine(BD),z)",
+    "Equal(LengthOfLine(CD),4)",
+    "PerpendicularBetweenLine(AD,CD)",
+    "PerpendicularBetweenLine(CA,BA)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AB),x)",
     "Equal(LengthOfLine(AD),y)",
@@ -33,7 +41,13 @@
     "right_triangle_property_pythagorean(1,CAB)",
     "line_addition(1,BD,DC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,BDA,ADC)",
+      "right_triangle_judgment_angle(1,ADC)",
+      "right_triangle_judgment_angle(1,CAB)",
+      "line_addition(1,BD,DC)"
+    ],
     "adjacent_complementary_angle(1,BDA,ADC)": [
       "right_triangle_judgment_angle(1,BDA)"
     ],
@@ -45,12 +59,6 @@
     ],
     "right_triangle_judgment_angle(1,CAB)": [
       "right_triangle_property_pythagorean(1,CAB)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,BDA,ADC)",
-      "right_triangle_judgment_angle(1,ADC)",
-      "right_triangle_judgment_angle(1,CAB)",
-      "line_addition(1,BD,DC)"
     ]
   }
 }

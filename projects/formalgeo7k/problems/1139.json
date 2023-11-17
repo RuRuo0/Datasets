@@ -2,9 +2,9 @@
   "problem_id": 1139,
   "annotation": "JiaZou_2023-03-19",
   "source": "Geometry3k-1178",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "\\triangle R S T \\cong \\triangle V U T. What is the area of \\triangle R S T?",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，ST=11*x-2，TU=8*x+4，UV=15*x，△RST与△VTU是镜像全等三角形，RS垂直于TS，TU⊥VU。求三角形RST的面积。",
+  "problem_text_en": "As shown in the diagram, ST=11*x-2, TU=8*x+4, UV=15*x, △RST is mirror congruent to △VTU, RS is perpendicular to TS, TU⊥VU. Find the area of △RST.",
   "problem_img": "1139.png",
   "construction_cdl": [
     "Shape(RS,ST,TR)",
@@ -12,7 +12,12 @@
     "Collinear(STU)"
   ],
   "text_cdl": [
-    "MirrorCongruentBetweenTriangle(RST,VTU)"
+    "Equal(LengthOfLine(ST),11*x-2)",
+    "Equal(LengthOfLine(TU),8*x+4)",
+    "Equal(LengthOfLine(UV),15*x)",
+    "MirrorCongruentBetweenTriangle(RST,VTU)",
+    "PerpendicularBetweenLine(RS,TS)",
+    "PerpendicularBetweenLine(TU,VU)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(UV),15*x)",
@@ -28,7 +33,7 @@
     "mirror_congruent_triangle_property_line_equal(1,TRS,TUV)",
     "triangle_area_formula_sine(1,STR)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "mirror_congruent_triangle_property_line_equal(1,RST,VTU)",
       "mirror_congruent_triangle_property_line_equal(1,TRS,TUV)",

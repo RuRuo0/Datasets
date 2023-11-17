@@ -2,9 +2,9 @@
   "problem_id": 3212,
   "annotation": "NaZhu_2023-04-23",
   "source": "GeoQA-507",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,∠ACB=90°,∠A=40°,以C为圆心,CB为半径的圆交AB于点D,连接CD,则∠ACD=()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠ACB = N_0, ∠A = N_1, the circle with C as the center and CB as the radius intersects AB at point D. Connect CD, then ∠ACD = ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠DAE=40°，∠ECB=90°，C是圆C的圆心。求∠ECD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DAE=40°, ∠ECB=90°, the center of ⊙C is C. Find the measure of ∠ECD.",
   "problem_img": "3212.png",
   "construction_cdl": [
     "Shape(CEB,BC,CE)",
@@ -17,9 +17,9 @@
     "Cocircular(C,BDE)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(C,C)",
+    "Equal(MeasureOfAngle(DAE),40)",
     "Equal(MeasureOfAngle(ECB),90)",
-    "Equal(MeasureOfAngle(DAE),40)"
+    "IsCentreOfCircle(C,C)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ECD))",
@@ -33,7 +33,14 @@
     "triangle_property_angle_sum(1,DCB)",
     "angle_addition(1,ACD,DCB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "triangle_property_angle_sum(1,ACB)",
+      "radius_of_circle_property_length_equal(1,CB,C)",
+      "radius_of_circle_property_length_equal(1,CD,C)",
+      "triangle_property_angle_sum(1,DCB)",
+      "angle_addition(1,ACD,DCB)"
+    ],
     "radius_of_circle_property_length_equal(1,CB,C)": [
       "isosceles_triangle_judgment_line_equal(1,CBD)"
     ],
@@ -42,13 +49,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,CBD)": [
       "isosceles_triangle_property_angle_equal(1,CBD)"
-    ],
-    "START": [
-      "triangle_property_angle_sum(1,ACB)",
-      "radius_of_circle_property_length_equal(1,CB,C)",
-      "radius_of_circle_property_length_equal(1,CD,C)",
-      "triangle_property_angle_sum(1,DCB)",
-      "angle_addition(1,ACD,DCB)"
     ]
   }
 }

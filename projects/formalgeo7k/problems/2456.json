@@ -2,14 +2,20 @@
   "problem_id": 2456,
   "annotation": "RunanWang_2023-04-23",
   "source": "Geometry3k-2576",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find X Y of isosceles \\triangle X Y Z.",
+  "problem_level": 0,
+  "problem_text_cn": "如图所示，XZ=8*x-4，YX=2*x+3，ZY=4*x-1，ZY=YX，∠YXZ和∠XZY是等腰△YXZ的底角。求直线YX的长度。",
+  "problem_text_en": "As shown in the diagram, XZ=8*x-4, YX=2*x+3, ZY=4*x-1, ZY=YX, ∠YXZ and ∠XZY are the base angles of the isosceles triangle YXZ. Find the length of line YX.",
   "problem_img": "2456.png",
   "construction_cdl": [
     "Shape(YX,XZ,ZY)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(XZ),8*x-4)",
+    "Equal(LengthOfLine(YX),2*x+3)",
+    "Equal(LengthOfLine(ZY),4*x-1)",
+    "Equal(LengthOfLine(ZY),LengthOfLine(YX))",
+    "IsoscelesTriangle(YXZ)"
+  ],
   "image_cdl": [
     "IsoscelesTriangle(YXZ)",
     "Equal(LengthOfLine(YX),2*x+3)",
@@ -20,5 +26,7 @@
   "goal_cdl": "Value(LengthOfLine(YX))",
   "problem_answer": "7",
   "theorem_seqs": [],
-  "theorem_seq_dag": {}
+  "theorem_seqs_dag": {
+    "START": []
+  }
 }

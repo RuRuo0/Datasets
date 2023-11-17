@@ -2,15 +2,26 @@
   "problem_id": 2540,
   "annotation": "YiwenHuang_2023-05-07",
   "source": "Geometry3k-2665",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Each pair of polygons is similar. Find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=2*x，AC=12，BC=20，DE=y+4，DF=12，EF=15，∠ABC=∠EFD，∠ACB=∠DEF，∠BAC=∠FDE，△ACB相似于△DEF。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=2*x, AC=12, BC=20, DE=y+4, DF=12, EF=15, ∠ABC=∠EFD, ∠ACB=∠DEF, ∠BAC=∠FDE, △ACB is similar to △DEF.. Find the value of x.",
   "problem_img": "2540.png",
   "construction_cdl": [
     "Shape(AC,CB,BA)",
     "Shape(DE,EF,FD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),2*x)",
+    "Equal(LengthOfLine(AC),12)",
+    "Equal(LengthOfLine(BC),20)",
+    "Equal(LengthOfLine(DE),y+4)",
+    "Equal(LengthOfLine(DF),12)",
+    "Equal(LengthOfLine(EF),15)",
+    "Equal(MeasureOfAngle(ABC),MeasureOfAngle(EFD))",
+    "Equal(MeasureOfAngle(ACB),MeasureOfAngle(DEF))",
+    "Equal(MeasureOfAngle(BAC),MeasureOfAngle(FDE))",
+    "SimilarBetweenTriangle(ACB,DEF)"
+  ],
   "image_cdl": [
     "SimilarBetweenTriangle(ACB,DEF)",
     "Equal(LengthOfLine(DE),y+4)",
@@ -29,7 +40,7 @@
     "similar_triangle_property_line_ratio(1,ACB,DEF)",
     "similar_triangle_property_line_ratio(1,CBA,EFD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "similar_triangle_property_line_ratio(1,ACB,DEF)",
       "similar_triangle_property_line_ratio(1,CBA,EFD)"

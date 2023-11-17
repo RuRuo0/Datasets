@@ -2,9 +2,9 @@
   "problem_id": 3412,
   "annotation": "NaZhu_2023-04-30",
   "source": "GeoQA-958",
-  "problem_level": 1,
-  "problem_text_cn": "如图,BE、CF分别是△ABC的高,M为BC的中点,EF=5,BC=8,则△EFM的周长是()",
-  "problem_text_en": "As shown in the figure, BE and CF are the height of △ABC, M is the midpoint of BC, EF = N_0, BC = N_1, then the perimeter of △EFM is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，BC=8，EF=5，BE是三角形BCA的高，CF是三角形CAB的高，M平分线段BC。求△EFM的周长。",
+  "problem_text_en": "As shown in the diagram, BC=8, EF=5, BE is the altitude of triangle BCA, CF is the altitude of triangle CAB, M bisects segment BC. Find the perimeter of triangle EFM.",
   "problem_img": "3412.png",
   "construction_cdl": [
     "Shape(AF,FE,EA)",
@@ -25,11 +25,11 @@
     "Collinear(MNE)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(BC),8)",
+    "Equal(LengthOfLine(EF),5)",
     "IsAltitudeOfTriangle(BE,BCA)",
     "IsAltitudeOfTriangle(CF,CAB)",
-    "IsMidpointOfLine(M,BC)",
-    "Equal(LengthOfLine(EF),5)",
-    "Equal(LengthOfLine(BC),8)"
+    "IsMidpointOfLine(M,BC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfTriangle(EFM))",
@@ -43,7 +43,14 @@
     "right_triangle_property_length_of_median(1,CFB,M)",
     "triangle_perimeter_formula(1,EFM)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "right_triangle_judgment_angle(1,CFB)",
+      "right_triangle_judgment_angle(1,CEB)",
+      "median_of_triangle_judgment(1,EM,EBC)",
+      "median_of_triangle_judgment(1,FM,FBC)",
+      "triangle_perimeter_formula(1,EFM)"
+    ],
     "right_triangle_judgment_angle(1,CFB)": [
       "right_triangle_property_length_of_median(1,CFB,M)"
     ],
@@ -55,13 +62,6 @@
     ],
     "median_of_triangle_judgment(1,FM,FBC)": [
       "right_triangle_property_length_of_median(1,CFB,M)"
-    ],
-    "START": [
-      "right_triangle_judgment_angle(1,CFB)",
-      "right_triangle_judgment_angle(1,CEB)",
-      "median_of_triangle_judgment(1,EM,EBC)",
-      "median_of_triangle_judgment(1,FM,FBC)",
-      "triangle_perimeter_formula(1,EFM)"
     ]
   }
 }

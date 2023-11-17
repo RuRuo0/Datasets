@@ -2,9 +2,9 @@
   "problem_id": 6327,
   "annotation": "ChengQin_2023-06-04",
   "source": "GeoQA-9131",
-  "problem_level": 1,
-  "problem_text_cn": "如图,菱形ABCD的周长为24cm,对角线AC、BD相交于O点,E是AD的中点,连接OE,则线段OE的长等于()",
-  "problem_text_en": "As shown in the figure, the perimeter of the diamond ABCD is N_0, the diagonal AC and BD intersect at point O, and E is the midpoint of AD, connecting OE, then the length of the line segment OE is equal to ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，ABCD的周长为24，E是线段AD的中点，ABCD是菱形。求直线OE的长度。",
+  "problem_text_en": "As shown in the diagram, the perimeter of quadrilateral ABCD is 24, E bisects segment AD, ABCD is a rhombus. Find the length of line OE.",
   "problem_img": "6327.png",
   "construction_cdl": [
     "Shape(AB,BO,OA)",
@@ -17,9 +17,9 @@
     "Collinear(BOD)"
   ],
   "text_cdl": [
-    "Rhombus(ABCD)",
     "Equal(PerimeterOfQuadrilateral(ABCD),24)",
-    "IsMidpointOfLine(E,AD)"
+    "IsMidpointOfLine(E,AD)",
+    "Rhombus(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(OE))",
@@ -30,16 +30,16 @@
     "midsegment_of_triangle_judgment_midpoint(1,EO,DAB)",
     "midsegment_of_triangle_property_length(1,EO,DAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "quadrilateral_perimeter_formula(1,ABCD)",
+      "kite_property_diagonal_perpendicular_bisection(1,ABCD,O)"
+    ],
     "kite_property_diagonal_perpendicular_bisection(1,ABCD,O)": [
       "midsegment_of_triangle_judgment_midpoint(1,EO,DAB)"
     ],
     "midsegment_of_triangle_judgment_midpoint(1,EO,DAB)": [
       "midsegment_of_triangle_property_length(1,EO,DAB)"
-    ],
-    "START": [
-      "quadrilateral_perimeter_formula(1,ABCD)",
-      "kite_property_diagonal_perpendicular_bisection(1,ABCD,O)"
     ]
   }
 }

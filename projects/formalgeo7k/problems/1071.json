@@ -2,15 +2,21 @@
   "problem_id": 1071,
   "annotation": "YiwenHuang_2023-04-23",
   "source": "Geometry3k-1107",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the quadrilateral.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，DB=70，EC=70，∠EDC=60°，四边形CEDB是▱，CE⊥DE。求四边形CEDB的面积。",
+  "problem_text_en": "As shown in the diagram, DB=70, EC=70, ∠EDC=60°, CB and ED are opposite sides of the ▱ CEDB, CE⊥DE. Find the area of CEDB.",
   "problem_img": "1071.png",
   "construction_cdl": [
     "Shape(CE,ED,DC)",
     "Shape(BC,CD,DB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(DB),70)",
+    "Equal(LengthOfLine(EC),70)",
+    "Equal(MeasureOfAngle(EDC),60)",
+    "Parallelogram(CEDB)",
+    "PerpendicularBetweenLine(CE,DE)"
+  ],
   "image_cdl": [
     "Parallelogram(CEDB)",
     "Equal(LengthOfLine(EC),70)",
@@ -25,7 +31,7 @@
     "sine_theorem(1,EDC)",
     "parallelogram_area_formula_sine(1,CEDB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,CED)",
       "sine_theorem(1,EDC)",

@@ -2,9 +2,9 @@
   "problem_id": 6273,
   "annotation": "FangzhenZhu_2023-06-04",
   "source": "GeoQA-8932",
-  "problem_level": 1,
-  "problem_text_cn": "如图,MN切⊙O于点A,∠AOB=60°,那么∠BAM等于()",
-  "problem_text_en": "As shown in the figure, MN is tangent to ⊙O at point A, ∠AOB = N_0, then ∠BAM is equal to ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠AOB=60°，O是圆O的圆心，MA是⊙O的切线。求∠MAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AOB=60°, the center of circle O is O, the tangent to ⊙O is MA. Find the measure of ∠MAB.",
   "problem_img": "6273.png",
   "construction_cdl": [
     "Shape(OB,BA,AO)",
@@ -16,8 +16,8 @@
     "Cocircular(O,BA)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfAngle(AOB),60)",
+    "IsCentreOfCircle(O,O)",
     "IsTangentOfCircle(MA,O)"
   ],
   "image_cdl": [],
@@ -32,7 +32,14 @@
     "triangle_property_angle_sum(1,OBA)",
     "angle_addition(1,MAB,BAO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(2,MA,O,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "triangle_property_angle_sum(1,OBA)",
+      "angle_addition(1,MAB,BAO)"
+    ],
     "radius_of_circle_property_length_equal(1,OB,O)": [
       "isosceles_triangle_judgment_line_equal(1,OBA)"
     ],
@@ -41,13 +48,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OBA)": [
       "isosceles_triangle_property_angle_equal(1,OBA)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(2,MA,O,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "triangle_property_angle_sum(1,OBA)",
-      "angle_addition(1,MAB,BAO)"
     ]
   }
 }

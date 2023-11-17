@@ -2,14 +2,18 @@
   "problem_id": 2064,
   "annotation": "YimingHe_2023-03-26",
   "source": "Geometry3k-2151",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the triangle. Round to the nearest hundredth.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AD=5，∠ACD=59°，CD⊥AD。求△ACD的周长。",
+  "problem_text_en": "As shown in the diagram, AD=5, ∠ACD=59°, CD⊥AD. Find the perimeter of △ACD.",
   "problem_img": "2064.png",
   "construction_cdl": [
     "Shape(AC,CD,DA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AD),5)",
+    "Equal(MeasureOfAngle(ACD),59)",
+    "PerpendicularBetweenLine(CD,AD)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AD),5)",
     "Equal(MeasureOfAngle(ACD),59)",
@@ -23,14 +27,14 @@
     "right_triangle_property_pythagorean(1,CDA)",
     "triangle_perimeter_formula(1,ACD)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,CDA)": [
-      "right_triangle_property_pythagorean(1,CDA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "sine_theorem(1,ACD)",
       "right_triangle_judgment_angle(1,CDA)",
       "triangle_perimeter_formula(1,ACD)"
+    ],
+    "right_triangle_judgment_angle(1,CDA)": [
+      "right_triangle_property_pythagorean(1,CDA)"
     ]
   }
 }

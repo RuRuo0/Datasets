@@ -2,9 +2,9 @@
   "problem_id": 2946,
   "annotation": "JiaZou_2023-04-16",
   "source": "GeoQA-133",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,C、D是⊙O上两点,CD⊥AB,若∠DAB=65°,则∠AOC等于()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, C and D are two points on ⊙O, CD ⊥ AB, if ∠DAB = N_0, then ∠AOC is equal to () ",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠DAB=65°，⊙O的圆心为O，DE垂直于OE。求∠COA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DAB=65°, O is the center of circle O, DE is perpendicular to OE. Find the measure of ∠COA.",
   "problem_img": "2946.png",
   "construction_cdl": [
     "Shape(AD,ODA)",
@@ -18,8 +18,9 @@
     "Cocircular(O,ACBD)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(DE,OE)",
-    "Equal(MeasureOfAngle(DAB),65)"
+    "Equal(MeasureOfAngle(DAB),65)",
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(DE,OE)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)"
@@ -32,7 +33,7 @@
     "arc_property_circumference_angle_external(1,OAC,D)",
     "arc_property_center_angle(1,OAC,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,AED,DEO)",
       "triangle_property_angle_sum(1,DAE)",

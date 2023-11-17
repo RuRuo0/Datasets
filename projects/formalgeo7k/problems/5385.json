@@ -2,9 +2,9 @@
   "problem_id": 5385,
   "annotation": "QikeHuang_2023-05-21",
   "source": "GeoQA-5670",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示的图案是一个轴对称图形,直线l是它的一条对称轴,如果最大圆的半径为2,那么阴影部分面积是()",
-  "problem_text_en": "The pattern shown in the figure is an axially symmetrical figure, and the straight line l is its axis of symmetry. If the radius of the largest circle is N_0, then the area of ​​the shaded part is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，⊙O的半径为2，O是⊙O的圆心，⊙O的圆心为X，Y是圆O的圆心，AO⊥NO，FO垂直于GO，GO⊥AO，NO⊥FO。求扇形OAG的面积与扇形OFN的面积之和。",
+  "problem_text_en": "As shown in the diagram, the radius of ⊙O is 2, O is the center of circle O, the center of circle O is X, Y is the center of ⊙O, AO⊥NO, FO⊥GO, GO is perpendicular to AO, NO is perpendicular to FO. Find the sum of the area of the sector OAG and the area of the sector OFN.",
   "problem_img": "5385.png",
   "construction_cdl": [
     "Shape(OAG,GH,XBH,BA)",
@@ -28,14 +28,14 @@
     "Cocircular(Y,CPDQ)"
   ],
   "text_cdl": [
+    "Equal(RadiusOfCircle(O),2)",
+    "IsCentreOfCircle(O,O)",
     "IsCentreOfCircle(X,O)",
     "IsCentreOfCircle(Y,O)",
-    "IsCentreOfCircle(O,O)",
-    "Equal(RadiusOfCircle(O),2)",
-    "PerpendicularBetweenLine(GO,AO)",
     "PerpendicularBetweenLine(AO,NO)",
-    "PerpendicularBetweenLine(NO,FO)",
-    "PerpendicularBetweenLine(FO,GO)"
+    "PerpendicularBetweenLine(FO,GO)",
+    "PerpendicularBetweenLine(GO,AO)",
+    "PerpendicularBetweenLine(NO,FO)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Add(AreaOfSector(OAG),AreaOfSector(OFN)))",
@@ -46,7 +46,7 @@
     "sector_area_formula(1,OAG)",
     "sector_area_formula(1,OFN)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,OAG,O)",
       "arc_property_center_angle(1,OFN,O)",

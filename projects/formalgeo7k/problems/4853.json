@@ -2,9 +2,9 @@
   "problem_id": 4853,
   "annotation": "RunanWang_2023-05-21",
   "source": "GeoQA-4342",
-  "problem_level": 1,
-  "problem_text_cn": "如图,PA,PB分别与⊙O相切于A,B两点,点C是劣弧AB上一动点(不与A,B重合),∠P=70°,则∠C=()",
-  "problem_text_en": "As shown in the figure, PA and PB are tangent to ⊙O at two points A and B respectively. Point C is a moving point on minor arc AB (not coincident with A and B), ∠P = N_0, then ∠C = ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠BPA=70°，O是⊙O的圆心，圆O的切线为PA，⊙O的切线为PB。求∠BCA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BPA=70°, the center of ⊙O is O, PA is the tangent to ⊙O, the tangent to ⊙O is PB. Find the measure of ∠BCA.",
   "problem_img": "4853.png",
   "construction_cdl": [
     "Shape(PA,OCA,OBC,BP)",
@@ -17,7 +17,10 @@
     "Cocircular(O,ADBC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)"
+    "Equal(MeasureOfAngle(BPA),70)",
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(PA,O)",
+    "IsTangentOfCircle(PB,O)"
   ],
   "image_cdl": [
     "IsTangentOfCircle(PA,O)",
@@ -33,7 +36,7 @@
     "arc_property_center_angle(1,OBA,O)",
     "arc_property_circumference_angle_internal(1,OBA,C)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(2,PA,O,O)",
       "tangent_of_circle_property_perpendicular(1,PB,O,O)",

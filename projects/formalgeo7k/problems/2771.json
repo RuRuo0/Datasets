@@ -2,9 +2,9 @@
   "problem_id": 2771,
   "annotation": "ZheZhu_2023-04-09",
   "source": "Geometry3k-2918",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x so that G J \\parallel F K. G H = x + 3.5, H J = x - 8.5, F H = 21, H K = 7.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，HF=21，HG=x+3，JH=x-8，KH=7，GJ∥FK。求x的值。",
+  "problem_text_en": "As shown in the diagram, HF=21, HG=x+3, JH=x-8, KH=7, GJ is parallel to FK. Find the value of x.",
   "problem_img": "2771.png",
   "construction_cdl": [
     "Shape(HG,GJ,JH)",
@@ -13,11 +13,11 @@
     "Collinear(KJH)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(GJ,FK)",
     "Equal(LengthOfLine(HF),21)",
-    "Equal(LengthOfLine(KH),7)",
     "Equal(LengthOfLine(HG),x+3)",
-    "Equal(LengthOfLine(JH),x-8)"
+    "Equal(LengthOfLine(JH),x-8)",
+    "Equal(LengthOfLine(KH),7)",
+    "ParallelBetweenLine(GJ,FK)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(x)",
@@ -29,7 +29,11 @@
     "similar_triangle_property_line_ratio(1,JHG,KHF)",
     "similar_triangle_property_line_ratio(1,GJH,FKH)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,GJ,FK,H)",
+      "parallel_property_corresponding_angle(2,KF,JG,H)"
+    ],
     "parallel_property_corresponding_angle(1,GJ,FK,H)": [
       "similar_triangle_judgment_aa(1,HGJ,HFK)"
     ],
@@ -39,10 +43,6 @@
     "similar_triangle_judgment_aa(1,HGJ,HFK)": [
       "similar_triangle_property_line_ratio(1,GJH,FKH)",
       "similar_triangle_property_line_ratio(1,JHG,KHF)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,GJ,FK,H)",
-      "parallel_property_corresponding_angle(2,KF,JG,H)"
     ]
   }
 }

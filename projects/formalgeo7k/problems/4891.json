@@ -2,9 +2,9 @@
   "problem_id": 4891,
   "annotation": "YifanWang_2023-05-21",
   "source": "GeoQA-4427",
-  "problem_level": 1,
-  "problem_text_cn": "如图,圆O与正方形ABCD的两边AB、AD相切,且DE与圆O相切于E点．若圆O的半径为5,且AB=11,则DE的长度为何？()",
-  "problem_text_en": "As shown in the figure, the circle O is tangent to the two edges AB and AD of the square ABCD, and DE and the circle O are tangent to the point E. If the radius of circle O is N_0 and AB = N_1, what is the length of DE? ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，AB=11，圆O的半径为5，圆O的圆心为O，AM是⊙O的切线，AN是⊙O的切线，BN是圆O的切线，圆O的切线为DE，⊙O的切线为DM，ABCD是正方形。求直线DE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=11, the radius of circle O is 5, O is the center of ⊙O, AM is the tangent to ⊙O, the tangent to circle O is AN, BN is the tangent to circle O, the tangent to ⊙O is DE, DM is the tangent to ⊙O, quadrilateral ABCD is a square. Find the length of line DE.",
   "problem_img": "4891.png",
   "construction_cdl": [
     "Shape(MA,AN,OMN)",
@@ -17,15 +17,15 @@
     "Cocircular(O,EMN)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AB),11)",
+    "Equal(RadiusOfCircle(O),5)",
     "IsCentreOfCircle(O,O)",
     "IsTangentOfCircle(AM,O)",
     "IsTangentOfCircle(AN,O)",
-    "IsTangentOfCircle(DM,O)",
-    "IsTangentOfCircle(DE,O)",
     "IsTangentOfCircle(BN,O)",
-    "Square(ABCD)",
-    "Equal(LengthOfLine(AB),11)",
-    "Equal(RadiusOfCircle(O),5)"
+    "IsTangentOfCircle(DE,O)",
+    "IsTangentOfCircle(DM,O)",
+    "Square(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(DE))",
@@ -43,7 +43,17 @@
     "rhombus_judgment_parallelogram_and_kite(1,ANOM)",
     "line_addition(1,DM,MA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(1,AM,O,O)",
+      "tangent_of_circle_property_perpendicular(2,AN,O,O)",
+      "radius_of_circle_property_length_equal(1,OM,O)",
+      "radius_of_circle_property_length_equal(1,ON,O)",
+      "tangent_of_circle_property_length_equal(1,AM,AN,O)",
+      "tangent_of_circle_property_length_equal(1,DM,DE,O)",
+      "quadrilateral_property_angle_sum(1,ANOM)",
+      "line_addition(1,DM,MA)"
+    ],
     "tangent_of_circle_property_perpendicular(1,AM,O,O)": [
       "parallelogram_judgment_angle_and_angle(1,ANOM)",
       "parallelogram_judgment_angle_and_angle(1,ANOM)"
@@ -69,16 +79,6 @@
     ],
     "kite_judgment_equal_and_equal(1,ANOM)": [
       "rhombus_judgment_parallelogram_and_kite(1,ANOM)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(1,AM,O,O)",
-      "tangent_of_circle_property_perpendicular(2,AN,O,O)",
-      "radius_of_circle_property_length_equal(1,OM,O)",
-      "radius_of_circle_property_length_equal(1,ON,O)",
-      "tangent_of_circle_property_length_equal(1,AM,AN,O)",
-      "tangent_of_circle_property_length_equal(1,DM,DE,O)",
-      "quadrilateral_property_angle_sum(1,ANOM)",
-      "line_addition(1,DM,MA)"
     ]
   }
 }

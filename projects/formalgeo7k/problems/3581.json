@@ -2,9 +2,9 @@
   "problem_id": 3581,
   "annotation": "QikeHuang_2023-04-30",
   "source": "GeoQA-1225",
-  "problem_level": 1,
-  "problem_text_cn": "如图a∥b,∠1与∠2互余,∠3=115°,则∠4等于()",
-  "problem_text_en": "As shown in figure a ∥ b, ∠1 and ∠2 are mutually complementary, ∠3 = N_0, then ∠4 is equal to ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，Add(MeasureOfAngle(GCB)=MeasureOfAngle(FBA))，∠HGQ=115°，AD∥EH。求∠EFB的大小。",
+  "problem_text_en": "As shown in the diagram, Add(MeasureOfAngle(GCB)=MeasureOfAngle(FBA)), ∠HGQ=115°, AD∥EH. Find the measure of ∠EFB.",
   "problem_img": "3581.png",
   "construction_cdl": [
     "Shape(BF,FG,GC,CB)",
@@ -26,9 +26,9 @@
     "Collinear(RCGQ)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AD,EH)",
     "Equal(Add(MeasureOfAngle(GCB),MeasureOfAngle(FBA)),90)",
-    "Equal(MeasureOfAngle(HGQ),115)"
+    "Equal(MeasureOfAngle(HGQ),115)",
+    "ParallelBetweenLine(AD,EH)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(EFB))",
@@ -42,7 +42,12 @@
     "parallel_property_ipsilateral_internal_angle(1,FE,BA)",
     "parallel_property_ipsilateral_internal_angle(1,GE,CA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,AD,EH,B)",
+      "parallel_property_collinear_extend(3,AD,EH,C)",
+      "vertical_angle(1,HGQ,FGC)"
+    ],
     "parallel_property_collinear_extend(3,AD,EH,B)": [
       "parallel_property_collinear_extend(3,HE,BA,F)"
     ],
@@ -54,11 +59,6 @@
     ],
     "parallel_property_collinear_extend(3,HE,CA,G)": [
       "parallel_property_ipsilateral_internal_angle(1,GE,CA)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,AD,EH,B)",
-      "parallel_property_collinear_extend(3,AD,EH,C)",
-      "vertical_angle(1,HGQ,FGC)"
     ]
   }
 }

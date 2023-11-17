@@ -2,9 +2,9 @@
   "problem_id": 420,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-428",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Given figure A B C D, with A B \\parallel D C, m \\angle B = 60, m \\angle D = 45, B C = 8 and A B = 24, find the perimeter.",
+  "problem_level": 18,
+  "problem_text_cn": "如图所示，AB=24，BC=8，∠ADC=45°，∠CBA=60°，AB∥DC，BF⊥CF，DE⊥AE。求四边形ADCB的周长。",
+  "problem_text_en": "As shown in the diagram, AB=24, BC=8, ∠ADC=45°, ∠CBA=60°, AB is parallel to DC, BF⊥CF, DE is perpendicular to AE. Find the perimeter of quadrilateral ADCB.",
   "problem_img": "420.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -13,7 +13,15 @@
     "Collinear(AFB)",
     "Collinear(DEC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),24)",
+    "Equal(LengthOfLine(BC),8)",
+    "Equal(MeasureOfAngle(ADC),45)",
+    "Equal(MeasureOfAngle(CBA),60)",
+    "ParallelBetweenLine(AB,DC)",
+    "PerpendicularBetweenLine(BF,CF)",
+    "PerpendicularBetweenLine(DE,AE)"
+  ],
   "image_cdl": [
     "ParallelBetweenLine(AB,DC)",
     "Equal(LengthOfLine(BC),8)",
@@ -45,7 +53,21 @@
     "line_addition(1,DE,EC)",
     "quadrilateral_perimeter_formula(1,ADCB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,BFC,CFA)",
+      "adjacent_complementary_angle(1,DEA,AEC)",
+      "parallel_property_collinear_extend(3,AB,DC,F)",
+      "triangle_property_angle_sum(1,ADE)",
+      "triangle_property_angle_sum(1,BFC)",
+      "sine_theorem(1,CBF)",
+      "sine_theorem(1,BFC)",
+      "sine_theorem(1,ADE)",
+      "sine_theorem(1,EAD)",
+      "line_addition(1,AF,FB)",
+      "line_addition(1,DE,EC)",
+      "quadrilateral_perimeter_formula(1,ADCB)"
+    ],
     "adjacent_complementary_angle(1,BFC,CFA)": [
       "parallel_judgment_ipsilateral_internal_angle(1,EA,CF)"
     ],
@@ -68,20 +90,6 @@
     "parallelogram_judgment_parallel_and_parallel(1,AECF)": [
       "parallelogram_property_opposite_line_equal(1,AECF)",
       "parallelogram_property_opposite_line_equal(1,ECFA)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,BFC,CFA)",
-      "adjacent_complementary_angle(1,DEA,AEC)",
-      "parallel_property_collinear_extend(3,AB,DC,F)",
-      "triangle_property_angle_sum(1,ADE)",
-      "triangle_property_angle_sum(1,BFC)",
-      "sine_theorem(1,CBF)",
-      "sine_theorem(1,BFC)",
-      "sine_theorem(1,ADE)",
-      "sine_theorem(1,EAD)",
-      "line_addition(1,AF,FB)",
-      "line_addition(1,DE,EC)",
-      "quadrilateral_perimeter_formula(1,ADCB)"
     ]
   }
 }

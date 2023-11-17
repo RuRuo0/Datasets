@@ -2,9 +2,9 @@
   "problem_id": 3032,
   "annotation": "XiaokaiZhang_2023-04-16",
   "source": "GeoQA-243",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB∥CD,点E在线段BC上,若∠1=40°,∠2=30°,则∠3的度数是()",
-  "problem_text_en": "As shown in the figure, AB ∥ CD, point E is on the line segment BC, if ∠1 = N_0, ∠2 = N_1, then the degree of ∠3 is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠CDE=30°，∠EBA=40°，AB∥CD。求∠BED的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CDE=30°, ∠EBA=40°, AB∥CD. Find the measure of ∠BED.",
   "problem_img": "3032.png",
   "construction_cdl": [
     "Shape(EB,BA)",
@@ -13,9 +13,9 @@
     "Collinear(BEC)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AB,CD)",
+    "Equal(MeasureOfAngle(CDE),30)",
     "Equal(MeasureOfAngle(EBA),40)",
-    "Equal(MeasureOfAngle(CDE),30)"
+    "ParallelBetweenLine(AB,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BED))",
@@ -25,7 +25,7 @@
     "triangle_property_angle_sum(1,ECD)",
     "adjacent_complementary_angle(1,BED,DEC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_alternate_interior_angle(2,AB,CD)",
       "triangle_property_angle_sum(1,ECD)",

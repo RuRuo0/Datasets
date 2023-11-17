@@ -2,9 +2,9 @@
   "problem_id": 5350,
   "annotation": "QikeHuang_2023-05-21",
   "source": "GeoQA-5596",
-  "problem_level": 1,
-  "problem_text_cn": "如图,四边形ABCD是⊙O的外切四边形,且AB=10,CD=12,则四边形ABCD的周长为()",
-  "problem_text_en": "As shown in the figure, the quadrilateral ABCD is the circumscribed quadrilateral of ⊙O, and AB = N_0, CD = N_1, then the perimeter of the quadrilateral ABCD is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AB=10，CD=12，圆O的圆心为O，AE是⊙O的切线，⊙O的切线为AF，BF是⊙O的切线，BG是⊙O的切线，圆O的切线为CG，⊙O的切线为CH，DE是⊙O的切线，DH是⊙O的切线。求四边形ABCD的周长。",
+  "problem_text_en": "As shown in the diagram, AB=10, CD=12, O is the center of ⊙O, the tangent to ⊙O is AE, AF is the tangent to circle O, BF is the tangent to ⊙O, the tangent to ⊙O is BG, CG is the tangent to ⊙O, the tangent to ⊙O is CH, the tangent to circle O is DE, the tangent to circle O is DH. Find the perimeter of ABCD.",
   "problem_img": "5350.png",
   "construction_cdl": [
     "Shape(EA,AF,OEF)",
@@ -20,17 +20,17 @@
     "Cocircular(O,EFGH)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(AB),10)",
     "Equal(LengthOfLine(CD),12)",
+    "IsCentreOfCircle(O,O)",
     "IsTangentOfCircle(AE,O)",
-    "IsTangentOfCircle(DE,O)",
-    "IsTangentOfCircle(DH,O)",
-    "IsTangentOfCircle(CH,O)",
-    "IsTangentOfCircle(CG,O)",
-    "IsTangentOfCircle(BG,O)",
+    "IsTangentOfCircle(AF,O)",
     "IsTangentOfCircle(BF,O)",
-    "IsTangentOfCircle(AF,O)"
+    "IsTangentOfCircle(BG,O)",
+    "IsTangentOfCircle(CG,O)",
+    "IsTangentOfCircle(CH,O)",
+    "IsTangentOfCircle(DE,O)",
+    "IsTangentOfCircle(DH,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfQuadrilateral(ABCD))",
@@ -46,7 +46,7 @@
     "line_addition(1,CH,HD)",
     "quadrilateral_perimeter_formula(1,ABCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_length_equal(1,AE,AF,O)",
       "tangent_of_circle_property_length_equal(1,DE,DH,O)",

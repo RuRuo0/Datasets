@@ -2,9 +2,9 @@
   "problem_id": 2571,
   "annotation": "ChenyangMao_2023-04-23",
   "source": "Geometry3k-2699",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot X, A B = 30, C D = 30, and m \\widehat C Z = 40. Find N D.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=30，CD=30，⌒XCZ的角度为40，X是⊙X的圆心，AM⊥YM，DN垂直于ZN。求直线ND的长度。",
+  "problem_text_en": "As shown in the diagram, AB=30, CD=30, the measure of arc XCZ is 40, X is the center of circle X, AM is perpendicular to YM, DN is perpendicular to ZN. Find the length of line ND.",
   "problem_img": "2571.png",
   "construction_cdl": [
     "Shape(XYA,AM,MY)",
@@ -21,7 +21,14 @@
     "Collinear(CND)",
     "Cocircular(X,ACZDBY)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),30)",
+    "Equal(LengthOfLine(CD),30)",
+    "Equal(MeasureOfArc(XCZ),40)",
+    "IsCentreOfCircle(X,X)",
+    "PerpendicularBetweenLine(AM,YM)",
+    "PerpendicularBetweenLine(DN,ZN)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(X,X)",
     "Equal(LengthOfLine(AB),30)",
@@ -41,7 +48,14 @@
     "mirror_congruent_triangle_property_line_equal(1,XCN,XND)",
     "line_addition(1,CN,ND)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,XD,X)",
+      "radius_of_circle_property_length_equal(1,XC,X)",
+      "vertical_angle(1,CNX,DNZ)",
+      "adjacent_complementary_angle(1,XND,DNZ)",
+      "line_addition(1,CN,ND)"
+    ],
     "radius_of_circle_property_length_equal(1,XD,X)": [
       "mirror_congruent_triangle_judgment_hl(1,CNX,DXN)"
     ],
@@ -56,13 +70,6 @@
     ],
     "mirror_congruent_triangle_judgment_hl(1,CNX,DXN)": [
       "mirror_congruent_triangle_property_line_equal(1,XCN,XND)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,XD,X)",
-      "radius_of_circle_property_length_equal(1,XC,X)",
-      "vertical_angle(1,CNX,DNZ)",
-      "adjacent_complementary_angle(1,XND,DNZ)",
-      "line_addition(1,CN,ND)"
     ]
   }
 }

@@ -3,8 +3,8 @@
   "annotation": "RunanWang_2023-05-07",
   "source": "Geometry3k-2952",
   "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "For trapezoid Q R S T, A and B are midpoints of the legs. Find m \\angle S.",
+  "problem_text_cn": "如图所示，QR=20，TS=12，∠QRS=45°，∠STQ=120°，A是线段TQ的中点，B平分线段SR，四边形TQRS是梯形。求∠RST的大小。",
+  "problem_text_en": "As shown in the diagram, QR=20, TS=12, ∠QRS=45°, ∠STQ=120°, A is the midpoint of segment TQ, B bisects segment SR, TQRS is a trapezoid. Find the measure of ∠RST.",
   "problem_img": "2803.png",
   "construction_cdl": [
     "Shape(AQ,QR,RB,BA)",
@@ -12,7 +12,15 @@
     "Collinear(TAQ)",
     "Collinear(SBR)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(QR),20)",
+    "Equal(LengthOfLine(TS),12)",
+    "Equal(MeasureOfAngle(QRS),45)",
+    "Equal(MeasureOfAngle(STQ),120)",
+    "IsMidpointOfLine(A,TQ)",
+    "IsMidpointOfLine(B,SR))",
+    "Trapezoid(TQRS)"
+  ],
   "image_cdl": [
     "Trapezoid(TQRS)",
     "IsMidpointOfLine(A,TQ)",
@@ -27,7 +35,7 @@
   "theorem_seqs": [
     "parallel_property_ipsilateral_internal_angle(1,RQ,ST)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_ipsilateral_internal_angle(1,RQ,ST)"
     ]

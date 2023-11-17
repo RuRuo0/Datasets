@@ -2,9 +2,9 @@
   "problem_id": 5426,
   "annotation": "XiaoxiaoJin_2023-05-21",
   "source": "GeoQA-5743",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在▱ABCD中,点E、F分别在CD、BC的延长线上,AE∥BD,EF⊥BF,∠ABC=60°,EF=3,则AB的长是()",
-  "problem_text_en": "As shown in the figure, in ▱ABCD, points E and F are on the extended lines of CD and BC respectively, AE ∥ BD, EF ⊥ BF, ∠ABC = N_0, EF = N_1, then the length of AB is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，EF=3，∠ABC=60°，AE平行于BD，AD和BC是平行四边形ABCD的一组对边，CF垂直于EF。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, EF=3, ∠ABC=60°, AE is parallel to BD, BA and CD are opposite sides of the ▱ ABCD, CF⊥EF. Find the length of line AB.",
   "problem_img": "5426.png",
   "construction_cdl": [
     "Shape(AB,BD,DA)",
@@ -18,8 +18,8 @@
     "Equal(LengthOfLine(EF),3)",
     "Equal(MeasureOfAngle(ABC),60)",
     "ParallelBetweenLine(AE,BD)",
-    "PerpendicularBetweenLine(CF,EF)",
-    "Parallelogram(ABCD)"
+    "Parallelogram(ABCD)",
+    "PerpendicularBetweenLine(CF,EF)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -33,19 +33,19 @@
     "parallel_property_corresponding_angle(2,BA,CD,F)",
     "sine_theorem(1,ECF)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(1,DC,AB,E)": [
-      "parallelogram_judgment_parallel_and_parallel(1,ABDE)"
-    ],
-    "parallelogram_judgment_parallel_and_parallel(1,ABDE)": [
-      "parallelogram_property_opposite_line_equal(1,ABDE)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,CD,DE)",
       "parallel_property_collinear_extend(1,DC,AB,E)",
       "parallelogram_property_opposite_line_equal(1,ABCD)",
       "parallel_property_corresponding_angle(2,BA,CD,F)",
       "sine_theorem(1,ECF)"
+    ],
+    "parallel_property_collinear_extend(1,DC,AB,E)": [
+      "parallelogram_judgment_parallel_and_parallel(1,ABDE)"
+    ],
+    "parallelogram_judgment_parallel_and_parallel(1,ABDE)": [
+      "parallelogram_property_opposite_line_equal(1,ABDE)"
     ]
   }
 }

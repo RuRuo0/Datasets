@@ -2,9 +2,9 @@
   "problem_id": 3810,
   "annotation": "YifanWang_2023-05-07",
   "source": "GeoQA-1665",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在⊙O中,弦BC∥半径OA,AC与OB相交于M,∠C=20°,则∠AMB的度数为()",
-  "problem_text_en": "As shown in the figure, in ⊙O, chord BC ∥ radius OA, AC and OB intersect at M, ∠C = N_0, then the degree of ∠AMB is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠BCM=20°，O是圆O的圆心，AO∥BC。求∠BMA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BCM=20°, the center of ⊙O is O, AO is parallel to BC. Find the measure of ∠BMA.",
   "problem_img": "3810.png",
   "construction_cdl": [
     "Shape(AO,OM,MC,OCA)",
@@ -16,7 +16,11 @@
     "Collinear(BMO)",
     "Cocircular(O,ABC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(BCM),20)",
+    "IsCentreOfCircle(O,O)",
+    "ParallelBetweenLine(AO,BC)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "ParallelBetweenLine(AO,BC)",
@@ -31,7 +35,7 @@
     "triangle_property_angle_sum(1,MBC)",
     "adjacent_complementary_angle(1,CMB,BMA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_circumference_angle_external(1,OAB,C)",
       "arc_property_center_angle(1,OAB,O)",

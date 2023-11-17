@@ -2,9 +2,9 @@
   "problem_id": 4912,
   "annotation": "YifanWang_2023-05-21",
   "source": "GeoQA-4461",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,AC、BC是⊙O的弦,PC是⊙O的切线,切点为C,∠ACP=55°,那么∠BAC等于()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, AC and BC are the chords of ⊙O, PC is the tangent of ⊙O, and the tangent point is C, ∠ACP = N_0, then ∠BAC is equal to ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠PCA=55°，⊙O的圆心为O，PC是圆O的切线。求∠BAC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠PCA=55°, O is the center of ⊙O, PC is the tangent to ⊙O. Find the measure of ∠BAC.",
   "problem_img": "4912.png",
   "construction_cdl": [
     "Shape(AO,OB,OBA)",
@@ -17,9 +17,9 @@
     "Cocircular(O,ADCB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(PCA),55)",
     "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(PC,O)",
-    "Equal(MeasureOfAngle(PCA),55)"
+    "IsTangentOfCircle(PC,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BAC))",
@@ -32,7 +32,13 @@
     "isosceles_triangle_judgment_line_equal(1,OAC)",
     "isosceles_triangle_property_angle_equal(1,OAC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(2,PC,O,O)",
+      "angle_addition(1,PCA,ACO)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OAC)"
     ],
@@ -41,12 +47,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OAC)": [
       "isosceles_triangle_property_angle_equal(1,OAC)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(2,PC,O,O)",
-      "angle_addition(1,PCA,ACO)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)"
     ]
   }
 }

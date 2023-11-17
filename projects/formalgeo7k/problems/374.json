@@ -2,9 +2,9 @@
   "problem_id": 374,
   "annotation": "NaZhu_2023-03-12",
   "source": "Geometry3k-381",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，BA=5，CB=8，CD=12，NE=5，BA垂直于DA，NE垂直于BE。求△NCB的面积与△BCD的面积之和。",
+  "problem_text_en": "As shown in the diagram, BA=5, CB=8, CD=12, NE=5, BA is perpendicular to DA, NE⊥BE. Find the sum of the area of △NCB and the area of triangle BCD.",
   "problem_img": "374.png",
   "construction_cdl": [
     "Shape(NE,EB,BN)",
@@ -14,7 +14,14 @@
     "Collinear(CEB)",
     "Collinear(CAD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BA),5)",
+    "Equal(LengthOfLine(CB),8)",
+    "Equal(LengthOfLine(CD),12)",
+    "Equal(LengthOfLine(NE),5)",
+    "PerpendicularBetweenLine(BA,DA)",
+    "PerpendicularBetweenLine(NE,BE)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(NE),5)",
     "Equal(LengthOfLine(CB),8)",
@@ -33,18 +40,18 @@
     "triangle_area_formula_common(1,NCB)",
     "triangle_area_formula_common(1,BCD)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,CEN,NEB)": [
-      "altitude_of_triangle_judgment(1,NE,NCB)"
-    ],
-    "adjacent_complementary_angle(1,CAB,BAD)": [
-      "altitude_of_triangle_judgment(1,BA,BCD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,CEN,NEB)",
       "adjacent_complementary_angle(1,CAB,BAD)",
       "triangle_area_formula_common(1,NCB)",
       "triangle_area_formula_common(1,BCD)"
+    ],
+    "adjacent_complementary_angle(1,CEN,NEB)": [
+      "altitude_of_triangle_judgment(1,NE,NCB)"
+    ],
+    "adjacent_complementary_angle(1,CAB,BAD)": [
+      "altitude_of_triangle_judgment(1,BA,BCD)"
     ]
   }
 }

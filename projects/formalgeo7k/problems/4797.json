@@ -2,9 +2,9 @@
   "problem_id": 4797,
   "annotation": "ChenyangMao_2023-05-14",
   "source": "GeoQA-4202",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AD是⊙O的切线,A为切点．点C在⊙O上,连接BC并延长交AD于点D,若∠AOC=70°,则∠ADB=()",
-  "problem_text_en": "As shown in the figure, AD is the tangent of O, and A is the tangent point. Point C is on ⊙O, connect BC and extend AD to point D, if ∠AOC = N_0, then ∠ADB = ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠COA=70°，O是圆O的圆心，AB是圆O的直径，DA是⊙O的切线。求∠ADB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠COA=70°, O is the center of circle O, the diameter of ⊙O is AB, the tangent to ⊙O is DA. Find the measure of ∠ADB.",
   "problem_img": "4797.png",
   "construction_cdl": [
     "Shape(OAC,CO,OA)",
@@ -17,10 +17,10 @@
     "Cocircular(O,BAC)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(COA),70)",
     "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(DA,O)",
     "IsDiameterOfCircle(AB,O)",
-    "Equal(MeasureOfAngle(COA),70)"
+    "IsTangentOfCircle(DA,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ADB))",
@@ -31,7 +31,7 @@
     "arc_property_center_angle(1,OAC,O)",
     "triangle_property_angle_sum(1,BAD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(1,DA,O,O)",
       "arc_property_circumference_angle_external(1,OAC,B)",

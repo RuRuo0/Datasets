@@ -2,9 +2,9 @@
   "problem_id": 5116,
   "annotation": "YimingHe_2023-05-21",
   "source": "GeoQA-4969",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在梯形ABCD中,AD∥BC,E、F分别是对角线BD、AC的中点,若AD=6cm,BC=18cm,则EF的长为()",
-  "problem_text_en": "As shown in the figure, in the trapezoid ABCD, AD ∥ BC, E, F are the midpoints of the diagonals BD and AC, respectively. If AD = N_0, BC = N_1, then the length of EF is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AD=6，BC=18，E平分线段BD，F是线段AC的中点，AD平行于BC。求直线EF的长度。",
+  "problem_text_en": "As shown in the diagram, AD=6, BC=18, E is the midpoint of segment BD, F is the midpoint of segment AC, AD∥BC. Find the length of line EF.",
   "problem_img": "5116.png",
   "construction_cdl": [
     "Shape(AO,OD,DA)",
@@ -20,11 +20,11 @@
     "Collinear(BHC)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AD,BC)",
+    "Equal(LengthOfLine(AD),6)",
+    "Equal(LengthOfLine(BC),18)",
     "IsMidpointOfLine(E,BD)",
     "IsMidpointOfLine(F,AC)",
-    "Equal(LengthOfLine(AD),6)",
-    "Equal(LengthOfLine(BC),18)"
+    "ParallelBetweenLine(AD,BC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(EF))",
@@ -40,7 +40,12 @@
     "midsegment_of_triangle_property_length(1,EF,DBH)",
     "line_addition(1,BH,HC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,CB,DA,H)",
+      "parallel_property_alternate_interior_angle(1,AD,BC)",
+      "line_addition(1,BH,HC)"
+    ],
     "parallel_property_collinear_extend(3,CB,DA,H)": [
       "parallel_property_alternate_interior_angle(2,CH,DA)"
     ],
@@ -59,11 +64,6 @@
     ],
     "midsegment_of_triangle_judgment_midpoint(1,EF,DBH)": [
       "midsegment_of_triangle_property_length(1,EF,DBH)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,CB,DA,H)",
-      "parallel_property_alternate_interior_angle(1,AD,BC)",
-      "line_addition(1,BH,HC)"
     ]
   }
 }

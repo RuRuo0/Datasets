@@ -2,16 +2,24 @@
   "problem_id": 2155,
   "annotation": "YiwenHuang_2023-04-23",
   "source": "Geometry3k-2249",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AB=8，BC=10，BD=y，CA=6，CD=x，BD⊥AD，CA⊥BA。求y的值。",
+  "problem_text_en": "As shown in the diagram, AB=8, BC=10, BD=y, CA=6, CD=x, BD⊥AD, CA⊥BA. Find the value of y.",
   "problem_img": "2155.png",
   "construction_cdl": [
     "Shape(AB,BD,DA)",
     "Shape(AD,DC,CA)",
     "Collinear(BDC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),8)",
+    "Equal(LengthOfLine(BC),10)",
+    "Equal(LengthOfLine(BD),y)",
+    "Equal(LengthOfLine(CA),6)",
+    "Equal(LengthOfLine(CD),x)",
+    "PerpendicularBetweenLine(BD,AD)",
+    "PerpendicularBetweenLine(CA,BA)"
+  ],
   "image_cdl": [
     "PerpendicularBetweenLine(BD,AD)",
     "PerpendicularBetweenLine(CA,BA)",
@@ -31,7 +39,12 @@
     "right_triangle_property_pythagorean(1,BDA)",
     "right_triangle_property_pythagorean(1,ADC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,BDA,ADC)",
+      "line_addition(1,BD,DC)",
+      "right_triangle_judgment_angle(1,BDA)"
+    ],
     "adjacent_complementary_angle(1,BDA,ADC)": [
       "right_triangle_judgment_angle(1,ADC)"
     ],
@@ -40,11 +53,6 @@
     ],
     "right_triangle_judgment_angle(1,ADC)": [
       "right_triangle_property_pythagorean(1,ADC)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,BDA,ADC)",
-      "line_addition(1,BD,DC)",
-      "right_triangle_judgment_angle(1,BDA)"
     ]
   }
 }

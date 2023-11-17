@@ -2,9 +2,9 @@
   "problem_id": 2844,
   "annotation": "RunanWang_2023-05-07",
   "source": "Geometry3k-2997",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，JH=FG，∠GBF=70°，∠HBJ=x°，圆B的圆心为B。求x的值。",
+  "problem_text_en": "As shown in the diagram, JH=FG, ∠GBF=70°, ∠HBJ=x°, B is the center of ⊙B. Find the value of x.",
   "problem_img": "2844.png",
   "construction_cdl": [
     "Shape(BFG,GF)",
@@ -15,7 +15,12 @@
     "Shape(BG,BGJ,JB)",
     "Cocircular(B,HFGJ)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(JH),LengthOfLine(FG))",
+    "Equal(MeasureOfAngle(GBF),70)",
+    "Equal(MeasureOfAngle(HBJ),x)",
+    "IsCentreOfCircle(B,B)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(B,B)",
     "Equal(MeasureOfAngle(HBJ),x)",
@@ -30,14 +35,14 @@
     "congruent_arc_judgment_chord_equal(1,BJH,BFG)",
     "congruent_arc_property_measure_equal(1,BJH,BFG)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_chord_equal(1,BJH,BFG)": [
-      "congruent_arc_property_measure_equal(1,BJH,BFG)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,BJH,B)",
       "arc_property_center_angle(1,BFG,B)",
       "congruent_arc_judgment_chord_equal(1,BJH,BFG)"
+    ],
+    "congruent_arc_judgment_chord_equal(1,BJH,BFG)": [
+      "congruent_arc_property_measure_equal(1,BJH,BFG)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 6366,
   "annotation": "ChengQin_2023-06-04",
   "source": "GeoQA-9218",
-  "problem_level": 1,
-  "problem_text_cn": "如图,P为菱形ABCD的对角线AC上一点,AB=2cm,∠B=120°,PE⊥CD于点E,PF⊥AD于点F,则PE+PF的值为()",
-  "problem_text_en": "As shown in the figure, P is a point on the diagonal AC of the diamond ABCD, AB = N_0, ∠B = N_1, PE ⊥ CD at point E, PF ⊥ AD at point F, then the value of PE + PF is ()",
+  "problem_level": 13,
+  "problem_text_cn": "如图所示，AB=2，∠ABC=120°，CE⊥PE，PF⊥AF，四边形ABCD是菱形。求直线PE的长度与直线PF的长度之和。",
+  "problem_text_en": "As shown in the diagram, AB=2, ∠ABC=120°, CE is perpendicular to PE, PF is perpendicular to AF, quadrilateral ABCD is a rhombus. Find the sum of the length of line PE and the length of line PF.",
   "problem_img": "6366.png",
   "construction_cdl": [
     "Shape(FA,AP,PF)",
@@ -21,11 +21,11 @@
     "Collinear(PGE)"
   ],
   "text_cdl": [
-    "Rhombus(ABCD)",
     "Equal(LengthOfLine(AB),2)",
     "Equal(MeasureOfAngle(ABC),120)",
+    "PerpendicularBetweenLine(CE,PE)",
     "PerpendicularBetweenLine(PF,AF)",
-    "PerpendicularBetweenLine(CE,PE)"
+    "Rhombus(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Add(LengthOfLine(PE),LengthOfLine(PF)))",
@@ -45,16 +45,7 @@
     "sine_theorem(1,PCE)",
     "line_addition(1,AP,PC)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,DAC)": [
-      "isosceles_triangle_property_angle_equal(1,DAC)"
-    ],
-    "kite_property_diagonal_perpendicular_bisection(1,BCDA,O)": [
-      "right_triangle_judgment_angle(1,BOA)"
-    ],
-    "right_triangle_judgment_angle(1,BOA)": [
-      "right_triangle_property_pythagorean(1,BOA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "parallel_property_alternate_interior_angle(2,DC,AB)",
@@ -66,6 +57,15 @@
       "sine_theorem(1,PFA)",
       "sine_theorem(1,PCE)",
       "line_addition(1,AP,PC)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,DAC)": [
+      "isosceles_triangle_property_angle_equal(1,DAC)"
+    ],
+    "kite_property_diagonal_perpendicular_bisection(1,BCDA,O)": [
+      "right_triangle_judgment_angle(1,BOA)"
+    ],
+    "right_triangle_judgment_angle(1,BOA)": [
+      "right_triangle_property_pythagorean(1,BOA)"
     ]
   }
 }

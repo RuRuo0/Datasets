@@ -2,16 +2,24 @@
   "problem_id": 1037,
   "annotation": "NaZhu_2023-03-19",
   "source": "Geometry3k-1070",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=x，AC=12，AD=y，BD=z，DC=4，AD垂直于CD，CA垂直于BA。求y的值。",
+  "problem_text_en": "As shown in the diagram, AB=x, AC=12, AD=y, BD=z, DC=4, AD is perpendicular to CD, CA is perpendicular to BA. Find the value of y.",
   "problem_img": "1037.png",
   "construction_cdl": [
     "Shape(BD,DA,AB)",
     "Shape(AD,DC,CA)",
     "Collinear(BDC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),x)",
+    "Equal(LengthOfLine(AC),12)",
+    "Equal(LengthOfLine(AD),y)",
+    "Equal(LengthOfLine(BD),z)",
+    "Equal(LengthOfLine(DC),4)",
+    "PerpendicularBetweenLine(AD,CD)",
+    "PerpendicularBetweenLine(CA,BA)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AB),x)",
     "Equal(LengthOfLine(AD),y)",
@@ -27,12 +35,12 @@
     "right_triangle_judgment_angle(1,ADC)",
     "right_triangle_property_pythagorean(1,ADC)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,ADC)": [
-      "right_triangle_property_pythagorean(1,ADC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,ADC)"
+    ],
+    "right_triangle_judgment_angle(1,ADC)": [
+      "right_triangle_property_pythagorean(1,ADC)"
     ]
   }
 }

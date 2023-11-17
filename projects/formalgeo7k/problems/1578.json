@@ -2,9 +2,9 @@
   "problem_id": 1578,
   "annotation": "XiaoxiaoJin_2023-04-16",
   "source": "Geometry3k-1637",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "What is E D?",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，EF=60，FD=65，圆A的圆心为A，FD是圆A的直径。求直线ED的长度。",
+  "problem_text_en": "As shown in the diagram, EF=60, FD=65, A is the center of circle A, FD is the diameter of circle A. Find the length of line ED.",
   "problem_img": "1578.png",
   "construction_cdl": [
     "Shape(ED,DA,AF,FE)",
@@ -14,7 +14,12 @@
     "Collinear(DAF)",
     "Cocircular(A,EDF)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(EF),60)",
+    "Equal(LengthOfLine(FD),65)",
+    "IsCentreOfCircle(A,A)",
+    "IsDiameterOfCircle(FD,A)"
+  ],
   "image_cdl": [
     "IsDiameterOfCircle(FD,A)",
     "IsCentreOfCircle(A,A)",
@@ -28,15 +33,15 @@
     "right_triangle_judgment_angle(1,FED)",
     "right_triangle_property_pythagorean(1,FED)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "diameter_of_circle_property_right_angle(1,FED,A)"
+    ],
     "diameter_of_circle_property_right_angle(1,FED,A)": [
       "right_triangle_judgment_angle(1,FED)"
     ],
     "right_triangle_judgment_angle(1,FED)": [
       "right_triangle_property_pythagorean(1,FED)"
-    ],
-    "START": [
-      "diameter_of_circle_property_right_angle(1,FED,A)"
     ]
   }
 }

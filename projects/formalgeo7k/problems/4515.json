@@ -2,9 +2,9 @@
   "problem_id": 4515,
   "annotation": "NaZhu_2023-05-14",
   "source": "GeoQA-3541",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O的内接四边形ABCD两组对边的延长线分别交于点E、F,若∠E=∠F=35°,则∠A的度数是()",
-  "problem_text_en": "As shown in the figure, the extended lines of the two opposite edges of the inscribed quadrilateral ABCD of ⊙O intersect at vertices E and F respectively. If ∠E = ∠F = N_0, then the degree of ∠A is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠BFC=35°，∠CED=35°，O是圆O的圆心。求∠DAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BFC=35°, ∠CED=35°, the center of ⊙O is O. Find the measure of ∠DAB.",
   "problem_img": "4515.png",
   "construction_cdl": [
     "Shape(OAB,BA)",
@@ -21,9 +21,9 @@
     "Cocircular(O,ABCD)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(BFC),35)",
     "Equal(MeasureOfAngle(CED),35)",
-    "Equal(MeasureOfAngle(BFC),35)"
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DAB))",
@@ -38,7 +38,7 @@
     "arc_property_circumference_angle_internal(1,OAC,B)",
     "triangle_property_angle_sum(1,EAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,EDC)",
       "adjacent_complementary_angle(1,EDC,CDA)",

@@ -35,10 +35,7 @@ def inverse_parse_gdl(p_vars, s):
 
 def inverse_parse_logic(s, language, gdl):
     p_name, p_para = parse_geo_predicate(s)
-    if language == "cn":
-        return random.sample(gdl[p_name]["cn"], 1)[0].format(*p_para)
-    else:
-        return random.sample(gdl[p_name]["en"], 1)[0].format(*p_para)
+    return random.sample(gdl[p_name][language], 1)[0].format(*p_para)
 
 
 def inverse_parse_equal(s, language, gdl, log, pid):
@@ -92,7 +89,6 @@ def inverse_parse_equal(s, language, gdl, log, pid):
     else:
         input_s = input("pid={}, type={}, language={}, s={}:".format(pid, "cdl", language, s))
         log[language][s] = input_s
-        safe_save_json(log, "log_files/inverse_input.json")
         return input_s
 
 
@@ -101,21 +97,57 @@ def inverse_parse_target(s, language, gdl, log, pid):
         if s.startswith("Value"):
             s = s.replace("Value(", "")
             s = s[0:len(s) - 1]
-            pattern1 = r"[a-zA-Z]+\([A-Z,]+\)"
-            pattern2 = r"[a-zA-Z]{3}\(MeasureOfAngle\([A-Z]{3}\)\)"
             if s[0] in string.ascii_lowercase:
                 if language == "cn":
                     return "求{}的值。".format(s)
                 else:
                     return "Find the value of {}.".format(s)
-            elif re.match(pattern1, s):
+            elif re.match(r"[a-zA-Z]+\([A-Z,]+\)", s):
                 attr_name, attr_para = parse_geo_predicate(s)
                 if language == "cn":
                     return "求{}。".format(random.sample(gdl[attr_name]["cn"], 1)[0].format(*attr_para))
                 else:
                     return "Find {}.".format(random.sample(gdl[attr_name]["en"], 1)[0].format(*attr_para))
-            elif re.match(pattern2, s):
-                pass
+            elif re.match(r"[a-zA-Z]{3}\(MeasureOfAngle\([A-Z]{3}\)\)", s):
+                if language == "cn":
+                    return "求{}({})的值。".format(s[0:3].lower(), s[19:21])
+                else:
+                    return "Find the value of {}({}).".format(s[0:3].lower(), s[19:21])
+            elif re.match(r"[a-zA-Z]{3}\([a-zA-Z]+\([A-Z,]+\)(,[a-zA-Z]+\([A-Z,]+\))+\)", s):
+                anti_parsed_attrs = []
+                for attr in re.findall(r"[a-zA-Z]+\([A-Z,]+\)", s):
+                    attr_name, attr_para = parse_geo_predicate(attr)
+                    anti_parsed_attrs.append(random.sample(gdl[attr_name][language], 1)[0].format(*attr_para))
+                if s[0:3] == "Add":
+                    if language == "cn":
+                        return "求{}与{}之和。".format(
+                            "、".join(anti_parsed_attrs[0:len(anti_parsed_attrs) - 1]),
+                            anti_parsed_attrs[-1]
+                        )
+                    else:
+                        return "Find the sum of {} and {}.".format(
+                            ", ".join(anti_parsed_attrs[0:len(anti_parsed_attrs) - 1]),
+                            anti_parsed_attrs[-1]
+                        )
+                elif s[0:3] == "Sub":
+                    if language == "cn":
+                        return "求{}减去{}。".format(*anti_parsed_attrs)
+                    else:
+                        return "Find {} minus {}.".format(*anti_parsed_attrs)
+                elif s[0:3] == "Div":
+                    if language == "cn":
+                        return "求{}与{}之比。".format(*anti_parsed_attrs)
+                    else:
+                        return "Find the ratio of {} to {}.".format(*anti_parsed_attrs)
+        elif s.startswith("Relation"):
+            s = s.replace("Relation(", "")
+            s = s[0:len(s) - 1]
+            p_name, p_para = parse_geo_predicate(s)
+            if language == "cn":
+                return "求证{}。".format(random.sample(gdl[p_name][language], 1)[0].format(*p_para))
+            else:
+                return "Prove that {}.".format(random.sample(gdl[p_name][language], 1)[0].format(*p_para))
+
     except Exception as e:
         print("Exception: {}".format(repr(e)))
 
@@ -124,11 +156,10 @@ def inverse_parse_target(s, language, gdl, log, pid):
     else:
         input_s = input("pid={}, type={}, language={}, s={}:".format(pid, "target", language, s))
         log[language][s] = input_s
-        safe_save_json(log, "log_files/inverse_input.json")
         return input_s
 
 
-def inverse_parse(path_datasets):
+def inverse_parse(path_datasets, log_filename):
     gdl_source = load_json(os.path.join(path_datasets, "files/predicate_GDL-source.json"))
     gdl = {}
     for p_class in ["Entity", "Relation", "Attribution"]:
@@ -140,9 +171,9 @@ def inverse_parse(path_datasets):
                 "en": [inverse_parse_gdl(p_para, s)
                        for s in gdl_source["Predicates"][p_class][predicate]["anti_parse_to_nl_en"]]
             }
-    log = load_json("log_files/inverse_input.json")
+    log = load_json(log_filename)
 
-    for pid in range(1, load_json(os.path.join(path_datasets, "info.json"))["problem_number"] + 1):
+    for pid in range(log["start_pid"], load_json(os.path.join(path_datasets, "info.json"))["problem_number"] + 1):
         problem = load_json(os.path.join(path_datasets, "problems/{}.json".format(pid)))
         problem["text_cdl"] = sorted(list(set(problem["text_cdl"] + problem["image_cdl"])))
         text_cn = []
@@ -157,14 +188,14 @@ def inverse_parse(path_datasets):
 
         target_cn = inverse_parse_target(problem["goal_cdl"], "cn", gdl, log, pid)
         problem["problem_text_cn"] = "如图所示，" + "，".join(text_cn) + "。" + target_cn
-
         target_en = inverse_parse_target(problem["goal_cdl"], "en", gdl, log, pid)
         problem["problem_text_en"] = "As shown in the diagram, " + ", ".join(text_en) + ". " + target_en
+
         save_json(problem, os.path.join(path_datasets, "problems/{}.json".format(pid)))
-        # c = input("continue? (y/n):")
-        # if c != "y":
-        #     break
+        log["start_pid"] = pid + 1
+        safe_save_json(log, "log_files/inverse_input.json")
+        print("{} ok.".format(pid))
 
 
 if __name__ == '__main__':
-    inverse_parse("../../../projects/formalgeo7k/")
+    inverse_parse("../../../projects/formalgeo7k/", "../../../projects/formalgeo7k/files/inverse_parse_log.json")

@@ -2,9 +2,9 @@
   "problem_id": 1992,
   "annotation": "YimingHe_2023-03-26",
   "source": "Geometry3k-2076",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AD=15，CB=6，ES=28，SA=17，AD垂直于ED，SB⊥CB。求三角形CSA的面积与三角形ASE的面积之和。",
+  "problem_text_en": "As shown in the diagram, AD=15, CB=6, ES=28, SA=17, AD⊥ED, SB is perpendicular to CB. Find the sum of the area of △CSA and the area of △ASE.",
   "problem_img": "1992.png",
   "construction_cdl": [
     "Shape(CS,SB,BC)",
@@ -14,7 +14,14 @@
     "Collinear(SBA)",
     "Collinear(SDE)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AD),15)",
+    "Equal(LengthOfLine(CB),6)",
+    "Equal(LengthOfLine(ES),28)",
+    "Equal(LengthOfLine(SA),17)",
+    "PerpendicularBetweenLine(AD,ED)",
+    "PerpendicularBetweenLine(SB,CB)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(CB),6)",
     "Equal(LengthOfLine(SA),17)",
@@ -32,15 +39,15 @@
     "triangle_area_formula_common(1,CSA)",
     "triangle_area_formula_common(1,ASE)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,SDA,ADE)": [
-      "altitude_of_triangle_judgment(1,AD,ASE)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,SDA,ADE)",
       "altitude_of_triangle_judgment(1,CB,CSA)",
       "triangle_area_formula_common(1,CSA)",
       "triangle_area_formula_common(1,ASE)"
+    ],
+    "adjacent_complementary_angle(1,SDA,ADE)": [
+      "altitude_of_triangle_judgment(1,AD,ASE)"
     ]
   }
 }

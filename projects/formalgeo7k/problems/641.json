@@ -2,15 +2,23 @@
   "problem_id": 641,
   "annotation": "YimingHe_2023-03-12",
   "source": "Geometry3k-658",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Two triangles are similar. Find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，BM=16，GC=x，MH=22，VG=12，∠CVG=∠HBM，∠VGC=∠BMH，三角形VGC相似于三角形BMH。求x的值。",
+  "problem_text_en": "As shown in the diagram, BM=16, GC=x, MH=22, VG=12, ∠CVG=∠HBM, ∠VGC=∠BMH, △VGC is similar to △BMH.. Find the value of x.",
   "problem_img": "641.png",
   "construction_cdl": [
     "Shape(VG,GC,CV)",
     "Shape(BM,MH,HB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BM),16)",
+    "Equal(LengthOfLine(GC),x)",
+    "Equal(LengthOfLine(MH),22)",
+    "Equal(LengthOfLine(VG),12)",
+    "Equal(MeasureOfAngle(CVG),MeasureOfAngle(HBM))",
+    "Equal(MeasureOfAngle(VGC),MeasureOfAngle(BMH))",
+    "SimilarBetweenTriangle(VGC,BMH)"
+  ],
   "image_cdl": [
     "SimilarBetweenTriangle(VGC,BMH)",
     "Equal(LengthOfLine(BM),16)",
@@ -26,7 +34,7 @@
     "similar_triangle_property_line_ratio(1,VGC,BMH)",
     "similar_triangle_property_line_ratio(1,CVG,HBM)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "similar_triangle_property_line_ratio(1,VGC,BMH)",
       "similar_triangle_property_line_ratio(1,CVG,HBM)"

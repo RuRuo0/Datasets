@@ -2,9 +2,9 @@
   "problem_id": 3805,
   "annotation": "YifanWang_2023-05-07",
   "source": "GeoQA-1656",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC内接于半径为1的⊙O中,若∠BAC=60°,则BC的长度为()",
-  "problem_text_en": "As shown in the figure, △ABC is inscribed in ⊙O with radius N_0, if ∠BAC = N_1, then the length of BC is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，⊙O的直径与直线BD的长度相等，∠EAB=60°，⊙O的半径为1，O是圆O的圆心，BD是圆O的直径。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, the diameter of ⊙O is equal to the length of line BD, ∠EAB=60°, the radius of ⊙O is 1, the center of ⊙O is O, the diameter of ⊙O is BD. Find the length of line BC.",
   "problem_img": "3805.png",
   "construction_cdl": [
     "Shape(AB,OAB)",
@@ -18,7 +18,13 @@
     "Collinear(BOED)",
     "Cocircular(O,ABCD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(DiameterOfCircle(O),LengthOfLine(BD))",
+    "Equal(MeasureOfAngle(EAB),60)",
+    "Equal(RadiusOfCircle(O),1)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(BD,O)"
+  ],
   "image_cdl": [
     "IsDiameterOfCircle(BD,O)",
     "IsCentreOfCircle(O,O)",
@@ -35,7 +41,7 @@
     "diameter_of_circle_property_right_angle(1,BCD,O)",
     "sine_theorem(1,BCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "circle_property_length_of_radius_and_diameter(1,O)",
       "arc_property_circumference_angle_external(1,OBC,A)",

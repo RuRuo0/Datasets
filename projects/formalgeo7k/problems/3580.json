@@ -2,9 +2,9 @@
   "problem_id": 3580,
   "annotation": "QikeHuang_2023-04-30",
   "source": "GeoQA-1222",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示,M是△ABC的边BC的中点,AN平分∠BAC,BN⊥AN于点N,且AB=8,MN=3,则AC的长是()",
-  "problem_text_en": "As shown in the figure, M is the midpoint of the edge BC of △ABC, AN bisects ∠BAC, BN ⊥ AN at point N, and AB = N_0, MN = N_1, then the length of AC is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=8，MN=3，AN平分∠DAB，M是线段BC的中点，BN⊥AN。求直线AC的长度。",
+  "problem_text_en": "As shown in the diagram, AB=8, MN=3, AN bisects ∠DAB, M bisects segment BC, BN is perpendicular to AN. Find the length of line AC.",
   "problem_img": "3580.png",
   "construction_cdl": [
     "Shape(AB,BN,NA)",
@@ -19,8 +19,8 @@
     "Equal(LengthOfLine(AB),8)",
     "Equal(LengthOfLine(MN),3)",
     "IsBisectorOfAngle(AN,DAB)",
-    "PerpendicularBetweenLine(BN,AN)",
-    "IsMidpointOfLine(M,BC)"
+    "IsMidpointOfLine(M,BC)",
+    "PerpendicularBetweenLine(BN,AN)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AC))",
@@ -34,7 +34,11 @@
     "midsegment_of_triangle_property_length(1,MN,BCD)",
     "line_addition(1,AD,DC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,BNA,AND)",
+      "line_addition(1,AD,DC)"
+    ],
     "adjacent_complementary_angle(1,BNA,AND)": [
       "mirror_congruent_triangle_judgment_aas(2,BNA,DAN)"
     ],
@@ -47,10 +51,6 @@
     ],
     "midsegment_of_triangle_judgment_midpoint(1,MN,BCD)": [
       "midsegment_of_triangle_property_length(1,MN,BCD)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,BNA,AND)",
-      "line_addition(1,AD,DC)"
     ]
   }
 }

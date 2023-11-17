@@ -2,9 +2,9 @@
   "problem_id": 4971,
   "annotation": "FangzhenZhu_2023-05-21",
   "source": "GeoQA-4653",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知a∥b∥c,AC=6,AB=2,EF=5,则DF的值为()",
-  "problem_text_en": "As shown in the figure, given that a ∥ b ∥ c, AC = N_0, AB = N_1, EF = N_2, then the value of DF is ()",
+  "problem_level": 14,
+  "problem_text_cn": "如图所示，AB=2，AC=6，EF=5，AD平行于BE，AD平行于CF，BE∥CF。求直线DF的长度。",
+  "problem_text_en": "As shown in the diagram, AB=2, AC=6, EF=5, AD is parallel to BE, AD is parallel to CF, BE is parallel to CF. Find the length of line DF.",
   "problem_img": "4971.png",
   "construction_cdl": [
     "Shape(MA,AD,DM)",
@@ -40,7 +40,17 @@
     "line_addition(1,MD,DF)",
     "line_addition(1,ME,EF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,AD,BE,M)",
+      "parallel_property_corresponding_angle(1,AD,CF,M)",
+      "parallel_property_corresponding_angle(2,EB,DA,M)",
+      "parallel_property_corresponding_angle(2,FC,DA,M)",
+      "line_addition(1,MA,AB)",
+      "line_addition(1,MA,AC)",
+      "line_addition(1,MD,DF)",
+      "line_addition(1,ME,EF)"
+    ],
     "parallel_property_corresponding_angle(1,AD,BE,M)": [
       "similar_triangle_judgment_aa(1,MAD,MBE)"
     ],
@@ -60,16 +70,6 @@
     "similar_triangle_judgment_aa(1,MAD,MCF)": [
       "similar_triangle_property_line_ratio(1,ADM,CFM)",
       "similar_triangle_property_line_ratio(1,DMA,FMC)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,AD,BE,M)",
-      "parallel_property_corresponding_angle(1,AD,CF,M)",
-      "parallel_property_corresponding_angle(2,EB,DA,M)",
-      "parallel_property_corresponding_angle(2,FC,DA,M)",
-      "line_addition(1,MA,AB)",
-      "line_addition(1,MA,AC)",
-      "line_addition(1,MD,DF)",
-      "line_addition(1,ME,EF)"
     ]
   }
 }

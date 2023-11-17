@@ -2,9 +2,9 @@
   "problem_id": 4183,
   "annotation": "Yangli_2023-05-07",
   "source": "GeoQA-2840",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示的半圆中,AD是直径,且AD=3,AC=2,则\\cos∠B的值是()",
-  "problem_text_en": "In the semicircle as shown in the figure, AD is the diameter, and AD = N_0, AC = N_1, then the value of \\cos∠B is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AC=2，AD=3，⊙O的圆心为O，AD是⊙O的直径。求cos(EB)的值。",
+  "problem_text_en": "As shown in the diagram, AC=2, AD=3, O is the center of ⊙O, the diameter of ⊙O is AD. Find the value of cos(EB).",
   "problem_img": "4183.png",
   "construction_cdl": [
     "Shape(CA,AE,EC)",
@@ -20,8 +20,9 @@
     "Cocircular(O,DBCA)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(AD),3)",
     "Equal(LengthOfLine(AC),2)",
+    "Equal(LengthOfLine(AD),3)",
+    "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AD,O)"
   ],
   "image_cdl": [
@@ -37,18 +38,18 @@
     "arc_property_circumference_angle_external(1,OCA,B)",
     "arc_property_circumference_angle_external(1,OCA,D)"
   ],
-  "theorem_seq_dag": {
-    "diameter_of_circle_property_right_angle(1,DCA,O)": [
-      "right_triangle_judgment_angle(1,DCA)"
-    ],
-    "right_triangle_judgment_angle(1,DCA)": [
-      "right_triangle_property_pythagorean(1,DCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,DCA,O)",
       "cosine_theorem(1,DCA)",
       "arc_property_circumference_angle_external(1,OCA,B)",
       "arc_property_circumference_angle_external(1,OCA,D)"
+    ],
+    "diameter_of_circle_property_right_angle(1,DCA,O)": [
+      "right_triangle_judgment_angle(1,DCA)"
+    ],
+    "right_triangle_judgment_angle(1,DCA)": [
+      "right_triangle_property_pythagorean(1,DCA)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 883,
   "annotation": "NaZhu_2023-04-09",
   "source": "Geometry3k-912",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "W X Y Z is a square. If W T = 3, find Z X.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，WT=3，WX⊥YX，XY垂直于ZY，YZ⊥WZ，ZW垂直于XW，WXYZ是正方形。求直线ZX的长度。",
+  "problem_text_en": "As shown in the diagram, WT=3, WX is perpendicular to YX, XY is perpendicular to ZY, YZ⊥WZ, ZW is perpendicular to XW, WXYZ is a square. Find the length of line ZX.",
   "problem_img": "883.png",
   "construction_cdl": [
     "Shape(XY,YT,TX)",
@@ -15,8 +15,12 @@
     "Collinear(YTW)"
   ],
   "text_cdl": [
-    "Square(WXYZ)",
-    "Equal(LengthOfLine(WT),3)"
+    "Equal(LengthOfLine(WT),3)",
+    "PerpendicularBetweenLine(WX,YX)",
+    "PerpendicularBetweenLine(XY,ZY)",
+    "PerpendicularBetweenLine(YZ,WZ)",
+    "PerpendicularBetweenLine(ZW,XW)",
+    "Square(WXYZ)"
   ],
   "image_cdl": [
     "PerpendicularBetweenLine(WX,YX)",
@@ -31,7 +35,7 @@
     "parallelogram_property_diagonal_bisection(1,WXYZ,T)",
     "rectangle_property_diagonal_equal(1,WXYZ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,YT,TW)",
       "parallelogram_property_diagonal_bisection(1,WXYZ,T)",

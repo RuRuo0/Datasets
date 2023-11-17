@@ -2,9 +2,9 @@
   "problem_id": 1494,
   "annotation": "QikeHuang_2023-04-16",
   "source": "Geometry3k-1550",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x so that p \\parallel q.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠AEP=3*x-50°，∠CDG=2*x-5°，BP平行于GF。求x的值。",
+  "problem_text_en": "As shown in the diagram, ∠AEP=3*x-50°, ∠CDG=2*x-5°, BP∥GF. Find the value of x.",
   "problem_img": "1494.png",
   "construction_cdl": [
     "Shape(AE)",
@@ -26,7 +26,11 @@
     "Collinear(PEB)",
     "Collinear(FDG)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(AEP),3*x-50)",
+    "Equal(MeasureOfAngle(CDG),2*x-5)",
+    "ParallelBetweenLine(BP,GF)"
+  ],
   "image_cdl": [
     "ParallelBetweenLine(BP,GF)",
     "Equal(MeasureOfAngle(AEP),3*x-50)",
@@ -40,16 +44,16 @@
     "parallel_property_corresponding_angle(1,EP,DF,A)",
     "vertical_angle(1,EDF,CDG)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,BP,GF,E)",
+      "vertical_angle(1,EDF,CDG)"
+    ],
     "parallel_property_collinear_extend(3,BP,GF,E)": [
       "parallel_property_collinear_extend(3,FG,PE,D)"
     ],
     "parallel_property_collinear_extend(3,FG,PE,D)": [
       "parallel_property_corresponding_angle(1,EP,DF,A)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,BP,GF,E)",
-      "vertical_angle(1,EDF,CDG)"
     ]
   }
 }

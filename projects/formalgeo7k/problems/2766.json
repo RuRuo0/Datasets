@@ -2,15 +2,20 @@
   "problem_id": 2766,
   "annotation": "FangzhenZhu_2023-04-09",
   "source": "Geometry3k-2913",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，BC=10，BD=14，DC=x，BC垂直于DC。求x的值。",
+  "problem_text_en": "As shown in the diagram, BC=10, BD=14, DC=x, BC is perpendicular to DC. Find the value of x.",
   "problem_img": "2766.png",
   "construction_cdl": [
     "Shape(DA,AB,BD)",
     "Shape(DB,BC,CD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BC),10)",
+    "Equal(LengthOfLine(BD),14)",
+    "Equal(LengthOfLine(DC),x)",
+    "PerpendicularBetweenLine(BC,DC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(DC),x)",
     "Equal(LengthOfLine(BD),14)",
@@ -23,12 +28,12 @@
     "right_triangle_judgment_angle(1,BCD)",
     "right_triangle_property_pythagorean(1,BCD)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,BCD)": [
-      "right_triangle_property_pythagorean(1,BCD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,BCD)"
+    ],
+    "right_triangle_judgment_angle(1,BCD)": [
+      "right_triangle_property_pythagorean(1,BCD)"
     ]
   }
 }

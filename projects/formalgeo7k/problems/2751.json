@@ -2,9 +2,9 @@
   "problem_id": 2751,
   "annotation": "YiwenHuang_2023-05-07",
   "source": "Geometry3k-2898",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure to the nearest tenth.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，DE=3，EC=8，FC=3，圆A的半径为1，圆B的半径为1，x=Add(AreaOfSector(A，y=Add(x，A是⊙A的圆心，圆B的圆心为B，GH垂直于CH，DECF是矩形。求y的值。",
+  "problem_text_en": "As shown in the diagram, DE=3, EC=8, FC=3, the radius of circle A is 1, the radius of circle B is 1, x=Add(AreaOfSector(A, y=Add(x, the center of ⊙A is A, the center of ⊙B is B, GH is perpendicular to CH, DECF is a rectangle. Find the value of y.",
   "problem_img": "2751.png",
   "construction_cdl": [
     "Shape(AD,ADE,EA)",
@@ -15,7 +15,19 @@
     "Cocircular(A,DE)",
     "Cocircular(B,FC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(DE),3)",
+    "Equal(LengthOfLine(EC),8)",
+    "Equal(LengthOfLine(FC),3)",
+    "Equal(RadiusOfCircle(A),1)",
+    "Equal(RadiusOfCircle(B),1)",
+    "Equal(x,Add(AreaOfSector(A,DE),AreaOfSector(B,CF)))",
+    "Equal(y,Add(x,AreaOfQuadrilateral(DECF)))",
+    "IsCentreOfCircle(A,A)",
+    "IsCentreOfCircle(B,B)",
+    "PerpendicularBetweenLine(GH,CH)",
+    "Rectangle(DECF)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(A,A)",
     "IsCentreOfCircle(B,B)",
@@ -40,7 +52,7 @@
     "sector_area_formula(1,BCF)",
     "parallelogram_area_formula_sine(1,DECF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "flat_angle(1,EAD)",
       "flat_angle(1,FBC)",

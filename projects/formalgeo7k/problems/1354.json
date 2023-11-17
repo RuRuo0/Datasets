@@ -2,9 +2,9 @@
   "problem_id": 1354,
   "annotation": "ZheZhu_2023-04-09",
   "source": "Geometry3k-1402",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "For the pair of similar figures, find the area of the green figure.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，四边形EFGH的面积为60，AD=12，EM=6，AC和TB是▱ATBC的一组对边，EFGH是平行四边形，FM垂直于EM，TD垂直于AD，四边形EFGH相似于四边形ATBC。求ATBC的面积。",
+  "problem_text_en": "As shown in the diagram, the area of quadrilateral EFGH is 60, AD=12, EM=6, TA and BC are opposite sides of the parallelogram ATBC, EFGH is a ▱, FM is perpendicular to EM, TD is perpendicular to AD, EFGH is similar to ATBC. Find the area of quadrilateral ATBC.",
   "problem_img": "1354.png",
   "construction_cdl": [
     "Shape(EF,FM,ME)",
@@ -15,8 +15,13 @@
     "Collinear(TDB)"
   ],
   "text_cdl": [
-    "Parallelogram(EFGH)",
+    "Equal(AreaOfQuadrilateral(EFGH),60)",
+    "Equal(LengthOfLine(AD),12)",
+    "Equal(LengthOfLine(EM),6)",
     "Parallelogram(ATBC)",
+    "Parallelogram(EFGH)",
+    "PerpendicularBetweenLine(FM,EM)",
+    "PerpendicularBetweenLine(TD,AD)",
     "SimilarBetweenQuadrilateral(EFGH,ATBC)"
   ],
   "image_cdl": [
@@ -36,7 +41,7 @@
     "similar_quadrilateral_property_line_ratio(1,FGHE,TBCA)",
     "similar_quadrilateral_property_area_square_ratio(1,EFGH,ATBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "altitude_of_quadrilateral_judgment_left_vertex(1,EM,EFGH)",
       "altitude_of_quadrilateral_judgment_left_vertex(1,AD,ATBC)",

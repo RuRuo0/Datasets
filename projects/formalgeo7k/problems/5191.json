@@ -2,9 +2,9 @@
   "problem_id": 5191,
   "annotation": "NaZhu_2023-05-21",
   "source": "GeoQA-5186",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB为⊙O的直径,CD为弦,AB⊥CD,如果∠BOC=70°,则∠ABD的度数为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, CD is the chord, AB ⊥ CD, if ∠BOC = N_0, then the degree of ∠ABD is ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，∠EOC=70°，⊙O的圆心为O，OE⊥DE。求∠EBD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠EOC=70°, the center of circle O is O, OE⊥DE. Find the measure of ∠EBD.",
   "problem_img": "5191.png",
   "construction_cdl": [
     "Shape(OAC,CO,OA)",
@@ -19,9 +19,9 @@
     "Cocircular(O,ACBD)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(EOC),70)",
     "IsCentreOfCircle(O,O)",
-    "PerpendicularBetweenLine(OE,DE)",
-    "Equal(MeasureOfAngle(EOC),70)"
+    "PerpendicularBetweenLine(OE,DE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(EBD))",
@@ -39,7 +39,15 @@
     "isosceles_triangle_property_angle_equal(1,OBD)",
     "triangle_property_angle_sum(1,BDO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,CEO,OED)",
+      "arc_property_center_angle(1,OCB,O)",
+      "arc_property_center_angle(1,OBD,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "radius_of_circle_property_length_equal(1,OD,O)",
+      "triangle_property_angle_sum(1,BDO)"
+    ],
     "adjacent_complementary_angle(1,CEO,OED)": [
       "circle_property_chord_perpendicular_bisect_arc(1,OCD,OEB)"
     ],
@@ -57,14 +65,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OBD)": [
       "isosceles_triangle_property_angle_equal(1,OBD)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,CEO,OED)",
-      "arc_property_center_angle(1,OCB,O)",
-      "arc_property_center_angle(1,OBD,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "radius_of_circle_property_length_equal(1,OD,O)",
-      "triangle_property_angle_sum(1,BDO)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 6773,
   "annotation": "Yangli_2023-06-04",
   "source": "GeoQA-9871",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O是△ABC的外接圆,∠ACO=45°,则∠B的度数为()",
-  "problem_text_en": "As shown in the figure, ⊙O is the circumscribe of △ABC, ∠ACO = N_0, then the degree of ∠B is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠OCA=45°，圆O的圆心为O。求∠ABC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠OCA=45°, O is the center of circle O. Find the measure of ∠ABC.",
   "problem_img": "6773.png",
   "construction_cdl": [
     "Shape(NC,CO,OA,AB)",
@@ -30,7 +30,14 @@
     "arc_property_center_angle(1,OCA,O)",
     "arc_property_circumference_angle_external(1,OCA,B)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "triangle_property_angle_sum(1,OCA)",
+      "arc_property_center_angle(1,OCA,O)",
+      "arc_property_circumference_angle_external(1,OCA,B)"
+    ],
     "radius_of_circle_property_length_equal(1,OC,O)": [
       "isosceles_triangle_judgment_line_equal(1,OCA)"
     ],
@@ -39,13 +46,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OCA)": [
       "isosceles_triangle_property_angle_equal(1,OCA)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "triangle_property_angle_sum(1,OCA)",
-      "arc_property_center_angle(1,OCA,O)",
-      "arc_property_circumference_angle_external(1,OCA,B)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 215,
   "annotation": "XiaokaiZhang_2023-04-02",
   "source": "Geometry3k-217",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，FN=1/4*x+6，IP=PD，NA=2*x-29，PD=16-5*y，PI=12-3*y，IF平行于PN，PN平行于DA。求x的值。",
+  "problem_text_en": "As shown in the diagram, FN=1/4*x+6, IP=PD, NA=2*x-29, PD=16-5*y, PI=12-3*y, IF is parallel to PN, PN is parallel to DA. Find the value of x.",
   "problem_img": "215.png",
   "construction_cdl": [
     "Shape(IP,PN,NF,FI)",
@@ -12,7 +12,15 @@
     "Collinear(IPD)",
     "Collinear(FNA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(FN),1/4*x+6)",
+    "Equal(LengthOfLine(IP),LengthOfLine(PD))",
+    "Equal(LengthOfLine(NA),2*x-29)",
+    "Equal(LengthOfLine(PD),16-5*y)",
+    "Equal(LengthOfLine(PI),12-3*y)",
+    "ParallelBetweenLine(IF,PN)",
+    "ParallelBetweenLine(PN,DA)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(FN),1/4*x+6)",
     "Equal(LengthOfLine(PI),12-3*y)",
@@ -29,15 +37,15 @@
     "trapezoid_judgment_parallel(1,IDAF)",
     "midsegment_of_quadrilateral_judgment_parallel(1,PN,IDAF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_judgment_par_par(1,IF,PN,DA)"
+    ],
     "parallel_judgment_par_par(1,IF,PN,DA)": [
       "trapezoid_judgment_parallel(1,IDAF)"
     ],
     "trapezoid_judgment_parallel(1,IDAF)": [
       "midsegment_of_quadrilateral_judgment_parallel(1,PN,IDAF)"
-    ],
-    "START": [
-      "parallel_judgment_par_par(1,IF,PN,DA)"
     ]
   }
 }

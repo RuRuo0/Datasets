@@ -2,9 +2,9 @@
   "problem_id": 6195,
   "annotation": "DengfengYue_2023-05-28",
   "source": "GeoQA-8775",
-  "problem_level": 1,
-  "problem_text_cn": "已知如图:点A、B、C、D在⊙O上,AB为直径,∠ABC=72°,则∠D为()",
-  "problem_text_en": "As shown in the figure: points A, B, C, D are on ⊙O, AB is the diameter, ∠ABC = N_0, then ∠D is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠ABC=72°，圆O的圆心为O，圆O的直径为AB。求∠ODB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABC=72°, O is the center of circle O, AB is the diameter of circle O. Find the measure of ∠ODB.",
   "problem_img": "6195.png",
   "construction_cdl": [
     "Shape(AC,OCA)",
@@ -19,9 +19,9 @@
     "Cocircular(O,ADBC)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(ABC),72)",
     "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(AB,O)",
-    "Equal(MeasureOfAngle(ABC),72)"
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ODB))",
@@ -32,7 +32,7 @@
     "arc_property_circumference_angle_external(1,OBC,A)",
     "arc_property_circumference_angle_external(1,OBC,D)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,BCA,O)",
       "triangle_property_angle_sum(1,CAB)",

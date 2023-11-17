@@ -2,9 +2,9 @@
   "problem_id": 3422,
   "annotation": "NaZhu_2023-04-30",
   "source": "GeoQA-973",
-  "problem_level": 1,
-  "problem_text_cn": "将△ABC沿着平行于BC的直线折叠,点A落到点A′,若∠C=120°,∠A=26°,则∠A′DB的度数是()",
-  "problem_text_en": "Fold △ABC along a line parallel to BC, vertex A falls to vertex A′, if ∠C = N_0, ∠A = N_1, then the degree of ∠A′DB is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠BCG=120°，∠EAD=26°，三角形DFE与三角形DEA是镜像全等三角形，DE平行于BC。求∠GDB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BCG=120°, ∠EAD=26°, triangle DFE is mirror congruent to triangle DEA, DE is parallel to BC. Find the measure of ∠GDB.",
   "problem_img": "3422.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -16,10 +16,10 @@
     "Collinear(DGF)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(DE,BC)",
-    "MirrorCongruentBetweenTriangle(DFE,DEA)",
     "Equal(MeasureOfAngle(BCG),120)",
-    "Equal(MeasureOfAngle(EAD),26)"
+    "Equal(MeasureOfAngle(EAD),26)",
+    "MirrorCongruentBetweenTriangle(DFE,DEA)",
+    "ParallelBetweenLine(DE,BC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(GDB))",
@@ -31,7 +31,7 @@
     "angle_addition(1,ADE,EDG)",
     "adjacent_complementary_angle(1,ADG,GDB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "mirror_congruent_triangle_property_angle_equal(1,DFE,DEA)",
       "parallel_property_corresponding_angle(2,CB,ED,A)",

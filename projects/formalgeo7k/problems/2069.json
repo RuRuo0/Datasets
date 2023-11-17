@@ -2,9 +2,9 @@
   "problem_id": 2069,
   "annotation": "QikeHuang_2023-04-23",
   "source": "Geometry3k-2156",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "What is m \\angle 1 in the figure below?",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠HJF=130°，∠IKG=145°，BA∥DI，MF∥BA。求∠KAJ的大小。",
+  "problem_text_en": "As shown in the diagram, ∠HJF=130°, ∠IKG=145°, BA∥DI, MF∥BA. Find the measure of ∠KAJ.",
   "problem_img": "2069.png",
   "construction_cdl": [
     "Shape(IK,KG)",
@@ -23,7 +23,12 @@
     "Collinear(AJH)",
     "Collinear(MJF)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(HJF),130)",
+    "Equal(MeasureOfAngle(IKG),145)",
+    "ParallelBetweenLine(BA,DI)",
+    "ParallelBetweenLine(MF,BA)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(IKG),145)",
     "Equal(MeasureOfAngle(HJF),130)",
@@ -41,19 +46,19 @@
     "parallel_property_ipsilateral_internal_angle(1,KD,AB)",
     "parallel_property_ipsilateral_internal_angle(1,AB,JM)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,ID,AB,K)": [
-      "parallel_property_ipsilateral_internal_angle(1,KD,AB)"
-    ],
-    "parallel_property_collinear_extend(3,MF,BA,J)": [
-      "parallel_property_ipsilateral_internal_angle(1,AB,JM)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,KAB,BAJ)",
       "vertical_angle(1,IKG,DKA)",
       "vertical_angle(1,AJM,HJF)",
       "parallel_property_collinear_extend(3,ID,AB,K)",
       "parallel_property_collinear_extend(3,MF,BA,J)"
+    ],
+    "parallel_property_collinear_extend(3,ID,AB,K)": [
+      "parallel_property_ipsilateral_internal_angle(1,KD,AB)"
+    ],
+    "parallel_property_collinear_extend(3,MF,BA,J)": [
+      "parallel_property_ipsilateral_internal_angle(1,AB,JM)"
     ]
   }
 }

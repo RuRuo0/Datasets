@@ -2,9 +2,9 @@
   "problem_id": 5459,
   "annotation": "Yangli_2023-05-21",
   "source": "GeoQA-5866",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知∠ACB=60°,PC=12,点M,N在边CB上,PM=PN．若MN=3,则CM的长为()",
-  "problem_text_en": "As shown in the figure, it is known that ∠ACB = N_0, PC = N_1, points M and N are on the edge CB, PM = PN. If MN = N_2, then the length of CM is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，MN=3，PC=12，PM=PN，∠PCM=60°，MD⊥PD。求直线CM的长度。",
+  "problem_text_en": "As shown in the diagram, MN=3, PC=12, PM=PN, ∠PCM=60°, MD⊥PD. Find the length of line CM.",
   "problem_img": "5459.png",
   "construction_cdl": [
     "Shape(PC,CM,MP)",
@@ -13,8 +13,8 @@
     "Collinear(CMDN)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(PC),12)",
     "Equal(LengthOfLine(MN),3)",
+    "Equal(LengthOfLine(PC),12)",
     "Equal(LengthOfLine(PM),LengthOfLine(PN))",
     "Equal(MeasureOfAngle(PCM),60)",
     "PerpendicularBetweenLine(MD,PD)"
@@ -33,7 +33,15 @@
     "sine_theorem(1,CDP)",
     "line_addition(1,CM,MD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,MDP,PDN)",
+      "triangle_property_angle_sum(1,PCD)",
+      "line_addition(1,MD,DN)",
+      "isosceles_triangle_judgment_line_equal(1,PMN)",
+      "sine_theorem(1,CDP)",
+      "line_addition(1,CM,MD)"
+    ],
     "adjacent_complementary_angle(1,MDP,PDN)": [
       "mirror_congruent_triangle_judgment_aas(1,PMD,PDN)"
     ],
@@ -45,14 +53,6 @@
     ],
     "mirror_congruent_triangle_judgment_aas(1,PMD,PDN)": [
       "mirror_congruent_triangle_property_line_equal(1,PMD,PDN)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,MDP,PDN)",
-      "triangle_property_angle_sum(1,PCD)",
-      "line_addition(1,MD,DN)",
-      "isosceles_triangle_judgment_line_equal(1,PMN)",
-      "sine_theorem(1,CDP)",
-      "line_addition(1,CM,MD)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 315,
   "annotation": "NaZhu_2023-04-02",
   "source": "Geometry3k-319",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the shaded region. Assume that all polygons that appear to be regular are regular. Round to the nearest tenth.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，EN=3，三角形DCB为等边三角形，N是圆N的圆心，三角形DCB的重心为O，N是△DCB的内心，BG是圆O的切线，CF是圆O的切线，⊙O的切线为DE。求三角形DCB的面积减去圆N的面积。",
+  "problem_text_en": "As shown in the diagram, EN=3, △DCB is an equilateral △, N is the center of ⊙N, the centroid of △DCB is N, the incenter of triangle DCB is N, BG is the tangent to ⊙N, CF is the tangent to circle N, the tangent to circle N is DE. Find the area of triangle DCB minus the area of the ⊙N.",
   "problem_img": "315.png",
   "construction_cdl": [
     "Shape(NQG,NGE,EN,NQ)",
@@ -20,12 +20,14 @@
     "Cocircular(N,GEFQ)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(EN),3)",
     "EquilateralTriangle(DCB)",
-    "IsIncenterOfTriangle(N,DCB)",
+    "IsCentreOfCircle(N,N)",
     "IsCentroidOfTriangle(N,DCB)",
-    "IsTangentOfCircle(DE,N)",
+    "IsIncenterOfTriangle(N,DCB)",
     "IsTangentOfCircle(BG,N)",
-    "IsTangentOfCircle(CF,N)"
+    "IsTangentOfCircle(CF,N)",
+    "IsTangentOfCircle(DE,N)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(N,N)",
@@ -43,7 +45,7 @@
     "radius_of_circle_property_length_equal(1,NE,N)",
     "circle_area_formula(1,N)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(2,DE,N,N)",
       "equilateral_triangle_property_angle(1,DCB)",

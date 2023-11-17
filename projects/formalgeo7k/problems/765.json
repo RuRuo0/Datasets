@@ -2,9 +2,9 @@
   "problem_id": 765,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-790",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure, Q R \\parallel T S, Q T \\parallel R S, and m \\angle 1 = 131. Find the measure of \\angle 5.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠JQR=131°，QR平行于TG，TQ平行于GR。求∠QRH的大小。",
+  "problem_text_en": "As shown in the diagram, ∠JQR=131°, QR is parallel to TG, TQ is parallel to GR. Find the measure of ∠QRH.",
   "problem_img": "765.png",
   "construction_cdl": [
     "Shape(JQ,QR)",
@@ -15,7 +15,11 @@
     "Collinear(JQTC)",
     "Collinear(HRGB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(JQR),131)",
+    "ParallelBetweenLine(QR,TG)",
+    "ParallelBetweenLine(TQ,GR)"
+  ],
   "image_cdl": [
     "ParallelBetweenLine(QR,TG)",
     "ParallelBetweenLine(TQ,GR)",
@@ -28,15 +32,15 @@
     "parallel_property_collinear_extend(1,RG,JQ,H)",
     "parallel_property_ipsilateral_internal_angle(1,QJ,RH)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(2,TQ,GR,J)"
+    ],
     "parallel_property_collinear_extend(2,TQ,GR,J)": [
       "parallel_property_collinear_extend(1,RG,JQ,H)"
     ],
     "parallel_property_collinear_extend(1,RG,JQ,H)": [
       "parallel_property_ipsilateral_internal_angle(1,QJ,RH)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(2,TQ,GR,J)"
     ]
   }
 }

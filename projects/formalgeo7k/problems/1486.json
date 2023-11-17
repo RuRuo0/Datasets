@@ -2,9 +2,9 @@
   "problem_id": 1486,
   "annotation": "QikeHuang_2023-04-16",
   "source": "Geometry3k-1541",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure consisting of squares A, B, and C, J K = 2K L and K L = 2L M. If the perimeter of the figure is 66 units, what is the area?",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，Add(LengthOfLine(JM)=LengthOfLine(MG)，JK=Mul(LengthOfLine(KL),2)，KL=Mul(LengthOfLine(LM),2)，AKLD是正方形，四边形BLMG是正方形，四边形EJKF是正方形。求四边形EJKF的面积、四边形AKLD的面积与BLMG的面积之和。",
+  "problem_text_en": "As shown in the diagram, Add(LengthOfLine(JM)=LengthOfLine(MG), JK=Mul(LengthOfLine(KL),2), KL=Mul(LengthOfLine(LM),2), quadrilateral AKLD is a square, quadrilateral BLMG is a square, quadrilateral EJKF is a square. Find the sum of the area of quadrilateral EJKF, the area of quadrilateral AKLD and the area of quadrilateral BLMG.",
   "problem_img": "1486.png",
   "construction_cdl": [
     "Shape(EJ,JK,KA,AF,FE)",
@@ -15,12 +15,12 @@
     "Collinear(JKLM)"
   ],
   "text_cdl": [
-    "Square(EJKF)",
-    "Square(AKLD)",
-    "Square(BLMG)",
+    "Equal(Add(LengthOfLine(JM),LengthOfLine(MG),LengthOfLine(BG),LengthOfLine(BD),LengthOfLine(DA),LengthOfLine(AF),LengthOfLine(FE),LengthOfLine(EJ)),66)",
     "Equal(LengthOfLine(JK),Mul(LengthOfLine(KL),2))",
     "Equal(LengthOfLine(KL),Mul(LengthOfLine(LM),2))",
-    "Equal(Add(LengthOfLine(JM),LengthOfLine(MG),LengthOfLine(BG),LengthOfLine(BD),LengthOfLine(DA),LengthOfLine(AF),LengthOfLine(FE),LengthOfLine(EJ)),66)"
+    "Square(AKLD)",
+    "Square(BLMG)",
+    "Square(EJKF)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Add(AreaOfQuadrilateral(EJKF),AreaOfQuadrilateral(AKLD),AreaOfQuadrilateral(BLMG)))",
@@ -34,7 +34,7 @@
     "parallelogram_area_formula_sine(1,AKLD)",
     "parallelogram_area_formula_sine(1,BLMG)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,FA,AK)",
       "line_addition(1,DB,BL)",

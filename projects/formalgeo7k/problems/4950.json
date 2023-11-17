@@ -2,9 +2,9 @@
   "problem_id": 4950,
   "annotation": "FangzhenZhu_2023-05-21",
   "source": "GeoQA-4623",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB∥CD∥EF,AD=4,BC=DF=3,则BE的长为()",
-  "problem_text_en": "As shown in the figure, AB ∥ CD ∥ EF, AD = N_0, BC = DF = N_1, then the length of BE is ()",
+  "problem_level": 15,
+  "problem_text_cn": "如图所示，AD=4，BC=3，DF=3，AB平行于CD，AB∥EF，CD平行于EF。求直线BE的长度。",
+  "problem_text_en": "As shown in the diagram, AD=4, BC=3, DF=3, AB∥CD, AB is parallel to EF, CD is parallel to EF. Find the length of line BE.",
   "problem_img": "4950.png",
   "construction_cdl": [
     "Shape(AM,MB,BA)",
@@ -35,14 +35,24 @@
     "similar_triangle_property_line_ratio(1,AMB,DMC)",
     "similar_triangle_property_line_ratio(1,BAM,EFM)",
     "similar_triangle_property_line_ratio(1,AMB,FME)",
-    "similar_triangle_property_line_ratio(1,CDM,BAM)",
     "line_addition(1,AM,MD)",
     "line_addition(1,AM,MF)",
     "line_addition(1,AD,DF)",
     "line_addition(1,BM,MC)",
     "line_addition(1,BM,ME)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_alternate_interior_angle(1,AB,CD)",
+      "parallel_property_alternate_interior_angle(2,AB,CD)",
+      "parallel_property_alternate_interior_angle(1,AB,EF)",
+      "parallel_property_alternate_interior_angle(2,AB,EF)",
+      "line_addition(1,AM,MD)",
+      "line_addition(1,AM,MF)",
+      "line_addition(1,AD,DF)",
+      "line_addition(1,BM,MC)",
+      "line_addition(1,BM,ME)"
+    ],
     "parallel_property_alternate_interior_angle(1,AB,CD)": [
       "similar_triangle_judgment_aa(1,MBA,MCD)"
     ],
@@ -62,17 +72,6 @@
     "similar_triangle_judgment_aa(1,MBA,MEF)": [
       "similar_triangle_property_line_ratio(1,BAM,EFM)",
       "similar_triangle_property_line_ratio(1,AMB,FME)"
-    ],
-    "START": [
-      "parallel_property_alternate_interior_angle(1,AB,CD)",
-      "parallel_property_alternate_interior_angle(2,AB,CD)",
-      "parallel_property_alternate_interior_angle(1,AB,EF)",
-      "parallel_property_alternate_interior_angle(2,AB,EF)",
-      "line_addition(1,AM,MD)",
-      "line_addition(1,AM,MF)",
-      "line_addition(1,AD,DF)",
-      "line_addition(1,BM,MC)",
-      "line_addition(1,BM,ME)"
     ]
   }
 }

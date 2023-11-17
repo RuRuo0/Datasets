@@ -2,9 +2,9 @@
   "problem_id": 576,
   "annotation": "YimingHe_2023-04-09",
   "source": "Geometry3k-590",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Use the figure to find the indicated variable. Find y if m \\angle 3 = 4 y + 30 and m \\angle 7 = 7 y + 6.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠DAG=7*y+6°，∠RGA=4*y+30°，FR平行于DS。求y的值。",
+  "problem_text_en": "As shown in the diagram, ∠DAG=7*y+6°, ∠RGA=4*y+30°, FR is parallel to DS. Find the value of y.",
   "problem_img": "576.png",
   "construction_cdl": [
     "Shape(EG,GB)",
@@ -19,7 +19,11 @@
     "Collinear(FGR)",
     "Collinear(DAS)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(DAG),7*y+6)",
+    "Equal(MeasureOfAngle(RGA),4*y+30)",
+    "ParallelBetweenLine(FR,DS)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(RGA),4*y+30)",
     "Equal(MeasureOfAngle(DAG),7*y+6)",
@@ -32,15 +36,15 @@
     "parallel_property_collinear_extend(3,SD,RG,A)",
     "parallel_property_alternate_interior_angle(1,GR,DA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,FR,DS,G)"
+    ],
     "parallel_property_collinear_extend(3,FR,DS,G)": [
       "parallel_property_collinear_extend(3,SD,RG,A)"
     ],
     "parallel_property_collinear_extend(3,SD,RG,A)": [
       "parallel_property_alternate_interior_angle(1,GR,DA)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,FR,DS,G)"
     ]
   }
 }

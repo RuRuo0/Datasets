@@ -2,9 +2,9 @@
   "problem_id": 5389,
   "annotation": "XiaoxiaoJin_2023-05-21",
   "source": "GeoQA-5677",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB∥CD,BE垂直平分AD,DC=BC,若∠A=70°,则∠C=()",
-  "problem_text_en": "As shown in the figure, AB ∥ CD, BE perpendicularly bisects AD, DC = BC, if ∠A = N_0, then ∠C = ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，DC=BC，∠DAB=70°，BE垂直平分AB，DC平行于AB。求∠BCD的大小。",
+  "problem_text_en": "As shown in the diagram, DC=BC, ∠DAB=70°, BE perpendicular bisects DA, DC is parallel to AB. Find the measure of ∠BCD.",
   "problem_img": "5389.png",
   "construction_cdl": [
     "Shape(CD,DB,BC)",
@@ -15,8 +15,8 @@
   "text_cdl": [
     "Equal(LengthOfLine(DC),LengthOfLine(BC))",
     "Equal(MeasureOfAngle(DAB),70)",
-    "ParallelBetweenLine(DC,AB)",
-    "IsPerpendicularBisectorOfLine(BE,DA)"
+    "IsPerpendicularBisectorOfLine(BE,DA)",
+    "ParallelBetweenLine(DC,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BCD))",
@@ -31,7 +31,14 @@
     "triangle_property_angle_sum(1,BDA)",
     "parallel_property_alternate_interior_angle(1,DC,AB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "perpendicular_bisector_property_distance_equal(1,BE,DA)",
+      "isosceles_triangle_judgment_line_equal(1,CDB)",
+      "triangle_property_angle_sum(1,CDB)",
+      "triangle_property_angle_sum(1,BDA)",
+      "parallel_property_alternate_interior_angle(1,DC,AB)"
+    ],
     "perpendicular_bisector_property_distance_equal(1,BE,DA)": [
       "isosceles_triangle_judgment_line_equal(1,BDA)"
     ],
@@ -40,13 +47,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,BDA)": [
       "isosceles_triangle_property_angle_equal(1,BDA)"
-    ],
-    "START": [
-      "perpendicular_bisector_property_distance_equal(1,BE,DA)",
-      "isosceles_triangle_judgment_line_equal(1,CDB)",
-      "triangle_property_angle_sum(1,CDB)",
-      "triangle_property_angle_sum(1,BDA)",
-      "parallel_property_alternate_interior_angle(1,DC,AB)"
     ]
   }
 }

@@ -3,15 +3,22 @@
   "annotation": "YimingHe_2023-03-19",
   "source": "Geometry3k-1398",
   "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the triangle. Round to the nearest tenth if necessary.",
+  "problem_text_cn": "如图所示，AB=5，AC=15，OB=21.5，OC=8，OC是三角形OAB的高，OC⊥AC。求△OAB的面积。",
+  "problem_text_en": "As shown in the diagram, AB=5, AC=15, OB=21.5, OC=8, OC is the altitude of △ OAB, OC is perpendicular to AC. Find the area of triangle OAB.",
   "problem_img": "1350.png",
   "construction_cdl": [
     "Shape(OC,CA,AO)",
     "Shape(OA,AB,BO)",
     "Collinear(CAB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),5)",
+    "Equal(LengthOfLine(AC),15)",
+    "Equal(LengthOfLine(OB),21.5)",
+    "Equal(LengthOfLine(OC),8)",
+    "IsAltitudeOfTriangle(OC,OAB)",
+    "PerpendicularBetweenLine(OC,AC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AB),5)",
     "Equal(LengthOfLine(OB),21.5)",
@@ -25,7 +32,7 @@
   "theorem_seqs": [
     "triangle_area_formula_common(1,OAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_area_formula_common(1,OAB)"
     ]

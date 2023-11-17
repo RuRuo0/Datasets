@@ -2,9 +2,9 @@
   "problem_id": 6347,
   "annotation": "ChengQin_2023-06-04",
   "source": "GeoQA-9166",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示,在菱形ABCD中,点E、F分别是AB、AC的中点,若EF=4,则AD的长为()",
-  "problem_text_en": "As shown in the figure, in the diamond ABCD, the points E and F are the midpoints of AB and AC respectively. If EF = N_0, the length of AD is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，EF=4，E平分线段AB，F平分线段AC，ABCD是菱形。求直线AD的长度。",
+  "problem_text_en": "As shown in the diagram, EF=4, E is the midpoint of segment AB, F is the midpoint of segment AC, ABCD is a rhombus. Find the length of line AD.",
   "problem_img": "6347.png",
   "construction_cdl": [
     "Shape(AE,EF,FA)",
@@ -14,10 +14,10 @@
     "Collinear(AFC)"
   ],
   "text_cdl": [
-    "Rhombus(ABCD)",
+    "Equal(LengthOfLine(EF),4)",
     "IsMidpointOfLine(E,AB)",
     "IsMidpointOfLine(F,AC)",
-    "Equal(LengthOfLine(EF),4)"
+    "Rhombus(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AD))",
@@ -26,12 +26,12 @@
     "midsegment_of_triangle_judgment_midpoint(1,EF,ABC)",
     "midsegment_of_triangle_property_length(1,EF,ABC)"
   ],
-  "theorem_seq_dag": {
-    "midsegment_of_triangle_judgment_midpoint(1,EF,ABC)": [
-      "midsegment_of_triangle_property_length(1,EF,ABC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "midsegment_of_triangle_judgment_midpoint(1,EF,ABC)"
+    ],
+    "midsegment_of_triangle_judgment_midpoint(1,EF,ABC)": [
+      "midsegment_of_triangle_property_length(1,EF,ABC)"
     ]
   }
 }

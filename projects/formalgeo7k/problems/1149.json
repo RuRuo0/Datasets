@@ -2,9 +2,9 @@
   "problem_id": 1149,
   "annotation": "JiaZou_2023-03-19",
   "source": "Geometry3k-1188",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "P is the incenter of \\angle X Y Z. Find P K.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，JZ=12，PZ=20，∠JYP=27°，∠YXP=31°，△XZY的内心为P，PJ⊥YJ，YK⊥PK。求直线PK的长度。",
+  "problem_text_en": "As shown in the diagram, JZ=12, PZ=20, ∠JYP=27°, ∠YXP=31°, P is the incenter of triangle XZY, PJ⊥YJ, YK is perpendicular to PK. Find the length of line PK.",
   "problem_img": "1149.png",
   "construction_cdl": [
     "Shape(XL,LP,PX)",
@@ -21,7 +21,13 @@
     "Collinear(ZPK)"
   ],
   "text_cdl": [
-    "IsIncenterOfTriangle(P,XZY)"
+    "Equal(LengthOfLine(JZ),12)",
+    "Equal(LengthOfLine(PZ),20)",
+    "Equal(MeasureOfAngle(JYP),27)",
+    "Equal(MeasureOfAngle(YXP),31)",
+    "IsIncenterOfTriangle(P,XZY)",
+    "PerpendicularBetweenLine(PJ,YJ)",
+    "PerpendicularBetweenLine(YK,PK)"
   ],
   "image_cdl": [
     "Equal(MeasureOfAngle(YXP),31)",
@@ -40,7 +46,11 @@
     "bisector_of_angle_judgment_angle_equal(1,YP,JYK)",
     "bisector_of_angle_property_distance_equal(1,YP,JYK)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,ZJP,PJY)",
+      "bisector_of_angle_judgment_angle_equal(1,YP,JYK)"
+    ],
     "adjacent_complementary_angle(1,ZJP,PJY)": [
       "right_triangle_judgment_angle(1,ZJP)"
     ],
@@ -49,10 +59,6 @@
     ],
     "bisector_of_angle_judgment_angle_equal(1,YP,JYK)": [
       "bisector_of_angle_property_distance_equal(1,YP,JYK)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,ZJP,PJY)",
-      "bisector_of_angle_judgment_angle_equal(1,YP,JYK)"
     ]
   }
 }

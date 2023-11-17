@@ -2,9 +2,9 @@
   "problem_id": 6646,
   "annotation": "QikeHuang_2023-06-04",
   "source": "GeoQA-9662",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB、CD是⊙O的直径,弦CE∥AB,CE为100°,则∠AOC的度数为()",
-  "problem_text_en": "As shown in the figure, AB and CD are the diameter of ⊙O, chord CE ∥ AB, CE is N_0, then the degree of ∠AOC is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，弧OCE的角度为100，圆O的圆心为O，AB是圆O的直径，⊙O的直径为CE，AB∥CE。求∠COA的大小。",
+  "problem_text_en": "As shown in the diagram, the measure of ⌒OCE is 100, O is the center of ⊙O, the diameter of ⊙O is AB, CE is the diameter of circle O, AB is parallel to CE. Find the measure of ∠COA.",
   "problem_img": "6646.png",
   "construction_cdl": [
     "Shape(ODA,AO,OD)",
@@ -17,11 +17,11 @@
     "Cocircular(O,ACEBD)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfArc(OCE),100)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)",
     "IsDiameterOfCircle(CE,O)",
-    "ParallelBetweenLine(AB,CE)",
-    "Equal(MeasureOfArc(OCE),100)"
+    "ParallelBetweenLine(AB,CE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(COA))",
@@ -34,16 +34,16 @@
     "arc_property_center_angle(1,OCD,O)",
     "arc_property_circumference_angle_external(1,OED,C)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,AB,CE,O)": [
-      "parallel_property_alternate_interior_angle(2,AO,CE)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_collinear_extend(3,AB,CE,O)",
       "arc_addition_measure(1,OCE,OED)",
       "flat_angle(1,DOC)",
       "arc_property_center_angle(1,OCD,O)",
       "arc_property_circumference_angle_external(1,OED,C)"
+    ],
+    "parallel_property_collinear_extend(3,AB,CE,O)": [
+      "parallel_property_alternate_interior_angle(2,AO,CE)"
     ]
   }
 }

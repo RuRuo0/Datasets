@@ -2,9 +2,9 @@
   "problem_id": 6850,
   "annotation": "DengfengYue_2023-06-04",
   "source": "GeoQA-angle-10070",
-  "problem_level": 1,
-  "problem_text_cn": "如图，已知P是三角形ABC内一点，∠BPC＝120°，∠A＝50°，BD是∠ABP的平分线，CE是∠ACP的平分线，BD与CE交于点F，则∠BFC等于（）",
-  "problem_text_en": "",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，∠CAB=50°，∠CPB=120°，BD平分∠ABP，CE是∠PCA的角平分线。求∠CFB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAB=50°, ∠CPB=120°, BD bisects ∠ABP, CE is the angle bisector of ∠PCA. Find the measure of ∠CFB.",
   "problem_img": "6850.png",
   "construction_cdl": [
     "Shape(AE,EF,FD,DA)",
@@ -18,10 +18,10 @@
     "Collinear(DFB)"
   ],
   "text_cdl": [
-    "IsBisectorOfAngle(BD,ABP)",
-    "IsBisectorOfAngle(CE,PCA)",
+    "Equal(MeasureOfAngle(CAB),50)",
     "Equal(MeasureOfAngle(CPB),120)",
-    "Equal(MeasureOfAngle(CAB),50)"
+    "IsBisectorOfAngle(BD,ABP)",
+    "IsBisectorOfAngle(CE,PCA)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CFB))",
@@ -37,7 +37,7 @@
     "angle_addition(1,FBP,PBC)",
     "angle_addition(1,BCP,PCF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,BCP)",
       "triangle_property_angle_sum(1,CFB)",

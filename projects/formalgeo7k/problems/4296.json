@@ -2,9 +2,9 @@
   "problem_id": 4296,
   "annotation": "DengfengYue_2023-05-07",
   "source": "GeoQA-3102",
-  "problem_level": 1,
-  "problem_text_cn": "如图,A、D是⊙O上的两个点,BC是直径,若∠D=35°,则∠OAC等于()",
-  "problem_text_en": "As shown in the figure, A and D are two points on ⊙O, BC is the diameter, if ∠D = N_0, then ∠OAC is equal to ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠ADC=35°，O是圆O的圆心，BC是圆O的直径。求∠CAO的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ADC=35°, the center of circle O is O, BC is the diameter of circle O. Find the measure of ∠CAO.",
   "problem_img": "4296.png",
   "construction_cdl": [
     "Shape(BA,OAB)",
@@ -20,9 +20,9 @@
     "Cocircular(O,ABDC)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(ADC),35)",
     "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(BC,O)",
-    "Equal(MeasureOfAngle(ADC),35)"
+    "IsDiameterOfCircle(BC,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CAO))",
@@ -36,7 +36,14 @@
     "isosceles_triangle_property_angle_equal(1,OCA)",
     "triangle_property_angle_sum(1,AOC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_circumference_angle_external(1,OCA,D)",
+      "arc_property_center_angle(1,OCA,O)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "triangle_property_angle_sum(1,AOC)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OCA)"
     ],
@@ -45,13 +52,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OCA)": [
       "isosceles_triangle_property_angle_equal(1,OCA)"
-    ],
-    "START": [
-      "arc_property_circumference_angle_external(1,OCA,D)",
-      "arc_property_center_angle(1,OCA,O)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "triangle_property_angle_sum(1,AOC)"
     ]
   }
 }

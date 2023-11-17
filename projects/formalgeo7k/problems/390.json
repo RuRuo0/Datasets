@@ -2,9 +2,9 @@
   "problem_id": 390,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-397",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "A B C D is a rhombus. If P B = 12, A B = 15, and m \\angle A B D = 24. Find A P.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AB=15，PB=12，∠PBA=24°，ADCB是菱形。求直线AP的长度。",
+  "problem_text_en": "As shown in the diagram, AB=15, PB=12, ∠PBA=24°, quadrilateral ADCB is a rhombus. Find the length of line AP.",
   "problem_img": "390.png",
   "construction_cdl": [
     "Shape(AD,DP,PA)",
@@ -15,6 +15,9 @@
     "Collinear(DPB)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AB),15)",
+    "Equal(LengthOfLine(PB),12)",
+    "Equal(MeasureOfAngle(PBA),24)",
     "Rhombus(ADCB)"
   ],
   "image_cdl": [
@@ -29,15 +32,15 @@
     "right_triangle_judgment_angle(1,APB)",
     "right_triangle_property_pythagorean(1,APB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "kite_property_diagonal_perpendicular_bisection(1,BADC,P)"
+    ],
     "kite_property_diagonal_perpendicular_bisection(1,BADC,P)": [
       "right_triangle_judgment_angle(1,APB)"
     ],
     "right_triangle_judgment_angle(1,APB)": [
       "right_triangle_property_pythagorean(1,APB)"
-    ],
-    "START": [
-      "kite_property_diagonal_perpendicular_bisection(1,BADC,P)"
     ]
   }
 }

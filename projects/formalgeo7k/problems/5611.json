@@ -2,9 +2,9 @@
   "problem_id": 5611,
   "annotation": "YimingHe_2023-05-28",
   "source": "GeoQA-7180",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,点D、E分别在边AB、AC上,连接CD、BE交于点O,且DE∥BC,OD=1,OC=3,AD=2,则AB的长为()",
-  "problem_text_en": "As shown in the figure, in △ABC, vertices D and E are on edges AB and AC respectively, connecting CD and BE to point O, and DE ∥ BC, OD = N_0, OC = N_1, AD = N_2, then the length of AB is()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，AD=2，OC=3，OD=1，DE平行于BC。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, AD=2, OC=3, OD=1, DE is parallel to BC. Find the length of line AB.",
   "problem_img": "5611.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -18,10 +18,10 @@
     "Collinear(BOE)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(DE,BC)",
-    "Equal(LengthOfLine(OD),1)",
+    "Equal(LengthOfLine(AD),2)",
     "Equal(LengthOfLine(OC),3)",
-    "Equal(LengthOfLine(AD),2)"
+    "Equal(LengthOfLine(OD),1)",
+    "ParallelBetweenLine(DE,BC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -38,7 +38,13 @@
     "similar_triangle_property_line_ratio(1,ABC,ADE)",
     "similar_triangle_property_line_ratio(1,CAB,EAD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_alternate_interior_angle(1,DE,BC)",
+      "parallel_property_alternate_interior_angle(2,DE,BC)",
+      "parallel_property_corresponding_angle(1,DE,BC,A)",
+      "parallel_property_corresponding_angle(2,CB,ED,A)"
+    ],
     "parallel_property_alternate_interior_angle(1,DE,BC)": [
       "similar_triangle_judgment_aa(1,OBC,OED)"
     ],
@@ -58,12 +64,6 @@
     "similar_triangle_judgment_aa(1,ABC,ADE)": [
       "similar_triangle_property_line_ratio(1,ABC,ADE)",
       "similar_triangle_property_line_ratio(1,CAB,EAD)"
-    ],
-    "START": [
-      "parallel_property_alternate_interior_angle(1,DE,BC)",
-      "parallel_property_alternate_interior_angle(2,DE,BC)",
-      "parallel_property_corresponding_angle(1,DE,BC,A)",
-      "parallel_property_corresponding_angle(2,CB,ED,A)"
     ]
   }
 }

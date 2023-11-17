@@ -2,16 +2,20 @@
   "problem_id": 3782,
   "annotation": "ChenyangMao_2023-04-30",
   "source": "GeoQA-1615",
-  "problem_level": 1,
-  "problem_text_cn": "如图,平行四边形ABCD中,CE⊥AB于E,如果∠A=125°,则∠BCE度数是()",
-  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, CE ⊥ AB is in E, if ∠A = N_0, then the degree of ∠BCE is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠DAE=125°，四边形ABCD是▱，AE⊥CE。求∠BCE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DAE=125°, AD and BC are opposite sides of the ▱ ABCD, AE⊥CE. Find the measure of ∠BCE.",
   "problem_img": "3782.png",
   "construction_cdl": [
     "Shape(AE,EC,CD,DA)",
     "Shape(EB,BC,CE)",
     "Collinear(AEB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(DAE),125)",
+    "Parallelogram(ABCD)",
+    "PerpendicularBetweenLine(AE,CE)"
+  ],
   "image_cdl": [
     "Parallelogram(ABCD)",
     "PerpendicularBetweenLine(AE,CE)",
@@ -24,7 +28,7 @@
     "quadrilateral_property_angle_sum(1,AECD)",
     "angle_addition(1,BCE,ECD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_ipsilateral_internal_angle(1,CB,DA)",
       "quadrilateral_property_angle_sum(1,AECD)",

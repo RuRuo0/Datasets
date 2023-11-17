@@ -2,9 +2,9 @@
   "problem_id": 2422,
   "annotation": "Yangli_2023-04-23",
   "source": "Geometry3k-2539",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot M, F L = 24, H J = 48, and m \\widehat H P = 65. Find m \\widehat P J.",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，FL=24，HJ=48，⌒MHP的角度为65，⊙M的圆心为M，JN垂直于PN，KL垂直于GL。求∠JMN的大小。",
+  "problem_text_en": "As shown in the diagram, FL=24, HJ=48, the measure of ⌒MHP is 65, M is the center of circle M, JN is perpendicular to PN, KL is perpendicular to GL. Find the measure of ∠JMN.",
   "problem_img": "2422.png",
   "construction_cdl": [
     "Shape(FL,LK,MKF)",
@@ -24,7 +24,10 @@
   "text_cdl": [
     "Equal(LengthOfLine(FL),24)",
     "Equal(LengthOfLine(HJ),48)",
-    "Equal(MeasureOfArc(MHP),65)"
+    "Equal(MeasureOfArc(MHP),65)",
+    "IsCentreOfCircle(M,M)",
+    "PerpendicularBetweenLine(JN,PN)",
+    "PerpendicularBetweenLine(KL,GL)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(M,M)",
@@ -45,7 +48,15 @@
     "mirror_congruent_triangle_judgment_aas(1,MHN,MNJ)",
     "mirror_congruent_triangle_property_angle_equal(1,MHN,MNJ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_center_angle(1,MHP,M)",
+      "radius_of_circle_property_length_equal(1,MH,M)",
+      "radius_of_circle_property_length_equal(1,MJ,M)",
+      "adjacent_complementary_angle(1,JNP,PNH)",
+      "adjacent_complementary_angle(1,MNJ,JNP)",
+      "adjacent_complementary_angle(1,PNH,HNM)"
+    ],
     "radius_of_circle_property_length_equal(1,MH,M)": [
       "isosceles_triangle_judgment_line_equal(1,MHJ)",
       "mirror_congruent_triangle_judgment_aas(1,MHN,MNJ)"
@@ -71,14 +82,6 @@
     ],
     "mirror_congruent_triangle_judgment_aas(1,MHN,MNJ)": [
       "mirror_congruent_triangle_property_angle_equal(1,MHN,MNJ)"
-    ],
-    "START": [
-      "arc_property_center_angle(1,MHP,M)",
-      "radius_of_circle_property_length_equal(1,MH,M)",
-      "radius_of_circle_property_length_equal(1,MJ,M)",
-      "adjacent_complementary_angle(1,JNP,PNH)",
-      "adjacent_complementary_angle(1,MNJ,JNP)",
-      "adjacent_complementary_angle(1,PNH,HNM)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 4373,
   "annotation": "YimingHe_2023-05-14",
   "source": "GeoQA-3289",
-  "problem_level": 1,
-  "problem_text_cn": "在直径为100cm的圆柱形油桶内装入一些油后,截面如本题图所示,若油面宽AB=80cm,则油的最大深度为()",
-  "problem_text_en": "After filling some oil in a cylindrical oil drum with a diameter of N_0, the cross section is as shown in the figure in this question. If the width of oil surface AB = N_1, the maximum depth of oil is ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，⊙O的直径为100，AB=80，⊙O的圆心为O，AC⊥OC。求直线CD的长度。",
+  "problem_text_en": "As shown in the diagram, the diameter of circle O is 100, AB=80, O is the center of ⊙O, AC is perpendicular to OC. Find the length of line CD.",
   "problem_img": "4373.png",
   "construction_cdl": [
     "Shape(AO,OB,OBA)",
@@ -17,10 +17,10 @@
     "Cocircular(O,ADB)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(AC,OC)",
     "Equal(DiameterOfCircle(O),100)",
     "Equal(LengthOfLine(AB),80)",
-    "IsCentreOfCircle(O,O)"
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(AC,OC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(CD))",
@@ -38,7 +38,16 @@
     "right_triangle_property_pythagorean(1,OCB)",
     "line_addition(1,OC,CD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "circle_property_length_of_radius_and_diameter(1,O)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OD,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "adjacent_complementary_angle(1,ACO,OCB)",
+      "line_addition(1,AC,CB)",
+      "line_addition(1,OC,CD)"
+    ],
     "circle_property_length_of_radius_and_diameter(1,O)": [
       "mirror_congruent_triangle_judgment_hl(1,ACO,BOC)",
       "mirror_congruent_triangle_judgment_hl(1,ACO,BOC)"
@@ -58,15 +67,6 @@
     ],
     "right_triangle_judgment_angle(1,OCB)": [
       "right_triangle_property_pythagorean(1,OCB)"
-    ],
-    "START": [
-      "circle_property_length_of_radius_and_diameter(1,O)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OD,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "adjacent_complementary_angle(1,ACO,OCB)",
-      "line_addition(1,AC,CB)",
-      "line_addition(1,OC,CD)"
     ]
   }
 }

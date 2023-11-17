@@ -2,9 +2,9 @@
   "problem_id": 2023,
   "annotation": "QikeHuang_2023-04-23",
   "source": "Geometry3k-2109",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y. Round to the nearest tenth, if necessary.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，BE=5，CF=y，FD=2，圆B的圆心为B，BF⊥AF。求y的值。",
+  "problem_text_en": "As shown in the diagram, BE=5, CF=y, FD=2, B is the center of circle B, BF⊥AF. Find the value of y.",
   "problem_img": "2023.png",
   "construction_cdl": [
     "Shape(BCD,DF,FC)",
@@ -16,7 +16,13 @@
     "Collinear(CFA)",
     "Cocircular(B,CDAE)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BE),5)",
+    "Equal(LengthOfLine(CF),y)",
+    "Equal(LengthOfLine(FD),2)",
+    "IsCentreOfCircle(B,B)",
+    "PerpendicularBetweenLine(BF,AF)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(B,B)",
     "Equal(LengthOfLine(CF),y)",
@@ -35,19 +41,19 @@
     "line_addition(1,DF,FB)",
     "right_triangle_property_pythagorean(1,CFB)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,CFB,BFA)": [
-      "right_triangle_judgment_angle(1,CFB)"
-    ],
-    "right_triangle_judgment_angle(1,CFB)": [
-      "right_triangle_property_pythagorean(1,CFB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,CFB,BFA)",
       "radius_of_circle_property_length_equal(1,BC,B)",
       "radius_of_circle_property_length_equal(1,BD,B)",
       "radius_of_circle_property_length_equal(1,BE,B)",
       "line_addition(1,DF,FB)"
+    ],
+    "adjacent_complementary_angle(1,CFB,BFA)": [
+      "right_triangle_judgment_angle(1,CFB)"
+    ],
+    "right_triangle_judgment_angle(1,CFB)": [
+      "right_triangle_property_pythagorean(1,CFB)"
     ]
   }
 }

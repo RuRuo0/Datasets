@@ -2,9 +2,9 @@
   "problem_id": 5087,
   "annotation": "YimingHe_2023-05-21",
   "source": "GeoQA-4897",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AD∥BE∥CF,直线l_{1},l_{2}与这三条平行线分别交于A,B,C和点D,E,F．若AB=2,BC=4,DE=3,则EF的长为()",
-  "problem_text_en": "As shown in the figure, AD ∥ BE ∥ CF, straight lines l_ 1, l_ 2 and these three parallel lines intersect at A, B, C and points D, E, F respectively. If AB = N_0, BC = N_1, DE = N_2, then the length of EF is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=2，BC=4，DE=3，AD∥BE，AD平行于CF，BE平行于CF，ABED与BCFE相似。求直线EF的长度。",
+  "problem_text_en": "As shown in the diagram, AB=2, BC=4, DE=3, AD∥BE, AD is parallel to CF, BE is parallel to CF, ABED is similar to BCFE. Find the length of line EF.",
   "problem_img": "5087.png",
   "construction_cdl": [
     "Shape(AB,BE,ED,DA)",
@@ -13,13 +13,13 @@
     "Collinear(DEF)"
   ],
   "text_cdl": [
-    "SimilarBetweenQuadrilateral(ABED,BCFE)",
+    "Equal(LengthOfLine(AB),2)",
+    "Equal(LengthOfLine(BC),4)",
+    "Equal(LengthOfLine(DE),3)",
     "ParallelBetweenLine(AD,BE)",
     "ParallelBetweenLine(AD,CF)",
     "ParallelBetweenLine(BE,CF)",
-    "Equal(LengthOfLine(AB),2)",
-    "Equal(LengthOfLine(BC),4)",
-    "Equal(LengthOfLine(DE),3)"
+    "SimilarBetweenQuadrilateral(ABED,BCFE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(EF))",
@@ -28,7 +28,7 @@
     "similar_quadrilateral_property_line_ratio(1,ABED,BCFE)",
     "similar_quadrilateral_property_line_ratio(1,EDAB,FEBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "similar_quadrilateral_property_line_ratio(1,ABED,BCFE)",
       "similar_quadrilateral_property_line_ratio(1,EDAB,FEBC)"

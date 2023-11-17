@@ -2,9 +2,9 @@
   "problem_id": 6253,
   "annotation": "FangzhenZhu_2023-06-04",
   "source": "GeoQA-8870",
-  "problem_level": 1,
-  "problem_text_cn": "如图,一矩形与⊙O相交,若AB=4,BC=6,DE=2,则DF=()",
-  "problem_text_en": "As shown in the figure, a rectangle intersects with ⊙O, if AB = N_0, BC = N_1, DE = N_2, then DF = ()",
+  "problem_level": 13,
+  "problem_text_cn": "如图所示，AB=4，BC=6，DE=2，O是圆O的圆心，CM⊥OM，四边形ADHG是矩形。求直线DF的长度。",
+  "problem_text_en": "As shown in the diagram, AB=4, BC=6, DE=2, O is the center of ⊙O, CM⊥OM, quadrilateral ADHG is a rectangle. Find the length of line DF.",
   "problem_img": "6253.png",
   "construction_cdl": [
     "Shape(OCB,BC)",
@@ -22,8 +22,8 @@
     "Equal(LengthOfLine(BC),6)",
     "Equal(LengthOfLine(DE),2)",
     "IsCentreOfCircle(O,O)",
-    "Rectangle(ADHG)",
-    "PerpendicularBetweenLine(CM,OM)"
+    "PerpendicularBetweenLine(CM,OM)",
+    "Rectangle(ADHG)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(DF))",
@@ -43,19 +43,7 @@
     "radius_of_circle_property_length_equal(1,OE,O)",
     "radius_of_circle_property_length_equal(1,OF,O)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,CMO,OMA)": [
-      "parallel_judgment_ipsilateral_internal_angle(1,MO,AD)"
-    ],
-    "parallel_judgment_ipsilateral_internal_angle(1,AM,DO)": [
-      "parallelogram_judgment_parallel_and_parallel(1,OMAD)"
-    ],
-    "parallel_judgment_ipsilateral_internal_angle(1,MO,AD)": [
-      "parallelogram_judgment_parallel_and_parallel(1,OMAD)"
-    ],
-    "parallelogram_judgment_parallel_and_parallel(1,OMAD)": [
-      "parallelogram_property_opposite_line_equal(1,MADO)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,CMO,OMA)",
       "parallel_judgment_ipsilateral_internal_angle(1,AM,DO)",
@@ -67,6 +55,18 @@
       "circle_property_chord_perpendicular_bisect_chord(1,O,OM,CB)",
       "radius_of_circle_property_length_equal(1,OE,O)",
       "radius_of_circle_property_length_equal(1,OF,O)"
+    ],
+    "adjacent_complementary_angle(1,CMO,OMA)": [
+      "parallel_judgment_ipsilateral_internal_angle(1,MO,AD)"
+    ],
+    "parallel_judgment_ipsilateral_internal_angle(1,AM,DO)": [
+      "parallelogram_judgment_parallel_and_parallel(1,OMAD)"
+    ],
+    "parallel_judgment_ipsilateral_internal_angle(1,MO,AD)": [
+      "parallelogram_judgment_parallel_and_parallel(1,OMAD)"
+    ],
+    "parallelogram_judgment_parallel_and_parallel(1,OMAD)": [
+      "parallelogram_property_opposite_line_equal(1,MADO)"
     ]
   }
 }

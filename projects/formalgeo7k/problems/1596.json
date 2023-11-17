@@ -2,16 +2,21 @@
   "problem_id": 1596,
   "annotation": "QikeHuang_2023-04-09",
   "source": "Geometry3k-1656",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the measure of the altitude drawn to the hypotenuse.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，TV=13，VW=2，TW⊥UW，VU垂直于TU。求直线VU的长度。",
+  "problem_text_en": "As shown in the diagram, TV=13, VW=2, TW⊥UW, VU is perpendicular to TU. Find the length of line VU.",
   "problem_img": "1596.png",
   "construction_cdl": [
     "Shape(TW,WU,UT)",
     "Shape(WV,VU,UW)",
     "Collinear(VWT)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(TV),13)",
+    "Equal(LengthOfLine(VW),2)",
+    "PerpendicularBetweenLine(TW,UW)",
+    "PerpendicularBetweenLine(VU,TU)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(VW),2)",
     "Equal(LengthOfLine(TV),13)",
@@ -30,7 +35,13 @@
     "right_triangle_property_pythagorean(1,UWV)",
     "right_triangle_property_pythagorean(1,VUT)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,VW,WT)",
+      "adjacent_complementary_angle(1,TWU,UWV)",
+      "right_triangle_judgment_angle(1,TWU)",
+      "right_triangle_judgment_angle(1,VUT)"
+    ],
     "adjacent_complementary_angle(1,TWU,UWV)": [
       "right_triangle_judgment_angle(1,UWV)"
     ],
@@ -42,12 +53,6 @@
     ],
     "right_triangle_judgment_angle(1,VUT)": [
       "right_triangle_property_pythagorean(1,VUT)"
-    ],
-    "START": [
-      "line_addition(1,VW,WT)",
-      "adjacent_complementary_angle(1,TWU,UWV)",
-      "right_triangle_judgment_angle(1,TWU)",
-      "right_triangle_judgment_angle(1,VUT)"
     ]
   }
 }

@@ -2,15 +2,24 @@
   "problem_id": 849,
   "annotation": "XiaokaiZhang_2023-03-19",
   "source": "Geometry3k-878",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=18，AD=y，BC=x，BD=z，∠ABC=45°，∠ADB=60°，BA⊥DA，BC⊥AC。求y的值。",
+  "problem_text_en": "As shown in the diagram, AB=18, AD=y, BC=x, BD=z, ∠ABC=45°, ∠ADB=60°, BA is perpendicular to DA, BC⊥AC. Find the value of y.",
   "problem_img": "849.png",
   "construction_cdl": [
     "Shape(DB,BA,AD)",
     "Shape(AB,BC,CA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),18)",
+    "Equal(LengthOfLine(AD),y)",
+    "Equal(LengthOfLine(BC),x)",
+    "Equal(LengthOfLine(BD),z)",
+    "Equal(MeasureOfAngle(ABC),45)",
+    "Equal(MeasureOfAngle(ADB),60)",
+    "PerpendicularBetweenLine(BA,DA)",
+    "PerpendicularBetweenLine(BC,AC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AD),y)",
     "Equal(MeasureOfAngle(ADB),60)",
@@ -27,7 +36,7 @@
     "triangle_property_angle_sum(1,DBA)",
     "sine_theorem(1,ADB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,DBA)",
       "sine_theorem(1,ADB)"

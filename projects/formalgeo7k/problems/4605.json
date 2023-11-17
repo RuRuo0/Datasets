@@ -2,9 +2,9 @@
   "problem_id": 4605,
   "annotation": "QikeHuang_2023-05-14",
   "source": "GeoQA-3770",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC内接于⊙O,AD⊥BC,BE⊥AC,AD,BE相交于点M,若AC=8,BM=4,则⊙O的半径等于()",
-  "problem_text_en": "As shown in the figure, △ABC is inscribed in ⊙O, AD ⊥ BC, BE ⊥ AC, AD and BE intersect at point M, if AC = N_0, BM = N_1, then the radius of ⊙O is equal to ()",
+  "problem_level": 17,
+  "problem_text_cn": "如图所示，AC=8，BM=4，圆O的圆心为O，AE垂直于BE，CD⊥AD。求圆O的半径。",
+  "problem_text_en": "As shown in the diagram, AC=8, BM=4, the center of ⊙O is O, AE is perpendicular to BE, CD is perpendicular to AD. Find the radius of circle O.",
   "problem_img": "4605.png",
   "construction_cdl": [
     "Shape(BN,NM,MB)",
@@ -32,11 +32,11 @@
     "Cocircular(O,ACHB)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AC),8)",
+    "Equal(LengthOfLine(BM),4)",
     "IsCentreOfCircle(O,O)",
     "PerpendicularBetweenLine(AE,BE)",
-    "PerpendicularBetweenLine(CD,AD)",
-    "Equal(LengthOfLine(AC),8)",
-    "Equal(LengthOfLine(BM),4)"
+    "PerpendicularBetweenLine(CD,AD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(RadiusOfCircle(O))",
@@ -60,7 +60,13 @@
     "diameter_of_circle_property_length_equal(1,AH,O)",
     "circle_property_length_of_radius_and_diameter(1,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "altitude_of_triangle_judgment(1,BE,BAC)",
+      "altitude_of_triangle_judgment(1,AD,ACB)",
+      "diameter_of_circle_judgment_pass_centre(1,AOH,O)",
+      "circle_property_length_of_radius_and_diameter(1,O)"
+    ],
     "altitude_of_triangle_judgment(1,BE,BAC)": [
       "orthocenter_of_triangle_judgment_intersection(1,M,CBA,D,E)",
       "parallel_judgment_ipsilateral_internal_angle(1,EB,CH)"
@@ -103,12 +109,6 @@
     ],
     "right_triangle_judgment_angle(1,ACH)": [
       "right_triangle_property_pythagorean(1,ACH)"
-    ],
-    "START": [
-      "altitude_of_triangle_judgment(1,BE,BAC)",
-      "altitude_of_triangle_judgment(1,AD,ACB)",
-      "diameter_of_circle_judgment_pass_centre(1,AOH,O)",
-      "circle_property_length_of_radius_and_diameter(1,O)"
     ]
   }
 }

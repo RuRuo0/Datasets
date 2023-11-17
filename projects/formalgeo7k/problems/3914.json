@@ -2,9 +2,9 @@
   "problem_id": 3914,
   "annotation": "FangzhenZhu_2023-05-07",
   "source": "GeoQA-1823",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点A、B、C、D在⊙O上,OB∥CD,∠A=25°,则∠BOD等于()",
-  "problem_text_en": "As shown in the figure, points A, B, C, D are on ⊙O, OB ∥ CD, ∠A = N_0, then ∠BOD is equal to ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，∠CAB=25°，O是⊙O的圆心，BO平行于CD。求∠DOB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAB=25°, the center of circle O is O, BO is parallel to CD. Find the measure of ∠DOB.",
   "problem_img": "3914.png",
   "construction_cdl": [
     "Shape(OAB,BA)",
@@ -15,7 +15,11 @@
     "Shape(OC,CD,DO)",
     "Cocircular(O,BCDA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(CAB),25)",
+    "IsCentreOfCircle(O,O)",
+    "ParallelBetweenLine(BO,CD)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "ParallelBetweenLine(BO,CD)",
@@ -34,16 +38,7 @@
     "triangle_property_angle_sum(1,OCD)",
     "parallel_property_alternate_interior_angle(2,BO,CD)"
   ],
-  "theorem_seq_dag": {
-    "radius_of_circle_property_length_equal(1,OC,O)": [
-      "isosceles_triangle_judgment_line_equal(1,OCD)"
-    ],
-    "radius_of_circle_property_length_equal(1,OD,O)": [
-      "isosceles_triangle_judgment_line_equal(1,OCD)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,OCD)": [
-      "isosceles_triangle_property_angle_equal(1,OCD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_circumference_angle_external(1,OBC,A)",
       "arc_property_center_angle(1,OBC,O)",
@@ -52,6 +47,15 @@
       "radius_of_circle_property_length_equal(1,OD,O)",
       "triangle_property_angle_sum(1,OCD)",
       "parallel_property_alternate_interior_angle(2,BO,CD)"
+    ],
+    "radius_of_circle_property_length_equal(1,OC,O)": [
+      "isosceles_triangle_judgment_line_equal(1,OCD)"
+    ],
+    "radius_of_circle_property_length_equal(1,OD,O)": [
+      "isosceles_triangle_judgment_line_equal(1,OCD)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,OCD)": [
+      "isosceles_triangle_property_angle_equal(1,OCD)"
     ]
   }
 }

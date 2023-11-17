@@ -2,9 +2,9 @@
   "problem_id": 6028,
   "annotation": "ChenyangMao_2023-05-28",
   "source": "GeoQA-8511",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点A、B、C、D在⊙O上,OB⊥AC．若∠BOC=56°,则∠ADB的大小为()",
-  "problem_text_en": "As shown in the figure, vertices A, B, C, and D are on O, OB ⊥ AC. If ∠BOC = N_0, then the size of ∠ADB is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠COB=56°，O是圆O的圆心，OE⊥CE。求∠BDA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠COB=56°, O is the center of ⊙O, OE is perpendicular to CE. Find the measure of ∠BDA.",
   "problem_img": "6028.png",
   "construction_cdl": [
     "Shape(OE,EC,CO)",
@@ -17,9 +17,9 @@
     "Cocircular(O,ABCD)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(COB),56)",
     "IsCentreOfCircle(O,O)",
-    "PerpendicularBetweenLine(OE,CE)",
-    "Equal(MeasureOfAngle(COB),56)"
+    "PerpendicularBetweenLine(OE,CE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BDA))",
@@ -32,7 +32,12 @@
     "arc_property_center_angle(1,OBC,O)",
     "arc_property_circumference_angle_external(1,OAB,D)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,AEO,OEC)",
+      "arc_property_center_angle(1,OBC,O)",
+      "arc_property_circumference_angle_external(1,OAB,D)"
+    ],
     "adjacent_complementary_angle(1,AEO,OEC)": [
       "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)"
     ],
@@ -41,11 +46,6 @@
     ],
     "congruent_arc_judgment_length_equal(1,OAB,OBC)": [
       "congruent_arc_property_measure_equal(1,OAB,OBC)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,AEO,OEC)",
-      "arc_property_center_angle(1,OBC,O)",
-      "arc_property_circumference_angle_external(1,OAB,D)"
     ]
   }
 }

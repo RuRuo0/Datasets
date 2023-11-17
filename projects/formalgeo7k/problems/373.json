@@ -2,9 +2,9 @@
   "problem_id": 373,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-380",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Quadrilateral W X Z Y is a rhombus. If m \\angle X Z Y = 56, find m \\angle Y W Z.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠YZX=56°，四边形WYZX是菱形。求∠TWY的大小。",
+  "problem_text_en": "As shown in the diagram, ∠YZX=56°, quadrilateral WYZX is a rhombus. Find the measure of ∠TWY.",
   "problem_img": "373.png",
   "construction_cdl": [
     "Shape(WY,YT,TW)",
@@ -15,6 +15,7 @@
     "Collinear(XTY)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(YZX),56)",
     "Rhombus(WYZX)"
   ],
   "image_cdl": [
@@ -31,7 +32,13 @@
     "isosceles_triangle_judgment_line_equal(1,YZW)",
     "isosceles_triangle_property_angle_equal(1,YZW)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "kite_property_diagonal_perpendicular_bisection(1,ZXWY,T)",
+      "isosceles_triangle_judgment_line_equal(1,ZXY)",
+      "angle_addition(1,YZT,TZX)",
+      "isosceles_triangle_judgment_line_equal(1,YZW)"
+    ],
     "kite_property_diagonal_perpendicular_bisection(1,ZXWY,T)": [
       "altitude_of_triangle_judgment(1,ZT,ZXY)"
     ],
@@ -43,12 +50,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,YZW)": [
       "isosceles_triangle_property_angle_equal(1,YZW)"
-    ],
-    "START": [
-      "kite_property_diagonal_perpendicular_bisection(1,ZXWY,T)",
-      "isosceles_triangle_judgment_line_equal(1,ZXY)",
-      "angle_addition(1,YZT,TZX)",
-      "isosceles_triangle_judgment_line_equal(1,YZW)"
     ]
   }
 }

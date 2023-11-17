@@ -2,9 +2,9 @@
   "problem_id": 1824,
   "annotation": "JiaZou_2023-03-26",
   "source": "Geometry3k-1892",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "J H is a midsegment of \\triangle K L M. Find x.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，HJ=5，LM=x，HJ是三角形KML的中位线。求x的值。",
+  "problem_text_en": "As shown in the diagram, HJ=5, LM=x, HJ is the midsegment of triangle KML. Find the value of x.",
   "problem_img": "1824.png",
   "construction_cdl": [
     "Shape(JK,KH,HJ)",
@@ -15,6 +15,8 @@
     "Collinear(LXM)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(HJ),5)",
+    "Equal(LengthOfLine(LM),x)",
     "IsMidsegmentOfTriangle(HJ,KML)"
   ],
   "image_cdl": [
@@ -31,7 +33,11 @@
     "similar_triangle_property_line_ratio(1,KHJ,KML)",
     "similar_triangle_property_line_ratio(1,JKH,LKM)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "midsegment_of_triangle_property_parallel(1,HJ,KML)",
+      "line_addition(1,KH,HM)"
+    ],
     "midsegment_of_triangle_property_parallel(1,HJ,KML)": [
       "parallel_property_corresponding_angle(1,HJ,ML,K)"
     ],
@@ -41,10 +47,6 @@
     "similar_triangle_judgment_aa(1,JKH,LKM)": [
       "similar_triangle_property_line_ratio(1,JKH,LKM)",
       "similar_triangle_property_line_ratio(1,KHJ,KML)"
-    ],
-    "START": [
-      "midsegment_of_triangle_property_parallel(1,HJ,KML)",
-      "line_addition(1,KH,HM)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 4208,
   "annotation": "Yangli_2023-05-07",
   "source": "GeoQA-2940",
-  "problem_level": 1,
-  "problem_text_cn": "AB是⊙O的直径,点C在圆上,∠ABC=65°,那么∠OCA的度数是()",
-  "problem_text_en": "AB is the diameter of ⊙O, point C is on the circle, ∠ABC = N_0, then the degree of ∠OCA is ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，∠OBC=65°，圆O的圆心为O，圆O的直径为AB。求∠OCA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠OBC=65°, the center of circle O is O, AB is the diameter of ⊙O. Find the measure of ∠OCA.",
   "problem_img": "4208.png",
   "construction_cdl": [
     "Shape(AO,OC,CA)",
@@ -17,6 +17,7 @@
   ],
   "text_cdl": [
     "Equal(MeasureOfAngle(OBC),65)",
+    "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [
@@ -36,7 +37,15 @@
     "isosceles_triangle_judgment_line_equal(1,OCA)",
     "isosceles_triangle_property_angle_equal(1,OCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "triangle_property_angle_sum(1,OBC)",
+      "adjacent_complementary_angle(1,AOC,COB)",
+      "triangle_property_angle_sum(1,OCA)"
+    ],
     "radius_of_circle_property_length_equal(1,OB,O)": [
       "isosceles_triangle_judgment_line_equal(1,OBC)"
     ],
@@ -52,14 +61,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OCA)": [
       "isosceles_triangle_property_angle_equal(1,OCA)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "triangle_property_angle_sum(1,OBC)",
-      "adjacent_complementary_angle(1,AOC,COB)",
-      "triangle_property_angle_sum(1,OCA)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 6642,
   "annotation": "QikeHuang_2023-06-04",
   "source": "GeoQA-9658",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是半圆的直径,∠ABC=50°,点D是⁀{AC}的中点,则∠DAB等于()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of the semicircle, ∠ABC = N_0, point D is the midpoint of ⁀AC, then ∠DAB is equal to ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠CBA=50°，O是⊙O的圆心，圆O的直径为AB，D是⌒OAC的中点。求∠BAD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CBA=50°, the center of ⊙O is O, AB is the diameter of circle O, D bisects ⌒OAC. Find the measure of ∠BAD.",
   "problem_img": "6642.png",
   "construction_cdl": [
     "Shape(CB,OBC)",
@@ -15,10 +15,10 @@
     "Cocircular(O,ADCB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(CBA),50)",
     "IsCentreOfCircle(O,O)",
-    "IsMidpointOfArc(D,OAC)",
     "IsDiameterOfCircle(AB,O)",
-    "Equal(MeasureOfAngle(CBA),50)"
+    "IsMidpointOfArc(D,OAC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BAD))",
@@ -33,10 +33,7 @@
     "arc_addition_measure(1,OAD,ODC)",
     "arc_addition_measure(1,OAD,ODB)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_length_equal(1,OAD,ODC)": [
-      "congruent_arc_property_measure_equal(1,OAD,ODC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_circumference_angle_external(1,ODB,A)",
       "arc_property_circumference_angle_external(1,OAC,B)",
@@ -45,6 +42,9 @@
       "arc_property_center_angle(1,OAB,O)",
       "arc_addition_measure(1,OAD,ODC)",
       "arc_addition_measure(1,OAD,ODB)"
+    ],
+    "congruent_arc_judgment_length_equal(1,OAD,ODC)": [
+      "congruent_arc_property_measure_equal(1,OAD,ODC)"
     ]
   }
 }

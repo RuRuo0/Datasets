@@ -2,9 +2,9 @@
   "problem_id": 3217,
   "annotation": "NaZhu_2023-04-23",
   "source": "GeoQA-513",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB∥CD,EMNF是直线AB、CD间的一条折线．若∠1=40°,∠2=60°,∠3=70°,则∠4的度数为()",
-  "problem_text_en": "As shown in the figure, AB ∥ CD, EMNF is a broken line between the straight lines AB and CD. If ∠1 = N_0, ∠2 = N_1, ∠3 = N_2, then the degree of ∠4 is ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，∠EMN=60°，∠FNM=70°，∠MEA=40°，AB平行于CD，AB平行于GH，GH平行于PQ，PQ∥CD。求∠NFD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠EMN=60°, ∠FNM=70°, ∠MEA=40°, AB is parallel to CD, AB is parallel to GH, GH is parallel to PQ, PQ is parallel to CD. Find the measure of ∠NFD.",
   "problem_img": "3217.png",
   "construction_cdl": [
     "Shape(ME,EA)",
@@ -25,13 +25,13 @@
     "Collinear(CFD)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(EMN),60)",
+    "Equal(MeasureOfAngle(FNM),70)",
+    "Equal(MeasureOfAngle(MEA),40)",
     "ParallelBetweenLine(AB,CD)",
     "ParallelBetweenLine(AB,GH)",
     "ParallelBetweenLine(GH,PQ)",
-    "ParallelBetweenLine(PQ,CD)",
-    "Equal(MeasureOfAngle(MEA),40)",
-    "Equal(MeasureOfAngle(EMN),60)",
-    "Equal(MeasureOfAngle(FNM),70)"
+    "ParallelBetweenLine(PQ,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(NFD))",
@@ -49,7 +49,14 @@
     "angle_addition(1,EMH,HMN)",
     "angle_addition(1,FNP,PNM)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,AB,GH,E)",
+      "parallel_property_collinear_extend(3,GH,PQ,M)",
+      "parallel_property_collinear_extend(3,PQ,CD,N)",
+      "angle_addition(1,EMH,HMN)",
+      "angle_addition(1,FNP,PNM)"
+    ],
     "parallel_property_collinear_extend(3,AB,GH,E)": [
       "parallel_property_collinear_extend(3,HG,EA,M)"
     ],
@@ -67,13 +74,6 @@
     ],
     "parallel_property_collinear_extend(3,DC,NP,F)": [
       "parallel_property_alternate_interior_angle(2,DF,NP)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,AB,GH,E)",
-      "parallel_property_collinear_extend(3,GH,PQ,M)",
-      "parallel_property_collinear_extend(3,PQ,CD,N)",
-      "angle_addition(1,EMH,HMN)",
-      "angle_addition(1,FNP,PNM)"
     ]
   }
 }

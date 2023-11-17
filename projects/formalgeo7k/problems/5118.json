@@ -2,9 +2,9 @@
   "problem_id": 5118,
   "annotation": "YimingHe_2023-05-21",
   "source": "GeoQA-4971",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示,吴伯伯家一块等边三角形的空地ABC,已知点E,F分别是边AB,AC的中点,量得EF=5米,他想把四边形BCFE用篱笆围成一圈放养小鸡,则需要篱笆的长是()",
-  "problem_text_en": "As shown in the picture, Uncle Wu's house is an equilateral triangle open space ABC. It is known that the points E and F are the midpoints of sides AB and AC respectively, and the measurement is EF = N_0. He wants to surround the quadrilateral BCFE with a fence for stocking For chicks, the length of the fence is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，EF=5，三角形ABC为等边三角形，E平分线段AB，F是线段AC的中点。求四边形EBCF的周长。",
+  "problem_text_en": "As shown in the diagram, EF=5, △ABC is an equilateral △, E bisects segment AB, F is the midpoint of segment AC. Find the perimeter of quadrilateral EBCF.",
   "problem_img": "5118.png",
   "construction_cdl": [
     "Shape(AE,EF,FA)",
@@ -13,10 +13,10 @@
     "Collinear(AFC)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(EF),5)",
     "EquilateralTriangle(ABC)",
     "IsMidpointOfLine(E,AB)",
-    "IsMidpointOfLine(F,AC)",
-    "Equal(LengthOfLine(EF),5)"
+    "IsMidpointOfLine(F,AC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfQuadrilateral(EBCF))",
@@ -28,15 +28,15 @@
     "midsegment_of_triangle_judgment_midpoint(1,EF,ABC)",
     "midsegment_of_triangle_property_length(1,EF,ABC)"
   ],
-  "theorem_seq_dag": {
-    "midsegment_of_triangle_judgment_midpoint(1,EF,ABC)": [
-      "midsegment_of_triangle_property_length(1,EF,ABC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AE,EB)",
       "line_addition(1,AF,FC)",
       "quadrilateral_perimeter_formula(1,EBCF)",
       "midsegment_of_triangle_judgment_midpoint(1,EF,ABC)"
+    ],
+    "midsegment_of_triangle_judgment_midpoint(1,EF,ABC)": [
+      "midsegment_of_triangle_property_length(1,EF,ABC)"
     ]
   }
 }

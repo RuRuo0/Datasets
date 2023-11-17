@@ -2,9 +2,9 @@
   "problem_id": 1157,
   "annotation": "Yangli_2023-04-09",
   "source": "Geometry3k-1196",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Line l is parallel to line m. What is the value of x?",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠EAD=x°，∠FBG=120°，∠HEB=160°，LB∥EG，AD⊥GD。求x的值。",
+  "problem_text_en": "As shown in the diagram, ∠EAD=x°, ∠FBG=120°, ∠HEB=160°, LB∥EG, AD⊥GD. Find the value of x.",
   "problem_img": "1157.png",
   "construction_cdl": [
     "Shape(BE,EG,GB)",
@@ -21,7 +21,13 @@
     "Collinear(AEB)",
     "Collinear(BGD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(EAD),x)",
+    "Equal(MeasureOfAngle(FBG),120)",
+    "Equal(MeasureOfAngle(HEB),160)",
+    "ParallelBetweenLine(LB,EG)",
+    "PerpendicularBetweenLine(AD,GD)"
+  ],
   "image_cdl": [
     "ParallelBetweenLine(LB,EG)",
     "Equal(MeasureOfAngle(FBG),120)",
@@ -38,7 +44,7 @@
     "adjacent_complementary_angle(1,FBG,GBL)",
     "triangle_property_angle_sum(1,DBA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,HEB,BEG)",
       "parallel_property_alternate_interior_angle(2,LB,EG)",

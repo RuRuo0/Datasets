@@ -2,9 +2,9 @@
   "problem_id": 2402,
   "annotation": "FangzhenZhu_2023-04-23",
   "source": "Geometry3k-2517",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "\\overrightarrow B A and \\overrightarrow B C are opposite rays and \\overrightarrow B D bisects \\angle A B F. If m \\angle F B C = 2 x + 25 and m \\angle A B F = 10 x - 1, find m \\angle D B F.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠ABF=10*x-1°，∠FBC=2*x+25°，BD平分∠ABF。求∠DBF的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABF=10*x-1°, ∠FBC=2*x+25°, BD bisects ∠ABF. Find the measure of ∠DBF.",
   "problem_img": "2402.png",
   "construction_cdl": [
     "Shape(AB,BD)",
@@ -12,7 +12,11 @@
     "Shape(FB,BC)",
     "Collinear(ABC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(ABF),10*x-1)",
+    "Equal(MeasureOfAngle(FBC),2*x+25)",
+    "IsBisectorOfAngle(BD,ABF)"
+  ],
   "image_cdl": [
     "IsBisectorOfAngle(BD,ABF)",
     "Equal(MeasureOfAngle(FBC),2*x+25)",
@@ -24,7 +28,7 @@
     "angle_addition(1,ABD,DBF)",
     "adjacent_complementary_angle(1,ABF,FBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,ABD,DBF)",
       "adjacent_complementary_angle(1,ABF,FBC)"

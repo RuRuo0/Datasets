@@ -2,14 +2,21 @@
   "problem_id": 2778,
   "annotation": "RunanWang_2023-05-07",
   "source": "Geometry3k-2925",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，CBAD的高为10，AB=12，AD垂直于CD，BA⊥DA，CB垂直于AB，DC垂直于BC。求CBAD的面积。",
+  "problem_text_en": "As shown in the diagram, the height of CBAD is 10, AB=12, AD is perpendicular to CD, BA is perpendicular to DA, CB is perpendicular to AB, DC is perpendicular to BC. Find the area of CBAD.",
   "problem_img": "2778.png",
   "construction_cdl": [
     "Shape(CB,BA,AD,DC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(HeightOfQuadrilateral(CBAD),10)",
+    "Equal(LengthOfLine(AB),12)",
+    "PerpendicularBetweenLine(AD,CD)",
+    "PerpendicularBetweenLine(BA,DA)",
+    "PerpendicularBetweenLine(CB,AB)",
+    "PerpendicularBetweenLine(DC,BC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AB),12)",
     "Equal(HeightOfQuadrilateral(CBAD),10)",
@@ -27,7 +34,11 @@
     "parallelogram_judgment_parallel_and_parallel(1,CBAD)",
     "parallelogram_area_formula_common(1,CBAD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_judgment_per_per(1,BC,AD)",
+      "parallel_judgment_per_per(1,AB,DC)"
+    ],
     "parallel_judgment_per_per(1,BC,AD)": [
       "parallelogram_judgment_parallel_and_parallel(1,CBAD)"
     ],
@@ -36,10 +47,6 @@
     ],
     "parallelogram_judgment_parallel_and_parallel(1,CBAD)": [
       "parallelogram_area_formula_common(1,CBAD)"
-    ],
-    "START": [
-      "parallel_judgment_per_per(1,BC,AD)",
-      "parallel_judgment_per_per(1,AB,DC)"
     ]
   }
 }

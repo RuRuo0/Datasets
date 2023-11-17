@@ -3,8 +3,8 @@
   "annotation": "XiaokaiZhang_2023-04-09",
   "source": "Geometry3k-980",
   "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure, L H is the midsegment of trapezoid F G J K. What is the value of x?",
+  "problem_text_cn": "如图所示，FL=LK，GF=x，GH=HJ，HL=15，JK=18，LH是四边形FKJG的中位线，四边形FKJG是梯形。求x的值。",
+  "problem_text_en": "As shown in the diagram, FL=LK, GF=x, GH=HJ, HL=15, JK=18, the midsegment of FKJG is LH, quadrilateral FKJG is a trapezoid. Find the value of x.",
   "problem_img": "951.png",
   "construction_cdl": [
     "Shape(FL,LH,HG,GF)",
@@ -13,8 +13,13 @@
     "Collinear(GHJ)"
   ],
   "text_cdl": [
-    "Trapezoid(FKJG)",
-    "IsMidsegmentOfQuadrilateral(LH,FKJG)"
+    "Equal(LengthOfLine(FL),LengthOfLine(LK))",
+    "Equal(LengthOfLine(GF),x)",
+    "Equal(LengthOfLine(GH),LengthOfLine(HJ))",
+    "Equal(LengthOfLine(HL),15)",
+    "Equal(LengthOfLine(JK),18)",
+    "IsMidsegmentOfQuadrilateral(LH,FKJG)",
+    "Trapezoid(FKJG)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(GF),x)",
@@ -28,7 +33,7 @@
   "theorem_seqs": [
     "midsegment_of_quadrilateral_property_length(1,LH,FKJG)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "midsegment_of_quadrilateral_property_length(1,LH,FKJG)"
     ]

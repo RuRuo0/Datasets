@@ -2,9 +2,9 @@
   "problem_id": 6776,
   "annotation": "Yangli_2023-06-04",
   "source": "GeoQA-9880",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AT是⊙O的切线,AB是⊙O的弦,∠B=55°,则∠BAT等于()",
-  "problem_text_en": "As shown in the figure, AT is the tangent of ⊙O, AB is the chord of ⊙O, ∠B = N_0, then ∠BAT is equal to ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠ABO=55°，O是圆O的圆心，TA是⊙O的切线。求∠BAT的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABO=55°, O is the center of ⊙O, TA is the tangent to circle O. Find the measure of ∠BAT.",
   "problem_img": "6776.png",
   "construction_cdl": [
     "Shape(AO,OB,OBA)",
@@ -29,7 +29,13 @@
     "tangent_of_circle_property_perpendicular(1,TA,O,O)",
     "angle_addition(1,OAB,BAT)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "tangent_of_circle_property_perpendicular(1,TA,O,O)",
+      "angle_addition(1,OAB,BAT)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OAB)"
     ],
@@ -38,12 +44,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OAB)": [
       "isosceles_triangle_property_angle_equal(1,OAB)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "tangent_of_circle_property_perpendicular(1,TA,O,O)",
-      "angle_addition(1,OAB,BAT)"
     ]
   }
 }

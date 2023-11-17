@@ -2,9 +2,9 @@
   "problem_id": 3765,
   "annotation": "ChenyangMao_2023-04-30",
   "source": "GeoQA-1582",
-  "problem_level": 1,
-  "problem_text_cn": "如图,是我国古代著名的“赵爽弦图”的示意图,此图是由四个全等的直角三角形拼接而成,其中AE=10,BE=24,则EF的长是()",
-  "problem_text_en": "As shown in the figure, it is a schematic diagram of the famous \"Zhao Shuang String Diagram\" in ancient China. This picture is made up of four congruent right triangles, where AE = N_0, BE = N_1, then the length of EF is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，△BEA全等于△AGD，三角形BEA全等于三角形CHB，三角形BEA全等于三角形DFC，AE=10，BE=24，∠EHF=90°，∠FGE=90°，∠GEH=90°，∠HFG=90°，△AGD为直角△，∠BEA是直角三角形BEA的直角，三角形CHB为直角三角形，∠DFC是直角△DFC的直角。求直线EF的长度。",
+  "problem_text_en": "As shown in the diagram, △BEA is congruent to △AGD, triangle BEA is congruent to triangle CHB, △BEA is congruent to △DFC, AE=10, BE=24, ∠EHF=90°, ∠FGE=90°, ∠GEH=90°, ∠HFG=90°, AG and GD are the legs of the right △ AGD, BE and EA are the legs of the right △ BEA, ∠CHB is the right angle of the right triangle CHB, triangle DFC is a right triangle. Find the length of line EF.",
   "problem_img": "3765.png",
   "construction_cdl": [
     "Shape(EA,AB,BH,HE)",
@@ -18,7 +18,21 @@
     "Collinear(DGF)",
     "Collinear(CFH)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "CongruentBetweenTriangle(BEA,AGD)",
+    "CongruentBetweenTriangle(BEA,CHB)",
+    "CongruentBetweenTriangle(BEA,DFC)",
+    "Equal(LengthOfLine(AE),10)",
+    "Equal(LengthOfLine(BE),24)",
+    "Equal(MeasureOfAngle(EHF),90)",
+    "Equal(MeasureOfAngle(FGE),90)",
+    "Equal(MeasureOfAngle(GEH),90)",
+    "Equal(MeasureOfAngle(HFG),90)",
+    "RightTriangle(AGD)",
+    "RightTriangle(BEA)",
+    "RightTriangle(CHB)",
+    "RightTriangle(DFC)"
+  ],
   "image_cdl": [
     "RightTriangle(BEA)",
     "RightTriangle(AGD)",
@@ -45,10 +59,7 @@
     "right_triangle_judgment_angle(1,FGE)",
     "right_triangle_property_pythagorean(1,FGE)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,FGE)": [
-      "right_triangle_property_pythagorean(1,FGE)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "congruent_triangle_property_line_equal(1,BEA,AGD)",
       "congruent_triangle_property_line_equal(1,ABE,DAG)",
@@ -56,6 +67,9 @@
       "line_addition(1,AE,EG)",
       "line_addition(1,DG,GF)",
       "right_triangle_judgment_angle(1,FGE)"
+    ],
+    "right_triangle_judgment_angle(1,FGE)": [
+      "right_triangle_property_pythagorean(1,FGE)"
     ]
   }
 }

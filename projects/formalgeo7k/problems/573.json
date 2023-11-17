@@ -2,16 +2,21 @@
   "problem_id": 573,
   "annotation": "JiaZou_2023-03-12",
   "source": "Geometry3k-587",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the triangle.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AC=13，CD=6，DB=29，CD垂直于AD。求△ADB的周长。",
+  "problem_text_en": "As shown in the diagram, AC=13, CD=6, DB=29, CD⊥AD. Find the perimeter of triangle ADB.",
   "problem_img": "573.png",
   "construction_cdl": [
     "Shape(AC,CD,DA)",
     "Shape(AD,DB,BA)",
     "Collinear(CDB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),13)",
+    "Equal(LengthOfLine(CD),6)",
+    "Equal(LengthOfLine(DB),29)",
+    "PerpendicularBetweenLine(CD,AD)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AC),13)",
     "Equal(LengthOfLine(DB),29)",
@@ -28,7 +33,12 @@
     "right_triangle_property_pythagorean(1,ADB)",
     "triangle_perimeter_formula(1,ADB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,CDA,ADB)",
+      "right_triangle_judgment_angle(1,CDA)",
+      "triangle_perimeter_formula(1,ADB)"
+    ],
     "adjacent_complementary_angle(1,CDA,ADB)": [
       "right_triangle_judgment_angle(1,ADB)"
     ],
@@ -37,11 +47,6 @@
     ],
     "right_triangle_judgment_angle(1,ADB)": [
       "right_triangle_property_pythagorean(1,ADB)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,CDA,ADB)",
-      "right_triangle_judgment_angle(1,CDA)",
-      "triangle_perimeter_formula(1,ADB)"
     ]
   }
 }

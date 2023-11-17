@@ -2,16 +2,22 @@
   "problem_id": 2313,
   "annotation": "FangzhenZhu_2023-04-23",
   "source": "Geometry3k-2421",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the parallelogram. Round to the nearest tenth if necessary.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，CB=12，DB=20，∠DBC=60°，DA和BC是平行四边形DBCA的一组对边，DE⊥CE。求四边形DBCA的周长。",
+  "problem_text_en": "As shown in the diagram, CB=12, DB=20, ∠DBC=60°, BD and CA are opposite sides of the ▱ DBCA, DE⊥CE. Find the perimeter of quadrilateral DBCA.",
   "problem_img": "2313.png",
   "construction_cdl": [
     "Shape(DB,BE,ED)",
     "Shape(DE,EC,CA,AD)",
     "Collinear(BEC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(CB),12)",
+    "Equal(LengthOfLine(DB),20)",
+    "Equal(MeasureOfAngle(DBC),60)",
+    "Parallelogram(DBCA)",
+    "PerpendicularBetweenLine(DE,CE)"
+  ],
   "image_cdl": [
     "Parallelogram(DBCA)",
     "Equal(LengthOfLine(CB),12)",
@@ -26,7 +32,7 @@
     "parallelogram_property_opposite_line_equal(1,BCAD)",
     "quadrilateral_perimeter_formula(1,DBCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_property_opposite_line_equal(1,DBCA)",
       "parallelogram_property_opposite_line_equal(1,BCAD)",

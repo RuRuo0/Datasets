@@ -2,9 +2,9 @@
   "problem_id": 5200,
   "annotation": "NaZhu_2023-05-21",
   "source": "GeoQA-5200",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点A、B是⊙O上两点,AB=8,点P是⊙O上的动点,连接AP、PB,过点O分别作OE⊥AP于E,OF⊥PB于F,则EF为()",
-  "problem_text_en": "As shown in the figure, points A and B are two points on ⊙O, AB = N_0, point P is the moving point on ⊙O. Connect AP and PB, and crossing point O to draw OE ⊥ AP at E and OF ⊥ PB at F respectively, Then EF is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=8，圆O的圆心为O，AE垂直于ME，PF⊥NF。求直线EF的长度。",
+  "problem_text_en": "As shown in the diagram, AB=8, the center of circle O is O, AE⊥ME, PF⊥NF. Find the length of line EF.",
   "problem_img": "5200.png",
   "construction_cdl": [
     "Shape(OAP,PE,EA)",
@@ -23,10 +23,10 @@
     "Cocircular(O,APB)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AB),8)",
     "IsCentreOfCircle(O,O)",
     "PerpendicularBetweenLine(AE,ME)",
-    "PerpendicularBetweenLine(PF,NF)",
-    "Equal(LengthOfLine(AB),8)"
+    "PerpendicularBetweenLine(PF,NF)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(EF))",
@@ -37,7 +37,11 @@
     "midsegment_of_triangle_judgment_midpoint(1,FE,PBA)",
     "midsegment_of_triangle_property_length(1,FE,PBA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "circle_property_chord_perpendicular_bisect_chord(1,O,OE,AP)",
+      "circle_property_chord_perpendicular_bisect_chord(1,O,OF,PB)"
+    ],
     "circle_property_chord_perpendicular_bisect_chord(1,O,OE,AP)": [
       "midsegment_of_triangle_judgment_midpoint(1,FE,PBA)"
     ],
@@ -46,10 +50,6 @@
     ],
     "midsegment_of_triangle_judgment_midpoint(1,FE,PBA)": [
       "midsegment_of_triangle_property_length(1,FE,PBA)"
-    ],
-    "START": [
-      "circle_property_chord_perpendicular_bisect_chord(1,O,OE,AP)",
-      "circle_property_chord_perpendicular_bisect_chord(1,O,OF,PB)"
     ]
   }
 }

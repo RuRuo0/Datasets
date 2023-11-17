@@ -2,9 +2,9 @@
   "problem_id": 3026,
   "annotation": "XiaokaiZhang_2023-04-16",
   "source": "GeoQA-235",
-  "problem_level": 1,
-  "problem_text_cn": "(4分)如图,直线a∥b,直线c分别与a,b相交,∠1=50°,则∠2的度数为()",
-  "problem_text_en": "As shown in the figure, the line a ∥ b and they intersect the line c at a and b respectively, ∠1 = N_0, then the degree of ∠2 is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠AME=50°，AB平行于CD。求∠MND的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AME=50°, AB is parallel to CD. Find the measure of ∠MND.",
   "problem_img": "3026.png",
   "construction_cdl": [
     "Shape(AM,ME)",
@@ -20,8 +20,8 @@
     "Collinear(EMNF)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AB,CD)",
-    "Equal(MeasureOfAngle(AME),50)"
+    "Equal(MeasureOfAngle(AME),50)",
+    "ParallelBetweenLine(AB,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(MND))",
@@ -32,16 +32,16 @@
     "parallel_property_collinear_extend(3,DC,BM,N)",
     "parallel_property_ipsilateral_internal_angle(1,MB,ND)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "vertical_angle(1,AME,BMN)",
+      "parallel_property_collinear_extend(3,AB,CD,M)"
+    ],
     "parallel_property_collinear_extend(3,AB,CD,M)": [
       "parallel_property_collinear_extend(3,DC,BM,N)"
     ],
     "parallel_property_collinear_extend(3,DC,BM,N)": [
       "parallel_property_ipsilateral_internal_angle(1,MB,ND)"
-    ],
-    "START": [
-      "vertical_angle(1,AME,BMN)",
-      "parallel_property_collinear_extend(3,AB,CD,M)"
     ]
   }
 }

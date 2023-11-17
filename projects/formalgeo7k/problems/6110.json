@@ -2,9 +2,9 @@
   "problem_id": 6110,
   "annotation": "YifanWang_2023-06-04",
   "source": "GeoQA-8658",
-  "problem_level": 1,
-  "problem_text_cn": "如图,直径为10的⊙A经过点C(0,5)和点O(0,0),B是y轴右侧⊙A优弧上一点,则∠OBC的度数为()",
-  "problem_text_en": "As shown in the figure, ⊙A with a diameter of N_0 passes through point C(N_1,N_2) O(N_3,N_4), B is a point on the ⊙A major arc on the right side of the y-axis, then the degree of ∠OBC is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，圆A的直径为10，CO=5，∠COD=90°，A是⊙A的圆心。求∠OBC的大小。",
+  "problem_text_en": "As shown in the diagram, the diameter of circle A is 10, CO=5, ∠COD=90°, the center of circle A is A. Find the measure of ∠OBC.",
   "problem_img": "6110.png",
   "construction_cdl": [
     "Shape(OC,ACO)",
@@ -20,10 +20,10 @@
     "Cocircular(A,COBD)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(A,A)",
+    "Equal(DiameterOfCircle(A),10)",
     "Equal(LengthOfLine(CO),5)",
     "Equal(MeasureOfAngle(COD),90)",
-    "Equal(DiameterOfCircle(A),10)"
+    "IsCentreOfCircle(A,A)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(OBC))",
@@ -35,15 +35,15 @@
     "arc_property_circumference_angle_external(1,ACO,B)",
     "arc_property_circumference_angle_external(1,ACO,D)"
   ],
-  "theorem_seq_dag": {
-    "diameter_of_circle_judgment_right_angle(1,COD,A)": [
-      "diameter_of_circle_property_length_equal(1,DC,A)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_judgment_right_angle(1,COD,A)",
       "sine_theorem(1,COD)",
       "arc_property_circumference_angle_external(1,ACO,B)",
       "arc_property_circumference_angle_external(1,ACO,D)"
+    ],
+    "diameter_of_circle_judgment_right_angle(1,COD,A)": [
+      "diameter_of_circle_property_length_equal(1,DC,A)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 880,
   "annotation": "NaZhu_2023-04-09",
   "source": "Geometry3k-909",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "假设AC垂直CD,ID垂直CD,Find the area of the figure. Round to the nearest tenth if necessary.",
+  "problem_level": 13,
+  "problem_text_cn": "如图所示，AB=BI，AC=4，AC=ID，BE=8，CD=9，AC垂直于EC，CE垂直于FE，ED垂直于ID。求三角形BAI的面积与ACDI的面积之和。",
+  "problem_text_en": "As shown in the diagram, AB=BI, AC=4, AC=ID, BE=8, CD=9, AC⊥EC, CE is perpendicular to FE, ED⊥ID. Find the sum of the area of triangle BAI and the area of ACDI.",
   "problem_img": "880.png",
   "construction_cdl": [
     "Shape(BA,AF,FB)",
@@ -16,7 +16,13 @@
     "Collinear(CED)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AB),LengthOfLine(BI))",
+    "Equal(LengthOfLine(AC),4)",
+    "Equal(LengthOfLine(AC),LengthOfLine(ID))",
+    "Equal(LengthOfLine(BE),8)",
+    "Equal(LengthOfLine(CD),9)",
     "PerpendicularBetweenLine(AC,EC)",
+    "PerpendicularBetweenLine(CE,FE)",
     "PerpendicularBetweenLine(ED,ID)"
   ],
   "image_cdl": [
@@ -44,7 +50,13 @@
     "triangle_area_formula_common(1,BAI)",
     "parallelogram_area_formula_sine(1,ACDI)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_judgment_ipsilateral_internal_angle(1,CA,EF)",
+      "parallel_judgment_ipsilateral_internal_angle(1,CA,DI)",
+      "line_addition(1,BF,FE)",
+      "triangle_area_formula_common(1,BAI)"
+    ],
     "parallel_judgment_ipsilateral_internal_angle(1,CA,EF)": [
       "parallelogram_judgment_parallel_and_parallel(1,ACEF)"
     ],
@@ -68,12 +80,6 @@
     ],
     "parallelogram_judgment_parallel_and_parallel(1,ACEF)": [
       "parallelogram_property_opposite_line_equal(1,ACEF)"
-    ],
-    "START": [
-      "parallel_judgment_ipsilateral_internal_angle(1,CA,EF)",
-      "parallel_judgment_ipsilateral_internal_angle(1,CA,DI)",
-      "line_addition(1,BF,FE)",
-      "triangle_area_formula_common(1,BAI)"
     ]
   }
 }

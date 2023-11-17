@@ -2,9 +2,9 @@
   "problem_id": 5409,
   "annotation": "XiaoxiaoJin_2023-05-21",
   "source": "GeoQA-5706",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,AB=AC,BC=9,点D在边AB上,且BD=5将线段BD沿着BC的方向平移得到线段EF,若平移的距离为6时点F恰好落在AC边上,则△CEF的周长为()",
-  "problem_text_en": "As shown in the figure, in △ABC, AB = AC, BC = N_0, point D is on the side AB, and BD = N_1 translate the line segment BD along the direction of BC to obtain the line segment EF, if the translation distance is N_2, the point F is exactly falling on AC, the perimeter of △CEF is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=AC，BC=9，BD=5，BE=6，BD和EF是▱BEFD的一组对边。求△FEC的周长。",
+  "problem_text_en": "As shown in the diagram, AB=AC, BC=9, BD=5, BE=6, BEFD is a parallelogram. Find the perimeter of △FEC.",
   "problem_img": "5409.png",
   "construction_cdl": [
     "Shape(AD,DF,FA)",
@@ -33,7 +33,14 @@
     "line_addition(1,BE,EC)",
     "triangle_perimeter_formula(1,FEC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallelogram_property_opposite_line_equal(1,EFDB)",
+      "isosceles_triangle_judgment_line_equal(1,ABC)",
+      "parallel_property_corresponding_angle(2,BD,EF,C)",
+      "line_addition(1,BE,EC)",
+      "triangle_perimeter_formula(1,FEC)"
+    ],
     "isosceles_triangle_judgment_line_equal(1,ABC)": [
       "isosceles_triangle_property_angle_equal(1,ABC)"
     ],
@@ -42,13 +49,6 @@
     ],
     "parallel_property_corresponding_angle(2,BD,EF,C)": [
       "isosceles_triangle_judgment_angle_equal(1,FEC)"
-    ],
-    "START": [
-      "parallelogram_property_opposite_line_equal(1,EFDB)",
-      "isosceles_triangle_judgment_line_equal(1,ABC)",
-      "parallel_property_corresponding_angle(2,BD,EF,C)",
-      "line_addition(1,BE,EC)",
-      "triangle_perimeter_formula(1,FEC)"
     ]
   }
 }

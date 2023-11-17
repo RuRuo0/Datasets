@@ -2,15 +2,21 @@
   "problem_id": 852,
   "annotation": "XiaokaiZhang_2023-03-19",
   "source": "Geometry3k-881",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If b = 18, find a.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=c，CA=b，CB=a，∠ABC=60°，∠CAB=30°，b=18，BC⊥AC。求a的值。",
+  "problem_text_en": "As shown in the diagram, AB=c, CA=b, CB=a, ∠ABC=60°, ∠CAB=30°, b=18, BC⊥AC. Find the value of a.",
   "problem_img": "852.png",
   "construction_cdl": [
     "Shape(BC,CA,AB)"
   ],
   "text_cdl": [
-    "Equal(b,18)"
+    "Equal(LengthOfLine(AB),c)",
+    "Equal(LengthOfLine(CA),b)",
+    "Equal(LengthOfLine(CB),a)",
+    "Equal(MeasureOfAngle(ABC),60)",
+    "Equal(MeasureOfAngle(CAB),30)",
+    "Equal(b,18)",
+    "PerpendicularBetweenLine(BC,AC)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(AB),c)",
@@ -26,7 +32,7 @@
     "sine_theorem(1,BCA)",
     "sine_theorem(1,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "sine_theorem(1,BCA)",
       "sine_theorem(1,ABC)"

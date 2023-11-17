@@ -3,8 +3,8 @@
   "annotation": "ZheZhu_2023-05-28",
   "source": "GeoQA-9114",
   "problem_level": 1,
-  "problem_text_cn": "如图所示,在矩形ABCD中,点E、F分别在边AB、DC上,BF∥DE,若AD=12cm,AB=7cm,且AE:EB=5:2,则阴影部分的面积是()cm²．",
-  "problem_text_en": "As shown in the figure, in the rectangle ABCD, the points E and F are on the sides AB and DC respectively, BF ∥ DE, if AD = N_0, AB = N_1, and AE:EB = N_2:N_3, the area of ​​the shaded part is () ^ 2．",
+  "problem_text_cn": "如图所示，DEBF的高为12，AB=7，AE=5，BC=12，EB=2，DF和EB是平行四边形DEBF的一组对边，ABCD是矩形。求DEBF的面积。",
+  "problem_text_en": "As shown in the diagram, the height of quadrilateral DEBF is 12, AB=7, AE=5, BC=12, EB=2, quadrilateral DEBF is a ▱, quadrilateral ABCD is a rectangle. Find the area of quadrilateral DEBF.",
   "problem_img": "6319.png",
   "construction_cdl": [
     "Shape(AE,ED,DA)",
@@ -14,13 +14,13 @@
     "Collinear(DFC)"
   ],
   "text_cdl": [
-    "Rectangle(ABCD)",
-    "Parallelogram(DEBF)",
-    "Equal(LengthOfLine(BC),12)",
+    "Equal(HeightOfQuadrilateral(DEBF),12)",
     "Equal(LengthOfLine(AB),7)",
     "Equal(LengthOfLine(AE),5)",
+    "Equal(LengthOfLine(BC),12)",
     "Equal(LengthOfLine(EB),2)",
-    "Equal(HeightOfQuadrilateral(DEBF),12)"
+    "Parallelogram(DEBF)",
+    "Rectangle(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(AreaOfQuadrilateral(DEBF))",
@@ -28,7 +28,7 @@
   "theorem_seqs": [
     "parallelogram_area_formula_common(1,DEBF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_area_formula_common(1,DEBF)"
     ]

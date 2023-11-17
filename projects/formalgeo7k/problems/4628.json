@@ -2,9 +2,9 @@
   "problem_id": 4628,
   "annotation": "QikeHuang_2023-05-14",
   "source": "GeoQA-3833",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB切⊙O于点A,BO交⊙O于点C,点D在⊙O上,若∠ADC=32°,则∠ABO的度数是()",
-  "problem_text_en": "As shown in the figure, AB tangents ⊙O at vertex A, BO crosses ⊙O at vertex C, and vertex D is at ⊙O. If ∠ADC = N_0, then the degree of ∠ABO is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠ADC=32°，O是圆O的圆心，圆O的切线为BA。求∠OBA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ADC=32°, O is the center of ⊙O, BA is the tangent to circle O. Find the measure of ∠OBA.",
   "problem_img": "4628.png",
   "construction_cdl": [
     "Shape(DM,MO,OA,OAD)",
@@ -18,9 +18,9 @@
     "Cocircular(O,DCA)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(ADC),32)",
     "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(BA,O)",
-    "Equal(MeasureOfAngle(ADC),32)"
+    "IsTangentOfCircle(BA,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(OBA))",
@@ -31,7 +31,7 @@
     "arc_property_circumference_angle_external(1,OCA,D)",
     "triangle_property_angle_sum(1,AOB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(2,BA,O,O)",
       "arc_property_center_angle(1,OCA,O)",

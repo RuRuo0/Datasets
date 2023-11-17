@@ -2,9 +2,9 @@
   "problem_id": 2417,
   "annotation": "RunanWang_2023-04-23",
   "source": "Geometry3k-2533",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find J Q if Q is the incenter of \\triangle J L N. Rounded to the nearest hundredth.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，JP=18，MQ=9，三角形JNL的内切圆圆心为Q，LK⊥QK，QM垂直于LM，QP⊥NP。求直线JQ的长度。",
+  "problem_text_en": "As shown in the diagram, JP=18, MQ=9, Q is the incenter of triangle JNL, LK is perpendicular to QK, QM⊥LM, QP is perpendicular to NP. Find the length of line JQ.",
   "problem_img": "2417.png",
   "construction_cdl": [
     "Shape(LK,KQ,QL)",
@@ -17,7 +17,14 @@
     "Collinear(JPN)",
     "Collinear(NML)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(JP),18)",
+    "Equal(LengthOfLine(MQ),9)",
+    "IsIncenterOfTriangle(Q,JNL)",
+    "PerpendicularBetweenLine(LK,QK)",
+    "PerpendicularBetweenLine(QM,LM)",
+    "PerpendicularBetweenLine(QP,NP)"
+  ],
   "image_cdl": [
     "IsIncenterOfTriangle(Q,JNL)",
     "Equal(LengthOfLine(JP),18)",
@@ -38,7 +45,12 @@
     "right_triangle_judgment_angle(1,QKJ)",
     "right_triangle_property_pythagorean(1,QKJ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,LKQ,QKJ)",
+      "adjacent_complementary_angle(1,JPQ,QPN)",
+      "mirror_congruent_triangle_judgment_aas(1,QLK,QML)"
+    ],
     "adjacent_complementary_angle(1,LKQ,QKJ)": [
       "mirror_congruent_triangle_judgment_aas(1,QJP,QKJ)",
       "right_triangle_judgment_angle(1,QKJ)"
@@ -54,11 +66,6 @@
     ],
     "right_triangle_judgment_angle(1,QKJ)": [
       "right_triangle_property_pythagorean(1,QKJ)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,LKQ,QKJ)",
-      "adjacent_complementary_angle(1,JPQ,QPN)",
-      "mirror_congruent_triangle_judgment_aas(1,QLK,QML)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 2579,
   "annotation": "DengfengYue_2023-04-23",
   "source": "Geometry3k-2707",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the parallelogram. Round to the nearest tenth if necessary.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，BC=13，BE=5，DC=15，BC和AD是▱CBAD的一组对边，BE垂直于CE。求CBAD的面积。",
+  "problem_text_en": "As shown in the diagram, BC=13, BE=5, DC=15, CBAD is a ▱, BE is perpendicular to CE. Find the area of quadrilateral CBAD.",
   "problem_img": "2579.png",
   "construction_cdl": [
     "Shape(CB,BE,EC)",
@@ -12,7 +12,11 @@
     "Collinear(BEA)"
   ],
   "text_cdl": [
-    "Parallelogram(CBAD)"
+    "Equal(LengthOfLine(BC),13)",
+    "Equal(LengthOfLine(BE),5)",
+    "Equal(LengthOfLine(DC),15)",
+    "Parallelogram(CBAD)",
+    "PerpendicularBetweenLine(BE,CE)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(DC),15)",
@@ -29,15 +33,15 @@
     "parallelogram_property_opposite_line_equal(1,DCBA)",
     "parallelogram_area_formula_common(1,CBAD)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,BEC)": [
-      "right_triangle_property_pythagorean(1,BEC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,BEC)",
       "altitude_of_quadrilateral_judgment_left_vertex(1,CE,CBAD)",
       "parallelogram_property_opposite_line_equal(1,DCBA)",
       "parallelogram_area_formula_common(1,CBAD)"
+    ],
+    "right_triangle_judgment_angle(1,BEC)": [
+      "right_triangle_property_pythagorean(1,BEC)"
     ]
   }
 }

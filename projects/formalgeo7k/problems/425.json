@@ -2,9 +2,9 @@
   "problem_id": 425,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-433",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If S P = 4, P T = 6, and Q R = 12, find S Q.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，PT=6，QR=12，SP=4，PT平行于QR。求直线SQ的长度。",
+  "problem_text_en": "As shown in the diagram, PT=6, QR=12, SP=4, PT∥QR. Find the length of line SQ.",
   "problem_img": "425.png",
   "construction_cdl": [
     "Shape(SP,PT,TS)",
@@ -12,7 +12,12 @@
     "Collinear(SPQ)",
     "Collinear(STR)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(PT),6)",
+    "Equal(LengthOfLine(QR),12)",
+    "Equal(LengthOfLine(SP),4)",
+    "ParallelBetweenLine(PT,QR)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(SP),4)",
     "Equal(LengthOfLine(PT),6)",
@@ -27,16 +32,16 @@
     "similar_triangle_property_line_ratio(1,TSP,RSQ)",
     "similar_triangle_property_line_ratio(1,SPT,SQR)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,PT,QR,S)"
+    ],
     "parallel_property_corresponding_angle(1,PT,QR,S)": [
       "similar_triangle_judgment_aa(1,TSP,RSQ)"
     ],
     "similar_triangle_judgment_aa(1,TSP,RSQ)": [
       "similar_triangle_property_line_ratio(1,TSP,RSQ)",
       "similar_triangle_property_line_ratio(1,SPT,SQR)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,PT,QR,S)"
     ]
   }
 }

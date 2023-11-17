@@ -2,9 +2,9 @@
   "problem_id": 921,
   "annotation": "XiaokaiZhang_2023-04-09",
   "source": "Geometry3k-950",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "A E is a tangent. If A D = 12 and F E = 18, how long is A E to the nearest tenth unit?",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AD=12，FE=18，D是圆D的圆心，圆O的切线为EA。求直线AE的长度。",
+  "problem_text_en": "As shown in the diagram, AD=12, FE=18, D is the center of circle D, the tangent to circle D is EA. Find the length of line AE.",
   "problem_img": "921.png",
   "construction_cdl": [
     "Shape(DAB,BA)",
@@ -24,7 +24,12 @@
     "Collinear(DFE)",
     "Cocircular(D,ABJCHF)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AD),12)",
+    "Equal(LengthOfLine(FE),18)",
+    "IsCentreOfCircle(D,D)",
+    "IsTangentOfCircle(EA,D)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(D,D)",
     "IsTangentOfCircle(EA,D)",
@@ -41,18 +46,18 @@
     "right_triangle_judgment_angle(1,EAD)",
     "right_triangle_property_pythagorean(1,EAD)"
   ],
-  "theorem_seq_dag": {
-    "tangent_of_circle_property_perpendicular(2,EA,D,D)": [
-      "right_triangle_judgment_angle(1,EAD)"
-    ],
-    "right_triangle_judgment_angle(1,EAD)": [
-      "right_triangle_property_pythagorean(1,EAD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,DA,D)",
       "radius_of_circle_property_length_equal(1,DF,D)",
       "line_addition(1,DF,FE)",
       "tangent_of_circle_property_perpendicular(2,EA,D,D)"
+    ],
+    "tangent_of_circle_property_perpendicular(2,EA,D,D)": [
+      "right_triangle_judgment_angle(1,EAD)"
+    ],
+    "right_triangle_judgment_angle(1,EAD)": [
+      "right_triangle_property_pythagorean(1,EAD)"
     ]
   }
 }

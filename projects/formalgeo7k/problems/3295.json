@@ -2,9 +2,9 @@
   "problem_id": 3295,
   "annotation": "XiaokaiZhang_2023-04-23",
   "source": "GeoQA-620",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示,矩形ABCD的对角线AC、BD相交于点O,CE∥BD,DE∥AC,若AB=4,BC=3,则四边形CODE的周长是()",
-  "problem_text_en": "As shown in the figure, the diagonal AC and BD of the rectangle ABCD intersect at point O, CE ∥ BD, DE ∥ AC, if AB = N_0, BC = N_1, then the perimeter of the quadrilateral CODE is ()",
+  "problem_level": 13,
+  "problem_text_cn": "如图所示，AB=4，BC=3，DE平行于AC，EC∥DB，四边形DABC是长方形。求四边形EDOC的周长。",
+  "problem_text_en": "As shown in the diagram, AB=4, BC=3, DE is parallel to AC, EC∥DB, DABC is a rectangle. Find the perimeter of EDOC.",
   "problem_img": "3295.png",
   "construction_cdl": [
     "Shape(DA,AO,OD)",
@@ -16,11 +16,11 @@
     "Collinear(AOC)"
   ],
   "text_cdl": [
-    "Rectangle(DABC)",
+    "Equal(LengthOfLine(AB),4)",
+    "Equal(LengthOfLine(BC),3)",
     "ParallelBetweenLine(DE,AC)",
     "ParallelBetweenLine(EC,DB)",
-    "Equal(LengthOfLine(AB),4)",
-    "Equal(LengthOfLine(BC),3)"
+    "Rectangle(DABC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfQuadrilateral(EDOC))",
@@ -40,7 +40,18 @@
     "parallelogram_property_opposite_line_equal(1,DOCE)",
     "quadrilateral_perimeter_formula(1,EDOC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "right_triangle_judgment_angle(1,ABC)",
+      "rectangle_property_diagonal_equal(1,DABC)",
+      "parallelogram_property_diagonal_bisection(1,DABC,O)",
+      "line_addition(1,DO,OB)",
+      "parallelogram_property_diagonal_bisection(1,ABCD,O)",
+      "line_addition(1,AO,OC)",
+      "parallel_property_collinear_extend(3,CA,ED,O)",
+      "parallel_property_collinear_extend(3,BD,CE,O)",
+      "quadrilateral_perimeter_formula(1,EDOC)"
+    ],
     "right_triangle_judgment_angle(1,ABC)": [
       "right_triangle_property_pythagorean(1,ABC)"
     ],
@@ -53,17 +64,6 @@
     "parallelogram_judgment_parallel_and_parallel(1,EDOC)": [
       "parallelogram_property_opposite_line_equal(1,EDOC)",
       "parallelogram_property_opposite_line_equal(1,DOCE)"
-    ],
-    "START": [
-      "right_triangle_judgment_angle(1,ABC)",
-      "rectangle_property_diagonal_equal(1,DABC)",
-      "parallelogram_property_diagonal_bisection(1,DABC,O)",
-      "line_addition(1,DO,OB)",
-      "parallelogram_property_diagonal_bisection(1,ABCD,O)",
-      "line_addition(1,AO,OC)",
-      "parallel_property_collinear_extend(3,CA,ED,O)",
-      "parallel_property_collinear_extend(3,BD,CE,O)",
-      "quadrilateral_perimeter_formula(1,EDOC)"
     ]
   }
 }

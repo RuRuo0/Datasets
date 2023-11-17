@@ -2,9 +2,9 @@
   "problem_id": 6549,
   "annotation": "XiaokaiZhang_2023-06-04",
   "source": "GeoQA-9478",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在Rt△ABC中,∠ABC=30°,Q是AB上的一点,⊙O分别与AC、BC相切于点A、D,与AB交于另一点E,若BE=2,则切线CD的长为()",
-  "problem_text_en": "As shown in the figure, in Rt△ABC, ∠BAC = N_0, ∠ABC = N_1, Q is a point on AB, and ⊙O is tangent to AC and BC at points A and D, and intersects AB at another point E, if BE = N_2, then the length of the tangent CD is ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，BE=2，∠ABC=30°，O是圆O的圆心，BD是⊙O的切线，CA是圆O的切线，圆O的切线为CD，△CAB为直角△。求直线DC的长度。",
+  "problem_text_en": "As shown in the diagram, BE=2, ∠ABC=30°, the center of circle O is O, BD is the tangent to ⊙O, CA is the tangent to circle O, CD is the tangent to ⊙O, CA and AB are the legs of the right triangle CAB. Find the length of line DC.",
   "problem_img": "6549.png",
   "construction_cdl": [
     "Shape(CA,ODA,DC)",
@@ -17,13 +17,13 @@
     "Cocircular(O,AED)"
   ],
   "text_cdl": [
-    "RightTriangle(CAB)",
+    "Equal(LengthOfLine(BE),2)",
     "Equal(MeasureOfAngle(ABC),30)",
     "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(BD,O)",
     "IsTangentOfCircle(CA,O)",
     "IsTangentOfCircle(CD,O)",
-    "IsTangentOfCircle(BD,O)",
-    "Equal(LengthOfLine(BE),2)"
+    "RightTriangle(CAB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(DC))",
@@ -40,7 +40,7 @@
     "sine_theorem(1,ABC)",
     "tangent_of_circle_property_length_equal(1,CD,CA,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(2,BD,O,O)",
       "radius_of_circle_property_length_equal(1,OD,O)",

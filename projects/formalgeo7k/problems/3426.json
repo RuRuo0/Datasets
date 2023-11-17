@@ -2,9 +2,9 @@
   "problem_id": 3426,
   "annotation": "NaZhu_2023-04-30",
   "source": "GeoQA-980",
-  "problem_level": 1,
-  "problem_text_cn": "如图,∠ABC=50°,BD平分∠ABC,过D作DE∥AB交BC于点E,若点F在AB上,且满足DF=DE,则∠DFB的度数为()",
-  "problem_text_en": "",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，BF=BE，DF=DE，∠FBE=50°，BD是∠FBE的角平分线，DE平行于AB。求∠DFB的大小。",
+  "problem_text_en": "As shown in the diagram, BF=BE, DF=DE, ∠FBE=50°, BD is the angle bisector of ∠FBE, DE∥AB. Find the measure of ∠DFB.",
   "problem_img": "3426.png",
   "construction_cdl": [
     "Shape(DF,FB,BD)",
@@ -16,11 +16,11 @@
     "Collinear(BPG)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(BF),LengthOfLine(BE))",
+    "Equal(LengthOfLine(DF),LengthOfLine(DE))",
     "Equal(MeasureOfAngle(FBE),50)",
     "IsBisectorOfAngle(BD,FBE)",
-    "ParallelBetweenLine(DE,AB)",
-    "Equal(LengthOfLine(DF),LengthOfLine(DE))",
-    "Equal(LengthOfLine(BF),LengthOfLine(BE))"
+    "ParallelBetweenLine(DE,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DFB))",
@@ -30,13 +30,13 @@
     "mirror_congruent_triangle_judgment_sas(1,BDF,BED)",
     "mirror_congruent_triangle_property_angle_equal(1,FBD,EDB)"
   ],
-  "theorem_seq_dag": {
-    "mirror_congruent_triangle_judgment_sas(1,BDF,BED)": [
-      "mirror_congruent_triangle_property_angle_equal(1,FBD,EDB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_ipsilateral_internal_angle(1,BA,ED)",
       "mirror_congruent_triangle_judgment_sas(1,BDF,BED)"
+    ],
+    "mirror_congruent_triangle_judgment_sas(1,BDF,BED)": [
+      "mirror_congruent_triangle_property_angle_equal(1,FBD,EDB)"
     ]
   }
 }

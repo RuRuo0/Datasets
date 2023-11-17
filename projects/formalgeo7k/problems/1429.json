@@ -2,9 +2,9 @@
   "problem_id": 1429,
   "annotation": "YanjunGuo_2023-04-16",
   "source": "Geometry3k-1481",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure in feet. Round to the nearest tenth, if necessary.",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AC=CL，AL=3*sqrt(2)，LB=6，BL和BT是风筝形ALBT的一组临边，LC⊥AC。求四边形ALBT的面积。",
+  "problem_text_en": "As shown in the diagram, AC=CL, AL=3*sqrt(2), LB=6, ALBT is a kite, LC⊥AC. Find the area of quadrilateral ALBT.",
   "problem_img": "1429.png",
   "construction_cdl": [
     "Shape(AL,LC,CA)",
@@ -14,7 +14,13 @@
     "Collinear(LCT)",
     "Collinear(BCA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),LengthOfLine(CL))",
+    "Equal(LengthOfLine(AL),3*sqrt(2))",
+    "Equal(LengthOfLine(LB),6)",
+    "Kite(ALBT)",
+    "PerpendicularBetweenLine(LC,AC)"
+  ],
   "image_cdl": [
     "Kite(ALBT)",
     "Equal(LengthOfLine(LB),6)",
@@ -35,7 +41,15 @@
     "line_addition(1,LC,CT)",
     "kite_area_formula_diagonal(1,ALBT)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "right_triangle_judgment_angle(1,LCA)",
+      "adjacent_complementary_angle(1,BCL,LCA)",
+      "kite_property_diagonal_perpendicular_bisection(1,ALBT,C)",
+      "line_addition(1,BC,CA)",
+      "line_addition(1,LC,CT)",
+      "kite_area_formula_diagonal(1,ALBT)"
+    ],
     "right_triangle_judgment_angle(1,LCA)": [
       "right_triangle_property_pythagorean(1,LCA)"
     ],
@@ -44,14 +58,6 @@
     ],
     "right_triangle_judgment_angle(1,BCL)": [
       "right_triangle_property_pythagorean(1,BCL)"
-    ],
-    "START": [
-      "right_triangle_judgment_angle(1,LCA)",
-      "adjacent_complementary_angle(1,BCL,LCA)",
-      "kite_property_diagonal_perpendicular_bisection(1,ALBT,C)",
-      "line_addition(1,BC,CA)",
-      "line_addition(1,LC,CT)",
-      "kite_area_formula_diagonal(1,ALBT)"
     ]
   }
 }

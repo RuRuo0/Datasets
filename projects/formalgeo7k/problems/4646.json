@@ -2,9 +2,9 @@
   "problem_id": 4646,
   "annotation": "QikeHuang_2023-05-14",
   "source": "GeoQA-3874",
-  "problem_level": 1,
-  "problem_text_cn": "如图,PA,PB分别切⊙O于点A,B,PA=12,CD切⊙O于点E,交PA,PB于点C,D两点,则△PCD的周长是()",
-  "problem_text_en": "As shown in the figure, PA and PB respectively tangent ⊙O at points A, B, PA = N_0, CD tangents to ⊙O at point E, and intersects PA and PB at points C, D, then the perimeter of △PCD is ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，PA=12，O是圆O的圆心，圆O的切线为CE，⊙O的切线为DE，PA是圆O的切线，圆O的切线为PB。求△PCD的周长。",
+  "problem_text_en": "As shown in the diagram, PA=12, the center of circle O is O, CE is the tangent to circle O, the tangent to circle O is DE, PA is the tangent to circle O, PB is the tangent to ⊙O. Find the perimeter of triangle PCD.",
   "problem_img": "4646.png",
   "construction_cdl": [
     "Shape(PC,CE,ED,DP)",
@@ -18,12 +18,12 @@
     "Cocircular(O,BEA)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(PA),12)",
     "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(PA,O)",
-    "IsTangentOfCircle(PB,O)",
     "IsTangentOfCircle(CE,O)",
     "IsTangentOfCircle(DE,O)",
-    "Equal(LengthOfLine(PA),12)"
+    "IsTangentOfCircle(PA,O)",
+    "IsTangentOfCircle(PB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfTriangle(PCD))",
@@ -41,7 +41,16 @@
     "line_addition(1,CE,ED)",
     "triangle_perimeter_formula(1,PCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(1,PA,O,O)",
+      "tangent_of_circle_property_perpendicular(1,PB,O,O)",
+      "tangent_of_circle_property_length_equal(1,PA,PB,O)",
+      "line_addition(1,PC,CA)",
+      "line_addition(1,PD,DB)",
+      "line_addition(1,CE,ED)",
+      "triangle_perimeter_formula(1,PCD)"
+    ],
     "tangent_of_circle_property_perpendicular(1,PA,O,O)": [
       "tangent_of_circle_judgment_perpendicular(1,CA,O,O)"
     ],
@@ -53,15 +62,6 @@
     ],
     "tangent_of_circle_judgment_perpendicular(1,CA,O,O)": [
       "tangent_of_circle_property_length_equal(1,CA,CE,O)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(1,PA,O,O)",
-      "tangent_of_circle_property_perpendicular(1,PB,O,O)",
-      "tangent_of_circle_property_length_equal(1,PA,PB,O)",
-      "line_addition(1,PC,CA)",
-      "line_addition(1,PD,DB)",
-      "line_addition(1,CE,ED)",
-      "triangle_perimeter_formula(1,PCD)"
     ]
   }
 }

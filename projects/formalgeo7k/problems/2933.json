@@ -2,9 +2,9 @@
   "problem_id": 2933,
   "annotation": "JiaZou_2023-04-16",
   "source": "GeoQA-112",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB//CD,EF分别为交AB,CD于点E,F,∠1=50°,则∠2的度数为()",
-  "problem_text_en": "As shown in the figure, AB // CD, and EF intersects AB and CD at points E, F, ∠1 = N_0, then the degree of ∠2 is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠GFD=50°，CD∥AB。求∠AEF的大小。",
+  "problem_text_en": "As shown in the diagram, ∠GFD=50°, CD is parallel to AB. Find the measure of ∠AEF.",
   "problem_img": "2933.png",
   "construction_cdl": [
     "Shape(CF,FG)",
@@ -20,8 +20,8 @@
     "Collinear(GFEH)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(CD,AB)",
-    "Equal(MeasureOfAngle(GFD),50)"
+    "Equal(MeasureOfAngle(GFD),50)",
+    "ParallelBetweenLine(CD,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(AEF))",
@@ -32,16 +32,16 @@
     "parallel_property_corresponding_angle(1,FD,EB,G)",
     "adjacent_complementary_angle(1,AEF,FEB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,CD,AB,F)",
+      "adjacent_complementary_angle(1,AEF,FEB)"
+    ],
     "parallel_property_collinear_extend(3,CD,AB,F)": [
       "parallel_property_collinear_extend(3,BA,DF,E)"
     ],
     "parallel_property_collinear_extend(3,BA,DF,E)": [
       "parallel_property_corresponding_angle(1,FD,EB,G)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,CD,AB,F)",
-      "adjacent_complementary_angle(1,AEF,FEB)"
     ]
   }
 }

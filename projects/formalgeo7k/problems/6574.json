@@ -2,9 +2,9 @@
   "problem_id": 6574,
   "annotation": "XiaokaiZhang_2023-06-04",
   "source": "GeoQA-9533",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在▱ABCD中,AB=10,AD=6,EC⊥AE,FC⊥AB,CF=3,则CE的长是()",
-  "problem_text_en": "As shown in the figure, in ▱ABCD, AB = N_0, AD = N_1, EC ⊥ AE, FC ⊥ AB, CF = N_2, then the length of CE is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=10，AD=6，CF=3，四边形ABCD是▱，AE⊥CE，AF垂直于CF。求直线CE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, AD=6, CF=3, quadrilateral ABCD is a ▱, AE⊥CE, AF⊥CF. Find the length of line CE.",
   "problem_img": "6574.png",
   "construction_cdl": [
     "Shape(FB,BC,CF)",
@@ -16,12 +16,12 @@
     "Collinear(EGC)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
     "Equal(LengthOfLine(AB),10)",
     "Equal(LengthOfLine(AD),6)",
+    "Equal(LengthOfLine(CF),3)",
+    "Parallelogram(ABCD)",
     "PerpendicularBetweenLine(AE,CE)",
-    "PerpendicularBetweenLine(AF,CF)",
-    "Equal(LengthOfLine(CF),3)"
+    "PerpendicularBetweenLine(AF,CF)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(CE))",
@@ -32,7 +32,7 @@
     "parallelogram_area_formula_common(1,CDAB)",
     "parallelogram_area_formula_common(1,DABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "altitude_of_quadrilateral_judgment_right_vertex(1,CF,DABC)",
       "altitude_of_quadrilateral_judgment_left_vertex(5,CE,CDAB)",

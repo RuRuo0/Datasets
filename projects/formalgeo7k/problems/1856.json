@@ -2,9 +2,9 @@
   "problem_id": 1856,
   "annotation": "JiaZou_2023-03-26",
   "source": "Geometry3k-1926",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find A B.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=x+3，BC=2*x-8，DB=3，EB=5，EA平行于CD。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, AB=x+3, BC=2*x-8, DB=3, EB=5, EA∥CD. Find the length of line AB.",
   "problem_img": "1856.png",
   "construction_cdl": [
     "Shape(AE,EB,BA)",
@@ -13,6 +13,10 @@
     "Collinear(EBD)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AB),x+3)",
+    "Equal(LengthOfLine(BC),2*x-8)",
+    "Equal(LengthOfLine(DB),3)",
+    "Equal(LengthOfLine(EB),5)",
     "ParallelBetweenLine(EA,CD)"
   ],
   "image_cdl": [
@@ -30,7 +34,11 @@
     "similar_triangle_property_line_ratio(1,EBA,DBC)",
     "similar_triangle_property_line_ratio(1,AEB,CDB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_alternate_interior_angle(1,EA,CD)",
+      "vertical_angle(1,EBA,DBC)"
+    ],
     "parallel_property_alternate_interior_angle(1,EA,CD)": [
       "similar_triangle_judgment_aa(1,AEB,CDB)"
     ],
@@ -40,10 +48,6 @@
     "similar_triangle_judgment_aa(1,AEB,CDB)": [
       "similar_triangle_property_line_ratio(1,AEB,CDB)",
       "similar_triangle_property_line_ratio(1,EBA,DBC)"
-    ],
-    "START": [
-      "parallel_property_alternate_interior_angle(1,EA,CD)",
-      "vertical_angle(1,EBA,DBC)"
     ]
   }
 }

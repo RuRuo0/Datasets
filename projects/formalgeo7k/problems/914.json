@@ -2,15 +2,20 @@
   "problem_id": 914,
   "annotation": "XiaokaiZhang_2023-03-19",
   "source": "Geometry3k-943",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find X A.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AZ=4，∠XYA=∠AYZ，AX⊥YX，YZ⊥AZ。求直线XA的长度。",
+  "problem_text_en": "As shown in the diagram, AZ=4, ∠XYA=∠AYZ, AX⊥YX, YZ⊥AZ. Find the length of line XA.",
   "problem_img": "914.png",
   "construction_cdl": [
     "Shape(XY,YA,AX)",
     "Shape(AY,YZ,ZA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AZ),4)",
+    "Equal(MeasureOfAngle(XYA),MeasureOfAngle(AYZ))",
+    "PerpendicularBetweenLine(AX,YX)",
+    "PerpendicularBetweenLine(YZ,AZ)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AZ),4)",
     "PerpendicularBetweenLine(AX,YX)",
@@ -23,12 +28,12 @@
     "mirror_congruent_triangle_judgment_aas(3,AXY,AYZ)",
     "mirror_congruent_triangle_property_line_equal(1,YAX,YZA)"
   ],
-  "theorem_seq_dag": {
-    "mirror_congruent_triangle_judgment_aas(3,AXY,AYZ)": [
-      "mirror_congruent_triangle_property_line_equal(1,YAX,YZA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "mirror_congruent_triangle_judgment_aas(3,AXY,AYZ)"
+    ],
+    "mirror_congruent_triangle_judgment_aas(3,AXY,AYZ)": [
+      "mirror_congruent_triangle_property_line_equal(1,YAX,YZA)"
     ]
   }
 }

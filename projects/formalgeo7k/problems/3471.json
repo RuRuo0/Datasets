@@ -2,9 +2,9 @@
   "problem_id": 3471,
   "annotation": "XiaokaiZhang_2023-04-30",
   "source": "GeoQA-1060",
-  "problem_level": 1,
-  "problem_text_cn": "如图,将长方形ABCD沿线段OG折叠到OB'C'G的位置,∠OGC'等于100°,则∠DGC'的度数为()",
-  "problem_text_en": "As shown in the figure, fold the rectangle ABCD along the line segment OG to the position of OB'C'G, ∠OGC' is equal to N_0, then the degree of ∠DGC' is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠FGO=100°，OEFG镜像全等于OGCB。求∠FGH的大小。",
+  "problem_text_en": "As shown in the diagram, ∠FGO=100°, quadrilateral OEFG is mirror congruent to quadrilateral OGCB. Find the measure of ∠FGH.",
   "problem_img": "3471.png",
   "construction_cdl": [
     "Shape(AD,DH,HE,EO,OA)",
@@ -16,8 +16,8 @@
     "Collinear(EHF)"
   ],
   "text_cdl": [
-    "MirrorCongruentBetweenQuadrilateral(OEFG,OGCB)",
-    "Equal(MeasureOfAngle(FGO),100)"
+    "Equal(MeasureOfAngle(FGO),100)",
+    "MirrorCongruentBetweenQuadrilateral(OEFG,OGCB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(FGH))",
@@ -27,7 +27,7 @@
     "adjacent_complementary_angle(1,HGO,OGC)",
     "angle_addition(1,FGH,HGO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "mirror_congruent_quadrilateral_property_angle_equal(1,GOEF,GCBO)",
       "adjacent_complementary_angle(1,HGO,OGC)",

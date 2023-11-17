@@ -2,9 +2,9 @@
   "problem_id": 2351,
   "annotation": "ChenyangMao_2023-04-09",
   "source": "Geometry3k-2465",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Lines l, m, and n are perpendicular bisectors of \\triangle P Q R and meet at T. find z.",
+  "problem_level": 0,
+  "problem_text_cn": "如图所示，GR=7，PG=z+4，PT=3*y-1，TQ=2*x，TR=8，TF是RQ的垂直平分线，TG是PR的垂直平分线，TH是QP的垂直平分线。求z的值。",
+  "problem_text_en": "As shown in the diagram, GR=7, PG=z+4, PT=3*y-1, TQ=2*x, TR=8, TF perpendicular bisects RQ, TG perpendicular bisects PR, TH perpendicular bisects QP. Find the value of z.",
   "problem_img": "2351.png",
   "construction_cdl": [
     "Shape(QH,HT,TQ)",
@@ -18,9 +18,14 @@
     "Collinear(RFQ)"
   ],
   "text_cdl": [
-    "IsPerpendicularBisectorOfLine(TH,QP)",
+    "Equal(LengthOfLine(GR),7)",
+    "Equal(LengthOfLine(PG),z+4)",
+    "Equal(LengthOfLine(PT),3*y-1)",
+    "Equal(LengthOfLine(TQ),2*x)",
+    "Equal(LengthOfLine(TR),8)",
+    "IsPerpendicularBisectorOfLine(TF,RQ)",
     "IsPerpendicularBisectorOfLine(TG,PR)",
-    "IsPerpendicularBisectorOfLine(TF,RQ)"
+    "IsPerpendicularBisectorOfLine(TH,QP)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(PT),3*y-1)",
@@ -32,5 +37,7 @@
   "goal_cdl": "Value(z)",
   "problem_answer": "3",
   "theorem_seqs": [],
-  "theorem_seq_dag": {}
+  "theorem_seqs_dag": {
+    "START": []
+  }
 }

@@ -2,9 +2,9 @@
   "problem_id": 276,
   "annotation": "XiaokaiZhang_2023-03-12",
   "source": "Geometry3k-280",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the length of line EC.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，BA=3，BD=x-1，CE=x+2，EF=8，∠GAB=∠EFG，AB垂直于CB，DE⊥FE。求直线EC的长度。",
+  "problem_text_en": "As shown in the diagram, BA=3, BD=x-1, CE=x+2, EF=8, ∠GAB=∠EFG, AB⊥CB, DE is perpendicular to FE. Find the length of line EC.",
   "problem_img": "276.png",
   "construction_cdl": [
     "Shape(AB,BC,CG,GA)",
@@ -14,7 +14,15 @@
     "Collinear(AGD)",
     "Collinear(CGF)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BA),3)",
+    "Equal(LengthOfLine(BD),x-1)",
+    "Equal(LengthOfLine(CE),x+2)",
+    "Equal(LengthOfLine(EF),8)",
+    "Equal(MeasureOfAngle(GAB),MeasureOfAngle(EFG))",
+    "PerpendicularBetweenLine(AB,CB)",
+    "PerpendicularBetweenLine(DE,FE)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BD),x-1)",
     "Equal(LengthOfLine(CE),x+2)",
@@ -31,13 +39,13 @@
     "mirror_similar_triangle_property_line_ratio(1,DAB,CEF)",
     "mirror_similar_triangle_property_line_ratio(1,ABD,FCE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "mirror_similar_triangle_judgment_aa(1,DAB,CEF)"
+    ],
     "mirror_similar_triangle_judgment_aa(1,DAB,CEF)": [
       "mirror_similar_triangle_property_line_ratio(1,DAB,CEF)",
       "mirror_similar_triangle_property_line_ratio(1,ABD,FCE)"
-    ],
-    "START": [
-      "mirror_similar_triangle_judgment_aa(1,DAB,CEF)"
     ]
   }
 }

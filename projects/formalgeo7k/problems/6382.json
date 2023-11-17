@@ -2,9 +2,9 @@
   "problem_id": 6382,
   "annotation": "YimingHe_2023-06-04",
   "source": "GeoQA-9238",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在▱ABCD中,用直尺和圆规作∠BAD的平分线AG交BC于点E,若BF=6,AB=5,则AE的长为()",
-  "problem_text_en": "As shown in the figure, in ▱ABCD, use a ruler and compasses to make the bisector of ∠BAD intersect BC at point E. If BF = N_0, AB = N_1, then the length of AE is ()",
+  "problem_level": 13,
+  "problem_text_cn": "如图所示，AB=5，AB=AF，BF=6，AO平分∠FAB，AD和BC是平行四边形ABCD的一组对边。求直线AE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=5, AB=AF, BF=6, AO bisects ∠FAB, AD and BC are opposite sides of the ▱ ABCD. Find the length of line AE.",
   "problem_img": "6382.png",
   "construction_cdl": [
     "Shape(AO,OF,FA)",
@@ -18,11 +18,11 @@
     "Collinear(BOF)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
-    "IsBisectorOfAngle(AO,FAB)",
+    "Equal(LengthOfLine(AB),5)",
     "Equal(LengthOfLine(AB),LengthOfLine(AF))",
     "Equal(LengthOfLine(BF),6)",
-    "Equal(LengthOfLine(AB),5)"
+    "IsBisectorOfAngle(AO,FAB)",
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AE))",
@@ -42,7 +42,14 @@
     "right_triangle_judgment_angle(1,BOA)",
     "right_triangle_property_pythagorean(1,BOA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AO,OE)",
+      "line_addition(1,BO,OF)",
+      "parallel_property_collinear_extend(3,AD,BC,F)",
+      "parallel_property_collinear_extend(3,CB,DA,E)",
+      "isosceles_triangle_judgment_line_equal(1,ABF)"
+    ],
     "parallel_property_collinear_extend(3,AD,BC,F)": [
       "parallel_property_collinear_extend(3,CB,FA,E)"
     ],
@@ -69,13 +76,6 @@
     ],
     "right_triangle_judgment_angle(1,BOA)": [
       "right_triangle_property_pythagorean(1,BOA)"
-    ],
-    "START": [
-      "line_addition(1,AO,OE)",
-      "line_addition(1,BO,OF)",
-      "parallel_property_collinear_extend(3,AD,BC,F)",
-      "parallel_property_collinear_extend(3,CB,DA,E)",
-      "isosceles_triangle_judgment_line_equal(1,ABF)"
     ]
   }
 }

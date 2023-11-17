@@ -2,9 +2,9 @@
   "problem_id": 932,
   "annotation": "XiaokaiZhang_2023-03-19",
   "source": "Geometry3k-961",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "H is the incenter of \\triangle A B C. Find m \\angle H A C.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AF=24，AH=25，BH=11，∠DBH=30°，∠GCH=28°，三角形ABC的内切圆圆心为H，BG垂直于HG，HD⊥BD，HF⊥AF。求∠CAH的大小。",
+  "problem_text_en": "As shown in the diagram, AF=24, AH=25, BH=11, ∠DBH=30°, ∠GCH=28°, H is the incenter of △ABC, BG⊥HG, HD is perpendicular to BD, HF⊥AF. Find the measure of ∠CAH.",
   "problem_img": "932.png",
   "construction_cdl": [
     "Shape(AD,DH,HA)",
@@ -18,7 +18,15 @@
     "Collinear(CFA)"
   ],
   "text_cdl": [
-    "IsIncenterOfTriangle(H,ABC)"
+    "Equal(LengthOfLine(AF),24)",
+    "Equal(LengthOfLine(AH),25)",
+    "Equal(LengthOfLine(BH),11)",
+    "Equal(MeasureOfAngle(DBH),30)",
+    "Equal(MeasureOfAngle(GCH),28)",
+    "IsIncenterOfTriangle(H,ABC)",
+    "PerpendicularBetweenLine(BG,HG)",
+    "PerpendicularBetweenLine(HD,BD)",
+    "PerpendicularBetweenLine(HF,AF)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(AF),24)",
@@ -38,7 +46,7 @@
     "angle_addition(1,FAH,HAD)",
     "triangle_property_angle_sum(1,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,DBH,HBG)",
       "angle_addition(1,GCH,HCF)",

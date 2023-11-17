@@ -2,9 +2,9 @@
   "problem_id": 5119,
   "annotation": "YimingHe_2023-05-21",
   "source": "GeoQA-4973",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,M为BC的中点,MI∥CA,且MI与∠A的平分线AI相交于点I．若AB=10,AC=16,则MI长度为()",
-  "problem_text_en": "As shown in the figure, in △ABC, M is the midpoint of BC, MI ∥ CA, and MI intersects the bisector AI of ∠A at vertex I. If AB = N_0, AC = N_1, the length of MI is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=10，AC=16，AI平分∠CAD，M是线段BC的中点，AC∥IM。求直线MI的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, AC=16, AI is the angle bisector of ∠CAD, M bisects segment BC, AC is parallel to IM. Find the length of line MI.",
   "problem_img": "5119.png",
   "construction_cdl": [
     "Shape(AD,DI,IA)",
@@ -15,11 +15,11 @@
     "Collinear(ADB)"
   ],
   "text_cdl": [
-    "IsMidpointOfLine(M,BC)",
-    "ParallelBetweenLine(AC,IM)",
-    "IsBisectorOfAngle(AI,CAD)",
     "Equal(LengthOfLine(AB),10)",
-    "Equal(LengthOfLine(AC),16)"
+    "Equal(LengthOfLine(AC),16)",
+    "IsBisectorOfAngle(AI,CAD)",
+    "IsMidpointOfLine(M,BC)",
+    "ParallelBetweenLine(AC,IM)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(MI))",
@@ -33,7 +33,12 @@
     "line_addition(1,AD,DB)",
     "line_addition(1,DI,IM)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(2,MI,CA,D)",
+      "line_addition(1,AD,DB)",
+      "line_addition(1,DI,IM)"
+    ],
     "parallel_property_collinear_extend(2,MI,CA,D)": [
       "midsegment_of_triangle_judgment_parallel(1,MD,BCA)",
       "parallel_property_alternate_interior_angle(1,ID,CA)"
@@ -43,11 +48,6 @@
     ],
     "midsegment_of_triangle_judgment_parallel(1,MD,BCA)": [
       "midsegment_of_triangle_property_length(1,MD,BCA)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(2,MI,CA,D)",
-      "line_addition(1,AD,DB)",
-      "line_addition(1,DI,IM)"
     ]
   }
 }

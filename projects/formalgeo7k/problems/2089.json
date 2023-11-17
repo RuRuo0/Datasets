@@ -2,14 +2,20 @@
   "problem_id": 2089,
   "annotation": "QikeHuang_2023-04-23",
   "source": "Geometry3k-2176",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x so that the quadrilateral is a parallelogram.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=y+2*x，AY=3*y+2*x，BC=5*y-2*x，YC=4，AB和YC是▱AYCB的一组对边。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=y+2*x, AY=3*y+2*x, BC=5*y-2*x, YC=4, YA and CB are opposite sides of the ▱ AYCB. Find the value of x.",
   "problem_img": "2089.png",
   "construction_cdl": [
     "Shape(AY,YC,CB,BA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),y+2*x)",
+    "Equal(LengthOfLine(AY),3*y+2*x)",
+    "Equal(LengthOfLine(BC),5*y-2*x)",
+    "Equal(LengthOfLine(YC),4)",
+    "Parallelogram(AYCB)"
+  ],
   "image_cdl": [
     "Parallelogram(AYCB)",
     "Equal(LengthOfLine(AB),y+2*x)",
@@ -23,7 +29,7 @@
     "parallelogram_property_opposite_line_equal(1,AYCB)",
     "parallelogram_property_opposite_line_equal(1,YCBA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_property_opposite_line_equal(1,AYCB)",
       "parallelogram_property_opposite_line_equal(1,YCBA)"

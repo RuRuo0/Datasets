@@ -2,16 +2,22 @@
   "problem_id": 2354,
   "annotation": "ChenyangMao_2023-04-09",
   "source": "Geometry3k-2468",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the measure of the altitude drawn to the hypotenuse.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，FG=16，HF=12，EH是△EGF的高，EH⊥FH，FE⊥GE。求直线EH的长度。",
+  "problem_text_en": "As shown in the diagram, FG=16, HF=12, EH is the altitude of triangle EGF, EH is perpendicular to FH, FE⊥GE. Find the length of line EH.",
   "problem_img": "2354.png",
   "construction_cdl": [
     "Shape(HE,EG,GH)",
     "Shape(EH,HF,FE)",
     "Collinear(GHF)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(FG),16)",
+    "Equal(LengthOfLine(HF),12)",
+    "IsAltitudeOfTriangle(EH,EGF)",
+    "PerpendicularBetweenLine(EH,FH)",
+    "PerpendicularBetweenLine(FE,GE)"
+  ],
   "image_cdl": [
     "IsAltitudeOfTriangle(EH,EGF)",
     "Equal(LengthOfLine(FG),16)",
@@ -29,18 +35,18 @@
     "mirror_similar_triangle_property_line_ratio(1,EGH,FEG)",
     "right_triangle_property_pythagorean(1,GHE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,GH,HF)",
+      "right_triangle_judgment_angle(1,GHE)",
+      "mirror_similar_triangle_judgment_aa(1,EGH,FEG)"
+    ],
     "right_triangle_judgment_angle(1,GHE)": [
       "right_triangle_property_pythagorean(1,GHE)"
     ],
     "mirror_similar_triangle_judgment_aa(1,EGH,FEG)": [
       "mirror_similar_triangle_property_line_ratio(1,EGH,FEG)",
       "mirror_similar_triangle_property_line_ratio(1,HEG,EGF)"
-    ],
-    "START": [
-      "line_addition(1,GH,HF)",
-      "right_triangle_judgment_angle(1,GHE)",
-      "mirror_similar_triangle_judgment_aa(1,EGH,FEG)"
     ]
   }
 }

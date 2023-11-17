@@ -2,9 +2,9 @@
   "problem_id": 5683,
   "annotation": "NaZhu_2023-05-28",
   "source": "GeoQA-7404",
-  "problem_level": 1,
-  "problem_text_cn": "如图,等边△ABC的边长为3,P为BC上一点,且BP=1,D为AC上一点,若∠APD=60°,则CD的长是()",
-  "problem_text_en": "As shown in the figure, the edge length of equilateral △ABC is N_0, P is a point on BC, and BP = N_1, D is a point on AC, if ∠APD = N_2, the length of CD is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AB=3，BP=1，∠APD=60°，三角形ABC为等边三角形。求直线CD的长度。",
+  "problem_text_en": "As shown in the diagram, AB=3, BP=1, ∠APD=60°, triangle ABC is an equilateral triangle. Find the length of line CD.",
   "problem_img": "5683.png",
   "construction_cdl": [
     "Shape(AB,BP,PA)",
@@ -14,10 +14,10 @@
     "Collinear(ADC)"
   ],
   "text_cdl": [
-    "EquilateralTriangle(ABC)",
     "Equal(LengthOfLine(AB),3)",
     "Equal(LengthOfLine(BP),1)",
-    "Equal(MeasureOfAngle(APD),60)"
+    "Equal(MeasureOfAngle(APD),60)",
+    "EquilateralTriangle(ABC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(CD))",
@@ -33,7 +33,15 @@
     "similar_triangle_property_line_ratio(1,PAB,DPC)",
     "similar_triangle_property_line_ratio(1,ABP,PCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "equilateral_triangle_property_angle(1,BCA)",
+      "equilateral_triangle_property_angle(1,CAB)",
+      "triangle_property_angle_sum(1,ABP)",
+      "adjacent_complementary_angle(1,BPA,APC)",
+      "angle_addition(1,APD,DPC)",
+      "line_addition(1,BP,PC)"
+    ],
     "equilateral_triangle_property_angle(1,BCA)": [
       "similar_triangle_judgment_aa(1,PAB,DPC)"
     ],
@@ -52,14 +60,6 @@
     "similar_triangle_judgment_aa(1,PAB,DPC)": [
       "similar_triangle_property_line_ratio(1,PAB,DPC)",
       "similar_triangle_property_line_ratio(1,ABP,PCD)"
-    ],
-    "START": [
-      "equilateral_triangle_property_angle(1,BCA)",
-      "equilateral_triangle_property_angle(1,CAB)",
-      "triangle_property_angle_sum(1,ABP)",
-      "adjacent_complementary_angle(1,BPA,APC)",
-      "angle_addition(1,APD,DPC)",
-      "line_addition(1,BP,PC)"
     ]
   }
 }

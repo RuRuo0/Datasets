@@ -2,9 +2,9 @@
   "problem_id": 1525,
   "annotation": "QikeHuang_2023-04-16",
   "source": "Geometry3k-1583",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find \\angle DAB.",
+  "problem_level": 13,
+  "problem_text_cn": "如图所示，⌒OBD的角度为6*a，弧OCB的角度为4*a，弧ODE的角度为3*a，⌒OEC的角度为5*a，圆O的圆心为O。求∠DAB的大小。",
+  "problem_text_en": "As shown in the diagram, the measure of ⌒OBD is 6*a, the measure of arc OCB is 4*a, the measure of arc ODE is 3*a, the measure of ⌒OEC is 5*a, the center of circle O is O. Find the measure of ∠DAB.",
   "problem_img": "1525.png",
   "construction_cdl": [
     "Shape(AE,OEC,CA)",
@@ -17,7 +17,13 @@
     "Collinear(CAD)",
     "Cocircular(O,ECBD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfArc(OBD),6*a)",
+    "Equal(MeasureOfArc(OCB),4*a)",
+    "Equal(MeasureOfArc(ODE),3*a)",
+    "Equal(MeasureOfArc(OEC),5*a)",
+    "IsCentreOfCircle(O,O)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfArc(ODE),3*a)",
@@ -42,16 +48,7 @@
     "triangle_property_angle_sum(1,ODA)",
     "triangle_property_angle_sum(1,COD)"
   ],
-  "theorem_seq_dag": {
-    "radius_of_circle_property_length_equal(1,OC,O)": [
-      "isosceles_triangle_judgment_line_equal(1,ODC)"
-    ],
-    "radius_of_circle_property_length_equal(1,OD,O)": [
-      "isosceles_triangle_judgment_line_equal(1,ODC)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,ODC)": [
-      "isosceles_triangle_property_angle_equal(1,ODC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,ODE,O)",
       "arc_property_center_angle(1,OEC,O)",
@@ -64,6 +61,15 @@
       "radius_of_circle_property_length_equal(1,OD,O)",
       "triangle_property_angle_sum(1,ODA)",
       "triangle_property_angle_sum(1,COD)"
+    ],
+    "radius_of_circle_property_length_equal(1,OC,O)": [
+      "isosceles_triangle_judgment_line_equal(1,ODC)"
+    ],
+    "radius_of_circle_property_length_equal(1,OD,O)": [
+      "isosceles_triangle_judgment_line_equal(1,ODC)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,ODC)": [
+      "isosceles_triangle_property_angle_equal(1,ODC)"
     ]
   }
 }

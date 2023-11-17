@@ -2,16 +2,20 @@
   "problem_id": 222,
   "annotation": "NaZhu_2023-04-02",
   "source": "Geometry3k-224",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the shaded sector. Round to the nearest tenth.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，KL=10，∠LKJ=85°，K是⊙K的圆心。求扇形KLJ的面积。",
+  "problem_text_en": "As shown in the diagram, KL=10, ∠LKJ=85°, K is the center of circle K. Find the area of the sector KLJ.",
   "problem_img": "222.png",
   "construction_cdl": [
     "Shape(KJL,LK,KJ)",
     "Shape(KLJ,JK,KL)",
     "Cocircular(K,JL)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(KL),10)",
+    "Equal(MeasureOfAngle(LKJ),85)",
+    "IsCentreOfCircle(K,K)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(K,K)",
     "Equal(MeasureOfAngle(LKJ),85)",
@@ -25,7 +29,7 @@
     "round_angle(1,LKJ,JKL)",
     "sector_area_formula(1,KLJ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,KL,K)",
       "arc_property_center_angle(1,KLJ,K)",

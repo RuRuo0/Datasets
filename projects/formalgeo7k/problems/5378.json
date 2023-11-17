@@ -2,19 +2,19 @@
   "problem_id": 5378,
   "annotation": "QikeHuang_2023-05-21",
   "source": "GeoQA-5662",
-  "problem_level": 1,
-  "problem_text_cn": "如图,▱ABCD与▱EBCF关于边BC所在的直线对称,若∠ABE=110°,则∠F等于()",
-  "problem_text_en": "As shown in the figure, ▱ABCD and ▱EBCF are symmetric with respect to the line where the edge BC is located. If ∠ABE = N_0, then ∠F is equal to ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠ABE=110°，BCDA镜像全等于BEFC，ABCD是平行四边形，四边形BEFC是▱。求∠EFC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABE=110°, BCDA is mirror congruent to BEFC, ABCD is a parallelogram, BC and EF are opposite sides of the ▱ BEFC. Find the measure of ∠EFC.",
   "problem_img": "5378.png",
   "construction_cdl": [
     "Shape(AB,BC,CD,DA)",
     "Shape(BE,EF,FC,CB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(ABE),110)",
     "MirrorCongruentBetweenQuadrilateral(BCDA,BEFC)",
     "Parallelogram(ABCD)",
-    "Parallelogram(BEFC)",
-    "Equal(MeasureOfAngle(ABE),110)"
+    "Parallelogram(BEFC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(EFC))",
@@ -24,7 +24,7 @@
     "mirror_congruent_quadrilateral_property_angle_equal(1,BCDA,BEFC)",
     "parallelogram_property_opposite_angle_equal(1,BEFC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,ABC,CBE)",
       "mirror_congruent_quadrilateral_property_angle_equal(1,BCDA,BEFC)",

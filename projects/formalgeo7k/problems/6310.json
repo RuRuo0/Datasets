@@ -2,9 +2,9 @@
   "problem_id": 6310,
   "annotation": "ZheZhu_2023-05-28",
   "source": "GeoQA-9090",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在矩形ABCD中,AB=2,BC=3,AE是∠BAD的平分线,EF⊥AE,则AF的长为()",
-  "problem_text_en": "As shown in the figure, in the rectangle ABCD, AB = N_0, BC = N_1, AE is the bisector of ∠BAD, EF ⊥ AE, then the length of AF is ()",
+  "problem_level": 14,
+  "problem_text_cn": "如图所示，AB=2，BC=3，∠AEF=90°，∠FEC=45°，AE平分∠DAB，ABCD是长方形。求直线AF的长度。",
+  "problem_text_en": "As shown in the diagram, AB=2, BC=3, ∠AEF=90°, ∠FEC=45°, AE bisects ∠DAB, ABCD is a rectangle. Find the length of line AF.",
   "problem_img": "6310.png",
   "construction_cdl": [
     "Shape(AB,BE,EA)",
@@ -15,12 +15,12 @@
     "Collinear(BEC)"
   ],
   "text_cdl": [
-    "Rectangle(ABCD)",
-    "IsBisectorOfAngle(AE,DAB)",
     "Equal(LengthOfLine(AB),2)",
     "Equal(LengthOfLine(BC),3)",
     "Equal(MeasureOfAngle(AEF),90)",
-    "Equal(MeasureOfAngle(FEC),45)"
+    "Equal(MeasureOfAngle(FEC),45)",
+    "IsBisectorOfAngle(AE,DAB)",
+    "Rectangle(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AF))",
@@ -41,7 +41,18 @@
     "right_triangle_property_pythagorean(1,FDA)",
     "right_triangle_property_pythagorean(1,ECF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,DF,FC)",
+      "line_addition(1,BE,EC)",
+      "parallelogram_property_opposite_line_equal(1,ABCD)",
+      "parallelogram_property_opposite_line_equal(1,BCDA)",
+      "triangle_property_angle_sum(1,FEC)",
+      "right_triangle_judgment_angle(1,ABE)",
+      "right_triangle_judgment_angle(1,AEF)",
+      "right_triangle_judgment_angle(1,FDA)",
+      "right_triangle_judgment_angle(1,ECF)"
+    ],
     "triangle_property_angle_sum(1,FEC)": [
       "isosceles_triangle_judgment_angle_equal(1,CFE)"
     ],
@@ -56,17 +67,6 @@
     ],
     "right_triangle_judgment_angle(1,ECF)": [
       "right_triangle_property_pythagorean(1,ECF)"
-    ],
-    "START": [
-      "line_addition(1,DF,FC)",
-      "line_addition(1,BE,EC)",
-      "parallelogram_property_opposite_line_equal(1,ABCD)",
-      "parallelogram_property_opposite_line_equal(1,BCDA)",
-      "triangle_property_angle_sum(1,FEC)",
-      "right_triangle_judgment_angle(1,ABE)",
-      "right_triangle_judgment_angle(1,AEF)",
-      "right_triangle_judgment_angle(1,FDA)",
-      "right_triangle_judgment_angle(1,ECF)"
     ]
   }
 }

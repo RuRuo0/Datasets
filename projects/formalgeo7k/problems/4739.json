@@ -2,9 +2,9 @@
   "problem_id": 4739,
   "annotation": "Yangli_2023-05-14",
   "source": "GeoQA-4079",
-  "problem_level": 1,
-  "problem_text_cn": "把直尺、三角尺和圆形螺母按如图所示放置于桌面上,∠CAB=60°,若量出AD=6cm,则圆形螺母的外直径是()",
-  "problem_text_en": "Put the ruler, the triangle ruler and the round nut on the desktop as shown in the figure, ∠CAB = N_0, if AD = N_1, then the outer diameter of the round nut is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AD=6，∠DAF=∠FAE，∠EAC=60°，⊙O的圆心为O，⊙O的切线为AD，AE是⊙O的切线，∠BAC是直角△BAC的直角。求直线OD的长度。",
+  "problem_text_en": "As shown in the diagram, AD=6, ∠DAF=∠FAE, ∠EAC=60°, O is the center of ⊙O, AD is the tangent to circle O, AE is the tangent to ⊙O, triangle BAC is a right triangle. Find the length of line OD.",
   "problem_img": "4739.png",
   "construction_cdl": [
     "Shape(BE,EA,AC,CB)",
@@ -20,12 +20,12 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(AD),6)",
+    "Equal(MeasureOfAngle(DAF),MeasureOfAngle(FAE))",
     "Equal(MeasureOfAngle(EAC),60)",
-    "RightTriangle(BAC)",
+    "IsCentreOfCircle(O,O)",
     "IsTangentOfCircle(AD,O)",
     "IsTangentOfCircle(AE,O)",
-    "IsCentreOfCircle(O,O)",
-    "Equal(MeasureOfAngle(DAF),MeasureOfAngle(FAE))"
+    "RightTriangle(BAC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(OD))",
@@ -38,7 +38,7 @@
     "triangle_property_angle_sum(1,ODA)",
     "sine_theorem(1,DAO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(1,AD,O,O)",
       "angle_addition(1,DAE,EAC)",

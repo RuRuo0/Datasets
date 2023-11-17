@@ -2,9 +2,9 @@
   "problem_id": 4180,
   "annotation": "Yangli_2023-05-07",
   "source": "GeoQA-2836",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在四边形ABCD中,E、F分別是AB、AD的中点,若EF=2,BC=5,CD=3,则tanC等于()",
-  "problem_text_en": "As shown in the figure, in the quadrilateral ABCD, E and F are the midpoints of AB and AD respectively. If EF = N_0, BC = N_1, CD = N_2, then tanC is equal to ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，BC=5，CD=3，EF=2，E是线段AB的中点，F平分线段AD。求tan(BC)的值。",
+  "problem_text_en": "As shown in the diagram, BC=5, CD=3, EF=2, E bisects segment AB, F bisects segment AD. Find the value of tan(BC).",
   "problem_img": "4180.png",
   "construction_cdl": [
     "Shape(AE,EF,FA)",
@@ -14,11 +14,11 @@
     "Collinear(AFD)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(EF),2)",
     "Equal(LengthOfLine(BC),5)",
     "Equal(LengthOfLine(CD),3)",
-    "IsMidpointOfLine(F,AD)",
-    "IsMidpointOfLine(E,AB)"
+    "Equal(LengthOfLine(EF),2)",
+    "IsMidpointOfLine(E,AB)",
+    "IsMidpointOfLine(F,AD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Tan(MeasureOfAngle(BCD)))",
@@ -28,13 +28,13 @@
     "midsegment_of_triangle_property_length(1,EF,ABD)",
     "cosine_theorem(1,CDB)"
   ],
-  "theorem_seq_dag": {
-    "midsegment_of_triangle_judgment_midpoint(1,EF,ABD)": [
-      "midsegment_of_triangle_property_length(1,EF,ABD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "midsegment_of_triangle_judgment_midpoint(1,EF,ABD)",
       "cosine_theorem(1,CDB)"
+    ],
+    "midsegment_of_triangle_judgment_midpoint(1,EF,ABD)": [
+      "midsegment_of_triangle_property_length(1,EF,ABD)"
     ]
   }
 }

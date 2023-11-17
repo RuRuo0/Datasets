@@ -2,9 +2,9 @@
   "problem_id": 6034,
   "annotation": "ChenyangMao_2023-05-28",
   "source": "GeoQA-8522",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AC、BC是两个半圆的直径,∠ACP=30°,若AB=20cm,则PQ的值为()",
-  "problem_text_en": "As shown in the figure, AC and BC are the diameters of two semicircles, ∠ACP = N_0, if AB = N_1, the value of PQ is ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，AB=20，∠ACP=30°，圆O的圆心为O，圆Z的圆心为Z，AC是圆O的直径，⊙Z的直径为BC。求直线PQ的长度。",
+  "problem_text_en": "As shown in the diagram, AB=20, ∠ACP=30°, O is the center of ⊙O, the center of circle Z is Z, the diameter of circle O is AC, BC is the diameter of circle Z. Find the length of line PQ.",
   "problem_img": "6034.png",
   "construction_cdl": [
     "Shape(OPA,AP)",
@@ -19,12 +19,12 @@
     "Cocircular(Z,CQB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(AC,O)",
-    "IsCentreOfCircle(Z,Z)",
-    "IsDiameterOfCircle(BC,Z)",
     "Equal(LengthOfLine(AB),20)",
-    "Equal(MeasureOfAngle(ACP),30)"
+    "Equal(MeasureOfAngle(ACP),30)",
+    "IsCentreOfCircle(O,O)",
+    "IsCentreOfCircle(Z,Z)",
+    "IsDiameterOfCircle(AC,O)",
+    "IsDiameterOfCircle(BC,Z)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(PQ))",
@@ -41,7 +41,7 @@
     "line_addition(1,AB,BC)",
     "line_addition(1,PQ,QC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,CPA,O)",
       "diameter_of_circle_property_right_angle(1,CQB,Z)",

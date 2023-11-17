@@ -2,9 +2,9 @@
   "problem_id": 4784,
   "annotation": "ChenyangMao_2023-05-14",
   "source": "GeoQA-4172",
-  "problem_level": 1,
-  "problem_text_cn": "如图,过⊙O上一点E作圆的切线,交直径AC的延长线于点B,再取⊙O上一点D,连接AE、ED和CD,若⊙O的半径为2,∠EDC=30°,则CB的长为()",
-  "problem_text_en": "As shown in the figure, make a tangent of a circle through a point E on ⊙O, intersect the extended line of the diameter AC at point B, and then take a point D on ⊙O, connect AE, ED and CD, if the radius of ⊙O is N_0, ∠EDC = N_1, then the length of CB is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠EDC=30°，圆O的半径为2，O是⊙O的圆心，圆O的切线为BE。求直线CB的长度。",
+  "problem_text_en": "As shown in the diagram, ∠EDC=30°, the radius of ⊙O is 2, the center of circle O is O, BE is the tangent to ⊙O. Find the length of line CB.",
   "problem_img": "4784.png",
   "construction_cdl": [
     "Shape(OEA,AE)",
@@ -19,10 +19,10 @@
     "Cocircular(O,ADCE)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(EDC),30)",
     "Equal(RadiusOfCircle(O),2)",
-    "IsTangentOfCircle(BE,O)",
-    "Equal(MeasureOfAngle(EDC),30)"
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(BE,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(CB))",
@@ -37,7 +37,7 @@
     "sine_theorem(1,OBE)",
     "line_addition(1,OC,CB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_circumference_angle_external(1,OCE,D)",
       "radius_of_circle_property_length_equal(1,OC,O)",

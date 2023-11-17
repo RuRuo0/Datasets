@@ -2,9 +2,9 @@
   "problem_id": 3219,
   "annotation": "NaZhu_2023-04-23",
   "source": "GeoQA-517",
-  "problem_level": 1,
-  "problem_text_cn": "如图,把一块含有30°角的直角三角板ABC的直角顶点放在矩形桌面CDEF的一个顶点C处,桌面的另一个顶点F与三角板斜边相交于点F,如果∠1=50°,那么∠AFE的度数为()",
-  "problem_text_en": "As shown in the figure, the right-angled vertex of a right triangular plate ABC with angle N_0 is placed at a vertex C of the rectangular desktop CDEF, and the other vertex F of the desktop intersects the hypotenuse of the triangular plate at point F. If ∠1 = N_1, then ∠AFE The degree is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠DCG=50°，∠FAG=30°，EDCF是长方形，三角形CBA为直角三角形。求∠GFA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DCG=50°, ∠FAG=30°, quadrilateral EDCF is a rectangle, CB and BA are the legs of the right triangle CBA. Find the measure of ∠GFA.",
   "problem_img": "3219.png",
   "construction_cdl": [
     "Shape(FA,AG,GF)",
@@ -16,10 +16,10 @@
     "Collinear(AFB)"
   ],
   "text_cdl": [
-    "RightTriangle(CBA)",
-    "Rectangle(EDCF)",
+    "Equal(MeasureOfAngle(DCG),50)",
     "Equal(MeasureOfAngle(FAG),30)",
-    "Equal(MeasureOfAngle(DCG),50)"
+    "Rectangle(EDCF)",
+    "RightTriangle(CBA)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(GFA))",
@@ -31,15 +31,15 @@
     "angle_addition(1,AGF,FGC)",
     "triangle_property_angle_sum(1,AGF)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,EF,DC,G)": [
-      "parallel_property_alternate_interior_angle(1,GF,DC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_collinear_extend(3,EF,DC,G)",
       "flat_angle(1,AGC)",
       "angle_addition(1,AGF,FGC)",
       "triangle_property_angle_sum(1,AGF)"
+    ],
+    "parallel_property_collinear_extend(3,EF,DC,G)": [
+      "parallel_property_alternate_interior_angle(1,GF,DC)"
     ]
   }
 }

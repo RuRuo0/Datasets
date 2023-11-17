@@ -2,9 +2,9 @@
   "problem_id": 320,
   "annotation": "NaZhu_2023-04-02",
   "source": "Geometry3k-325",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "For trapezoid T R S V, M and N are midpoints of the legs. If V S = 21 and T R = 44, find M N.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，TR=44，VA=21，M平分线段TV，N平分线段RA，四边形TVAR是梯形。求直线MN的长度。",
+  "problem_text_en": "As shown in the diagram, TR=44, VA=21, M is the midpoint of segment TV, N is the midpoint of segment RA, TV and AR are the non-parallel sides (legs) of trapezoid TVAR. Find the length of line MN.",
   "problem_img": "320.png",
   "construction_cdl": [
     "Shape(TM,MN,NR,RT)",
@@ -13,11 +13,11 @@
     "Collinear(RNA)"
   ],
   "text_cdl": [
-    "Trapezoid(TVAR)",
+    "Equal(LengthOfLine(TR),44)",
+    "Equal(LengthOfLine(VA),21)",
     "IsMidpointOfLine(M,TV)",
     "IsMidpointOfLine(N,RA)",
-    "Equal(LengthOfLine(VA),21)",
-    "Equal(LengthOfLine(TR),44)"
+    "Trapezoid(TVAR)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(MN))",
@@ -26,12 +26,12 @@
     "midsegment_of_quadrilateral_judgment_midpoint(1,MN,TVAR)",
     "midsegment_of_quadrilateral_property_length(1,MN,TVAR)"
   ],
-  "theorem_seq_dag": {
-    "midsegment_of_quadrilateral_judgment_midpoint(1,MN,TVAR)": [
-      "midsegment_of_quadrilateral_property_length(1,MN,TVAR)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "midsegment_of_quadrilateral_judgment_midpoint(1,MN,TVAR)"
+    ],
+    "midsegment_of_quadrilateral_judgment_midpoint(1,MN,TVAR)": [
+      "midsegment_of_quadrilateral_property_length(1,MN,TVAR)"
     ]
   }
 }

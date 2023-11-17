@@ -2,9 +2,9 @@
   "problem_id": 3120,
   "annotation": "YimingHe_2023-04-23",
   "source": "GeoQA-371",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,点A是弧CD的中点,若∠B=25°,则∠AOC=()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of O, and point A is the midpoint of arc CD. If ∠B = N_0, then ∠AOC = ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，弧OAC的长度与弧ODA的长度相等，∠ABD=25°，O是圆O的圆心。求∠COA的大小。",
+  "problem_text_en": "As shown in the diagram, the length of ⌒OAC is equal to the length of ⌒ODA, ∠ABD=25°, O is the center of ⊙O. Find the measure of ∠COA.",
   "problem_img": "3120.png",
   "construction_cdl": [
     "Shape(CO,OA,OAC)",
@@ -15,8 +15,8 @@
     "Cocircular(O,ACBD)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(ABD),25)",
     "Equal(LengthOfArc(OAC),LengthOfArc(ODA))",
+    "Equal(MeasureOfAngle(ABD),25)",
     "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
@@ -28,14 +28,14 @@
     "congruent_arc_property_measure_equal(1,ODA,OAC)",
     "arc_property_center_angle(1,OAC,O)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_length_equal(1,ODA,OAC)": [
-      "congruent_arc_property_measure_equal(1,ODA,OAC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_circumference_angle_external(1,ODA,B)",
       "congruent_arc_judgment_length_equal(1,ODA,OAC)",
       "arc_property_center_angle(1,OAC,O)"
+    ],
+    "congruent_arc_judgment_length_equal(1,ODA,OAC)": [
+      "congruent_arc_property_measure_equal(1,ODA,OAC)"
     ]
   }
 }

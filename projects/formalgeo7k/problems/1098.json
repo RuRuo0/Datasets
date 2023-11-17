@@ -2,9 +2,9 @@
   "problem_id": 1098,
   "annotation": "XiaoxiaoJin_2023-04-09",
   "source": "Geometry3k-1135",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find z in the figure.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠ILR=2*y+8°，∠JME=z°，∠KIP=4*x+6°，∠RLP=142°，HK平行于BR，JN∥HK。求z的值。",
+  "problem_text_en": "As shown in the diagram, ∠ILR=2*y+8°, ∠JME=z°, ∠KIP=4*x+6°, ∠RLP=142°, HK∥BR, JN is parallel to HK. Find the value of z.",
   "problem_img": "1098.png",
   "construction_cdl": [
     "Shape(JM,ME)",
@@ -24,7 +24,14 @@
     "Collinear(BQLGODR)",
     "Collinear(PLIME)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(ILR),2*y+8)",
+    "Equal(MeasureOfAngle(JME),z)",
+    "Equal(MeasureOfAngle(KIP),4*x+6)",
+    "Equal(MeasureOfAngle(RLP),142)",
+    "ParallelBetweenLine(HK,BR)",
+    "ParallelBetweenLine(JN,HK)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(JME),z)",
     "Equal(MeasureOfAngle(KIP),4*x+6)",
@@ -45,7 +52,13 @@
     "parallel_property_corresponding_angle(1,MN,IK,E)",
     "adjacent_complementary_angle(1,JME,EMN)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,ELR,RLP)",
+      "parallel_property_collinear_extend(3,HK,BR,I)",
+      "parallel_property_collinear_extend(3,JN,HK,M)",
+      "adjacent_complementary_angle(1,JME,EMN)"
+    ],
     "parallel_property_collinear_extend(3,HK,BR,I)": [
       "parallel_property_collinear_extend(3,RB,KI,L)"
     ],
@@ -57,12 +70,6 @@
     ],
     "parallel_property_collinear_extend(3,KH,NM,I)": [
       "parallel_property_corresponding_angle(1,MN,IK,E)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,ELR,RLP)",
-      "parallel_property_collinear_extend(3,HK,BR,I)",
-      "parallel_property_collinear_extend(3,JN,HK,M)",
-      "adjacent_complementary_angle(1,JME,EMN)"
     ]
   }
 }

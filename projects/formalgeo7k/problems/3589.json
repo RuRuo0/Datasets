@@ -2,9 +2,9 @@
   "problem_id": 3589,
   "annotation": "QikeHuang_2023-04-30",
   "source": "GeoQA-1236",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,AB=AC,∠A=40°,以AB为直径的半圆与BC、AC分别相交于点D、E,则弧BD的度数为()",
-  "problem_text_en": "As shown in the figure, in △ABC, AB = AC, ∠A = N_0, the semicircle with AB as the diameter intersects with BC and AC at points D and E respectively, then the degree of arc BD is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=AC，∠EAO=40°，圆O的圆心为O。求⌒OBD的角度。",
+  "problem_text_en": "As shown in the diagram, AB=AC, ∠EAO=40°, the center of ⊙O is O. Find the measure of ⌒OBD.",
   "problem_img": "3589.png",
   "construction_cdl": [
     "Shape(AO,OB,BD,DA)",
@@ -19,9 +19,9 @@
     "Cocircular(O,ABDE)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
+    "Equal(LengthOfLine(AB),LengthOfLine(AC))",
     "Equal(MeasureOfAngle(EAO),40)",
-    "Equal(LengthOfLine(AB),LengthOfLine(AC))"
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfArc(OBD))",
@@ -35,7 +35,13 @@
     "angle_addition(1,EAD,DAO)",
     "arc_property_circumference_angle_external(1,OBD,A)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
+      "isosceles_triangle_judgment_line_equal(1,ABC)",
+      "angle_addition(1,EAD,DAO)",
+      "arc_property_circumference_angle_external(1,OBD,A)"
+    ],
     "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
       "diameter_of_circle_property_right_angle(1,BDA,O)"
     ],
@@ -47,12 +53,6 @@
     ],
     "altitude_of_triangle_judgment(1,AD,ABC)": [
       "isosceles_triangle_property_line_coincidence(1,ABC,D)"
-    ],
-    "START": [
-      "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
-      "isosceles_triangle_judgment_line_equal(1,ABC)",
-      "angle_addition(1,EAD,DAO)",
-      "arc_property_circumference_angle_external(1,OBD,A)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 820,
   "annotation": "NaZhu_2023-04-09",
   "source": "Geometry3k-847",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the Trapezoid. Round to the nearest tenth if necessary.",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AN=19，BF=10，CE=2，FN=20，AE垂直于FE，EF垂直于NF，AN和CB是梯形ACBN的平行边。求ACBN的面积。",
+  "problem_text_en": "As shown in the diagram, AN=19, BF=10, CE=2, FN=20, AE is perpendicular to FE, EF⊥NF, AC and BN are the non-parallel sides (legs) of trapezoid ACBN. Find the area of quadrilateral ACBN.",
   "problem_img": "820.png",
   "construction_cdl": [
     "Shape(AC,CE,EA)",
@@ -13,6 +13,12 @@
     "Collinear(CEFB)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AN),19)",
+    "Equal(LengthOfLine(BF),10)",
+    "Equal(LengthOfLine(CE),2)",
+    "Equal(LengthOfLine(FN),20)",
+    "PerpendicularBetweenLine(AE,FE)",
+    "PerpendicularBetweenLine(EF,NF)",
     "Trapezoid(ACBN)"
   ],
   "image_cdl": [
@@ -36,7 +42,15 @@
     "altitude_of_quadrilateral_judgment_right_vertex(2,NF,ACBN)",
     "trapezoid_area_formula(1,ACBN)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_judgment_ipsilateral_internal_angle(1,EA,FN)",
+      "parallel_property_collinear_extend(3,BC,NA,E)",
+      "line_addition(1,CE,EF)",
+      "line_addition(1,CF,FB)",
+      "altitude_of_quadrilateral_judgment_right_vertex(2,NF,ACBN)",
+      "trapezoid_area_formula(1,ACBN)"
+    ],
     "parallel_judgment_ipsilateral_internal_angle(1,EA,FN)": [
       "parallelogram_judgment_parallel_and_parallel(1,AEFN)"
     ],
@@ -48,14 +62,6 @@
     ],
     "parallelogram_judgment_parallel_and_parallel(1,AEFN)": [
       "parallelogram_property_opposite_line_equal(1,EFNA)"
-    ],
-    "START": [
-      "parallel_judgment_ipsilateral_internal_angle(1,EA,FN)",
-      "parallel_property_collinear_extend(3,BC,NA,E)",
-      "line_addition(1,CE,EF)",
-      "line_addition(1,CF,FB)",
-      "altitude_of_quadrilateral_judgment_right_vertex(2,NF,ACBN)",
-      "trapezoid_area_formula(1,ACBN)"
     ]
   }
 }

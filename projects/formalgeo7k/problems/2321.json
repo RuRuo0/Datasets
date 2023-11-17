@@ -2,14 +2,21 @@
   "problem_id": 2321,
   "annotation": "FangzhenZhu_2023-04-23",
   "source": "Geometry3k-2432",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AE=9，EB=16，AD垂直于BD，BE垂直于AE，DB垂直于EB，EA⊥DA。求四边形DBEA的面积。",
+  "problem_text_en": "As shown in the diagram, AE=9, EB=16, AD⊥BD, BE is perpendicular to AE, DB⊥EB, EA⊥DA. Find the area of quadrilateral DBEA.",
   "problem_img": "2321.png",
   "construction_cdl": [
     "Shape(DB,BE,EA,AD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AE),9)",
+    "Equal(LengthOfLine(EB),16)",
+    "PerpendicularBetweenLine(AD,BD)",
+    "PerpendicularBetweenLine(BE,AE)",
+    "PerpendicularBetweenLine(DB,EB)",
+    "PerpendicularBetweenLine(EA,DA)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(EB),16)",
     "Equal(LengthOfLine(AE),9)",
@@ -24,12 +31,12 @@
     "parallelogram_judgment_angle_and_angle(1,DBEA)",
     "parallelogram_area_formula_sine(1,BEAD)"
   ],
-  "theorem_seq_dag": {
-    "parallelogram_judgment_angle_and_angle(1,DBEA)": [
-      "parallelogram_area_formula_sine(1,BEAD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_judgment_angle_and_angle(1,DBEA)"
+    ],
+    "parallelogram_judgment_angle_and_angle(1,DBEA)": [
+      "parallelogram_area_formula_sine(1,BEAD)"
     ]
   }
 }

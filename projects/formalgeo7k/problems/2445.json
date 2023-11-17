@@ -2,14 +2,18 @@
   "problem_id": 2445,
   "annotation": "RunanWang_2023-04-23",
   "source": "Geometry3k-2565",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find \\tan X.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，BX=13，XA=5，XA⊥BA。求tan(BX)的值。",
+  "problem_text_en": "As shown in the diagram, BX=13, XA=5, XA is perpendicular to BA. Find the value of tan(BX).",
   "problem_img": "2445.png",
   "construction_cdl": [
     "Shape(XA,AB,BX)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BX),13)",
+    "Equal(LengthOfLine(XA),5)",
+    "PerpendicularBetweenLine(XA,BA)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BX),13)",
     "Equal(LengthOfLine(XA),5)",
@@ -22,13 +26,13 @@
     "right_triangle_property_pythagorean(1,XAB)",
     "cosine_theorem(1,XAB)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,XAB)": [
-      "right_triangle_property_pythagorean(1,XAB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,XAB)",
       "cosine_theorem(1,XAB)"
+    ],
+    "right_triangle_judgment_angle(1,XAB)": [
+      "right_triangle_property_pythagorean(1,XAB)"
     ]
   }
 }

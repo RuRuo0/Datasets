@@ -2,9 +2,9 @@
   "problem_id": 4578,
   "annotation": "YanjunGuo_2023-05-14",
   "source": "GeoQA-3718",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O是△ABP的外接圆,半径r=2,∠APB=45°,则弦AB的长为()",
-  "problem_text_en": "As shown in the figure, ⊙O is the circumscribed circle of △ABP, radius r = N_0, ∠APB = N_1, then the length of chord AB is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠BPA=45°，⊙O的半径为2，圆O的圆心为O。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, ∠BPA=45°, the radius of ⊙O is 2, O is the center of ⊙O. Find the length of line AB.",
   "problem_img": "4578.png",
   "construction_cdl": [
     "Shape(AP,OPA)",
@@ -30,7 +30,13 @@
     "right_triangle_judgment_angle(1,BOA)",
     "right_triangle_property_pythagorean(1,BOA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_circumference_angle_external(1,OAB,P)",
+      "arc_property_center_angle(1,OAB,O)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)"
+    ],
     "arc_property_circumference_angle_external(1,OAB,P)": [
       "right_triangle_judgment_angle(1,BOA)"
     ],
@@ -39,12 +45,6 @@
     ],
     "right_triangle_judgment_angle(1,BOA)": [
       "right_triangle_property_pythagorean(1,BOA)"
-    ],
-    "START": [
-      "arc_property_circumference_angle_external(1,OAB,P)",
-      "arc_property_center_angle(1,OAB,O)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)"
     ]
   }
 }

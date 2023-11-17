@@ -2,9 +2,9 @@
   "problem_id": 5770,
   "annotation": "XiaokaiZhang_2023-05-28",
   "source": "GeoQA-7649",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在等边△ABC中,AC=4,点D、E、F分别在三边AB、BC、AC上,且AF=1,FD⊥DE,∠DFE=60°,则AD的长为()",
-  "problem_text_en": "As shown in the figure, in the equilateral △ABC, AC = N_0, points D, E, and F are on the three edges AB, BC, AC, and AF = N_1, FD ⊥ DE, ∠DFE = N_2, then the length of AD is ()",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，AC=4，AF=1，∠EFD=60°，△CAB为等边△，FD⊥ED。求直线AD的长度。",
+  "problem_text_en": "As shown in the diagram, AC=4, AF=1, ∠EFD=60°, triangle CAB is an equilateral triangle, FD⊥ED. Find the length of line AD.",
   "problem_img": "5770.png",
   "construction_cdl": [
     "Shape(CF,FE,EC)",
@@ -16,11 +16,11 @@
     "Collinear(ADB)"
   ],
   "text_cdl": [
-    "EquilateralTriangle(CAB)",
     "Equal(LengthOfLine(AC),4)",
     "Equal(LengthOfLine(AF),1)",
-    "PerpendicularBetweenLine(FD,ED)",
-    "Equal(MeasureOfAngle(EFD),60)"
+    "Equal(MeasureOfAngle(EFD),60)",
+    "EquilateralTriangle(CAB)",
+    "PerpendicularBetweenLine(FD,ED)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AD))",
@@ -38,7 +38,17 @@
     "triangle_property_angle_sum(1,EFD)",
     "sine_theorem(1,FDE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "equilateral_triangle_property_angle(1,CAB)",
+      "equilateral_triangle_property_angle(1,ABC)",
+      "triangle_property_angle_sum(1,FAD)",
+      "angle_addition(1,CFE,EFD)",
+      "adjacent_complementary_angle(1,CFD,DFA)",
+      "line_addition(1,AF,FC)",
+      "triangle_property_angle_sum(1,EFD)",
+      "sine_theorem(1,FDE)"
+    ],
     "equilateral_triangle_property_angle(1,CAB)": [
       "similar_triangle_judgment_aa(1,ECF,FAD)"
     ],
@@ -57,16 +67,6 @@
     "similar_triangle_judgment_aa(1,ECF,FAD)": [
       "similar_triangle_property_line_ratio(1,ECF,FAD)",
       "similar_triangle_property_line_ratio(1,CFE,ADF)"
-    ],
-    "START": [
-      "equilateral_triangle_property_angle(1,CAB)",
-      "equilateral_triangle_property_angle(1,ABC)",
-      "triangle_property_angle_sum(1,FAD)",
-      "angle_addition(1,CFE,EFD)",
-      "adjacent_complementary_angle(1,CFD,DFA)",
-      "line_addition(1,AF,FC)",
-      "triangle_property_angle_sum(1,EFD)",
-      "sine_theorem(1,FDE)"
     ]
   }
 }

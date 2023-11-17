@@ -2,9 +2,9 @@
   "problem_id": 3269,
   "annotation": "XiaokaiZhang_2023-04-23",
   "source": "GeoQA-576",
-  "problem_level": 1,
-  "problem_text_cn": "如图,直线AB与CD相交于E,在∠CEB的平分线上有一点F,FM∥AB．当∠3=10°时,∠F的度数是()",
-  "problem_text_en": "As shown in the figure, the line AB and CD intersect at E, and there is a point F on the bisector of ∠CEB, FM ∥ AB. When ∠3 = N_0, the degree of ∠F is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠DEB=10°，EF是∠BEC的角平分线，AB∥MF。求∠MFE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DEB=10°, EF bisects ∠BEC, AB is parallel to MF. Find the measure of ∠MFE.",
   "problem_img": "3269.png",
   "construction_cdl": [
     "Shape(AC,CE,EA)",
@@ -17,9 +17,9 @@
     "Collinear(CED)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(DEB),10)",
     "IsBisectorOfAngle(EF,BEC)",
-    "ParallelBetweenLine(AB,MF)",
-    "Equal(MeasureOfAngle(DEB),10)"
+    "ParallelBetweenLine(AB,MF)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(MFE))",
@@ -31,15 +31,15 @@
     "parallel_property_collinear_extend(3,AB,MF,E)",
     "parallel_property_alternate_interior_angle(1,EB,MF)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,AB,MF,E)": [
-      "parallel_property_alternate_interior_angle(1,EB,MF)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "vertical_angle(1,DEB,CEA)",
       "angle_addition(1,BEF,FEC)",
       "adjacent_complementary_angle(1,BEC,CEA)",
       "parallel_property_collinear_extend(3,AB,MF,E)"
+    ],
+    "parallel_property_collinear_extend(3,AB,MF,E)": [
+      "parallel_property_alternate_interior_angle(1,EB,MF)"
     ]
   }
 }

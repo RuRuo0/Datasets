@@ -3,8 +3,8 @@
   "annotation": "YifanWang_2023-04-23",
   "source": "Geometry3k-2634",
   "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "X Y and X Z are midsegments of \\triangle R S T. Find S T.",
+  "problem_text_cn": "如图所示，RT=13，XY=7，∠ZXY=124°，XZ是△SRT的中位线，YX是三角形RTS的中位线。求直线TS的长度。",
+  "problem_text_en": "As shown in the diagram, RT=13, XY=7, ∠ZXY=124°, XZ is the midsegment of △ SRT, YX is the midsegment of triangle RTS. Find the length of line TS.",
   "problem_img": "2510.png",
   "construction_cdl": [
     "Shape(RY,YX,XR)",
@@ -14,7 +14,13 @@
     "Collinear(RYT)",
     "Collinear(TZS)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(RT),13)",
+    "Equal(LengthOfLine(XY),7)",
+    "Equal(MeasureOfAngle(ZXY),124)",
+    "IsMidsegmentOfTriangle(XZ,SRT)",
+    "IsMidsegmentOfTriangle(YX,RTS)"
+  ],
   "image_cdl": [
     "IsMidsegmentOfTriangle(YX,RTS)",
     "IsMidsegmentOfTriangle(XZ,SRT)",
@@ -27,7 +33,7 @@
   "theorem_seqs": [
     "midsegment_of_triangle_property_length(1,YX,RTS)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "midsegment_of_triangle_property_length(1,YX,RTS)"
     ]

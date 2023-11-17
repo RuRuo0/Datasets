@@ -2,9 +2,9 @@
   "problem_id": 2854,
   "annotation": "YimingHe_2023-04-16",
   "source": "GeoQA-6",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB∥CD,若∠2=135°,那么∠1的度数是()",
-  "problem_text_en": "As shown in the figure, AB ∥ CD, if ∠2 = N_0, then the degree of ∠1 is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠CGF=135°，AB∥CD。求∠EFB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CGF=135°, AB∥CD. Find the measure of ∠EFB.",
   "problem_img": "2854.png",
   "construction_cdl": [
     "Shape(AF,FE)",
@@ -20,8 +20,8 @@
     "Collinear(EFGH)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AB,CD)",
-    "Equal(MeasureOfAngle(CGF),135)"
+    "Equal(MeasureOfAngle(CGF),135)",
+    "ParallelBetweenLine(AB,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(EFB))",
@@ -32,16 +32,16 @@
     "adjacent_complementary_angle(1,CGF,FGD)",
     "parallel_property_corresponding_angle(1,FB,GD,E)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,AB,CD,F)",
+      "adjacent_complementary_angle(1,CGF,FGD)"
+    ],
     "parallel_property_collinear_extend(3,AB,CD,F)": [
       "parallel_property_collinear_extend(3,DC,BF,G)"
     ],
     "parallel_property_collinear_extend(3,DC,BF,G)": [
       "parallel_property_corresponding_angle(1,FB,GD,E)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,AB,CD,F)",
-      "adjacent_complementary_angle(1,CGF,FGD)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 278,
   "annotation": "NaZhu_2023-03-12",
   "source": "Geometry3k-282",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "The height of a triangle is 5 centimeters more than its base. The area of the triangle is 52 square centimeters. Find the base.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，△CEA的面积为52，CD=b+5，EA=b，ED垂直于CD。求b的值。",
+  "problem_text_en": "As shown in the diagram, the area of △CEA is 52, CD=b+5, EA=b, ED⊥CD. Find the value of b.",
   "problem_img": "278.png",
   "construction_cdl": [
     "Shape(CE,ED,DC)",
@@ -12,7 +12,10 @@
     "Collinear(EDA)"
   ],
   "text_cdl": [
-    "Equal(AreaOfTriangle(CEA),52)"
+    "Equal(AreaOfTriangle(CEA),52)",
+    "Equal(LengthOfLine(CD),b+5)",
+    "Equal(LengthOfLine(EA),b)",
+    "PerpendicularBetweenLine(ED,CD)"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(EA),b)",
@@ -25,7 +28,7 @@
     "altitude_of_triangle_judgment(1,CD,CEA)",
     "triangle_area_formula_common(1,CEA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "altitude_of_triangle_judgment(1,CD,CEA)",
       "triangle_area_formula_common(1,CEA)"

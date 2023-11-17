@@ -2,9 +2,9 @@
   "problem_id": 3018,
   "annotation": "NaZhu_2023-04-16",
   "source": "GeoQA-225",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O是△ABC的外接圆,∠OBC=42°,则∠A的度数是()",
-  "problem_text_en": "As shown in the figure, ⊙O is the circumcircle of △ABC, ∠OBC = N_0, then the degree of ∠A is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠OBC=42°，⊙O的圆心为O，O是△ABC外接圆的圆心。求∠CAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠OBC=42°, the center of ⊙O is O, the center of the circumscribed circle of △ABC is O. Find the measure of ∠CAB.",
   "problem_img": "3018.png",
   "construction_cdl": [
     "Shape(OCA,AC)",
@@ -15,8 +15,9 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
-    "IsCircumcenterOfTriangle(O,ABC)",
-    "Equal(MeasureOfAngle(OBC),42)"
+    "Equal(MeasureOfAngle(OBC),42)",
+    "IsCentreOfCircle(O,O)",
+    "IsCircumcenterOfTriangle(O,ABC)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)"
@@ -32,7 +33,14 @@
     "arc_property_center_angle(1,OBC,O)",
     "arc_property_circumference_angle_external(1,OBC,A)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "triangle_property_angle_sum(1,OBC)",
+      "arc_property_center_angle(1,OBC,O)",
+      "arc_property_circumference_angle_external(1,OBC,A)"
+    ],
     "radius_of_circle_property_length_equal(1,OB,O)": [
       "isosceles_triangle_judgment_line_equal(1,OBC)"
     ],
@@ -41,13 +49,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OBC)": [
       "isosceles_triangle_property_angle_equal(1,OBC)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "triangle_property_angle_sum(1,OBC)",
-      "arc_property_center_angle(1,OBC,O)",
-      "arc_property_circumference_angle_external(1,OBC,A)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 6705,
   "annotation": "XiaoxiaoJin_2023-06-04",
   "source": "GeoQA-9739",
-  "problem_level": 1,
-  "problem_text_cn": "如图,A、B、C是半径为1的⊙O上的三点,已知∠C=30°,则弦AB的长为()",
-  "problem_text_en": "As shown in the figure, A, B, and C are three points on ⊙O with a radius of N_0. Given that ∠C = N_1, the length of chord AB is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠BCA=30°，⊙O的半径为1，O是圆O的圆心。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, ∠BCA=30°, the radius of ⊙O is 1, O is the center of circle O. Find the length of line AB.",
   "problem_img": "6705.png",
   "construction_cdl": [
     "Shape(OA,AD,DO)",
@@ -18,9 +18,9 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfAngle(BCA),30)",
-    "Equal(RadiusOfCircle(O),1)"
+    "Equal(RadiusOfCircle(O),1)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -32,7 +32,7 @@
     "radius_of_circle_property_length_equal(1,OB,O)",
     "cosine_theorem(1,OAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,OAB,O)",
       "arc_property_circumference_angle_external(1,OAB,C)",

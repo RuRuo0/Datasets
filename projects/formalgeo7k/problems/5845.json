@@ -2,17 +2,17 @@
   "problem_id": 5845,
   "annotation": "QikeHuang_2023-05-28",
   "source": "GeoQA-7862",
-  "problem_level": 1,
-  "problem_text_cn": "如图,一道斜坡的坡比为1:2.4,已知AC=12,则斜坡AB的长为()",
-  "problem_text_en": "As shown in the figure, the slope ratio of a slope is N_0:N_1, and it is known that AC = N_2, then the length of slope AB is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AC=12，Tan(MeasureOfAngle(BAC))=5/12，AC垂直于BC。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, AC=12, Tan(MeasureOfAngle(BAC))=5/12, AC⊥BC. Find the length of line AB.",
   "problem_img": "5845.png",
   "construction_cdl": [
     "Shape(AC,CB,BA)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(AC,BC)",
     "Equal(LengthOfLine(AC),12)",
-    "Equal(Tan(MeasureOfAngle(BAC)),5/12)"
+    "Equal(Tan(MeasureOfAngle(BAC)),5/12)",
+    "PerpendicularBetweenLine(AC,BC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -21,7 +21,7 @@
     "triangle_property_angle_sum(1,ACB)",
     "sine_theorem(1,ACB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,ACB)",
       "sine_theorem(1,ACB)"

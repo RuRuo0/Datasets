@@ -2,9 +2,9 @@
   "problem_id": 2080,
   "annotation": "YimingHe_2023-03-26",
   "source": "Geometry3k-2167",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If A B = 8, K L = 10, and J B = 13, find J L.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=8，JB=13，KL=10，BA∥LK。求直线JL的长度。",
+  "problem_text_en": "As shown in the diagram, AB=8, JB=13, KL=10, BA is parallel to LK. Find the length of line JL.",
   "problem_img": "2080.png",
   "construction_cdl": [
     "Shape(JB,BA,AJ)",
@@ -12,7 +12,12 @@
     "Collinear(JBL)",
     "Collinear(JAK)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),8)",
+    "Equal(LengthOfLine(JB),13)",
+    "Equal(LengthOfLine(KL),10)",
+    "ParallelBetweenLine(BA,LK)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AB),8)",
     "Equal(LengthOfLine(KL),10)",
@@ -27,16 +32,16 @@
     "similar_triangle_property_line_ratio(1,JBA,JLK)",
     "similar_triangle_property_line_ratio(1,AJB,KJL)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,BA,LK,J)"
+    ],
     "parallel_property_corresponding_angle(1,BA,LK,J)": [
       "similar_triangle_judgment_aa(1,AJB,KJL)"
     ],
     "similar_triangle_judgment_aa(1,AJB,KJL)": [
       "similar_triangle_property_line_ratio(1,AJB,KJL)",
       "similar_triangle_property_line_ratio(1,JBA,JLK)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,BA,LK,J)"
     ]
   }
 }

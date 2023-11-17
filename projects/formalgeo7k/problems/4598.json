@@ -2,9 +2,9 @@
   "problem_id": 4598,
   "annotation": "QikeHuang_2023-05-14",
   "source": "GeoQA-3757",
-  "problem_level": 1,
-  "problem_text_cn": "如图,D是等边△ABC外接圆上的点,且∠DAC=20°,则∠ACD的度数为()",
-  "problem_text_en": "As shown in the figure, D is the vertex on the circumscribed circle of equilateral △ABC, and ∠DAC = N_0, then the degree of ∠ACD is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠DAC=20°，△ABC为等边△，圆O的圆心为O。求∠ACD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DAC=20°, △ABC is an equilateral △, O is the center of ⊙O. Find the measure of ∠ACD.",
   "problem_img": "4598.png",
   "construction_cdl": [
     "Shape(OAB,BA)",
@@ -17,9 +17,9 @@
     "Cocircular(O,ABCD)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(DAC),20)",
     "EquilateralTriangle(ABC)",
-    "Equal(MeasureOfAngle(DAC),20)"
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ACD))",
@@ -31,7 +31,7 @@
     "arc_addition_measure(1,OCD,ODA)",
     "arc_property_circumference_angle_external(1,ODA,C)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "equilateral_triangle_property_angle(1,BCA)",
       "arc_property_circumference_angle_external(1,OCA,B)",

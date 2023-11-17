@@ -2,9 +2,9 @@
   "problem_id": 777,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-802",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "J K L M is a rectangle. M L P R is a rhombus. \\angle J M K \\cong \\angle R M P, m \\angle J M K = 55 and m \\angle M R P = 70. Find m \\angle M P R.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠JMK=55°，∠JMK=∠PMR，∠MRP=70°，JMLK是矩形，四边形MRPL是菱形。求∠RPM的大小。",
+  "problem_text_en": "As shown in the diagram, ∠JMK=55°, ∠JMK=∠PMR, ∠MRP=70°, JMLK is a rectangle, MRPL is a rhombus. Find the measure of ∠RPM.",
   "problem_img": "777.png",
   "construction_cdl": [
     "Shape(JM,MK,KJ)",
@@ -12,7 +12,13 @@
     "Shape(MP,PL,LM)",
     "Shape(MR,RP,PM)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(JMK),55)",
+    "Equal(MeasureOfAngle(JMK),MeasureOfAngle(PMR))",
+    "Equal(MeasureOfAngle(MRP),70)",
+    "Rectangle(JMLK)",
+    "Rhombus(MRPL)"
+  ],
   "image_cdl": [
     "Rectangle(JMLK)",
     "Rhombus(MRPL)",
@@ -26,12 +32,12 @@
     "isosceles_triangle_judgment_line_equal(1,RPM)",
     "isosceles_triangle_property_angle_equal(1,RPM)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,RPM)": [
-      "isosceles_triangle_property_angle_equal(1,RPM)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,RPM)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,RPM)": [
+      "isosceles_triangle_property_angle_equal(1,RPM)"
     ]
   }
 }

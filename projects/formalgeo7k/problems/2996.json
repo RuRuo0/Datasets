@@ -2,9 +2,9 @@
   "problem_id": 2996,
   "annotation": "NaZhu_2023-04-16",
   "source": "GeoQA-200",
-  "problem_level": 1,
-  "problem_text_cn": "直线a、b、c、d的位置如图所示,如果∠1=58°,∠2=58°,∠3=70°,那么∠4等于()",
-  "problem_text_en": "The positions of straight lines a, b, c, and d are shown in the figure. If ∠1 = N_0, ∠2 = N_1, ∠3 = N_2, then ∠4 is equal to ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠BMN=70°，∠EPM=58°，∠PQN=58°。求∠HNQ的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BMN=70°, ∠EPM=58°, ∠PQN=58°. Find the measure of ∠HNQ.",
   "problem_img": "2996.png",
   "construction_cdl": [
     "Shape(PQ,QN,NM,MP)",
@@ -26,9 +26,9 @@
     "Collinear(GMNH)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(BMN),70)",
     "Equal(MeasureOfAngle(EPM),58)",
-    "Equal(MeasureOfAngle(PQN),58)",
-    "Equal(MeasureOfAngle(BMN),70)"
+    "Equal(MeasureOfAngle(PQN),58)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(HNQ))",
@@ -41,7 +41,12 @@
     "flat_angle(1,DNQ)",
     "angle_addition(1,DNH,HNQ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_judgment_corresponding_angle(1,PM,QN,E)",
+      "flat_angle(1,DNQ)",
+      "angle_addition(1,DNH,HNQ)"
+    ],
     "parallel_judgment_corresponding_angle(1,PM,QN,E)": [
       "parallel_property_collinear_extend(1,NQ,MP,D)"
     ],
@@ -50,11 +55,6 @@
     ],
     "parallel_property_collinear_extend(2,PM,ND,B)": [
       "parallel_property_corresponding_angle(2,MB,ND,H)"
-    ],
-    "START": [
-      "parallel_judgment_corresponding_angle(1,PM,QN,E)",
-      "flat_angle(1,DNQ)",
-      "angle_addition(1,DNH,HNQ)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 1320,
   "annotation": "YimingHe_2023-03-19",
   "source": "Geometry3k-1368",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Points S, T, and U are the midpoints of D E, E F, and D F, respectively. Find y.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=4*z，AT=2*x-5，AU=3，DA=6，EA=y，FA=5，S是线段ED的中点，T平分线段EF，U是线段DF的中点。求y的值。",
+  "problem_text_en": "As shown in the diagram, AB=4*z, AT=2*x-5, AU=3, DA=6, EA=y, FA=5, S bisects segment ED, T is the midpoint of segment EF, U bisects segment DF. Find the value of y.",
   "problem_img": "1320.png",
   "construction_cdl": [
     "Shape(SA,AE,ES)",
@@ -20,7 +20,17 @@
     "Collinear(DAT)",
     "Collinear(EAU)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),4*z)",
+    "Equal(LengthOfLine(AT),2*x-5)",
+    "Equal(LengthOfLine(AU),3)",
+    "Equal(LengthOfLine(DA),6)",
+    "Equal(LengthOfLine(EA),y)",
+    "Equal(LengthOfLine(FA),5)",
+    "IsMidpointOfLine(S,ED)",
+    "IsMidpointOfLine(T,EF)",
+    "IsMidpointOfLine(U,DF)"
+  ],
   "image_cdl": [
     "IsMidpointOfLine(U,DF)",
     "IsMidpointOfLine(S,ED)",
@@ -40,7 +50,11 @@
     "centroid_of_triangle_judgment_intersection(1,A,EDF,S,T)",
     "centroid_of_triangle_property_line_ratio(1,A,EDF,U)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "median_of_triangle_judgment(1,DT,DFE)",
+      "median_of_triangle_judgment(1,FS,FED)"
+    ],
     "median_of_triangle_judgment(1,DT,DFE)": [
       "centroid_of_triangle_judgment_intersection(1,A,EDF,S,T)"
     ],
@@ -49,10 +63,6 @@
     ],
     "centroid_of_triangle_judgment_intersection(1,A,EDF,S,T)": [
       "centroid_of_triangle_property_line_ratio(1,A,EDF,U)"
-    ],
-    "START": [
-      "median_of_triangle_judgment(1,DT,DFE)",
-      "median_of_triangle_judgment(1,FS,FED)"
     ]
   }
 }

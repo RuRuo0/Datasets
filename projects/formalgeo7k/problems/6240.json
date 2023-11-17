@@ -2,9 +2,9 @@
   "problem_id": 6240,
   "annotation": "FangzhenZhu_2023-06-04",
   "source": "GeoQA-8839",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在半径为5的⊙O中,如果弦AB的长为8,那么它的弦心距OC等于()",
-  "problem_text_en": "As shown in the figure, in the ⊙O with a radius of N_0, if the length of the chord AB is N_1, then its distance from the chord OC to the centre is equal to ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=8，圆O的半径为5，⊙O的圆心为O，BC垂直于OC。求直线OC的长度。",
+  "problem_text_en": "As shown in the diagram, AB=8, the radius of circle O is 5, O is the center of circle O, BC⊥OC. Find the length of line OC.",
   "problem_img": "6240.png",
   "construction_cdl": [
     "Shape(AO,OC,CA)",
@@ -29,17 +29,17 @@
     "right_triangle_judgment_angle(1,OCA)",
     "right_triangle_property_pythagorean(1,OCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "circle_property_chord_perpendicular_bisect_chord(1,O,OC,BA)",
+      "line_addition(1,AC,CB)"
+    ],
     "circle_property_chord_perpendicular_bisect_chord(1,O,OC,BA)": [
       "right_triangle_judgment_angle(1,OCA)"
     ],
     "right_triangle_judgment_angle(1,OCA)": [
       "right_triangle_property_pythagorean(1,OCA)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "circle_property_chord_perpendicular_bisect_chord(1,O,OC,BA)",
-      "line_addition(1,AC,CB)"
     ]
   }
 }

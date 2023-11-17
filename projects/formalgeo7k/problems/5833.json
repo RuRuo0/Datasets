@@ -2,9 +2,9 @@
   "problem_id": 5833,
   "annotation": "QikeHuang_2023-05-28",
   "source": "GeoQA-7832",
-  "problem_level": 1,
-  "problem_text_cn": "如图,四边形ABCD的两条对角线相交于点P,∠ADB=∠BCA,DC=AP=6,DP=3,则AB=()",
-  "problem_text_en": "As shown in the figure, the two diagonals of the quadrilateral ABCD intersect at point P, ∠ADB = ∠BCA, DC = AP = N_0, DP = N_1, then AB = ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AP=6，DC=6，DP=3，∠BDA=∠BCA。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, AP=6, DC=6, DP=3, ∠BDA=∠BCA. Find the length of line AB.",
   "problem_img": "5833.png",
   "construction_cdl": [
     "Shape(DA,AP,PD)",
@@ -15,8 +15,8 @@
     "Collinear(APC)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(DC),6)",
     "Equal(LengthOfLine(AP),6)",
+    "Equal(LengthOfLine(DC),6)",
     "Equal(LengthOfLine(DP),3)",
     "Equal(MeasureOfAngle(BDA),MeasureOfAngle(BCA))"
   ],
@@ -33,7 +33,11 @@
     "mirror_similar_triangle_property_line_ratio(1,PCD,PAB)",
     "mirror_similar_triangle_property_line_ratio(1,CDP,BPA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "vertical_angle(1,DPC,BPA)",
+      "vertical_angle(1,APD,CPB)"
+    ],
     "vertical_angle(1,DPC,BPA)": [
       "mirror_similar_triangle_judgment_sas(1,PCD,PAB)"
     ],
@@ -53,10 +57,6 @@
     "mirror_similar_triangle_judgment_sas(1,PCD,PAB)": [
       "mirror_similar_triangle_property_line_ratio(1,PCD,PAB)",
       "mirror_similar_triangle_property_line_ratio(1,CDP,BPA)"
-    ],
-    "START": [
-      "vertical_angle(1,DPC,BPA)",
-      "vertical_angle(1,APD,CPB)"
     ]
   }
 }

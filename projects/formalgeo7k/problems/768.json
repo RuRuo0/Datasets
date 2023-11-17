@@ -2,9 +2,9 @@
   "problem_id": 768,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-793",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，PM=LM，⌒OMP的角度为x，⌒OPL的角度为106。求x的值。",
+  "problem_text_en": "As shown in the diagram, PM=LM, the measure of arc OMP is x, the measure of ⌒OPL is 106. Find the value of x.",
   "problem_img": "768.png",
   "construction_cdl": [
     "Shape(LM,MP,PL)",
@@ -13,7 +13,11 @@
     "Shape(LP,OOL)",
     "Cocircular(O,LMP)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(PM),LengthOfLine(LM))",
+    "Equal(MeasureOfArc(OMP),x)",
+    "Equal(MeasureOfArc(OPL),106)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfArc(OPL),106)",
     "Equal(MeasureOfArc(OMP),x)",
@@ -28,15 +32,15 @@
     "isosceles_triangle_property_angle_equal(1,MPL)",
     "triangle_property_angle_sum(1,MPL)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,MPL)": [
-      "isosceles_triangle_property_angle_equal(1,MPL)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_circumference_angle_external(1,OPL,M)",
       "arc_property_circumference_angle_external(1,OMP,L)",
       "isosceles_triangle_judgment_line_equal(1,MPL)",
       "triangle_property_angle_sum(1,MPL)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,MPL)": [
+      "isosceles_triangle_property_angle_equal(1,MPL)"
     ]
   }
 }

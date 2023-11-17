@@ -2,9 +2,9 @@
   "problem_id": 2520,
   "annotation": "ChenyangMao_2023-04-23",
   "source": "Geometry3k-2644",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find B C.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，BA=DA，CB=CD，CE=12，ED=5，AE垂直于DE。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, BA=DA, CB=CD, CE=12, ED=5, AE⊥DE. Find the length of line BC.",
   "problem_img": "2520.png",
   "construction_cdl": [
     "Shape(AB,BE,EA)",
@@ -14,7 +14,13 @@
     "Collinear(BED)",
     "Collinear(AEC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BA),LengthOfLine(DA))",
+    "Equal(LengthOfLine(CB),LengthOfLine(CD))",
+    "Equal(LengthOfLine(CE),12)",
+    "Equal(LengthOfLine(ED),5)",
+    "PerpendicularBetweenLine(AE,DE)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(ED),5)",
     "Equal(LengthOfLine(CE),12)",
@@ -29,15 +35,15 @@
     "right_triangle_judgment_angle(1,DEC)",
     "right_triangle_property_pythagorean(1,DEC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,AED,DEC)"
+    ],
     "adjacent_complementary_angle(1,AED,DEC)": [
       "right_triangle_judgment_angle(1,DEC)"
     ],
     "right_triangle_judgment_angle(1,DEC)": [
       "right_triangle_property_pythagorean(1,DEC)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,AED,DEC)"
     ]
   }
 }

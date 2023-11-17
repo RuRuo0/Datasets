@@ -3,15 +3,21 @@
   "annotation": "YimingHe_2023-03-19",
   "source": "Geometry3k-1343",
   "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "The height of a triangle is 5 centimeters more than its base. The area of the triangle is 52 square centimeters. Find the height.",
+  "problem_text_cn": "如图所示，三角形CEA的面积为52，AE=b，CD=b+5，CD是三角形CEA的高，ED垂直于CD。求直线CD的长度。",
+  "problem_text_en": "As shown in the diagram, the area of triangle CEA is 52, AE=b, CD=b+5, CD is the altitude of △ CEA, ED is perpendicular to CD. Find the length of line CD.",
   "problem_img": "1296.png",
   "construction_cdl": [
     "Shape(CE,ED,DC)",
     "Shape(CD,DA,AC)",
     "Collinear(EDA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(AreaOfTriangle(CEA),52)",
+    "Equal(LengthOfLine(AE),b)",
+    "Equal(LengthOfLine(CD),b+5)",
+    "IsAltitudeOfTriangle(CD,CEA)",
+    "PerpendicularBetweenLine(ED,CD)"
+  ],
   "image_cdl": [
     "IsAltitudeOfTriangle(CD,CEA)",
     "Equal(AreaOfTriangle(CEA),52)",
@@ -24,7 +30,7 @@
   "theorem_seqs": [
     "triangle_area_formula_common(1,CEA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_area_formula_common(1,CEA)"
     ]

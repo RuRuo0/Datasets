@@ -2,9 +2,9 @@
   "problem_id": 5526,
   "annotation": "DengfengYue_2023-05-21",
   "source": "GeoQA-6577",
-  "problem_level": 1,
-  "problem_text_cn": "如图,圆心角为60°的扇形中,弦AB=4,则扇形面积为()",
-  "problem_text_en": "As shown in the figure, in the sector with the central angle of N_0, chord AB = N_1, then the area of the sector is ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，AB=4，∠BCA=60°，⊙C的圆心为C，AD垂直于CD。求扇形CAB的面积。",
+  "problem_text_en": "As shown in the diagram, AB=4, ∠BCA=60°, C is the center of circle C, AD⊥CD. Find the area of the sector CAB.",
   "problem_img": "5526.png",
   "construction_cdl": [
     "Shape(CA,AD,DC)",
@@ -15,10 +15,10 @@
     "Cocircular(C,AB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(C,C)",
-    "PerpendicularBetweenLine(AD,CD)",
     "Equal(LengthOfLine(AB),4)",
-    "Equal(MeasureOfAngle(BCA),60)"
+    "Equal(MeasureOfAngle(BCA),60)",
+    "IsCentreOfCircle(C,C)",
+    "PerpendicularBetweenLine(AD,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(AreaOfSector(CAB))",
@@ -35,7 +35,17 @@
     "arc_property_center_angle(1,CAB,C)",
     "sector_area_formula(1,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,CA,C)",
+      "radius_of_circle_property_length_equal(1,CB,C)",
+      "altitude_of_triangle_judgment(1,CD,CAB)",
+      "line_addition(1,AD,DB)",
+      "angle_addition(1,BCD,DCA)",
+      "sine_theorem(1,ADC)",
+      "arc_property_center_angle(1,CAB,C)",
+      "sector_area_formula(1,CAB)"
+    ],
     "radius_of_circle_property_length_equal(1,CA,C)": [
       "isosceles_triangle_judgment_line_equal(1,CAB)"
     ],
@@ -47,16 +57,6 @@
     ],
     "altitude_of_triangle_judgment(1,CD,CAB)": [
       "isosceles_triangle_property_line_coincidence(1,CAB,D)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,CA,C)",
-      "radius_of_circle_property_length_equal(1,CB,C)",
-      "altitude_of_triangle_judgment(1,CD,CAB)",
-      "line_addition(1,AD,DB)",
-      "angle_addition(1,BCD,DCA)",
-      "sine_theorem(1,ADC)",
-      "arc_property_center_angle(1,CAB,C)",
-      "sector_area_formula(1,CAB)"
     ]
   }
 }

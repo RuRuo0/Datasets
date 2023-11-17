@@ -2,9 +2,9 @@
   "problem_id": 3070,
   "annotation": "XiaokaiZhang_2023-04-16",
   "source": "GeoQA-297",
-  "problem_level": 1,
-  "problem_text_cn": "如图,直线a∥b,一块含60°角的直角三角板ABC(∠A=60°)按如图所示放置．若∠1=55°,则∠2的度数为()",
-  "problem_text_en": "As shown in the figure, the straight line a ∥ b, and a right-angled triangular plate ABC (∠A = N_1) with N_0 angles are placed as shown in the figure. If ∠1 = N_2, then the degree of ∠2 is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠CAB=60°，∠ENC=55°，DE∥FG，∠BCA是直角三角形BCA的直角。求∠FXM的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAB=60°, ∠ENC=55°, DE is parallel to FG, triangle BCA is a right triangle. Find the measure of ∠FXM.",
   "problem_img": "3070.png",
   "construction_cdl": [
     "Shape(DM,MA)",
@@ -26,10 +26,10 @@
     "Collinear(CYB)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(DE,FG)",
     "Equal(MeasureOfAngle(CAB),60)",
-    "RightTriangle(BCA)",
-    "Equal(MeasureOfAngle(ENC),55)"
+    "Equal(MeasureOfAngle(ENC),55)",
+    "ParallelBetweenLine(DE,FG)",
+    "RightTriangle(BCA)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(FXM))",
@@ -42,18 +42,18 @@
     "parallel_property_collinear_extend(3,GF,MD,X)",
     "parallel_property_ipsilateral_internal_angle(1,XF,MD)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,DE,FG,M)": [
-      "parallel_property_collinear_extend(3,GF,MD,X)"
-    ],
-    "parallel_property_collinear_extend(3,GF,MD,X)": [
-      "parallel_property_ipsilateral_internal_angle(1,XF,MD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "vertical_angle(1,MNA,ENC)",
       "triangle_property_angle_sum(1,AMN)",
       "vertical_angle(1,XMD,AMN)",
       "parallel_property_collinear_extend(3,DE,FG,M)"
+    ],
+    "parallel_property_collinear_extend(3,DE,FG,M)": [
+      "parallel_property_collinear_extend(3,GF,MD,X)"
+    ],
+    "parallel_property_collinear_extend(3,GF,MD,X)": [
+      "parallel_property_ipsilateral_internal_angle(1,XF,MD)"
     ]
   }
 }

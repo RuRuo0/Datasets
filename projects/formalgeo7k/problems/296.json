@@ -2,9 +2,9 @@
   "problem_id": 296,
   "annotation": "NaZhu_2023-04-02",
   "source": "Geometry3k-300",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "The segment is tangent to the circle. Find x. Round to the nearest tenth.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，RC=x，ST=20，TC=12，R是⊙R的圆心，TS是⊙O的切线。求x的值。",
+  "problem_text_en": "As shown in the diagram, RC=x, ST=20, TC=12, the center of ⊙R is R, TS is the tangent to ⊙R. Find the value of x.",
   "problem_img": "296.png",
   "construction_cdl": [
     "Shape(RSC,CR,RS)",
@@ -14,6 +14,10 @@
     "Cocircular(R,SC)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(RC),x)",
+    "Equal(LengthOfLine(ST),20)",
+    "Equal(LengthOfLine(TC),12)",
+    "IsCentreOfCircle(R,R)",
     "IsTangentOfCircle(TS,R)"
   ],
   "image_cdl": [
@@ -32,18 +36,18 @@
     "radius_of_circle_property_length_equal(1,RC,R)",
     "right_triangle_property_pythagorean(1,TSR)"
   ],
-  "theorem_seq_dag": {
-    "tangent_of_circle_property_perpendicular(2,TS,R,R)": [
-      "right_triangle_judgment_angle(1,TSR)"
-    ],
-    "right_triangle_judgment_angle(1,TSR)": [
-      "right_triangle_property_pythagorean(1,TSR)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(2,TS,R,R)",
       "line_addition(1,RC,CT)",
       "radius_of_circle_property_length_equal(1,RS,R)",
       "radius_of_circle_property_length_equal(1,RC,R)"
+    ],
+    "tangent_of_circle_property_perpendicular(2,TS,R,R)": [
+      "right_triangle_judgment_angle(1,TSR)"
+    ],
+    "right_triangle_judgment_angle(1,TSR)": [
+      "right_triangle_property_pythagorean(1,TSR)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 2007,
   "annotation": "ZheZhu_2023-04-16",
   "source": "Geometry3k-2092",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "m \\widehat J H = 114. Find m \\angle 3.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，弧AJH的角度为114，圆A的圆心为A。求∠AJH的大小。",
+  "problem_text_en": "As shown in the diagram, the measure of ⌒AJH is 114, A is the center of circle A. Find the measure of ∠AJH.",
   "problem_img": "2007.png",
   "construction_cdl": [
     "Shape(AHJ,JA,AH)",
@@ -12,7 +12,10 @@
     "Shape(AJH,HJ)",
     "Cocircular(A,JH)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfArc(AJH),114)",
+    "IsCentreOfCircle(A,A)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(A,A)",
     "Equal(MeasureOfArc(AJH),114)"
@@ -27,7 +30,13 @@
     "isosceles_triangle_judgment_line_equal(1,AJH)",
     "isosceles_triangle_property_angle_equal(1,AJH)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_center_angle(1,AJH,A)",
+      "triangle_property_angle_sum(1,AJH)",
+      "radius_of_circle_property_length_equal(1,AJ,A)",
+      "radius_of_circle_property_length_equal(1,AH,A)"
+    ],
     "radius_of_circle_property_length_equal(1,AJ,A)": [
       "isosceles_triangle_judgment_line_equal(1,AJH)"
     ],
@@ -36,12 +45,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,AJH)": [
       "isosceles_triangle_property_angle_equal(1,AJH)"
-    ],
-    "START": [
-      "arc_property_center_angle(1,AJH,A)",
-      "triangle_property_angle_sum(1,AJH)",
-      "radius_of_circle_property_length_equal(1,AJ,A)",
-      "radius_of_circle_property_length_equal(1,AH,A)"
     ]
   }
 }

@@ -2,14 +2,18 @@
   "problem_id": 936,
   "annotation": "XiaokaiZhang_2023-03-19",
   "source": "Geometry3k-965",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of the figure.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AB=16，AC=12，BA垂直于CA。求三角形CBA的周长。",
+  "problem_text_en": "As shown in the diagram, AB=16, AC=12, BA is perpendicular to CA. Find the perimeter of triangle CBA.",
   "problem_img": "936.png",
   "construction_cdl": [
     "Shape(AC,CB,BA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),16)",
+    "Equal(LengthOfLine(AC),12)",
+    "PerpendicularBetweenLine(BA,CA)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AC),12)",
     "Equal(LengthOfLine(AB),16)",
@@ -22,13 +26,13 @@
     "right_triangle_property_pythagorean(1,BAC)",
     "triangle_perimeter_formula(1,CBA)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,BAC)": [
-      "right_triangle_property_pythagorean(1,BAC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,BAC)",
       "triangle_perimeter_formula(1,CBA)"
+    ],
+    "right_triangle_judgment_angle(1,BAC)": [
+      "right_triangle_property_pythagorean(1,BAC)"
     ]
   }
 }

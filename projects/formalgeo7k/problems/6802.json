@@ -2,9 +2,9 @@
   "problem_id": 6802,
   "annotation": "ChenyangMao_2023-06-04",
   "source": "GeoQA-angle-10008",
-  "problem_level": 1,
-  "problem_text_cn": "如图，在Rt△ABC中，∠ACB＝90°，以点B为圆心，BC长为半径画弧，交AB于点D，连接CD，∠ACD＝20°，则∠A的度数是（）",
-  "problem_text_en": "",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠ACD=20°，B是⊙B的圆心，三角形ACB为直角三角形。求∠BAC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ACD=20°, the center of circle B is B, AC and CB are the legs of the right △ ACB. Find the measure of ∠BAC.",
   "problem_img": "6802.png",
   "construction_cdl": [
     "Shape(DA,AC,BDC)",
@@ -14,9 +14,9 @@
     "Cocircular(B,DC)"
   ],
   "text_cdl": [
-    "RightTriangle(ACB)",
+    "Equal(MeasureOfAngle(ACD),20)",
     "IsCentreOfCircle(B,B)",
-    "Equal(MeasureOfAngle(ACD),20)"
+    "RightTriangle(ACB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BAC))",
@@ -30,7 +30,14 @@
     "isosceles_triangle_judgment_line_equal(1,BDC)",
     "isosceles_triangle_property_angle_equal(1,BDC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "angle_addition(1,ACD,DCB)",
+      "triangle_property_angle_sum(1,BDC)",
+      "triangle_property_angle_sum(1,ACB)",
+      "radius_of_circle_property_length_equal(1,BD,B)",
+      "radius_of_circle_property_length_equal(1,BC,B)"
+    ],
     "radius_of_circle_property_length_equal(1,BD,B)": [
       "isosceles_triangle_judgment_line_equal(1,BDC)"
     ],
@@ -39,13 +46,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,BDC)": [
       "isosceles_triangle_property_angle_equal(1,BDC)"
-    ],
-    "START": [
-      "angle_addition(1,ACD,DCB)",
-      "triangle_property_angle_sum(1,BDC)",
-      "triangle_property_angle_sum(1,ACB)",
-      "radius_of_circle_property_length_equal(1,BD,B)",
-      "radius_of_circle_property_length_equal(1,BC,B)"
     ]
   }
 }

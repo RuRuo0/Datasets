@@ -2,9 +2,9 @@
   "problem_id": 3079,
   "annotation": "YimingHe_2023-04-23",
   "source": "GeoQA-309",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,点C、D在⊙O上,且点C、D在AB的异侧,连结AD、OD、OC,若∠AOC=70°,且AD∥OC,则∠AOD的度数为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, points C and D are on ⊙O, and points C and D are on the opposite side of AB, connecting AD, OD, OC, if ∠AOC = N_0, and AD ∥ OC, then the degree of ∠AOD is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠COA=70°，⊙O的圆心为O，AD∥CO。求∠AOD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠COA=70°, O is the center of circle O, AD is parallel to CO. Find the measure of ∠AOD.",
   "problem_img": "3079.png",
   "construction_cdl": [
     "Shape(AD,ODA)",
@@ -17,6 +17,7 @@
   ],
   "text_cdl": [
     "Equal(MeasureOfAngle(COA),70)",
+    "IsCentreOfCircle(O,O)",
     "ParallelBetweenLine(AD,CO)"
   ],
   "image_cdl": [
@@ -32,7 +33,13 @@
     "isosceles_triangle_property_angle_equal(1,ODA)",
     "triangle_property_angle_sum(1,ODA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_alternate_interior_angle(1,AD,CO)",
+      "radius_of_circle_property_length_equal(1,OD,O)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "triangle_property_angle_sum(1,ODA)"
+    ],
     "radius_of_circle_property_length_equal(1,OD,O)": [
       "isosceles_triangle_judgment_line_equal(1,ODA)"
     ],
@@ -41,12 +48,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,ODA)": [
       "isosceles_triangle_property_angle_equal(1,ODA)"
-    ],
-    "START": [
-      "parallel_property_alternate_interior_angle(1,AD,CO)",
-      "radius_of_circle_property_length_equal(1,OD,O)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "triangle_property_angle_sum(1,ODA)"
     ]
   }
 }

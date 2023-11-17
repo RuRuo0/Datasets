@@ -2,9 +2,9 @@
   "problem_id": 3633,
   "annotation": "QikeHuang_2023-04-30",
   "source": "GeoQA-1316",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在四边形ABCD中,P是对角线BD的中点,E,F分别是AB,CD的中点,AD=BC,∠PEF=25°,则∠EPF的度数是()",
-  "problem_text_en": "As shown in the figure, in the quadrilateral ABCD, P is the midpoint of the diagonal BD, E and F are the midvertices of AB and CD respectively, AD = BC, ∠PEF = N_0, then the degree of ∠EPF is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AD=BC，∠FEP=25°，E是线段AB的中点，F是线段CD的中点，P平分线段BD。求∠EPF的大小。",
+  "problem_text_en": "As shown in the diagram, AD=BC, ∠FEP=25°, E is the midpoint of segment AB, F is the midpoint of segment CD, P bisects segment BD. Find the measure of ∠EPF.",
   "problem_img": "3633.png",
   "construction_cdl": [
     "Shape(FD,DM,MF)",
@@ -19,11 +19,11 @@
     "Collinear(EMF)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AD),LengthOfLine(BC))",
     "Equal(MeasureOfAngle(FEP),25)",
-    "IsMidpointOfLine(F,CD)",
-    "IsMidpointOfLine(P,BD)",
     "IsMidpointOfLine(E,AB)",
-    "Equal(LengthOfLine(AD),LengthOfLine(BC))"
+    "IsMidpointOfLine(F,CD)",
+    "IsMidpointOfLine(P,BD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(EPF))",
@@ -37,7 +37,12 @@
     "isosceles_triangle_property_angle_equal(1,PFE)",
     "triangle_property_angle_sum(1,PFE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "midsegment_of_triangle_judgment_midpoint(1,PF,DBC)",
+      "midsegment_of_triangle_judgment_midpoint(1,PE,BDA)",
+      "triangle_property_angle_sum(1,PFE)"
+    ],
     "midsegment_of_triangle_judgment_midpoint(1,PF,DBC)": [
       "midsegment_of_triangle_property_length(1,PF,DBC)"
     ],
@@ -52,11 +57,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,PFE)": [
       "isosceles_triangle_property_angle_equal(1,PFE)"
-    ],
-    "START": [
-      "midsegment_of_triangle_judgment_midpoint(1,PF,DBC)",
-      "midsegment_of_triangle_judgment_midpoint(1,PE,BDA)",
-      "triangle_property_angle_sum(1,PFE)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 6449,
   "annotation": "JiaZou_2023-06-04",
   "source": "GeoQA-9326",
-  "problem_level": 1,
-  "problem_text_cn": "如图,平行四边形ABCD中,AE平分∠DAB,∠B=110°,则∠DEA等于()",
-  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, AE bisects ∠DAB, ∠B = N_0, then ∠DEA is equal to ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠ABC=110°，AE平分∠DAB，BA和CD是▱ABCD的一组对边。求∠AED的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABC=110°, AE is the angle bisector of ∠DAB, ABCD is a parallelogram. Find the measure of ∠AED.",
   "problem_img": "6449.png",
   "construction_cdl": [
     "Shape(DA,AE,ED)",
@@ -12,9 +12,9 @@
     "Collinear(DEC)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
     "Equal(MeasureOfAngle(ABC),110)",
-    "IsBisectorOfAngle(AE,DAB)"
+    "IsBisectorOfAngle(AE,DAB)",
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(AED))",
@@ -25,7 +25,7 @@
     "angle_addition(1,DAE,EAB)",
     "triangle_property_angle_sum(1,DAE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "parallelogram_property_opposite_angle_equal(1,DABC)",

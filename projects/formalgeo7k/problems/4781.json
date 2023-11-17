@@ -2,9 +2,9 @@
   "problem_id": 4781,
   "annotation": "ChenyangMao_2023-05-14",
   "source": "GeoQA-4167",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的弦,AC是⊙O的切线,A为切点,BC经过圆心,若∠C=40°,则∠B的大小为()",
-  "problem_text_en": "As shown in the figure, AB is the chord of ⊙O, AC is the tangent of ⊙O, A is the tangent vertex, and BC passes through the center of the circle. If ∠C = N_0, then the size of ∠B is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠DCA=40°，圆O的圆心为O，CA是圆O的切线。求∠ABD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DCA=40°, O is the center of circle O, the tangent to ⊙O is CA. Find the measure of ∠ABD.",
   "problem_img": "4781.png",
   "construction_cdl": [
     "Shape(OAB,BA)",
@@ -16,9 +16,9 @@
     "Cocircular(O,BDA)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(DCA),40)",
     "IsCentreOfCircle(O,O)",
-    "IsTangentOfCircle(CA,O)",
-    "Equal(MeasureOfAngle(DCA),40)"
+    "IsTangentOfCircle(CA,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ABD))",
@@ -29,7 +29,7 @@
     "arc_property_circumference_angle_external(1,ODA,B)",
     "arc_property_center_angle(1,ODA,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(2,CA,O,O)",
       "triangle_property_angle_sum(1,CAO)",

@@ -2,9 +2,9 @@
   "problem_id": 4354,
   "annotation": "ChengQin_2023-05-21",
   "source": "GeoQA-3250",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⁀{BC}=⁀{CD}=⁀{DE},已知AB是⊙O的直径,∠BOC=40°,那么∠AOE=()",
-  "problem_text_en": "As shown in the figure, ⁀BC = ⁀CD = ⁀DE, it is known that AB is the diameter of ⊙O, ∠BOC = N_0, then ∠AOE = ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，弧OBC的长度与弧OCD的长度相等，⌒OCD的长度与⌒ODE的长度相等，∠COB=40°，圆O的圆心为O，AB是⊙O的直径。求∠AOE的大小。",
+  "problem_text_en": "As shown in the diagram, the length of arc OBC is equal to the length of ⌒OCD, the length of ⌒OCD is equal to the length of ⌒ODE, ∠COB=40°, the center of circle O is O, AB is the diameter of ⊙O. Find the measure of ∠AOE.",
   "problem_img": "4354.png",
   "construction_cdl": [
     "Shape(OAB,BO,OA)",
@@ -16,11 +16,11 @@
     "Cocircular(O,ABCDE)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(AB,O)",
     "Equal(LengthOfArc(OBC),LengthOfArc(OCD))",
     "Equal(LengthOfArc(OCD),LengthOfArc(ODE))",
-    "Equal(MeasureOfAngle(COB),40)"
+    "Equal(MeasureOfAngle(COB),40)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(AOE))",
@@ -37,13 +37,7 @@
     "angle_addition(1,EOC,COB)",
     "adjacent_complementary_angle(1,AOE,EOB)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_length_equal(1,OBC,OCD)": [
-      "congruent_arc_property_measure_equal(1,OBC,OCD)"
-    ],
-    "congruent_arc_judgment_length_equal(1,OCD,ODE)": [
-      "congruent_arc_property_measure_equal(1,OCD,ODE)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,OBC,O)",
       "congruent_arc_judgment_length_equal(1,OBC,OCD)",
@@ -53,6 +47,12 @@
       "angle_addition(1,EOD,DOC)",
       "angle_addition(1,EOC,COB)",
       "adjacent_complementary_angle(1,AOE,EOB)"
+    ],
+    "congruent_arc_judgment_length_equal(1,OBC,OCD)": [
+      "congruent_arc_property_measure_equal(1,OBC,OCD)"
+    ],
+    "congruent_arc_judgment_length_equal(1,OCD,ODE)": [
+      "congruent_arc_property_measure_equal(1,OCD,ODE)"
     ]
   }
 }

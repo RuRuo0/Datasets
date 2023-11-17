@@ -2,9 +2,9 @@
   "problem_id": 2878,
   "annotation": "YimingHe_2023-04-16",
   "source": "GeoQA-45",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,∠ABC=45°,AC=8cm,F是高AD和BE的交点,则BF的长是()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠ABC = N_0, AC = N_1, F is the intersection of height AD and BE, then the length of BF is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AC=8，∠ABC=45°，AD是三角形ABC的高，BE是三角形BCA的高。求直线BF的长度。",
+  "problem_text_en": "As shown in the diagram, AC=8, ∠ABC=45°, AD is the altitude of △ ABC, BE is the altitude of △ BCA. Find the length of line BF.",
   "problem_img": "2878.png",
   "construction_cdl": [
     "Shape(AB,BF,FA)",
@@ -17,8 +17,8 @@
     "Collinear(AEC)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(ABC),45)",
     "Equal(LengthOfLine(AC),8)",
+    "Equal(MeasureOfAngle(ABC),45)",
     "IsAltitudeOfTriangle(AD,ABC)",
     "IsAltitudeOfTriangle(BE,BCA)"
   ],
@@ -34,7 +34,13 @@
     "congruent_triangle_judgment_aas(2,FBD,CAD)",
     "congruent_triangle_property_line_equal(1,DFB,DCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "vertical_angle(1,AFE,DFB)",
+      "triangle_property_angle_sum(1,ABD)",
+      "triangle_property_angle_sum(1,FBD)",
+      "triangle_property_angle_sum(1,AFE)"
+    ],
     "vertical_angle(1,AFE,DFB)": [
       "congruent_triangle_judgment_aas(2,FBD,CAD)"
     ],
@@ -52,12 +58,6 @@
     ],
     "congruent_triangle_judgment_aas(2,FBD,CAD)": [
       "congruent_triangle_property_line_equal(1,DFB,DCA)"
-    ],
-    "START": [
-      "vertical_angle(1,AFE,DFB)",
-      "triangle_property_angle_sum(1,ABD)",
-      "triangle_property_angle_sum(1,FBD)",
-      "triangle_property_angle_sum(1,AFE)"
     ]
   }
 }

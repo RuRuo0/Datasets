@@ -2,9 +2,9 @@
   "problem_id": 2870,
   "annotation": "YimingHe_2023-04-16",
   "source": "GeoQA-35",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,∠CAB=70°,将△ABC绕点A逆时针旋转到△AFE的位置,使得CE∥AB,则∠BAF的度数是()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠CAB = N_0, rotate △ABC counterclockwise around point A to the position of △AB′C′, so that CC′ ∥ AB, then the degree of ∠BAB′ is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，三角形ABC全等于三角形AFE，∠CAB=70°，EC平行于AB。求∠DAB的大小。",
+  "problem_text_en": "As shown in the diagram, △ABC is congruent to △AFE, ∠CAB=70°, EC∥AB. Find the measure of ∠DAB.",
   "problem_img": "2870.png",
   "construction_cdl": [
     "Shape(FE,EC,CD,DF)",
@@ -32,13 +32,7 @@
     "angle_addition(1,EAC,CAF)",
     "angle_addition(1,CAF,DAB)"
   ],
-  "theorem_seq_dag": {
-    "congruent_triangle_property_line_equal(1,BCA,FEA)": [
-      "isosceles_triangle_judgment_line_equal(1,ACE)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,ACE)": [
-      "isosceles_triangle_property_angle_equal(1,ACE)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_alternate_interior_angle(2,EC,AB)",
       "congruent_triangle_property_line_equal(1,BCA,FEA)",
@@ -46,6 +40,12 @@
       "congruent_triangle_property_angle_equal(1,ABC,AFE)",
       "angle_addition(1,EAC,CAF)",
       "angle_addition(1,CAF,DAB)"
+    ],
+    "congruent_triangle_property_line_equal(1,BCA,FEA)": [
+      "isosceles_triangle_judgment_line_equal(1,ACE)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,ACE)": [
+      "isosceles_triangle_property_angle_equal(1,ACE)"
     ]
   }
 }

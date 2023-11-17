@@ -2,9 +2,9 @@
   "problem_id": 4837,
   "annotation": "RunanWang_2023-05-21",
   "source": "GeoQA-4295",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是半圆的直径,点O是圆心,点C是AB延长线的一点,CD与半圆相切于点D．若AB=6,CD=4,则sin∠C的值为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of the semicircle, point O is the center of the circle, point C is a point on the extended line of AB, and CD is tangent to the semicircle at point D. If AB = N_0, CD = N_1, then the value of sin∠C is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，CD=4，OD=3，O是圆O的圆心，圆O的切线为CD。求sin(OC)的值。",
+  "problem_text_en": "As shown in the diagram, CD=4, OD=3, O is the center of ⊙O, the tangent to circle O is CD. Find the value of sin(OC).",
   "problem_img": "4837.png",
   "construction_cdl": [
     "Shape(ODA,AO,OD)",
@@ -14,7 +14,10 @@
     "Cocircular(OABD)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)"
+    "Equal(LengthOfLine(CD),4)",
+    "Equal(LengthOfLine(OD),3)",
+    "IsCentreOfCircle(O,O)",
+    "IsTangentOfCircle(CD,O)"
   ],
   "image_cdl": [
     "IsTangentOfCircle(CD,O)",
@@ -29,16 +32,16 @@
     "right_triangle_property_pythagorean(1,CDO)",
     "sine_theorem(1,OCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(2,CD,O,O)",
+      "sine_theorem(1,OCD)"
+    ],
     "tangent_of_circle_property_perpendicular(2,CD,O,O)": [
       "right_triangle_judgment_angle(1,CDO)"
     ],
     "right_triangle_judgment_angle(1,CDO)": [
       "right_triangle_property_pythagorean(1,CDO)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(2,CD,O,O)",
-      "sine_theorem(1,OCD)"
     ]
   }
 }

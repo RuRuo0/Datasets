@@ -2,9 +2,9 @@
   "problem_id": 3952,
   "annotation": "FangzhenZhu_2023-05-07",
   "source": "GeoQA-1878",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点A、B、C在⊙O上,D是⁀{AB}的中点,若∠ACD=20°,则∠AOB的度数为()",
-  "problem_text_en": "As shown in the figure, points A, B, and C are on ⊙O, and D is the midpoint of ⁀AB. If ∠ACD = N_0, then the degree of ∠AOB is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠DCA=20°，O是圆O的圆心，D平分⌒OAB。求∠BOA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DCA=20°, the center of ⊙O is O, D bisects arc OAB. Find the measure of ∠BOA.",
   "problem_img": "3952.png",
   "construction_cdl": [
     "Shape(OCA,AC)",
@@ -17,7 +17,11 @@
     "Collinear(CED)",
     "Cocircular(O,CADB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(DCA),20)",
+    "IsCentreOfCircle(O,O)",
+    "IsMidpointOfArc(D,OAB)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "IsMidpointOfArc(D,OAB)",
@@ -33,16 +37,16 @@
     "arc_property_center_angle(1,ODB,O)",
     "angle_addition(1,BOD,DOA)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_length_equal(1,OAD,ODB)": [
-      "congruent_arc_property_measure_equal(1,OAD,ODB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_circumference_angle_external(1,OAD,C)",
       "congruent_arc_judgment_length_equal(1,OAD,ODB)",
       "arc_property_center_angle(1,OAD,O)",
       "arc_property_center_angle(1,ODB,O)",
       "angle_addition(1,BOD,DOA)"
+    ],
+    "congruent_arc_judgment_length_equal(1,OAD,ODB)": [
+      "congruent_arc_property_measure_equal(1,OAD,ODB)"
     ]
   }
 }

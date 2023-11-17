@@ -2,9 +2,9 @@
   "problem_id": 5383,
   "annotation": "QikeHuang_2023-05-21",
   "source": "GeoQA-5667",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC的内部有一点P,且D,E,F是P分别以AB,BC,AC为对称轴的对称点．若△ABC的内角∠A=70°,∠B=60°,∠C=50°,则∠ADB+∠BEC+∠CFA=()",
-  "problem_text_en": "As shown in the figure, there is a point P inside △ABC, and D, E, F are the symmetry points of P with AB, BC, and AC as the symmetry axis respectively. If the inner angle of △ABC ∠A = N_0, ∠B = N_1, ∠C = N_2, then ∠ADB + ∠BEC + ∠CFA = ()",
+  "problem_level": 12,
+  "problem_text_cn": "如图所示，∠ABC=60°，∠BCA=50°，∠CAB=70°，AM垂直平分AB，AQ垂直平分AB，BM是PD的垂直平分线，BN是EP的垂直平分线，CN是PE的垂直平分线，CQ垂直平分AB。求∠ADB的大小、∠BEC的大小与∠CFA的大小之和。",
+  "problem_text_en": "As shown in the diagram, ∠ABC=60°, ∠BCA=50°, ∠CAB=70°, AM perpendicular bisects DP, AQ perpendicular bisects PF, BM perpendicular bisects PD, BN is the perpendicular bisector of EP, CN perpendicular bisects PE, CQ perpendicular bisects FP. Find the sum of the measure of ∠ADB, the measure of ∠BEC and the measure of ∠CFA.",
   "problem_img": "5383.png",
   "construction_cdl": [
     "Shape(AD,DM,MA)",
@@ -27,15 +27,15 @@
     "Collinear(PQF)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(ABC),60)",
+    "Equal(MeasureOfAngle(BCA),50)",
+    "Equal(MeasureOfAngle(CAB),70)",
     "IsPerpendicularBisectorOfLine(AM,DP)",
+    "IsPerpendicularBisectorOfLine(AQ,PF)",
     "IsPerpendicularBisectorOfLine(BM,PD)",
     "IsPerpendicularBisectorOfLine(BN,EP)",
     "IsPerpendicularBisectorOfLine(CN,PE)",
-    "IsPerpendicularBisectorOfLine(CQ,FP)",
-    "IsPerpendicularBisectorOfLine(AQ,PF)",
-    "Equal(MeasureOfAngle(CAB),70)",
-    "Equal(MeasureOfAngle(ABC),60)",
-    "Equal(MeasureOfAngle(BCA),50)"
+    "IsPerpendicularBisectorOfLine(CQ,FP)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Add(MeasureOfAngle(ADB),MeasureOfAngle(BEC),MeasureOfAngle(CFA)))",
@@ -54,7 +54,7 @@
     "triangle_property_angle_sum(1,BEC)",
     "triangle_property_angle_sum(1,CFA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "perpendicular_bisector_property_bisector(1,AM,DP)",
       "perpendicular_bisector_property_bisector(1,BM,PD)",

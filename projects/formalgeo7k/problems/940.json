@@ -2,9 +2,9 @@
   "problem_id": 940,
   "annotation": "XiaokaiZhang_2023-03-19",
   "source": "Geometry3k-969",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure, G K \\cong H K and H K \\cong K J. If m \\angle H G K = 28, find m \\angle H J K.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，GK=HK，HK=KJ，∠HGK=28°。求∠KJH的大小。",
+  "problem_text_en": "As shown in the diagram, GK=HK, HK=KJ, ∠HGK=28°. Find the measure of ∠KJH.",
   "problem_img": "940.png",
   "construction_cdl": [
     "Shape(HG,GK,KH)",
@@ -13,7 +13,8 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(GK),LengthOfLine(HK))",
-    "Equal(LengthOfLine(HK),LengthOfLine(KJ))"
+    "Equal(LengthOfLine(HK),LengthOfLine(KJ))",
+    "Equal(MeasureOfAngle(HGK),28)"
   ],
   "image_cdl": [
     "Equal(MeasureOfAngle(HGK),28)"
@@ -29,19 +30,19 @@
     "isosceles_triangle_property_angle_equal(1,KJH)",
     "triangle_property_angle_sum(1,KJH)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,KHG)": [
-      "isosceles_triangle_property_angle_equal(1,KHG)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,KJH)": [
-      "isosceles_triangle_property_angle_equal(1,KJH)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,KHG)",
       "triangle_property_angle_sum(1,KHG)",
       "adjacent_complementary_angle(1,GKH,HKJ)",
       "isosceles_triangle_judgment_line_equal(1,KJH)",
       "triangle_property_angle_sum(1,KJH)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,KHG)": [
+      "isosceles_triangle_property_angle_equal(1,KHG)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,KJH)": [
+      "isosceles_triangle_property_angle_equal(1,KJH)"
     ]
   }
 }

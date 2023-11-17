@@ -2,9 +2,9 @@
   "problem_id": 5588,
   "annotation": "YimingHe_2023-05-28",
   "source": "GeoQA-7100",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在Rt△ABC中,∠C为直角,CD⊥AB于D,已知AC=3,AB=5,则tan∠BCD等于()",
-  "problem_text_en": "As shown in the figure, in Rt△ABC, ∠C is a right angle, CD ⊥ AB at D, it is known that AC = N_0, AB = N_1, then tan∠BCD is equal to ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，AB=5，AC=3，∠BCA=90°，CD垂直于BD。求tan(BC)的值。",
+  "problem_text_en": "As shown in the diagram, AB=5, AC=3, ∠BCA=90°, CD⊥BD. Find the value of tan(BC).",
   "problem_img": "5588.png",
   "construction_cdl": [
     "Shape(AD,DC,CA)",
@@ -12,10 +12,10 @@
     "Collinear(ADB)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(AC),3)",
     "Equal(LengthOfLine(AB),5)",
-    "PerpendicularBetweenLine(CD,BD)",
-    "Equal(MeasureOfAngle(BCA),90)"
+    "Equal(LengthOfLine(AC),3)",
+    "Equal(MeasureOfAngle(BCA),90)",
+    "PerpendicularBetweenLine(CD,BD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Tan(MeasureOfAngle(BCD)))",
@@ -31,7 +31,14 @@
     "right_triangle_property_pythagorean(1,BCA)",
     "sine_theorem(1,BCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AD,DB)",
+      "adjacent_complementary_angle(1,ADC,CDB)",
+      "right_triangle_judgment_angle(1,CDB)",
+      "right_triangle_judgment_angle(1,BCA)",
+      "sine_theorem(1,BCD)"
+    ],
     "adjacent_complementary_angle(1,ADC,CDB)": [
       "right_triangle_judgment_angle(1,ADC)"
     ],
@@ -43,13 +50,6 @@
     ],
     "right_triangle_judgment_angle(1,BCA)": [
       "right_triangle_property_pythagorean(1,BCA)"
-    ],
-    "START": [
-      "line_addition(1,AD,DB)",
-      "adjacent_complementary_angle(1,ADC,CDB)",
-      "right_triangle_judgment_angle(1,CDB)",
-      "right_triangle_judgment_angle(1,BCA)",
-      "sine_theorem(1,BCD)"
     ]
   }
 }

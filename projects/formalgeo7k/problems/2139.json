@@ -2,9 +2,9 @@
   "problem_id": 2139,
   "annotation": "XiaoxiaoJin_2023-04-23",
   "source": "Geometry3k-2232",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x. Assume that segments that appear to be tangent are tangent.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，BA=15，DA=x，圆C的圆心为C，⊙O的切线为AB，圆O的切线为AD，AB⊥CB，CD垂直于AD。求x的值。",
+  "problem_text_en": "As shown in the diagram, BA=15, DA=x, the center of ⊙C is C, the tangent to ⊙C is AB, AD is the tangent to ⊙C, AB is perpendicular to CB, CD is perpendicular to AD. Find the value of x.",
   "problem_img": "2139.png",
   "construction_cdl": [
     "Shape(EA,AB,CEB)",
@@ -15,7 +15,15 @@
     "Collinear(CEA)",
     "Cocircular(C,BED)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BA),15)",
+    "Equal(LengthOfLine(DA),x)",
+    "IsCentreOfCircle(C,C)",
+    "IsTangentOfCircle(AB,C)",
+    "IsTangentOfCircle(AD,C)",
+    "PerpendicularBetweenLine(AB,CB)",
+    "PerpendicularBetweenLine(CD,AD)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(C,C)",
     "IsTangentOfCircle(AB,C)",
@@ -33,7 +41,11 @@
     "mirror_congruent_triangle_judgment_hl(1,ABC,ACD)",
     "mirror_congruent_triangle_property_line_equal(1,CAB,CDA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,CB,C)",
+      "radius_of_circle_property_length_equal(1,CD,C)"
+    ],
     "radius_of_circle_property_length_equal(1,CB,C)": [
       "mirror_congruent_triangle_judgment_hl(1,ABC,ACD)"
     ],
@@ -42,10 +54,6 @@
     ],
     "mirror_congruent_triangle_judgment_hl(1,ABC,ACD)": [
       "mirror_congruent_triangle_property_line_equal(1,CAB,CDA)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,CB,C)",
-      "radius_of_circle_property_length_equal(1,CD,C)"
     ]
   }
 }

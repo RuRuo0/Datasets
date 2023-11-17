@@ -2,9 +2,9 @@
   "problem_id": 4616,
   "annotation": "QikeHuang_2023-05-14",
   "source": "GeoQA-3790",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O是等边三角形ABC的外接圆,⊙O的半径为2,则等边三角形ABC的边长为()",
-  "problem_text_en": "As shown in the figure, ⊙O is the circumscribed circle of the equilateral triangle ABC, and the radius of ⊙O is N_0, then the edge length of the equilateral triangle ABC is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，圆O的半径为2，三角形ABC为等边三角形，O是⊙O的圆心。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, the radius of circle O is 2, triangle ABC is an equilateral triangle, O is the center of circle O. Find the length of line AB.",
   "problem_img": "4616.png",
   "construction_cdl": [
     "Shape(AB,BO,OA)",
@@ -15,9 +15,9 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
+    "Equal(RadiusOfCircle(O),2)",
     "EquilateralTriangle(ABC)",
-    "Equal(RadiusOfCircle(O),2)"
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -30,7 +30,7 @@
     "arc_property_circumference_angle_external(1,OAB,C)",
     "cosine_theorem(1,OAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "equilateral_triangle_property_angle(1,CAB)",
       "radius_of_circle_property_length_equal(1,OA,O)",

@@ -2,14 +2,19 @@
   "problem_id": 1056,
   "annotation": "NaZhu_2023-03-19",
   "source": "Geometry3k-1090",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AC=x，BA=8/9，BC=4/9，BC垂直于AC。求x的值。",
+  "problem_text_en": "As shown in the diagram, AC=x, BA=8/9, BC=4/9, BC is perpendicular to AC. Find the value of x.",
   "problem_img": "1056.png",
   "construction_cdl": [
     "Shape(BC,CA,AB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),x)",
+    "Equal(LengthOfLine(BA),8/9)",
+    "Equal(LengthOfLine(BC),4/9)",
+    "PerpendicularBetweenLine(BC,AC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BC),4/9)",
     "Equal(LengthOfLine(BA),8/9)",
@@ -22,12 +27,12 @@
     "right_triangle_judgment_angle(1,BCA)",
     "right_triangle_property_pythagorean(1,BCA)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,BCA)": [
-      "right_triangle_property_pythagorean(1,BCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,BCA)"
+    ],
+    "right_triangle_judgment_angle(1,BCA)": [
+      "right_triangle_property_pythagorean(1,BCA)"
     ]
   }
 }

@@ -2,15 +2,22 @@
   "problem_id": 1979,
   "annotation": "ZheZhu_2023-04-16",
   "source": "Geometry3k-2063",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure. Round to the nearest tenth if necessary.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AD=ED，AO=13，DE=9，OJ=10，x=Add(AreaOfTriangle(AED)，四边形OJEA是矩形。求x的值。",
+  "problem_text_en": "As shown in the diagram, AD=ED, AO=13, DE=9, OJ=10, x=Add(AreaOfTriangle(AED), OJEA is a rectangle. Find the value of x.",
   "problem_img": "1979.png",
   "construction_cdl": [
     "Shape(OJ,JE,EA,AO)",
     "Shape(AE,ED,DA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AD),LengthOfLine(ED))",
+    "Equal(LengthOfLine(AO),13)",
+    "Equal(LengthOfLine(DE),9)",
+    "Equal(LengthOfLine(OJ),10)",
+    "Equal(x,Add(AreaOfTriangle(AED),AreaOfQuadrilateral(OJEA)))",
+    "Rectangle(OJEA)"
+  ],
   "image_cdl": [
     "Rectangle(OJEA)",
     "Equal(LengthOfLine(AO),13)",
@@ -28,7 +35,7 @@
     "cosine_theorem(1,AED)",
     "triangle_area_formula_sine(1,AED)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_area_formula_sine(1,OJEA)",
       "parallelogram_area_formula_sine(1,JEAO)",

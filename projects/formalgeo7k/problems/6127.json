@@ -2,9 +2,9 @@
   "problem_id": 6127,
   "annotation": "YifanWang_2023-06-04",
   "source": "GeoQA-8680",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,弦CD⊥AB于点E,∠CDB=30°,⊙O的半径为3cm,则圆心O到弦CD的距离为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, chord CD ⊥ AB at point E, ∠CDB = N_0, and the radius of ⊙O is N_1, then the distance from center O to chord CD is ()",
+  "problem_level": 13,
+  "problem_text_cn": "如图所示，∠CDB=30°，圆O的半径为3，⊙O的圆心为O，OE⊥CE。求直线OE的长度。",
+  "problem_text_en": "As shown in the diagram, ∠CDB=30°, the radius of ⊙O is 3, O is the center of circle O, OE⊥CE. Find the length of line OE.",
   "problem_img": "6127.png",
   "construction_cdl": [
     "Shape(AO,OC,OCA)",
@@ -19,10 +19,10 @@
     "Cocircular(O,ADBC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "PerpendicularBetweenLine(OE,CE)",
+    "Equal(MeasureOfAngle(CDB),30)",
     "Equal(RadiusOfCircle(O),3)",
-    "Equal(MeasureOfAngle(CDB),30)"
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(OE,CE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(OE))",
@@ -42,7 +42,18 @@
     "line_addition(1,AO,OB)",
     "line_addition(1,AE,EB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_center_angle(1,OBC,O)",
+      "arc_property_circumference_angle_external(1,OBC,D)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "triangle_property_angle_sum(1,COB)",
+      "altitude_of_triangle_judgment(1,CE,COB)",
+      "line_addition(1,AO,OE)",
+      "line_addition(1,AO,OB)",
+      "line_addition(1,AE,EB)"
+    ],
     "arc_property_center_angle(1,OBC,O)": [
       "isosceles_triangle_judgment_angle_equal(1,COB)",
       "isosceles_triangle_judgment_angle_equal(1,COB)"
@@ -71,17 +82,6 @@
     ],
     "altitude_of_triangle_judgment(1,CE,COB)": [
       "isosceles_triangle_property_line_coincidence(1,COB,E)"
-    ],
-    "START": [
-      "arc_property_center_angle(1,OBC,O)",
-      "arc_property_circumference_angle_external(1,OBC,D)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "triangle_property_angle_sum(1,COB)",
-      "altitude_of_triangle_judgment(1,CE,COB)",
-      "line_addition(1,AO,OE)",
-      "line_addition(1,AO,OB)",
-      "line_addition(1,AE,EB)"
     ]
   }
 }

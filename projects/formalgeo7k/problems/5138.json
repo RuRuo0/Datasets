@@ -2,18 +2,18 @@
   "problem_id": 5138,
   "annotation": "JiaZou_2023-05-21",
   "source": "GeoQA-5024",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点C是线段AB上一点,点P是AC的中点,点Q是BC的中点,已知线段AC=8cm,线段BC=4cm,则线段PQ为()",
-  "problem_text_en": "As shown in the figure, point C is a point on the line segment AB, point P is the midpoint of AC, and point Q is the midpoint of BC. It is known that the line segment AC = N_0, the line segment BC = N_1, then the length of the line segment PQ is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AC=8，BC=4，P平分线段AC，Q平分线段CB。求直线PQ的长度。",
+  "problem_text_en": "As shown in the diagram, AC=8, BC=4, P bisects segment AC, Q bisects segment CB. Find the length of line PQ.",
   "problem_img": "5138.png",
   "construction_cdl": [
     "Collinear(APCQB)"
   ],
   "text_cdl": [
-    "IsMidpointOfLine(P,AC)",
-    "IsMidpointOfLine(Q,CB)",
     "Equal(LengthOfLine(AC),8)",
-    "Equal(LengthOfLine(BC),4)"
+    "Equal(LengthOfLine(BC),4)",
+    "IsMidpointOfLine(P,AC)",
+    "IsMidpointOfLine(Q,CB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(PQ))",
@@ -23,7 +23,7 @@
     "line_addition(1,CQ,QB)",
     "line_addition(1,PC,CQ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AP,PC)",
       "line_addition(1,CQ,QB)",

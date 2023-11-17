@@ -2,9 +2,9 @@
   "problem_id": 651,
   "annotation": "YimingHe_2023-04-09",
   "source": "Geometry3k-668",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Circle W has a radius of 4 units, \\odot Z has a radius of 7 units, and X Y = 2. Find I C.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，XY=2，圆W的半径为4，⊙Z的半径为7，W是圆W的圆心，Z是圆Z的圆心，CX是圆Z的直径。求直线IC的长度。",
+  "problem_text_en": "As shown in the diagram, XY=2, the radius of ⊙W is 4, the radius of circle Z is 7, W is the center of ⊙W, Z is the center of ⊙Z, CX is the diameter of ⊙Z. Find the length of line IC.",
   "problem_img": "651.png",
   "construction_cdl": [
     "Shape(IW,WX,ZAX,WAI)",
@@ -17,7 +17,14 @@
     "Cocircular(W,IBYA)",
     "Cocircular(Z,XBCA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(XY),2)",
+    "Equal(RadiusOfCircle(W),4)",
+    "Equal(RadiusOfCircle(Z),7)",
+    "IsCentreOfCircle(W,W)",
+    "IsCentreOfCircle(Z,Z)",
+    "IsDiameterOfCircle(CX,Z)"
+  ],
   "image_cdl": [
     "IsDiameterOfCircle(CX,Z)",
     "IsCentreOfCircle(W,W)",
@@ -37,7 +44,7 @@
     "line_addition(1,IW,WX)",
     "line_addition(1,IX,XC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,WI,W)",
       "radius_of_circle_property_length_equal(1,WY,W)",

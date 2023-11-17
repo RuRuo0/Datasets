@@ -2,9 +2,9 @@
   "problem_id": 1586,
   "annotation": "QikeHuang_2023-04-09",
   "source": "Geometry3k-1646",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "\\triangle K L N and \\triangle L M N are isosceles and m \\angle J K N = 130. Find the measure of \\angle L K N.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，KL=NL，NM=ML，∠JLK=25°，∠KLN=18°，∠NKJ=130°，∠NLM=20°，三角形LNK为等腰三角形，MN和ML是等腰三角形MNL的腰。求∠NKL的大小。",
+  "problem_text_en": "As shown in the diagram, KL=NL, NM=ML, ∠JLK=25°, ∠KLN=18°, ∠NKJ=130°, ∠NLM=20°, △LNK is an isosceles △, triangleMNL is an isosceles triangle. Find the measure of ∠NKL.",
   "problem_img": "1586.png",
   "construction_cdl": [
     "Shape(MN,NL,LM)",
@@ -12,9 +12,14 @@
     "Shape(KJ,JL,LK)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(KL),LengthOfLine(NL))",
+    "Equal(LengthOfLine(NM),LengthOfLine(ML))",
+    "Equal(MeasureOfAngle(JLK),25)",
+    "Equal(MeasureOfAngle(KLN),18)",
+    "Equal(MeasureOfAngle(NKJ),130)",
+    "Equal(MeasureOfAngle(NLM),20)",
     "IsoscelesTriangle(LNK)",
-    "IsoscelesTriangle(MNL)",
-    "Equal(MeasureOfAngle(NKJ),130)"
+    "IsoscelesTriangle(MNL)"
   ],
   "image_cdl": [
     "Equal(MeasureOfAngle(KLN),18)",
@@ -29,7 +34,7 @@
     "isosceles_triangle_property_angle_equal(1,LNK)",
     "triangle_property_angle_sum(1,NKL)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_property_angle_equal(1,LNK)",
       "triangle_property_angle_sum(1,NKL)"

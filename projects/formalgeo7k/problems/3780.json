@@ -2,9 +2,9 @@
   "problem_id": 3780,
   "annotation": "ChenyangMao_2023-04-30",
   "source": "GeoQA-1611",
-  "problem_level": 1,
-  "problem_text_cn": "将直尺和直角三角板按如图方式摆放,已知∠1=30°,则∠2的大小是()",
-  "problem_text_en": "Place the ruler and the right triangle as shown in the figure. It is known that ∠1 = N_0, then the size of ∠2 is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠FEC=90°，∠FED=30°，BC平行于DE。求∠GCE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠FEC=90°, ∠FED=30°, BC is parallel to DE. Find the measure of ∠GCE.",
   "problem_img": "3780.png",
   "construction_cdl": [
     "Shape(AB,BC,CA)",
@@ -15,7 +15,11 @@
     "Collinear(BCG)",
     "Collinear(ACE)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(FEC),90)",
+    "Equal(MeasureOfAngle(FED),30)",
+    "ParallelBetweenLine(BC,DE)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(FEC),90)",
     "ParallelBetweenLine(BC,DE)",
@@ -28,13 +32,13 @@
     "angle_addition(1,FED,DEC)",
     "parallel_property_alternate_interior_angle(1,CG,DE)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(2,BC,DE,G)": [
-      "parallel_property_alternate_interior_angle(1,CG,DE)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_collinear_extend(2,BC,DE,G)",
       "angle_addition(1,FED,DEC)"
+    ],
+    "parallel_property_collinear_extend(2,BC,DE,G)": [
+      "parallel_property_alternate_interior_angle(1,CG,DE)"
     ]
   }
 }

@@ -2,15 +2,20 @@
   "problem_id": 1471,
   "annotation": "YanjunGuo_2023-04-09",
   "source": "Geometry3k-1525",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "For the pair of similar figures, find the area of the green figure.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，三角形DEF的面积为25，AB=18，FD=10，△DEF与△BCA是相似三角形。求三角形BCA的面积。",
+  "problem_text_en": "As shown in the diagram, the area of triangle DEF is 25, AB=18, FD=10, △DEF is similar to △BCA.. Find the area of △BCA.",
   "problem_img": "1471.png",
   "construction_cdl": [
     "Shape(BC,CA,AB)",
     "Shape(DE,EF,FD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(AreaOfTriangle(DEF),25)",
+    "Equal(LengthOfLine(AB),18)",
+    "Equal(LengthOfLine(FD),10)",
+    "SimilarBetweenTriangle(DEF,BCA)"
+  ],
   "image_cdl": [
     "SimilarBetweenTriangle(DEF,BCA)",
     "Equal(LengthOfLine(AB),18)",
@@ -23,7 +28,7 @@
     "similar_triangle_property_line_ratio(1,EFD,CAB)",
     "similar_triangle_property_area_square_ratio(1,EFD,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "similar_triangle_property_line_ratio(1,EFD,CAB)",
       "similar_triangle_property_area_square_ratio(1,EFD,CAB)"

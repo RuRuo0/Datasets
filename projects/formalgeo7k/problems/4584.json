@@ -2,9 +2,9 @@
   "problem_id": 4584,
   "annotation": "YanjunGuo_2023-05-14",
   "source": "GeoQA-3727",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC为⊙O的内接三角形,AB为⊙O的直径,点D在⊙O上,∠ADC=65°,则∠BAC=()",
-  "problem_text_en": "As shown in the figure, △ABC is the inscribed triangle of ⊙O, AB is the diameter of ⊙O, point D is on ⊙O, ∠ADC = N_0, then ∠BAC = ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠ADC=65°，圆O的圆心为P，AB是圆O的直径。求∠CAB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ADC=65°, P is the center of circle O, the diameter of circle O is AB. Find the measure of ∠CAB.",
   "problem_img": "4584.png",
   "construction_cdl": [
     "Shape(AC,OCA)",
@@ -19,9 +19,9 @@
     "Cocircular(O,ADBC)"
   ],
   "text_cdl": [
-    "IsDiameterOfCircle(AB,O)",
+    "Equal(MeasureOfAngle(ADC),65)",
     "IsCentreOfCircle(P,O)",
-    "Equal(MeasureOfAngle(ADC),65)"
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CAB))",
@@ -32,7 +32,7 @@
     "diameter_of_circle_property_right_angle(1,BCA,O)",
     "triangle_property_angle_sum(1,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_circumference_angle_external(1,OCA,D)",
       "arc_property_circumference_angle_external(1,OCA,B)",

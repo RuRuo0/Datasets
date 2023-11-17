@@ -2,9 +2,9 @@
   "problem_id": 929,
   "annotation": "XiaokaiZhang_2023-04-09",
   "source": "Geometry3k-958",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "The segment is tangent to the circle. Find x to the nearest hundredth.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，QR=4，SA=5，ST=x，⊙Q的圆心为Q，⊙O的切线为SR，ST是⊙O的切线。求x的值。",
+  "problem_text_en": "As shown in the diagram, QR=4, SA=5, ST=x, Q is the center of ⊙Q, SR is the tangent to circle Q, ST is the tangent to ⊙Q. Find the value of x.",
   "problem_img": "929.png",
   "construction_cdl": [
     "Shape(SR,QAR,AS)",
@@ -16,6 +16,10 @@
     "Cocircular(Q,TAR)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(QR),4)",
+    "Equal(LengthOfLine(SA),5)",
+    "Equal(LengthOfLine(ST),x)",
+    "IsCentreOfCircle(Q,Q)",
     "IsTangentOfCircle(SR,Q)",
     "IsTangentOfCircle(ST,Q)"
   ],
@@ -36,19 +40,19 @@
     "right_triangle_judgment_angle(1,QTS)",
     "right_triangle_property_pythagorean(1,QTS)"
   ],
-  "theorem_seq_dag": {
-    "tangent_of_circle_property_perpendicular(1,ST,Q,Q)": [
-      "right_triangle_judgment_angle(1,QTS)"
-    ],
-    "right_triangle_judgment_angle(1,QTS)": [
-      "right_triangle_property_pythagorean(1,QTS)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,QR,Q)",
       "radius_of_circle_property_length_equal(1,QA,Q)",
       "radius_of_circle_property_length_equal(1,QT,Q)",
       "line_addition(1,QA,AS)",
       "tangent_of_circle_property_perpendicular(1,ST,Q,Q)"
+    ],
+    "tangent_of_circle_property_perpendicular(1,ST,Q,Q)": [
+      "right_triangle_judgment_angle(1,QTS)"
+    ],
+    "right_triangle_judgment_angle(1,QTS)": [
+      "right_triangle_property_pythagorean(1,QTS)"
     ]
   }
 }

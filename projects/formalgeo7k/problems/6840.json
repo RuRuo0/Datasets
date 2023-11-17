@@ -2,9 +2,9 @@
   "problem_id": 6840,
   "annotation": "DengfengYue_2023-06-04",
   "source": "GeoQA-angle-10056",
-  "problem_level": 1,
-  "problem_text_cn": "如图，在△ABC中，∠B＝70°，∠C＝50°，若点D，E，F分别是边AB，BC，CA的中点，则∠DEF＝（）",
-  "problem_text_en": "",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，∠DBE=70°，∠ECF=50°，D是线段AB的中点，E是线段BC的中点，F是线段AC的中点。求∠DEF的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DBE=70°, ∠ECF=50°, D is the midpoint of segment AB, E is the midpoint of segment BC, F is the midpoint of segment AC. Find the measure of ∠DEF.",
   "problem_img": "6840.png",
   "construction_cdl": [
     "Shape(AD,DE,EF,FA)",
@@ -15,11 +15,11 @@
     "Collinear(BEC)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(DBE),70)",
+    "Equal(MeasureOfAngle(ECF),50)",
     "IsMidpointOfLine(D,AB)",
     "IsMidpointOfLine(E,BC)",
-    "IsMidpointOfLine(F,AC)",
-    "Equal(MeasureOfAngle(DBE),70)",
-    "Equal(MeasureOfAngle(ECF),50)"
+    "IsMidpointOfLine(F,AC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DEF))",
@@ -35,7 +35,12 @@
     "parallelogram_judgment_parallel_and_parallel(1,ADEF)",
     "parallelogram_property_opposite_angle_equal(1,ADEF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "triangle_property_angle_sum(1,BCA)",
+      "midsegment_of_triangle_judgment_midpoint(1,ED,BCA)",
+      "midsegment_of_triangle_judgment_midpoint(1,FE,CAB)"
+    ],
     "midsegment_of_triangle_judgment_midpoint(1,ED,BCA)": [
       "midsegment_of_triangle_property_parallel(1,ED,BCA)"
     ],
@@ -56,11 +61,6 @@
     ],
     "parallelogram_judgment_parallel_and_parallel(1,ADEF)": [
       "parallelogram_property_opposite_angle_equal(1,ADEF)"
-    ],
-    "START": [
-      "triangle_property_angle_sum(1,BCA)",
-      "midsegment_of_triangle_judgment_midpoint(1,ED,BCA)",
-      "midsegment_of_triangle_judgment_midpoint(1,FE,CAB)"
     ]
   }
 }

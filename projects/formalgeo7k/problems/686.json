@@ -2,9 +2,9 @@
   "problem_id": 686,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-703",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In quadrilateral A B C D, A C = 188, B D = 214, m \\angle B P C = 70, and P is the midpoint of A C and B D. Find the perimeter of quadrilateral A B C D.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AB=DC，AC=188，AD=BC，BD=214，∠BPC=70°，P是线段AC的中点。求ADCB的周长。",
+  "problem_text_en": "As shown in the diagram, AB=DC, AC=188, AD=BC, BD=214, ∠BPC=70°, P bisects segment AC. Find the perimeter of ADCB.",
   "problem_img": "686.png",
   "construction_cdl": [
     "Shape(AD,DP,PA)",
@@ -15,7 +15,9 @@
     "Collinear(DPB)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AB),LengthOfLine(DC))",
     "Equal(LengthOfLine(AC),188)",
+    "Equal(LengthOfLine(AD),LengthOfLine(BC))",
     "Equal(LengthOfLine(BD),214)",
     "Equal(MeasureOfAngle(BPC),70)",
     "IsMidpointOfLine(P,AC)"
@@ -36,10 +38,7 @@
     "cosine_theorem(1,PBA)",
     "quadrilateral_perimeter_formula(1,ADCB)"
   ],
-  "theorem_seq_dag": {
-    "parallelogram_judgment_equal_and_equal(1,ADCB)": [
-      "parallelogram_property_diagonal_bisection(1,DCBA,P)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_judgment_equal_and_equal(1,ADCB)",
       "adjacent_complementary_angle(1,APB,BPC)",
@@ -48,6 +47,9 @@
       "cosine_theorem(1,PCB)",
       "cosine_theorem(1,PBA)",
       "quadrilateral_perimeter_formula(1,ADCB)"
+    ],
+    "parallelogram_judgment_equal_and_equal(1,ADCB)": [
+      "parallelogram_property_diagonal_bisection(1,DCBA,P)"
     ]
   }
 }

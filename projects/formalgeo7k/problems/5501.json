@@ -2,9 +2,9 @@
   "problem_id": 5501,
   "annotation": "DengfengYue_2023-05-21",
   "source": "GeoQA-5959",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,D,E,F分别为BC,AC,AB边的中点,AH⊥BC于H,FD=16,则HE等于()",
-  "problem_text_en": "As shown in the figure, in △ABC, D, E, F are the midpoints of BC, AC, AB, AH ⊥ BC is in H, FD = N_0, then HE is equal to ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，FD=16，D平分线段BC，E是线段AC的中点，F是线段AB的中点，BH⊥AH。求直线HE的长度。",
+  "problem_text_en": "As shown in the diagram, FD=16, D is the midpoint of segment BC, E bisects segment AC, F is the midpoint of segment AB, BH is perpendicular to AH. Find the length of line HE.",
   "problem_img": "5501.png",
   "construction_cdl": [
     "Shape(AF,FG,GA)",
@@ -20,10 +20,10 @@
     "Collinear(BDHC)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(FD),16)",
     "IsMidpointOfLine(D,BC)",
     "IsMidpointOfLine(E,AC)",
     "IsMidpointOfLine(F,AB)",
-    "Equal(LengthOfLine(FD),16)",
     "PerpendicularBetweenLine(BH,AH)"
   ],
   "image_cdl": [],
@@ -37,7 +37,12 @@
     "median_of_triangle_judgment(1,HE,HCA)",
     "right_triangle_property_length_of_median(1,AHC,E)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "midsegment_of_triangle_judgment_midpoint(1,DF,BCA)",
+      "adjacent_complementary_angle(1,BHG,GHC)",
+      "median_of_triangle_judgment(1,HE,HCA)"
+    ],
     "midsegment_of_triangle_judgment_midpoint(1,DF,BCA)": [
       "midsegment_of_triangle_property_length(1,DF,BCA)"
     ],
@@ -49,11 +54,6 @@
     ],
     "median_of_triangle_judgment(1,HE,HCA)": [
       "right_triangle_property_length_of_median(1,AHC,E)"
-    ],
-    "START": [
-      "midsegment_of_triangle_judgment_midpoint(1,DF,BCA)",
-      "adjacent_complementary_angle(1,BHG,GHC)",
-      "median_of_triangle_judgment(1,HE,HCA)"
     ]
   }
 }

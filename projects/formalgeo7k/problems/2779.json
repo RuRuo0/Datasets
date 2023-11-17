@@ -2,14 +2,21 @@
   "problem_id": 2779,
   "annotation": "RunanWang_2023-05-07",
   "source": "Geometry3k-2926",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the trapezoid.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AC=14，AD=15，DB=10，BD⊥AD，DA垂直于CA，四边形DACB是梯形。求四边形DACB的面积。",
+  "problem_text_en": "As shown in the diagram, AC=14, AD=15, DB=10, BD is perpendicular to AD, DA is perpendicular to CA, DB and AC are the parallel sides of trapezoid DACB. Find the area of DACB.",
   "problem_img": "2779.png",
   "construction_cdl": [
     "Shape(BD,DA,AC,CB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),14)",
+    "Equal(LengthOfLine(AD),15)",
+    "Equal(LengthOfLine(DB),10)",
+    "PerpendicularBetweenLine(BD,AD)",
+    "PerpendicularBetweenLine(DA,CA)",
+    "Trapezoid(DACB)"
+  ],
   "image_cdl": [
     "Trapezoid(DACB)",
     "Equal(LengthOfLine(AD),15)",
@@ -24,12 +31,12 @@
     "right_trapezoid_judgment_right_angle(1,DACB)",
     "right_trapezoid_area_formular(1,DACB)"
   ],
-  "theorem_seq_dag": {
-    "right_trapezoid_judgment_right_angle(1,DACB)": [
-      "right_trapezoid_area_formular(1,DACB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_trapezoid_judgment_right_angle(1,DACB)"
+    ],
+    "right_trapezoid_judgment_right_angle(1,DACB)": [
+      "right_trapezoid_area_formular(1,DACB)"
     ]
   }
 }

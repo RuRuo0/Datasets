@@ -2,9 +2,9 @@
   "problem_id": 623,
   "annotation": "YimingHe_2023-04-09",
   "source": "Geometry3k-640",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot T, Z V = 1, and T W = 13. Find X V.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，TW=13，ZV=1，T是圆T的圆心，TV垂直于XV。求直线XV的长度。",
+  "problem_text_en": "As shown in the diagram, TW=13, ZV=1, the center of circle T is T, TV is perpendicular to XV. Find the length of line XV.",
   "problem_img": "623.png",
   "construction_cdl": [
     "Shape(TZX,XV,VZ)",
@@ -17,8 +17,10 @@
     "Cocircular(T,ZXWY)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(TW),13)",
     "Equal(LengthOfLine(ZV),1)",
-    "Equal(LengthOfLine(TW),13)"
+    "IsCentreOfCircle(T,T)",
+    "PerpendicularBetweenLine(TV,XV)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(T,T)",
@@ -34,16 +36,16 @@
     "right_triangle_judgment_angle(1,TVX)",
     "right_triangle_property_pythagorean(1,TVX)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,TVX)": [
-      "right_triangle_property_pythagorean(1,TVX)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,TW,T)",
       "radius_of_circle_property_length_equal(1,TX,T)",
       "radius_of_circle_property_length_equal(1,TZ,T)",
       "line_addition(1,ZV,VT)",
       "right_triangle_judgment_angle(1,TVX)"
+    ],
+    "right_triangle_judgment_angle(1,TVX)": [
+      "right_triangle_property_pythagorean(1,TVX)"
     ]
   }
 }

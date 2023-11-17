@@ -2,9 +2,9 @@
   "problem_id": 3903,
   "annotation": "FangzhenZhu_2023-05-07",
   "source": "GeoQA-1807",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点B,C,D在⊙O上,若∠BCD=120°,则∠BOD的度数是()",
-  "problem_text_en": "As shown in the figure, the points B, C, D are on ⊙O, if ∠BCD = N_0, then the degree of ∠BOD is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠BCD=120°，O是圆O的圆心。求∠DOB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BCD=120°, O is the center of circle O. Find the measure of ∠DOB.",
   "problem_img": "3903.png",
   "construction_cdl": [
     "Shape(OBC,CB)",
@@ -15,7 +15,10 @@
     "Shape(OB,BC,CD,DO)",
     "Cocircular(O,ABCD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(BCD),120)",
+    "IsCentreOfCircle(O,O)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfAngle(BCD),120)"
@@ -26,7 +29,7 @@
     "arc_property_center_angle(1,OBD,O)",
     "arc_property_circumference_angle_internal(1,OBD,C)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,OBD,O)",
       "arc_property_circumference_angle_internal(1,OBD,C)"

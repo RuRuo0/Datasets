@@ -2,9 +2,9 @@
   "problem_id": 491,
   "annotation": "YimingHe_2023-04-02",
   "source": "Geometry3k-502",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find m \\widehat J K.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠JKL=62°，⊙A的圆心为A。求⌒AJK的角度。",
+  "problem_text_en": "As shown in the diagram, ∠JKL=62°, A is the center of circle A. Find the measure of ⌒AJK.",
   "problem_img": "491.png",
   "construction_cdl": [
     "Shape(AL,ALJ,JA)",
@@ -14,7 +14,10 @@
     "Collinear(LAK)",
     "Cocircular(A,LJK)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(JKL),62)",
+    "IsCentreOfCircle(A,A)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(A,A)",
     "Equal(MeasureOfAngle(JKL),62)"
@@ -29,7 +32,13 @@
     "triangle_property_angle_sum(1,AJK)",
     "arc_property_center_angle(1,AJK,A)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,AJ,A)",
+      "radius_of_circle_property_length_equal(1,AK,A)",
+      "triangle_property_angle_sum(1,AJK)",
+      "arc_property_center_angle(1,AJK,A)"
+    ],
     "radius_of_circle_property_length_equal(1,AJ,A)": [
       "isosceles_triangle_judgment_line_equal(1,AJK)"
     ],
@@ -38,12 +47,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,AJK)": [
       "isosceles_triangle_property_angle_equal(1,AJK)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,AJ,A)",
-      "radius_of_circle_property_length_equal(1,AK,A)",
-      "triangle_property_angle_sum(1,AJK)",
-      "arc_property_center_angle(1,AJK,A)"
     ]
   }
 }

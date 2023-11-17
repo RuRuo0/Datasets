@@ -2,18 +2,18 @@
   "problem_id": 5099,
   "annotation": "YimingHe_2023-05-21",
   "source": "GeoQA-4920",
-  "problem_level": 1,
-  "problem_text_cn": "如图,BC=\\frac{1}{2}AB,D为AC的中点,若DC=3,则AB的长是()",
-  "problem_text_en": "As shown in the figure, BC=\\frac{N_0}{N_1}AB, D is the midpoint of AC, if DC = N_2, then the length of AB is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，Div(LengthOfLine(BC)=LengthOfLine(AB))，CD=3，D平分线段AC。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, Div(LengthOfLine(BC)=LengthOfLine(AB)), CD=3, D bisects segment AC. Find the length of line AB.",
   "problem_img": "5099.png",
   "construction_cdl": [
     "Shape(AD,DB,BC)",
     "Collinear(ADBC)"
   ],
   "text_cdl": [
-    "IsMidpointOfLine(D,AC)",
     "Equal(Div(LengthOfLine(BC),LengthOfLine(AB)),1/2)",
-    "Equal(LengthOfLine(CD),3)"
+    "Equal(LengthOfLine(CD),3)",
+    "IsMidpointOfLine(D,AC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -22,7 +22,7 @@
     "line_addition(1,AD,DC)",
     "line_addition(1,AB,BC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AD,DC)",
       "line_addition(1,AB,BC)"

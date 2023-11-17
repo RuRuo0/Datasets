@@ -2,17 +2,17 @@
   "problem_id": 1569,
   "annotation": "XiaoxiaoJin_2023-04-16",
   "source": "Geometry3k-1628",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Quadrilateral A B C D is a rhombus. If m \\angle B C D = 120, find m \\angle D A C.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠DCB=120°，四边形BADC是菱形。求∠CAD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DCB=120°, BADC is a rhombus. Find the measure of ∠CAD.",
   "problem_img": "1569.png",
   "construction_cdl": [
     "Shape(CB,BA,AC)",
     "Shape(CA,AD,DC)"
   ],
   "text_cdl": [
-    "Rhombus(BADC)",
-    "Equal(MeasureOfAngle(DCB),120)"
+    "Equal(MeasureOfAngle(DCB),120)",
+    "Rhombus(BADC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CAD))",
@@ -23,14 +23,14 @@
     "isosceles_triangle_property_angle_equal(1,DCA)",
     "triangle_property_angle_sum(1,DCA)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,DCA)": [
-      "isosceles_triangle_property_angle_equal(1,DCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_ipsilateral_internal_angle(1,DA,CB)",
       "isosceles_triangle_judgment_line_equal(1,DCA)",
       "triangle_property_angle_sum(1,DCA)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,DCA)": [
+      "isosceles_triangle_property_angle_equal(1,DCA)"
     ]
   }
 }

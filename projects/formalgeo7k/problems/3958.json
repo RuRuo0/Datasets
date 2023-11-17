@@ -2,9 +2,9 @@
   "problem_id": 3958,
   "annotation": "ZheZhu_2023-04-30",
   "source": "GeoQA-1888",
-  "problem_level": 1,
-  "problem_text_cn": "如图,圆的两条弦AB,CD相交于点E,且⁀{AD}=⁀{CB},∠A=40°,则∠CEB的度数为()",
-  "problem_text_en": "As shown in the figure, the two chords AB and CD of the circle intersect at point E, and ⁀AD = ⁀CB, ∠A = N_0, then the degree of ∠CEB is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，弧ODA的长度与弧OCB的长度相等，∠EAC=40°，圆O的圆心为O。求∠BEC的大小。",
+  "problem_text_en": "As shown in the diagram, the length of arc ODA is equal to the length of ⌒OCB, ∠EAC=40°, O is the center of ⊙O. Find the measure of ∠BEC.",
   "problem_img": "3958.png",
   "construction_cdl": [
     "Shape(OAC,CA)",
@@ -16,7 +16,11 @@
     "Collinear(CED)",
     "Cocircular(O,ACBD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfArc(ODA),LengthOfArc(OCB))",
+    "Equal(MeasureOfAngle(EAC),40)",
+    "IsCentreOfCircle(O,O)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "Equal(LengthOfArc(ODA),LengthOfArc(OCB))",
@@ -33,10 +37,7 @@
     "flat_angle(1,BEA)",
     "angle_addition(1,BEC,CEA)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_length_equal(1,ODA,OCB)": [
-      "congruent_arc_property_measure_equal(1,ODA,OCB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "congruent_arc_judgment_length_equal(1,ODA,OCB)",
       "arc_property_circumference_angle_external(1,OCB,A)",
@@ -44,6 +45,9 @@
       "triangle_property_angle_sum(1,ACE)",
       "flat_angle(1,BEA)",
       "angle_addition(1,BEC,CEA)"
+    ],
+    "congruent_arc_judgment_length_equal(1,ODA,OCB)": [
+      "congruent_arc_property_measure_equal(1,ODA,OCB)"
     ]
   }
 }

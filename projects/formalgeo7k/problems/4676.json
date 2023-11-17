@@ -2,9 +2,9 @@
   "problem_id": 4676,
   "annotation": "YiwenHuang_2023-05-21",
   "source": "GeoQA-3950",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB、CD分别与半圆OO切于点A,D,BC切⊙O于点E．若AB=4,CD=9,则⊙O的半径为()",
-  "problem_text_en": "As shown in the figure, AB and CD are respectively tangent to the semicircle OO at points A, D, and BC is tangent to the point E. If AB = N_0, CD = N_1, then the radius of ⊙O is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=4，BF=5，CD=9，CF=AD，∠CFB=90°，AD是⊙O的直径，BA是⊙O的切线，圆O的切线为BE，CD是圆O的切线，圆O的切线为CE。求⊙O的半径。",
+  "problem_text_en": "As shown in the diagram, AB=4, BF=5, CD=9, CF=AD, ∠CFB=90°, AD is the diameter of ⊙O, the tangent to circle O is BA, the tangent to circle O is BE, CD is the tangent to circle O, CE is the tangent to ⊙O. Find the radius of ⊙O.",
   "problem_img": "4676.png",
   "construction_cdl": [
     "Shape(EB,BA,OEA)",
@@ -17,16 +17,16 @@
     "Cocircular(O,DEA)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AB),4)",
+    "Equal(LengthOfLine(BF),5)",
+    "Equal(LengthOfLine(CD),9)",
+    "Equal(LengthOfLine(CF),LengthOfLine(AD))",
+    "Equal(MeasureOfAngle(CFB),90)",
     "IsDiameterOfCircle(AD,O)",
     "IsTangentOfCircle(BA,O)",
     "IsTangentOfCircle(BE,O)",
     "IsTangentOfCircle(CD,O)",
-    "IsTangentOfCircle(CE,O)",
-    "Equal(LengthOfLine(AB),4)",
-    "Equal(LengthOfLine(CD),9)",
-    "Equal(LengthOfLine(BF),5)",
-    "Equal(LengthOfLine(CF),LengthOfLine(AD))",
-    "Equal(MeasureOfAngle(CFB),90)"
+    "IsTangentOfCircle(CE,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(RadiusOfCircle(O))",
@@ -40,10 +40,7 @@
     "circle_property_length_of_radius_and_diameter(1,O)",
     "diameter_of_circle_property_length_equal(1,AD,O)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,CFB)": [
-      "right_triangle_property_pythagorean(1,CFB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_length_equal(1,BA,BE,O)",
       "tangent_of_circle_property_length_equal(1,CD,CE,O)",
@@ -51,6 +48,9 @@
       "right_triangle_judgment_angle(1,CFB)",
       "circle_property_length_of_radius_and_diameter(1,O)",
       "diameter_of_circle_property_length_equal(1,AD,O)"
+    ],
+    "right_triangle_judgment_angle(1,CFB)": [
+      "right_triangle_property_pythagorean(1,CFB)"
     ]
   }
 }

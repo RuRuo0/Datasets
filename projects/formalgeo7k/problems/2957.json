@@ -2,9 +2,9 @@
   "problem_id": 2957,
   "annotation": "JiaZou_2023-04-16",
   "source": "GeoQA-152",
-  "problem_level": 1,
-  "problem_text_cn": "如图,∠1=∠B,∠2=25°,则∠D=()",
-  "problem_text_en": "As shown in the figure, ∠1 = ∠B, ∠2 = N_0, then ∠D = ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠DCF=25°，∠EAD=∠ABC，AD平行于BC。求∠CDA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DCF=25°, ∠EAD=∠ABC, AD is parallel to BC. Find the measure of ∠CDA.",
   "problem_img": "2957.png",
   "construction_cdl": [
     "Shape(EA,AD)",
@@ -14,9 +14,9 @@
     "Collinear(BCF)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AD,BC)",
+    "Equal(MeasureOfAngle(DCF),25)",
     "Equal(MeasureOfAngle(EAD),MeasureOfAngle(ABC))",
-    "Equal(MeasureOfAngle(DCF),25)"
+    "ParallelBetweenLine(AD,BC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CDA))",
@@ -26,7 +26,7 @@
     "adjacent_complementary_angle(1,BCD,DCF)",
     "quadrilateral_property_angle_sum(1,ABCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,EAD,DAB)",
       "adjacent_complementary_angle(1,BCD,DCF)",

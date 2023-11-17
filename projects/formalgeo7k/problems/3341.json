@@ -2,9 +2,9 @@
   "problem_id": 3341,
   "annotation": "YimingHe_2023-04-30",
   "source": "GeoQA-767",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知CD为⊙O的直径,过点D的弦DE平行于半径OA,若∠D的度数是50°,则∠C的度数是()",
-  "problem_text_en": "As shown in the figure, it is known that CD is the diameter of ⊙O, and the chord DE passing through point D is parallel to the radius OA. If the degree of ∠D is N_0, then the degree of ∠C is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠ODE=50°，⊙O的圆心为O，⊙O的直径为CD，AO平行于DE。求∠OCA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ODE=50°, the center of circle O is O, CD is the diameter of circle O, AO∥DE. Find the measure of ∠OCA.",
   "problem_img": "3341.png",
   "construction_cdl": [
     "Shape(AC,OCA)",
@@ -16,10 +16,10 @@
     "Cocircular(O,ADEC)"
   ],
   "text_cdl": [
-    "IsDiameterOfCircle(CD,O)",
+    "Equal(MeasureOfAngle(ODE),50)",
     "IsCentreOfCircle(O,O)",
-    "ParallelBetweenLine(AO,DE)",
-    "Equal(MeasureOfAngle(ODE),50)"
+    "IsDiameterOfCircle(CD,O)",
+    "ParallelBetweenLine(AO,DE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(OCA))",
@@ -29,7 +29,7 @@
     "arc_property_center_angle(1,OAD,O)",
     "arc_property_circumference_angle_external(1,OAD,C)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_alternate_interior_angle(2,AO,DE)",
       "arc_property_center_angle(1,OAD,O)",

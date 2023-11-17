@@ -2,9 +2,9 @@
   "problem_id": 5356,
   "annotation": "QikeHuang_2023-05-21",
   "source": "GeoQA-5621",
-  "problem_level": 1,
-  "problem_text_cn": "如图,A,B,C是⊙O上的三点,AB,AC的圆心O的两侧,若∠ABO=20°,∠ACO=30°,则∠BOC的度数为()",
-  "problem_text_en": "As shown in the figure, A, B, C are the three points on ⊙O, AB, AC are on the both sides of the center O, if ∠ABO = N_0, ∠ACO = N_1, then the degree of ∠BOC is ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，∠ABO=20°，∠OCA=30°，圆O的圆心为O。求∠COB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABO=20°, ∠OCA=30°, the center of ⊙O is O. Find the measure of ∠COB.",
   "problem_img": "5356.png",
   "construction_cdl": [
     "Shape(OAB,BA)",
@@ -15,9 +15,9 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfAngle(ABO),20)",
-    "Equal(MeasureOfAngle(OCA),30)"
+    "Equal(MeasureOfAngle(OCA),30)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(COB))",
@@ -34,7 +34,15 @@
     "arc_property_circumference_angle_external(1,OBC,A)",
     "arc_property_center_angle(1,OBC,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "angle_addition(1,CAO,OAB)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "arc_property_circumference_angle_external(1,OBC,A)",
+      "arc_property_center_angle(1,OBC,O)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OAB)",
       "isosceles_triangle_judgment_line_equal(1,OCA)"
@@ -50,14 +58,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OCA)": [
       "isosceles_triangle_property_angle_equal(1,OCA)"
-    ],
-    "START": [
-      "angle_addition(1,CAO,OAB)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "arc_property_circumference_angle_external(1,OBC,A)",
-      "arc_property_center_angle(1,OBC,O)"
     ]
   }
 }

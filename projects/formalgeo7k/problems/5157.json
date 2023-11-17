@@ -2,9 +2,9 @@
   "problem_id": 5157,
   "annotation": "JiaZou_2023-05-21",
   "source": "GeoQA-5093",
-  "problem_level": 1,
-  "problem_text_cn": "如图⊙O中,直径AB垂直于弦CD,垂足为P．若CD=8,OP=3,则半径为()",
-  "problem_text_en": "As shown in figure, in ⊙O, the diameter AB is perpendicular to the chord CD, and the vertical foot is P. If CD = N_0, OP = N_1, then the radius is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，CD=8，OP=3，⊙O的圆心为O，AB是⊙O的直径，OP⊥CP。求⊙O的半径。",
+  "problem_text_en": "As shown in the diagram, CD=8, OP=3, O is the center of ⊙O, the diameter of ⊙O is AB, OP⊥CP. Find the radius of ⊙O.",
   "problem_img": "5157.png",
   "construction_cdl": [
     "Shape(AO,OC,OCA)",
@@ -17,10 +17,10 @@
     "Cocircular(O,ADBC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(AB,O)",
     "Equal(LengthOfLine(CD),8)",
     "Equal(LengthOfLine(OP),3)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)",
     "PerpendicularBetweenLine(OP,CP)"
   ],
   "image_cdl": [],
@@ -34,18 +34,18 @@
     "right_triangle_property_pythagorean(1,OPC)",
     "radius_of_circle_property_length_equal(1,OC,O)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,DPO,OPC)": [
-      "circle_property_chord_perpendicular_bisect_chord(1,O,OP,DC)"
-    ],
-    "right_triangle_judgment_angle(1,OPC)": [
-      "right_triangle_property_pythagorean(1,OPC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,DPO,OPC)",
       "line_addition(1,DP,PC)",
       "right_triangle_judgment_angle(1,OPC)",
       "radius_of_circle_property_length_equal(1,OC,O)"
+    ],
+    "adjacent_complementary_angle(1,DPO,OPC)": [
+      "circle_property_chord_perpendicular_bisect_chord(1,O,OP,DC)"
+    ],
+    "right_triangle_judgment_angle(1,OPC)": [
+      "right_triangle_property_pythagorean(1,OPC)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 1829,
   "annotation": "ChenyangMao_2023-04-16",
   "source": "Geometry3k-1897",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If A C = 14, B C = 8, and A D = 21, find E D.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AC=14，AD=21，BC=8，EB∥DC。求直线ED的长度。",
+  "problem_text_en": "As shown in the diagram, AC=14, AD=21, BC=8, EB∥DC. Find the length of line ED.",
   "problem_img": "1829.png",
   "construction_cdl": [
     "Shape(BA,AE,EB)",
@@ -14,8 +14,9 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(AC),14)",
+    "Equal(LengthOfLine(AD),21)",
     "Equal(LengthOfLine(BC),8)",
-    "Equal(LengthOfLine(AD),21)"
+    "ParallelBetweenLine(EB,DC)"
   ],
   "image_cdl": [
     "ParallelBetweenLine(EB,DC)"
@@ -30,18 +31,18 @@
     "similar_triangle_property_line_ratio(1,EBA,DCA)",
     "similar_triangle_property_line_ratio(1,BAE,CAD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AB,BC)",
+      "line_addition(1,AE,ED)",
+      "parallel_property_corresponding_angle(2,CD,BE,A)"
+    ],
     "parallel_property_corresponding_angle(2,CD,BE,A)": [
       "similar_triangle_judgment_aa(1,EBA,DCA)"
     ],
     "similar_triangle_judgment_aa(1,EBA,DCA)": [
       "similar_triangle_property_line_ratio(1,EBA,DCA)",
       "similar_triangle_property_line_ratio(1,BAE,CAD)"
-    ],
-    "START": [
-      "line_addition(1,AB,BC)",
-      "line_addition(1,AE,ED)",
-      "parallel_property_corresponding_angle(2,CD,BE,A)"
     ]
   }
 }

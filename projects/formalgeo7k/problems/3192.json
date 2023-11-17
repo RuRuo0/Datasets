@@ -2,9 +2,9 @@
   "problem_id": 3192,
   "annotation": "NaZhu_2023-04-23",
   "source": "GeoQA-479",
-  "problem_level": 1,
-  "problem_text_cn": "如图,直线a∥b,点B在直线b上,且AB⊥BC,∠1=55°,则∠2的度数为()",
-  "problem_text_en": "As shown in the figure, the straight line a ∥ b, the point B is on the straight line b, and AB ⊥ BC, ∠1 = N_0, then the degree of ∠2 is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠MBA=55°，PQ∥MN，AB垂直于CB。求∠FCQ的大小。",
+  "problem_text_en": "As shown in the diagram, ∠MBA=55°, PQ∥MN, AB is perpendicular to CB. Find the measure of ∠FCQ.",
   "problem_img": "3192.png",
   "construction_cdl": [
     "Shape(AB,BC,CA)",
@@ -22,9 +22,9 @@
     "Collinear(FCB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(MBA),55)",
     "ParallelBetweenLine(PQ,MN)",
-    "PerpendicularBetweenLine(AB,CB)",
-    "Equal(MeasureOfAngle(MBA),55)"
+    "PerpendicularBetweenLine(AB,CB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(FCQ))",
@@ -37,7 +37,12 @@
     "triangle_property_angle_sum(1,ABC)",
     "vertical_angle(1,FCQ,BCP)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,PQ,MN,C)",
+      "triangle_property_angle_sum(1,ABC)",
+      "vertical_angle(1,FCQ,BCP)"
+    ],
     "parallel_property_collinear_extend(3,PQ,MN,C)": [
       "parallel_property_collinear_extend(1,CQ,MN,A)"
     ],
@@ -46,11 +51,6 @@
     ],
     "parallel_property_collinear_extend(3,NM,CA,B)": [
       "parallel_property_alternate_interior_angle(1,AC,MB)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,PQ,MN,C)",
-      "triangle_property_angle_sum(1,ABC)",
-      "vertical_angle(1,FCQ,BCP)"
     ]
   }
 }

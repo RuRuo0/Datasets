@@ -2,9 +2,9 @@
   "problem_id": 1522,
   "annotation": "QikeHuang_2023-04-16",
   "source": "Geometry3k-1580",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x. Assume that segments that appear to be tangent are tangent.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠ABC=35°，弧DAC的角度为x，D是⊙D的圆心，圆O的切线为BA，BC是⊙O的切线。求x的值。",
+  "problem_text_en": "As shown in the diagram, ∠ABC=35°, the measure of arc DAC is x, D is the center of circle D, BA is the tangent to ⊙D, BC is the tangent to circle D. Find the value of x.",
   "problem_img": "1522.png",
   "construction_cdl": [
     "Shape(DC,DCA,AD)",
@@ -12,7 +12,13 @@
     "Shape(BC,DAC,AB)",
     "Cocircular(D,CA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(ABC),35)",
+    "Equal(MeasureOfArc(DAC),x)",
+    "IsCentreOfCircle(D,D)",
+    "IsTangentOfCircle(BA,D)",
+    "IsTangentOfCircle(BC,D)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(D,D)",
     "IsTangentOfCircle(BC,D)",
@@ -28,7 +34,7 @@
     "quadrilateral_property_angle_sum(1,CDAB)",
     "arc_property_center_angle(1,DAC,D)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(1,BA,D,D)",
       "tangent_of_circle_property_perpendicular(2,BC,D,D)",

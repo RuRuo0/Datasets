@@ -2,9 +2,9 @@
   "problem_id": 4306,
   "annotation": "DengfengYue_2023-05-07",
   "source": "GeoQA-3135",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,C是⊙O上的一点,OD⊥BC于点D,AC=6,则OD的长为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, C is a point on ⊙O, OD ⊥ BC at point D, AC = N_0, then the length of OD is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AC=6，∠BDO=90°，O是圆O的圆心。求直线OD的长度。",
+  "problem_text_en": "As shown in the diagram, AC=6, ∠BDO=90°, O is the center of circle O. Find the length of line OD.",
   "problem_img": "4306.png",
   "construction_cdl": [
     "Shape(AC,OCA)",
@@ -33,7 +33,12 @@
     "midsegment_of_triangle_judgment_parallel(2,DO,BCA)",
     "midsegment_of_triangle_property_length(1,DO,BCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)"
+    ],
     "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
       "diameter_of_circle_property_right_angle(1,BCA,O)"
     ],
@@ -51,11 +56,6 @@
     ],
     "midsegment_of_triangle_judgment_parallel(2,DO,BCA)": [
       "midsegment_of_triangle_property_length(1,DO,BCA)"
-    ],
-    "START": [
-      "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)"
     ]
   }
 }

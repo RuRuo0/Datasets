@@ -2,16 +2,23 @@
   "problem_id": 446,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-456",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x. A = 177 cm^2.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，BDAC的面积为177，AD=11，AE=13，BC=x，AE⊥BE，BDAC是梯形。求x的值。",
+  "problem_text_en": "As shown in the diagram, the area of quadrilateral BDAC is 177, AD=11, AE=13, BC=x, AE⊥BE, BC and DA are the parallel sides of trapezoid BDAC. Find the value of x.",
   "problem_img": "446.png",
   "construction_cdl": [
     "Shape(BD,DA,AE,EB)",
     "Shape(EA,AC,CE)",
     "Collinear(BEC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(AreaOfQuadrilateral(BDAC),177)",
+    "Equal(LengthOfLine(AD),11)",
+    "Equal(LengthOfLine(AE),13)",
+    "Equal(LengthOfLine(BC),x)",
+    "PerpendicularBetweenLine(AE,BE)",
+    "Trapezoid(BDAC)"
+  ],
   "image_cdl": [
     "Trapezoid(BDAC)",
     "Equal(AreaOfQuadrilateral(BDAC),177)",
@@ -27,13 +34,13 @@
     "altitude_of_quadrilateral_judgment_left_vertex(2,AE,ACBD)",
     "trapezoid_area_formula(1,ACBD)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,CEA,AEB)": [
-      "altitude_of_quadrilateral_judgment_left_vertex(2,AE,ACBD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,CEA,AEB)",
       "trapezoid_area_formula(1,ACBD)"
+    ],
+    "adjacent_complementary_angle(1,CEA,AEB)": [
+      "altitude_of_quadrilateral_judgment_left_vertex(2,AE,ACBD)"
     ]
   }
 }

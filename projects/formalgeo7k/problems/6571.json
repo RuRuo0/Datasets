@@ -2,20 +2,20 @@
   "problem_id": 6571,
   "annotation": "XiaokaiZhang_2023-06-04",
   "source": "GeoQA-9528",
-  "problem_level": 1,
-  "problem_text_cn": "如图,DC∥AB,∠BAE=∠BCD,AE⊥DE,∠C=130°,则∠D的度数是()",
-  "problem_text_en": "As shown in the figure, DC ∥ AB, ∠BAE = ∠BCD, AE ⊥ DE, ∠C = N_0, then the degree of ∠D is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠FCD=130°，∠FCD=∠EAB，DC∥EF，EF∥AB，DE垂直于AE。求∠CDE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠FCD=130°, ∠FCD=∠EAB, DC∥EF, EF is parallel to AB, DE is perpendicular to AE. Find the measure of ∠CDE.",
   "problem_img": "6571.png",
   "construction_cdl": [
     "Shape(DE,EF,FC,CD)",
     "Shape(EA,AB,BF,FE)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(FCD),130)",
+    "Equal(MeasureOfAngle(FCD),MeasureOfAngle(EAB))",
     "ParallelBetweenLine(DC,EF)",
     "ParallelBetweenLine(EF,AB)",
-    "Equal(MeasureOfAngle(FCD),MeasureOfAngle(EAB))",
-    "PerpendicularBetweenLine(DE,AE)",
-    "Equal(MeasureOfAngle(FCD),130)"
+    "PerpendicularBetweenLine(DE,AE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CDE))",
@@ -27,7 +27,7 @@
     "angle_addition(1,DEF,FEA)",
     "quadrilateral_property_angle_sum(1,DEFC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_ipsilateral_internal_angle(1,FE,CD)",
       "parallel_property_ipsilateral_internal_angle(1,BA,FE)",

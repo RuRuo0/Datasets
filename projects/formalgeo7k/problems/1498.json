@@ -2,9 +2,9 @@
   "problem_id": 1498,
   "annotation": "QikeHuang_2023-04-16",
   "source": "Geometry3k-1554",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In \\odot O, E C and A B are diameters, and \\angle B O D \\cong \\angle D O E \\cong \\angle E O F \\cong \\angle F O A. Find m \\widehat E B.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠DOB=∠AOF，∠DOB=∠EOD，∠DOB=∠FOE，圆O的圆心为O，CO⊥AO。求⌒OBE的角度。",
+  "problem_text_en": "As shown in the diagram, ∠DOB=∠AOF, ∠DOB=∠EOD, ∠DOB=∠FOE, the center of ⊙O is O, CO⊥AO. Find the measure of arc OBE.",
   "problem_img": "1498.png",
   "construction_cdl": [
     "Shape(ODE,EO,OD)",
@@ -17,7 +17,13 @@
     "Collinear(EOC)",
     "Cocircular(O,ACBDEF)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(DOB),MeasureOfAngle(AOF))",
+    "Equal(MeasureOfAngle(DOB),MeasureOfAngle(EOD))",
+    "Equal(MeasureOfAngle(DOB),MeasureOfAngle(FOE))",
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(CO,AO)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfAngle(DOB),MeasureOfAngle(EOD))",
@@ -31,7 +37,7 @@
     "vertical_angle(1,EOB,COA)",
     "arc_property_center_angle(1,OBE,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "vertical_angle(1,EOB,COA)",
       "arc_property_center_angle(1,OBE,O)"

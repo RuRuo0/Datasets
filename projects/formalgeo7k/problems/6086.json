@@ -2,9 +2,9 @@
   "problem_id": 6086,
   "annotation": "RunanWang_2023-06-04",
   "source": "GeoQA-8607",
-  "problem_level": 1,
-  "problem_text_cn": "如图,A、D是⊙O上的两个点,BC是直径,AD⊥BC,若∠D=35°,则∠OAD等于()",
-  "problem_text_en": "As shown in the figure, A and D are two points on ⊙O, BC is the diameter, AD ⊥ BC, if ∠D = N_0, then ∠OAD is equal to ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠ADC=35°，⊙O的圆心为O，OP垂直于AP。求∠DAO的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ADC=35°, O is the center of circle O, OP⊥AP. Find the measure of ∠DAO.",
   "problem_img": "6086.png",
   "construction_cdl": [
     "Shape(OAB,BO,OA)",
@@ -18,7 +18,9 @@
     "Cocircular(O,ABDC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)"
+    "Equal(MeasureOfAngle(ADC),35)",
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(OP,AP)"
   ],
   "image_cdl": [
     "Equal(MeasureOfAngle(ADC),35)",
@@ -31,7 +33,7 @@
     "arc_property_circumference_angle_external(1,OCA,D)",
     "triangle_property_angle_sum(1,AOP)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,OCA,O)",
       "arc_property_circumference_angle_external(1,OCA,D)",

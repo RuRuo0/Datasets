@@ -2,9 +2,9 @@
   "problem_id": 6866,
   "annotation": "DengfengYue_2023-06-04",
   "source": "GeoQA-angle-10092",
-  "problem_level": 1,
-  "problem_text_cn": "如图，A，B，C是⊙O上的三个点，若∠B＝32°，则∠OAC＝（）",
-  "problem_text_en": "",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，∠ABD=32°，⊙O的圆心为O。求∠CAO的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABD=32°, O is the center of circle O. Find the measure of ∠CAO.",
   "problem_img": "6866.png",
   "construction_cdl": [
     "Shape(BA,OAB)",
@@ -18,8 +18,8 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "Equal(MeasureOfAngle(ABD),32)"
+    "Equal(MeasureOfAngle(ABD),32)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CAO))",
@@ -33,7 +33,14 @@
     "isosceles_triangle_property_angle_equal(1,OCA)",
     "triangle_property_angle_sum(1,CAO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_circumference_angle_external(1,OCA,B)",
+      "arc_property_center_angle(1,OCA,O)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "triangle_property_angle_sum(1,CAO)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "isosceles_triangle_judgment_line_equal(1,OCA)"
     ],
@@ -42,13 +49,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,OCA)": [
       "isosceles_triangle_property_angle_equal(1,OCA)"
-    ],
-    "START": [
-      "arc_property_circumference_angle_external(1,OCA,B)",
-      "arc_property_center_angle(1,OCA,O)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "triangle_property_angle_sum(1,CAO)"
     ]
   }
 }

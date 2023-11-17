@@ -2,9 +2,9 @@
   "problem_id": 2112,
   "annotation": "QikeHuang_2023-04-23",
   "source": "Geometry3k-2202",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the shaded region. Round to the nearest tenth.",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，MN=18，ON=18，F是⊙F的圆心，⊙F的直径为HJ，圆O的切线为NH，BO垂直于HO，GM垂直于JM，HN垂直于GN，JP垂直于BP。求ONMP的面积减去圆F的面积。",
+  "problem_text_en": "As shown in the diagram, MN=18, ON=18, F is the center of circle F, the diameter of ⊙F is HJ, NH is the tangent to circle F, BO⊥HO, GM is perpendicular to JM, HN is perpendicular to GN, JP⊥BP. Find the area of quadrilateral ONMP minus the area of the circle F.",
   "problem_img": "2112.png",
   "construction_cdl": [
     "Shape(OH,FBH,BO)",
@@ -20,7 +20,17 @@
     "Collinear(HFJ)",
     "Cocircular(F,BHGJ)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(MN),18)",
+    "Equal(LengthOfLine(ON),18)",
+    "IsCentreOfCircle(F,F)",
+    "IsDiameterOfCircle(HJ,F)",
+    "IsTangentOfCircle(NH,F)",
+    "PerpendicularBetweenLine(BO,HO)",
+    "PerpendicularBetweenLine(GM,JM)",
+    "PerpendicularBetweenLine(HN,GN)",
+    "PerpendicularBetweenLine(JP,BP)"
+  ],
   "image_cdl": [
     "IsDiameterOfCircle(HJ,F)",
     "IsCentreOfCircle(F,F)",
@@ -45,7 +55,15 @@
     "circle_area_formula(1,F)",
     "parallelogram_area_formula_sine(1,ONMP)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallelogram_judgment_angle_and_angle(1,ONMP)",
+      "tangent_of_circle_property_perpendicular(1,NH,F,F)",
+      "quadrilateral_property_angle_sum(1,HNMJ)",
+      "diameter_of_circle_property_length_equal(1,HJ,F)",
+      "circle_property_length_of_radius_and_diameter(1,F)",
+      "circle_area_formula(1,F)"
+    ],
     "parallelogram_judgment_angle_and_angle(1,ONMP)": [
       "parallelogram_area_formula_sine(1,ONMP)"
     ],
@@ -58,14 +76,6 @@
     ],
     "parallelogram_judgment_angle_and_angle(1,HNMJ)": [
       "parallelogram_property_opposite_line_equal(1,NMJH)"
-    ],
-    "START": [
-      "parallelogram_judgment_angle_and_angle(1,ONMP)",
-      "tangent_of_circle_property_perpendicular(1,NH,F,F)",
-      "quadrilateral_property_angle_sum(1,HNMJ)",
-      "diameter_of_circle_property_length_equal(1,HJ,F)",
-      "circle_property_length_of_radius_and_diameter(1,F)",
-      "circle_area_formula(1,F)"
     ]
   }
 }

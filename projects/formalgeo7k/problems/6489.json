@@ -2,9 +2,9 @@
   "problem_id": 6489,
   "annotation": "NaZhu_2023-06-04",
   "source": "GeoQA-9392",
-  "problem_level": 1,
-  "problem_text_cn": "如图,▱ABCD中,∠ABD=50°,AF⊥BC于F,AF交BD于E,点O是DE的中点,连接OA,若DE=2AB,则∠ADB的大小是()",
-  "problem_text_en": "As shown in the figure, in ▱ABCD, ∠ABD = N_0, AF ⊥ BC at F, AF crosses BD at E, point O is the midpoint of DE, connected to OA, if DE = 2 AB, then the size of ∠ADB is ()",
+  "problem_level": 12,
+  "problem_text_cn": "如图所示，DE=Mul(2,LengthOfLine(AB))，∠EBA=50°，O是线段DE的中点，ADCB是平行四边形，EF⊥BF。求∠ADO的大小。",
+  "problem_text_en": "As shown in the diagram, DE=Mul(2,LengthOfLine(AB)), ∠EBA=50°, O is the midpoint of segment DE, quadrilateral ADCB is a ▱, EF⊥BF. Find the measure of ∠ADO.",
   "problem_img": "6489.png",
   "construction_cdl": [
     "Shape(AD,DO,OA)",
@@ -18,11 +18,11 @@
     "Collinear(BFC)"
   ],
   "text_cdl": [
-    "Parallelogram(ADCB)",
+    "Equal(LengthOfLine(DE),Mul(2,LengthOfLine(AB)))",
     "Equal(MeasureOfAngle(EBA),50)",
-    "PerpendicularBetweenLine(EF,BF)",
     "IsMidpointOfLine(O,DE)",
-    "Equal(LengthOfLine(DE),Mul(2,LengthOfLine(AB)))"
+    "Parallelogram(ADCB)",
+    "PerpendicularBetweenLine(EF,BF)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(ADO))",
@@ -41,7 +41,14 @@
     "adjacent_complementary_angle(1,DOA,AOE)",
     "triangle_property_angle_sum(1,ADO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,BC,AD,F)",
+      "median_of_triangle_judgment(1,AO,ADE)",
+      "line_addition(1,DO,OE)",
+      "adjacent_complementary_angle(1,DOA,AOE)",
+      "triangle_property_angle_sum(1,ADO)"
+    ],
     "parallel_property_collinear_extend(3,BC,AD,F)": [
       "parallel_property_alternate_interior_angle(2,BF,AD)"
     ],
@@ -66,13 +73,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,AOB)": [
       "isosceles_triangle_property_angle_equal(1,AOB)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,BC,AD,F)",
-      "median_of_triangle_judgment(1,AO,ADE)",
-      "line_addition(1,DO,OE)",
-      "adjacent_complementary_angle(1,DOA,AOE)",
-      "triangle_property_angle_sum(1,ADO)"
     ]
   }
 }

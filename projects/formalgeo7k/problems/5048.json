@@ -2,9 +2,9 @@
   "problem_id": 5048,
   "annotation": "ChengQin_2023-05-21",
   "source": "GeoQA-4799",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC∽△AED,∠ADE=80°,∠A=60°,则∠B等于()",
-  "problem_text_en": "As shown in the figure, △ABC ∽ △AED, ∠ADE = N_0, ∠A = N_1, then ∠B is equal to ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠ADE=80°，∠EAD=60°，三角形ABC镜像相似于三角形ADE。求∠DBC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ADE=80°, ∠EAD=60°, Triangle ABC is mirror similar to triangle ADE.. Find the measure of ∠DBC.",
   "problem_img": "5048.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -13,9 +13,9 @@
     "Collinear(AEC)"
   ],
   "text_cdl": [
-    "MirrorSimilarBetweenTriangle(ABC,ADE)",
     "Equal(MeasureOfAngle(ADE),80)",
-    "Equal(MeasureOfAngle(EAD),60)"
+    "Equal(MeasureOfAngle(EAD),60)",
+    "MirrorSimilarBetweenTriangle(ABC,ADE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DBC))",
@@ -24,7 +24,7 @@
     "triangle_property_angle_sum(1,ADE)",
     "mirror_similar_triangle_property_angle_equal(1,BCA,EAD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,ADE)",
       "mirror_similar_triangle_property_angle_equal(1,BCA,EAD)"

@@ -2,9 +2,9 @@
   "problem_id": 2893,
   "annotation": "YimingHe_2023-04-16",
   "source": "GeoQA-61",
-  "problem_level": 1,
-  "problem_text_cn": "如图,把一块含有45°的直角三角形的两个顶点放在直尺的对边上．如果∠1=20°,那么∠2的度数是()",
-  "problem_text_en": "As shown in the figure, put the two vertices of a right triangle containing N_0 on the opposite sides of the ruler. If ∠1 = N_1, then the degree of ∠2 is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠ABD=20°，∠BAE=45°，CA平行于BD。求∠CAE的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABD=20°, ∠BAE=45°, CA∥BD. Find the measure of ∠CAE.",
   "problem_img": "2893.png",
   "construction_cdl": [
     "Shape(AB,BD)",
@@ -12,9 +12,9 @@
     "Shape(CA,AE)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(CA,BD)",
+    "Equal(MeasureOfAngle(ABD),20)",
     "Equal(MeasureOfAngle(BAE),45)",
-    "Equal(MeasureOfAngle(ABD),20)"
+    "ParallelBetweenLine(CA,BD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CAE))",
@@ -23,7 +23,7 @@
     "parallel_property_alternate_interior_angle(2,CA,BD)",
     "angle_addition(1,BAC,CAE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_alternate_interior_angle(2,CA,BD)",
       "angle_addition(1,BAC,CAE)"

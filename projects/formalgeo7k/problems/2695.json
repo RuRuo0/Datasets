@@ -2,9 +2,9 @@
   "problem_id": 2695,
   "annotation": "DengfengYue_2023-04-09",
   "source": "Geometry3k-2838",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If P R \\parallel K L, K N = 9, L N = 16, P M = 2 K P, find P R.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，KN=9，LN=16，PM=Mul(LengthOfLine(KP),2)，PR平行于KL，KN垂直于QN，RM垂直于PM。求直线PR的长度。",
+  "problem_text_en": "As shown in the diagram, KN=9, LN=16, PM=Mul(LengthOfLine(KP),2), PR is parallel to KL, KN is perpendicular to QN, RM is perpendicular to PM. Find the length of line PR.",
   "problem_img": "2695.png",
   "construction_cdl": [
     "Shape(LR,RQ,QN,NL)",
@@ -16,7 +16,14 @@
     "Collinear(LRM)",
     "Collinear(KPM)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(KN),9)",
+    "Equal(LengthOfLine(LN),16)",
+    "Equal(LengthOfLine(PM),Mul(LengthOfLine(KP),2))",
+    "ParallelBetweenLine(PR,KL)",
+    "PerpendicularBetweenLine(KN,QN)",
+    "PerpendicularBetweenLine(RM,PM)"
+  ],
   "image_cdl": [
     "ParallelBetweenLine(PR,KL)",
     "Equal(LengthOfLine(KN),9)",
@@ -36,7 +43,13 @@
     "similar_triangle_property_line_ratio(1,RMP,LMK)",
     "similar_triangle_property_line_ratio(1,MPR,MKL)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,LN,NK)",
+      "parallel_property_ipsilateral_internal_angle(1,LK,RP)",
+      "adjacent_complementary_angle(1,LRQ,QRM)",
+      "line_addition(1,KP,PM)"
+    ],
     "parallel_property_ipsilateral_internal_angle(1,LK,RP)": [
       "similar_triangle_judgment_aa(1,PRM,KLM)"
     ],
@@ -46,12 +59,6 @@
     "similar_triangle_judgment_aa(1,PRM,KLM)": [
       "similar_triangle_property_line_ratio(1,RMP,LMK)",
       "similar_triangle_property_line_ratio(1,MPR,MKL)"
-    ],
-    "START": [
-      "line_addition(1,LN,NK)",
-      "parallel_property_ipsilateral_internal_angle(1,LK,RP)",
-      "adjacent_complementary_angle(1,LRQ,QRM)",
-      "line_addition(1,KP,PM)"
     ]
   }
 }

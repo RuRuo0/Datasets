@@ -2,9 +2,9 @@
   "problem_id": 291,
   "annotation": "NaZhu_2023-03-12",
   "source": "Geometry3k-295",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AE=2*x+1，CD=DB，EB=3*x-5，CA垂直于EA，DE垂直于BE。求x的值。",
+  "problem_text_en": "As shown in the diagram, AE=2*x+1, CD=DB, EB=3*x-5, CA⊥EA, DE is perpendicular to BE. Find the value of x.",
   "problem_img": "291.png",
   "construction_cdl": [
     "Shape(BD,DE,EB)",
@@ -12,7 +12,13 @@
     "Collinear(CDB)",
     "Collinear(AEB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AE),2*x+1)",
+    "Equal(LengthOfLine(CD),LengthOfLine(DB))",
+    "Equal(LengthOfLine(EB),3*x-5)",
+    "PerpendicularBetweenLine(CA,EA)",
+    "PerpendicularBetweenLine(DE,BE)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(CD),LengthOfLine(DB))",
     "Equal(LengthOfLine(AE),2*x+1)",
@@ -31,7 +37,12 @@
     "similar_triangle_property_line_ratio(1,EBD,ABC)",
     "similar_triangle_property_line_ratio(1,DEB,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_judgment_corresponding_angle(2,AC,ED,B)",
+      "line_addition(1,BD,DC)",
+      "line_addition(1,BE,EA)"
+    ],
     "parallel_judgment_corresponding_angle(2,AC,ED,B)": [
       "parallel_property_corresponding_angle(1,DE,CA,B)"
     ],
@@ -41,11 +52,6 @@
     "similar_triangle_judgment_aa(1,EBD,ABC)": [
       "similar_triangle_property_line_ratio(1,EBD,ABC)",
       "similar_triangle_property_line_ratio(1,DEB,CAB)"
-    ],
-    "START": [
-      "parallel_judgment_corresponding_angle(2,AC,ED,B)",
-      "line_addition(1,BD,DC)",
-      "line_addition(1,BE,EA)"
     ]
   }
 }

@@ -2,16 +2,21 @@
   "problem_id": 890,
   "annotation": "XiaokaiZhang_2023-04-09",
   "source": "Geometry3k-919",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the value of x.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，弧ANX的长度为x，XA=3，∠XAN=78°，⊙A的圆心为A。求x的值。",
+  "problem_text_en": "As shown in the diagram, the length of ⌒ANX is x, XA=3, ∠XAN=78°, A is the center of circle A. Find the value of x.",
   "problem_img": "890.png",
   "construction_cdl": [
     "Shape(AN,ANX,XA)",
     "Shape(AX,AXN,NA)",
     "Cocircular(A,XN)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfArc(ANX),x)",
+    "Equal(LengthOfLine(XA),3)",
+    "Equal(MeasureOfAngle(XAN),78)",
+    "IsCentreOfCircle(A,A)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(A,A)",
     "Equal(MeasureOfAngle(XAN),78)",
@@ -25,7 +30,7 @@
     "arc_property_center_angle(1,ANX,A)",
     "arc_length_formula(1,ANX)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,AX,A)",
       "arc_property_center_angle(1,ANX,A)",

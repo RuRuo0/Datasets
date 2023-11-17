@@ -2,9 +2,9 @@
   "problem_id": 633,
   "annotation": "YimingHe_2023-04-09",
   "source": "Geometry3k-650",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Solve for x in the figure.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AC=4*x-2，EB=6*x-10，⌒DCA的角度为133，弧DEB的角度为133。求x的值。",
+  "problem_text_en": "As shown in the diagram, AC=4*x-2, EB=6*x-10, the measure of arc DCA is 133, the measure of arc DEB is 133. Find the value of x.",
   "problem_img": "633.png",
   "construction_cdl": [
     "Shape(AC,DCA)",
@@ -12,7 +12,12 @@
     "Shape(BE,DEB)",
     "Cocircular(D,AEBC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),4*x-2)",
+    "Equal(LengthOfLine(EB),6*x-10)",
+    "Equal(MeasureOfArc(DCA),133)",
+    "Equal(MeasureOfArc(DEB),133)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfArc(DEB),133)",
     "Equal(MeasureOfArc(DCA),133)",
@@ -25,12 +30,12 @@
     "congruent_arc_judgment_measure_equal(1,DEB,DCA)",
     "congruent_arc_property_chord_equal(1,DEB,DCA)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_measure_equal(1,DEB,DCA)": [
-      "congruent_arc_property_chord_equal(1,DEB,DCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "congruent_arc_judgment_measure_equal(1,DEB,DCA)"
+    ],
+    "congruent_arc_judgment_measure_equal(1,DEB,DCA)": [
+      "congruent_arc_property_chord_equal(1,DEB,DCA)"
     ]
   }
 }

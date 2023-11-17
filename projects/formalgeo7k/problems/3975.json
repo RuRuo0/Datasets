@@ -2,9 +2,9 @@
   "problem_id": 3975,
   "annotation": "ZheZhu_2023-04-30",
   "source": "GeoQA-1918",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,点C是⊙O上的一点,过点C作CD⊥AB于点D,若AB=10,BC=6,则CD的长为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, point C is a point on ⊙O, passing point C as CD ⊥ AB at point D, if AB = N_0, BC = N_1, then the length of CD is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=10，BC=6，O是⊙O的圆心，CD⊥BD。求直线CD的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, BC=6, O is the center of circle O, CD is perpendicular to BD. Find the length of line CD.",
   "problem_img": "3975.png",
   "construction_cdl": [
     "Shape(CA,AO,OD,DC)",
@@ -15,7 +15,12 @@
     "Collinear(AODB)",
     "Cocircular(O,BCA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),10)",
+    "Equal(LengthOfLine(BC),6)",
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(CD,BD)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(AB),10)",
@@ -33,7 +38,10 @@
     "mirror_similar_triangle_property_line_ratio(1,DBC,CAB)",
     "mirror_similar_triangle_property_line_ratio(1,BCD,BCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "diameter_of_circle_judgment_pass_centre(1,BOA,O)"
+    ],
     "diameter_of_circle_judgment_pass_centre(1,BOA,O)": [
       "diameter_of_circle_property_right_angle(1,BCA,O)"
     ],
@@ -47,9 +55,6 @@
     "mirror_similar_triangle_judgment_aa(1,CDB,ABC)": [
       "mirror_similar_triangle_property_line_ratio(1,DBC,CAB)",
       "mirror_similar_triangle_property_line_ratio(1,BCD,BCA)"
-    ],
-    "START": [
-      "diameter_of_circle_judgment_pass_centre(1,BOA,O)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 5674,
   "annotation": "NaZhu_2023-05-28",
   "source": "GeoQA-7377",
-  "problem_level": 1,
-  "problem_text_cn": "如图,Rt△ABC中,∠C=90°,∠A=30°,CD⊥AB于D,则△CBD与△ABC的周长比是()",
-  "problem_text_en": "As shown in the figure, in Rt△ABC, ∠C = N_0, ∠A = N_1, CD ⊥ AB to D, then the perimeter ratio of △CBD to △ABC is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠ADC=90°，∠CAD=30°，BC垂直于AC。求三角形CDB的周长与△ABC的周长之比。",
+  "problem_text_en": "As shown in the diagram, ∠ADC=90°, ∠CAD=30°, BC⊥AC. Find the ratio of the perimeter of triangle CDB to the perimeter of △ABC.",
   "problem_img": "5674.png",
   "construction_cdl": [
     "Shape(AD,DC,CA)",
@@ -26,17 +26,17 @@
     "mirror_similar_triangle_property_line_ratio(1,DBC,CAB)",
     "mirror_similar_triangle_property_perimeter_ratio(1,CDB,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "sine_theorem(1,BCA)",
+      "adjacent_complementary_angle(1,ADC,CDB)"
+    ],
     "adjacent_complementary_angle(1,ADC,CDB)": [
       "mirror_similar_triangle_judgment_aa(1,CDB,ABC)"
     ],
     "mirror_similar_triangle_judgment_aa(1,CDB,ABC)": [
       "mirror_similar_triangle_property_perimeter_ratio(1,CDB,ABC)",
       "mirror_similar_triangle_property_line_ratio(1,DBC,CAB)"
-    ],
-    "START": [
-      "sine_theorem(1,BCA)",
-      "adjacent_complementary_angle(1,ADC,CDB)"
     ]
   }
 }

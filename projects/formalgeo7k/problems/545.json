@@ -2,9 +2,9 @@
   "problem_id": 545,
   "annotation": "YimingHe_2023-04-02",
   "source": "Geometry3k-558",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "For the pair of similar figures, use the given areas to find x.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，ABLT的面积为147，四边形EGHD的面积为27，BC=14，EF=x，BC垂直于LC，EF⊥GF，四边形EGHD相似于四边形BLTA，三角形EFG相似于三角形BCL。求x的值。",
+  "problem_text_en": "As shown in the diagram, the area of ABLT is 147, the area of quadrilateral EGHD is 27, BC=14, EF=x, BC⊥LC, EF is perpendicular to GF, EGHD is similar to BLTA, △EFG is similar to △BCL.. Find the value of x.",
   "problem_img": "545.png",
   "construction_cdl": [
     "Shape(EF,FG,GE)",
@@ -13,8 +13,14 @@
     "Shape(BL,LT,TA,AB)"
   ],
   "text_cdl": [
-    "SimilarBetweenTriangle(EFG,BCL)",
-    "SimilarBetweenQuadrilateral(EGHD,BLTA)"
+    "Equal(AreaOfQuadrilateral(ABLT),147)",
+    "Equal(AreaOfQuadrilateral(EGHD),27)",
+    "Equal(LengthOfLine(BC),14)",
+    "Equal(LengthOfLine(EF),x)",
+    "PerpendicularBetweenLine(BC,LC)",
+    "PerpendicularBetweenLine(EF,GF)",
+    "SimilarBetweenQuadrilateral(EGHD,BLTA)",
+    "SimilarBetweenTriangle(EFG,BCL)"
   ],
   "image_cdl": [
     "PerpendicularBetweenLine(EF,GF)",
@@ -32,7 +38,7 @@
     "similar_triangle_property_line_ratio(1,FGE,CLB)",
     "similar_triangle_property_line_ratio(1,GEF,LBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "similar_quadrilateral_property_line_ratio(1,EGHD,BLTA)",
       "similar_quadrilateral_property_area_square_ratio(1,EGHD,BLTA)",

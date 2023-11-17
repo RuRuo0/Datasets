@@ -2,9 +2,9 @@
   "problem_id": 1493,
   "annotation": "QikeHuang_2023-04-16",
   "source": "Geometry3k-1549",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure, m \\angle 1 = 50 and m \\angle 3 = 60. Find the measure of \\angle 7.",
+  "problem_level": 18,
+  "problem_text_cn": "如图所示，∠AGK=60°，∠MJB=50°，HA平行于CG，MH平行于EL，WD平行于BT。求∠LNQ的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AGK=60°, ∠MJB=50°, HA∥CG, MH is parallel to EL, WD∥BT. Find the measure of ∠LNQ.",
   "problem_img": "1493.png",
   "construction_cdl": [
     "Shape(HC,CP,PN,NH)",
@@ -36,7 +36,13 @@
     "Collinear(ICPRGK)",
     "Collinear(HNQAU)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(AGK),60)",
+    "Equal(MeasureOfAngle(MJB),50)",
+    "ParallelBetweenLine(HA,CG)",
+    "ParallelBetweenLine(MH,EL)",
+    "ParallelBetweenLine(WD,BT)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(MJB),50)",
     "Equal(MeasureOfAngle(AGK),60)",
@@ -66,7 +72,16 @@
     "parallel_property_corresponding_angle(2,NA,PG,O)",
     "adjacent_complementary_angle(1,LNQ,QNP)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,WD,BT,O)",
+      "parallel_property_collinear_extend(3,MH,EL,S)",
+      "parallel_property_collinear_extend(3,HA,CG,N)",
+      "vertical_angle(1,AGK,FGR)",
+      "vertical_angle(1,MJB,SJF)",
+      "triangle_property_angle_sum(1,POR)",
+      "adjacent_complementary_angle(1,LNQ,QNP)"
+    ],
     "parallel_property_collinear_extend(3,WD,BT,O)": [
       "parallel_property_collinear_extend(3,OD,BT,R)"
     ],
@@ -97,15 +112,6 @@
     ],
     "parallel_property_collinear_extend(3,GC,AN,P)": [
       "parallel_property_corresponding_angle(2,NA,PG,O)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,WD,BT,O)",
-      "parallel_property_collinear_extend(3,MH,EL,S)",
-      "parallel_property_collinear_extend(3,HA,CG,N)",
-      "vertical_angle(1,AGK,FGR)",
-      "vertical_angle(1,MJB,SJF)",
-      "triangle_property_angle_sum(1,POR)",
-      "adjacent_complementary_angle(1,LNQ,QNP)"
     ]
   }
 }

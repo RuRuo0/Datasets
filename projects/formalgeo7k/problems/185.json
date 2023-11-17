@@ -2,9 +2,9 @@
   "problem_id": 185,
   "annotation": "XiaokaiZhang_2023-04-02",
   "source": "Geometry3k-187",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the shaded region.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AC=3，∠DAC=∠BAE，∠EAD=130°，A是⊙A的圆心。求扇形ACD的面积与扇形AEB的面积之和。",
+  "problem_text_en": "As shown in the diagram, AC=3, ∠DAC=∠BAE, ∠EAD=130°, the center of circle A is A. Find the sum of the area of the sector ACD and the area of the sector AEB.",
   "problem_img": "185.png",
   "construction_cdl": [
     "Shape(ACD,DA,AC)",
@@ -15,7 +15,12 @@
     "Collinear(DAB)",
     "Cocircular(A,CDEB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),3)",
+    "Equal(MeasureOfAngle(DAC),MeasureOfAngle(BAE))",
+    "Equal(MeasureOfAngle(EAD),130)",
+    "IsCentreOfCircle(A,A)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(A,A)",
     "Equal(LengthOfLine(AC),3)",
@@ -32,7 +37,7 @@
     "sector_area_formula(1,ACD)",
     "sector_area_formula(1,AEB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,BAE,EAD)",
       "radius_of_circle_property_length_equal(1,AC,A)",

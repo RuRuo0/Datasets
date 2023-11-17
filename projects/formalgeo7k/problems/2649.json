@@ -2,9 +2,9 @@
   "problem_id": 2649,
   "annotation": "DengfengYue_2023-04-23",
   "source": "Geometry3k-2785",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，∠ALH=110°，∠GAH=x°，∠JAK=97°，圆A的圆心为A。求x的值。",
+  "problem_text_en": "As shown in the diagram, ∠ALH=110°, ∠GAH=x°, ∠JAK=97°, the center of ⊙A is A. Find the value of x.",
   "problem_img": "2649.png",
   "construction_cdl": [
     "Shape(AK,KL,LA)",
@@ -16,7 +16,12 @@
     "Collinear(KLH)",
     "Cocircular(A,JHGK)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(ALH),110)",
+    "Equal(MeasureOfAngle(GAH),x)",
+    "Equal(MeasureOfAngle(JAK),97)",
+    "IsCentreOfCircle(A,A)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(A,A)",
     "Equal(MeasureOfAngle(ALH),110)",
@@ -37,16 +42,7 @@
     "flat_angle(1,GAL)",
     "angle_addition(1,GAH,HAL)"
   ],
-  "theorem_seq_dag": {
-    "radius_of_circle_property_length_equal(1,AK,A)": [
-      "isosceles_triangle_judgment_line_equal(1,AKH)"
-    ],
-    "radius_of_circle_property_length_equal(1,AH,A)": [
-      "isosceles_triangle_judgment_line_equal(1,AKH)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,AKH)": [
-      "isosceles_triangle_property_angle_equal(1,AKH)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,AK,A)",
       "radius_of_circle_property_length_equal(1,AH,A)",
@@ -56,6 +52,15 @@
       "triangle_property_angle_sum(1,ALH)",
       "flat_angle(1,GAL)",
       "angle_addition(1,GAH,HAL)"
+    ],
+    "radius_of_circle_property_length_equal(1,AK,A)": [
+      "isosceles_triangle_judgment_line_equal(1,AKH)"
+    ],
+    "radius_of_circle_property_length_equal(1,AH,A)": [
+      "isosceles_triangle_judgment_line_equal(1,AKH)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,AKH)": [
+      "isosceles_triangle_property_angle_equal(1,AKH)"
     ]
   }
 }

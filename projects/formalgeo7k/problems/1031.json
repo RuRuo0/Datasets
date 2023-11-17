@@ -2,14 +2,20 @@
   "problem_id": 1031,
   "annotation": "NaZhu_2023-03-19",
   "source": "Geometry3k-1064",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AB=y，AC=x，BC=7*sqrt(2)，∠CBA=45°，AC垂直于BC。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=y, AC=x, BC=7*sqrt(2), ∠CBA=45°, AC is perpendicular to BC. Find the value of x.",
   "problem_img": "1031.png",
   "construction_cdl": [
     "Shape(AC,CB,BA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),y)",
+    "Equal(LengthOfLine(AC),x)",
+    "Equal(LengthOfLine(BC),7*sqrt(2))",
+    "Equal(MeasureOfAngle(CBA),45)",
+    "PerpendicularBetweenLine(AC,BC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AC),x)",
     "Equal(LengthOfLine(BC),7*sqrt(2))",
@@ -24,7 +30,7 @@
     "sine_theorem(1,ACB)",
     "sine_theorem(1,BAC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,ACB)",
       "sine_theorem(1,ACB)",

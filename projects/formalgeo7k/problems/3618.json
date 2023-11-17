@@ -2,9 +2,9 @@
   "problem_id": 3618,
   "annotation": "QikeHuang_2023-04-30",
   "source": "GeoQA-1293",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,D、E分别是AB、AC边上的点,DE∥BC,∠ADE=35°,∠C=120°,则∠A为()",
-  "problem_text_en": "As shown in the figure, in △ABC, D and E are points on edges AB and AC respectively, DE ∥ BC, ∠ADE = N_0, ∠C = N_1, then ∠A is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠ADE=35°，∠BCA=120°，DE∥BC。求∠EAD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ADE=35°, ∠BCA=120°, DE is parallel to BC. Find the measure of ∠EAD.",
   "problem_img": "3618.png",
   "construction_cdl": [
     "Shape(EA,AD,DE)",
@@ -13,9 +13,9 @@
     "Collinear(ADB)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(DE,BC)",
     "Equal(MeasureOfAngle(ADE),35)",
-    "Equal(MeasureOfAngle(BCA),120)"
+    "Equal(MeasureOfAngle(BCA),120)",
+    "ParallelBetweenLine(DE,BC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(EAD))",
@@ -24,7 +24,7 @@
     "parallel_property_corresponding_angle(2,CB,ED,A)",
     "triangle_property_angle_sum(1,ADE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_corresponding_angle(2,CB,ED,A)",
       "triangle_property_angle_sum(1,ADE)"

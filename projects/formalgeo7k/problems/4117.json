@@ -2,9 +2,9 @@
   "problem_id": 4117,
   "annotation": "QikeHuang_2023-05-07",
   "source": "GeoQA-2583",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在Rt△ABC中,∠ACB=90°,CD⊥AB于点D,BC=3,AC=4,则sin∠DCB的值为()",
-  "problem_text_en": "As shown in the figure, in Rt△ABC, ∠ACB = N_0, CD ⊥ AB at point D, BC = N_1, AC = N_2, then the value of sin∠DCB is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AC=4，BC=3，∠BCA=90°，AD垂直于CD。求sin(BC)的值。",
+  "problem_text_en": "As shown in the diagram, AC=4, BC=3, ∠BCA=90°, AD is perpendicular to CD. Find the value of sin(BC).",
   "problem_img": "4117.png",
   "construction_cdl": [
     "Shape(CA,AD,DC)",
@@ -12,8 +12,8 @@
     "Collinear(ADB)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(BC),3)",
     "Equal(LengthOfLine(AC),4)",
+    "Equal(LengthOfLine(BC),3)",
     "Equal(MeasureOfAngle(BCA),90)",
     "PerpendicularBetweenLine(AD,CD)"
   ],
@@ -29,10 +29,7 @@
     "sine_theorem(1,BCA)",
     "triangle_property_angle_sum(1,CDB)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,BCA)": [
-      "right_triangle_property_pythagorean(1,BCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,BCA)",
       "sine_theorem(1,CAD)",
@@ -40,6 +37,9 @@
       "sine_theorem(1,ABC)",
       "sine_theorem(1,BCA)",
       "triangle_property_angle_sum(1,CDB)"
+    ],
+    "right_triangle_judgment_angle(1,BCA)": [
+      "right_triangle_property_pythagorean(1,BCA)"
     ]
   }
 }

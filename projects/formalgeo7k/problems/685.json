@@ -2,9 +2,9 @@
   "problem_id": 685,
   "annotation": "YimingHe_2023-03-12",
   "source": "Geometry3k-702",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If W Z = 25.3, Y Z = 22.4, find X Y.",
+  "problem_level": 0,
+  "problem_text_cn": "如图所示，WZ=25，XY=YZ，YZ=22，WY垂直于XY。求直线XY的长度。",
+  "problem_text_en": "As shown in the diagram, WZ=25, XY=YZ, YZ=22, WY⊥XY. Find the length of line XY.",
   "problem_img": "685.png",
   "construction_cdl": [
     "Shape(XW,WY,YX)",
@@ -13,7 +13,12 @@
     "Collinear(XYZ)",
     "Collinear(WYT)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(WZ),25)",
+    "Equal(LengthOfLine(XY),LengthOfLine(YZ))",
+    "Equal(LengthOfLine(YZ),22)",
+    "PerpendicularBetweenLine(WY,XY)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(WZ),25)",
     "Equal(LengthOfLine(YZ),22)",
@@ -23,5 +28,7 @@
   "goal_cdl": "Value(LengthOfLine(XY))",
   "problem_answer": "22",
   "theorem_seqs": [],
-  "theorem_seq_dag": {}
+  "theorem_seqs_dag": {
+    "START": []
+  }
 }

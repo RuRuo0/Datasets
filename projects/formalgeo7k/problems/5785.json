@@ -2,9 +2,9 @@
   "problem_id": 5785,
   "annotation": "YanjunGuo_2023-05-28",
   "source": "GeoQA-7697",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC内接于⊙O,E是AC上一点,EF⊥AB于点F,且\\frac{AE}{EF}=\\frac{3}{4},BC=10,则BC的弦心距OD等于()",
-  "problem_text_en": "As shown in the figure, △ABC is inscribed to ⊙O, E is a point on AC, EF ⊥ AB at point F, and \\frac{AE}{EF}=\\frac{N_0}{N_1},BC=N_2, then the distance from the chord BC to the centre OD is equal to ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，Div(LengthOfLine(AE)=LengthOfLine(EF))，BC=10，∠CAB=∠DOB，O是圆O的圆心，AE⊥FE，BD垂直于OD。求直线OD的长度。",
+  "problem_text_en": "As shown in the diagram, Div(LengthOfLine(AE)=LengthOfLine(EF)), BC=10, ∠CAB=∠DOB, O is the center of ⊙O, AE⊥FE, BD is perpendicular to OD. Find the length of line OD.",
   "problem_img": "5785.png",
   "construction_cdl": [
     "Shape(AE,EF,FA)",
@@ -20,12 +20,12 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
+    "Equal(Div(LengthOfLine(AE),LengthOfLine(EF)),3/4)",
     "Equal(LengthOfLine(BC),10)",
     "Equal(MeasureOfAngle(CAB),MeasureOfAngle(DOB))",
-    "Equal(Div(LengthOfLine(AE),LengthOfLine(EF)),3/4)",
-    "PerpendicularBetweenLine(BD,OD)",
+    "IsCentreOfCircle(O,O)",
     "PerpendicularBetweenLine(AE,FE)",
-    "IsCentreOfCircle(O,O)"
+    "PerpendicularBetweenLine(BD,OD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(OD))",
@@ -37,15 +37,15 @@
     "mirror_similar_triangle_property_line_ratio(1,BDO,FAE)",
     "mirror_similar_triangle_property_line_ratio(1,OBD,AEF)"
   ],
-  "theorem_seq_dag": {
-    "mirror_similar_triangle_judgment_aa(1,BDO,FAE)": [
-      "mirror_similar_triangle_property_line_ratio(1,BDO,FAE)",
-      "mirror_similar_triangle_property_line_ratio(1,OBD,AEF)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "circle_property_chord_perpendicular_bisect_chord(1,O,OD,BC)",
       "line_addition(1,BD,DC)",
       "mirror_similar_triangle_judgment_aa(1,BDO,FAE)"
+    ],
+    "mirror_similar_triangle_judgment_aa(1,BDO,FAE)": [
+      "mirror_similar_triangle_property_line_ratio(1,BDO,FAE)",
+      "mirror_similar_triangle_property_line_ratio(1,OBD,AEF)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 4728,
   "annotation": "XiaoxiaoJin_2023-05-14",
   "source": "GeoQA-4062",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC内接于⊙O,MN切⊙O于点A,若∠BAN=50°,则∠ACB的度数为()",
-  "problem_text_en": "As shown in the figure, △ABC is inscribed to ⊙O, MN is tangent to ⊙O at point A, if ∠BAN = N_0, then the degree of ∠ACB is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠BAN=50°，O是⊙O的圆心，圆O的直径为AD，圆O的切线为NA。求∠BCA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BAN=50°, O is the center of circle O, the diameter of circle O is AD, the tangent to circle O is NA. Find the measure of ∠BCA.",
   "problem_img": "4728.png",
   "construction_cdl": [
     "Shape(CA,AO,OE,EC)",
@@ -19,10 +19,10 @@
     "Cocircular(O,ABDC)"
   ],
   "text_cdl": [
-    "IsTangentOfCircle(NA,O)",
-    "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfAngle(BAN),50)",
-    "IsDiameterOfCircle(AD,O)"
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AD,O)",
+    "IsTangentOfCircle(NA,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BCA))",
@@ -31,7 +31,7 @@
     "arc_property_circumference_angle_external(1,OAB,C)",
     "circle_property_angle_of_osculation(1,OAB,N)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_circumference_angle_external(1,OAB,C)",
       "circle_property_angle_of_osculation(1,OAB,N)"

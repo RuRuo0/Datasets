@@ -2,9 +2,9 @@
   "problem_id": 3232,
   "annotation": "NaZhu_2023-04-23",
   "source": "GeoQA-531",
-  "problem_level": 1,
-  "problem_text_cn": "如图,∠1+∠2=180°,∠3=108°,则∠4的度数是()",
-  "problem_text_en": "As shown in the figure, ∠1 + ∠2 = N_0, ∠3 = N_1, then the degree of ∠4 is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，Add(MeasureOfAngle(EMP)=MeasureOfAngle(QNF))，∠MPG=108°。求∠PQD的大小。",
+  "problem_text_en": "As shown in the diagram, Add(MeasureOfAngle(EMP)=MeasureOfAngle(QNF)), ∠MPG=108°. Find the measure of ∠PQD.",
   "problem_img": "3232.png",
   "construction_cdl": [
     "Shape(MN,NQ,QP,PM)",
@@ -45,7 +45,12 @@
     "parallel_property_ipsilateral_internal_angle(1,PB,QD)",
     "vertical_angle(1,MPG,BPQ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "flat_angle(1,EMN)",
+      "angle_addition(1,EMP,PMN)",
+      "vertical_angle(1,MPG,BPQ)"
+    ],
     "flat_angle(1,EMN)": [
       "parallel_judgment_corresponding_angle(2,MP,NQ,F)"
     ],
@@ -60,11 +65,6 @@
     ],
     "parallel_property_collinear_extend(2,MP,QD,B)": [
       "parallel_property_ipsilateral_internal_angle(1,PB,QD)"
-    ],
-    "START": [
-      "flat_angle(1,EMN)",
-      "angle_addition(1,EMP,PMN)",
-      "vertical_angle(1,MPG,BPQ)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 5167,
   "annotation": "JiaZou_2023-05-21",
   "source": "GeoQA-5120",
-  "problem_level": 1,
-  "problem_text_cn": "已知⊙O的半径为2,AB是它的一条弦,以OA,OB为邻边作平行四边形OAPB,若点P在⊙O上,则弦长AB为()",
-  "problem_text_en": "Given that the radius of ⊙O is N_0, AB is one of its chords, take OA and OB as the adjacent sides to make a parallelogram OAPB, if the point P is on ⊙O, then the length of the chord AB is ()",
+  "problem_level": 12,
+  "problem_text_cn": "如图所示，⊙O的半径为2，O是圆O的圆心，OAPB是▱。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, the radius of circle O is 2, O is the center of circle O, OAPB is a ▱. Find the length of line AB.",
   "problem_img": "5167.png",
   "construction_cdl": [
     "Shape(OA,AC,CO)",
@@ -19,9 +19,9 @@
     "Cocircular(O,APB)"
   ],
   "text_cdl": [
-    "Parallelogram(OAPB)",
+    "Equal(RadiusOfCircle(O),2)",
     "IsCentreOfCircle(O,O)",
-    "Equal(RadiusOfCircle(O),2)"
+    "Parallelogram(OAPB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AB))",
@@ -40,7 +40,17 @@
     "right_triangle_property_pythagorean(1,ACO)",
     "line_addition(1,AC,CB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "radius_of_circle_property_length_equal(1,OP,O)",
+      "parallelogram_property_opposite_line_equal(1,OAPB)",
+      "parallelogram_property_opposite_line_equal(1,APBO)",
+      "parallelogram_property_diagonal_bisection(1,OAPB,C)",
+      "line_addition(1,OC,CP)",
+      "line_addition(1,AC,CB)"
+    ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
       "kite_judgment_equal_and_equal(1,OAPB)",
       "kite_judgment_equal_and_equal(1,OAPB)"
@@ -63,16 +73,6 @@
     ],
     "right_triangle_judgment_angle(1,ACO)": [
       "right_triangle_property_pythagorean(1,ACO)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "radius_of_circle_property_length_equal(1,OP,O)",
-      "parallelogram_property_opposite_line_equal(1,OAPB)",
-      "parallelogram_property_opposite_line_equal(1,APBO)",
-      "parallelogram_property_diagonal_bisection(1,OAPB,C)",
-      "line_addition(1,OC,CP)",
-      "line_addition(1,AC,CB)"
     ]
   }
 }

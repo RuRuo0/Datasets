@@ -2,9 +2,9 @@
   "problem_id": 4327,
   "annotation": "ZheZhu_2023-05-07",
   "source": "GeoQA-3180",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在⊙A中,已知弦BC=8,DE=6,∠BAC+∠EAD=180°,则⊙A的半径长为()",
-  "problem_text_en": "As shown in the figure, in ⊙A, the known chord BC = N_0, DE = N_1, ∠BAC + ∠EAD = N_2, then the radius of ⊙A is ()",
+  "problem_level": 12,
+  "problem_text_cn": "如图所示，Add(MeasureOfAngle(BAC)=MeasureOfAngle(DAE))，BC=8，DE=6，⊙A的圆心为A，⊙A的直径为CF。求直线AC的长度。",
+  "problem_text_en": "As shown in the diagram, Add(MeasureOfAngle(BAC)=MeasureOfAngle(DAE)), BC=8, DE=6, the center of ⊙A is A, CF is the diameter of circle A. Find the length of line AC.",
   "problem_img": "4327.png",
   "construction_cdl": [
     "Shape(AC,CB,BA)",
@@ -19,11 +19,11 @@
     "Cocircular(A,CBFED)"
   ],
   "text_cdl": [
-    "IsDiameterOfCircle(CF,A)",
-    "IsCentreOfCircle(A,A)",
+    "Equal(Add(MeasureOfAngle(BAC),MeasureOfAngle(DAE)),180)",
     "Equal(LengthOfLine(BC),8)",
     "Equal(LengthOfLine(DE),6)",
-    "Equal(Add(MeasureOfAngle(BAC),MeasureOfAngle(DAE)),180)"
+    "IsCentreOfCircle(A,A)",
+    "IsDiameterOfCircle(CF,A)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AC))",
@@ -42,7 +42,17 @@
     "circle_property_length_of_radius_and_diameter(1,A)",
     "radius_of_circle_property_length_equal(1,AC,A)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "flat_angle(1,FAC)",
+      "angle_addition(1,FAB,BAC)",
+      "arc_property_center_angle(1,ABF,A)",
+      "arc_property_center_angle(1,AED,A)",
+      "diameter_of_circle_property_right_angle(1,CBF,A)",
+      "diameter_of_circle_property_length_equal(1,CF,A)",
+      "circle_property_length_of_radius_and_diameter(1,A)",
+      "radius_of_circle_property_length_equal(1,AC,A)"
+    ],
     "flat_angle(1,FAC)": [
       "congruent_arc_judgment_measure_equal(1,ABF,AED)"
     ],
@@ -63,16 +73,6 @@
     ],
     "right_triangle_judgment_angle(1,CBF)": [
       "right_triangle_property_pythagorean(1,CBF)"
-    ],
-    "START": [
-      "flat_angle(1,FAC)",
-      "angle_addition(1,FAB,BAC)",
-      "arc_property_center_angle(1,ABF,A)",
-      "arc_property_center_angle(1,AED,A)",
-      "diameter_of_circle_property_right_angle(1,CBF,A)",
-      "diameter_of_circle_property_length_equal(1,CF,A)",
-      "circle_property_length_of_radius_and_diameter(1,A)",
-      "radius_of_circle_property_length_equal(1,AC,A)"
     ]
   }
 }

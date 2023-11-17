@@ -2,9 +2,9 @@
   "problem_id": 6041,
   "annotation": "ChenyangMao_2023-05-28",
   "source": "GeoQA-8539",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点A、B、C在⊙O上,∠ABO=30°,∠ACO=45°,则∠BOC等于()",
-  "problem_text_en": "As shown in the figure, vertices A, B, and C are on ⊙O, ∠ABO = N_0, ∠ACO = N_1, then ∠BOC is equal to ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠ACO=45°，∠OBA=30°，圆O的圆心为O。求∠BOC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ACO=45°, ∠OBA=30°, the center of circle O is O. Find the measure of ∠BOC.",
   "problem_img": "6041.png",
   "construction_cdl": [
     "Shape(AC,CO,OB,BA)",
@@ -14,9 +14,9 @@
     "Cocircular(O,ACB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfAngle(ACO),45)",
-    "Equal(MeasureOfAngle(OBA),30)"
+    "Equal(MeasureOfAngle(OBA),30)",
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BOC))",
@@ -27,7 +27,7 @@
     "arc_property_center_angle(1,OCB,O)",
     "quadrilateral_property_angle_sum(1,ACOB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "round_angle(1,BOC,COB)",
       "arc_property_circumference_angle_external(1,OCB,A)",

@@ -2,9 +2,9 @@
   "problem_id": 773,
   "annotation": "YimingHe_2023-03-12",
   "source": "Geometry3k-798",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，PQ=6-x，QS=3+x，RQ=6+x，TQ=3，TP∥RS。求x的值。",
+  "problem_text_en": "As shown in the diagram, PQ=6-x, QS=3+x, RQ=6+x, TQ=3, TP∥RS. Find the value of x.",
   "problem_img": "773.png",
   "construction_cdl": [
     "Shape(PT,TQ,QP)",
@@ -12,7 +12,13 @@
     "Collinear(PQR)",
     "Collinear(TQS)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(PQ),6-x)",
+    "Equal(LengthOfLine(QS),3+x)",
+    "Equal(LengthOfLine(RQ),6+x)",
+    "Equal(LengthOfLine(TQ),3)",
+    "ParallelBetweenLine(TP,RS)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(QS),3+x)",
     "Equal(LengthOfLine(PQ),6-x)",
@@ -29,7 +35,11 @@
     "similar_triangle_property_line_ratio(1,TQP,SQR)",
     "similar_triangle_property_line_ratio(1,PTQ,RSQ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_alternate_interior_angle(1,TP,RS)",
+      "parallel_property_alternate_interior_angle(2,TP,RS)"
+    ],
     "parallel_property_alternate_interior_angle(1,TP,RS)": [
       "similar_triangle_judgment_aa(1,QPT,QRS)"
     ],
@@ -39,10 +49,6 @@
     "similar_triangle_judgment_aa(1,QPT,QRS)": [
       "similar_triangle_property_line_ratio(1,PTQ,RSQ)",
       "similar_triangle_property_line_ratio(1,TQP,SQR)"
-    ],
-    "START": [
-      "parallel_property_alternate_interior_angle(1,TP,RS)",
-      "parallel_property_alternate_interior_angle(2,TP,RS)"
     ]
   }
 }

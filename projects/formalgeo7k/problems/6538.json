@@ -2,9 +2,9 @@
   "problem_id": 6538,
   "annotation": "XiaokaiZhang_2023-06-04",
   "source": "GeoQA-9461",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在▱ABCD中,已知对角线AC和BD相交于点O,△AOB的周长为15cm,AB=6cm,则AC+BD=()",
-  "problem_text_en": "As shown in the figure, in ▱ABCD, it is known that the diagonal AC and BD intersect at point O, the perimeter of △AOB is N_0, AB = N_1, then AC + BD = ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=6，△BOA的周长为15，四边形ABCD是▱。求直线AC的长度与直线BD的长度之和。",
+  "problem_text_en": "As shown in the diagram, AB=6, the perimeter of △BOA is 15, ABCD is a ▱. Find the sum of the length of line AC and the length of line BD.",
   "problem_img": "6538.png",
   "construction_cdl": [
     "Shape(AB,BO,OA)",
@@ -15,9 +15,9 @@
     "Collinear(BOD)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
+    "Equal(LengthOfLine(AB),6)",
     "Equal(PerimeterOfTriangle(BOA),15)",
-    "Equal(LengthOfLine(AB),6)"
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Add(LengthOfLine(AC),LengthOfLine(BD)))",
@@ -29,7 +29,7 @@
     "line_addition(1,AO,OC)",
     "line_addition(1,BO,OD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_perimeter_formula(1,ABO)",
       "parallelogram_property_diagonal_bisection(1,ABCD,O)",

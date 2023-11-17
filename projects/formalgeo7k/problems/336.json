@@ -2,15 +2,25 @@
   "problem_id": 336,
   "annotation": "NaZhu_2023-03-12",
   "source": "Geometry3k-341",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Each pair of polygons is similar. Find x.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，RS=x，RT=y+3，TS=49，VU=21，WU=29，WV=20，∠RST=∠UWV，∠STR=∠WVU，∠TRS=∠VUW。求x的值。",
+  "problem_text_en": "As shown in the diagram, RS=x, RT=y+3, TS=49, VU=21, WU=29, WV=20, ∠RST=∠UWV, ∠STR=∠WVU, ∠TRS=∠VUW. Find the value of x.",
   "problem_img": "336.png",
   "construction_cdl": [
     "Shape(RS,ST,TR)",
     "Shape(UW,WV,VU)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(RS),x)",
+    "Equal(LengthOfLine(RT),y+3)",
+    "Equal(LengthOfLine(TS),49)",
+    "Equal(LengthOfLine(VU),21)",
+    "Equal(LengthOfLine(WU),29)",
+    "Equal(LengthOfLine(WV),20)",
+    "Equal(MeasureOfAngle(RST),MeasureOfAngle(UWV))",
+    "Equal(MeasureOfAngle(STR),MeasureOfAngle(WVU))",
+    "Equal(MeasureOfAngle(TRS),MeasureOfAngle(VUW))"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(RT),y+3)",
     "Equal(LengthOfLine(RS),x)",
@@ -29,13 +39,13 @@
     "similar_triangle_property_line_ratio(1,RST,UWV)",
     "similar_triangle_property_line_ratio(1,TRS,VUW)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "similar_triangle_judgment_aa(1,RST,UWV)"
+    ],
     "similar_triangle_judgment_aa(1,RST,UWV)": [
       "similar_triangle_property_line_ratio(1,RST,UWV)",
       "similar_triangle_property_line_ratio(1,TRS,VUW)"
-    ],
-    "START": [
-      "similar_triangle_judgment_aa(1,RST,UWV)"
     ]
   }
 }

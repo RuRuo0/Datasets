@@ -2,9 +2,9 @@
   "problem_id": 195,
   "annotation": "XiaokaiZhang_2023-04-02",
   "source": "Geometry3k-197",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In the figure, m \\angle 1 = 53. Find the measure of \\angle 5.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠LWX=53°，WL∥XE，XN∥ZK。求∠ZYM的大小。",
+  "problem_text_en": "As shown in the diagram, ∠LWX=53°, WL is parallel to XE, XN∥ZK. Find the measure of ∠ZYM.",
   "problem_img": "195.png",
   "construction_cdl": [
     "Shape(GW,WL)",
@@ -25,7 +25,11 @@
     "Collinear(MYWL)",
     "Collinear(HZXE)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(LWX),53)",
+    "ParallelBetweenLine(WL,XE)",
+    "ParallelBetweenLine(XN,ZK)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(LWX),53)",
     "ParallelBetweenLine(WL,XE)",
@@ -39,16 +43,16 @@
     "adjacent_complementary_angle(1,LWX,XWY)",
     "parallel_property_corresponding_angle(2,WX,YZ,M)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(1,XN,ZK,W)",
+      "adjacent_complementary_angle(1,LWX,XWY)"
+    ],
     "parallel_property_collinear_extend(1,XN,ZK,W)": [
       "parallel_property_collinear_extend(2,KZ,XW,Y)"
     ],
     "parallel_property_collinear_extend(2,KZ,XW,Y)": [
       "parallel_property_corresponding_angle(2,WX,YZ,M)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(1,XN,ZK,W)",
-      "adjacent_complementary_angle(1,LWX,XWY)"
     ]
   }
 }

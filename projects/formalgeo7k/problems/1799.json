@@ -2,9 +2,9 @@
   "problem_id": 1799,
   "annotation": "ChenyangMao_2023-04-16",
   "source": "Geometry3k-1865",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "The diameters of \\odot A, \\odot B, and \\odot C are 10, 30 and 10 units, respectively. Find B Y if A Z \\cong C W and C W = 2.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，⊙A的直径为10，圆B的直径为30，⊙C的直径为10，AZ=CW，CW=2，A是⊙A的圆心，B是圆B的圆心，C是圆C的圆心。求直线BY的长度。",
+  "problem_text_en": "As shown in the diagram, the diameter of circle A is 10, the diameter of ⊙B is 30, the diameter of ⊙C is 10, AZ=CW, CW=2, the center of circle A is A, B is the center of ⊙B, the center of ⊙C is C. Find the length of line BY.",
   "problem_img": "1799.png",
   "construction_cdl": [
     "Shape(ADF,FA,AZ,BDZ)",
@@ -22,7 +22,16 @@
     "Cocircular(B,DZEIWH)",
     "Cocircular(C,HYIG)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(DiameterOfCircle(A),10)",
+    "Equal(DiameterOfCircle(B),30)",
+    "Equal(DiameterOfCircle(C),10)",
+    "Equal(LengthOfLine(AZ),LengthOfLine(CW))",
+    "Equal(LengthOfLine(CW),2)",
+    "IsCentreOfCircle(A,A)",
+    "IsCentreOfCircle(B,B)",
+    "IsCentreOfCircle(C,C)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(A,A)",
     "IsCentreOfCircle(B,B)",
@@ -43,7 +52,7 @@
     "line_addition(1,BY,YW)",
     "line_addition(1,YW,WC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "circle_property_length_of_radius_and_diameter(1,B)",
       "circle_property_length_of_radius_and_diameter(1,C)",

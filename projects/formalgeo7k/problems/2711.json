@@ -2,9 +2,9 @@
   "problem_id": 2711,
   "annotation": "FangzhenZhu_2023-04-09",
   "source": "Geometry3k-2855",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=y，AC=5，CD=x，∠ADB=45°，AB⊥CB，CA垂直于DA。求y的值。",
+  "problem_text_en": "As shown in the diagram, AB=y, AC=5, CD=x, ∠ADB=45°, AB is perpendicular to CB, CA is perpendicular to DA. Find the value of y.",
   "problem_img": "2711.png",
   "construction_cdl": [
     "Shape(AD,DB,BA)",
@@ -12,12 +12,12 @@
     "Collinear(DBC)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(ADB),45)",
     "Equal(LengthOfLine(AB),y)",
-    "Equal(LengthOfLine(CD),x)",
     "Equal(LengthOfLine(AC),5)",
-    "PerpendicularBetweenLine(CA,DA)",
-    "PerpendicularBetweenLine(AB,CB)"
+    "Equal(LengthOfLine(CD),x)",
+    "Equal(MeasureOfAngle(ADB),45)",
+    "PerpendicularBetweenLine(AB,CB)",
+    "PerpendicularBetweenLine(CA,DA)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(y)",
@@ -29,7 +29,12 @@
     "right_triangle_judgment_angle(1,ABC)",
     "right_triangle_property_pythagorean(1,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "triangle_property_angle_sum(1,ADC)",
+      "triangle_property_angle_sum(1,ABC)",
+      "right_triangle_judgment_angle(1,ABC)"
+    ],
     "triangle_property_angle_sum(1,ADC)": [
       "isosceles_triangle_judgment_angle_equal(1,BCA)",
       "isosceles_triangle_judgment_angle_equal(1,BCA)"
@@ -39,11 +44,6 @@
     ],
     "right_triangle_judgment_angle(1,ABC)": [
       "right_triangle_property_pythagorean(1,ABC)"
-    ],
-    "START": [
-      "triangle_property_angle_sum(1,ADC)",
-      "triangle_property_angle_sum(1,ABC)",
-      "right_triangle_judgment_angle(1,ABC)"
     ]
   }
 }

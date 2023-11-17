@@ -2,9 +2,9 @@
   "problem_id": 4695,
   "annotation": "XiaoxiaoJin_2023-05-14",
   "source": "GeoQA-3995",
-  "problem_level": 1,
-  "problem_text_cn": "如图,四边形ABCD是矩形,AC为⊙O的直径,过点B作⊙O的切线,与AC的延长线交于点P,若AC=10,∠P=30°,则AB的长度是()",
-  "problem_text_en": "As shown in the figure, the quadrilateral ABCD is a rectangle, AC is the diameter of ⊙O, and the tangent line of ⊙O is made through point B, and the extended line of AC intersects at point P. If AC = N_0, ∠P = N_1, then the length of AB is ( )",
+  "problem_level": 12,
+  "problem_text_cn": "如图所示，AC=10，∠BPC=30°，O是⊙O的圆心，AC是圆O的直径，圆O的切线为PB，四边形ABCD是矩形。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, AC=10, ∠BPC=30°, O is the center of ⊙O, the diameter of ⊙O is AC, the tangent to circle O is PB, quadrilateral ABCD is a rectangle. Find the length of line AB.",
   "problem_img": "4695.png",
   "construction_cdl": [
     "Shape(AD,ODA)",
@@ -21,9 +21,9 @@
   "text_cdl": [
     "Equal(LengthOfLine(AC),10)",
     "Equal(MeasureOfAngle(BPC),30)",
-    "IsTangentOfCircle(PB,O)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AC,O)",
+    "IsTangentOfCircle(PB,O)",
     "Rectangle(ABCD)"
   ],
   "image_cdl": [],
@@ -43,21 +43,27 @@
     "right_triangle_judgment_angle(1,ABC)",
     "right_triangle_property_pythagorean(1,ABC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AO,OC)",
+      "radius_of_circle_property_length_equal(1,OA,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "tangent_of_circle_property_perpendicular(1,PB,O,O)",
+      "triangle_property_angle_sum(1,COB)",
+      "triangle_property_angle_sum(1,OBP)",
+      "right_triangle_judgment_angle(1,ABC)"
+    ],
     "line_addition(1,AO,OC)": [
-      "isosceles_triangle_judgment_line_equal(1,OBC)",
       "isosceles_triangle_judgment_line_equal(1,OBC)"
     ],
     "radius_of_circle_property_length_equal(1,OA,O)": [
-      "isosceles_triangle_judgment_line_equal(1,OBC)",
       "isosceles_triangle_judgment_line_equal(1,OBC)"
     ],
     "radius_of_circle_property_length_equal(1,OB,O)": [
-      "isosceles_triangle_judgment_line_equal(1,OBC)",
       "isosceles_triangle_judgment_line_equal(1,OBC)"
     ],
     "radius_of_circle_property_length_equal(1,OC,O)": [
-      "isosceles_triangle_judgment_line_equal(1,OBC)",
       "isosceles_triangle_judgment_line_equal(1,OBC)"
     ],
     "tangent_of_circle_property_perpendicular(1,PB,O,O)": [
@@ -79,16 +85,6 @@
     ],
     "right_triangle_judgment_angle(1,ABC)": [
       "right_triangle_property_pythagorean(1,ABC)"
-    ],
-    "START": [
-      "line_addition(1,AO,OC)",
-      "radius_of_circle_property_length_equal(1,OA,O)",
-      "radius_of_circle_property_length_equal(1,OB,O)",
-      "radius_of_circle_property_length_equal(1,OC,O)",
-      "tangent_of_circle_property_perpendicular(1,PB,O,O)",
-      "triangle_property_angle_sum(1,COB)",
-      "triangle_property_angle_sum(1,OBP)",
-      "right_triangle_judgment_angle(1,ABC)"
     ]
   }
 }

@@ -2,18 +2,18 @@
   "problem_id": 6566,
   "annotation": "XiaokaiZhang_2023-06-04",
   "source": "GeoQA-9523",
-  "problem_level": 1,
-  "problem_text_cn": "如图,平行四边形的周长是28厘米,△ABC的周长是22厘米,则AC的长是()",
-  "problem_text_en": "As shown in the figure, the perimeter of the parallelogram is N_0 cm, the perimeter of △ABC is N_1 cm, then the length of AC is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，DABC的周长为28，三角形ABC的周长为22，DC和AB是平行四边形DABC的一组对边。求直线AC的长度。",
+  "problem_text_en": "As shown in the diagram, the perimeter of quadrilateral DABC is 28, the perimeter of △ABC is 22, quadrilateral DABC is a ▱. Find the length of line AC.",
   "problem_img": "6566.png",
   "construction_cdl": [
     "Shape(DA,AC,CD)",
     "Shape(CA,AB,BC)"
   ],
   "text_cdl": [
-    "Parallelogram(DABC)",
     "Equal(PerimeterOfQuadrilateral(DABC),28)",
-    "Equal(PerimeterOfTriangle(ABC),22)"
+    "Equal(PerimeterOfTriangle(ABC),22)",
+    "Parallelogram(DABC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AC))",
@@ -24,7 +24,7 @@
     "parallelogram_property_opposite_line_equal(1,DABC)",
     "parallelogram_property_opposite_line_equal(1,ABCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "quadrilateral_perimeter_formula(1,DABC)",
       "triangle_perimeter_formula(1,ABC)",

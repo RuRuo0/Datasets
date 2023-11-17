@@ -2,9 +2,9 @@
   "problem_id": 6409,
   "annotation": "YimingHe_2023-06-04",
   "source": "GeoQA-9270",
-  "problem_level": 1,
-  "problem_text_cn": "如图,▱ABCD中,AE平分∠BAD,若CE=3cm,AB=4cm,则▱ABCD的周长是()",
-  "problem_text_en": "As shown in the figure, in ▱ABCD, AE bisects ∠BAD, if CE = N_0, AB = N_1, then the perimeter of ▱ABCD is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=4，CE=3，AE是∠DAB的角平分线，BA和CD是平行四边形ABCD的一组对边。求ABCD的周长。",
+  "problem_text_en": "As shown in the diagram, AB=4, CE=3, AE bisects ∠DAB, AD and BC are opposite sides of the ▱ ABCD. Find the perimeter of quadrilateral ABCD.",
   "problem_img": "6409.png",
   "construction_cdl": [
     "Shape(AB,BE,EA)",
@@ -12,10 +12,10 @@
     "Collinear(BEC)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
-    "IsBisectorOfAngle(AE,DAB)",
+    "Equal(LengthOfLine(AB),4)",
     "Equal(LengthOfLine(CE),3)",
-    "Equal(LengthOfLine(AB),4)"
+    "IsBisectorOfAngle(AE,DAB)",
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfQuadrilateral(ABCD))",
@@ -29,19 +29,19 @@
     "isosceles_triangle_judgment_angle_equal(1,BEA)",
     "quadrilateral_perimeter_formula(1,ABCD)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,CB,DA,E)": [
-      "parallel_property_alternate_interior_angle(1,EB,DA)"
-    ],
-    "parallel_property_alternate_interior_angle(1,EB,DA)": [
-      "isosceles_triangle_judgment_angle_equal(1,BEA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,BE,EC)",
       "parallel_property_collinear_extend(3,CB,DA,E)",
       "parallelogram_property_opposite_line_equal(1,ABCD)",
       "parallelogram_property_opposite_line_equal(1,BCDA)",
       "quadrilateral_perimeter_formula(1,ABCD)"
+    ],
+    "parallel_property_collinear_extend(3,CB,DA,E)": [
+      "parallel_property_alternate_interior_angle(1,EB,DA)"
+    ],
+    "parallel_property_alternate_interior_angle(1,EB,DA)": [
+      "isosceles_triangle_judgment_angle_equal(1,BEA)"
     ]
   }
 }

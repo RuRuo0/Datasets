@@ -2,9 +2,9 @@
   "problem_id": 2954,
   "annotation": "JiaZou_2023-04-16",
   "source": "GeoQA-148",
-  "problem_level": 1,
-  "problem_text_cn": "如图,C岛在A岛的北偏东45°方向,C岛在B岛的北偏西25°方向,则从C岛看A、B两岛的视角∠ACB的度数是()",
-  "problem_text_en": "As shown in the figure, the C island is in the N_0 degrees of the north by east of the A island, and the C island is in the N_1 degrees of the north by west of the B island. The angle of view ∠ACB of the two islands A and B from the C island is () ",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠CBF=25°，∠EAC=45°，AE∥DC，DC∥BF。求∠BCA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CBF=25°, ∠EAC=45°, AE∥DC, DC∥BF. Find the measure of ∠BCA.",
   "problem_img": "2954.png",
   "construction_cdl": [
     "Shape(EA,AC)",
@@ -13,10 +13,10 @@
     "Shape(CB,BF)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AE,DC)",
-    "ParallelBetweenLine(DC,BF)",
+    "Equal(MeasureOfAngle(CBF),25)",
     "Equal(MeasureOfAngle(EAC),45)",
-    "Equal(MeasureOfAngle(CBF),25)"
+    "ParallelBetweenLine(AE,DC)",
+    "ParallelBetweenLine(DC,BF)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BCA))",
@@ -26,7 +26,7 @@
     "parallel_property_alternate_interior_angle(2,DC,BF)",
     "angle_addition(1,BCD,DCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_alternate_interior_angle(1,AE,DC)",
       "parallel_property_alternate_interior_angle(2,DC,BF)",

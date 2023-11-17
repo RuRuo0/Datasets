@@ -2,9 +2,9 @@
   "problem_id": 1112,
   "annotation": "NaZhu_2023-03-19",
   "source": "Geometry3k-1149",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If \\frac { I J } { X J } = \\frac { H J } { Y J }, m \\angle W X J = 130, and m \\angle W Z G = 20, find m \\angle J H G.",
+  "problem_level": 11,
+  "problem_text_cn": "如图所示，∠WXH=130°，∠YZI=20°，Mul(LengthOfLine(IJ)=LengthOfLine(YJ))。求∠GHJ的大小。",
+  "problem_text_en": "As shown in the diagram, ∠WXH=130°, ∠YZI=20°, Mul(LengthOfLine(IJ)=LengthOfLine(YJ)). Find the measure of ∠GHJ.",
   "problem_img": "1112.png",
   "construction_cdl": [
     "Shape(HX,XY,YI,IH)",
@@ -17,7 +17,11 @@
     "Collinear(GHIZ)",
     "Collinear(WXYZ)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(WXH),130)",
+    "Equal(MeasureOfAngle(YZI),20)",
+    "Equal(Mul(LengthOfLine(IJ),LengthOfLine(YJ)),Mul(LengthOfLine(XJ),LengthOfLine(HJ)))"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(WXH),130)",
     "Equal(MeasureOfAngle(YZI),20)",
@@ -38,11 +42,7 @@
     "flat_angle(1,GHI)",
     "angle_addition(1,GHJ,JHI)"
   ],
-  "theorem_seq_dag": {
-    "mirror_similar_triangle_judgment_sas(1,JHI,JXY)": [
-      "mirror_similar_triangle_property_angle_equal(1,HIJ,YJX)",
-      "mirror_similar_triangle_property_angle_equal(1,IJH,XYJ)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "flat_angle(1,WXY)",
       "angle_addition(1,WXH,HXY)",
@@ -53,6 +53,10 @@
       "angle_addition(1,XYI,IYZ)",
       "flat_angle(1,GHI)",
       "angle_addition(1,GHJ,JHI)"
+    ],
+    "mirror_similar_triangle_judgment_sas(1,JHI,JXY)": [
+      "mirror_similar_triangle_property_angle_equal(1,HIJ,YJX)",
+      "mirror_similar_triangle_property_angle_equal(1,IJH,XYJ)"
     ]
   }
 }

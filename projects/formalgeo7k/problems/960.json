@@ -2,9 +2,9 @@
   "problem_id": 960,
   "annotation": "NaZhu_2023-03-19",
   "source": "Geometry3k-989",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the quadrilateral.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AE=6，DB=7，FC=16，EA⊥BA，FB⊥DB。求三角形DFC的面积与△ECF的面积之和。",
+  "problem_text_en": "As shown in the diagram, AE=6, DB=7, FC=16, EA⊥BA, FB is perpendicular to DB. Find the sum of the area of △DFC and the area of triangle ECF.",
   "problem_img": "960.png",
   "construction_cdl": [
     "Shape(DF,FB,BD)",
@@ -13,7 +13,13 @@
     "Shape(AE,EC,CA)",
     "Collinear(FBAC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AE),6)",
+    "Equal(LengthOfLine(DB),7)",
+    "Equal(LengthOfLine(FC),16)",
+    "PerpendicularBetweenLine(EA,BA)",
+    "PerpendicularBetweenLine(FB,DB)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(DB),7)",
     "Equal(LengthOfLine(FC),16)",
@@ -30,15 +36,15 @@
     "triangle_area_formula_common(1,DFC)",
     "triangle_area_formula_common(1,ECF)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,CAE,EAF)": [
-      "altitude_of_triangle_judgment(1,EA,ECF)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,CAE,EAF)",
       "altitude_of_triangle_judgment(1,DB,DFC)",
       "triangle_area_formula_common(1,DFC)",
       "triangle_area_formula_common(1,ECF)"
+    ],
+    "adjacent_complementary_angle(1,CAE,EAF)": [
+      "altitude_of_triangle_judgment(1,EA,ECF)"
     ]
   }
 }

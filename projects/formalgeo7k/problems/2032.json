@@ -2,15 +2,21 @@
   "problem_id": 2032,
   "annotation": "YimingHe_2023-03-26",
   "source": "Geometry3k-2118",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the Area of quadrilateral A B C D to the nearest tenth.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=CD，DA=12，DA=BC，∠ADB=28°，∠DBA=40°。求四边形ADCB的面积。",
+  "problem_text_en": "As shown in the diagram, AB=CD, DA=12, DA=BC, ∠ADB=28°, ∠DBA=40°. Find the area of quadrilateral ADCB.",
   "problem_img": "2032.png",
   "construction_cdl": [
     "Shape(AD,DB,BA)",
     "Shape(BD,DC,CB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),LengthOfLine(CD))",
+    "Equal(LengthOfLine(DA),12)",
+    "Equal(LengthOfLine(DA),LengthOfLine(BC))",
+    "Equal(MeasureOfAngle(ADB),28)",
+    "Equal(MeasureOfAngle(DBA),40)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(DA),12)",
     "Equal(MeasureOfAngle(ADB),28)",
@@ -27,15 +33,15 @@
     "angle_addition(1,ADB,BDC)",
     "parallelogram_area_formula_sine(1,ADCB)"
   ],
-  "theorem_seq_dag": {
-    "parallelogram_judgment_equal_and_equal(1,ADCB)": [
-      "parallelogram_area_formula_sine(1,ADCB)",
-      "parallel_property_alternate_interior_angle(2,AB,DC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "sine_theorem(1,ADB)",
       "parallelogram_judgment_equal_and_equal(1,ADCB)",
       "angle_addition(1,ADB,BDC)"
+    ],
+    "parallelogram_judgment_equal_and_equal(1,ADCB)": [
+      "parallelogram_area_formula_sine(1,ADCB)",
+      "parallel_property_alternate_interior_angle(2,AB,DC)"
     ]
   }
 }

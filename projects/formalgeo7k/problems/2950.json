@@ -2,9 +2,9 @@
   "problem_id": 2950,
   "annotation": "JiaZou_2023-04-16",
   "source": "GeoQA-138",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC中,AD为△ABC的角平分线,BE为△ABC的高,∠C=70°,∠ABC=48°,那么∠3是()",
-  "problem_text_en": "As shown in the figure, in △ABC, AD is the angle bisector of △ABC, BE is the height of △ABC, ∠C = N_0, ∠ABC = N_1, then ∠3 is () ",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠ABC=48°，∠DCE=70°，BE是△BCA的高，AD是∠EAB的角平分线。求∠DFB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠ABC=48°, ∠DCE=70°, BE is the altitude of triangle BCA, AD bisects ∠EAB. Find the measure of ∠DFB.",
   "problem_img": "2950.png",
   "construction_cdl": [
     "Shape(CE,EF,FD,DC)",
@@ -17,10 +17,10 @@
     "Collinear(CDB)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(DCE),70)",
     "Equal(MeasureOfAngle(ABC),48)",
-    "IsBisectorOfAngle(AD,EAB)",
-    "IsAltitudeOfTriangle(BE,BCA)"
+    "Equal(MeasureOfAngle(DCE),70)",
+    "IsAltitudeOfTriangle(BE,BCA)",
+    "IsBisectorOfAngle(AD,EAB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DFB))",
@@ -32,7 +32,7 @@
     "triangle_property_angle_sum(1,ABF)",
     "adjacent_complementary_angle(1,DFB,BFA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,ABC)",
       "angle_addition(1,EAF,FAB)",

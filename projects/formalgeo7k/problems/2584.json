@@ -2,9 +2,9 @@
   "problem_id": 2584,
   "annotation": "YiwenHuang_2023-05-07",
   "source": "Geometry3k-2712",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If D B = 24, A E = 3, and E C = 18, find A D.",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AE=3，DB=24，EC=18，DE平行于BC，ED平行于CB。求直线AD的长度。",
+  "problem_text_en": "As shown in the diagram, AE=3, DB=24, EC=18, DE is parallel to BC, ED∥CB. Find the length of line AD.",
   "problem_img": "2584.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -12,7 +12,13 @@
     "Collinear(ADB)",
     "Collinear(AEC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AE),3)",
+    "Equal(LengthOfLine(DB),24)",
+    "Equal(LengthOfLine(EC),18)",
+    "ParallelBetweenLine(DE,BC)",
+    "ParallelBetweenLine(ED,CB)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(DB),24)",
     "Equal(LengthOfLine(AE),3)",
@@ -31,7 +37,13 @@
     "similar_triangle_property_line_ratio(1,DEA,BCA)",
     "similar_triangle_property_line_ratio(1,EAD,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AD,DB)",
+      "line_addition(1,AE,EC)",
+      "parallel_property_corresponding_angle(1,DE,BC,A)",
+      "parallel_property_corresponding_angle(2,CB,ED,A)"
+    ],
     "parallel_property_corresponding_angle(1,DE,BC,A)": [
       "similar_triangle_judgment_aa(1,ADE,ABC)"
     ],
@@ -41,12 +53,6 @@
     "similar_triangle_judgment_aa(1,ADE,ABC)": [
       "similar_triangle_property_line_ratio(1,DEA,BCA)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ],
-    "START": [
-      "line_addition(1,AD,DB)",
-      "line_addition(1,AE,EC)",
-      "parallel_property_corresponding_angle(1,DE,BC,A)",
-      "parallel_property_corresponding_angle(2,CB,ED,A)"
     ]
   }
 }

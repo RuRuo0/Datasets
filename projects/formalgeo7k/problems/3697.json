@@ -2,9 +2,9 @@
   "problem_id": 3697,
   "annotation": "Yangli_2023-04-30",
   "source": "GeoQA-1455",
-  "problem_level": 1,
-  "problem_text_cn": "如图,平行四边形ABCD绕点D逆时针旋转40°,得到平行四边形A'B'C'D(点A'是A点的对应点,点B’是B点的对应点,点C'是C点的对应点),并且A'点恰好落在AB边上,则∠B的度数为()",
-  "problem_text_en": "As shown in the figure, the parallelogram ABCD rotates N_0 anticlockwise around the point D, and the parallelogram A'B'C'D is obtained (point A' is the corresponding point of point A, point B' is the corresponding point of point B, and point C' is C The corresponding point of the point), and the point A' happens to fall on the edge of AB, then the degree of ∠B is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，DA=DF，∠FDA=40°，四边形DABC是平行四边形，DH和FG是▱DFGH的一组对边。求∠FBC的大小。",
+  "problem_text_en": "As shown in the diagram, DA=DF, ∠FDA=40°, DC and AB are opposite sides of the ▱ DABC, DFGH is a parallelogram. Find the measure of ∠FBC.",
   "problem_img": "3697.png",
   "construction_cdl": [
     "Shape(EF,FB,BC,CE)",
@@ -17,10 +17,10 @@
     "Collinear(FEG)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(DA),LengthOfLine(DF))",
     "Equal(MeasureOfAngle(FDA),40)",
     "Parallelogram(DABC)",
-    "Parallelogram(DFGH)",
-    "Equal(LengthOfLine(DA),LengthOfLine(DF))"
+    "Parallelogram(DFGH)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(FBC))",
@@ -31,14 +31,14 @@
     "triangle_property_angle_sum(1,DAF)",
     "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,DAF)": [
-      "isosceles_triangle_property_angle_equal(1,DAF)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,DAF)",
       "triangle_property_angle_sum(1,DAF)",
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,DAF)": [
+      "isosceles_triangle_property_angle_equal(1,DAF)"
     ]
   }
 }

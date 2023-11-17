@@ -2,9 +2,9 @@
   "problem_id": 1376,
   "annotation": "YanjunGuo_2023-04-16",
   "source": "Geometry3k-1425",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y in the figure.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠ABJ=3*y-11°，∠BAE=y+19°，∠EBA=4*z+2°，∠JBL=x°，EI平行于BJ，AE垂直于BE。求y的值。",
+  "problem_text_en": "As shown in the diagram, ∠ABJ=3*y-11°, ∠BAE=y+19°, ∠EBA=4*z+2°, ∠JBL=x°, EI∥BJ, AE is perpendicular to BE. Find the value of y.",
   "problem_img": "1376.png",
   "construction_cdl": [
     "Shape(LB,BF)",
@@ -22,7 +22,14 @@
     "Collinear(FBAH)",
     "Collinear(EAI)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(ABJ),3*y-11)",
+    "Equal(MeasureOfAngle(BAE),y+19)",
+    "Equal(MeasureOfAngle(EBA),4*z+2)",
+    "Equal(MeasureOfAngle(JBL),x)",
+    "ParallelBetweenLine(EI,BJ)",
+    "PerpendicularBetweenLine(AE,BE)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(EBA),4*z+2)",
     "Equal(MeasureOfAngle(JBL),x)",
@@ -38,7 +45,7 @@
     "angle_addition(1,EBA,ABJ)",
     "triangle_property_angle_sum(1,AEB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_ipsilateral_internal_angle(1,EI,BJ)",
       "angle_addition(1,EBA,ABJ)",

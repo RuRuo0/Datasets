@@ -2,9 +2,9 @@
   "problem_id": 6345,
   "annotation": "ChengQin_2023-06-04",
   "source": "GeoQA-9164",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示,点O是AC的中点,将周长为4cm的菱形ABCD沿对角线AC方向平移AO长度得到菱形OB′C′D′,则四边形OECF的周长是()",
-  "problem_text_en": "As shown in the figure, point O is the midpoint of AC. Translate the diamond ABCD with the perimeter of N_0 along the diagonal AC by the length of AO to obtain the diamond OB′C′D′, then the perimeter of the quadrilateral OECF is ()",
+  "problem_level": 15,
+  "problem_text_cn": "如图所示，四边形ABCD与四边形OGHI全等，ABCD的周长为4，OGHI的周长为4，C是线段OH的中点，O是线段AC的中点，AD∥OI，BA平行于GO，BC平行于GH，CD∥HI，四边形ABCD是菱形，OGHI是菱形。求OECF的周长。",
+  "problem_text_en": "As shown in the diagram, ABCD is congruent to OGHI, the perimeter of quadrilateral ABCD is 4, the perimeter of quadrilateral OGHI is 4, C is the midpoint of segment OH, O is the midpoint of segment AC, AD∥OI, BA is parallel to GO, BC∥GH, CD∥HI, ABCD is a rhombus, OGHI is a rhombus. Find the perimeter of quadrilateral OECF.",
   "problem_img": "6345.png",
   "construction_cdl": [
     "Shape(DA,AO,OF,FD)",
@@ -20,17 +20,17 @@
     "Collinear(BEC)"
   ],
   "text_cdl": [
-    "Rhombus(ABCD)",
-    "Rhombus(OGHI)",
-    "IsMidpointOfLine(O,AC)",
-    "IsMidpointOfLine(C,OH)",
+    "CongruentBetweenQuadrilateral(ABCD,OGHI)",
     "Equal(PerimeterOfQuadrilateral(ABCD),4)",
     "Equal(PerimeterOfQuadrilateral(OGHI),4)",
+    "IsMidpointOfLine(C,OH)",
+    "IsMidpointOfLine(O,AC)",
     "ParallelBetweenLine(AD,OI)",
     "ParallelBetweenLine(BA,GO)",
-    "ParallelBetweenLine(CD,HI)",
     "ParallelBetweenLine(BC,GH)",
-    "CongruentBetweenQuadrilateral(ABCD,OGHI)"
+    "ParallelBetweenLine(CD,HI)",
+    "Rhombus(ABCD)",
+    "Rhombus(OGHI)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfQuadrilateral(OECF))",
@@ -52,7 +52,16 @@
     "midsegment_of_triangle_property_length(1,EC,OGH)",
     "quadrilateral_perimeter_formula(1,OECF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "quadrilateral_perimeter_formula(1,ABCD)",
+      "quadrilateral_perimeter_formula(1,OGHI)",
+      "parallel_property_collinear_extend(3,IO,DA,F)",
+      "parallel_property_collinear_extend(3,OG,AB,E)",
+      "parallel_property_collinear_extend(3,CD,HI,F)",
+      "parallel_property_collinear_extend(3,BC,GH,E)",
+      "quadrilateral_perimeter_formula(1,OECF)"
+    ],
     "parallel_property_collinear_extend(3,IO,DA,F)": [
       "midsegment_of_triangle_judgment_parallel(2,FO,CDA)"
     ],
@@ -76,15 +85,6 @@
     ],
     "midsegment_of_triangle_judgment_parallel(2,EC,OGH)": [
       "midsegment_of_triangle_property_length(1,EC,OGH)"
-    ],
-    "START": [
-      "quadrilateral_perimeter_formula(1,ABCD)",
-      "quadrilateral_perimeter_formula(1,OGHI)",
-      "parallel_property_collinear_extend(3,IO,DA,F)",
-      "parallel_property_collinear_extend(3,OG,AB,E)",
-      "parallel_property_collinear_extend(3,CD,HI,F)",
-      "parallel_property_collinear_extend(3,BC,GH,E)",
-      "quadrilateral_perimeter_formula(1,OECF)"
     ]
   }
 }

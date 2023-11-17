@@ -2,14 +2,19 @@
   "problem_id": 1054,
   "annotation": "NaZhu_2023-03-19",
   "source": "Geometry3k-1088",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，WY=WX，∠WYX=4*x+20°，∠XWY=52°，∠YXW=6*y-2°。求y的值。",
+  "problem_text_en": "As shown in the diagram, WY=WX, ∠WYX=4*x+20°, ∠XWY=52°, ∠YXW=6*y-2°. Find the value of y.",
   "problem_img": "1054.png",
   "construction_cdl": [
     "Shape(WY,YX,XW)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(WY),LengthOfLine(WX))",
+    "Equal(MeasureOfAngle(WYX),4*x+20)",
+    "Equal(MeasureOfAngle(XWY),52)",
+    "Equal(MeasureOfAngle(YXW),6*y-2)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(WY),LengthOfLine(WX))",
     "Equal(MeasureOfAngle(XWY),52)",
@@ -23,13 +28,13 @@
     "isosceles_triangle_property_angle_equal(1,WYX)",
     "triangle_property_angle_sum(1,WYX)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,WYX)": [
-      "isosceles_triangle_property_angle_equal(1,WYX)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,WYX)",
       "triangle_property_angle_sum(1,WYX)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,WYX)": [
+      "isosceles_triangle_property_angle_equal(1,WYX)"
     ]
   }
 }

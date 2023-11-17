@@ -2,9 +2,9 @@
   "problem_id": 4351,
   "annotation": "ChengQin_2023-05-21",
   "source": "GeoQA-3243",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是半圆的直径,∠BAC=20°,D是⁀{AC}的中点,则∠DAC的度数是()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of the semicircle, ∠BAC = N_0, D is the midpoint of ⁀AC, then the degree of ∠DAC is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，∠CAB=20°，⌒OCA和⌒OCD的相似比为1/2，O是⊙O的圆心，AB是圆O的直径，D平分弧OCA。求∠DAC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CAB=20°, The ratio of similar arcs OCA and OCD is 1/2, O is the center of ⊙O, AB is the diameter of ⊙O, D bisects arc OCA. Find the measure of ∠DAC.",
   "problem_img": "4351.png",
   "construction_cdl": [
     "Shape(ODA,AD)",
@@ -19,11 +19,11 @@
     "Cocircular(O,BCDA)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(CAB),20)",
+    "Equal(RatioOfSimilarArc(OCA,OCD),1/2)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)",
-    "Equal(MeasureOfAngle(CAB),20)",
-    "IsMidpointOfArc(D,OCA)",
-    "Equal(RatioOfSimilarArc(OCA,OCD),1/2)"
+    "IsMidpointOfArc(D,OCA)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(DAC))",
@@ -36,16 +36,16 @@
     "similar_arc_property_measure_ratio(1,OCD,OCA)",
     "arc_property_circumference_angle_external(1,OCD,A)"
   ],
-  "theorem_seq_dag": {
-    "similar_arc_judgment_cocircular(1,OCD,OCA)": [
-      "similar_arc_property_measure_ratio(1,OCD,OCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,BCA,O)",
       "triangle_property_angle_sum(1,ABC)",
       "arc_property_circumference_angle_external(1,OCA,B)",
       "similar_arc_judgment_cocircular(1,OCD,OCA)",
       "arc_property_circumference_angle_external(1,OCD,A)"
+    ],
+    "similar_arc_judgment_cocircular(1,OCD,OCA)": [
+      "similar_arc_property_measure_ratio(1,OCD,OCA)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 6048,
   "annotation": "ChenyangMao_2023-05-28",
   "source": "GeoQA-8548",
-  "problem_level": 1,
-  "problem_text_cn": "如图,OA⊥BC,∠AOB=50°,则∠ADC的大小为()",
-  "problem_text_en": "As shown in the figure, OA ⊥ BC, ∠AOB = N_0, then the size of ∠ADC is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠AOB=50°，O是圆O的圆心，BE⊥OE。求∠CDA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠AOB=50°, O is the center of circle O, BE is perpendicular to OE. Find the measure of ∠CDA.",
   "problem_img": "6048.png",
   "construction_cdl": [
     "Shape(OBA,AE,EO,OB)",
@@ -18,9 +18,9 @@
     "Cocircular(O,ACDB)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(AOB),50)",
     "IsCentreOfCircle(O,O)",
-    "PerpendicularBetweenLine(BE,OE)",
-    "Equal(MeasureOfAngle(AOB),50)"
+    "PerpendicularBetweenLine(BE,OE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CDA))",
@@ -32,17 +32,17 @@
     "arc_property_circumference_angle_external(1,OAC,D)",
     "arc_property_center_angle(1,OBA,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "circle_property_chord_perpendicular_bisect_arc(1,OBC,OEA)",
+      "arc_property_circumference_angle_external(1,OAC,D)",
+      "arc_property_center_angle(1,OBA,O)"
+    ],
     "circle_property_chord_perpendicular_bisect_arc(1,OBC,OEA)": [
       "congruent_arc_judgment_length_equal(1,OBA,OAC)"
     ],
     "congruent_arc_judgment_length_equal(1,OBA,OAC)": [
       "congruent_arc_property_measure_equal(1,OBA,OAC)"
-    ],
-    "START": [
-      "circle_property_chord_perpendicular_bisect_arc(1,OBC,OEA)",
-      "arc_property_circumference_angle_external(1,OAC,D)",
-      "arc_property_center_angle(1,OBA,O)"
     ]
   }
 }

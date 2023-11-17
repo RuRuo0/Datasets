@@ -2,9 +2,9 @@
   "problem_id": 2135,
   "annotation": "XiaoxiaoJin_2023-04-23",
   "source": "Geometry3k-2228",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the value of the variable y in the figure.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠CDF=y°，∠EFG=114°，∠FDI=x+12°，DC∥BE。求y的值。",
+  "problem_text_en": "As shown in the diagram, ∠CDF=y°, ∠EFG=114°, ∠FDI=x+12°, DC is parallel to BE. Find the value of y.",
   "problem_img": "2135.png",
   "construction_cdl": [
     "Shape(ID,DJ)",
@@ -19,7 +19,12 @@
     "Collinear(BFE)",
     "Collinear(JDFG)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(CDF),y)",
+    "Equal(MeasureOfAngle(EFG),114)",
+    "Equal(MeasureOfAngle(FDI),x+12)",
+    "ParallelBetweenLine(DC,BE)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(FDI),x+12)",
     "Equal(MeasureOfAngle(CDF),y)",
@@ -32,12 +37,12 @@
     "parallel_property_collinear_extend(3,EB,CD,F)",
     "parallel_property_corresponding_angle(2,DC,FE,G)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,EB,CD,F)": [
-      "parallel_property_corresponding_angle(2,DC,FE,G)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_collinear_extend(3,EB,CD,F)"
+    ],
+    "parallel_property_collinear_extend(3,EB,CD,F)": [
+      "parallel_property_corresponding_angle(2,DC,FE,G)"
     ]
   }
 }

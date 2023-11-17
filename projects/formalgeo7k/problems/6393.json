@@ -2,9 +2,9 @@
   "problem_id": 6393,
   "annotation": "YimingHe_2023-06-04",
   "source": "GeoQA-9250",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在平行四边形ABCD中,以A为圆心,AB为半径画弧,交AD于F,再分别以B、F为圆心,大于\\frac{1}{2}BF的长为半径画弧,两弧相交于点G,若BF=6,AB=5,则AE的长为()",
-  "problem_text_en": "As shown in the figure, in the parallelogram ABCD, draw an arc with A as the center, AB as the radius, and intersect AD at F, and then draw the arc with B and F as the center, and the length greater than \\frac{N_0}{N_1} BF as the radius, and the two arcs intersect at point G , If BF = N_2, AB = N_3, then the length of AE is ()",
+  "problem_level": 13,
+  "problem_text_cn": "如图所示，AB=5，AB=AF，BF=6，AO是∠FAB的角平分线，BA和CD是平行四边形ABCD的一组对边。求直线AE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=5, AB=AF, BF=6, AO is the angle bisector of ∠FAB, BA and CD are opposite sides of the parallelogram ABCD. Find the length of line AE.",
   "problem_img": "6393.png",
   "construction_cdl": [
     "Shape(AO,OF,FA)",
@@ -18,11 +18,11 @@
     "Collinear(BOF)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
-    "IsBisectorOfAngle(AO,FAB)",
+    "Equal(LengthOfLine(AB),5)",
     "Equal(LengthOfLine(AB),LengthOfLine(AF))",
     "Equal(LengthOfLine(BF),6)",
-    "Equal(LengthOfLine(AB),5)"
+    "IsBisectorOfAngle(AO,FAB)",
+    "Parallelogram(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AE))",
@@ -42,7 +42,14 @@
     "right_triangle_judgment_angle(1,BOA)",
     "right_triangle_property_pythagorean(1,BOA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AO,OE)",
+      "line_addition(1,BO,OF)",
+      "parallel_property_collinear_extend(3,AD,BC,F)",
+      "parallel_property_collinear_extend(3,CB,DA,E)",
+      "isosceles_triangle_judgment_line_equal(1,ABF)"
+    ],
     "parallel_property_collinear_extend(3,AD,BC,F)": [
       "parallel_property_collinear_extend(3,CB,FA,E)"
     ],
@@ -69,13 +76,6 @@
     ],
     "right_triangle_judgment_angle(1,BOA)": [
       "right_triangle_property_pythagorean(1,BOA)"
-    ],
-    "START": [
-      "line_addition(1,AO,OE)",
-      "line_addition(1,BO,OF)",
-      "parallel_property_collinear_extend(3,AD,BC,F)",
-      "parallel_property_collinear_extend(3,CB,DA,E)",
-      "isosceles_triangle_judgment_line_equal(1,ABF)"
     ]
   }
 }

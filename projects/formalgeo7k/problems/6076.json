@@ -2,9 +2,9 @@
   "problem_id": 6076,
   "annotation": "RunanWang_2023-06-04",
   "source": "GeoQA-8592",
-  "problem_level": 1,
-  "problem_text_cn": "如图,已知AB是⊙O的直径,C、D是⊙O上的两点,∠BAC=20°,⁀{AD}=⁀{DC},则∠DAC的度数是()",
-  "problem_text_en": "As shown in the figure, it is known that AB is the diameter of ⊙O, C and D are two vertices on ⊙O, ∠BAC = N_0, ⁀AD = ⁀DC, then the degree of ∠DAC is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，弧ODA的长度与弧OCD的长度相等，∠AOD=70°，∠CAB=20°，O是⊙O的圆心，圆O的直径为AB。求∠DAC的大小。",
+  "problem_text_en": "As shown in the diagram, the length of arc ODA is equal to the length of ⌒OCD, ∠AOD=70°, ∠CAB=20°, the center of ⊙O is O, AB is the diameter of circle O. Find the measure of ∠DAC.",
   "problem_img": "6076.png",
   "construction_cdl": [
     "Shape(ODA,AD)",
@@ -21,7 +21,11 @@
     "Cocircular(O,BCDA)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)"
+    "Equal(LengthOfArc(ODA),LengthOfArc(OCD))",
+    "Equal(MeasureOfAngle(AOD),70)",
+    "Equal(MeasureOfAngle(CAB),20)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AB,O)"
   ],
   "image_cdl": [
     "Equal(MeasureOfAngle(CAB),20)",
@@ -37,14 +41,14 @@
     "congruent_arc_judgment_length_equal(1,OCD,ODA)",
     "congruent_arc_property_measure_equal(1,OCD,ODA)"
   ],
-  "theorem_seq_dag": {
-    "congruent_arc_judgment_length_equal(1,OCD,ODA)": [
-      "congruent_arc_property_measure_equal(1,OCD,ODA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,ODA,O)",
       "arc_property_circumference_angle_external(1,OCD,A)",
       "congruent_arc_judgment_length_equal(1,OCD,ODA)"
+    ],
+    "congruent_arc_judgment_length_equal(1,OCD,ODA)": [
+      "congruent_arc_property_measure_equal(1,OCD,ODA)"
     ]
   }
 }

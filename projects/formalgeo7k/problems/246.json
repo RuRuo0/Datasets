@@ -2,9 +2,9 @@
   "problem_id": 246,
   "annotation": "XiaokaiZhang_2023-03-12",
   "source": "Geometry3k-249",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，BC=4，BF=x，∠ABD=30°，∠CBE=30°，∠DBF=30°，∠EBA=30°，BA⊥EA，BD⊥AD，BE⊥CE，BF⊥DF。求x的值。",
+  "problem_text_en": "As shown in the diagram, BC=4, BF=x, ∠ABD=30°, ∠CBE=30°, ∠DBF=30°, ∠EBA=30°, BA is perpendicular to EA, BD is perpendicular to AD, BE is perpendicular to CE, BF⊥DF. Find the value of x.",
   "problem_img": "246.png",
   "construction_cdl": [
     "Shape(CB,BE,EC)",
@@ -12,7 +12,18 @@
     "Shape(AB,BD,DA)",
     "Shape(DB,BF,FD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(BC),4)",
+    "Equal(LengthOfLine(BF),x)",
+    "Equal(MeasureOfAngle(ABD),30)",
+    "Equal(MeasureOfAngle(CBE),30)",
+    "Equal(MeasureOfAngle(DBF),30)",
+    "Equal(MeasureOfAngle(EBA),30)",
+    "PerpendicularBetweenLine(BA,EA)",
+    "PerpendicularBetweenLine(BD,AD)",
+    "PerpendicularBetweenLine(BE,CE)",
+    "PerpendicularBetweenLine(BF,DF)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BC),4)",
     "Equal(MeasureOfAngle(CBE),30)",
@@ -37,7 +48,7 @@
     "triangle_property_angle_sum(1,BFD)",
     "sine_theorem(1,BFD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,BEC)",
       "sine_theorem(1,BEC)",

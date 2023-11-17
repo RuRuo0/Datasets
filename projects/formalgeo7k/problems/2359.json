@@ -2,16 +2,22 @@
   "problem_id": 2359,
   "annotation": "ChenyangMao_2023-04-09",
   "source": "Geometry3k-2473",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=9*x-2，AD=6*x+2，BC=10，CD=8，∠DBC=∠ABD。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=9*x-2, AD=6*x+2, BC=10, CD=8, ∠DBC=∠ABD. Find the value of x.",
   "problem_img": "2359.png",
   "construction_cdl": [
     "Shape(DA,AB,BD)",
     "Shape(DB,BC,CD)",
     "Collinear(ADC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),9*x-2)",
+    "Equal(LengthOfLine(AD),6*x+2)",
+    "Equal(LengthOfLine(BC),10)",
+    "Equal(LengthOfLine(CD),8)",
+    "Equal(MeasureOfAngle(DBC),MeasureOfAngle(ABD))"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(CD),8)",
     "Equal(LengthOfLine(AD),6*x+2)",
@@ -25,12 +31,12 @@
     "bisector_of_angle_judgment_angle_equal(1,BD,ABC)",
     "bisector_of_angle_property_line_ratio(1,BD,ABC)"
   ],
-  "theorem_seq_dag": {
-    "bisector_of_angle_judgment_angle_equal(1,BD,ABC)": [
-      "bisector_of_angle_property_line_ratio(1,BD,ABC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "bisector_of_angle_judgment_angle_equal(1,BD,ABC)"
+    ],
+    "bisector_of_angle_judgment_angle_equal(1,BD,ABC)": [
+      "bisector_of_angle_property_line_ratio(1,BD,ABC)"
     ]
   }
 }

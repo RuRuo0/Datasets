@@ -2,9 +2,9 @@
   "problem_id": 2230,
   "annotation": "DengfengYue_2023-04-16",
   "source": "Geometry3k-2329",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find T Y.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，WT=x，XY=16，YW=20，ZT=10，ZT∥XY。求直线TY的长度。",
+  "problem_text_en": "As shown in the diagram, WT=x, XY=16, YW=20, ZT=10, ZT∥XY. Find the length of line TY.",
   "problem_img": "2230.png",
   "construction_cdl": [
     "Shape(WZ,ZT,TW)",
@@ -12,7 +12,13 @@
     "Collinear(WZX)",
     "Collinear(WTY)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(WT),x)",
+    "Equal(LengthOfLine(XY),16)",
+    "Equal(LengthOfLine(YW),20)",
+    "Equal(LengthOfLine(ZT),10)",
+    "ParallelBetweenLine(ZT,XY)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(YW),20)",
     "Equal(LengthOfLine(XY),16)",
@@ -29,17 +35,17 @@
     "similar_triangle_property_line_ratio(1,ZTW,XYW)",
     "line_addition(1,WT,TY)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_corresponding_angle(1,ZT,XY,W)",
+      "line_addition(1,WT,TY)"
+    ],
     "parallel_property_corresponding_angle(1,ZT,XY,W)": [
       "similar_triangle_judgment_aa(1,TWZ,YWX)"
     ],
     "similar_triangle_judgment_aa(1,TWZ,YWX)": [
       "similar_triangle_property_line_ratio(1,WZT,WXY)",
       "similar_triangle_property_line_ratio(1,ZTW,XYW)"
-    ],
-    "START": [
-      "parallel_property_corresponding_angle(1,ZT,XY,W)",
-      "line_addition(1,WT,TY)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 1068,
   "annotation": "YiwenHuang_2023-04-23",
   "source": "Geometry3k-1103",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "The pair of polygons is similar. Find A B.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=x-2，AD=x，DG=13/2，EB=5，四边形ADCB相似于四边形AGFE。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, AB=x-2, AD=x, DG=13/2, EB=5, quadrilateral ADCB is similar to quadrilateral AGFE. Find the length of line AB.",
   "problem_img": "1068.png",
   "construction_cdl": [
     "Shape(BA,AD,DC,CB)",
@@ -12,7 +12,13 @@
     "Collinear(ADG)",
     "Collinear(EBA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),x-2)",
+    "Equal(LengthOfLine(AD),x)",
+    "Equal(LengthOfLine(DG),13/2)",
+    "Equal(LengthOfLine(EB),5)",
+    "SimilarBetweenQuadrilateral(ADCB,AGFE)"
+  ],
   "image_cdl": [
     "SimilarBetweenQuadrilateral(ADCB,AGFE)",
     "Equal(LengthOfLine(EB),5)",
@@ -28,7 +34,7 @@
     "similar_quadrilateral_property_line_ratio(1,ADCB,AGFE)",
     "similar_quadrilateral_property_line_ratio(1,BADC,EAGF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AD,DG)",
       "line_addition(1,EB,BA)",

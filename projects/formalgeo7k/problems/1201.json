@@ -2,9 +2,9 @@
   "problem_id": 1201,
   "annotation": "RunanWang_2023-04-23",
   "source": "Geometry3k-1241",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Quadrilateral A B C D is a rectangle. m \\angle 2 = 40. Find m \\angle 6.",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，∠EAB=40°，AB垂直于DB，ABDC是矩形。求∠EBD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠EAB=40°, AB is perpendicular to DB, quadrilateral ABDC is a rectangle. Find the measure of ∠EBD.",
   "problem_img": "1201.png",
   "construction_cdl": [
     "Shape(AB,BE,EA)",
@@ -14,7 +14,11 @@
     "Collinear(BEC)",
     "Collinear(AED)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(EAB),40)",
+    "PerpendicularBetweenLine(AB,DB)",
+    "Rectangle(ABDC)"
+  ],
   "image_cdl": [
     "Rectangle(ABDC)",
     "Equal(MeasureOfAngle(EAB),40)",
@@ -32,7 +36,15 @@
     "isosceles_triangle_property_angle_equal(1,EAB)",
     "angle_addition(1,ABE,EBD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "rectangle_property_diagonal_equal(1,ABDC)",
+      "parallelogram_property_diagonal_bisection(1,ABDC,E)",
+      "parallelogram_property_diagonal_bisection(1,BDCA,E)",
+      "line_addition(1,BE,EC)",
+      "line_addition(1,AE,ED)",
+      "angle_addition(1,ABE,EBD)"
+    ],
     "rectangle_property_diagonal_equal(1,ABDC)": [
       "isosceles_triangle_judgment_line_equal(1,EAB)"
     ],
@@ -50,14 +62,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,EAB)": [
       "isosceles_triangle_property_angle_equal(1,EAB)"
-    ],
-    "START": [
-      "rectangle_property_diagonal_equal(1,ABDC)",
-      "parallelogram_property_diagonal_bisection(1,ABDC,E)",
-      "parallelogram_property_diagonal_bisection(1,BDCA,E)",
-      "line_addition(1,BE,EC)",
-      "line_addition(1,AE,ED)",
-      "angle_addition(1,ABE,EBD)"
     ]
   }
 }

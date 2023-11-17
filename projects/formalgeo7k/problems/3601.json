@@ -2,9 +2,9 @@
   "problem_id": 3601,
   "annotation": "QikeHuang_2023-04-30",
   "source": "GeoQA-1264",
-  "problem_level": 1,
-  "problem_text_cn": "如图,测得BD=120m,DC=60m,EC=50m,则河宽AB为()",
-  "problem_text_en": "As shown in the figure, the measured BD = N_0, DC = N_1, EC = N_2, then the width of the river AB is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，BD=120，DC=60，EC=50，BA∥EC。求直线AB的长度。",
+  "problem_text_en": "As shown in the diagram, BD=120, DC=60, EC=50, BA∥EC. Find the length of line AB.",
   "problem_img": "3601.png",
   "construction_cdl": [
     "Shape(AB,BD,DA)",
@@ -15,7 +15,8 @@
   "text_cdl": [
     "Equal(LengthOfLine(BD),120)",
     "Equal(LengthOfLine(DC),60)",
-    "Equal(LengthOfLine(EC),50)"
+    "Equal(LengthOfLine(EC),50)",
+    "ParallelBetweenLine(BA,EC)"
   ],
   "image_cdl": [
     "ParallelBetweenLine(BA,EC)"
@@ -29,7 +30,11 @@
     "similar_triangle_property_line_ratio(1,DAB,DEC)",
     "similar_triangle_property_line_ratio(1,ABD,ECD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_alternate_interior_angle(1,BA,EC)",
+      "parallel_property_alternate_interior_angle(2,BA,EC)"
+    ],
     "parallel_property_alternate_interior_angle(1,BA,EC)": [
       "similar_triangle_judgment_aa(1,DAB,DEC)"
     ],
@@ -39,10 +44,6 @@
     "similar_triangle_judgment_aa(1,DAB,DEC)": [
       "similar_triangle_property_line_ratio(1,DAB,DEC)",
       "similar_triangle_property_line_ratio(1,ABD,ECD)"
-    ],
-    "START": [
-      "parallel_property_alternate_interior_angle(1,BA,EC)",
-      "parallel_property_alternate_interior_angle(2,BA,EC)"
     ]
   }
 }

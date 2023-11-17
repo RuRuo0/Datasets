@@ -2,9 +2,9 @@
   "problem_id": 2730,
   "annotation": "FangzhenZhu_2023-04-09",
   "source": "Geometry3k-2875",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find P S.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，PQ=9，QR=7，SR=7，PR垂直于QR，SR垂直于PR。求直线PS的长度。",
+  "problem_text_en": "As shown in the diagram, PQ=9, QR=7, SR=7, PR⊥QR, SR⊥PR. Find the length of line PS.",
   "problem_img": "2730.png",
   "construction_cdl": [
     "Shape(PS,SQ,QP)",
@@ -12,7 +12,13 @@
     "Shape(PS,SR,RP)",
     "Collinear(SRQ)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(PQ),9)",
+    "Equal(LengthOfLine(QR),7)",
+    "Equal(LengthOfLine(SR),7)",
+    "PerpendicularBetweenLine(PR,QR)",
+    "PerpendicularBetweenLine(SR,PR)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(PQ),9)",
     "Equal(LengthOfLine(QR),7)",
@@ -28,16 +34,16 @@
     "right_triangle_property_pythagorean(1,PRQ)",
     "right_triangle_property_pythagorean(1,SRP)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "right_triangle_judgment_angle(1,SRP)",
+      "right_triangle_judgment_angle(1,PRQ)"
+    ],
     "right_triangle_judgment_angle(1,SRP)": [
       "right_triangle_property_pythagorean(1,SRP)"
     ],
     "right_triangle_judgment_angle(1,PRQ)": [
       "right_triangle_property_pythagorean(1,PRQ)"
-    ],
-    "START": [
-      "right_triangle_judgment_angle(1,SRP)",
-      "right_triangle_judgment_angle(1,PRQ)"
     ]
   }
 }

@@ -2,16 +2,24 @@
   "problem_id": 1707,
   "annotation": "NaZhu_2023-03-26",
   "source": "Geometry3k-1771",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AB=z，AN=x，AY=5，YB=14，YN=y，AN⊥BN，BA垂直于YA。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=z, AN=x, AY=5, YB=14, YN=y, AN is perpendicular to BN, BA is perpendicular to YA. Find the value of x.",
   "problem_img": "1707.png",
   "construction_cdl": [
     "Shape(AY,YN,NA)",
     "Shape(AN,NB,BA)",
     "Collinear(YNB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),z)",
+    "Equal(LengthOfLine(AN),x)",
+    "Equal(LengthOfLine(AY),5)",
+    "Equal(LengthOfLine(YB),14)",
+    "Equal(LengthOfLine(YN),y)",
+    "PerpendicularBetweenLine(AN,BN)",
+    "PerpendicularBetweenLine(BA,YA)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AY),5)",
     "Equal(LengthOfLine(AN),x)",
@@ -31,18 +39,18 @@
     "triangle_area_formula_sine(1,AYB)",
     "triangle_area_formula_common(1,AYB)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,YNA,ANB)": [
-      "altitude_of_triangle_judgment(1,AN,AYB)"
-    ],
-    "right_triangle_judgment_angle(1,BAY)": [
-      "right_triangle_property_pythagorean(1,BAY)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,YNA,ANB)",
       "right_triangle_judgment_angle(1,BAY)",
       "triangle_area_formula_sine(1,AYB)",
       "triangle_area_formula_common(1,AYB)"
+    ],
+    "adjacent_complementary_angle(1,YNA,ANB)": [
+      "altitude_of_triangle_judgment(1,AN,AYB)"
+    ],
+    "right_triangle_judgment_angle(1,BAY)": [
+      "right_triangle_property_pythagorean(1,BAY)"
     ]
   }
 }

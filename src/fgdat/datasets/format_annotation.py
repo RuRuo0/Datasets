@@ -1,9 +1,5 @@
 import os
-import warnings
-import time
-from formalgeo.tools import load_json, save_json, simple_show, get_used_pid_and_theorem
-from formalgeo.solver import Interactor
-from formalgeo.parse import parse_theorem_seqs, inverse_parse_one_theorem
+from formalgeo.tools import load_json, save_json
 
 
 def check_json_format(path_problems):
@@ -15,7 +11,7 @@ def check_json_format(path_problems):
             print(filename + ": " + repr(e))
 
 
-def format_annotation(path_problems):
+def format_annotation_id(path_problems):
     """2.Modify the annotation_id and select missing annotations."""
     cowork = load_json(os.path.join("log/", "cowork.json"))
     problems = os.listdir(path_problems)
@@ -45,47 +41,24 @@ def check_notes(path_problems, add_notes=False):
                 save_json(problem_GDL, os.path.join(path_problems, filename))
 
 
-def run(path_datasets, start_pid, end_pid, clean_theorem=False):
-    """4.Run problems and check annotation quality."""
-    warnings.filterwarnings("ignore")
-    solver = Interactor(load_json(os.path.join(path_datasets, "gdl/predicate_GDL.json")),
-                        load_json(os.path.join(path_datasets, "gdl/theorem_GDL.json")))
-    error_problems = []
-    print("pid\tcorrect_answer\tsolved\tsolved_answer\ttiming(s)")
-
+def check_cdl(path_problems, start_pid, end_pid):
+    """4.Ensure that all cdl is valid."""
     for pid in range(start_pid, end_pid + 1):
-        timing = time.time()
-        filename = "{}.json".format(pid)
-
-        try:  # try solve
-            problem_CDL = load_json(os.path.join(path_datasets, "problems", filename))
-            solver.load_problem(problem_CDL)
-
-            for t_name, t_branch, t_para in parse_theorem_seqs(problem_CDL["theorem_seqs"]):
-                solver.apply_theorem(t_name, t_branch, t_para)
-
-            solver.problem.check_goal()  # check goal after applied theorem seqs
-
-            if clean_theorem and solver.problem.goal.solved:
-                _, theorem_seqs = get_used_pid_and_theorem(solver.problem)  # clean theorem seqs
-                theorem_seqs = [inverse_parse_one_theorem(t, solver.parsed_theorem_GDL) for t in theorem_seqs]
-                problem_CDL["theorem_seqs"] = theorem_seqs
-                save_json(problem_CDL, os.path.join(path_datasets, "problems", filename))
-
-            simple_show(pid, solver.problem.goal.answer, solver.problem.goal.solved,
-                        solver.problem.goal.solved_answer, time.time() - timing)  # show solved msg
-
-        except Exception as e:  # exception
-            error_problems.append((pid, repr(e)))
-
-    if len(error_problems) > 0:
-        print("\npid\te_msg")
-        for pid, e_msg in error_problems:  # show error
-            print("{}\t{}".format(pid, e_msg))
+        problem_CDL = load_json(os.path.join(path_problems, "{}.json".format(pid)))
+        for cdl in problem_CDL["construction_cdl"]:
+            if cdl.split("(")[0] not in ["Shape", "Collinear", "Cocircular"]:
+                print("{} (construction_cdl)".format(pid))
+                break
+        for cdl in problem_CDL["text_cdl"] + problem_CDL["image_cdl"]:
+            if cdl.split("(")[0] in ["Shape", "Collinear", "Cocircular",
+                                     "Line", "Angle", "Polygon", "Point", "Circle", "Arc"]:
+                print("{} (cdl)".format(pid))
+                break
 
 
 if __name__ == '__main__':
-    check_json_format("../../../projects/formalgeo7k/problems/")
-    format_annotation("../../../projects/formalgeo7k/problems/")
-    check_notes("../../../projects/formalgeo7k/problems/", add_notes=True)
-    run("../../../projects/formalgeo7k/", 1, 6981)
+    # check_json_format("../../../projects/formalgeo7k/problems/")
+    # format_annotation_id("../../../projects/formalgeo7k/problems/")
+    # check_notes("../../../projects/formalgeo7k/problems/", add_notes=True)
+    check_cdl("../../../projects/formalgeo7k/problems/", 1, 6981)
+    # run("../../../projects/formalgeo7k/", 1, 6981)

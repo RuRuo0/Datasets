@@ -2,9 +2,9 @@
   "problem_id": 2960,
   "annotation": "JiaZou_2023-04-16",
   "source": "GeoQA-155",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示,直线m∥n,AB⊥m,∠ABC=130°,那么∠ɑ为()",
-  "problem_text_en": "As shown in the figure, the straight line m∥n, AB⊥m, ∠ABC = N_0, then ∠ɑ is ()  ",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠EBF=130°，EM∥DN，AE垂直于ME，BO垂直于FO。求∠NFC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠EBF=130°, EM∥DN, AE is perpendicular to ME, BO⊥FO. Find the measure of ∠NFC.",
   "problem_img": "2960.png",
   "construction_cdl": [
     "Shape(AE,EM)",
@@ -20,10 +20,10 @@
     "Collinear(DOFN)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(EBF),130)",
     "ParallelBetweenLine(EM,DN)",
     "PerpendicularBetweenLine(AE,ME)",
-    "PerpendicularBetweenLine(BO,FO)",
-    "Equal(MeasureOfAngle(EBF),130)"
+    "PerpendicularBetweenLine(BO,FO)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(NFC))",
@@ -33,7 +33,7 @@
     "triangle_property_angle_sum(1,BOF)",
     "vertical_angle(1,OFB,NFC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,EBF,FBO)",
       "triangle_property_angle_sum(1,BOF)",

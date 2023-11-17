@@ -2,9 +2,9 @@
   "problem_id": 3966,
   "annotation": "ZheZhu_2023-04-30",
   "source": "GeoQA-1903",
-  "problem_level": 1,
-  "problem_text_cn": "本题考查了圆周角定理,关键是根据同弦所对圆心角与圆周角的关系解答．\n4．如图,AB是⊙O的直径,C是⊙O上一点(A、B除外),∠AOD=136°,则∠C的度数是()",
-  "problem_text_en": "This question examines the theorem of angle of circumference, the key is to answer it based on the relationship between the central angle and the angle of circumference of the same chord. N_0. As shown in the figure, AB is the diameter of ⊙O, C is the point on ⊙O (except A and B), ∠AOD = N_1, then the degree of ∠C is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠DOA=136°，圆O的圆心为O。求∠BCD的大小。",
+  "problem_text_en": "As shown in the diagram, ∠DOA=136°, O is the center of ⊙O. Find the measure of ∠BCD.",
   "problem_img": "3966.png",
   "construction_cdl": [
     "Shape(OA,OAD,DO)",
@@ -17,7 +17,10 @@
     "Collinear(CED)",
     "Cocircular(O,CADB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(DOA),136)",
+    "IsCentreOfCircle(O,O)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "Equal(MeasureOfAngle(DOA),136)"
@@ -30,7 +33,7 @@
     "arc_property_center_angle(1,ODB,O)",
     "arc_property_circumference_angle_external(1,ODB,C)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "flat_angle(1,EOA)",
       "angle_addition(1,EOD,DOA)",

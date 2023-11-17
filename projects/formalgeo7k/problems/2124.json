@@ -2,16 +2,20 @@
   "problem_id": 2124,
   "annotation": "YiwenHuang_2023-04-23",
   "source": "Geometry3k-2216",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find R S.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，RQ=9/2，TR=TS，RQ⊥TQ。求直线RS的长度。",
+  "problem_text_en": "As shown in the diagram, RQ=9/2, TR=TS, RQ is perpendicular to TQ. Find the length of line RS.",
   "problem_img": "2124.png",
   "construction_cdl": [
     "Shape(RQ,QT,TR)",
     "Shape(QS,ST,TQ)",
     "Collinear(RQS)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(RQ),9/2)",
+    "Equal(LengthOfLine(TR),LengthOfLine(TS))",
+    "PerpendicularBetweenLine(RQ,TQ)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(RQ),9/2)",
     "PerpendicularBetweenLine(RQ,TQ)",
@@ -25,17 +29,17 @@
     "isosceles_triangle_property_line_coincidence(1,TRS,Q)",
     "line_addition(1,RQ,QS)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "altitude_of_triangle_judgment(1,TQ,TRS)",
+      "isosceles_triangle_judgment_line_equal(1,TRS)",
+      "line_addition(1,RQ,QS)"
+    ],
     "altitude_of_triangle_judgment(1,TQ,TRS)": [
       "isosceles_triangle_property_line_coincidence(1,TRS,Q)"
     ],
     "isosceles_triangle_judgment_line_equal(1,TRS)": [
       "isosceles_triangle_property_line_coincidence(1,TRS,Q)"
-    ],
-    "START": [
-      "altitude_of_triangle_judgment(1,TQ,TRS)",
-      "isosceles_triangle_judgment_line_equal(1,TRS)",
-      "line_addition(1,RQ,QS)"
     ]
   }
 }

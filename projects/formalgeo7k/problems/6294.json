@@ -2,9 +2,9 @@
   "problem_id": 6294,
   "annotation": "ZheZhu_2023-05-28",
   "source": "GeoQA-9003",
-  "problem_level": 1,
-  "problem_text_cn": "如图,四边形ABCD是边长为8的正方形,点E在边CD上,CE=6,作EF∥BC,分别交AC,AB于点G,F；M、N分别是AG、BE的中点,则MN的长是()",
-  "problem_text_en": "As shown in the figure, the quadrilateral ABCD is a square with edge length N_0, point E is on the edge CD, CE = N_1, as EF ∥ BC, intersecting AC and AB at points G and F respectively; M and N are the middle of AG and BE respectively Point, then the length of MN is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，BC=8，FB=6，∠AFE=90°，∠CAB=45°，∠CMF=90°，FM是三角形FFG的中线，MN是△MFC的中线，FBCE是矩形，∠CMF是直角三角形CMF的直角，四边形ABCD是正方形。求直线MN的长度。",
+  "problem_text_en": "As shown in the diagram, BC=8, FB=6, ∠AFE=90°, ∠CAB=45°, ∠CMF=90°, FM is the median of △ FFG, MN is the median of △ MFC, quadrilateral FBCE is a rectangle, CM and MF are the legs of the right triangle CMF, ABCD is a square. Find the length of line MN.",
   "problem_img": "6294.png",
   "construction_cdl": [
     "Shape(AF,FM,MA)",
@@ -21,16 +21,16 @@
     "Collinear(ENB)"
   ],
   "text_cdl": [
-    "Square(ABCD)",
-    "Rectangle(FBCE)",
-    "Equal(LengthOfLine(FB),6)",
     "Equal(LengthOfLine(BC),8)",
+    "Equal(LengthOfLine(FB),6)",
+    "Equal(MeasureOfAngle(AFE),90)",
+    "Equal(MeasureOfAngle(CAB),45)",
+    "Equal(MeasureOfAngle(CMF),90)",
     "IsMedianOfTriangle(FM,AFG)",
     "IsMedianOfTriangle(MN,MFC)",
+    "Rectangle(FBCE)",
     "RightTriangle(CMF)",
-    "Equal(MeasureOfAngle(CAB),45)",
-    "Equal(MeasureOfAngle(AFE),90)",
-    "Equal(MeasureOfAngle(CMF),90)"
+    "Square(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(MN))",
@@ -40,13 +40,13 @@
     "right_triangle_property_pythagorean(1,FBC)",
     "right_triangle_property_length_of_median(1,CMF,N)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,FBC)": [
-      "right_triangle_property_pythagorean(1,FBC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,FBC)",
       "right_triangle_property_length_of_median(1,CMF,N)"
+    ],
+    "right_triangle_judgment_angle(1,FBC)": [
+      "right_triangle_property_pythagorean(1,FBC)"
     ]
   }
 }

@@ -2,14 +2,18 @@
   "problem_id": 1305,
   "annotation": "YimingHe_2023-03-19",
   "source": "Geometry3k-1352",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the measure of \\angle A to the nearest tenth.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AB=15，AC=3，BC⊥AC。求∠CAB的大小。",
+  "problem_text_en": "As shown in the diagram, AB=15, AC=3, BC⊥AC. Find the measure of ∠CAB.",
   "problem_img": "1305.png",
   "construction_cdl": [
     "Shape(BC,CA,AB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),15)",
+    "Equal(LengthOfLine(AC),3)",
+    "PerpendicularBetweenLine(BC,AC)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AB),15)",
     "Equal(LengthOfLine(AC),3)",
@@ -22,13 +26,13 @@
     "right_triangle_property_pythagorean(1,BCA)",
     "cosine_theorem(1,ABC)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,BCA)": [
-      "right_triangle_property_pythagorean(1,BCA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "right_triangle_judgment_angle(1,BCA)",
       "cosine_theorem(1,ABC)"
+    ],
+    "right_triangle_judgment_angle(1,BCA)": [
+      "right_triangle_property_pythagorean(1,BCA)"
     ]
   }
 }

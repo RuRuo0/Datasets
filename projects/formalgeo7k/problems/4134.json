@@ -2,9 +2,9 @@
   "problem_id": 4134,
   "annotation": "XiaoxiaoJin_2023-05-07",
   "source": "GeoQA-2685",
-  "problem_level": 1,
-  "problem_text_cn": "如图,CD是Rt△ABC斜边AB上的高,AC=8,BC=6,则\\cos∠BCD的值是()",
-  "problem_text_en": "As shown in the figure, CD is the height on the hypotenuse AB of Rt△ABC, AC = N_0, BC = N_1, then the value of cos∠BCD is ()",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，AC=8，BC=6，∠BCA=90°，∠CDB=90°。求cos(BC)的值。",
+  "problem_text_en": "As shown in the diagram, AC=8, BC=6, ∠BCA=90°, ∠CDB=90°. Find the value of cos(BC).",
   "problem_img": "4134.png",
   "construction_cdl": [
     "Shape(AD,DC,CA)",
@@ -32,7 +32,15 @@
     "sine_theorem(1,CDB)",
     "sine_theorem(1,DBC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AD,DB)",
+      "adjacent_complementary_angle(1,ADC,CDB)",
+      "right_triangle_judgment_angle(1,CDB)",
+      "right_triangle_judgment_angle(1,BCA)",
+      "sine_theorem(1,CDB)",
+      "sine_theorem(1,DBC)"
+    ],
     "adjacent_complementary_angle(1,ADC,CDB)": [
       "right_triangle_judgment_angle(1,ADC)"
     ],
@@ -44,14 +52,6 @@
     ],
     "right_triangle_judgment_angle(1,BCA)": [
       "right_triangle_property_pythagorean(1,BCA)"
-    ],
-    "START": [
-      "line_addition(1,AD,DB)",
-      "adjacent_complementary_angle(1,ADC,CDB)",
-      "right_triangle_judgment_angle(1,CDB)",
-      "right_triangle_judgment_angle(1,BCA)",
-      "sine_theorem(1,CDB)",
-      "sine_theorem(1,DBC)"
     ]
   }
 }

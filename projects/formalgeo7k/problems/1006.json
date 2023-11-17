@@ -2,9 +2,9 @@
   "problem_id": 1006,
   "annotation": "NaZhu_2023-03-19",
   "source": "Geometry3k-1038",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AC=3*x-6，AD=21，BD=BC，EG=x+4，EH=14，HF=GF，∠ACB=∠EGF，∠BDA=∠FHE。求x的值。",
+  "problem_text_en": "As shown in the diagram, AC=3*x-6, AD=21, BD=BC, EG=x+4, EH=14, HF=GF, ∠ACB=∠EGF, ∠BDA=∠FHE. Find the value of x.",
   "problem_img": "1006.png",
   "construction_cdl": [
     "Shape(DA,AB,BD)",
@@ -14,7 +14,16 @@
     "Collinear(DBC)",
     "Collinear(HFG)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),3*x-6)",
+    "Equal(LengthOfLine(AD),21)",
+    "Equal(LengthOfLine(BD),LengthOfLine(BC))",
+    "Equal(LengthOfLine(EG),x+4)",
+    "Equal(LengthOfLine(EH),14)",
+    "Equal(LengthOfLine(HF),LengthOfLine(GF))",
+    "Equal(MeasureOfAngle(ACB),MeasureOfAngle(EGF))",
+    "Equal(MeasureOfAngle(BDA),MeasureOfAngle(FHE))"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AD),21)",
     "Equal(LengthOfLine(AC),3*x-6)",
@@ -32,13 +41,13 @@
     "similar_triangle_property_line_ratio(1,DAC,HEG)",
     "similar_triangle_property_line_ratio(1,CDA,GHE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "similar_triangle_judgment_aa(1,ACD,EGH)"
+    ],
     "similar_triangle_judgment_aa(1,ACD,EGH)": [
       "similar_triangle_property_line_ratio(1,CDA,GHE)",
       "similar_triangle_property_line_ratio(1,DAC,HEG)"
-    ],
-    "START": [
-      "similar_triangle_judgment_aa(1,ACD,EGH)"
     ]
   }
 }

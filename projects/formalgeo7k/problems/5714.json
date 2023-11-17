@@ -2,9 +2,9 @@
   "problem_id": 5714,
   "annotation": "NaZhu_2023-05-28",
   "source": "GeoQA-7487",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,点D,E分别是边AB,AC上的点,且DE∥BC,若\\frac{AD}{DB}=\\frac{1}{2},DE=3,则BC的长度是()",
-  "problem_text_en": "As shown in the figure, in △ABC, vertices D and E are vertices on edges AB and AC respectively, and DE ∥ BC, if \\frac {AD}{DB} = \\frac{N_0}{N_1},DE=N_2,then the length of BC is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，Div(LengthOfLine(AD)=LengthOfLine(DB))，DE=3，DE平行于BC。求直线BC的长度。",
+  "problem_text_en": "As shown in the diagram, Div(LengthOfLine(AD)=LengthOfLine(DB)), DE=3, DE is parallel to BC. Find the length of line BC.",
   "problem_img": "5714.png",
   "construction_cdl": [
     "Shape(AD,DE,EA)",
@@ -13,9 +13,9 @@
     "Collinear(AEC)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(DE,BC)",
     "Equal(Div(LengthOfLine(AD),LengthOfLine(DB)),1/2)",
-    "Equal(LengthOfLine(DE),3)"
+    "Equal(LengthOfLine(DE),3)",
+    "ParallelBetweenLine(DE,BC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(BC))",
@@ -28,7 +28,12 @@
     "similar_triangle_property_line_ratio(1,ADE,ABC)",
     "similar_triangle_property_line_ratio(1,EAD,CAB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AD,DB)",
+      "parallel_property_corresponding_angle(1,DE,BC,A)",
+      "parallel_property_corresponding_angle(2,CB,ED,A)"
+    ],
     "parallel_property_corresponding_angle(1,DE,BC,A)": [
       "similar_triangle_judgment_aa(1,ADE,ABC)"
     ],
@@ -38,11 +43,6 @@
     "similar_triangle_judgment_aa(1,ADE,ABC)": [
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ],
-    "START": [
-      "line_addition(1,AD,DB)",
-      "parallel_property_corresponding_angle(1,DE,BC,A)",
-      "parallel_property_corresponding_angle(2,CB,ED,A)"
     ]
   }
 }

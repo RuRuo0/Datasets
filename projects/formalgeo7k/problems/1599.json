@@ -2,15 +2,20 @@
   "problem_id": 1599,
   "annotation": "XiaoxiaoJin_2023-04-16",
   "source": "Geometry3k-1659",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "The area A of the shaded region is given. Find x. A = 94 in^2.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，扇形KJL的面积为94，LK=14，弧KJL的角度为x，圆K的圆心为K。求x的值。",
+  "problem_text_en": "As shown in the diagram, the area of the sector KJL is 94, LK=14, the measure of ⌒KJL is x, K is the center of circle K. Find the value of x.",
   "problem_img": "1599.png",
   "construction_cdl": [
     "Shape(LK,KJ,KJL)",
     "Cocircular(K,JL)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(AreaOfSector(KJL),94)",
+    "Equal(LengthOfLine(LK),14)",
+    "Equal(MeasureOfArc(KJL),x)",
+    "IsCentreOfCircle(K,K)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(K,K)",
     "Equal(AreaOfSector(KJL),94)",
@@ -23,7 +28,7 @@
     "radius_of_circle_property_length_equal(1,KL,K)",
     "sector_area_formula(1,KJL)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,KL,K)",
       "sector_area_formula(1,KJL)"

@@ -2,9 +2,9 @@
   "problem_id": 3014,
   "annotation": "NaZhu_2023-04-16",
   "source": "GeoQA-219",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB∥CD,∠A=50°,则∠1的大小是()",
-  "problem_text_en": "As shown in the figure, AB ∥ CD, ∠A = N_0, then the size of ∠1 is ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠EAB=50°，CD平行于AB。求∠CEF的大小。",
+  "problem_text_en": "As shown in the diagram, ∠EAB=50°, CD is parallel to AB. Find the measure of ∠CEF.",
   "problem_img": "3014.png",
   "construction_cdl": [
     "Shape(CE,EF)",
@@ -16,8 +16,8 @@
     "Collinear(AEF)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(CD,AB)",
-    "Equal(MeasureOfAngle(EAB),50)"
+    "Equal(MeasureOfAngle(EAB),50)",
+    "ParallelBetweenLine(CD,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CEF))",
@@ -27,13 +27,13 @@
     "parallel_property_ipsilateral_internal_angle(1,ED,AB)",
     "vertical_angle(1,CEF,DEA)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,CD,AB,E)": [
-      "parallel_property_ipsilateral_internal_angle(1,ED,AB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_collinear_extend(3,CD,AB,E)",
       "vertical_angle(1,CEF,DEA)"
+    ],
+    "parallel_property_collinear_extend(3,CD,AB,E)": [
+      "parallel_property_ipsilateral_internal_angle(1,ED,AB)"
     ]
   }
 }

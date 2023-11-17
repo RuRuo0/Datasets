@@ -2,9 +2,9 @@
   "problem_id": 6097,
   "annotation": "RunanWang_2023-06-04",
   "source": "GeoQA-8631",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC内接于⊙O,AD是⊙O的直径,∠ABC=26°,则∠CAD的度数是()",
-  "problem_text_en": "As shown in the figure, △ABC is inscribed in ⊙O, AD is the diameter of ⊙O, ∠ABC = N_0, then the degree of ∠CAD is ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠CBA=26°，圆O的圆心为O，AD是圆O的直径。求∠DAC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CBA=26°, the center of ⊙O is O, the diameter of circle O is AD. Find the measure of ∠DAC.",
   "problem_img": "6097.png",
   "construction_cdl": [
     "Shape(OCD,DC)",
@@ -19,7 +19,9 @@
     "Cocircular(O,ACDB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)"
+    "Equal(MeasureOfAngle(CBA),26)",
+    "IsCentreOfCircle(O,O)",
+    "IsDiameterOfCircle(AD,O)"
   ],
   "image_cdl": [
     "Equal(MeasureOfAngle(CBA),26)",
@@ -33,7 +35,7 @@
     "arc_property_circumference_angle_external(1,OAC,B)",
     "triangle_property_angle_sum(1,CDA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,ACD,O)",
       "arc_property_circumference_angle_external(1,OAC,D)",

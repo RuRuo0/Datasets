@@ -2,9 +2,9 @@
   "problem_id": 4441,
   "annotation": "JiaZou_2023-05-14",
   "source": "GeoQA-3401",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙A经过点E、B、C、O,且C(0,8),E(-6,0),O(0,0),则\\cos∠OBC的值为()",
-  "problem_text_en": "As shown in the figure, ⊙A passes through points E, B, C, O, and C(N_0,N_1),E(-N_2,N_3),O(N_4,N_5), then the value of cos∠OBC is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，CO=8，EO=6，圆A的圆心为A，圆A的直径为EC。求cos(CB)的值。",
+  "problem_text_en": "As shown in the diagram, CO=8, EO=6, the center of ⊙A is A, EC is the diameter of ⊙A. Find the value of cos(CB).",
   "problem_img": "4441.png",
   "construction_cdl": [
     "Shape(CA,AE,ED,DC)",
@@ -20,10 +20,10 @@
     "Cocircular(A,EBOC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(A,A)",
-    "IsDiameterOfCircle(EC,A)",
     "Equal(LengthOfLine(CO),8)",
-    "Equal(LengthOfLine(EO),6)"
+    "Equal(LengthOfLine(EO),6)",
+    "IsCentreOfCircle(A,A)",
+    "IsDiameterOfCircle(EC,A)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Cos(MeasureOfAngle(CBO)))",
@@ -36,18 +36,18 @@
     "arc_property_circumference_angle_external(1,AOC,E)",
     "arc_property_circumference_angle_external(1,AOC,B)"
   ],
-  "theorem_seq_dag": {
-    "diameter_of_circle_property_right_angle(1,EOC,A)": [
-      "right_triangle_judgment_angle(1,EOC)"
-    ],
-    "right_triangle_judgment_angle(1,EOC)": [
-      "right_triangle_property_pythagorean(1,EOC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "diameter_of_circle_property_right_angle(1,EOC,A)",
       "cosine_theorem(1,EOC)",
       "arc_property_circumference_angle_external(1,AOC,E)",
       "arc_property_circumference_angle_external(1,AOC,B)"
+    ],
+    "diameter_of_circle_property_right_angle(1,EOC,A)": [
+      "right_triangle_judgment_angle(1,EOC)"
+    ],
+    "right_triangle_judgment_angle(1,EOC)": [
+      "right_triangle_property_pythagorean(1,EOC)"
     ]
   }
 }

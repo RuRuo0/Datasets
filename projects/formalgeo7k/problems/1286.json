@@ -2,16 +2,21 @@
   "problem_id": 1286,
   "annotation": "YimingHe_2023-03-19",
   "source": "Geometry3k-1332",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the triangle. Round to the nearest hundredth.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AB=7，BC=4，∠CBA=29°，CD垂直于AD。求三角形CBA的面积。",
+  "problem_text_en": "As shown in the diagram, AB=7, BC=4, ∠CBA=29°, CD⊥AD. Find the area of triangle CBA.",
   "problem_img": "1286.png",
   "construction_cdl": [
     "Shape(CB,BD,DC)",
     "Shape(CD,DA,AC)",
     "Collinear(BDA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),7)",
+    "Equal(LengthOfLine(BC),4)",
+    "Equal(MeasureOfAngle(CBA),29)",
+    "PerpendicularBetweenLine(CD,AD)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(BC),4)",
     "Equal(MeasureOfAngle(CBA),29)",
@@ -26,14 +31,14 @@
     "altitude_of_triangle_judgment(1,CD,CBA)",
     "triangle_area_formula_common(1,CBA)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,BDC,CDA)": [
-      "altitude_of_triangle_judgment(1,CD,CBA)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,BDC,CDA)",
       "sine_theorem(1,CBD)",
       "triangle_area_formula_common(1,CBA)"
+    ],
+    "adjacent_complementary_angle(1,BDC,CDA)": [
+      "altitude_of_triangle_judgment(1,CD,CBA)"
     ]
   }
 }

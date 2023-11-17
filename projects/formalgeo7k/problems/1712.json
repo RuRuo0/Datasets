@@ -2,16 +2,21 @@
   "problem_id": 1712,
   "annotation": "NaZhu_2023-03-26",
   "source": "Geometry3k-1776",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the perimeter of \\triangle A B C.",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，CA=10，CM=6，AC⊥BC，BM⊥CM。求△ACB的周长。",
+  "problem_text_en": "As shown in the diagram, CA=10, CM=6, AC⊥BC, BM⊥CM. Find the perimeter of △ACB.",
   "problem_img": "1712.png",
   "construction_cdl": [
     "Shape(AC,CM,MA)",
     "Shape(MC,CB,BM)",
     "Collinear(AMB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(CA),10)",
+    "Equal(LengthOfLine(CM),6)",
+    "PerpendicularBetweenLine(AC,BC)",
+    "PerpendicularBetweenLine(BM,CM)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(CA),10)",
     "Equal(LengthOfLine(CM),6)",
@@ -31,7 +36,14 @@
     "right_triangle_property_pythagorean(1,ACB)",
     "triangle_perimeter_formula(1,ACB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,BMC,CMA)",
+      "line_addition(1,AM,MB)",
+      "right_triangle_judgment_angle(1,BMC)",
+      "right_triangle_judgment_angle(1,ACB)",
+      "triangle_perimeter_formula(1,ACB)"
+    ],
     "adjacent_complementary_angle(1,BMC,CMA)": [
       "right_triangle_judgment_angle(1,CMA)"
     ],
@@ -43,13 +55,6 @@
     ],
     "right_triangle_judgment_angle(1,ACB)": [
       "right_triangle_property_pythagorean(1,ACB)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,BMC,CMA)",
-      "line_addition(1,AM,MB)",
-      "right_triangle_judgment_angle(1,BMC)",
-      "right_triangle_judgment_angle(1,ACB)",
-      "triangle_perimeter_formula(1,ACB)"
     ]
   }
 }

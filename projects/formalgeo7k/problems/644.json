@@ -2,9 +2,9 @@
   "problem_id": 644,
   "annotation": "YimingHe_2023-04-09",
   "source": "Geometry3k-661",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x. Assume that segments that appear to be tangent are tangent.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，NO=6，OP=10，PN=x，O是圆O的圆心，PN是圆O的切线。求x的值。",
+  "problem_text_en": "As shown in the diagram, NO=6, OP=10, PN=x, the center of ⊙O is O, PN is the tangent to circle O. Find the value of x.",
   "problem_img": "644.png",
   "construction_cdl": [
     "Shape(AO,ON,ONA)",
@@ -14,6 +14,10 @@
     "Cocircular(O,NA)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(NO),6)",
+    "Equal(LengthOfLine(OP),10)",
+    "Equal(LengthOfLine(PN),x)",
+    "IsCentreOfCircle(O,O)",
     "IsTangentOfCircle(PN,O)"
   ],
   "image_cdl": [
@@ -29,15 +33,15 @@
     "right_triangle_judgment_angle(1,PNO)",
     "right_triangle_property_pythagorean(1,PNO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(2,PN,O,O)"
+    ],
     "tangent_of_circle_property_perpendicular(2,PN,O,O)": [
       "right_triangle_judgment_angle(1,PNO)"
     ],
     "right_triangle_judgment_angle(1,PNO)": [
       "right_triangle_property_pythagorean(1,PNO)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(2,PN,O,O)"
     ]
   }
 }

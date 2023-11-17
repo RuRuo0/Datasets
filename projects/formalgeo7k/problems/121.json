@@ -2,9 +2,9 @@
   "problem_id": 121,
   "annotation": "XiaokaiZhang_2023-04-02",
   "source": "Geometry3k-123",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the parallelogram. Round to the nearest tenth if necessary.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，CB=20，EC=24，∠CAE=37°，ACBD是▱，AE垂直于CE。求ACBD的面积。",
+  "problem_text_en": "As shown in the diagram, CB=20, EC=24, ∠CAE=37°, CA and BD are opposite sides of the ▱ ACBD, AE⊥CE. Find the area of quadrilateral ACBD.",
   "problem_img": "121.png",
   "construction_cdl": [
     "Shape(EC,CA,AE)",
@@ -12,7 +12,11 @@
     "Collinear(EAD)"
   ],
   "text_cdl": [
-    "Parallelogram(ACBD)"
+    "Equal(LengthOfLine(CB),20)",
+    "Equal(LengthOfLine(EC),24)",
+    "Equal(MeasureOfAngle(CAE),37)",
+    "Parallelogram(ACBD)",
+    "PerpendicularBetweenLine(AE,CE)"
   ],
   "image_cdl": [
     "Equal(MeasureOfAngle(CAE),37)",
@@ -27,7 +31,7 @@
     "parallelogram_property_opposite_line_equal(1,CBDA)",
     "parallelogram_area_formula_common(1,BDAC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "altitude_of_quadrilateral_judgment_right_vertex(5,CE,BDAC)",
       "parallelogram_property_opposite_line_equal(1,CBDA)",

@@ -2,9 +2,9 @@
   "problem_id": 4779,
   "annotation": "Yangli_2023-05-14",
   "source": "GeoQA-4165",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC中,AB=5,BC=3,AC=4,以点C为圆心的圆与AB相切,则⊙C的半径为()",
-  "problem_text_en": "As shown in the figure, in △ABC, AB = N_0, BC = N_1, AC = N_2, the circle with point C as the center is tangent to AB, then the radius of ⊙C is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=5，AO=4，BO=3，O是圆O的圆心，AC是圆O的切线，圆O的切线为BC。求直线OC的长度。",
+  "problem_text_en": "As shown in the diagram, AB=5, AO=4, BO=3, O is the center of ⊙O, AC is the tangent to circle O, the tangent to ⊙O is BC. Find the length of line OC.",
   "problem_img": "4779.png",
   "construction_cdl": [
     "Shape(DA,AC,ODC)",
@@ -19,11 +19,11 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(AB),5)",
-    "Equal(LengthOfLine(BO),3)",
     "Equal(LengthOfLine(AO),4)",
+    "Equal(LengthOfLine(BO),3)",
+    "IsCentreOfCircle(O,O)",
     "IsTangentOfCircle(AC,O)",
-    "IsTangentOfCircle(BC,O)",
-    "IsCentreOfCircle(O,O)"
+    "IsTangentOfCircle(BC,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(OC))",
@@ -35,7 +35,11 @@
     "mirror_similar_triangle_property_line_ratio(1,CBO,OAB)",
     "mirror_similar_triangle_property_line_ratio(1,BOC,BOA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "right_triangle_judgment_pythagorean_inverse(1,BOA)",
+      "tangent_of_circle_property_perpendicular(1,BC,O,O)"
+    ],
     "right_triangle_judgment_pythagorean_inverse(1,BOA)": [
       "mirror_similar_triangle_judgment_aa(1,OCB,ABO)"
     ],
@@ -45,10 +49,6 @@
     "mirror_similar_triangle_judgment_aa(1,OCB,ABO)": [
       "mirror_similar_triangle_property_line_ratio(1,CBO,OAB)",
       "mirror_similar_triangle_property_line_ratio(1,BOC,BOA)"
-    ],
-    "START": [
-      "right_triangle_judgment_pythagorean_inverse(1,BOA)",
-      "tangent_of_circle_property_perpendicular(1,BC,O,O)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 1546,
   "annotation": "QikeHuang_2023-04-09",
   "source": "Geometry3k-1605",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Points P, Q, and R are the midpoints of J K, K L, and J L, respectively. Find x.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，DR=28，KD=6*x+23，P平分线段JK，Q平分线段KL，R是线段JL的中点。求x的值。",
+  "problem_text_en": "As shown in the diagram, DR=28, KD=6*x+23, P bisects segment JK, Q is the midpoint of segment KL, R bisects segment JL. Find the value of x.",
   "problem_img": "1546.png",
   "construction_cdl": [
     "Shape(LQ,QD,DL)",
@@ -20,7 +20,13 @@
     "Collinear(KPJ)",
     "Collinear(JRL)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(DR),28)",
+    "Equal(LengthOfLine(KD),6*x+23)",
+    "IsMidpointOfLine(P,JK)",
+    "IsMidpointOfLine(Q,KL)",
+    "IsMidpointOfLine(R,JL)"
+  ],
   "image_cdl": [
     "IsMidpointOfLine(P,JK)",
     "IsMidpointOfLine(Q,KL)",
@@ -36,7 +42,11 @@
     "centroid_of_triangle_judgment_intersection(1,D,LKJ,Q,R)",
     "centroid_of_triangle_property_line_ratio(1,D,KJL,R)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "median_of_triangle_judgment(1,KR,KJL)",
+      "median_of_triangle_judgment(1,JQ,JLK)"
+    ],
     "median_of_triangle_judgment(1,KR,KJL)": [
       "centroid_of_triangle_judgment_intersection(1,D,LKJ,Q,R)"
     ],
@@ -45,10 +55,6 @@
     ],
     "centroid_of_triangle_judgment_intersection(1,D,LKJ,Q,R)": [
       "centroid_of_triangle_property_line_ratio(1,D,KJL,R)"
-    ],
-    "START": [
-      "median_of_triangle_judgment(1,KR,KJL)",
-      "median_of_triangle_judgment(1,JQ,JLK)"
     ]
   }
 }

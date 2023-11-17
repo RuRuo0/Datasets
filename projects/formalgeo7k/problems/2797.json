@@ -2,14 +2,20 @@
   "problem_id": 2797,
   "annotation": "RunanWang_2023-05-07",
   "source": "Geometry3k-2946",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "If F G H J is a kite, find m \\angle G F J.",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，GF=HG，HJ=JF，∠FJH=72°，∠HGF=128°，GF和GH是风筝形GFJH的一组临边。求∠GFJ的大小。",
+  "problem_text_en": "As shown in the diagram, GF=HG, HJ=JF, ∠FJH=72°, ∠HGF=128°, GF and GH are one pair of adjacent sides of the kite GFJH. Find the measure of ∠GFJ.",
   "problem_img": "2797.png",
   "construction_cdl": [
     "Shape(FJ,JH,HG,GF)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(GF),LengthOfLine(HG))",
+    "Equal(LengthOfLine(HJ),LengthOfLine(JF))",
+    "Equal(MeasureOfAngle(FJH),72)",
+    "Equal(MeasureOfAngle(HGF),128)",
+    "Kite(GFJH)"
+  ],
   "image_cdl": [
     "Kite(GFJH)",
     "Equal(MeasureOfAngle(HGF),128)",
@@ -23,7 +29,7 @@
     "kite_property_opposite_angle_equal(1,GFJH)",
     "quadrilateral_property_angle_sum(1,FJHG)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "kite_property_opposite_angle_equal(1,GFJH)",
       "quadrilateral_property_angle_sum(1,FJHG)"

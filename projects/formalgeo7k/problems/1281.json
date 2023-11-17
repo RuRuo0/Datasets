@@ -2,9 +2,9 @@
   "problem_id": 1281,
   "annotation": "YiwenHuang_2023-05-07",
   "source": "Geometry3k-1327",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure. Round to the nearest tenth if necessary.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AD=62，AO=54，EC=27，x=Add(AreaOfTriangle(CBO)，BE⊥CE，四边形BDAO是长方形。求x的值。",
+  "problem_text_en": "As shown in the diagram, AD=62, AO=54, EC=27, x=Add(AreaOfTriangle(CBO), BE is perpendicular to CE, BDAO is a rectangle. Find the value of x.",
   "problem_img": "1281.png",
   "construction_cdl": [
     "Shape(BD,DA,AO,OB)",
@@ -12,7 +12,14 @@
     "Shape(CE,EO,OC)",
     "Collinear(BEO)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AD),62)",
+    "Equal(LengthOfLine(AO),54)",
+    "Equal(LengthOfLine(EC),27)",
+    "Equal(x,Add(AreaOfTriangle(CBO),AreaOfQuadrilateral(BDAO)))",
+    "PerpendicularBetweenLine(BE,CE)",
+    "Rectangle(BDAO)"
+  ],
   "image_cdl": [
     "Rectangle(BDAO)",
     "Equal(LengthOfLine(EC),27)",
@@ -30,7 +37,7 @@
     "triangle_area_formula_common(1,CBO)",
     "parallelogram_area_formula_sine(1,BDAO)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_property_opposite_line_equal(1,BDAO)",
       "parallelogram_property_opposite_line_equal(1,DAOB)",

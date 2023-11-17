@@ -2,9 +2,9 @@
   "problem_id": 5194,
   "annotation": "NaZhu_2023-05-21",
   "source": "GeoQA-5192",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示,P是⊙O的弦AB上的一点,AB=10cm,AP=4cm,OP=5cm,则⊙O的半径为cm．()",
-  "problem_text_en": "As shown in the figure, P is a point on the chord AB of ⊙O, AB = N_0, AP = N_1, OP = N_2, then the radius of ⊙O is. ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，AB=10，AP=4，OP=5，⊙O的圆心为O，BC⊥OC。求⊙O的半径。",
+  "problem_text_en": "As shown in the diagram, AB=10, AP=4, OP=5, O is the center of ⊙O, BC⊥OC. Find the radius of ⊙O.",
   "problem_img": "5194.png",
   "construction_cdl": [
     "Shape(OAB,BC,CO,OA)",
@@ -15,11 +15,11 @@
     "Cocircular(O,AB)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "PerpendicularBetweenLine(BC,OC)",
     "Equal(LengthOfLine(AB),10)",
     "Equal(LengthOfLine(AP),4)",
-    "Equal(LengthOfLine(OP),5)"
+    "Equal(LengthOfLine(OP),5)",
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(BC,OC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(RadiusOfCircle(O))",
@@ -34,7 +34,13 @@
     "right_triangle_property_pythagorean(1,OCA)",
     "radius_of_circle_property_length_equal(1,OA,O)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "circle_property_chord_perpendicular_bisect_chord(1,O,OC,BA)",
+      "line_addition(1,BC,CA)",
+      "line_addition(1,CP,PA)",
+      "radius_of_circle_property_length_equal(1,OA,O)"
+    ],
     "circle_property_chord_perpendicular_bisect_chord(1,O,OC,BA)": [
       "right_triangle_judgment_angle(1,OCP)",
       "right_triangle_judgment_angle(1,OCA)"
@@ -44,12 +50,6 @@
     ],
     "right_triangle_judgment_angle(1,OCA)": [
       "right_triangle_property_pythagorean(1,OCA)"
-    ],
-    "START": [
-      "circle_property_chord_perpendicular_bisect_chord(1,O,OC,BA)",
-      "line_addition(1,BC,CA)",
-      "line_addition(1,CP,PA)",
-      "radius_of_circle_property_length_equal(1,OA,O)"
     ]
   }
 }

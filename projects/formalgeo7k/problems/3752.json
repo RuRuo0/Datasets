@@ -2,9 +2,9 @@
   "problem_id": 3752,
   "annotation": "ChenyangMao_2023-04-30",
   "source": "GeoQA-1552",
-  "problem_level": 1,
-  "problem_text_cn": "如图,把一块含有45°角的直角三角板的两个顶点放在直尺的对边上,如果∠1=20°,那么∠2等于()",
-  "problem_text_en": "As shown in the figure, put the two vertices of a right triangle plate with N_0 angles on the opposite sides of the ruler. If ∠1 = N_1, then ∠2 is equal to ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠CEF=45°，∠ECD=20°，AB∥CD。求∠AEF的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CEF=45°, ∠ECD=20°, AB∥CD. Find the measure of ∠AEF.",
   "problem_img": "3752.png",
   "construction_cdl": [
     "Shape(EA,AC,CE)",
@@ -13,7 +13,11 @@
     "Shape(AE,EF)",
     "Collinear(AEB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(CEF),45)",
+    "Equal(MeasureOfAngle(ECD),20)",
+    "ParallelBetweenLine(AB,CD)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(ECD),20)",
     "ParallelBetweenLine(AB,CD)",
@@ -26,13 +30,13 @@
     "parallel_property_alternate_interior_angle(2,AE,CD)",
     "angle_addition(1,CEA,AEF)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,AB,CD,E)": [
-      "parallel_property_alternate_interior_angle(2,AE,CD)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallel_property_collinear_extend(3,AB,CD,E)",
       "angle_addition(1,CEA,AEF)"
+    ],
+    "parallel_property_collinear_extend(3,AB,CD,E)": [
+      "parallel_property_alternate_interior_angle(2,AE,CD)"
     ]
   }
 }

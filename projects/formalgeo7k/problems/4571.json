@@ -2,9 +2,9 @@
   "problem_id": 4571,
   "annotation": "YanjunGuo_2023-05-14",
   "source": "GeoQA-3705",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC中,AB=AC,∠BAC=70°,⊙O是△ABC的外接圆,点D在劣弧⁀{AC}上,则∠D的度数是()",
-  "problem_text_en": "As shown in the figure, in △ABC, AB = AC, ∠BAC = N_0, ⊙O is the circumscribed circle of △ABC, point D is on the minor arc ⁀AC, then the degree of ∠D is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AB=AC，∠CAB=70°。求∠CDA的大小。",
+  "problem_text_en": "As shown in the diagram, AB=AC, ∠CAB=70°. Find the measure of ∠CDA.",
   "problem_img": "4571.png",
   "construction_cdl": [
     "Shape(BA,OAB)",
@@ -16,8 +16,8 @@
     "Cocircular(O,ABCD)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(CAB),70)",
-    "Equal(LengthOfLine(AB),LengthOfLine(AC))"
+    "Equal(LengthOfLine(AB),LengthOfLine(AC))",
+    "Equal(MeasureOfAngle(CAB),70)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CDA))",
@@ -29,15 +29,15 @@
     "arc_property_circumference_angle_external(1,OCA,B)",
     "arc_property_circumference_angle_internal(1,OCA,D)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,ABC)": [
-      "isosceles_triangle_property_angle_equal(1,ABC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,ABC)",
       "triangle_property_angle_sum(1,ABC)",
       "arc_property_circumference_angle_external(1,OCA,B)",
       "arc_property_circumference_angle_internal(1,OCA,D)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,ABC)": [
+      "isosceles_triangle_property_angle_equal(1,ABC)"
     ]
   }
 }

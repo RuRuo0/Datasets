@@ -2,9 +2,9 @@
   "problem_id": 6482,
   "annotation": "NaZhu_2023-06-04",
   "source": "GeoQA-9381",
-  "problem_level": 1,
-  "problem_text_cn": "如图,▱ABCD中,∠B=70°,点E是BC的中点,点F在AB上,且BF=BE,过点F作FG⊥CD于点G,则∠EGC的度数为()",
-  "problem_text_en": "As shown in the figure, in ▱ABCD, ∠B = N_0, point E is the midpoint of BC, point F is on AB, and BF = BE, passing point F is FG ⊥ CD at point G, then the degree of ∠EGC is ()",
+  "problem_level": 18,
+  "problem_text_cn": "如图所示，BF=BE，∠FBE=70°，E是线段BC的中点，AD和BC是▱ABCD的一组对边，FG⊥DG。求∠CGE的大小。",
+  "problem_text_en": "As shown in the diagram, BF=BE, ∠FBE=70°, E bisects segment BC, AD and BC are opposite sides of the ▱ ABCD, FG⊥DG. Find the measure of ∠CGE.",
   "problem_img": "6482.png",
   "construction_cdl": [
     "Shape(AF,FG,GD,DA)",
@@ -18,10 +18,10 @@
     "Collinear(HEG)"
   ],
   "text_cdl": [
-    "Parallelogram(ABCD)",
-    "IsMidpointOfLine(E,BC)",
-    "Equal(MeasureOfAngle(FBE),70)",
     "Equal(LengthOfLine(BF),LengthOfLine(BE))",
+    "Equal(MeasureOfAngle(FBE),70)",
+    "IsMidpointOfLine(E,BC)",
+    "Parallelogram(ABCD)",
     "PerpendicularBetweenLine(FG,DG)"
   ],
   "image_cdl": [],
@@ -47,7 +47,13 @@
     "isosceles_triangle_judgment_line_equal(1,EFH)",
     "isosceles_triangle_property_angle_equal(1,EFH)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(1,BA,CD,H)",
+      "line_addition(1,HE,EG)",
+      "isosceles_triangle_judgment_line_equal(1,BEF)",
+      "triangle_property_angle_sum(1,BEF)"
+    ],
     "parallel_property_collinear_extend(1,BA,CD,H)": [
       "parallel_property_collinear_extend(2,HB,CD,F)",
       "parallel_property_collinear_extend(3,DC,BH,G)"
@@ -95,12 +101,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,EFH)": [
       "isosceles_triangle_property_angle_equal(1,EFH)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(1,BA,CD,H)",
-      "line_addition(1,HE,EG)",
-      "isosceles_triangle_judgment_line_equal(1,BEF)",
-      "triangle_property_angle_sum(1,BEF)"
     ]
   }
 }

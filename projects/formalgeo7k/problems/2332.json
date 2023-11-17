@@ -2,16 +2,23 @@
   "problem_id": 2332,
   "annotation": "ChenyangMao_2023-04-09",
   "source": "Geometry3k-2445",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AE=8，AG=x，GD=y，∠ADE=30°，∠DEA=45°，DG垂直于AG。求x的值。",
+  "problem_text_en": "As shown in the diagram, AE=8, AG=x, GD=y, ∠ADE=30°, ∠DEA=45°, DG⊥AG. Find the value of x.",
   "problem_img": "2332.png",
   "construction_cdl": [
     "Shape(GE,EA,AG)",
     "Shape(GA,AD,DG)",
     "Collinear(EGD)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AE),8)",
+    "Equal(LengthOfLine(AG),x)",
+    "Equal(LengthOfLine(GD),y)",
+    "Equal(MeasureOfAngle(ADE),30)",
+    "Equal(MeasureOfAngle(DEA),45)",
+    "PerpendicularBetweenLine(DG,AG)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(DEA),45)",
     "Equal(LengthOfLine(AG),x)",
@@ -29,7 +36,11 @@
     "isosceles_triangle_judgment_angle_equal(1,GEA)",
     "right_triangle_property_pythagorean(1,AGE)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,DGA,AGE)",
+      "triangle_property_angle_sum(1,EAG)"
+    ],
     "adjacent_complementary_angle(1,DGA,AGE)": [
       "right_triangle_judgment_angle(1,AGE)",
       "isosceles_triangle_judgment_angle_equal(1,GEA)"
@@ -39,10 +50,6 @@
     ],
     "right_triangle_judgment_angle(1,AGE)": [
       "right_triangle_property_pythagorean(1,AGE)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,DGA,AGE)",
-      "triangle_property_angle_sum(1,EAG)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 1615,
   "annotation": "YiwenHuang_2023-04-23",
   "source": "Geometry3k-1675",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find C B.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AC=20，CF=12，DB=2*x+1，FB=2*x-1，∠ACB=22°，∠CBD=22°，CF⊥AF。求直线CB的长度。",
+  "problem_text_en": "As shown in the diagram, AC=20, CF=12, DB=2*x+1, FB=2*x-1, ∠ACB=22°, ∠CBD=22°, CF⊥AF. Find the length of line CB.",
   "problem_img": "1615.png",
   "construction_cdl": [
     "Shape(AC,CF,FA)",
@@ -12,7 +12,15 @@
     "Collinear(ADF)",
     "Collinear(BFC)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),20)",
+    "Equal(LengthOfLine(CF),12)",
+    "Equal(LengthOfLine(DB),2*x+1)",
+    "Equal(LengthOfLine(FB),2*x-1)",
+    "Equal(MeasureOfAngle(ACB),22)",
+    "Equal(MeasureOfAngle(CBD),22)",
+    "PerpendicularBetweenLine(CF,AF)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(AC),20)",
     "Equal(LengthOfLine(DB),2*x+1)",
@@ -31,17 +39,17 @@
     "mirror_similar_triangle_property_line_ratio(1,FAC,FBD)",
     "line_addition(1,BF,FC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,CFA,AFB)",
+      "line_addition(1,BF,FC)"
+    ],
     "adjacent_complementary_angle(1,CFA,AFB)": [
       "mirror_similar_triangle_judgment_aa(1,ACF,DFB)"
     ],
     "mirror_similar_triangle_judgment_aa(1,ACF,DFB)": [
       "mirror_similar_triangle_property_line_ratio(1,ACF,DFB)",
       "mirror_similar_triangle_property_line_ratio(1,FAC,FBD)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,CFA,AFB)",
-      "line_addition(1,BF,FC)"
     ]
   }
 }

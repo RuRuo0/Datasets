@@ -2,9 +2,9 @@
   "problem_id": 4147,
   "annotation": "XiaoxiaoJin_2023-05-07",
   "source": "GeoQA-2737",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在Rt△ABC中,D是AB的中点,BC=5,AC=12,则sin∠DCA的值为()",
-  "problem_text_en": "As shown in the figure, in Rt△ABC, D is the midpoint of AB, BC = N_0, AC = N_1, then the value of sin∠DCA is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AC=12，BC=5，∠BCA=90°，CD是△CAB的中线。求sin(DC)的值。",
+  "problem_text_en": "As shown in the diagram, AC=12, BC=5, ∠BCA=90°, CD is the median of △ CAB. Find the value of sin(DC).",
   "problem_img": "4147.png",
   "construction_cdl": [
     "Shape(BC,CD,DB)",
@@ -12,8 +12,8 @@
     "Collinear(ADB)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(BC),5)",
     "Equal(LengthOfLine(AC),12)",
+    "Equal(LengthOfLine(BC),5)",
     "Equal(MeasureOfAngle(BCA),90)",
     "IsMedianOfTriangle(CD,CAB)"
   ],
@@ -29,7 +29,12 @@
     "isosceles_triangle_property_angle_equal(1,DCA)",
     "sine_theorem(1,BCA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,AD,DB)",
+      "right_triangle_judgment_angle(1,BCA)",
+      "sine_theorem(1,BCA)"
+    ],
     "line_addition(1,AD,DB)": [
       "isosceles_triangle_judgment_line_equal(1,DCA)"
     ],
@@ -46,11 +51,6 @@
     ],
     "isosceles_triangle_judgment_line_equal(1,DCA)": [
       "isosceles_triangle_property_angle_equal(1,DCA)"
-    ],
-    "START": [
-      "line_addition(1,AD,DB)",
-      "right_triangle_judgment_angle(1,BCA)",
-      "sine_theorem(1,BCA)"
     ]
   }
 }

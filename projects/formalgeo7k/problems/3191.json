@@ -2,9 +2,9 @@
   "problem_id": 3191,
   "annotation": "NaZhu_2023-04-23",
   "source": "GeoQA-477",
-  "problem_level": 1,
-  "problem_text_cn": "如图,直线a∥b,∠1=56°,∠2=37°,则∠3的度数为()",
-  "problem_text_en": "As shown in the figure, the straight line a ∥ b, ∠1 = N_0, ∠2 = N_1, then the degree of ∠3 is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠NEM=37°，∠PMA=56°，AB平行于CD。求∠PQN的大小。",
+  "problem_text_en": "As shown in the diagram, ∠NEM=37°, ∠PMA=56°, AB∥CD. Find the measure of ∠PQN.",
   "problem_img": "3191.png",
   "construction_cdl": [
     "Shape(EM,MN,NE)",
@@ -25,9 +25,9 @@
     "Collinear(CPQD)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(AB,CD)",
+    "Equal(MeasureOfAngle(NEM),37)",
     "Equal(MeasureOfAngle(PMA),56)",
-    "Equal(MeasureOfAngle(NEM),37)"
+    "ParallelBetweenLine(AB,CD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(PQN))",
@@ -39,7 +39,11 @@
     "parallel_property_alternate_interior_angle(2,AM,PQ)",
     "triangle_property_angle_sum(1,EPQ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,DC,BA,P)",
+      "triangle_property_angle_sum(1,EPQ)"
+    ],
     "parallel_property_collinear_extend(3,DC,BA,P)": [
       "parallel_property_collinear_extend(1,PC,BA,Q)"
     ],
@@ -48,10 +52,6 @@
     ],
     "parallel_property_collinear_extend(3,AB,PQ,M)": [
       "parallel_property_alternate_interior_angle(2,AM,PQ)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,DC,BA,P)",
-      "triangle_property_angle_sum(1,EPQ)"
     ]
   }
 }

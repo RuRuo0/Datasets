@@ -2,9 +2,9 @@
   "problem_id": 4564,
   "annotation": "YanjunGuo_2023-05-14",
   "source": "GeoQA-3690",
-  "problem_level": 1,
-  "problem_text_cn": "如图,王大伯家屋后有一块长12m、宽8m的长方形空地,他在以较长边BC为直径的半圆内种菜,他家养的一只羊平时拴在A处的一棵树上,为了不让羊吃到菜,拴羊的绳长最长不超过()",
-  "problem_text_en": "As shown in the figure, there is a rectangular open space with a length of N_0 and a width of N_1 behind Uncle Wang's house. He grows vegetables in a semicircle with the longer side BC as the diameter. A sheep of his family is usually tied to a tree at A. In order to prevent the sheep from eating the vegetables, the longest rope to tie the sheep does not exceed ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=8，BC=12，⊙O的圆心为O，BC是⊙O的直径，四边形ABCD是长方形。求直线AE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=8, BC=12, O is the center of circle O, the diameter of circle O is BC, ABCD is a rectangle. Find the length of line AE.",
   "problem_img": "4564.png",
   "construction_cdl": [
     "Shape(CD,DA,AE,OCE)",
@@ -17,11 +17,11 @@
     "Cocircular(O,EBC)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(BC),12)",
     "Equal(LengthOfLine(AB),8)",
-    "Rectangle(ABCD)",
+    "Equal(LengthOfLine(BC),12)",
     "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(BC,O)"
+    "IsDiameterOfCircle(BC,O)",
+    "Rectangle(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(AE))",
@@ -35,10 +35,7 @@
     "line_addition(1,BO,OC)",
     "line_addition(1,AE,EO)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,ABO)": [
-      "right_triangle_property_pythagorean(1,ABO)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "radius_of_circle_property_length_equal(1,OE,O)",
       "radius_of_circle_property_length_equal(1,OB,O)",
@@ -46,6 +43,9 @@
       "right_triangle_judgment_angle(1,ABO)",
       "line_addition(1,BO,OC)",
       "line_addition(1,AE,EO)"
+    ],
+    "right_triangle_judgment_angle(1,ABO)": [
+      "right_triangle_property_pythagorean(1,ABO)"
     ]
   }
 }

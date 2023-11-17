@@ -2,15 +2,20 @@
   "problem_id": 74,
   "annotation": "XiaokaiZhang_2023-04-02",
   "source": "Geometry3k-74",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x in square A D B C.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AB=y，AC=12，AD=BD，∠CAB=x°，DB垂直于CB，四边形ADBC是正方形。求x的值。",
+  "problem_text_en": "As shown in the diagram, AB=y, AC=12, AD=BD, ∠CAB=x°, DB is perpendicular to CB, ADBC is a square. Find the value of x.",
   "problem_img": "74.png",
   "construction_cdl": [
     "Shape(AD,DB,BA)",
     "Shape(AB,BC,CA)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AB),y)",
+    "Equal(LengthOfLine(AC),12)",
+    "Equal(LengthOfLine(AD),LengthOfLine(BD))",
+    "Equal(MeasureOfAngle(CAB),x)",
+    "PerpendicularBetweenLine(DB,CB)",
     "Square(ADBC)"
   ],
   "image_cdl": [
@@ -27,13 +32,13 @@
     "isosceles_triangle_property_angle_equal(1,CAB)",
     "triangle_property_angle_sum(1,CAB)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,CAB)": [
-      "isosceles_triangle_property_angle_equal(1,CAB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,CAB)",
       "triangle_property_angle_sum(1,CAB)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,CAB)": [
+      "isosceles_triangle_property_angle_equal(1,CAB)"
     ]
   }
 }

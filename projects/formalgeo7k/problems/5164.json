@@ -2,9 +2,9 @@
   "problem_id": 5164,
   "annotation": "JiaZou_2023-05-21",
   "source": "GeoQA-5112",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,O是圆心,弦CD⊥AB于E,AB=10,CD=8,则OE的长为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, O is the center of the circle, the chord CD ⊥ AB at E, AB = N_0, CD = N_1, then the length of OE is ()",
+  "problem_level": 7,
+  "problem_text_cn": "如图所示，AB=10，CD=8，O是⊙O的圆心，AB是圆O的直径，CE垂直于OE。求直线OE的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, CD=8, O is the center of ⊙O, the diameter of ⊙O is AB, CE⊥OE. Find the length of line OE.",
   "problem_img": "5164.png",
   "construction_cdl": [
     "Shape(CO,OB,OCB)",
@@ -17,11 +17,11 @@
     "Cocircular(O,ADBC)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AB),10)",
+    "Equal(LengthOfLine(CD),8)",
     "IsCentreOfCircle(O,O)",
     "IsDiameterOfCircle(AB,O)",
-    "PerpendicularBetweenLine(CE,OE)",
-    "Equal(LengthOfLine(AB),10)",
-    "Equal(LengthOfLine(CD),8)"
+    "PerpendicularBetweenLine(CE,OE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(OE))",
@@ -35,10 +35,7 @@
     "right_triangle_judgment_angle(1,CEO)",
     "right_triangle_property_pythagorean(1,CEO)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,CEO)": [
-      "right_triangle_property_pythagorean(1,CEO)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "circle_property_chord_perpendicular_bisect_chord(1,O,OE,CD)",
       "line_addition(1,CE,ED)",
@@ -46,6 +43,9 @@
       "diameter_of_circle_property_length_equal(1,AB,O)",
       "circle_property_length_of_radius_and_diameter(1,O)",
       "right_triangle_judgment_angle(1,CEO)"
+    ],
+    "right_triangle_judgment_angle(1,CEO)": [
+      "right_triangle_property_pythagorean(1,CEO)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 6546,
   "annotation": "XiaokaiZhang_2023-06-04",
   "source": "GeoQA-9471",
-  "problem_level": 1,
-  "problem_text_cn": "如图所示,在▱ABCD中,AB=10cm,AB边上的高DH=4cm,BC=6cm,求BC边上的高DF的长()",
-  "problem_text_en": "As shown in the figure, in ▱ABCD, AB = N_0, the height on the AB side DH = N_1, BC = N_2, find the length of the height DF on the BC side ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=10，BC=6，DH=4，四边形ABCD的高为DF，四边形DABC的高为DH，AD和BC是▱DABC的一组对边。求直线DF的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, BC=6, DH=4, the height of ABCD is DF, the height of quadrilateral DABC is DH, DABC is a parallelogram. Find the length of line DF.",
   "problem_img": "6546.png",
   "construction_cdl": [
     "Shape(DA,AH,HD)",
@@ -14,12 +14,12 @@
     "Collinear(BFC)"
   ],
   "text_cdl": [
-    "Parallelogram(DABC)",
     "Equal(LengthOfLine(AB),10)",
-    "IsAltitudeOfQuadrilateral(DH,DABC)",
-    "Equal(LengthOfLine(DH),4)",
     "Equal(LengthOfLine(BC),6)",
-    "IsAltitudeOfQuadrilateral(DF,ABCD)"
+    "Equal(LengthOfLine(DH),4)",
+    "IsAltitudeOfQuadrilateral(DF,ABCD)",
+    "IsAltitudeOfQuadrilateral(DH,DABC)",
+    "Parallelogram(DABC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(DF))",
@@ -28,7 +28,7 @@
     "parallelogram_area_formula_common(1,DABC)",
     "parallelogram_area_formula_common(1,ABCD)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_area_formula_common(1,DABC)",
       "parallelogram_area_formula_common(1,ABCD)"

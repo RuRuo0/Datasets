@@ -2,9 +2,9 @@
   "problem_id": 634,
   "annotation": "YimingHe_2023-04-09",
   "source": "Geometry3k-651",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x. A = 96 in^2.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，OLAB的面积为96，LE=7，OE=EA，OE=x，OL=LA，四边形LABO是菱形。求x的值。",
+  "problem_text_en": "As shown in the diagram, the area of quadrilateral OLAB is 96, LE=7, OE=EA, OE=x, OL=LA, quadrilateral LABO is a rhombus. Find the value of x.",
   "problem_img": "634.png",
   "construction_cdl": [
     "Shape(OL,LE,EO)",
@@ -14,7 +14,14 @@
     "Collinear(OEA)",
     "Collinear(LEB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(AreaOfQuadrilateral(OLAB),96)",
+    "Equal(LengthOfLine(LE),7)",
+    "Equal(LengthOfLine(OE),LengthOfLine(EA))",
+    "Equal(LengthOfLine(OE),x)",
+    "Equal(LengthOfLine(OL),LengthOfLine(LA))",
+    "Rhombus(LABO)"
+  ],
   "image_cdl": [
     "Equal(AreaOfQuadrilateral(OLAB),96)",
     "Equal(LengthOfLine(LE),7)",
@@ -31,7 +38,7 @@
     "line_addition(1,LE,EB)",
     "line_addition(1,OE,EA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_property_diagonal_bisection(1,LABO,E)",
       "kite_area_formula_diagonal(1,LABO)",

@@ -2,9 +2,9 @@
   "problem_id": 3623,
   "annotation": "QikeHuang_2023-04-30",
   "source": "GeoQA-1301",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABC中,∠C=90°,O为△ABC的三条角平分线的交点,OD⊥BC,OE⊥AC,OF⊥AB,点D、E、F分别是垂足,且AB=10cm,BC=8cm,CA=6cm,则点O到边AB的距离为()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠C = N_0, O is the intersection of the three angular bisectors of △ABC, OD ⊥ BC, OE ⊥ AC, OF ⊥ AB, vertices D, E, and F are the vertical feet, and AB = N_1, BC = N_2, CA = N_3, then the distance from point O to edge AB is ()",
+  "problem_level": 18,
+  "problem_text_cn": "如图所示，AB=10，AC=6，BC=8，∠BCA=90°，三角形ABC的内切圆圆心为O，AF垂直于OF，BD垂直于OD，OE⊥AE。求直线OF的长度。",
+  "problem_text_en": "As shown in the diagram, AB=10, AC=6, BC=8, ∠BCA=90°, the incenter of triangle ABC is O, AF is perpendicular to OF, BD⊥OD, OE is perpendicular to AE. Find the length of line OF.",
   "problem_img": "3623.png",
   "construction_cdl": [
     "Shape(AF,FO,OA)",
@@ -19,13 +19,13 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(AB),10)",
-    "Equal(LengthOfLine(BC),8)",
     "Equal(LengthOfLine(AC),6)",
-    "PerpendicularBetweenLine(AF,OF)",
-    "PerpendicularBetweenLine(OE,AE)",
-    "PerpendicularBetweenLine(BD,OD)",
+    "Equal(LengthOfLine(BC),8)",
     "Equal(MeasureOfAngle(BCA),90)",
-    "IsIncenterOfTriangle(O,ABC)"
+    "IsIncenterOfTriangle(O,ABC)",
+    "PerpendicularBetweenLine(AF,OF)",
+    "PerpendicularBetweenLine(BD,OD)",
+    "PerpendicularBetweenLine(OE,AE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(OF))",
@@ -50,7 +50,18 @@
     "line_addition(1,BD,DC)",
     "line_addition(1,AE,EC)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "bisector_of_angle_judgment_angle_equal(1,AO,EAF)",
+      "bisector_of_angle_judgment_angle_equal(1,BO,FBD)",
+      "adjacent_complementary_angle(1,AFO,OFB)",
+      "adjacent_complementary_angle(1,CEO,OEA)",
+      "adjacent_complementary_angle(1,BDO,ODC)",
+      "quadrilateral_property_angle_sum(1,ODCE)",
+      "line_addition(1,AF,FB)",
+      "line_addition(1,BD,DC)",
+      "line_addition(1,AE,EC)"
+    ],
     "bisector_of_angle_judgment_angle_equal(1,AO,EAF)": [
       "bisector_of_angle_property_distance_equal(1,AO,EAF)"
     ],
@@ -87,17 +98,6 @@
     "parallelogram_judgment_angle_and_angle(1,ODCE)": [
       "parallelogram_property_opposite_line_equal(1,ODCE)",
       "parallelogram_property_opposite_line_equal(1,DCEO)"
-    ],
-    "START": [
-      "bisector_of_angle_judgment_angle_equal(1,AO,EAF)",
-      "bisector_of_angle_judgment_angle_equal(1,BO,FBD)",
-      "adjacent_complementary_angle(1,AFO,OFB)",
-      "adjacent_complementary_angle(1,CEO,OEA)",
-      "adjacent_complementary_angle(1,BDO,ODC)",
-      "quadrilateral_property_angle_sum(1,ODCE)",
-      "line_addition(1,AF,FB)",
-      "line_addition(1,BD,DC)",
-      "line_addition(1,AE,EC)"
     ]
   }
 }

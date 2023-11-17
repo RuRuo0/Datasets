@@ -2,9 +2,9 @@
   "problem_id": 3072,
   "annotation": "XiaokaiZhang_2023-04-16",
   "source": "GeoQA-299",
-  "problem_level": 1,
-  "problem_text_cn": "如图,△ABC中,∠C=90°,AC=BC,AD平分∠CAB交BC于点D,DE⊥AB,垂足为E,且AB=6cm,则△DEB的周长为()",
-  "problem_text_en": "As shown in the figure, in △ABC, ∠C = N_0, AC = BC, AD bisects ∠CAB intersects BC at point D, DE ⊥ AB, foot of perpendicular is E, and AB = N_1, then the perimeter of △DEB is ()",
+  "problem_level": 14,
+  "problem_text_cn": "如图所示，AB=6，AC=BC，∠BCA=90°，AD平分∠CAB，AE垂直于DE。求△DEB的周长。",
+  "problem_text_en": "As shown in the diagram, AB=6, AC=BC, ∠BCA=90°, AD bisects ∠CAB, AE⊥DE. Find the perimeter of △DEB.",
   "problem_img": "3072.png",
   "construction_cdl": [
     "Shape(CA,AD,DC)",
@@ -14,11 +14,11 @@
     "Collinear(AEB)"
   ],
   "text_cdl": [
-    "Equal(MeasureOfAngle(BCA),90)",
+    "Equal(LengthOfLine(AB),6)",
     "Equal(LengthOfLine(AC),LengthOfLine(BC))",
+    "Equal(MeasureOfAngle(BCA),90)",
     "IsBisectorOfAngle(AD,CAB)",
-    "PerpendicularBetweenLine(AE,DE)",
-    "Equal(LengthOfLine(AB),6)"
+    "PerpendicularBetweenLine(AE,DE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfTriangle(DEB))",
@@ -39,7 +39,17 @@
     "line_addition(1,CD,DB)",
     "triangle_perimeter_formula(1,DEB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "right_triangle_judgment_angle(1,BCA)",
+      "bisector_of_angle_judgment_angle_equal(1,AD,CAE)",
+      "isosceles_triangle_judgment_line_equal(1,CAB)",
+      "triangle_property_angle_sum(1,CAB)",
+      "adjacent_complementary_angle(1,AED,DEB)",
+      "triangle_property_angle_sum(1,DEB)",
+      "line_addition(1,CD,DB)",
+      "triangle_perimeter_formula(1,DEB)"
+    ],
     "right_triangle_judgment_angle(1,BCA)": [
       "right_triangle_property_pythagorean(1,BCA)"
     ],
@@ -66,16 +76,6 @@
     ],
     "right_triangle_judgment_angle(1,DEB)": [
       "right_triangle_property_pythagorean(1,DEB)"
-    ],
-    "START": [
-      "right_triangle_judgment_angle(1,BCA)",
-      "bisector_of_angle_judgment_angle_equal(1,AD,CAE)",
-      "isosceles_triangle_judgment_line_equal(1,CAB)",
-      "triangle_property_angle_sum(1,CAB)",
-      "adjacent_complementary_angle(1,AED,DEB)",
-      "triangle_property_angle_sum(1,DEB)",
-      "line_addition(1,CD,DB)",
-      "triangle_perimeter_formula(1,DEB)"
     ]
   }
 }

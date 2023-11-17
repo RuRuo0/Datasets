@@ -2,17 +2,20 @@
   "problem_id": 499,
   "annotation": "YimingHe_2023-04-02",
   "source": "Geometry3k-510",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the ratio of the area of \\triangle A B C to the area of square B C D E, if BC = 1.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，BA=BC，BC=1，BC=AC，ED垂直于CD，EDCB是正方形。求三角形ABC的面积与EDCB的面积之比。",
+  "problem_text_en": "As shown in the diagram, BA=BC, BC=1, BC=AC, ED is perpendicular to CD, quadrilateral EDCB is a square. Find the ratio of the area of triangle ABC to the area of quadrilateral EDCB.",
   "problem_img": "499.png",
   "construction_cdl": [
     "Shape(ED,DC,CB,BE)",
     "Shape(BC,CA,AB)"
   ],
   "text_cdl": [
-    "Square(EDCB)",
-    "Equal(LengthOfLine(BC),1)"
+    "Equal(LengthOfLine(BA),LengthOfLine(BC))",
+    "Equal(LengthOfLine(BC),1)",
+    "Equal(LengthOfLine(BC),LengthOfLine(AC))",
+    "PerpendicularBetweenLine(ED,CD)",
+    "Square(EDCB)"
   ],
   "image_cdl": [
     "PerpendicularBetweenLine(ED,CD)",
@@ -29,7 +32,13 @@
     "triangle_area_formula_sine(1,ABC)",
     "parallelogram_area_formula_sine(1,EDCB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "isosceles_triangle_judgment_line_equal(1,ABC)",
+      "isosceles_triangle_judgment_line_equal(1,BCA)",
+      "triangle_area_formula_sine(1,ABC)",
+      "parallelogram_area_formula_sine(1,EDCB)"
+    ],
     "isosceles_triangle_judgment_line_equal(1,ABC)": [
       "equilateral_triangle_judgment_isosceles_and_isosceles(1,ABC)"
     ],
@@ -38,12 +47,6 @@
     ],
     "equilateral_triangle_judgment_isosceles_and_isosceles(1,ABC)": [
       "equilateral_triangle_property_angle(1,ABC)"
-    ],
-    "START": [
-      "isosceles_triangle_judgment_line_equal(1,ABC)",
-      "isosceles_triangle_judgment_line_equal(1,BCA)",
-      "triangle_area_formula_sine(1,ABC)",
-      "parallelogram_area_formula_sine(1,EDCB)"
     ]
   }
 }

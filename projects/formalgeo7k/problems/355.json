@@ -2,9 +2,9 @@
   "problem_id": 355,
   "annotation": "JiaZou_2023-04-09",
   "source": "Geometry3k-362",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x. (Hint: Draw an auxiliary line).",
+  "problem_level": 10,
+  "problem_text_cn": "如图所示，∠BCJ=105°，∠CIE=x°，∠KEF=125°，BD∥FH。求x的值。",
+  "problem_text_en": "As shown in the diagram, ∠BCJ=105°, ∠CIE=x°, ∠KEF=125°, BD is parallel to FH. Find the value of x.",
   "problem_img": "355.png",
   "construction_cdl": [
     "Shape(BC,CJ)",
@@ -22,7 +22,12 @@
     "Collinear(IEK)",
     "Collinear(FEH)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(BCJ),105)",
+    "Equal(MeasureOfAngle(CIE),x)",
+    "Equal(MeasureOfAngle(KEF),125)",
+    "ParallelBetweenLine(BD,FH)"
+  ],
   "image_cdl": [
     "Equal(MeasureOfAngle(BCJ),105)",
     "Equal(MeasureOfAngle(CIE),x)",
@@ -43,13 +48,7 @@
     "angle_addition(1,IEC,CEH)",
     "triangle_property_angle_sum(1,CIE)"
   ],
-  "theorem_seq_dag": {
-    "parallel_property_collinear_extend(3,BD,FH,C)": [
-      "parallel_property_collinear_extend(3,HF,DC,E)"
-    ],
-    "parallel_property_collinear_extend(3,HF,DC,E)": [
-      "parallel_property_ipsilateral_internal_angle(1,CD,EH)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "adjacent_complementary_angle(1,BCJ,JCD)",
       "adjacent_complementary_angle(1,HEK,KEF)",
@@ -59,6 +58,12 @@
       "angle_addition(1,DCE,ECI)",
       "angle_addition(1,IEC,CEH)",
       "triangle_property_angle_sum(1,CIE)"
+    ],
+    "parallel_property_collinear_extend(3,BD,FH,C)": [
+      "parallel_property_collinear_extend(3,HF,DC,E)"
+    ],
+    "parallel_property_collinear_extend(3,HF,DC,E)": [
+      "parallel_property_ipsilateral_internal_angle(1,CD,EH)"
     ]
   }
 }

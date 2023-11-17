@@ -2,9 +2,9 @@
   "problem_id": 1165,
   "annotation": "ChenyangMao_2023-04-09",
   "source": "Geometry3k-1204",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find y. Assume that segments that appear to be tangent are tangent. Round to the nearest tenth if necessary.",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，AB=41，AD=y，CH=5*x-8，DB=39，DC=72-3*x，A是⊙A的圆心，BD是⊙O的切线，CH是⊙O的切线。求y的值。",
+  "problem_text_en": "As shown in the diagram, AB=41, AD=y, CH=5*x-8, DB=39, DC=72-3*x, the center of circle A is A, the tangent to circle A is BD, the tangent to circle A is CH. Find the value of y.",
   "problem_img": "1165.png",
   "construction_cdl": [
     "Shape(HC,CD,AHD)",
@@ -15,7 +15,16 @@
     "Collinear(AFB)",
     "Cocircular(A,HDF)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AB),41)",
+    "Equal(LengthOfLine(AD),y)",
+    "Equal(LengthOfLine(CH),5*x-8)",
+    "Equal(LengthOfLine(DB),39)",
+    "Equal(LengthOfLine(DC),72-3*x)",
+    "IsCentreOfCircle(A,A)",
+    "IsTangentOfCircle(BD,A)",
+    "IsTangentOfCircle(CH,A)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(A,A)",
     "IsTangentOfCircle(BD,A)",
@@ -33,15 +42,15 @@
     "right_triangle_judgment_angle(1,ADB)",
     "right_triangle_property_pythagorean(1,ADB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "tangent_of_circle_property_perpendicular(1,BD,A,A)"
+    ],
     "tangent_of_circle_property_perpendicular(1,BD,A,A)": [
       "right_triangle_judgment_angle(1,ADB)"
     ],
     "right_triangle_judgment_angle(1,ADB)": [
       "right_triangle_property_pythagorean(1,ADB)"
-    ],
-    "START": [
-      "tangent_of_circle_property_perpendicular(1,BD,A,A)"
     ]
   }
 }

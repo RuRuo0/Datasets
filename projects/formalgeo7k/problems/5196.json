@@ -2,9 +2,9 @@
   "problem_id": 5196,
   "annotation": "NaZhu_2023-05-21",
   "source": "GeoQA-5195",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是⊙O的直径,CD是弦,AB⊥CD,垂足为点E,连接OD、CB、AC,∠DOB=60°,EB=2,那么CD的长为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of ⊙O, CD is the chord, AB ⊥ CD, the foot of perpendicular is point E, connect OD, CB, AC, ∠DOB = N_0, EB = N_1, then the length of CD is ()",
+  "problem_level": 8,
+  "problem_text_cn": "如图所示，EB=2，∠EOD=60°，圆O的圆心为O，OE⊥CE。求直线CD的长度。",
+  "problem_text_en": "As shown in the diagram, EB=2, ∠EOD=60°, O is the center of ⊙O, OE⊥CE. Find the length of line CD.",
   "problem_img": "5196.png",
   "construction_cdl": [
     "Shape(OAD,DO,OA)",
@@ -19,10 +19,10 @@
     "Cocircular(O,ADBC)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "PerpendicularBetweenLine(OE,CE)",
     "Equal(LengthOfLine(EB),2)",
-    "Equal(MeasureOfAngle(EOD),60)"
+    "Equal(MeasureOfAngle(EOD),60)",
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(OE,CE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(CD))",
@@ -37,10 +37,7 @@
     "circle_property_chord_perpendicular_bisect_chord(1,O,OE,DC)",
     "line_addition(1,CE,ED)"
   ],
-  "theorem_seq_dag": {
-    "adjacent_complementary_angle(1,DEO,OEC)": [
-      "circle_property_chord_perpendicular_bisect_chord(1,O,OE,DC)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "arc_property_center_angle(1,ODB,O)",
       "arc_property_circumference_angle_external(1,ODB,C)",
@@ -49,6 +46,9 @@
       "triangle_property_angle_sum(1,CEB)",
       "sine_theorem(1,EBC)",
       "line_addition(1,CE,ED)"
+    ],
+    "adjacent_complementary_angle(1,DEO,OEC)": [
+      "circle_property_chord_perpendicular_bisect_chord(1,O,OE,DC)"
     ]
   }
 }

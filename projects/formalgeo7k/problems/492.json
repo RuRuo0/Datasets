@@ -2,16 +2,24 @@
   "problem_id": 492,
   "annotation": "JiaZou_2023-03-12",
   "source": "Geometry3k-503",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Refer to the triangle shown below. Find z to the nearest tenth.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AC=y，AD=8，BC=z，BD=25/2，CD=x，BC⊥AC，CD垂直于BD。求z的值。",
+  "problem_text_en": "As shown in the diagram, AC=y, AD=8, BC=z, BD=25/2, CD=x, BC⊥AC, CD⊥BD. Find the value of z.",
   "problem_img": "492.png",
   "construction_cdl": [
     "Shape(CA,AD,DC)",
     "Shape(CD,DB,BC)",
     "Collinear(ADB)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),y)",
+    "Equal(LengthOfLine(AD),8)",
+    "Equal(LengthOfLine(BC),z)",
+    "Equal(LengthOfLine(BD),25/2)",
+    "Equal(LengthOfLine(CD),x)",
+    "PerpendicularBetweenLine(BC,AC)",
+    "PerpendicularBetweenLine(CD,BD)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(CD),x)",
     "Equal(LengthOfLine(AC),y)",
@@ -29,14 +37,14 @@
     "mirror_similar_triangle_property_line_ratio(1,CDB,ABC)",
     "mirror_similar_triangle_property_line_ratio(1,DBC,CAB)"
   ],
-  "theorem_seq_dag": {
-    "mirror_similar_triangle_judgment_aa(1,CDB,ABC)": [
-      "mirror_similar_triangle_property_line_ratio(1,CDB,ABC)",
-      "mirror_similar_triangle_property_line_ratio(1,DBC,CAB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "mirror_similar_triangle_judgment_aa(1,CDB,ABC)",
       "line_addition(1,AD,DB)"
+    ],
+    "mirror_similar_triangle_judgment_aa(1,CDB,ABC)": [
+      "mirror_similar_triangle_property_line_ratio(1,CDB,ABC)",
+      "mirror_similar_triangle_property_line_ratio(1,DBC,CAB)"
     ]
   }
 }

@@ -2,17 +2,17 @@
   "problem_id": 5235,
   "annotation": "XiaokaiZhang_2023-05-21",
   "source": "GeoQA-5302",
-  "problem_level": 1,
-  "problem_text_cn": "如图,点M是线段AB的中点,点N在线段MB上,若AB=12,AM:BN=3:1,则线段MN的长为()",
-  "problem_text_en": "As shown in the figure, point M is the midpoint of line segment AB, point N is on line segment MB, if AB = N_0, AM:BN=N_1:N_2, then the length of line segment MN is ()",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，AB=12，AM=Mul(LengthOfLine(BN),3)，M平分线段AB。求直线MN的长度。",
+  "problem_text_en": "As shown in the diagram, AB=12, AM=Mul(LengthOfLine(BN),3), M is the midpoint of segment AB. Find the length of line MN.",
   "problem_img": "5235.png",
   "construction_cdl": [
     "Collinear(AMNB)"
   ],
   "text_cdl": [
-    "IsMidpointOfLine(M,AB)",
     "Equal(LengthOfLine(AB),12)",
-    "Equal(LengthOfLine(AM),Mul(LengthOfLine(BN),3))"
+    "Equal(LengthOfLine(AM),Mul(LengthOfLine(BN),3))",
+    "IsMidpointOfLine(M,AB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(MN))",
@@ -21,7 +21,7 @@
     "line_addition(1,AM,MB)",
     "line_addition(1,MN,NB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AM,MB)",
       "line_addition(1,MN,NB)"

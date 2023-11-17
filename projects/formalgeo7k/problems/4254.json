@@ -2,9 +2,9 @@
   "problem_id": 4254,
   "annotation": "ChenyangMao_2023-05-07",
   "source": "GeoQA-3038",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在⊙O中,弦AB,CD相交于点P,若∠A=55°,∠APD=80°,则∠B等于()",
-  "problem_text_en": "As shown in the figure, in ⊙O, chords AB and CD intersect at point P, if ∠A = N_0, ∠APD = N_1, then ∠B is equal to ()",
+  "problem_level": 3,
+  "problem_text_cn": "如图所示，∠APD=80°，∠DAP=55°，⊙O的圆心为O。求∠CBP的大小。",
+  "problem_text_en": "As shown in the diagram, ∠APD=80°, ∠DAP=55°, O is the center of circle O. Find the measure of ∠CBP.",
   "problem_img": "4254.png",
   "construction_cdl": [
     "Shape(PC,CB,BP)",
@@ -18,9 +18,9 @@
     "Cocircular(O,CBDA)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
+    "Equal(MeasureOfAngle(APD),80)",
     "Equal(MeasureOfAngle(DAP),55)",
-    "Equal(MeasureOfAngle(APD),80)"
+    "IsCentreOfCircle(O,O)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(CBP))",
@@ -30,7 +30,7 @@
     "arc_property_circumference_angle_external(1,OAC,B)",
     "arc_property_circumference_angle_external(1,OAC,D)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "triangle_property_angle_sum(1,APD)",
       "arc_property_circumference_angle_external(1,OAC,B)",

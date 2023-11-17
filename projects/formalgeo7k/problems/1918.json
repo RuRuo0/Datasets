@@ -2,9 +2,9 @@
   "problem_id": 1918,
   "annotation": "JiaZou_2023-03-26",
   "source": "Geometry3k-1994",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "R P = 3.5 and J P = 9. Find P S.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，JP=9，KR=RJ，KS=SL，LT=TJ，RP=3.5。求直线PS的长度。",
+  "problem_text_en": "As shown in the diagram, JP=9, KR=RJ, KS=SL, LT=TJ, RP=3.5. Find the length of line PS.",
   "problem_img": "1918.png",
   "construction_cdl": [
     "Shape(PK,KR,RP)",
@@ -20,7 +20,13 @@
     "Collinear(KPT)",
     "Collinear(LPR)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(JP),9)",
+    "Equal(LengthOfLine(KR),LengthOfLine(RJ))",
+    "Equal(LengthOfLine(KS),LengthOfLine(SL))",
+    "Equal(LengthOfLine(LT),LengthOfLine(TJ))",
+    "Equal(LengthOfLine(RP),3.5)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(RP),3.5)",
     "Equal(LengthOfLine(JP),9)",
@@ -36,7 +42,11 @@
     "centroid_of_triangle_judgment_intersection(1,P,JLK,T,R)",
     "centroid_of_triangle_property_line_ratio(1,P,JLK,S)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "median_of_triangle_judgment(1,LR,LKJ)",
+      "median_of_triangle_judgment(1,KT,KJL)"
+    ],
     "median_of_triangle_judgment(1,LR,LKJ)": [
       "centroid_of_triangle_judgment_intersection(1,P,JLK,T,R)"
     ],
@@ -45,10 +55,6 @@
     ],
     "centroid_of_triangle_judgment_intersection(1,P,JLK,T,R)": [
       "centroid_of_triangle_property_line_ratio(1,P,JLK,S)"
-    ],
-    "START": [
-      "median_of_triangle_judgment(1,LR,LKJ)",
-      "median_of_triangle_judgment(1,KT,KJL)"
     ]
   }
 }

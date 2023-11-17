@@ -2,9 +2,9 @@
   "problem_id": 2305,
   "annotation": "DengfengYue_2023-04-16",
   "source": "Geometry3k-2413",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "In rhombus A B C D, m \\angle D A B = 2, m \\angle A D C and C B = 6. Find m \\angle A C D.",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，BC=6，∠DAB=Mul(MeasureOfAngle(CDA),2)°，四边形DABC是菱形。求∠ACD的大小。",
+  "problem_text_en": "As shown in the diagram, BC=6, ∠DAB=Mul(MeasureOfAngle(CDA),2)°, DABC is a rhombus. Find the measure of ∠ACD.",
   "problem_img": "2305.png",
   "construction_cdl": [
     "Shape(DA,AE,ED)",
@@ -15,6 +15,8 @@
     "Collinear(CEA)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(BC),6)",
+    "Equal(MeasureOfAngle(DAB),Mul(MeasureOfAngle(CDA),2))",
     "Rhombus(DABC)"
   ],
   "image_cdl": [
@@ -31,16 +33,16 @@
     "perpendicular_bisector_property_bisector(1,CE,DB)",
     "angle_addition(1,BCE,ECD)"
   ],
-  "theorem_seq_dag": {
-    "kite_property_diagonal_perpendicular_bisection(1,CDAB,E)": [
-      "perpendicular_bisector_property_bisector(1,CE,DB)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "parallelogram_property_opposite_angle_equal(1,CDAB)",
       "parallelogram_property_opposite_angle_equal(1,DABC)",
       "quadrilateral_property_angle_sum(1,DABC)",
       "kite_property_diagonal_perpendicular_bisection(1,CDAB,E)",
       "angle_addition(1,BCE,ECD)"
+    ],
+    "kite_property_diagonal_perpendicular_bisection(1,CDAB,E)": [
+      "perpendicular_bisector_property_bisector(1,CE,DB)"
     ]
   }
 }

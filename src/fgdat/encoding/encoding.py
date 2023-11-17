@@ -7,6 +7,7 @@ geo_sym = [
     "∥",  # parallel
     "⊥",  # perpendicular
     "⌒",  # arc
+    "²",  # pow
 ]
 
 greek_alp = [

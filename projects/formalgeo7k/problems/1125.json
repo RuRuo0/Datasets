@@ -2,9 +2,9 @@
   "problem_id": 1125,
   "annotation": "XiaoxiaoJin_2023-04-09",
   "source": "Geometry3k-1162",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find the area of the figure.",
+  "problem_level": 16,
+  "problem_text_cn": "如图所示，AC=8，AD=11，BE=2，BF=3，CH=6，EG=2，FD=5，HG=1，BE⊥GE，BN⊥DN，CA垂直于MA，DF⊥BF，GH⊥CH，GM⊥NM，HC垂直于AC，ND⊥FD。求HCAM的面积、四边形GMNE的面积与四边形FBND的面积之和。",
+  "problem_text_en": "As shown in the diagram, AC=8, AD=11, BE=2, BF=3, CH=6, EG=2, FD=5, HG=1, BE⊥GE, BN is perpendicular to DN, CA is perpendicular to MA, DF⊥BF, GH is perpendicular to CH, GM⊥NM, HC⊥AC, ND is perpendicular to FD. Find the sum of the area of quadrilateral HCAM, the area of quadrilateral GMNE and the area of quadrilateral FBND.",
   "problem_img": "1125.png",
   "construction_cdl": [
     "Shape(HC,CA,AM,MG,GH)",
@@ -14,7 +14,24 @@
     "Collinear(EBN)",
     "Collinear(AMND)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(AC),8)",
+    "Equal(LengthOfLine(AD),11)",
+    "Equal(LengthOfLine(BE),2)",
+    "Equal(LengthOfLine(BF),3)",
+    "Equal(LengthOfLine(CH),6)",
+    "Equal(LengthOfLine(EG),2)",
+    "Equal(LengthOfLine(FD),5)",
+    "Equal(LengthOfLine(HG),1)",
+    "PerpendicularBetweenLine(BE,GE)",
+    "PerpendicularBetweenLine(BN,DN)",
+    "PerpendicularBetweenLine(CA,MA)",
+    "PerpendicularBetweenLine(DF,BF)",
+    "PerpendicularBetweenLine(GH,CH)",
+    "PerpendicularBetweenLine(GM,NM)",
+    "PerpendicularBetweenLine(HC,AC)",
+    "PerpendicularBetweenLine(ND,FD)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(HG),1)",
     "Equal(LengthOfLine(EG),2)",
@@ -53,7 +70,15 @@
     "parallelogram_judgment_parallel_and_parallel(1,CAMH)",
     "parallelogram_area_formula_sine(1,HCAM)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "line_addition(1,EB,BN)",
+      "parallel_judgment_ipsilateral_internal_angle(1,NB,DF)",
+      "parallel_judgment_ipsilateral_internal_angle(1,DN,FB)",
+      "adjacent_complementary_angle(1,ANB,BND)",
+      "parallel_judgment_ipsilateral_internal_angle(1,CH,AM)",
+      "parallel_judgment_ipsilateral_internal_angle(1,HG,CA)"
+    ],
     "parallel_judgment_ipsilateral_internal_angle(1,NB,DF)": [
       "parallelogram_judgment_parallel_and_parallel(1,BNDF)"
     ],
@@ -88,14 +113,6 @@
     ],
     "parallelogram_judgment_parallel_and_parallel(1,CAMH)": [
       "parallelogram_area_formula_sine(1,HCAM)"
-    ],
-    "START": [
-      "line_addition(1,EB,BN)",
-      "parallel_judgment_ipsilateral_internal_angle(1,NB,DF)",
-      "parallel_judgment_ipsilateral_internal_angle(1,DN,FB)",
-      "adjacent_complementary_angle(1,ANB,BND)",
-      "parallel_judgment_ipsilateral_internal_angle(1,CH,AM)",
-      "parallel_judgment_ipsilateral_internal_angle(1,HG,CA)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 3949,
   "annotation": "FangzhenZhu_2023-05-07",
   "source": "GeoQA-1873",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB是半圆O的直径,D为半圆上的点,在BA延长线上取点C,使得DC=DO,连结CD并延长交圆O于点E,连结AE,若∠C=18°,则∠EAB的度数为()",
-  "problem_text_en": "As shown in the figure, AB is the diameter of the semicircle O, D is the point on the semicircle, take point C on the extended line of BA, so that DC = DO, connect CD and extend the circle of intersection O to point E, connect AE, if ∠C = N_0 , Then the degree of ∠EAB is ()",
+  "problem_level": 13,
+  "problem_text_cn": "如图所示，DC=DO，∠DCA=18°，O是圆O的圆心。求∠EAB的大小。",
+  "problem_text_en": "As shown in the diagram, DC=DO, ∠DCA=18°, O is the center of circle O. Find the measure of ∠EAB.",
   "problem_img": "3949.png",
   "construction_cdl": [
     "Shape(OBE,EO,OB)",
@@ -18,7 +18,11 @@
     "Collinear(CDE)",
     "Cocircular(O,BEDA)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(DC),LengthOfLine(DO))",
+    "Equal(MeasureOfAngle(DCA),18)",
+    "IsCentreOfCircle(O,O)"
+  ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(DC),LengthOfLine(DO))",
@@ -41,19 +45,7 @@
     "arc_property_center_angle(1,OBE,O)",
     "arc_property_circumference_angle_external(1,OBE,A)"
   ],
-  "theorem_seq_dag": {
-    "isosceles_triangle_judgment_line_equal(1,DCO)": [
-      "isosceles_triangle_property_angle_equal(1,DCO)"
-    ],
-    "radius_of_circle_property_length_equal(1,OD,O)": [
-      "isosceles_triangle_judgment_line_equal(1,OED)"
-    ],
-    "radius_of_circle_property_length_equal(1,OE,O)": [
-      "isosceles_triangle_judgment_line_equal(1,OED)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,OED)": [
-      "isosceles_triangle_property_angle_equal(1,OED)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "isosceles_triangle_judgment_line_equal(1,DCO)",
       "triangle_property_angle_sum(1,DCO)",
@@ -65,6 +57,18 @@
       "adjacent_complementary_angle(1,AOE,EOB)",
       "arc_property_center_angle(1,OBE,O)",
       "arc_property_circumference_angle_external(1,OBE,A)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,DCO)": [
+      "isosceles_triangle_property_angle_equal(1,DCO)"
+    ],
+    "radius_of_circle_property_length_equal(1,OD,O)": [
+      "isosceles_triangle_judgment_line_equal(1,OED)"
+    ],
+    "radius_of_circle_property_length_equal(1,OE,O)": [
+      "isosceles_triangle_judgment_line_equal(1,OED)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,OED)": [
+      "isosceles_triangle_property_angle_equal(1,OED)"
     ]
   }
 }

@@ -2,9 +2,9 @@
   "problem_id": 3055,
   "annotation": "XiaokaiZhang_2023-04-16",
   "source": "GeoQA-274",
-  "problem_level": 1,
-  "problem_text_cn": "如图,PA,PB是⊙O的切线,切点分别为A,B,∠APB=50°,C是⊙O上一点,则∠ACB的度数为()",
-  "problem_text_en": "As shown in the figure, PA and PB are the tangents of ⊙O, the tangent points are A, B, ∠APB = N_0, C is a point on ⊙O, then the degree of ∠ACB is ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠APB=50°，⊙O的圆心为O，圆O的切线为PA，⊙O的切线为PB。求∠BCA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠APB=50°, O is the center of ⊙O, PA is the tangent to circle O, the tangent to circle O is PB. Find the measure of ∠BCA.",
   "problem_img": "3055.png",
   "construction_cdl": [
     "Shape(AP,PB,OAB)",
@@ -15,9 +15,10 @@
     "Cocircular(O,ABC)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(APB),50)",
+    "IsCentreOfCircle(O,O)",
     "IsTangentOfCircle(PA,O)",
-    "IsTangentOfCircle(PB,O)",
-    "Equal(MeasureOfAngle(APB),50)"
+    "IsTangentOfCircle(PB,O)"
   ],
   "image_cdl": [
     "IsCentreOfCircle(O,O)"
@@ -31,7 +32,7 @@
     "arc_property_center_angle(1,OAB,O)",
     "arc_property_circumference_angle_external(1,OAB,C)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "tangent_of_circle_property_perpendicular(1,PA,O,O)",
       "tangent_of_circle_property_perpendicular(2,PB,O,O)",

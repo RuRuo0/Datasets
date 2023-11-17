@@ -2,9 +2,9 @@
   "problem_id": 6403,
   "annotation": "YimingHe_2023-06-04",
   "source": "GeoQA-9264",
-  "problem_level": 1,
-  "problem_text_cn": "如图,▱ABCD的对角线相交于点O,且AD≠CD,过点O作OM⊥AC,交AD于点M,如果△CDM的周长是40cm,则平行四边形ABCD的周长是()",
-  "problem_text_en": "As shown in the figure, the diagonal of ▱ABCD intersects at point O, and AD≠CD, crossing point O is OM ⊥ AC, and intersects AD at point M. If the perimeter of △CDM is N_0, then the perimeter of parallelogram ABCD is ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，三角形CDM的周长为40，ABCD是▱，AO⊥MO。求四边形ABCD的周长。",
+  "problem_text_en": "As shown in the diagram, the perimeter of triangle CDM is 40, ABCD is a parallelogram, AO is perpendicular to MO. Find the perimeter of quadrilateral ABCD.",
   "problem_img": "6403.png",
   "construction_cdl": [
     "Shape(AB,BO,OA)",
@@ -20,9 +20,9 @@
     "Collinear(MNC)"
   ],
   "text_cdl": [
+    "Equal(PerimeterOfTriangle(CDM),40)",
     "Parallelogram(ABCD)",
-    "PerpendicularBetweenLine(AO,MO)",
-    "Equal(PerimeterOfTriangle(CDM),40)"
+    "PerpendicularBetweenLine(AO,MO)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(PerimeterOfQuadrilateral(ABCD))",
@@ -38,16 +38,7 @@
     "triangle_perimeter_formula(1,DMC)",
     "quadrilateral_perimeter_formula(1,ABCD)"
   ],
-  "theorem_seq_dag": {
-    "parallelogram_property_diagonal_bisection(1,ABCD,O)": [
-      "mirror_congruent_triangle_judgment_sas(1,OMA,OCM)"
-    ],
-    "adjacent_complementary_angle(1,AOM,MOC)": [
-      "mirror_congruent_triangle_judgment_sas(1,OMA,OCM)"
-    ],
-    "mirror_congruent_triangle_judgment_sas(1,OMA,OCM)": [
-      "mirror_congruent_triangle_property_line_equal(1,OMA,OCM)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AM,MD)",
       "parallelogram_property_opposite_line_equal(1,ABCD)",
@@ -56,6 +47,15 @@
       "adjacent_complementary_angle(1,AOM,MOC)",
       "triangle_perimeter_formula(1,DMC)",
       "quadrilateral_perimeter_formula(1,ABCD)"
+    ],
+    "parallelogram_property_diagonal_bisection(1,ABCD,O)": [
+      "mirror_congruent_triangle_judgment_sas(1,OMA,OCM)"
+    ],
+    "adjacent_complementary_angle(1,AOM,MOC)": [
+      "mirror_congruent_triangle_judgment_sas(1,OMA,OCM)"
+    ],
+    "mirror_congruent_triangle_judgment_sas(1,OMA,OCM)": [
+      "mirror_congruent_triangle_property_line_equal(1,OMA,OCM)"
     ]
   }
 }

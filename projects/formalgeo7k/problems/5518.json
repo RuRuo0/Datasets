@@ -2,9 +2,9 @@
   "problem_id": 5518,
   "annotation": "DengfengYue_2023-05-21",
   "source": "GeoQA-5991",
-  "problem_level": 1,
-  "problem_text_cn": "如图,在△ABE中,BA=BE,F为AE中点．若∠ABC=34°,∠C=50°,则∠ADB的度数为()",
-  "problem_text_en": "As shown in the figure, in △ABE, BA = BE, F is the midpoint of AE. If ∠ABC = N_0, ∠C = N_1, then the degree of ∠ADB is ()",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，BA=BE，∠ABC=34°，∠ECA=50°，F平分线段EA。求∠BDA的大小。",
+  "problem_text_en": "As shown in the diagram, BA=BE, ∠ABC=34°, ∠ECA=50°, F bisects segment EA. Find the measure of ∠BDA.",
   "problem_img": "5518.png",
   "construction_cdl": [
     "Shape(AB,BF,FA)",
@@ -18,9 +18,9 @@
   ],
   "text_cdl": [
     "Equal(LengthOfLine(BA),LengthOfLine(BE))",
-    "IsMidpointOfLine(F,EA)",
     "Equal(MeasureOfAngle(ABC),34)",
-    "Equal(MeasureOfAngle(ECA),50)"
+    "Equal(MeasureOfAngle(ECA),50)",
+    "IsMidpointOfLine(F,EA)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BDA))",
@@ -33,19 +33,19 @@
     "triangle_property_angle_sum(1,DBC)",
     "adjacent_complementary_angle(1,CDF,FDA)"
   ],
-  "theorem_seq_dag": {
-    "median_of_triangle_judgment(1,BF,BEA)": [
-      "isosceles_triangle_property_line_coincidence(2,BEA,F)"
-    ],
-    "isosceles_triangle_judgment_line_equal(1,BEA)": [
-      "isosceles_triangle_property_line_coincidence(2,BEA,F)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "median_of_triangle_judgment(1,BF,BEA)",
       "isosceles_triangle_judgment_line_equal(1,BEA)",
       "angle_addition(1,ABF,FBE)",
       "triangle_property_angle_sum(1,DBC)",
       "adjacent_complementary_angle(1,CDF,FDA)"
+    ],
+    "median_of_triangle_judgment(1,BF,BEA)": [
+      "isosceles_triangle_property_line_coincidence(2,BEA,F)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,BEA)": [
+      "isosceles_triangle_property_line_coincidence(2,BEA,F)"
     ]
   }
 }

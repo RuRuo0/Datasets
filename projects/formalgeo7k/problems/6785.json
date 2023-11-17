@@ -2,9 +2,9 @@
   "problem_id": 6785,
   "annotation": "Yangli_2023-06-04",
   "source": "GeoQA-9905",
-  "problem_level": 1,
-  "problem_text_cn": "如图,⊙O的半径OC=5cm,直线L⊥OC,垂足为H,且L交⊙O于A,B两点,AB=8cm,则L沿OC所在直线向下平移()cm时与⊙O相切．\\frac{",
-  "problem_text_en": "As shown in the figure, the radius of ⊙O OC = N_0, the straight line L ⊥ OC, the foot of perpendicular is H, and L intersects ⊙O at the two points A and B, AB = N_1, then L is translated downward along the line where OC is () and when ⊙O Tangent. ",
+  "problem_level": 6,
+  "problem_text_cn": "如图所示，AB=8，AH=HB，OA=5，O是圆O的圆心，AH⊥OH。求直线HC的长度。",
+  "problem_text_en": "As shown in the diagram, AB=8, AH=HB, OA=5, O is the center of ⊙O, AH is perpendicular to OH. Find the length of line HC.",
   "problem_img": "6785.png",
   "construction_cdl": [
     "Shape(OA,AH,HO)",
@@ -16,11 +16,11 @@
     "Cocircular(O,ACB)"
   ],
   "text_cdl": [
-    "Equal(LengthOfLine(OA),5)",
     "Equal(LengthOfLine(AB),8)",
     "Equal(LengthOfLine(AH),LengthOfLine(HB))",
-    "PerpendicularBetweenLine(AH,OH)",
-    "IsCentreOfCircle(O,O)"
+    "Equal(LengthOfLine(OA),5)",
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(AH,OH)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(HC))",
@@ -33,16 +33,16 @@
     "right_triangle_property_pythagorean(1,AHO)",
     "line_addition(1,OH,HC)"
   ],
-  "theorem_seq_dag": {
-    "right_triangle_judgment_angle(1,AHO)": [
-      "right_triangle_property_pythagorean(1,AHO)"
-    ],
+  "theorem_seqs_dag": {
     "START": [
       "line_addition(1,AH,HB)",
       "radius_of_circle_property_length_equal(1,OA,O)",
       "radius_of_circle_property_length_equal(1,OC,O)",
       "right_triangle_judgment_angle(1,AHO)",
       "line_addition(1,OH,HC)"
+    ],
+    "right_triangle_judgment_angle(1,AHO)": [
+      "right_triangle_property_pythagorean(1,AHO)"
     ]
   }
 }

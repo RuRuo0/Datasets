@@ -2,9 +2,9 @@
   "problem_id": 1953,
   "annotation": "JiaZou_2023-03-26",
   "source": "Geometry3k-2032",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "J is the incenter of \\angle A B C. Find J F.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，AE=12，AJ=15，∠JBA=34°，∠JCB=32°，J是三角形ACB的内心，CD垂直于JD，JE垂直于AE，JF⊥CF。求直线JF的长度。",
+  "problem_text_en": "As shown in the diagram, AE=12, AJ=15, ∠JBA=34°, ∠JCB=32°, J is the center of the inscribed circle of triangle ACB, CD is perpendicular to JD, JE⊥AE, JF⊥CF. Find the length of line JF.",
   "problem_img": "1953.png",
   "construction_cdl": [
     "Shape(JD,DB,BJ)",
@@ -18,7 +18,14 @@
     "Collinear(CFA)"
   ],
   "text_cdl": [
-    "IsIncenterOfTriangle(J,ACB)"
+    "Equal(LengthOfLine(AE),12)",
+    "Equal(LengthOfLine(AJ),15)",
+    "Equal(MeasureOfAngle(JBA),34)",
+    "Equal(MeasureOfAngle(JCB),32)",
+    "IsIncenterOfTriangle(J,ACB)",
+    "PerpendicularBetweenLine(CD,JD)",
+    "PerpendicularBetweenLine(JE,AE)",
+    "PerpendicularBetweenLine(JF,CF)"
   ],
   "image_cdl": [
     "Equal(MeasureOfAngle(JCB),32)",
@@ -38,7 +45,12 @@
     "bisector_of_angle_judgment_angle_equal(1,AJ,EAF)",
     "bisector_of_angle_property_distance_equal(1,AJ,EAF)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,AFJ,JFC)",
+      "right_triangle_judgment_angle(1,JEA)",
+      "bisector_of_angle_judgment_angle_equal(1,AJ,EAF)"
+    ],
     "adjacent_complementary_angle(1,AFJ,JFC)": [
       "bisector_of_angle_property_distance_equal(1,AJ,EAF)"
     ],
@@ -47,11 +59,6 @@
     ],
     "bisector_of_angle_judgment_angle_equal(1,AJ,EAF)": [
       "bisector_of_angle_property_distance_equal(1,AJ,EAF)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,AFJ,JFC)",
-      "right_triangle_judgment_angle(1,JEA)",
-      "bisector_of_angle_judgment_angle_equal(1,AJ,EAF)"
     ]
   }
 }

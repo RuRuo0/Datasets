@@ -2,9 +2,9 @@
   "problem_id": 3725,
   "annotation": "Yangli_2023-04-30",
   "source": "GeoQA-1504",
-  "problem_level": 1,
-  "problem_text_cn": "如图,把矩形ABCD沿EF折叠,若∠1=40°,则∠AEF=()",
-  "problem_text_en": "As shown in the figure, fold the rectangle ABCD along EF, if ∠1 = N_0, then ∠AEF = ()",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，∠BIE=∠EIG，∠GIC=40°，IB∥EA，ABCD是长方形。求∠IEA的大小。",
+  "problem_text_en": "As shown in the diagram, ∠BIE=∠EIG, ∠GIC=40°, IB∥EA, ABCD is a rectangle. Find the measure of ∠IEA.",
   "problem_img": "3725.png",
   "construction_cdl": [
     "Shape(EA,AB,BI,IE)",
@@ -16,10 +16,10 @@
     "Collinear(HFG)"
   ],
   "text_cdl": [
-    "Rectangle(ABCD)",
-    "Equal(MeasureOfAngle(GIC),40)",
     "Equal(MeasureOfAngle(BIE),MeasureOfAngle(EIG))",
-    "ParallelBetweenLine(IB,EA)"
+    "Equal(MeasureOfAngle(GIC),40)",
+    "ParallelBetweenLine(IB,EA)",
+    "Rectangle(ABCD)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(IEA))",
@@ -30,7 +30,7 @@
     "flat_angle(1,BIC)",
     "parallel_property_ipsilateral_internal_angle(1,IB,EA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
     "START": [
       "angle_addition(1,BIE,EIG)",
       "angle_addition(1,BIG,GIC)",

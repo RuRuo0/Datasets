@@ -2,9 +2,9 @@
   "problem_id": 2333,
   "annotation": "ChenyangMao_2023-04-09",
   "source": "Geometry3k-2446",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "M C = 7, R M = 4, and A T = 16. Find M B.",
+  "problem_level": 4,
+  "problem_text_cn": "如图所示，AR=RC，AT=16，CT=TB，MC=7，RM=4，SA=SB。求直线MB的长度。",
+  "problem_text_en": "As shown in the diagram, AR=RC, AT=16, CT=TB, MC=7, RM=4, SA=SB. Find the length of line MB.",
   "problem_img": "2333.png",
   "construction_cdl": [
     "Shape(AR,RM,MA)",
@@ -21,9 +21,12 @@
     "Collinear(BMR)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(AR),LengthOfLine(RC))",
+    "Equal(LengthOfLine(AT),16)",
+    "Equal(LengthOfLine(CT),LengthOfLine(TB))",
     "Equal(LengthOfLine(MC),7)",
     "Equal(LengthOfLine(RM),4)",
-    "Equal(LengthOfLine(AT),16)"
+    "Equal(LengthOfLine(SA),LengthOfLine(SB))"
   ],
   "image_cdl": [
     "Equal(LengthOfLine(SA),LengthOfLine(SB))",
@@ -38,7 +41,11 @@
     "centroid_of_triangle_judgment_intersection(1,M,CBA,T,R)",
     "centroid_of_triangle_property_line_ratio(1,M,BAC,R)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "median_of_triangle_judgment(1,AT,ACB)",
+      "median_of_triangle_judgment(1,BR,BAC)"
+    ],
     "median_of_triangle_judgment(1,AT,ACB)": [
       "centroid_of_triangle_judgment_intersection(1,M,CBA,T,R)"
     ],
@@ -47,10 +54,6 @@
     ],
     "centroid_of_triangle_judgment_intersection(1,M,CBA,T,R)": [
       "centroid_of_triangle_property_line_ratio(1,M,BAC,R)"
-    ],
-    "START": [
-      "median_of_triangle_judgment(1,AT,ACB)",
-      "median_of_triangle_judgment(1,BR,BAC)"
     ]
   }
 }

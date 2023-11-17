@@ -2,9 +2,9 @@
   "problem_id": 3216,
   "annotation": "NaZhu_2023-04-23",
   "source": "GeoQA-512",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB∥CD,直线l交AB于点E,交CD于点F,若∠2=70°,则∠1等于()",
-  "problem_text_en": "As shown in the figure, AB ∥ CD, the straight line l intersects AB at point E, and intersects CD at point F. If ∠2 = N_0, then ∠1 is equal to ()",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，∠CFM=70°，BA平行于DC。求∠FEB的大小。",
+  "problem_text_en": "As shown in the diagram, ∠CFM=70°, BA is parallel to DC. Find the measure of ∠FEB.",
   "problem_img": "3216.png",
   "construction_cdl": [
     "Shape(CF,FM)",
@@ -20,8 +20,8 @@
     "Collinear(MFEN)"
   ],
   "text_cdl": [
-    "ParallelBetweenLine(BA,DC)",
-    "Equal(MeasureOfAngle(CFM),70)"
+    "Equal(MeasureOfAngle(CFM),70)",
+    "ParallelBetweenLine(BA,DC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(FEB))",
@@ -33,17 +33,17 @@
     "flat_angle(1,AEB)",
     "angle_addition(1,AEF,FEB)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "parallel_property_collinear_extend(3,BA,DC,E)",
+      "flat_angle(1,AEB)",
+      "angle_addition(1,AEF,FEB)"
+    ],
     "parallel_property_collinear_extend(3,BA,DC,E)": [
       "parallel_property_collinear_extend(3,CD,AE,F)"
     ],
     "parallel_property_collinear_extend(3,CD,AE,F)": [
       "parallel_property_corresponding_angle(2,EA,FC,M)"
-    ],
-    "START": [
-      "parallel_property_collinear_extend(3,BA,DC,E)",
-      "flat_angle(1,AEB)",
-      "angle_addition(1,AEF,FEB)"
     ]
   }
 }

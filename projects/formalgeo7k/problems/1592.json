@@ -2,9 +2,9 @@
   "problem_id": 1592,
   "annotation": "QikeHuang_2023-04-09",
   "source": "Geometry3k-1652",
-  "problem_level": 1,
-  "problem_text_cn": "",
-  "problem_text_en": "Find x.",
+  "problem_level": 5,
+  "problem_text_cn": "如图所示，MK=20，MP=16，YQ=x，YX=15，∠MLP=∠YZQ，∠PKM=∠QXY，LP⊥MP，ZQ垂直于YQ。求x的值。",
+  "problem_text_en": "As shown in the diagram, MK=20, MP=16, YQ=x, YX=15, ∠MLP=∠YZQ, ∠PKM=∠QXY, LP⊥MP, ZQ is perpendicular to YQ. Find the value of x.",
   "problem_img": "1592.png",
   "construction_cdl": [
     "Shape(KM,MP,PK)",
@@ -14,7 +14,16 @@
     "Collinear(KPL)",
     "Collinear(ZQX)"
   ],
-  "text_cdl": [],
+  "text_cdl": [
+    "Equal(LengthOfLine(MK),20)",
+    "Equal(LengthOfLine(MP),16)",
+    "Equal(LengthOfLine(YQ),x)",
+    "Equal(LengthOfLine(YX),15)",
+    "Equal(MeasureOfAngle(MLP),MeasureOfAngle(YZQ))",
+    "Equal(MeasureOfAngle(PKM),MeasureOfAngle(QXY))",
+    "PerpendicularBetweenLine(LP,MP)",
+    "PerpendicularBetweenLine(ZQ,YQ)"
+  ],
   "image_cdl": [
     "Equal(LengthOfLine(YX),15)",
     "Equal(LengthOfLine(YQ),x)",
@@ -34,7 +43,11 @@
     "similar_triangle_property_line_ratio(1,PKM,QXY)",
     "similar_triangle_property_line_ratio(1,KMP,XYQ)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,LPM,MPK)",
+      "adjacent_complementary_angle(1,ZQY,YQX)"
+    ],
     "adjacent_complementary_angle(1,LPM,MPK)": [
       "similar_triangle_judgment_aa(1,MPK,YQX)"
     ],
@@ -44,10 +57,6 @@
     "similar_triangle_judgment_aa(1,MPK,YQX)": [
       "similar_triangle_property_line_ratio(1,PKM,QXY)",
       "similar_triangle_property_line_ratio(1,KMP,XYQ)"
-    ],
-    "START": [
-      "adjacent_complementary_angle(1,LPM,MPK)",
-      "adjacent_complementary_angle(1,ZQY,YQX)"
     ]
   }
 }

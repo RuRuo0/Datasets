@@ -2,9 +2,9 @@
   "problem_id": 4343,
   "annotation": "ZheZhu_2023-05-07",
   "source": "GeoQA-3232",
-  "problem_level": 1,
-  "problem_text_cn": "如图,AB和CD是⊙O的两条直径,弦DE∥AB,若弧DE为40°的弧,则∠BOC=()",
-  "problem_text_en": "As shown in the figure, AB and CD are the two diameters of ⊙O, the chord DE ∥ AB, if the arc DE is the arc of N_0, then ∠BOC = ()",
+  "problem_level": 9,
+  "problem_text_cn": "如图所示，∠EOD=40°，⊙O的圆心为O，AB是圆O的直径，圆O的直径为CD，BA平行于DE。求∠BOC的大小。",
+  "problem_text_en": "As shown in the diagram, ∠EOD=40°, O is the center of circle O, AB is the diameter of ⊙O, CD is the diameter of ⊙O, BA is parallel to DE. Find the measure of ∠BOC.",
   "problem_img": "4343.png",
   "construction_cdl": [
     "Shape(OA,OAC,CO)",
@@ -18,11 +18,11 @@
     "Cocircular(O,ACBDE)"
   ],
   "text_cdl": [
+    "Equal(MeasureOfAngle(EOD),40)",
     "IsCentreOfCircle(O,O)",
-    "IsDiameterOfCircle(CD,O)",
     "IsDiameterOfCircle(AB,O)",
-    "ParallelBetweenLine(BA,DE)",
-    "Equal(MeasureOfAngle(EOD),40)"
+    "IsDiameterOfCircle(CD,O)",
+    "ParallelBetweenLine(BA,DE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(MeasureOfAngle(BOC))",
@@ -38,7 +38,15 @@
     "flat_angle(1,BOA)",
     "angle_addition(1,BOC,COA)"
   ],
-  "theorem_seq_dag": {
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OD,O)",
+      "radius_of_circle_property_length_equal(1,OE,O)",
+      "triangle_property_angle_sum(1,EOD)",
+      "parallel_property_collinear_extend(3,BA,DE,O)",
+      "flat_angle(1,BOA)",
+      "angle_addition(1,BOC,COA)"
+    ],
     "radius_of_circle_property_length_equal(1,OD,O)": [
       "isosceles_triangle_judgment_line_equal(1,ODE)"
     ],
@@ -50,14 +58,6 @@
     ],
     "parallel_property_collinear_extend(3,BA,DE,O)": [
       "parallel_property_corresponding_angle(1,OA,DE,C)"
-    ],
-    "START": [
-      "radius_of_circle_property_length_equal(1,OD,O)",
-      "radius_of_circle_property_length_equal(1,OE,O)",
-      "triangle_property_angle_sum(1,EOD)",
-      "parallel_property_collinear_extend(3,BA,DE,O)",
-      "flat_angle(1,BOA)",
-      "angle_addition(1,BOC,COA)"
     ]
   }
 }

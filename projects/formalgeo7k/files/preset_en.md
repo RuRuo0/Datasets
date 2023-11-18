@@ -1,138 +1,162 @@
 # GFS-Basic
 
-GFS-Basic是基于[几何形式化理论](https://arxiv.org/abs/2310.18021)设计的几何形式化系统，适用求解器
-[FormalGeo](https://github.com/FormalGeo/FormalGeo)的版本为0.0.1。FormalGeo-0.0.1包含25个内置的谓词，GFS-Basic在此基础之上，
-详细总结了平面几何领域常见的名词和定理，新定义了63个谓词和196个定理。
+GFS-Basic is a geometry formal system designed based on the
+[Geometry Formalization Theory](https://arxiv.org/abs/2310.18021), suitable for the solver
+[FormalGeo](https://github.com/FormalGeo/FormalGeo) version 0.0.1. FormalGeo-0.0.1 contains 25 built-in predicates.
+On this basis, GFS-Basic has detailed summaries of common nouns and theorems in the field of plane geometry, and has
+newly defined 63 predicates and 196 theorems.
 
 ## Preset Predicates
 
-内置谓词包括:  
-3个构图谓词：Shape、Collinear、Cocircular；6个基本实体谓词：Point、Line、Arc、Angle、Polygon、Circle；2个代数关系谓词：
-Equal、Equation；1个属性谓词：Free；10个运算谓词：Add、Sub、Mul、Div、Pow、Mod、Sqrt、Sin、Cos、Tan；3个解题目标谓词：
-Value、Equal、Relation。
+3 construction predicates: Shape, Collinear, Cocircular; 6 basic entity predicates: Point, Line, Arc, Angle, Polygon,
+Circle; 2 algebraic relation predicates: Equal, Equation; 1 attribute predicate: Free; 10 operation predicates: Add,
+Sub, Mul, Div, Pow, Mod, Sqrt, Sin, Cos, Tan; 3 problem target predicates: Value, Equal, Relation.
 
-### 构图谓词
+### Construction Predicates
 
 #### Shape(*)
 
-Shape是最基本的构图谓词，它使用若干个边或弧来声明一个几何图形，这个几何图形可以是一条边，可以是一个角，也可以是边和弧围成的图形。使用Shape声明
-几何图形时，我们需要依据有序原则、逆时针原则和旋转不变原则，这三大原则的介绍可参考cowork.md。
+Shape is the most basic construction predicate. It uses several edges or arcs to declare a closed geometric figure,
+which can be an angle or a shape formed by edges and arcs. For closed geometric figures, list the edges of the figure in
+a counterclockwise direction. For non-closed geometric figures, first connect the gaps to transform them into closed
+geometric figures.
+
 <div>
     <img src="pic/Shape.png" alt="Shape" width="60%">
 </div>
 
-**1.声明一个点**  
-如图1所示，P是圆O的圆心，我们可以这样声明一个点：
+**1.Declare a point**  
+As shown in Figure 1, P is the center of the circle O. We can declare a point like this：
 
     Shape(P)
 
-**2.声明一条线段**  
-如图2所示，AB是线段的两点，我们可以这样声明线段：
+**2.Declare a point**  
+As shown in Figure 2, AB are the two points of the line segment. We can declare the line segment like this:
 
     Shape(AB)
 
-当使用Shape声明线段时，默认线段是无向的，所以这样声明也是合法的：
+When declaring a line segment using Shape, the segment is assumed to be undirected by default, so declaring it this way
+is also valid:
 
     Shape(BA)
 
-**3.声明一个角**  
-如图3所示，角B由两条线段构成。需要注意，在声明角时，线段是有向的，两条线出现的顺序按照逆时针的方向，首尾相接。因此角B可以表示为：
+**3.Declare a angle**  
+As shown in Figure 3, angle B is formed by two line segments. It is important to note that when declaring an angle, the
+line segments are directed, and the order in which the two lines appear follows the counterclockwise direction,
+connecting head to tail. Therefore, angle B can be represented as:
 
     Shape(AB,BC)
 
-**4.声明一个封闭图形**  
-如果一个边一个边或一个角一个角来声明图形，未免也太麻烦了。我们可以直接声明一个由若干线段和弧构成的图形，在构图阶段，推理器会自动扩展出图形中的
-角、线和弧。因此我们在标注图形的构图语句时，先使用Shape声明所有的最小封闭图形，然后在把那些不封闭的最小图形如角、线段、点等声明，就可以声明整个图形。  
-对于图3中的四边形，我们可以这样声明：
+**4.Declare a shape**  
+If we declare shapes one edge or one angle at a time, it can be quite cumbersome. Instead, we can directly declare a
+shape composed of several line segments and arcs. In the construction stage, the reasoner will automatically expand the
+angles, lines, and arcs in the shape.
+
+For the quadrilateral in Figure 3, we can declare it like this:
 
     Shape(AB,BC,CD,DA)
     Shape(BC,CD,DA,AB)
     Shape(CD,DA,AB,BC)
     Shape(DA,AB,BC,CD)
 
-根据旋转不变原则，一个四边形有上述四种表示，我们选择一种就可以。  
-更复杂的图形，如图4，可以声明为：
+A quadrilateral can be represented in the four ways mentioned above, and we can choose one of them. For more complex
+shapes, like the one in Figure 4, it can be declared as:
 
     Shape(OAB,BE,EA)
     Shape(OBC,CE,EB)
     Shape(EC,OCD,DP,PE)
     Shape(AE,EP,PD,ODA)
 
-需注意，虽然EP和PD是共线的，但在声明封闭图形时，不能直接声明ED，需要把最小的边都声明出来。  
-封闭图形可以由线和弧构成，线有两个方向，弧只有一个方向。在声明线时，需要按照逆时针的方向，各点首尾相接；声明弧时，需注意弧只有一种表示方法。  
-当弧单独出现时，不需要使用Shape来声明，因为弧的出现必然伴随着Cocircular谓词，所有弧将会由Cocircular谓词自动扩展得到。
+It should be noted that although EP and PD are collinear, when declaring a closed figure, we cannot directly declare ED;
+we need to declare all the smallest edges. Closed figures can be composed of lines and arcs. Lines have two directions,
+but arcs only have one. When declaring lines, they should be arranged in a counterclockwise direction, with the points
+connecting end to end; when declaring arcs, it's important to note that there is only one way to represent them. When an
+arc appears on its own, there is no need to declare it using Shape, as the appearance of an arc is always accompanied by
+the Cocircular predicate. All arcs will be automatically extended by the Cocircular predicate.
 
 #### Collinear(*)
 
-Collinear用来声明3个及3个以上的共线点，2点一定是共线的，所以不用声明2点。
+Collinear is used to declare that three or more points are collinear. Since two points are always collinear, there is no
+need to declare collinearity for just two points.
 
 <div>
     <img src="pic/Collinear.png" alt="Collinear" width="45%">
 </div>
 
-共线声明是及其简单的，只要按顺序列出一条线上所有的点即可，如图1中的共线可声明为：
+Declaring collinearity is extremely simple; just list all the points on a line in order. The collinearity in Figure 1
+can be declared as:
 
     Collinear(AMB)
 
-共线没有方向之分，从另一个方向声明也是合法的：
+Collinearity does not have a direction, so declaring it from the other direction is also valid:
 
     Collinear(BMA)
 
-图2中的共线可声明为：
+The collinearity in Figure 2 can be declared as:
 
     Collinear(BCDEF)
 
-图3中的共线可声明为：
+The collinearity in Figure 3 can be declared as:
 
     Collinear(ADB)
     Collinear(AEC)
 
-共线会在推理器中自动扩展出所有的线和平角，如Collinear(AMB)会扩展得到Line(AM),Line(MB),Line(AM),Angle(AMB),Angle(BMA)。
+Collinearity will automatically expand in the reasoner to include all lines and flat angles. For instance,
+Collinear(AMB) will expand to include Line(AM), Line(MB), Line(AM), Angle(AMB), and Angle(BMA).
 
 #### Cocircular(O,*)
 
-Cocircular用来声明共圆的若干个点，与Collinear相同，按照顺序列出若干点即可；但也与Collinear不同，一是即使1个点在圆上也要声明，二是共圆的
-声明按照逆时针方向，且从任何点开始都可。
+Cocircular is used to declare several points that are concyclic. Like Collinear, it involves listing several points in
+order. However, it differs from Collinear in two ways: first, even if only one point is on the circle, it needs to be
+declared, and second, the declaration of concyclic points should follow a counterclockwise direction, and it can start
+from any point.
+
 <div>
     <img src="pic/Cocircular.png" alt="Cocircular" width="60%">
 </div>
 
-在图1中，共圆的几点可声明为：
+In Figure 1, the points that are concyclic can be declared as:
 
     Cocircular(O,ABCD)
     Cocircular(O,BCDA)
     Cocircular(O,CDAB)
     Cocircular(O,DABC)
 
-依据三大原则，图1的共圆声明可以有上述4种形式，任选其1即可。图2到图4是几种比较特殊的共圆声明。
-图2的圆上只有1个点，也要声明：
+The concyclic declaration in Figure 1 can have the above four forms, and any one of them can be chosen. Figures 2 to 4
+show several special cases of concyclic declarations. In Figure 2, where there is only one point on the circle, it also
+needs to be declared:
 
     Cocircular(O,A)
 
-图3圆上没有点，也要声明：
+In Figure 3, where there are no points on the circle, it also needs to be declared:
 
     Cocircular(O)
 
-图4两圆有公共点，要分别声明：
+In Figure 4, where two circles have a common point, they need to be declared separately:
 
     Cocircular(O,AB)
     Cocircular(P,BA)
 
-共圆声明后，会自动扩展出所有的弧和圆。
+After declaring cocircular, all arcs and circles will be automatically expanded.
 
-### 基本实体谓词
+### Basic Entity Predicates
 
-基本实体是由基本构图扩展来的实体，在构图结束后不会再改变。我们无需声明基本实体，下述内容是为了让我们理解形式化系统的内在逻辑。
-基本构图谓词声明一个图形的结构信息，也就是点的相对位置信息。基本实体相当于是基本构图的unzip版本，在推理过程中更方便使用。
+Basic entities are derived from basic constructions and do not change after the construction phase is complete. We do
+not need to declare basic entities; the following information is provided to help us understand the internal logic of
+the formal system. Basic construction predicates declare the structural information of a shape, which is the relative
+positional information of points. Basic entities are essentially the 'unzipped' version of basic constructions, making
+them more convenient to use during the reasoning process.
 
 #### Point(A)
 
-就是点，没什么好说的。
+It's about points, straightforward and simple.
+
 <div>
     <img src="pic/Point.png" alt="Point" width="45%">
 </div>
 
-图1-3的点的声明：
+
+The declaration of points in Figures 1-3:
 
     Point(A)
     Point(A),Point(B),Point(C)
@@ -140,29 +164,33 @@ Cocircular用来声明共圆的若干个点，与Collinear相同，按照顺序�
 
 #### Line(AB)
 
-Line声明一个无向线段。
+Line declares an undirected line segment.
+
 <div>
     <img src="pic/Line.png" alt="Line" width="45%">
 </div>
 
-因为是无向的，所以图1的线段有两种声明方法，选其一即可：
+Since it is undirected, the line segment in Figure 1 can be declared in two ways; either one can be chosen:
 
     Line(AB)
     Line(BA)
 
-图2和图3的线段声明：
+The declaration of line in Figures 2 and 3:
 
     Line(AB),Line(CD)  
     Line(AO),Line(BO) 
 
 #### Arc(OAB)
 
-Arc声明一段弧，由3个点组成，第1个点是弧所在的圆，其余2点是构成弧的点，按照逆时针的方向有序列出。
+Arc declares a segment of an arc, consisting of three points. The first point is the center of the circle to which the
+arc belongs, and the remaining two points form the arc. They should be listed in counterclockwise order.
+
 <div>
     <img src="pic/Arc.png" alt="Arc" width="45%">
 </div>
 
-图1-3中弧的声明：
+
+The declaration of arcs in Figures 1-3:
 
     Arc(OAB)
     Arc(OAC),Arc(OCA)
@@ -170,12 +198,15 @@ Arc声明一段弧，由3个点组成，第1个点是弧所在的圆，其余2�
 
 #### Angle(ABC)
 
-角由3个点构成，在声明角时，需要按照逆时针原则。
+An angle is formed by three points. When declaring an angle, the points should be ordered according to the
+counterclockwise principle.
+
 <div>
     <img src="pic/Angle.png" alt="Angle" width="45%">
 </div>
 
-图1-3的角的声明：
+
+The declaration of angles in Figures 1-3:
 
     Angle(AOB)
     Angle(ABC),Angle(BCA),Angle(CAB)
@@ -183,7 +214,9 @@ Arc声明一段弧，由3个点组成，第1个点是弧所在的圆，其余2�
 
 #### Polygon(*)
 
-多边形由若干个直线构成，按照逆时针的方向列出所有的点。依据旋转不变原则，一个n边形有n种表示方式。
+A polygon is formed by several straight lines, and all points should be listed in counterclockwise order. A polygon with
+n sides has n different representations.
+
 <div>
     <img src="pic/Polygon.png" alt="Polygon" width="45%">
 </div>
@@ -194,24 +227,27 @@ Arc声明一段弧，由3个点组成，第1个点是弧所在的圆，其余2�
 
 #### Circle(O)
 
-Circle用于声明一个圆，注意区别圆和圆心。
+Circle is used to declare a circle, and it's important to distinguish between the circle and its center.
+
 <div>
     <img src="pic/Circle.png" alt="Circle" width="45%">
 </div>
 
-图1-3中圆的声明：
+
+The declaration of circles in Figures 1-3:
 
     Cirlce(O)
     Cirlce(B),Cirlce(A)
     Cirlce(O)
 
-### 代数关系谓词
+### Algebraic Relation Predicates
 
-代数关系由代数式表达，记为expr。expr是由符号、运算符、属性嵌套构成的式子。凡是符合sympy语法的表达式都可以被正确的解析。
+Algebraic relations are expressed as algebraic expressions, denoted as "expr." An "expr" is a formula composed of
+symbols, operators, and nested attributes. Any expression that conforms to the sympy syntax can be correctly parsed.
 
 #### Equal(expr1,expr2)
 
-Equal接受两个expr，表示代数的等价关系。
+Equal accepts two "expr" values, representing an algebraic equivalence relationship.
 
     Equal(a,5)  
     Equal(MeasureOfAngle(ABC),30)  
@@ -219,43 +255,43 @@ Equal接受两个expr，表示代数的等价关系。
 
 #### Equation(expr)
 
-Equation接受一个expr，表示方程。
+Equation accepts one "expr" value, representing an equation.
 
     Equation(a-5)  
     Equation(Sub(MeasureOfAngle(ABC),30))  
     Equation(Sub(Add(LengthOfLine(AB),a+5,x),y^2))
 
-### 属性谓词
+### Attribution Predicates
 
 #### Free(y)
 
-声明一个自由符号，可以表示未知数或代指某个几何属性。
+Declare a free symbol, which can represent an unknown variable or refer to a geometric property.
 
-### 运算符谓词
+### Operation Predicates
 
-|  名称  |         格式         |   表达式符号   | 运算符优先级 |
-|:----:|:------------------:|:---------:|:------:|
-|  加   | Add(expr1,expr2,…) |     +     |   1    |
-|  减   |  Sub(expr1,expr2)  |     -     |   1    |
-|  乘   | Mul(expr1,expr2,…) |     *     |   2    |
-|  除   |  Div(expr1,expr2)  |     /     |   2    |
-|  幂   |  Pow(expr1,expr2)  |    **     |   3    |
-|  幂   |  Mod(expr1,expr2)  |    mod    |   3    |
-|  根号  |    Sqrt(expr1)     |   sqrt    |   4    |
-|  正弦  |     Sin(expr)      |    sin    |   4    |
-|  余弦  |     Cos(expr)      |    cos    |   4    |
-|  正切  |     Tan(expr)      |    tan    |   4    |
-|  实数  |         R          | 1,2,3,... |   /    |
-| 自由变量 |         f          | a,b,c,... |   /    |
-| 左括号  |         /          |     (     |   5    |
-| 右括号  |         /          |     )     |   0    |  
+|        名称         |         格式         |   表达式符号   | 优先级 |
+|:-----------------:|:------------------:|:---------:|:---:|
+|        Add        | Add(expr1,expr2,…) |     +     |  1  |
+|        Sub        |  Sub(expr1,expr2)  |     -     |  1  |
+|        Mul        | Mul(expr1,expr2,…) |     *     |  2  |
+|        Div        |  Div(expr1,expr2)  |     /     |  2  |
+|        Pow        |  Pow(expr1,expr2)  |    **     |  3  |
+|        Mod        |  Mod(expr1,expr2)  |    mod    |  3  |
+|       Sqrt        |    Sqrt(expr1)     |   sqrt    |  4  |
+|        Sin        |     Sin(expr)      |    sin    |  4  |
+|        Cos        |     Cos(expr)      |    cos    |  4  |
+|        Tan        |     Tan(expr)      |    tan    |  4  |
+|    Real Number    |         R          | 1,2,3,... |  /  |
+|  Free Variables   |         f          | a,b,c,... |  /  |
+| Left parenthesis  |         /          |     (     |  5  |
+| Right parenthesis |         /          |     )     |  0  |  
 
-### 解题目标谓词
+### Problem Target Predicates
 
 #### Value(expr)
 
-expr可以是表达式，也可以是实体属性，并且可以嵌套表示。  
-代数型解题目标，求某个表达式或属性的值。
+"expr" can be an expression or a geometric entity property, and it can be nested. Algebraic problem-solving goals
+involve finding the value of an expression or property.
 
     Value(LengthOfLine(AB))
     Value(Add(MeasureOfAngle(ABC),MeasureOfAngle(DEF)))
@@ -263,16 +299,16 @@ expr可以是表达式，也可以是实体属性，并且可以嵌套表示。
 
 #### Equal(expr1,expr2)
 
-expr可以是表达式，也可以是实体属性，并且可以嵌套表示。
-代数型解题目标，证明左右俩个部分相等。
+"expr" can indeed be an expression or a geometric entity property, and it can be nested. Algebraic problem-solving goals
+can involve proving the equality of two expressions or properties on the left and right sides of an equation.
 
     Equal(LengthOfLine(AB),x+y)
     Equal(Add(MeasureOfAngle(ABC),MeasureOfAngle(DEF)),Pow(x,2))
 
 #### Relation(*)
 
-逻辑型解题目标，求某个实体或属性。  
-Relation表示任意实体、实体关系。
+In logical problem-solving goals, the aim is to find a specific entity or property. "Relation" represents any entity or
+entity relationship.
 
     Relation(Parallel(AB,CD))
     Relation(RightTriangle(ABC))  

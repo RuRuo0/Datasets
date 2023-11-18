@@ -30,13 +30,13 @@ def renumber(path_dataset):
 def get_cleaned_theorem_seqs(solver, problem_CDL, clean_acc):
     """return problem_CDL"""
     if clean_acc:
-        theorem_seqs = copy.copy(problem_CDL["theorem_seqs"])
+        _, theorem_seqs = get_used_pid_and_theorem(solver.problem)
         for i in range(len(theorem_seqs))[::-1]:
             theorem_seqs_try = copy.copy(theorem_seqs)
             theorem_seqs_try.pop(i)
 
             solver.load_problem(problem_CDL)
-            for t_name, t_branch, t_para in parse_theorem_seqs(theorem_seqs_try):
+            for t_name, t_branch, t_para in theorem_seqs_try:
                 solver.apply_theorem(t_name, t_branch, t_para)
             solver.problem.check_goal()
 
@@ -44,7 +44,7 @@ def get_cleaned_theorem_seqs(solver, problem_CDL, clean_acc):
                 theorem_seqs.pop(i)
 
         solver.load_problem(problem_CDL)
-        for t_name, t_branch, t_para in parse_theorem_seqs(theorem_seqs):
+        for t_name, t_branch, t_para in theorem_seqs:
             solver.apply_theorem(t_name, t_branch, t_para)
         solver.problem.check_goal()
 
@@ -120,4 +120,4 @@ def check_problems(path_datasets, start_pid=1, auto=False, clean_theorem=False, 
 
 
 if __name__ == '__main__':
-    check_problems("../../../projects/formalgeo7k", start_pid=2295, auto=True, clean_theorem=True, clean_acc=True)
+    check_problems("../../../projects/formalgeo7k", start_pid=4105, auto=True, clean_theorem=True, clean_acc=True)

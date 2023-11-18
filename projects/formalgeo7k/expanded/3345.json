@@ -1,24 +1,32 @@
 {
-  "79498": {
-    "problem_id": 79498,
+  "56788": {
+    "problem_id": 56788,
     "added_cdl": [],
     "goal_cdl": "Equal(LengthOfLine(AD),LengthOfLine(DF))",
     "problem_answer": "0",
     "theorem_seqs": [
       "mirror_congruent_triangle_property_line_equal(1,EAD,EDF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "79499": {
-    "problem_id": 79499,
+  "56789": {
+    "problem_id": 56789,
     "added_cdl": [],
     "goal_cdl": "Equal(LengthOfLine(DB),LengthOfLine(DF))",
     "problem_answer": "0",
     "theorem_seqs": [
       "mirror_congruent_triangle_property_line_equal(1,EAD,EDF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "mirror_congruent_triangle_property_line_equal(1,EAD,EDF)"
+      ]
+    }
   },
-  "79500": {
-    "problem_id": 79500,
+  "56790": {
+    "problem_id": 56790,
     "added_cdl": [
       "Equal(LengthOfLine(AD),LengthOfLine(DF))"
     ],
@@ -26,20 +34,31 @@
     "problem_answer": "IsoscelesTriangle(DBF)",
     "theorem_seqs": [
       "isosceles_triangle_judgment_line_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "79501": {
-    "problem_id": 79501,
+  "56791": {
+    "problem_id": 56791,
     "added_cdl": [],
     "goal_cdl": "Relation(IsoscelesTriangle(DBF))",
     "problem_answer": "IsoscelesTriangle(DBF)",
     "theorem_seqs": [
       "mirror_congruent_triangle_property_line_equal(1,EAD,EDF)",
       "isosceles_triangle_judgment_line_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "mirror_congruent_triangle_property_line_equal(1,EAD,EDF)"
+      ],
+      "mirror_congruent_triangle_property_line_equal(1,EAD,EDF)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ]
+    }
   },
-  "79502": {
-    "problem_id": 79502,
+  "56792": {
+    "problem_id": 56792,
     "added_cdl": [
       "IsoscelesTriangle(DBF)"
     ],
@@ -47,10 +66,15 @@
     "problem_answer": "0",
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ]
+    }
   },
-  "79503": {
-    "problem_id": 79503,
+  "56793": {
+    "problem_id": 56793,
     "added_cdl": [
       "Equal(LengthOfLine(AD),LengthOfLine(DF))"
     ],
@@ -59,10 +83,18 @@
     "theorem_seqs": [
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ]
+    }
   },
-  "79504": {
-    "problem_id": 79504,
+  "56794": {
+    "problem_id": 56794,
     "added_cdl": [],
     "goal_cdl": "Equal(MeasureOfAngle(ABF),MeasureOfAngle(BFD))",
     "problem_answer": "0",
@@ -70,60 +102,21 @@
       "mirror_congruent_triangle_property_line_equal(1,EAD,EDF)",
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)"
-    ]
-  },
-  "79505": {
-    "problem_id": 79505,
-    "added_cdl": [
-      "IsoscelesTriangle(DBF)",
-      "Equation(ma_bfd+ma_dbf+ma_fdb-180)"
     ],
-    "goal_cdl": "Value(MeasureOfAngle(ABF))",
-    "problem_answer": "50",
-    "theorem_seqs": [
-      "isosceles_triangle_property_angle_equal(1,DBF)"
-    ]
+    "theorem_seqs_dag": {
+      "START": [
+        "mirror_congruent_triangle_property_line_equal(1,EAD,EDF)"
+      ],
+      "mirror_congruent_triangle_property_line_equal(1,EAD,EDF)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ]
+    }
   },
-  "79506": {
-    "problem_id": 79506,
-    "added_cdl": [
-      "Equation(ma_bfd+ma_dbf+ma_fdb-180)",
-      "Equal(LengthOfLine(AD),LengthOfLine(DF))"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(ABF))",
-    "problem_answer": "50",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_line_equal(1,DBF)",
-      "isosceles_triangle_property_angle_equal(1,DBF)"
-    ]
-  },
-  "79507": {
-    "problem_id": 79507,
-    "added_cdl": [
-      "Equal(LengthOfLine(AD),LengthOfLine(DF))"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(ABF))",
-    "problem_answer": "50",
-    "theorem_seqs": [
-      "triangle_property_angle_sum(1,DBF)",
-      "isosceles_triangle_judgment_line_equal(1,DBF)",
-      "isosceles_triangle_property_angle_equal(1,DBF)"
-    ]
-  },
-  "79508": {
-    "problem_id": 79508,
-    "added_cdl": [],
-    "goal_cdl": "Value(MeasureOfAngle(ABF))",
-    "problem_answer": "50",
-    "theorem_seqs": [
-      "mirror_congruent_triangle_property_line_equal(1,EAD,EDF)",
-      "triangle_property_angle_sum(1,DBF)",
-      "isosceles_triangle_judgment_line_equal(1,DBF)",
-      "isosceles_triangle_property_angle_equal(1,DBF)"
-    ]
-  },
-  "79509": {
-    "problem_id": 79509,
+  "56795": {
+    "problem_id": 56795,
     "added_cdl": [
       "IsoscelesTriangle(DBF)",
       "Equation(ma_bfd+ma_dbf+ma_fdb-180)"
@@ -132,10 +125,15 @@
     "problem_answer": "80",
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ]
+    }
   },
-  "79510": {
-    "problem_id": 79510,
+  "56796": {
+    "problem_id": 56796,
     "added_cdl": [
       "Equation(ma_bfd+ma_dbf+ma_fdb-180)",
       "Equal(LengthOfLine(AD),LengthOfLine(DF))"
@@ -145,10 +143,18 @@
     "theorem_seqs": [
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ]
+    }
   },
-  "79511": {
-    "problem_id": 79511,
+  "56797": {
+    "problem_id": 56797,
     "added_cdl": [
       "Equal(LengthOfLine(AD),LengthOfLine(DF))"
     ],
@@ -158,10 +164,19 @@
       "triangle_property_angle_sum(1,DBF)",
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,DBF)",
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ]
+    }
   },
-  "79512": {
-    "problem_id": 79512,
+  "56798": {
+    "problem_id": 56798,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(FDB))",
     "problem_answer": "80",
@@ -170,10 +185,22 @@
       "triangle_property_angle_sum(1,DBF)",
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "mirror_congruent_triangle_property_line_equal(1,EAD,EDF)",
+        "triangle_property_angle_sum(1,DBF)"
+      ],
+      "mirror_congruent_triangle_property_line_equal(1,EAD,EDF)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ]
+    }
   },
-  "79513": {
-    "problem_id": 79513,
+  "56799": {
+    "problem_id": 56799,
     "added_cdl": [
       "IsoscelesTriangle(DBF)"
     ],
@@ -181,10 +208,15 @@
     "problem_answer": "50",
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ]
+    }
   },
-  "79514": {
-    "problem_id": 79514,
+  "56800": {
+    "problem_id": 56800,
     "added_cdl": [
       "Equal(LengthOfLine(AD),LengthOfLine(DF))"
     ],
@@ -193,10 +225,18 @@
     "theorem_seqs": [
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ]
+    }
   },
-  "79515": {
-    "problem_id": 79515,
+  "56801": {
+    "problem_id": 56801,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(BFD))",
     "problem_answer": "50",
@@ -204,6 +244,17 @@
       "mirror_congruent_triangle_property_line_equal(1,EAD,EDF)",
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "mirror_congruent_triangle_property_line_equal(1,EAD,EDF)"
+      ],
+      "mirror_congruent_triangle_property_line_equal(1,EAD,EDF)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ]
+    }
   }
 }

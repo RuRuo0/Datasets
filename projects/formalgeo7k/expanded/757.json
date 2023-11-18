@@ -1,15 +1,18 @@
 {
-  "22906": {
-    "problem_id": 22906,
+  "17772": {
+    "problem_id": 17772,
     "added_cdl": [],
     "goal_cdl": "Relation(IsoscelesTriangle(MPJ))",
     "problem_answer": "IsoscelesTriangle(MPJ)",
     "theorem_seqs": [
       "isosceles_triangle_judgment_line_equal(1,MPJ)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "22907": {
-    "problem_id": 22907,
+  "17773": {
+    "problem_id": 17773,
     "added_cdl": [
       "IsoscelesTriangle(MPJ)"
     ],
@@ -17,29 +20,43 @@
     "problem_answer": "0",
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,MPJ)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "22908": {
-    "problem_id": 22908,
+  "17774": {
+    "problem_id": 17774,
     "added_cdl": [],
     "goal_cdl": "Equal(MeasureOfAngle(MPJ),MeasureOfAngle(PJM))",
     "problem_answer": "0",
     "theorem_seqs": [
       "isosceles_triangle_judgment_line_equal(1,MPJ)",
       "isosceles_triangle_property_angle_equal(1,MPJ)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,MPJ)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,MPJ)": [
+        "isosceles_triangle_property_angle_equal(1,MPJ)"
+      ]
+    }
   },
-  "22909": {
-    "problem_id": 22909,
+  "17775": {
+    "problem_id": 17775,
     "added_cdl": [],
     "goal_cdl": "Relation(IsoscelesTriangle(LPM))",
     "problem_answer": "IsoscelesTriangle(LPM)",
     "theorem_seqs": [
       "isosceles_triangle_judgment_line_equal(1,LPM)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "22910": {
-    "problem_id": 22910,
+  "17776": {
+    "problem_id": 17776,
     "added_cdl": [
       "IsoscelesTriangle(LPM)"
     ],
@@ -47,123 +64,31 @@
     "problem_answer": "0",
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,LPM)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "22911": {
-    "problem_id": 22911,
+  "17777": {
+    "problem_id": 17777,
     "added_cdl": [],
     "goal_cdl": "Equal(MeasureOfAngle(LPM),MeasureOfAngle(PML))",
     "problem_answer": "0",
     "theorem_seqs": [
       "isosceles_triangle_judgment_line_equal(1,LPM)",
       "isosceles_triangle_property_angle_equal(1,LPM)"
-    ]
-  },
-  "22912": {
-    "problem_id": 22912,
-    "added_cdl": [
-      "Equation(ma_jlp+ma_lpm+ma_pml-180)",
-      "Equation(ma_jmp+ma_pml-180)",
-      "Equal(MeasureOfAngle(MPJ),MeasureOfAngle(PJM))",
-      "Equal(MeasureOfAngle(LPM),MeasureOfAngle(PML))"
     ],
-    "goal_cdl": "Value(MeasureOfAngle(JLP))",
-    "problem_answer": "34",
-    "theorem_seqs": [
-      "triangle_property_angle_sum(1,PJM)"
-    ]
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,LPM)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,LPM)": [
+        "isosceles_triangle_property_angle_equal(1,LPM)"
+      ]
+    }
   },
-  "22913": {
-    "problem_id": 22913,
-    "added_cdl": [
-      "Equation(ma_jmp+ma_pml-180)",
-      "Equal(MeasureOfAngle(MPJ),MeasureOfAngle(PJM))",
-      "Equal(MeasureOfAngle(LPM),MeasureOfAngle(PML))"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(JLP))",
-    "problem_answer": "34",
-    "theorem_seqs": [
-      "triangle_property_angle_sum(1,PML)",
-      "triangle_property_angle_sum(1,PJM)"
-    ]
-  },
-  "22914": {
-    "problem_id": 22914,
-    "added_cdl": [
-      "Equal(MeasureOfAngle(MPJ),MeasureOfAngle(PJM))",
-      "Equal(MeasureOfAngle(LPM),MeasureOfAngle(PML))"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(JLP))",
-    "problem_answer": "34",
-    "theorem_seqs": [
-      "adjacent_complementary_angle(1,JMP,PML)",
-      "triangle_property_angle_sum(1,PML)",
-      "triangle_property_angle_sum(1,PJM)"
-    ]
-  },
-  "22915": {
-    "problem_id": 22915,
-    "added_cdl": [
-      "IsoscelesTriangle(MPJ)",
-      "Equal(MeasureOfAngle(LPM),MeasureOfAngle(PML))"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(JLP))",
-    "problem_answer": "34",
-    "theorem_seqs": [
-      "isosceles_triangle_property_angle_equal(1,MPJ)",
-      "adjacent_complementary_angle(1,JMP,PML)",
-      "triangle_property_angle_sum(1,PML)",
-      "triangle_property_angle_sum(1,PJM)"
-    ]
-  },
-  "22916": {
-    "problem_id": 22916,
-    "added_cdl": [
-      "Equal(MeasureOfAngle(LPM),MeasureOfAngle(PML))"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(JLP))",
-    "problem_answer": "34",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_line_equal(1,MPJ)",
-      "isosceles_triangle_property_angle_equal(1,MPJ)",
-      "adjacent_complementary_angle(1,JMP,PML)",
-      "triangle_property_angle_sum(1,PML)",
-      "triangle_property_angle_sum(1,PJM)"
-    ]
-  },
-  "22917": {
-    "problem_id": 22917,
-    "added_cdl": [
-      "IsoscelesTriangle(LPM)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(JLP))",
-    "problem_answer": "34",
-    "theorem_seqs": [
-      "isosceles_triangle_property_angle_equal(1,LPM)",
-      "isosceles_triangle_judgment_line_equal(1,MPJ)",
-      "isosceles_triangle_property_angle_equal(1,MPJ)",
-      "adjacent_complementary_angle(1,JMP,PML)",
-      "triangle_property_angle_sum(1,PML)",
-      "triangle_property_angle_sum(1,PJM)"
-    ]
-  },
-  "22918": {
-    "problem_id": 22918,
-    "added_cdl": [],
-    "goal_cdl": "Value(MeasureOfAngle(JLP))",
-    "problem_answer": "34",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_line_equal(1,LPM)",
-      "isosceles_triangle_property_angle_equal(1,LPM)",
-      "isosceles_triangle_judgment_line_equal(1,MPJ)",
-      "isosceles_triangle_property_angle_equal(1,MPJ)",
-      "adjacent_complementary_angle(1,JMP,PML)",
-      "triangle_property_angle_sum(1,PML)",
-      "triangle_property_angle_sum(1,PJM)"
-    ]
-  },
-  "22919": {
-    "problem_id": 22919,
+  "17778": {
+    "problem_id": 17778,
     "added_cdl": [
       "Equation(ma_jlp+ma_lpm+ma_pml-180)",
       "Equation(ma_jmp+ma_pml-180)",
@@ -174,10 +99,15 @@
     "problem_answer": "73/2",
     "theorem_seqs": [
       "triangle_property_angle_sum(1,PJM)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,PJM)"
+      ]
+    }
   },
-  "22920": {
-    "problem_id": 22920,
+  "17779": {
+    "problem_id": 17779,
     "added_cdl": [
       "Equation(ma_jmp+ma_pml-180)",
       "Equal(MeasureOfAngle(MPJ),MeasureOfAngle(PJM))",
@@ -188,10 +118,16 @@
     "theorem_seqs": [
       "triangle_property_angle_sum(1,PML)",
       "triangle_property_angle_sum(1,PJM)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,PML)",
+        "triangle_property_angle_sum(1,PJM)"
+      ]
+    }
   },
-  "22921": {
-    "problem_id": 22921,
+  "17780": {
+    "problem_id": 17780,
     "added_cdl": [
       "Equal(MeasureOfAngle(MPJ),MeasureOfAngle(PJM))",
       "Equal(MeasureOfAngle(LPM),MeasureOfAngle(PML))"
@@ -202,10 +138,17 @@
       "adjacent_complementary_angle(1,JMP,PML)",
       "triangle_property_angle_sum(1,PML)",
       "triangle_property_angle_sum(1,PJM)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "adjacent_complementary_angle(1,JMP,PML)",
+        "triangle_property_angle_sum(1,PML)",
+        "triangle_property_angle_sum(1,PJM)"
+      ]
+    }
   },
-  "22922": {
-    "problem_id": 22922,
+  "17781": {
+    "problem_id": 17781,
     "added_cdl": [
       "IsoscelesTriangle(MPJ)",
       "Equal(MeasureOfAngle(LPM),MeasureOfAngle(PML))"
@@ -217,10 +160,18 @@
       "adjacent_complementary_angle(1,JMP,PML)",
       "triangle_property_angle_sum(1,PML)",
       "triangle_property_angle_sum(1,PJM)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,MPJ)",
+        "adjacent_complementary_angle(1,JMP,PML)",
+        "triangle_property_angle_sum(1,PML)",
+        "triangle_property_angle_sum(1,PJM)"
+      ]
+    }
   },
-  "22923": {
-    "problem_id": 22923,
+  "17782": {
+    "problem_id": 17782,
     "added_cdl": [
       "Equal(MeasureOfAngle(LPM),MeasureOfAngle(PML))"
     ],
@@ -232,10 +183,21 @@
       "adjacent_complementary_angle(1,JMP,PML)",
       "triangle_property_angle_sum(1,PML)",
       "triangle_property_angle_sum(1,PJM)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,MPJ)",
+        "adjacent_complementary_angle(1,JMP,PML)",
+        "triangle_property_angle_sum(1,PML)",
+        "triangle_property_angle_sum(1,PJM)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,MPJ)": [
+        "isosceles_triangle_property_angle_equal(1,MPJ)"
+      ]
+    }
   },
-  "22924": {
-    "problem_id": 22924,
+  "17783": {
+    "problem_id": 17783,
     "added_cdl": [
       "IsoscelesTriangle(LPM)"
     ],
@@ -248,10 +210,22 @@
       "adjacent_complementary_angle(1,JMP,PML)",
       "triangle_property_angle_sum(1,PML)",
       "triangle_property_angle_sum(1,PJM)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,LPM)",
+        "isosceles_triangle_judgment_line_equal(1,MPJ)",
+        "adjacent_complementary_angle(1,JMP,PML)",
+        "triangle_property_angle_sum(1,PML)",
+        "triangle_property_angle_sum(1,PJM)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,MPJ)": [
+        "isosceles_triangle_property_angle_equal(1,MPJ)"
+      ]
+    }
   },
-  "22925": {
-    "problem_id": 22925,
+  "17784": {
+    "problem_id": 17784,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(MPJ))",
     "problem_answer": "73/2",
@@ -263,10 +237,25 @@
       "adjacent_complementary_angle(1,JMP,PML)",
       "triangle_property_angle_sum(1,PML)",
       "triangle_property_angle_sum(1,PJM)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,LPM)",
+        "isosceles_triangle_judgment_line_equal(1,MPJ)",
+        "adjacent_complementary_angle(1,JMP,PML)",
+        "triangle_property_angle_sum(1,PML)",
+        "triangle_property_angle_sum(1,PJM)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,LPM)": [
+        "isosceles_triangle_property_angle_equal(1,LPM)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,MPJ)": [
+        "isosceles_triangle_property_angle_equal(1,MPJ)"
+      ]
+    }
   },
-  "22926": {
-    "problem_id": 22926,
+  "17785": {
+    "problem_id": 17785,
     "added_cdl": [
       "Equation(ma_jlp+ma_lpm+ma_pml-180)",
       "Equation(ma_jmp+ma_pml-180)",
@@ -277,10 +266,15 @@
     "problem_answer": "73/2",
     "theorem_seqs": [
       "triangle_property_angle_sum(1,PJM)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,PJM)"
+      ]
+    }
   },
-  "22927": {
-    "problem_id": 22927,
+  "17786": {
+    "problem_id": 17786,
     "added_cdl": [
       "Equation(ma_jmp+ma_pml-180)",
       "Equal(MeasureOfAngle(MPJ),MeasureOfAngle(PJM))",
@@ -291,10 +285,16 @@
     "theorem_seqs": [
       "triangle_property_angle_sum(1,PML)",
       "triangle_property_angle_sum(1,PJM)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,PML)",
+        "triangle_property_angle_sum(1,PJM)"
+      ]
+    }
   },
-  "22928": {
-    "problem_id": 22928,
+  "17787": {
+    "problem_id": 17787,
     "added_cdl": [
       "Equal(MeasureOfAngle(MPJ),MeasureOfAngle(PJM))",
       "Equal(MeasureOfAngle(LPM),MeasureOfAngle(PML))"
@@ -305,10 +305,17 @@
       "adjacent_complementary_angle(1,JMP,PML)",
       "triangle_property_angle_sum(1,PML)",
       "triangle_property_angle_sum(1,PJM)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "adjacent_complementary_angle(1,JMP,PML)",
+        "triangle_property_angle_sum(1,PML)",
+        "triangle_property_angle_sum(1,PJM)"
+      ]
+    }
   },
-  "22929": {
-    "problem_id": 22929,
+  "17788": {
+    "problem_id": 17788,
     "added_cdl": [
       "IsoscelesTriangle(MPJ)",
       "Equal(MeasureOfAngle(LPM),MeasureOfAngle(PML))"
@@ -320,10 +327,18 @@
       "adjacent_complementary_angle(1,JMP,PML)",
       "triangle_property_angle_sum(1,PML)",
       "triangle_property_angle_sum(1,PJM)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,MPJ)",
+        "adjacent_complementary_angle(1,JMP,PML)",
+        "triangle_property_angle_sum(1,PML)",
+        "triangle_property_angle_sum(1,PJM)"
+      ]
+    }
   },
-  "22930": {
-    "problem_id": 22930,
+  "17789": {
+    "problem_id": 17789,
     "added_cdl": [
       "Equal(MeasureOfAngle(LPM),MeasureOfAngle(PML))"
     ],
@@ -335,10 +350,21 @@
       "adjacent_complementary_angle(1,JMP,PML)",
       "triangle_property_angle_sum(1,PML)",
       "triangle_property_angle_sum(1,PJM)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,MPJ)",
+        "adjacent_complementary_angle(1,JMP,PML)",
+        "triangle_property_angle_sum(1,PML)",
+        "triangle_property_angle_sum(1,PJM)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,MPJ)": [
+        "isosceles_triangle_property_angle_equal(1,MPJ)"
+      ]
+    }
   },
-  "22931": {
-    "problem_id": 22931,
+  "17790": {
+    "problem_id": 17790,
     "added_cdl": [
       "IsoscelesTriangle(LPM)"
     ],
@@ -351,10 +377,22 @@
       "adjacent_complementary_angle(1,JMP,PML)",
       "triangle_property_angle_sum(1,PML)",
       "triangle_property_angle_sum(1,PJM)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,LPM)",
+        "isosceles_triangle_judgment_line_equal(1,MPJ)",
+        "adjacent_complementary_angle(1,JMP,PML)",
+        "triangle_property_angle_sum(1,PML)",
+        "triangle_property_angle_sum(1,PJM)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,MPJ)": [
+        "isosceles_triangle_property_angle_equal(1,MPJ)"
+      ]
+    }
   },
-  "22932": {
-    "problem_id": 22932,
+  "17791": {
+    "problem_id": 17791,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(PJM))",
     "problem_answer": "73/2",
@@ -366,10 +404,25 @@
       "adjacent_complementary_angle(1,JMP,PML)",
       "triangle_property_angle_sum(1,PML)",
       "triangle_property_angle_sum(1,PJM)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,LPM)",
+        "isosceles_triangle_judgment_line_equal(1,MPJ)",
+        "adjacent_complementary_angle(1,JMP,PML)",
+        "triangle_property_angle_sum(1,PML)",
+        "triangle_property_angle_sum(1,PJM)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,LPM)": [
+        "isosceles_triangle_property_angle_equal(1,LPM)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,MPJ)": [
+        "isosceles_triangle_property_angle_equal(1,MPJ)"
+      ]
+    }
   },
-  "22933": {
-    "problem_id": 22933,
+  "17792": {
+    "problem_id": 17792,
     "added_cdl": [
       "Equal(MeasureOfAngle(LPM),MeasureOfAngle(PML))"
     ],
@@ -377,10 +430,15 @@
     "problem_answer": "73",
     "theorem_seqs": [
       "triangle_property_angle_sum(1,PML)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,PML)"
+      ]
+    }
   },
-  "22934": {
-    "problem_id": 22934,
+  "17793": {
+    "problem_id": 17793,
     "added_cdl": [
       "IsoscelesTriangle(LPM)"
     ],
@@ -389,10 +447,16 @@
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,LPM)",
       "triangle_property_angle_sum(1,PML)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,LPM)",
+        "triangle_property_angle_sum(1,PML)"
+      ]
+    }
   },
-  "22935": {
-    "problem_id": 22935,
+  "17794": {
+    "problem_id": 17794,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(LPM))",
     "problem_answer": "73",
@@ -400,10 +464,19 @@
       "isosceles_triangle_judgment_line_equal(1,LPM)",
       "isosceles_triangle_property_angle_equal(1,LPM)",
       "triangle_property_angle_sum(1,PML)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,LPM)",
+        "triangle_property_angle_sum(1,PML)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,LPM)": [
+        "isosceles_triangle_property_angle_equal(1,LPM)"
+      ]
+    }
   },
-  "22936": {
-    "problem_id": 22936,
+  "17795": {
+    "problem_id": 17795,
     "added_cdl": [
       "Equal(MeasureOfAngle(LPM),MeasureOfAngle(PML))"
     ],
@@ -411,10 +484,15 @@
     "problem_answer": "73",
     "theorem_seqs": [
       "triangle_property_angle_sum(1,PML)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,PML)"
+      ]
+    }
   },
-  "22937": {
-    "problem_id": 22937,
+  "17796": {
+    "problem_id": 17796,
     "added_cdl": [
       "IsoscelesTriangle(LPM)"
     ],
@@ -423,10 +501,16 @@
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,LPM)",
       "triangle_property_angle_sum(1,PML)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,LPM)",
+        "triangle_property_angle_sum(1,PML)"
+      ]
+    }
   },
-  "22938": {
-    "problem_id": 22938,
+  "17797": {
+    "problem_id": 17797,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(PML))",
     "problem_answer": "73",
@@ -434,10 +518,19 @@
       "isosceles_triangle_judgment_line_equal(1,LPM)",
       "isosceles_triangle_property_angle_equal(1,LPM)",
       "triangle_property_angle_sum(1,PML)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,LPM)",
+        "triangle_property_angle_sum(1,PML)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,LPM)": [
+        "isosceles_triangle_property_angle_equal(1,LPM)"
+      ]
+    }
   },
-  "22939": {
-    "problem_id": 22939,
+  "17798": {
+    "problem_id": 17798,
     "added_cdl": [
       "Equation(ma_jmp+ma_pml-180)",
       "Equal(MeasureOfAngle(LPM),MeasureOfAngle(PML))"
@@ -446,10 +539,15 @@
     "problem_answer": "107",
     "theorem_seqs": [
       "triangle_property_angle_sum(1,PML)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,PML)"
+      ]
+    }
   },
-  "22940": {
-    "problem_id": 22940,
+  "17799": {
+    "problem_id": 17799,
     "added_cdl": [
       "Equal(MeasureOfAngle(LPM),MeasureOfAngle(PML))"
     ],
@@ -458,10 +556,16 @@
     "theorem_seqs": [
       "adjacent_complementary_angle(1,JMP,PML)",
       "triangle_property_angle_sum(1,PML)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "adjacent_complementary_angle(1,JMP,PML)",
+        "triangle_property_angle_sum(1,PML)"
+      ]
+    }
   },
-  "22941": {
-    "problem_id": 22941,
+  "17800": {
+    "problem_id": 17800,
     "added_cdl": [
       "IsoscelesTriangle(LPM)"
     ],
@@ -471,10 +575,17 @@
       "isosceles_triangle_property_angle_equal(1,LPM)",
       "adjacent_complementary_angle(1,JMP,PML)",
       "triangle_property_angle_sum(1,PML)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,LPM)",
+        "adjacent_complementary_angle(1,JMP,PML)",
+        "triangle_property_angle_sum(1,PML)"
+      ]
+    }
   },
-  "22942": {
-    "problem_id": 22942,
+  "17801": {
+    "problem_id": 17801,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(JMP))",
     "problem_answer": "107",
@@ -483,6 +594,16 @@
       "isosceles_triangle_property_angle_equal(1,LPM)",
       "adjacent_complementary_angle(1,JMP,PML)",
       "triangle_property_angle_sum(1,PML)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,LPM)",
+        "adjacent_complementary_angle(1,JMP,PML)",
+        "triangle_property_angle_sum(1,PML)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,LPM)": [
+        "isosceles_triangle_property_angle_equal(1,LPM)"
+      ]
+    }
   }
 }

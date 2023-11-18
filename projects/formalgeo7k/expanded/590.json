@@ -1,33 +1,46 @@
 {
-  "19119": {
-    "problem_id": 19119,
+  "15269": {
+    "problem_id": 15269,
     "added_cdl": [],
     "goal_cdl": "Relation(RightTriangle(ACB))",
     "problem_answer": "RightTriangle(ACB)",
     "theorem_seqs": [
       "right_triangle_judgment_angle(1,ACB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "19120": {
-    "problem_id": 19120,
+  "15270": {
+    "problem_id": 15270,
     "added_cdl": [],
     "goal_cdl": "Relation(RightTriangle(ACD))",
     "problem_answer": "RightTriangle(ACD)",
     "theorem_seqs": [
       "right_triangle_judgment_angle(1,ACD)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,ACD)"
+      ]
+    }
   },
-  "19121": {
-    "problem_id": 19121,
+  "15271": {
+    "problem_id": 15271,
     "added_cdl": [],
     "goal_cdl": "Relation(PerpendicularBetweenLine(AC,DC))",
     "problem_answer": "PerpendicularBetweenLine(AC,DC)",
     "theorem_seqs": [
       "right_triangle_judgment_angle(1,ACD)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,ACD)"
+      ]
+    }
   },
-  "19122": {
-    "problem_id": 19122,
+  "15272": {
+    "problem_id": 15272,
     "added_cdl": [
       "Equation(ll_ab**2-ll_ad**2+2*ll_ad*ll_bd*cos(pi*ma_cda/180)-ll_bd**2)",
       "Equation(-ll_ab**2+ll_ac**2+ll_bc**2)",
@@ -37,10 +50,15 @@
     "problem_answer": "180*acos(sqrt(5)/3)/pi",
     "theorem_seqs": [
       "line_addition(1,DB,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,DB,BC)"
+      ]
+    }
   },
-  "19123": {
-    "problem_id": 19123,
+  "15273": {
+    "problem_id": 15273,
     "added_cdl": [
       "Equation(-ll_ab**2+ll_ac**2+ll_bc**2)",
       "Equation(ll_ac**2-ll_ad**2+ll_dc**2)"
@@ -50,10 +68,16 @@
     "theorem_seqs": [
       "cosine_theorem(1,DAB)",
       "line_addition(1,DB,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "cosine_theorem(1,DAB)",
+        "line_addition(1,DB,BC)"
+      ]
+    }
   },
-  "19124": {
-    "problem_id": 19124,
+  "15274": {
+    "problem_id": 15274,
     "added_cdl": [
       "RightTriangle(ACB)",
       "Equation(ll_ac**2-ll_ad**2+ll_dc**2)"
@@ -64,10 +88,17 @@
       "right_triangle_property_pythagorean(1,ACB)",
       "cosine_theorem(1,DAB)",
       "line_addition(1,DB,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,ACB)",
+        "cosine_theorem(1,DAB)",
+        "line_addition(1,DB,BC)"
+      ]
+    }
   },
-  "19125": {
-    "problem_id": 19125,
+  "15275": {
+    "problem_id": 15275,
     "added_cdl": [
       "Equation(ll_ac**2-ll_ad**2+ll_dc**2)"
     ],
@@ -78,10 +109,20 @@
       "right_triangle_property_pythagorean(1,ACB)",
       "cosine_theorem(1,DAB)",
       "line_addition(1,DB,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,ACB)",
+        "cosine_theorem(1,DAB)",
+        "line_addition(1,DB,BC)"
+      ],
+      "right_triangle_judgment_angle(1,ACB)": [
+        "right_triangle_property_pythagorean(1,ACB)"
+      ]
+    }
   },
-  "19126": {
-    "problem_id": 19126,
+  "15276": {
+    "problem_id": 15276,
     "added_cdl": [
       "RightTriangle(ACD)"
     ],
@@ -93,10 +134,21 @@
       "right_triangle_property_pythagorean(1,ACB)",
       "cosine_theorem(1,DAB)",
       "line_addition(1,DB,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,ACD)",
+        "right_triangle_judgment_angle(1,ACB)",
+        "cosine_theorem(1,DAB)",
+        "line_addition(1,DB,BC)"
+      ],
+      "right_triangle_judgment_angle(1,ACB)": [
+        "right_triangle_property_pythagorean(1,ACB)"
+      ]
+    }
   },
-  "19127": {
-    "problem_id": 19127,
+  "15277": {
+    "problem_id": 15277,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(BDA))",
     "problem_answer": "180*acos(sqrt(5)/3)/pi",
@@ -107,10 +159,24 @@
       "right_triangle_property_pythagorean(1,ACB)",
       "cosine_theorem(1,DAB)",
       "line_addition(1,DB,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,ACD)",
+        "right_triangle_judgment_angle(1,ACB)",
+        "cosine_theorem(1,DAB)",
+        "line_addition(1,DB,BC)"
+      ],
+      "right_triangle_judgment_angle(1,ACD)": [
+        "right_triangle_property_pythagorean(1,ACD)"
+      ],
+      "right_triangle_judgment_angle(1,ACB)": [
+        "right_triangle_property_pythagorean(1,ACB)"
+      ]
+    }
   },
-  "19128": {
-    "problem_id": 19128,
+  "15278": {
+    "problem_id": 15278,
     "added_cdl": [
       "Equation(ll_ab**2-ll_ad**2+2*ll_ad*ll_bd*cos(pi*ma_cda/180)-ll_bd**2)",
       "Equation(-ll_ab**2+ll_ac**2+ll_bc**2)",
@@ -120,10 +186,15 @@
     "problem_answer": "180*acos(sqrt(5)/3)/pi",
     "theorem_seqs": [
       "line_addition(1,DB,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,DB,BC)"
+      ]
+    }
   },
-  "19129": {
-    "problem_id": 19129,
+  "15279": {
+    "problem_id": 15279,
     "added_cdl": [
       "Equation(-ll_ab**2+ll_ac**2+ll_bc**2)",
       "Equation(ll_ac**2-ll_ad**2+ll_dc**2)"
@@ -133,10 +204,16 @@
     "theorem_seqs": [
       "cosine_theorem(1,DAB)",
       "line_addition(1,DB,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "cosine_theorem(1,DAB)",
+        "line_addition(1,DB,BC)"
+      ]
+    }
   },
-  "19130": {
-    "problem_id": 19130,
+  "15280": {
+    "problem_id": 15280,
     "added_cdl": [
       "RightTriangle(ACB)",
       "Equation(ll_ac**2-ll_ad**2+ll_dc**2)"
@@ -147,10 +224,17 @@
       "right_triangle_property_pythagorean(1,ACB)",
       "cosine_theorem(1,DAB)",
       "line_addition(1,DB,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,ACB)",
+        "cosine_theorem(1,DAB)",
+        "line_addition(1,DB,BC)"
+      ]
+    }
   },
-  "19131": {
-    "problem_id": 19131,
+  "15281": {
+    "problem_id": 15281,
     "added_cdl": [
       "Equation(ll_ac**2-ll_ad**2+ll_dc**2)"
     ],
@@ -161,10 +245,20 @@
       "right_triangle_property_pythagorean(1,ACB)",
       "cosine_theorem(1,DAB)",
       "line_addition(1,DB,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,ACB)",
+        "cosine_theorem(1,DAB)",
+        "line_addition(1,DB,BC)"
+      ],
+      "right_triangle_judgment_angle(1,ACB)": [
+        "right_triangle_property_pythagorean(1,ACB)"
+      ]
+    }
   },
-  "19132": {
-    "problem_id": 19132,
+  "15282": {
+    "problem_id": 15282,
     "added_cdl": [
       "RightTriangle(ACD)"
     ],
@@ -176,10 +270,21 @@
       "right_triangle_property_pythagorean(1,ACB)",
       "cosine_theorem(1,DAB)",
       "line_addition(1,DB,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,ACD)",
+        "right_triangle_judgment_angle(1,ACB)",
+        "cosine_theorem(1,DAB)",
+        "line_addition(1,DB,BC)"
+      ],
+      "right_triangle_judgment_angle(1,ACB)": [
+        "right_triangle_property_pythagorean(1,ACB)"
+      ]
+    }
   },
-  "19133": {
-    "problem_id": 19133,
+  "15283": {
+    "problem_id": 15283,
     "added_cdl": [],
     "goal_cdl": "Value(x)",
     "problem_answer": "180*acos(sqrt(5)/3)/pi",
@@ -190,176 +295,24 @@
       "right_triangle_property_pythagorean(1,ACB)",
       "cosine_theorem(1,DAB)",
       "line_addition(1,DB,BC)"
-    ]
-  },
-  "19134": {
-    "problem_id": 19134,
-    "added_cdl": [
-      "Equation(ll_ab**2-ll_ad**2+2*ll_ad*ll_bd*cos(pi*ma_cda/180)-ll_bd**2)",
-      "Equation(-ll_ab**2+ll_ac**2+ll_bc**2)",
-      "Equation(ll_ac**2-ll_ad**2+ll_dc**2)"
     ],
-    "goal_cdl": "Value(LengthOfLine(AC))",
-    "problem_answer": "24",
-    "theorem_seqs": [
-      "line_addition(1,DB,BC)"
-    ]
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,ACD)",
+        "right_triangle_judgment_angle(1,ACB)",
+        "cosine_theorem(1,DAB)",
+        "line_addition(1,DB,BC)"
+      ],
+      "right_triangle_judgment_angle(1,ACD)": [
+        "right_triangle_property_pythagorean(1,ACD)"
+      ],
+      "right_triangle_judgment_angle(1,ACB)": [
+        "right_triangle_property_pythagorean(1,ACB)"
+      ]
+    }
   },
-  "19135": {
-    "problem_id": 19135,
-    "added_cdl": [
-      "Equation(-ll_ab**2+ll_ac**2+ll_bc**2)",
-      "Equation(ll_ac**2-ll_ad**2+ll_dc**2)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AC))",
-    "problem_answer": "24",
-    "theorem_seqs": [
-      "cosine_theorem(1,DAB)",
-      "line_addition(1,DB,BC)"
-    ]
-  },
-  "19136": {
-    "problem_id": 19136,
-    "added_cdl": [
-      "RightTriangle(ACB)",
-      "Equation(ll_ac**2-ll_ad**2+ll_dc**2)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AC))",
-    "problem_answer": "24",
-    "theorem_seqs": [
-      "right_triangle_property_pythagorean(1,ACB)",
-      "cosine_theorem(1,DAB)",
-      "line_addition(1,DB,BC)"
-    ]
-  },
-  "19137": {
-    "problem_id": 19137,
-    "added_cdl": [
-      "Equation(ll_ac**2-ll_ad**2+ll_dc**2)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AC))",
-    "problem_answer": "24",
-    "theorem_seqs": [
-      "right_triangle_judgment_angle(1,ACB)",
-      "right_triangle_property_pythagorean(1,ACB)",
-      "cosine_theorem(1,DAB)",
-      "line_addition(1,DB,BC)"
-    ]
-  },
-  "19138": {
-    "problem_id": 19138,
-    "added_cdl": [
-      "RightTriangle(ACD)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AC))",
-    "problem_answer": "24",
-    "theorem_seqs": [
-      "right_triangle_property_pythagorean(1,ACD)",
-      "right_triangle_judgment_angle(1,ACB)",
-      "right_triangle_property_pythagorean(1,ACB)",
-      "cosine_theorem(1,DAB)",
-      "line_addition(1,DB,BC)"
-    ]
-  },
-  "19139": {
-    "problem_id": 19139,
-    "added_cdl": [],
-    "goal_cdl": "Value(LengthOfLine(AC))",
-    "problem_answer": "24",
-    "theorem_seqs": [
-      "right_triangle_judgment_angle(1,ACD)",
-      "right_triangle_property_pythagorean(1,ACD)",
-      "right_triangle_judgment_angle(1,ACB)",
-      "right_triangle_property_pythagorean(1,ACB)",
-      "cosine_theorem(1,DAB)",
-      "line_addition(1,DB,BC)"
-    ]
-  },
-  "19140": {
-    "problem_id": 19140,
-    "added_cdl": [
-      "Equation(ll_ab**2-ll_ad**2+2*ll_ad*ll_bd*cos(pi*ma_cda/180)-ll_bd**2)",
-      "Equation(-ll_ab**2+ll_ac**2+ll_bc**2)",
-      "Equation(ll_ac**2-ll_ad**2+ll_dc**2)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AD))",
-    "problem_answer": "36",
-    "theorem_seqs": [
-      "line_addition(1,DB,BC)"
-    ]
-  },
-  "19141": {
-    "problem_id": 19141,
-    "added_cdl": [
-      "Equation(-ll_ab**2+ll_ac**2+ll_bc**2)",
-      "Equation(ll_ac**2-ll_ad**2+ll_dc**2)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AD))",
-    "problem_answer": "36",
-    "theorem_seqs": [
-      "cosine_theorem(1,DAB)",
-      "line_addition(1,DB,BC)"
-    ]
-  },
-  "19142": {
-    "problem_id": 19142,
-    "added_cdl": [
-      "RightTriangle(ACB)",
-      "Equation(ll_ac**2-ll_ad**2+ll_dc**2)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AD))",
-    "problem_answer": "36",
-    "theorem_seqs": [
-      "right_triangle_property_pythagorean(1,ACB)",
-      "cosine_theorem(1,DAB)",
-      "line_addition(1,DB,BC)"
-    ]
-  },
-  "19143": {
-    "problem_id": 19143,
-    "added_cdl": [
-      "Equation(ll_ac**2-ll_ad**2+ll_dc**2)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AD))",
-    "problem_answer": "36",
-    "theorem_seqs": [
-      "right_triangle_judgment_angle(1,ACB)",
-      "right_triangle_property_pythagorean(1,ACB)",
-      "cosine_theorem(1,DAB)",
-      "line_addition(1,DB,BC)"
-    ]
-  },
-  "19144": {
-    "problem_id": 19144,
-    "added_cdl": [
-      "RightTriangle(ACD)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AD))",
-    "problem_answer": "36",
-    "theorem_seqs": [
-      "right_triangle_property_pythagorean(1,ACD)",
-      "right_triangle_judgment_angle(1,ACB)",
-      "right_triangle_property_pythagorean(1,ACB)",
-      "cosine_theorem(1,DAB)",
-      "line_addition(1,DB,BC)"
-    ]
-  },
-  "19145": {
-    "problem_id": 19145,
-    "added_cdl": [],
-    "goal_cdl": "Value(LengthOfLine(AD))",
-    "problem_answer": "36",
-    "theorem_seqs": [
-      "right_triangle_judgment_angle(1,ACD)",
-      "right_triangle_property_pythagorean(1,ACD)",
-      "right_triangle_judgment_angle(1,ACB)",
-      "right_triangle_property_pythagorean(1,ACB)",
-      "cosine_theorem(1,DAB)",
-      "line_addition(1,DB,BC)"
-    ]
-  },
-  "19146": {
-    "problem_id": 19146,
+  "15284": {
+    "problem_id": 15284,
     "added_cdl": [
       "Equation(-ll_ab**2+ll_ac**2+ll_bc**2)",
       "Equation(ll_ac**2-ll_ad**2+ll_dc**2)"
@@ -368,10 +321,15 @@
     "problem_answer": "6*sqrt(5)",
     "theorem_seqs": [
       "line_addition(1,DB,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,DB,BC)"
+      ]
+    }
   },
-  "19147": {
-    "problem_id": 19147,
+  "15285": {
+    "problem_id": 15285,
     "added_cdl": [
       "RightTriangle(ACB)",
       "Equation(ll_ac**2-ll_ad**2+ll_dc**2)"
@@ -379,25 +337,32 @@
     "goal_cdl": "Value(LengthOfLine(BD))",
     "problem_answer": "6*sqrt(5)",
     "theorem_seqs": [
-      "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,DB,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,DB,BC)"
+      ]
+    }
   },
-  "19148": {
-    "problem_id": 19148,
+  "15286": {
+    "problem_id": 15286,
     "added_cdl": [
       "Equation(ll_ac**2-ll_ad**2+ll_dc**2)"
     ],
     "goal_cdl": "Value(LengthOfLine(BD))",
     "problem_answer": "6*sqrt(5)",
     "theorem_seqs": [
-      "right_triangle_judgment_angle(1,ACB)",
-      "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,DB,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,DB,BC)"
+      ]
+    }
   },
-  "19149": {
-    "problem_id": 19149,
+  "15287": {
+    "problem_id": 15287,
     "added_cdl": [
       "RightTriangle(ACD)"
     ],
@@ -405,26 +370,37 @@
     "problem_answer": "6*sqrt(5)",
     "theorem_seqs": [
       "right_triangle_property_pythagorean(1,ACD)",
-      "right_triangle_judgment_angle(1,ACB)",
-      "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,DB,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,ACD)",
+        "line_addition(1,DB,BC)"
+      ]
+    }
   },
-  "19150": {
-    "problem_id": 19150,
+  "15288": {
+    "problem_id": 15288,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(BD))",
     "problem_answer": "6*sqrt(5)",
     "theorem_seqs": [
       "right_triangle_judgment_angle(1,ACD)",
       "right_triangle_property_pythagorean(1,ACD)",
-      "right_triangle_judgment_angle(1,ACB)",
-      "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,DB,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,ACD)",
+        "line_addition(1,DB,BC)"
+      ],
+      "right_triangle_judgment_angle(1,ACD)": [
+        "right_triangle_property_pythagorean(1,ACD)"
+      ]
+    }
   },
-  "19151": {
-    "problem_id": 19151,
+  "15289": {
+    "problem_id": 15289,
     "added_cdl": [
       "Equation(-ll_ab**2+ll_ac**2+ll_bc**2)",
       "Equation(ll_ac**2-ll_ad**2+ll_dc**2)"
@@ -433,10 +409,15 @@
     "problem_answer": "6*sqrt(5)",
     "theorem_seqs": [
       "line_addition(1,DB,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,DB,BC)"
+      ]
+    }
   },
-  "19152": {
-    "problem_id": 19152,
+  "15290": {
+    "problem_id": 15290,
     "added_cdl": [
       "RightTriangle(ACB)",
       "Equation(ll_ac**2-ll_ad**2+ll_dc**2)"
@@ -444,25 +425,32 @@
     "goal_cdl": "Value(LengthOfLine(BC))",
     "problem_answer": "6*sqrt(5)",
     "theorem_seqs": [
-      "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,DB,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,DB,BC)"
+      ]
+    }
   },
-  "19153": {
-    "problem_id": 19153,
+  "15291": {
+    "problem_id": 15291,
     "added_cdl": [
       "Equation(ll_ac**2-ll_ad**2+ll_dc**2)"
     ],
     "goal_cdl": "Value(LengthOfLine(BC))",
     "problem_answer": "6*sqrt(5)",
     "theorem_seqs": [
-      "right_triangle_judgment_angle(1,ACB)",
-      "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,DB,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,DB,BC)"
+      ]
+    }
   },
-  "19154": {
-    "problem_id": 19154,
+  "15292": {
+    "problem_id": 15292,
     "added_cdl": [
       "RightTriangle(ACD)"
     ],
@@ -470,26 +458,37 @@
     "problem_answer": "6*sqrt(5)",
     "theorem_seqs": [
       "right_triangle_property_pythagorean(1,ACD)",
-      "right_triangle_judgment_angle(1,ACB)",
-      "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,DB,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,ACD)",
+        "line_addition(1,DB,BC)"
+      ]
+    }
   },
-  "19155": {
-    "problem_id": 19155,
+  "15293": {
+    "problem_id": 15293,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(BC))",
     "problem_answer": "6*sqrt(5)",
     "theorem_seqs": [
       "right_triangle_judgment_angle(1,ACD)",
       "right_triangle_property_pythagorean(1,ACD)",
-      "right_triangle_judgment_angle(1,ACB)",
-      "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,DB,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,ACD)",
+        "line_addition(1,DB,BC)"
+      ],
+      "right_triangle_judgment_angle(1,ACD)": [
+        "right_triangle_property_pythagorean(1,ACD)"
+      ]
+    }
   },
-  "19156": {
-    "problem_id": 19156,
+  "15294": {
+    "problem_id": 15294,
     "added_cdl": [
       "RightTriangle(ACD)"
     ],
@@ -497,20 +496,33 @@
     "problem_answer": "12*sqrt(5)",
     "theorem_seqs": [
       "right_triangle_property_pythagorean(1,ACD)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,ACD)"
+      ]
+    }
   },
-  "19157": {
-    "problem_id": 19157,
+  "15295": {
+    "problem_id": 15295,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(DC))",
     "problem_answer": "12*sqrt(5)",
     "theorem_seqs": [
       "right_triangle_judgment_angle(1,ACD)",
       "right_triangle_property_pythagorean(1,ACD)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,ACD)"
+      ],
+      "right_triangle_judgment_angle(1,ACD)": [
+        "right_triangle_property_pythagorean(1,ACD)"
+      ]
+    }
   },
-  "19158": {
-    "problem_id": 19158,
+  "15296": {
+    "problem_id": 15296,
     "added_cdl": [
       "Equation(-ll_ab**2+ll_ac**2+ll_bc**2)",
       "Equation(ll_ac**2-ll_ad**2+ll_dc**2)"
@@ -519,10 +531,15 @@
     "problem_answer": "6*sqrt(21)",
     "theorem_seqs": [
       "line_addition(1,DB,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,DB,BC)"
+      ]
+    }
   },
-  "19159": {
-    "problem_id": 19159,
+  "15297": {
+    "problem_id": 15297,
     "added_cdl": [
       "RightTriangle(ACB)",
       "Equation(ll_ac**2-ll_ad**2+ll_dc**2)"
@@ -532,10 +549,16 @@
     "theorem_seqs": [
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,DB,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,DB,BC)"
+      ]
+    }
   },
-  "19160": {
-    "problem_id": 19160,
+  "15298": {
+    "problem_id": 15298,
     "added_cdl": [
       "Equation(ll_ac**2-ll_ad**2+ll_dc**2)"
     ],
@@ -545,10 +568,19 @@
       "right_triangle_judgment_angle(1,ACB)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,DB,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,ACB)",
+        "line_addition(1,DB,BC)"
+      ],
+      "right_triangle_judgment_angle(1,ACB)": [
+        "right_triangle_property_pythagorean(1,ACB)"
+      ]
+    }
   },
-  "19161": {
-    "problem_id": 19161,
+  "15299": {
+    "problem_id": 15299,
     "added_cdl": [
       "RightTriangle(ACD)"
     ],
@@ -559,10 +591,20 @@
       "right_triangle_judgment_angle(1,ACB)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,DB,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,ACD)",
+        "right_triangle_judgment_angle(1,ACB)",
+        "line_addition(1,DB,BC)"
+      ],
+      "right_triangle_judgment_angle(1,ACB)": [
+        "right_triangle_property_pythagorean(1,ACB)"
+      ]
+    }
   },
-  "19162": {
-    "problem_id": 19162,
+  "15300": {
+    "problem_id": 15300,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(AB))",
     "problem_answer": "6*sqrt(21)",
@@ -572,6 +614,19 @@
       "right_triangle_judgment_angle(1,ACB)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,DB,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,ACD)",
+        "right_triangle_judgment_angle(1,ACB)",
+        "line_addition(1,DB,BC)"
+      ],
+      "right_triangle_judgment_angle(1,ACD)": [
+        "right_triangle_property_pythagorean(1,ACD)"
+      ],
+      "right_triangle_judgment_angle(1,ACB)": [
+        "right_triangle_property_pythagorean(1,ACB)"
+      ]
+    }
   }
 }

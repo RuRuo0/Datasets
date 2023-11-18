@@ -1,15 +1,18 @@
 {
-  "43769": {
-    "problem_id": 43769,
+  "32159": {
+    "problem_id": 32159,
     "added_cdl": [],
     "goal_cdl": "Relation(RightTriangle(BAY))",
     "problem_answer": "RightTriangle(BAY)",
     "theorem_seqs": [
       "right_triangle_judgment_angle(1,BAY)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "43770": {
-    "problem_id": 43770,
+  "32160": {
+    "problem_id": 32160,
     "added_cdl": [
       "Equation(ma_anb+ma_yna-180)"
     ],
@@ -17,20 +20,33 @@
     "problem_answer": "IsAltitudeOfTriangle(AN,AYB)",
     "theorem_seqs": [
       "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "altitude_of_triangle_judgment(1,AN,AYB)"
+      ]
+    }
   },
-  "43771": {
-    "problem_id": 43771,
+  "32161": {
+    "problem_id": 32161,
     "added_cdl": [],
     "goal_cdl": "Relation(IsAltitudeOfTriangle(AN,AYB))",
     "problem_answer": "IsAltitudeOfTriangle(AN,AYB)",
     "theorem_seqs": [
       "adjacent_complementary_angle(1,YNA,ANB)",
       "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "adjacent_complementary_angle(1,YNA,ANB)"
+      ],
+      "adjacent_complementary_angle(1,YNA,ANB)": [
+        "altitude_of_triangle_judgment(1,AN,AYB)"
+      ]
+    }
   },
-  "43772": {
-    "problem_id": 43772,
+  "32162": {
+    "problem_id": 32162,
     "added_cdl": [
       "Equation(ma_anb+ma_yna-180)"
     ],
@@ -38,20 +54,33 @@
     "problem_answer": "0",
     "theorem_seqs": [
       "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "altitude_of_triangle_judgment(1,AN,AYB)"
+      ]
+    }
   },
-  "43773": {
-    "problem_id": 43773,
+  "32163": {
+    "problem_id": 32163,
     "added_cdl": [],
     "goal_cdl": "Equal(LengthOfLine(AN),HeightOfTriangle(AYB))",
     "problem_answer": "0",
     "theorem_seqs": [
       "adjacent_complementary_angle(1,YNA,ANB)",
       "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "adjacent_complementary_angle(1,YNA,ANB)"
+      ],
+      "adjacent_complementary_angle(1,YNA,ANB)": [
+        "altitude_of_triangle_judgment(1,AN,AYB)"
+      ]
+    }
   },
-  "43774": {
-    "problem_id": 43774,
+  "32164": {
+    "problem_id": 32164,
     "added_cdl": [
       "Equation(ma_anb+ma_yna-180)"
     ],
@@ -59,105 +88,33 @@
     "problem_answer": "PerpendicularBetweenLine(YN,AN)",
     "theorem_seqs": [
       "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "altitude_of_triangle_judgment(1,AN,AYB)"
+      ]
+    }
   },
-  "43775": {
-    "problem_id": 43775,
+  "32165": {
+    "problem_id": 32165,
     "added_cdl": [],
     "goal_cdl": "Relation(PerpendicularBetweenLine(YN,AN))",
     "problem_answer": "PerpendicularBetweenLine(YN,AN)",
     "theorem_seqs": [
       "adjacent_complementary_angle(1,YNA,ANB)",
       "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
-  },
-  "43776": {
-    "problem_id": 43776,
-    "added_cdl": [
-      "Equation(ma_anb+ma_yna-180)",
-      "Equation(at_ayb-ll_ab*ll_ay*sin(pi*ma_bay/180)/2)",
-      "Equation(at_ayb-ht_ayb*ll_yb/2)",
-      "Equation(ll_ab**2+ll_ay**2-ll_yb**2)"
     ],
-    "goal_cdl": "Value(LengthOfLine(AY))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
+    "theorem_seqs_dag": {
+      "START": [
+        "adjacent_complementary_angle(1,YNA,ANB)"
+      ],
+      "adjacent_complementary_angle(1,YNA,ANB)": [
+        "altitude_of_triangle_judgment(1,AN,AYB)"
+      ]
+    }
   },
-  "43777": {
-    "problem_id": 43777,
-    "added_cdl": [
-      "Equation(at_ayb-ll_ab*ll_ay*sin(pi*ma_bay/180)/2)",
-      "Equation(ll_ab**2+ll_ay**2-ll_yb**2)",
-      "Equation(at_ayb-ht_ayb*ll_yb/2)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AY))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "adjacent_complementary_angle(1,YNA,ANB)",
-      "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
-  },
-  "43778": {
-    "problem_id": 43778,
-    "added_cdl": [
-      "Equation(at_ayb-ht_ayb*ll_yb/2)",
-      "Equation(ll_ab**2+ll_ay**2-ll_yb**2)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AY))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "triangle_area_formula_sine(1,AYB)",
-      "adjacent_complementary_angle(1,YNA,ANB)",
-      "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
-  },
-  "43779": {
-    "problem_id": 43779,
-    "added_cdl": [
-      "Equation(ll_ab**2+ll_ay**2-ll_yb**2)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AY))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "triangle_area_formula_common(1,AYB)",
-      "triangle_area_formula_sine(1,AYB)",
-      "adjacent_complementary_angle(1,YNA,ANB)",
-      "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
-  },
-  "43780": {
-    "problem_id": 43780,
-    "added_cdl": [
-      "RightTriangle(BAY)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AY))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "right_triangle_property_pythagorean(1,BAY)",
-      "triangle_area_formula_common(1,AYB)",
-      "triangle_area_formula_sine(1,AYB)",
-      "adjacent_complementary_angle(1,YNA,ANB)",
-      "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
-  },
-  "43781": {
-    "problem_id": 43781,
-    "added_cdl": [],
-    "goal_cdl": "Value(LengthOfLine(AY))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "right_triangle_judgment_angle(1,BAY)",
-      "right_triangle_property_pythagorean(1,BAY)",
-      "triangle_area_formula_common(1,AYB)",
-      "triangle_area_formula_sine(1,AYB)",
-      "adjacent_complementary_angle(1,YNA,ANB)",
-      "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
-  },
-  "43782": {
-    "problem_id": 43782,
+  "32166": {
+    "problem_id": 32166,
     "added_cdl": [
       "Equation(ma_anb+ma_yna-180)",
       "Equation(at_ayb-ll_ab*ll_ay*sin(pi*ma_bay/180)/2)",
@@ -168,10 +125,15 @@
     "problem_answer": "15*sqrt(19)/14",
     "theorem_seqs": [
       "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "altitude_of_triangle_judgment(1,AN,AYB)"
+      ]
+    }
   },
-  "43783": {
-    "problem_id": 43783,
+  "32167": {
+    "problem_id": 32167,
     "added_cdl": [
       "Equation(at_ayb-ll_ab*ll_ay*sin(pi*ma_bay/180)/2)",
       "Equation(ll_ab**2+ll_ay**2-ll_yb**2)",
@@ -182,10 +144,18 @@
     "theorem_seqs": [
       "adjacent_complementary_angle(1,YNA,ANB)",
       "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "adjacent_complementary_angle(1,YNA,ANB)"
+      ],
+      "adjacent_complementary_angle(1,YNA,ANB)": [
+        "altitude_of_triangle_judgment(1,AN,AYB)"
+      ]
+    }
   },
-  "43784": {
-    "problem_id": 43784,
+  "32168": {
+    "problem_id": 32168,
     "added_cdl": [
       "Equation(at_ayb-ht_ayb*ll_yb/2)",
       "Equation(ll_ab**2+ll_ay**2-ll_yb**2)"
@@ -196,10 +166,19 @@
       "triangle_area_formula_sine(1,AYB)",
       "adjacent_complementary_angle(1,YNA,ANB)",
       "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_area_formula_sine(1,AYB)",
+        "adjacent_complementary_angle(1,YNA,ANB)"
+      ],
+      "adjacent_complementary_angle(1,YNA,ANB)": [
+        "altitude_of_triangle_judgment(1,AN,AYB)"
+      ]
+    }
   },
-  "43785": {
-    "problem_id": 43785,
+  "32169": {
+    "problem_id": 32169,
     "added_cdl": [
       "Equation(ll_ab**2+ll_ay**2-ll_yb**2)"
     ],
@@ -210,10 +189,20 @@
       "triangle_area_formula_sine(1,AYB)",
       "adjacent_complementary_angle(1,YNA,ANB)",
       "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_area_formula_common(1,AYB)",
+        "triangle_area_formula_sine(1,AYB)",
+        "adjacent_complementary_angle(1,YNA,ANB)"
+      ],
+      "adjacent_complementary_angle(1,YNA,ANB)": [
+        "altitude_of_triangle_judgment(1,AN,AYB)"
+      ]
+    }
   },
-  "43786": {
-    "problem_id": 43786,
+  "32170": {
+    "problem_id": 32170,
     "added_cdl": [
       "RightTriangle(BAY)"
     ],
@@ -225,10 +214,21 @@
       "triangle_area_formula_sine(1,AYB)",
       "adjacent_complementary_angle(1,YNA,ANB)",
       "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,BAY)",
+        "triangle_area_formula_common(1,AYB)",
+        "triangle_area_formula_sine(1,AYB)",
+        "adjacent_complementary_angle(1,YNA,ANB)"
+      ],
+      "adjacent_complementary_angle(1,YNA,ANB)": [
+        "altitude_of_triangle_judgment(1,AN,AYB)"
+      ]
+    }
   },
-  "43787": {
-    "problem_id": 43787,
+  "32171": {
+    "problem_id": 32171,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(AN))",
     "problem_answer": "15*sqrt(19)/14",
@@ -239,10 +239,24 @@
       "triangle_area_formula_sine(1,AYB)",
       "adjacent_complementary_angle(1,YNA,ANB)",
       "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BAY)",
+        "triangle_area_formula_common(1,AYB)",
+        "triangle_area_formula_sine(1,AYB)",
+        "adjacent_complementary_angle(1,YNA,ANB)"
+      ],
+      "right_triangle_judgment_angle(1,BAY)": [
+        "right_triangle_property_pythagorean(1,BAY)"
+      ],
+      "adjacent_complementary_angle(1,YNA,ANB)": [
+        "altitude_of_triangle_judgment(1,AN,AYB)"
+      ]
+    }
   },
-  "43788": {
-    "problem_id": 43788,
+  "32172": {
+    "problem_id": 32172,
     "added_cdl": [
       "Equation(ma_anb+ma_yna-180)",
       "Equation(at_ayb-ll_ab*ll_ay*sin(pi*ma_bay/180)/2)",
@@ -253,10 +267,15 @@
     "problem_answer": "15*sqrt(19)/14",
     "theorem_seqs": [
       "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "altitude_of_triangle_judgment(1,AN,AYB)"
+      ]
+    }
   },
-  "43789": {
-    "problem_id": 43789,
+  "32173": {
+    "problem_id": 32173,
     "added_cdl": [
       "Equation(at_ayb-ll_ab*ll_ay*sin(pi*ma_bay/180)/2)",
       "Equation(ll_ab**2+ll_ay**2-ll_yb**2)",
@@ -267,10 +286,18 @@
     "theorem_seqs": [
       "adjacent_complementary_angle(1,YNA,ANB)",
       "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "adjacent_complementary_angle(1,YNA,ANB)"
+      ],
+      "adjacent_complementary_angle(1,YNA,ANB)": [
+        "altitude_of_triangle_judgment(1,AN,AYB)"
+      ]
+    }
   },
-  "43790": {
-    "problem_id": 43790,
+  "32174": {
+    "problem_id": 32174,
     "added_cdl": [
       "Equation(at_ayb-ht_ayb*ll_yb/2)",
       "Equation(ll_ab**2+ll_ay**2-ll_yb**2)"
@@ -281,10 +308,19 @@
       "triangle_area_formula_sine(1,AYB)",
       "adjacent_complementary_angle(1,YNA,ANB)",
       "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_area_formula_sine(1,AYB)",
+        "adjacent_complementary_angle(1,YNA,ANB)"
+      ],
+      "adjacent_complementary_angle(1,YNA,ANB)": [
+        "altitude_of_triangle_judgment(1,AN,AYB)"
+      ]
+    }
   },
-  "43791": {
-    "problem_id": 43791,
+  "32175": {
+    "problem_id": 32175,
     "added_cdl": [
       "Equation(ll_ab**2+ll_ay**2-ll_yb**2)"
     ],
@@ -295,10 +331,20 @@
       "triangle_area_formula_sine(1,AYB)",
       "adjacent_complementary_angle(1,YNA,ANB)",
       "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_area_formula_common(1,AYB)",
+        "triangle_area_formula_sine(1,AYB)",
+        "adjacent_complementary_angle(1,YNA,ANB)"
+      ],
+      "adjacent_complementary_angle(1,YNA,ANB)": [
+        "altitude_of_triangle_judgment(1,AN,AYB)"
+      ]
+    }
   },
-  "43792": {
-    "problem_id": 43792,
+  "32176": {
+    "problem_id": 32176,
     "added_cdl": [
       "RightTriangle(BAY)"
     ],
@@ -310,10 +356,21 @@
       "triangle_area_formula_sine(1,AYB)",
       "adjacent_complementary_angle(1,YNA,ANB)",
       "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,BAY)",
+        "triangle_area_formula_common(1,AYB)",
+        "triangle_area_formula_sine(1,AYB)",
+        "adjacent_complementary_angle(1,YNA,ANB)"
+      ],
+      "adjacent_complementary_angle(1,YNA,ANB)": [
+        "altitude_of_triangle_judgment(1,AN,AYB)"
+      ]
+    }
   },
-  "43793": {
-    "problem_id": 43793,
+  "32177": {
+    "problem_id": 32177,
     "added_cdl": [],
     "goal_cdl": "Value(x)",
     "problem_answer": "15*sqrt(19)/14",
@@ -324,10 +381,24 @@
       "triangle_area_formula_sine(1,AYB)",
       "adjacent_complementary_angle(1,YNA,ANB)",
       "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BAY)",
+        "triangle_area_formula_common(1,AYB)",
+        "triangle_area_formula_sine(1,AYB)",
+        "adjacent_complementary_angle(1,YNA,ANB)"
+      ],
+      "right_triangle_judgment_angle(1,BAY)": [
+        "right_triangle_property_pythagorean(1,BAY)"
+      ],
+      "adjacent_complementary_angle(1,YNA,ANB)": [
+        "altitude_of_triangle_judgment(1,AN,AYB)"
+      ]
+    }
   },
-  "43794": {
-    "problem_id": 43794,
+  "32178": {
+    "problem_id": 32178,
     "added_cdl": [
       "RightTriangle(BAY)"
     ],
@@ -335,20 +406,33 @@
     "problem_answer": "3*sqrt(19)",
     "theorem_seqs": [
       "right_triangle_property_pythagorean(1,BAY)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,BAY)"
+      ]
+    }
   },
-  "43795": {
-    "problem_id": 43795,
+  "32179": {
+    "problem_id": 32179,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(AB))",
     "problem_answer": "3*sqrt(19)",
     "theorem_seqs": [
       "right_triangle_judgment_angle(1,BAY)",
       "right_triangle_property_pythagorean(1,BAY)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BAY)"
+      ],
+      "right_triangle_judgment_angle(1,BAY)": [
+        "right_triangle_property_pythagorean(1,BAY)"
+      ]
+    }
   },
-  "43796": {
-    "problem_id": 43796,
+  "32180": {
+    "problem_id": 32180,
     "added_cdl": [
       "RightTriangle(BAY)"
     ],
@@ -356,114 +440,47 @@
     "problem_answer": "3*sqrt(19)",
     "theorem_seqs": [
       "right_triangle_property_pythagorean(1,BAY)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,BAY)"
+      ]
+    }
   },
-  "43797": {
-    "problem_id": 43797,
+  "32181": {
+    "problem_id": 32181,
     "added_cdl": [],
     "goal_cdl": "Value(z)",
     "problem_answer": "3*sqrt(19)",
     "theorem_seqs": [
       "right_triangle_judgment_angle(1,BAY)",
       "right_triangle_property_pythagorean(1,BAY)"
-    ]
-  },
-  "43798": {
-    "problem_id": 43798,
-    "added_cdl": [
-      "Equation(ma_anb+ma_yna-180)",
-      "Equation(at_ayb-ll_ab*ll_ay*sin(pi*ma_bay/180)/2)",
-      "Equation(at_ayb-ht_ayb*ll_yb/2)",
-      "Equation(ll_ab**2+ll_ay**2-ll_yb**2)"
     ],
-    "goal_cdl": "Value(LengthOfLine(YB))",
-    "problem_answer": "14",
-    "theorem_seqs": [
-      "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BAY)"
+      ],
+      "right_triangle_judgment_angle(1,BAY)": [
+        "right_triangle_property_pythagorean(1,BAY)"
+      ]
+    }
   },
-  "43799": {
-    "problem_id": 43799,
-    "added_cdl": [
-      "Equation(at_ayb-ll_ab*ll_ay*sin(pi*ma_bay/180)/2)",
-      "Equation(ll_ab**2+ll_ay**2-ll_yb**2)",
-      "Equation(at_ayb-ht_ayb*ll_yb/2)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(YB))",
-    "problem_answer": "14",
-    "theorem_seqs": [
-      "adjacent_complementary_angle(1,YNA,ANB)",
-      "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
-  },
-  "43800": {
-    "problem_id": 43800,
-    "added_cdl": [
-      "Equation(at_ayb-ht_ayb*ll_yb/2)",
-      "Equation(ll_ab**2+ll_ay**2-ll_yb**2)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(YB))",
-    "problem_answer": "14",
-    "theorem_seqs": [
-      "triangle_area_formula_sine(1,AYB)",
-      "adjacent_complementary_angle(1,YNA,ANB)",
-      "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
-  },
-  "43801": {
-    "problem_id": 43801,
-    "added_cdl": [
-      "Equation(ll_ab**2+ll_ay**2-ll_yb**2)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(YB))",
-    "problem_answer": "14",
-    "theorem_seqs": [
-      "triangle_area_formula_common(1,AYB)",
-      "triangle_area_formula_sine(1,AYB)",
-      "adjacent_complementary_angle(1,YNA,ANB)",
-      "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
-  },
-  "43802": {
-    "problem_id": 43802,
-    "added_cdl": [
-      "RightTriangle(BAY)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(YB))",
-    "problem_answer": "14",
-    "theorem_seqs": [
-      "right_triangle_property_pythagorean(1,BAY)",
-      "triangle_area_formula_common(1,AYB)",
-      "triangle_area_formula_sine(1,AYB)",
-      "adjacent_complementary_angle(1,YNA,ANB)",
-      "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
-  },
-  "43803": {
-    "problem_id": 43803,
-    "added_cdl": [],
-    "goal_cdl": "Value(LengthOfLine(YB))",
-    "problem_answer": "14",
-    "theorem_seqs": [
-      "right_triangle_judgment_angle(1,BAY)",
-      "right_triangle_property_pythagorean(1,BAY)",
-      "triangle_area_formula_common(1,AYB)",
-      "triangle_area_formula_sine(1,AYB)",
-      "adjacent_complementary_angle(1,YNA,ANB)",
-      "altitude_of_triangle_judgment(1,AN,AYB)"
-    ]
-  },
-  "43804": {
-    "problem_id": 43804,
+  "32182": {
+    "problem_id": 32182,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(YNA))",
     "problem_answer": "90",
     "theorem_seqs": [
       "adjacent_complementary_angle(1,YNA,ANB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "adjacent_complementary_angle(1,YNA,ANB)"
+      ]
+    }
   },
-  "43805": {
-    "problem_id": 43805,
+  "32183": {
+    "problem_id": 32183,
     "added_cdl": [
       "Equation(ll_ab**2+ll_ay**2-ll_yb**2)",
       "Equation(at_ayb-ht_ayb*ll_yb/2)"
@@ -472,10 +489,15 @@
     "problem_answer": "15*sqrt(19)/14",
     "theorem_seqs": [
       "triangle_area_formula_sine(1,AYB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_area_formula_sine(1,AYB)"
+      ]
+    }
   },
-  "43806": {
-    "problem_id": 43806,
+  "32184": {
+    "problem_id": 32184,
     "added_cdl": [
       "RightTriangle(BAY)",
       "Equation(at_ayb-ht_ayb*ll_yb/2)"
@@ -485,10 +507,16 @@
     "theorem_seqs": [
       "right_triangle_property_pythagorean(1,BAY)",
       "triangle_area_formula_sine(1,AYB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,BAY)",
+        "triangle_area_formula_sine(1,AYB)"
+      ]
+    }
   },
-  "43807": {
-    "problem_id": 43807,
+  "32185": {
+    "problem_id": 32185,
     "added_cdl": [
       "Equation(at_ayb-ht_ayb*ll_yb/2)"
     ],
@@ -498,10 +526,19 @@
       "right_triangle_judgment_angle(1,BAY)",
       "right_triangle_property_pythagorean(1,BAY)",
       "triangle_area_formula_sine(1,AYB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BAY)",
+        "triangle_area_formula_sine(1,AYB)"
+      ],
+      "right_triangle_judgment_angle(1,BAY)": [
+        "right_triangle_property_pythagorean(1,BAY)"
+      ]
+    }
   },
-  "43808": {
-    "problem_id": 43808,
+  "32186": {
+    "problem_id": 32186,
     "added_cdl": [],
     "goal_cdl": "Value(HeightOfTriangle(AYB))",
     "problem_answer": "15*sqrt(19)/14",
@@ -510,10 +547,20 @@
       "right_triangle_judgment_angle(1,BAY)",
       "right_triangle_property_pythagorean(1,BAY)",
       "triangle_area_formula_sine(1,AYB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_area_formula_common(1,AYB)",
+        "right_triangle_judgment_angle(1,BAY)",
+        "triangle_area_formula_sine(1,AYB)"
+      ],
+      "right_triangle_judgment_angle(1,BAY)": [
+        "right_triangle_property_pythagorean(1,BAY)"
+      ]
+    }
   },
-  "43809": {
-    "problem_id": 43809,
+  "32187": {
+    "problem_id": 32187,
     "added_cdl": [
       "Equation(ll_ab**2+ll_ay**2-ll_yb**2)"
     ],
@@ -521,10 +568,15 @@
     "problem_answer": "15*sqrt(19)/2",
     "theorem_seqs": [
       "triangle_area_formula_sine(1,AYB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_area_formula_sine(1,AYB)"
+      ]
+    }
   },
-  "43810": {
-    "problem_id": 43810,
+  "32188": {
+    "problem_id": 32188,
     "added_cdl": [
       "RightTriangle(BAY)"
     ],
@@ -533,10 +585,16 @@
     "theorem_seqs": [
       "right_triangle_property_pythagorean(1,BAY)",
       "triangle_area_formula_sine(1,AYB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,BAY)",
+        "triangle_area_formula_sine(1,AYB)"
+      ]
+    }
   },
-  "43811": {
-    "problem_id": 43811,
+  "32189": {
+    "problem_id": 32189,
     "added_cdl": [],
     "goal_cdl": "Value(AreaOfTriangle(AYB))",
     "problem_answer": "15*sqrt(19)/2",
@@ -544,6 +602,15 @@
       "right_triangle_judgment_angle(1,BAY)",
       "right_triangle_property_pythagorean(1,BAY)",
       "triangle_area_formula_sine(1,AYB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BAY)",
+        "triangle_area_formula_sine(1,AYB)"
+      ],
+      "right_triangle_judgment_angle(1,BAY)": [
+        "right_triangle_property_pythagorean(1,BAY)"
+      ]
+    }
   }
 }

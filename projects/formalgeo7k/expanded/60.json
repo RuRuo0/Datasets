@@ -1,24 +1,30 @@
 {
-  "8036": {
-    "problem_id": 8036,
+  "7639": {
+    "problem_id": 7639,
     "added_cdl": [],
     "goal_cdl": "Relation(RightTriangle(ACB))",
     "problem_answer": "RightTriangle(ACB)",
     "theorem_seqs": [
       "right_triangle_judgment_angle(1,ACB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "8037": {
-    "problem_id": 8037,
+  "7640": {
+    "problem_id": 7640,
     "added_cdl": [],
     "goal_cdl": "Relation(RightTriangle(BDC))",
     "problem_answer": "RightTriangle(BDC)",
     "theorem_seqs": [
       "right_triangle_judgment_angle(1,BDC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "8038": {
-    "problem_id": 8038,
+  "7641": {
+    "problem_id": 7641,
     "added_cdl": [
       "Equation(ma_bdc+ma_cda-180)"
     ],
@@ -26,20 +32,33 @@
     "problem_answer": "RightTriangle(CDA)",
     "theorem_seqs": [
       "right_triangle_judgment_angle(1,CDA)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,CDA)"
+      ]
+    }
   },
-  "8039": {
-    "problem_id": 8039,
+  "7642": {
+    "problem_id": 7642,
     "added_cdl": [],
     "goal_cdl": "Relation(RightTriangle(CDA))",
     "problem_answer": "RightTriangle(CDA)",
     "theorem_seqs": [
       "adjacent_complementary_angle(1,BDC,CDA)",
       "right_triangle_judgment_angle(1,CDA)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "adjacent_complementary_angle(1,BDC,CDA)"
+      ],
+      "adjacent_complementary_angle(1,BDC,CDA)": [
+        "right_triangle_judgment_angle(1,CDA)"
+      ]
+    }
   },
-  "8040": {
-    "problem_id": 8040,
+  "7643": {
+    "problem_id": 7643,
     "added_cdl": [
       "Equation(ma_bdc+ma_cda-180)"
     ],
@@ -47,270 +66,33 @@
     "problem_answer": "PerpendicularBetweenLine(CD,AD)",
     "theorem_seqs": [
       "right_triangle_judgment_angle(1,CDA)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,CDA)"
+      ]
+    }
   },
-  "8041": {
-    "problem_id": 8041,
+  "7644": {
+    "problem_id": 7644,
     "added_cdl": [],
     "goal_cdl": "Relation(PerpendicularBetweenLine(CD,AD))",
     "problem_answer": "PerpendicularBetweenLine(CD,AD)",
     "theorem_seqs": [
       "adjacent_complementary_angle(1,BDC,CDA)",
       "right_triangle_judgment_angle(1,CDA)"
-    ]
-  },
-  "8042": {
-    "problem_id": 8042,
-    "added_cdl": [
-      "Equation(-ll_ab**2+ll_ac**2+ll_bc**2)",
-      "Equation(-ll_bc**2+ll_bd**2+ll_cd**2)",
-      "Equation(-ll_ac**2+ll_ad**2+ll_cd**2)"
     ],
-    "goal_cdl": "Value(LengthOfLine(AD))",
-    "problem_answer": "4",
-    "theorem_seqs": [
-      "line_addition(1,AD,DB)"
-    ]
+    "theorem_seqs_dag": {
+      "START": [
+        "adjacent_complementary_angle(1,BDC,CDA)"
+      ],
+      "adjacent_complementary_angle(1,BDC,CDA)": [
+        "right_triangle_judgment_angle(1,CDA)"
+      ]
+    }
   },
-  "8043": {
-    "problem_id": 8043,
-    "added_cdl": [
-      "Equation(-ll_bc**2+ll_bd**2+ll_cd**2)",
-      "Equation(-ll_ac**2+ll_ad**2+ll_cd**2)",
-      "RightTriangle(ACB)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AD))",
-    "problem_answer": "4",
-    "theorem_seqs": [
-      "right_triangle_property_pythagorean(1,ACB)",
-      "line_addition(1,AD,DB)"
-    ]
-  },
-  "8044": {
-    "problem_id": 8044,
-    "added_cdl": [
-      "Equation(-ll_ac**2+ll_ad**2+ll_cd**2)",
-      "RightTriangle(ACB)",
-      "RightTriangle(BDC)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AD))",
-    "problem_answer": "4",
-    "theorem_seqs": [
-      "right_triangle_property_pythagorean(1,BDC)",
-      "right_triangle_property_pythagorean(1,ACB)",
-      "line_addition(1,AD,DB)"
-    ]
-  },
-  "8045": {
-    "problem_id": 8045,
-    "added_cdl": [
-      "RightTriangle(CDA)",
-      "RightTriangle(ACB)",
-      "RightTriangle(BDC)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AD))",
-    "problem_answer": "4",
-    "theorem_seqs": [
-      "right_triangle_property_pythagorean(1,CDA)",
-      "right_triangle_property_pythagorean(1,BDC)",
-      "right_triangle_property_pythagorean(1,ACB)",
-      "line_addition(1,AD,DB)"
-    ]
-  },
-  "8046": {
-    "problem_id": 8046,
-    "added_cdl": [
-      "Equation(ma_bdc+ma_cda-180)",
-      "RightTriangle(ACB)",
-      "RightTriangle(BDC)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AD))",
-    "problem_answer": "4",
-    "theorem_seqs": [
-      "right_triangle_judgment_angle(1,CDA)",
-      "right_triangle_property_pythagorean(1,CDA)",
-      "right_triangle_property_pythagorean(1,BDC)",
-      "right_triangle_property_pythagorean(1,ACB)",
-      "line_addition(1,AD,DB)"
-    ]
-  },
-  "8047": {
-    "problem_id": 8047,
-    "added_cdl": [
-      "RightTriangle(ACB)",
-      "RightTriangle(BDC)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AD))",
-    "problem_answer": "4",
-    "theorem_seqs": [
-      "adjacent_complementary_angle(1,BDC,CDA)",
-      "right_triangle_judgment_angle(1,CDA)",
-      "right_triangle_property_pythagorean(1,CDA)",
-      "right_triangle_property_pythagorean(1,BDC)",
-      "right_triangle_property_pythagorean(1,ACB)",
-      "line_addition(1,AD,DB)"
-    ]
-  },
-  "8048": {
-    "problem_id": 8048,
-    "added_cdl": [
-      "RightTriangle(BDC)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AD))",
-    "problem_answer": "4",
-    "theorem_seqs": [
-      "right_triangle_judgment_angle(1,ACB)",
-      "adjacent_complementary_angle(1,BDC,CDA)",
-      "right_triangle_judgment_angle(1,CDA)",
-      "right_triangle_property_pythagorean(1,CDA)",
-      "right_triangle_property_pythagorean(1,BDC)",
-      "right_triangle_property_pythagorean(1,ACB)",
-      "line_addition(1,AD,DB)"
-    ]
-  },
-  "8049": {
-    "problem_id": 8049,
-    "added_cdl": [],
-    "goal_cdl": "Value(LengthOfLine(AD))",
-    "problem_answer": "4",
-    "theorem_seqs": [
-      "right_triangle_judgment_angle(1,BDC)",
-      "right_triangle_judgment_angle(1,ACB)",
-      "adjacent_complementary_angle(1,BDC,CDA)",
-      "right_triangle_judgment_angle(1,CDA)",
-      "right_triangle_property_pythagorean(1,CDA)",
-      "right_triangle_property_pythagorean(1,BDC)",
-      "right_triangle_property_pythagorean(1,ACB)",
-      "line_addition(1,AD,DB)"
-    ]
-  },
-  "8050": {
-    "problem_id": 8050,
-    "added_cdl": [
-      "Equation(-ll_ab**2+ll_ac**2+ll_bc**2)",
-      "Equation(-ll_bc**2+ll_bd**2+ll_cd**2)",
-      "Equation(-ll_ac**2+ll_ad**2+ll_cd**2)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(BD))",
-    "problem_answer": "9",
-    "theorem_seqs": [
-      "line_addition(1,AD,DB)"
-    ]
-  },
-  "8051": {
-    "problem_id": 8051,
-    "added_cdl": [
-      "Equation(-ll_bc**2+ll_bd**2+ll_cd**2)",
-      "Equation(-ll_ac**2+ll_ad**2+ll_cd**2)",
-      "RightTriangle(ACB)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(BD))",
-    "problem_answer": "9",
-    "theorem_seqs": [
-      "right_triangle_property_pythagorean(1,ACB)",
-      "line_addition(1,AD,DB)"
-    ]
-  },
-  "8052": {
-    "problem_id": 8052,
-    "added_cdl": [
-      "Equation(-ll_ac**2+ll_ad**2+ll_cd**2)",
-      "RightTriangle(ACB)",
-      "RightTriangle(BDC)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(BD))",
-    "problem_answer": "9",
-    "theorem_seqs": [
-      "right_triangle_property_pythagorean(1,BDC)",
-      "right_triangle_property_pythagorean(1,ACB)",
-      "line_addition(1,AD,DB)"
-    ]
-  },
-  "8053": {
-    "problem_id": 8053,
-    "added_cdl": [
-      "RightTriangle(CDA)",
-      "RightTriangle(ACB)",
-      "RightTriangle(BDC)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(BD))",
-    "problem_answer": "9",
-    "theorem_seqs": [
-      "right_triangle_property_pythagorean(1,CDA)",
-      "right_triangle_property_pythagorean(1,BDC)",
-      "right_triangle_property_pythagorean(1,ACB)",
-      "line_addition(1,AD,DB)"
-    ]
-  },
-  "8054": {
-    "problem_id": 8054,
-    "added_cdl": [
-      "Equation(ma_bdc+ma_cda-180)",
-      "RightTriangle(ACB)",
-      "RightTriangle(BDC)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(BD))",
-    "problem_answer": "9",
-    "theorem_seqs": [
-      "right_triangle_judgment_angle(1,CDA)",
-      "right_triangle_property_pythagorean(1,CDA)",
-      "right_triangle_property_pythagorean(1,BDC)",
-      "right_triangle_property_pythagorean(1,ACB)",
-      "line_addition(1,AD,DB)"
-    ]
-  },
-  "8055": {
-    "problem_id": 8055,
-    "added_cdl": [
-      "RightTriangle(ACB)",
-      "RightTriangle(BDC)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(BD))",
-    "problem_answer": "9",
-    "theorem_seqs": [
-      "adjacent_complementary_angle(1,BDC,CDA)",
-      "right_triangle_judgment_angle(1,CDA)",
-      "right_triangle_property_pythagorean(1,CDA)",
-      "right_triangle_property_pythagorean(1,BDC)",
-      "right_triangle_property_pythagorean(1,ACB)",
-      "line_addition(1,AD,DB)"
-    ]
-  },
-  "8056": {
-    "problem_id": 8056,
-    "added_cdl": [
-      "RightTriangle(BDC)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(BD))",
-    "problem_answer": "9",
-    "theorem_seqs": [
-      "right_triangle_judgment_angle(1,ACB)",
-      "adjacent_complementary_angle(1,BDC,CDA)",
-      "right_triangle_judgment_angle(1,CDA)",
-      "right_triangle_property_pythagorean(1,CDA)",
-      "right_triangle_property_pythagorean(1,BDC)",
-      "right_triangle_property_pythagorean(1,ACB)",
-      "line_addition(1,AD,DB)"
-    ]
-  },
-  "8057": {
-    "problem_id": 8057,
-    "added_cdl": [],
-    "goal_cdl": "Value(LengthOfLine(BD))",
-    "problem_answer": "9",
-    "theorem_seqs": [
-      "right_triangle_judgment_angle(1,BDC)",
-      "right_triangle_judgment_angle(1,ACB)",
-      "adjacent_complementary_angle(1,BDC,CDA)",
-      "right_triangle_judgment_angle(1,CDA)",
-      "right_triangle_property_pythagorean(1,CDA)",
-      "right_triangle_property_pythagorean(1,BDC)",
-      "right_triangle_property_pythagorean(1,ACB)",
-      "line_addition(1,AD,DB)"
-    ]
-  },
-  "8058": {
-    "problem_id": 8058,
+  "7645": {
+    "problem_id": 7645,
     "added_cdl": [
       "Equation(-ll_ab**2+ll_ac**2+ll_bc**2)",
       "Equation(-ll_bc**2+ll_bd**2+ll_cd**2)",
@@ -320,10 +102,15 @@
     "problem_answer": "2*sqrt(13)",
     "theorem_seqs": [
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "8059": {
-    "problem_id": 8059,
+  "7646": {
+    "problem_id": 7646,
     "added_cdl": [
       "Equation(-ll_bc**2+ll_bd**2+ll_cd**2)",
       "Equation(-ll_ac**2+ll_ad**2+ll_cd**2)",
@@ -334,10 +121,16 @@
     "theorem_seqs": [
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "8060": {
-    "problem_id": 8060,
+  "7647": {
+    "problem_id": 7647,
     "added_cdl": [
       "Equation(-ll_ac**2+ll_ad**2+ll_cd**2)",
       "RightTriangle(ACB)",
@@ -349,10 +142,17 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,BDC)",
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "8061": {
-    "problem_id": 8061,
+  "7648": {
+    "problem_id": 7648,
     "added_cdl": [
       "RightTriangle(CDA)",
       "RightTriangle(ACB)",
@@ -365,10 +165,18 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,CDA)",
+        "right_triangle_property_pythagorean(1,BDC)",
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "8062": {
-    "problem_id": 8062,
+  "7649": {
+    "problem_id": 7649,
     "added_cdl": [
       "Equation(ma_bdc+ma_cda-180)",
       "RightTriangle(ACB)",
@@ -382,10 +190,21 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,CDA)",
+        "right_triangle_property_pythagorean(1,BDC)",
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ],
+      "right_triangle_judgment_angle(1,CDA)": [
+        "right_triangle_property_pythagorean(1,CDA)"
+      ]
+    }
   },
-  "8063": {
-    "problem_id": 8063,
+  "7650": {
+    "problem_id": 7650,
     "added_cdl": [
       "RightTriangle(ACB)",
       "RightTriangle(BDC)"
@@ -399,10 +218,24 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "adjacent_complementary_angle(1,BDC,CDA)",
+        "right_triangle_property_pythagorean(1,BDC)",
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ],
+      "adjacent_complementary_angle(1,BDC,CDA)": [
+        "right_triangle_judgment_angle(1,CDA)"
+      ],
+      "right_triangle_judgment_angle(1,CDA)": [
+        "right_triangle_property_pythagorean(1,CDA)"
+      ]
+    }
   },
-  "8064": {
-    "problem_id": 8064,
+  "7651": {
+    "problem_id": 7651,
     "added_cdl": [
       "RightTriangle(BDC)"
     ],
@@ -416,10 +249,27 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,ACB)",
+        "adjacent_complementary_angle(1,BDC,CDA)",
+        "right_triangle_property_pythagorean(1,BDC)",
+        "line_addition(1,AD,DB)"
+      ],
+      "right_triangle_judgment_angle(1,ACB)": [
+        "right_triangle_property_pythagorean(1,ACB)"
+      ],
+      "adjacent_complementary_angle(1,BDC,CDA)": [
+        "right_triangle_judgment_angle(1,CDA)"
+      ],
+      "right_triangle_judgment_angle(1,CDA)": [
+        "right_triangle_property_pythagorean(1,CDA)"
+      ]
+    }
   },
-  "8065": {
-    "problem_id": 8065,
+  "7652": {
+    "problem_id": 7652,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(AC))",
     "problem_answer": "2*sqrt(13)",
@@ -432,10 +282,30 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BDC)",
+        "right_triangle_judgment_angle(1,ACB)",
+        "adjacent_complementary_angle(1,BDC,CDA)",
+        "line_addition(1,AD,DB)"
+      ],
+      "right_triangle_judgment_angle(1,BDC)": [
+        "right_triangle_property_pythagorean(1,BDC)"
+      ],
+      "right_triangle_judgment_angle(1,ACB)": [
+        "right_triangle_property_pythagorean(1,ACB)"
+      ],
+      "adjacent_complementary_angle(1,BDC,CDA)": [
+        "right_triangle_judgment_angle(1,CDA)"
+      ],
+      "right_triangle_judgment_angle(1,CDA)": [
+        "right_triangle_property_pythagorean(1,CDA)"
+      ]
+    }
   },
-  "8066": {
-    "problem_id": 8066,
+  "7653": {
+    "problem_id": 7653,
     "added_cdl": [
       "Equation(-ll_ab**2+ll_ac**2+ll_bc**2)",
       "Equation(-ll_bc**2+ll_bd**2+ll_cd**2)",
@@ -445,10 +315,15 @@
     "problem_answer": "2*sqrt(13)",
     "theorem_seqs": [
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "8067": {
-    "problem_id": 8067,
+  "7654": {
+    "problem_id": 7654,
     "added_cdl": [
       "Equation(-ll_bc**2+ll_bd**2+ll_cd**2)",
       "Equation(-ll_ac**2+ll_ad**2+ll_cd**2)",
@@ -459,10 +334,16 @@
     "theorem_seqs": [
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "8068": {
-    "problem_id": 8068,
+  "7655": {
+    "problem_id": 7655,
     "added_cdl": [
       "Equation(-ll_ac**2+ll_ad**2+ll_cd**2)",
       "RightTriangle(ACB)",
@@ -474,10 +355,17 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,BDC)",
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "8069": {
-    "problem_id": 8069,
+  "7656": {
+    "problem_id": 7656,
     "added_cdl": [
       "RightTriangle(CDA)",
       "RightTriangle(ACB)",
@@ -490,10 +378,18 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,CDA)",
+        "right_triangle_property_pythagorean(1,BDC)",
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "8070": {
-    "problem_id": 8070,
+  "7657": {
+    "problem_id": 7657,
     "added_cdl": [
       "Equation(ma_bdc+ma_cda-180)",
       "RightTriangle(ACB)",
@@ -507,10 +403,21 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,CDA)",
+        "right_triangle_property_pythagorean(1,BDC)",
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ],
+      "right_triangle_judgment_angle(1,CDA)": [
+        "right_triangle_property_pythagorean(1,CDA)"
+      ]
+    }
   },
-  "8071": {
-    "problem_id": 8071,
+  "7658": {
+    "problem_id": 7658,
     "added_cdl": [
       "RightTriangle(ACB)",
       "RightTriangle(BDC)"
@@ -524,10 +431,24 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "adjacent_complementary_angle(1,BDC,CDA)",
+        "right_triangle_property_pythagorean(1,BDC)",
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ],
+      "adjacent_complementary_angle(1,BDC,CDA)": [
+        "right_triangle_judgment_angle(1,CDA)"
+      ],
+      "right_triangle_judgment_angle(1,CDA)": [
+        "right_triangle_property_pythagorean(1,CDA)"
+      ]
+    }
   },
-  "8072": {
-    "problem_id": 8072,
+  "7659": {
+    "problem_id": 7659,
     "added_cdl": [
       "RightTriangle(BDC)"
     ],
@@ -541,10 +462,27 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,ACB)",
+        "adjacent_complementary_angle(1,BDC,CDA)",
+        "right_triangle_property_pythagorean(1,BDC)",
+        "line_addition(1,AD,DB)"
+      ],
+      "right_triangle_judgment_angle(1,ACB)": [
+        "right_triangle_property_pythagorean(1,ACB)"
+      ],
+      "adjacent_complementary_angle(1,BDC,CDA)": [
+        "right_triangle_judgment_angle(1,CDA)"
+      ],
+      "right_triangle_judgment_angle(1,CDA)": [
+        "right_triangle_property_pythagorean(1,CDA)"
+      ]
+    }
   },
-  "8073": {
-    "problem_id": 8073,
+  "7660": {
+    "problem_id": 7660,
     "added_cdl": [],
     "goal_cdl": "Value(x)",
     "problem_answer": "2*sqrt(13)",
@@ -557,10 +495,30 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BDC)",
+        "right_triangle_judgment_angle(1,ACB)",
+        "adjacent_complementary_angle(1,BDC,CDA)",
+        "line_addition(1,AD,DB)"
+      ],
+      "right_triangle_judgment_angle(1,BDC)": [
+        "right_triangle_property_pythagorean(1,BDC)"
+      ],
+      "right_triangle_judgment_angle(1,ACB)": [
+        "right_triangle_property_pythagorean(1,ACB)"
+      ],
+      "adjacent_complementary_angle(1,BDC,CDA)": [
+        "right_triangle_judgment_angle(1,CDA)"
+      ],
+      "right_triangle_judgment_angle(1,CDA)": [
+        "right_triangle_property_pythagorean(1,CDA)"
+      ]
+    }
   },
-  "8074": {
-    "problem_id": 8074,
+  "7661": {
+    "problem_id": 7661,
     "added_cdl": [
       "Equation(-ll_ab**2+ll_ac**2+ll_bc**2)",
       "Equation(-ll_bc**2+ll_bd**2+ll_cd**2)",
@@ -570,10 +528,15 @@
     "problem_answer": "6",
     "theorem_seqs": [
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "8075": {
-    "problem_id": 8075,
+  "7662": {
+    "problem_id": 7662,
     "added_cdl": [
       "Equation(-ll_bc**2+ll_bd**2+ll_cd**2)",
       "Equation(-ll_ac**2+ll_ad**2+ll_cd**2)",
@@ -584,10 +547,16 @@
     "theorem_seqs": [
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "8076": {
-    "problem_id": 8076,
+  "7663": {
+    "problem_id": 7663,
     "added_cdl": [
       "Equation(-ll_ac**2+ll_ad**2+ll_cd**2)",
       "RightTriangle(ACB)",
@@ -599,10 +568,17 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,BDC)",
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "8077": {
-    "problem_id": 8077,
+  "7664": {
+    "problem_id": 7664,
     "added_cdl": [
       "RightTriangle(CDA)",
       "RightTriangle(ACB)",
@@ -615,10 +591,18 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,CDA)",
+        "right_triangle_property_pythagorean(1,BDC)",
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "8078": {
-    "problem_id": 8078,
+  "7665": {
+    "problem_id": 7665,
     "added_cdl": [
       "Equation(ma_bdc+ma_cda-180)",
       "RightTriangle(ACB)",
@@ -632,10 +616,21 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,CDA)",
+        "right_triangle_property_pythagorean(1,BDC)",
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ],
+      "right_triangle_judgment_angle(1,CDA)": [
+        "right_triangle_property_pythagorean(1,CDA)"
+      ]
+    }
   },
-  "8079": {
-    "problem_id": 8079,
+  "7666": {
+    "problem_id": 7666,
     "added_cdl": [
       "RightTriangle(ACB)",
       "RightTriangle(BDC)"
@@ -649,10 +644,24 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "adjacent_complementary_angle(1,BDC,CDA)",
+        "right_triangle_property_pythagorean(1,BDC)",
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ],
+      "adjacent_complementary_angle(1,BDC,CDA)": [
+        "right_triangle_judgment_angle(1,CDA)"
+      ],
+      "right_triangle_judgment_angle(1,CDA)": [
+        "right_triangle_property_pythagorean(1,CDA)"
+      ]
+    }
   },
-  "8080": {
-    "problem_id": 8080,
+  "7667": {
+    "problem_id": 7667,
     "added_cdl": [
       "RightTriangle(BDC)"
     ],
@@ -666,10 +675,27 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,ACB)",
+        "adjacent_complementary_angle(1,BDC,CDA)",
+        "right_triangle_property_pythagorean(1,BDC)",
+        "line_addition(1,AD,DB)"
+      ],
+      "right_triangle_judgment_angle(1,ACB)": [
+        "right_triangle_property_pythagorean(1,ACB)"
+      ],
+      "adjacent_complementary_angle(1,BDC,CDA)": [
+        "right_triangle_judgment_angle(1,CDA)"
+      ],
+      "right_triangle_judgment_angle(1,CDA)": [
+        "right_triangle_property_pythagorean(1,CDA)"
+      ]
+    }
   },
-  "8081": {
-    "problem_id": 8081,
+  "7668": {
+    "problem_id": 7668,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(CD))",
     "problem_answer": "6",
@@ -682,10 +708,30 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BDC)",
+        "right_triangle_judgment_angle(1,ACB)",
+        "adjacent_complementary_angle(1,BDC,CDA)",
+        "line_addition(1,AD,DB)"
+      ],
+      "right_triangle_judgment_angle(1,BDC)": [
+        "right_triangle_property_pythagorean(1,BDC)"
+      ],
+      "right_triangle_judgment_angle(1,ACB)": [
+        "right_triangle_property_pythagorean(1,ACB)"
+      ],
+      "adjacent_complementary_angle(1,BDC,CDA)": [
+        "right_triangle_judgment_angle(1,CDA)"
+      ],
+      "right_triangle_judgment_angle(1,CDA)": [
+        "right_triangle_property_pythagorean(1,CDA)"
+      ]
+    }
   },
-  "8082": {
-    "problem_id": 8082,
+  "7669": {
+    "problem_id": 7669,
     "added_cdl": [
       "Equation(-ll_ab**2+ll_ac**2+ll_bc**2)",
       "Equation(-ll_bc**2+ll_bd**2+ll_cd**2)",
@@ -695,10 +741,15 @@
     "problem_answer": "6",
     "theorem_seqs": [
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "8083": {
-    "problem_id": 8083,
+  "7670": {
+    "problem_id": 7670,
     "added_cdl": [
       "Equation(-ll_bc**2+ll_bd**2+ll_cd**2)",
       "Equation(-ll_ac**2+ll_ad**2+ll_cd**2)",
@@ -709,10 +760,16 @@
     "theorem_seqs": [
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "8084": {
-    "problem_id": 8084,
+  "7671": {
+    "problem_id": 7671,
     "added_cdl": [
       "Equation(-ll_ac**2+ll_ad**2+ll_cd**2)",
       "RightTriangle(ACB)",
@@ -724,10 +781,17 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,BDC)",
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "8085": {
-    "problem_id": 8085,
+  "7672": {
+    "problem_id": 7672,
     "added_cdl": [
       "RightTriangle(CDA)",
       "RightTriangle(ACB)",
@@ -740,10 +804,18 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,CDA)",
+        "right_triangle_property_pythagorean(1,BDC)",
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "8086": {
-    "problem_id": 8086,
+  "7673": {
+    "problem_id": 7673,
     "added_cdl": [
       "Equation(ma_bdc+ma_cda-180)",
       "RightTriangle(ACB)",
@@ -757,10 +829,21 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,CDA)",
+        "right_triangle_property_pythagorean(1,BDC)",
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ],
+      "right_triangle_judgment_angle(1,CDA)": [
+        "right_triangle_property_pythagorean(1,CDA)"
+      ]
+    }
   },
-  "8087": {
-    "problem_id": 8087,
+  "7674": {
+    "problem_id": 7674,
     "added_cdl": [
       "RightTriangle(ACB)",
       "RightTriangle(BDC)"
@@ -774,10 +857,24 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "adjacent_complementary_angle(1,BDC,CDA)",
+        "right_triangle_property_pythagorean(1,BDC)",
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ],
+      "adjacent_complementary_angle(1,BDC,CDA)": [
+        "right_triangle_judgment_angle(1,CDA)"
+      ],
+      "right_triangle_judgment_angle(1,CDA)": [
+        "right_triangle_property_pythagorean(1,CDA)"
+      ]
+    }
   },
-  "8088": {
-    "problem_id": 8088,
+  "7675": {
+    "problem_id": 7675,
     "added_cdl": [
       "RightTriangle(BDC)"
     ],
@@ -791,10 +888,27 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,ACB)",
+        "adjacent_complementary_angle(1,BDC,CDA)",
+        "right_triangle_property_pythagorean(1,BDC)",
+        "line_addition(1,AD,DB)"
+      ],
+      "right_triangle_judgment_angle(1,ACB)": [
+        "right_triangle_property_pythagorean(1,ACB)"
+      ],
+      "adjacent_complementary_angle(1,BDC,CDA)": [
+        "right_triangle_judgment_angle(1,CDA)"
+      ],
+      "right_triangle_judgment_angle(1,CDA)": [
+        "right_triangle_property_pythagorean(1,CDA)"
+      ]
+    }
   },
-  "8089": {
-    "problem_id": 8089,
+  "7676": {
+    "problem_id": 7676,
     "added_cdl": [],
     "goal_cdl": "Value(z)",
     "problem_answer": "6",
@@ -807,10 +921,30 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BDC)",
+        "right_triangle_judgment_angle(1,ACB)",
+        "adjacent_complementary_angle(1,BDC,CDA)",
+        "line_addition(1,AD,DB)"
+      ],
+      "right_triangle_judgment_angle(1,BDC)": [
+        "right_triangle_property_pythagorean(1,BDC)"
+      ],
+      "right_triangle_judgment_angle(1,ACB)": [
+        "right_triangle_property_pythagorean(1,ACB)"
+      ],
+      "adjacent_complementary_angle(1,BDC,CDA)": [
+        "right_triangle_judgment_angle(1,CDA)"
+      ],
+      "right_triangle_judgment_angle(1,CDA)": [
+        "right_triangle_property_pythagorean(1,CDA)"
+      ]
+    }
   },
-  "8090": {
-    "problem_id": 8090,
+  "7677": {
+    "problem_id": 7677,
     "added_cdl": [
       "Equation(-ll_ab**2+ll_ac**2+ll_bc**2)",
       "Equation(-ll_bc**2+ll_bd**2+ll_cd**2)",
@@ -820,10 +954,15 @@
     "problem_answer": "3*sqrt(13)",
     "theorem_seqs": [
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "8091": {
-    "problem_id": 8091,
+  "7678": {
+    "problem_id": 7678,
     "added_cdl": [
       "Equation(-ll_bc**2+ll_bd**2+ll_cd**2)",
       "Equation(-ll_ac**2+ll_ad**2+ll_cd**2)",
@@ -834,10 +973,16 @@
     "theorem_seqs": [
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "8092": {
-    "problem_id": 8092,
+  "7679": {
+    "problem_id": 7679,
     "added_cdl": [
       "Equation(-ll_ac**2+ll_ad**2+ll_cd**2)",
       "RightTriangle(ACB)",
@@ -849,10 +994,17 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,BDC)",
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "8093": {
-    "problem_id": 8093,
+  "7680": {
+    "problem_id": 7680,
     "added_cdl": [
       "RightTriangle(CDA)",
       "RightTriangle(ACB)",
@@ -865,10 +1017,18 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,CDA)",
+        "right_triangle_property_pythagorean(1,BDC)",
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "8094": {
-    "problem_id": 8094,
+  "7681": {
+    "problem_id": 7681,
     "added_cdl": [
       "Equation(ma_bdc+ma_cda-180)",
       "RightTriangle(ACB)",
@@ -882,10 +1042,21 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,CDA)",
+        "right_triangle_property_pythagorean(1,BDC)",
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ],
+      "right_triangle_judgment_angle(1,CDA)": [
+        "right_triangle_property_pythagorean(1,CDA)"
+      ]
+    }
   },
-  "8095": {
-    "problem_id": 8095,
+  "7682": {
+    "problem_id": 7682,
     "added_cdl": [
       "RightTriangle(ACB)",
       "RightTriangle(BDC)"
@@ -899,10 +1070,24 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "adjacent_complementary_angle(1,BDC,CDA)",
+        "right_triangle_property_pythagorean(1,BDC)",
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ],
+      "adjacent_complementary_angle(1,BDC,CDA)": [
+        "right_triangle_judgment_angle(1,CDA)"
+      ],
+      "right_triangle_judgment_angle(1,CDA)": [
+        "right_triangle_property_pythagorean(1,CDA)"
+      ]
+    }
   },
-  "8096": {
-    "problem_id": 8096,
+  "7683": {
+    "problem_id": 7683,
     "added_cdl": [
       "RightTriangle(BDC)"
     ],
@@ -916,10 +1101,27 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,ACB)",
+        "adjacent_complementary_angle(1,BDC,CDA)",
+        "right_triangle_property_pythagorean(1,BDC)",
+        "line_addition(1,AD,DB)"
+      ],
+      "right_triangle_judgment_angle(1,ACB)": [
+        "right_triangle_property_pythagorean(1,ACB)"
+      ],
+      "adjacent_complementary_angle(1,BDC,CDA)": [
+        "right_triangle_judgment_angle(1,CDA)"
+      ],
+      "right_triangle_judgment_angle(1,CDA)": [
+        "right_triangle_property_pythagorean(1,CDA)"
+      ]
+    }
   },
-  "8097": {
-    "problem_id": 8097,
+  "7684": {
+    "problem_id": 7684,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(BC))",
     "problem_answer": "3*sqrt(13)",
@@ -932,10 +1134,30 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BDC)",
+        "right_triangle_judgment_angle(1,ACB)",
+        "adjacent_complementary_angle(1,BDC,CDA)",
+        "line_addition(1,AD,DB)"
+      ],
+      "right_triangle_judgment_angle(1,BDC)": [
+        "right_triangle_property_pythagorean(1,BDC)"
+      ],
+      "right_triangle_judgment_angle(1,ACB)": [
+        "right_triangle_property_pythagorean(1,ACB)"
+      ],
+      "adjacent_complementary_angle(1,BDC,CDA)": [
+        "right_triangle_judgment_angle(1,CDA)"
+      ],
+      "right_triangle_judgment_angle(1,CDA)": [
+        "right_triangle_property_pythagorean(1,CDA)"
+      ]
+    }
   },
-  "8098": {
-    "problem_id": 8098,
+  "7685": {
+    "problem_id": 7685,
     "added_cdl": [
       "Equation(-ll_ab**2+ll_ac**2+ll_bc**2)",
       "Equation(-ll_bc**2+ll_bd**2+ll_cd**2)",
@@ -945,10 +1167,15 @@
     "problem_answer": "3*sqrt(13)",
     "theorem_seqs": [
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "8099": {
-    "problem_id": 8099,
+  "7686": {
+    "problem_id": 7686,
     "added_cdl": [
       "Equation(-ll_bc**2+ll_bd**2+ll_cd**2)",
       "Equation(-ll_ac**2+ll_ad**2+ll_cd**2)",
@@ -959,10 +1186,16 @@
     "theorem_seqs": [
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "8100": {
-    "problem_id": 8100,
+  "7687": {
+    "problem_id": 7687,
     "added_cdl": [
       "Equation(-ll_ac**2+ll_ad**2+ll_cd**2)",
       "RightTriangle(ACB)",
@@ -974,10 +1207,17 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,BDC)",
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "8101": {
-    "problem_id": 8101,
+  "7688": {
+    "problem_id": 7688,
     "added_cdl": [
       "RightTriangle(CDA)",
       "RightTriangle(ACB)",
@@ -990,10 +1230,18 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,CDA)",
+        "right_triangle_property_pythagorean(1,BDC)",
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "8102": {
-    "problem_id": 8102,
+  "7689": {
+    "problem_id": 7689,
     "added_cdl": [
       "Equation(ma_bdc+ma_cda-180)",
       "RightTriangle(ACB)",
@@ -1007,10 +1255,21 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,CDA)",
+        "right_triangle_property_pythagorean(1,BDC)",
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ],
+      "right_triangle_judgment_angle(1,CDA)": [
+        "right_triangle_property_pythagorean(1,CDA)"
+      ]
+    }
   },
-  "8103": {
-    "problem_id": 8103,
+  "7690": {
+    "problem_id": 7690,
     "added_cdl": [
       "RightTriangle(ACB)",
       "RightTriangle(BDC)"
@@ -1024,10 +1283,24 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "adjacent_complementary_angle(1,BDC,CDA)",
+        "right_triangle_property_pythagorean(1,BDC)",
+        "right_triangle_property_pythagorean(1,ACB)",
+        "line_addition(1,AD,DB)"
+      ],
+      "adjacent_complementary_angle(1,BDC,CDA)": [
+        "right_triangle_judgment_angle(1,CDA)"
+      ],
+      "right_triangle_judgment_angle(1,CDA)": [
+        "right_triangle_property_pythagorean(1,CDA)"
+      ]
+    }
   },
-  "8104": {
-    "problem_id": 8104,
+  "7691": {
+    "problem_id": 7691,
     "added_cdl": [
       "RightTriangle(BDC)"
     ],
@@ -1041,10 +1314,27 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,ACB)",
+        "adjacent_complementary_angle(1,BDC,CDA)",
+        "right_triangle_property_pythagorean(1,BDC)",
+        "line_addition(1,AD,DB)"
+      ],
+      "right_triangle_judgment_angle(1,ACB)": [
+        "right_triangle_property_pythagorean(1,ACB)"
+      ],
+      "adjacent_complementary_angle(1,BDC,CDA)": [
+        "right_triangle_judgment_angle(1,CDA)"
+      ],
+      "right_triangle_judgment_angle(1,CDA)": [
+        "right_triangle_property_pythagorean(1,CDA)"
+      ]
+    }
   },
-  "8105": {
-    "problem_id": 8105,
+  "7692": {
+    "problem_id": 7692,
     "added_cdl": [],
     "goal_cdl": "Value(y)",
     "problem_answer": "3*sqrt(13)",
@@ -1057,24 +1347,54 @@
       "right_triangle_property_pythagorean(1,BDC)",
       "right_triangle_property_pythagorean(1,ACB)",
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BDC)",
+        "right_triangle_judgment_angle(1,ACB)",
+        "adjacent_complementary_angle(1,BDC,CDA)",
+        "line_addition(1,AD,DB)"
+      ],
+      "right_triangle_judgment_angle(1,BDC)": [
+        "right_triangle_property_pythagorean(1,BDC)"
+      ],
+      "right_triangle_judgment_angle(1,ACB)": [
+        "right_triangle_property_pythagorean(1,ACB)"
+      ],
+      "adjacent_complementary_angle(1,BDC,CDA)": [
+        "right_triangle_judgment_angle(1,CDA)"
+      ],
+      "right_triangle_judgment_angle(1,CDA)": [
+        "right_triangle_property_pythagorean(1,CDA)"
+      ]
+    }
   },
-  "8106": {
-    "problem_id": 8106,
+  "7693": {
+    "problem_id": 7693,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(AB))",
     "problem_answer": "13",
     "theorem_seqs": [
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "8107": {
-    "problem_id": 8107,
+  "7694": {
+    "problem_id": 7694,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(CDA))",
     "problem_answer": "90",
     "theorem_seqs": [
       "adjacent_complementary_angle(1,BDC,CDA)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "adjacent_complementary_angle(1,BDC,CDA)"
+      ]
+    }
   }
 }

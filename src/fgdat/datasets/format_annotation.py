@@ -61,4 +61,3 @@ if __name__ == '__main__':
     # format_annotation_id("../../../projects/formalgeo7k/problems/")
     # check_notes("../../../projects/formalgeo7k/problems/", add_notes=True)
     check_cdl("../../../projects/formalgeo7k/problems/", 1, 6981)
-    # run("../../../projects/formalgeo7k/", 1, 6981)

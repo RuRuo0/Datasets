@@ -1,15 +1,18 @@
 {
-  "45395": {
-    "problem_id": 45395,
+  "33251": {
+    "problem_id": 33251,
     "added_cdl": [],
     "goal_cdl": "Relation(RightTriangle(BOC))",
     "problem_answer": "RightTriangle(BOC)",
     "theorem_seqs": [
       "right_triangle_judgment_angle(1,BOC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "45396": {
-    "problem_id": 45396,
+  "33252": {
+    "problem_id": 33252,
     "added_cdl": [
       "Equation(ma_boc+ma_cbo+ma_ocb-180)"
     ],
@@ -17,20 +20,33 @@
     "problem_answer": "IsoscelesTriangle(OCB)",
     "theorem_seqs": [
       "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_angle_equal(1,OCB)"
+      ]
+    }
   },
-  "45397": {
-    "problem_id": 45397,
+  "33253": {
+    "problem_id": 33253,
     "added_cdl": [],
     "goal_cdl": "Relation(IsoscelesTriangle(OCB))",
     "problem_answer": "IsoscelesTriangle(OCB)",
     "theorem_seqs": [
       "triangle_property_angle_sum(1,BOC)",
       "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,BOC)"
+      ],
+      "triangle_property_angle_sum(1,BOC)": [
+        "isosceles_triangle_judgment_angle_equal(1,OCB)"
+      ]
+    }
   },
-  "45398": {
-    "problem_id": 45398,
+  "33254": {
+    "problem_id": 33254,
     "added_cdl": [
       "Equation(ma_boc+ma_cbo+ma_ocb-180)"
     ],
@@ -38,258 +54,59 @@
     "problem_answer": "0",
     "theorem_seqs": [
       "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_angle_equal(1,OCB)"
+      ]
+    }
   },
-  "45399": {
-    "problem_id": 45399,
+  "33255": {
+    "problem_id": 33255,
     "added_cdl": [],
     "goal_cdl": "Equal(LengthOfLine(OC),LengthOfLine(OB))",
     "problem_answer": "0",
     "theorem_seqs": [
       "triangle_property_angle_sum(1,BOC)",
       "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,BOC)"
+      ],
+      "triangle_property_angle_sum(1,BOC)": [
+        "isosceles_triangle_judgment_angle_equal(1,OCB)"
+      ]
+    }
   },
-  "45400": {
-    "problem_id": 45400,
+  "33256": {
+    "problem_id": 33256,
     "added_cdl": [],
     "goal_cdl": "Equal(LengthOfLine(CB),LengthOfLine(OA))",
     "problem_answer": "0",
     "theorem_seqs": [
       "parallelogram_property_opposite_line_equal(1,CBOA)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallelogram_property_opposite_line_equal(1,CBOA)"
+      ]
+    }
   },
-  "45401": {
-    "problem_id": 45401,
+  "33257": {
+    "problem_id": 33257,
     "added_cdl": [],
     "goal_cdl": "Equal(LengthOfLine(OB),LengthOfLine(AC))",
     "problem_answer": "0",
     "theorem_seqs": [
       "parallelogram_property_opposite_line_equal(1,BOAC)"
-    ]
-  },
-  "45402": {
-    "problem_id": 45402,
-    "added_cdl": [
-      "Equation(-ll_cb**2+ll_ob**2+ll_oc**2)",
-      "Equal(LengthOfLine(CB),LengthOfLine(OA))",
-      "Equal(LengthOfLine(OB),LengthOfLine(AC))",
-      "Equation(ll_ac+ll_cb+ll_oa+ll_ob-pq_cboa)",
-      "Equation(ma_boc+ma_cbo+ma_ocb-180)"
     ],
-    "goal_cdl": "Value(LengthOfLine(CB))",
-    "problem_answer": "4",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "45403": {
-    "problem_id": 45403,
-    "added_cdl": [
-      "Equal(LengthOfLine(CB),LengthOfLine(OA))",
-      "Equal(LengthOfLine(OB),LengthOfLine(AC))",
-      "Equation(ll_ac+ll_cb+ll_oa+ll_ob-pq_cboa)",
-      "RightTriangle(BOC)",
-      "Equation(ma_boc+ma_cbo+ma_ocb-180)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(CB))",
-    "problem_answer": "4",
-    "theorem_seqs": [
-      "right_triangle_property_pythagorean(1,BOC)",
-      "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
-  },
-  "45404": {
-    "problem_id": 45404,
-    "added_cdl": [
-      "Equal(LengthOfLine(OB),LengthOfLine(AC))",
-      "Equation(ll_ac+ll_cb+ll_oa+ll_ob-pq_cboa)",
-      "RightTriangle(BOC)",
-      "Equation(ma_boc+ma_cbo+ma_ocb-180)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(CB))",
-    "problem_answer": "4",
-    "theorem_seqs": [
-      "parallelogram_property_opposite_line_equal(1,CBOA)",
-      "right_triangle_property_pythagorean(1,BOC)",
-      "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
-  },
-  "45405": {
-    "problem_id": 45405,
-    "added_cdl": [
-      "Equation(ll_ac+ll_cb+ll_oa+ll_ob-pq_cboa)",
-      "RightTriangle(BOC)",
-      "Equation(ma_boc+ma_cbo+ma_ocb-180)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(CB))",
-    "problem_answer": "4",
-    "theorem_seqs": [
-      "parallelogram_property_opposite_line_equal(1,BOAC)",
-      "parallelogram_property_opposite_line_equal(1,CBOA)",
-      "right_triangle_property_pythagorean(1,BOC)",
-      "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
-  },
-  "45406": {
-    "problem_id": 45406,
-    "added_cdl": [
-      "RightTriangle(BOC)",
-      "Equation(ma_boc+ma_cbo+ma_ocb-180)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(CB))",
-    "problem_answer": "4",
-    "theorem_seqs": [
-      "quadrilateral_perimeter_formula(1,CBOA)",
-      "parallelogram_property_opposite_line_equal(1,BOAC)",
-      "parallelogram_property_opposite_line_equal(1,CBOA)",
-      "right_triangle_property_pythagorean(1,BOC)",
-      "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
-  },
-  "45407": {
-    "problem_id": 45407,
-    "added_cdl": [
-      "Equation(ma_boc+ma_cbo+ma_ocb-180)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(CB))",
-    "problem_answer": "4",
-    "theorem_seqs": [
-      "right_triangle_judgment_angle(1,BOC)",
-      "quadrilateral_perimeter_formula(1,CBOA)",
-      "parallelogram_property_opposite_line_equal(1,BOAC)",
-      "parallelogram_property_opposite_line_equal(1,CBOA)",
-      "right_triangle_property_pythagorean(1,BOC)",
-      "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
-  },
-  "45408": {
-    "problem_id": 45408,
-    "added_cdl": [],
-    "goal_cdl": "Value(LengthOfLine(CB))",
-    "problem_answer": "4",
-    "theorem_seqs": [
-      "triangle_property_angle_sum(1,BOC)",
-      "right_triangle_judgment_angle(1,BOC)",
-      "quadrilateral_perimeter_formula(1,CBOA)",
-      "parallelogram_property_opposite_line_equal(1,BOAC)",
-      "parallelogram_property_opposite_line_equal(1,CBOA)",
-      "right_triangle_property_pythagorean(1,BOC)",
-      "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
-  },
-  "45409": {
-    "problem_id": 45409,
-    "added_cdl": [
-      "Equation(-ll_cb**2+ll_ob**2+ll_oc**2)",
-      "Equal(LengthOfLine(CB),LengthOfLine(OA))",
-      "Equal(LengthOfLine(OB),LengthOfLine(AC))",
-      "Equation(ll_ac+ll_cb+ll_oa+ll_ob-pq_cboa)",
-      "Equation(ma_boc+ma_cbo+ma_ocb-180)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(CBO))",
-    "problem_answer": "45",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
-  },
-  "45410": {
-    "problem_id": 45410,
-    "added_cdl": [
-      "Equal(LengthOfLine(CB),LengthOfLine(OA))",
-      "Equal(LengthOfLine(OB),LengthOfLine(AC))",
-      "Equation(ll_ac+ll_cb+ll_oa+ll_ob-pq_cboa)",
-      "RightTriangle(BOC)",
-      "Equation(ma_boc+ma_cbo+ma_ocb-180)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(CBO))",
-    "problem_answer": "45",
-    "theorem_seqs": [
-      "right_triangle_property_pythagorean(1,BOC)",
-      "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
-  },
-  "45411": {
-    "problem_id": 45411,
-    "added_cdl": [
-      "Equal(LengthOfLine(OB),LengthOfLine(AC))",
-      "Equation(ll_ac+ll_cb+ll_oa+ll_ob-pq_cboa)",
-      "RightTriangle(BOC)",
-      "Equation(ma_boc+ma_cbo+ma_ocb-180)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(CBO))",
-    "problem_answer": "45",
-    "theorem_seqs": [
-      "parallelogram_property_opposite_line_equal(1,CBOA)",
-      "right_triangle_property_pythagorean(1,BOC)",
-      "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
-  },
-  "45412": {
-    "problem_id": 45412,
-    "added_cdl": [
-      "Equation(ll_ac+ll_cb+ll_oa+ll_ob-pq_cboa)",
-      "RightTriangle(BOC)",
-      "Equation(ma_boc+ma_cbo+ma_ocb-180)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(CBO))",
-    "problem_answer": "45",
-    "theorem_seqs": [
-      "parallelogram_property_opposite_line_equal(1,BOAC)",
-      "parallelogram_property_opposite_line_equal(1,CBOA)",
-      "right_triangle_property_pythagorean(1,BOC)",
-      "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
-  },
-  "45413": {
-    "problem_id": 45413,
-    "added_cdl": [
-      "RightTriangle(BOC)",
-      "Equation(ma_boc+ma_cbo+ma_ocb-180)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(CBO))",
-    "problem_answer": "45",
-    "theorem_seqs": [
-      "quadrilateral_perimeter_formula(1,CBOA)",
-      "parallelogram_property_opposite_line_equal(1,BOAC)",
-      "parallelogram_property_opposite_line_equal(1,CBOA)",
-      "right_triangle_property_pythagorean(1,BOC)",
-      "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
-  },
-  "45414": {
-    "problem_id": 45414,
-    "added_cdl": [
-      "Equation(ma_boc+ma_cbo+ma_ocb-180)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(CBO))",
-    "problem_answer": "45",
-    "theorem_seqs": [
-      "right_triangle_judgment_angle(1,BOC)",
-      "quadrilateral_perimeter_formula(1,CBOA)",
-      "parallelogram_property_opposite_line_equal(1,BOAC)",
-      "parallelogram_property_opposite_line_equal(1,CBOA)",
-      "right_triangle_property_pythagorean(1,BOC)",
-      "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
-  },
-  "45415": {
-    "problem_id": 45415,
-    "added_cdl": [],
-    "goal_cdl": "Value(MeasureOfAngle(CBO))",
-    "problem_answer": "45",
-    "theorem_seqs": [
-      "triangle_property_angle_sum(1,BOC)",
-      "right_triangle_judgment_angle(1,BOC)",
-      "quadrilateral_perimeter_formula(1,CBOA)",
-      "parallelogram_property_opposite_line_equal(1,BOAC)",
-      "parallelogram_property_opposite_line_equal(1,CBOA)",
-      "right_triangle_property_pythagorean(1,BOC)",
-      "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
-  },
-  "45416": {
-    "problem_id": 45416,
+  "33258": {
+    "problem_id": 33258,
     "added_cdl": [
       "Equation(-ll_cb**2+ll_ob**2+ll_oc**2)",
       "Equal(LengthOfLine(CB),LengthOfLine(OA))",
@@ -301,10 +118,15 @@
     "problem_answer": "4*sqrt(2)+8",
     "theorem_seqs": [
       "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_angle_equal(1,OCB)"
+      ]
+    }
   },
-  "45417": {
-    "problem_id": 45417,
+  "33259": {
+    "problem_id": 33259,
     "added_cdl": [
       "Equal(LengthOfLine(CB),LengthOfLine(OA))",
       "Equal(LengthOfLine(OB),LengthOfLine(AC))",
@@ -317,10 +139,16 @@
     "theorem_seqs": [
       "right_triangle_property_pythagorean(1,BOC)",
       "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,BOC)",
+        "isosceles_triangle_judgment_angle_equal(1,OCB)"
+      ]
+    }
   },
-  "45418": {
-    "problem_id": 45418,
+  "33260": {
+    "problem_id": 33260,
     "added_cdl": [
       "Equal(LengthOfLine(OB),LengthOfLine(AC))",
       "Equation(ll_ac+ll_cb+ll_oa+ll_ob-pq_cboa)",
@@ -333,10 +161,17 @@
       "parallelogram_property_opposite_line_equal(1,CBOA)",
       "right_triangle_property_pythagorean(1,BOC)",
       "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallelogram_property_opposite_line_equal(1,CBOA)",
+        "right_triangle_property_pythagorean(1,BOC)",
+        "isosceles_triangle_judgment_angle_equal(1,OCB)"
+      ]
+    }
   },
-  "45419": {
-    "problem_id": 45419,
+  "33261": {
+    "problem_id": 33261,
     "added_cdl": [
       "Equation(ll_ac+ll_cb+ll_oa+ll_ob-pq_cboa)",
       "RightTriangle(BOC)",
@@ -349,10 +184,18 @@
       "parallelogram_property_opposite_line_equal(1,CBOA)",
       "right_triangle_property_pythagorean(1,BOC)",
       "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallelogram_property_opposite_line_equal(1,BOAC)",
+        "parallelogram_property_opposite_line_equal(1,CBOA)",
+        "right_triangle_property_pythagorean(1,BOC)",
+        "isosceles_triangle_judgment_angle_equal(1,OCB)"
+      ]
+    }
   },
-  "45420": {
-    "problem_id": 45420,
+  "33262": {
+    "problem_id": 33262,
     "added_cdl": [
       "RightTriangle(BOC)",
       "Equation(ma_boc+ma_cbo+ma_ocb-180)"
@@ -365,10 +208,19 @@
       "parallelogram_property_opposite_line_equal(1,CBOA)",
       "right_triangle_property_pythagorean(1,BOC)",
       "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "quadrilateral_perimeter_formula(1,CBOA)",
+        "parallelogram_property_opposite_line_equal(1,BOAC)",
+        "parallelogram_property_opposite_line_equal(1,CBOA)",
+        "right_triangle_property_pythagorean(1,BOC)",
+        "isosceles_triangle_judgment_angle_equal(1,OCB)"
+      ]
+    }
   },
-  "45421": {
-    "problem_id": 45421,
+  "33263": {
+    "problem_id": 33263,
     "added_cdl": [
       "Equation(ma_boc+ma_cbo+ma_ocb-180)"
     ],
@@ -381,10 +233,22 @@
       "parallelogram_property_opposite_line_equal(1,CBOA)",
       "right_triangle_property_pythagorean(1,BOC)",
       "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BOC)",
+        "quadrilateral_perimeter_formula(1,CBOA)",
+        "parallelogram_property_opposite_line_equal(1,BOAC)",
+        "parallelogram_property_opposite_line_equal(1,CBOA)",
+        "isosceles_triangle_judgment_angle_equal(1,OCB)"
+      ],
+      "right_triangle_judgment_angle(1,BOC)": [
+        "right_triangle_property_pythagorean(1,BOC)"
+      ]
+    }
   },
-  "45422": {
-    "problem_id": 45422,
+  "33264": {
+    "problem_id": 33264,
     "added_cdl": [],
     "goal_cdl": "Value(PerimeterOfQuadrilateral(CBOA))",
     "problem_answer": "4*sqrt(2)+8",
@@ -396,19 +260,39 @@
       "parallelogram_property_opposite_line_equal(1,CBOA)",
       "right_triangle_property_pythagorean(1,BOC)",
       "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,BOC)",
+        "right_triangle_judgment_angle(1,BOC)",
+        "quadrilateral_perimeter_formula(1,CBOA)",
+        "parallelogram_property_opposite_line_equal(1,BOAC)",
+        "parallelogram_property_opposite_line_equal(1,CBOA)"
+      ],
+      "triangle_property_angle_sum(1,BOC)": [
+        "isosceles_triangle_judgment_angle_equal(1,OCB)"
+      ],
+      "right_triangle_judgment_angle(1,BOC)": [
+        "right_triangle_property_pythagorean(1,BOC)"
+      ]
+    }
   },
-  "45423": {
-    "problem_id": 45423,
+  "33265": {
+    "problem_id": 33265,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(OCB))",
     "problem_answer": "45",
     "theorem_seqs": [
       "triangle_property_angle_sum(1,BOC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,BOC)"
+      ]
+    }
   },
-  "45424": {
-    "problem_id": 45424,
+  "33266": {
+    "problem_id": 33266,
     "added_cdl": [
       "Equation(-ll_cb**2+ll_ob**2+ll_oc**2)",
       "Equation(ma_boc+ma_cbo+ma_ocb-180)"
@@ -417,10 +301,15 @@
     "problem_answer": "2*sqrt(2)",
     "theorem_seqs": [
       "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_angle_equal(1,OCB)"
+      ]
+    }
   },
-  "45425": {
-    "problem_id": 45425,
+  "33267": {
+    "problem_id": 33267,
     "added_cdl": [
       "RightTriangle(BOC)",
       "Equation(ma_boc+ma_cbo+ma_ocb-180)"
@@ -430,10 +319,16 @@
     "theorem_seqs": [
       "right_triangle_property_pythagorean(1,BOC)",
       "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,BOC)",
+        "isosceles_triangle_judgment_angle_equal(1,OCB)"
+      ]
+    }
   },
-  "45426": {
-    "problem_id": 45426,
+  "33268": {
+    "problem_id": 33268,
     "added_cdl": [
       "Equation(ma_boc+ma_cbo+ma_ocb-180)"
     ],
@@ -443,10 +338,19 @@
       "right_triangle_judgment_angle(1,BOC)",
       "right_triangle_property_pythagorean(1,BOC)",
       "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BOC)",
+        "isosceles_triangle_judgment_angle_equal(1,OCB)"
+      ],
+      "right_triangle_judgment_angle(1,BOC)": [
+        "right_triangle_property_pythagorean(1,BOC)"
+      ]
+    }
   },
-  "45427": {
-    "problem_id": 45427,
+  "33269": {
+    "problem_id": 33269,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(OC))",
     "problem_answer": "2*sqrt(2)",
@@ -455,10 +359,22 @@
       "right_triangle_judgment_angle(1,BOC)",
       "right_triangle_property_pythagorean(1,BOC)",
       "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,BOC)",
+        "right_triangle_judgment_angle(1,BOC)"
+      ],
+      "triangle_property_angle_sum(1,BOC)": [
+        "isosceles_triangle_judgment_angle_equal(1,OCB)"
+      ],
+      "right_triangle_judgment_angle(1,BOC)": [
+        "right_triangle_property_pythagorean(1,BOC)"
+      ]
+    }
   },
-  "45428": {
-    "problem_id": 45428,
+  "33270": {
+    "problem_id": 33270,
     "added_cdl": [
       "Equation(-ll_cb**2+ll_ob**2+ll_oc**2)",
       "Equation(ma_boc+ma_cbo+ma_ocb-180)"
@@ -467,10 +383,15 @@
     "problem_answer": "2*sqrt(2)",
     "theorem_seqs": [
       "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_angle_equal(1,OCB)"
+      ]
+    }
   },
-  "45429": {
-    "problem_id": 45429,
+  "33271": {
+    "problem_id": 33271,
     "added_cdl": [
       "RightTriangle(BOC)",
       "Equation(ma_boc+ma_cbo+ma_ocb-180)"
@@ -480,10 +401,16 @@
     "theorem_seqs": [
       "right_triangle_property_pythagorean(1,BOC)",
       "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,BOC)",
+        "isosceles_triangle_judgment_angle_equal(1,OCB)"
+      ]
+    }
   },
-  "45430": {
-    "problem_id": 45430,
+  "33272": {
+    "problem_id": 33272,
     "added_cdl": [
       "Equation(ma_boc+ma_cbo+ma_ocb-180)"
     ],
@@ -493,10 +420,19 @@
       "right_triangle_judgment_angle(1,BOC)",
       "right_triangle_property_pythagorean(1,BOC)",
       "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BOC)",
+        "isosceles_triangle_judgment_angle_equal(1,OCB)"
+      ],
+      "right_triangle_judgment_angle(1,BOC)": [
+        "right_triangle_property_pythagorean(1,BOC)"
+      ]
+    }
   },
-  "45431": {
-    "problem_id": 45431,
+  "33273": {
+    "problem_id": 33273,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(OB))",
     "problem_answer": "2*sqrt(2)",
@@ -505,19 +441,36 @@
       "right_triangle_judgment_angle(1,BOC)",
       "right_triangle_property_pythagorean(1,BOC)",
       "isosceles_triangle_judgment_angle_equal(1,OCB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,BOC)",
+        "right_triangle_judgment_angle(1,BOC)"
+      ],
+      "triangle_property_angle_sum(1,BOC)": [
+        "isosceles_triangle_judgment_angle_equal(1,OCB)"
+      ],
+      "right_triangle_judgment_angle(1,BOC)": [
+        "right_triangle_property_pythagorean(1,BOC)"
+      ]
+    }
   },
-  "45432": {
-    "problem_id": 45432,
+  "33274": {
+    "problem_id": 33274,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(OA))",
     "problem_answer": "4",
     "theorem_seqs": [
       "parallelogram_property_opposite_line_equal(1,CBOA)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallelogram_property_opposite_line_equal(1,CBOA)"
+      ]
+    }
   },
-  "45433": {
-    "problem_id": 45433,
+  "33275": {
+    "problem_id": 33275,
     "added_cdl": [
       "IsoscelesTriangle(OCB)",
       "Equation(-ll_cb**2+ll_ob**2+ll_oc**2)"
@@ -526,10 +479,15 @@
     "problem_answer": "2*sqrt(2)",
     "theorem_seqs": [
       "parallelogram_property_opposite_line_equal(1,BOAC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallelogram_property_opposite_line_equal(1,BOAC)"
+      ]
+    }
   },
-  "45434": {
-    "problem_id": 45434,
+  "33276": {
+    "problem_id": 33276,
     "added_cdl": [
       "Equation(-ll_cb**2+ll_ob**2+ll_oc**2)",
       "Equation(ma_boc+ma_cbo+ma_ocb-180)"
@@ -539,10 +497,16 @@
     "theorem_seqs": [
       "isosceles_triangle_judgment_angle_equal(1,OCB)",
       "parallelogram_property_opposite_line_equal(1,BOAC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_angle_equal(1,OCB)",
+        "parallelogram_property_opposite_line_equal(1,BOAC)"
+      ]
+    }
   },
-  "45435": {
-    "problem_id": 45435,
+  "33277": {
+    "problem_id": 33277,
     "added_cdl": [
       "RightTriangle(BOC)",
       "Equation(ma_boc+ma_cbo+ma_ocb-180)"
@@ -553,10 +517,17 @@
       "right_triangle_property_pythagorean(1,BOC)",
       "isosceles_triangle_judgment_angle_equal(1,OCB)",
       "parallelogram_property_opposite_line_equal(1,BOAC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_pythagorean(1,BOC)",
+        "isosceles_triangle_judgment_angle_equal(1,OCB)",
+        "parallelogram_property_opposite_line_equal(1,BOAC)"
+      ]
+    }
   },
-  "45436": {
-    "problem_id": 45436,
+  "33278": {
+    "problem_id": 33278,
     "added_cdl": [
       "Equation(ma_boc+ma_cbo+ma_ocb-180)"
     ],
@@ -567,10 +538,20 @@
       "right_triangle_property_pythagorean(1,BOC)",
       "isosceles_triangle_judgment_angle_equal(1,OCB)",
       "parallelogram_property_opposite_line_equal(1,BOAC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BOC)",
+        "isosceles_triangle_judgment_angle_equal(1,OCB)",
+        "parallelogram_property_opposite_line_equal(1,BOAC)"
+      ],
+      "right_triangle_judgment_angle(1,BOC)": [
+        "right_triangle_property_pythagorean(1,BOC)"
+      ]
+    }
   },
-  "45437": {
-    "problem_id": 45437,
+  "33279": {
+    "problem_id": 33279,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(AC))",
     "problem_answer": "2*sqrt(2)",
@@ -580,6 +561,19 @@
       "right_triangle_property_pythagorean(1,BOC)",
       "isosceles_triangle_judgment_angle_equal(1,OCB)",
       "parallelogram_property_opposite_line_equal(1,BOAC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,BOC)",
+        "right_triangle_judgment_angle(1,BOC)",
+        "parallelogram_property_opposite_line_equal(1,BOAC)"
+      ],
+      "triangle_property_angle_sum(1,BOC)": [
+        "isosceles_triangle_judgment_angle_equal(1,OCB)"
+      ],
+      "right_triangle_judgment_angle(1,BOC)": [
+        "right_triangle_property_pythagorean(1,BOC)"
+      ]
+    }
   }
 }

@@ -1,24 +1,32 @@
 {
-  "72339": {
-    "problem_id": 72339,
+  "51559": {
+    "problem_id": 51559,
     "added_cdl": [],
     "goal_cdl": "Equal(MeasureOfArc(OBC),MeasureOfAngle(COB))",
     "problem_answer": "0",
     "theorem_seqs": [
       "arc_property_center_angle(1,OBC,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_center_angle(1,OBC,O)"
+      ]
+    }
   },
-  "72340": {
-    "problem_id": 72340,
+  "51560": {
+    "problem_id": 51560,
     "added_cdl": [],
     "goal_cdl": "Relation(IsoscelesTriangle(CDB))",
     "problem_answer": "IsoscelesTriangle(CDB)",
     "theorem_seqs": [
       "isosceles_triangle_judgment_line_equal(1,CDB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "72341": {
-    "problem_id": 72341,
+  "51561": {
+    "problem_id": 51561,
     "added_cdl": [
       "IsoscelesTriangle(CDB)"
     ],
@@ -26,129 +34,31 @@
     "problem_answer": "0",
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,CDB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "72342": {
-    "problem_id": 72342,
+  "51562": {
+    "problem_id": 51562,
     "added_cdl": [],
     "goal_cdl": "Equal(MeasureOfAngle(CDB),MeasureOfAngle(DBC))",
     "problem_answer": "0",
     "theorem_seqs": [
       "isosceles_triangle_judgment_line_equal(1,CDB)",
       "isosceles_triangle_property_angle_equal(1,CDB)"
-    ]
-  },
-  "72343": {
-    "problem_id": 72343,
-    "added_cdl": [
-      "Equation(ma_cdb-mar_obc/2)",
-      "Equal(MeasureOfAngle(CDB),MeasureOfAngle(DBC))",
-      "Equation(ma_bcd+ma_cdb+ma_dbc-180)",
-      "Equation(ma_bcd-mar_odb/2)",
-      "Equation(ma_dab+mar_odb/2-180)"
     ],
-    "goal_cdl": "Value(MeasureOfAngle(COB))",
-    "problem_answer": "130",
-    "theorem_seqs": [
-      "arc_property_center_angle(1,OBC,O)"
-    ]
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,CDB)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,CDB)": [
+        "isosceles_triangle_property_angle_equal(1,CDB)"
+      ]
+    }
   },
-  "72344": {
-    "problem_id": 72344,
-    "added_cdl": [
-      "Equal(MeasureOfAngle(CDB),MeasureOfAngle(DBC))",
-      "Equation(ma_bcd+ma_cdb+ma_dbc-180)",
-      "Equation(ma_bcd-mar_odb/2)",
-      "Equation(ma_dab+mar_odb/2-180)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(COB))",
-    "problem_answer": "130",
-    "theorem_seqs": [
-      "arc_property_circumference_angle_external(1,OBC,D)",
-      "arc_property_center_angle(1,OBC,O)"
-    ]
-  },
-  "72345": {
-    "problem_id": 72345,
-    "added_cdl": [
-      "Equation(ma_bcd+ma_cdb+ma_dbc-180)",
-      "Equation(ma_bcd-mar_odb/2)",
-      "Equation(ma_dab+mar_odb/2-180)",
-      "IsoscelesTriangle(CDB)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(COB))",
-    "problem_answer": "130",
-    "theorem_seqs": [
-      "isosceles_triangle_property_angle_equal(1,CDB)",
-      "arc_property_circumference_angle_external(1,OBC,D)",
-      "arc_property_center_angle(1,OBC,O)"
-    ]
-  },
-  "72346": {
-    "problem_id": 72346,
-    "added_cdl": [
-      "Equation(ma_bcd-mar_odb/2)",
-      "Equation(ma_dab+mar_odb/2-180)",
-      "IsoscelesTriangle(CDB)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(COB))",
-    "problem_answer": "130",
-    "theorem_seqs": [
-      "triangle_property_angle_sum(1,CDB)",
-      "isosceles_triangle_property_angle_equal(1,CDB)",
-      "arc_property_circumference_angle_external(1,OBC,D)",
-      "arc_property_center_angle(1,OBC,O)"
-    ]
-  },
-  "72347": {
-    "problem_id": 72347,
-    "added_cdl": [
-      "Equation(ma_dab+mar_odb/2-180)",
-      "IsoscelesTriangle(CDB)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(COB))",
-    "problem_answer": "130",
-    "theorem_seqs": [
-      "arc_property_circumference_angle_external(1,ODB,C)",
-      "triangle_property_angle_sum(1,CDB)",
-      "isosceles_triangle_property_angle_equal(1,CDB)",
-      "arc_property_circumference_angle_external(1,OBC,D)",
-      "arc_property_center_angle(1,OBC,O)"
-    ]
-  },
-  "72348": {
-    "problem_id": 72348,
-    "added_cdl": [
-      "IsoscelesTriangle(CDB)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(COB))",
-    "problem_answer": "130",
-    "theorem_seqs": [
-      "arc_property_circumference_angle_internal(1,ODB,A)",
-      "arc_property_circumference_angle_external(1,ODB,C)",
-      "triangle_property_angle_sum(1,CDB)",
-      "isosceles_triangle_property_angle_equal(1,CDB)",
-      "arc_property_circumference_angle_external(1,OBC,D)",
-      "arc_property_center_angle(1,OBC,O)"
-    ]
-  },
-  "72349": {
-    "problem_id": 72349,
-    "added_cdl": [],
-    "goal_cdl": "Value(MeasureOfAngle(COB))",
-    "problem_answer": "130",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_line_equal(1,CDB)",
-      "arc_property_circumference_angle_internal(1,ODB,A)",
-      "arc_property_circumference_angle_external(1,ODB,C)",
-      "triangle_property_angle_sum(1,CDB)",
-      "isosceles_triangle_property_angle_equal(1,CDB)",
-      "arc_property_circumference_angle_external(1,OBC,D)",
-      "arc_property_center_angle(1,OBC,O)"
-    ]
-  },
-  "72350": {
-    "problem_id": 72350,
+  "51563": {
+    "problem_id": 51563,
     "added_cdl": [
       "Equation(ma_cdb-mar_obc/2)",
       "Equal(MeasureOfAngle(CDB),MeasureOfAngle(DBC))",
@@ -160,10 +70,15 @@
     "problem_answer": "130",
     "theorem_seqs": [
       "arc_property_center_angle(1,OBC,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_center_angle(1,OBC,O)"
+      ]
+    }
   },
-  "72351": {
-    "problem_id": 72351,
+  "51564": {
+    "problem_id": 51564,
     "added_cdl": [
       "Equal(MeasureOfAngle(CDB),MeasureOfAngle(DBC))",
       "Equation(ma_bcd+ma_cdb+ma_dbc-180)",
@@ -175,10 +90,16 @@
     "theorem_seqs": [
       "arc_property_circumference_angle_external(1,OBC,D)",
       "arc_property_center_angle(1,OBC,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_circumference_angle_external(1,OBC,D)",
+        "arc_property_center_angle(1,OBC,O)"
+      ]
+    }
   },
-  "72352": {
-    "problem_id": 72352,
+  "51565": {
+    "problem_id": 51565,
     "added_cdl": [
       "Equation(ma_bcd+ma_cdb+ma_dbc-180)",
       "Equation(ma_bcd-mar_odb/2)",
@@ -191,10 +112,17 @@
       "isosceles_triangle_property_angle_equal(1,CDB)",
       "arc_property_circumference_angle_external(1,OBC,D)",
       "arc_property_center_angle(1,OBC,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,CDB)",
+        "arc_property_circumference_angle_external(1,OBC,D)",
+        "arc_property_center_angle(1,OBC,O)"
+      ]
+    }
   },
-  "72353": {
-    "problem_id": 72353,
+  "51566": {
+    "problem_id": 51566,
     "added_cdl": [
       "Equation(ma_bcd-mar_odb/2)",
       "Equation(ma_dab+mar_odb/2-180)",
@@ -207,10 +135,18 @@
       "isosceles_triangle_property_angle_equal(1,CDB)",
       "arc_property_circumference_angle_external(1,OBC,D)",
       "arc_property_center_angle(1,OBC,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,CDB)",
+        "isosceles_triangle_property_angle_equal(1,CDB)",
+        "arc_property_circumference_angle_external(1,OBC,D)",
+        "arc_property_center_angle(1,OBC,O)"
+      ]
+    }
   },
-  "72354": {
-    "problem_id": 72354,
+  "51567": {
+    "problem_id": 51567,
     "added_cdl": [
       "Equation(ma_dab+mar_odb/2-180)",
       "IsoscelesTriangle(CDB)"
@@ -223,10 +159,19 @@
       "isosceles_triangle_property_angle_equal(1,CDB)",
       "arc_property_circumference_angle_external(1,OBC,D)",
       "arc_property_center_angle(1,OBC,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_circumference_angle_external(1,ODB,C)",
+        "triangle_property_angle_sum(1,CDB)",
+        "isosceles_triangle_property_angle_equal(1,CDB)",
+        "arc_property_circumference_angle_external(1,OBC,D)",
+        "arc_property_center_angle(1,OBC,O)"
+      ]
+    }
   },
-  "72355": {
-    "problem_id": 72355,
+  "51568": {
+    "problem_id": 51568,
     "added_cdl": [
       "IsoscelesTriangle(CDB)"
     ],
@@ -239,10 +184,20 @@
       "isosceles_triangle_property_angle_equal(1,CDB)",
       "arc_property_circumference_angle_external(1,OBC,D)",
       "arc_property_center_angle(1,OBC,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_circumference_angle_internal(1,ODB,A)",
+        "arc_property_circumference_angle_external(1,ODB,C)",
+        "triangle_property_angle_sum(1,CDB)",
+        "isosceles_triangle_property_angle_equal(1,CDB)",
+        "arc_property_circumference_angle_external(1,OBC,D)",
+        "arc_property_center_angle(1,OBC,O)"
+      ]
+    }
   },
-  "72356": {
-    "problem_id": 72356,
+  "51569": {
+    "problem_id": 51569,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(DAB))",
     "problem_answer": "130",
@@ -254,19 +209,37 @@
       "isosceles_triangle_property_angle_equal(1,CDB)",
       "arc_property_circumference_angle_external(1,OBC,D)",
       "arc_property_center_angle(1,OBC,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,CDB)",
+        "arc_property_circumference_angle_internal(1,ODB,A)",
+        "arc_property_circumference_angle_external(1,ODB,C)",
+        "triangle_property_angle_sum(1,CDB)",
+        "arc_property_circumference_angle_external(1,OBC,D)",
+        "arc_property_center_angle(1,OBC,O)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,CDB)": [
+        "isosceles_triangle_property_angle_equal(1,CDB)"
+      ]
+    }
   },
-  "72357": {
-    "problem_id": 72357,
+  "51570": {
+    "problem_id": 51570,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfArc(OBC))",
     "problem_answer": "130",
     "theorem_seqs": [
       "arc_property_center_angle(1,OBC,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_center_angle(1,OBC,O)"
+      ]
+    }
   },
-  "72358": {
-    "problem_id": 72358,
+  "51571": {
+    "problem_id": 51571,
     "added_cdl": [
       "Equation(ma_cdb-mar_obc/2)"
     ],
@@ -274,20 +247,31 @@
     "problem_answer": "65",
     "theorem_seqs": [
       "arc_property_center_angle(1,OBC,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_center_angle(1,OBC,O)"
+      ]
+    }
   },
-  "72359": {
-    "problem_id": 72359,
+  "51572": {
+    "problem_id": 51572,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(CDB))",
     "problem_answer": "65",
     "theorem_seqs": [
       "arc_property_circumference_angle_external(1,OBC,D)",
       "arc_property_center_angle(1,OBC,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_circumference_angle_external(1,OBC,D)",
+        "arc_property_center_angle(1,OBC,O)"
+      ]
+    }
   },
-  "72360": {
-    "problem_id": 72360,
+  "51573": {
+    "problem_id": 51573,
     "added_cdl": [
       "Equal(MeasureOfArc(OBC),MeasureOfAngle(COB))",
       "Equation(ma_cdb-mar_obc/2)",
@@ -297,10 +281,15 @@
     "problem_answer": "65",
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,CDB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,CDB)"
+      ]
+    }
   },
-  "72361": {
-    "problem_id": 72361,
+  "51574": {
+    "problem_id": 51574,
     "added_cdl": [
       "Equation(ma_cdb-mar_obc/2)",
       "IsoscelesTriangle(CDB)"
@@ -310,10 +299,16 @@
     "theorem_seqs": [
       "arc_property_center_angle(1,OBC,O)",
       "isosceles_triangle_property_angle_equal(1,CDB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_center_angle(1,OBC,O)",
+        "isosceles_triangle_property_angle_equal(1,CDB)"
+      ]
+    }
   },
-  "72362": {
-    "problem_id": 72362,
+  "51575": {
+    "problem_id": 51575,
     "added_cdl": [
       "IsoscelesTriangle(CDB)"
     ],
@@ -323,10 +318,17 @@
       "arc_property_circumference_angle_external(1,OBC,D)",
       "arc_property_center_angle(1,OBC,O)",
       "isosceles_triangle_property_angle_equal(1,CDB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_circumference_angle_external(1,OBC,D)",
+        "arc_property_center_angle(1,OBC,O)",
+        "isosceles_triangle_property_angle_equal(1,CDB)"
+      ]
+    }
   },
-  "72363": {
-    "problem_id": 72363,
+  "51576": {
+    "problem_id": 51576,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(DBC))",
     "problem_answer": "65",
@@ -335,10 +337,20 @@
       "arc_property_circumference_angle_external(1,OBC,D)",
       "arc_property_center_angle(1,OBC,O)",
       "isosceles_triangle_property_angle_equal(1,CDB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,CDB)",
+        "arc_property_circumference_angle_external(1,OBC,D)",
+        "arc_property_center_angle(1,OBC,O)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,CDB)": [
+        "isosceles_triangle_property_angle_equal(1,CDB)"
+      ]
+    }
   },
-  "72364": {
-    "problem_id": 72364,
+  "51577": {
+    "problem_id": 51577,
     "added_cdl": [
       "Equation(ma_bcd+ma_cdb+ma_dbc-180)",
       "Equal(MeasureOfArc(OBC),MeasureOfAngle(COB))",
@@ -349,10 +361,15 @@
     "problem_answer": "50",
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,CDB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,CDB)"
+      ]
+    }
   },
-  "72365": {
-    "problem_id": 72365,
+  "51578": {
+    "problem_id": 51578,
     "added_cdl": [
       "Equal(MeasureOfArc(OBC),MeasureOfAngle(COB))",
       "Equation(ma_cdb-mar_obc/2)",
@@ -363,10 +380,16 @@
     "theorem_seqs": [
       "triangle_property_angle_sum(1,CDB)",
       "isosceles_triangle_property_angle_equal(1,CDB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,CDB)",
+        "isosceles_triangle_property_angle_equal(1,CDB)"
+      ]
+    }
   },
-  "72366": {
-    "problem_id": 72366,
+  "51579": {
+    "problem_id": 51579,
     "added_cdl": [
       "Equation(ma_cdb-mar_obc/2)",
       "IsoscelesTriangle(CDB)"
@@ -377,10 +400,17 @@
       "arc_property_center_angle(1,OBC,O)",
       "triangle_property_angle_sum(1,CDB)",
       "isosceles_triangle_property_angle_equal(1,CDB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_center_angle(1,OBC,O)",
+        "triangle_property_angle_sum(1,CDB)",
+        "isosceles_triangle_property_angle_equal(1,CDB)"
+      ]
+    }
   },
-  "72367": {
-    "problem_id": 72367,
+  "51580": {
+    "problem_id": 51580,
     "added_cdl": [
       "IsoscelesTriangle(CDB)"
     ],
@@ -391,10 +421,18 @@
       "arc_property_center_angle(1,OBC,O)",
       "triangle_property_angle_sum(1,CDB)",
       "isosceles_triangle_property_angle_equal(1,CDB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_circumference_angle_external(1,OBC,D)",
+        "arc_property_center_angle(1,OBC,O)",
+        "triangle_property_angle_sum(1,CDB)",
+        "isosceles_triangle_property_angle_equal(1,CDB)"
+      ]
+    }
   },
-  "72368": {
-    "problem_id": 72368,
+  "51581": {
+    "problem_id": 51581,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(BCD))",
     "problem_answer": "50",
@@ -404,10 +442,21 @@
       "arc_property_center_angle(1,OBC,O)",
       "triangle_property_angle_sum(1,CDB)",
       "isosceles_triangle_property_angle_equal(1,CDB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,CDB)",
+        "arc_property_circumference_angle_external(1,OBC,D)",
+        "arc_property_center_angle(1,OBC,O)",
+        "triangle_property_angle_sum(1,CDB)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,CDB)": [
+        "isosceles_triangle_property_angle_equal(1,CDB)"
+      ]
+    }
   },
-  "72369": {
-    "problem_id": 72369,
+  "51582": {
+    "problem_id": 51582,
     "added_cdl": [
       "Equal(MeasureOfAngle(CDB),MeasureOfAngle(DBC))",
       "Equation(ma_bcd+ma_cdb+ma_dbc-180)",
@@ -418,10 +467,15 @@
     "problem_answer": "100",
     "theorem_seqs": [
       "arc_property_center_angle(1,OBC,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_center_angle(1,OBC,O)"
+      ]
+    }
   },
-  "72370": {
-    "problem_id": 72370,
+  "51583": {
+    "problem_id": 51583,
     "added_cdl": [
       "Equation(ma_bcd+ma_cdb+ma_dbc-180)",
       "Equation(ma_bcd-mar_odb/2)",
@@ -433,10 +487,16 @@
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,CDB)",
       "arc_property_center_angle(1,OBC,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,CDB)",
+        "arc_property_center_angle(1,OBC,O)"
+      ]
+    }
   },
-  "72371": {
-    "problem_id": 72371,
+  "51584": {
+    "problem_id": 51584,
     "added_cdl": [
       "Equation(ma_bcd-mar_odb/2)",
       "Equation(ma_cdb-mar_obc/2)",
@@ -448,10 +508,17 @@
       "triangle_property_angle_sum(1,CDB)",
       "isosceles_triangle_property_angle_equal(1,CDB)",
       "arc_property_center_angle(1,OBC,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,CDB)",
+        "isosceles_triangle_property_angle_equal(1,CDB)",
+        "arc_property_center_angle(1,OBC,O)"
+      ]
+    }
   },
-  "72372": {
-    "problem_id": 72372,
+  "51585": {
+    "problem_id": 51585,
     "added_cdl": [
       "Equation(ma_cdb-mar_obc/2)",
       "IsoscelesTriangle(CDB)"
@@ -463,10 +530,18 @@
       "triangle_property_angle_sum(1,CDB)",
       "isosceles_triangle_property_angle_equal(1,CDB)",
       "arc_property_center_angle(1,OBC,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_circumference_angle_external(1,ODB,C)",
+        "triangle_property_angle_sum(1,CDB)",
+        "isosceles_triangle_property_angle_equal(1,CDB)",
+        "arc_property_center_angle(1,OBC,O)"
+      ]
+    }
   },
-  "72373": {
-    "problem_id": 72373,
+  "51586": {
+    "problem_id": 51586,
     "added_cdl": [
       "IsoscelesTriangle(CDB)"
     ],
@@ -478,10 +553,19 @@
       "triangle_property_angle_sum(1,CDB)",
       "isosceles_triangle_property_angle_equal(1,CDB)",
       "arc_property_center_angle(1,OBC,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_circumference_angle_external(1,OBC,D)",
+        "arc_property_circumference_angle_external(1,ODB,C)",
+        "triangle_property_angle_sum(1,CDB)",
+        "isosceles_triangle_property_angle_equal(1,CDB)",
+        "arc_property_center_angle(1,OBC,O)"
+      ]
+    }
   },
-  "72374": {
-    "problem_id": 72374,
+  "51587": {
+    "problem_id": 51587,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfArc(ODB))",
     "problem_answer": "100",
@@ -492,6 +576,18 @@
       "triangle_property_angle_sum(1,CDB)",
       "isosceles_triangle_property_angle_equal(1,CDB)",
       "arc_property_center_angle(1,OBC,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,CDB)",
+        "arc_property_circumference_angle_external(1,OBC,D)",
+        "arc_property_circumference_angle_external(1,ODB,C)",
+        "triangle_property_angle_sum(1,CDB)",
+        "arc_property_center_angle(1,OBC,O)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,CDB)": [
+        "isosceles_triangle_property_angle_equal(1,CDB)"
+      ]
+    }
   }
 }

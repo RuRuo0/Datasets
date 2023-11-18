@@ -47,17 +47,17 @@ def check_cdl(path_problems, start_pid, end_pid):
         problem_CDL = load_json(os.path.join(path_problems, "{}.json".format(pid)))
         for cdl in problem_CDL["construction_cdl"]:
             if cdl.split("(")[0] not in ["Shape", "Collinear", "Cocircular"]:
-                print("{} (construction_cdl)".format(pid))
+                print("{} check not passed (construction_cdl).".format(pid))
                 break
         for cdl in problem_CDL["text_cdl"] + problem_CDL["image_cdl"]:
             if cdl.split("(")[0] in ["Shape", "Collinear", "Cocircular",
                                      "Line", "Angle", "Polygon", "Point", "Circle", "Arc"]:
-                print("{} (cdl)".format(pid))
+                print("{} check not passed (cdl).".format(pid))
                 break
 
 
 if __name__ == '__main__':
-    # check_json_format("../../../projects/formalgeo7k/problems/")
-    # format_annotation_id("../../../projects/formalgeo7k/problems/")
-    # check_notes("../../../projects/formalgeo7k/problems/", add_notes=True)
-    check_cdl("../../../projects/formalgeo7k/problems/", 1, 6981)
+    # check_json_format("../../../projects/formalgeo7k/problems")
+    # format_annotation_id("../../../projects/formalgeo7k/problems")
+    # check_notes("../../../projects/formalgeo7k/problems", add_notes=True)
+    check_cdl("../../../projects/formalgeo7k/problems", 1, 6981)

@@ -2,8 +2,10 @@
 # Author: Xiaokai Zhang
 # Contact: formalgeo@gmail.com
 
-"""
-"""
+""""""
 
 __all__ = [
+    "get_cleaned_theorem_seqs"
 ]
+
+from format_problems import get_cleaned_theorem_seqs

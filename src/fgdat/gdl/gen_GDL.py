@@ -1,9 +1,13 @@
 import os.path
 from formalgeo.tools import load_json, save_json
+from fgdat.files import overwrite
 
 
-def gen_gdl(path_datasets):
-    predicate_gdl_source = load_json(os.path.join(path_datasets, "files", "predicate_GDL-source.json"))
+def gen_predicate_gdl(path_dataset):
+    if not overwrite(os.path.join(path_dataset, "gdl/predicate_GDL.json")):
+        return
+
+    predicate_gdl_source = load_json(os.path.join(path_dataset, "files", "predicate_GDL-source.json"))
     entity = {}
     for name in predicate_gdl_source["Predicates"]["Entity"]:
         entity[name] = predicate_gdl_source["Predicates"]["Entity"][name]["body"]
@@ -20,13 +24,19 @@ def gen_gdl(path_datasets):
         "Attribution": attr
     }
 
-    theorem_gdl_source = load_json(os.path.join(path_datasets, "files", "theorem_GDL-source.json"))
+    save_json(predicate_gdl, os.path.join(path_dataset, "gdl", "predicate_GDL.json"))
+
+
+def gen_theorem_gdl(path_dataset):
+    if not overwrite(os.path.join(path_dataset, "gdl/theorem_GDL.json")):
+        return
+
+    theorem_gdl_source = load_json(os.path.join(path_dataset, "files", "theorem_GDL-source.json"))
     theorem_gdl = {}
     for name in theorem_gdl_source["Theorems"]:
         theorem_gdl[name] = theorem_gdl_source["Theorems"][name]["body"]
 
-    save_json(predicate_gdl, os.path.join(path_datasets, "gdl", "predicate_GDL.json"))
-    save_json(theorem_gdl, os.path.join(path_datasets, "gdl", "theorem_GDL.json"))
+    save_json(theorem_gdl, os.path.join(path_dataset, "gdl", "theorem_GDL.json"))
 
 
 def deal_item(title, items):
@@ -42,10 +52,14 @@ def deal_item(title, items):
     return doc
 
 
-def gen_doc(path_datasets, language):
-    predicate_gdl_source = load_json(os.path.join(path_datasets, "files", "predicate_GDL-source.json"))
+def gen_doc(path_dataset, language):
+    filename = "doc_{}.md".format(language)
+    if not overwrite(os.path.join(path_dataset, "gdl", filename)):
+        return
 
-    with open(os.path.join(path_datasets, "files", "preset_{}.md".format(language)), 'r', encoding='utf-8') as file:
+    predicate_gdl_source = load_json(os.path.join(path_dataset, "files", "predicate_GDL-source.json"))
+
+    with open(os.path.join(path_dataset, "files", "preset_{}.md".format(language)), 'r', encoding='utf-8') as file:
         doc = file.read()
 
     if language == "cn":
@@ -64,7 +78,7 @@ def gen_doc(path_datasets, language):
         doc += deal_item("ee_check", predicate_gdl_source["Predicates"]["Entity"][entity]["body"]["ee_check"])
         doc += deal_item("multi", predicate_gdl_source["Predicates"]["Entity"][entity]["body"]["multi"])
         doc += deal_item("extend", predicate_gdl_source["Predicates"]["Entity"][entity]["body"]["extend"])
-        doc += "**Desc**:  \n{}\n\n".format(
+        doc += "\n**Description**:  \n{}\n\n".format(
             predicate_gdl_source["Predicates"]["Entity"][entity]["doc_{}".format(language)])
 
     if language == "cn":
@@ -83,7 +97,7 @@ def gen_doc(path_datasets, language):
             doc += deal_item("fv_check", predicate_gdl_source["Predicates"]["Relation"][relation]["body"]["fv_check"])
         doc += deal_item("multi", predicate_gdl_source["Predicates"]["Relation"][relation]["body"]["multi"])
         doc += deal_item("extend", predicate_gdl_source["Predicates"]["Relation"][relation]["body"]["extend"])
-        doc += "**Desc**:  \n{}\n\n".format(
+        doc += "\n**Description**:  \n{}\n\n".format(
             predicate_gdl_source["Predicates"]["Relation"][relation]["doc_{}".format(language)])
 
     if language == "cn":
@@ -103,10 +117,10 @@ def gen_doc(path_datasets, language):
             doc += deal_item("fv_check", predicate_gdl_source["Predicates"]["Attribution"][attr]["body"]["fv_check"])
         doc += deal_item("multi", predicate_gdl_source["Predicates"]["Attribution"][attr]["body"]["multi"])
         doc += "    sym: {}\n".format(predicate_gdl_source["Predicates"]["Attribution"][attr]["body"]["sym"])
-        doc += "**Desc**:  \n{}\n\n".format(
+        doc += "\n**Description**:  \n{}\n\n".format(
             predicate_gdl_source["Predicates"]["Attribution"][attr]["doc_{}".format(language)])
 
-    theorem_gdl_source = load_json(os.path.join(path_datasets, "files", "theorem_GDL-source.json"))
+    theorem_gdl_source = load_json(os.path.join(path_dataset, "files", "theorem_GDL-source.json"))
 
     if language == "cn":
         doc += "## 自定义定理\n"
@@ -127,12 +141,14 @@ def gen_doc(path_datasets, language):
         else:
             doc += "    premise: {}\n".format(theorem_gdl_source["Theorems"][t_name]["body"]["1"]["premise"])
             doc += deal_item("conclusion", theorem_gdl_source["Theorems"][t_name]["body"]["1"]["conclusion"])
-        doc += "**Desc**:  \n{}\n\n".format(theorem_gdl_source["Theorems"][t_name]["doc_{}".format(language)])
+        doc += "\n**Description**:  \n{}\n\n".format(theorem_gdl_source["Theorems"][t_name]["doc_{}".format(language)])
 
-    with open(os.path.join(path_datasets, "gdl", "doc_{}.md".format(language)), 'w', encoding='utf-8') as f:
+    with open(os.path.join(path_dataset, "gdl", filename), 'w', encoding='utf-8') as f:
         f.write(doc)
 
 
 if __name__ == '__main__':
-    gen_doc("../../../projects/formalgeo7k/", "cn")
-    gen_gdl(os.path.join("../../../projects/formalgeo7k/"))
+    gen_doc("../../../projects/formalgeo7k", "cn")
+    gen_doc("../../../projects/formalgeo7k", "en")
+    gen_predicate_gdl("../../../projects/formalgeo7k")
+    gen_theorem_gdl("../../../projects/formalgeo7k")

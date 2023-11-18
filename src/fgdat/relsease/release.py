@@ -3,8 +3,6 @@ import os
 import shutil
 from formalgeo.tools import load_json, safe_save_json
 from tqdm import tqdm
-import time
-import tarfile
 
 
 def check_dataset(path_dataset):

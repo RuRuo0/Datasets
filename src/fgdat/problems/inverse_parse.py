@@ -159,8 +159,8 @@ def inverse_parse_target(s, language, gdl, log, pid):
         return input_s
 
 
-def inverse_parse(path_datasets, log_filename):
-    gdl_source = load_json(os.path.join(path_datasets, "files/predicate_GDL-source.json"))
+def inverse_parse(path_dataset):
+    gdl_source = load_json(os.path.join(path_dataset, "files/predicate_GDL-source.json"))
     gdl = {}
     for p_class in ["Entity", "Relation", "Attribution"]:
         for predicate in gdl_source["Predicates"][p_class]:
@@ -171,10 +171,10 @@ def inverse_parse(path_datasets, log_filename):
                 "en": [inverse_parse_gdl(p_para, s)
                        for s in gdl_source["Predicates"][p_class][predicate]["anti_parse_to_nl_en"]]
             }
-    log = load_json(log_filename)
+    log = load_json(os.path.join(path_dataset, "files/inverse_parse_log.json"))
 
-    for pid in range(log["start_pid"], load_json(os.path.join(path_datasets, "info.json"))["problem_number"] + 1):
-        problem = load_json(os.path.join(path_datasets, "problems/{}.json".format(pid)))
+    for pid in range(log["start_pid"], load_json(os.path.join(path_dataset, "info.json"))["problem_number"] + 1):
+        problem = load_json(os.path.join(path_dataset, "problems/{}.json".format(pid)))
         problem["text_cdl"] = sorted(list(set(problem["text_cdl"] + problem["image_cdl"])))
         text_cn = []
         text_en = []
@@ -191,11 +191,11 @@ def inverse_parse(path_datasets, log_filename):
         target_en = inverse_parse_target(problem["goal_cdl"], "en", gdl, log, pid)
         problem["problem_text_en"] = "As shown in the diagram, " + ", ".join(text_en) + ". " + target_en
 
-        save_json(problem, os.path.join(path_datasets, "problems/{}.json".format(pid)))
+        save_json(problem, os.path.join(path_dataset, "problems/{}.json".format(pid)))
         log["start_pid"] = pid + 1
         safe_save_json(log, "log_files/inverse_input.json")
         print("{} ok.".format(pid))
 
 
 if __name__ == '__main__':
-    inverse_parse("../../../projects/formalgeo7k/", "../../../projects/formalgeo7k/files/inverse_parse_log.json")
+    inverse_parse("../../../projects/formalgeo7k")

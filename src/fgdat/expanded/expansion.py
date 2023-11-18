@@ -9,10 +9,10 @@ from func_timeout import FunctionTimedOut, func_set_timeout
 
 
 class Expander:
-    def __init__(self, path_datasets, problem_count, random_search, debug=False):
+    def __init__(self, path_datasets, random_search, debug=False):
         self.path_datasets = path_datasets
         self.random_search = random_search
-        self.stop_pid = problem_count + 1
+        self.stop_pid = load_json(os.path.join(self.path_datasets, "info.json"))["problem_number"] + 1
         self.debug = debug
 
         warnings.filterwarnings("ignore")
@@ -24,12 +24,12 @@ class Expander:
         if self.random_search:
             EqKiller.use_cache = True
 
-        if "aug_log.json" not in os.listdir("log_files/"):
-            self.log = {"break_pid": 1, "pid_count": problem_count + 1}
+        if "expanded_log.json" not in os.listdir(os.path.join(self.path_datasets, "files/")):
+            self.log = {"break_pid": 1, "pid_count": self.stop_pid}
         else:
-            self.log = load_json(os.path.join("log_files/", "aug_log.json"))
+            self.log = load_json(os.path.join(self.path_datasets, "files/", "expanded_log.json"))
 
-        self.t_msg = load_json(os.path.join("log_files/", "t_info.json"))
+        self.t_msg = load_json(os.path.join(self.path_datasets, "files/", "t_info.json"))
         self.data = None
 
     def expand(self):
@@ -201,11 +201,10 @@ class Expander:
     def save_expand(self):
         all_expanded_data = set()
         filename = "{}.json".format(self.log["break_pid"])
-        if filename not in os.listdir(
-                os.path.join(self.path_datasets, "problems-augment")):  # ensure no duplicate problems
+        if filename not in os.listdir(os.path.join(self.path_datasets, "expanded/")):  # ensure no duplicate problems
             expanded = {}
         else:
-            expanded = load_json(os.path.join(self.path_datasets, "problems-augment", filename))
+            expanded = load_json(os.path.join(self.path_datasets, "expanded/", filename))
             for pid in expanded:
                 all_expanded_data.add((tuple(expanded[pid]["added_cdl"]), expanded[pid]["goal_cdl"]))
 
@@ -229,16 +228,15 @@ class Expander:
             expanded[str(self.log["pid_count"])] = new_data
             self.log["pid_count"] += 1
 
-        save_json(expanded, os.path.join(self.path_datasets, "problems-augment", filename))
+        save_json(expanded, os.path.join(self.path_datasets, "expanded/", filename))
 
         debug_print(
             self.debug,
             "\033[34m(pid={},count={})\033[0m Save Expanded.\n".format(self.log["break_pid"], len(self.data)))
         self.log["break_pid"] += 1
-        safe_save_json(self.log, os.path.join("log_files/", "aug_log.json"))
+        safe_save_json(self.log, os.path.join(self.path_datasets, "files/", "expanded_log.json"))
 
 
 if __name__ == '__main__':
-    expander = Expander(path_datasets="../../../projects/formalgeo7k/", problem_count=6982,
-                        random_search=False)
+    expander = Expander(path_datasets="../../../projects/formalgeo7k/", random_search=False)
     expander.expand()

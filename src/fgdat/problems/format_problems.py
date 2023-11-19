@@ -117,7 +117,32 @@ def check_problems(path_datasets, start_pid=1, auto=False, clean_theorem=False, 
                 save_json(problem_CDL, os.path.join(path_datasets, "problems", filename))
 
             show_solution(solver.problem)  # show solving process
+            print()
+
+
+def format_problems(path_datasets, start_pid=1):
+    for pid in range(start_pid, load_json(os.path.join(path_datasets, "info.json"))["problem_number"] + 1):
+        problem_CDL = load_json(os.path.join(path_datasets, "problems", "{}.json".format(pid)))
+        new_problem_CDL = {
+            "problem_id": problem_CDL["problem_id"],
+            "annotation": problem_CDL["annotation"],
+            "source": problem_CDL["source"],
+            "problem_level": problem_CDL["problem_level"],
+            "problem_text_cn": problem_CDL["problem_text_cn"],
+            "problem_text_en": problem_CDL["problem_text_en"],
+            "problem_img": problem_CDL["problem_img"],
+            "construction_cdl": problem_CDL["construction_cdl"],
+            "text_cdl": problem_CDL["text_cdl"],
+            "image_cdl": sorted(problem_CDL["image_cdl"]),
+            "goal_cdl": problem_CDL["goal_cdl"],
+            "problem_answer": problem_CDL["problem_answer"],
+            "theorem_seqs": problem_CDL["theorem_seqs"],
+            "theorem_seqs_dag": problem_CDL["theorem_seqs_dag"]
+        }
+
+        save_json(new_problem_CDL, os.path.join(path_datasets, "problems", "{}.json".format(pid)))
 
 
 if __name__ == '__main__':
-    check_problems("../../../projects/formalgeo7k", start_pid=4105, auto=True, clean_theorem=True, clean_acc=True)
+    # format_problems("../../../projects/formalgeo7k")
+    check_problems("../../../projects/formalgeo7k", start_pid=1, auto=False, clean_theorem=True, clean_acc=True)

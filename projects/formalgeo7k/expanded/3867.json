@@ -1,24 +1,34 @@
 {
-  "92035": {
-    "problem_id": 92035,
+  "66115": {
+    "problem_id": 66115,
     "added_cdl": [],
     "goal_cdl": "Relation(IsDiameterOfCircle(AB,O))",
     "problem_answer": "IsDiameterOfCircle(AB,O)",
     "theorem_seqs": [
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
+      ]
+    }
   },
-  "92036": {
-    "problem_id": 92036,
+  "66116": {
+    "problem_id": 66116,
     "added_cdl": [],
     "goal_cdl": "Relation(IsDiameterOfCircle(BA,O))",
     "problem_answer": "IsDiameterOfCircle(BA,O)",
     "theorem_seqs": [
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
+      ]
+    }
   },
-  "92037": {
-    "problem_id": 92037,
+  "66117": {
+    "problem_id": 66117,
     "added_cdl": [
       "IsDiameterOfCircle(AB,O)"
     ],
@@ -26,29 +36,45 @@
     "problem_answer": "PerpendicularBetweenLine(BC,AC)",
     "theorem_seqs": [
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92038": {
-    "problem_id": 92038,
+  "66118": {
+    "problem_id": 66118,
     "added_cdl": [],
     "goal_cdl": "Relation(PerpendicularBetweenLine(BC,AC))",
     "problem_answer": "PerpendicularBetweenLine(BC,AC)",
     "theorem_seqs": [
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92039": {
-    "problem_id": 92039,
+  "66119": {
+    "problem_id": 66119,
     "added_cdl": [],
     "goal_cdl": "Relation(IsoscelesTriangle(DAC))",
     "problem_answer": "IsoscelesTriangle(DAC)",
     "theorem_seqs": [
       "isosceles_triangle_judgment_line_equal(1,DAC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "92040": {
-    "problem_id": 92040,
+  "66120": {
+    "problem_id": 66120,
     "added_cdl": [
       "IsoscelesTriangle(DAC)"
     ],
@@ -56,176 +82,31 @@
     "problem_answer": "0",
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,DAC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "92041": {
-    "problem_id": 92041,
+  "66121": {
+    "problem_id": 66121,
     "added_cdl": [],
     "goal_cdl": "Equal(MeasureOfAngle(DAC),MeasureOfAngle(ACD))",
     "problem_answer": "0",
     "theorem_seqs": [
       "isosceles_triangle_judgment_line_equal(1,DAC)",
       "isosceles_triangle_property_angle_equal(1,DAC)"
-    ]
-  },
-  "92042": {
-    "problem_id": 92042,
-    "added_cdl": [
-      "IsDiameterOfCircle(AB,O)",
-      "Equation(ma_abc+ma_bca+ma_cab-180)",
-      "Equation(mar_oac+mar_oca-360)",
-      "Equation(ma_abc-mar_oca/2)",
-      "Equation(ma_cda-mar_oac/2)",
-      "Equal(MeasureOfAngle(DAC),MeasureOfAngle(ACD))",
-      "Equation(ma_acd+ma_cda+ma_dac-180)"
     ],
-    "goal_cdl": "Value(MeasureOfAngle(CAO))",
-    "problem_answer": "30",
-    "theorem_seqs": [
-      "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,DAC)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DAC)": [
+        "isosceles_triangle_property_angle_equal(1,DAC)"
+      ]
+    }
   },
-  "92043": {
-    "problem_id": 92043,
-    "added_cdl": [
-      "Equation(ma_abc+ma_bca+ma_cab-180)",
-      "Equation(mar_oac+mar_oca-360)",
-      "Equation(ma_abc-mar_oca/2)",
-      "Equation(ma_cda-mar_oac/2)",
-      "Equal(MeasureOfAngle(DAC),MeasureOfAngle(ACD))",
-      "Equation(ma_acd+ma_cda+ma_dac-180)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(CAO))",
-    "problem_answer": "30",
-    "theorem_seqs": [
-      "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
-      "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
-  },
-  "92044": {
-    "problem_id": 92044,
-    "added_cdl": [
-      "Equation(mar_oac+mar_oca-360)",
-      "Equation(ma_abc-mar_oca/2)",
-      "Equation(ma_cda-mar_oac/2)",
-      "Equal(MeasureOfAngle(DAC),MeasureOfAngle(ACD))",
-      "Equation(ma_acd+ma_cda+ma_dac-180)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(CAO))",
-    "problem_answer": "30",
-    "theorem_seqs": [
-      "triangle_property_angle_sum(1,CAB)",
-      "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
-      "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
-  },
-  "92045": {
-    "problem_id": 92045,
-    "added_cdl": [
-      "Equation(ma_cda-mar_oac/2)",
-      "Equal(MeasureOfAngle(DAC),MeasureOfAngle(ACD))",
-      "Equation(ma_acd+ma_cda+ma_dac-180)",
-      "Equation(ma_abc-mar_oca/2)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(CAO))",
-    "problem_answer": "30",
-    "theorem_seqs": [
-      "round_arc(1,OAC,OCA)",
-      "triangle_property_angle_sum(1,CAB)",
-      "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
-      "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
-  },
-  "92046": {
-    "problem_id": 92046,
-    "added_cdl": [
-      "Equal(MeasureOfAngle(DAC),MeasureOfAngle(ACD))",
-      "Equation(ma_acd+ma_cda+ma_dac-180)",
-      "Equation(ma_abc-mar_oca/2)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(CAO))",
-    "problem_answer": "30",
-    "theorem_seqs": [
-      "arc_property_circumference_angle_external(1,OAC,D)",
-      "round_arc(1,OAC,OCA)",
-      "triangle_property_angle_sum(1,CAB)",
-      "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
-      "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
-  },
-  "92047": {
-    "problem_id": 92047,
-    "added_cdl": [
-      "IsoscelesTriangle(DAC)",
-      "Equation(ma_acd+ma_cda+ma_dac-180)",
-      "Equation(ma_abc-mar_oca/2)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(CAO))",
-    "problem_answer": "30",
-    "theorem_seqs": [
-      "isosceles_triangle_property_angle_equal(1,DAC)",
-      "arc_property_circumference_angle_external(1,OAC,D)",
-      "round_arc(1,OAC,OCA)",
-      "triangle_property_angle_sum(1,CAB)",
-      "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
-      "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
-  },
-  "92048": {
-    "problem_id": 92048,
-    "added_cdl": [
-      "Equation(ma_acd+ma_cda+ma_dac-180)",
-      "Equation(ma_abc-mar_oca/2)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(CAO))",
-    "problem_answer": "30",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_line_equal(1,DAC)",
-      "isosceles_triangle_property_angle_equal(1,DAC)",
-      "arc_property_circumference_angle_external(1,OAC,D)",
-      "round_arc(1,OAC,OCA)",
-      "triangle_property_angle_sum(1,CAB)",
-      "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
-      "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
-  },
-  "92049": {
-    "problem_id": 92049,
-    "added_cdl": [
-      "Equation(ma_abc-mar_oca/2)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(CAO))",
-    "problem_answer": "30",
-    "theorem_seqs": [
-      "triangle_property_angle_sum(1,DAC)",
-      "isosceles_triangle_judgment_line_equal(1,DAC)",
-      "isosceles_triangle_property_angle_equal(1,DAC)",
-      "arc_property_circumference_angle_external(1,OAC,D)",
-      "round_arc(1,OAC,OCA)",
-      "triangle_property_angle_sum(1,CAB)",
-      "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
-      "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
-  },
-  "92050": {
-    "problem_id": 92050,
-    "added_cdl": [],
-    "goal_cdl": "Value(MeasureOfAngle(CAO))",
-    "problem_answer": "30",
-    "theorem_seqs": [
-      "arc_property_circumference_angle_external(1,OCA,B)",
-      "triangle_property_angle_sum(1,DAC)",
-      "isosceles_triangle_judgment_line_equal(1,DAC)",
-      "isosceles_triangle_property_angle_equal(1,DAC)",
-      "arc_property_circumference_angle_external(1,OAC,D)",
-      "round_arc(1,OAC,OCA)",
-      "triangle_property_angle_sum(1,CAB)",
-      "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
-      "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
-  },
-  "92051": {
-    "problem_id": 92051,
+  "66122": {
+    "problem_id": 66122,
     "added_cdl": [
       "IsDiameterOfCircle(AB,O)",
       "Equation(ma_abc+ma_bca+ma_cab-180)",
@@ -239,10 +120,15 @@
     "problem_answer": "30",
     "theorem_seqs": [
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92052": {
-    "problem_id": 92052,
+  "66123": {
+    "problem_id": 66123,
     "added_cdl": [
       "Equation(ma_abc+ma_bca+ma_cab-180)",
       "Equation(mar_oac+mar_oca-360)",
@@ -256,10 +142,18 @@
     "theorem_seqs": [
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92053": {
-    "problem_id": 92053,
+  "66124": {
+    "problem_id": 66124,
     "added_cdl": [
       "Equation(mar_oac+mar_oca-360)",
       "Equation(ma_abc-mar_oca/2)",
@@ -273,10 +167,19 @@
       "triangle_property_angle_sum(1,CAB)",
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,CAB)",
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92054": {
-    "problem_id": 92054,
+  "66125": {
+    "problem_id": 66125,
     "added_cdl": [
       "Equation(ma_cda-mar_oac/2)",
       "Equal(MeasureOfAngle(DAC),MeasureOfAngle(ACD))",
@@ -290,10 +193,20 @@
       "triangle_property_angle_sum(1,CAB)",
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "round_arc(1,OAC,OCA)",
+        "triangle_property_angle_sum(1,CAB)",
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92055": {
-    "problem_id": 92055,
+  "66126": {
+    "problem_id": 66126,
     "added_cdl": [
       "Equal(MeasureOfAngle(DAC),MeasureOfAngle(ACD))",
       "Equation(ma_acd+ma_cda+ma_dac-180)",
@@ -307,10 +220,21 @@
       "triangle_property_angle_sum(1,CAB)",
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_circumference_angle_external(1,OAC,D)",
+        "round_arc(1,OAC,OCA)",
+        "triangle_property_angle_sum(1,CAB)",
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92056": {
-    "problem_id": 92056,
+  "66127": {
+    "problem_id": 66127,
     "added_cdl": [
       "IsoscelesTriangle(DAC)",
       "Equation(ma_acd+ma_cda+ma_dac-180)",
@@ -325,10 +249,22 @@
       "triangle_property_angle_sum(1,CAB)",
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,DAC)",
+        "arc_property_circumference_angle_external(1,OAC,D)",
+        "round_arc(1,OAC,OCA)",
+        "triangle_property_angle_sum(1,CAB)",
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92057": {
-    "problem_id": 92057,
+  "66128": {
+    "problem_id": 66128,
     "added_cdl": [
       "Equation(ma_acd+ma_cda+ma_dac-180)",
       "Equation(ma_abc-mar_oca/2)"
@@ -343,10 +279,25 @@
       "triangle_property_angle_sum(1,CAB)",
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,DAC)",
+        "arc_property_circumference_angle_external(1,OAC,D)",
+        "round_arc(1,OAC,OCA)",
+        "triangle_property_angle_sum(1,CAB)",
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DAC)": [
+        "isosceles_triangle_property_angle_equal(1,DAC)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92058": {
-    "problem_id": 92058,
+  "66129": {
+    "problem_id": 66129,
     "added_cdl": [
       "Equation(ma_abc-mar_oca/2)"
     ],
@@ -361,10 +312,26 @@
       "triangle_property_angle_sum(1,CAB)",
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,DAC)",
+        "isosceles_triangle_judgment_line_equal(1,DAC)",
+        "arc_property_circumference_angle_external(1,OAC,D)",
+        "round_arc(1,OAC,OCA)",
+        "triangle_property_angle_sum(1,CAB)",
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DAC)": [
+        "isosceles_triangle_property_angle_equal(1,DAC)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92059": {
-    "problem_id": 92059,
+  "66130": {
+    "problem_id": 66130,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(DAC))",
     "problem_answer": "30",
@@ -378,10 +345,27 @@
       "triangle_property_angle_sum(1,CAB)",
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_circumference_angle_external(1,OCA,B)",
+        "triangle_property_angle_sum(1,DAC)",
+        "isosceles_triangle_judgment_line_equal(1,DAC)",
+        "arc_property_circumference_angle_external(1,OAC,D)",
+        "round_arc(1,OAC,OCA)",
+        "triangle_property_angle_sum(1,CAB)",
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DAC)": [
+        "isosceles_triangle_property_angle_equal(1,DAC)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92060": {
-    "problem_id": 92060,
+  "66131": {
+    "problem_id": 66131,
     "added_cdl": [
       "IsDiameterOfCircle(AB,O)"
     ],
@@ -389,20 +373,33 @@
     "problem_answer": "90",
     "theorem_seqs": [
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92061": {
-    "problem_id": 92061,
+  "66132": {
+    "problem_id": 66132,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(BCA))",
     "problem_answer": "90",
     "theorem_seqs": [
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92062": {
-    "problem_id": 92062,
+  "66133": {
+    "problem_id": 66133,
     "added_cdl": [
       "Equation(ma_abc+ma_bca+ma_cab-180)",
       "IsDiameterOfCircle(AB,O)"
@@ -411,10 +408,15 @@
     "problem_answer": "60",
     "theorem_seqs": [
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92063": {
-    "problem_id": 92063,
+  "66134": {
+    "problem_id": 66134,
     "added_cdl": [
       "IsDiameterOfCircle(AB,O)"
     ],
@@ -423,10 +425,16 @@
     "theorem_seqs": [
       "triangle_property_angle_sum(1,CAB)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,CAB)",
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92064": {
-    "problem_id": 92064,
+  "66135": {
+    "problem_id": 66135,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(ABC))",
     "problem_answer": "60",
@@ -434,10 +442,19 @@
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "triangle_property_angle_sum(1,CAB)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
+        "triangle_property_angle_sum(1,CAB)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92065": {
-    "problem_id": 92065,
+  "66136": {
+    "problem_id": 66136,
     "added_cdl": [
       "Equation(ma_abc+ma_bca+ma_cab-180)",
       "Equation(mar_oac+mar_oca-360)",
@@ -448,10 +465,15 @@
     "problem_answer": "240",
     "theorem_seqs": [
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92066": {
-    "problem_id": 92066,
+  "66137": {
+    "problem_id": 66137,
     "added_cdl": [
       "Equation(mar_oac+mar_oca-360)",
       "Equation(ma_abc-mar_oca/2)",
@@ -462,10 +484,16 @@
     "theorem_seqs": [
       "triangle_property_angle_sum(1,CAB)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,CAB)",
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92067": {
-    "problem_id": 92067,
+  "66138": {
+    "problem_id": 66138,
     "added_cdl": [
       "Equation(ma_abc-mar_oca/2)",
       "IsDiameterOfCircle(AB,O)"
@@ -476,10 +504,17 @@
       "round_arc(1,OAC,OCA)",
       "triangle_property_angle_sum(1,CAB)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "round_arc(1,OAC,OCA)",
+        "triangle_property_angle_sum(1,CAB)",
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92068": {
-    "problem_id": 92068,
+  "66139": {
+    "problem_id": 66139,
     "added_cdl": [
       "IsDiameterOfCircle(AB,O)"
     ],
@@ -490,10 +525,18 @@
       "round_arc(1,OAC,OCA)",
       "triangle_property_angle_sum(1,CAB)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_circumference_angle_external(1,OCA,B)",
+        "round_arc(1,OAC,OCA)",
+        "triangle_property_angle_sum(1,CAB)",
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92069": {
-    "problem_id": 92069,
+  "66140": {
+    "problem_id": 66140,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfArc(OAC))",
     "problem_answer": "240",
@@ -503,10 +546,21 @@
       "round_arc(1,OAC,OCA)",
       "triangle_property_angle_sum(1,CAB)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
+        "arc_property_circumference_angle_external(1,OCA,B)",
+        "round_arc(1,OAC,OCA)",
+        "triangle_property_angle_sum(1,CAB)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92070": {
-    "problem_id": 92070,
+  "66141": {
+    "problem_id": 66141,
     "added_cdl": [
       "Equation(ma_abc+ma_bca+ma_cab-180)",
       "Equation(ma_abc-mar_oca/2)",
@@ -516,10 +570,15 @@
     "problem_answer": "120",
     "theorem_seqs": [
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92071": {
-    "problem_id": 92071,
+  "66142": {
+    "problem_id": 66142,
     "added_cdl": [
       "Equation(ma_abc-mar_oca/2)",
       "IsDiameterOfCircle(AB,O)"
@@ -529,10 +588,16 @@
     "theorem_seqs": [
       "triangle_property_angle_sum(1,CAB)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,CAB)",
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92072": {
-    "problem_id": 92072,
+  "66143": {
+    "problem_id": 66143,
     "added_cdl": [
       "IsDiameterOfCircle(AB,O)"
     ],
@@ -542,10 +607,17 @@
       "arc_property_circumference_angle_external(1,OCA,B)",
       "triangle_property_angle_sum(1,CAB)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_circumference_angle_external(1,OCA,B)",
+        "triangle_property_angle_sum(1,CAB)",
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92073": {
-    "problem_id": 92073,
+  "66144": {
+    "problem_id": 66144,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfArc(OCA))",
     "problem_answer": "120",
@@ -554,10 +626,20 @@
       "arc_property_circumference_angle_external(1,OCA,B)",
       "triangle_property_angle_sum(1,CAB)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
+        "arc_property_circumference_angle_external(1,OCA,B)",
+        "triangle_property_angle_sum(1,CAB)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92074": {
-    "problem_id": 92074,
+  "66145": {
+    "problem_id": 66145,
     "added_cdl": [
       "IsDiameterOfCircle(AB,O)",
       "Equation(ma_abc+ma_bca+ma_cab-180)",
@@ -569,10 +651,15 @@
     "problem_answer": "120",
     "theorem_seqs": [
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92075": {
-    "problem_id": 92075,
+  "66146": {
+    "problem_id": 66146,
     "added_cdl": [
       "Equation(ma_cda-mar_oac/2)",
       "Equation(ma_abc+ma_bca+ma_cab-180)",
@@ -584,10 +671,18 @@
     "theorem_seqs": [
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92076": {
-    "problem_id": 92076,
+  "66147": {
+    "problem_id": 66147,
     "added_cdl": [
       "Equation(ma_abc+ma_bca+ma_cab-180)",
       "Equation(mar_oac+mar_oca-360)",
@@ -599,10 +694,19 @@
       "arc_property_circumference_angle_external(1,OAC,D)",
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_circumference_angle_external(1,OAC,D)",
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92077": {
-    "problem_id": 92077,
+  "66148": {
+    "problem_id": 66148,
     "added_cdl": [
       "Equation(mar_oac+mar_oca-360)",
       "Equation(ma_abc-mar_oca/2)"
@@ -614,10 +718,20 @@
       "arc_property_circumference_angle_external(1,OAC,D)",
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,CAB)",
+        "arc_property_circumference_angle_external(1,OAC,D)",
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92078": {
-    "problem_id": 92078,
+  "66149": {
+    "problem_id": 66149,
     "added_cdl": [
       "Equation(ma_abc-mar_oca/2)"
     ],
@@ -629,10 +743,21 @@
       "arc_property_circumference_angle_external(1,OAC,D)",
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "round_arc(1,OAC,OCA)",
+        "triangle_property_angle_sum(1,CAB)",
+        "arc_property_circumference_angle_external(1,OAC,D)",
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92079": {
-    "problem_id": 92079,
+  "66150": {
+    "problem_id": 66150,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(CDA))",
     "problem_answer": "120",
@@ -643,10 +768,22 @@
       "arc_property_circumference_angle_external(1,OAC,D)",
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_circumference_angle_external(1,OCA,B)",
+        "round_arc(1,OAC,OCA)",
+        "triangle_property_angle_sum(1,CAB)",
+        "arc_property_circumference_angle_external(1,OAC,D)",
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92080": {
-    "problem_id": 92080,
+  "66151": {
+    "problem_id": 66151,
     "added_cdl": [
       "IsDiameterOfCircle(AB,O)",
       "Equation(ma_abc+ma_bca+ma_cab-180)",
@@ -660,10 +797,15 @@
     "problem_answer": "30",
     "theorem_seqs": [
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92081": {
-    "problem_id": 92081,
+  "66152": {
+    "problem_id": 66152,
     "added_cdl": [
       "Equation(ma_abc+ma_bca+ma_cab-180)",
       "Equation(mar_oac+mar_oca-360)",
@@ -677,10 +819,18 @@
     "theorem_seqs": [
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92082": {
-    "problem_id": 92082,
+  "66153": {
+    "problem_id": 66153,
     "added_cdl": [
       "Equation(mar_oac+mar_oca-360)",
       "Equation(ma_abc-mar_oca/2)",
@@ -694,10 +844,19 @@
       "triangle_property_angle_sum(1,CAB)",
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,CAB)",
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92083": {
-    "problem_id": 92083,
+  "66154": {
+    "problem_id": 66154,
     "added_cdl": [
       "Equation(ma_cda-mar_oac/2)",
       "Equal(MeasureOfAngle(DAC),MeasureOfAngle(ACD))",
@@ -711,10 +870,20 @@
       "triangle_property_angle_sum(1,CAB)",
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "round_arc(1,OAC,OCA)",
+        "triangle_property_angle_sum(1,CAB)",
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92084": {
-    "problem_id": 92084,
+  "66155": {
+    "problem_id": 66155,
     "added_cdl": [
       "Equal(MeasureOfAngle(DAC),MeasureOfAngle(ACD))",
       "Equation(ma_acd+ma_cda+ma_dac-180)",
@@ -728,10 +897,21 @@
       "triangle_property_angle_sum(1,CAB)",
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_circumference_angle_external(1,OAC,D)",
+        "round_arc(1,OAC,OCA)",
+        "triangle_property_angle_sum(1,CAB)",
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92085": {
-    "problem_id": 92085,
+  "66156": {
+    "problem_id": 66156,
     "added_cdl": [
       "IsoscelesTriangle(DAC)",
       "Equation(ma_acd+ma_cda+ma_dac-180)",
@@ -746,10 +926,22 @@
       "triangle_property_angle_sum(1,CAB)",
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,DAC)",
+        "arc_property_circumference_angle_external(1,OAC,D)",
+        "round_arc(1,OAC,OCA)",
+        "triangle_property_angle_sum(1,CAB)",
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92086": {
-    "problem_id": 92086,
+  "66157": {
+    "problem_id": 66157,
     "added_cdl": [
       "Equation(ma_acd+ma_cda+ma_dac-180)",
       "Equation(ma_abc-mar_oca/2)"
@@ -764,10 +956,25 @@
       "triangle_property_angle_sum(1,CAB)",
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,DAC)",
+        "arc_property_circumference_angle_external(1,OAC,D)",
+        "round_arc(1,OAC,OCA)",
+        "triangle_property_angle_sum(1,CAB)",
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DAC)": [
+        "isosceles_triangle_property_angle_equal(1,DAC)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92087": {
-    "problem_id": 92087,
+  "66158": {
+    "problem_id": 66158,
     "added_cdl": [
       "Equation(ma_abc-mar_oca/2)"
     ],
@@ -782,10 +989,26 @@
       "triangle_property_angle_sum(1,CAB)",
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,DAC)",
+        "isosceles_triangle_judgment_line_equal(1,DAC)",
+        "arc_property_circumference_angle_external(1,OAC,D)",
+        "round_arc(1,OAC,OCA)",
+        "triangle_property_angle_sum(1,CAB)",
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DAC)": [
+        "isosceles_triangle_property_angle_equal(1,DAC)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   },
-  "92088": {
-    "problem_id": 92088,
+  "66159": {
+    "problem_id": 66159,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(ACD))",
     "problem_answer": "30",
@@ -799,6 +1022,23 @@
       "triangle_property_angle_sum(1,CAB)",
       "diameter_of_circle_judgment_pass_centre(1,AOB,O)",
       "diameter_of_circle_property_right_angle(1,BCA,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_circumference_angle_external(1,OCA,B)",
+        "triangle_property_angle_sum(1,DAC)",
+        "isosceles_triangle_judgment_line_equal(1,DAC)",
+        "arc_property_circumference_angle_external(1,OAC,D)",
+        "round_arc(1,OAC,OCA)",
+        "triangle_property_angle_sum(1,CAB)",
+        "diameter_of_circle_judgment_pass_centre(1,AOB,O)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DAC)": [
+        "isosceles_triangle_property_angle_equal(1,DAC)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,AOB,O)": [
+        "diameter_of_circle_property_right_angle(1,BCA,O)"
+      ]
+    }
   }
 }

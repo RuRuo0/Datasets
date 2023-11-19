@@ -1,24 +1,30 @@
 {
-  "147522": {
-    "problem_id": 147522,
+  "104998": {
+    "problem_id": 104998,
     "added_cdl": [],
     "goal_cdl": "Relation(RightTriangle(BFA))",
     "problem_answer": "RightTriangle(BFA)",
     "theorem_seqs": [
       "right_triangle_judgment_angle(1,BFA)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "147523": {
-    "problem_id": 147523,
+  "104999": {
+    "problem_id": 104999,
     "added_cdl": [],
     "goal_cdl": "Relation(IsMedianOfTriangle(FD,FAB))",
     "problem_answer": "IsMedianOfTriangle(FD,FAB)",
     "theorem_seqs": [
       "median_of_triangle_judgment(1,FD,FAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "147524": {
-    "problem_id": 147524,
+  "105000": {
+    "problem_id": 105000,
     "added_cdl": [
       "Equation(-ll_ab+2*ll_fd)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -27,10 +33,15 @@
     "problem_answer": "IsoscelesTriangle(DBF)",
     "theorem_seqs": [
       "isosceles_triangle_judgment_line_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ]
+    }
   },
-  "147525": {
-    "problem_id": 147525,
+  "105001": {
+    "problem_id": 105001,
     "added_cdl": [
       "RightTriangle(BFA)",
       "IsMedianOfTriangle(FD,FAB)",
@@ -41,10 +52,18 @@
     "theorem_seqs": [
       "right_triangle_property_length_of_median(1,BFA,D)",
       "isosceles_triangle_judgment_line_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ]
+    }
   },
-  "147526": {
-    "problem_id": 147526,
+  "105002": {
+    "problem_id": 105002,
     "added_cdl": [
       "IsMedianOfTriangle(FD,FAB)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -55,10 +74,21 @@
       "right_triangle_judgment_angle(1,BFA)",
       "right_triangle_property_length_of_median(1,BFA,D)",
       "isosceles_triangle_judgment_line_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ]
+    }
   },
-  "147527": {
-    "problem_id": 147527,
+  "105003": {
+    "problem_id": 105003,
     "added_cdl": [
       "Equation(ll_ab-ll_ad-ll_db)"
     ],
@@ -69,10 +99,25 @@
       "right_triangle_judgment_angle(1,BFA)",
       "right_triangle_property_length_of_median(1,BFA,D)",
       "isosceles_triangle_judgment_line_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ]
+    }
   },
-  "147528": {
-    "problem_id": 147528,
+  "105004": {
+    "problem_id": 105004,
     "added_cdl": [],
     "goal_cdl": "Relation(IsoscelesTriangle(DBF))",
     "problem_answer": "IsoscelesTriangle(DBF)",
@@ -82,22 +127,29 @@
       "right_triangle_judgment_angle(1,BFA)",
       "right_triangle_property_length_of_median(1,BFA,D)",
       "isosceles_triangle_judgment_line_equal(1,DBF)"
-    ]
-  },
-  "147529": {
-    "problem_id": 147529,
-    "added_cdl": [
-      "Equation(-ll_ab+2*ll_fd)",
-      "Equation(ll_ab-ll_ad-ll_db)"
     ],
-    "goal_cdl": "Equal(LengthOfLine(DB),LengthOfLine(FD))",
-    "problem_answer": "0",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_line_equal(1,DBF)"
-    ]
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,AD,DB)",
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "line_addition(1,AD,DB)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ]
+    }
   },
-  "147530": {
-    "problem_id": 147530,
+  "105005": {
+    "problem_id": 105005,
     "added_cdl": [
       "RightTriangle(BFA)",
       "IsMedianOfTriangle(FD,FAB)",
@@ -106,12 +158,16 @@
     "goal_cdl": "Equal(LengthOfLine(DB),LengthOfLine(FD))",
     "problem_answer": "0",
     "theorem_seqs": [
-      "right_triangle_property_length_of_median(1,BFA,D)",
-      "isosceles_triangle_judgment_line_equal(1,DBF)"
-    ]
+      "right_triangle_property_length_of_median(1,BFA,D)"
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ]
+    }
   },
-  "147531": {
-    "problem_id": 147531,
+  "105006": {
+    "problem_id": 105006,
     "added_cdl": [
       "IsMedianOfTriangle(FD,FAB)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -120,12 +176,19 @@
     "problem_answer": "0",
     "theorem_seqs": [
       "right_triangle_judgment_angle(1,BFA)",
-      "right_triangle_property_length_of_median(1,BFA,D)",
-      "isosceles_triangle_judgment_line_equal(1,DBF)"
-    ]
+      "right_triangle_property_length_of_median(1,BFA,D)"
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ]
+    }
   },
-  "147532": {
-    "problem_id": 147532,
+  "105007": {
+    "problem_id": 105007,
     "added_cdl": [
       "Equation(ll_ab-ll_ad-ll_db)"
     ],
@@ -134,12 +197,23 @@
     "theorem_seqs": [
       "median_of_triangle_judgment(1,FD,FAB)",
       "right_triangle_judgment_angle(1,BFA)",
-      "right_triangle_property_length_of_median(1,BFA,D)",
-      "isosceles_triangle_judgment_line_equal(1,DBF)"
-    ]
+      "right_triangle_property_length_of_median(1,BFA,D)"
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ]
+    }
   },
-  "147533": {
-    "problem_id": 147533,
+  "105008": {
+    "problem_id": 105008,
     "added_cdl": [],
     "goal_cdl": "Equal(LengthOfLine(DB),LengthOfLine(FD))",
     "problem_answer": "0",
@@ -147,12 +221,24 @@
       "line_addition(1,AD,DB)",
       "median_of_triangle_judgment(1,FD,FAB)",
       "right_triangle_judgment_angle(1,BFA)",
-      "right_triangle_property_length_of_median(1,BFA,D)",
-      "isosceles_triangle_judgment_line_equal(1,DBF)"
-    ]
+      "right_triangle_property_length_of_median(1,BFA,D)"
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,AD,DB)",
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ]
+    }
   },
-  "147534": {
-    "problem_id": 147534,
+  "105009": {
+    "problem_id": 105009,
     "added_cdl": [
       "IsoscelesTriangle(DBF)"
     ],
@@ -160,10 +246,13 @@
     "problem_answer": "0",
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "147535": {
-    "problem_id": 147535,
+  "105010": {
+    "problem_id": 105010,
     "added_cdl": [
       "Equation(-ll_ab+2*ll_fd)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -173,10 +262,18 @@
     "theorem_seqs": [
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ]
+    }
   },
-  "147536": {
-    "problem_id": 147536,
+  "105011": {
+    "problem_id": 105011,
     "added_cdl": [
       "RightTriangle(BFA)",
       "IsMedianOfTriangle(FD,FAB)",
@@ -188,10 +285,21 @@
       "right_triangle_property_length_of_median(1,BFA,D)",
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ]
+    }
   },
-  "147537": {
-    "problem_id": 147537,
+  "105012": {
+    "problem_id": 105012,
     "added_cdl": [
       "IsMedianOfTriangle(FD,FAB)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -203,10 +311,24 @@
       "right_triangle_property_length_of_median(1,BFA,D)",
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ]
+    }
   },
-  "147538": {
-    "problem_id": 147538,
+  "105013": {
+    "problem_id": 105013,
     "added_cdl": [
       "Equation(ll_ab-ll_ad-ll_db)"
     ],
@@ -218,10 +340,28 @@
       "right_triangle_property_length_of_median(1,BFA,D)",
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ]
+    }
   },
-  "147539": {
-    "problem_id": 147539,
+  "105014": {
+    "problem_id": 105014,
     "added_cdl": [],
     "goal_cdl": "Equal(MeasureOfAngle(ABF),MeasureOfAngle(BFD))",
     "problem_answer": "0",
@@ -232,10 +372,32 @@
       "right_triangle_property_length_of_median(1,BFA,D)",
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,AD,DB)",
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "line_addition(1,AD,DB)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ]
+    }
   },
-  "147540": {
-    "problem_id": 147540,
+  "105015": {
+    "problem_id": 105015,
     "added_cdl": [
       "IsoscelesTriangle(DBF)"
     ],
@@ -243,10 +405,15 @@
     "problem_answer": "0",
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ]
+    }
   },
-  "147541": {
-    "problem_id": 147541,
+  "105016": {
+    "problem_id": 105016,
     "added_cdl": [
       "Equation(-ll_ab+2*ll_fd)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -256,10 +423,18 @@
     "theorem_seqs": [
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ]
+    }
   },
-  "147542": {
-    "problem_id": 147542,
+  "105017": {
+    "problem_id": 105017,
     "added_cdl": [
       "RightTriangle(BFA)",
       "IsMedianOfTriangle(FD,FAB)",
@@ -271,10 +446,21 @@
       "right_triangle_property_length_of_median(1,BFA,D)",
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ]
+    }
   },
-  "147543": {
-    "problem_id": 147543,
+  "105018": {
+    "problem_id": 105018,
     "added_cdl": [
       "IsMedianOfTriangle(FD,FAB)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -286,10 +472,24 @@
       "right_triangle_property_length_of_median(1,BFA,D)",
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ]
+    }
   },
-  "147544": {
-    "problem_id": 147544,
+  "105019": {
+    "problem_id": 105019,
     "added_cdl": [
       "Equation(ll_ab-ll_ad-ll_db)"
     ],
@@ -301,10 +501,28 @@
       "right_triangle_property_length_of_median(1,BFA,D)",
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ]
+    }
   },
-  "147545": {
-    "problem_id": 147545,
+  "105020": {
+    "problem_id": 105020,
     "added_cdl": [],
     "goal_cdl": "Equal(MeasureOfAngle(BFD),MeasureOfAngle(FBC))",
     "problem_answer": "0",
@@ -315,10 +533,32 @@
       "right_triangle_property_length_of_median(1,BFA,D)",
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,AD,DB)",
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "line_addition(1,AD,DB)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ]
+    }
   },
-  "147546": {
-    "problem_id": 147546,
+  "105021": {
+    "problem_id": 105021,
     "added_cdl": [
       "Equal(MeasureOfAngle(ABF),MeasureOfAngle(BFD))"
     ],
@@ -326,10 +566,15 @@
     "problem_answer": "ParallelBetweenLine(DF,BC)",
     "theorem_seqs": [
       "parallel_judgment_alternate_interior_angle(2,DF,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ]
+    }
   },
-  "147547": {
-    "problem_id": 147547,
+  "105022": {
+    "problem_id": 105022,
     "added_cdl": [
       "IsoscelesTriangle(DBF)"
     ],
@@ -338,10 +583,18 @@
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,DBF)",
       "parallel_judgment_alternate_interior_angle(2,DF,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ]
+    }
   },
-  "147548": {
-    "problem_id": 147548,
+  "105023": {
+    "problem_id": 105023,
     "added_cdl": [
       "Equation(-ll_ab+2*ll_fd)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -352,10 +605,21 @@
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)",
       "parallel_judgment_alternate_interior_angle(2,DF,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ]
+    }
   },
-  "147549": {
-    "problem_id": 147549,
+  "105024": {
+    "problem_id": 105024,
     "added_cdl": [
       "RightTriangle(BFA)",
       "IsMedianOfTriangle(FD,FAB)",
@@ -368,10 +632,24 @@
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)",
       "parallel_judgment_alternate_interior_angle(2,DF,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ]
+    }
   },
-  "147550": {
-    "problem_id": 147550,
+  "105025": {
+    "problem_id": 105025,
     "added_cdl": [
       "IsMedianOfTriangle(FD,FAB)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -384,10 +662,27 @@
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)",
       "parallel_judgment_alternate_interior_angle(2,DF,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ]
+    }
   },
-  "147551": {
-    "problem_id": 147551,
+  "105026": {
+    "problem_id": 105026,
     "added_cdl": [
       "Equation(ll_ab-ll_ad-ll_db)"
     ],
@@ -400,10 +695,31 @@
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)",
       "parallel_judgment_alternate_interior_angle(2,DF,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ]
+    }
   },
-  "147552": {
-    "problem_id": 147552,
+  "105027": {
+    "problem_id": 105027,
     "added_cdl": [],
     "goal_cdl": "Relation(ParallelBetweenLine(DF,BC))",
     "problem_answer": "ParallelBetweenLine(DF,BC)",
@@ -415,10 +731,35 @@
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)",
       "parallel_judgment_alternate_interior_angle(2,DF,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,AD,DB)",
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "line_addition(1,AD,DB)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ]
+    }
   },
-  "147553": {
-    "problem_id": 147553,
+  "105028": {
+    "problem_id": 105028,
     "added_cdl": [
       "Equal(MeasureOfAngle(ABF),MeasureOfAngle(BFD))"
     ],
@@ -426,10 +767,15 @@
     "problem_answer": "ParallelBetweenLine(CB,FD)",
     "theorem_seqs": [
       "parallel_judgment_alternate_interior_angle(2,DF,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ]
+    }
   },
-  "147554": {
-    "problem_id": 147554,
+  "105029": {
+    "problem_id": 105029,
     "added_cdl": [
       "IsoscelesTriangle(DBF)"
     ],
@@ -438,10 +784,18 @@
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,DBF)",
       "parallel_judgment_alternate_interior_angle(2,DF,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ]
+    }
   },
-  "147555": {
-    "problem_id": 147555,
+  "105030": {
+    "problem_id": 105030,
     "added_cdl": [
       "Equation(-ll_ab+2*ll_fd)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -452,10 +806,21 @@
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)",
       "parallel_judgment_alternate_interior_angle(2,DF,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ]
+    }
   },
-  "147556": {
-    "problem_id": 147556,
+  "105031": {
+    "problem_id": 105031,
     "added_cdl": [
       "RightTriangle(BFA)",
       "IsMedianOfTriangle(FD,FAB)",
@@ -468,10 +833,24 @@
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)",
       "parallel_judgment_alternate_interior_angle(2,DF,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ]
+    }
   },
-  "147557": {
-    "problem_id": 147557,
+  "105032": {
+    "problem_id": 105032,
     "added_cdl": [
       "IsMedianOfTriangle(FD,FAB)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -484,10 +863,27 @@
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)",
       "parallel_judgment_alternate_interior_angle(2,DF,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ]
+    }
   },
-  "147558": {
-    "problem_id": 147558,
+  "105033": {
+    "problem_id": 105033,
     "added_cdl": [
       "Equation(ll_ab-ll_ad-ll_db)"
     ],
@@ -500,10 +896,31 @@
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)",
       "parallel_judgment_alternate_interior_angle(2,DF,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ]
+    }
   },
-  "147559": {
-    "problem_id": 147559,
+  "105034": {
+    "problem_id": 105034,
     "added_cdl": [],
     "goal_cdl": "Relation(ParallelBetweenLine(CB,FD))",
     "problem_answer": "ParallelBetweenLine(CB,FD)",
@@ -515,10 +932,35 @@
       "isosceles_triangle_judgment_line_equal(1,DBF)",
       "isosceles_triangle_property_angle_equal(1,DBF)",
       "parallel_judgment_alternate_interior_angle(2,DF,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,AD,DB)",
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "line_addition(1,AD,DB)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ]
+    }
   },
-  "147560": {
-    "problem_id": 147560,
+  "105035": {
+    "problem_id": 105035,
     "added_cdl": [
       "ParallelBetweenLine(DF,BC)"
     ],
@@ -526,10 +968,13 @@
     "problem_answer": "0",
     "theorem_seqs": [
       "parallel_property_corresponding_angle(1,DF,BC,A)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "147561": {
-    "problem_id": 147561,
+  "105036": {
+    "problem_id": 105036,
     "added_cdl": [
       "Equal(MeasureOfAngle(ABF),MeasureOfAngle(BFD))"
     ],
@@ -538,10 +983,18 @@
     "theorem_seqs": [
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ]
+    }
   },
-  "147562": {
-    "problem_id": 147562,
+  "105037": {
+    "problem_id": 105037,
     "added_cdl": [
       "IsoscelesTriangle(DBF)"
     ],
@@ -551,10 +1004,21 @@
       "isosceles_triangle_property_angle_equal(1,DBF)",
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ]
+    }
   },
-  "147563": {
-    "problem_id": 147563,
+  "105038": {
+    "problem_id": 105038,
     "added_cdl": [
       "Equation(-ll_ab+2*ll_fd)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -566,10 +1030,24 @@
       "isosceles_triangle_property_angle_equal(1,DBF)",
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ]
+    }
   },
-  "147564": {
-    "problem_id": 147564,
+  "105039": {
+    "problem_id": 105039,
     "added_cdl": [
       "RightTriangle(BFA)",
       "IsMedianOfTriangle(FD,FAB)",
@@ -583,10 +1061,27 @@
       "isosceles_triangle_property_angle_equal(1,DBF)",
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ]
+    }
   },
-  "147565": {
-    "problem_id": 147565,
+  "105040": {
+    "problem_id": 105040,
     "added_cdl": [
       "IsMedianOfTriangle(FD,FAB)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -600,10 +1095,30 @@
       "isosceles_triangle_property_angle_equal(1,DBF)",
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ]
+    }
   },
-  "147566": {
-    "problem_id": 147566,
+  "105041": {
+    "problem_id": 105041,
     "added_cdl": [
       "Equation(ll_ab-ll_ad-ll_db)"
     ],
@@ -617,10 +1132,34 @@
       "isosceles_triangle_property_angle_equal(1,DBF)",
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ]
+    }
   },
-  "147567": {
-    "problem_id": 147567,
+  "105042": {
+    "problem_id": 105042,
     "added_cdl": [],
     "goal_cdl": "Equal(MeasureOfAngle(ADF),MeasureOfAngle(ABC))",
     "problem_answer": "0",
@@ -633,10 +1172,38 @@
       "isosceles_triangle_property_angle_equal(1,DBF)",
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,AD,DB)",
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "line_addition(1,AD,DB)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ]
+    }
   },
-  "147568": {
-    "problem_id": 147568,
+  "105043": {
+    "problem_id": 105043,
     "added_cdl": [
       "Equal(MeasureOfAngle(ADF),MeasureOfAngle(ABC))"
     ],
@@ -644,10 +1211,15 @@
     "problem_answer": "SimilarBetweenTriangle(EAD,CAB)",
     "theorem_seqs": [
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147569": {
-    "problem_id": 147569,
+  "105044": {
+    "problem_id": 105044,
     "added_cdl": [
       "ParallelBetweenLine(DF,BC)"
     ],
@@ -656,10 +1228,18 @@
     "theorem_seqs": [
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147570": {
-    "problem_id": 147570,
+  "105045": {
+    "problem_id": 105045,
     "added_cdl": [
       "Equal(MeasureOfAngle(ABF),MeasureOfAngle(BFD))"
     ],
@@ -669,10 +1249,21 @@
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147571": {
-    "problem_id": 147571,
+  "105046": {
+    "problem_id": 105046,
     "added_cdl": [
       "IsoscelesTriangle(DBF)"
     ],
@@ -683,10 +1274,24 @@
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147572": {
-    "problem_id": 147572,
+  "105047": {
+    "problem_id": 105047,
     "added_cdl": [
       "Equation(-ll_ab+2*ll_fd)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -699,10 +1304,27 @@
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147573": {
-    "problem_id": 147573,
+  "105048": {
+    "problem_id": 105048,
     "added_cdl": [
       "RightTriangle(BFA)",
       "IsMedianOfTriangle(FD,FAB)",
@@ -717,10 +1339,30 @@
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147574": {
-    "problem_id": 147574,
+  "105049": {
+    "problem_id": 105049,
     "added_cdl": [
       "IsMedianOfTriangle(FD,FAB)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -735,10 +1377,33 @@
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147575": {
-    "problem_id": 147575,
+  "105050": {
+    "problem_id": 105050,
     "added_cdl": [
       "Equation(ll_ab-ll_ad-ll_db)"
     ],
@@ -753,10 +1418,37 @@
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147576": {
-    "problem_id": 147576,
+  "105051": {
+    "problem_id": 105051,
     "added_cdl": [],
     "goal_cdl": "Relation(SimilarBetweenTriangle(EAD,CAB))",
     "problem_answer": "SimilarBetweenTriangle(EAD,CAB)",
@@ -770,10 +1462,41 @@
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,AD,DB)",
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "line_addition(1,AD,DB)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147577": {
-    "problem_id": 147577,
+  "105052": {
+    "problem_id": 105052,
     "added_cdl": [
       "Equal(MeasureOfAngle(ADF),MeasureOfAngle(ABC))"
     ],
@@ -781,10 +1504,15 @@
     "problem_answer": "SimilarBetweenTriangle(ADE,ABC)",
     "theorem_seqs": [
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147578": {
-    "problem_id": 147578,
+  "105053": {
+    "problem_id": 105053,
     "added_cdl": [
       "ParallelBetweenLine(DF,BC)"
     ],
@@ -793,10 +1521,18 @@
     "theorem_seqs": [
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147579": {
-    "problem_id": 147579,
+  "105054": {
+    "problem_id": 105054,
     "added_cdl": [
       "Equal(MeasureOfAngle(ABF),MeasureOfAngle(BFD))"
     ],
@@ -806,10 +1542,21 @@
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147580": {
-    "problem_id": 147580,
+  "105055": {
+    "problem_id": 105055,
     "added_cdl": [
       "IsoscelesTriangle(DBF)"
     ],
@@ -820,10 +1567,24 @@
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147581": {
-    "problem_id": 147581,
+  "105056": {
+    "problem_id": 105056,
     "added_cdl": [
       "Equation(-ll_ab+2*ll_fd)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -836,10 +1597,27 @@
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147582": {
-    "problem_id": 147582,
+  "105057": {
+    "problem_id": 105057,
     "added_cdl": [
       "RightTriangle(BFA)",
       "IsMedianOfTriangle(FD,FAB)",
@@ -854,10 +1632,30 @@
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147583": {
-    "problem_id": 147583,
+  "105058": {
+    "problem_id": 105058,
     "added_cdl": [
       "IsMedianOfTriangle(FD,FAB)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -872,10 +1670,33 @@
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147584": {
-    "problem_id": 147584,
+  "105059": {
+    "problem_id": 105059,
     "added_cdl": [
       "Equation(ll_ab-ll_ad-ll_db)"
     ],
@@ -890,10 +1711,37 @@
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147585": {
-    "problem_id": 147585,
+  "105060": {
+    "problem_id": 105060,
     "added_cdl": [],
     "goal_cdl": "Relation(SimilarBetweenTriangle(ADE,ABC))",
     "problem_answer": "SimilarBetweenTriangle(ADE,ABC)",
@@ -907,10 +1755,41 @@
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,AD,DB)",
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "line_addition(1,AD,DB)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147586": {
-    "problem_id": 147586,
+  "105061": {
+    "problem_id": 105061,
     "added_cdl": [
       "Equal(MeasureOfAngle(ADF),MeasureOfAngle(ABC))"
     ],
@@ -918,10 +1797,15 @@
     "problem_answer": "SimilarBetweenTriangle(DEA,BCA)",
     "theorem_seqs": [
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147587": {
-    "problem_id": 147587,
+  "105062": {
+    "problem_id": 105062,
     "added_cdl": [
       "ParallelBetweenLine(DF,BC)"
     ],
@@ -930,10 +1814,18 @@
     "theorem_seqs": [
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147588": {
-    "problem_id": 147588,
+  "105063": {
+    "problem_id": 105063,
     "added_cdl": [
       "Equal(MeasureOfAngle(ABF),MeasureOfAngle(BFD))"
     ],
@@ -943,10 +1835,21 @@
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147589": {
-    "problem_id": 147589,
+  "105064": {
+    "problem_id": 105064,
     "added_cdl": [
       "IsoscelesTriangle(DBF)"
     ],
@@ -957,10 +1860,24 @@
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147590": {
-    "problem_id": 147590,
+  "105065": {
+    "problem_id": 105065,
     "added_cdl": [
       "Equation(-ll_ab+2*ll_fd)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -973,10 +1890,27 @@
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147591": {
-    "problem_id": 147591,
+  "105066": {
+    "problem_id": 105066,
     "added_cdl": [
       "RightTriangle(BFA)",
       "IsMedianOfTriangle(FD,FAB)",
@@ -991,10 +1925,30 @@
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147592": {
-    "problem_id": 147592,
+  "105067": {
+    "problem_id": 105067,
     "added_cdl": [
       "IsMedianOfTriangle(FD,FAB)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -1009,10 +1963,33 @@
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147593": {
-    "problem_id": 147593,
+  "105068": {
+    "problem_id": 105068,
     "added_cdl": [
       "Equation(ll_ab-ll_ad-ll_db)"
     ],
@@ -1027,10 +2004,37 @@
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147594": {
-    "problem_id": 147594,
+  "105069": {
+    "problem_id": 105069,
     "added_cdl": [],
     "goal_cdl": "Relation(SimilarBetweenTriangle(DEA,BCA))",
     "problem_answer": "SimilarBetweenTriangle(DEA,BCA)",
@@ -1044,780 +2048,69 @@
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,AD,DB)",
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "line_addition(1,AD,DB)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ]
+    }
   },
-  "147595": {
-    "problem_id": 147595,
+  "105070": {
+    "problem_id": 105070,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(AD))",
     "problem_answer": "5",
     "theorem_seqs": [
       "line_addition(1,AD,DB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "147596": {
-    "problem_id": 147596,
+  "105071": {
+    "problem_id": 105071,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(DB))",
     "problem_answer": "5",
     "theorem_seqs": [
       "line_addition(1,AD,DB)"
-    ]
-  },
-  "147597": {
-    "problem_id": 147597,
-    "added_cdl": [
-      "SimilarBetweenTriangle(EAD,CAB)",
-      "Equation(-ll_bc*rst_eadcab+ll_de)",
-      "Equation(ll_de-ll_ef-ll_fd)",
-      "Equation(ll_ab-ll_ad-ll_db)",
-      "Equation(-ll_ab+2*ll_fd)"
     ],
-    "goal_cdl": "Value(LengthOfLine(AB))",
-    "problem_answer": "10",
-    "theorem_seqs": [
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,AD,DB)"
+      ]
+    }
   },
-  "147598": {
-    "problem_id": 147598,
-    "added_cdl": [
-      "Equal(MeasureOfAngle(ADF),MeasureOfAngle(ABC))",
-      "Equation(-ll_bc*rst_eadcab+ll_de)",
-      "Equation(ll_de-ll_ef-ll_fd)",
-      "Equation(ll_ab-ll_ad-ll_db)",
-      "Equation(-ll_ab+2*ll_fd)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AB))",
-    "problem_answer": "10",
-    "theorem_seqs": [
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147599": {
-    "problem_id": 147599,
-    "added_cdl": [
-      "ParallelBetweenLine(DF,BC)",
-      "Equation(-ll_bc*rst_eadcab+ll_de)",
-      "Equation(ll_de-ll_ef-ll_fd)",
-      "Equation(ll_ab-ll_ad-ll_db)",
-      "Equation(-ll_ab+2*ll_fd)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AB))",
-    "problem_answer": "10",
-    "theorem_seqs": [
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147600": {
-    "problem_id": 147600,
-    "added_cdl": [
-      "Equal(MeasureOfAngle(ABF),MeasureOfAngle(BFD))",
-      "Equation(-ll_bc*rst_eadcab+ll_de)",
-      "Equation(ll_de-ll_ef-ll_fd)",
-      "Equation(ll_ab-ll_ad-ll_db)",
-      "Equation(-ll_ab+2*ll_fd)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AB))",
-    "problem_answer": "10",
-    "theorem_seqs": [
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147601": {
-    "problem_id": 147601,
-    "added_cdl": [
-      "Equation(-ll_bc*rst_eadcab+ll_de)",
-      "Equation(ll_de-ll_ef-ll_fd)",
-      "Equation(ll_ab-ll_ad-ll_db)",
-      "Equation(-ll_ab+2*ll_fd)",
-      "IsoscelesTriangle(DBF)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AB))",
-    "problem_answer": "10",
-    "theorem_seqs": [
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147602": {
-    "problem_id": 147602,
-    "added_cdl": [
-      "SimilarBetweenTriangle(EAD,CAB)",
-      "Equation(ll_de-ll_ef-ll_fd)",
-      "Equation(ll_ab-ll_ad-ll_db)",
-      "Equation(-ll_ab+2*ll_fd)",
-      "IsoscelesTriangle(DBF)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AB))",
-    "problem_answer": "10",
-    "theorem_seqs": [
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147603": {
-    "problem_id": 147603,
-    "added_cdl": [
-      "Equal(MeasureOfAngle(ADF),MeasureOfAngle(ABC))",
-      "Equation(ll_de-ll_ef-ll_fd)",
-      "Equation(ll_ab-ll_ad-ll_db)",
-      "Equation(-ll_ab+2*ll_fd)",
-      "IsoscelesTriangle(DBF)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AB))",
-    "problem_answer": "10",
-    "theorem_seqs": [
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147604": {
-    "problem_id": 147604,
-    "added_cdl": [
-      "ParallelBetweenLine(DF,BC)",
-      "Equation(ll_de-ll_ef-ll_fd)",
-      "Equation(ll_ab-ll_ad-ll_db)",
-      "Equation(-ll_ab+2*ll_fd)",
-      "IsoscelesTriangle(DBF)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AB))",
-    "problem_answer": "10",
-    "theorem_seqs": [
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147605": {
-    "problem_id": 147605,
-    "added_cdl": [
-      "Equal(MeasureOfAngle(ABF),MeasureOfAngle(BFD))",
-      "Equation(ll_de-ll_ef-ll_fd)",
-      "Equation(ll_ab-ll_ad-ll_db)",
-      "Equation(-ll_ab+2*ll_fd)",
-      "IsoscelesTriangle(DBF)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AB))",
-    "problem_answer": "10",
-    "theorem_seqs": [
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147606": {
-    "problem_id": 147606,
-    "added_cdl": [
-      "Equation(-ll_ab+2*ll_fd)",
-      "Equation(ll_de-ll_ef-ll_fd)",
-      "IsoscelesTriangle(DBF)",
-      "Equation(ll_ab-ll_ad-ll_db)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AB))",
-    "problem_answer": "10",
-    "theorem_seqs": [
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147607": {
-    "problem_id": 147607,
-    "added_cdl": [
-      "Equation(ll_de-ll_ef-ll_fd)",
-      "Equation(ll_ab-ll_ad-ll_db)",
-      "RightTriangle(BFA)",
-      "IsMedianOfTriangle(FD,FAB)",
-      "IsoscelesTriangle(DBF)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AB))",
-    "problem_answer": "10",
-    "theorem_seqs": [
-      "right_triangle_property_length_of_median(1,BFA,D)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147608": {
-    "problem_id": 147608,
-    "added_cdl": [
-      "RightTriangle(BFA)",
-      "IsMedianOfTriangle(FD,FAB)",
-      "IsoscelesTriangle(DBF)",
-      "Equation(ll_ab-ll_ad-ll_db)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AB))",
-    "problem_answer": "10",
-    "theorem_seqs": [
-      "line_addition(1,DF,FE)",
-      "right_triangle_property_length_of_median(1,BFA,D)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147609": {
-    "problem_id": 147609,
-    "added_cdl": [
-      "IsMedianOfTriangle(FD,FAB)",
-      "IsoscelesTriangle(DBF)",
-      "Equation(ll_ab-ll_ad-ll_db)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AB))",
-    "problem_answer": "10",
-    "theorem_seqs": [
-      "right_triangle_judgment_angle(1,BFA)",
-      "line_addition(1,DF,FE)",
-      "right_triangle_property_length_of_median(1,BFA,D)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147610": {
-    "problem_id": 147610,
-    "added_cdl": [
-      "IsoscelesTriangle(DBF)",
-      "Equation(ll_ab-ll_ad-ll_db)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AB))",
-    "problem_answer": "10",
-    "theorem_seqs": [
-      "median_of_triangle_judgment(1,FD,FAB)",
-      "right_triangle_judgment_angle(1,BFA)",
-      "line_addition(1,DF,FE)",
-      "right_triangle_property_length_of_median(1,BFA,D)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147611": {
-    "problem_id": 147611,
-    "added_cdl": [
-      "Equation(-ll_ab+2*ll_fd)",
-      "Equation(ll_ab-ll_ad-ll_db)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AB))",
-    "problem_answer": "10",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_line_equal(1,DBF)",
-      "median_of_triangle_judgment(1,FD,FAB)",
-      "right_triangle_judgment_angle(1,BFA)",
-      "line_addition(1,DF,FE)",
-      "right_triangle_property_length_of_median(1,BFA,D)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147612": {
-    "problem_id": 147612,
-    "added_cdl": [
-      "RightTriangle(BFA)",
-      "IsMedianOfTriangle(FD,FAB)",
-      "Equation(ll_ab-ll_ad-ll_db)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AB))",
-    "problem_answer": "10",
-    "theorem_seqs": [
-      "right_triangle_property_length_of_median(1,BFA,D)",
-      "isosceles_triangle_judgment_line_equal(1,DBF)",
-      "median_of_triangle_judgment(1,FD,FAB)",
-      "right_triangle_judgment_angle(1,BFA)",
-      "line_addition(1,DF,FE)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147613": {
-    "problem_id": 147613,
-    "added_cdl": [
-      "IsMedianOfTriangle(FD,FAB)",
-      "Equation(ll_ab-ll_ad-ll_db)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AB))",
-    "problem_answer": "10",
-    "theorem_seqs": [
-      "right_triangle_judgment_angle(1,BFA)",
-      "right_triangle_property_length_of_median(1,BFA,D)",
-      "isosceles_triangle_judgment_line_equal(1,DBF)",
-      "median_of_triangle_judgment(1,FD,FAB)",
-      "line_addition(1,DF,FE)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147614": {
-    "problem_id": 147614,
-    "added_cdl": [
-      "Equation(ll_ab-ll_ad-ll_db)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AB))",
-    "problem_answer": "10",
-    "theorem_seqs": [
-      "median_of_triangle_judgment(1,FD,FAB)",
-      "right_triangle_judgment_angle(1,BFA)",
-      "right_triangle_property_length_of_median(1,BFA,D)",
-      "isosceles_triangle_judgment_line_equal(1,DBF)",
-      "line_addition(1,DF,FE)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147615": {
-    "problem_id": 147615,
-    "added_cdl": [],
-    "goal_cdl": "Value(LengthOfLine(AB))",
-    "problem_answer": "10",
-    "theorem_seqs": [
-      "line_addition(1,AD,DB)",
-      "median_of_triangle_judgment(1,FD,FAB)",
-      "right_triangle_judgment_angle(1,BFA)",
-      "right_triangle_property_length_of_median(1,BFA,D)",
-      "isosceles_triangle_judgment_line_equal(1,DBF)",
-      "line_addition(1,DF,FE)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147616": {
-    "problem_id": 147616,
-    "added_cdl": [
-      "SimilarBetweenTriangle(EAD,CAB)",
-      "Equation(-ll_bc*rst_eadcab+ll_de)",
-      "Equation(ll_de-ll_ef-ll_fd)",
-      "Equation(ll_ab-ll_ad-ll_db)",
-      "Equation(-ll_ab+2*ll_fd)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(BC))",
-    "problem_answer": "16",
-    "theorem_seqs": [
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147617": {
-    "problem_id": 147617,
-    "added_cdl": [
-      "Equal(MeasureOfAngle(ADF),MeasureOfAngle(ABC))",
-      "Equation(-ll_bc*rst_eadcab+ll_de)",
-      "Equation(ll_de-ll_ef-ll_fd)",
-      "Equation(ll_ab-ll_ad-ll_db)",
-      "Equation(-ll_ab+2*ll_fd)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(BC))",
-    "problem_answer": "16",
-    "theorem_seqs": [
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147618": {
-    "problem_id": 147618,
-    "added_cdl": [
-      "ParallelBetweenLine(DF,BC)",
-      "Equation(-ll_bc*rst_eadcab+ll_de)",
-      "Equation(ll_de-ll_ef-ll_fd)",
-      "Equation(ll_ab-ll_ad-ll_db)",
-      "Equation(-ll_ab+2*ll_fd)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(BC))",
-    "problem_answer": "16",
-    "theorem_seqs": [
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147619": {
-    "problem_id": 147619,
-    "added_cdl": [
-      "Equal(MeasureOfAngle(ABF),MeasureOfAngle(BFD))",
-      "Equation(-ll_bc*rst_eadcab+ll_de)",
-      "Equation(ll_de-ll_ef-ll_fd)",
-      "Equation(ll_ab-ll_ad-ll_db)",
-      "Equation(-ll_ab+2*ll_fd)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(BC))",
-    "problem_answer": "16",
-    "theorem_seqs": [
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147620": {
-    "problem_id": 147620,
-    "added_cdl": [
-      "Equation(-ll_bc*rst_eadcab+ll_de)",
-      "Equation(ll_de-ll_ef-ll_fd)",
-      "Equation(ll_ab-ll_ad-ll_db)",
-      "Equation(-ll_ab+2*ll_fd)",
-      "IsoscelesTriangle(DBF)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(BC))",
-    "problem_answer": "16",
-    "theorem_seqs": [
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147621": {
-    "problem_id": 147621,
-    "added_cdl": [
-      "SimilarBetweenTriangle(EAD,CAB)",
-      "Equation(ll_de-ll_ef-ll_fd)",
-      "Equation(ll_ab-ll_ad-ll_db)",
-      "Equation(-ll_ab+2*ll_fd)",
-      "IsoscelesTriangle(DBF)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(BC))",
-    "problem_answer": "16",
-    "theorem_seqs": [
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147622": {
-    "problem_id": 147622,
-    "added_cdl": [
-      "Equal(MeasureOfAngle(ADF),MeasureOfAngle(ABC))",
-      "Equation(ll_de-ll_ef-ll_fd)",
-      "Equation(ll_ab-ll_ad-ll_db)",
-      "Equation(-ll_ab+2*ll_fd)",
-      "IsoscelesTriangle(DBF)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(BC))",
-    "problem_answer": "16",
-    "theorem_seqs": [
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147623": {
-    "problem_id": 147623,
-    "added_cdl": [
-      "ParallelBetweenLine(DF,BC)",
-      "Equation(ll_de-ll_ef-ll_fd)",
-      "Equation(ll_ab-ll_ad-ll_db)",
-      "Equation(-ll_ab+2*ll_fd)",
-      "IsoscelesTriangle(DBF)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(BC))",
-    "problem_answer": "16",
-    "theorem_seqs": [
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147624": {
-    "problem_id": 147624,
-    "added_cdl": [
-      "Equal(MeasureOfAngle(ABF),MeasureOfAngle(BFD))",
-      "Equation(ll_de-ll_ef-ll_fd)",
-      "Equation(ll_ab-ll_ad-ll_db)",
-      "Equation(-ll_ab+2*ll_fd)",
-      "IsoscelesTriangle(DBF)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(BC))",
-    "problem_answer": "16",
-    "theorem_seqs": [
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147625": {
-    "problem_id": 147625,
-    "added_cdl": [
-      "Equation(-ll_ab+2*ll_fd)",
-      "Equation(ll_de-ll_ef-ll_fd)",
-      "IsoscelesTriangle(DBF)",
-      "Equation(ll_ab-ll_ad-ll_db)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(BC))",
-    "problem_answer": "16",
-    "theorem_seqs": [
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147626": {
-    "problem_id": 147626,
-    "added_cdl": [
-      "Equation(ll_de-ll_ef-ll_fd)",
-      "Equation(ll_ab-ll_ad-ll_db)",
-      "RightTriangle(BFA)",
-      "IsMedianOfTriangle(FD,FAB)",
-      "IsoscelesTriangle(DBF)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(BC))",
-    "problem_answer": "16",
-    "theorem_seqs": [
-      "right_triangle_property_length_of_median(1,BFA,D)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147627": {
-    "problem_id": 147627,
-    "added_cdl": [
-      "RightTriangle(BFA)",
-      "IsMedianOfTriangle(FD,FAB)",
-      "IsoscelesTriangle(DBF)",
-      "Equation(ll_ab-ll_ad-ll_db)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(BC))",
-    "problem_answer": "16",
-    "theorem_seqs": [
-      "line_addition(1,DF,FE)",
-      "right_triangle_property_length_of_median(1,BFA,D)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147628": {
-    "problem_id": 147628,
-    "added_cdl": [
-      "IsMedianOfTriangle(FD,FAB)",
-      "IsoscelesTriangle(DBF)",
-      "Equation(ll_ab-ll_ad-ll_db)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(BC))",
-    "problem_answer": "16",
-    "theorem_seqs": [
-      "right_triangle_judgment_angle(1,BFA)",
-      "line_addition(1,DF,FE)",
-      "right_triangle_property_length_of_median(1,BFA,D)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147629": {
-    "problem_id": 147629,
-    "added_cdl": [
-      "IsoscelesTriangle(DBF)",
-      "Equation(ll_ab-ll_ad-ll_db)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(BC))",
-    "problem_answer": "16",
-    "theorem_seqs": [
-      "median_of_triangle_judgment(1,FD,FAB)",
-      "right_triangle_judgment_angle(1,BFA)",
-      "line_addition(1,DF,FE)",
-      "right_triangle_property_length_of_median(1,BFA,D)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147630": {
-    "problem_id": 147630,
-    "added_cdl": [
-      "Equation(-ll_ab+2*ll_fd)",
-      "Equation(ll_ab-ll_ad-ll_db)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(BC))",
-    "problem_answer": "16",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_line_equal(1,DBF)",
-      "median_of_triangle_judgment(1,FD,FAB)",
-      "right_triangle_judgment_angle(1,BFA)",
-      "line_addition(1,DF,FE)",
-      "right_triangle_property_length_of_median(1,BFA,D)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147631": {
-    "problem_id": 147631,
-    "added_cdl": [
-      "RightTriangle(BFA)",
-      "IsMedianOfTriangle(FD,FAB)",
-      "Equation(ll_ab-ll_ad-ll_db)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(BC))",
-    "problem_answer": "16",
-    "theorem_seqs": [
-      "right_triangle_property_length_of_median(1,BFA,D)",
-      "isosceles_triangle_judgment_line_equal(1,DBF)",
-      "median_of_triangle_judgment(1,FD,FAB)",
-      "right_triangle_judgment_angle(1,BFA)",
-      "line_addition(1,DF,FE)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147632": {
-    "problem_id": 147632,
-    "added_cdl": [
-      "IsMedianOfTriangle(FD,FAB)",
-      "Equation(ll_ab-ll_ad-ll_db)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(BC))",
-    "problem_answer": "16",
-    "theorem_seqs": [
-      "right_triangle_judgment_angle(1,BFA)",
-      "right_triangle_property_length_of_median(1,BFA,D)",
-      "isosceles_triangle_judgment_line_equal(1,DBF)",
-      "median_of_triangle_judgment(1,FD,FAB)",
-      "line_addition(1,DF,FE)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147633": {
-    "problem_id": 147633,
-    "added_cdl": [
-      "Equation(ll_ab-ll_ad-ll_db)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(BC))",
-    "problem_answer": "16",
-    "theorem_seqs": [
-      "median_of_triangle_judgment(1,FD,FAB)",
-      "right_triangle_judgment_angle(1,BFA)",
-      "right_triangle_property_length_of_median(1,BFA,D)",
-      "isosceles_triangle_judgment_line_equal(1,DBF)",
-      "line_addition(1,DF,FE)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147634": {
-    "problem_id": 147634,
-    "added_cdl": [],
-    "goal_cdl": "Value(LengthOfLine(BC))",
-    "problem_answer": "16",
-    "theorem_seqs": [
-      "line_addition(1,AD,DB)",
-      "median_of_triangle_judgment(1,FD,FAB)",
-      "right_triangle_judgment_angle(1,BFA)",
-      "right_triangle_property_length_of_median(1,BFA,D)",
-      "isosceles_triangle_judgment_line_equal(1,DBF)",
-      "line_addition(1,DF,FE)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
-      "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
-  },
-  "147635": {
-    "problem_id": 147635,
+  "105072": {
+    "problem_id": 105072,
     "added_cdl": [
       "SimilarBetweenTriangle(EAD,CAB)",
       "Equation(-ll_bc*rst_eadcab+ll_de)",
@@ -1829,10 +2122,15 @@
     "problem_answer": "3",
     "theorem_seqs": [
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)"
+      ]
+    }
   },
-  "147636": {
-    "problem_id": 147636,
+  "105073": {
+    "problem_id": 105073,
     "added_cdl": [
       "Equal(MeasureOfAngle(ADF),MeasureOfAngle(ABC))",
       "Equation(-ll_bc*rst_eadcab+ll_de)",
@@ -1845,10 +2143,18 @@
     "theorem_seqs": [
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)"
+      ]
+    }
   },
-  "147637": {
-    "problem_id": 147637,
+  "105074": {
+    "problem_id": 105074,
     "added_cdl": [
       "ParallelBetweenLine(DF,BC)",
       "Equation(-ll_bc*rst_eadcab+ll_de)",
@@ -1862,10 +2168,21 @@
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)"
+      ]
+    }
   },
-  "147638": {
-    "problem_id": 147638,
+  "105075": {
+    "problem_id": 105075,
     "added_cdl": [
       "Equal(MeasureOfAngle(ABF),MeasureOfAngle(BFD))",
       "Equation(-ll_bc*rst_eadcab+ll_de)",
@@ -1880,10 +2197,24 @@
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)"
+      ]
+    }
   },
-  "147639": {
-    "problem_id": 147639,
+  "105076": {
+    "problem_id": 105076,
     "added_cdl": [
       "Equation(-ll_bc*rst_eadcab+ll_de)",
       "Equation(ll_de-ll_ef-ll_fd)",
@@ -1899,10 +2230,27 @@
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)"
+      ]
+    }
   },
-  "147640": {
-    "problem_id": 147640,
+  "105077": {
+    "problem_id": 105077,
     "added_cdl": [
       "SimilarBetweenTriangle(EAD,CAB)",
       "Equation(ll_de-ll_ef-ll_fd)",
@@ -1914,15 +2262,17 @@
     "problem_answer": "3",
     "theorem_seqs": [
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
-      "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "similar_triangle_property_line_ratio(1,ADE,ABC)",
+        "similar_triangle_property_line_ratio(1,EAD,CAB)"
+      ]
+    }
   },
-  "147641": {
-    "problem_id": 147641,
+  "105078": {
+    "problem_id": 105078,
     "added_cdl": [
       "Equal(MeasureOfAngle(ADF),MeasureOfAngle(ABC))",
       "Equation(ll_de-ll_ef-ll_fd)",
@@ -1935,14 +2285,20 @@
     "theorem_seqs": [
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
-      "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)",
+        "similar_triangle_property_line_ratio(1,ADE,ABC)"
+      ]
+    }
   },
-  "147642": {
-    "problem_id": 147642,
+  "105079": {
+    "problem_id": 105079,
     "added_cdl": [
       "ParallelBetweenLine(DF,BC)",
       "Equation(ll_de-ll_ef-ll_fd)",
@@ -1956,13 +2312,23 @@
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
-      "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)",
+        "similar_triangle_property_line_ratio(1,ADE,ABC)"
+      ]
+    }
   },
-  "147643": {
-    "problem_id": 147643,
+  "105080": {
+    "problem_id": 105080,
     "added_cdl": [
       "Equal(MeasureOfAngle(ABF),MeasureOfAngle(BFD))",
       "Equation(ll_de-ll_ef-ll_fd)",
@@ -1977,12 +2343,26 @@
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
-      "isosceles_triangle_property_angle_equal(1,DBF)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)",
+        "similar_triangle_property_line_ratio(1,ADE,ABC)"
+      ]
+    }
   },
-  "147644": {
-    "problem_id": 147644,
+  "105081": {
+    "problem_id": 105081,
     "added_cdl": [
       "Equation(-ll_ab+2*ll_fd)",
       "Equation(ll_de-ll_ef-ll_fd)",
@@ -1998,10 +2378,28 @@
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)",
+        "similar_triangle_property_line_ratio(1,ADE,ABC)"
+      ]
+    }
   },
-  "147645": {
-    "problem_id": 147645,
+  "105082": {
+    "problem_id": 105082,
     "added_cdl": [
       "Equation(ll_de-ll_ef-ll_fd)",
       "Equation(ll_ab-ll_ad-ll_db)",
@@ -2012,17 +2410,34 @@
     "goal_cdl": "Value(LengthOfLine(EF))",
     "problem_answer": "3",
     "theorem_seqs": [
-      "right_triangle_property_length_of_median(1,BFA,D)",
       "isosceles_triangle_property_angle_equal(1,DBF)",
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)",
+        "similar_triangle_property_line_ratio(1,ADE,ABC)"
+      ]
+    }
   },
-  "147646": {
-    "problem_id": 147646,
+  "105083": {
+    "problem_id": 105083,
     "added_cdl": [
       "RightTriangle(BFA)",
       "IsMedianOfTriangle(FD,FAB)",
@@ -2033,17 +2448,35 @@
     "problem_answer": "3",
     "theorem_seqs": [
       "line_addition(1,DF,FE)",
-      "right_triangle_property_length_of_median(1,BFA,D)",
       "isosceles_triangle_property_angle_equal(1,DBF)",
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,DF,FE)",
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)",
+        "similar_triangle_property_line_ratio(1,ADE,ABC)"
+      ]
+    }
   },
-  "147647": {
-    "problem_id": 147647,
+  "105084": {
+    "problem_id": 105084,
     "added_cdl": [
       "IsMedianOfTriangle(FD,FAB)",
       "IsoscelesTriangle(DBF)",
@@ -2052,19 +2485,36 @@
     "goal_cdl": "Value(LengthOfLine(EF))",
     "problem_answer": "3",
     "theorem_seqs": [
-      "right_triangle_judgment_angle(1,BFA)",
       "line_addition(1,DF,FE)",
-      "right_triangle_property_length_of_median(1,BFA,D)",
       "isosceles_triangle_property_angle_equal(1,DBF)",
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,DF,FE)",
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)",
+        "similar_triangle_property_line_ratio(1,ADE,ABC)"
+      ]
+    }
   },
-  "147648": {
-    "problem_id": 147648,
+  "105085": {
+    "problem_id": 105085,
     "added_cdl": [
       "IsoscelesTriangle(DBF)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -2072,20 +2522,36 @@
     "goal_cdl": "Value(LengthOfLine(EF))",
     "problem_answer": "3",
     "theorem_seqs": [
-      "median_of_triangle_judgment(1,FD,FAB)",
-      "right_triangle_judgment_angle(1,BFA)",
       "line_addition(1,DF,FE)",
-      "right_triangle_property_length_of_median(1,BFA,D)",
       "isosceles_triangle_property_angle_equal(1,DBF)",
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,DF,FE)",
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)",
+        "similar_triangle_property_line_ratio(1,ADE,ABC)"
+      ]
+    }
   },
-  "147649": {
-    "problem_id": 147649,
+  "105086": {
+    "problem_id": 105086,
     "added_cdl": [
       "Equation(-ll_ab+2*ll_fd)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -2094,20 +2560,39 @@
     "problem_answer": "3",
     "theorem_seqs": [
       "isosceles_triangle_judgment_line_equal(1,DBF)",
-      "median_of_triangle_judgment(1,FD,FAB)",
-      "right_triangle_judgment_angle(1,BFA)",
       "line_addition(1,DF,FE)",
-      "right_triangle_property_length_of_median(1,BFA,D)",
       "isosceles_triangle_property_angle_equal(1,DBF)",
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)",
+        "line_addition(1,DF,FE)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)",
+        "similar_triangle_property_line_ratio(1,ADE,ABC)"
+      ]
+    }
   },
-  "147650": {
-    "problem_id": 147650,
+  "105087": {
+    "problem_id": 105087,
     "added_cdl": [
       "RightTriangle(BFA)",
       "IsMedianOfTriangle(FD,FAB)",
@@ -2118,8 +2603,6 @@
     "theorem_seqs": [
       "right_triangle_property_length_of_median(1,BFA,D)",
       "isosceles_triangle_judgment_line_equal(1,DBF)",
-      "median_of_triangle_judgment(1,FD,FAB)",
-      "right_triangle_judgment_angle(1,BFA)",
       "line_addition(1,DF,FE)",
       "isosceles_triangle_property_angle_equal(1,DBF)",
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
@@ -2127,10 +2610,35 @@
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_length_of_median(1,BFA,D)",
+        "line_addition(1,DF,FE)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)",
+        "similar_triangle_property_line_ratio(1,ADE,ABC)"
+      ]
+    }
   },
-  "147651": {
-    "problem_id": 147651,
+  "105088": {
+    "problem_id": 105088,
     "added_cdl": [
       "IsMedianOfTriangle(FD,FAB)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -2141,7 +2649,6 @@
       "right_triangle_judgment_angle(1,BFA)",
       "right_triangle_property_length_of_median(1,BFA,D)",
       "isosceles_triangle_judgment_line_equal(1,DBF)",
-      "median_of_triangle_judgment(1,FD,FAB)",
       "line_addition(1,DF,FE)",
       "isosceles_triangle_property_angle_equal(1,DBF)",
       "parallel_judgment_alternate_interior_angle(2,DF,BC)",
@@ -2149,10 +2656,38 @@
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BFA)",
+        "line_addition(1,DF,FE)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)",
+        "similar_triangle_property_line_ratio(1,ADE,ABC)"
+      ]
+    }
   },
-  "147652": {
-    "problem_id": 147652,
+  "105089": {
+    "problem_id": 105089,
     "added_cdl": [
       "Equation(ll_ab-ll_ad-ll_db)"
     ],
@@ -2170,10 +2705,42 @@
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)",
+        "line_addition(1,DF,FE)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)",
+        "similar_triangle_property_line_ratio(1,ADE,ABC)"
+      ]
+    }
   },
-  "147653": {
-    "problem_id": 147653,
+  "105090": {
+    "problem_id": 105090,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(EF))",
     "problem_answer": "3",
@@ -2190,10 +2757,46 @@
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,AD,DB)",
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)",
+        "line_addition(1,DF,FE)"
+      ],
+      "line_addition(1,AD,DB)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)",
+        "similar_triangle_property_line_ratio(1,ADE,ABC)"
+      ]
+    }
   },
-  "147654": {
-    "problem_id": 147654,
+  "105091": {
+    "problem_id": 105091,
     "added_cdl": [
       "RightTriangle(BFA)",
       "IsMedianOfTriangle(FD,FAB)"
@@ -2202,10 +2805,15 @@
     "problem_answer": "5",
     "theorem_seqs": [
       "right_triangle_property_length_of_median(1,BFA,D)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ]
+    }
   },
-  "147655": {
-    "problem_id": 147655,
+  "105092": {
+    "problem_id": 105092,
     "added_cdl": [
       "IsMedianOfTriangle(FD,FAB)"
     ],
@@ -2214,10 +2822,18 @@
     "theorem_seqs": [
       "right_triangle_judgment_angle(1,BFA)",
       "right_triangle_property_length_of_median(1,BFA,D)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ]
+    }
   },
-  "147656": {
-    "problem_id": 147656,
+  "105093": {
+    "problem_id": 105093,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(FD))",
     "problem_answer": "5",
@@ -2225,10 +2841,22 @@
       "median_of_triangle_judgment(1,FD,FAB)",
       "right_triangle_judgment_angle(1,BFA)",
       "right_triangle_property_length_of_median(1,BFA,D)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ]
+    }
   },
-  "147657": {
-    "problem_id": 147657,
+  "105094": {
+    "problem_id": 105094,
     "added_cdl": [
       "SimilarBetweenTriangle(EAD,CAB)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -2237,10 +2865,15 @@
     "problem_answer": "1/2",
     "theorem_seqs": [
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)"
+      ]
+    }
   },
-  "147658": {
-    "problem_id": 147658,
+  "105095": {
+    "problem_id": 105095,
     "added_cdl": [
       "Equal(MeasureOfAngle(ADF),MeasureOfAngle(ABC))",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -2250,10 +2883,18 @@
     "theorem_seqs": [
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)"
+      ]
+    }
   },
-  "147659": {
-    "problem_id": 147659,
+  "105096": {
+    "problem_id": 105096,
     "added_cdl": [
       "ParallelBetweenLine(DF,BC)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -2264,10 +2905,21 @@
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)"
+      ]
+    }
   },
-  "147660": {
-    "problem_id": 147660,
+  "105097": {
+    "problem_id": 105097,
     "added_cdl": [
       "Equal(MeasureOfAngle(ABF),MeasureOfAngle(BFD))",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -2279,10 +2931,24 @@
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)"
+      ]
+    }
   },
-  "147661": {
-    "problem_id": 147661,
+  "105098": {
+    "problem_id": 105098,
     "added_cdl": [
       "IsoscelesTriangle(DBF)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -2295,10 +2961,27 @@
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)"
+      ]
+    }
   },
-  "147662": {
-    "problem_id": 147662,
+  "105099": {
+    "problem_id": 105099,
     "added_cdl": [
       "Equation(-ll_ab+2*ll_fd)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -2312,10 +2995,30 @@
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)"
+      ]
+    }
   },
-  "147663": {
-    "problem_id": 147663,
+  "105100": {
+    "problem_id": 105100,
     "added_cdl": [
       "RightTriangle(BFA)",
       "IsMedianOfTriangle(FD,FAB)",
@@ -2331,10 +3034,33 @@
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)"
+      ]
+    }
   },
-  "147664": {
-    "problem_id": 147664,
+  "105101": {
+    "problem_id": 105101,
     "added_cdl": [
       "IsMedianOfTriangle(FD,FAB)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -2350,10 +3076,36 @@
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)"
+      ]
+    }
   },
-  "147665": {
-    "problem_id": 147665,
+  "105102": {
+    "problem_id": 105102,
     "added_cdl": [
       "Equation(ll_ab-ll_ad-ll_db)"
     ],
@@ -2369,10 +3121,40 @@
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)"
+      ]
+    }
   },
-  "147666": {
-    "problem_id": 147666,
+  "105103": {
+    "problem_id": 105103,
     "added_cdl": [],
     "goal_cdl": "Value(RatioOfSimilarTriangle(EADCAB))",
     "problem_answer": "1/2",
@@ -2387,10 +3169,44 @@
       "parallel_property_corresponding_angle(1,DF,BC,A)",
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,AD,DB)",
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "line_addition(1,AD,DB)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)"
+      ]
+    }
   },
-  "147667": {
-    "problem_id": 147667,
+  "105104": {
+    "problem_id": 105104,
     "added_cdl": [
       "Equation(-ll_bc*rst_eadcab+ll_de)",
       "SimilarBetweenTriangle(EAD,CAB)",
@@ -2400,10 +3216,15 @@
     "problem_answer": "8",
     "theorem_seqs": [
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)"
+      ]
+    }
   },
-  "147668": {
-    "problem_id": 147668,
+  "105105": {
+    "problem_id": 105105,
     "added_cdl": [
       "SimilarBetweenTriangle(EAD,CAB)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -2413,10 +3234,16 @@
     "theorem_seqs": [
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "similar_triangle_property_line_ratio(1,ADE,ABC)",
+        "similar_triangle_property_line_ratio(1,EAD,CAB)"
+      ]
+    }
   },
-  "147669": {
-    "problem_id": 147669,
+  "105106": {
+    "problem_id": 105106,
     "added_cdl": [
       "Equal(MeasureOfAngle(ADF),MeasureOfAngle(ABC))",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -2427,10 +3254,19 @@
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)",
+        "similar_triangle_property_line_ratio(1,ADE,ABC)"
+      ]
+    }
   },
-  "147670": {
-    "problem_id": 147670,
+  "105107": {
+    "problem_id": 105107,
     "added_cdl": [
       "ParallelBetweenLine(DF,BC)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -2442,10 +3278,22 @@
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)",
+        "similar_triangle_property_line_ratio(1,ADE,ABC)"
+      ]
+    }
   },
-  "147671": {
-    "problem_id": 147671,
+  "105108": {
+    "problem_id": 105108,
     "added_cdl": [
       "Equal(MeasureOfAngle(ABF),MeasureOfAngle(BFD))",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -2458,10 +3306,25 @@
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)",
+        "similar_triangle_property_line_ratio(1,ADE,ABC)"
+      ]
+    }
   },
-  "147672": {
-    "problem_id": 147672,
+  "105109": {
+    "problem_id": 105109,
     "added_cdl": [
       "IsoscelesTriangle(DBF)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -2475,10 +3338,28 @@
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)",
+        "similar_triangle_property_line_ratio(1,ADE,ABC)"
+      ]
+    }
   },
-  "147673": {
-    "problem_id": 147673,
+  "105110": {
+    "problem_id": 105110,
     "added_cdl": [
       "Equation(-ll_ab+2*ll_fd)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -2493,10 +3374,31 @@
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)",
+        "similar_triangle_property_line_ratio(1,ADE,ABC)"
+      ]
+    }
   },
-  "147674": {
-    "problem_id": 147674,
+  "105111": {
+    "problem_id": 105111,
     "added_cdl": [
       "RightTriangle(BFA)",
       "IsMedianOfTriangle(FD,FAB)",
@@ -2513,10 +3415,34 @@
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)",
+        "similar_triangle_property_line_ratio(1,ADE,ABC)"
+      ]
+    }
   },
-  "147675": {
-    "problem_id": 147675,
+  "105112": {
+    "problem_id": 105112,
     "added_cdl": [
       "IsMedianOfTriangle(FD,FAB)",
       "Equation(ll_ab-ll_ad-ll_db)"
@@ -2533,10 +3459,37 @@
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)",
+        "similar_triangle_property_line_ratio(1,ADE,ABC)"
+      ]
+    }
   },
-  "147676": {
-    "problem_id": 147676,
+  "105113": {
+    "problem_id": 105113,
     "added_cdl": [
       "Equation(ll_ab-ll_ad-ll_db)"
     ],
@@ -2553,10 +3506,41 @@
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)",
+        "similar_triangle_property_line_ratio(1,ADE,ABC)"
+      ]
+    }
   },
-  "147677": {
-    "problem_id": 147677,
+  "105114": {
+    "problem_id": 105114,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(DE))",
     "problem_answer": "8",
@@ -2572,6 +3556,41 @@
       "similar_triangle_judgment_aa(1,EAD,CAB)",
       "similar_triangle_property_line_ratio(1,ADE,ABC)",
       "similar_triangle_property_line_ratio(1,EAD,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "line_addition(1,AD,DB)",
+        "median_of_triangle_judgment(1,FD,FAB)",
+        "right_triangle_judgment_angle(1,BFA)"
+      ],
+      "line_addition(1,AD,DB)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "median_of_triangle_judgment(1,FD,FAB)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_judgment_angle(1,BFA)": [
+        "right_triangle_property_length_of_median(1,BFA,D)"
+      ],
+      "right_triangle_property_length_of_median(1,BFA,D)": [
+        "isosceles_triangle_judgment_line_equal(1,DBF)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,DBF)": [
+        "isosceles_triangle_property_angle_equal(1,DBF)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,DBF)": [
+        "parallel_judgment_alternate_interior_angle(2,DF,BC)"
+      ],
+      "parallel_judgment_alternate_interior_angle(2,DF,BC)": [
+        "parallel_property_corresponding_angle(1,DF,BC,A)"
+      ],
+      "parallel_property_corresponding_angle(1,DF,BC,A)": [
+        "similar_triangle_judgment_aa(1,EAD,CAB)"
+      ],
+      "similar_triangle_judgment_aa(1,EAD,CAB)": [
+        "similar_triangle_property_line_ratio(1,EAD,CAB)",
+        "similar_triangle_property_line_ratio(1,ADE,ABC)"
+      ]
+    }
   }
 }

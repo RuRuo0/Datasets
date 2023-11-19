@@ -1,15 +1,18 @@
 {
-  "112863": {
-    "problem_id": 112863,
+  "80902": {
+    "problem_id": 80902,
     "added_cdl": [],
     "goal_cdl": "Equal(LengthOfLine(PA),LengthOfLine(PB))",
     "problem_answer": "0",
     "theorem_seqs": [
       "tangent_of_circle_property_length_equal(1,PA,PB,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "112864": {
-    "problem_id": 112864,
+  "80903": {
+    "problem_id": 80903,
     "added_cdl": [
       "Equal(LengthOfLine(PA),LengthOfLine(PB))"
     ],
@@ -17,20 +20,31 @@
     "problem_answer": "IsoscelesTriangle(PAB)",
     "theorem_seqs": [
       "isosceles_triangle_judgment_line_equal(1,PAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "112865": {
-    "problem_id": 112865,
+  "80904": {
+    "problem_id": 80904,
     "added_cdl": [],
     "goal_cdl": "Relation(IsoscelesTriangle(PAB))",
     "problem_answer": "IsoscelesTriangle(PAB)",
     "theorem_seqs": [
       "tangent_of_circle_property_length_equal(1,PA,PB,O)",
       "isosceles_triangle_judgment_line_equal(1,PAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "tangent_of_circle_property_length_equal(1,PA,PB,O)"
+      ],
+      "tangent_of_circle_property_length_equal(1,PA,PB,O)": [
+        "isosceles_triangle_judgment_line_equal(1,PAB)"
+      ]
+    }
   },
-  "112866": {
-    "problem_id": 112866,
+  "80905": {
+    "problem_id": 80905,
     "added_cdl": [
       "IsoscelesTriangle(PAB)"
     ],
@@ -38,10 +52,13 @@
     "problem_answer": "0",
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,PAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "112867": {
-    "problem_id": 112867,
+  "80906": {
+    "problem_id": 80906,
     "added_cdl": [
       "Equal(LengthOfLine(PA),LengthOfLine(PB))"
     ],
@@ -50,10 +67,18 @@
     "theorem_seqs": [
       "isosceles_triangle_judgment_line_equal(1,PAB)",
       "isosceles_triangle_property_angle_equal(1,PAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,PAB)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,PAB)": [
+        "isosceles_triangle_property_angle_equal(1,PAB)"
+      ]
+    }
   },
-  "112868": {
-    "problem_id": 112868,
+  "80907": {
+    "problem_id": 80907,
     "added_cdl": [],
     "goal_cdl": "Equal(MeasureOfAngle(PAB),MeasureOfAngle(ABP))",
     "problem_answer": "0",
@@ -61,10 +86,21 @@
       "tangent_of_circle_property_length_equal(1,PA,PB,O)",
       "isosceles_triangle_judgment_line_equal(1,PAB)",
       "isosceles_triangle_property_angle_equal(1,PAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "tangent_of_circle_property_length_equal(1,PA,PB,O)"
+      ],
+      "tangent_of_circle_property_length_equal(1,PA,PB,O)": [
+        "isosceles_triangle_judgment_line_equal(1,PAB)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,PAB)": [
+        "isosceles_triangle_property_angle_equal(1,PAB)"
+      ]
+    }
   },
-  "112869": {
-    "problem_id": 112869,
+  "80908": {
+    "problem_id": 80908,
     "added_cdl": [
       "Equation(ma_abp+ma_bpa+ma_pab-180)",
       "Equal(MeasureOfAngle(PAB),MeasureOfAngle(ABP))"
@@ -73,10 +109,15 @@
     "problem_answer": "IsoscelesTriangle(ABP)",
     "theorem_seqs": [
       "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ]
+    }
   },
-  "112870": {
-    "problem_id": 112870,
+  "80909": {
+    "problem_id": 80909,
     "added_cdl": [
       "Equal(MeasureOfAngle(PAB),MeasureOfAngle(ABP))"
     ],
@@ -85,10 +126,18 @@
     "theorem_seqs": [
       "triangle_property_angle_sum(1,BPA)",
       "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,BPA)"
+      ],
+      "triangle_property_angle_sum(1,BPA)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ]
+    }
   },
-  "112871": {
-    "problem_id": 112871,
+  "80910": {
+    "problem_id": 80910,
     "added_cdl": [
       "IsoscelesTriangle(PAB)"
     ],
@@ -98,10 +147,22 @@
       "isosceles_triangle_property_angle_equal(1,PAB)",
       "triangle_property_angle_sum(1,BPA)",
       "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,PAB)",
+        "triangle_property_angle_sum(1,BPA)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,PAB)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ],
+      "triangle_property_angle_sum(1,BPA)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ]
+    }
   },
-  "112872": {
-    "problem_id": 112872,
+  "80911": {
+    "problem_id": 80911,
     "added_cdl": [
       "Equal(LengthOfLine(PA),LengthOfLine(PB))"
     ],
@@ -112,10 +173,25 @@
       "isosceles_triangle_property_angle_equal(1,PAB)",
       "triangle_property_angle_sum(1,BPA)",
       "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,PAB)",
+        "triangle_property_angle_sum(1,BPA)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,PAB)": [
+        "isosceles_triangle_property_angle_equal(1,PAB)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,PAB)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ],
+      "triangle_property_angle_sum(1,BPA)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ]
+    }
   },
-  "112873": {
-    "problem_id": 112873,
+  "80912": {
+    "problem_id": 80912,
     "added_cdl": [],
     "goal_cdl": "Relation(IsoscelesTriangle(ABP))",
     "problem_answer": "IsoscelesTriangle(ABP)",
@@ -125,10 +201,28 @@
       "isosceles_triangle_property_angle_equal(1,PAB)",
       "triangle_property_angle_sum(1,BPA)",
       "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "tangent_of_circle_property_length_equal(1,PA,PB,O)",
+        "triangle_property_angle_sum(1,BPA)"
+      ],
+      "tangent_of_circle_property_length_equal(1,PA,PB,O)": [
+        "isosceles_triangle_judgment_line_equal(1,PAB)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,PAB)": [
+        "isosceles_triangle_property_angle_equal(1,PAB)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,PAB)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ],
+      "triangle_property_angle_sum(1,BPA)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ]
+    }
   },
-  "112874": {
-    "problem_id": 112874,
+  "80913": {
+    "problem_id": 80913,
     "added_cdl": [
       "Equation(ma_abp+ma_bpa+ma_pab-180)",
       "Equal(MeasureOfAngle(PAB),MeasureOfAngle(ABP))"
@@ -137,10 +231,15 @@
     "problem_answer": "0",
     "theorem_seqs": [
       "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ]
+    }
   },
-  "112875": {
-    "problem_id": 112875,
+  "80914": {
+    "problem_id": 80914,
     "added_cdl": [
       "Equal(MeasureOfAngle(PAB),MeasureOfAngle(ABP))"
     ],
@@ -149,10 +248,18 @@
     "theorem_seqs": [
       "triangle_property_angle_sum(1,BPA)",
       "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,BPA)"
+      ],
+      "triangle_property_angle_sum(1,BPA)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ]
+    }
   },
-  "112876": {
-    "problem_id": 112876,
+  "80915": {
+    "problem_id": 80915,
     "added_cdl": [
       "IsoscelesTriangle(PAB)"
     ],
@@ -162,10 +269,22 @@
       "isosceles_triangle_property_angle_equal(1,PAB)",
       "triangle_property_angle_sum(1,BPA)",
       "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,PAB)",
+        "triangle_property_angle_sum(1,BPA)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,PAB)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ],
+      "triangle_property_angle_sum(1,BPA)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ]
+    }
   },
-  "112877": {
-    "problem_id": 112877,
+  "80916": {
+    "problem_id": 80916,
     "added_cdl": [
       "Equal(LengthOfLine(PA),LengthOfLine(PB))"
     ],
@@ -176,10 +295,25 @@
       "isosceles_triangle_property_angle_equal(1,PAB)",
       "triangle_property_angle_sum(1,BPA)",
       "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,PAB)",
+        "triangle_property_angle_sum(1,BPA)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,PAB)": [
+        "isosceles_triangle_property_angle_equal(1,PAB)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,PAB)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ],
+      "triangle_property_angle_sum(1,BPA)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ]
+    }
   },
-  "112878": {
-    "problem_id": 112878,
+  "80917": {
+    "problem_id": 80917,
     "added_cdl": [],
     "goal_cdl": "Equal(LengthOfLine(AB),LengthOfLine(PA))",
     "problem_answer": "0",
@@ -189,172 +323,28 @@
       "isosceles_triangle_property_angle_equal(1,PAB)",
       "triangle_property_angle_sum(1,BPA)",
       "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
-  },
-  "112879": {
-    "problem_id": 112879,
-    "added_cdl": [
-      "Equation(ma_abp+ma_bpa+ma_pab-180)",
-      "Equal(LengthOfLine(PA),LengthOfLine(PB))",
-      "Equal(MeasureOfAngle(PAB),MeasureOfAngle(ABP))"
     ],
-    "goal_cdl": "Value(LengthOfLine(AB))",
-    "problem_answer": "7",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
+    "theorem_seqs_dag": {
+      "START": [
+        "tangent_of_circle_property_length_equal(1,PA,PB,O)",
+        "triangle_property_angle_sum(1,BPA)"
+      ],
+      "tangent_of_circle_property_length_equal(1,PA,PB,O)": [
+        "isosceles_triangle_judgment_line_equal(1,PAB)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,PAB)": [
+        "isosceles_triangle_property_angle_equal(1,PAB)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,PAB)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ],
+      "triangle_property_angle_sum(1,BPA)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ]
+    }
   },
-  "112880": {
-    "problem_id": 112880,
-    "added_cdl": [
-      "Equal(LengthOfLine(PA),LengthOfLine(PB))",
-      "Equal(MeasureOfAngle(PAB),MeasureOfAngle(ABP))"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AB))",
-    "problem_answer": "7",
-    "theorem_seqs": [
-      "triangle_property_angle_sum(1,BPA)",
-      "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
-  },
-  "112881": {
-    "problem_id": 112881,
-    "added_cdl": [
-      "Equal(MeasureOfAngle(PAB),MeasureOfAngle(ABP))"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AB))",
-    "problem_answer": "7",
-    "theorem_seqs": [
-      "tangent_of_circle_property_length_equal(1,PA,PB,O)",
-      "triangle_property_angle_sum(1,BPA)",
-      "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
-  },
-  "112882": {
-    "problem_id": 112882,
-    "added_cdl": [
-      "IsoscelesTriangle(PAB)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AB))",
-    "problem_answer": "7",
-    "theorem_seqs": [
-      "isosceles_triangle_property_angle_equal(1,PAB)",
-      "tangent_of_circle_property_length_equal(1,PA,PB,O)",
-      "triangle_property_angle_sum(1,BPA)",
-      "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
-  },
-  "112883": {
-    "problem_id": 112883,
-    "added_cdl": [
-      "Equal(LengthOfLine(PA),LengthOfLine(PB))"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AB))",
-    "problem_answer": "7",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_line_equal(1,PAB)",
-      "isosceles_triangle_property_angle_equal(1,PAB)",
-      "tangent_of_circle_property_length_equal(1,PA,PB,O)",
-      "triangle_property_angle_sum(1,BPA)",
-      "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
-  },
-  "112884": {
-    "problem_id": 112884,
-    "added_cdl": [],
-    "goal_cdl": "Value(LengthOfLine(AB))",
-    "problem_answer": "7",
-    "theorem_seqs": [
-      "tangent_of_circle_property_length_equal(1,PA,PB,O)",
-      "isosceles_triangle_judgment_line_equal(1,PAB)",
-      "isosceles_triangle_property_angle_equal(1,PAB)",
-      "triangle_property_angle_sum(1,BPA)",
-      "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
-  },
-  "112885": {
-    "problem_id": 112885,
-    "added_cdl": [
-      "Equation(ma_abp+ma_bpa+ma_pab-180)",
-      "Equal(LengthOfLine(PA),LengthOfLine(PB))",
-      "Equal(MeasureOfAngle(PAB),MeasureOfAngle(ABP))"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(BPA))",
-    "problem_answer": "60",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
-  },
-  "112886": {
-    "problem_id": 112886,
-    "added_cdl": [
-      "Equal(LengthOfLine(PA),LengthOfLine(PB))",
-      "Equal(MeasureOfAngle(PAB),MeasureOfAngle(ABP))"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(BPA))",
-    "problem_answer": "60",
-    "theorem_seqs": [
-      "triangle_property_angle_sum(1,BPA)",
-      "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
-  },
-  "112887": {
-    "problem_id": 112887,
-    "added_cdl": [
-      "Equal(MeasureOfAngle(PAB),MeasureOfAngle(ABP))"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(BPA))",
-    "problem_answer": "60",
-    "theorem_seqs": [
-      "tangent_of_circle_property_length_equal(1,PA,PB,O)",
-      "triangle_property_angle_sum(1,BPA)",
-      "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
-  },
-  "112888": {
-    "problem_id": 112888,
-    "added_cdl": [
-      "IsoscelesTriangle(PAB)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(BPA))",
-    "problem_answer": "60",
-    "theorem_seqs": [
-      "isosceles_triangle_property_angle_equal(1,PAB)",
-      "tangent_of_circle_property_length_equal(1,PA,PB,O)",
-      "triangle_property_angle_sum(1,BPA)",
-      "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
-  },
-  "112889": {
-    "problem_id": 112889,
-    "added_cdl": [
-      "Equal(LengthOfLine(PA),LengthOfLine(PB))"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(BPA))",
-    "problem_answer": "60",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_line_equal(1,PAB)",
-      "isosceles_triangle_property_angle_equal(1,PAB)",
-      "tangent_of_circle_property_length_equal(1,PA,PB,O)",
-      "triangle_property_angle_sum(1,BPA)",
-      "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
-  },
-  "112890": {
-    "problem_id": 112890,
-    "added_cdl": [],
-    "goal_cdl": "Value(MeasureOfAngle(BPA))",
-    "problem_answer": "60",
-    "theorem_seqs": [
-      "tangent_of_circle_property_length_equal(1,PA,PB,O)",
-      "isosceles_triangle_judgment_line_equal(1,PAB)",
-      "isosceles_triangle_property_angle_equal(1,PAB)",
-      "triangle_property_angle_sum(1,BPA)",
-      "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
-  },
-  "112891": {
-    "problem_id": 112891,
+  "80918": {
+    "problem_id": 80918,
     "added_cdl": [
       "Equation(ma_abp+ma_bpa+ma_pab-180)",
       "Equal(MeasureOfAngle(PAB),MeasureOfAngle(ABP))"
@@ -363,10 +353,15 @@
     "problem_answer": "7",
     "theorem_seqs": [
       "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ]
+    }
   },
-  "112892": {
-    "problem_id": 112892,
+  "80919": {
+    "problem_id": 80919,
     "added_cdl": [
       "Equal(MeasureOfAngle(PAB),MeasureOfAngle(ABP))"
     ],
@@ -375,10 +370,18 @@
     "theorem_seqs": [
       "triangle_property_angle_sum(1,BPA)",
       "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,BPA)"
+      ],
+      "triangle_property_angle_sum(1,BPA)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ]
+    }
   },
-  "112893": {
-    "problem_id": 112893,
+  "80920": {
+    "problem_id": 80920,
     "added_cdl": [
       "IsoscelesTriangle(PAB)"
     ],
@@ -388,10 +391,22 @@
       "isosceles_triangle_property_angle_equal(1,PAB)",
       "triangle_property_angle_sum(1,BPA)",
       "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,PAB)",
+        "triangle_property_angle_sum(1,BPA)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,PAB)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ],
+      "triangle_property_angle_sum(1,BPA)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ]
+    }
   },
-  "112894": {
-    "problem_id": 112894,
+  "80921": {
+    "problem_id": 80921,
     "added_cdl": [
       "Equal(LengthOfLine(PA),LengthOfLine(PB))"
     ],
@@ -402,10 +417,25 @@
       "isosceles_triangle_property_angle_equal(1,PAB)",
       "triangle_property_angle_sum(1,BPA)",
       "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,PAB)",
+        "triangle_property_angle_sum(1,BPA)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,PAB)": [
+        "isosceles_triangle_property_angle_equal(1,PAB)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,PAB)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ],
+      "triangle_property_angle_sum(1,BPA)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ]
+    }
   },
-  "112895": {
-    "problem_id": 112895,
+  "80922": {
+    "problem_id": 80922,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(PA))",
     "problem_answer": "7",
@@ -415,10 +445,28 @@
       "isosceles_triangle_property_angle_equal(1,PAB)",
       "triangle_property_angle_sum(1,BPA)",
       "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "tangent_of_circle_property_length_equal(1,PA,PB,O)",
+        "triangle_property_angle_sum(1,BPA)"
+      ],
+      "tangent_of_circle_property_length_equal(1,PA,PB,O)": [
+        "isosceles_triangle_judgment_line_equal(1,PAB)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,PAB)": [
+        "isosceles_triangle_property_angle_equal(1,PAB)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,PAB)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ],
+      "triangle_property_angle_sum(1,BPA)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ]
+    }
   },
-  "112896": {
-    "problem_id": 112896,
+  "80923": {
+    "problem_id": 80923,
     "added_cdl": [
       "Equation(ma_abp+ma_bpa+ma_pab-180)",
       "Equal(LengthOfLine(PA),LengthOfLine(PB))",
@@ -428,10 +476,15 @@
     "problem_answer": "7",
     "theorem_seqs": [
       "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ]
+    }
   },
-  "112897": {
-    "problem_id": 112897,
+  "80924": {
+    "problem_id": 80924,
     "added_cdl": [
       "Equal(LengthOfLine(PA),LengthOfLine(PB))",
       "Equal(MeasureOfAngle(PAB),MeasureOfAngle(ABP))"
@@ -441,10 +494,18 @@
     "theorem_seqs": [
       "triangle_property_angle_sum(1,BPA)",
       "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,BPA)"
+      ],
+      "triangle_property_angle_sum(1,BPA)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ]
+    }
   },
-  "112898": {
-    "problem_id": 112898,
+  "80925": {
+    "problem_id": 80925,
     "added_cdl": [
       "Equal(MeasureOfAngle(PAB),MeasureOfAngle(ABP))"
     ],
@@ -454,10 +515,19 @@
       "tangent_of_circle_property_length_equal(1,PA,PB,O)",
       "triangle_property_angle_sum(1,BPA)",
       "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "tangent_of_circle_property_length_equal(1,PA,PB,O)",
+        "triangle_property_angle_sum(1,BPA)"
+      ],
+      "triangle_property_angle_sum(1,BPA)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ]
+    }
   },
-  "112899": {
-    "problem_id": 112899,
+  "80926": {
+    "problem_id": 80926,
     "added_cdl": [
       "IsoscelesTriangle(PAB)"
     ],
@@ -465,13 +535,24 @@
     "problem_answer": "7",
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,PAB)",
-      "tangent_of_circle_property_length_equal(1,PA,PB,O)",
       "triangle_property_angle_sum(1,BPA)",
       "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,PAB)",
+        "triangle_property_angle_sum(1,BPA)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,PAB)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ],
+      "triangle_property_angle_sum(1,BPA)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ]
+    }
   },
-  "112900": {
-    "problem_id": 112900,
+  "80927": {
+    "problem_id": 80927,
     "added_cdl": [
       "Equal(LengthOfLine(PA),LengthOfLine(PB))"
     ],
@@ -480,13 +561,27 @@
     "theorem_seqs": [
       "isosceles_triangle_judgment_line_equal(1,PAB)",
       "isosceles_triangle_property_angle_equal(1,PAB)",
-      "tangent_of_circle_property_length_equal(1,PA,PB,O)",
       "triangle_property_angle_sum(1,BPA)",
       "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,PAB)",
+        "triangle_property_angle_sum(1,BPA)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,PAB)": [
+        "isosceles_triangle_property_angle_equal(1,PAB)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,PAB)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ],
+      "triangle_property_angle_sum(1,BPA)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ]
+    }
   },
-  "112901": {
-    "problem_id": 112901,
+  "80928": {
+    "problem_id": 80928,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(PB))",
     "problem_answer": "7",
@@ -496,10 +591,28 @@
       "isosceles_triangle_property_angle_equal(1,PAB)",
       "triangle_property_angle_sum(1,BPA)",
       "isosceles_triangle_judgment_angle_equal(1,ABP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "tangent_of_circle_property_length_equal(1,PA,PB,O)",
+        "triangle_property_angle_sum(1,BPA)"
+      ],
+      "tangent_of_circle_property_length_equal(1,PA,PB,O)": [
+        "isosceles_triangle_judgment_line_equal(1,PAB)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,PAB)": [
+        "isosceles_triangle_property_angle_equal(1,PAB)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,PAB)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ],
+      "triangle_property_angle_sum(1,BPA)": [
+        "isosceles_triangle_judgment_angle_equal(1,ABP)"
+      ]
+    }
   },
-  "112902": {
-    "problem_id": 112902,
+  "80929": {
+    "problem_id": 80929,
     "added_cdl": [
       "Equal(MeasureOfAngle(PAB),MeasureOfAngle(ABP))"
     ],
@@ -507,10 +620,15 @@
     "problem_answer": "60",
     "theorem_seqs": [
       "triangle_property_angle_sum(1,BPA)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,BPA)"
+      ]
+    }
   },
-  "112903": {
-    "problem_id": 112903,
+  "80930": {
+    "problem_id": 80930,
     "added_cdl": [
       "IsoscelesTriangle(PAB)"
     ],
@@ -519,10 +637,16 @@
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,PAB)",
       "triangle_property_angle_sum(1,BPA)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,PAB)",
+        "triangle_property_angle_sum(1,BPA)"
+      ]
+    }
   },
-  "112904": {
-    "problem_id": 112904,
+  "80931": {
+    "problem_id": 80931,
     "added_cdl": [
       "Equal(LengthOfLine(PA),LengthOfLine(PB))"
     ],
@@ -532,10 +656,19 @@
       "isosceles_triangle_judgment_line_equal(1,PAB)",
       "isosceles_triangle_property_angle_equal(1,PAB)",
       "triangle_property_angle_sum(1,BPA)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,PAB)",
+        "triangle_property_angle_sum(1,BPA)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,PAB)": [
+        "isosceles_triangle_property_angle_equal(1,PAB)"
+      ]
+    }
   },
-  "112905": {
-    "problem_id": 112905,
+  "80932": {
+    "problem_id": 80932,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(PAB))",
     "problem_answer": "60",
@@ -544,10 +677,22 @@
       "isosceles_triangle_judgment_line_equal(1,PAB)",
       "isosceles_triangle_property_angle_equal(1,PAB)",
       "triangle_property_angle_sum(1,BPA)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "tangent_of_circle_property_length_equal(1,PA,PB,O)",
+        "triangle_property_angle_sum(1,BPA)"
+      ],
+      "tangent_of_circle_property_length_equal(1,PA,PB,O)": [
+        "isosceles_triangle_judgment_line_equal(1,PAB)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,PAB)": [
+        "isosceles_triangle_property_angle_equal(1,PAB)"
+      ]
+    }
   },
-  "112906": {
-    "problem_id": 112906,
+  "80933": {
+    "problem_id": 80933,
     "added_cdl": [
       "Equal(MeasureOfAngle(PAB),MeasureOfAngle(ABP))"
     ],
@@ -555,10 +700,15 @@
     "problem_answer": "60",
     "theorem_seqs": [
       "triangle_property_angle_sum(1,BPA)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,BPA)"
+      ]
+    }
   },
-  "112907": {
-    "problem_id": 112907,
+  "80934": {
+    "problem_id": 80934,
     "added_cdl": [
       "IsoscelesTriangle(PAB)"
     ],
@@ -567,10 +717,16 @@
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,PAB)",
       "triangle_property_angle_sum(1,BPA)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,PAB)",
+        "triangle_property_angle_sum(1,BPA)"
+      ]
+    }
   },
-  "112908": {
-    "problem_id": 112908,
+  "80935": {
+    "problem_id": 80935,
     "added_cdl": [
       "Equal(LengthOfLine(PA),LengthOfLine(PB))"
     ],
@@ -580,10 +736,19 @@
       "isosceles_triangle_judgment_line_equal(1,PAB)",
       "isosceles_triangle_property_angle_equal(1,PAB)",
       "triangle_property_angle_sum(1,BPA)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,PAB)",
+        "triangle_property_angle_sum(1,BPA)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,PAB)": [
+        "isosceles_triangle_property_angle_equal(1,PAB)"
+      ]
+    }
   },
-  "112909": {
-    "problem_id": 112909,
+  "80936": {
+    "problem_id": 80936,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(ABP))",
     "problem_answer": "60",
@@ -592,6 +757,18 @@
       "isosceles_triangle_judgment_line_equal(1,PAB)",
       "isosceles_triangle_property_angle_equal(1,PAB)",
       "triangle_property_angle_sum(1,BPA)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "tangent_of_circle_property_length_equal(1,PA,PB,O)",
+        "triangle_property_angle_sum(1,BPA)"
+      ],
+      "tangent_of_circle_property_length_equal(1,PA,PB,O)": [
+        "isosceles_triangle_judgment_line_equal(1,PAB)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,PAB)": [
+        "isosceles_triangle_property_angle_equal(1,PAB)"
+      ]
+    }
   }
 }

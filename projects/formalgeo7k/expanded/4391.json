@@ -1,24 +1,34 @@
 {
-  "105920": {
-    "problem_id": 105920,
+  "75797": {
+    "problem_id": 75797,
     "added_cdl": [],
     "goal_cdl": "Relation(IsDiameterOfCircle(CB,O))",
     "problem_answer": "IsDiameterOfCircle(CB,O)",
     "theorem_seqs": [
       "diameter_of_circle_judgment_pass_centre(1,COB,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_judgment_pass_centre(1,COB,O)"
+      ]
+    }
   },
-  "105921": {
-    "problem_id": 105921,
+  "75798": {
+    "problem_id": 75798,
     "added_cdl": [],
     "goal_cdl": "Relation(IsDiameterOfCircle(BC,O))",
     "problem_answer": "IsDiameterOfCircle(BC,O)",
     "theorem_seqs": [
       "diameter_of_circle_judgment_pass_centre(1,COB,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_judgment_pass_centre(1,COB,O)"
+      ]
+    }
   },
-  "105922": {
-    "problem_id": 105922,
+  "75799": {
+    "problem_id": 75799,
     "added_cdl": [
       "IsDiameterOfCircle(CB,O)"
     ],
@@ -26,29 +36,45 @@
     "problem_answer": "PerpendicularBetweenLine(CD,BD)",
     "theorem_seqs": [
       "diameter_of_circle_property_right_angle(1,CDB,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_property_right_angle(1,CDB,O)"
+      ]
+    }
   },
-  "105923": {
-    "problem_id": 105923,
+  "75800": {
+    "problem_id": 75800,
     "added_cdl": [],
     "goal_cdl": "Relation(PerpendicularBetweenLine(CD,BD))",
     "problem_answer": "PerpendicularBetweenLine(CD,BD)",
     "theorem_seqs": [
       "diameter_of_circle_judgment_pass_centre(1,COB,O)",
       "diameter_of_circle_property_right_angle(1,CDB,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_judgment_pass_centre(1,COB,O)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,COB,O)": [
+        "diameter_of_circle_property_right_angle(1,CDB,O)"
+      ]
+    }
   },
-  "105924": {
-    "problem_id": 105924,
+  "75801": {
+    "problem_id": 75801,
     "added_cdl": [],
     "goal_cdl": "Relation(IsoscelesTriangle(ABC))",
     "problem_answer": "IsoscelesTriangle(ABC)",
     "theorem_seqs": [
       "isosceles_triangle_judgment_line_equal(1,ABC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "105925": {
-    "problem_id": 105925,
+  "75802": {
+    "problem_id": 75802,
     "added_cdl": [
       "IsoscelesTriangle(ABC)"
     ],
@@ -56,103 +82,31 @@
     "problem_answer": "0",
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,ABC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "105926": {
-    "problem_id": 105926,
+  "75803": {
+    "problem_id": 75803,
     "added_cdl": [],
     "goal_cdl": "Equal(MeasureOfAngle(ABO),MeasureOfAngle(BCA))",
     "problem_answer": "0",
     "theorem_seqs": [
       "isosceles_triangle_judgment_line_equal(1,ABC)",
       "isosceles_triangle_property_angle_equal(1,ABC)"
-    ]
-  },
-  "105927": {
-    "problem_id": 105927,
-    "added_cdl": [
-      "Equation(ma_abc+ma_bcd+ma_dae-180)",
-      "Equal(MeasureOfAngle(ABO),MeasureOfAngle(BCA))",
-      "PerpendicularBetweenLine(CD,BD)"
     ],
-    "goal_cdl": "Value(MeasureOfAngle(DBO))",
-    "problem_answer": "20",
-    "theorem_seqs": [
-      "triangle_property_angle_sum(1,BCD)"
-    ]
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,ABC)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,ABC)": [
+        "isosceles_triangle_property_angle_equal(1,ABC)"
+      ]
+    }
   },
-  "105928": {
-    "problem_id": 105928,
-    "added_cdl": [
-      "Equal(MeasureOfAngle(ABO),MeasureOfAngle(BCA))",
-      "PerpendicularBetweenLine(CD,BD)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(DBO))",
-    "problem_answer": "20",
-    "theorem_seqs": [
-      "triangle_property_angle_sum(1,ABC)",
-      "triangle_property_angle_sum(1,BCD)"
-    ]
-  },
-  "105929": {
-    "problem_id": 105929,
-    "added_cdl": [
-      "IsoscelesTriangle(ABC)",
-      "PerpendicularBetweenLine(CD,BD)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(DBO))",
-    "problem_answer": "20",
-    "theorem_seqs": [
-      "isosceles_triangle_property_angle_equal(1,ABC)",
-      "triangle_property_angle_sum(1,ABC)",
-      "triangle_property_angle_sum(1,BCD)"
-    ]
-  },
-  "105930": {
-    "problem_id": 105930,
-    "added_cdl": [
-      "PerpendicularBetweenLine(CD,BD)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(DBO))",
-    "problem_answer": "20",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_line_equal(1,ABC)",
-      "isosceles_triangle_property_angle_equal(1,ABC)",
-      "triangle_property_angle_sum(1,ABC)",
-      "triangle_property_angle_sum(1,BCD)"
-    ]
-  },
-  "105931": {
-    "problem_id": 105931,
-    "added_cdl": [
-      "IsDiameterOfCircle(CB,O)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(DBO))",
-    "problem_answer": "20",
-    "theorem_seqs": [
-      "diameter_of_circle_property_right_angle(1,CDB,O)",
-      "isosceles_triangle_judgment_line_equal(1,ABC)",
-      "isosceles_triangle_property_angle_equal(1,ABC)",
-      "triangle_property_angle_sum(1,ABC)",
-      "triangle_property_angle_sum(1,BCD)"
-    ]
-  },
-  "105932": {
-    "problem_id": 105932,
-    "added_cdl": [],
-    "goal_cdl": "Value(MeasureOfAngle(DBO))",
-    "problem_answer": "20",
-    "theorem_seqs": [
-      "diameter_of_circle_judgment_pass_centre(1,COB,O)",
-      "diameter_of_circle_property_right_angle(1,CDB,O)",
-      "isosceles_triangle_judgment_line_equal(1,ABC)",
-      "isosceles_triangle_property_angle_equal(1,ABC)",
-      "triangle_property_angle_sum(1,ABC)",
-      "triangle_property_angle_sum(1,BCD)"
-    ]
-  },
-  "105933": {
-    "problem_id": 105933,
+  "75804": {
+    "problem_id": 75804,
     "added_cdl": [
       "Equation(ma_abc+ma_bcd+ma_dae-180)",
       "Equal(MeasureOfAngle(ABO),MeasureOfAngle(BCA))",
@@ -162,10 +116,15 @@
     "problem_answer": "40",
     "theorem_seqs": [
       "triangle_property_angle_sum(1,BCD)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,BCD)"
+      ]
+    }
   },
-  "105934": {
-    "problem_id": 105934,
+  "75805": {
+    "problem_id": 75805,
     "added_cdl": [
       "Equal(MeasureOfAngle(ABO),MeasureOfAngle(BCA))",
       "PerpendicularBetweenLine(CD,BD)"
@@ -175,10 +134,16 @@
     "theorem_seqs": [
       "triangle_property_angle_sum(1,ABC)",
       "triangle_property_angle_sum(1,BCD)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,ABC)",
+        "triangle_property_angle_sum(1,BCD)"
+      ]
+    }
   },
-  "105935": {
-    "problem_id": 105935,
+  "75806": {
+    "problem_id": 75806,
     "added_cdl": [
       "IsoscelesTriangle(ABC)",
       "PerpendicularBetweenLine(CD,BD)"
@@ -189,10 +154,17 @@
       "isosceles_triangle_property_angle_equal(1,ABC)",
       "triangle_property_angle_sum(1,ABC)",
       "triangle_property_angle_sum(1,BCD)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,ABC)",
+        "triangle_property_angle_sum(1,ABC)",
+        "triangle_property_angle_sum(1,BCD)"
+      ]
+    }
   },
-  "105936": {
-    "problem_id": 105936,
+  "75807": {
+    "problem_id": 75807,
     "added_cdl": [
       "PerpendicularBetweenLine(CD,BD)"
     ],
@@ -203,10 +175,20 @@
       "isosceles_triangle_property_angle_equal(1,ABC)",
       "triangle_property_angle_sum(1,ABC)",
       "triangle_property_angle_sum(1,BCD)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,ABC)",
+        "triangle_property_angle_sum(1,ABC)",
+        "triangle_property_angle_sum(1,BCD)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,ABC)": [
+        "isosceles_triangle_property_angle_equal(1,ABC)"
+      ]
+    }
   },
-  "105937": {
-    "problem_id": 105937,
+  "75808": {
+    "problem_id": 75808,
     "added_cdl": [
       "IsDiameterOfCircle(CB,O)"
     ],
@@ -218,10 +200,21 @@
       "isosceles_triangle_property_angle_equal(1,ABC)",
       "triangle_property_angle_sum(1,ABC)",
       "triangle_property_angle_sum(1,BCD)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_property_right_angle(1,CDB,O)",
+        "isosceles_triangle_judgment_line_equal(1,ABC)",
+        "triangle_property_angle_sum(1,ABC)",
+        "triangle_property_angle_sum(1,BCD)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,ABC)": [
+        "isosceles_triangle_property_angle_equal(1,ABC)"
+      ]
+    }
   },
-  "105938": {
-    "problem_id": 105938,
+  "75809": {
+    "problem_id": 75809,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(DAE))",
     "problem_answer": "40",
@@ -232,10 +225,24 @@
       "isosceles_triangle_property_angle_equal(1,ABC)",
       "triangle_property_angle_sum(1,ABC)",
       "triangle_property_angle_sum(1,BCD)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_judgment_pass_centre(1,COB,O)",
+        "isosceles_triangle_judgment_line_equal(1,ABC)",
+        "triangle_property_angle_sum(1,ABC)",
+        "triangle_property_angle_sum(1,BCD)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,COB,O)": [
+        "diameter_of_circle_property_right_angle(1,CDB,O)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,ABC)": [
+        "isosceles_triangle_property_angle_equal(1,ABC)"
+      ]
+    }
   },
-  "105939": {
-    "problem_id": 105939,
+  "75810": {
+    "problem_id": 75810,
     "added_cdl": [
       "IsDiameterOfCircle(CB,O)"
     ],
@@ -243,20 +250,33 @@
     "problem_answer": "90",
     "theorem_seqs": [
       "diameter_of_circle_property_right_angle(1,CDB,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_property_right_angle(1,CDB,O)"
+      ]
+    }
   },
-  "105940": {
-    "problem_id": 105940,
+  "75811": {
+    "problem_id": 75811,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(CDB))",
     "problem_answer": "90",
     "theorem_seqs": [
       "diameter_of_circle_judgment_pass_centre(1,COB,O)",
       "diameter_of_circle_property_right_angle(1,CDB,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_judgment_pass_centre(1,COB,O)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,COB,O)": [
+        "diameter_of_circle_property_right_angle(1,CDB,O)"
+      ]
+    }
   },
-  "105941": {
-    "problem_id": 105941,
+  "75812": {
+    "problem_id": 75812,
     "added_cdl": [
       "PerpendicularBetweenLine(CD,BD)"
     ],
@@ -264,10 +284,15 @@
     "problem_answer": "70",
     "theorem_seqs": [
       "triangle_property_angle_sum(1,BCD)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,BCD)"
+      ]
+    }
   },
-  "105942": {
-    "problem_id": 105942,
+  "75813": {
+    "problem_id": 75813,
     "added_cdl": [
       "IsDiameterOfCircle(CB,O)"
     ],
@@ -276,10 +301,16 @@
     "theorem_seqs": [
       "diameter_of_circle_property_right_angle(1,CDB,O)",
       "triangle_property_angle_sum(1,BCD)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_property_right_angle(1,CDB,O)",
+        "triangle_property_angle_sum(1,BCD)"
+      ]
+    }
   },
-  "105943": {
-    "problem_id": 105943,
+  "75814": {
+    "problem_id": 75814,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(BCA))",
     "problem_answer": "70",
@@ -287,10 +318,19 @@
       "diameter_of_circle_judgment_pass_centre(1,COB,O)",
       "diameter_of_circle_property_right_angle(1,CDB,O)",
       "triangle_property_angle_sum(1,BCD)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_judgment_pass_centre(1,COB,O)",
+        "triangle_property_angle_sum(1,BCD)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,COB,O)": [
+        "diameter_of_circle_property_right_angle(1,CDB,O)"
+      ]
+    }
   },
-  "105944": {
-    "problem_id": 105944,
+  "75815": {
+    "problem_id": 75815,
     "added_cdl": [
       "Equal(MeasureOfAngle(ABO),MeasureOfAngle(BCA))",
       "PerpendicularBetweenLine(CD,BD)"
@@ -299,10 +339,15 @@
     "problem_answer": "70",
     "theorem_seqs": [
       "triangle_property_angle_sum(1,BCD)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,BCD)"
+      ]
+    }
   },
-  "105945": {
-    "problem_id": 105945,
+  "75816": {
+    "problem_id": 75816,
     "added_cdl": [
       "IsoscelesTriangle(ABC)",
       "PerpendicularBetweenLine(CD,BD)"
@@ -312,10 +357,16 @@
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,ABC)",
       "triangle_property_angle_sum(1,BCD)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,ABC)",
+        "triangle_property_angle_sum(1,BCD)"
+      ]
+    }
   },
-  "105946": {
-    "problem_id": 105946,
+  "75817": {
+    "problem_id": 75817,
     "added_cdl": [
       "PerpendicularBetweenLine(CD,BD)"
     ],
@@ -325,10 +376,19 @@
       "isosceles_triangle_judgment_line_equal(1,ABC)",
       "isosceles_triangle_property_angle_equal(1,ABC)",
       "triangle_property_angle_sum(1,BCD)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,ABC)",
+        "triangle_property_angle_sum(1,BCD)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,ABC)": [
+        "isosceles_triangle_property_angle_equal(1,ABC)"
+      ]
+    }
   },
-  "105947": {
-    "problem_id": 105947,
+  "75818": {
+    "problem_id": 75818,
     "added_cdl": [
       "IsDiameterOfCircle(CB,O)"
     ],
@@ -339,10 +399,20 @@
       "isosceles_triangle_judgment_line_equal(1,ABC)",
       "isosceles_triangle_property_angle_equal(1,ABC)",
       "triangle_property_angle_sum(1,BCD)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_property_right_angle(1,CDB,O)",
+        "isosceles_triangle_judgment_line_equal(1,ABC)",
+        "triangle_property_angle_sum(1,BCD)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,ABC)": [
+        "isosceles_triangle_property_angle_equal(1,ABC)"
+      ]
+    }
   },
-  "105948": {
-    "problem_id": 105948,
+  "75819": {
+    "problem_id": 75819,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(ABO))",
     "problem_answer": "70",
@@ -352,6 +422,19 @@
       "isosceles_triangle_judgment_line_equal(1,ABC)",
       "isosceles_triangle_property_angle_equal(1,ABC)",
       "triangle_property_angle_sum(1,BCD)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "diameter_of_circle_judgment_pass_centre(1,COB,O)",
+        "isosceles_triangle_judgment_line_equal(1,ABC)",
+        "triangle_property_angle_sum(1,BCD)"
+      ],
+      "diameter_of_circle_judgment_pass_centre(1,COB,O)": [
+        "diameter_of_circle_property_right_angle(1,CDB,O)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,ABC)": [
+        "isosceles_triangle_property_angle_equal(1,ABC)"
+      ]
+    }
   }
 }

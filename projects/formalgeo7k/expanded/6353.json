@@ -1,15 +1,18 @@
 {
-  "167164": {
-    "problem_id": 167164,
+  "118635": {
+    "problem_id": 118635,
     "added_cdl": [],
     "goal_cdl": "Relation(IsoscelesTriangle(BCA))",
     "problem_answer": "IsoscelesTriangle(BCA)",
     "theorem_seqs": [
       "isosceles_triangle_judgment_line_equal(1,BCA)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "167165": {
-    "problem_id": 167165,
+  "118636": {
+    "problem_id": 118636,
     "added_cdl": [
       "IsoscelesTriangle(BCA)"
     ],
@@ -17,20 +20,31 @@
     "problem_answer": "0",
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,BCA)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "167166": {
-    "problem_id": 167166,
+  "118637": {
+    "problem_id": 118637,
     "added_cdl": [],
     "goal_cdl": "Equal(MeasureOfAngle(BCA),MeasureOfAngle(CAB))",
     "problem_answer": "0",
     "theorem_seqs": [
       "isosceles_triangle_judgment_line_equal(1,BCA)",
       "isosceles_triangle_property_angle_equal(1,BCA)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,BCA)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,BCA)": [
+        "isosceles_triangle_property_angle_equal(1,BCA)"
+      ]
+    }
   },
-  "167167": {
-    "problem_id": 167167,
+  "118638": {
+    "problem_id": 118638,
     "added_cdl": [
       "Equation(ma_abc+ma_dab-180)",
       "Equal(MeasureOfAngle(BCA),MeasureOfAngle(CAB))",
@@ -40,10 +54,15 @@
     "problem_answer": "IsoscelesTriangle(CAB)",
     "theorem_seqs": [
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167168": {
-    "problem_id": 167168,
+  "118639": {
+    "problem_id": 118639,
     "added_cdl": [
       "Equal(MeasureOfAngle(BCA),MeasureOfAngle(CAB))",
       "Equation(ma_abc+ma_bca+ma_cab-180)"
@@ -53,10 +72,19 @@
     "theorem_seqs": [
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167169": {
-    "problem_id": 167169,
+  "118640": {
+    "problem_id": 118640,
     "added_cdl": [
       "IsoscelesTriangle(BCA)",
       "Equation(ma_abc+ma_bca+ma_cab-180)"
@@ -67,10 +95,23 @@
       "isosceles_triangle_property_angle_equal(1,BCA)",
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167170": {
-    "problem_id": 167170,
+  "118641": {
+    "problem_id": 118641,
     "added_cdl": [
       "Equation(ma_abc+ma_bca+ma_cab-180)"
     ],
@@ -81,10 +122,26 @@
       "isosceles_triangle_property_angle_equal(1,BCA)",
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,BCA)": [
+        "isosceles_triangle_property_angle_equal(1,BCA)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167171": {
-    "problem_id": 167171,
+  "118642": {
+    "problem_id": 118642,
     "added_cdl": [],
     "goal_cdl": "Relation(IsoscelesTriangle(CAB))",
     "problem_answer": "IsoscelesTriangle(CAB)",
@@ -94,10 +151,30 @@
       "isosceles_triangle_property_angle_equal(1,BCA)",
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,BCA)",
+        "isosceles_triangle_judgment_line_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "triangle_property_angle_sum(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,BCA)": [
+        "isosceles_triangle_property_angle_equal(1,BCA)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167172": {
-    "problem_id": 167172,
+  "118643": {
+    "problem_id": 118643,
     "added_cdl": [
       "Equation(ma_abc+ma_dab-180)",
       "Equal(MeasureOfAngle(BCA),MeasureOfAngle(CAB))",
@@ -107,10 +184,15 @@
     "problem_answer": "0",
     "theorem_seqs": [
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167173": {
-    "problem_id": 167173,
+  "118644": {
+    "problem_id": 118644,
     "added_cdl": [
       "Equal(MeasureOfAngle(BCA),MeasureOfAngle(CAB))",
       "Equation(ma_abc+ma_bca+ma_cab-180)"
@@ -120,10 +202,19 @@
     "theorem_seqs": [
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167174": {
-    "problem_id": 167174,
+  "118645": {
+    "problem_id": 118645,
     "added_cdl": [
       "IsoscelesTriangle(BCA)",
       "Equation(ma_abc+ma_bca+ma_cab-180)"
@@ -134,10 +225,23 @@
       "isosceles_triangle_property_angle_equal(1,BCA)",
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167175": {
-    "problem_id": 167175,
+  "118646": {
+    "problem_id": 118646,
     "added_cdl": [
       "Equation(ma_abc+ma_bca+ma_cab-180)"
     ],
@@ -148,10 +252,26 @@
       "isosceles_triangle_property_angle_equal(1,BCA)",
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,BCA)": [
+        "isosceles_triangle_property_angle_equal(1,BCA)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167176": {
-    "problem_id": 167176,
+  "118647": {
+    "problem_id": 118647,
     "added_cdl": [],
     "goal_cdl": "Equal(LengthOfLine(AC),LengthOfLine(CB))",
     "problem_answer": "0",
@@ -161,10 +281,30 @@
       "isosceles_triangle_property_angle_equal(1,BCA)",
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,BCA)",
+        "isosceles_triangle_judgment_line_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "triangle_property_angle_sum(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,BCA)": [
+        "isosceles_triangle_property_angle_equal(1,BCA)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167177": {
-    "problem_id": 167177,
+  "118648": {
+    "problem_id": 118648,
     "added_cdl": [
       "Equation(ma_abc+ma_dab-180)",
       "Equal(MeasureOfAngle(BCA),MeasureOfAngle(CAB))",
@@ -174,10 +314,15 @@
     "problem_answer": "4",
     "theorem_seqs": [
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167178": {
-    "problem_id": 167178,
+  "118649": {
+    "problem_id": 118649,
     "added_cdl": [
       "Equal(MeasureOfAngle(BCA),MeasureOfAngle(CAB))",
       "Equation(ma_abc+ma_bca+ma_cab-180)"
@@ -187,10 +332,19 @@
     "theorem_seqs": [
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167179": {
-    "problem_id": 167179,
+  "118650": {
+    "problem_id": 118650,
     "added_cdl": [
       "IsoscelesTriangle(BCA)",
       "Equation(ma_abc+ma_bca+ma_cab-180)"
@@ -201,10 +355,23 @@
       "isosceles_triangle_property_angle_equal(1,BCA)",
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167180": {
-    "problem_id": 167180,
+  "118651": {
+    "problem_id": 118651,
     "added_cdl": [
       "Equation(ma_abc+ma_bca+ma_cab-180)"
     ],
@@ -215,10 +382,26 @@
       "isosceles_triangle_property_angle_equal(1,BCA)",
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,BCA)": [
+        "isosceles_triangle_property_angle_equal(1,BCA)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167181": {
-    "problem_id": 167181,
+  "118652": {
+    "problem_id": 118652,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(AB))",
     "problem_answer": "4",
@@ -228,10 +411,30 @@
       "isosceles_triangle_property_angle_equal(1,BCA)",
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,BCA)",
+        "isosceles_triangle_judgment_line_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "triangle_property_angle_sum(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,BCA)": [
+        "isosceles_triangle_property_angle_equal(1,BCA)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167182": {
-    "problem_id": 167182,
+  "118653": {
+    "problem_id": 118653,
     "added_cdl": [
       "Equation(ma_abc+ma_dab-180)",
       "Equal(MeasureOfAngle(BCA),MeasureOfAngle(CAB))",
@@ -241,10 +444,15 @@
     "problem_answer": "4",
     "theorem_seqs": [
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167183": {
-    "problem_id": 167183,
+  "118654": {
+    "problem_id": 118654,
     "added_cdl": [
       "Equal(MeasureOfAngle(BCA),MeasureOfAngle(CAB))",
       "Equation(ma_abc+ma_bca+ma_cab-180)"
@@ -254,10 +462,19 @@
     "theorem_seqs": [
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167184": {
-    "problem_id": 167184,
+  "118655": {
+    "problem_id": 118655,
     "added_cdl": [
       "IsoscelesTriangle(BCA)",
       "Equation(ma_abc+ma_bca+ma_cab-180)"
@@ -268,10 +485,23 @@
       "isosceles_triangle_property_angle_equal(1,BCA)",
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167185": {
-    "problem_id": 167185,
+  "118656": {
+    "problem_id": 118656,
     "added_cdl": [
       "Equation(ma_abc+ma_bca+ma_cab-180)"
     ],
@@ -282,10 +512,26 @@
       "isosceles_triangle_property_angle_equal(1,BCA)",
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,BCA)": [
+        "isosceles_triangle_property_angle_equal(1,BCA)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167186": {
-    "problem_id": 167186,
+  "118657": {
+    "problem_id": 118657,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(AD))",
     "problem_answer": "4",
@@ -295,10 +541,30 @@
       "isosceles_triangle_property_angle_equal(1,BCA)",
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,BCA)",
+        "isosceles_triangle_judgment_line_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "triangle_property_angle_sum(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,BCA)": [
+        "isosceles_triangle_property_angle_equal(1,BCA)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167187": {
-    "problem_id": 167187,
+  "118658": {
+    "problem_id": 118658,
     "added_cdl": [
       "Equation(ma_abc+ma_dab-180)",
       "Equal(MeasureOfAngle(BCA),MeasureOfAngle(CAB))",
@@ -308,10 +574,15 @@
     "problem_answer": "4",
     "theorem_seqs": [
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167188": {
-    "problem_id": 167188,
+  "118659": {
+    "problem_id": 118659,
     "added_cdl": [
       "Equal(MeasureOfAngle(BCA),MeasureOfAngle(CAB))",
       "Equation(ma_abc+ma_bca+ma_cab-180)"
@@ -321,10 +592,19 @@
     "theorem_seqs": [
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167189": {
-    "problem_id": 167189,
+  "118660": {
+    "problem_id": 118660,
     "added_cdl": [
       "IsoscelesTriangle(BCA)",
       "Equation(ma_abc+ma_bca+ma_cab-180)"
@@ -335,10 +615,23 @@
       "isosceles_triangle_property_angle_equal(1,BCA)",
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167190": {
-    "problem_id": 167190,
+  "118661": {
+    "problem_id": 118661,
     "added_cdl": [
       "Equation(ma_abc+ma_bca+ma_cab-180)"
     ],
@@ -349,10 +642,26 @@
       "isosceles_triangle_property_angle_equal(1,BCA)",
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,BCA)": [
+        "isosceles_triangle_property_angle_equal(1,BCA)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167191": {
-    "problem_id": 167191,
+  "118662": {
+    "problem_id": 118662,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(CB))",
     "problem_answer": "4",
@@ -362,10 +671,30 @@
       "isosceles_triangle_property_angle_equal(1,BCA)",
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,BCA)",
+        "isosceles_triangle_judgment_line_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "triangle_property_angle_sum(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,BCA)": [
+        "isosceles_triangle_property_angle_equal(1,BCA)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167192": {
-    "problem_id": 167192,
+  "118663": {
+    "problem_id": 118663,
     "added_cdl": [
       "Equation(ma_abc+ma_dab-180)",
       "Equal(MeasureOfAngle(BCA),MeasureOfAngle(CAB))",
@@ -375,10 +704,15 @@
     "problem_answer": "4",
     "theorem_seqs": [
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167193": {
-    "problem_id": 167193,
+  "118664": {
+    "problem_id": 118664,
     "added_cdl": [
       "Equal(MeasureOfAngle(BCA),MeasureOfAngle(CAB))",
       "Equation(ma_abc+ma_bca+ma_cab-180)"
@@ -388,10 +722,19 @@
     "theorem_seqs": [
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167194": {
-    "problem_id": 167194,
+  "118665": {
+    "problem_id": 118665,
     "added_cdl": [
       "IsoscelesTriangle(BCA)",
       "Equation(ma_abc+ma_bca+ma_cab-180)"
@@ -402,10 +745,23 @@
       "isosceles_triangle_property_angle_equal(1,BCA)",
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167195": {
-    "problem_id": 167195,
+  "118666": {
+    "problem_id": 118666,
     "added_cdl": [
       "Equation(ma_abc+ma_bca+ma_cab-180)"
     ],
@@ -416,10 +772,26 @@
       "isosceles_triangle_property_angle_equal(1,BCA)",
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,BCA)": [
+        "isosceles_triangle_property_angle_equal(1,BCA)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167196": {
-    "problem_id": 167196,
+  "118667": {
+    "problem_id": 118667,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(CD))",
     "problem_answer": "4",
@@ -429,187 +801,46 @@
       "isosceles_triangle_property_angle_equal(1,BCA)",
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,BCA)",
+        "isosceles_triangle_judgment_line_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "triangle_property_angle_sum(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,BCA)": [
+        "isosceles_triangle_property_angle_equal(1,BCA)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167197": {
-    "problem_id": 167197,
+  "118668": {
+    "problem_id": 118668,
     "added_cdl": [
       "IsoscelesTriangle(CAB)"
     ],
-    "goal_cdl": "Value(LengthOfLine(AC))",
-    "problem_answer": "4",
-    "theorem_seqs": [
-      "quadrilateral_perimeter_formula(1,ABCD)"
-    ]
-  },
-  "167198": {
-    "problem_id": 167198,
-    "added_cdl": [
-      "Equation(ma_abc+ma_dab-180)",
-      "Equal(MeasureOfAngle(BCA),MeasureOfAngle(CAB))",
-      "Equation(ma_abc+ma_bca+ma_cab-180)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AC))",
-    "problem_answer": "4",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_angle_equal(1,CAB)",
-      "quadrilateral_perimeter_formula(1,ABCD)"
-    ]
-  },
-  "167199": {
-    "problem_id": 167199,
-    "added_cdl": [
-      "Equal(MeasureOfAngle(BCA),MeasureOfAngle(CAB))",
-      "Equation(ma_abc+ma_bca+ma_cab-180)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AC))",
-    "problem_answer": "4",
-    "theorem_seqs": [
-      "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
-      "isosceles_triangle_judgment_angle_equal(1,CAB)",
-      "quadrilateral_perimeter_formula(1,ABCD)"
-    ]
-  },
-  "167200": {
-    "problem_id": 167200,
-    "added_cdl": [
-      "IsoscelesTriangle(BCA)",
-      "Equation(ma_abc+ma_bca+ma_cab-180)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AC))",
-    "problem_answer": "4",
-    "theorem_seqs": [
-      "isosceles_triangle_property_angle_equal(1,BCA)",
-      "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
-      "isosceles_triangle_judgment_angle_equal(1,CAB)",
-      "quadrilateral_perimeter_formula(1,ABCD)"
-    ]
-  },
-  "167201": {
-    "problem_id": 167201,
-    "added_cdl": [
-      "Equation(ma_abc+ma_bca+ma_cab-180)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(AC))",
-    "problem_answer": "4",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_line_equal(1,BCA)",
-      "isosceles_triangle_property_angle_equal(1,BCA)",
-      "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
-      "isosceles_triangle_judgment_angle_equal(1,CAB)",
-      "quadrilateral_perimeter_formula(1,ABCD)"
-    ]
-  },
-  "167202": {
-    "problem_id": 167202,
-    "added_cdl": [],
-    "goal_cdl": "Value(LengthOfLine(AC))",
-    "problem_answer": "4",
-    "theorem_seqs": [
-      "triangle_property_angle_sum(1,BCA)",
-      "isosceles_triangle_judgment_line_equal(1,BCA)",
-      "isosceles_triangle_property_angle_equal(1,BCA)",
-      "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
-      "isosceles_triangle_judgment_angle_equal(1,CAB)",
-      "quadrilateral_perimeter_formula(1,ABCD)"
-    ]
-  },
-  "167203": {
-    "problem_id": 167203,
-    "added_cdl": [
-      "IsoscelesTriangle(CAB)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(DAB))",
-    "problem_answer": "120",
-    "theorem_seqs": [
-      "quadrilateral_perimeter_formula(1,ABCD)"
-    ]
-  },
-  "167204": {
-    "problem_id": 167204,
-    "added_cdl": [
-      "Equation(ma_abc+ma_dab-180)",
-      "Equal(MeasureOfAngle(BCA),MeasureOfAngle(CAB))",
-      "Equation(ma_abc+ma_bca+ma_cab-180)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(DAB))",
-    "problem_answer": "120",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_angle_equal(1,CAB)",
-      "quadrilateral_perimeter_formula(1,ABCD)"
-    ]
-  },
-  "167205": {
-    "problem_id": 167205,
-    "added_cdl": [
-      "Equal(MeasureOfAngle(BCA),MeasureOfAngle(CAB))",
-      "Equation(ma_abc+ma_bca+ma_cab-180)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(DAB))",
-    "problem_answer": "120",
-    "theorem_seqs": [
-      "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
-      "isosceles_triangle_judgment_angle_equal(1,CAB)",
-      "quadrilateral_perimeter_formula(1,ABCD)"
-    ]
-  },
-  "167206": {
-    "problem_id": 167206,
-    "added_cdl": [
-      "IsoscelesTriangle(BCA)",
-      "Equation(ma_abc+ma_bca+ma_cab-180)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(DAB))",
-    "problem_answer": "120",
-    "theorem_seqs": [
-      "isosceles_triangle_property_angle_equal(1,BCA)",
-      "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
-      "isosceles_triangle_judgment_angle_equal(1,CAB)",
-      "quadrilateral_perimeter_formula(1,ABCD)"
-    ]
-  },
-  "167207": {
-    "problem_id": 167207,
-    "added_cdl": [
-      "Equation(ma_abc+ma_bca+ma_cab-180)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(DAB))",
-    "problem_answer": "120",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_line_equal(1,BCA)",
-      "isosceles_triangle_property_angle_equal(1,BCA)",
-      "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
-      "isosceles_triangle_judgment_angle_equal(1,CAB)",
-      "quadrilateral_perimeter_formula(1,ABCD)"
-    ]
-  },
-  "167208": {
-    "problem_id": 167208,
-    "added_cdl": [],
-    "goal_cdl": "Value(MeasureOfAngle(DAB))",
-    "problem_answer": "120",
-    "theorem_seqs": [
-      "triangle_property_angle_sum(1,BCA)",
-      "isosceles_triangle_judgment_line_equal(1,BCA)",
-      "isosceles_triangle_property_angle_equal(1,BCA)",
-      "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
-      "isosceles_triangle_judgment_angle_equal(1,CAB)",
-      "quadrilateral_perimeter_formula(1,ABCD)"
-    ]
-  },
-  "167209": {
-    "problem_id": 167209,
-    "added_cdl": [
-      "IsoscelesTriangle(CAB)"
-    ],
     "goal_cdl": "Value(PerimeterOfQuadrilateral(ABCD))",
     "problem_answer": "16",
     "theorem_seqs": [
       "quadrilateral_perimeter_formula(1,ABCD)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "quadrilateral_perimeter_formula(1,ABCD)"
+      ]
+    }
   },
-  "167210": {
-    "problem_id": 167210,
+  "118669": {
+    "problem_id": 118669,
     "added_cdl": [
       "Equation(ma_abc+ma_dab-180)",
       "Equal(MeasureOfAngle(BCA),MeasureOfAngle(CAB))",
@@ -620,10 +851,16 @@
     "theorem_seqs": [
       "isosceles_triangle_judgment_angle_equal(1,CAB)",
       "quadrilateral_perimeter_formula(1,ABCD)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "quadrilateral_perimeter_formula(1,ABCD)"
+      ]
+    }
   },
-  "167211": {
-    "problem_id": 167211,
+  "118670": {
+    "problem_id": 118670,
     "added_cdl": [
       "Equal(MeasureOfAngle(BCA),MeasureOfAngle(CAB))",
       "Equation(ma_abc+ma_bca+ma_cab-180)"
@@ -634,10 +871,20 @@
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)",
       "quadrilateral_perimeter_formula(1,ABCD)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
+        "quadrilateral_perimeter_formula(1,ABCD)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167212": {
-    "problem_id": 167212,
+  "118671": {
+    "problem_id": 118671,
     "added_cdl": [
       "IsoscelesTriangle(BCA)",
       "Equation(ma_abc+ma_bca+ma_cab-180)"
@@ -649,10 +896,24 @@
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)",
       "quadrilateral_perimeter_formula(1,ABCD)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
+        "quadrilateral_perimeter_formula(1,ABCD)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167213": {
-    "problem_id": 167213,
+  "118672": {
+    "problem_id": 118672,
     "added_cdl": [
       "Equation(ma_abc+ma_bca+ma_cab-180)"
     ],
@@ -664,10 +925,27 @@
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)",
       "quadrilateral_perimeter_formula(1,ABCD)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
+        "quadrilateral_perimeter_formula(1,ABCD)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,BCA)": [
+        "isosceles_triangle_property_angle_equal(1,BCA)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167214": {
-    "problem_id": 167214,
+  "118673": {
+    "problem_id": 118673,
     "added_cdl": [],
     "goal_cdl": "Value(PerimeterOfQuadrilateral(ABCD))",
     "problem_answer": "16",
@@ -678,19 +956,45 @@
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
       "isosceles_triangle_judgment_angle_equal(1,CAB)",
       "quadrilateral_perimeter_formula(1,ABCD)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,BCA)",
+        "isosceles_triangle_judgment_line_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)",
+        "quadrilateral_perimeter_formula(1,ABCD)"
+      ],
+      "triangle_property_angle_sum(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,BCA)": [
+        "isosceles_triangle_property_angle_equal(1,BCA)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,BCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ],
+      "parallel_property_ipsilateral_internal_angle(1,AD,BC)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAB)",
+        "isosceles_triangle_judgment_angle_equal(1,CAB)"
+      ]
+    }
   },
-  "167215": {
-    "problem_id": 167215,
+  "118674": {
+    "problem_id": 118674,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(ABC))",
     "problem_answer": "60",
     "theorem_seqs": [
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ]
+    }
   },
-  "167216": {
-    "problem_id": 167216,
+  "118675": {
+    "problem_id": 118675,
     "added_cdl": [
       "Equal(MeasureOfAngle(BCA),MeasureOfAngle(CAB))",
       "Equation(ma_abc+ma_bca+ma_cab-180)"
@@ -699,10 +1003,15 @@
     "problem_answer": "60",
     "theorem_seqs": [
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ]
+    }
   },
-  "167217": {
-    "problem_id": 167217,
+  "118676": {
+    "problem_id": 118676,
     "added_cdl": [
       "IsoscelesTriangle(BCA)",
       "Equation(ma_abc+ma_bca+ma_cab-180)"
@@ -712,10 +1021,16 @@
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,BCA)",
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ]
+    }
   },
-  "167218": {
-    "problem_id": 167218,
+  "118677": {
+    "problem_id": 118677,
     "added_cdl": [
       "Equation(ma_abc+ma_bca+ma_cab-180)"
     ],
@@ -725,10 +1040,19 @@
       "isosceles_triangle_judgment_line_equal(1,BCA)",
       "isosceles_triangle_property_angle_equal(1,BCA)",
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,BCA)": [
+        "isosceles_triangle_property_angle_equal(1,BCA)"
+      ]
+    }
   },
-  "167219": {
-    "problem_id": 167219,
+  "118678": {
+    "problem_id": 118678,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(BCA))",
     "problem_answer": "60",
@@ -737,10 +1061,20 @@
       "isosceles_triangle_judgment_line_equal(1,BCA)",
       "isosceles_triangle_property_angle_equal(1,BCA)",
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,BCA)",
+        "isosceles_triangle_judgment_line_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,BCA)": [
+        "isosceles_triangle_property_angle_equal(1,BCA)"
+      ]
+    }
   },
-  "167220": {
-    "problem_id": 167220,
+  "118679": {
+    "problem_id": 118679,
     "added_cdl": [
       "Equal(MeasureOfAngle(BCA),MeasureOfAngle(CAB))",
       "Equation(ma_abc+ma_bca+ma_cab-180)"
@@ -749,10 +1083,15 @@
     "problem_answer": "60",
     "theorem_seqs": [
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ]
+    }
   },
-  "167221": {
-    "problem_id": 167221,
+  "118680": {
+    "problem_id": 118680,
     "added_cdl": [
       "IsoscelesTriangle(BCA)",
       "Equation(ma_abc+ma_bca+ma_cab-180)"
@@ -762,10 +1101,16 @@
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,BCA)",
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ]
+    }
   },
-  "167222": {
-    "problem_id": 167222,
+  "118681": {
+    "problem_id": 118681,
     "added_cdl": [
       "Equation(ma_abc+ma_bca+ma_cab-180)"
     ],
@@ -775,10 +1120,19 @@
       "isosceles_triangle_judgment_line_equal(1,BCA)",
       "isosceles_triangle_property_angle_equal(1,BCA)",
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,BCA)": [
+        "isosceles_triangle_property_angle_equal(1,BCA)"
+      ]
+    }
   },
-  "167223": {
-    "problem_id": 167223,
+  "118682": {
+    "problem_id": 118682,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(CAB))",
     "problem_answer": "60",
@@ -787,6 +1141,16 @@
       "isosceles_triangle_judgment_line_equal(1,BCA)",
       "isosceles_triangle_property_angle_equal(1,BCA)",
       "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,BCA)",
+        "isosceles_triangle_judgment_line_equal(1,BCA)",
+        "parallel_property_ipsilateral_internal_angle(1,AD,BC)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,BCA)": [
+        "isosceles_triangle_property_angle_equal(1,BCA)"
+      ]
+    }
   }
 }

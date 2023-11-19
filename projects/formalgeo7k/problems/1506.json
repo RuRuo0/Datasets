@@ -2,7 +2,7 @@
   "problem_id": 1506,
   "annotation": "YanjunGuo_2023-04-09",
   "source": "Geometry3k-1563",
-  "problem_level": 0,
+  "problem_level": 2,
   "problem_text_cn": "如图所示，GF=x，HF=32，∠FHG=29°，GF⊥HF。求x的值。",
   "problem_text_en": "As shown in the diagram, GF=x, HF=32, ∠FHG=29°, GF is perpendicular to HF. Find the value of x.",
   "problem_img": "1506.png",
@@ -16,20 +16,21 @@
     "PerpendicularBetweenLine(GF,HF)"
   ],
   "image_cdl": [
-    "Equal(MeasureOfAngle(FHG),29)",
-    "Equal(LengthOfLine(HF),32)",
     "Equal(LengthOfLine(GF),x)",
+    "Equal(LengthOfLine(HF),32)",
+    "Equal(MeasureOfAngle(FHG),29)",
     "PerpendicularBetweenLine(GF,HF)"
   ],
   "goal_cdl": "Value(x)",
   "problem_answer": "32*tan(29*pi/180)",
-  "theorem_seqs": [],
+  "theorem_seqs": [
+    "triangle_property_angle_sum(1,HGF)",
+    "sine_theorem(1,FHG)"
+  ],
   "theorem_seqs_dag": {
     "START": [
-      "right_triangle_judgment_angle(1,GFH)"
-    ],
-    "right_triangle_judgment_angle(1,GFH)": [
-      "right_triangle_property_pythagorean(1,GFH)"
+      "triangle_property_angle_sum(1,HGF)",
+      "sine_theorem(1,FHG)"
     ]
   }
 }

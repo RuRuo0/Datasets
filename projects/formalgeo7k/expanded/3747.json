@@ -1,15 +1,18 @@
 {
-  "88311": {
-    "problem_id": 88311,
+  "63257": {
+    "problem_id": 63257,
     "added_cdl": [],
     "goal_cdl": "Relation(IsMidsegmentOfTriangle(DE,ABC))",
     "problem_answer": "IsMidsegmentOfTriangle(DE,ABC)",
     "theorem_seqs": [
       "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "88312": {
-    "problem_id": 88312,
+  "63258": {
+    "problem_id": 63258,
     "added_cdl": [
       "IsMidsegmentOfTriangle(DE,ABC)"
     ],
@@ -17,20 +20,33 @@
     "problem_answer": "ParallelBetweenLine(DE,BC)",
     "theorem_seqs": [
       "midsegment_of_triangle_property_parallel(1,DE,ABC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "midsegment_of_triangle_property_parallel(1,DE,ABC)"
+      ]
+    }
   },
-  "88313": {
-    "problem_id": 88313,
+  "63259": {
+    "problem_id": 63259,
     "added_cdl": [],
     "goal_cdl": "Relation(ParallelBetweenLine(DE,BC))",
     "problem_answer": "ParallelBetweenLine(DE,BC)",
     "theorem_seqs": [
       "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)",
       "midsegment_of_triangle_property_parallel(1,DE,ABC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)"
+      ],
+      "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)": [
+        "midsegment_of_triangle_property_parallel(1,DE,ABC)"
+      ]
+    }
   },
-  "88314": {
-    "problem_id": 88314,
+  "63260": {
+    "problem_id": 63260,
     "added_cdl": [
       "IsMidsegmentOfTriangle(DE,ABC)"
     ],
@@ -38,20 +54,33 @@
     "problem_answer": "ParallelBetweenLine(CB,ED)",
     "theorem_seqs": [
       "midsegment_of_triangle_property_parallel(1,DE,ABC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "midsegment_of_triangle_property_parallel(1,DE,ABC)"
+      ]
+    }
   },
-  "88315": {
-    "problem_id": 88315,
+  "63261": {
+    "problem_id": 63261,
     "added_cdl": [],
     "goal_cdl": "Relation(ParallelBetweenLine(CB,ED))",
     "problem_answer": "ParallelBetweenLine(CB,ED)",
     "theorem_seqs": [
       "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)",
       "midsegment_of_triangle_property_parallel(1,DE,ABC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)"
+      ],
+      "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)": [
+        "midsegment_of_triangle_property_parallel(1,DE,ABC)"
+      ]
+    }
   },
-  "88316": {
-    "problem_id": 88316,
+  "63262": {
+    "problem_id": 63262,
     "added_cdl": [
       "ParallelBetweenLine(DE,BC)"
     ],
@@ -59,10 +88,13 @@
     "problem_answer": "0",
     "theorem_seqs": [
       "parallel_property_corresponding_angle(2,CB,ED,A)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "88317": {
-    "problem_id": 88317,
+  "63263": {
+    "problem_id": 63263,
     "added_cdl": [
       "IsMidsegmentOfTriangle(DE,ABC)"
     ],
@@ -71,10 +103,18 @@
     "theorem_seqs": [
       "midsegment_of_triangle_property_parallel(1,DE,ABC)",
       "parallel_property_corresponding_angle(2,CB,ED,A)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "midsegment_of_triangle_property_parallel(1,DE,ABC)"
+      ],
+      "midsegment_of_triangle_property_parallel(1,DE,ABC)": [
+        "parallel_property_corresponding_angle(2,CB,ED,A)"
+      ]
+    }
   },
-  "88318": {
-    "problem_id": 88318,
+  "63264": {
+    "problem_id": 63264,
     "added_cdl": [],
     "goal_cdl": "Equal(MeasureOfAngle(BCA),MeasureOfAngle(DEA))",
     "problem_answer": "0",
@@ -82,142 +122,21 @@
       "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)",
       "midsegment_of_triangle_property_parallel(1,DE,ABC)",
       "parallel_property_corresponding_angle(2,CB,ED,A)"
-    ]
-  },
-  "88319": {
-    "problem_id": 88319,
-    "added_cdl": [
-      "Equation(ma_ade+ma_dea+ma_ead-180)",
-      "Equation(ma_bce+ma_ecf-180)",
-      "ParallelBetweenLine(DE,BC)"
     ],
-    "goal_cdl": "Value(MeasureOfAngle(ADE))",
-    "problem_answer": "105",
-    "theorem_seqs": [
-      "parallel_property_corresponding_angle(2,CB,ED,A)"
-    ]
+    "theorem_seqs_dag": {
+      "START": [
+        "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)"
+      ],
+      "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)": [
+        "midsegment_of_triangle_property_parallel(1,DE,ABC)"
+      ],
+      "midsegment_of_triangle_property_parallel(1,DE,ABC)": [
+        "parallel_property_corresponding_angle(2,CB,ED,A)"
+      ]
+    }
   },
-  "88320": {
-    "problem_id": 88320,
-    "added_cdl": [
-      "Equation(ma_bce+ma_ecf-180)",
-      "ParallelBetweenLine(DE,BC)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(ADE))",
-    "problem_answer": "105",
-    "theorem_seqs": [
-      "triangle_property_angle_sum(1,ADE)",
-      "parallel_property_corresponding_angle(2,CB,ED,A)"
-    ]
-  },
-  "88321": {
-    "problem_id": 88321,
-    "added_cdl": [
-      "ParallelBetweenLine(DE,BC)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(ADE))",
-    "problem_answer": "105",
-    "theorem_seqs": [
-      "adjacent_complementary_angle(1,BCE,ECF)",
-      "triangle_property_angle_sum(1,ADE)",
-      "parallel_property_corresponding_angle(2,CB,ED,A)"
-    ]
-  },
-  "88322": {
-    "problem_id": 88322,
-    "added_cdl": [
-      "IsMidsegmentOfTriangle(DE,ABC)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(ADE))",
-    "problem_answer": "105",
-    "theorem_seqs": [
-      "midsegment_of_triangle_property_parallel(1,DE,ABC)",
-      "adjacent_complementary_angle(1,BCE,ECF)",
-      "triangle_property_angle_sum(1,ADE)",
-      "parallel_property_corresponding_angle(2,CB,ED,A)"
-    ]
-  },
-  "88323": {
-    "problem_id": 88323,
-    "added_cdl": [],
-    "goal_cdl": "Value(MeasureOfAngle(ADE))",
-    "problem_answer": "105",
-    "theorem_seqs": [
-      "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)",
-      "midsegment_of_triangle_property_parallel(1,DE,ABC)",
-      "adjacent_complementary_angle(1,BCE,ECF)",
-      "triangle_property_angle_sum(1,ADE)",
-      "parallel_property_corresponding_angle(2,CB,ED,A)"
-    ]
-  },
-  "88324": {
-    "problem_id": 88324,
-    "added_cdl": [
-      "Equation(ma_ade+ma_dea+ma_ead-180)",
-      "Equation(ma_bce+ma_ecf-180)",
-      "ParallelBetweenLine(DE,BC)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(ACF))",
-    "problem_answer": "140",
-    "theorem_seqs": [
-      "parallel_property_corresponding_angle(2,CB,ED,A)"
-    ]
-  },
-  "88325": {
-    "problem_id": 88325,
-    "added_cdl": [
-      "Equation(ma_bce+ma_ecf-180)",
-      "ParallelBetweenLine(DE,BC)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(ACF))",
-    "problem_answer": "140",
-    "theorem_seqs": [
-      "triangle_property_angle_sum(1,ADE)",
-      "parallel_property_corresponding_angle(2,CB,ED,A)"
-    ]
-  },
-  "88326": {
-    "problem_id": 88326,
-    "added_cdl": [
-      "ParallelBetweenLine(DE,BC)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(ACF))",
-    "problem_answer": "140",
-    "theorem_seqs": [
-      "adjacent_complementary_angle(1,BCE,ECF)",
-      "triangle_property_angle_sum(1,ADE)",
-      "parallel_property_corresponding_angle(2,CB,ED,A)"
-    ]
-  },
-  "88327": {
-    "problem_id": 88327,
-    "added_cdl": [
-      "IsMidsegmentOfTriangle(DE,ABC)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(ACF))",
-    "problem_answer": "140",
-    "theorem_seqs": [
-      "midsegment_of_triangle_property_parallel(1,DE,ABC)",
-      "adjacent_complementary_angle(1,BCE,ECF)",
-      "triangle_property_angle_sum(1,ADE)",
-      "parallel_property_corresponding_angle(2,CB,ED,A)"
-    ]
-  },
-  "88328": {
-    "problem_id": 88328,
-    "added_cdl": [],
-    "goal_cdl": "Value(MeasureOfAngle(ACF))",
-    "problem_answer": "140",
-    "theorem_seqs": [
-      "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)",
-      "midsegment_of_triangle_property_parallel(1,DE,ABC)",
-      "adjacent_complementary_angle(1,BCE,ECF)",
-      "triangle_property_angle_sum(1,ADE)",
-      "parallel_property_corresponding_angle(2,CB,ED,A)"
-    ]
-  },
-  "88329": {
-    "problem_id": 88329,
+  "63265": {
+    "problem_id": 63265,
     "added_cdl": [
       "Equation(ma_ade+ma_dea+ma_ead-180)",
       "Equation(ma_bce+ma_ecf-180)",
@@ -227,10 +146,15 @@
     "problem_answer": "35",
     "theorem_seqs": [
       "parallel_property_corresponding_angle(2,CB,ED,A)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_property_corresponding_angle(2,CB,ED,A)"
+      ]
+    }
   },
-  "88330": {
-    "problem_id": 88330,
+  "63266": {
+    "problem_id": 63266,
     "added_cdl": [
       "Equation(ma_bce+ma_ecf-180)",
       "ParallelBetweenLine(DE,BC)"
@@ -240,10 +164,16 @@
     "theorem_seqs": [
       "triangle_property_angle_sum(1,ADE)",
       "parallel_property_corresponding_angle(2,CB,ED,A)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,ADE)",
+        "parallel_property_corresponding_angle(2,CB,ED,A)"
+      ]
+    }
   },
-  "88331": {
-    "problem_id": 88331,
+  "63267": {
+    "problem_id": 63267,
     "added_cdl": [
       "ParallelBetweenLine(DE,BC)"
     ],
@@ -253,10 +183,17 @@
       "adjacent_complementary_angle(1,BCE,ECF)",
       "triangle_property_angle_sum(1,ADE)",
       "parallel_property_corresponding_angle(2,CB,ED,A)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "adjacent_complementary_angle(1,BCE,ECF)",
+        "triangle_property_angle_sum(1,ADE)",
+        "parallel_property_corresponding_angle(2,CB,ED,A)"
+      ]
+    }
   },
-  "88332": {
-    "problem_id": 88332,
+  "63268": {
+    "problem_id": 63268,
     "added_cdl": [
       "IsMidsegmentOfTriangle(DE,ABC)"
     ],
@@ -267,10 +204,20 @@
       "adjacent_complementary_angle(1,BCE,ECF)",
       "triangle_property_angle_sum(1,ADE)",
       "parallel_property_corresponding_angle(2,CB,ED,A)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "midsegment_of_triangle_property_parallel(1,DE,ABC)",
+        "adjacent_complementary_angle(1,BCE,ECF)",
+        "triangle_property_angle_sum(1,ADE)"
+      ],
+      "midsegment_of_triangle_property_parallel(1,DE,ABC)": [
+        "parallel_property_corresponding_angle(2,CB,ED,A)"
+      ]
+    }
   },
-  "88333": {
-    "problem_id": 88333,
+  "63269": {
+    "problem_id": 63269,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(EAD))",
     "problem_answer": "35",
@@ -280,19 +227,37 @@
       "adjacent_complementary_angle(1,BCE,ECF)",
       "triangle_property_angle_sum(1,ADE)",
       "parallel_property_corresponding_angle(2,CB,ED,A)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)",
+        "adjacent_complementary_angle(1,BCE,ECF)",
+        "triangle_property_angle_sum(1,ADE)"
+      ],
+      "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)": [
+        "midsegment_of_triangle_property_parallel(1,DE,ABC)"
+      ],
+      "midsegment_of_triangle_property_parallel(1,DE,ABC)": [
+        "parallel_property_corresponding_angle(2,CB,ED,A)"
+      ]
+    }
   },
-  "88334": {
-    "problem_id": 88334,
+  "63270": {
+    "problem_id": 63270,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(BCA))",
     "problem_answer": "40",
     "theorem_seqs": [
       "adjacent_complementary_angle(1,BCE,ECF)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "adjacent_complementary_angle(1,BCE,ECF)"
+      ]
+    }
   },
-  "88335": {
-    "problem_id": 88335,
+  "63271": {
+    "problem_id": 63271,
     "added_cdl": [
       "Equation(ma_bce+ma_ecf-180)",
       "ParallelBetweenLine(DE,BC)"
@@ -301,10 +266,15 @@
     "problem_answer": "40",
     "theorem_seqs": [
       "parallel_property_corresponding_angle(2,CB,ED,A)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "parallel_property_corresponding_angle(2,CB,ED,A)"
+      ]
+    }
   },
-  "88336": {
-    "problem_id": 88336,
+  "63272": {
+    "problem_id": 63272,
     "added_cdl": [
       "ParallelBetweenLine(DE,BC)"
     ],
@@ -313,10 +283,16 @@
     "theorem_seqs": [
       "adjacent_complementary_angle(1,BCE,ECF)",
       "parallel_property_corresponding_angle(2,CB,ED,A)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "adjacent_complementary_angle(1,BCE,ECF)",
+        "parallel_property_corresponding_angle(2,CB,ED,A)"
+      ]
+    }
   },
-  "88337": {
-    "problem_id": 88337,
+  "63273": {
+    "problem_id": 63273,
     "added_cdl": [
       "IsMidsegmentOfTriangle(DE,ABC)"
     ],
@@ -326,10 +302,19 @@
       "midsegment_of_triangle_property_parallel(1,DE,ABC)",
       "adjacent_complementary_angle(1,BCE,ECF)",
       "parallel_property_corresponding_angle(2,CB,ED,A)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "midsegment_of_triangle_property_parallel(1,DE,ABC)",
+        "adjacent_complementary_angle(1,BCE,ECF)"
+      ],
+      "midsegment_of_triangle_property_parallel(1,DE,ABC)": [
+        "parallel_property_corresponding_angle(2,CB,ED,A)"
+      ]
+    }
   },
-  "88338": {
-    "problem_id": 88338,
+  "63274": {
+    "problem_id": 63274,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(DEA))",
     "problem_answer": "40",
@@ -338,6 +323,18 @@
       "midsegment_of_triangle_property_parallel(1,DE,ABC)",
       "adjacent_complementary_angle(1,BCE,ECF)",
       "parallel_property_corresponding_angle(2,CB,ED,A)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)",
+        "adjacent_complementary_angle(1,BCE,ECF)"
+      ],
+      "midsegment_of_triangle_judgment_midpoint(1,DE,ABC)": [
+        "midsegment_of_triangle_property_parallel(1,DE,ABC)"
+      ],
+      "midsegment_of_triangle_property_parallel(1,DE,ABC)": [
+        "parallel_property_corresponding_angle(2,CB,ED,A)"
+      ]
+    }
   }
 }

@@ -1,24 +1,32 @@
 {
-  "183211": {
-    "problem_id": 183211,
+  "130927": {
+    "problem_id": 130927,
     "added_cdl": [],
     "goal_cdl": "Equal(MeasureOfArc(OAC),MeasureOfAngle(COA))",
     "problem_answer": "0",
     "theorem_seqs": [
       "arc_property_center_angle(1,OAC,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_center_angle(1,OAC,O)"
+      ]
+    }
   },
-  "183212": {
-    "problem_id": 183212,
+  "130928": {
+    "problem_id": 130928,
     "added_cdl": [],
     "goal_cdl": "Equal(LengthOfArc(OAB),LengthOfArc(OBC))",
     "problem_answer": "0",
     "theorem_seqs": [
       "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "183213": {
-    "problem_id": 183213,
+  "130929": {
+    "problem_id": 130929,
     "added_cdl": [
       "Equal(LengthOfArc(OAB),LengthOfArc(OBC))"
     ],
@@ -26,20 +34,31 @@
     "problem_answer": "CongruentBetweenArc(OAB,OBC)",
     "theorem_seqs": [
       "congruent_arc_judgment_length_equal(1,OAB,OBC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "183214": {
-    "problem_id": 183214,
+  "130930": {
+    "problem_id": 130930,
     "added_cdl": [],
     "goal_cdl": "Relation(CongruentBetweenArc(OAB,OBC))",
     "problem_answer": "CongruentBetweenArc(OAB,OBC)",
     "theorem_seqs": [
       "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)",
       "congruent_arc_judgment_length_equal(1,OAB,OBC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)"
+      ],
+      "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)": [
+        "congruent_arc_judgment_length_equal(1,OAB,OBC)"
+      ]
+    }
   },
-  "183215": {
-    "problem_id": 183215,
+  "130931": {
+    "problem_id": 130931,
     "added_cdl": [
       "CongruentBetweenArc(OAB,OBC)"
     ],
@@ -47,10 +66,13 @@
     "problem_answer": "0",
     "theorem_seqs": [
       "congruent_arc_property_measure_equal(1,OAB,OBC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": []
+    }
   },
-  "183216": {
-    "problem_id": 183216,
+  "130932": {
+    "problem_id": 130932,
     "added_cdl": [
       "Equal(LengthOfArc(OAB),LengthOfArc(OBC))"
     ],
@@ -59,10 +81,18 @@
     "theorem_seqs": [
       "congruent_arc_judgment_length_equal(1,OAB,OBC)",
       "congruent_arc_property_measure_equal(1,OAB,OBC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "congruent_arc_judgment_length_equal(1,OAB,OBC)"
+      ],
+      "congruent_arc_judgment_length_equal(1,OAB,OBC)": [
+        "congruent_arc_property_measure_equal(1,OAB,OBC)"
+      ]
+    }
   },
-  "183217": {
-    "problem_id": 183217,
+  "130933": {
+    "problem_id": 130933,
     "added_cdl": [],
     "goal_cdl": "Equal(MeasureOfArc(OAB),MeasureOfArc(OBC))",
     "problem_answer": "0",
@@ -70,98 +100,21 @@
       "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)",
       "congruent_arc_judgment_length_equal(1,OAB,OBC)",
       "congruent_arc_property_measure_equal(1,OAB,OBC)"
-    ]
-  },
-  "183218": {
-    "problem_id": 183218,
-    "added_cdl": [
-      "CongruentBetweenArc(OAB,OBC)",
-      "Equation(-mar_oab+mar_oac-mar_obc)",
-      "Equal(MeasureOfArc(OAC),MeasureOfAngle(COA))",
-      "Equation(ma_cdb-mar_obc/2)"
     ],
-    "goal_cdl": "Value(MeasureOfAngle(COA))",
-    "problem_answer": "100",
-    "theorem_seqs": [
-      "congruent_arc_property_measure_equal(1,OAB,OBC)"
-    ]
+    "theorem_seqs_dag": {
+      "START": [
+        "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)"
+      ],
+      "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)": [
+        "congruent_arc_judgment_length_equal(1,OAB,OBC)"
+      ],
+      "congruent_arc_judgment_length_equal(1,OAB,OBC)": [
+        "congruent_arc_property_measure_equal(1,OAB,OBC)"
+      ]
+    }
   },
-  "183219": {
-    "problem_id": 183219,
-    "added_cdl": [
-      "Equal(LengthOfArc(OAB),LengthOfArc(OBC))",
-      "Equation(-mar_oab+mar_oac-mar_obc)",
-      "Equation(ma_cdb-mar_obc/2)",
-      "Equal(MeasureOfArc(OAC),MeasureOfAngle(COA))"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(COA))",
-    "problem_answer": "100",
-    "theorem_seqs": [
-      "congruent_arc_judgment_length_equal(1,OAB,OBC)",
-      "congruent_arc_property_measure_equal(1,OAB,OBC)"
-    ]
-  },
-  "183220": {
-    "problem_id": 183220,
-    "added_cdl": [
-      "Equation(-mar_oab+mar_oac-mar_obc)",
-      "Equation(ma_cdb-mar_obc/2)",
-      "Equal(MeasureOfArc(OAC),MeasureOfAngle(COA))"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(COA))",
-    "problem_answer": "100",
-    "theorem_seqs": [
-      "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)",
-      "congruent_arc_judgment_length_equal(1,OAB,OBC)",
-      "congruent_arc_property_measure_equal(1,OAB,OBC)"
-    ]
-  },
-  "183221": {
-    "problem_id": 183221,
-    "added_cdl": [
-      "Equation(ma_cdb-mar_obc/2)",
-      "Equal(MeasureOfArc(OAC),MeasureOfAngle(COA))"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(COA))",
-    "problem_answer": "100",
-    "theorem_seqs": [
-      "arc_addition_measure(1,OAB,OBC)",
-      "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)",
-      "congruent_arc_judgment_length_equal(1,OAB,OBC)",
-      "congruent_arc_property_measure_equal(1,OAB,OBC)"
-    ]
-  },
-  "183222": {
-    "problem_id": 183222,
-    "added_cdl": [
-      "Equal(MeasureOfArc(OAC),MeasureOfAngle(COA))"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(COA))",
-    "problem_answer": "100",
-    "theorem_seqs": [
-      "arc_property_circumference_angle_external(1,OBC,D)",
-      "arc_addition_measure(1,OAB,OBC)",
-      "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)",
-      "congruent_arc_judgment_length_equal(1,OAB,OBC)",
-      "congruent_arc_property_measure_equal(1,OAB,OBC)"
-    ]
-  },
-  "183223": {
-    "problem_id": 183223,
-    "added_cdl": [],
-    "goal_cdl": "Value(MeasureOfAngle(COA))",
-    "problem_answer": "100",
-    "theorem_seqs": [
-      "arc_property_center_angle(1,OAC,O)",
-      "arc_property_circumference_angle_external(1,OBC,D)",
-      "arc_addition_measure(1,OAB,OBC)",
-      "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)",
-      "congruent_arc_judgment_length_equal(1,OAB,OBC)",
-      "congruent_arc_property_measure_equal(1,OAB,OBC)"
-    ]
-  },
-  "183224": {
-    "problem_id": 183224,
+  "130934": {
+    "problem_id": 130934,
     "added_cdl": [
       "CongruentBetweenArc(OAB,OBC)",
       "Equation(-mar_oab+mar_oac-mar_obc)",
@@ -172,10 +125,15 @@
     "problem_answer": "25",
     "theorem_seqs": [
       "congruent_arc_property_measure_equal(1,OAB,OBC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "congruent_arc_property_measure_equal(1,OAB,OBC)"
+      ]
+    }
   },
-  "183225": {
-    "problem_id": 183225,
+  "130935": {
+    "problem_id": 130935,
     "added_cdl": [
       "Equal(LengthOfArc(OAB),LengthOfArc(OBC))",
       "Equation(-mar_oab+mar_oac-mar_obc)",
@@ -187,10 +145,18 @@
     "theorem_seqs": [
       "congruent_arc_judgment_length_equal(1,OAB,OBC)",
       "congruent_arc_property_measure_equal(1,OAB,OBC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "congruent_arc_judgment_length_equal(1,OAB,OBC)"
+      ],
+      "congruent_arc_judgment_length_equal(1,OAB,OBC)": [
+        "congruent_arc_property_measure_equal(1,OAB,OBC)"
+      ]
+    }
   },
-  "183226": {
-    "problem_id": 183226,
+  "130936": {
+    "problem_id": 130936,
     "added_cdl": [
       "Equation(-mar_oab+mar_oac-mar_obc)",
       "Equation(ma_cdb-mar_obc/2)",
@@ -202,10 +168,21 @@
       "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)",
       "congruent_arc_judgment_length_equal(1,OAB,OBC)",
       "congruent_arc_property_measure_equal(1,OAB,OBC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)"
+      ],
+      "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)": [
+        "congruent_arc_judgment_length_equal(1,OAB,OBC)"
+      ],
+      "congruent_arc_judgment_length_equal(1,OAB,OBC)": [
+        "congruent_arc_property_measure_equal(1,OAB,OBC)"
+      ]
+    }
   },
-  "183227": {
-    "problem_id": 183227,
+  "130937": {
+    "problem_id": 130937,
     "added_cdl": [
       "Equation(ma_cdb-mar_obc/2)",
       "Equal(MeasureOfArc(OAC),MeasureOfAngle(COA))"
@@ -217,10 +194,22 @@
       "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)",
       "congruent_arc_judgment_length_equal(1,OAB,OBC)",
       "congruent_arc_property_measure_equal(1,OAB,OBC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_addition_measure(1,OAB,OBC)",
+        "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)"
+      ],
+      "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)": [
+        "congruent_arc_judgment_length_equal(1,OAB,OBC)"
+      ],
+      "congruent_arc_judgment_length_equal(1,OAB,OBC)": [
+        "congruent_arc_property_measure_equal(1,OAB,OBC)"
+      ]
+    }
   },
-  "183228": {
-    "problem_id": 183228,
+  "130938": {
+    "problem_id": 130938,
     "added_cdl": [
       "Equal(MeasureOfArc(OAC),MeasureOfAngle(COA))"
     ],
@@ -232,10 +221,23 @@
       "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)",
       "congruent_arc_judgment_length_equal(1,OAB,OBC)",
       "congruent_arc_property_measure_equal(1,OAB,OBC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_circumference_angle_external(1,OBC,D)",
+        "arc_addition_measure(1,OAB,OBC)",
+        "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)"
+      ],
+      "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)": [
+        "congruent_arc_judgment_length_equal(1,OAB,OBC)"
+      ],
+      "congruent_arc_judgment_length_equal(1,OAB,OBC)": [
+        "congruent_arc_property_measure_equal(1,OAB,OBC)"
+      ]
+    }
   },
-  "183229": {
-    "problem_id": 183229,
+  "130939": {
+    "problem_id": 130939,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(CDO))",
     "problem_answer": "25",
@@ -246,19 +248,38 @@
       "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)",
       "congruent_arc_judgment_length_equal(1,OAB,OBC)",
       "congruent_arc_property_measure_equal(1,OAB,OBC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_center_angle(1,OAC,O)",
+        "arc_property_circumference_angle_external(1,OBC,D)",
+        "arc_addition_measure(1,OAB,OBC)",
+        "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)"
+      ],
+      "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)": [
+        "congruent_arc_judgment_length_equal(1,OAB,OBC)"
+      ],
+      "congruent_arc_judgment_length_equal(1,OAB,OBC)": [
+        "congruent_arc_property_measure_equal(1,OAB,OBC)"
+      ]
+    }
   },
-  "183230": {
-    "problem_id": 183230,
+  "130940": {
+    "problem_id": 130940,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfArc(OAC))",
     "problem_answer": "100",
     "theorem_seqs": [
       "arc_property_center_angle(1,OAC,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_center_angle(1,OAC,O)"
+      ]
+    }
   },
-  "183231": {
-    "problem_id": 183231,
+  "130941": {
+    "problem_id": 130941,
     "added_cdl": [
       "CongruentBetweenArc(OAB,OBC)",
       "Equation(-mar_oab+mar_oac-mar_obc)",
@@ -268,10 +289,15 @@
     "problem_answer": "50",
     "theorem_seqs": [
       "congruent_arc_property_measure_equal(1,OAB,OBC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "congruent_arc_property_measure_equal(1,OAB,OBC)"
+      ]
+    }
   },
-  "183232": {
-    "problem_id": 183232,
+  "130942": {
+    "problem_id": 130942,
     "added_cdl": [
       "Equal(LengthOfArc(OAB),LengthOfArc(OBC))",
       "Equation(-mar_oab+mar_oac-mar_obc)",
@@ -282,10 +308,18 @@
     "theorem_seqs": [
       "congruent_arc_judgment_length_equal(1,OAB,OBC)",
       "congruent_arc_property_measure_equal(1,OAB,OBC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "congruent_arc_judgment_length_equal(1,OAB,OBC)"
+      ],
+      "congruent_arc_judgment_length_equal(1,OAB,OBC)": [
+        "congruent_arc_property_measure_equal(1,OAB,OBC)"
+      ]
+    }
   },
-  "183233": {
-    "problem_id": 183233,
+  "130943": {
+    "problem_id": 130943,
     "added_cdl": [
       "Equation(-mar_oab+mar_oac-mar_obc)",
       "Equal(MeasureOfArc(OAC),MeasureOfAngle(COA))"
@@ -296,10 +330,21 @@
       "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)",
       "congruent_arc_judgment_length_equal(1,OAB,OBC)",
       "congruent_arc_property_measure_equal(1,OAB,OBC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)"
+      ],
+      "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)": [
+        "congruent_arc_judgment_length_equal(1,OAB,OBC)"
+      ],
+      "congruent_arc_judgment_length_equal(1,OAB,OBC)": [
+        "congruent_arc_property_measure_equal(1,OAB,OBC)"
+      ]
+    }
   },
-  "183234": {
-    "problem_id": 183234,
+  "130944": {
+    "problem_id": 130944,
     "added_cdl": [
       "Equal(MeasureOfArc(OAC),MeasureOfAngle(COA))"
     ],
@@ -310,10 +355,22 @@
       "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)",
       "congruent_arc_judgment_length_equal(1,OAB,OBC)",
       "congruent_arc_property_measure_equal(1,OAB,OBC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_addition_measure(1,OAB,OBC)",
+        "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)"
+      ],
+      "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)": [
+        "congruent_arc_judgment_length_equal(1,OAB,OBC)"
+      ],
+      "congruent_arc_judgment_length_equal(1,OAB,OBC)": [
+        "congruent_arc_property_measure_equal(1,OAB,OBC)"
+      ]
+    }
   },
-  "183235": {
-    "problem_id": 183235,
+  "130945": {
+    "problem_id": 130945,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfArc(OAB))",
     "problem_answer": "50",
@@ -323,10 +380,23 @@
       "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)",
       "congruent_arc_judgment_length_equal(1,OAB,OBC)",
       "congruent_arc_property_measure_equal(1,OAB,OBC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_center_angle(1,OAC,O)",
+        "arc_addition_measure(1,OAB,OBC)",
+        "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)"
+      ],
+      "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)": [
+        "congruent_arc_judgment_length_equal(1,OAB,OBC)"
+      ],
+      "congruent_arc_judgment_length_equal(1,OAB,OBC)": [
+        "congruent_arc_property_measure_equal(1,OAB,OBC)"
+      ]
+    }
   },
-  "183236": {
-    "problem_id": 183236,
+  "130946": {
+    "problem_id": 130946,
     "added_cdl": [
       "CongruentBetweenArc(OAB,OBC)",
       "Equation(-mar_oab+mar_oac-mar_obc)",
@@ -336,10 +406,15 @@
     "problem_answer": "50",
     "theorem_seqs": [
       "congruent_arc_property_measure_equal(1,OAB,OBC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "congruent_arc_property_measure_equal(1,OAB,OBC)"
+      ]
+    }
   },
-  "183237": {
-    "problem_id": 183237,
+  "130947": {
+    "problem_id": 130947,
     "added_cdl": [
       "Equal(LengthOfArc(OAB),LengthOfArc(OBC))",
       "Equation(-mar_oab+mar_oac-mar_obc)",
@@ -350,10 +425,18 @@
     "theorem_seqs": [
       "congruent_arc_judgment_length_equal(1,OAB,OBC)",
       "congruent_arc_property_measure_equal(1,OAB,OBC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "congruent_arc_judgment_length_equal(1,OAB,OBC)"
+      ],
+      "congruent_arc_judgment_length_equal(1,OAB,OBC)": [
+        "congruent_arc_property_measure_equal(1,OAB,OBC)"
+      ]
+    }
   },
-  "183238": {
-    "problem_id": 183238,
+  "130948": {
+    "problem_id": 130948,
     "added_cdl": [
       "Equation(-mar_oab+mar_oac-mar_obc)",
       "Equal(MeasureOfArc(OAC),MeasureOfAngle(COA))"
@@ -364,10 +447,21 @@
       "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)",
       "congruent_arc_judgment_length_equal(1,OAB,OBC)",
       "congruent_arc_property_measure_equal(1,OAB,OBC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)"
+      ],
+      "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)": [
+        "congruent_arc_judgment_length_equal(1,OAB,OBC)"
+      ],
+      "congruent_arc_judgment_length_equal(1,OAB,OBC)": [
+        "congruent_arc_property_measure_equal(1,OAB,OBC)"
+      ]
+    }
   },
-  "183239": {
-    "problem_id": 183239,
+  "130949": {
+    "problem_id": 130949,
     "added_cdl": [
       "Equal(MeasureOfArc(OAC),MeasureOfAngle(COA))"
     ],
@@ -378,10 +472,22 @@
       "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)",
       "congruent_arc_judgment_length_equal(1,OAB,OBC)",
       "congruent_arc_property_measure_equal(1,OAB,OBC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_addition_measure(1,OAB,OBC)",
+        "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)"
+      ],
+      "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)": [
+        "congruent_arc_judgment_length_equal(1,OAB,OBC)"
+      ],
+      "congruent_arc_judgment_length_equal(1,OAB,OBC)": [
+        "congruent_arc_property_measure_equal(1,OAB,OBC)"
+      ]
+    }
   },
-  "183240": {
-    "problem_id": 183240,
+  "130950": {
+    "problem_id": 130950,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfArc(OBC))",
     "problem_answer": "50",
@@ -391,6 +497,19 @@
       "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)",
       "congruent_arc_judgment_length_equal(1,OAB,OBC)",
       "congruent_arc_property_measure_equal(1,OAB,OBC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "arc_property_center_angle(1,OAC,O)",
+        "arc_addition_measure(1,OAB,OBC)",
+        "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)"
+      ],
+      "circle_property_chord_perpendicular_bisect_arc(1,OAC,OEB)": [
+        "congruent_arc_judgment_length_equal(1,OAB,OBC)"
+      ],
+      "congruent_arc_judgment_length_equal(1,OAB,OBC)": [
+        "congruent_arc_property_measure_equal(1,OAB,OBC)"
+      ]
+    }
   }
 }

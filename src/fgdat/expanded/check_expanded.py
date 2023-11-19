@@ -13,13 +13,14 @@ def check_expanded(path_datasets, start_pid=1, clean_theorem=False, clean_acc=Fa
                         load_json(os.path.join(path_datasets, "gdl/theorem_GDL.json")))
     warnings.filterwarnings("ignore")
     error_problems = []
+    problem_number = load_json(os.path.join(path_datasets, "info.json"))["problem_number"]
     if start_pid == 1:
-        pid_count = load_json(os.path.join(path_datasets, "info.json"))["problem_number"] + 1
+        pid_count = problem_number + 1
     else:
         pid_count = int(list(load_json(os.path.join(path_datasets, "expanded/{}.json".format(start_pid - 1))))[-1]) + 1
 
     print("raw_pid\tsolved\ttiming(s)")
-    for raw_pid in range(start_pid, pid_count):
+    for raw_pid in range(start_pid, problem_number + 1):
         expanded_problems = load_json(os.path.join(path_datasets, "expanded/{}.json".format(raw_pid)))
         solved_problems = {}
         timing = time.time()
@@ -71,4 +72,4 @@ def check_expanded(path_datasets, start_pid=1, clean_theorem=False, clean_acc=Fa
 
 
 if __name__ == '__main__':
-    check_expanded("../../../projects/formalgeo7k/", start_pid=3616, clean_theorem=True, clean_acc=True)
+    check_expanded("../../../projects/formalgeo7k/", start_pid=6982, clean_theorem=True, clean_acc=True)

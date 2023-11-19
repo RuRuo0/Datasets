@@ -1,33 +1,34 @@
 {
-  "114493": {
-    "problem_id": 114493,
+  "82101": {
+    "problem_id": 82101,
     "added_cdl": [],
     "goal_cdl": "Relation(PerpendicularBetweenLine(PC,OC))",
     "problem_answer": "PerpendicularBetweenLine(PC,OC)",
     "theorem_seqs": [
       "tangent_of_circle_property_perpendicular(2,PC,O,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "tangent_of_circle_property_perpendicular(2,PC,O,O)"
+      ]
+    }
   },
-  "114494": {
-    "problem_id": 114494,
+  "82102": {
+    "problem_id": 82102,
     "added_cdl": [],
     "goal_cdl": "Relation(IsoscelesTriangle(OCA))",
     "problem_answer": "IsoscelesTriangle(OCA)",
     "theorem_seqs": [
       "isosceles_triangle_judgment_line_equal(1,OCA)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,OCA)"
+      ]
+    }
   },
-  "114495": {
-    "problem_id": 114495,
-    "added_cdl": [],
-    "goal_cdl": "Equal(LengthOfLine(OC),LengthOfLine(OA))",
-    "problem_answer": "0",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_line_equal(1,OCA)"
-    ]
-  },
-  "114496": {
-    "problem_id": 114496,
+  "82103": {
+    "problem_id": 82103,
     "added_cdl": [
       "IsoscelesTriangle(OCA)"
     ],
@@ -35,20 +36,33 @@
     "problem_answer": "0",
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,OCA)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,OCA)"
+      ]
+    }
   },
-  "114497": {
-    "problem_id": 114497,
+  "82104": {
+    "problem_id": 82104,
     "added_cdl": [],
     "goal_cdl": "Equal(MeasureOfAngle(OCA),MeasureOfAngle(CAO))",
     "problem_answer": "0",
     "theorem_seqs": [
       "isosceles_triangle_judgment_line_equal(1,OCA)",
       "isosceles_triangle_property_angle_equal(1,OCA)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,OCA)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,OCA)": [
+        "isosceles_triangle_property_angle_equal(1,OCA)"
+      ]
+    }
   },
-  "114498": {
-    "problem_id": 114498,
+  "82105": {
+    "problem_id": 82105,
     "added_cdl": [
       "PerpendicularBetweenLine(PC,OC)",
       "Equation(ma_apc+ma_cao+ma_pca-180)",
@@ -59,10 +73,15 @@
     "problem_answer": "IsoscelesTriangle(CAP)",
     "theorem_seqs": [
       "isosceles_triangle_judgment_angle_equal(1,CAP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ]
+    }
   },
-  "114499": {
-    "problem_id": 114499,
+  "82106": {
+    "problem_id": 82106,
     "added_cdl": [
       "Equation(ma_apc+ma_cao+ma_pca-180)",
       "Equal(MeasureOfAngle(OCA),MeasureOfAngle(CAO))",
@@ -73,10 +92,18 @@
     "theorem_seqs": [
       "tangent_of_circle_property_perpendicular(2,PC,O,O)",
       "isosceles_triangle_judgment_angle_equal(1,CAP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "tangent_of_circle_property_perpendicular(2,PC,O,O)"
+      ],
+      "tangent_of_circle_property_perpendicular(2,PC,O,O)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ]
+    }
   },
-  "114500": {
-    "problem_id": 114500,
+  "82107": {
+    "problem_id": 82107,
     "added_cdl": [
       "Equal(MeasureOfAngle(OCA),MeasureOfAngle(CAO))",
       "Equation(-ma_oca+ma_pca-ma_pco)"
@@ -87,10 +114,22 @@
       "triangle_property_angle_sum(1,CAP)",
       "tangent_of_circle_property_perpendicular(2,PC,O,O)",
       "isosceles_triangle_judgment_angle_equal(1,CAP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,CAP)",
+        "tangent_of_circle_property_perpendicular(2,PC,O,O)"
+      ],
+      "triangle_property_angle_sum(1,CAP)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ],
+      "tangent_of_circle_property_perpendicular(2,PC,O,O)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ]
+    }
   },
-  "114501": {
-    "problem_id": 114501,
+  "82108": {
+    "problem_id": 82108,
     "added_cdl": [
       "IsoscelesTriangle(OCA)",
       "Equation(-ma_oca+ma_pca-ma_pco)"
@@ -102,10 +141,26 @@
       "triangle_property_angle_sum(1,CAP)",
       "tangent_of_circle_property_perpendicular(2,PC,O,O)",
       "isosceles_triangle_judgment_angle_equal(1,CAP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,OCA)",
+        "triangle_property_angle_sum(1,CAP)",
+        "tangent_of_circle_property_perpendicular(2,PC,O,O)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,OCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ],
+      "triangle_property_angle_sum(1,CAP)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ],
+      "tangent_of_circle_property_perpendicular(2,PC,O,O)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ]
+    }
   },
-  "114502": {
-    "problem_id": 114502,
+  "82109": {
+    "problem_id": 82109,
     "added_cdl": [
       "Equation(-ma_oca+ma_pca-ma_pco)"
     ],
@@ -117,10 +172,29 @@
       "triangle_property_angle_sum(1,CAP)",
       "tangent_of_circle_property_perpendicular(2,PC,O,O)",
       "isosceles_triangle_judgment_angle_equal(1,CAP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,OCA)",
+        "triangle_property_angle_sum(1,CAP)",
+        "tangent_of_circle_property_perpendicular(2,PC,O,O)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,OCA)": [
+        "isosceles_triangle_property_angle_equal(1,OCA)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,OCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ],
+      "triangle_property_angle_sum(1,CAP)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ],
+      "tangent_of_circle_property_perpendicular(2,PC,O,O)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ]
+    }
   },
-  "114503": {
-    "problem_id": 114503,
+  "82110": {
+    "problem_id": 82110,
     "added_cdl": [],
     "goal_cdl": "Relation(IsoscelesTriangle(CAP))",
     "problem_answer": "IsoscelesTriangle(CAP)",
@@ -131,10 +205,33 @@
       "triangle_property_angle_sum(1,CAP)",
       "tangent_of_circle_property_perpendicular(2,PC,O,O)",
       "isosceles_triangle_judgment_angle_equal(1,CAP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "angle_addition(1,PCO,OCA)",
+        "isosceles_triangle_judgment_line_equal(1,OCA)",
+        "triangle_property_angle_sum(1,CAP)",
+        "tangent_of_circle_property_perpendicular(2,PC,O,O)"
+      ],
+      "angle_addition(1,PCO,OCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,OCA)": [
+        "isosceles_triangle_property_angle_equal(1,OCA)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,OCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ],
+      "triangle_property_angle_sum(1,CAP)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ],
+      "tangent_of_circle_property_perpendicular(2,PC,O,O)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ]
+    }
   },
-  "114504": {
-    "problem_id": 114504,
+  "82111": {
+    "problem_id": 82111,
     "added_cdl": [
       "PerpendicularBetweenLine(PC,OC)",
       "Equation(ma_apc+ma_cao+ma_pca-180)",
@@ -145,10 +242,15 @@
     "problem_answer": "0",
     "theorem_seqs": [
       "isosceles_triangle_judgment_angle_equal(1,CAP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ]
+    }
   },
-  "114505": {
-    "problem_id": 114505,
+  "82112": {
+    "problem_id": 82112,
     "added_cdl": [
       "Equation(ma_apc+ma_cao+ma_pca-180)",
       "Equal(MeasureOfAngle(OCA),MeasureOfAngle(CAO))",
@@ -159,10 +261,18 @@
     "theorem_seqs": [
       "tangent_of_circle_property_perpendicular(2,PC,O,O)",
       "isosceles_triangle_judgment_angle_equal(1,CAP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "tangent_of_circle_property_perpendicular(2,PC,O,O)"
+      ],
+      "tangent_of_circle_property_perpendicular(2,PC,O,O)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ]
+    }
   },
-  "114506": {
-    "problem_id": 114506,
+  "82113": {
+    "problem_id": 82113,
     "added_cdl": [
       "Equal(MeasureOfAngle(OCA),MeasureOfAngle(CAO))",
       "Equation(-ma_oca+ma_pca-ma_pco)"
@@ -173,10 +283,22 @@
       "triangle_property_angle_sum(1,CAP)",
       "tangent_of_circle_property_perpendicular(2,PC,O,O)",
       "isosceles_triangle_judgment_angle_equal(1,CAP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,CAP)",
+        "tangent_of_circle_property_perpendicular(2,PC,O,O)"
+      ],
+      "triangle_property_angle_sum(1,CAP)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ],
+      "tangent_of_circle_property_perpendicular(2,PC,O,O)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ]
+    }
   },
-  "114507": {
-    "problem_id": 114507,
+  "82114": {
+    "problem_id": 82114,
     "added_cdl": [
       "IsoscelesTriangle(OCA)",
       "Equation(-ma_oca+ma_pca-ma_pco)"
@@ -188,10 +310,26 @@
       "triangle_property_angle_sum(1,CAP)",
       "tangent_of_circle_property_perpendicular(2,PC,O,O)",
       "isosceles_triangle_judgment_angle_equal(1,CAP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,OCA)",
+        "triangle_property_angle_sum(1,CAP)",
+        "tangent_of_circle_property_perpendicular(2,PC,O,O)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,OCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ],
+      "triangle_property_angle_sum(1,CAP)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ],
+      "tangent_of_circle_property_perpendicular(2,PC,O,O)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ]
+    }
   },
-  "114508": {
-    "problem_id": 114508,
+  "82115": {
+    "problem_id": 82115,
     "added_cdl": [
       "Equation(-ma_oca+ma_pca-ma_pco)"
     ],
@@ -203,10 +341,29 @@
       "triangle_property_angle_sum(1,CAP)",
       "tangent_of_circle_property_perpendicular(2,PC,O,O)",
       "isosceles_triangle_judgment_angle_equal(1,CAP)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,OCA)",
+        "triangle_property_angle_sum(1,CAP)",
+        "tangent_of_circle_property_perpendicular(2,PC,O,O)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,OCA)": [
+        "isosceles_triangle_property_angle_equal(1,OCA)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,OCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ],
+      "triangle_property_angle_sum(1,CAP)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ],
+      "tangent_of_circle_property_perpendicular(2,PC,O,O)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ]
+    }
   },
-  "114509": {
-    "problem_id": 114509,
+  "82116": {
+    "problem_id": 82116,
     "added_cdl": [],
     "goal_cdl": "Equal(LengthOfLine(AC),LengthOfLine(CP))",
     "problem_answer": "0",
@@ -217,422 +374,33 @@
       "triangle_property_angle_sum(1,CAP)",
       "tangent_of_circle_property_perpendicular(2,PC,O,O)",
       "isosceles_triangle_judgment_angle_equal(1,CAP)"
-    ]
-  },
-  "114510": {
-    "problem_id": 114510,
-    "added_cdl": [
-      "IsoscelesTriangle(CAP)"
     ],
-    "goal_cdl": "Value(LengthOfLine(OC))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "cosine_theorem(1,AOC)"
-    ]
+    "theorem_seqs_dag": {
+      "START": [
+        "angle_addition(1,PCO,OCA)",
+        "isosceles_triangle_judgment_line_equal(1,OCA)",
+        "triangle_property_angle_sum(1,CAP)",
+        "tangent_of_circle_property_perpendicular(2,PC,O,O)"
+      ],
+      "angle_addition(1,PCO,OCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,OCA)": [
+        "isosceles_triangle_property_angle_equal(1,OCA)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,OCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ],
+      "triangle_property_angle_sum(1,CAP)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ],
+      "tangent_of_circle_property_perpendicular(2,PC,O,O)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ]
+    }
   },
-  "114511": {
-    "problem_id": 114511,
-    "added_cdl": [
-      "PerpendicularBetweenLine(PC,OC)",
-      "Equation(ma_apc+ma_cao+ma_pca-180)",
-      "Equal(MeasureOfAngle(OCA),MeasureOfAngle(CAO))",
-      "Equation(-ma_oca+ma_pca-ma_pco)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(OC))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_angle_equal(1,CAP)",
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114512": {
-    "problem_id": 114512,
-    "added_cdl": [
-      "Equation(ma_apc+ma_cao+ma_pca-180)",
-      "Equal(MeasureOfAngle(OCA),MeasureOfAngle(CAO))",
-      "Equation(-ma_oca+ma_pca-ma_pco)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(OC))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "tangent_of_circle_property_perpendicular(2,PC,O,O)",
-      "isosceles_triangle_judgment_angle_equal(1,CAP)",
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114513": {
-    "problem_id": 114513,
-    "added_cdl": [
-      "Equal(MeasureOfAngle(OCA),MeasureOfAngle(CAO))",
-      "Equation(-ma_oca+ma_pca-ma_pco)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(OC))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "triangle_property_angle_sum(1,CAP)",
-      "tangent_of_circle_property_perpendicular(2,PC,O,O)",
-      "isosceles_triangle_judgment_angle_equal(1,CAP)",
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114514": {
-    "problem_id": 114514,
-    "added_cdl": [
-      "IsoscelesTriangle(OCA)",
-      "Equation(-ma_oca+ma_pca-ma_pco)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(OC))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "isosceles_triangle_property_angle_equal(1,OCA)",
-      "triangle_property_angle_sum(1,CAP)",
-      "tangent_of_circle_property_perpendicular(2,PC,O,O)",
-      "isosceles_triangle_judgment_angle_equal(1,CAP)",
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114515": {
-    "problem_id": 114515,
-    "added_cdl": [
-      "Equation(-ma_oca+ma_pca-ma_pco)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(OC))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_line_equal(1,OCA)",
-      "isosceles_triangle_property_angle_equal(1,OCA)",
-      "triangle_property_angle_sum(1,CAP)",
-      "tangent_of_circle_property_perpendicular(2,PC,O,O)",
-      "isosceles_triangle_judgment_angle_equal(1,CAP)",
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114516": {
-    "problem_id": 114516,
-    "added_cdl": [],
-    "goal_cdl": "Value(LengthOfLine(OC))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "angle_addition(1,PCO,OCA)",
-      "isosceles_triangle_judgment_line_equal(1,OCA)",
-      "isosceles_triangle_property_angle_equal(1,OCA)",
-      "triangle_property_angle_sum(1,CAP)",
-      "tangent_of_circle_property_perpendicular(2,PC,O,O)",
-      "isosceles_triangle_judgment_angle_equal(1,CAP)",
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114517": {
-    "problem_id": 114517,
-    "added_cdl": [
-      "IsoscelesTriangle(CAP)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(OB))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114518": {
-    "problem_id": 114518,
-    "added_cdl": [
-      "PerpendicularBetweenLine(PC,OC)",
-      "Equation(ma_apc+ma_cao+ma_pca-180)",
-      "Equal(MeasureOfAngle(OCA),MeasureOfAngle(CAO))",
-      "Equation(-ma_oca+ma_pca-ma_pco)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(OB))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_angle_equal(1,CAP)",
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114519": {
-    "problem_id": 114519,
-    "added_cdl": [
-      "Equation(ma_apc+ma_cao+ma_pca-180)",
-      "Equal(MeasureOfAngle(OCA),MeasureOfAngle(CAO))",
-      "Equation(-ma_oca+ma_pca-ma_pco)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(OB))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "tangent_of_circle_property_perpendicular(2,PC,O,O)",
-      "isosceles_triangle_judgment_angle_equal(1,CAP)",
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114520": {
-    "problem_id": 114520,
-    "added_cdl": [
-      "Equal(MeasureOfAngle(OCA),MeasureOfAngle(CAO))",
-      "Equation(-ma_oca+ma_pca-ma_pco)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(OB))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "triangle_property_angle_sum(1,CAP)",
-      "tangent_of_circle_property_perpendicular(2,PC,O,O)",
-      "isosceles_triangle_judgment_angle_equal(1,CAP)",
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114521": {
-    "problem_id": 114521,
-    "added_cdl": [
-      "IsoscelesTriangle(OCA)",
-      "Equation(-ma_oca+ma_pca-ma_pco)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(OB))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "isosceles_triangle_property_angle_equal(1,OCA)",
-      "triangle_property_angle_sum(1,CAP)",
-      "tangent_of_circle_property_perpendicular(2,PC,O,O)",
-      "isosceles_triangle_judgment_angle_equal(1,CAP)",
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114522": {
-    "problem_id": 114522,
-    "added_cdl": [
-      "Equation(-ma_oca+ma_pca-ma_pco)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(OB))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_line_equal(1,OCA)",
-      "isosceles_triangle_property_angle_equal(1,OCA)",
-      "triangle_property_angle_sum(1,CAP)",
-      "tangent_of_circle_property_perpendicular(2,PC,O,O)",
-      "isosceles_triangle_judgment_angle_equal(1,CAP)",
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114523": {
-    "problem_id": 114523,
-    "added_cdl": [],
-    "goal_cdl": "Value(LengthOfLine(OB))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "angle_addition(1,PCO,OCA)",
-      "isosceles_triangle_judgment_line_equal(1,OCA)",
-      "isosceles_triangle_property_angle_equal(1,OCA)",
-      "triangle_property_angle_sum(1,CAP)",
-      "tangent_of_circle_property_perpendicular(2,PC,O,O)",
-      "isosceles_triangle_judgment_angle_equal(1,CAP)",
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114524": {
-    "problem_id": 114524,
-    "added_cdl": [
-      "IsoscelesTriangle(CAP)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(OA))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114525": {
-    "problem_id": 114525,
-    "added_cdl": [
-      "PerpendicularBetweenLine(PC,OC)",
-      "Equation(ma_apc+ma_cao+ma_pca-180)",
-      "Equal(MeasureOfAngle(OCA),MeasureOfAngle(CAO))",
-      "Equation(-ma_oca+ma_pca-ma_pco)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(OA))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_angle_equal(1,CAP)",
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114526": {
-    "problem_id": 114526,
-    "added_cdl": [
-      "Equation(ma_apc+ma_cao+ma_pca-180)",
-      "Equal(MeasureOfAngle(OCA),MeasureOfAngle(CAO))",
-      "Equation(-ma_oca+ma_pca-ma_pco)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(OA))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "tangent_of_circle_property_perpendicular(2,PC,O,O)",
-      "isosceles_triangle_judgment_angle_equal(1,CAP)",
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114527": {
-    "problem_id": 114527,
-    "added_cdl": [
-      "Equal(MeasureOfAngle(OCA),MeasureOfAngle(CAO))",
-      "Equation(-ma_oca+ma_pca-ma_pco)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(OA))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "triangle_property_angle_sum(1,CAP)",
-      "tangent_of_circle_property_perpendicular(2,PC,O,O)",
-      "isosceles_triangle_judgment_angle_equal(1,CAP)",
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114528": {
-    "problem_id": 114528,
-    "added_cdl": [
-      "IsoscelesTriangle(OCA)",
-      "Equation(-ma_oca+ma_pca-ma_pco)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(OA))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "isosceles_triangle_property_angle_equal(1,OCA)",
-      "triangle_property_angle_sum(1,CAP)",
-      "tangent_of_circle_property_perpendicular(2,PC,O,O)",
-      "isosceles_triangle_judgment_angle_equal(1,CAP)",
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114529": {
-    "problem_id": 114529,
-    "added_cdl": [
-      "Equation(-ma_oca+ma_pca-ma_pco)"
-    ],
-    "goal_cdl": "Value(LengthOfLine(OA))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_line_equal(1,OCA)",
-      "isosceles_triangle_property_angle_equal(1,OCA)",
-      "triangle_property_angle_sum(1,CAP)",
-      "tangent_of_circle_property_perpendicular(2,PC,O,O)",
-      "isosceles_triangle_judgment_angle_equal(1,CAP)",
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114530": {
-    "problem_id": 114530,
-    "added_cdl": [],
-    "goal_cdl": "Value(LengthOfLine(OA))",
-    "problem_answer": "5",
-    "theorem_seqs": [
-      "angle_addition(1,PCO,OCA)",
-      "isosceles_triangle_judgment_line_equal(1,OCA)",
-      "isosceles_triangle_property_angle_equal(1,OCA)",
-      "triangle_property_angle_sum(1,CAP)",
-      "tangent_of_circle_property_perpendicular(2,PC,O,O)",
-      "isosceles_triangle_judgment_angle_equal(1,CAP)",
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114531": {
-    "problem_id": 114531,
-    "added_cdl": [
-      "IsoscelesTriangle(CAP)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(CAO))",
-    "problem_answer": "30",
-    "theorem_seqs": [
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114532": {
-    "problem_id": 114532,
-    "added_cdl": [
-      "PerpendicularBetweenLine(PC,OC)",
-      "Equation(ma_apc+ma_cao+ma_pca-180)",
-      "Equal(MeasureOfAngle(OCA),MeasureOfAngle(CAO))",
-      "Equation(-ma_oca+ma_pca-ma_pco)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(CAO))",
-    "problem_answer": "30",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_angle_equal(1,CAP)",
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114533": {
-    "problem_id": 114533,
-    "added_cdl": [
-      "Equation(ma_apc+ma_cao+ma_pca-180)",
-      "Equal(MeasureOfAngle(OCA),MeasureOfAngle(CAO))",
-      "Equation(-ma_oca+ma_pca-ma_pco)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(CAO))",
-    "problem_answer": "30",
-    "theorem_seqs": [
-      "tangent_of_circle_property_perpendicular(2,PC,O,O)",
-      "isosceles_triangle_judgment_angle_equal(1,CAP)",
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114534": {
-    "problem_id": 114534,
-    "added_cdl": [
-      "Equal(MeasureOfAngle(OCA),MeasureOfAngle(CAO))",
-      "Equation(-ma_oca+ma_pca-ma_pco)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(CAO))",
-    "problem_answer": "30",
-    "theorem_seqs": [
-      "triangle_property_angle_sum(1,CAP)",
-      "tangent_of_circle_property_perpendicular(2,PC,O,O)",
-      "isosceles_triangle_judgment_angle_equal(1,CAP)",
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114535": {
-    "problem_id": 114535,
-    "added_cdl": [
-      "IsoscelesTriangle(OCA)",
-      "Equation(-ma_oca+ma_pca-ma_pco)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(CAO))",
-    "problem_answer": "30",
-    "theorem_seqs": [
-      "isosceles_triangle_property_angle_equal(1,OCA)",
-      "triangle_property_angle_sum(1,CAP)",
-      "tangent_of_circle_property_perpendicular(2,PC,O,O)",
-      "isosceles_triangle_judgment_angle_equal(1,CAP)",
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114536": {
-    "problem_id": 114536,
-    "added_cdl": [
-      "Equation(-ma_oca+ma_pca-ma_pco)"
-    ],
-    "goal_cdl": "Value(MeasureOfAngle(CAO))",
-    "problem_answer": "30",
-    "theorem_seqs": [
-      "isosceles_triangle_judgment_line_equal(1,OCA)",
-      "isosceles_triangle_property_angle_equal(1,OCA)",
-      "triangle_property_angle_sum(1,CAP)",
-      "tangent_of_circle_property_perpendicular(2,PC,O,O)",
-      "isosceles_triangle_judgment_angle_equal(1,CAP)",
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114537": {
-    "problem_id": 114537,
-    "added_cdl": [],
-    "goal_cdl": "Value(MeasureOfAngle(CAO))",
-    "problem_answer": "30",
-    "theorem_seqs": [
-      "angle_addition(1,PCO,OCA)",
-      "isosceles_triangle_judgment_line_equal(1,OCA)",
-      "isosceles_triangle_property_angle_equal(1,OCA)",
-      "triangle_property_angle_sum(1,CAP)",
-      "tangent_of_circle_property_perpendicular(2,PC,O,O)",
-      "isosceles_triangle_judgment_angle_equal(1,CAP)",
-      "cosine_theorem(1,AOC)"
-    ]
-  },
-  "114538": {
-    "problem_id": 114538,
+  "82117": {
+    "problem_id": 82117,
     "added_cdl": [
       "IsoscelesTriangle(CAP)"
     ],
@@ -640,10 +408,15 @@
     "problem_answer": "5*sqrt(3)",
     "theorem_seqs": [
       "cosine_theorem(1,AOC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "cosine_theorem(1,AOC)"
+      ]
+    }
   },
-  "114539": {
-    "problem_id": 114539,
+  "82118": {
+    "problem_id": 82118,
     "added_cdl": [
       "PerpendicularBetweenLine(PC,OC)",
       "Equation(ma_apc+ma_cao+ma_pca-180)",
@@ -655,10 +428,16 @@
     "theorem_seqs": [
       "isosceles_triangle_judgment_angle_equal(1,CAP)",
       "cosine_theorem(1,AOC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)",
+        "cosine_theorem(1,AOC)"
+      ]
+    }
   },
-  "114540": {
-    "problem_id": 114540,
+  "82119": {
+    "problem_id": 82119,
     "added_cdl": [
       "Equation(ma_apc+ma_cao+ma_pca-180)",
       "Equal(MeasureOfAngle(OCA),MeasureOfAngle(CAO))",
@@ -670,10 +449,19 @@
       "tangent_of_circle_property_perpendicular(2,PC,O,O)",
       "isosceles_triangle_judgment_angle_equal(1,CAP)",
       "cosine_theorem(1,AOC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "tangent_of_circle_property_perpendicular(2,PC,O,O)",
+        "cosine_theorem(1,AOC)"
+      ],
+      "tangent_of_circle_property_perpendicular(2,PC,O,O)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ]
+    }
   },
-  "114541": {
-    "problem_id": 114541,
+  "82120": {
+    "problem_id": 82120,
     "added_cdl": [
       "Equal(MeasureOfAngle(OCA),MeasureOfAngle(CAO))",
       "Equation(-ma_oca+ma_pca-ma_pco)"
@@ -685,10 +473,23 @@
       "tangent_of_circle_property_perpendicular(2,PC,O,O)",
       "isosceles_triangle_judgment_angle_equal(1,CAP)",
       "cosine_theorem(1,AOC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,CAP)",
+        "tangent_of_circle_property_perpendicular(2,PC,O,O)",
+        "cosine_theorem(1,AOC)"
+      ],
+      "triangle_property_angle_sum(1,CAP)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ],
+      "tangent_of_circle_property_perpendicular(2,PC,O,O)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ]
+    }
   },
-  "114542": {
-    "problem_id": 114542,
+  "82121": {
+    "problem_id": 82121,
     "added_cdl": [
       "IsoscelesTriangle(OCA)",
       "Equation(-ma_oca+ma_pca-ma_pco)"
@@ -701,10 +502,27 @@
       "tangent_of_circle_property_perpendicular(2,PC,O,O)",
       "isosceles_triangle_judgment_angle_equal(1,CAP)",
       "cosine_theorem(1,AOC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,OCA)",
+        "triangle_property_angle_sum(1,CAP)",
+        "tangent_of_circle_property_perpendicular(2,PC,O,O)",
+        "cosine_theorem(1,AOC)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,OCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ],
+      "triangle_property_angle_sum(1,CAP)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ],
+      "tangent_of_circle_property_perpendicular(2,PC,O,O)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ]
+    }
   },
-  "114543": {
-    "problem_id": 114543,
+  "82122": {
+    "problem_id": 82122,
     "added_cdl": [
       "Equation(-ma_oca+ma_pca-ma_pco)"
     ],
@@ -717,10 +535,30 @@
       "tangent_of_circle_property_perpendicular(2,PC,O,O)",
       "isosceles_triangle_judgment_angle_equal(1,CAP)",
       "cosine_theorem(1,AOC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,OCA)",
+        "triangle_property_angle_sum(1,CAP)",
+        "tangent_of_circle_property_perpendicular(2,PC,O,O)",
+        "cosine_theorem(1,AOC)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,OCA)": [
+        "isosceles_triangle_property_angle_equal(1,OCA)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,OCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ],
+      "triangle_property_angle_sum(1,CAP)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ],
+      "tangent_of_circle_property_perpendicular(2,PC,O,O)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ]
+    }
   },
-  "114544": {
-    "problem_id": 114544,
+  "82123": {
+    "problem_id": 82123,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(CP))",
     "problem_answer": "5*sqrt(3)",
@@ -732,19 +570,48 @@
       "tangent_of_circle_property_perpendicular(2,PC,O,O)",
       "isosceles_triangle_judgment_angle_equal(1,CAP)",
       "cosine_theorem(1,AOC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "angle_addition(1,PCO,OCA)",
+        "isosceles_triangle_judgment_line_equal(1,OCA)",
+        "triangle_property_angle_sum(1,CAP)",
+        "tangent_of_circle_property_perpendicular(2,PC,O,O)",
+        "cosine_theorem(1,AOC)"
+      ],
+      "angle_addition(1,PCO,OCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,OCA)": [
+        "isosceles_triangle_property_angle_equal(1,OCA)"
+      ],
+      "isosceles_triangle_property_angle_equal(1,OCA)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ],
+      "triangle_property_angle_sum(1,CAP)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ],
+      "tangent_of_circle_property_perpendicular(2,PC,O,O)": [
+        "isosceles_triangle_judgment_angle_equal(1,CAP)"
+      ]
+    }
   },
-  "114545": {
-    "problem_id": 114545,
+  "82124": {
+    "problem_id": 82124,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(PCO))",
     "problem_answer": "90",
     "theorem_seqs": [
       "tangent_of_circle_property_perpendicular(2,PC,O,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "tangent_of_circle_property_perpendicular(2,PC,O,O)"
+      ]
+    }
   },
-  "114546": {
-    "problem_id": 114546,
+  "82125": {
+    "problem_id": 82125,
     "added_cdl": [
       "IsoscelesTriangle(OCA)"
     ],
@@ -752,20 +619,33 @@
     "problem_answer": "30",
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,OCA)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,OCA)"
+      ]
+    }
   },
-  "114547": {
-    "problem_id": 114547,
+  "82126": {
+    "problem_id": 82126,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(OCA))",
     "problem_answer": "30",
     "theorem_seqs": [
       "isosceles_triangle_judgment_line_equal(1,OCA)",
       "isosceles_triangle_property_angle_equal(1,OCA)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,OCA)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,OCA)": [
+        "isosceles_triangle_property_angle_equal(1,OCA)"
+      ]
+    }
   },
-  "114548": {
-    "problem_id": 114548,
+  "82127": {
+    "problem_id": 82127,
     "added_cdl": [
       "Equal(MeasureOfAngle(OCA),MeasureOfAngle(CAO))",
       "Equation(-ma_oca+ma_pca-ma_pco)"
@@ -774,10 +654,15 @@
     "problem_answer": "120",
     "theorem_seqs": [
       "tangent_of_circle_property_perpendicular(2,PC,O,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "tangent_of_circle_property_perpendicular(2,PC,O,O)"
+      ]
+    }
   },
-  "114549": {
-    "problem_id": 114549,
+  "82128": {
+    "problem_id": 82128,
     "added_cdl": [
       "IsoscelesTriangle(OCA)",
       "Equation(-ma_oca+ma_pca-ma_pco)"
@@ -787,10 +672,16 @@
     "theorem_seqs": [
       "isosceles_triangle_property_angle_equal(1,OCA)",
       "tangent_of_circle_property_perpendicular(2,PC,O,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,OCA)",
+        "tangent_of_circle_property_perpendicular(2,PC,O,O)"
+      ]
+    }
   },
-  "114550": {
-    "problem_id": 114550,
+  "82129": {
+    "problem_id": 82129,
     "added_cdl": [
       "Equation(-ma_oca+ma_pca-ma_pco)"
     ],
@@ -800,10 +691,19 @@
       "isosceles_triangle_judgment_line_equal(1,OCA)",
       "isosceles_triangle_property_angle_equal(1,OCA)",
       "tangent_of_circle_property_perpendicular(2,PC,O,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,OCA)",
+        "tangent_of_circle_property_perpendicular(2,PC,O,O)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,OCA)": [
+        "isosceles_triangle_property_angle_equal(1,OCA)"
+      ]
+    }
   },
-  "114551": {
-    "problem_id": 114551,
+  "82130": {
+    "problem_id": 82130,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(PCA))",
     "problem_answer": "120",
@@ -812,19 +712,34 @@
       "isosceles_triangle_judgment_line_equal(1,OCA)",
       "isosceles_triangle_property_angle_equal(1,OCA)",
       "tangent_of_circle_property_perpendicular(2,PC,O,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "angle_addition(1,PCO,OCA)",
+        "isosceles_triangle_judgment_line_equal(1,OCA)",
+        "tangent_of_circle_property_perpendicular(2,PC,O,O)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,OCA)": [
+        "isosceles_triangle_property_angle_equal(1,OCA)"
+      ]
+    }
   },
-  "114552": {
-    "problem_id": 114552,
+  "82131": {
+    "problem_id": 82131,
     "added_cdl": [],
     "goal_cdl": "Value(LengthOfLine(AC))",
     "problem_answer": "5*sqrt(3)",
     "theorem_seqs": [
       "cosine_theorem(1,AOC)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "cosine_theorem(1,AOC)"
+      ]
+    }
   },
-  "114553": {
-    "problem_id": 114553,
+  "82132": {
+    "problem_id": 82132,
     "added_cdl": [
       "Equation(ma_apc+ma_cao+ma_pca-180)",
       "Equal(MeasureOfAngle(OCA),MeasureOfAngle(CAO))",
@@ -834,10 +749,15 @@
     "problem_answer": "30",
     "theorem_seqs": [
       "tangent_of_circle_property_perpendicular(2,PC,O,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "tangent_of_circle_property_perpendicular(2,PC,O,O)"
+      ]
+    }
   },
-  "114554": {
-    "problem_id": 114554,
+  "82133": {
+    "problem_id": 82133,
     "added_cdl": [
       "Equal(MeasureOfAngle(OCA),MeasureOfAngle(CAO))",
       "Equation(-ma_oca+ma_pca-ma_pco)"
@@ -847,10 +767,16 @@
     "theorem_seqs": [
       "triangle_property_angle_sum(1,CAP)",
       "tangent_of_circle_property_perpendicular(2,PC,O,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "triangle_property_angle_sum(1,CAP)",
+        "tangent_of_circle_property_perpendicular(2,PC,O,O)"
+      ]
+    }
   },
-  "114555": {
-    "problem_id": 114555,
+  "82134": {
+    "problem_id": 82134,
     "added_cdl": [
       "IsoscelesTriangle(OCA)",
       "Equation(-ma_oca+ma_pca-ma_pco)"
@@ -861,10 +787,17 @@
       "isosceles_triangle_property_angle_equal(1,OCA)",
       "triangle_property_angle_sum(1,CAP)",
       "tangent_of_circle_property_perpendicular(2,PC,O,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_property_angle_equal(1,OCA)",
+        "triangle_property_angle_sum(1,CAP)",
+        "tangent_of_circle_property_perpendicular(2,PC,O,O)"
+      ]
+    }
   },
-  "114556": {
-    "problem_id": 114556,
+  "82135": {
+    "problem_id": 82135,
     "added_cdl": [
       "Equation(-ma_oca+ma_pca-ma_pco)"
     ],
@@ -875,10 +808,20 @@
       "isosceles_triangle_property_angle_equal(1,OCA)",
       "triangle_property_angle_sum(1,CAP)",
       "tangent_of_circle_property_perpendicular(2,PC,O,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "isosceles_triangle_judgment_line_equal(1,OCA)",
+        "triangle_property_angle_sum(1,CAP)",
+        "tangent_of_circle_property_perpendicular(2,PC,O,O)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,OCA)": [
+        "isosceles_triangle_property_angle_equal(1,OCA)"
+      ]
+    }
   },
-  "114557": {
-    "problem_id": 114557,
+  "82136": {
+    "problem_id": 82136,
     "added_cdl": [],
     "goal_cdl": "Value(MeasureOfAngle(APC))",
     "problem_answer": "30",
@@ -888,6 +831,17 @@
       "isosceles_triangle_property_angle_equal(1,OCA)",
       "triangle_property_angle_sum(1,CAP)",
       "tangent_of_circle_property_perpendicular(2,PC,O,O)"
-    ]
+    ],
+    "theorem_seqs_dag": {
+      "START": [
+        "angle_addition(1,PCO,OCA)",
+        "isosceles_triangle_judgment_line_equal(1,OCA)",
+        "triangle_property_angle_sum(1,CAP)",
+        "tangent_of_circle_property_perpendicular(2,PC,O,O)"
+      ],
+      "isosceles_triangle_judgment_line_equal(1,OCA)": [
+        "isosceles_triangle_property_angle_equal(1,OCA)"
+      ]
+    }
   }
 }

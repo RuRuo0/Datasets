@@ -6,15 +6,13 @@ from tqdm import tqdm
 
 
 def check_dataset(path_dataset):
-    legal_files = {'diagrams', 'expanded', 'files', 'gdl', 'info.json', 'LICENSE', 'problems', 'REAMDE.md'}
-    selected = {'diagrams', 'expanded', 'files'}
-
+    legal_files = {'diagrams', 'expanded', 'files', 'gdl', 'problems', 'info.json', 'LICENSE', 'REAMDE.md'}
     dataset_files = set(os.listdir(path_dataset))
     legal = True
     if len(dataset_files - legal_files) > 0:
         print("Redundant files: {}".format(dataset_files - legal_files))
         legal = False
-    if len(legal_files - dataset_files - selected) > 0:
+    if len(legal_files - dataset_files) > 0:
         print("Missing files: {}".format(legal_files - dataset_files - {'diagrams', 'expanded', 'files'}))
         legal = False
 
@@ -54,7 +52,7 @@ def release(path_dataset, path_released):
         return
 
     info = load_json(os.path.join(path_dataset, "info.json"))
-    filename = "{}-{}".format(info["name"], info["version"])
+    filename = "{}_{}".format(info["dataset_name"], info["dataset_version"])
     path_cache = os.path.join(path_released, filename)
 
     shutil.copy(os.path.join(path_dataset, "info.json"), os.path.join(path_released, "{}.json".format(filename)))
@@ -63,19 +61,11 @@ def release(path_dataset, path_released):
     print("Packing... (It may take a few minutes)")
     shutil.make_archive(path_cache, 'gztar', path_cache)
 
-    print("Removing cache... (It may take a few minutes)")
-    shutil.rmtree(path_cache)
+    # print("Removing cache... (It may take a few minutes)")
+    # shutil.rmtree(path_cache)
 
     released = load_json(os.path.join(path_released, "released.json"))
-    released[filename] = {
-        "name": info["name"],
-        "version": info["version"],
-        "formalgeo": info["formalgeo"],
-        "gdl": info["gdl"],
-        "gdl_version": info["gdl_version"],
-        "release_datetime": info["release_datetime"],
-        "short_desc": info["short_desc"],
-    }
+    released[filename] = info
     safe_save_json(released, os.path.join(path_released, "released.json"))
 
 

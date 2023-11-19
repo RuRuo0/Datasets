@@ -8,6 +8,7 @@ from tqdm import tqdm
 def check_dataset(path_dataset):
     legal_files = {'diagrams', 'expanded', 'files', 'gdl', 'problems', 'info.json', 'LICENSE', 'REAMDE.md'}
     dataset_files = set(os.listdir(path_dataset))
+
     legal = True
     if len(dataset_files - legal_files) > 0:
         print("Redundant files: {}".format(dataset_files - legal_files))
@@ -16,11 +17,13 @@ def check_dataset(path_dataset):
         print("Missing files: {}".format(legal_files - dataset_files - {'diagrams', 'expanded', 'files'}))
         legal = False
 
-    return legal
+    if not legal:
+        msg = "Dataset checking not passed."
+        raise Exception(msg)
 
 
 def copy_tree(src, dst):
-    print("Calculating file size...")
+    print("Calculating file number...")
     tree = list(os.walk(src))
 
     total = 0
@@ -46,10 +49,11 @@ def copy_tree(src, dst):
     pbar.update(total - pbar.n)
 
 
-def release(path_dataset, path_released):
-    if not check_dataset(path_dataset):
-        print("Dataset checking not pass.")
-        return
+def release(path_dataset, path_released="../../../released"):
+    if not os.path.exists(path_dataset):
+        msg = "Path '{}' not exists.".format(path_dataset)
+        raise Exception(msg)
+    check_dataset(path_dataset)
 
     info = load_json(os.path.join(path_dataset, "info.json"))
     filename = "{}_{}".format(info["dataset_name"], info["dataset_version"])
@@ -61,8 +65,8 @@ def release(path_dataset, path_released):
     print("Packing... (It may take a few minutes)")
     shutil.make_archive(path_cache, 'gztar', path_cache)
 
-    # print("Removing cache... (It may take a few minutes)")
-    # shutil.rmtree(path_cache)
+    print("Removing cache... (It may take a few minutes)")
+    shutil.rmtree(path_cache)
 
     released = load_json(os.path.join(path_released, "released.json"))
     released[filename] = info
@@ -70,4 +74,5 @@ def release(path_dataset, path_released):
 
 
 if __name__ == '__main__':
-    release("../../../projects/formalgeo7k", "../../../released")
+    release("../../../projects/formalgeo7k")
+    release("../../../projects/formalgeo-imo")

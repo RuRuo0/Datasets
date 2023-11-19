@@ -145,4 +145,4 @@ def format_problems(path_datasets, start_pid=1):
 
 if __name__ == '__main__':
     # format_problems("../../../projects/formalgeo7k")
-    check_problems("../../../projects/formalgeo7k", start_pid=1, auto=False, clean_theorem=True, clean_acc=True)
+    check_problems("../../../projects/formalgeo7k", start_pid=1, auto=True, clean_theorem=True, clean_acc=False)

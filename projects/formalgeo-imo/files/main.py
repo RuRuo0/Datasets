@@ -5,13 +5,13 @@ from formalgeo.parse import parse_theorem_seqs, parse_one_theorem, inverse_parse
 
 
 def main(clean_theorem=False, interactive=True):
-    solver = Interactor(load_json(os.path.join("gdl/", "predicate_GDL.json")),
-                        load_json(os.path.join("gdl/", "theorem_GDL.json")))
+    solver = Interactor(load_json(os.path.join("../gdl/", "predicate_GDL.json")),
+                        load_json(os.path.join("../gdl/", "theorem_GDL.json")))
     while True:
         try:
             pid = input("pid:")
             filename = "{}.json".format(pid)
-            problem_CDL = load_json(os.path.join("problems/", filename))
+            problem_CDL = load_json(os.path.join("../problems/", filename))
         except BaseException as e:
             print("Exception: {}\n".format(repr(e)))
             continue
@@ -43,7 +43,7 @@ def main(clean_theorem=False, interactive=True):
             _, theorem_seqs = get_used_pid_and_theorem(solver.problem)  # clean theorem seqs
             theorem_seqs = [inverse_parse_one_theorem(t, solver.parsed_theorem_GDL) for t in theorem_seqs]
             problem_CDL["theorem_seqs"] = theorem_seqs
-            save_json(problem_CDL, os.path.join("problems/", filename))
+            save_json(problem_CDL, os.path.join("../problems/", filename))
 
 
 if __name__ == '__main__':

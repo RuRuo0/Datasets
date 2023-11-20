@@ -4,9 +4,10 @@
 [![License](https://img.shields.io/badge/License-MIT-green)](https://opensource.org/licenses/MIT)
 [![Survey](https://img.shields.io/badge/Survey-FormalGeo-blue)](https://github.com/FormalGeo/FormalGeo)
 
-Dataset Annotation Tools and Dataset Release for formal Euclidean plane geometry problems.  
-This project is based on the [Geometry Formalization Theory](https://arxiv.org/abs/2310.18021) and
-utilizes [FormalGeo](https://github.com/FormalGeo/FormalGeo) as its problem solver.
+Dataset Annotation Tools and Dataset Release for formal Euclidean plane geometry problems. This project is based on
+the Geometry Formalization Theory and utilizes FormalGeo as its problem solver. More information about FormalGeo will be
+found in [homepage](https://formalgeo.github.io/).  
+FormalGeo is in its early stages and brimming with potential. We welcome anyone to join us in this exciting endeavor.
 
 ## Installation
 
@@ -39,7 +40,8 @@ and [projects](./projects).
 
 You can contribute additional automation scripts that facilitate dataset annotation, or use the scripts from this
 project to build your own dataset.  
-We welcome contributions from anyone, even if you are new to open source. Please read our [Introduction to Contributing](./doc/contributing.md)page.
+We welcome contributions from anyone, even if you are new to open source. Please read
+our [Introduction to Contributing](./doc/contributing.md)page.
 
 ## Bugs
 

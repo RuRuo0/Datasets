@@ -1,0 +1,1786 @@
+{
+  "Name": "GFS-IMO",
+  "Version": "v1",
+  "Notes": "1.ee_check: Entity Existence check (EE check). It only contains BasicEntity. 2.fv_check: Format Validity check (FV check). More stringent than the default FV check. 3.multi: Multi representation. 4.extend: For automatic extension of conditions. It only contains Entity or Relation. It usually used for the definition of predicate.",
+  "Predicates": {
+    "Preset": {
+      "FixLength": [
+        "Point",
+        "Line",
+        "Arc",
+        "Angle",
+        "Circle",
+        "Equation"
+      ],
+      "VariableLength": [
+        "Shape",
+        "Collinear",
+        "Cocircular",
+        "Polygon"
+      ],
+      "Construction": [
+        "Shape",
+        "Collinear",
+        "Cocircular"
+      ],
+      "BasicEntity": [
+        "Point",
+        "Line",
+        "Arc",
+        "Angle",
+        "Polygon",
+        "Circle"
+      ],
+      "Attribution": [
+        "Free"
+      ],
+      "Algebra": [
+        "Equal",
+        "Equation"
+      ]
+    },
+    "Entity": {
+      "RightTriangle(ABC)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABC)"
+          ],
+          "multi": [],
+          "extend": [
+            "PerpendicularBetweenLine(AB,CB)"
+          ]
+        },
+        "doc_cn": "有一个角是直角的三角形称为直角三角形。\n在直角△ABC中，∠ABC为直角，AB和BC是两个直角边。",
+        "doc_en": "A triangle with one right angle is called a right triangle.\nIn the right triangle ABC, ∠ABC is the right angle, and AB and BC are the two legs.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "△{A}{B}{C}为直角△",
+          "∠{A}{B}{C}是直角△{A}{B}{C}的直角",
+          "{A}{B}和{B}{C}是直角△{A}{B}{C}的两个直角边",
+          "三角形{A}{B}{C}为直角三角形",
+          "∠{A}{B}{C}是直角三角形{A}{B}{C}的直角",
+          "{A}{B}和{B}{C}是直角三角形{A}{B}{C}的两个直角边"
+        ],
+        "anti_parse_to_nl_en": [
+          "△{A}{B}{C} is a right △",
+          "∠{A}{B}{C} is the right angle of the right △ {A}{B}{C}",
+          "{A}{B} and {B}{C} are the legs of the right △ {A}{B}{C}",
+          "triangle {A}{B}{C} is a right triangle",
+          "∠{A}{B}{C} is the right angle of the right triangle {A}{B}{C}",
+          "{A}{B} and {B}{C} are the legs of the right triangle {A}{B}{C}"
+        ]
+      },
+      "IsoscelesTriangle(ABC)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABC)"
+          ],
+          "multi": [],
+          "extend": [
+            "Equal(LengthOfLine(AB),LengthOfLine(AC))"
+          ]
+        },
+        "doc_cn": "两腰相等的三角形称为等腰三角形。\nAB和AC是等腰三角形ABC的两腰。",
+        "doc_en": "A triangle with two equal legs is called an isosceles triangle. \nAB and AC are the two equal legs of the isosceles triangle ABC.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "△{A}{B}{C}为等腰△",
+          "{A}{B}和{A}{C}是等腰△{A}{B}{C}的腰",
+          "∠{A}{B}{C}和∠{B}{C}{A}是等腰△{A}{B}{C}的底角",
+          "三角形{A}{B}{C}为等腰三角形",
+          "{A}{B}和{A}{C}是等腰三角形{A}{B}{C}的腰",
+          "∠{A}{B}{C}和∠{B}{C}{A}是等腰三角形{A}{B}{C}的底角"
+        ],
+        "anti_parse_to_nl_en": [
+          "△{A}{B}{C} is an isosceles △",
+          "{A}{B} and {A}{C} are the legs of the isosceles △ {A}{B}{C}",
+          "∠{A}{B}{C} and ∠{B}{C}{A} are the base angles of the isosceles △ {A}{B}{C}",
+          "triangle{A}{B}{C} is an isosceles triangle",
+          "{A}{B} and {A}{C} are the legs of the isosceles triangle {A}{B}{C}",
+          "∠{A}{B}{C} and ∠{B}{C}{A} are the base angles of the isosceles triangle {A}{B}{C}"
+        ]
+      },
+      "IsoscelesRightTriangle(ABC)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABC)"
+          ],
+          "multi": [],
+          "extend": [
+            "RightTriangle(CAB)",
+            "IsoscelesTriangle(ABC)"
+          ]
+        },
+        "doc_cn": "同时满足直角三角形和等腰三角形的三角形，是等腰直角三角形。",
+        "doc_en": "A triangle that satisfies the conditions of both a right triangle and an isosceles triangle is called an isosceles right triangle.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "△{A}{B}{C}为等腰直角△",
+          "{A}{B}和{A}{C}是等腰直角△{A}{B}{C}的腰",
+          "∠{A}{B}{C}和∠{B}{C}{A}是等腰直角△{A}{B}{C}的底角",
+          "∠{C}{A}{B}是等腰直角△{A}{B}{C}的直角",
+          "三角形{A}{B}{C}为等腰直角三角形",
+          "{A}{B}和{A}{C}是等腰直角三角形{A}{B}{C}的腰",
+          "∠{A}{B}{C}和∠{B}{C}{A}是等腰直角三角形{A}{B}{C}的底角",
+          "∠{C}{A}{B}是等腰直角三角形{A}{B}{C}的直角"
+        ],
+        "anti_parse_to_nl_en": [
+          "△{A}{B}{C} is an isosceles right △",
+          "{A}{B} and {A}{C} are the legs of the isosceles right △ {A}{B}{C}",
+          "∠{A}{B}{C} and ∠BCA are the base angles of the isosceles right △ {A}{B}{C}",
+          "∠CAB is the right angle of the isosceles right △ {A}{B}{C}",
+          "triangle {A}{B}{C} is an isosceles right triangle",
+          "{A}{B} and {A}{C} are the legs of the isosceles right triangle {A}{B}{C}",
+          "∠{A}{B}{C} and ∠{B}{C}{A} are the base angles of the isosceles right triangle {A}{B}{C}",
+          "∠{C}{A}{B} is the right angle of the isosceles right triangle {A}{B}{C}"
+        ]
+      },
+      "EquilateralTriangle(ABC)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABC)"
+          ],
+          "multi": [
+            "BCA",
+            "CAB"
+          ],
+          "extend": [
+            "IsoscelesTriangle(ABC)",
+            "IsoscelesTriangle(BCA)",
+            "IsoscelesTriangle(CAB)"
+          ]
+        },
+        "doc_cn": "三条边相等的三角形称为等边三角形。",
+        "doc_en": "A triangle with three equal sides is called an equilateral triangle.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "△{A}{B}{C}为等边△",
+          "三角形{A}{B}{C}为等边三角形"
+        ],
+        "anti_parse_to_nl_en": [
+          "△{A}{B}{C} is an equilateral △",
+          "triangle {A}{B}{C} is an equilateral triangle"
+        ]
+      },
+      "Kite(ABCD)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABCD)"
+          ],
+          "multi": [
+            "CDAB"
+          ],
+          "extend": [
+            "Equal(LengthOfLine(AB),LengthOfLine(AD))",
+            "Equal(LengthOfLine(CB),LengthOfLine(CD))"
+          ]
+        },
+        "doc_cn": "两组临边相等的四边形称为风筝形。在风筝形ABCD中，AB和AD是一组临边，CB和CD是另一组临边。",
+        "doc_en": "A quadrilateral with two pairs of adjacent sides equal is called a kite. \nIn the kite ABCD, AB and AD are one pair of adjacent sides, and CB and CD are the other pair.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{A}{B}{C}{D}是风筝形",
+          "四边形{A}{B}{C}{D}是风筝形",
+          "{A}{B}和{A}{D}是风筝形{A}{B}{C}{D}的一组临边",
+          "{C}{B}和{C}{D}是风筝形{A}{B}{C}{D}的一组临边"
+        ],
+        "anti_parse_to_nl_en": [
+          "{A}{B}{C}{D} is a kite",
+          "quadrilateral {A}{B}{C}{D} is a kite",
+          "{A}{B} and {A}{D} are one pair of adjacent sides of the kite {A}{B}{C}{D}",
+          "{C}{B} and {C}{D} are one pair of adjacent sides of the kite {A}{B}{C}{D}"
+        ]
+      },
+      "Parallelogram(ABCD)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABCD)"
+          ],
+          "multi": [
+            "BCDA",
+            "CDAB",
+            "DABC"
+          ],
+          "extend": [
+            "ParallelBetweenLine(AD,BC)",
+            "ParallelBetweenLine(BA,CD)"
+          ]
+        },
+        "doc_cn": "两组对边分别平行的四边形称为平行四边形。在平行四边形ABCD中，AD和BC是一组对边，BA和CD是另一组对边。",
+        "doc_en": "A quadrilateral with both pairs of opposite sides parallel is called a parallelogram. \nIn the parallelogram ABCD, AD and BC are one pair of opposite sides, and BA and CD are the other pair.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{A}{B}{C}{D}是平行四边形",
+          "四边形{A}{B}{C}{D}是平行四边形",
+          "{A}{D}和{B}{C}是平行四边形{A}{B}{C}{D}的一组对边",
+          "{B}{A}和{C}{D}是平行四边形{A}{B}{C}{D}的一组对边",
+          "{A}{B}{C}{D}是▱",
+          "四边形{A}{B}{C}{D}是▱",
+          "{A}{D}和{B}{C}是▱{A}{B}{C}{D}的一组对边",
+          "{B}{A}和{C}{D}是▱{A}{B}{C}{D}的一组对边"
+        ],
+        "anti_parse_to_nl_en": [
+          "{A}{B}{C}{D} is a ▱",
+          "quadrilateral {A}{B}{C}{D} is a ▱",
+          "{A}{D} and {B}{C} are opposite sides of the ▱ {A}{B}{C}{D}",
+          "{B}{A} and {C}{D} are opposite sides of the ▱ {A}{B}{C}{D}",
+          "{A}{B}{C}{D} is a parallelogram",
+          "quadrilateral {A}{B}{C}{D} is a parallelogram",
+          "{A}{D} and {B}{C} are opposite sides of the parallelogram {A}{B}{C}{D}",
+          "{B}{A} and {C}{D} are opposite sides of the parallelogram {A}{B}{C}{D}"
+        ]
+      },
+      "Rhombus(ABCD)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABCD)"
+          ],
+          "multi": [
+            "BCDA",
+            "CDAB",
+            "DABC"
+          ],
+          "extend": [
+            "Parallelogram(ABCD)",
+            "Kite(ABCD)",
+            "Kite(BCDA)"
+          ]
+        },
+        "doc_cn": "四条边相等的四边形称为菱形。",
+        "doc_en": "A quadrilateral with four equal sides is called a rhombus.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{A}{B}{C}{D}是菱形",
+          "四边形{A}{B}{C}{D}是菱形"
+        ],
+        "anti_parse_to_nl_en": [
+          "{A}{B}{C}{D} is a rhombus",
+          "quadrilateral {A}{B}{C}{D} is a rhombus"
+        ]
+      },
+      "Rectangle(ABCD)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABCD)"
+          ],
+          "multi": [
+            "BCDA",
+            "CDAB",
+            "DABC"
+          ],
+          "extend": [
+            "Parallelogram(ABCD)",
+            "PerpendicularBetweenLine(AB,CB)",
+            "PerpendicularBetweenLine(BC,DC)",
+            "PerpendicularBetweenLine(CD,AD)",
+            "PerpendicularBetweenLine(DA,BA)"
+          ]
+        },
+        "doc_cn": "四个角都是直角的四边形称为矩形。",
+        "doc_en": "A quadrilateral with four right angles is called a rectangle.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{A}{B}{C}{D}是矩形",
+          "四边形{A}{B}{C}{D}是矩形",
+          "{A}{B}{C}{D}是长方形",
+          "四边形{A}{B}{C}{D}是长方形"
+        ],
+        "anti_parse_to_nl_en": [
+          "{A}{B}{C}{D} is a rectangle",
+          "quadrilateral {A}{B}{C}{D} is a rectangle"
+        ]
+      },
+      "Square(ABCD)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABCD)"
+          ],
+          "multi": [
+            "BCDA",
+            "CDAB",
+            "DABC"
+          ],
+          "extend": [
+            "Rhombus(ABCD)",
+            "Rectangle(ABCD)"
+          ]
+        },
+        "doc_cn": "四个角都是直角且四条边相等的四边形称为正方形。",
+        "doc_en": "A quadrilateral with four right angles and four equal sides is called a square.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{A}{B}{C}{D}是正方形",
+          "四边形{A}{B}{C}{D}是正方形"
+        ],
+        "anti_parse_to_nl_en": [
+          "{A}{B}{C}{D} is a square",
+          "quadrilateral {A}{B}{C}{D} is a square"
+        ]
+      },
+      "Trapezoid(ABCD)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABCD)"
+          ],
+          "multi": [
+            "CDAB"
+          ],
+          "extend": [
+            "ParallelBetweenLine(AD,BC)"
+          ]
+        },
+        "doc_cn": "一组对边平行且另一组对边延长后相交的四边形称为梯形。\n在梯形ABCD中，AD和BC是平行边，AB和CD是梯形的腰。",
+        "doc_en": "A quadrilateral with one pair of parallel sides and another pair of sides that would intersect if extended is called a trapezoid. \nIn the trapezoid ABCD, AD and BC are the parallel sides, and AB and CD are the non-parallel sides.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{A}{B}{C}{D}是梯形",
+          "四边形{A}{B}{C}{D}是梯形",
+          "{A}{D}和{B}{C}是梯形{A}{B}{C}{D}的平行边",
+          "{A}{B}和{C}{D}是梯形{A}{B}{C}{D}的腰"
+        ],
+        "anti_parse_to_nl_en": [
+          "{A}{B}{C}{D} is a trapezoid",
+          "quadrilateral {A}{B}{C}{D} is a trapezoid",
+          "{A}{D} and {B}{C} are the parallel sides of trapezoid {A}{B}{C}{D}",
+          "{A}{B} and {C}{D} are the non-parallel sides (legs) of trapezoid {A}{B}{C}{D}"
+        ]
+      },
+      "IsoscelesTrapezoid(ABCD)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABCD)"
+          ],
+          "multi": [
+            "CDAB"
+          ],
+          "extend": [
+            "Trapezoid(ABCD)",
+            "Equal(LengthOfLine(AB),LengthOfLine(CD))"
+          ]
+        },
+        "doc_cn": "两腰相等的梯形称为等腰梯形。",
+        "doc_en": "A trapezoid with two equal legs is called an isosceles trapezoid.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{A}{B}{C}{D}是等腰梯形",
+          "四边形{A}{B}{C}{D}是等腰梯形",
+          "{A}{D}和{B}{C}是等腰梯形{A}{B}{C}{D}的平行边",
+          "{A}{B}和{C}{D}是等腰梯形{A}{B}{C}{D}的腰"
+        ],
+        "anti_parse_to_nl_en": [
+          "{A}{B}{C}{D} is a isosceles trapezoid",
+          "quadrilateral {A}{B}{C}{D} is a isosceles trapezoid",
+          "{A}{D} and {B}{C} are the parallel sides of isosceles trapezoid {A}{B}{C}{D}",
+          "{A}{B} and {C}{D} are the non-parallel sides of isosceles trapezoid {A}{B}{C}{D}"
+        ]
+      },
+      "RightTrapezoid(ABCD)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABCD)"
+          ],
+          "multi": [],
+          "extend": [
+            "Trapezoid(ABCD)",
+            "PerpendicularBetweenLine(DA,BA)",
+            "PerpendicularBetweenLine(AB,CB)"
+          ]
+        },
+        "doc_cn": "一侧角是直角的梯形称为直角梯形。\n在直角梯形ABCD中，∠A和∠B为直角。",
+        "doc_en": "A trapezoid with one right angle is called a right-angled trapezoid. \nIn the right-angled trapezoid ABCD, ∠A and ∠B are right angles.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{A}{B}{C}{D}是直角梯形",
+          "四边形{A}{B}{C}{D}是直角梯形",
+          "{A}{D}和{B}{C}是直角梯形{A}{B}{C}{D}的平行边",
+          "{A}{B}和{C}{D}是直角梯形{A}{B}{C}{D}的腰",
+          "∠{D}{A}{B}和∠{A}{B}{C}是直角梯形{A}{B}{C}{D}的直角"
+        ],
+        "anti_parse_to_nl_en": [
+          "{A}{B}{C}{D} is a right trapezoid",
+          "quadrilateral {A}{B}{C}{D} is a right trapezoid",
+          "{A}{D} and {B}{C} are the parallel sides of right trapezoid {A}{B}{C}{D}",
+          "{A}{B} and {C}{D} are the non-parallel sides of right trapezoid {A}{B}{C}{D}",
+          "∠{D}{A}{B} and ∠{A}{B}{C} are the right angles of right trapezoid {A}{B}{C}{D}"
+        ]
+      }
+    },
+    "Relation": {
+      "IsMidpointOfLine(M,AB)": {
+        "body": {
+          "ee_check": [
+            "Point(M)",
+            "Line(AB)",
+            "Collinear(AMB)"
+          ],
+          "fv_check": [
+            "M,AB"
+          ],
+          "multi": [
+            "M,BA"
+          ],
+          "extend": [
+            "Equal(LengthOfLine(AM),LengthOfLine(MB))"
+          ]
+        },
+        "doc_cn": "线段上到线段两端距离相等的点，称为线段的中点。",
+        "doc_en": "Points on a segment that are equidistant from the two endpoints of the segment are called the midpoint of the segment.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{M}是线段{A}{B}的中点",
+          "{M}平分线段{A}{B}"
+        ],
+        "anti_parse_to_nl_en": [
+          "{M} is the midpoint of segment {A}{B}",
+          "{M} bisects segment {A}{B}"
+        ]
+      },
+      "ConcyclicBetweenPoints(A,B,C,D)": {
+        "body": {
+          "ee_check": [
+            "Point(A)",
+            "Point(B)",
+            "Point(C)",
+            "Point(D)"
+          ],
+          "fv_check": [
+            "A,B,C,D"
+          ],
+          "multi": [
+            "B,C,D,A",
+            "C,D,A,B",
+            "D,A,B,C"
+          ],
+          "extend": []
+        },
+        "doc_cn": "在同一圆上的四个点。",
+        "doc_en": "Four points on the same circle.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{A}、{B}、{C}、{D}四点共圆"
+        ],
+        "anti_parse_to_nl_en": [
+          "four points {A}, {B}, {C}, {D} are concyclic"
+        ]
+      },
+      "IsMidpointOfArc(M,OAB)": {
+        "body": {
+          "ee_check": [
+            "Point(M)",
+            "Arc(OAB)",
+            "Cocircular(O,AMB)"
+          ],
+          "fv_check": [
+            "M,OAB"
+          ],
+          "multi": [],
+          "extend": [
+            "Equal(LengthOfArc(OAM),LengthOfArc(OMB))"
+          ]
+        },
+        "doc_cn": "弧上到弧两端距离相等的点，称为弧的中点。",
+        "doc_en": "Points on a arc that are equidistant from the two endpoints of the arc are called the midpoint of the arc.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{M}是弧{O}{A}{B}的中点",
+          "{M}是⌒{O}{A}{B}的中点",
+          "{M}平分弧{O}{A}{B}",
+          "{M}平分⌒{O}{A}{B}"
+        ],
+        "anti_parse_to_nl_en": [
+          "{M} is the midpoint of arc {O}{A}{B}",
+          "{M} is the midpoint of ⌒{O}{A}{B}",
+          "{M} bisects arc {O}{A}{B}",
+          "{M} bisects ⌒{O}{A}{B}"
+        ]
+      },
+      "ParallelBetweenLine(AB,CD)": {
+        "body": {
+          "ee_check": [
+            "Line(AB)",
+            "Line(CD)"
+          ],
+          "fv_check": [
+            "AB,CD"
+          ],
+          "multi": [
+            "DC,BA"
+          ],
+          "extend": []
+        },
+        "doc_cn": "线AB和线CD相互平行。\nAB与CD是同方向的线段。",
+        "doc_en": "Line AB and line CD are parallel to each other. \nAB and CD are collinear segments in the same direction.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{A}{B}平行于{C}{D}",
+          "{A}{B}∥{C}{D}"
+        ],
+        "anti_parse_to_nl_en": [
+          "{A}{B} is parallel to {C}{D}",
+          "{A}{B}∥{C}{D}"
+        ]
+      },
+      "PerpendicularBetweenLine(AO,CO)": {
+        "body": {
+          "ee_check": [
+            "Line(AO)",
+            "Line(CO)"
+          ],
+          "fv_check": [
+            "AO,CO"
+          ],
+          "multi": [],
+          "extend": [
+            "Equal(MeasureOfAngle(AOC),90)"
+          ]
+        },
+        "doc_cn": "线AO和线CO相互垂直。\n∠AOC是直角。",
+        "doc_en": "Line AO and line CO are mutually perpendicular.\n∠AOC is a right angle.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{A}{O}垂直于{C}{O}",
+          "{A}{O}⊥{C}{O}"
+        ],
+        "anti_parse_to_nl_en": [
+          "{A}{O} is perpendicular to {C}{O}",
+          "{A}{O}⊥{C}{O}"
+        ]
+      },
+      "IsPerpendicularBisectorOfLine(CO,AB)": {
+        "body": {
+          "ee_check": [
+            "Line(CO)",
+            "Line(AB)",
+            "Collinear(AOB)"
+          ],
+          "fv_check": [
+            "CO,AB"
+          ],
+          "multi": [],
+          "extend": [
+            "PerpendicularBetweenLine(AO,CO)",
+            "PerpendicularBetweenLine(CO,BO)",
+            "IsMidpointOfLine(O,AB)"
+          ]
+        },
+        "doc_cn": "若CO垂直于AB，与AB交于点O，且O是AB的重点，则线CO是线AB的垂直平分线。",
+        "doc_en": "If CO is perpendicular to AB, intersects AB at point O, and O is the midpoint of AB, then line CO is the perpendicular bisector of line AB.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{C}{O}是{A}{B}的垂直平分线",
+          "{C}{O}垂直平分AB"
+        ],
+        "anti_parse_to_nl_en": [
+          "{C}{O} is the perpendicular bisector of {A}{B}",
+          "{C}{O} perpendicular bisects {A}{B}"
+        ]
+      },
+      "IsBisectorOfAngle(BD,ABC)": {
+        "body": {
+          "ee_check": [
+            "Line(BD)",
+            "Angle(ABC)"
+          ],
+          "fv_check": [
+            "BD,ABC"
+          ],
+          "multi": [],
+          "extend": [
+            "Equal(MeasureOfAngle(ABD),MeasureOfAngle(DBC))"
+          ]
+        },
+        "doc_cn": "若BD在角ABC中间，且分割后的两个角相等，则线BD是角ABC的角平分线。",
+        "doc_en": "If BD is between angles ABC, and after the division, the two resulting angles are equal, then line BD is the angle bisector of angle ABC.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{B}{D}是∠{A}{B}{C}的角平分线",
+          "{B}{D}平分∠{A}{B}{C}"
+        ],
+        "anti_parse_to_nl_en": [
+          "{B}{D} is the angle bisector of ∠{A}{B}{C}",
+          "{B}{D} bisects ∠{A}{B}{C}"
+        ]
+      },
+      "IsMedianOfTriangle(AD,ABC)": {
+        "body": {
+          "ee_check": [
+            "Line(AD)",
+            "Polygon(ABC)",
+            "Collinear(BDC)"
+          ],
+          "fv_check": [
+            "AD,ABC"
+          ],
+          "multi": [],
+          "extend": [
+            "IsMidpointOfLine(D,BC)"
+          ]
+        },
+        "doc_cn": "三角形ABC顶点A与底边BC的中点D的连线，称为三角形的中线。",
+        "doc_en": "The line segment connecting vertex A and the midpoint D of the base BC of triangle ABC is called the median of the triangle.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{A}{D}是三角形{A}{B}{C}的中线",
+          "{A}{D}是△{A}{B}{C}的中线"
+        ],
+        "anti_parse_to_nl_en": [
+          "{A}{D} is the median of triangle {A}{B}{C}",
+          "{A}{D} is the median of △ {A}{B}{C}"
+        ]
+      },
+      "IsAltitudeOfTriangle(AD,ABC)": {
+        "body": {
+          "ee_check": [
+            "Line(AD)",
+            "Polygon(ABC)"
+          ],
+          "fv_check": [
+            "AD,ABC"
+          ],
+          "multi": [],
+          "extend": [
+            "Equal(LengthOfLine(AD),HeightOfTriangle(ABC))",
+            "PerpendicularBetweenLine(BD,AD)",
+            "PerpendicularBetweenLine(AD,CD)"
+          ]
+        },
+        "doc_cn": "垂直于底边的线段是三角形的高。",
+        "doc_en": "A line segment perpendicular to the base is the altitude of a triangle.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{A}{D}是三角形{A}{B}{C}的高",
+          "{A}{D}是△{A}{B}{C}的高"
+        ],
+        "anti_parse_to_nl_en": [
+          "{A}{D} is the altitude of triangle {A}{B}{C}",
+          "{A}{D} is the altitude of △ {A}{B}{C}"
+        ]
+      },
+      "IsMidsegmentOfTriangle(DE,ABC)": {
+        "body": {
+          "ee_check": [
+            "Line(DE)",
+            "Polygon(ABC)",
+            "Collinear(ADB)",
+            "Collinear(AEC)"
+          ],
+          "fv_check": [
+            "DE,ABC"
+          ],
+          "multi": [],
+          "extend": [
+            "IsMidpointOfLine(D,AB)",
+            "IsMidpointOfLine(E,AC)"
+          ]
+        },
+        "doc_cn": "三角形两腰中点的连线是三角形的中位线。",
+        "doc_en": "The line connecting the midpoints of the two legs of a triangle is called the midsegment of the triangle.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{D}{E}是三角形{A}{B}{C}的中位线",
+          "{D}{E}是△{A}{B}{C}的中位线"
+        ],
+        "anti_parse_to_nl_en": [
+          "{D}{E} is the midsegment of triangle {A}{B}{C}",
+          "{D}{E} is the midsegment of △ {A}{B}{C}"
+        ]
+      },
+      "IsCircumcenterOfTriangle(O,ABC)": {
+        "body": {
+          "ee_check": [
+            "Point(O)",
+            "Polygon(ABC)"
+          ],
+          "fv_check": [
+            "O,ABC"
+          ],
+          "multi": [
+            "O,BCA",
+            "O,CAB"
+          ],
+          "extend": []
+        },
+        "doc_cn": "三角形三边垂直平分线的交点、外接圆的圆心，是三角形的外心。",
+        "doc_en": "The point of intersection of the perpendicular bisectors of the three sides of a triangle and the center of the circumcircle is the circumcenter of the triangle",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{O}是三角形{A}{B}{C}的外心",
+          "三角形{A}{B}{C}的外心为{O}",
+          "三角形{A}{B}{C}的外接圆圆心为{O}",
+          "{O}是三角形ABC外接圆的圆心",
+          "{O}是△{A}{B}{C}的外心",
+          "△{A}{B}{C}的外心为{O}",
+          "△{A}{B}{C}的外接圆圆心为{O}",
+          "{O}是△ABC外接圆的圆心"
+        ],
+        "anti_parse_to_nl_en": [
+          "{O} is the circumcenter of triangle {A}{B}{C}",
+          "the circumcenter of triangle {A}{B}{C} is {O}",
+          "{O} is the center of the circumscribed circle of triangle {A}{B}{C}",
+          "the center of the circumscribed circle of triangle {A}{B}{C} is {O}",
+          "{O} is the circumcenter of △{A}{B}{C}",
+          "the circumcenter of △{A}{B}{C} is {O}",
+          "{O} is the center of the circumscribed circle of △{A}{B}{C}",
+          "the center of the circumscribed circle of △{A}{B}{C} is {O}"
+        ]
+      },
+      "IsIncenterOfTriangle(O,ABC)": {
+        "body": {
+          "ee_check": [
+            "Point(O)",
+            "Polygon(ABC)"
+          ],
+          "fv_check": [
+            "O,ABC"
+          ],
+          "multi": [
+            "O,BCA",
+            "O,CAB"
+          ],
+          "extend": [
+            "IsBisectorOfAngle(AO,CAB)",
+            "IsBisectorOfAngle(BO,ABC)",
+            "IsBisectorOfAngle(CO,BCA)"
+          ]
+        },
+        "doc_cn": "三角形三边角平分线的交点、内切圆的圆心，是三角形的内心。",
+        "doc_en": "The point of intersection of the angle bisectors of the three sides of a triangle and the center of the incircle is the incenter of the triangle.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{O}是三角形{A}{B}{C}的内心",
+          "三角形{A}{B}{C}的内心为{O}",
+          "三角形{A}{B}{C}的内切圆圆心为{O}",
+          "{O}是三角形{A}{B}{C}内切圆的圆心",
+          "{O}是△{A}{B}{C}的内心",
+          "△{A}{B}{C}的内心为{O}",
+          "△{A}{B}{C}的内切圆圆心为{O}",
+          "{O}是△{A}{B}{C}内切圆的圆心"
+        ],
+        "anti_parse_to_nl_en": [
+          "{O} is the incenter of triangle {A}{B}{C}",
+          "the incenter of triangle {A}{B}{C} is {O}",
+          "{O} is the center of the inscribed circle of triangle {A}{B}{C}",
+          "the center of the inscribed circle of triangle {A}{B}{C} is {O}",
+          "{O} is the incenter of △{A}{B}{C}",
+          "the incenter of △{A}{B}{C} is {O}",
+          "{O} is the center of the inscribed circle of △{A}{B}{C}",
+          "the center of the inscribed circle of △{A}{B}{C} is {O}"
+        ]
+      },
+      "IsCentroidOfTriangle(O,ABC)": {
+        "body": {
+          "ee_check": [
+            "Point(O)",
+            "Polygon(ABC)"
+          ],
+          "fv_check": [
+            "O,ABC"
+          ],
+          "multi": [
+            "O,BCA",
+            "O,CAB"
+          ],
+          "extend": []
+        },
+        "doc_cn": "三角形三边的中线的交点是三角形的重心。",
+        "doc_en": "The point of intersection of the medians of the three sides of a triangle is the centroid of the triangle.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{O}是三角形{A}{B}{C}的重心",
+          "三角形{A}{B}{C}的重心为O",
+          "{O}是△{A}{B}{C}的重心",
+          "△{A}{B}{C}的重心为O"
+        ],
+        "anti_parse_to_nl_en": [
+          "{O} is the centroid of triangle {A}{B}{C}",
+          "the centroid of triangle {A}{B}{C} is {O}",
+          "{O} is the centroid of △{A}{B}{C}",
+          "the centroid of △{A}{B}{C} is {O}"
+        ]
+      },
+      "IsOrthocenterOfTriangle(O,ABC)": {
+        "body": {
+          "ee_check": [
+            "Point(O)",
+            "Polygon(ABC)"
+          ],
+          "fv_check": [
+            "O,ABC",
+            "A,ABC",
+            "B,ABC",
+            "C,ABC"
+          ],
+          "multi": [
+            "O,BCA",
+            "O,CAB"
+          ],
+          "extend": []
+        },
+        "doc_cn": "三角形三边的高的交点是三角形的垂心。",
+        "doc_en": "The point of intersection of the altitudes of the three sides of a triangle is the orthocenter of the triangle.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{O}是三角形{A}{B}{C}的垂心",
+          "三角形{A}{B}{C}的垂心为{O}",
+          "{O}是△{A}{B}{C}的垂心",
+          "△{A}{B}{C}的垂心为{O}"
+        ],
+        "anti_parse_to_nl_en": [
+          "{O} is the orthocenter of triangle {A}{B}{C}",
+          "the orthocenter of triangle {A}{B}{C} is {O}",
+          "{O} is the orthocenter of △{A}{B}{C}",
+          "the orthocenter of △{A}{B}{C} is {O}"
+        ]
+      },
+      "CongruentBetweenTriangle(ABC,DEF)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABC)",
+            "Polygon(DEF)"
+          ],
+          "multi": [
+            "BCA,EFD",
+            "CAB,FDE"
+          ],
+          "extend": []
+        },
+        "doc_cn": "完全一致的两个三角形，称为全等三角形。",
+        "doc_en": "Two triangles that are exactly the same are called congruent triangles.",
+        "pic_width": "30",
+        "anti_parse_to_nl_cn": [
+          "三角形{A}{B}{C}与三角形{D}{E}{F}是全等三角形",
+          "三角形{A}{B}{C}全等于三角形{D}{E}{F}",
+          "△{A}{B}{C}与△{D}{E}{F}是全等三角形",
+          "△{A}{B}{C}全等于△{D}{E}{F}"
+        ],
+        "anti_parse_to_nl_en": [
+          "triangle {A}{B}{C} is congruent to triangle {D}{E}{F}",
+          "△{A}{B}{C} is congruent to △{D}{E}{F}"
+        ]
+      },
+      "MirrorCongruentBetweenTriangle(ABC,DEF)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABC)",
+            "Polygon(DEF)"
+          ],
+          "multi": [
+            "BCA,FDE",
+            "CAB,EFD"
+          ],
+          "extend": []
+        },
+        "doc_cn": "镜像完全一致的两个三角形，称为镜像全等三角形。\n点一一对应得(ABC,DFE)，不存在三角形DFE，第一个点D不动，将其他点逆序，得(ABC,DEF)。",
+        "doc_en": "Two triangles that are mirror images of each other and exactly the same are called mirror congruent triangles. \nCorresponding points (ABC, DFE), and there is no triangle DFE. Keeping the first point D fixed and reversing the order of the other points, we get (ABC, DEF).",
+        "pic_width": "30",
+        "anti_parse_to_nl_cn": [
+          "三角形{A}{B}{C}与三角形{D}{E}{F}是镜像全等三角形",
+          "三角形{A}{B}{C}镜像全等于三角形{D}{E}{F}",
+          "△{A}{B}{C}与△{D}{E}{F}是镜像全等三角形",
+          "△{A}{B}{C}镜像全等于△{D}{E}{F}"
+        ],
+        "anti_parse_to_nl_en": [
+          "triangle {A}{B}{C} is mirror congruent to triangle {D}{E}{F}",
+          "△{A}{B}{C} is mirror congruent to △{D}{E}{F}"
+        ]
+      },
+      "SimilarBetweenTriangle(ABC,DEF)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABC)",
+            "Polygon(DEF)"
+          ],
+          "multi": [
+            "BCA,EFD",
+            "CAB,FDE"
+          ],
+          "extend": []
+        },
+        "doc_cn": "成比例的两个三角形，称为相似三角形。",
+        "doc_en": "Two triangles that are in proportion to each other are called similar triangles.",
+        "pic_width": "30",
+        "anti_parse_to_nl_cn": [
+          "三角形{A}{B}{C}与三角形{D}{E}{F}是相似三角形",
+          "三角形{A}{B}{C}相似于三角形{D}{E}{F}",
+          "△{A}{B}{C}与△{D}{E}{F}是相似三角形",
+          "△{A}{B}{C}相似于△{D}{E}{F}"
+        ],
+        "anti_parse_to_nl_en": [
+          "triangle {A}{B}{C} is similar to triangle {D}{E}{F}.",
+          "△{A}{B}{C} is similar to △{D}{E}{F}."
+        ]
+      },
+      "MirrorSimilarBetweenTriangle(ABC,DEF)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABC)",
+            "Polygon(DEF)"
+          ],
+          "multi": [
+            "BCA,FDE",
+            "CAB,EFD"
+          ],
+          "extend": []
+        },
+        "doc_cn": "镜像成比例的两个三角形，称为镜像相似三角形。",
+        "doc_en": "Two triangles that are mirror images of each other and in proportion to each other are called mirror similar triangles.",
+        "pic_width": "30",
+        "anti_parse_to_nl_cn": [
+          "三角形{A}{B}{C}与三角形{D}{E}{F}是镜像相似三角形",
+          "三角形{A}{B}{C}镜像相似于三角形{D}{E}{F}",
+          "△{A}{B}{C}与△{D}{E}{F}是镜像相似三角形",
+          "△{A}{B}{C}镜像相似于△{D}{E}{F}"
+        ],
+        "anti_parse_to_nl_en": [
+          "Triangle {A}{B}{C} is mirror similar to triangle {D}{E}{F}.",
+          "△{A}{B}{C} is mirror similar to △{D}{E}{F}."
+        ]
+      },
+      "IsAltitudeOfQuadrilateral(EF,ABCD)": {
+        "body": {
+          "ee_check": [
+            "Line(EF)",
+            "Polygon(ABCD)"
+          ],
+          "fv_check": [
+            "EF,ABCD",
+            "AF,ABCD",
+            "DF,ABCD",
+            "AC,ABCD",
+            "DB,ABCD"
+          ],
+          "multi": [],
+          "extend": [
+            "Equal(LengthOfLine(EF),HeightOfQuadrilateral(ABCD))",
+            "PerpendicularBetweenLine(BF,EF)",
+            "PerpendicularBetweenLine(EF,CF)",
+            "PerpendicularBetweenLine(DE,FE)",
+            "PerpendicularBetweenLine(FE,AE)"
+          ]
+        },
+        "doc_cn": "垂直于底边的线EF是四边形ABCD的高。",
+        "doc_en": "The line EF, which is perpendicular to the base, is the height of quadrilateral ABCD.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{E}{F}是四边形{A}{B}{C}{D}的高",
+          "四边形{A}{B}{C}{D}的高为{E}{F}",
+          "{E}{F}是{A}{B}{C}{D}的高",
+          "{A}{B}{C}{D}的高为{E}{F}"
+        ],
+        "anti_parse_to_nl_en": [
+          "{E}{F} is the height of quadrilateral {A}{B}{C}{D}",
+          "the height of quadrilateral {A}{B}{C}{D} is {E}{F}",
+          "{E}{F} is the height of {A}{B}{C}{D}",
+          "the height of {A}{B}{C}{D} is {E}{F}"
+        ]
+      },
+      "IsMidsegmentOfQuadrilateral(EF,ABCD)": {
+        "body": {
+          "ee_check": [
+            "Line(EF)",
+            "Polygon(ABCD)",
+            "Collinear(AEB)",
+            "Collinear(DFC)"
+          ],
+          "fv_check": [
+            "FE,CDAB"
+          ],
+          "multi": [
+            "FE,CDAB"
+          ],
+          "extend": [
+            "IsMidpointOfLine(E,AB)",
+            "IsMidpointOfLine(F,CD)"
+          ]
+        },
+        "doc_cn": "四边形两腰中点的连线，称为四边形的中位线。",
+        "doc_en": "The line connecting the midpoints of the two legs of a quadrilateral is called the midsegment of the quadrilateral.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{E}{F}是四边形{A}{B}{C}{D}的中位线",
+          "四边形{A}{B}{C}{D}的中位线为{E}{F}",
+          "{E}{F}是{A}{B}{C}{D}的中位线",
+          "{A}{B}{C}{D}的中位线为{E}{F}"
+        ],
+        "anti_parse_to_nl_en": [
+          "{E}{F} is the midsegment of quadrilateral {A}{B}{C}{D}",
+          "the midsegment of quadrilateral {A}{B}{C}{D} is {E}{F}",
+          "{E}{F} is the midsegment of {A}{B}{C}{D}",
+          "the midsegment of {A}{B}{C}{D} is {E}{F}"
+        ]
+      },
+      "IsCircumcenterOfQuadrilateral(O,ABCD)": {
+        "body": {
+          "ee_check": [
+            "Point(O)",
+            "Polygon(ABCD)"
+          ],
+          "fv_check": [
+            "O,ABCD"
+          ],
+          "multi": [
+            "O,BCDA",
+            "O,CDAB",
+            "O,DABC"
+          ],
+          "extend": []
+        },
+        "doc_cn": "四边形外接圆的圆心，称为四边形的外心。",
+        "doc_en": "The center of the circumcircle of a quadrilateral is called the circumcenter of the quadrilateral.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{O}是四边形{A}{B}{C}{D}的外心",
+          "四边形{A}{B}{C}{D}的外心为{O}",
+          "{O}是四边形{A}{B}{C}{D}外切圆的圆心",
+          "四边形{A}{B}{C}{D}外切圆的圆心为{O}",
+          "{O}是{A}{B}{C}{D}的外心",
+          "{A}{B}{C}{D}的外心为{O}",
+          "{O}是{A}{B}{C}{D}外切圆的圆心",
+          "{A}{B}{C}{D}外切圆的圆心为{O}"
+        ],
+        "anti_parse_to_nl_en": [
+          "{O} is the circumcenter of quadrilateral {A}{B}{C}{D}",
+          "the circumcenter of quadrilateral {A}{B}{C}{D} is {O}",
+          "{O} is the center of the circumscribed circle of quadrilateral {A}{B}{C}{D}",
+          "the center of the circumscribed circle of quadrilateral {A}{B}{C}{D} is {O}",
+          "{O} is the circumcenter of {A}{B}{C}{D}",
+          "the circumcenter of {A}{B}{C}{D} is {O}",
+          "{O} is the center of the circumscribed circle of {A}{B}{C}{D}",
+          "the center of the circumscribed circle of {A}{B}{C}{D} is {O}"
+        ]
+      },
+      "IsIncenterOfQuadrilateral(O,ABCD)": {
+        "body": {
+          "ee_check": [
+            "Point(O)",
+            "Polygon(ABCD)"
+          ],
+          "fv_check": [
+            "O,ABCD"
+          ],
+          "multi": [
+            "O,BCDA",
+            "O,CDAB",
+            "O,DABC"
+          ],
+          "extend": [
+            "IsBisectorOfAngle(AO,DAB)",
+            "IsBisectorOfAngle(BO,ABC)",
+            "IsBisectorOfAngle(CO,BCD)",
+            "IsBisectorOfAngle(DO,CDA)"
+          ]
+        },
+        "doc_cn": "四边形内切圆的圆心，称为四边形的内心。",
+        "doc_en": "The center of the incircle of a quadrilateral is called the incenter of the quadrilateral.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{O}是四边形{A}{B}{C}{D}的内心",
+          "四边形{A}{B}{C}{D}的内心为{O}",
+          "{O}是四边形{A}{B}{C}{D}内切圆的圆心",
+          "四边形{A}{B}{C}{D}内切圆的圆心为{O}",
+          "{O}是{A}{B}{C}{D}的内心",
+          "{A}{B}{C}{D}的内心为{O}",
+          "{O}是{A}{B}{C}{D}内切圆的圆心",
+          "{A}{B}{C}{D}内切圆的圆心为{O}"
+        ],
+        "anti_parse_to_nl_en": [
+          "{O} is the incenter of quadrilateral {A}{B}{C}{D}",
+          "the incenter of quadrilateral {A}{B}{C}{D} is {O}",
+          "{O} is the center of the inscribed circle of quadrilateral {A}{B}{C}{D}",
+          "the center of the inscribed circle of quadrilateral {A}{B}{C}{D} is {O}",
+          "{O} is the incenter of {A}{B}{C}{D}",
+          "the incenter of {A}{B}{C}{D} is {O}",
+          "{O} is the center of the inscribed circle of {A}{B}{C}{D}",
+          "the center of the inscribed circle of {A}{B}{C}{D} is {O}"
+        ]
+      },
+      "CongruentBetweenQuadrilateral(ABCD,EFGH)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABCD)",
+            "Polygon(EFGH)"
+          ],
+          "multi": [
+            "BCDA,FGHE",
+            "CDAB,GHEF",
+            "DABC,HEFG"
+          ],
+          "extend": []
+        },
+        "doc_cn": "完全一致的两个四边形，称为全等四边形。",
+        "doc_en": "Two quadrilaterals that are exactly the same are called congruent quadrilaterals.",
+        "pic_width": "30",
+        "anti_parse_to_nl_cn": [
+          "四边形{A}{B}{C}{D}全等于四边形{E}{F}{G}{H}",
+          "四边形{A}{B}{C}{D}与四边形{E}{F}{G}{H}全等",
+          "{A}{B}{C}{D}全等于{E}{F}{G}{H}",
+          "{A}{B}{C}{D}与{E}{F}{G}{H}全等"
+        ],
+        "anti_parse_to_nl_en": [
+          "quadrilateral {A}{B}{C}{D} is congruent to quadrilateral {E}{F}{G}{H}",
+          "{A}{B}{C}{D} is congruent to {E}{F}{G}{H}"
+        ]
+      },
+      "MirrorCongruentBetweenQuadrilateral(ABCD,EFGH)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABCD)",
+            "Polygon(EFGH)"
+          ],
+          "multi": [
+            "BCDA,HEFG",
+            "CDAB,GHEF",
+            "DABC,FGHE"
+          ],
+          "extend": []
+        },
+        "doc_cn": "镜像完全一致的两个四边形，称为镜像全等四边形。",
+        "doc_en": "Two quadrilaterals that are mirror images of each other and exactly the same are called mirror congruent quadrilaterals.",
+        "pic_width": "30",
+        "anti_parse_to_nl_cn": [
+          "四边形{A}{B}{C}{D}镜像全等于四边形{E}{F}{G}{H}",
+          "四边形{A}{B}{C}{D}与四边形{E}{F}{G}{H}镜像全等",
+          "{A}{B}{C}{D}镜像全等于{E}{F}{G}{H}",
+          "{A}{B}{C}{D}与{E}{F}{G}{H}镜像全等"
+        ],
+        "anti_parse_to_nl_en": [
+          "quadrilateral {A}{B}{C}{D} is mirror congruent to quadrilateral {E}{F}{G}{H}",
+          "{A}{B}{C}{D} is mirror congruent to {E}{F}{G}{H}"
+        ]
+      },
+      "SimilarBetweenQuadrilateral(ABCD,EFGH)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABCD)",
+            "Polygon(EFGH)"
+          ],
+          "multi": [
+            "BCDA,FGHE",
+            "CDAB,GHEF",
+            "DABC,HEFG"
+          ],
+          "extend": []
+        },
+        "doc_cn": "成比例的两个四边形，称为相似四边形。",
+        "doc_en": "Two quadrilaterals that are in proportion to each other are called similar quadrilaterals.",
+        "pic_width": "30",
+        "anti_parse_to_nl_cn": [
+          "四边形{A}{B}{C}{D}相似于四边形{E}{F}{G}{H}",
+          "四边形{A}{B}{C}{D}与四边形{E}{F}{G}{H}相似",
+          "{A}{B}{C}{D}相似于{E}{F}{G}{H}",
+          "{A}{B}{C}{D}与{E}{F}{G}{H}相似"
+        ],
+        "anti_parse_to_nl_en": [
+          "quadrilateral {A}{B}{C}{D} is similar to quadrilateral {E}{F}{G}{H}",
+          "{A}{B}{C}{D} is similar to {E}{F}{G}{H}"
+        ]
+      },
+      "MirrorSimilarBetweenQuadrilateral(ABCD,EFGH)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABCD)",
+            "Polygon(EFGH)"
+          ],
+          "multi": [
+            "BCDA,HEFG",
+            "CDAB,GHEF",
+            "DABC,FGHE"
+          ],
+          "extend": []
+        },
+        "doc_cn": "镜像成比例的两个四边形，称为镜像相似四边形。",
+        "doc_en": "Two quadrilaterals that are mirror images of each other and in proportion to each other are called mirror similar quadrilaterals.",
+        "pic_width": "30",
+        "anti_parse_to_nl_cn": [
+          "四边形{A}{B}{C}{D}镜像相似于四边形{E}{F}{G}{H}",
+          "四边形{A}{B}{C}{D}与四边形{E}{F}{G}{H}镜像相似",
+          "{A}{B}{C}{D}镜像相似于{E}{F}{G}{H}",
+          "{A}{B}{C}{D}与{E}{F}{G}{H}镜像相似"
+        ],
+        "anti_parse_to_nl_en": [
+          "quadrilateral {A}{B}{C}{D} is mirror similar to quadrilateral {E}{F}{G}{H}",
+          "{A}{B}{C}{D} is mirror similar to {E}{F}{G}{H}"
+        ]
+      },
+      "CongruentBetweenArc(OAB,OCD)": {
+        "body": {
+          "ee_check": [
+            "Arc(OAB)",
+            "Arc(OCD)"
+          ],
+          "multi": [],
+          "extend": []
+        },
+        "doc_cn": "完全一致的两个弧，称为全等弧。",
+        "doc_en": "Two arcs that are exactly the same are called congruent arcs.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "弧{O}{A}{B}全等于弧{O}{C}{D}",
+          "弧{O}{A}{B}与弧{O}{C}{D}全等",
+          "⌒{O}{A}{B}全等于⌒{O}{C}{D}",
+          "⌒{O}{A}{B}与⌒{O}{C}{D}全等"
+        ],
+        "anti_parse_to_nl_en": [
+          "⌒{O}{A}{B} is congruent to ⌒{O}{C}{D}",
+          "⌒{O}{A}{B} is congruent to ⌒{O}{C}{D}"
+        ]
+      },
+      "SimilarBetweenArc(OAB,OCD)": {
+        "body": {
+          "ee_check": [
+            "Arc(OAB)",
+            "Arc(OCD)"
+          ],
+          "multi": [],
+          "extend": []
+        },
+        "doc_cn": "成比例的两个弧，称为相似弧。",
+        "doc_en": "Two arcs that are in proportion to each other are called similar arcs.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "弧{O}{A}{B}相似于弧{O}{C}{D}",
+          "弧{O}{A}{B}与弧{O}{C}{D}相似",
+          "⌒{O}{A}{B}相似于⌒{O}{C}{D}",
+          "⌒{O}{A}{B}与⌒{O}{C}{D}相似"
+        ],
+        "anti_parse_to_nl_en": [
+          "arc {O}{A}{B} is similar to arc {O}{C}{D}",
+          "⌒{O}{A}{B} is similar to ⌒{O}{C}{D}"
+        ]
+      },
+      "IsDiameterOfCircle(AB,O)": {
+        "body": {
+          "ee_check": [
+            "Line(AB)",
+            "Cocircular(O,AB)"
+          ],
+          "fv_check": [
+            "AB,O"
+          ],
+          "multi": [
+            "BA,O"
+          ],
+          "extend": []
+        },
+        "doc_cn": "圆的直径。",
+        "doc_en": "The diameter of a circle.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{A}{B}是圆{O}的直径",
+          "圆{O}的直径为{A}{B}",
+          "{A}{B}是⊙{O}的直径",
+          "⊙{O}的直径为{A}{B}"
+        ],
+        "anti_parse_to_nl_en": [
+          "{A}{B} is the diameter of circle {O}",
+          "the diameter of circle {O} is {A}{B}",
+          "{A}{B} is the diameter of ⊙{O}",
+          "the diameter of ⊙{O} is {A}{B}"
+        ]
+      },
+      "IsTangentOfCircle(PA,O)": {
+        "body": {
+          "ee_check": [
+            "Line(PA)",
+            "Cocircular(O,A)"
+          ],
+          "fv_check": [
+            "PA,O"
+          ],
+          "multi": [],
+          "extend": []
+        },
+        "doc_cn": "过P点做一条直线，若直线与圆只有一个交点，称这个直线是圆的切线。",
+        "doc_en": "A straight line passing through point P, if it intersects the circle at only one point, is called a tangent to the circle.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{P}{A}是圆O的切线",
+          "圆O的切线为{P}{A}",
+          "{P}{A}是⊙O的切线",
+          "⊙O的切线为{P}{A}"
+        ],
+        "anti_parse_to_nl_en": [
+          "{P}{A} is the tangent to circle {O}",
+          "the tangent to circle {O} is {P}{A}",
+          "{P}{A} is the tangent to ⊙{O}",
+          "the tangent to ⊙{O} is {P}{A}"
+        ]
+      },
+      "IsCentreOfCircle(P,O)": {
+        "body": {
+          "ee_check": [
+            "Point(P)",
+            "Circle(O)"
+          ],
+          "fv_check": [
+            "P,O",
+            "O,O"
+          ],
+          "multi": [],
+          "extend": []
+        },
+        "doc_cn": "圆的中心称为圆的圆心。",
+        "doc_en": "The center of a circle is called the center or the centre of the circle.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "{P}是圆{O}的圆心",
+          "圆{O}的圆心为{P}",
+          "{P}是⊙{O}的圆心",
+          "⊙{O}的圆心为{P}"
+        ],
+        "anti_parse_to_nl_en": [
+          "{P} is the center of circle {O}",
+          "the center of circle {O} is {P}",
+          "{P} is the center of ⊙{O}",
+          "the center of ⊙{O} is {P}"
+        ]
+      }
+    },
+    "Attribution": {
+      "LengthOfLine(AB)": {
+        "body": {
+          "ee_check": [
+            "Line(AB)"
+          ],
+          "sym": "ll",
+          "multi": [
+            "BA"
+          ]
+        },
+        "doc_cn": "直线AB的长度。",
+        "doc_en": "The length of the line AB.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "直线{A}{B}的长度"
+        ],
+        "anti_parse_to_nl_en": [
+          "the length of line {A}{B}"
+        ]
+      },
+      "MeasureOfAngle(ABC)": {
+        "body": {
+          "ee_check": [
+            "Angle(ABC)"
+          ],
+          "sym": "ma",
+          "multi": []
+        },
+        "doc_cn": "∠ABC的角度。",
+        "doc_en": "The measure of ∠ABC.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "∠{A}{B}{C}的大小"
+        ],
+        "anti_parse_to_nl_en": [
+          "the measure of ∠{A}{B}{C}"
+        ]
+      },
+      "PerimeterOfTriangle(ABC)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABC)"
+          ],
+          "sym": "pt",
+          "multi": [
+            "BCA",
+            "CAB"
+          ]
+        },
+        "doc_cn": "三角形ABC的周长。",
+        "doc_en": "The perimeter of triangle ABC.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "△{A}{B}{C}的周长",
+          "三角形{A}{B}{C}的周长"
+        ],
+        "anti_parse_to_nl_en": [
+          "the perimeter of triangle {A}{B}{C}",
+          "the perimeter of △{A}{B}{C}"
+        ]
+      },
+      "AreaOfTriangle(ABC)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABC)"
+          ],
+          "sym": "at",
+          "multi": [
+            "BCA",
+            "CAB"
+          ]
+        },
+        "doc_cn": "三角形ABC的面积。",
+        "doc_en": "The area of triangle ABC.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "三角形{A}{B}{C}的面积",
+          "△{A}{B}{C}的面积"
+        ],
+        "anti_parse_to_nl_en": [
+          "the area of triangle {A}{B}{C}",
+          "the area of △{A}{B}{C}"
+        ]
+      },
+      "HeightOfTriangle(ABC)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABC)"
+          ],
+          "sym": "ht",
+          "multi": []
+        },
+        "doc_cn": "三角形ABC底边BC上的高的长度。",
+        "doc_en": "The length of the altitude on the base BC of triangle ABC.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "三角形{A}{B}{C}的高",
+          "△{A}{B}{C}的高"
+        ],
+        "anti_parse_to_nl_en": [
+          "the height of triangle {A}{B}{C}",
+          "the height of △{A}{B}{C}"
+        ]
+      },
+      "RatioOfSimilarTriangle(ABC,DEF)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABC)",
+            "Polygon(DEF)"
+          ],
+          "sym": "rst",
+          "multi": [
+            "BCA,EFD",
+            "CAB,FDE"
+          ]
+        },
+        "doc_cn": "相似三角形的相似比。",
+        "doc_en": "The similarity ratio of similar triangles.",
+        "pic_width": "30",
+        "anti_parse_to_nl_cn": [
+          "三角形{A}{B}{C}和三角形{D}{E}{F}的相似比",
+          "△{A}{B}{C}和△{D}{E}{F}的相似比"
+        ],
+        "anti_parse_to_nl_en": [
+          "the ratio of similar triangles {A}{B}{C} and {D}{E}{F}",
+          "the ratio of similar △{A}{B}{C} and △{D}{E}{F}"
+        ]
+      },
+      "RatioOfMirrorSimilarTriangle(ABC,DEF)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABC)",
+            "Polygon(DEF)"
+          ],
+          "sym": "rmt",
+          "multi": [
+            "BCA,FDE",
+            "CAB,EFD"
+          ]
+        },
+        "doc_cn": "镜像相似三角形的相似比。",
+        "doc_en": "The similarity ratio of mirror similar triangles.",
+        "pic_width": "30",
+        "anti_parse_to_nl_cn": [
+          "三角形{A}{B}{C}和三角形{D}{E}{F}的镜像相似比",
+          "△{A}{B}{C}和△{D}{E}{F}的镜像相似比"
+        ],
+        "anti_parse_to_nl_en": [
+          "the ratio of mirror similar triangles {A}{B}{C} and {D}{E}{F}",
+          "the ratio of mirror similar △{A}{B}{C} and △{D}{E}{F}"
+        ]
+      },
+      "PerimeterOfQuadrilateral(ABCD)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABCD)"
+          ],
+          "sym": "pq",
+          "multi": [
+            "BCDA",
+            "CDAB",
+            "DABC"
+          ]
+        },
+        "doc_cn": "四边形ABCD的周长。",
+        "doc_en": "The perimeter of quadrilateral ABCD.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "四边形{A}{B}{C}{D}的周长",
+          "{A}{B}{C}{D}的周长"
+        ],
+        "anti_parse_to_nl_en": [
+          "the perimeter of quadrilateral {A}{B}{C}{D}",
+          "the perimeter of {A}{B}{C}{D}"
+        ]
+      },
+      "AreaOfQuadrilateral(ABCD)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABCD)"
+          ],
+          "sym": "aq",
+          "multi": [
+            "BCDA",
+            "CDAB",
+            "DABC"
+          ]
+        },
+        "doc_cn": "四边形ABCD的面积。",
+        "doc_en": "The area of quadrilateral ABCD.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "四边形{A}{B}{C}{D}的面积",
+          "{A}{B}{C}{D}的面积"
+        ],
+        "anti_parse_to_nl_en": [
+          "the area of quadrilateral {A}{B}{C}{D}",
+          "the area of {A}{B}{C}{D}"
+        ]
+      },
+      "HeightOfQuadrilateral(ABCD)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABCD)"
+          ],
+          "sym": "hq",
+          "multi": []
+        },
+        "doc_cn": "四边形ABCD底边BC上的高的长度。",
+        "doc_en": "The length of the altitude on the base BC of quadrilateral ABCD.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "四边形{A}{B}{C}{D}的高",
+          "{A}{B}{C}{D}的高"
+        ],
+        "anti_parse_to_nl_en": [
+          "the height of quadrilateral {A}{B}{C}{D}",
+          "the height of {A}{B}{C}{D}"
+        ]
+      },
+      "RatioOfSimilarQuadrilateral(ABCD,EFGH)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABCD)",
+            "Polygon(EFGH)"
+          ],
+          "sym": "rsq",
+          "multi": [
+            "BCDA,FGHE",
+            "CDAB,GHEF",
+            "DABC,HEFG"
+          ]
+        },
+        "doc_cn": "相似四边形的相似比。",
+        "doc_en": "The similarity ratio of similar quadrilaterals.",
+        "pic_width": "30",
+        "anti_parse_to_nl_cn": [
+          "四边形{A}{B}{C}{D}和四边形{E}{F}{G}{H}的相似比",
+          "{A}{B}{C}{D}和{E}{F}{G}{H}的相似比"
+        ],
+        "anti_parse_to_nl_en": [
+          "The ratio of similar quadrilaterals {A}{B}{C}{D} and {E}{F}{G}{H}"
+        ]
+      },
+      "RatioOfMirrorSimilarQuadrilateral(ABCD,EFGH)": {
+        "body": {
+          "ee_check": [
+            "Polygon(ABCD)",
+            "Polygon(EFGH)"
+          ],
+          "sym": "rmq",
+          "multi": [
+            "BCDA,HEFG",
+            "CDAB,GHEF",
+            "DABC,FGHE"
+          ]
+        },
+        "doc_cn": "镜像相似四边形的相似比。",
+        "doc_en": "The similarity ratio of mirror similar quadrilaterals.",
+        "pic_width": "30",
+        "anti_parse_to_nl_cn": [
+          "四边形{A}{B}{C}{D}和四边形{E}{F}{G}{H}的镜像相似比",
+          "{A}{B}{C}{D}和{E}{F}{G}{H}的镜像相似比"
+        ],
+        "anti_parse_to_nl_en": [
+          "The ratio of mirror similar quadrilaterals {A}{B}{C}{D} and {E}{F}{G}{H}"
+        ]
+      },
+      "LengthOfArc(OAB)": {
+        "body": {
+          "ee_check": [
+            "Arc(OAB)"
+          ],
+          "sym": "la",
+          "multi": []
+        },
+        "doc_cn": "弧OAB的长度。",
+        "doc_en": "The length of arc OAB.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "弧{O}{A}{B}的长度",
+          "⌒{O}{A}{B}的长度"
+        ],
+        "anti_parse_to_nl_en": [
+          "the length of arc {O}{A}{B}",
+          "the length of ⌒{O}{A}{B}"
+        ]
+      },
+      "MeasureOfArc(OAB)": {
+        "body": {
+          "ee_check": [
+            "Arc(OAB)"
+          ],
+          "sym": "mar",
+          "multi": []
+        },
+        "doc_cn": "弧OAB的角度。\n与弧OAB所对圆心角的大小相等。",
+        "doc_en": "The measure of arc OAB. \nIt is equal to the measure of the central angle of the circle.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "弧{O}{A}{B}的角度",
+          "⌒{O}{A}{B}的角度"
+        ],
+        "anti_parse_to_nl_en": [
+          "the measure of arc {O}{A}{B}",
+          "the measure of ⌒{O}{A}{B}"
+        ]
+      },
+      "RatioOfSimilarArc(OAB,OCD)": {
+        "body": {
+          "ee_check": [
+            "Arc(OAB)",
+            "Arc(OCD)"
+          ],
+          "sym": "rsa",
+          "multi": []
+        },
+        "doc_cn": "相似弧的相似比。",
+        "doc_en": "The similarity ratio of similar arcs.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "弧{O}{A}{B}和弧{O}{C}{D}的相似比",
+          "⌒{O}{A}{B}和⌒{O}{C}{D}的相似比"
+        ],
+        "anti_parse_to_nl_en": [
+          "The ratio of similar arcs {O}{A}{B} and {O}{C}{D}"
+        ]
+      },
+      "RadiusOfCircle(O)": {
+        "body": {
+          "ee_check": [
+            "Circle(O)"
+          ],
+          "sym": "rc",
+          "multi": []
+        },
+        "doc_cn": "圆半径的长度。",
+        "doc_en": "The length of the radius of the circle.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "圆{O}的半径",
+          "⊙{O}的半径"
+        ],
+        "anti_parse_to_nl_en": [
+          "the radius of circle {O}",
+          "the radius of ⊙{O}"
+        ]
+      },
+      "DiameterOfCircle(O)": {
+        "body": {
+          "ee_check": [
+            "Circle(O)"
+          ],
+          "sym": "dc",
+          "multi": []
+        },
+        "doc_cn": "圆直径的长度。",
+        "doc_en": "The length of the diameter of the circle.",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "圆{O}的直径",
+          "⊙{O}的直径"
+        ],
+        "anti_parse_to_nl_en": [
+          "the diameter of circle {O}",
+          "the diameter of ⊙{O}"
+        ]
+      },
+      "PerimeterOfCircle(O)": {
+        "body": {
+          "ee_check": [
+            "Circle(O)"
+          ],
+          "sym": "pc",
+          "multi": []
+        },
+        "doc_cn": "The circumference of the circle.",
+        "doc_en": "",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "圆{O}的周长",
+          "⊙{O}的周长"
+        ],
+        "anti_parse_to_nl_en": [
+          "the circumference of the circle {O}",
+          "the circumference of the ⊙{O}"
+        ]
+      },
+      "AreaOfCircle(O)": {
+        "body": {
+          "ee_check": [
+            "Circle(O)"
+          ],
+          "sym": "ac",
+          "multi": []
+        },
+        "doc_cn": "The area of the circle.",
+        "doc_en": "",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "圆{O}的面积",
+          "⊙{O}的面积"
+        ],
+        "anti_parse_to_nl_en": [
+          "the area of the circle {O}",
+          "the area of the ⊙{O}"
+        ]
+      },
+      "PerimeterOfSector(OAB)": {
+        "body": {
+          "ee_check": [
+            "Arc(OAB)"
+          ],
+          "sym": "ps",
+          "multi": []
+        },
+        "doc_cn": "The circumference of the sector.",
+        "doc_en": "",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "扇形{O}{A}{B}的周长"
+        ],
+        "anti_parse_to_nl_en": [
+          "the circumference of the sector {O}{A}{B}"
+        ]
+      },
+      "AreaOfSector(OAB)": {
+        "body": {
+          "ee_check": [
+            "Arc(OAB)"
+          ],
+          "sym": "as",
+          "multi": []
+        },
+        "doc_cn": "The area of the sector.",
+        "doc_en": "",
+        "pic_width": "15",
+        "anti_parse_to_nl_cn": [
+          "扇形{O}{A}{B}的面积"
+        ],
+        "anti_parse_to_nl_en": [
+          "the area of the sector {O}{A}{B}"
+        ]
+      }
+    }
+  }
+}

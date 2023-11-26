@@ -2,7 +2,7 @@
   "problem_id": 7,
   "annotation": "XiaokaiZhang_2023-06-19",
   "source": "2023年上海市初中数学中考第25题第1问",
-  "problem_level": 1,
+  "problem_level": 11,
   "problem_text_cn": "",
   "problem_text_en": "",
   "problem_img": "7.png",
@@ -21,10 +21,10 @@
     "Cocircular(O,BDE)"
   ],
   "text_cdl": [
-    "IsMidpointOfLine(F,OB)",
+    "Equal(LengthOfLine(OG),LengthOfLine(GD))",
     "IsCentreOfCircle(O,O)",
-    "IsoscelesTriangle(ABC)",
-    "Equal(LengthOfLine(OG),LengthOfLine(GD))"
+    "IsMidpointOfLine(F,OB)",
+    "IsoscelesTriangle(ABC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Relation(Parallelogram(CEGD))",
@@ -41,5 +41,43 @@
     "parallel_property_collinear_extend(1,DB,GF,C)",
     "parallel_property_collinear_extend(2,FG,DC,E)",
     "parallelogram_judgment_parallel_and_parallel(1,CEGD)"
-  ]
+  ],
+  "theorem_seqs_dag": {
+    "START": [
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "radius_of_circle_property_length_equal(1,OD,O)",
+      "isosceles_triangle_property_angle_equal(1,ABC)",
+      "midsegment_of_triangle_judgment_midpoint(1,FG,OBD)"
+    ],
+    "radius_of_circle_property_length_equal(1,OB,O)": [
+      "isosceles_triangle_judgment_line_equal(1,OBD)"
+    ],
+    "radius_of_circle_property_length_equal(1,OD,O)": [
+      "isosceles_triangle_judgment_line_equal(1,OBD)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,OBD)": [
+      "isosceles_triangle_property_angle_equal(1,OBD)"
+    ],
+    "isosceles_triangle_property_angle_equal(1,ABC)": [
+      "parallel_judgment_corresponding_angle(1,DG,CE,B)"
+    ],
+    "isosceles_triangle_property_angle_equal(1,OBD)": [
+      "parallel_judgment_corresponding_angle(1,DG,CE,B)"
+    ],
+    "parallel_judgment_corresponding_angle(1,DG,CE,B)": [
+      "parallelogram_judgment_parallel_and_parallel(1,CEGD)"
+    ],
+    "midsegment_of_triangle_judgment_midpoint(1,FG,OBD)": [
+      "midsegment_of_triangle_property_parallel(1,FG,OBD)"
+    ],
+    "midsegment_of_triangle_property_parallel(1,FG,OBD)": [
+      "parallel_property_collinear_extend(1,DB,GF,C)"
+    ],
+    "parallel_property_collinear_extend(1,DB,GF,C)": [
+      "parallel_property_collinear_extend(2,FG,DC,E)"
+    ],
+    "parallel_property_collinear_extend(2,FG,DC,E)": [
+      "parallelogram_judgment_parallel_and_parallel(1,CEGD)"
+    ]
+  }
 }

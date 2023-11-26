@@ -2,7 +2,7 @@
   "problem_id": 17,
   "annotation": "JiaZou_2023-11-02",
   "source": "2010亚太地区数学奥林匹克",
-  "problem_level": 12,
+  "problem_level": 15,
   "problem_text_cn": "如图，在三角形ABC中，∠BAC≠90°，0是外心，设三角形BOC的外接圆T分别与边AB、AC交于不同于B、C的点P、Q，若ON是圆T的直径，求证：四边形APNQ是平行四边形。",
   "problem_text_en": "",
   "problem_img": "17.png",
@@ -28,11 +28,11 @@
     "Cocircular(T,OPBNCQ)"
   ],
   "text_cdl": [
+    "Equal(LengthOfLine(ON),DiameterOfCircle(T))",
+    "Equal(MeasureOfAngle(BFO),90)",
     "IsCentreOfCircle(O,O)",
     "IsCentreOfCircle(T,T)",
-    "Equal(LengthOfLine(ON),DiameterOfCircle(T))",
-    "IsCircumcenterOfTriangle(O,ABC)",
-    "Equal(MeasureOfAngle(BFO),90)"
+    "IsCircumcenterOfTriangle(O,ABC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Relation(Parallelogram(APNQ))",
@@ -53,5 +53,65 @@
     "parallel_judgment_corresponding_angle(2,AQ,PN,B)",
     "parallel_judgment_corresponding_angle(1,QN,AP,C)",
     "parallelogram_judgment_parallel_and_parallel(1,APNQ)"
-  ]
+  ],
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_circumference_angle_external(1,TBN,P)",
+      "arc_property_circumference_angle_external(1,TBN,O)",
+      "arc_property_circumference_angle_external(1,TNC,Q)",
+      "arc_property_circumference_angle_external(1,TNC,O)",
+      "radius_of_circle_property_length_equal(1,OB,O)",
+      "radius_of_circle_property_length_equal(1,OC,O)",
+      "circumcenter_of_triangle_property_intersection(1,O,ABC,F)",
+      "angle_addition(1,COF,FOB)",
+      "arc_property_circumference_angle_external(1,OBC,A)",
+      "arc_property_center_angle(1,OBC,O)"
+    ],
+    "arc_property_circumference_angle_external(1,TBN,P)": [
+      "parallel_judgment_corresponding_angle(2,AQ,PN,B)"
+    ],
+    "arc_property_circumference_angle_external(1,TBN,O)": [
+      "parallel_judgment_corresponding_angle(2,AQ,PN,B)"
+    ],
+    "arc_property_circumference_angle_external(1,TNC,Q)": [
+      "parallel_judgment_corresponding_angle(1,QN,AP,C)"
+    ],
+    "arc_property_circumference_angle_external(1,TNC,O)": [
+      "parallel_judgment_corresponding_angle(1,QN,AP,C)"
+    ],
+    "radius_of_circle_property_length_equal(1,OB,O)": [
+      "mirror_congruent_triangle_judgment_sss(1,OBF,OFC)"
+    ],
+    "radius_of_circle_property_length_equal(1,OC,O)": [
+      "mirror_congruent_triangle_judgment_sss(1,OBF,OFC)"
+    ],
+    "circumcenter_of_triangle_property_intersection(1,O,ABC,F)": [
+      "mirror_congruent_triangle_judgment_sss(1,OBF,OFC)"
+    ],
+    "mirror_congruent_triangle_judgment_sss(1,OBF,OFC)": [
+      "mirror_congruent_triangle_property_angle_equal(1,OBF,OFC)"
+    ],
+    "mirror_congruent_triangle_property_angle_equal(1,OBF,OFC)": [
+      "parallel_judgment_corresponding_angle(2,AQ,PN,B)",
+      "parallel_judgment_corresponding_angle(1,QN,AP,C)"
+    ],
+    "angle_addition(1,COF,FOB)": [
+      "parallel_judgment_corresponding_angle(2,AQ,PN,B)",
+      "parallel_judgment_corresponding_angle(1,QN,AP,C)"
+    ],
+    "arc_property_circumference_angle_external(1,OBC,A)": [
+      "parallel_judgment_corresponding_angle(2,AQ,PN,B)",
+      "parallel_judgment_corresponding_angle(1,QN,AP,C)"
+    ],
+    "arc_property_center_angle(1,OBC,O)": [
+      "parallel_judgment_corresponding_angle(2,AQ,PN,B)",
+      "parallel_judgment_corresponding_angle(1,QN,AP,C)"
+    ],
+    "parallel_judgment_corresponding_angle(2,AQ,PN,B)": [
+      "parallelogram_judgment_parallel_and_parallel(1,APNQ)"
+    ],
+    "parallel_judgment_corresponding_angle(1,QN,AP,C)": [
+      "parallelogram_judgment_parallel_and_parallel(1,APNQ)"
+    ]
+  }
 }

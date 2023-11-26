@@ -2,7 +2,7 @@
   "problem_id": 16,
   "annotation": "XiaokaiZhang_2023-11-10",
   "source": "2022年国际奥林匹克第4题",
-  "problem_level": 1,
+  "problem_level": 14,
   "problem_text_cn": "如图，在五边形ABCDE中，BC=DE，T是形内一点，满足TB=TD，TC=TE，且∠ABT=∠AET，求证：PSQR四点共圆。",
   "problem_text_en": "",
   "problem_img": "16.png",
@@ -49,5 +49,56 @@
     "adjacent_complementary_angle(1,PCQ,QCR)",
     "angle_addition(1,QSA,ASF)",
     "concyclic_between_points_judgment_sum_of_angles(2,P,R,Q,S)"
-  ]
+  ],
+  "theorem_seqs_dag": {
+    "START": [
+      "congruent_triangle_judgment_sss(1,TBC,TDE)",
+      "adjacent_complementary_angle(1,CTB,BTQ)",
+      "adjacent_complementary_angle(1,STE,ETD)",
+      "triangle_property_angle_sum(1,QPC)",
+      "adjacent_complementary_angle(1,PCQ,QCR)",
+      "angle_addition(1,QSA,ASF)"
+    ],
+    "congruent_triangle_judgment_sss(1,TBC,TDE)": [
+      "congruent_triangle_property_angle_equal(1,TBC,TDE)"
+    ],
+    "congruent_triangle_property_angle_equal(1,TBC,TDE)": [
+      "mirror_similar_triangle_judgment_aa(1,QBT,STE)"
+    ],
+    "adjacent_complementary_angle(1,CTB,BTQ)": [
+      "mirror_similar_triangle_judgment_aa(1,QBT,STE)"
+    ],
+    "adjacent_complementary_angle(1,STE,ETD)": [
+      "mirror_similar_triangle_judgment_aa(1,QBT,STE)"
+    ],
+    "mirror_similar_triangle_judgment_aa(1,QBT,STE)": [
+      "mirror_similar_triangle_property_line_ratio(1,QBT,STE)",
+      "mirror_similar_triangle_property_angle_equal(1,QBT,STE)",
+      "mirror_similar_triangle_property_line_ratio(1,BTQ,EST)"
+    ],
+    "mirror_similar_triangle_property_line_ratio(1,QBT,STE)": [
+      "concyclic_between_points_judgment_circular_power_chord_and_chord(1,STD,CTQ)"
+    ],
+    "mirror_similar_triangle_property_line_ratio(1,BTQ,EST)": [
+      "concyclic_between_points_judgment_circular_power_chord_and_chord(1,STD,CTQ)"
+    ],
+    "concyclic_between_points_judgment_circular_power_chord_and_chord(1,STD,CTQ)": [
+      "concyclic_between_points_property_angle_equal(1,C,D,Q,S)"
+    ],
+    "concyclic_between_points_property_angle_equal(1,C,D,Q,S)": [
+      "concyclic_between_points_judgment_sum_of_angles(2,P,R,Q,S)"
+    ],
+    "mirror_similar_triangle_property_angle_equal(1,QBT,STE)": [
+      "concyclic_between_points_judgment_sum_of_angles(2,P,R,Q,S)"
+    ],
+    "triangle_property_angle_sum(1,QPC)": [
+      "concyclic_between_points_judgment_sum_of_angles(2,P,R,Q,S)"
+    ],
+    "adjacent_complementary_angle(1,PCQ,QCR)": [
+      "concyclic_between_points_judgment_sum_of_angles(2,P,R,Q,S)"
+    ],
+    "angle_addition(1,QSA,ASF)": [
+      "concyclic_between_points_judgment_sum_of_angles(2,P,R,Q,S)"
+    ]
+  }
 }

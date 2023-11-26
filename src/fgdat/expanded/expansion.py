@@ -15,95 +15,89 @@ class Expander:
         self.stop_pid = load_json(os.path.join(self.path_datasets, "info.json"))["problem_number"] + 1
         self.debug = debug
 
-        warnings.filterwarnings("ignore")
-
         self.solver = Interactor(
             load_json(os.path.join(self.path_datasets, "gdl/", "predicate_GDL.json")),
             load_json(os.path.join(self.path_datasets, "gdl/", "theorem_GDL.json"))
         )
         if self.random_search:
             EqKiller.use_cache = True
+            self.t_msg = load_json(os.path.join(self.path_datasets, "files/", "t_info.json"))
 
         if "expanded_log.json" not in os.listdir(os.path.join(self.path_datasets, "files/")):
             self.log = {"break_pid": 1, "pid_count": self.stop_pid}
         else:
             self.log = load_json(os.path.join(self.path_datasets, "files/", "expanded_log.json"))
 
-        self.t_msg = load_json(os.path.join(self.path_datasets, "files/", "t_info.json"))
         self.data = None
 
-    def expand(self):
+    def start(self):
         while self.log["break_pid"] < self.stop_pid:
             problem_CDL = load_json(
                 os.path.join(self.path_datasets, "problems", "{}.json".format(self.log["break_pid"])))
 
             print("\033[36m(pid={})\033[0m Start Expanding.".format(self.log["break_pid"]))
-            self.init_problem(problem_CDL)  # apply theorem or random search
+
+            try:
+                self.load_problem(problem_CDL)  # init problem and apply theorem
+            except FunctionTimedOut:
+                pass
+            self.solver.problem.check_goal()
+
             self.data = []
-            self.expand_logic()
-            self.expand_algebra()
-            self.save_expand()
+            self.expand()
 
     @func_set_timeout(300)
-    def apply_all_theorem(self):
-        timing = time.time()
-        count = 0
-        update = True
-        while update:
-            update = False
-            for t_name in self.t_msg:
-                if self.t_msg[t_name][0] != 1:
-                    continue
-                update = self.solver.apply_theorem(t_name) or update
-                debug_print(
-                    self.debug,
-                    "\033[34m(pid={},use_theorem=False,timing={:.4f}s,count={})\033[0m Apply theorem <{}>.".format(
-                        self.log["break_pid"], time.time() - timing, count, t_name)
-                )
-                count += 1
-
-        update = True
-        while update:
-            update = False
-            for t_name in self.t_msg:
-                if self.t_msg[t_name][0] == 3:
-                    continue
-                update = self.solver.apply_theorem(t_name) or update
-                debug_print(
-                    self.debug,
-                    "\033[34m(pid={},use_theorem=False,timing={:.4f}s,count={})\033[0m Apply theorem <{}>.".format(
-                        self.log["break_pid"], time.time() - timing, count, t_name)
-                )
-                count += 1
-
-    def init_problem(self, problem_CDL):
+    def load_problem(self, problem_CDL):
         EqKiller.cache_eqs = {}  # init cache
         EqKiller.cache_target = {}
         self.solver.load_problem(problem_CDL)
         if self.random_search:
-            try:
-                self.apply_all_theorem()
-            except FunctionTimedOut:
-                pass
-        else:
             timing = time.time()
             count = 0
+            update = True
+            while update:
+                update = False
+                for t_name in self.t_msg:
+                    if self.t_msg[t_name][0] != 1:
+                        continue
+                    update = self.solver.apply_theorem(t_name) or update
+                    debug_print(
+                        self.debug,
+                        "\033[34m(pid={},random_search=True,timing={:.4f}s,count={})\033[0m Apply theorem <{}>.".format(
+                            self.log["break_pid"], time.time() - timing, count, t_name)
+                    )
+                    count += 1
+
+            update = True
+            while update:
+                update = False
+                for t_name in self.t_msg:
+                    if self.t_msg[t_name][0] == 3:
+                        continue
+                    update = self.solver.apply_theorem(t_name) or update
+                    debug_print(
+                        self.debug,
+                        "\033[34m(pid={},random_search=True,timing={:.4f}s,count={})\033[0m Apply theorem <{}>.".format(
+                            self.log["break_pid"], time.time() - timing, count, t_name)
+                    )
+                    count += 1
+        else:
+            timing = time.time()
             for t_name, t_branch, t_para in parse_theorem_seqs(problem_CDL["theorem_seqs"]):
                 self.solver.apply_theorem(t_name, t_branch, t_para)
-                debug_print(
-                    self.debug,
-                    "\033[34m(pid={},use_theorem=True,timing={:.4f}s,count={})\033[0m Apply theorem <{}>".format(
-                        self.log["break_pid"], time.time() - timing, count, t_name)
-                )
-                count += 1
+            debug_print(self.debug,
+                        "\033[34m(pid={},random_search=False,timing={:.4f}s,count={})\033[0m Apply theorems.".format(
+                            self.log["break_pid"], time.time() - timing, len(problem_CDL["theorem_seqs"])))
 
-    def expand_logic(self):
+    def expand(self):
         problem = self.solver.problem
-        for cid in range(len(problem.condition.items)):
+        expanded_cid = []  # (cid, goal_GDL, problem_answer)
+
+        for cid in range(len(problem.condition.items)):  # generate logic goal
             predicate, item, premise, theorem, step = problem.condition.items[cid]
             if predicate in ["Shape", "Collinear", "Cocircular", "Point", "Line", "Arc",
                              "Angle", "Polygon", "Circle"] \
-                    or theorem == "prerequisite":
+                    or theorem[0] in ["prerequisite", "extended"]:
                 continue
 
             goal_GDL = inverse_parse_one(predicate, item, problem)
@@ -116,12 +110,9 @@ class Expander:
                 problem_answer = goal_GDL
                 goal_GDL = "Relation({})".format(goal_GDL)
 
-            for added_conditions, theorem_seqs in self.get_expand_problems(cid):
-                self.data.append((added_conditions, goal_GDL, problem_answer, theorem_seqs))
+            expanded_cid.append((cid, goal_GDL, problem_answer))
 
-    def expand_algebra(self):
-        problem = self.solver.problem
-        for sym in problem.condition.value_of_sym:
+        for sym in problem.condition.value_of_sym:  # generate algebra goal
             value = problem.condition.value_of_sym[sym]
             if value is None:
                 continue
@@ -137,79 +128,58 @@ class Expander:
             else:
                 goal_GDL = "Value(" + attr + "(" + "".join(paras[0]) + "))"
 
-            for added_conditions, theorem_seqs in self.get_expand_problems(cid):
-                self.data.append((added_conditions, goal_GDL, problem_answer, theorem_seqs))
+            expanded_cid.append((cid, goal_GDL, problem_answer))
 
-    def get_expand_problems(self, cid):
-        problem = self.solver.problem
-        expanded_problems = []
-        theorem_seqs = []
-        _, _, premise, theorem, _ = problem.condition.items[cid]
+        expanded = []  # list of (added_conditions, goal_GDL, problem_answer, theorem_seqs)
+        for cid, goal_GDL, problem_answer in expanded_cid:
+            print(str((cid, goal_GDL, problem_answer)))
+            theorem_seqs = []
+            _, _, premise, theorem, _ = problem.condition.items[cid]
+            if theorem[0] not in ["solve_eq", "prerequisite", "extended"]:
+                theorem_seqs.append(theorem)
+            premises = self.select_premises(premise)
 
-        if theorem not in ["solve_eq", "prerequisite", "extended"]:
-            theorem_seqs.append(theorem)
-        premises = self.select_premises(list(premise))
+            while len(premises) > 0:
 
-        while len(premises) > 0:
+                if len(theorem_seqs) > 0:  # add expanded problems
+                    added_conditions = []
+                    for i in premises:
+                        predicate, item, _, _, _ = problem.condition.items[i]
+                        condition = inverse_parse_one(predicate, item, problem)
+                        if "Value" in condition:
+                            condition = condition.replace("Value", "Equal")
+                        added_conditions.append(condition)
+                    added = (tuple(added_conditions), goal_GDL, problem_answer, tuple(theorem_seqs[::-1]))
+                    if added not in expanded:
+                        expanded.append(added)
+
+                _, _, premise, theorem, _ = problem.condition.items[premises[0]]
+                premises.pop(0)  # remove condition 0
+                for i in range(len(premises))[::-1]:  # remove condition i which in same group with premises[0]
+                    _, _, new_premise, new_theorem, _ = problem.condition.items[premises[i]]
+                    if theorem == new_theorem and premise == new_premise:
+                        premises.pop(i)
+
+                theorem_seqs.append(theorem)
+                for i in self.select_premises(premise):
+                    if i not in premises:
+                        premises.append(i)
+
             if len(theorem_seqs) > 0:
-                added_conditions = []
-                for i in premises:
-                    predicate, item, _, _, _ = problem.condition.items[i]
-                    condition = inverse_parse_one(predicate, item, problem)
-                    if "Value" in condition:
-                        condition = condition.replace("Value", "Equal")
-                    added_conditions.append(condition)
-                expanded_problems.append((added_conditions, theorem_seqs[::-1]))
+                added = (tuple([]), goal_GDL, problem_answer, tuple(theorem_seqs[::-1]))
+                if added not in expanded:
+                    expanded.append(added)
 
-            _, _, premise, theorem, _ = problem.condition.items[premises[0]]
-            premises.pop(0)
-            premises += list(premise)
-            theorem_seqs.append(theorem)
-            for i in range(len(premises))[::-1]:
-                _, _, new_premise, new_theorem, _ = problem.condition.items[premises[i]]
-                if premise == new_premise and theorem == new_theorem:
-                    premises.pop(i)
-            premises = self.select_premises(premises)
-
-        if len(theorem_seqs) > 0:
-            expanded_problems.append(([], theorem_seqs[::-1]))
-
-        return expanded_problems
-
-    def select_premises(self, premises):
-        problem = self.solver.problem
-
-        update = True
-        while update and len(premises) > 0:
-            update = False
-            new_premises = set()
-
-            for i in premises:
-                _, _, premise, theorem, _ = problem.condition.items[i]
-                if theorem not in ["solve_eq", "prerequisite", "extended"]:
-                    new_premises.add(i)
-                else:
-                    for p in premise:
-                        if p != -1:
-                            new_premises.add(p)
-                            update = True
-
-            premises = new_premises
-
-        return list(premises)
-
-    def save_expand(self):
-        all_expanded_data = set()
+        saved = set()    # save expanded
+        file_to_save = {}
         filename = "{}.json".format(self.log["break_pid"])
-        if filename not in os.listdir(os.path.join(self.path_datasets, "expanded/")):  # ensure no duplicate problems
-            expanded = {}
-        else:
-            expanded = load_json(os.path.join(self.path_datasets, "expanded/", filename))
-            for pid in expanded:
-                all_expanded_data.add((tuple(expanded[pid]["added_cdl"]), expanded[pid]["goal_cdl"]))
+        if filename in os.listdir(os.path.join(self.path_datasets, "expanded/")):  # ensure no duplicate problems
+            file_to_save = load_json(os.path.join(self.path_datasets, "expanded/", filename))
+            for pid in file_to_save:
+                saved.add((tuple(file_to_save[pid]["added_cdl"]), file_to_save[pid]["goal_cdl"]))
 
-        for added_conditions, goal_GDL, problem_answer, theorem_seqs in self.data:
-            if (tuple(added_conditions), goal_GDL) in all_expanded_data:
+        for added_conditions, goal_GDL, problem_answer, theorem_seqs in expanded:
+            if (added_conditions, goal_GDL) in saved:
                 continue
 
             cleaned_theorem_seqs = []
@@ -225,10 +195,10 @@ class Expander:
                 "theorem_seqs": [inverse_parse_one_theorem(t, self.solver.parsed_theorem_GDL)
                                  for t in cleaned_theorem_seqs]
             }
-            expanded[str(self.log["pid_count"])] = new_data
+            file_to_save[str(self.log["pid_count"])] = new_data
             self.log["pid_count"] += 1
 
-        save_json(expanded, os.path.join(self.path_datasets, "expanded/", filename))
+        safe_save_json(file_to_save, os.path.join(self.path_datasets, "expanded/", filename))
 
         debug_print(
             self.debug,
@@ -236,7 +206,32 @@ class Expander:
         self.log["break_pid"] += 1
         safe_save_json(self.log, os.path.join(self.path_datasets, "files/", "expanded_log.json"))
 
+    def select_premises(self, premises):
+        problem = self.solver.problem
+        premises = list(premises)
+
+        update = True
+        while update and len(premises) > 0:
+            update = False
+            new_premises = []
+
+            for i in premises:
+                _, _, premise, theorem, _ = problem.condition.items[i]
+                if theorem[0] not in ["solve_eq", "prerequisite", "extended"]:
+                    new_premises.append(i)  # add premise i if getting i need theorem
+                else:
+                    for p in premise:  # add premises of premise i if getting i don't need theorem
+                        if p != -1 and p not in new_premises:
+                            new_premises.append(p)
+                            update = True
+
+            premises = new_premises
+
+        return list(premises)
+
 
 if __name__ == '__main__':
-    expander = Expander(path_datasets="../../../projects/formalgeo7k/", random_search=False)
-    expander.expand()
+    warnings.filterwarnings("ignore")
+    # expander = Expander(path_datasets="../../../projects/formalgeo7k", random_search=False)
+    expander = Expander(path_datasets="../../../projects/formalgeo-imo", random_search=False, debug=True)
+    expander.start()

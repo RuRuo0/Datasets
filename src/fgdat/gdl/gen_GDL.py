@@ -148,7 +148,12 @@ def gen_doc(path_dataset, language):
 
 
 if __name__ == '__main__':
-    gen_doc("../../../projects/formalgeo7k", "cn")
-    gen_doc("../../../projects/formalgeo7k", "en")
-    gen_predicate_gdl("../../../projects/formalgeo7k")
-    gen_theorem_gdl("../../../projects/formalgeo7k")
+    # gen_doc("../../../projects/formalgeo7k", "cn")
+    # gen_doc("../../../projects/formalgeo7k", "en")
+    # gen_predicate_gdl("../../../projects/formalgeo7k")
+    # gen_theorem_gdl("../../../projects/formalgeo7k")
+
+    gen_doc("../../../projects/formalgeo-imo", "cn")
+    gen_doc("../../../projects/formalgeo-imo", "en")
+    gen_predicate_gdl("../../../projects/formalgeo-imo")
+    gen_theorem_gdl("../../../projects/formalgeo-imo")

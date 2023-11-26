@@ -17,6 +17,7 @@ def main(clean_theorem=False, interactive=True):
             continue
 
         solver.load_problem(problem_CDL)
+        print("Construction complete.")
         for t_name, t_branch, t_para in parse_theorem_seqs(problem_CDL["theorem_seqs"]):
             solver.apply_theorem(t_name, t_branch, t_para)
         solver.problem.check_goal()  # check goal after applied theorem seqs
@@ -47,4 +48,4 @@ def main(clean_theorem=False, interactive=True):
 
 
 if __name__ == '__main__':
-    main(clean_theorem=True, interactive=False)
+    main(clean_theorem=False, interactive=False)

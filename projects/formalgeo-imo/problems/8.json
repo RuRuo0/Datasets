@@ -2,7 +2,7 @@
   "problem_id": 8,
   "annotation": "XiaokaiZhang_2023-06-19",
   "source": "2023年上海市初中数学中考第25题第2问",
-  "problem_level": 1,
+  "problem_level": 13,
   "problem_text_cn": "",
   "problem_text_en": "",
   "problem_img": "8.png",
@@ -19,13 +19,13 @@
     "Collinear(OGD)"
   ],
   "text_cdl": [
-    "IsoscelesTriangle(ABC)",
-    "IsMidpointOfLine(F,OB)",
-    "Equal(MeasureOfAngle(CAB),90)",
+    "Equal(LengthOfLine(AO),4)",
     "Equal(LengthOfLine(OB),LengthOfLine(OD))",
     "Equal(LengthOfLine(OD),LengthOfLine(OE))",
+    "Equal(MeasureOfAngle(CAB),90)",
     "Equal(MeasureOfAngle(EOD),MeasureOfAngle(AFE))",
-    "Equal(LengthOfLine(AO),4)"
+    "IsMidpointOfLine(F,OB)",
+    "IsoscelesTriangle(ABC)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(LengthOfLine(OB))",
@@ -44,5 +44,39 @@
     "right_triangle_property_pythagorean(1,EAO)",
     "line_addition(1,OF,FB)",
     "line_addition(1,AO,OF)"
-  ]
+  ],
+  "theorem_seqs_dag": {
+    "START": [
+      "isosceles_triangle_judgment_line_equal(1,OBD)",
+      "isosceles_triangle_property_angle_equal(1,ABC)",
+      "right_triangle_judgment_angle(1,EAO)",
+      "line_addition(1,OF,FB)",
+      "line_addition(1,AO,OF)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,OBD)": [
+      "isosceles_triangle_property_angle_equal(1,OBD)"
+    ],
+    "isosceles_triangle_property_angle_equal(1,ABC)": [
+      "parallel_judgment_corresponding_angle(1,DO,CA,B)"
+    ],
+    "isosceles_triangle_property_angle_equal(1,OBD)": [
+      "parallel_judgment_corresponding_angle(1,DO,CA,B)"
+    ],
+    "parallel_judgment_corresponding_angle(1,DO,CA,B)": [
+      "parallel_property_collinear_extend(3,AC,OD,E)"
+    ],
+    "parallel_property_collinear_extend(3,AC,OD,E)": [
+      "parallel_property_alternate_interior_angle(2,AE,OD)"
+    ],
+    "parallel_property_alternate_interior_angle(2,AE,OD)": [
+      "mirror_similar_triangle_judgment_aa(1,OEA,EAF)"
+    ],
+    "mirror_similar_triangle_judgment_aa(1,OEA,EAF)": [
+      "mirror_similar_triangle_property_line_ratio(1,OEA,EAF)",
+      "mirror_similar_triangle_property_line_ratio(1,EAO,FEA)"
+    ],
+    "right_triangle_judgment_angle(1,EAO)": [
+      "right_triangle_property_pythagorean(1,EAO)"
+    ]
+  }
 }

@@ -2,34 +2,33 @@
   "problem_id": 15,
   "annotation": "XiaokaiZhang_2023-11-04",
   "source": "数之迷原创几何题-262",
-  "problem_level": 1,
+  "problem_level": 31,
   "problem_text_cn": "如图，I为△ABC的内心，延长AI、BI分别交三角形ABD的外接圆于点D、E，设△BIC的外接圆与线段DE交于点T，BT交CI于点S，DE、BE分别交AC于点X,Y，求证: STXY四点共圆。",
   "problem_text_en": "",
   "problem_img": "15.png",
   "construction_cdl": [
     "Shape(AB,BI,IA)",
     "Shape(AI,IY,YA)",
-    "Shape(IB,BH,HI)",
-    "Shape(HB,BF,FH)",
-    "Shape(FB,BD,DF)",
+    "Shape(IB,BS,SI)",
     "Shape(EY,YX,XE)",
     "Shape(EX,XC,CE)",
-    "Shape(YI,IS,SY)",
-    "Shape(IH,HS,SI)",
-    "Shape(YS,ST,TX,XY)",
-    "Shape(XT,TC,CX)",
-    "Shape(TS,SG,GT)",
-    "Shape(SH,HF,FJ,JG,GS)",
-    "Shape(TG,GC,CT)",
-    "Shape(GJ,JC,CG)",
-    "Shape(JF,FD,DJ)",
+    "Shape(BD,DJ,JB)",
     "Shape(JD,DC,CJ)",
-    "Collinear(AIHFD)",
+    "Shape(YI,IS,SY)",
+    "Shape(YS,ST,TX,XY)",
+    "Shape(TS,SG,GT)",
+    "Shape(XT,TC,CX)",
+    "Shape(TG,GC,CT)",
+    "Shape(IB,BS,SI)",
+    "Shape(SB,BJ,JG,GS)",
+    "Shape(GJ,JC,CG)",
+    "Shape(EI,ID,DC,CE)",
+    "Collinear(AID)",
     "Collinear(AYXC)",
     "Collinear(BIYE)",
-    "Collinear(BHST)",
+    "Collinear(BST)",
     "Collinear(EXTGJD)",
-    "Collinear(BFJC)",
+    "Collinear(BJC)",
     "Collinear(ISGC)",
     "Cocircular(O,ABDCE)",
     "Cocircular(D,CTIB)",
@@ -73,5 +72,157 @@
     "adjacent_complementary_angle(1,TSC,CSB)",
     "adjacent_complementary_angle(1,GTS,STX)",
     "concyclic_between_points_judgment_sum_of_angles(1,Y,S,T,X)"
+  ],
+  "theorem_seqs_dag": {
+    "START": [
+      "centre_of_circle_judgment_chicken_foot(1,O,ABDC,D,CIB,D)",
+      "centre_of_circle_judgment_chicken_foot(1,O,BCEA,E,AIC,E)",
+      "triangle_property_angle_sum(1,TSG)",
+      "triangle_property_angle_sum(1,DTB)",
+      "arc_property_circumference_angle_external(1,DTB,C)",
+      "arc_property_circumference_angle_external(1,DTI,B)",
+      "arc_property_circumference_angle_external(1,DTI,C)",
+      "bisector_of_angle_judgment_angle_equal(1,CS,BCY)",
+      "angle_addition(1,CYS,SYB)",
+      "angle_addition(1,YBS,SBC)",
+      "angle_addition(1,BCS,SCY)",
+      "triangle_property_angle_sum(1,YBC)",
+      "triangle_property_angle_sum(1,SBC)",
+      "adjacent_complementary_angle(1,TSC,CSB)",
+      "adjacent_complementary_angle(1,GTS,STX)"
+    ],
+    "centre_of_circle_judgment_chicken_foot(1,O,ABDC,D,CIB,D)": [
+      "radius_of_circle_property_length_equal(1,DB,D)",
+      "radius_of_circle_property_length_equal(1,DI,D)",
+      "radius_of_circle_property_length_equal(1,DT,D)",
+      "radius_of_circle_property_length_equal(1,DC,D)",
+      "arc_property_center_angle(1,DTB,D)"
+    ],
+    "centre_of_circle_judgment_chicken_foot(1,O,BCEA,E,AIC,E)": [
+      "radius_of_circle_property_length_equal(1,EI,E)",
+      "radius_of_circle_property_length_equal(1,EC,E)"
+    ],
+    "radius_of_circle_property_length_equal(1,DB,D)": [
+      "isosceles_triangle_judgment_line_equal(1,DTB)"
+    ],
+    "radius_of_circle_property_length_equal(1,DI,D)": [
+      "kite_judgment_equal_and_equal(1,EIDC)"
+    ],
+    "radius_of_circle_property_length_equal(1,DT,D)": [
+      "isosceles_triangle_judgment_line_equal(1,DTB)"
+    ],
+    "radius_of_circle_property_length_equal(1,DC,D)": [
+      "kite_judgment_equal_and_equal(1,EIDC)"
+    ],
+    "radius_of_circle_property_length_equal(1,EI,E)": [
+      "kite_judgment_equal_and_equal(1,EIDC)"
+    ],
+    "radius_of_circle_property_length_equal(1,EC,E)": [
+      "kite_judgment_equal_and_equal(1,EIDC)"
+    ],
+    "kite_judgment_equal_and_equal(1,EIDC)": [
+      "kite_property_diagonal_perpendicular_bisection(1,EIDC,G)"
+    ],
+    "kite_property_diagonal_perpendicular_bisection(1,EIDC,G)": [
+      "mirror_similar_triangle_judgment_aa(1,CTS,BCT)",
+      "concyclic_between_points_judgment_sum_of_angles(1,Y,S,T,X)"
+    ],
+    "triangle_property_angle_sum(1,TSG)": [
+      "mirror_similar_triangle_judgment_aa(1,CTS,BCT)",
+      "concyclic_between_points_judgment_sum_of_angles(1,Y,S,T,X)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,DTB)": [
+      "isosceles_triangle_property_angle_equal(1,DTB)"
+    ],
+    "isosceles_triangle_property_angle_equal(1,DTB)": [
+      "mirror_similar_triangle_judgment_aa(1,CTS,BCT)",
+      "concyclic_between_points_judgment_sum_of_angles(1,Y,S,T,X)"
+    ],
+    "triangle_property_angle_sum(1,DTB)": [
+      "mirror_similar_triangle_judgment_aa(1,CTS,BCT)",
+      "concyclic_between_points_judgment_sum_of_angles(1,Y,S,T,X)"
+    ],
+    "arc_property_circumference_angle_external(1,DTB,C)": [
+      "mirror_similar_triangle_judgment_aa(1,CTS,BCT)",
+      "concyclic_between_points_judgment_sum_of_angles(1,Y,S,T,X)"
+    ],
+    "arc_property_center_angle(1,DTB,D)": [
+      "mirror_similar_triangle_judgment_aa(1,CTS,BCT)",
+      "concyclic_between_points_judgment_sum_of_angles(1,Y,S,T,X)"
+    ],
+    "mirror_similar_triangle_judgment_aa(1,CTS,BCT)": [
+      "mirror_similar_triangle_property_angle_equal(1,CTS,BCT)"
+    ],
+    "mirror_similar_triangle_property_angle_equal(1,CTS,BCT)": [
+      "bisector_of_angle_judgment_angle_equal(1,BS,YBC)",
+      "concyclic_between_points_judgment_sum_of_angles(1,Y,S,T,X)"
+    ],
+    "arc_property_circumference_angle_external(1,DTI,B)": [
+      "bisector_of_angle_judgment_angle_equal(1,BS,YBC)",
+      "concyclic_between_points_judgment_sum_of_angles(1,Y,S,T,X)"
+    ],
+    "arc_property_circumference_angle_external(1,DTI,C)": [
+      "bisector_of_angle_judgment_angle_equal(1,BS,YBC)",
+      "concyclic_between_points_judgment_sum_of_angles(1,Y,S,T,X)"
+    ],
+    "bisector_of_angle_judgment_angle_equal(1,BS,YBC)": [
+      "incenter_of_triangle_judgment_intersection(1,S,YBC)"
+    ],
+    "bisector_of_angle_judgment_angle_equal(1,CS,BCY)": [
+      "incenter_of_triangle_judgment_intersection(1,S,YBC)"
+    ],
+    "incenter_of_triangle_judgment_intersection(1,S,YBC)": [
+      "concyclic_between_points_judgment_sum_of_angles(1,Y,S,T,X)"
+    ],
+    "angle_addition(1,CYS,SYB)": [
+      "concyclic_between_points_judgment_sum_of_angles(1,Y,S,T,X)"
+    ],
+    "angle_addition(1,YBS,SBC)": [
+      "concyclic_between_points_judgment_sum_of_angles(1,Y,S,T,X)"
+    ],
+    "angle_addition(1,BCS,SCY)": [
+      "concyclic_between_points_judgment_sum_of_angles(1,Y,S,T,X)"
+    ],
+    "triangle_property_angle_sum(1,YBC)": [
+      "concyclic_between_points_judgment_sum_of_angles(1,Y,S,T,X)"
+    ],
+    "triangle_property_angle_sum(1,SBC)": [
+      "concyclic_between_points_judgment_sum_of_angles(1,Y,S,T,X)"
+    ],
+    "adjacent_complementary_angle(1,TSC,CSB)": [
+      "concyclic_between_points_judgment_sum_of_angles(1,Y,S,T,X)"
+    ],
+    "adjacent_complementary_angle(1,GTS,STX)": [
+      "concyclic_between_points_judgment_sum_of_angles(1,Y,S,T,X)"
+    ]
+  },
+  "notes": [
+    "Shape(AB,BI,IA)",
+    "Shape(AI,IY,YA)",
+    "Shape(IB,BH,HI)",
+    "Shape(HB,BF,FH)",
+    "Shape(FB,BD,DF)",
+    "Shape(EY,YX,XE)",
+    "Shape(EX,XC,CE)",
+    "Shape(YI,IS,SY)",
+    "Shape(IH,HS,SI)",
+    "Shape(YS,ST,TX,XY)",
+    "Shape(XT,TC,CX)",
+    "Shape(TS,SG,GT)",
+    "Shape(SH,HF,FJ,JG,GS)",
+    "Shape(TG,GC,CT)",
+    "Shape(GJ,JC,CG)",
+    "Shape(JF,FD,DJ)",
+    "Shape(JD,DC,CJ)",
+    "Collinear(AIHFD)",
+    "Collinear(AYXC)",
+    "Collinear(BIYE)",
+    "Collinear(BHST)",
+    "Collinear(EXTGJD)",
+    "Collinear(BFJC)",
+    "Collinear(ISGC)",
+    "Cocircular(O,ABDCE)",
+    "Cocircular(D,CTIB)",
+    "Cocircular(E,AIC)"
   ]
 }

@@ -2,7 +2,7 @@
   "problem_id": 9,
   "annotation": "YimingHe_2023-06-20",
   "source": "2023年上海市初中数学中考第25题第3问",
-  "problem_level": 1,
+  "problem_level": 35,
   "problem_text_cn": "",
   "problem_text_en": "",
   "problem_img": "9.png",
@@ -31,16 +31,16 @@
     "Collinear(PIJF)"
   ],
   "text_cdl": [
-    "IsoscelesTriangle(ABC)",
-    "IsMidpointOfLine(F,OB)",
+    "Equal(LengthOfLine(AO),LengthOfLine(OF))",
     "Equal(LengthOfLine(OB),LengthOfLine(OD))",
     "Equal(LengthOfLine(OD),LengthOfLine(OE))",
-    "Equal(LengthOfLine(AO),LengthOfLine(OF))",
     "Equal(LengthOfLine(PF),LengthOfLine(GB))",
+    "IsMidpointOfLine(F,OB)",
+    "IsoscelesTriangle(ABC)",
     "IsoscelesTriangle(BGO)",
+    "ParallelBetweenLine(GB,PF)",
     "ParallelBetweenLine(PG,AO)",
-    "ParallelBetweenLine(PG,FB)",
-    "ParallelBetweenLine(GB,PF)"
+    "ParallelBetweenLine(PG,FB)"
   ],
   "image_cdl": [],
   "goal_cdl": "Value(Div(LengthOfLine(OG),LengthOfLine(OD)))",
@@ -81,5 +81,132 @@
     "median_of_triangle_judgment(1,GO,GAF)",
     "right_triangle_property_length_of_median(1,FGA,O)",
     "line_addition(1,OF,FB)"
-  ]
+  ],
+  "theorem_seqs_dag": {
+    "START": [
+      "isosceles_triangle_judgment_line_equal(1,OBD)",
+      "isosceles_triangle_property_angle_equal(1,ABC)",
+      "line_addition(1,AO,OF)",
+      "line_addition(1,EG,GF)",
+      "parallel_property_corresponding_angle(1,PG,AO,E)",
+      "line_addition(1,EP,PA)",
+      "line_addition(1,EI,IO)",
+      "line_addition(1,FI,IP)",
+      "median_of_triangle_judgment(1,EO,EAF)",
+      "adjacent_complementary_angle(1,FGI,IGE)",
+      "median_of_triangle_judgment(1,GO,GAF)",
+      "line_addition(1,OF,FB)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,OBD)": [
+      "isosceles_triangle_property_angle_equal(1,OBD)"
+    ],
+    "isosceles_triangle_property_angle_equal(1,ABC)": [
+      "parallel_judgment_corresponding_angle(1,DO,CA,B)"
+    ],
+    "isosceles_triangle_property_angle_equal(1,OBD)": [
+      "parallel_judgment_corresponding_angle(1,DO,CA,B)"
+    ],
+    "parallel_judgment_corresponding_angle(1,DO,CA,B)": [
+      "parallel_property_collinear_extend(3,AC,OD,P)",
+      "parallel_property_collinear_extend(3,AC,OD,E)"
+    ],
+    "parallel_property_collinear_extend(3,AC,OD,P)": [
+      "parallel_property_collinear_extend(3,DO,PA,G)"
+    ],
+    "parallel_property_collinear_extend(3,DO,PA,G)": [
+      "parallelogram_judgment_parallel_and_parallel(1,PAOG)"
+    ],
+    "parallelogram_judgment_parallel_and_parallel(1,PAOG)": [
+      "parallelogram_property_opposite_line_equal(1,PAOG)"
+    ],
+    "parallelogram_property_opposite_line_equal(1,PAOG)": [
+      "median_of_triangle_judgment(1,FP,FEA)",
+      "mirror_congruent_triangle_judgment_sss(1,IGE,IFG)"
+    ],
+    "parallel_property_collinear_extend(3,AC,OD,E)": [
+      "parallel_property_collinear_extend(3,DO,EA,G)"
+    ],
+    "parallel_property_collinear_extend(3,DO,EA,G)": [
+      "parallel_property_corresponding_angle(2,AE,OG,F)"
+    ],
+    "parallel_property_corresponding_angle(2,AE,OG,F)": [
+      "similar_triangle_judgment_aa(1,EAF,GOF)"
+    ],
+    "similar_triangle_judgment_aa(1,EAF,GOF)": [
+      "similar_triangle_property_line_ratio(1,EAF,GOF)",
+      "similar_triangle_property_line_ratio(1,AFE,OFG)"
+    ],
+    "line_addition(1,AO,OF)": [
+      "median_of_triangle_judgment(1,FP,FEA)",
+      "mirror_congruent_triangle_judgment_sss(1,IGE,IFG)"
+    ],
+    "line_addition(1,EG,GF)": [
+      "median_of_triangle_judgment(1,FP,FEA)",
+      "mirror_congruent_triangle_judgment_sss(1,IGE,IFG)"
+    ],
+    "similar_triangle_property_line_ratio(1,EAF,GOF)": [
+      "median_of_triangle_judgment(1,FP,FEA)",
+      "mirror_congruent_triangle_judgment_sss(1,IGE,IFG)"
+    ],
+    "similar_triangle_property_line_ratio(1,AFE,OFG)": [
+      "median_of_triangle_judgment(1,FP,FEA)",
+      "mirror_congruent_triangle_judgment_sss(1,IGE,IFG)"
+    ],
+    "parallel_property_corresponding_angle(1,PG,AO,E)": [
+      "similar_triangle_judgment_aa(1,FEA,GEP)"
+    ],
+    "similar_triangle_judgment_aa(1,FEA,GEP)": [
+      "similar_triangle_property_line_ratio(1,FEA,GEP)",
+      "similar_triangle_property_line_ratio(1,AFE,PGE)"
+    ],
+    "line_addition(1,EP,PA)": [
+      "median_of_triangle_judgment(1,FP,FEA)",
+      "mirror_congruent_triangle_judgment_sss(1,IGE,IFG)"
+    ],
+    "line_addition(1,EI,IO)": [
+      "mirror_congruent_triangle_judgment_sss(1,IGE,IFG)"
+    ],
+    "line_addition(1,FI,IP)": [
+      "mirror_congruent_triangle_judgment_sss(1,IGE,IFG)"
+    ],
+    "similar_triangle_property_line_ratio(1,AFE,PGE)": [
+      "median_of_triangle_judgment(1,FP,FEA)",
+      "mirror_congruent_triangle_judgment_sss(1,IGE,IFG)"
+    ],
+    "similar_triangle_property_line_ratio(1,FEA,GEP)": [
+      "median_of_triangle_judgment(1,FP,FEA)",
+      "mirror_congruent_triangle_judgment_sss(1,IGE,IFG)"
+    ],
+    "median_of_triangle_judgment(1,EO,EAF)": [
+      "centroid_of_triangle_judgment_intersection(1,I,AFE,O,P)"
+    ],
+    "median_of_triangle_judgment(1,FP,FEA)": [
+      "centroid_of_triangle_judgment_intersection(1,I,AFE,O,P)"
+    ],
+    "centroid_of_triangle_judgment_intersection(1,I,AFE,O,P)": [
+      "centroid_of_triangle_property_line_ratio(1,I,FEA,P)",
+      "centroid_of_triangle_property_line_ratio(1,I,EAF,O)"
+    ],
+    "centroid_of_triangle_property_line_ratio(1,I,EAF,O)": [
+      "mirror_congruent_triangle_judgment_sss(1,IGE,IFG)"
+    ],
+    "centroid_of_triangle_property_line_ratio(1,I,FEA,P)": [
+      "mirror_congruent_triangle_judgment_sss(1,IGE,IFG)"
+    ],
+    "mirror_congruent_triangle_judgment_sss(1,IGE,IFG)": [
+      "mirror_congruent_triangle_property_angle_equal(1,GEI,GIF)"
+    ],
+    "mirror_congruent_triangle_property_angle_equal(1,GEI,GIF)": [
+      "right_triangle_judgment_angle(1,FGA)"
+    ],
+    "adjacent_complementary_angle(1,FGI,IGE)": [
+      "right_triangle_judgment_angle(1,FGA)"
+    ],
+    "right_triangle_judgment_angle(1,FGA)": [
+      "right_triangle_property_length_of_median(1,FGA,O)"
+    ],
+    "median_of_triangle_judgment(1,GO,GAF)": [
+      "right_triangle_property_length_of_median(1,FGA,O)"
+    ]
+  }
 }

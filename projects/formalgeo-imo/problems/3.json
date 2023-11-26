@@ -2,7 +2,7 @@
   "problem_id": 3,
   "annotation": "XiaokaiZhang_2023-04-13",
   "source": "中国初中奥林匹克",
-  "problem_level": 1,
+  "problem_level": 9,
   "problem_text_cn": "",
   "problem_text_en": "",
   "problem_img": "3.png",
@@ -24,12 +24,12 @@
     "Cocircular(C,EDFN)"
   ],
   "text_cdl": [
-    "PerpendicularBetweenLine(AD,CD)",
-    "Equal(LengthOfLine(CN),4)"
+    "Equal(LengthOfLine(CN),4)",
+    "PerpendicularBetweenLine(AD,CD)"
   ],
   "image_cdl": [
-    "IsCentreOfCircle(O,O)",
-    "IsCentreOfCircle(C,C)"
+    "IsCentreOfCircle(C,C)",
+    "IsCentreOfCircle(O,O)"
   ],
   "goal_cdl": "Relation(IsMidpointOfLine(G,DC))",
   "problem_answer": "IsMidpointOfLine(G,DC)",
@@ -43,5 +43,40 @@
     "line_addition(1,MD,DG)",
     "line_addition(1,GC,CN)",
     "midpoint_of_line_judgment(1,G,DC)"
-  ]
+  ],
+  "theorem_seqs_dag": {
+    "START": [
+      "adjacent_complementary_angle(1,MDO,ODG)",
+      "radius_of_circle_property_length_equal(1,CD,C)",
+      "radius_of_circle_property_length_equal(1,CN,C)",
+      "circle_property_circular_power_chord_and_chord(1,MGC,FGE,O)",
+      "circle_property_circular_power_chord_and_chord(1,DGN,FGE,C)",
+      "line_addition(1,MD,DG)",
+      "line_addition(1,GC,CN)"
+    ],
+    "adjacent_complementary_angle(1,MDO,ODG)": [
+      "circle_property_chord_perpendicular_bisect_chord(1,O,OD,MC)"
+    ],
+    "circle_property_chord_perpendicular_bisect_chord(1,O,OD,MC)": [
+      "midpoint_of_line_judgment(1,G,DC)"
+    ],
+    "radius_of_circle_property_length_equal(1,CD,C)": [
+      "midpoint_of_line_judgment(1,G,DC)"
+    ],
+    "radius_of_circle_property_length_equal(1,CN,C)": [
+      "midpoint_of_line_judgment(1,G,DC)"
+    ],
+    "circle_property_circular_power_chord_and_chord(1,MGC,FGE,O)": [
+      "midpoint_of_line_judgment(1,G,DC)"
+    ],
+    "circle_property_circular_power_chord_and_chord(1,DGN,FGE,C)": [
+      "midpoint_of_line_judgment(1,G,DC)"
+    ],
+    "line_addition(1,MD,DG)": [
+      "midpoint_of_line_judgment(1,G,DC)"
+    ],
+    "line_addition(1,GC,CN)": [
+      "midpoint_of_line_judgment(1,G,DC)"
+    ]
+  }
 }

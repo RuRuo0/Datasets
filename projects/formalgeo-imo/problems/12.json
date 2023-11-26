@@ -2,7 +2,7 @@
   "problem_id": 12,
   "annotation": "YimingHe_2023-11-03",
   "source": "东南数学奥林匹克2021第2题",
-  "problem_level": 1,
+  "problem_level": 30,
   "problem_text_cn": "",
   "problem_text_en": "",
   "problem_img": "12.png",
@@ -27,15 +27,15 @@
     "Cocircular(O,BCA)"
   ],
   "text_cdl": [
-    "IsCentreOfCircle(O,O)",
     "Equal(LengthOfLine(AB),LengthOfLine(AC))",
+    "Equal(LengthOfLine(AH),Mul(LengthOfLine(OD),2))",
+    "IsCentreOfCircle(O,O)",
     "IsCircumcenterOfTriangle(O,ABC)",
-    "IsOrthocenterOfTriangle(H,ABC)",
     "IsMidpointOfLine(G,AH)",
-    "PerpendicularBetweenLine(BE,AE)",
+    "IsOrthocenterOfTriangle(H,ABC)",
     "ParallelBetweenLine(OE,BC)",
-    "PerpendicularBetweenLine(BK,EK)",
-    "Equal(LengthOfLine(AH),Mul(LengthOfLine(OD),2))"
+    "PerpendicularBetweenLine(BE,AE)",
+    "PerpendicularBetweenLine(BK,EK)"
   ],
   "image_cdl": [],
   "goal_cdl": "Relation(IsIncenterOfTriangle(H,CGB))",
@@ -71,5 +71,115 @@
     "bisector_of_angle_judgment_angle_equal(1,GH,CGB)",
     "bisector_of_angle_judgment_angle_equal(1,BH,GBC)",
     "incenter_of_triangle_judgment_intersection(1,H,CGB)"
-  ]
+  ],
+  "theorem_seqs_dag": {
+    "START": [
+      "orthocenter_of_triangle_property_intersection(1,H,ABC,D)",
+      "isosceles_triangle_judgment_line_equal(1,ABC)",
+      "adjacent_complementary_angle(1,DGB,BGA)",
+      "adjacent_complementary_angle(1,AGC,CGD)",
+      "right_triangle_judgment_angle(1,HEA)",
+      "median_of_triangle_judgment(1,EG,EAH)",
+      "line_addition(1,AG,GH)",
+      "angle_addition(1,HEG,GEA)",
+      "triangle_property_angle_sum(1,ADC)",
+      "angle_addition(1,CEK,KEB)",
+      "adjacent_complementary_angle(1,BKE,EKC)",
+      "adjacent_complementary_angle(1,CEB,BEA)",
+      "triangle_property_angle_sum(1,EKC)",
+      "parallel_property_collinear_extend(3,CB,EO,D)"
+    ],
+    "orthocenter_of_triangle_property_intersection(1,H,ABC,D)": [
+      "isosceles_triangle_property_line_coincidence(1,ABC,D)",
+      "parallelogram_judgment_angle_and_angle(1,ODKE)",
+      "mirror_congruent_triangle_judgment_sas(1,EGB,EBK)",
+      "parallelogram_judgment_angle_and_angle(1,ODKE)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,ABC)": [
+      "isosceles_triangle_property_line_coincidence(1,ABC,D)"
+    ],
+    "isosceles_triangle_property_line_coincidence(1,ABC,D)": [
+      "mirror_congruent_triangle_judgment_sas(1,ABG,AGC)"
+    ],
+    "mirror_congruent_triangle_judgment_sas(1,ABG,AGC)": [
+      "mirror_congruent_triangle_property_angle_equal(1,GAB,GCA)"
+    ],
+    "mirror_congruent_triangle_property_angle_equal(1,GAB,GCA)": [
+      "bisector_of_angle_judgment_angle_equal(1,GH,CGB)"
+    ],
+    "adjacent_complementary_angle(1,DGB,BGA)": [
+      "bisector_of_angle_judgment_angle_equal(1,GH,CGB)"
+    ],
+    "adjacent_complementary_angle(1,AGC,CGD)": [
+      "bisector_of_angle_judgment_angle_equal(1,GH,CGB)"
+    ],
+    "right_triangle_judgment_angle(1,HEA)": [
+      "right_triangle_property_length_of_median(1,HEA,G)"
+    ],
+    "median_of_triangle_judgment(1,EG,EAH)": [
+      "right_triangle_property_length_of_median(1,HEA,G)"
+    ],
+    "right_triangle_property_length_of_median(1,HEA,G)": [
+      "isosceles_triangle_judgment_line_equal(1,GEA)",
+      "mirror_congruent_triangle_judgment_sas(1,EGB,EBK)"
+    ],
+    "line_addition(1,AG,GH)": [
+      "isosceles_triangle_judgment_line_equal(1,GEA)"
+    ],
+    "isosceles_triangle_judgment_line_equal(1,GEA)": [
+      "isosceles_triangle_property_angle_equal(1,GEA)"
+    ],
+    "isosceles_triangle_property_angle_equal(1,GEA)": [
+      "mirror_congruent_triangle_judgment_sas(1,EGB,EBK)"
+    ],
+    "angle_addition(1,HEG,GEA)": [
+      "mirror_congruent_triangle_judgment_sas(1,EGB,EBK)"
+    ],
+    "triangle_property_angle_sum(1,ADC)": [
+      "mirror_congruent_triangle_judgment_sas(1,EGB,EBK)"
+    ],
+    "angle_addition(1,CEK,KEB)": [
+      "mirror_congruent_triangle_judgment_sas(1,EGB,EBK)"
+    ],
+    "adjacent_complementary_angle(1,BKE,EKC)": [
+      "mirror_congruent_triangle_judgment_sas(1,EGB,EBK)"
+    ],
+    "adjacent_complementary_angle(1,CEB,BEA)": [
+      "mirror_congruent_triangle_judgment_sas(1,EGB,EBK)"
+    ],
+    "triangle_property_angle_sum(1,EKC)": [
+      "mirror_congruent_triangle_judgment_sas(1,EGB,EBK)"
+    ],
+    "parallel_property_collinear_extend(3,CB,EO,D)": [
+      "parallel_property_collinear_extend(1,DB,EO,K)"
+    ],
+    "parallel_property_collinear_extend(1,DB,EO,K)": [
+      "parallel_property_ipsilateral_internal_angle(1,KD,EO)",
+      "parallel_property_ipsilateral_internal_angle(1,OE,DK)"
+    ],
+    "parallel_property_ipsilateral_internal_angle(1,OE,DK)": [
+      "parallelogram_judgment_angle_and_angle(1,ODKE)"
+    ],
+    "parallel_property_ipsilateral_internal_angle(1,KD,EO)": [
+      "parallelogram_judgment_angle_and_angle(1,ODKE)"
+    ],
+    "parallelogram_judgment_angle_and_angle(1,ODKE)": [
+      "parallelogram_property_opposite_line_equal(1,ODKE)"
+    ],
+    "parallelogram_property_opposite_line_equal(1,ODKE)": [
+      "mirror_congruent_triangle_judgment_sas(1,EGB,EBK)"
+    ],
+    "mirror_congruent_triangle_judgment_sas(1,EGB,EBK)": [
+      "mirror_congruent_triangle_property_angle_equal(1,BEG,BKE)"
+    ],
+    "mirror_congruent_triangle_property_angle_equal(1,BEG,BKE)": [
+      "bisector_of_angle_judgment_angle_equal(1,BH,GBC)"
+    ],
+    "bisector_of_angle_judgment_angle_equal(1,GH,CGB)": [
+      "incenter_of_triangle_judgment_intersection(1,H,CGB)"
+    ],
+    "bisector_of_angle_judgment_angle_equal(1,BH,GBC)": [
+      "incenter_of_triangle_judgment_intersection(1,H,CGB)"
+    ]
+  }
 }

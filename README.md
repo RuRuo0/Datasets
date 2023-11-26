@@ -5,9 +5,9 @@
 [![Survey](https://img.shields.io/badge/Survey-FormalGeo-blue)](https://github.com/FormalGeo/FormalGeo)
 
 Dataset Annotation Tools and Dataset Release for formal Euclidean plane geometry problems. This project is based on
-the Geometry Formalization Theory and utilizes FormalGeo as its problem solver. More information about FormalGeo will be
-found in [homepage](https://formalgeo.github.io/).  
-FormalGeo is in its early stages and brimming with potential. We welcome anyone to join us in this exciting endeavor.
+the Geometry Formalization Theory and utilizes FormalGeo as its problem solver.  
+More information about FormalGeo will be found in [homepage](https://formalgeo.github.io/). FormalGeo is in its early 
+stages and brimming with potential. We welcome anyone to join us in this exciting endeavor.  
 
 ## Installation
 

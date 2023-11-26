@@ -2,7 +2,7 @@
   "problem_id": 14,
   "annotation": "NaZhu_2023-11-03",
   "source": "2021美国TSTST第一题",
-  "problem_level": 1,
+  "problem_level": 15,
   "problem_text_cn": "如图，四边形ABCD内接于圆O，X、Y分别是AB、CD上的点，设△ADX，△BCY的外接圆与直线XY分别交于点P、Q，求证:OP=OQ。",
   "problem_text_en": "",
   "problem_img": "14.png",
@@ -33,8 +33,8 @@
   ],
   "text_cdl": [
     "IsCentreOfCircle(O,O)",
-    "IsCentreOfCircle(Z,Z)",
     "IsCentreOfCircle(W,W)",
+    "IsCentreOfCircle(Z,Z)",
     "PerpendicularBetweenLine(OU,SU)"
   ],
   "image_cdl": [],
@@ -57,7 +57,72 @@
     "mirror_congruent_quadrilateral_judgment_SASAS(1,OQBU,OUEP)",
     "mirror_congruent_quadrilateral_property_line_equal(1,OQBU,OUEP)"
   ],
-  "msg": [
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_circumference_angle_external(1,ZDX,P)",
+      "arc_property_circumference_angle_internal(1,ZDX,A)",
+      "arc_property_circumference_angle_external(1,ODB,E)",
+      "arc_property_circumference_angle_external(1,ODB,C)",
+      "arc_property_circumference_angle_internal(1,ODB,A)",
+      "arc_property_circumference_angle_external(1,WYB,C)",
+      "arc_property_circumference_angle_internal(1,WYB,Q)",
+      "adjacent_complementary_angle(1,BUO,OUS)"
+    ],
+    "arc_property_circumference_angle_external(1,ZDX,P)": [
+      "parallel_judgment_corresponding_angle(2,EB,PQ,D)"
+    ],
+    "arc_property_circumference_angle_internal(1,ZDX,A)": [
+      "parallel_judgment_corresponding_angle(2,EB,PQ,D)"
+    ],
+    "arc_property_circumference_angle_external(1,ODB,E)": [
+      "parallel_judgment_corresponding_angle(2,EB,PQ,D)",
+      "isosceles_trapezoid_judgment_angle_equal(1,QBEP)",
+      "mirror_congruent_quadrilateral_judgment_SASAS(1,OQBU,OUEP)"
+    ],
+    "arc_property_circumference_angle_external(1,ODB,C)": [
+      "parallel_judgment_corresponding_angle(2,EB,PQ,D)",
+      "isosceles_trapezoid_judgment_angle_equal(1,QBEP)",
+      "mirror_congruent_quadrilateral_judgment_SASAS(1,OQBU,OUEP)"
+    ],
+    "arc_property_circumference_angle_internal(1,ODB,A)": [
+      "parallel_judgment_corresponding_angle(2,EB,PQ,D)",
+      "isosceles_trapezoid_judgment_angle_equal(1,QBEP)",
+      "mirror_congruent_quadrilateral_judgment_SASAS(1,OQBU,OUEP)"
+    ],
+    "parallel_judgment_corresponding_angle(2,EB,PQ,D)": [
+      "parallel_property_ipsilateral_internal_angle(1,QP,BE)",
+      "trapezoid_judgment_parallel(1,QBEP)"
+    ],
+    "parallel_property_ipsilateral_internal_angle(1,QP,BE)": [
+      "isosceles_trapezoid_judgment_angle_equal(1,QBEP)",
+      "mirror_congruent_quadrilateral_judgment_SASAS(1,OQBU,OUEP)"
+    ],
+    "arc_property_circumference_angle_external(1,WYB,C)": [
+      "isosceles_trapezoid_judgment_angle_equal(1,QBEP)",
+      "mirror_congruent_quadrilateral_judgment_SASAS(1,OQBU,OUEP)"
+    ],
+    "arc_property_circumference_angle_internal(1,WYB,Q)": [
+      "isosceles_trapezoid_judgment_angle_equal(1,QBEP)",
+      "mirror_congruent_quadrilateral_judgment_SASAS(1,OQBU,OUEP)"
+    ],
+    "trapezoid_judgment_parallel(1,QBEP)": [
+      "isosceles_trapezoid_judgment_angle_equal(1,QBEP)"
+    ],
+    "isosceles_trapezoid_judgment_angle_equal(1,QBEP)": [
+      "mirror_congruent_quadrilateral_judgment_SASAS(1,OQBU,OUEP)"
+    ],
+    "adjacent_complementary_angle(1,BUO,OUS)": [
+      "circle_property_chord_perpendicular_bisect_chord(1,O,OU,BE)",
+      "mirror_congruent_quadrilateral_judgment_SASAS(1,OQBU,OUEP)"
+    ],
+    "circle_property_chord_perpendicular_bisect_chord(1,O,OU,BE)": [
+      "mirror_congruent_quadrilateral_judgment_SASAS(1,OQBU,OUEP)"
+    ],
+    "mirror_congruent_quadrilateral_judgment_SASAS(1,OQBU,OUEP)": [
+      "mirror_congruent_quadrilateral_property_line_equal(1,OQBU,OUEP)"
+    ]
+  },
+  "notes": [
     "Shape(ZDA,OFA,ODF)",
     "Shape(OFA,Aα,αF)",
     "Shape(αD,DF,Fα)",

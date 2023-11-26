@@ -2,7 +2,7 @@
   "problem_id": 10,
   "annotation": "YimingHe_2023-06-19",
   "source": "2023年美国数学奥林匹克",
-  "problem_level": 16,
+  "problem_level": 17,
   "problem_text_cn": "",
   "problem_text_en": "",
   "problem_img": "10.png",
@@ -33,11 +33,11 @@
     "IsCentreOfCircle(Y,Y)",
     "IsDiameterOfCircle(AB,Y)",
     "IsMidpointOfLine(M,BC)",
+    "IsMidpointOfLine(N,AQ)",
     "PerpendicularBetweenLine(AP,CP)",
-    "PerpendicularBetweenLine(CP,MP)",
     "PerpendicularBetweenLine(BD,MD)",
-    "PerpendicularBetweenLine(QE,AE)",
-    "IsMidpointOfLine(N,AQ)"
+    "PerpendicularBetweenLine(CP,MP)",
+    "PerpendicularBetweenLine(QE,AE)"
   ],
   "image_cdl": [],
   "goal_cdl": "Equal(LengthOfLine(BN),LengthOfLine(CN))",
@@ -60,5 +60,66 @@
     "adjacent_complementary_angle(1,BMN,NMC)",
     "mirror_congruent_triangle_judgment_sas(1,MNB,MCN)",
     "mirror_congruent_triangle_property_line_equal(1,MNB,MCN)"
-  ]
+  ],
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_circumference_angle_external(1,YBD,A)",
+      "arc_property_circumference_angle_external(1,YBD,E)",
+      "arc_property_circumference_angle_external(1,XBP,A)",
+      "arc_property_circumference_angle_internal(1,XBP,Q)",
+      "adjacent_complementary_angle(1,BQP,PQC)",
+      "vertical_angle(1,DMB,PMC)",
+      "vertical_angle(1,QMP,EMD)",
+      "adjacent_complementary_angle(1,BMN,NMC)"
+    ],
+    "arc_property_circumference_angle_external(1,YBD,A)": [
+      "congruent_triangle_judgment_aas(3,PQM,DEM)"
+    ],
+    "arc_property_circumference_angle_external(1,YBD,E)": [
+      "congruent_triangle_judgment_aas(3,PQM,DEM)"
+    ],
+    "arc_property_circumference_angle_external(1,XBP,A)": [
+      "congruent_triangle_judgment_aas(3,PQM,DEM)"
+    ],
+    "arc_property_circumference_angle_internal(1,XBP,Q)": [
+      "congruent_triangle_judgment_aas(3,PQM,DEM)"
+    ],
+    "adjacent_complementary_angle(1,BQP,PQC)": [
+      "congruent_triangle_judgment_aas(3,PQM,DEM)"
+    ],
+    "vertical_angle(1,DMB,PMC)": [
+      "congruent_triangle_judgment_aas(3,BDM,CPM)"
+    ],
+    "congruent_triangle_judgment_aas(3,BDM,CPM)": [
+      "congruent_triangle_property_line_equal(1,BDM,CPM)"
+    ],
+    "congruent_triangle_property_line_equal(1,BDM,CPM)": [
+      "congruent_triangle_judgment_aas(3,PQM,DEM)"
+    ],
+    "vertical_angle(1,QMP,EMD)": [
+      "congruent_triangle_judgment_aas(3,PQM,DEM)"
+    ],
+    "congruent_triangle_judgment_aas(3,PQM,DEM)": [
+      "congruent_triangle_property_line_equal(1,PQM,DEM)"
+    ],
+    "congruent_triangle_property_line_equal(1,PQM,DEM)": [
+      "midsegment_of_triangle_judgment_midpoint(1,MN,QEA)"
+    ],
+    "midsegment_of_triangle_judgment_midpoint(1,MN,QEA)": [
+      "midsegment_of_triangle_property_parallel(1,MN,QEA)"
+    ],
+    "midsegment_of_triangle_property_parallel(1,MN,QEA)": [
+      "parallel_property_corresponding_angle(1,MN,EA,Q)"
+    ],
+    "parallel_property_corresponding_angle(1,MN,EA,Q)": [
+      "mirror_congruent_triangle_judgment_sas(1,MNB,MCN)",
+      "mirror_congruent_triangle_judgment_sas(1,MNB,MCN)"
+    ],
+    "adjacent_complementary_angle(1,BMN,NMC)": [
+      "mirror_congruent_triangle_judgment_sas(1,MNB,MCN)"
+    ],
+    "mirror_congruent_triangle_judgment_sas(1,MNB,MCN)": [
+      "mirror_congruent_triangle_property_line_equal(1,MNB,MCN)"
+    ]
+  }
 }

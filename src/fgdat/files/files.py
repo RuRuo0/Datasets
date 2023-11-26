@@ -102,5 +102,16 @@ if __name__ == '__main__':
                  "FangzhenZhu": "zhufz@shu.edu.cn", "YangLi": "laying2000@outlook.com",
                  "YifanWang": "wangyifan0216@shu.edu.cn", "YiwenHuang": "15967121844@163.com",
                  "RunanWang": "luckyrunan@163.com", "ChengQin": "karllonrenz@outlook.com"})
-    get_pid_mapping("../../../projects/formalgeo7k")
-    get_t_info("../../../projects/formalgeo7k")
+    # get_pid_mapping("../../../projects/formalgeo7k")
+    # get_t_info("../../../projects/formalgeo7k")
+
+    get_authors("../../../projects/formalgeo-imo",
+                {"XiaokaiZhang": "xiaokaizhang1999@163.com", "NaZhu": "nazhu@shu.edu.cn",
+                 "YimingHe": "hym123@shu.edu.cn", "JiaZou": "zouj@shu.edu.cn", "QikeHuang": "qkhuang112@163.com",
+                 "XiaoxiaoJin": "leo_jxx@163.com", "YanjunGuo": "yanjunguo@163.com",
+                 "ChenyangMao": "shadymao@shu.edu.com", "ZheZhu": "zhuzhe@shu.edu.cn", "DengfengYue": "ydf@shu.edu.cn",
+                 "FangzhenZhu": "zhufz@shu.edu.cn", "YangLi": "laying2000@outlook.com",
+                 "YifanWang": "wangyifan0216@shu.edu.cn", "YiwenHuang": "15967121844@163.com",
+                 "RunanWang": "luckyrunan@163.com", "ChengQin": "karllonrenz@outlook.com"})
+    get_pid_mapping("../../../projects/formalgeo-imo")
+    # get_t_info("../../../projects/formalgeo-imo")

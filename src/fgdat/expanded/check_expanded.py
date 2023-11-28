@@ -72,4 +72,5 @@ def check_expanded(path_datasets, start_pid=1, clean_theorem=False, clean_acc=Fa
 
 
 if __name__ == '__main__':
-    check_expanded("../../../projects/formalgeo7k", start_pid=1, clean_theorem=True, clean_acc=False)
+    # check_expanded("../../../projects/formalgeo7k", start_pid=1, clean_theorem=True, clean_acc=False)
+    check_expanded("../../../projects/formalgeo-imo", start_pid=8, clean_theorem=True, clean_acc=False)

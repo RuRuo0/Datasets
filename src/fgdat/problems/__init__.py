@@ -8,4 +8,4 @@ __all__ = [
     "get_cleaned_theorem_seqs"
 ]
 
-from format_problems import get_cleaned_theorem_seqs
+from fgdat.problems.format_problems import get_cleaned_theorem_seqs

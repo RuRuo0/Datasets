@@ -3607,7 +3607,7 @@ The length of the diameter of the circle.
     premise: Polygon(ABCD)&Equal(Add(MeasureOfAngle(DAB),MeasureOfAngle(BCD)),180)
     conclusion: ConcyclicBetweenPoints(A,B,C,D)
     # branch 2
-    premise: Equal(MeasureOfAngle(CAB),MeasureOfAngle(CDB))
+    premise: Angle(CAB)&Angle(CDB)&Equal(MeasureOfAngle(CAB),MeasureOfAngle(CDB))
     conclusion: ConcyclicBetweenPoints(A,B,C,D)
 
 **Description**:  
@@ -3618,7 +3618,7 @@ The length of the diameter of the circle.
     <img src="pic/concyclic_between_points_judgment_circular_power_chord_and_chord.png" alt="concyclic_between_points_judgment_circular_power_chord_and_chord" width="15%">
 </div>
 
-    premise: Equal(Mul(LengthOfLine(EC),LengthOfLine(ED)),Mul(LengthOfLine(EA),LengthOfLine(EB)))
+    premise: Collinear(AEB)&Collinear(CED)&Equal(Mul(LengthOfLine(EC),LengthOfLine(ED)),Mul(LengthOfLine(EA),LengthOfLine(EB)))
     conclusion: ConcyclicBetweenPoints(A,C,B,D)
 
 **Description**:  

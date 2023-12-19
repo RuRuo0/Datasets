@@ -65,12 +65,12 @@ def release(path_dataset, path_released="../../../released"):
     print("Packing... (It may take a few minutes)")
     shutil.make_archive(path_cache, 'gztar', path_cache)
 
-    # print("Removing cache... (It may take a few minutes)")
-    # shutil.rmtree(path_cache)
+    print("Removing cache... (It may take a few minutes)")
+    shutil.rmtree(path_cache)
 
-    # released = load_json(os.path.join(path_released, "released.json"))
-    # released[filename] = info
-    # safe_save_json(released, os.path.join(path_released, "released.json"))
+    released = load_json(os.path.join(path_released, "released.json"))
+    released[filename] = info
+    safe_save_json(released, os.path.join(path_released, "released.json"))
 
 
 if __name__ == '__main__':

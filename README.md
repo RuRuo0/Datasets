@@ -66,7 +66,7 @@ dependencies, and installs the current project in an editable mode into the envi
 project development and testing.
 
     $ git clone --depth 1 https://github.com/FormalGeo/Datasets.git
-    $ cd FormalGeo-Datasets
+    $ cd Datasets
     $ conda create -n <your_env_name> python=3.10
     $ conda activate <your_env_name>
     $ pip install -e .

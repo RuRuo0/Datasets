@@ -20,11 +20,12 @@ Install Formalgeo using pip:
 
 Run python and download datasets:
 
-    >>> from formalgeo.data import download_dataset, DatasetLoader
+    >>> from formalgeo.data import download_dataset
     >>> download_dataset(dataset_name="formalgeo7k_v1", datasets_path="your_datasets_storage_path")
 
 Use datasets:
 
+    >>> from formalgeo.data import DatasetLoader
     >>> dl = DatasetLoader(dataset_name="formalgeo7k_v1", datasets_path="your_datasets_storage_path")
     >>> print(dl.get_problem(pid=1))
 

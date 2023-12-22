@@ -4,7 +4,7 @@ from formalgeo.tools import load_json, save_json, show_solution, get_used_pid_an
 from formalgeo.parse import parse_theorem_seqs, parse_one_theorem
 
 
-def run(clean_theorem=False, interactive=True):
+def run(clean_theorem=False, interactive=False):
     solver = Interactor(load_json(os.path.join("../gdl/", "predicate_GDL.json")),
                         load_json(os.path.join("../gdl/", "theorem_GDL.json")))
     while True:
@@ -37,7 +37,7 @@ def run(clean_theorem=False, interactive=True):
                     continue
 
         if clean_theorem and solver.problem.goal.solved:
-            _, theorem_seqs = get_used(solver.problem)  # clean theorem seqs
+            _, theorem_seqs = get_used_pid_and_theorem(solver.problem)  # clean theorem seqs
             problem_CDL["theorem_seqs"] = theorem_seqs
             save_json(problem_CDL, os.path.join("../problems/", filename))
 

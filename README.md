@@ -65,8 +65,11 @@ formalgeo7k自然语言问题描述和图像的质量，统一表述风格。
 可以直接使用[在线网站](https://www.geogebra.org/geometry)，也可以将软件[下载](https://www.geogebra.org/download)到本地。
 
 ### 标注协作
+本次标注仍然使用Github来协作。在每次标注前，跟主分支同步：
 
-本次标注仍然使用Github来协作。完成每周的标注任务后，提交到远程仓库：
+    $ git pull origin main
+
+完成每周的标注任务后，提交到远程仓库：
 
     $ git add projects/formalgeo7k/problems
     $ git add projects/formalgeo7k/diagrams
@@ -91,18 +94,18 @@ formalgeo7k自然语言问题描述和图像的质量，统一表述风格。
 
 ### Task2：画几何图形
 
-根据几何问题JSON文件、参考原始几何图像、使用GeoGebra重新画几何图像。大致步骤为：  
-1.根据JSON文件中的**construction_cdl**画出**基本图形**
-。可参考原始问题图像，但注意存在新增辅助线和表示点字母不一致等情况。  
-2.根据JSON文件中的**image_cdl**在基本图像上标出对应**符号**和**文本**。需重点注意的是图像中能表示的条件有限，只能表示predicate_GDL.json
-中Relation的部分关系，其它Entity或Attribution不能标注在图像中，详情见下述可标注类型。
+根据几何问题JSON文件、参考原始几何图像、使用GeoGebra重新画几何图像。步骤为：  
+1.根据JSON文件中的**construction_cdl**画出**基本图形**。可参考原始问题图像，但注意存在新增辅助线和表示点字母不一致等情况。  
+2.图像中能表示的几何关系种类有限，如下图所示。在画图之前，需要检查text_cdl与image_cdl的可标注类型语句：①删去image_cdl中，不在下图可标注
+类型中的语句。②若可标注类型语句在text_cdl但不在image_cdl，将其从text_cdl复制到image_cdl。  
 
 <div>
     <img src="readme_pic/image_cdl.jpg" alt="readme_pic">
 </div>
 
-3.画完图后，获取图像 **.png** 文件以及 **.gbb** 文件，以题号命名，一同上传至`projects/formalgeo7k/diagrams`文件夹下，并将
-原始几何图像文件覆盖。
+3.根据JSON文件中的**image_cdl**在基本图像上标出对应**符号**和**文本**，标注方法如上图所示。  
+4.画完图后，获取图像 **.png** 文件以及 **.gbb** 文件，以题号命名，一同上传至`projects/formalgeo7k/diagrams`文件夹下，并将
+原始几何图像文件覆盖。  
 GeoGebra的画图注意事项，具体可见章节[GeoGebra画图](#标注参考：GeoGebra画图)。
 
 ## 标注参考：GeoGebra画图

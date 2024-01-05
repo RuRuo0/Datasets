@@ -69,8 +69,9 @@ formalgeo7k自然语言问题描述和图像的质量，统一表述风格。
 
     $ git pull origin main
 
-完成每周的标注任务后，提交到远程仓库：
+完成每周的标注任务后，提交到远程仓库。在每次提交前，也要跟主分支同步一下。
 
+    $ git pull origin main
     $ git add projects/formalgeo7k/problems
     $ git add projects/formalgeo7k/diagrams
     $ git commit -m "your_name week_number"
@@ -156,7 +157,8 @@ GeoGebra可供操作的工具非常丰富，但我们的标注工作需要使用
 #### 注意事项
 
 1.几何图像需要跟JSON文件一一对应。图像中显示的点、线、弧对象一定是和construction_cdl一一对应的，可通过修改点的命名以及选择不显示对象或标签
-来实现正确图形显示，后续需从.gbb文件中解析出这些信息。image_cdl只要能在图像上显示出来即可，不涉及.gbb文件的解析。
+来实现正确图形显示，后续需从.gbb文件中解析出这些信息。image_cdl只要能在图像上显示出来即可，不涉及.gbb文件的解析。  
+2.画图时，几何形状应尽量占居整个画板。
 
 ## 标注参考：构图语句
 

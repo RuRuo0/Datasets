@@ -1,0 +1,45 @@
+{
+  "problem_id": 1466,
+  "annotation": "QikeHuang_2023-04-16",
+  "source": "Geometry3k-1520",
+  "problem_level": 2,
+  "problem_text_cn": "如图所示，∠DOB=∠AOF，∠DOB=∠EOD，∠DOB=∠FOE，O是⊙O的圆心，CO垂直于AO。求弧OAB的角度。",
+  "problem_text_en": "As shown in the diagram, ∠DOB=∠AOF, ∠DOB=∠EOD, ∠DOB=∠FOE, the center of ⊙O is O, CO⊥AO. Find the measure of arc OAB.",
+  "problem_img": "1466.png",
+  "construction_cdl": [
+    "Shape(OC,OCB,BO)",
+    "Shape(DO,OB,OBD)",
+    "Shape(EO,OD,ODE)",
+    "Shape(FO,OE,OEF)",
+    "Shape(AO,OF,OFA)",
+    "Shape(CO,OA,OAC)",
+    "Collinear(AOB)",
+    "Collinear(EOC)",
+    "Cocircular(O,ACBDEF)"
+  ],
+  "text_cdl": [
+    "Equal(MeasureOfAngle(DOB),MeasureOfAngle(AOF))",
+    "Equal(MeasureOfAngle(DOB),MeasureOfAngle(EOD))",
+    "Equal(MeasureOfAngle(DOB),MeasureOfAngle(FOE))",
+    "IsCentreOfCircle(O,O)",
+    "PerpendicularBetweenLine(CO,AO)"
+  ],
+  "image_cdl": [
+    "Equal(MeasureOfAngle(DOB),MeasureOfAngle(AOF))",
+    "Equal(MeasureOfAngle(DOB),MeasureOfAngle(EOD))",
+    "Equal(MeasureOfAngle(DOB),MeasureOfAngle(FOE))",
+    "PerpendicularBetweenLine(CO,AO)"
+  ],
+  "goal_cdl": "Value(MeasureOfArc(OAB))",
+  "problem_answer": "180",
+  "theorem_seqs": [
+    "arc_property_center_angle(1,OAB,O)",
+    "flat_angle(1,BOA)"
+  ],
+  "theorem_seqs_dag": {
+    "START": [
+      "arc_property_center_angle(1,OAB,O)",
+      "flat_angle(1,BOA)"
+    ]
+  }
+}

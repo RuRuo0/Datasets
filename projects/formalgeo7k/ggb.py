@@ -13,8 +13,8 @@ if not os.path.exists("ggb_export"):
     os.makedirs("ggb_export")
 if not os.path.exists("ggb_cut"):
     os.makedirs("ggb_export")
-if not os.path.exists("ggb_log"):
-    os.makedirs("ggb_log")
+if not os.path.exists("log"):
+    os.makedirs("log")
 
 
 def unzip_ggb():
@@ -37,7 +37,7 @@ def unzip_ggb():
         else:
             print(f"{pid} ok.")
 
-    save_json(log, f"ggb_log/unzip_error_log_{int(time.time())}.json")
+    save_json(log, f"log/unzip_error_log_{int(time.time())}.json")
 
 
 def rename():
@@ -73,7 +73,7 @@ def rename():
 
     shutil.rmtree("ggb_rename/extracted")
 
-    save_json(log, f"ggb_log/rename_log_{int(time.time())}.json")
+    save_json(log, f"log/rename_log_{int(time.time())}.json")
 
 
 def check_export():
@@ -89,7 +89,7 @@ def check_export():
         if f"{pid}.png" not in all_exported:
             log["lack"].append(f"{pid}.png")
 
-    save_json(log, f"ggb_log/check_export_log_{int(time.time())}.json")
+    save_json(log, f"log/check_export_log_{int(time.time())}.json")
 
 
 def cut():
@@ -115,7 +115,7 @@ def cut():
         else:
             print(f"{pid} ok.")
 
-    save_json(log, f"ggb_log/cut_error_log_{int(time.time())}.json")
+    save_json(log, f"log/cut_error_log_{int(time.time())}.json")
 
 
 def check_cut():
@@ -138,11 +138,11 @@ def check_cut():
         else:
             print(f"{pid} ok.")
 
-    save_json(log, f"ggb_log/check_cut_log_{int(time.time())}.json")
+    save_json(log, f"log/check_cut_log_{int(time.time())}.json")
 
 
 def complement_after_cut():
-    check_cut_log = load_json("ggb_log/check_cut_log_1714113598.json")
+    check_cut_log = load_json("log/check_cut_log_1714113598.json")
     log = {"no_file": []}
 
     for pid in check_cut_log["bad_cut"]:
@@ -167,7 +167,7 @@ def complement_after_cut():
 
         print(f"{pid} ok.")
 
-    save_json(log, f"ggb_log/complement_log_{int(time.time())}.json")
+    save_json(log, f"log/complement_log_{int(time.time())}.json")
 
 
 if __name__ == '__main__':

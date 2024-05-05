@@ -102,5 +102,6 @@ def check_problem(clean_theorem=False):
 
 
 if __name__ == '__main__':
+    add_img_annotation()
     # auto_check_problem()
-    check_problem()
+    # check_problem()
